@@ -4,46 +4,52 @@ title: "About"
 permalink: /about/
 ---
 
-# 👋 안녕하세요, 최호준입니다!
+# 👋 Hi, I'm Hojun Choi!
 
-저는 데이터 과학을 공부하며 **실전 프로젝트 중심으로 성장하고 있는 데이터 사이언티스트 지망생**입니다.
-
-대학교 재학 중 AI 경진대회를 통해 모델링의 매력을 느꼈고, 현재는 통계학, 머신러닝, 헬스케어 데이터에 특히 관심이 많습니다.  
-매일 GitHub에 흔적을 남기며, 작은 실험이라도 하나씩 기록하고자 노력하고 있습니다.
+I'm a self-driven data science learner on a mission to build solid, practical skills through hands-on projects and continuous learning.  
+My journey started after discovering the power of machine learning during an AI competition. Since then, I've been steadily shaping my path toward becoming a **data scientist who can think critically, work ethically, and build meaningful models.**
 
 ---
 
-## 🎯 현재 하고 있는 것들
+## 🎯 What I’m currently focused on
 
-- `Hands-On ML`, `Python for Data Analysis`, `데이터 과학을 위한 통계` 공부 중
-- Kaggle 실습과 함께 개인 프로젝트 (`교통 데이터 분석`, `XRP 가격 예측`) 진행
-- GitHub 페이지와 블로그를 통해 학습 내용 정리
-- 대학원 진학 준비 (2026년 목표)
+- Studying: `Hands-On Machine Learning`, `Python for Data Analysis`, and `Statistics for Data Science`
+- Running solo projects (e.g., traffic data analysis, XRP prediction attempts)
+- Documenting my progress via GitHub and blog posts
+- Preparing for graduate school (target: 2026 entry)
 
 ---
 
-## 🛠 기술 스택
+## 🧠 Interests
+
+- **Machine Learning** (LightGBM, XGBoost, CatBoost, Optuna)
+- **Statistical Modeling**
+- **Healthcare Data** (particularly chronic disease prediction and monitoring)
+- **Model interpretability**, real-world deployment, and error analysis
+
+---
+
+## ⚙️ Tools & Stack
 
 - Python, pandas, scikit-learn, matplotlib
-- LightGBM, XGBoost, CatBoost, Optuna
 - Jupyter Notebook, Git/GitHub
+- ML frameworks: LightGBM, XGBoost, CatBoost
 
 ---
 
-## 🔮 목표
+## 🎯 Career Goal
 
-- 머신러닝 모델 설계부터 배포까지 전 과정을 경험하는 데이터 사이언티스트
-- 헬스케어 분야에서 **데이터 기반의 인사이트**를 제공할 수 있는 전문가
-- 연구와 실무를 모두 아우를 수 있는 실전형 연구자
+To become a data scientist capable of driving insights from messy, real-world data and solving practical problems — especially in healthcare.  
+My long-term goal is to balance research and industry work to contribute to human well-being using data.
 
 ---
 
-## 📫 연락
+## 📫 Contact
 
 - GitHub: [@hojjang98](https://github.com/hojjang98)
-- 블로그: [hojjang98.github.io](https://hojjang98.github.io)
+- Blog: [hojjang98.github.io](https://hojjang98.github.io)
 
 ---
 
-> 💬 이 페이지는 계속 업데이트됩니다.  
-> 기록은 기억을 이긴다. 꾸준히, 성실하게 성장하겠습니다.
+> 🚧 This page will be updated as I grow.  
+> I believe in consistent, transparent learning — one post, one project at a time.
