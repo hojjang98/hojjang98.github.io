@@ -1,16 +1,17 @@
 ---
 layout: default
-title: 최호준의 블로그
+title: Hojun Choi's Blog
 ---
 
-# 👋 안녕하세요!
+# 👋 Hello there!
 
-이 페이지는 제가 공부하며 기록한 내용을 담은 공간입니다.  
-실패한 실험, 좋은 인사이트, 아이디어를 담아두려고 합니다.
+Welcome to my blog — a space where I document what I'm learning, experimenting with, and reflecting on as I grow in the field of data science.
+
+This includes everything from failed experiments and hard-earned insights to spontaneous ideas and personal notes.
 
 ---
 
-## 📚 최근 글
+## 📚 Recent Posts
 
 <ul>
   {% for post in site.posts %}
