@@ -1,13 +1,13 @@
-title: "최호준의 블로그"
-description: "데이터 과학과 성장 기록을 담은 공간"
+title: "Hojun Choi's Blog"
+description: "A space to share my growth, learning, and data science journey"
 theme: minima
 
-# 블로그 관련 설정
+# Blog settings
 show_excerpts: true
 markdown: kramdown
 paginate: 5
 
-# 네비게이션 링크
+# Navigation menu
 header_pages:
   - index.md
   - about.md
