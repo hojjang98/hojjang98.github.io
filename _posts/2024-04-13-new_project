@@ -1,0 +1,52 @@
+---
+layout: post
+title: "New Project Kickoff – Forecasting Sales for Small Businesses"
+date: 2024-04-13
+---
+
+So, I just started a new project – forecasting sales for small businesses.
+
+Why?  
+Because I actually ran my own store for over a year.  
+And during that time, I kept thinking…  
+**“Wouldn’t it be awesome if I could *predict* what the next week’s sales might look like?”**
+
+This is exactly that.  
+A small attempt to turn my real-world frustration into something smarter with data.
+
+---
+
+## 💡 What I'm trying to do
+
+- Predict daily or weekly sales using past data  
+- Add external factors like **weather, holidays, and day of week**  
+- Eventually turn it into something that could help make decisions  
+  like *when to market*, *when to hire*, or even *when to take a day off*
+
+This isn’t just a toy problem for me —  
+I know how stressful it gets when sales dip or you overprepare on a slow day.
+
+---
+
+## 🧪 What’s happening now
+
+Right now I’m:
+- setting things up on GitHub  
+- drafting some ideas  
+- and hunting for open datasets (💳💨)
+
+I’ve got a few directions I want to test out —  
+some models like XGBoost, maybe Prophet for time series,  
+and possibly even a little Streamlit dashboard if I feel fancy later on.
+
+---
+
+## ✍️ Final thoughts
+
+This project is part tech, part therapy.  
+It’s me trying to combine what I’ve learned with what I’ve lived.
+
+I’ll be sharing updates here as I go —  
+failures included, because that’s the fun part.
+
+Stay tuned!
