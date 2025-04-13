@@ -1,11 +1,16 @@
 ---
 layout: post
-title: "블로그 첫 글 – GitHub Page 시작!"
+title: "First Blog Post – Getting Started with GitHub Pages!"
 date: 2024-04-13
 ---
 
-오늘 드디어 GitHub 블로그를 시작했습니다.
-만든지는 좀 됐지만 바쁘다는 핑계로 미뤄두다가 최대한 자주 하려고 합니다.
-처음은 어렵지만, 하나씩 구조를 잡아가는 재미도 있어요!
+Today, I finally launched my GitHub blog!
 
-앞으로는 머신러닝 프로젝트, 제가 공부한 것들 등의 내용도 공유할 예정입니다.
+I actually created this a while ago, but kept putting it off using “being busy” as an excuse.  
+From now on, I'm going to try updating it more regularly.
+
+Starting something new is always a bit tricky, but there’s a certain joy in building structure step by step.
+
+I'll be sharing things like machine learning projects, notes from my studies, and whatever else I’m exploring.
+
+Let’s see how this journey unfolds 😄
