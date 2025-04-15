@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "First Blog Post – Getting Started with GitHub Pages!"
-date: 2024-04-13
+date: 2025-04-13
 ---
 
 Today, I finally launched my GitHub blog!

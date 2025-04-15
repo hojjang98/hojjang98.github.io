@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "New Project Kickoff – Forecasting Sales for Small Businesses"
-date: 2024-04-13
+date: 2025-04-13
 ---
 
 So, I just started a new project – forecasting sales for small businesses.
