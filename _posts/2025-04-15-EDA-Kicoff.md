@@ -26,15 +26,6 @@ Because after exploring Seoul’s open business datasets and running my own stor
 
 ---
 
-## 📷 Sample Visualization
-
-> Top 10 industries with the highest total sales in Q4 2024  
-> (Labels are in Korean, but explanation is provided in English below)
-
-![Top 10 Sales](../images/top10_sales_q4.png)
-
----
-
 ## 💡 Takeaways
 
 - Basic structure is ready — the data is clean and well-organized

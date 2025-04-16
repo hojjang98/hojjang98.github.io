@@ -32,15 +32,6 @@ After getting the basic structure set up, I wanted to understand:
 
 ---
 
-## 📷 Visualization
-
-> Top 5 industries in each quarter of 2024, sorted by total nationwide sales  
-> (Now scaled to 억 원 because we love our sanity)
-
-![Top 5 per Quarter](../images/top5_industries_by_quarter.png)
-
----
-
 ## 🧠 Insights
 
 - Some industries (like Korean food) are steady earners across all quarters  
