@@ -1,4 +1,8 @@
-🍙 Crawling into Results – Why Models Alone Won’t Save You
+---
+layout: post
+title: "🍙 Crawling into Results – Why Models Alone Won’t Save You"
+date: 2025-05-13
+---
 
 
 Today, the food image classifier got its biggest meal yet: real data.  
