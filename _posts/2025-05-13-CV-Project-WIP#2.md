@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "🍱 Fine-Tuning Activated – Accuracy Still on the Run"
+title: "🍙 Crawling into Results – Why Models Alone Won’t Save You"
 date: 2025-05-13
 ---
 
