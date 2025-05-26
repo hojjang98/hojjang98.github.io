@@ -49,10 +49,10 @@ def clean_corrupt_images(root_dir):
 
 | Metric              | Value     |
 |---------------------|-----------|
-| ✅ Train Accuracy    | ~0.73xx   |
-| ✅ Val Accuracy      | ~0.58xx   |
-| 📉 Train Loss        | ~0.71xx   |
-| 📉 Val Loss          | ~1.12xx   |
+| ✅ Train Accuracy    | ~0.77xx   |
+| ✅ Val Accuracy      | ~0.61xx   |
+| 📉 Train Loss        | ~0.60xx   |
+| 📉 Val Loss          | ~1.09xx   |
 
 Nothing groundbreaking, but definitely **cleaner and more stable** than round one.
 
