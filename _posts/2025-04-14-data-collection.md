@@ -1,7 +1,8 @@
 ---
 layout: post
-title: "Step 1 – Finding a Good Dataset Ain’t Easy"
+title: "Daily Study Log 3"
 date: 2025-04-14
+category: study_log
 ---
 
 Okay, so today I started digging for data.

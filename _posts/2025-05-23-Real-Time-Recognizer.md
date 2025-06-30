@@ -1,3 +1,10 @@
+---
+layout: post
+title: "Daily Study Log 23"
+date: 2025-05-21
+category: study_log
+---
+
 ## 🧪 Tuning the Recognizer – Dropout, Dense, and Fine-Tuning
 
 After my first MobileNetV2-based classifier, I wasn’t quite satisfied.  

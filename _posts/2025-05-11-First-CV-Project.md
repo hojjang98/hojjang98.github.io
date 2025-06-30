@@ -1,7 +1,8 @@
 ---
 layout: post
-title: "🍱 First Computer Vision Attempt – Fighting with TensorFlow"
+title: "Daily Study Log 14"
 date: 2025-05-11
+category: study_log
 ---
 
 Today I officially started my first computer vision project — a food image classifier.  

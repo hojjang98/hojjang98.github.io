@@ -1,7 +1,8 @@
 ---
 layout: post
-title: "🍱 Fine-Tuning Activated – Accuracy Still on the Run"
+title: "Daily Study Log 16"
 date: 2025-05-13
+category: study_log
 ---
 
 Today I focused on improving the food image classifier I started yesterday.  

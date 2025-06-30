@@ -1,3 +1,10 @@
+---
+layout: post
+title: "Daily Study Log 26"
+date: 2025-05-21
+category: study_log
+---
+
 # 📅 2025-05-28 – 🔁 Rebooting the Recognizer, Building CNNs from Scratch
 
 Today, I made a conscious decision to **reset the Real-Time Daily Activity Recognizer project** entirely.  

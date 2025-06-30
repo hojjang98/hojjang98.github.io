@@ -1,3 +1,10 @@
+---
+layout: post
+title: "Daily Study Log 31"
+date: 2025-05-21
+category: study_log
+---
+
 # 🏙️ [2025-06-19] Urban Scene Segmentation & CNN Recap
 
 Today was a productive day filled with hands-on practice in image segmentation and a solid CNN refresher.  

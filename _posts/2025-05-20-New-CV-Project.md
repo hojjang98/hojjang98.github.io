@@ -1,7 +1,8 @@
 ---
 layout: post
-title: "📸 Real-World in Real-Time – Starting Daily Activity Recognition"
+title: "Daily Study Log 21"
 date: 2025-05-20
+category: study_log
 ---
 
 Today, I kicked off a brand-new computer vision project:  

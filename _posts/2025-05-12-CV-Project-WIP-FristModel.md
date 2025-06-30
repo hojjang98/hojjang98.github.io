@@ -1,7 +1,8 @@
 ---
 layout: post
-title: "🍔 First Model Trained – Food Image Classifier Ready"
+title: "Daily Study Log 15"
 date: 2025-05-12
+category: study_log
 ---
 
 Today I completed training my first image classification model.  

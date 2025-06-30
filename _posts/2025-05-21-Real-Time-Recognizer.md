@@ -1,7 +1,8 @@
 ---
 layout: post
-title: "🏃‍♂️ First Steps, First Predictions – Training the Activity Recognizer"
+title: "Daily Study Log 22"
 date: 2025-05-21
+category: study_log
 ---
 
 Today I took the next step in my daily activity recognition project:  

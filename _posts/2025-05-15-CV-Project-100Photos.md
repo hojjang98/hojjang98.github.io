@@ -1,7 +1,8 @@
 ---
 layout: post
-title: "📷 Crawling More, Learning More – Accuracy Breaks 50%"
+title: "Daily Study Log 18"
 date: 2025-05-15
+category: study_log
 ---
 
 Today marked another big step forward for my food image classifier.  

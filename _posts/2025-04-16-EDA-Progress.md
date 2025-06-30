@@ -1,7 +1,8 @@
 ---
 layout: post
-title: "📊 Industry-Level EDA – Who’s Making All the Money?"
+title: "Daily Study Log 5"
 date: 2025-04-16
+category: study_log
 ---
 
 Today was all about diving deeper into the **industry-level sales trends** from the Seoul dataset I started cleaning yesterday.

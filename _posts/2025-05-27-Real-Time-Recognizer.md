@@ -1,3 +1,10 @@
+---
+layout: post
+title: "Daily Study Log 25"
+date: 2025-05-21
+category: study_log
+---
+
 # 📅 2025-05-27 – 🧠 Full Fine-Tuning & Realization: Maybe I Need More Data?
 
 Today I ran the most complete version of my real-time daily activity recognizer yet.  

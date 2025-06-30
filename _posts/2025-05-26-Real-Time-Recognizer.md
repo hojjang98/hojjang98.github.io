@@ -1,4 +1,10 @@
-```markdown
+---
+layout: post
+title: "Daily Study Log 24"
+date: 2025-05-21
+category: study_log
+---
+
 # 📅 2025-05-26 – 🧹 Cleaning Up the Dataset & 🧠 Retraining MobileNetV2
 
 Today I finally tamed my messy dataset and got a cleaner training loop running.  

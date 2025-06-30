@@ -1,3 +1,10 @@
+---
+layout: post
+title: "Daily Study Log 32"
+date: 2025-05-21
+category: study_log
+---
+
 # 🧠 Daily Study Log [2025-06-19]
 
 Today was all about combining hands-on computer vision tasks with core CNN theory.  

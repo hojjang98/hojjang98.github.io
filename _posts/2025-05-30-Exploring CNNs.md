@@ -1,3 +1,10 @@
+---
+layout: post
+title: "Daily Study Log 28"
+date: 2025-05-21
+category: study_log
+---
+
 # 🧠 [2025-05-30] Revisiting CNN Fundamentals with CIFAR-10
 
 Today, I didn’t have time to work on the Real-Time Activity Recognizer.  

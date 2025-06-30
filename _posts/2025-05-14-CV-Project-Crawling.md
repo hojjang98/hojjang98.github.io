@@ -1,7 +1,8 @@
 ---
 layout: post
-title: "🍙 Crawling into Results – Why Models Alone Won’t Save You"
+title: "Daily Study Log 17"
 date: 2025-05-14
+category: study_log
 ---
 
 

@@ -1,3 +1,10 @@
+---
+layout: post
+title: "Daily Study Log 27"
+date: 2025-05-21
+category: study_log
+---
+
 # 🧠 [2025-05-29] Fine-Tuning the Real-Time Recognizer + CIFAR-10 CNN Practice
 
 Today I focused on two key areas:

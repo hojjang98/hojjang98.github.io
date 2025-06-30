@@ -1,7 +1,8 @@
 ---
 layout: post
-title: "📊 Sales Forecasting Project – EDA Kickoff"
+title: Daily Study Log 4"
 date: 2025-04-15
+category: study_log
 ---
 
 Today marks the first real step in my **Sales Forecasting for Small Business** project.
