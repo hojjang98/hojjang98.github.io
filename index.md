@@ -11,10 +11,18 @@ This includes everything from failed experiments and hard-earned insights to spo
 
 ---
 
+## 📂 Browse by Category
+
+- [📁 Projects](/projects/)
+- [📄 Paper Reviews](/paper_review/)
+- [📝 Study Logs](/study_log/)
+
+---
+
 ## 📚 Recent Posts
 
 <ul>
-  {% for post in site.posts %}
+  {% for post in site.posts limit:10 %}
     <li>
       <a href="{{ post.url }}">{{ post.title }}</a> <small>{{ post.date | date: "%Y-%m-%d" }}</small>
     </li>
