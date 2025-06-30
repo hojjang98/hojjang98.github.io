@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Daily Study Log 4"
+title: "Daily Study Log 4"
 date: 2025-04-15
 category: study_log
 ---
