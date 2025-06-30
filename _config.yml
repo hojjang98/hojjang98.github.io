@@ -11,3 +11,11 @@ paginate: 5
 header_pages:
   - index.md
   - about.md
+
+collections:
+  study_log:
+    output: true
+  paper_review:
+    output: true
+  project:
+    output: true
