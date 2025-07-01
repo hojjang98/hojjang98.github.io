@@ -1,8 +1,10 @@
 ---
-layout: paper_review
-title: "📄 Paper Reviews"
-permalink: /paper_review/
+layout: post
+title: "📄 MobileNetV2: Inverted Residuals and Linear Bottlenecks"
+date: 2025-07-01
+categories: paper_review
 ---
+
 ## 📌 Paper Info
 
 - **Title**: *MobileNetV2: Inverted Residuals and Linear Bottlenecks*  
