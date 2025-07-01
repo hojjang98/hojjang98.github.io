@@ -1,5 +1,7 @@
 ---
 layout: post
+collection: paper_review
+category: paper_review
 title: "Paper Review: MobileNetV2"
 date: 2025-07-01
 ---
