@@ -1,10 +1,8 @@
 ---
 layout: post
-title: "[Paper Review] MobileNetV2 – Lightweight CNN for Mobile Inference"
-category: paper_review
+title: "Paper Review: MobileNetV2"
 date: 2025-07-01
 ---
-
 ## 📌 Paper Info
 
 - **Title**: *MobileNetV2: Inverted Residuals and Linear Bottlenecks*  
