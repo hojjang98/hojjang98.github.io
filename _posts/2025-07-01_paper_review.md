@@ -2,7 +2,6 @@
 layout: post
 title: "[Paper Review] MobileNetV2 – Lightweight CNN for Mobile Inference"
 category: paper_review
-tags: [computer-vision, mobile, CNN, architecture]
 date: 2025-07-01
 ---
 
