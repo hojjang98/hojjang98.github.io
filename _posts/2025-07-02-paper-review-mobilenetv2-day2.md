@@ -103,3 +103,4 @@ Next, I plan to look at experiments, ablation results, and comparisons with Mobi
 > [ ] Compare performance vs MobileNetV1  
 > [ ] Visualize block structures in code  
 > [ ] Possibly re-implement in PyTorch or TensorFlow
+
