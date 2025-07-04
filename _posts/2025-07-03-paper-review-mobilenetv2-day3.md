@@ -100,8 +100,3 @@ I'm especially impressed with how well it balances performance and hardware cons
 
 ---
 
-> 🧱 Next steps:  
-> [ ] Read final sections (Conclusion & References)  
-> [ ] Compare with ShuffleNetV2 or EfficientNet-Lite  
-> [ ] Visualize bottleneck block in code  
-> [ ] Try re-implementing a few blocks in PyTorch

@@ -58,9 +58,3 @@ Looking forward to digging deeper into the architecture and experiments in the n
 
 ---
 
-> 🧱 Next steps:  
-> [ ] Dive into Section 3 – Architecture  
-> [ ] Understand Inverted Residual block in detail  
-> [ ] Visualize the module structure  
-> [ ] Possibly re-implement it in PyTorch
-
