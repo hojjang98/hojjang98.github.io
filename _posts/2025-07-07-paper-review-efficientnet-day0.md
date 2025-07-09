@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Paper Review: EfficientNet DAY 1"
+title: "Paper Review: EfficientNet DAY 0 – Why I Chose This Paper"
 date: 2025-07-07
 categories: paper_review
 ---
@@ -15,60 +15,37 @@ categories: paper_review
 
 ---
 
-## 🧠 Day 1 Preview – Understanding the Big Picture
+## 🌱 Day 0 – Why EfficientNet?
 
-### ✅ Focus
+### 🧩 Context
 
-Today’s goal was to get a conceptual overview of the EfficientNet paper — focusing on its motivation, main contribution, and high-level architecture strategy.
+I recently finished reading the MobileNetV2 paper, which introduced the concept of **inverted residual blocks** and efficient model design for mobile devices. While reviewing it, I started wondering:
 
----
+> "What’s the next step beyond MobileNetV2? How do modern lightweight models evolve from there?"
 
-## 🏗️ Core Idea: Compound Scaling
-
-Traditional model scaling often increases **only one dimension** (depth / width / resolution).  
-EfficientNet proposes **compound scaling** — a principled way to scale **all three dimensions simultaneously** using fixed scaling coefficients.
-
-This approach helps the model achieve better accuracy **without** drastically increasing computation.
+That curiosity naturally led me to **EfficientNet**, which not only **builds on MobileNetV2's architectural ideas**, but also introduces a **novel model scaling strategy** — something I hadn’t explored in depth yet.
 
 ---
 
-## 🔍 Key Design Highlights
+### 🔍 Why I Chose This Paper
 
-- **Base architecture**: EfficientNet-B0 built on **MobileNetV2** inverted residual blocks  
-- **Search method**: Used **Neural Architecture Search (NAS)** to find the best base model  
-- **Scaling**:  
-  - Define constants: α (depth), β (width), γ (resolution)  
-  - Apply:  
-    \[
-    \text{depth} \propto \alpha^\phi,\quad 
-    \text{width} \propto \beta^\phi,\quad 
-    \text{resolution} \propto \gamma^\phi
-    \]  
-    (for scaling coefficient φ)  
+- ✅ It’s a **logical follow-up** to MobileNetV2  
+- ✅ It introduces the idea of **compound scaling**, which feels both elegant and practical  
+- ✅ It has had a **major impact** on model design in recent years (used in many modern libraries)  
+- ✅ I wanted to understand how **NAS (Neural Architecture Search)** can be integrated with scaling strategies  
 
 ---
 
-## 🧠 Initial Thoughts
+## 🔜 What's Next?
 
-- The compound scaling idea is intuitive yet surprisingly underexplored in older models  
-- I like that the paper balances *accuracy* and *efficiency* with a clean design flow  
-- The fact that EfficientNet outperforms larger models with fewer FLOPs is both elegant and practical  
-
----
-
-## 🔜 Next Step
-
-In the next review (DAY 2), I’ll dive deeper into:
-
-- EfficientNet-B0 architecture layout  
-- Scaling coefficients (α, β, γ) used in real cases  
-- Performance comparisons across B0–B7 models  
+In **Day 1**, I’ll explore the **motivation behind EfficientNet**, what problem it's trying to solve, and how its compound scaling approach works.  
+This will be followed by a breakdown of the architecture and performance benchmarks in Day 2 and beyond.
 
 ---
 
-## ✅ Summary
+## 🧠 Personal Note
 
-EfficientNet introduces a unified scaling framework that outperforms conventional CNN scaling methods.  
-By combining NAS with compound scaling, it sets a new standard for accuracy-per-computation in deep learning.
+I’m not feeling well today, so I decided to keep things light and just share **why** I picked this paper instead of diving into technical content right away.  
+Sometimes setting the stage properly helps make the reading experience more meaningful and focused.
 
-> 📌 **Note**: Full architecture diagrams and implementation insights will be reviewed in the next session.
+> 📌 **Next up: EfficientNet DAY 1 – Abstract, Introduction, and Motivation**
