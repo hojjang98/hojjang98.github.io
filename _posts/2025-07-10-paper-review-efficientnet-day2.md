@@ -44,13 +44,12 @@ The NAS process balances **accuracy, latency**, and **parameter count**, yieldin
 
 Once B0 is established, the authors introduce a **compound scaling formula** to generate deeper and wider models in a balanced way:
 
-\[
-\begin{aligned}
-\text{depth} & = \alpha^\phi \\
-\text{width} & = \beta^\phi \\
-\text{resolution} & = \gamma^\phi
-\end{aligned}
-\]
+$$
+\text{depth} = \alpha^\phi,\quad
+\text{width} = \beta^\phi,\quad
+\text{resolution} = \gamma^\phi
+$$
+
 
 - **ϕ**: user-specified scaling factor  
 - **(α, β, γ)**: constants derived via grid search  
