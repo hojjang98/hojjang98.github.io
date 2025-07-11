@@ -84,4 +84,4 @@ This ensures FLOPs double with each unit increase in \( \phi \), making the scal
 The use of a **small, well-designed base model (B0)** and then **applying uniform scaling** using simple coefficients is both **elegant and practical**.  
 Instead of engineering each model version, EfficientNet grows predictably in all dimensions, delivering **SOTA accuracy with fewer resources**.
 
-> 🔖 This post is part of an ongoing paper review series for deeper learning and long-term retention.
+> 🔖 This post is part of an ongoing paper review series for deeper learning and long-term retention!
