@@ -16,7 +16,7 @@ categories: paper_review
 
 ## 🧠 Day 3 – Deep Dive into EfficientNet-B0 Architecture & Scaling Coefficients
 
-Today’s study focused on understanding how the **EfficientNet-B0 baseline** is constructed via NAS, and how the **compound scaling coefficients (α, β, γ)** are derived and applied in practice.
+Today’s study focused on understanding how the **EfficientNet-B0 baseline** is constructed via NAS, and how the **compound scaling coefficients** \\( \alpha, \beta, \gamma \\) are derived and applied in practice.
 
 ---
 
@@ -29,14 +29,14 @@ $$
 \text{Objective} = \text{ACC}(M) \cdot \left( \frac{\text{FLOPs}(M)}{T} \right)^w
 $$
 
-- \( T = 400M \): FLOPs target  
-- \( w = -0.07 \): trade-off factor between accuracy and cost  
+- \\( T = 400M \\): FLOPs target  
+- \\( w = -0.07 \\): trade-off factor between accuracy and cost  
 
 ### 🔧 Core Components:
 - **MBConv blocks** (Mobile Inverted Bottlenecks)  
 - **Squeeze-and-Excitation (SE)** modules for channel-wise attention  
 - Expansion ratio:
-  - **MBConv1** (expansion=1) used in early layers
+  - **MBConv1** (expansion=1) used in early layers  
   - **MBConv6** (expansion=6) used in later layers  
 - **Skip connections** only when stride = 1 and input/output shapes match  
 
@@ -50,21 +50,21 @@ $$
 \text{depth} \propto \alpha^{\phi}, \quad \text{width} \propto \beta^{\phi}, \quad \text{resolution} \propto \gamma^{\phi}
 $$
 
-- \( \phi \): user-defined scaling coefficient  
-- \( \alpha = 1.2 \), \( \beta = 1.1 \), \( \gamma = 1.15 \) (found via grid search)  
+- \\( \phi \\): user-defined scaling coefficient  
+- \\( \alpha = 1.2 \\), \\( \beta = 1.1 \\), \\( \gamma = 1.15 \\) (found via grid search)  
 - Subject to the constraint:
 
 $$
 \alpha \cdot \beta^2 \cdot \gamma^2 \approx 2
 $$
 
-This ensures FLOPs double with each unit increase in \( \phi \), making the scaling predictable and efficient.
+This ensures FLOPs double with each unit increase in \\( \phi \\), making the scaling predictable and efficient.
 
 ---
 
 ## 💡 Why Find Coefficients on a Small Model?
 
-- Searching for optimal (α, β, γ) on large models is expensive  
+- Searching for optimal \\( \alpha, \beta, \gamma \\) on large models is expensive  
 - EfficientNet finds them on **B0**, then applies them to B1~B7  
 - This **reduces search cost** while keeping scaling behavior consistent
 
@@ -75,7 +75,7 @@ This ensures FLOPs double with each unit increase in \( \phi \), making the scal
 - EfficientNet-B0 is not manually designed, but NAS-optimized under computational constraints  
 - MBConv blocks with SE units provide expressive yet efficient computation  
 - The compound scaling method provides a **unified, constraint-aware** way to scale networks  
-- FLOPs increase roughly as \( 2^{\phi} \), while keeping architecture balanced
+- FLOPs increase roughly as \\( 2^{\phi} \\), while keeping architecture balanced
 
 ---
 
