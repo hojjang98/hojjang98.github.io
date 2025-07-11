@@ -5,6 +5,8 @@ theme: minima
 # Blog settings
 show_excerpts: true
 markdown: kramdown
+kramdown:
+  math_engine: mathjax
 paginate: 5
 
 # Navigation menu
