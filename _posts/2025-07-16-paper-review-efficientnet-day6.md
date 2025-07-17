@@ -51,11 +51,14 @@ Starting today, I’m moving on to a new topic:
 **Pose-based Action Recognition**, especially for **dance genre classification** (e.g., hip-hop, waacking, etc.).
 
 - I’ll be studying the paper:  
-  **“Action Recognition using Pose Estimation” (arXiv:1904.12691)**  
-- The idea is to extract keypoints via **OpenPose/BlazePose**, then classify sequences using **CNN or LSTM**.  
-- It’s a clean, explainable pipeline and highly suitable for custom datasets (including video I can record myself).
+  **“Unsupervised 3D Pose Estimation for Hierarchical Dance Video Recognition” (Hu & Ahuja, 2021)**  
+- [arXiv link](https://arxiv.org/abs/2109.09166) | [PDF](https://arxiv.org/pdf/2109.09166.pdf)
+- The idea is to extract 2D keypoints via **OpenPose/BlazePose**, optionally lift them to 3D,  
+  then classify pose sequences using **LSTM**.  
+- It’s a clean, explainable pipeline and highly suitable for custom dance datasets (including videos I can record myself).
 
-I believe this shift from *model scaling* to *skeleton-based temporal modeling* will give me hands-on experience with human-centric vision tasks.
+I believe this shift from *model scaling* to *skeleton-based temporal modeling* will give me practical insight into **human-centric vision**, especially for **motion and genre classification**.
+
 
 ---
 
