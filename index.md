@@ -7,7 +7,7 @@ permalink: /
 # 👋 Hi, I'm Hojun Choi
 
 > A data science student who loves turning ideas into experiments.  
-> I document everything from computer vision projects to paper reviews here.
+> I share my journey as a student exploring machine learning, data science, and beyond.
 
 ---
 
@@ -15,15 +15,15 @@ permalink: /
 
 - **🧠 Real-Time Activity Recognizer**  
   Classifies 8 daily activities using webcam + pose estimation  
-  [GitHub ↗](https://github.com/hojjang98/real-time-daily-activity-recognizer)
+  [GitHub ↗](https://github.com/hojjang98/CV-Projects/tree/main/real-time-daily-activity-recognizer)
 
 - **🗺️ Seoul Smoking Zone GIS**  
   Visualizes legal smoking zones in Seoul using open data and mapping  
-  [GitHub ↗](https://github.com/hojjang98/seoul-smoking-map)
+  [GitHub ↗](https://github.com/hojjang98/Misc-Projects/tree/main/seoul-smoking-gis)
 
 - **🎵 Dance Action Classifier**  
   Recognizes dance genres (hiphop, waacking...) from short videos using BlazePose + CNN  
-  [Project Log ↗](/projects/03_dance_action)
+  [Project Log ↗](https://github.com/hojjang98/ML-Projects/tree/main/scu_ai_competiton-2025)
 
 ---
 
