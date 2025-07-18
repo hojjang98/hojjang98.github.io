@@ -18,18 +18,15 @@ teaser: "/assets/images/teaser.png"
 # ----------------------------------------
 author:
   name: *name
-  avatar: "/assets/images/avatar.png"
+  avatar: "/assets/images/hj.jpeg"
   bio: "Aspiring Data Scientist | CV | ML | Python"
   location: "Seoul, Korea"
   links:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/hojjang98"
-    - label: "LinkedIn"
-      icon: "fab fa-fw fa-linkedin"
-      url: "https://linkedin.com/in/your-profile"
-    - label: "Blog"
-      icon: "fas fa-fw fa-blog"
+    - label: "Portfolio"
+      icon: "fas fa-fw fa-id-card"
       url: "https://hojjang98.github.io"
 
 # ----------------------------------------
@@ -44,7 +41,6 @@ social:
   name: "Hojun Choi"
   links:
     - "https://github.com/hojjang98"
-    - "https://linkedin.com/in/your-profile"
 
 # ----------------------------------------
 # 🔍 Search & Analytics

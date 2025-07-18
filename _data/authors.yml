@@ -1,8 +1,0 @@
-Hojun Choi:
-  name: "Hojun Choi"
-  bio: "Aspiring Data Scientist"
-  avatar: "/assets/images/hj.jpeg"
-  links:
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/hojjang98"
