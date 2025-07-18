@@ -5,11 +5,16 @@ layout: default
 <h1>{{ page.title }}</h1>
 
 <ul>
-  {% assign posts = site.categories[page.category] %}
-  {% for post in posts %}
-    <li>
-      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      <small>{{ post.date | date: "%Y-%m-%d" }}</small>
-    </li>
-  {% endfor %}
+  {% assign tax = page.taxonomy | default: page.category %}
+  {% assign posts = site.categories[tax] %}
+  {% if posts %}
+    {% for post in posts %}
+      <li>
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        <small>{{ post.date | date: "%Y-%m-%d" }}</small>
+      </li>
+    {% endfor %}
+  {% else %}
+    <li><em>No posts found in category '{{ tax }}'</em></li>
+  {% endif %}
 </ul>

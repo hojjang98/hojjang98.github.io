@@ -2,8 +2,9 @@
 title: "Paper Reviews"
 layout: category
 permalink: /paper_review
-taxonomy: paper_review
+category: paper_review
 ---
+
 
 
 # 📄 Paper Reviews
