@@ -1,4 +1,3 @@
-<!-- _layouts/category.html -->
 ---
 layout: default
 ---
@@ -6,7 +5,7 @@ layout: default
 <h1>{{ page.title }}</h1>
 
 <ul>
-  {% assign posts = site.categories[page.taxonomy] %}
+  {% assign posts = site.categories[page.category] %}
   {% for post in posts %}
     <li>
       <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
