@@ -1,9 +1,10 @@
 ---
-title: "Paper Reviews"
+title: "Study Logs"
 layout: category
-permalink: /paper_review/
-category: paper_review
+permalink: /study_log
+taxonomy: study_log
 ---
+
 
 # 📄 Paper Reviews
 
