@@ -1,23 +1,125 @@
-title: "Hojun Choi's Blog"
-description: "A space to share my growth, learning, and data science journey"
-theme: minima
+remote_theme: "mmistakes/minimal-mistakes@master"
+minimal_mistakes_skin: "air"
 
-# Blog settings
-show_excerpts: true
+# ----------------------------------------
+# ▶️ Site Settings
+# ----------------------------------------
+title: "Hojun Choi's Portfolio"
+subtitle: "Data Scientist in Progress"
+name: &name "Hojun Choi"
+description: &description "Learning, building, and writing in data science and computer vision."
+url: "https://hojjang98.github.io"
+baseurl: ""
+repository: "hojjang98/hojjang98.github.io"
+teaser: "/assets/images/teaser.png"
+
+# ----------------------------------------
+# 🧑 Author
+# ----------------------------------------
+author:
+  name: *name
+  avatar: "/assets/images/avatar.png"
+  bio: "Aspiring Data Scientist | CV | ML | Python"
+  location: "Seoul, Korea"
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/hojjang98"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://linkedin.com/in/your-profile"
+    - label: "Blog"
+      icon: "fas fa-fw fa-blog"
+      url: "https://hojjang98.github.io"
+
+# ----------------------------------------
+# 🌐 SEO & Social
+# ----------------------------------------
+twitter:
+  username: "hojjang98"
+og_image: "/assets/images/site-logo.png"
+
+social:
+  type: "Person"
+  name: "Hojun Choi"
+  links:
+    - "https://github.com/hojjang98"
+    - "https://linkedin.com/in/your-profile"
+
+# ----------------------------------------
+# 🔍 Search & Analytics
+# ----------------------------------------
+search: true
+search_full_content: true
+analytics:
+  provider: false
+
+# ----------------------------------------
+# 💬 Comments (off)
+# ----------------------------------------
+comments:
+  provider: false
+
+# ----------------------------------------
+# 🧱 Layout Defaults
+# ----------------------------------------
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      share: true
+      related: true
+  - scope:
+      path: "_pages"
+      type: pages
+    values:
+      layout: single
+      author_profile: true
+
+# ----------------------------------------
+# 🔎 Plugins
+# ----------------------------------------
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jemoji
+  - jekyll-include-cache
+
+# ----------------------------------------
+# 🕐 Time & Markdown
+# ----------------------------------------
 markdown: kramdown
-kramdown:
-  math_engine: mathjax
-paginate: 5
+highlighter: rouge
+permalink: /:categories/:title/
+timezone: Asia/Seoul
 
-# Navigation menu
-header_pages:
-  - index.md
-  - about.md
-
+# ----------------------------------------
+# 📁 Collections (optional)
+# ----------------------------------------
 collections:
-  study_log:
+  portfolio:
     output: true
-  paper_review:
-    output: true
-  project:
-    output: true
+    permalink: /:collection/:path/
+
+# ----------------------------------------
+# 📂 Include/Exclude
+# ----------------------------------------
+include:
+  - _pages
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+
+# ----------------------------------------
+# 🔧 SASS & Build
+# ----------------------------------------
+sass:
+  sass_dir: _sass
+  style: compressed

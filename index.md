@@ -1,30 +1,33 @@
 ---
-layout: default
-title: Hojun Choi's Blog
+layout: splash
+title: "Welcome to My Portfolio"
+permalink: /
 ---
 
-# 👋 Hello there!
+# 👋 Hi, I'm Hojun Choi
 
-Welcome to my blog — a space where I document what I'm learning, experimenting with, and reflecting on as I grow in the field of data science.
-
-This includes everything from failed experiments and hard-earned insights to spontaneous ideas and personal notes.
-
----
-
-## 📂 Browse by Category
-
-- [📁 Projects](/projects/)
-- [📄 Paper Reviews](/paper_review/)
-- [📝 Study Logs](/study_log/)
+> A data science student who loves turning ideas into experiments.  
+> I document everything from computer vision projects to paper reviews here.
 
 ---
 
-## 📚 Recent Posts
+## 🚀 Featured Projects
 
-<ul>
-  {% for post in site.posts limit:10 %}
-    <li>
-      <a href="{{ post.url }}">{{ post.title }}</a> <small>{{ post.date | date: "%Y-%m-%d" }}</small>
-    </li>
-  {% endfor %}
-</ul>
+- **🧠 Real-Time Activity Recognizer**  
+  Classifies 8 daily activities using webcam + pose estimation  
+  [GitHub ↗](https://github.com/hojjang98/real-time-daily-activity-recognizer)
+
+- **🗺️ Seoul Smoking Zone GIS**  
+  Visualizes legal smoking zones in Seoul using open data and mapping  
+  [GitHub ↗](https://github.com/hojjang98/seoul-smoking-map)
+
+- **🎵 Dance Action Classifier**  
+  Recognizes dance genres (hiphop, waacking...) from short videos using BlazePose + CNN  
+  [Project Log ↗](/projects/03_dance_action)
+
+---
+
+## 📄 Latest Posts
+
+> View my [Study Logs](/study_log) or [Paper Reviews](/paper_review)  
+> Everything is organized, tagged, and written in Markdown!
