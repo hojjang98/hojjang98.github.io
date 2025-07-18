@@ -1,8 +1,8 @@
 ---
 title: "Study Logs"
 layout: single
-permalink: /study_log/
-author_profile: true
+permalink: /study_log
+taxonomy: study_log
 ---
 
 # 🧠 Study Logs
