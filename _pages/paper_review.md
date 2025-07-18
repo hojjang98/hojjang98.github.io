@@ -1,8 +1,8 @@
 ---
-title: "Study Logs"
+title: "Paper Reviews"
 layout: category
-permalink: /study_log
-taxonomy: study_log
+permalink: /paper_review
+taxonomy: paper_review
 ---
 
 
