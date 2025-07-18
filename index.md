@@ -15,16 +15,17 @@ permalink: /
 
 - **🧠 Real-Time Activity Recognizer**  
   Classifies 8 daily activities using webcam + pose estimation  
-  [GitHub ↗](https://github.com/hojjang98/CV-Projects/tree/main/real-time-daily-activity-recognizer)
+  [Project Repo ↗](https://github.com/hojjang98/CV-Projects/tree/main/real-time-daily-activity-recognizer)
 
 - **🗺️ Seoul Smoking Zone GIS**  
   Visualizes legal smoking zones in Seoul using open data and mapping  
-  [GitHub ↗](https://github.com/hojjang98/Misc-Projects/tree/main/seoul-smoking-gis)
+  [Project Repo ↗](https://github.com/hojjang98/Misc-Projects/tree/main/seoul-smoking-gis)
 
-### 🎵 SCU AI Competition — Campaign Response Classifier  
-Predicts user responses to digital campaigns using classification models on structured data.  
-**Tech**: Python, Scikit-learn, LightGBM, XGBoost  
-🔗 [Project Repo](https://github.com/hojjang98/ML-Projects/tree/main/scu_ai_competiton-2025)
+- **🎵 SCU AI Competition — Campaign Response Classifier**  
+  Predicts user responses to digital campaigns using classification models on structured data.  
+  **Tech**: Python, Scikit-learn, LightGBM, XGBoost  
+  [Project Repo ↗](https://github.com/hojjang98/ML-Projects/tree/main/scu_ai_competiton-2025)
+
 
 ---
 
