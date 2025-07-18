@@ -21,9 +21,10 @@ permalink: /
   Visualizes legal smoking zones in Seoul using open data and mapping  
   [GitHub ↗](https://github.com/hojjang98/Misc-Projects/tree/main/seoul-smoking-gis)
 
-- **🎵 Dance Action Classifier**  
-  Recognizes dance genres (hiphop, waacking...) from short videos using BlazePose + CNN  
-  [Project Log ↗](https://github.com/hojjang98/ML-Projects/tree/main/scu_ai_competiton-2025)
+### 🎵 SCU AI Competition — Campaign Response Classifier  
+Predicts user responses to digital campaigns using classification models on structured data.  
+**Tech**: Python, Scikit-learn, LightGBM, XGBoost  
+🔗 [Project Repo](https://github.com/hojjang98/ML-Projects/tree/main/scu_ai_competiton-2025)
 
 ---
 
