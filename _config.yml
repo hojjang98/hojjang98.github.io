@@ -98,9 +98,12 @@ permalink: /:categories/:title/
 timezone: Asia/Seoul
 
 # ----------------------------------------
-# 📁 Collections (optional)
+# 📁 Collections (for custom categories)
 # ----------------------------------------
 collections:
+  posts:
+    output: true
+    permalink: /:categories/:title/
   portfolio:
     output: true
     permalink: /:collection/:path/
