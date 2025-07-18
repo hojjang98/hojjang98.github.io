@@ -1,3 +1,4 @@
+<!-- _layouts/category.html -->
 ---
 layout: default
 ---
@@ -7,7 +8,8 @@ layout: default
 <ul>
   {% for post in site.categories[page.taxonomy] %}
     <li>
-      <a href="{{ post.url }}">{{ post.title }}</a> — <span>{{ post.date | date: "%Y-%m-%d" }}</span>
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      <small>{{ post.date | date: "%Y-%m-%d" }}</small>
     </li>
   {% endfor %}
 </ul>
