@@ -1,8 +1,8 @@
 ---
 title: "Paper Reviews"
-layout: single
+layout: category
 permalink: /paper_review/
-author_profile: true
+category: paper_review
 ---
 
 # 📄 Paper Reviews

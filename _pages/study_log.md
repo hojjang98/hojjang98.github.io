@@ -1,8 +1,8 @@
 ---
 title: "Study Logs"
-layout: single
-permalink: /study_log
-taxonomy: study_log
+layout: category
+permalink: /study_log/
+category: study_log
 ---
 
 # 🧠 Study Logs
