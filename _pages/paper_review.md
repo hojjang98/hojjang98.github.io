@@ -1,10 +1,9 @@
 ---
 title: "Paper Reviews"
 layout: category
-permalink: /paper_review
+permalink: /paper_review/
 category: paper_review
 ---
-
 
 
 # 📄 Paper Reviews
