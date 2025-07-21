@@ -20,7 +20,7 @@ author_profile: true
   - Custom dataset collection (3000+ images per class)
   - Real-time webcam inference
 - **Status**: ✅ Completed  
-- **[GitHub Repo](https://github.com/hojjang98/real-time-daily-activity-recognizer)**
+- **[GitHub Repo](https://github.com/hojjang98/CV-Projects/tree/main/real-time-daily-activity-recognizer)**
 
 ---
 
@@ -32,8 +32,8 @@ author_profile: true
 - **Highlights**:
   - Address to coordinate conversion
   - Outlier removal & spatial clustering
-- **Status**: ✅ MVP done, planning next iteration  
-- **[GitHub Repo](https://github.com/hojjang98/seoul-smoking-zone-gis)**
+- **Status**: ✅ Compelted
+- **[GitHub Repo](https://github.com/hojjang98/Misc-Projects/tree/main/seoul-smoking-gis)**
 
 ---
 
@@ -45,8 +45,8 @@ author_profile: true
 - **Highlights**:
   - Feature engineering + voting ensemble
   - Hyperparameter tuning via RandomizedSearchCV
-- **Status**: ✅ Final submission complete  
-- **[GitHub Repo](https://github.com/hojjang98/electricity-usage-prediction)**
+- **Status**:  🛠 WIP 
+- **[GitHub Repo](https://github.com/hojjang98/ML-Projects/tree/main/dacon-electricity-prediction)**
 
 ---
 
