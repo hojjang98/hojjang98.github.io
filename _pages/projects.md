@@ -11,7 +11,7 @@ author_profile: true
 
 Classifies webcam input into daily actions like sitting, walking, stretching.  
 - **Tech**: MediaPipe + OpenCV + CNN  
-- [GitHub](https://github.com/hojjang98/real-time-daily-activity-recognizer)
+- [GitHub](https://github.com/hojjang98/CV-Projects/tree/main/real-time-daily-activity-recognizer)
 
 ---
 
@@ -19,12 +19,8 @@ Classifies webcam input into daily actions like sitting, walking, stretching.
 
 Uses public data + geocoding to show legal outdoor smoking areas in Seoul.  
 - **Tech**: Python, Folium, Pandas  
-- [GitHub](https://github.com/hojjang98/seoul-smoking-map)
+- [GitHub](https://github.com/hojjang98/Misc-Projects/tree/main/seoul-smoking-gis)
 
 ---
 
-## 💃 Dance Action Classifier
 
-Short dance video → genre classification using pose-based features  
-- **Tech**: BlazePose, LSTM, CNN  
-- [GitHub](https://github.com/hojjang98/dance-action-classifier)
