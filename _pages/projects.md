@@ -19,7 +19,7 @@ author_profile: true
 - **Highlights**:
   - Custom dataset collection (3000+ images per class)
   - Real-time webcam inference
-- **Status**: ✅ Completed  
+- **Status**: ✅ Completed
 - **[GitHub Repo](https://github.com/hojjang98/CV-Projects/tree/main/real-time-daily-activity-recognizer)**
 
 ---
@@ -32,7 +32,7 @@ author_profile: true
 - **Highlights**:
   - Address to coordinate conversion
   - Outlier removal & spatial clustering
-- **Status**: ✅ Compelted
+- **Status**: ✅ Completed
 - **[GitHub Repo](https://github.com/hojjang98/Misc-Projects/tree/main/seoul-smoking-gis)**
 
 ---

@@ -29,9 +29,14 @@ The paper presents a fully unsupervised approach, structured into three stages: 
 The 2D keypoints are lifted to 3D pose representations without any 3D ground truth.  
 To address the ambiguity of this inverse problem, the authors introduce a **multi-seed optimization strategy**:
 
-- Generate multiple candidate 3D poses $${ \{P_t^k, w_t^k\} }$$
-- Evaluate each candidate with a composite loss function
-- Select the best pose seed $${ k^* }$$ using total error minimization:
+- Generate multiple candidate 3D poses
+
+$$
+\{P_t^k, w_t^k\}
+$$
+
+- Evaluate each candidate with a composite loss function  
+- Select the best pose seed using total error minimization:
 
 $$
 k^* = \arg\min_k \sum_t e_t^k
@@ -43,25 +48,29 @@ $$
 
 **Loss Terms**:
 
-- 2D Reprojection:  
-  $$
-  L_{2D} = \| \hat{p}_t - p_t \|
-  $$
+- 2D Reprojection:
 
-- 2D Smoothness:  
-  $$
-  L_{\text{smooth2D}} = \| \hat{p}_t - \hat{p}_{t-1} \|
-  $$
+$$
+L_{2D} = \| \hat{p}_t - p_t \|
+$$
 
-- 3D Smoothness:  
-  $$
-  L_{\text{smooth3D}} = \| \hat{P}_t - \hat{P}_{t-1} \|
-  $$
+- 2D Smoothness:
 
-- 3D Consistency:  
-  $$
-  L_{3D} = \| \hat{P}_t - P_t^* \|
-  $$
+$$
+L_{\text{smooth2D}} = \| \hat{p}_t - \hat{p}_{t-1} \|
+$$
+
+- 3D Smoothness:
+
+$$
+L_{\text{smooth3D}} = \| \hat{P}_t - \hat{P}_{t-1} \|
+$$
+
+- 3D Consistency:
+
+$$
+L_{3D} = \| \hat{P}_t - P_t^* \|
+$$
 
 This strategy enables **unsupervised, temporally coherent 3D pose reconstruction** from 2D keypoints.
 
@@ -71,13 +80,13 @@ This strategy enables **unsupervised, temporally coherent 3D pose reconstruction
 
 Each body part $e \in E$ is associated with its own LSTM model to recognize basic motion types over time.
 
-- **Input**: 3D joint trajectories for the joints $j \in J_e$
+- **Input**: 3D joint trajectories for the joints:
 
 $$
 \left\{ \left\{ \hat{p}_t^j \right\}_{j \in J_e} \right\}_{t=0}^{T-1}
 $$
 
-- **Output**: Multi-label motion vector per time step
+- **Output**: Multi-label motion vector per time step:
 
 $$
 \left\{ \hat{y}_t^e \right\}_{t=0}^{T-1}
