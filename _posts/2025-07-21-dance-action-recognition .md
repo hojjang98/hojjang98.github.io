@@ -28,24 +28,39 @@ The paper presents a fully unsupervised approach, structured into three stages: 
 The 2D keypoints are lifted to 3D pose representations without any 3D ground truth.  
 To address the ambiguity of this inverse problem, the authors introduce a **multi-seed optimization strategy**:
 
-- Generate multiple candidate 3D poses \( \{P_t^k, w_t^k\} \)
+- Generate multiple candidate 3D poses $${ \{P_t^k, w_t^k\} }$$
 - Evaluate each candidate with a composite loss function
-- Select the best pose seed \( k^* \) using total error minimization:
+- Select the best pose seed $${ k^* }$$ using total error minimization:
 
-\[
+$$
 k^* = \arg\min_k \sum_t e_t^k
-\]
+$$
 
-\[
+$$
 \hat{P}_t = P_t^{k^*}, \quad w_t = w_t^{k^*}
-\]
+$$
 
 **Loss Terms**:
 
-- 2D Reprojection: \( L_{2D} = \| \hat{p}_t - p_t \| \)
-- 2D Smoothness: \( L_{\text{smooth2D}} = \| \hat{p}_t - \hat{p}_{t-1} \| \)
-- 3D Smoothness: \( L_{\text{smooth3D}} = \| \hat{P}_t - \hat{P}_{t-1} \| \)
-- 3D Consistency: \( L_{3D} = \| \hat{P}_t - P_t^* \| \)
+- 2D Reprojection:  
+  $$
+  L_{2D} = \| \hat{p}_t - p_t \|
+  $$
+
+- 2D Smoothness:  
+  $$
+  L_{\text{smooth2D}} = \| \hat{p}_t - \hat{p}_{t-1} \|
+  $$
+
+- 3D Smoothness:  
+  $$
+  L_{\text{smooth3D}} = \| \hat{P}_t - \hat{P}_{t-1} \|
+  $$
+
+- 3D Consistency:  
+  $$
+  L_{3D} = \| \hat{P}_t - P_t^* \|
+  $$
 
 This strategy enables **unsupervised, temporally coherent 3D pose reconstruction** from 2D keypoints.
 
@@ -53,25 +68,25 @@ This strategy enables **unsupervised, temporally coherent 3D pose reconstruction
 
 ### 🔹 Section 2.3 — Body Part Movement Recognition
 
-Each body part \( e \in E \) is associated with its own LSTM model to recognize basic motion types over time.
+Each body part $e \in E$ is associated with its own LSTM model to recognize basic motion types over time.
 
-- **Input**: 3D joint trajectories for the joints \( j \in J_e \)
+- **Input**: 3D joint trajectories for the joints $j \in J_e$
 
-\[
+$$
 \left\{ \left\{ \hat{p}_t^j \right\}_{j \in J_e} \right\}_{t=0}^{T-1}
-\]
+$$
 
 - **Output**: Multi-label motion vector per time step
 
-\[
+$$
 \left\{ \hat{y}_t^e \right\}_{t=0}^{T-1}
-\]
+$$
 
 - **Loss Function**: Binary cross-entropy for each body part
 
-\[
+$$
 L_{\text{BCE}}^e = \text{BCE}\left( \left\{ \hat{y}_t^e \right\}, \left\{ y_t^e \right\} \right)
-\]
+$$
 
 This component models the **localized movement patterns** across different body regions in a time-aware manner.
 
@@ -83,21 +98,21 @@ Finally, the predicted motion vectors from all body parts are concatenated and f
 
 - **Input**:
 
-\[
+$$
 \left\{ \left\{ \hat{y}_t^e \right\}_{t=0}^{T-1} \right\}_{e \in E}
-\]
+$$
 
-- **Output**: Final genre prediction \( \hat{g} \) from last LSTM hidden state
+- **Output**: Final genre prediction from last LSTM hidden state
 
-\[
+$$
 \hat{g} = \text{Softmax}(W h_T + b)
-\]
+$$
 
-- **Loss Function**: Cross-entropy over genre labels
+- **Loss Function**:
 
-\[
+$$
 L_{\text{genre}} = -\sum_{k=1}^K g_k \log(\hat{g}_k)
-\]
+$$
 
 This fusion stage captures the global movement semantics needed to infer the genre label from distributed joint dynamics.
 
