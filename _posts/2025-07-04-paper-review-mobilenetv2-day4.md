@@ -3,6 +3,7 @@ layout: post
 title: "Paper Review: MobileNetV2 DAY 4"
 date: 2025-07-04
 categories: paper_review
+mathjax: true
 ---
 
 ## 📌 Paper Info

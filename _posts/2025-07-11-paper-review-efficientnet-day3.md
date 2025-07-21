@@ -3,6 +3,7 @@ layout: post
 title: "Paper Review: EfficientNet DAY 3 – Deep Dive into B0 Architecture & Scaling Coefficients"
 date: 2025-07-11
 categories: paper_review
+mathjax: true
 ---
 
 ## 📌 Paper Info

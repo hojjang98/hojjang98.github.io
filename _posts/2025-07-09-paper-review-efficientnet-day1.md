@@ -3,6 +3,7 @@ layout: post
 title: "Paper Review: EfficientNet DAY 1 – Abstract, Introduction & Motivation"
 date: 2025-07-09
 categories: paper_review
+mathjax: true
 ---
 
 ## 📌 Paper Info

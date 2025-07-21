@@ -3,6 +3,7 @@ layout: post
 title: "Paper Review: EfficientNet DAY 2 – Architecture & Compound Scaling in Practice"
 date: 2025-07-10
 categories: paper_review
+mathjax: true
 ---
 
 ## 📌 Paper Info

@@ -122,3 +122,13 @@ exclude:
 sass:
   sass_dir: _sass
   style: compressed
+
+
+# _config.yml
+markdown: kramdown
+kramdown:
+  math_engine: mathjax
+  input: GFM
+
+# MathJax enable
+mathjax: true

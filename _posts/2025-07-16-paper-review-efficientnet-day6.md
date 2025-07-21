@@ -3,6 +3,7 @@ layout: post
 title: "Paper Review: EfficientNet DAY 6 – My Experiments & What’s Next"
 date: 2025-07-16
 categories: paper_review
+mathjax: true
 ---
 
 ## 📌 Paper Info

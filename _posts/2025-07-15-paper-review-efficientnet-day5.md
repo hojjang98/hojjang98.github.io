@@ -3,6 +3,7 @@ layout: post
 title: "Paper Review: EfficientNet DAY 5 – Conclusion & Takeaways"
 date: 2025-07-15
 categories: paper_review
+mathjax: true
 ---
 
 ## 📌 Paper Info

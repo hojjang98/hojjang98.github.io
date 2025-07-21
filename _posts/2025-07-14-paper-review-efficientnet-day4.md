@@ -3,6 +3,7 @@ layout: post
 title: "Paper Review: EfficientNet DAY 4 – Scaling Results & Cost-Effective Model Analysis"
 date: 2025-07-14
 categories: paper_review
+mathjax: true
 ---
 
 ## 📌 Paper Info

@@ -4,7 +4,7 @@ layout: post
 title: "Paper Review: Unsupervised 3D Pose Estimation for Hierarchical Dance Video Recognition DAY 2"  
 date: 2025-07-18  
 categories: paper_review  
-
+mathjax: true
 ---
 
 ## 📌 Paper Info

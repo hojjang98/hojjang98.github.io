@@ -3,6 +3,7 @@ layout: post
 title: "Paper Review: EfficientNet DAY 0 – Why I Chose This Paper"
 date: 2025-07-07
 categories: paper_review
+mathjax: true
 ---
 
 ## 📌 Paper Info
