@@ -100,6 +100,19 @@ author_profile: true
 - **Status**: 🛠 WIP  
 - **[GitHub Repo](https://github.com/hojjang98/ML-Projects/tree/main/dacon-electricity-prediction)**
 
+
+## 🕺 Dance Action Recognition
+
+- **Type**: Action Recognition (Pose-based Classification)  
+- **Goal**: Classify short dance videos into genre labels (e.g., waacking, hip-hop)  
+- **Tech**: MediaPipe, OpenCV, CNN/LSTM (planned), DTW  
+- **Highlights**:
+  - 2D Pose extraction using MediaPipe  
+  - Feature-based comparison & DTW-based similarity scoring  
+  - Roadmap for genre classification + real-time feedback  
+- **Status**: 🛠 WIP  
+- **[GitHub Repo](https://github.com/hojjang98/CV-Projects/tree/main/dance-action-recognition)**
+
 ---
 
 ## 📂 More coming soon...
