@@ -11,16 +11,18 @@ author_profile: true
 
 ---
 
-## 🚶‍♂️ Real-Time Daily Activity Recognizer
+## 🕺 Pose Sync Evaluator
 
-- **Type**: Computer Vision (Pose Estimation)
-- **Goal**: Recognize 8 daily activities in real-time using webcam video
-- **Tech**: OpenCV, MediaPipe, PyTorch, CNN/LSTM
+- **Type**: Pose Similarity Feedback System  
+- **Goal**: Compare two short dance videos and provide basic feedback based on movement alignment  
+- **Tech**: MediaPipe, OpenCV, fastdtw, ffmpeg  
 - **Highlights**:
-  - Custom dataset collection (3000+ images per class)
-  - Real-time webcam inference
-- **Status**: ✅ Completed  
-- **[GitHub Repo](https://github.com/hojjang98/CV-Projects/tree/main/real-time-daily-activity-recognizer)**
+  - 2D Pose extraction from reference/user videos  
+  - DTW-based similarity scoring  
+  - Simple real-time feedback interface (planned)  
+- **Status**: 🛠 WIP  
+- **[GitHub Repo](https://github.com/hojjang98/CV-Projects/tree/main/pose-sync-evaluator)**
+
 
 ---
 
