@@ -11,20 +11,6 @@ author_profile: true
 
 ---
 
-## 🎸 Bass Seeker
-
-- **Type**: Audio-Based Music Recommendation  
-- **Goal**: Recommend songs with similar bass characteristics, regardless of genre or artist  
-- **Tech**: Spotify Web API, Scikit-learn, NumPy, Streamlit (optional)  
-- **Highlights**:
-  - Feature-based song vector comparison (not artist/genre biased)
-  - Cosine similarity for bass-heavy track retrieval
-  - Candidate pool curation and custom filtering (planned)
-- **Status**: 🛠 WIP  
-- **[GitHub Repo](https://github.com/hojjang98/ML-Projects/tree/main/bass_seeker)**
-
----
-
 ## 🕺 Pose Sync Evaluator
 
 - **Type**: Pose Similarity Feedback System  
