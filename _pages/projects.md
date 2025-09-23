@@ -99,8 +99,22 @@ author_profile: true
 - **Highlights**:
   - Feature engineering + voting ensemble
   - Hyperparameter tuning via RandomizedSearchCV
-- **Status**: 🛠 WIP  
+- **Status**: ✅ Completed   
 - **[GitHub Repo](https://github.com/hojjang98/ML-Projects/tree/main/dacon-electricity-prediction)**
+
+---
+
+## 🗑️ Garbage Classification
+
+- **Type**: Image Classification (Waste Sorting)  
+- **Goal**: Automatically classify garbage images into multiple categories for waste management applications  
+- **Tech**: PyTorch, CNN, Transfer Learning  
+- **Highlights**:
+  - Dataset crawling from Kaggle + preprocessing  
+  - Baseline CNN vs. transfer learning (ResNet, EfficientNet)  
+  - Data augmentation for class balance improvement  
+- **Status**: ✅ Completed  
+- **[GitHub Repo](https://github.com/hojjang98/CV-Projects/tree/main/garbage-classification)**
 
 ---
 
