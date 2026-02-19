@@ -26,6 +26,15 @@ summaryLength = 30
   showReadingTime = true
   showBreadCrumbs = true
 
+[params.profileMode]
+  enabled = true
+  title = "Hojun Choi"
+  subtitle = "Security Governance & Legal Analysis"
+  imageUrl = "profile.jpg"
+  imageWidth = 120
+  imageHeight = 120
+  imageTitle = "Profile"
+
 [privacy]
   [privacy.youtube]
     privacyEnhanced = true
