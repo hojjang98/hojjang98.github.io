@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>보안시스템설계 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%EB%B3%B4%EC%95%88%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%84%A4%EA%B3%84/</link>
+    <description>Recent content in 보안시스템설계 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Tue, 28 Oct 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%EB%B3%B4%EC%95%88%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%84%A4%EA%B3%84/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2025.10.28 (Day 2) 파이썬 클래스/제어문 및 보안 시스템 설계 로그</title>
+      <link>http://localhost:1313/daily_logs/week01/20251028_python_basic_dict/</link>
+      <pubDate>Tue, 28 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week01/20251028_python_basic_dict/</guid>
+      <description>파이썬 클래스, 제어문 학습 및 보안 시스템 설계 인사이트 정리</description>
+    </item>
+  </channel>
+</rss>

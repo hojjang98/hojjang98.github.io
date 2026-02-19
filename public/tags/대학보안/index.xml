@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>대학보안 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%EB%8C%80%ED%95%99%EB%B3%B4%EC%95%88/</link>
+    <description>Recent content in 대학보안 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sun, 01 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%EB%8C%80%ED%95%99%EB%B3%B4%EC%95%88/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Dartmouth College Oracle EBS 제로데이 공격 (2025년 8월)</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week05/dartmouth_oracle_clop_breach/</link>
+      <pubDate>Sun, 01 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week05/dartmouth_oracle_clop_breach/</guid>
+      <description>Clop 그룹이 Oracle EBS 제로데이 취약점을 악용해 Dartmouth College를 포함한 100개 이상 조직에서 대규모 데이터를 탈취한 캠페인 분석</description>
+    </item>
+  </channel>
+</rss>

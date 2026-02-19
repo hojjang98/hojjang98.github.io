@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Categories on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/categories/</link>
+    <description>Recent content in Categories on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Wed, 18 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Security-Law-Study</title>
+      <link>http://localhost:1313/categories/security-law-study/</link>
+      <pubDate>Wed, 18 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/security-law-study/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Security-Issues-Analysis</title>
+      <link>http://localhost:1313/categories/security-issues-analysis/</link>
+      <pubDate>Sun, 15 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/security-issues-analysis/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Daily-Logs</title>
+      <link>http://localhost:1313/categories/daily-logs/</link>
+      <pubDate>Fri, 31 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/daily-logs/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

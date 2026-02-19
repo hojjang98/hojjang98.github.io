@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>제로데이 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%EC%A0%9C%EB%A1%9C%EB%8D%B0%EC%9D%B4/</link>
+    <description>Recent content in 제로데이 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sun, 15 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%EC%A0%9C%EB%A1%9C%EB%8D%B0%EC%9D%B4/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Apple dyld 제로데이 취약점 사건 분석</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week07/apple_dyld-_zero_day/</link>
+      <pubDate>Sun, 15 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week07/apple_dyld-_zero_day/</guid>
+      <description>Google TAG가 발견한 Apple dyld 컴포넌트 메모리 손상 취약점이 WebKit 취약점과 연계된 다단계 공격 체인으로 특정 고가치 표적을 대상으로 악용된 사건 분석</description>
+    </item>
+    <item>
+      <title>Ivanti EPMM 제로데이 취약점 대규모 악용 사건 분석</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week07/ivanti_epmm_zero_day/</link>
+      <pubDate>Sun, 15 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week07/ivanti_epmm_zero_day/</guid>
+      <description>CVSS 9.8의 Ivanti EPMM 코드 인젝션 제로데이가 EU 집행위원회 등 유럽 정부기관을 침해하고 공개 24시간 내 대규모 익스플로잇 캠페인으로 이어진 사건 분석</description>
+    </item>
+    <item>
+      <title>Metro4Shell - React Native Metro Server 원격 코드 실행 취약점 공격</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week06/metro4shell_react_native_rce/</link>
+      <pubDate>Sun, 08 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week06/metro4shell_react_native_rce/</guid>
+      <description>React Native Metro 개발 서버의 인증 없는 RCE 취약점을 악용한 실제 공격이 관측되었으며, EPSS 점수와 무관하게 PoC 공개 직후 공격이 시작된 개발 인프라 보안 사례 분석</description>
+    </item>
+    <item>
+      <title>Dartmouth College Oracle EBS 제로데이 공격 (2025년 8월)</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week05/dartmouth_oracle_clop_breach/</link>
+      <pubDate>Sun, 01 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week05/dartmouth_oracle_clop_breach/</guid>
+      <description>Clop 그룹이 Oracle EBS 제로데이 취약점을 악용해 Dartmouth College를 포함한 100개 이상 조직에서 대규모 데이터를 탈취한 캠페인 분석</description>
+    </item>
+    <item>
+      <title>Korean Air 직원 데이터 유출 사건 (공급망 공격)</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week01/korean_air_breach/</link>
+      <pubDate>Sun, 04 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week01/korean_air_breach/</guid>
+      <description>Oracle EBS 제로데이 취약점을 통한 공급망 공격으로 대한항공 직원 3만 명 정보가 유출된 사건 분석</description>
+    </item>
+  </channel>
+</rss>

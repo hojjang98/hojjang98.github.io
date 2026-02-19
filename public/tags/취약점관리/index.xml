@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>취약점관리 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%EC%B7%A8%EC%95%BD%EC%A0%90%EA%B4%80%EB%A6%AC/</link>
+    <description>Recent content in 취약점관리 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sun, 04 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%EC%B7%A8%EC%95%BD%EC%A0%90%EA%B4%80%EB%A6%AC/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Marquis Software 랜섬웨어 공격으로 인한 미국 금융기관 대규모 유출</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week01/marquis_ransomeware_breach/</link>
+      <pubDate>Sun, 04 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week01/marquis_ransomeware_breach/</guid>
+      <description>SonicWall 취약점을 악용한 Akira 랜섬웨어 공격으로 74개 미국 금융기관 고객 78만 명 정보가 유출된 사건 분석</description>
+    </item>
+  </channel>
+</rss>

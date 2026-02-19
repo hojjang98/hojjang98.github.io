@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>APT on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/apt/</link>
+    <description>Recent content in APT on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sun, 08 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/apt/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>폴란드 재생에너지 인프라 대상 협공 사이버 공격</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week06/poland_energy_infrastructure_attack/</link>
+      <pubDate>Sun, 08 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week06/poland_energy_infrastructure_attack/</guid>
+      <description>러시아 연계 Static Tundra 그룹이 극한 추위 속 신년 직전을 노려 폴란드 풍력·태양광 발전소 30개소 이상을 협조 공격하고 와이퍼 악성코드로 제어 시스템을 마비시킨 사건 분석</description>
+    </item>
+  </channel>
+</rss>

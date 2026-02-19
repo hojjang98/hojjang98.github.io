@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>익명정보 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%EC%9D%B5%EB%AA%85%EC%A0%95%EB%B3%B4/</link>
+    <description>Recent content in 익명정보 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Tue, 03 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%EC%9D%B5%EB%AA%85%EC%A0%95%EB%B3%B4/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Day 02: 개인정보의 정의와 범위</title>
+      <link>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day02_%EC%A0%95%EC%9D%98%EC%99%80%EB%B2%94%EC%9C%84/</link>
+      <pubDate>Tue, 03 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day02_%EC%A0%95%EC%9D%98%EC%99%80%EB%B2%94%EC%9C%84/</guid>
+      <description>개인정보, 민감정보, 고유식별정보, 가명정보, 익명정보의 정의와 각각의 처리 요건 및 구별 기준을 학습합니다.</description>
+    </item>
+  </channel>
+</rss>

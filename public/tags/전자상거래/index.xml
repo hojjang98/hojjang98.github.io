@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>전자상거래 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%EC%A0%84%EC%9E%90%EC%83%81%EA%B1%B0%EB%9E%98/</link>
+    <description>Recent content in 전자상거래 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sun, 25 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%EC%A0%84%EC%9E%90%EC%83%81%EA%B1%B0%EB%9E%98/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Global-e E-commerce Supply Chain Breach Exposes Customer Data Across Multiple Brands</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week04/global_e_supply_chain_breach/</link>
+      <pubDate>Sun, 25 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week04/global_e_supply_chain_breach/</guid>
+      <description>전자상거래 플랫폼 Global-e 침해로 Ledger를 포함한 다수 브랜드의 고객 주문 데이터 2억 건 이상이 노출된 공급망 공격 분석</description>
+    </item>
+  </channel>
+</rss>

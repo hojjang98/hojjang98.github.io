@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>SafePay on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/safepay/</link>
+    <description>Recent content in SafePay on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sun, 15 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/safepay/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Conduent 대규모 데이터 유출 사건 분석</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week07/conduent_data_breach/</link>
+      <pubDate>Sun, 15 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week07/conduent_data_breach/</guid>
+      <description>SafePay 랜섬웨어 그룹이 정부 기술 계약업체 Conduent에서 84일간 탐지되지 않고 8.5TB를 유출해 2,500만 명 이상의 의료·개인정보가 노출된 사건 분석</description>
+    </item>
+  </channel>
+</rss>

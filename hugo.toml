@@ -1,0 +1,26 @@
+baseURL = "https://hojjang98.github.io/"
+title = "HJ's Security Note"
+theme = "PaperMod"
+defaultContentLanguage = "ko"
+languageCode = "ko-kr"
+enableRobotsTXT = true
+summaryLength = 30
+
+[author]
+  name = "HJ"
+
+[pagination]
+  pagerSize = 10
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+  series = "series"
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  section = ["HTML", "RSS"]
+
+[privacy]
+  [privacy.youtube]
+    privacyEnhanced = true

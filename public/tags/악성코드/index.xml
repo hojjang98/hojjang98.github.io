@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>악성코드 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%EC%95%85%EC%84%B1%EC%BD%94%EB%93%9C/</link>
+    <description>Recent content in 악성코드 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sun, 04 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%EC%95%85%EC%84%B1%EC%BD%94%EB%93%9C/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>악성 Chrome 확장프로그램으로 인한 AI 대화 유출 사건</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week01/chrome_extension_malware/</link>
+      <pubDate>Sun, 04 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week01/chrome_extension_malware/</guid>
+      <description>AI 도구로 위장한 악성 Chrome 확장프로그램 2개가 90만 명의 ChatGPT·DeepSeek 대화를 탈취한 사건 분석</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>보안감사 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%EB%B3%B4%EC%95%88%EA%B0%90%EC%82%AC/</link>
+    <description>Recent content in 보안감사 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Fri, 31 Oct 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%EB%B3%B4%EC%95%88%EA%B0%90%EC%82%AC/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2025.10.31 (Day 5) 파이썬 예외 처리·로깅 및 보안 감사 로그 설계</title>
+      <link>http://localhost:1313/daily_logs/week01/20251031_code_resilience_and_logging/</link>
+      <pubDate>Fri, 31 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week01/20251031_code_resilience_and_logging/</guid>
+      <description>파이썬 예외 처리, 로깅 학습 및 보안 감사 로그 설계 실습</description>
+    </item>
+  </channel>
+</rss>

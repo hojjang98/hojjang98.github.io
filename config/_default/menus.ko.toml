@@ -1,0 +1,29 @@
+[[main]]
+  name = "일일 로그"
+  pageRef = "categories/daily-logs"
+  weight = 10
+
+[[main]]
+  name = "프로젝트"
+  pageRef = "categories/projects"
+  weight = 20
+
+[[main]]
+  name = "보안법 공부"
+  pageRef = "categories/security-law-study"
+  weight = 30
+
+[[main]]
+  name = "보안 시사 분석"
+  pageRef = "categories/security-issues-analysis"
+  weight = 40
+
+[[main]]
+  name = "논문 리뷰"
+  pageRef = "categories/paper-review"
+  weight = 60
+
+[[main]]
+  name = "태그"
+  pageRef = "tags"
+  weight = 50

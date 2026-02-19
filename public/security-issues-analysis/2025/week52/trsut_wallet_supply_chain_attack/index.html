@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Trust Wallet Chrome Extension 공급망 공격 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="공급망공격, Chrome확장프로그램, 암호화폐탈취, 크리스마스공격, TrustWallet, 시드프레이즈">
+<meta name="description" content="크리스마스 이브에 발생한 Trust Wallet Chrome 확장 프로그램 공급망 공격 및 700만 달러 탈취 분석">
+<meta name="author" content="map[autoswitchappearance:false bio:보안법규 분석과 실무 중심 거버넌스를 기록합니다. colorscheme:ocean defaultappearance:light enablecodecopy:true enableimagelazyloading:true enableimagewebp:true enablequicklink:true enablesearch:true fingerprintalgorithm:sha256 headline:Security Governance &amp; Legal Analysis image:profile.jpg links:[map[github:https://github.com/hojjang98]] name:Hojun Choi]">
+<link rel="canonical" href="http://localhost:1313/security-issues-analysis/2025/week52/trsut_wallet_supply_chain_attack/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a29c24210eb31d9ce56f669c66a35c9c51b17376b7764e336a49af7dec914cf0.css" integrity="sha256-opwkIQ6zHZzlb2acZqNcnFGxc3a3dk4zakmvfeyRTPA=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/security-issues-analysis/2025/week52/trsut_wallet_supply_chain_attack/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/" title="프로젝트">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/security-law-study/" title="Security-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/" title="논문 리뷰">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Trust Wallet Chrome Extension 공급망 공격
+    </h1>
+    <div class="post-meta"><span title='2025-12-28 00:00:00 +0000 UTC'>2025년 12월 28일</span>&nbsp;·&nbsp;<span>map[autoswitchappearance:false bio:보안법규 분석과 실무 중심 거버넌스를 기록합니다. colorscheme:ocean defaultappearance:light enablecodecopy:true enableimagelazyloading:true enableimagewebp:true enablequicklink:true enablesearch:true fingerprintalgorithm:sha256 headline:Security Governance &amp; Legal Analysis image:profile.jpg links:[map[github:https://github.com/hojjang98]] name:Hojun Choi]</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="trust-wallet-chrome-extension-공급망-공격">Trust Wallet Chrome Extension 공급망 공격<a hidden class="anchor" aria-hidden="true" href="#trust-wallet-chrome-extension-공급망-공격">#</a></h1>
+<h2 id="기사-정보">기사 정보<a hidden class="anchor" aria-hidden="true" href="#기사-정보">#</a></h2>
+<ul>
+<li><strong>출처</strong>: The Hacker News, Koi Security Research</li>
+<li><strong>작성일</strong>: 2025-12-24 (공격 발생일)</li>
+<li><strong>링크</strong>:
+<ul>
+<li><a href="https://thehackernews.com/2025/12/trust-wallet-chrome-extension-bug.html">https://thehackernews.com/2025/12/trust-wallet-chrome-extension-bug.html</a></li>
+<li><a href="https://www.koi.ai/blog/trust-wallet-binance-compromised-inside-the-code-that-stole-7m-on-christmas-eve">https://www.koi.ai/blog/trust-wallet-binance-compromised-inside-the-code-that-stole-7m-on-christmas-eve</a></li>
+</ul>
+</li>
+<li><strong>카테고리</strong>: 공급망 공격/악성코드/암호화폐 탈취</li>
+</ul>
+<hr>
+<h2 id="핵심-요약">핵심 요약<a hidden class="anchor" aria-hidden="true" href="#핵심-요약">#</a></h2>
+<blockquote>
+<p>2025년 12월 24일(크리스마스 이브), Binance 소유의 암호화폐 지갑 Trust Wallet의 Chrome 확장 프로그램 버전 2.68이 악성코드에 감염되어 배포되었다. 공격자는 Chrome Web Store API 키를 탈취하여 악성 업데이트를 공식 스토어를 통해 배포했으며, 48시간 내에 약 700만 달러(약 100억원)의 암호화폐가 탈취되었다. 이는 2024년 크리스마스 이브 Cyberhaven 사건에 이은 두 번째 크리스마스 공급망 공격이다.</p>
+</blockquote>
+<hr>
+<h2 id="사건이슈-배경">사건/이슈 배경<a hidden class="anchor" aria-hidden="true" href="#사건이슈-배경">#</a></h2>
+<h3 id="무슨-일이-일어났는가">무슨 일이 일어났는가?<a hidden class="anchor" aria-hidden="true" href="#무슨-일이-일어났는가">#</a></h3>
+<p><strong>공격 타임라인:</strong></p>
+<ul>
+<li>12월 8일: 공격자 인프라 구축 (metrics-trustwallet.com 도메인 등록)</li>
+<li>12월 21일: 첫 exfiltration 요청 시작</li>
+<li>12월 24일 12:32 UTC: 악성 버전 2.68.0이 Chrome Web Store를 통해 배포</li>
+<li>12월 25일: 사용자들의 지갑 탈취 신고 시작, ZachXBT가 패턴 발견</li>
+<li>12월 26일: Trust Wallet 공식 침해 확인, 버전 2.69 배포</li>
+<li>12월 26일: Binance CEO CZ, 전액 환불 발표</li>
+</ul>
+<p><strong>공격 메커니즘:</strong></p>
+<ol>
+<li>공격자는 Chrome Web Store API 키를 탈취</li>
+<li>정상적인 업데이트 프로세스를 우회하여 악성 버전 2.68.0 제출</li>
+<li>Chrome Web Store 리뷰 프로세스 통과</li>
+<li>100만 사용자에게 자동 업데이트 배포</li>
+<li>사용자가 지갑을 잠금 해제할 때마다 시드 프레이즈(seed phrase) 탈취</li>
+</ol>
+<p><strong>피해 규모:</strong></p>
+<ul>
+<li>약 700만 달러 탈취
+<ul>
+<li>Bitcoin: 약 300만 달러</li>
+<li>Ethereum: 약 300만 달러 이상</li>
+<li>Solana: 약 43만 달러</li>
+</ul>
+</li>
+<li>수백 명의 피해자 발생</li>
+<li>100만 명 이상의 확장 프로그램 사용자 위험 노출</li>
+</ul>
+<h3 id="누가-관련되었는가">누가 관련되었는가?<a hidden class="anchor" aria-hidden="true" href="#누가-관련되었는가">#</a></h3>
+<ul>
+<li>
+<p><strong>공격자/위협 주체</strong>:</p>
+<ul>
+<li>신원 미상 (국가 지원 행위자 가능성 제기)</li>
+<li>Binance CEO는 내부자 소행 가능성 언급 (증거 미제시)</li>
+</ul>
+</li>
+<li>
+<p><strong>피해자/영향 받은 대상</strong>:</p>
+<ul>
+<li>Trust Wallet Chrome 확장 프로그램 버전 2.68 사용자</li>
+<li>12월 24-26일 사이 지갑을 잠금 해제한 모든 사용자</li>
+<li>모바일 앱 사용자는 영향 없음</li>
+</ul>
+</li>
+<li>
+<p><strong>기타 관련 당사자</strong>:</p>
+<ul>
+<li>Binance (Trust Wallet 소유사)</li>
+<li>ZachXBT (온체인 조사관, 최초 발견)</li>
+<li>Akinator (보안 연구원, 확장 프로그램 추적)</li>
+<li>Koi Security, SlowMist (기술 분석)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="원인-분석">원인 분석<a hidden class="anchor" aria-hidden="true" href="#원인-분석">#</a></h2>
+<h3 id="기술적-원인">기술적 원인<a hidden class="anchor" aria-hidden="true" href="#기술적-원인">#</a></h3>
+<p><strong>공급망 공격 메커니즘:</strong></p>
+<ol>
+<li>
+<p><strong>Chrome Web Store API 키 탈취</strong></p>
+<ul>
+<li>공격자가 Trust Wallet의 Chrome Web Store API 키를 확보</li>
+<li>이를 통해 정상적인 배포 프로세스를 우회</li>
+<li>Chrome Web Store의 자동 리뷰 프로세스 통과</li>
+</ul>
+</li>
+<li>
+<p><strong>악성 코드 주입 (4482.js 파일)</strong></p>
+<ul>
+<li>PostHog 분석 라이브러리의 엔드포인트를 공격자의 서버로 변경</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">api</span>.<span style="color:#a6e22e">metrics</span><span style="color:#f92672">-</span><span style="color:#a6e22e">trustwallet</span>.<span style="color:#a6e22e">com</span> (<span style="color:#a6e22e">공격자</span> <span style="color:#a6e22e">서버</span>)
+</span></span></code></pre></div><ul>
+<li>정상적인 Trust Wallet 인프라로 위장</li>
+</ul>
+</li>
+<li>
+<p><strong>시드 프레이즈 탈취 로직 (8423.js 파일)</strong></p>
+<ul>
+<li>비밀번호와 생체인증 두 가지 인증 경로 모두에 악성 코드 삽입</li>
+<li>모든 지갑을 반복하여 각각의 시드 프레이즈 추출</li>
+<li>&ldquo;errorMessage&rdquo; 필드에 시드 프레이즈를 숨겨서 정상 텔레메트리로 위장</li>
+</ul>
+</li>
+<li>
+<p><strong>추가 공격 기능</strong></p>
+<ul>
+<li>새로운 WASM 암호화 모듈 추가 (4f8cd8a01d2966c5de9b.module.wasm)</li>
+<li>secp256k1 타원 곡선 암호화 라이브러리 (Bitcoin/Ethereum 서명에 사용)</li>
+<li>트랜잭션 직접 서명 가능</li>
+</ul>
+</li>
+</ol>
+<p><strong>리패키징 증거:</strong></p>
+<ul>
+<li>manifest.json에서 <code>key</code> 필드 제거 (확장 프로그램 서명 키)</li>
+<li>이는 공격자가 원본 서명 키에 접근하지 못했거나 의도적으로 제거했음을 시사</li>
+</ul>
+<h3 id="관리적절차적-원인">관리적/절차적 원인<a hidden class="anchor" aria-hidden="true" href="#관리적절차적-원인">#</a></h3>
+<p><strong>배포 파이프라인 보안 부재:</strong></p>
+<ul>
+<li>Chrome Web Store API 키 관리 실패</li>
+<li>API 키가 어떻게 유출되었는지에 대한 명확한 설명 부재</li>
+<li>버전 업데이트에 대한 서명 검증 메커니즘 부재</li>
+</ul>
+<p><strong>크리스마스 타이밍 악용:</strong></p>
+<ul>
+<li>2024년 크리스마스 이브: Cyberhaven 확장 프로그램 침해</li>
+<li>2025년 크리스마스 이브: Trust Wallet 침해</li>
+<li>보안팀 인력 부족 시기를 노린 계획적 공격</li>
+</ul>
+<p><strong>초기 대응 지연:</strong></p>
+<ul>
+<li>공격자 인프라가 12월 8일에 구축되었으나 탐지 실패</li>
+<li>악성 코드가 배포된 후 24시간 이후 커뮤니티에 의해 발견</li>
+</ul>
+<h3 id="인적-원인">인적 원인<a hidden class="anchor" aria-hidden="true" href="#인적-원인">#</a></h3>
+<p><strong>내부자 관여 가능성:</strong></p>
+<ul>
+<li>Binance CEO CZ가 내부자 소행 가능성 언급</li>
+<li>개발자 디바이스 침해 또는 배포 권한 탈취 가능성</li>
+<li>구체적 증거는 제시되지 않음</li>
+</ul>
+<hr>
+<h2 id="영향-및-파급효과">영향 및 파급효과<a hidden class="anchor" aria-hidden="true" href="#영향-및-파급효과">#</a></h2>
+<h3 id="직접적-영향">직접적 영향<a hidden class="anchor" aria-hidden="true" href="#직접적-영향">#</a></h3>
+<p><strong>금전적 피해:</strong></p>
+<ul>
+<li>총 약 700만 달러 탈취</li>
+<li>Bitcoin: 약 300만 달러</li>
+<li>Ethereum: 약 300만 달러 이상</li>
+<li>Solana: 약 43만 달러</li>
+</ul>
+<p><strong>자금 세탁 경로:</strong></p>
+<ul>
+<li>ChangeNOW: 약 330만 달러</li>
+<li>KuCoin: 약 44.7만 달러</li>
+<li>FixedFloat: 약 34만 달러</li>
+<li>크로스체인 브리지를 통한 자금 이동</li>
+</ul>
+<p><strong>사용자 피해:</strong></p>
+<ul>
+<li>수백 명의 직접 피해자</li>
+<li>100만 명 이상의 잠재적 위험 노출</li>
+<li>12월 24-26일 사이 지갑 잠금 해제한 모든 사용자 시드 프레이즈 탈취</li>
+</ul>
+<h3 id="간접적-영향">간접적 영향<a hidden class="anchor" aria-hidden="true" href="#간접적-영향">#</a></h3>
+<p><strong>신뢰 손상:</strong></p>
+<ul>
+<li>Trust Wallet 브랜드 이미지 타격</li>
+<li>Binance의 보안 관리 능력에 대한 의문</li>
+<li>Chrome Web Store의 리뷰 프로세스 신뢰성 문제</li>
+</ul>
+<p><strong>업계 전반:</strong></p>
+<ul>
+<li>브라우저 확장 프로그램 보안에 대한 재인식</li>
+<li>크리스마스 공급망 공격 패턴 확립</li>
+<li>암호화폐 지갑의 브라우저 확장 형태 위험성 부각</li>
+</ul>
+<p><strong>보안 패러다임 변화:</strong></p>
+<ul>
+<li>공식 스토어를 통한 배포도 안전하지 않음을 입증</li>
+<li>버전 업데이트 쿨다운 정책의 필요성 부각</li>
+</ul>
+<h3 id="예상-피해-규모">예상 피해 규모<a hidden class="anchor" aria-hidden="true" href="#예상-피해-규모">#</a></h3>
+<p><strong>즉각적 대응:</strong></p>
+<ul>
+<li>Binance SAFU 펀드를 통한 전액 환불 발표</li>
+<li>환불 금액: 약 700만 달러 (확정)</li>
+</ul>
+<p><strong>장기적 영향:</strong></p>
+<ul>
+<li>브랜드 신뢰도 회복 비용</li>
+<li>보안 시스템 재구축 비용</li>
+<li>법적 소송 가능성</li>
+</ul>
+<hr>
+<h2 id="예방-및-대응-방안">예방 및 대응 방안<a hidden class="anchor" aria-hidden="true" href="#예방-및-대응-방안">#</a></h2>
+<h3 id="사전-예방-방법">사전 예방 방법<a hidden class="anchor" aria-hidden="true" href="#사전-예방-방법">#</a></h3>
+<ol>
+<li>
+<p><strong>버전 업데이트 쿨다운 정책</strong></p>
+<ul>
+<li>확장 프로그램 업데이트를 48-72시간 지연</li>
+<li>커뮤니티가 조기 경보 시스템 역할 수행</li>
+<li>이번 사건의 경우 24시간 내 발견되어 쿨다운 정책으로 예방 가능했음</li>
+</ul>
+</li>
+<li>
+<p><strong>확장 프로그램 배포 파이프라인 보안</strong></p>
+<ul>
+<li>API 키 접근 제어 강화</li>
+<li>다중 인증(MFA) 필수</li>
+<li>서명 검증 메커니즘 구현</li>
+<li>리패키징 탐지 시스템 구축</li>
+</ul>
+</li>
+<li>
+<p><strong>Manifest 변경 모니터링</strong></p>
+<ul>
+<li>버전 간 manifest.json의 <code>key</code> 필드 제거 감지</li>
+<li>새로운 권한 요청 모니터링</li>
+<li>파일 구조 변경 추적</li>
+</ul>
+</li>
+</ol>
+<h3 id="사고-발생-시-대응-방안">사고 발생 시 대응 방안<a hidden class="anchor" aria-hidden="true" href="#사고-발생-시-대응-방안">#</a></h3>
+<ol>
+<li>
+<p><strong>즉각적 격리</strong></p>
+<ul>
+<li>악성 버전 즉시 제거</li>
+<li>새 버전 긴급 배포</li>
+<li>사용자 대상 긴급 공지</li>
+</ul>
+</li>
+<li>
+<p><strong>피해자 지원</strong></p>
+<ul>
+<li>전액 환불 약속 (Binance SAFU 펀드)</li>
+<li>보상 신청 프로세스 구축</li>
+<li>피해자 확인 시스템 운영</li>
+</ul>
+</li>
+<li>
+<p><strong>포렌식 조사</strong></p>
+<ul>
+<li>공격자 인프라 분석</li>
+<li>침투 경로 파악</li>
+<li>IOC(Indicators of Compromise) 공개</li>
+</ul>
+</li>
+</ol>
+<h3 id="재발-방지-대책">재발 방지 대책<a hidden class="anchor" aria-hidden="true" href="#재발-방지-대책">#</a></h3>
+<p><strong>기술적 대책:</strong></p>
+<ol>
+<li>
+<p><strong>하드웨어 지갑 우선 사용</strong></p>
+<ul>
+<li>브라우저 확장보다 전용 하드웨어 지갑 권장</li>
+<li>민감한 암호화폐 자산은 하드웨어 분리</li>
+</ul>
+</li>
+<li>
+<p><strong>서명 검증 자동화</strong></p>
+<ul>
+<li>빌드에서 배포까지 전 과정 서명 검증</li>
+<li>무단 리패키징 탐지</li>
+</ul>
+</li>
+<li>
+<p><strong>실시간 모니터링</strong></p>
+<ul>
+<li>확장 프로그램 행위 이상 탐지</li>
+<li>예상치 못한 네트워크 요청 차단</li>
+</ul>
+</li>
+</ol>
+<p><strong>조직적 대책:</strong></p>
+<ol>
+<li>
+<p><strong>휴일 보안 강화</strong></p>
+<ul>
+<li>크리스마스/주요 휴일 보안팀 대기 체계</li>
+<li>긴급 대응 프로토콜 사전 수립</li>
+</ul>
+</li>
+<li>
+<p><strong>공급망 보안 감사</strong></p>
+<ul>
+<li>정기적 배포 파이프라인 감사</li>
+<li>제3자 의존성 검토</li>
+<li>API 키 로테이션 정책</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="개인-인사이트">개인 인사이트<a hidden class="anchor" aria-hidden="true" href="#개인-인사이트">#</a></h2>
+<h3 id="배운-점">배운 점<a hidden class="anchor" aria-hidden="true" href="#배운-점">#</a></h3>
+<ol>
+<li>
+<p><strong>공급망 공격의 새로운 패턴: 크리스마스 타이밍</strong></p>
+<ul>
+<li>2024, 2025년 연속 크리스마스 이브 공격</li>
+<li>보안팀 인력이 부족한 시기를 노린 계획적 공격</li>
+<li>공격 인프라가 2주 이상 사전에 구축됨</li>
+<li>휴일 기간은 이제 고위험 시기로 인식해야 함</li>
+</ul>
+</li>
+<li>
+<p><strong>공식 배포 채널도 안전하지 않음</strong></p>
+<ul>
+<li>Chrome Web Store의 공식 리뷰 프로세스 통과</li>
+<li>API 키 탈취로 정상 프로세스를 우회</li>
+<li>&ldquo;공식 스토어 배포 = 안전&quot;이라는 믿음의 붕괴</li>
+<li>공급망의 모든 단계에 대한 검증 필요</li>
+</ul>
+</li>
+<li>
+<p><strong>버전 업데이트 쿨다운의 효과</strong></p>
+<ul>
+<li>48-72시간 업데이트 지연으로 예방 가능</li>
+<li>커뮤니티가 조기 경보 시스템으로 작동</li>
+<li>&ldquo;첫 번째 사용자가 되지 않기&rdquo; 전략의 유효성</li>
+<li>속도보다 안전이 우선</li>
+</ul>
+</li>
+<li>
+<p><strong>악성 코드 위장 기법의 정교함</strong></p>
+<ul>
+<li>PostHog 분석 라이브러리를 악용한 데이터 탈취</li>
+<li>시드 프레이즈를 &ldquo;errorMessage&rdquo; 필드에 숨김</li>
+<li>정상적인 텔레메트리로 위장하여 코드 리뷰 회피</li>
+<li>모든 인증 경로(비밀번호, 생체인증) 커버</li>
+</ul>
+</li>
+<li>
+<p><strong>Manifest 변경의 중요성</strong></p>
+<ul>
+<li><code>key</code> 필드 제거는 리패키징의 강력한 증거</li>
+<li>새로운 WASM 모듈 추가도 의심 신호</li>
+<li>버전 간 구조적 변경 모니터링의 중요성</li>
+</ul>
+</li>
+</ol>
+<h3 id="느낀-점">느낀 점<a hidden class="anchor" aria-hidden="true" href="#느낀-점">#</a></h3>
+<p><strong>암호화폐 지갑의 브라우저 확장 형태의 본질적 위험:</strong></p>
+<ul>
+<li>브라우저는 본질적으로 높은 공격 표면을 가진 환경</li>
+<li>민감한 암호화폐 자산을 브라우저 컨텍스트에 두는 것의 위험성</li>
+<li>하드웨어 지갑이나 전용 애플리케이션으로의 전환 필요</li>
+<li>편의성과 보안 사이의 근본적 트레이드오프</li>
+</ul>
+<p><strong>공급망 공격의 비대칭성:</strong></p>
+<ul>
+<li>공격자는 한 번의 성공으로 수백만 명에게 영향</li>
+<li>방어자는 모든 단계를 완벽하게 방어해야 함</li>
+<li>API 키 하나의 유출이 100만 사용자의 피해로 연결</li>
+<li>공급망 보안은 가장 약한 고리만큼만 강함</li>
+</ul>
+<p><strong>커뮤니티 기반 보안의 힘:</strong></p>
+<ul>
+<li>24시간 내 커뮤니티에 의해 발견</li>
+<li>ZachXBT, Akinator 등 독립 연구자들의 역할</li>
+<li>분산된 모니터링이 중앙화된 보안팀보다 빠를 수 있음</li>
+<li>투명성과 정보 공유의 중요성</li>
+</ul>
+<p><strong>크리스마스 공격 패턴의 확립:</strong></p>
+<ul>
+<li>2년 연속 크리스마스 이브 공격</li>
+<li>이제 패턴으로 인식되어야 함</li>
+<li>휴일 보안 대비의 필요성</li>
+<li>공격자들도 우리의 약점을 학습하고 활용</li>
+</ul>
+<p><strong>빠른 보상 대응의 중요성:</strong></p>
+<ul>
+<li>Binance의 즉각적인 전액 환불 약속</li>
+<li>피해자 신뢰 유지 및 브랜드 이미지 회복</li>
+<li>보상 프로세스가 명확하고 투명해야 함</li>
+<li>그러나 근본적 해결책은 예방임</li>
+</ul>
+<p><strong>학습해야 할 기술 영역:</strong></p>
+<ul>
+<li>Chrome 확장 프로그램 아키텍처 및 배포 프로세스</li>
+<li>PostHog 등 분석 라이브러리의 작동 원리</li>
+<li>secp256k1 타원 곡선 암호화 (Bitcoin/Ethereum)</li>
+<li>WASM 모듈을 이용한 공격 기법</li>
+<li>브라우저 확장 프로그램 리패키징 탐지 기법</li>
+</ul>
+<h2 id="관련-자료">관련 자료<a hidden class="anchor" aria-hidden="true" href="#관련-자료">#</a></h2>
+<ul>
+<li><a href="https://www.koi.ai/blog/trust-wallet-binance-compromised-inside-the-code-that-stole-7m-on-christmas-eve">Koi Security: Trust Wallet 기술 분석</a></li>
+<li><a href="https://dex.koi.security/reports/chrome/egjidjbpglichdcondbcbdnbeeppgdph/2.68.0">Koidex: Trust Wallet 버전 2.68.0 리포트</a></li>
+<li><a href="https://x.com/TrustWallet">Trust Wallet 공식 발표</a></li>
+<li><a href="https://t.me/investigations/297">ZachXBT 조사 내용</a></li>
+<li>Chrome Web Store 확장 프로그램 보안 가이드</li>
+</ul>
+<hr>
+<p><strong>분석일</strong>: 2024-12-28<br>
+<strong>키워드</strong>: <code>#공급망공격</code> <code>#Chrome확장프로그램</code> <code>#암호화폐탈취</code> <code>#크리스마스공격</code> <code>#TrustWallet</code> <code>#시드프레이즈</code></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/%EA%B3%B5%EA%B8%89%EB%A7%9D%EA%B3%B5%EA%B2%A9/">공급망공격</a></li>
+      <li><a href="http://localhost:1313/tags/chrome%ED%99%95%EC%9E%A5%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8/">Chrome확장프로그램</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%95%94%ED%98%B8%ED%99%94%ED%8F%90%ED%83%88%EC%B7%A8/">암호화폐탈취</a></li>
+      <li><a href="http://localhost:1313/tags/%ED%81%AC%EB%A6%AC%EC%8A%A4%EB%A7%88%EC%8A%A4%EA%B3%B5%EA%B2%A9/">크리스마스공격</a></li>
+      <li><a href="http://localhost:1313/tags/trustwallet/">TrustWallet</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%8B%9C%EB%93%9C%ED%94%84%EB%A0%88%EC%9D%B4%EC%A6%88/">시드프레이즈</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>데이터침해 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%B9%A8%ED%95%B4/</link>
+    <description>Recent content in 데이터침해 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sun, 18 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%B9%A8%ED%95%B4/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>유럽우주국(ESA) 외부 서버 침해로 200GB 데이터 탈취 주장</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week03/esa_external_server_breach/</link>
+      <pubDate>Sun, 18 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week03/esa_external_server_breach/</guid>
+      <description>해커 &amp;lsquo;888&amp;rsquo;이 ESA의 JIRA·Bitbucket 외부 서버를 침해해 소스 코드, API 토큰, 하드코딩된 자격증명 등 200GB 데이터를 탈취한 사건 분석</description>
+    </item>
+  </channel>
+</rss>

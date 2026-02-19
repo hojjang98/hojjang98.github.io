@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>정부기관침해 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%EC%A0%95%EB%B6%80%EA%B8%B0%EA%B4%80%EC%B9%A8%ED%95%B4/</link>
+    <description>Recent content in 정부기관침해 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sun, 15 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%EC%A0%95%EB%B6%80%EA%B8%B0%EA%B4%80%EC%B9%A8%ED%95%B4/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ivanti EPMM 제로데이 취약점 대규모 악용 사건 분석</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week07/ivanti_epmm_zero_day/</link>
+      <pubDate>Sun, 15 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week07/ivanti_epmm_zero_day/</guid>
+      <description>CVSS 9.8의 Ivanti EPMM 코드 인젝션 제로데이가 EU 집행위원회 등 유럽 정부기관을 침해하고 공개 24시간 내 대규모 익스플로잇 캠페인으로 이어진 사건 분석</description>
+    </item>
+  </channel>
+</rss>

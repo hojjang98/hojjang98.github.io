@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Day 11: 아동·영상정보·가명정보 특칙 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="개인정보보호법, 아동보호, CCTV, 가명정보, 법정대리인동의">
+<meta name="description" content="만 14세 미만 아동 개인정보 처리 시 법정대리인 동의, CCTV 설치·운영 제한, 가명정보 처리 특례를 학습합니다.">
+<meta name="author" content="map[autoswitchappearance:false bio:보안법규 분석과 실무 중심 거버넌스를 기록합니다. colorscheme:ocean defaultappearance:light enablecodecopy:true enableimagelazyloading:true enableimagewebp:true enablequicklink:true enablesearch:true fingerprintalgorithm:sha256 headline:Security Governance &amp; Legal Analysis image:profile.jpg links:[map[github:https://github.com/hojjang98]] name:Hojun Choi]">
+<link rel="canonical" href="http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day11_%EC%95%84%EB%8F%99%EC%98%81%EC%83%81%EC%A0%95%EB%B3%B4%EA%B0%80%EB%AA%85%EC%A0%95%EB%B3%B4/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a29c24210eb31d9ce56f669c66a35c9c51b17376b7764e336a49af7dec914cf0.css" integrity="sha256-opwkIQ6zHZzlb2acZqNcnFGxc3a3dk4zakmvfeyRTPA=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day11_%EC%95%84%EB%8F%99%EC%98%81%EC%83%81%EC%A0%95%EB%B3%B4%EA%B0%80%EB%AA%85%EC%A0%95%EB%B3%B4/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/" title="프로젝트">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/security-law-study/" title="Security-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/" title="논문 리뷰">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Day 11: 아동·영상정보·가명정보 특칙
+    </h1>
+    <div class="post-meta"><span title='2026-02-16 00:00:00 +0000 UTC'>2026년 2월 16일</span>&nbsp;·&nbsp;<span>map[autoswitchappearance:false bio:보안법규 분석과 실무 중심 거버넌스를 기록합니다. colorscheme:ocean defaultappearance:light enablecodecopy:true enableimagelazyloading:true enableimagewebp:true enablequicklink:true enablesearch:true fingerprintalgorithm:sha256 headline:Security Governance &amp; Legal Analysis image:profile.jpg links:[map[github:https://github.com/hojjang98]] name:Hojun Choi]</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="day-11-아동영상정보가명정보-특칙">Day 11: 아동·영상정보·가명정보 특칙<a hidden class="anchor" aria-hidden="true" href="#day-11-아동영상정보가명정보-특칙">#</a></h1>
+<h2 id="1-아동-개인정보-보호">1. 아동 개인정보 보호<a hidden class="anchor" aria-hidden="true" href="#1-아동-개인정보-보호">#</a></h2>
+<h3 id="11-아동의-정의">1.1 아동의 정의<a hidden class="anchor" aria-hidden="true" href="#11-아동의-정의">#</a></h3>
+<p><strong>만 14세 미만</strong>의 아동</p>
+<p>개인정보보호법에서는 만 14세 미만 아동의 개인정보를 특별히 보호</p>
+<h3 id="12-법적-근거">1.2 법적 근거<a hidden class="anchor" aria-hidden="true" href="#12-법적-근거">#</a></h3>
+<ul>
+<li><strong>개인정보보호법 제22조 제6항</strong>: 만 14세 미만 아동의 개인정보 수집 시 법정대리인 동의</li>
+<li><strong>정보통신망법 제31조</strong>: 동일한 내용 규정</li>
+</ul>
+<h3 id="13-법정대리인-동의-절차">1.3 법정대리인 동의 절차<a hidden class="anchor" aria-hidden="true" href="#13-법정대리인-동의-절차">#</a></h3>
+<h4 id="1-법정대리인의-동의-필요">(1) 법정대리인의 동의 필요<a hidden class="anchor" aria-hidden="true" href="#1-법정대리인의-동의-필요">#</a></h4>
+<p>만 14세 미만 아동의 개인정보를 수집·이용하려는 경우 <strong>법정대리인의 동의</strong> 필요</p>
+<p><strong>법정대리인:</strong></p>
+<ul>
+<li>친권자 (부모)</li>
+<li>후견인</li>
+</ul>
+<h4 id="2-법정대리인-동의-방법">(2) 법정대리인 동의 방법<a hidden class="anchor" aria-hidden="true" href="#2-법정대리인-동의-방법">#</a></h4>
+<p><strong>동의 받을 때 필수 사항:</strong></p>
+<ol>
+<li>법정대리인의 <strong>성명</strong></li>
+<li>법정대리인의 <strong>연락처</strong> (전화번호, 이메일 등)</li>
+</ol>
+<p><strong>동의 방법:</strong></p>
+<ul>
+<li><strong>법정대리인 본인확인 필수</strong>
+<ul>
+<li>법정대리인 명의 휴대폰 인증</li>
+<li>아이핀</li>
+<li>공동인증서</li>
+<li>신용카드 인증</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-동의-절차-예시">(3) 동의 절차 예시<a hidden class="anchor" aria-hidden="true" href="#3-동의-절차-예시">#</a></h4>
+<pre tabindex="0"><code>[1단계] 아동이 회원가입 시도
+    ↓
+[2단계] 아동 연령 확인 (만 14세 미만 판정)
+    ↓
+[3단계] 법정대리인 동의 안내
+    ↓
+[4단계] 법정대리인 본인확인 (휴대폰 인증 등)
+    ↓
+[5단계] 법정대리인 동의서 확인 및 동의
+    ↓
+[6단계] 회원가입 완료
+</code></pre><h3 id="14-법정대리인의-권리">1.4 법정대리인의 권리<a hidden class="anchor" aria-hidden="true" href="#14-법정대리인의-권리">#</a></h3>
+<p>법정대리인은 아동을 대신하여 다음 권리 행사 가능:</p>
+<ol>
+<li><strong>열람권</strong>: 아동의 개인정보 열람 요구</li>
+<li><strong>정정·삭제권</strong>: 아동의 개인정보 정정·삭제 요구</li>
+<li><strong>처리정지권</strong>: 아동의 개인정보 처리정지 요구</li>
+<li><strong>동의 철회권</strong>: 동의 철회</li>
+</ol>
+<h3 id="15-아동-개인정보-처리-시-주의사항">1.5 아동 개인정보 처리 시 주의사항<a hidden class="anchor" aria-hidden="true" href="#15-아동-개인정보-처리-시-주의사항">#</a></h3>
+<h4 id="1-연령-확인-절차-필수">(1) 연령 확인 절차 필수<a hidden class="anchor" aria-hidden="true" href="#1-연령-확인-절차-필수">#</a></h4>
+<p>회원가입 시 생년월일 입력 → 만 14세 미만 여부 자동 판단</p>
+<h4 id="2-법정대리인-동의-없이-수집-금지">(2) 법정대리인 동의 없이 수집 금지<a hidden class="anchor" aria-hidden="true" href="#2-법정대리인-동의-없이-수집-금지">#</a></h4>
+<p>법정대리인 동의 없이 아동 개인정보 수집 시 <strong>3천만원 이하 과태료</strong></p>
+<h4 id="3-아동-대상-마케팅-제한">(3) 아동 대상 마케팅 제한<a hidden class="anchor" aria-hidden="true" href="#3-아동-대상-마케팅-제한">#</a></h4>
+<p>만 14세 미만 아동 대상 마케팅은 법정대리인 동의 필요</p>
+<h3 id="16-실무-사례">1.6 실무 사례<a hidden class="anchor" aria-hidden="true" href="#16-실무-사례">#</a></h3>
+<h4 id="사례-1-온라인-게임">사례 1: 온라인 게임<a hidden class="anchor" aria-hidden="true" href="#사례-1-온라인-게임">#</a></h4>
+<p><strong>상황:</strong>
+만 12세 아동이 게임 회원가입</p>
+<p><strong>처리:</strong></p>
+<ol>
+<li>생년월일 입력 → 만 14세 미만 확인</li>
+<li>법정대리인(부모) 휴대폰 번호 입력</li>
+<li>부모 휴대폰으로 인증번호 발송</li>
+<li>부모가 인증번호 입력 + 동의</li>
+<li>회원가입 완료</li>
+</ol>
+<h4 id="사례-2-유튜브-키즈">사례 2: 유튜브 키즈<a hidden class="anchor" aria-hidden="true" href="#사례-2-유튜브-키즈">#</a></h4>
+<p><strong>상황:</strong>
+아동 대상 동영상 서비스</p>
+<p><strong>처리:</strong></p>
+<ul>
+<li>회원가입 자체를 만 14세 미만 불가로 제한</li>
+<li>또는 법정대리인 계정으로 자녀 계정 생성</li>
+</ul>
+<h2 id="2-영상정보처리기기-cctv-운영">2. 영상정보처리기기 (CCTV) 운영<a hidden class="anchor" aria-hidden="true" href="#2-영상정보처리기기-cctv-운영">#</a></h2>
+<h3 id="21-영상정보처리기기의-정의">2.1 영상정보처리기기의 정의<a hidden class="anchor" aria-hidden="true" href="#21-영상정보처리기기의-정의">#</a></h3>
+<p><strong>영상정보처리기기</strong>: 일정한 공간에 지속적으로 설치되어 <strong>사람 또는 사물의 영상 등을 촬영하거나 이를 유·무선망을 통해 전송하는 장치</strong></p>
+<p><strong>대표 예시:</strong></p>
+<ul>
+<li>CCTV</li>
+<li>네트워크 카메라</li>
+<li>차량 블랙박스 (고정 설치 시)</li>
+</ul>
+<h3 id="22-법적-근거">2.2 법적 근거<a hidden class="anchor" aria-hidden="true" href="#22-법적-근거">#</a></h3>
+<ul>
+<li><strong>개인정보보호법 제25조</strong>: 영상정보처리기기의 설치·운영 제한</li>
+</ul>
+<h3 id="23-설치-목적의-제한-법-제25조-제1항">2.3 설치 목적의 제한 (법 제25조 제1항)<a hidden class="anchor" aria-hidden="true" href="#23-설치-목적의-제한-법-제25조-제1항">#</a></h3>
+<p>영상정보처리기기는 다음 목적으로만 설치·운영 가능:</p>
+<ol>
+<li><strong>범죄의 예방 및 수사</strong>를 위하여 필요한 경우</li>
+<li><strong>시설안전 및 화재 예방</strong>을 위하여 필요한 경우</li>
+<li><strong>교통정보의 수집·분석 및 제공</strong>을 위하여 필요한 경우</li>
+<li><strong>교통단속</strong>을 위하여 필요한 경우</li>
+<li><strong>군사시설, 중요 시설</strong>의 보호를 위하여 필요한 경우</li>
+</ol>
+<p><strong>설치 금지 장소:</strong></p>
+<ul>
+<li>목욕탕, 화장실, 탈의실 등 <strong>사생활 침해 우려가 높은 장소</strong>는 원칙적 설치 금지</li>
+</ul>
+<h3 id="24-설치운영-시-준수사항-법-제25조-제2항제5항">2.4 설치·운영 시 준수사항 (법 제25조 제2항~제5항)<a hidden class="anchor" aria-hidden="true" href="#24-설치운영-시-준수사항-법-제25조-제2항제5항">#</a></h3>
+<h4 id="1-안내판-설치-의무">(1) 안내판 설치 의무<a hidden class="anchor" aria-hidden="true" href="#1-안내판-설치-의무">#</a></h4>
+<p>공개된 장소에 영상정보처리기기를 설치·운영하는 경우 <strong>안내판 설치</strong> 필수</p>
+<p><strong>안내판 기재 사항:</strong></p>
+<ol>
+<li>설치 목적 및 장소</li>
+<li>촬영 범위 및 시간</li>
+<li>관리책임자 성명 및 연락처</li>
+<li>그 밖에 대통령령으로 정하는 사항</li>
+</ol>
+<p><strong>안내판 설치 위치:</strong></p>
+<ul>
+<li>정보주체가 <strong>쉽게 알아볼 수 있는 장소</strong></li>
+<li>CCTV 인근</li>
+</ul>
+<h4 id="2-촬영-범위-최소화">(2) 촬영 범위 최소화<a hidden class="anchor" aria-hidden="true" href="#2-촬영-범위-최소화">#</a></h4>
+<p><strong>필요 최소한의 범위</strong>만 촬영</p>
+<ul>
+<li>불필요한 사생활 침해 최소화</li>
+<li>예: 엘리베이터 내부는 촬영하되, 이웃집 현관은 촬영 범위에서 제외</li>
+</ul>
+<h4 id="3-녹음-금지">(3) 녹음 금지<a hidden class="anchor" aria-hidden="true" href="#3-녹음-금지">#</a></h4>
+<p>영상정보처리기기 운영 시 <strong>음성 녹음 금지</strong> (원칙)</p>
+<p><strong>예외:</strong></p>
+<ul>
+<li>법률에 근거가 있는 경우</li>
+<li>정보주체 동의</li>
+</ul>
+<h4 id="4-보관-기간-명시">(4) 보관 기간 명시<a hidden class="anchor" aria-hidden="true" href="#4-보관-기간-명시">#</a></h4>
+<p>촬영한 영상정보의 <strong>보관 기간</strong>을 안내판에 명시</p>
+<ul>
+<li>일반적으로 <strong>30일 이내</strong></li>
+<li>필요 시 연장 가능하나 그 사유를 명확히 해야 함</li>
+</ul>
+<h4 id="5-영상정보-접근-제한">(5) 영상정보 접근 제한<a hidden class="anchor" aria-hidden="true" href="#5-영상정보-접근-제한">#</a></h4>
+<p>영상정보는 <strong>관리책임자 및 담당자</strong>만 접근 가능</p>
+<ul>
+<li>접근 권한 통제</li>
+<li>접근 기록 보관</li>
+</ul>
+<h3 id="25-영상정보-보관파기">2.5 영상정보 보관·파기<a hidden class="anchor" aria-hidden="true" href="#25-영상정보-보관파기">#</a></h3>
+<h4 id="보관-기간">보관 기간<a hidden class="anchor" aria-hidden="true" href="#보관-기간">#</a></h4>
+<ul>
+<li>안내판에 명시된 기간 (통상 30일)</li>
+</ul>
+<h4 id="파기">파기<a hidden class="anchor" aria-hidden="true" href="#파기">#</a></h4>
+<ul>
+<li>보관 기간 경과 후 <strong>지체 없이 파기</strong></li>
+<li>복구 불가능한 방법으로 파기</li>
+</ul>
+<h3 id="26-정보주체의-권리">2.6 정보주체의 권리<a hidden class="anchor" aria-hidden="true" href="#26-정보주체의-권리">#</a></h3>
+<h4 id="열람-요구권">열람 요구권<a hidden class="anchor" aria-hidden="true" href="#열람-요구권">#</a></h4>
+<p>정보주체는 자신이 촬영된 영상정보에 대해 <strong>열람을 요구</strong>할 수 있음</p>
+<p><strong>열람 절차:</strong></p>
+<ol>
+<li>본인 확인</li>
+<li>열람 요구 접수</li>
+<li>해당 영상 확인 및 열람 제공 (10일 이내)</li>
+</ol>
+<p><strong>열람 거부 사유:</strong></p>
+<ul>
+<li>범죄 수사 등 공공의 이익을 해칠 우려</li>
+<li>다른 사람의 사생활 침해 우려</li>
+</ul>
+<h3 id="27-실무-사례">2.7 실무 사례<a hidden class="anchor" aria-hidden="true" href="#27-실무-사례">#</a></h3>
+<h4 id="사례-1-아파트-cctv">사례 1: 아파트 CCTV<a hidden class="anchor" aria-hidden="true" href="#사례-1-아파트-cctv">#</a></h4>
+<p><strong>설치 목적:</strong>
+범죄 예방 및 시설 안전</p>
+<p><strong>준수 사항:</strong></p>
+<ol>
+<li>주 출입구, 엘리베이터, 주차장에 설치</li>
+<li>안내판 설치: &ldquo;범죄 예방 및 시설 안전을 위해 CCTV 운영 중&rdquo;</li>
+<li>촬영 범위: 공용 공간만 촬영, 개별 세대 현관 제외</li>
+<li>보관 기간: 30일</li>
+<li>관리책임자: 관리사무소장</li>
+</ol>
+<h4 id="사례-2-편의점-cctv">사례 2: 편의점 CCTV<a hidden class="anchor" aria-hidden="true" href="#사례-2-편의점-cctv">#</a></h4>
+<p><strong>설치 목적:</strong>
+범죄 예방, 시설 안전</p>
+<p><strong>준수 사항:</strong></p>
+<ol>
+<li>매장 내부, 출입구에 설치</li>
+<li>안내판 설치</li>
+<li>음성 녹음 금지</li>
+<li>보관 기간: 30일</li>
+<li>고객 요청 시 열람 제공</li>
+</ol>
+<h4 id="사례-3-학교-cctv">사례 3: 학교 CCTV<a hidden class="anchor" aria-hidden="true" href="#사례-3-학교-cctv">#</a></h4>
+<p><strong>설치 목적:</strong>
+학생 안전, 범죄 예방</p>
+<p><strong>주의 사항:</strong></p>
+<ul>
+<li>화장실, 탈의실은 설치 금지</li>
+<li>교실 내부는 신중히 판단 (사생활 침해 우려)</li>
+<li>학부모, 학생에게 충분히 안내</li>
+</ul>
+<h2 id="3-가명정보-2020년-8월-신설">3. 가명정보 (2020년 8월 신설)<a hidden class="anchor" aria-hidden="true" href="#3-가명정보-2020년-8월-신설">#</a></h2>
+<h3 id="31-가명정보의-정의">3.1 가명정보의 정의<a hidden class="anchor" aria-hidden="true" href="#31-가명정보의-정의">#</a></h3>
+<p><strong>가명정보</strong>: 개인정보의 일부를 삭제하거나 일부 또는 전부를 대체하는 등의 방법으로 <strong>추가 정보가 없이는 특정 개인을 알아볼 수 없도록 처리</strong>한 정보</p>
+<h3 id="32-법적-근거">3.2 법적 근거<a hidden class="anchor" aria-hidden="true" href="#32-법적-근거">#</a></h3>
+<ul>
+<li><strong>개인정보보호법 제2조 제1호의2</strong>: 가명정보 정의</li>
+<li><strong>개인정보보호법 제28조의2~제28조의7</strong>: 가명정보 처리 특례</li>
+</ul>
+<h3 id="33-가명정보와-익명정보의-차이">3.3 가명정보와 익명정보의 차이<a hidden class="anchor" aria-hidden="true" href="#33-가명정보와-익명정보의-차이">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>구분</th>
+          <th>가명정보</th>
+          <th>익명정보</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>재식별 가능성</td>
+          <td>추가 정보 이용 시 재식별 가능</td>
+          <td>재식별 불가능</td>
+      </tr>
+      <tr>
+          <td>법적 성격</td>
+          <td><strong>개인정보에 해당</strong></td>
+          <td>개인정보 미해당</td>
+      </tr>
+      <tr>
+          <td>적용 법률</td>
+          <td>개인정보보호법 적용</td>
+          <td>개인정보보호법 적용 안됨</td>
+      </tr>
+      <tr>
+          <td>동의 필요성</td>
+          <td>특정 목적에 한해 동의 불요</td>
+          <td>동의 불필요</td>
+      </tr>
+      <tr>
+          <td>제3자 제공</td>
+          <td>특정 요건 충족 시 가능</td>
+          <td>자유롭게 가능</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="34-가명정보-처리-목적-법-제28조의2-제1항">3.4 가명정보 처리 목적 (법 제28조의2 제1항)<a hidden class="anchor" aria-hidden="true" href="#34-가명정보-처리-목적-법-제28조의2-제1항">#</a></h3>
+<p>가명정보는 다음 목적으로만 <strong>정보주체 동의 없이</strong> 처리 가능:</p>
+<ol>
+<li><strong>통계 작성</strong></li>
+<li><strong>과학적 연구</strong></li>
+<li><strong>공익적 기록 보존</strong></li>
+</ol>
+<p><strong>주의:</strong></p>
+<ul>
+<li>위 목적 외에는 가명정보라도 동의 필요</li>
+<li>마케팅, 영리 목적 등은 <strong>불가</strong></li>
+</ul>
+<h3 id="35-가명처리-방법">3.5 가명처리 방법<a hidden class="anchor" aria-hidden="true" href="#35-가명처리-방법">#</a></h3>
+<h4 id="대표적인-가명처리-기법">대표적인 가명처리 기법<a hidden class="anchor" aria-hidden="true" href="#대표적인-가명처리-기법">#</a></h4>
+<p><strong>1. 가명처리 (Pseudonymization)</strong></p>
+<ul>
+<li>개인을 식별할 수 있는 요소를 **가명(ID)**으로 대체</li>
+<li>예: 홍길동 → P00123</li>
+</ul>
+<p><strong>2. 총계처리 (Aggregation)</strong></p>
+<ul>
+<li>통계값으로 처리</li>
+<li>예: 나이 → 30대</li>
+</ul>
+<p><strong>3. 데이터 삭제 (Suppression)</strong></p>
+<ul>
+<li>식별 가능 항목 삭제</li>
+<li>예: 주민등록번호 삭제</li>
+</ul>
+<p><strong>4. 데이터 범주화 (Generalization)</strong></p>
+<ul>
+<li>구체적 값을 범주로 변환</li>
+<li>예: 서울시 강남구 → 서울시</li>
+</ul>
+<p><strong>5. 데이터 마스킹 (Masking)</strong></p>
+<ul>
+<li>일부를 *로 처리</li>
+<li>예: 홍<em>동, 010-</em>***-1234</li>
+</ul>
+<h3 id="36-가명정보-처리-시-준수사항-법-제28조의3">3.6 가명정보 처리 시 준수사항 (법 제28조의3)<a hidden class="anchor" aria-hidden="true" href="#36-가명정보-처리-시-준수사항-법-제28조의3">#</a></h3>
+<h4 id="1-원래-상태로-복원하기-위한-추가-정보의-분리-보관">(1) 원래 상태로 복원하기 위한 추가 정보의 분리 보관<a hidden class="anchor" aria-hidden="true" href="#1-원래-상태로-복원하기-위한-추가-정보의-분리-보관">#</a></h4>
+<p>가명정보 처리 시, 원래 개인정보로 복원할 수 있는 <strong>추가 정보는 별도로 분리 보관</strong></p>
+<p><strong>예시:</strong></p>
+<ul>
+<li>가명정보: P00123, 30대, 서울시</li>
+<li>추가 정보 (별도 보관): P00123 = 홍길동</li>
+</ul>
+<h4 id="2-추가-정보에-대한-안전성-확보-조치">(2) 추가 정보에 대한 안전성 확보 조치<a hidden class="anchor" aria-hidden="true" href="#2-추가-정보에-대한-안전성-확보-조치">#</a></h4>
+<p>추가 정보는 가명정보보다 <strong>더 강력한 보안 조치</strong>:</p>
+<ul>
+<li>암호화</li>
+<li>접근 통제</li>
+<li>별도 저장 장소</li>
+</ul>
+<h4 id="3-가명정보의-재식별-금지">(3) 가명정보의 재식별 금지<a hidden class="anchor" aria-hidden="true" href="#3-가명정보의-재식별-금지">#</a></h4>
+<p>가명정보를 처리하는 과정에서 <strong>특정 개인을 알아보기 위한 목적</strong>으로 추가 정보를 이용하거나, 다른 정보와 결합해서는 안 됨</p>
+<p><strong>위반 시:</strong></p>
+<ul>
+<li>5년 이하 징역 또는 5천만원 이하 벌금</li>
+</ul>
+<h3 id="37-가명정보의-결합-법-제28조의4제28조의7">3.7 가명정보의 결합 (법 제28조의4~제28조의7)<a hidden class="anchor" aria-hidden="true" href="#37-가명정보의-결합-법-제28조의4제28조의7">#</a></h3>
+<h4 id="결합의-필요성">결합의 필요성<a hidden class="anchor" aria-hidden="true" href="#결합의-필요성">#</a></h4>
+<p>서로 다른 기관이 보유한 가명정보를 결합하여 <strong>더 가치 있는 통계·연구</strong> 수행</p>
+<h4 id="결합-절차">결합 절차<a hidden class="anchor" aria-hidden="true" href="#결합-절차">#</a></h4>
+<p><strong>1. 결합 전문기관 이용 의무</strong>
+가명정보 결합은 반드시 <strong>결합 전문기관</strong>을 통해서만 가능</p>
+<p><strong>결합 전문기관:</strong></p>
+<ul>
+<li>한국인터넷진흥원</li>
+<li>금융보안원</li>
+<li>한국신용정보원 등</li>
+</ul>
+<p><strong>2. 결합 절차</strong></p>
+<pre tabindex="0"><code>[1단계] 결합 신청
+    ↓
+[2단계] 결합키 관리기관이 결합키 생성
+    ↓
+[3단계] 결합 전문기관에서 결합 수행
+    ↓
+[4단계] 결합 데이터 반출 심사
+    ↓
+[5단계] 결합 데이터 제공
+</code></pre><p><strong>3. 결합 데이터 반출</strong></p>
+<ul>
+<li>결합된 가명정보가 <strong>재식별되지 않는지</strong> 전문기관이 심사</li>
+<li>적합 판정 시에만 반출 가능</li>
+</ul>
+<h3 id="38-가명정보-활용-사례">3.8 가명정보 활용 사례<a hidden class="anchor" aria-hidden="true" href="#38-가명정보-활용-사례">#</a></h3>
+<h4 id="사례-1-의료-빅데이터-연구">사례 1: 의료 빅데이터 연구<a hidden class="anchor" aria-hidden="true" href="#사례-1-의료-빅데이터-연구">#</a></h4>
+<p><strong>원본 데이터:</strong></p>
+<ul>
+<li>환자명: 홍길동</li>
+<li>주민등록번호: 800101-1234567</li>
+<li>진료 기록: 고혈압</li>
+</ul>
+<p><strong>가명처리:</strong></p>
+<ul>
+<li>환자ID: P00123</li>
+<li>성별/연령대: 남성, 40대</li>
+<li>진료 기록: 고혈압</li>
+</ul>
+<p><strong>활용:</strong></p>
+<ul>
+<li>고혈압 환자의 연령대별 분포 연구</li>
+<li>치료 효과 분석</li>
+</ul>
+<h4 id="사례-2-통신-데이터-분석">사례 2: 통신 데이터 분석<a hidden class="anchor" aria-hidden="true" href="#사례-2-통신-데이터-분석">#</a></h4>
+<p><strong>원본 데이터:</strong></p>
+<ul>
+<li>이름: 홍길동</li>
+<li>전화번호: 010-1234-5678</li>
+<li>통화 이력</li>
+</ul>
+<p><strong>가명처리:</strong></p>
+<ul>
+<li>UserID: U00456</li>
+<li>지역: 서울</li>
+<li>통화 패턴</li>
+</ul>
+<p><strong>활용:</strong></p>
+<ul>
+<li>지역별 통신 이용 패턴 분석</li>
+<li>네트워크 최적화</li>
+</ul>
+<h2 id="4-보안-컨설팅-관점의-시사점">4. 보안 컨설팅 관점의 시사점<a hidden class="anchor" aria-hidden="true" href="#4-보안-컨설팅-관점의-시사점">#</a></h2>
+<h3 id="41-아동-개인정보-처리-시스템-설계">4.1 아동 개인정보 처리 시스템 설계<a hidden class="anchor" aria-hidden="true" href="#41-아동-개인정보-처리-시스템-설계">#</a></h3>
+<h4 id="연령-확인-기능">연령 확인 기능<a hidden class="anchor" aria-hidden="true" href="#연령-확인-기능">#</a></h4>
+<ul>
+<li>생년월일 입력 → 자동 연령 계산</li>
+<li>만 14세 미만 판정 시 법정대리인 동의 프로세스로 분기</li>
+</ul>
+<h4 id="법정대리인-동의-시스템">법정대리인 동의 시스템<a hidden class="anchor" aria-hidden="true" href="#법정대리인-동의-시스템">#</a></h4>
+<ul>
+<li>법정대리인 본인확인 연동 (휴대폰 인증, 아이핀 등)</li>
+<li>동의 이력 기록 및 관리</li>
+</ul>
+<h3 id="42-cctv-운영-컨설팅">4.2 CCTV 운영 컨설팅<a hidden class="anchor" aria-hidden="true" href="#42-cctv-운영-컨설팅">#</a></h3>
+<h4 id="설치-전-검토">설치 전 검토<a hidden class="anchor" aria-hidden="true" href="#설치-전-검토">#</a></h4>
+<ol>
+<li>설치 목적이 법정 목적에 부합하는가?</li>
+<li>촬영 범위가 최소한인가?</li>
+<li>설치 금지 장소는 아닌가?</li>
+</ol>
+<h4 id="운영-관리">운영 관리<a hidden class="anchor" aria-hidden="true" href="#운영-관리">#</a></h4>
+<ol>
+<li>안내판 설치 여부 확인</li>
+<li>보관 기간 준수 여부</li>
+<li>접근 권한 관리</li>
+<li>정보주체 열람 요구 대응 절차</li>
+</ol>
+<h3 id="43-가명정보-활용-컨설팅">4.3 가명정보 활용 컨설팅<a hidden class="anchor" aria-hidden="true" href="#43-가명정보-활용-컨설팅">#</a></h3>
+<h4 id="가명처리-적정성-검토">가명처리 적정성 검토<a hidden class="anchor" aria-hidden="true" href="#가명처리-적정성-검토">#</a></h4>
+<ul>
+<li>가명처리 기법이 적절한가?</li>
+<li>재식별 위험은 없는가?</li>
+<li>추가 정보를 안전하게 분리 보관하는가?</li>
+</ul>
+<h4 id="가명정보-결합-지원">가명정보 결합 지원<a hidden class="anchor" aria-hidden="true" href="#가명정보-결합-지원">#</a></h4>
+<ul>
+<li>결합 전문기관 선정</li>
+<li>결합 신청 절차 지원</li>
+<li>반출 심사 대응</li>
+</ul>
+<h2 id="5-체크리스트">5. 체크리스트<a hidden class="anchor" aria-hidden="true" href="#5-체크리스트">#</a></h2>
+<h3 id="아동-개인정보">아동 개인정보<a hidden class="anchor" aria-hidden="true" href="#아동-개인정보">#</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 만 14세 미만 아동 판별 기능이 있는가?</li>
+<li><input disabled="" type="checkbox"> 법정대리인 동의 절차가 구현되어 있는가?</li>
+<li><input disabled="" type="checkbox"> 법정대리인 본인확인을 하는가?</li>
+<li><input disabled="" type="checkbox"> 법정대리인 동의 이력을 기록·관리하는가?</li>
+</ul>
+<h3 id="영상정보처리기기">영상정보처리기기<a hidden class="anchor" aria-hidden="true" href="#영상정보처리기기">#</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 설치 목적이 법정 목적에 부합하는가?</li>
+<li><input disabled="" type="checkbox"> 안내판을 설치했는가?</li>
+<li><input disabled="" type="checkbox"> 안내판에 필수 사항이 기재되어 있는가?</li>
+<li><input disabled="" type="checkbox"> 촬영 범위가 최소화되어 있는가?</li>
+<li><input disabled="" type="checkbox"> 음성 녹음을 하지 않는가?</li>
+<li><input disabled="" type="checkbox"> 보관 기간을 준수하는가?</li>
+<li><input disabled="" type="checkbox"> 접근 권한을 통제하는가?</li>
+<li><input disabled="" type="checkbox"> 정보주체 열람 요구 대응 절차가 있는가?</li>
+</ul>
+<h3 id="가명정보">가명정보<a hidden class="anchor" aria-hidden="true" href="#가명정보">#</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 가명정보 처리 목적이 통계·연구·공익 기록인가?</li>
+<li><input disabled="" type="checkbox"> 추가 정보를 분리 보관하는가?</li>
+<li><input disabled="" type="checkbox"> 재식별 방지 조치가 되어 있는가?</li>
+<li><input disabled="" type="checkbox"> 가명정보 결합 시 전문기관을 이용하는가?</li>
+</ul>
+<h2 id="학습-정리">학습 정리<a hidden class="anchor" aria-hidden="true" href="#학습-정리">#</a></h2>
+<p>오늘 학습한 핵심 내용:</p>
+<ul>
+<li>만 14세 미만 아동의 개인정보 수집 시 법정대리인 동의 필수</li>
+<li>CCTV는 법정 목적으로만 설치 가능, 안내판 설치 의무</li>
+<li>촬영 범위 최소화, 음성 녹음 금지 원칙</li>
+<li>가명정보는 통계·연구·공익 기록 목적으로 동의 없이 처리 가능</li>
+<li>가명정보는 개인정보이며, 재식별 금지</li>
+<li>가명정보 결합은 전문기관을 통해서만 가능</li>
+</ul>
+<h2 id="다음-학습-주제">다음 학습 주제<a hidden class="anchor" aria-hidden="true" href="#다음-학습-주제">#</a></h2>
+<p>Day 12: 전자금융거래법 - 전자금융거래의 안전성 확보 및 이용자 보호</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/">개인정보보호법</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%95%84%EB%8F%99%EB%B3%B4%ED%98%B8/">아동보호</a></li>
+      <li><a href="http://localhost:1313/tags/cctv/">CCTV</a></li>
+      <li><a href="http://localhost:1313/tags/%EA%B0%80%EB%AA%85%EC%A0%95%EB%B3%B4/">가명정보</a></li>
+      <li><a href="http://localhost:1313/tags/%EB%B2%95%EC%A0%95%EB%8C%80%EB%A6%AC%EC%9D%B8%EB%8F%99%EC%9D%98/">법정대리인동의</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

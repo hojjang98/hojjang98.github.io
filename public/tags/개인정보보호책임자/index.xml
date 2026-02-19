@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>개인정보보호책임자 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EC%B1%85%EC%9E%84%EC%9E%90/</link>
+    <description>Recent content in 개인정보보호책임자 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Thu, 12 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EC%B1%85%EC%9E%84%EC%9E%90/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Day 09: 정보통신망법 기초</title>
+      <link>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/02_%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%A7%9D%EB%B2%95/day09_%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%A7%9D%EB%B2%95_%EA%B8%B0%EC%B4%88/</link>
+      <pubDate>Thu, 12 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/02_%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%A7%9D%EB%B2%95/day09_%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%A7%9D%EB%B2%95_%EA%B8%B0%EC%B4%88/</guid>
+      <description>정보통신서비스 제공자에 적용되는 정보통신망법의 기본 개념, CISO 지정 의무, ISMS-P 인증 대상을 학습합니다.</description>
+    </item>
+  </channel>
+</rss>

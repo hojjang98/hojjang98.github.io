@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Kazu on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/kazu/</link>
+    <description>Recent content in Kazu on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sun, 18 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/kazu/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Manage My Health 뉴질랜드 의료 포털 랜섬웨어 공격으로 12만 명 환자 정보 유출</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week03/manage_my_health_randsomeware/</link>
+      <pubDate>Sun, 18 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week03/manage_my_health_randsomeware/</guid>
+      <description>유효한 사용자 비밀번호로 &amp;lsquo;정문 침입&amp;rsquo;한 Kazu 랜섬웨어 그룹이 뉴질랜드 최대 환자 포털에서 12만 6천 명의 의료 정보를 탈취한 사건 분석</description>
+    </item>
+  </channel>
+</rss>

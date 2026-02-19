@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Dartmouth College Oracle EBS 제로데이 공격 (2025년 8월) | HJ&#39;s Security Note</title>
+<meta name="keywords" content="제로데이, Oracle, Clop, 대학보안, 공급망공격, CVE-2025-61882">
+<meta name="description" content="Clop 그룹이 Oracle EBS 제로데이 취약점을 악용해 Dartmouth College를 포함한 100개 이상 조직에서 대규모 데이터를 탈취한 캠페인 분석">
+<meta name="author" content="map[autoswitchappearance:false bio:보안법규 분석과 실무 중심 거버넌스를 기록합니다. colorscheme:ocean defaultappearance:light enablecodecopy:true enableimagelazyloading:true enableimagewebp:true enablequicklink:true enablesearch:true fingerprintalgorithm:sha256 headline:Security Governance &amp; Legal Analysis image:profile.jpg links:[map[github:https://github.com/hojjang98]] name:Hojun Choi]">
+<link rel="canonical" href="http://localhost:1313/security-issues-analysis/2026/week05/dartmouth_oracle_clop_breach/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a29c24210eb31d9ce56f669c66a35c9c51b17376b7764e336a49af7dec914cf0.css" integrity="sha256-opwkIQ6zHZzlb2acZqNcnFGxc3a3dk4zakmvfeyRTPA=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/security-issues-analysis/2026/week05/dartmouth_oracle_clop_breach/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/" title="프로젝트">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/security-law-study/" title="Security-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/" title="논문 리뷰">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Dartmouth College Oracle EBS 제로데이 공격 (2025년 8월)
+    </h1>
+    <div class="post-meta"><span title='2026-02-01 00:00:00 +0000 UTC'>2026년 2월 1일</span>&nbsp;·&nbsp;<span>map[autoswitchappearance:false bio:보안법규 분석과 실무 중심 거버넌스를 기록합니다. colorscheme:ocean defaultappearance:light enablecodecopy:true enableimagelazyloading:true enableimagewebp:true enablequicklink:true enablesearch:true fingerprintalgorithm:sha256 headline:Security Governance &amp; Legal Analysis image:profile.jpg links:[map[github:https://github.com/hojjang98]] name:Hojun Choi]</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="dartmouth-college-oracle-ebs-제로데이-공격-2025년-8월">Dartmouth College Oracle EBS 제로데이 공격 (2025년 8월)<a hidden class="anchor" aria-hidden="true" href="#dartmouth-college-oracle-ebs-제로데이-공격-2025년-8월">#</a></h1>
+<h2 id="1-사건-개요">1. 사건 개요<a hidden class="anchor" aria-hidden="true" href="#1-사건-개요">#</a></h2>
+<h3 id="기본-정보">기본 정보<a hidden class="anchor" aria-hidden="true" href="#기본-정보">#</a></h3>
+<ul>
+<li>발생 시기: 2025년 8월 9일 ~ 8월 12일 (3일간)</li>
+<li>공개 시기: 2025년 11월 25일 (약 3개월 후)</li>
+<li>피해 조직: Dartmouth College (미국 아이비리그 사립대학)</li>
+<li>공격 그룹: Clop (러시아 연계 랜섬웨어 그룹)</li>
+<li>사건 유형: 제로데이 취약점 악용을 통한 데이터 탈취</li>
+</ul>
+<h3 id="피해-규모">피해 규모<a hidden class="anchor" aria-hidden="true" href="#피해-규모">#</a></h3>
+<ul>
+<li>영향 받은 인원: 35,000명 이상 (메인주만 1,494명, 전체는 더 많을 것으로 추정)</li>
+<li>탈취 데이터량: 226GB</li>
+<li>데이터 유형: 개인정보 (이름, 주소), 사회보장번호 (SSN), 금융 계좌 정보</li>
+</ul>
+<h3 id="조직-배경">조직 배경<a hidden class="anchor" aria-hidden="true" href="#조직-배경">#</a></h3>
+<ul>
+<li>설립: 1769년 (미국에서 9번째로 오래된 대학)</li>
+<li>기부금: 90억 달러 (2025년 6월 30일 기준)</li>
+<li>학부생: 4,000명 이상</li>
+<li>위치: 뉴햄프셔주 하노버</li>
+</ul>
+<h2 id="2-원인-분석">2. 원인 분석<a hidden class="anchor" aria-hidden="true" href="#2-원인-분석">#</a></h2>
+<h3 id="기술적-원인">기술적 원인<a hidden class="anchor" aria-hidden="true" href="#기술적-원인">#</a></h3>
+<h4 id="제로데이-취약점-cve-2025-61882">제로데이 취약점 (CVE-2025-61882)<a hidden class="anchor" aria-hidden="true" href="#제로데이-취약점-cve-2025-61882">#</a></h4>
+<ul>
+<li>대상 소프트웨어: Oracle E-Business Suite (EBS) 버전 12.2.3 ~ 12.2.14</li>
+<li>취약점 유형: 인증되지 않은 원격 코드 실행 (Unauthenticated RCE)</li>
+<li>CVSS 점수: 9.8 (Critical)</li>
+<li>영향 받는 구성요소: BI Publisher Integration</li>
+<li>악용 방식: 조작된 HTTP 요청을 특정 엔드포인트로 전송
+<ul>
+<li>/OA_HTML/OA.jsp?page=/oracle/apps/xdo/oa/template/webui/TemplatePreviewPG</li>
+<li>/OA_HTML/configurator/UiServlet</li>
+<li>/OA_HTML/SyncServlet</li>
+</ul>
+</li>
+</ul>
+<h4 id="제로데이의-특성">제로데이의 특성<a hidden class="anchor" aria-hidden="true" href="#제로데이의-특성">#</a></h4>
+<ul>
+<li>Oracle이 인지하지 못한 취약점을 Clop이 발견 및 악용</li>
+<li>패치가 존재하지 않는 상태에서 공격 발생</li>
+<li>인증 없이 원격에서 코드 실행 가능 → 매우 높은 위험도</li>
+<li>기밀성, 무결성, 가용성 모두에 영향</li>
+</ul>
+<h4 id="기술적-방어-실패-지점">기술적 방어 실패 지점<a hidden class="anchor" aria-hidden="true" href="#기술적-방어-실패-지점">#</a></h4>
+<ul>
+<li>제로데이 탐지 실패: 서명 기반 침입 탐지 시스템으로는 알려지지 않은 공격 패턴 탐지 불가</li>
+<li>이상 행위 탐지 부재: Oracle EBS에 대한 비정상적인 HTTP 요청 패턴을 실시간으로 탐지하지 못함</li>
+<li>네트워크 세분화 부족: Oracle EBS가 외부에서 직접 접근 가능한 상태였을 가능성</li>
+<li>데이터 유출 모니터링 부재: 226GB의 데이터가 3일간 외부로 전송되는 것을 탐지하지 못함</li>
+</ul>
+<h3 id="관리적-원인">관리적 원인<a hidden class="anchor" aria-hidden="true" href="#관리적-원인">#</a></h3>
+<h4 id="패치-관리-프로세스의-한계">패치 관리 프로세스의 한계<a hidden class="anchor" aria-hidden="true" href="#패치-관리-프로세스의-한계">#</a></h4>
+<ul>
+<li>제로데이 공격의 특성상 패치가 존재하지 않았지만, 일반적인 패치 관리 프로세스의 지연은 추가 피해를 발생시킬 수 있음</li>
+<li>Oracle이 10월에 패치를 배포했으나, 이미 8월에 공격이 발생한 상태</li>
+</ul>
+<h4 id="고위험-시스템-보호-부족">고위험 시스템 보호 부족<a hidden class="anchor" aria-hidden="true" href="#고위험-시스템-보호-부족">#</a></h4>
+<ul>
+<li>Oracle EBS는 재무, 인사, 학생 정보 등 민감한 데이터를 통합 관리하는 핵심 시스템</li>
+<li>이러한 고위험 시스템에 대한 특별 보호 조치 (WAF, 추가 인증 계층 등) 부재</li>
+<li>ERP 시스템 특성상 여러 부서가 접근하므로 접근 통제 복잡성 증가</li>
+</ul>
+<h4 id="공급업체-의존성">공급업체 의존성<a hidden class="anchor" aria-hidden="true" href="#공급업체-의존성">#</a></h4>
+<ul>
+<li>Oracle의 보안 업데이트에 전적으로 의존하는 구조</li>
+<li>자체적인 취약점 평가 및 보안 강화 조치 부족</li>
+<li>공급업체 보안 관행에 대한 지속적인 검증 미흡</li>
+</ul>
+<h3 id="인적-원인">인적 원인<a hidden class="anchor" aria-hidden="true" href="#인적-원인">#</a></h3>
+<h4 id="보안-인식-부족">보안 인식 부족<a hidden class="anchor" aria-hidden="true" href="#보안-인식-부족">#</a></h4>
+<ul>
+<li>대학 환경은 개방성을 중시하는 문화로 인해 보안이 상대적으로 소홀할 수 있음</li>
+<li>ERP 시스템 관리자들의 최신 위협 동향 파악 부족</li>
+</ul>
+<h4 id="사고-대응-지연">사고 대응 지연<a hidden class="anchor" aria-hidden="true" href="#사고-대응-지연">#</a></h4>
+<ul>
+<li>공격 발생: 2025년 8월 9-12일</li>
+<li>영향 받은 파일 식별: 2025년 10월 30일 (약 2.5개월 후)</li>
+<li>공개 및 통지: 2025년 11월 24-25일 (약 3.5개월 후)</li>
+<li>이러한 지연은 피해자들의 대응 시간을 단축시키고 추가 피해 가능성을 증가시킴</li>
+</ul>
+<h2 id="3-영향-분석">3. 영향 분석<a hidden class="anchor" aria-hidden="true" href="#3-영향-분석">#</a></h2>
+<h3 id="개인정보-보호-영향">개인정보 보호 영향<a hidden class="anchor" aria-hidden="true" href="#개인정보-보호-영향">#</a></h3>
+<h4 id="노출된-정보의-민감도">노출된 정보의 민감도<a hidden class="anchor" aria-hidden="true" href="#노출된-정보의-민감도">#</a></h4>
+<ul>
+<li>사회보장번호 (SSN): 미국에서 신원 도용의 핵심 정보</li>
+<li>금융 계좌 정보: 직접적인 금전적 피해 가능성</li>
+<li>이름, 주소: 표적 공격 및 피싱에 악용 가능</li>
+</ul>
+<h4 id="피해자-범위">피해자 범위<a hidden class="anchor" aria-hidden="true" href="#피해자-범위">#</a></h4>
+<ul>
+<li>대부분 뉴햄프셔 주민</li>
+<li>학생, 교직원, 기부자, 동문 등 다양한 이해관계자 포함</li>
+<li>총 35,000명 이상 영향 (정확한 전체 숫자는 미공개)</li>
+</ul>
+<h3 id="법적-및-규제-영향">법적 및 규제 영향<a hidden class="anchor" aria-hidden="true" href="#법적-및-규제-영향">#</a></h3>
+<h4 id="통지-의무-위반-가능성">통지 의무 위반 가능성<a hidden class="anchor" aria-hidden="true" href="#통지-의무-위반-가능성">#</a></h4>
+<ul>
+<li>메인주 법무장관에게는 11월 24일 신고</li>
+<li>많은 주에서 데이터 유출 발견 후 60일 이내 통지 요구</li>
+<li>Hernando County 사례에서 보듯이 지연된 통지는 최대 $500,000의 벌금 부과 가능</li>
+</ul>
+<h4 id="개인정보-보호법-준수">개인정보 보호법 준수<a hidden class="anchor" aria-hidden="true" href="#개인정보-보호법-준수">#</a></h4>
+<ul>
+<li>SSN 노출은 연방 및 주 개인정보 보호법 위반 가능성</li>
+<li>FERPA (가족교육권 및 프라이시법): 학생 정보 보호 의무</li>
+</ul>
+<h3 id="재정적-영향">재정적 영향<a hidden class="anchor" aria-hidden="true" href="#재정적-영향">#</a></h3>
+<h4 id="직접-비용">직접 비용<a hidden class="anchor" aria-hidden="true" href="#직접-비용">#</a></h4>
+<ul>
+<li>포렌식 조사 비용</li>
+<li>1년간 무료 신용 모니터링 및 신원 도용 보호 서비스 제공</li>
+<li>법률 자문 비용</li>
+<li>시스템 복구 및 보안 강화 비용</li>
+</ul>
+<h4 id="간접-비용">간접 비용<a hidden class="anchor" aria-hidden="true" href="#간접-비용">#</a></h4>
+<ul>
+<li>평판 손상으로 인한 기부금 감소 가능성</li>
+<li>입학 지원자 감소 우려</li>
+<li>법적 소송 비용</li>
+</ul>
+<h3 id="운영-영향">운영 영향<a hidden class="anchor" aria-hidden="true" href="#운영-영향">#</a></h3>
+<ul>
+<li>보안 조사 및 복구 작업으로 인한 IT 리소스 집중</li>
+<li>긴급 패치 적용 및 시스템 강화 작업</li>
+<li>영향 받은 개인들의 문의 응대</li>
+</ul>
+<h2 id="4-clop-랜섬웨어-그룹-분석">4. Clop 랜섬웨어 그룹 분석<a hidden class="anchor" aria-hidden="true" href="#4-clop-랜섬웨어-그룹-분석">#</a></h2>
+<h3 id="그룹-특성">그룹 특성<a hidden class="anchor" aria-hidden="true" href="#그룹-특성">#</a></h3>
+<ul>
+<li>별칭: GRACEFUL SPIDER, Cl0p, TA505</li>
+<li>국가 연계: 러시아</li>
+<li>활동 시작: 2019년경</li>
+<li>전문 분야: 대규모 데이터 탈취 및 이중 갈취</li>
+</ul>
+<h3 id="공격-이력-및-패턴">공격 이력 및 패턴<a hidden class="anchor" aria-hidden="true" href="#공격-이력-및-패턴">#</a></h3>
+<h4 id="과거-주요-캠페인">과거 주요 캠페인<a hidden class="anchor" aria-hidden="true" href="#과거-주요-캠페인">#</a></h4>
+<ol>
+<li>
+<p><strong>Accellion FTA 공격 (2021)</strong></p>
+<ul>
+<li>파일 전송 어플라이언스 취약점 악용</li>
+<li>다수의 기업 및 기관 피해</li>
+</ul>
+</li>
+<li>
+<p><strong>GoAnywhere MFT 공격 (2023)</strong></p>
+<ul>
+<li>관리형 파일 전송 솔루션 침해</li>
+<li>100개 이상 조직 피해</li>
+</ul>
+</li>
+<li>
+<p><strong>MOVEit Transfer 공격 (2023)</strong></p>
+<ul>
+<li>역대 최대 규모 공급망 공격</li>
+<li>2,770개 이상 조직 피해</li>
+<li>수천만 명의 개인정보 노출</li>
+</ul>
+</li>
+<li>
+<p><strong>Cleo 소프트웨어 공격</strong></p>
+</li>
+<li>
+<p><strong>Oracle EBS 캠페인 (2025)</strong></p>
+<ul>
+<li>Dartmouth를 포함한 100개 이상 조직 공격</li>
+<li>제로데이 취약점 악용</li>
+</ul>
+</li>
+</ol>
+<h3 id="공격-방식의-특징">공격 방식의 특징<a hidden class="anchor" aria-hidden="true" href="#공격-방식의-특징">#</a></h3>
+<h4 id="공급망-공격-선호">공급망 공격 선호<a hidden class="anchor" aria-hidden="true" href="#공급망-공격-선호">#</a></h4>
+<ul>
+<li>널리 사용되는 엔터프라이즈 소프트웨어의 취약점을 발견하여 악용</li>
+<li>한 번의 취약점 발견으로 다수의 조직을 동시에 공격 가능</li>
+<li>효율성과 확장성 극대화</li>
+</ul>
+<h4 id="데이터-탈취-중심">데이터 탈취 중심<a hidden class="anchor" aria-hidden="true" href="#데이터-탈취-중심">#</a></h4>
+<ul>
+<li>최근에는 암호화보다 데이터 탈취에 집중</li>
+<li>다크웹 유출 사이트 운영</li>
+<li>협상 실패 시 데이터 공개로 압박</li>
+</ul>
+<h4 id="타겟-선정">타겟 선정<a hidden class="anchor" aria-hidden="true" href="#타겟-선정">#</a></h4>
+<ul>
+<li>민감한 데이터를 다루는 조직 (의료, 교육, 금융, 정부)</li>
+<li>지불 능력이 있는 조직</li>
+<li>Oracle EBS를 사용하는 대형 기관 표적</li>
+</ul>
+<h3 id="현재-활동-상황">현재 활동 상황<a hidden class="anchor" aria-hidden="true" href="#현재-활동-상황">#</a></h3>
+<h4 id="oracle-ebs-캠페인-규모">Oracle EBS 캠페인 규모<a hidden class="anchor" aria-hidden="true" href="#oracle-ebs-캠페인-규모">#</a></h4>
+<ul>
+<li>2025년 8월부터 시작</li>
+<li>100개 이상 조직 침해 주장</li>
+<li>약 절반의 데이터를 다크웹에 공개</li>
+</ul>
+<h4 id="확인된-피해-조직">확인된 피해 조직<a hidden class="anchor" aria-hidden="true" href="#확인된-피해-조직">#</a></h4>
+<ul>
+<li><strong>교육 기관</strong>: Dartmouth College, Harvard University, Southern Illinois University, Tulane University</li>
+<li><strong>언론</strong>: The Washington Post</li>
+<li><strong>기업</strong>: Logitech, GlobalLogic, Mazda, Canon 자회사</li>
+<li><strong>항공</strong>: Envoy Air (American Airlines 자회사)</li>
+<li><strong>기타</strong>: Cox Enterprises</li>
+</ul>
+<h2 id="5-예방-및-대응-방안">5. 예방 및 대응 방안<a hidden class="anchor" aria-hidden="true" href="#5-예방-및-대응-방안">#</a></h2>
+<h3 id="기술적-대응">기술적 대응<a hidden class="anchor" aria-hidden="true" href="#기술적-대응">#</a></h3>
+<h4 id="제로데이-방어-전략">제로데이 방어 전략<a hidden class="anchor" aria-hidden="true" href="#제로데이-방어-전략">#</a></h4>
+<ul>
+<li>
+<p><strong>이상 행위 기반 탐지 시스템 도입</strong>:</p>
+<ul>
+<li>서명 기반 탐지의 한계 극복</li>
+<li>비정상적인 HTTP 요청 패턴 탐지</li>
+<li>머신러닝 기반 이상 탐지</li>
+<li>Dartmouth 교수 Saydjari의 제안: &ldquo;알려지지 않은 공격도 비정상적이고 의심스러운 활동으로 탐지 가능&rdquo;</li>
+</ul>
+</li>
+<li>
+<p><strong>가상 패칭 (Virtual Patching)</strong>:</p>
+<ul>
+<li>WAF (Web Application Firewall)를 통한 취약점 완화</li>
+<li>실제 패치 적용 전까지 임시 보호</li>
+<li>알려진 공격 패턴 차단</li>
+</ul>
+</li>
+<li>
+<p><strong>네트워크 세분화</strong>:</p>
+<ul>
+<li>Oracle EBS를 별도 네트워크 세그먼트에 격리</li>
+<li>인터넷에서 직접 접근 불가능하도록 설정</li>
+<li>VPN 또는 제로 트러스트 네트워크 접근 (ZTNA)를 통해서만 접근 허용</li>
+</ul>
+</li>
+<li>
+<p><strong>데이터 유출 방지 (DLP)</strong>:</p>
+<ul>
+<li>226GB 데이터가 3일간 외부로 전송되는 것을 차단했어야 함</li>
+<li>대용량 데이터 전송 모니터링 및 차단</li>
+<li>민감 데이터 식별 및 전송 제한</li>
+</ul>
+</li>
+</ul>
+<h4 id="시스템-강화">시스템 강화<a hidden class="anchor" aria-hidden="true" href="#시스템-강화">#</a></h4>
+<ul>
+<li>
+<p><strong>최소 권한 원칙</strong>:</p>
+<ul>
+<li>Oracle EBS 내에서도 역할 기반 접근 통제 (RBAC)</li>
+<li>필요한 모듈에만 접근 권한 부여</li>
+</ul>
+</li>
+<li>
+<p><strong>다단계 인증 (MFA)</strong>:</p>
+<ul>
+<li>모든 관리자 계정에 MFA 의무화</li>
+<li>특권 작업 수행 시 추가 인증</li>
+</ul>
+</li>
+<li>
+<p><strong>정기적인 보안 평가</strong>:</p>
+<ul>
+<li>침투 테스트</li>
+<li>취약점 스캐닝</li>
+<li>설정 검토</li>
+</ul>
+</li>
+</ul>
+<h3 id="관리적-대응">관리적 대응<a hidden class="anchor" aria-hidden="true" href="#관리적-대응">#</a></h3>
+<h4 id="공급업체-관리-강화">공급업체 관리 강화<a hidden class="anchor" aria-hidden="true" href="#공급업체-관리-강화">#</a></h4>
+<ul>
+<li>
+<p><strong>Oracle과의 협력 강화</strong>:</p>
+<ul>
+<li>보안 패치 우선 적용 프로그램 참여</li>
+<li>베타 패치 테스트 참여</li>
+<li>보안 권고 즉시 수신 및 검토</li>
+</ul>
+</li>
+<li>
+<p><strong>공급업체 보안 실사</strong>:</p>
+<ul>
+<li>Oracle의 보안 관행 정기 검토</li>
+<li>사고 대응 계획 공유</li>
+<li>SLA에 보안 요구사항 명시</li>
+</ul>
+</li>
+</ul>
+<h4 id="데이터-최소화">데이터 최소화<a hidden class="anchor" aria-hidden="true" href="#데이터-최소화">#</a></h4>
+<ul>
+<li>불필요한 SSN 및 금융 정보 저장 금지</li>
+<li>데이터 보존 정책 수립 및 이행</li>
+<li>암호화 및 토큰화를 통한 민감 데이터 보호</li>
+</ul>
+<h4 id="사고-대응-계획">사고 대응 계획<a hidden class="anchor" aria-hidden="true" href="#사고-대응-계획">#</a></h4>
+<ul>
+<li>
+<p><strong>신속한 탐지 및 통지</strong>:</p>
+<ul>
+<li>자동화된 이상 탐지 시스템</li>
+<li>사고 대응 팀 24/7 운영</li>
+<li>법적 통지 기한 준수</li>
+</ul>
+</li>
+<li>
+<p><strong>투명성</strong>:</p>
+<ul>
+<li>Saydjari 교수 제안: &ldquo;항공 안전위원회처럼 보안 침해 사례를 투명하게 연구하고 공유하여 업계 전체의 보안 향상&rdquo;</li>
+</ul>
+</li>
+</ul>
+<h3 id="인적-대응">인적 대응<a hidden class="anchor" aria-hidden="true" href="#인적-대응">#</a></h3>
+<h4 id="보안-인식-교육">보안 인식 교육<a hidden class="anchor" aria-hidden="true" href="#보안-인식-교육">#</a></h4>
+<ul>
+<li>ERP 시스템 관리자 대상 특화 교육</li>
+<li>제로데이 위협 및 대응 방법 교육</li>
+<li>정기적인 모의 훈련</li>
+</ul>
+<h4 id="조직-문화-변화">조직 문화 변화<a hidden class="anchor" aria-hidden="true" href="#조직-문화-변화">#</a></h4>
+<ul>
+<li>보안과 개방성의 균형</li>
+<li>보안을 IT 부서만의 문제가 아닌 전사적 책임으로 인식</li>
+</ul>
+<h3 id="법적-및-정책-대응">법적 및 정책 대응<a hidden class="anchor" aria-hidden="true" href="#법적-및-정책-대응">#</a></h3>
+<h4 id="규제-강화-필요성">규제 강화 필요성<a hidden class="anchor" aria-hidden="true" href="#규제-강화-필요성">#</a></h4>
+<ul>
+<li>Vermont 법무장관 Charity Clark: &ldquo;데이터 프라이시 법규 강화 필요&rdquo;</li>
+<li>소비자가 온라인 거래 시 안전하다고 느끼지 못하면 시장 전체가 위축됨</li>
+</ul>
+<h4 id="보상-및-지원">보상 및 지원<a hidden class="anchor" aria-hidden="true" href="#보상-및-지원">#</a></h4>
+<ul>
+<li>영향 받은 개인에게 1년간 무료 신용 모니터링 제공</li>
+<li>전담 지원 전화 운영</li>
+<li>신원 도용 발생 시 추가 지원</li>
+</ul>
+<h2 id="6-컨설팅-관점">6. 컨설팅 관점<a hidden class="anchor" aria-hidden="true" href="#6-컨설팅-관점">#</a></h2>
+<h3 id="고객사-커뮤니케이션-전략">고객사 커뮤니케이션 전략<a hidden class="anchor" aria-hidden="true" href="#고객사-커뮤니케이션-전략">#</a></h3>
+<h4 id="비기술-직원-대상">비기술 직원 대상<a hidden class="anchor" aria-hidden="true" href="#비기술-직원-대상">#</a></h4>
+<p>Dartmouth에서 발생한 사건은 Oracle이라는 소프트웨어 회사가 알지 못했던 보안 결함을 해커들이 먼저 발견하고 악용한 경우입니다. 이를 제로데이 공격이라고 합니다.</p>
+<p>문제는 이 소프트웨어가 학교의 재무, 인사, 학생 정보를 모두 관리하는 핵심 시스템이었다는 점입니다. 해커들은 3일간 접근하여 35,000명 이상의 사회보장번호와 은행 계좌 정보를 포함한 226GB의 데이터를 훔쳐갔습니다.</p>
+<p>이는 단순히 Dartmouth만의 문제가 아닙니다. 같은 방법으로 Harvard, Washington Post 등 100개 이상의 조직이 피해를 입었습니다.</p>
+<h4 id="기술팀-대상">기술팀 대상<a hidden class="anchor" aria-hidden="true" href="#기술팀-대상">#</a></h4>
+<p>CVE-2025-61882는 Oracle EBS의 BI Publisher Integration 구성요소에 존재하는 인증되지 않은 RCE 취약점으로, CVSS 9.8의 크리티컬 등급입니다. Clop 그룹은 특정 HTTP 엔드포인트에 조작된 요청을 보내 코드를 실행했습니다.</p>
+<p>방어 관점에서 주목할 점은 서명 기반 IDS로는 제로데이를 탐지할 수 없다는 것입니다. 이상 행위 기반 탐지, 특히 UEBA와 같은 솔루션이 필요합니다. 또한 226GB의 데이터가 3일간 외부로 전송되는 것을 탐지하지 못했다는 것은 DLP와 네트워크 모니터링의 부재를 의미합니다.</p>
+<p>Oracle EBS와 같은 ERP 시스템은 인터넷에 직접 노출되어서는 안 되며, ZTNA 또는 VPN을 통한 접근만 허용해야 합니다. 또한 WAF를 통한 가상 패칭으로 패치 적용 전까지 보호할 수 있었습니다.</p>
+<h4 id="경영진-대상">경영진 대상<a hidden class="anchor" aria-hidden="true" href="#경영진-대상">#</a></h4>
+<p>이번 침해는 단일 소프트웨어 취약점이 100개 이상의 조직에 동시에 영향을 미칠 수 있음을 보여줍니다. Oracle EBS는 전 세계 수많은 대학과 기업이 사용하는 표준 ERP 시스템입니다.</p>
+<p>재정적 영향은 직접 비용(포렌식, 신용 모니터링, 법률 자문)뿐만 아니라 평판 손상, 잠재적 소송, 규제 벌금 등을 포함합니다. Dartmouth의 경우 90억 달러 기부금을 보유한 명문대학으로서 기부자들의 신뢰 상실은 장기적인 재정 영향을 미칠 수 있습니다.</p>
+<p>또한 법적 통지 의무를 제때 이행하지 못하면 추가 벌금이 부과될 수 있습니다. 일부 주에서는 최대 $500,000까지 벌금을 부과합니다.</p>
+<p>보안 투자는 선택이 아닌 필수이며, 특히 민감한 데이터를 다루는 핵심 시스템에 대한 다층 방어가 필요합니다.</p>
+<h3 id="예상-질문-및-답변">예상 질문 및 답변<a hidden class="anchor" aria-hidden="true" href="#예상-질문-및-답변">#</a></h3>
+<p>Q1: 제로데이 공격은 방어할 수 없는 것 아닌가요?
+A: 완벽한 방어는 어렵지만, 다층 방어로 피해를 최소화할 수 있습니다. 이상 행위 탐지, 네트워크 세분화, WAF, DLP 등을 조합하면 제로데이 공격도 조기에 탐지하거나 피해를 제한할 수 있습니다.</p>
+<p>Q2: Oracle은 왜 이 취약점을 미리 발견하지 못했나요?
+A: 복잡한 소프트웨어에는 수많은 코드와 구성 요소가 있어 모든 취약점을 사전에 발견하기는 현실적으로 불가능합니다. 중요한 것은 취약점 발견 후 신속하게 패치를 배포하고, 사용자는 이를 즉시 적용하는 것입니다.</p>
+<p>Q3: 왜 3개월이나 지나서 공개했나요?
+A: 일반적으로 침해 발생 → 탐지 → 조사 → 영향 분석 → 통지 과정이 필요합니다. 하지만 3개월은 상당히 긴 시간이며, 많은 주에서 60일 이내 통지를 요구합니다. 이는 개선이 필요한 부분입니다.</p>
+<p>Q4: 이 공격으로 몸값을 요구받았나요?
+A: Clop은 다크웹 유출 사이트에 데이터를 게시하며 몸값을 요구하는 것으로 알려져 있습니다. Dartmouth가 지불했는지는 공개되지 않았습니다.</p>
+<p>Q5: 다른 대학들도 위험한가요?
+A: Oracle EBS를 사용하는 모든 조직이 위험했으며, 실제로 Harvard, Southern Illinois, Tulane 등 다수의 대학이 피해를 입었습니다. 패치를 적용하지 않은 조직은 여전히 위험합니다.</p>
+<h3 id="권고사항-요약">권고사항 요약<a hidden class="anchor" aria-hidden="true" href="#권고사항-요약">#</a></h3>
+<h4 id="즉시-조치-긴급">즉시 조치 (긴급)<a hidden class="anchor" aria-hidden="true" href="#즉시-조치-긴급">#</a></h4>
+<ol>
+<li>Oracle EBS 패치 상태 확인 및 즉시 적용 (CVE-2025-61882)</li>
+<li>Oracle EBS에 대한 인터넷 직접 접근 차단</li>
+<li>비정상적인 데이터 유출 여부 로그 검토</li>
+<li>영향 받은 개인에게 통지 및 신용 모니터링 제공</li>
+<li>법 집행 기관 및 규제 당국에 신고</li>
+</ol>
+<h4 id="단기-조치-1-3개월">단기 조치 (1-3개월)<a hidden class="anchor" aria-hidden="true" href="#단기-조치-1-3개월">#</a></h4>
+<ol>
+<li>WAF 배포로 Oracle EBS 보호</li>
+<li>이상 행위 탐지 시스템 도입</li>
+<li>DLP 솔루션 구축</li>
+<li>네트워크 세분화 강화</li>
+<li>모든 관리자 계정에 MFA 적용</li>
+</ol>
+<h4 id="중장기-조치-3-12개월">중장기 조치 (3-12개월)<a hidden class="anchor" aria-hidden="true" href="#중장기-조치-3-12개월">#</a></h4>
+<ol>
+<li>제로 트러스트 아키텍처로 전환</li>
+<li>SSN 및 금융 정보 최소화 및 암호화</li>
+<li>Oracle 보안 권고 자동 수신 및 우선 패치 프로그램 참여</li>
+<li>정기적인 침투 테스트 및 보안 평가</li>
+<li>전사적 보안 인식 교육 프로그램</li>
+</ol>
+<h2 id="7-학습-내용-및-인사이트">7. 학습 내용 및 인사이트<a hidden class="anchor" aria-hidden="true" href="#7-학습-내용-및-인사이트">#</a></h2>
+<h3 id="핵심-학습-사항">핵심 학습 사항<a hidden class="anchor" aria-hidden="true" href="#핵심-학습-사항">#</a></h3>
+<ol>
+<li>
+<p><strong>공급망 공격의 효율성</strong></p>
+<ul>
+<li>Clop은 한 가지 제로데이 취약점을 발견하여 100개 이상의 조직을 동시에 공격했습니다.</li>
+<li>널리 사용되는 엔터프라이즈 소프트웨어는 공격자에게 매우 매력적인 타겟입니다.</li>
+<li>과거 MOVEit, GoAnywhere, Accellion 등에서도 같은 패턴이 반복되었습니다.</li>
+</ul>
+</li>
+<li>
+<p><strong>제로데이 방어의 패러다임 전환 필요성</strong></p>
+<ul>
+<li>서명 기반 탐지만으로는 제로데이를 막을 수 없습니다.</li>
+<li>이상 행위 기반 탐지, 네트워크 세분화, 가상 패칭 등 다층 방어가 필수적입니다.</li>
+<li>Dartmouth 교수 Saydjari의 지적처럼, 알려지지 않은 공격도 비정상적 활동으로 탐지 가능합니다.</li>
+</ul>
+</li>
+<li>
+<p><strong>고위험 시스템에 대한 특별 보호 필요성</strong></p>
+<ul>
+<li>Oracle EBS와 같은 ERP 시스템은 조직의 핵심 데이터를 통합 관리합니다.</li>
+<li>이러한 시스템에는 일반 시스템보다 훨씬 강화된 보안 통제가 필요합니다.</li>
+<li>인터넷 직접 노출은 절대 피해야 합니다.</li>
+</ul>
+</li>
+<li>
+<p><strong>신속한 탐지 및 대응의 중요성</strong></p>
+<ul>
+<li>공격 발생 (8월) → 발견 (10월) → 공개 (11월)의 긴 시간차는 피해자들의 대응 시간을 단축시켰습니다.</li>
+<li>법적 통지 기한 준수 실패는 추가 벌금을 유발할 수 있습니다.</li>
+<li>자동화된 탐지 및 대응 체계가 필수적입니다.</li>
+</ul>
+</li>
+<li>
+<p><strong>투명성과 학습 문화의 필요성</strong></p>
+<ul>
+<li>Saydjari 교수는 항공 안전위원회처럼 보안 침해를 투명하게 연구하고 공유할 것을 제안했습니다.</li>
+<li>현재는 많은 조직이 평판 우려로 침해 사실을 최소화하려 하지만, 이는 전체 업계의 보안 향상을 저해합니다.</li>
+<li>공유와 학습을 통해 유사 사고를 예방할 수 있습니다.</li>
+</ul>
+</li>
+<li>
+<p><strong>민감 데이터 관리의 기본 원칙</strong></p>
+<ul>
+<li>SSN과 금융 정보는 반드시 필요한 경우에만 수집하고 저장해야 합니다.</li>
+<li>저장 시에는 강력한 암호화 또는 토큰화를 적용해야 합니다.</li>
+<li>데이터 보존 정책을 수립하고 불필요한 데이터는 안전하게 삭제해야 합니다.</li>
+</ul>
+</li>
+</ol>
+<h3 id="추가-학습-필요-영역">추가 학습 필요 영역<a hidden class="anchor" aria-hidden="true" href="#추가-학습-필요-영역">#</a></h3>
+<ol>
+<li>Oracle EBS의 아키텍처 및 보안 강화 방법</li>
+<li>Clop 그룹의 TTP 상세 분석 및 IOC 수집</li>
+<li>교육 기관 특유의 보안 도전과제 및 모범 사례</li>
+<li>제로데이 취약점 시장 및 발견 프로세스</li>
+<li>데이터 유출 통지 법규의 주별 차이 및 준수 방법</li>
+<li>ERP 시스템 보안 평가 방법론</li>
+</ol>
+<h3 id="보안-담당자를-위한-실무-적용-포인트">보안 담당자를 위한 실무 적용 포인트<a hidden class="anchor" aria-hidden="true" href="#보안-담당자를-위한-실무-적용-포인트">#</a></h3>
+<ol>
+<li>
+<p><strong>귀사의 Oracle EBS 또는 유사 ERP 시스템 보안 점검</strong>:</p>
+<ul>
+<li>최신 패치 적용 상태 확인</li>
+<li>인터넷 노출 여부 점검</li>
+<li>접근 통제 및 인증 강도 평가</li>
+<li>이상 행위 탐지 체계 구축</li>
+</ul>
+</li>
+<li>
+<p><strong>공급업체 관리 강화</strong>:</p>
+<ul>
+<li>Oracle 등 중요 공급업체의 보안 권고 자동 수신</li>
+<li>긴급 패치 우선 적용 프로세스 수립</li>
+<li>공급업체 보안 사고 발생 시 영향 평가 절차 마련</li>
+</ul>
+</li>
+<li>
+<p><strong>제로데이 대응 능력 구축</strong>:</p>
+<ul>
+<li>WAF 또는 NGFW를 통한 가상 패칭 능력</li>
+<li>이상 행위 탐지 시스템 (UEBA, NDR 등) 도입</li>
+<li>네트워크 세분화로 피해 확산 방지</li>
+</ul>
+</li>
+<li>
+<p><strong>데이터 보호 우선순위 설정</strong>:</p>
+<ul>
+<li>SSN, 금융 정보 등 고위험 데이터 식별</li>
+<li>암호화, 토큰화, 접근 통제 강화</li>
+<li>데이터 최소화 및 보존 정책 이행</li>
+</ul>
+</li>
+<li>
+<p><strong>사고 대응 계획 점검</strong>:</p>
+<ul>
+<li>제로데이 공격 시나리오 포함</li>
+<li>법적 통지 기한 준수 프로세스</li>
+<li>신속한 영향 평가 및 피해자 통지 절차</li>
+</ul>
+</li>
+<li>
+<p><strong>조직 문화 개선</strong>:</p>
+<ul>
+<li>보안 침해를 숨기지 말고 학습 기회로 활용</li>
+<li>투명성과 책임성 강화</li>
+<li>전사적 보안 인식 제고</li>
+</ul>
+</li>
+</ol>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/%EC%A0%9C%EB%A1%9C%EB%8D%B0%EC%9D%B4/">제로데이</a></li>
+      <li><a href="http://localhost:1313/tags/oracle/">Oracle</a></li>
+      <li><a href="http://localhost:1313/tags/clop/">Clop</a></li>
+      <li><a href="http://localhost:1313/tags/%EB%8C%80%ED%95%99%EB%B3%B4%EC%95%88/">대학보안</a></li>
+      <li><a href="http://localhost:1313/tags/%EA%B3%B5%EA%B8%89%EB%A7%9D%EA%B3%B5%EA%B2%A9/">공급망공격</a></li>
+      <li><a href="http://localhost:1313/tags/cve-2025-61882/">CVE-2025-61882</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

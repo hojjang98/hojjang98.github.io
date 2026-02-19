@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>보안활용 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%EB%B3%B4%EC%95%88%ED%99%9C%EC%9A%A9/</link>
+    <description>Recent content in 보안활용 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Mon, 27 Oct 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%EB%B3%B4%EC%95%88%ED%99%9C%EC%9A%A9/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2025.10.27 (Day 1) 파이썬 기초 및 보안 활용 종합 학습 로그</title>
+      <link>http://localhost:1313/daily_logs/week01/20251027_python_basic_types/</link>
+      <pubDate>Mon, 27 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week01/20251027_python_basic_types/</guid>
+      <description>파이썬 기초 문법과 보안 분야 활용 방법 종합 학습</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Tags | HJ&#39;s Security Note</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="map[autoswitchappearance:false bio:보안법규 분석과 실무 중심 거버넌스를 기록합니다. colorscheme:ocean defaultappearance:light enablecodecopy:true enableimagelazyloading:true enableimagewebp:true enablequicklink:true enablesearch:true fingerprintalgorithm:sha256 headline:Security Governance &amp; Legal Analysis image:profile.jpg links:[map[github:https://github.com/hojjang98]] name:Hojun Choi]">
+<link rel="canonical" href="http://localhost:1313/tags/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a29c24210eb31d9ce56f669c66a35c9c51b17376b7764e336a49af7dec914cf0.css" integrity="sha256-opwkIQ6zHZzlb2acZqNcnFGxc3a3dk4zakmvfeyRTPA=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/index.xml" title="rss">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/tags/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/" title="프로젝트">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/security-law-study/" title="Security-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span class="active">태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/" title="논문 리뷰">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+<header class="page-header">
+    <h1>Tags</h1>
+</header>
+
+<ul class="terms-tags">
+    <li>
+        <a href="http://localhost:1313/tags/102%EA%B0%9C%ED%86%B5%EC%A0%9C%ED%95%AD%EB%AA%A9/">102개통제항목 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/72%EC%8B%9C%EA%B0%84%EC%8B%A0%EA%B3%A0/">72시간신고 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/ai%EB%8C%80%ED%99%94%EC%9C%A0%EC%B6%9C/">AI대화유출 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/ai%EB%B3%B4%EC%95%88/">AI보안 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/akira/">Akira <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/alphv/">ALPHV <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/api%EB%B3%B4%EC%95%88/">API보안 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/api%ED%82%A4%EC%9C%A0%EC%B6%9C/">API키유출 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/api%ED%86%A0%ED%81%B0%EC%9C%A0%EC%B6%9C/">API토큰유출 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/apple/">Apple <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/apt/">APT <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/apt%EA%B3%B5%EA%B2%A9/">APT공격 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/azureblobstorage/">AzureBlobStorage <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/blackcat/">BlackCat <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/bpfdoor/">BPFDoor <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/cctv/">CCTV <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/chromewebstore/">ChromeWebStore <sup><strong><sup>2</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/chrome%ED%99%95%EC%9E%A5%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8/">Chrome확장프로그램 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/chromium/">Chromium <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/cisa-kev/">CISA-KEV <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/ciso/">CISO <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/cl0p/">Cl0p <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/clop/">Clop <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/cve-2025-11953/">CVE-2025-11953 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/cve-2025-61882/">CVE-2025-61882 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/cve-2026-1281/">CVE-2026-1281 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/cve-2026-20700/">CVE-2026-20700 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/edr/">EDR <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/esa/">ESA <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/global-e/">Global-e <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/hipaa/">HIPAA <sup><strong><sup>2</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/hr%EB%B3%B4%EC%95%88/">HR보안 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/htmlsmuggling/">HTMLSmuggling <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/isms-p/">ISMS-P <sup><strong><sup>2</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/isms-p%EC%9D%B8%EC%A6%9D/">ISMS-P인증 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/ivanti/">Ivanti <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/kazu/">Kazu <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/ledger/">Ledger <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/linux%EB%B3%B4%EC%95%88/">Linux보안 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/logokit/">LogoKit <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/mdm%EB%B3%B4%EC%95%88/">MDM보안 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/mfa%EB%B6%80%EC%9E%AC/">MFA부재 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/microsoft/">Microsoft <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/nis2/">NIS2 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/oauth%ED%86%A0%ED%81%B0/">OAuth토큰 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/oop/">OOP <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/oracle/">Oracle <sup><strong><sup>2</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/ot%EB%B3%B4%EC%95%88/">OT보안 <sup><strong><sup>2</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/python/">Python <sup><strong><sup>5</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/raas/">RaaS <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/rce/">RCE <sup><strong><sup>2</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/reactnative/">ReactNative <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/saas%EB%B3%B4%EC%95%88/">SaaS보안 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/safepay/">SafePay <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/salesforce/">Salesforce <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/shai-hulud/">Shai-Hulud <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/shinyhunters/">ShinyHunters <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/sk%EC%89%B4%EB%8D%94%EC%8A%A4%EB%A3%A8%ED%82%A4%EC%A6%88/">SK쉴더스루키즈 <sup><strong><sup>5</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/sonicwall/">SonicWall <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/static-tundra/">Static-Tundra <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/trustwallet/">TrustWallet <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/useafterfree/">UseAfterFree <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/worldleaks/">WorldLeaks <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/xss/">XSS <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EA%B0%80%EB%AA%85%EC%A0%95%EB%B3%B4/">가명정보 <sup><strong><sup>2</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EA%B0%9C%EB%B0%9C%ED%99%98%EA%B2%BD%EB%B3%B4%EC%95%88/">개발환경보안 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EA%B0%9C%EC%9D%B8%EC%8B%A0%EC%9A%A9%EC%A0%95%EB%B3%B4/">개인신용정보 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/">개인정보보호법 <sup><strong><sup>9</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EC%B1%85%EC%9E%84%EC%9E%90/">개인정보보호책임자 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%88%98%EC%A7%91/">개인정보수집 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%98%81%ED%96%A5%ED%8F%89%EA%B0%80/">개인정보영향평가 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C/">개인정보유출 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%B2%98%EB%A6%AC%EC%9E%90/">개인정보처리자 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%B9%A8%ED%95%B4/">개인정보침해 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EA%B1%B0%EB%9E%98%EA%B8%B0%EB%A1%9D%EB%B3%B4%EC%A1%B4/">거래기록보존 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EA%B3%A0%EC%9C%A0%EC%8B%9D%EB%B3%84%EC%A0%95%EB%B3%B4/">고유식별정보 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EA%B3%B5%EA%B0%9Ccve/">공개CVE <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EA%B3%B5%EA%B0%9C%EC%9D%98%EB%AC%B4/">공개의무 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EA%B3%B5%EA%B2%A9%EC%B2%B4%EC%9D%B8/">공격체인 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EA%B3%B5%EA%B8%89%EB%A7%9D%EA%B3%B5%EA%B2%A9/">공급망공격 <sup><strong><sup>8</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EA%B3%B5%EA%B8%89%EB%A7%9D%EB%B3%B4%EC%95%88/">공급망보안 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EA%B3%B5%EB%8F%99%EC%9D%B4%EC%9A%A9/">공동이용 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EA%B4%80%EB%A6%AC%EC%B2%B4%EA%B3%84/">관리체계 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EA%B5%AD%EC%A0%9C%ED%98%91%EB%A0%A5/">국제협력 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EA%B8%88%EC%9C%B5%EB%B3%B4%EC%95%88/">금융보안 <sup><strong><sup>2</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EA%B8%88%EC%9C%B5%EC%82%B0%EC%97%85/">금융산업 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EA%B8%B0%EB%B3%B8%EB%B3%B4%EC%95%88%EC%9C%84%EC%83%9D/">기본보안위생 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EB%82%A0%EC%A7%9C%EC%B2%98%EB%A6%AC/">날짜처리 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EB%82%B4%EB%B6%80%EA%B4%80%EB%A6%AC%EA%B3%84%ED%9A%8D/">내부관리계획 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EB%82%B4%EB%B6%80%EC%9E%90%EC%9C%84%ED%98%91/">내부자위협 <sup><strong><sup>2</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EB%8C%80%ED%95%99%EB%B3%B4%EC%95%88/">대학보안 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%9C%A0%EC%B6%9C/">데이터유출 <sup><strong><sup>2</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%B5%9C%EC%86%8C%ED%99%94/">데이터최소화 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%B9%A8%ED%95%B4/">데이터침해 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%83%88%EC%B7%A8/">데이터탈취 <sup><strong><sup>2</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EB%8F%99%EC%9D%98/">동의 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EB%8F%99%EC%9D%98%EC%B2%A0%ED%9A%8C/">동의철회 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EB%94%A5%ED%8E%98%EC%9D%B4%ED%81%AC/">딥페이크 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EB%9E%9C%EC%84%AC%EC%9B%A8%EC%96%B4/">랜섬웨어 <sup><strong><sup>7</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EB%A1%9C%EA%B7%B8%ED%8C%8C%EC%8B%B1/">로그파싱 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EB%A1%9C%EA%B9%85/">로깅 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EB%A7%88%EC%9D%B4%EB%8D%B0%EC%9D%B4%ED%84%B0/">마이데이터 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EB%A7%A4%EC%A7%81%EB%A7%81%ED%81%AC/">매직링크 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EB%A9%94%EB%AA%A8%EB%A6%AC%EC%86%90%EC%83%81/">메모리손상 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EB%AA%A9%EC%A0%81%EC%99%B8%EC%9D%B4%EC%9A%A9%EA%B8%88%EC%A7%80/">목적외이용금지 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EB%AC%B4%EA%B3%BC%EC%8B%A4%EC%B1%85%EC%9E%84/">무과실책임 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EB%AF%BC%EA%B0%90%EC%A0%95%EB%B3%B4/">민감정보 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EB%B0%98%EB%B3%B5%EC%B9%A8%ED%95%B4/">반복침해 <sup><strong><sup>2</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EB%B2%95%EB%A5%A0%EA%B8%B0%EC%B4%88/">법률기초 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EB%B2%95%EC%A0%95%EB%8C%80%EB%A6%AC%EC%9D%B8%EB%8F%99%EC%9D%98/">법정대리인동의 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EB%B3%80%EA%B2%BD%EC%9D%B4%EB%A0%A5%EA%B4%80%EB%A6%AC/">변경이력관리 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EB%B3%B4%EC%95%88%EA%B0%90%EC%82%AC/">보안감사 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EB%B3%B4%EC%95%88%EA%B2%8C%EC%9D%B4%ED%8A%B8%EC%9B%A8%EC%9D%B4/">보안게이트웨이 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EB%B3%B4%EC%95%88%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%84%A4%EA%B3%84/">보안시스템설계 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EB%B3%B4%EC%95%88%ED%99%9C%EC%9A%A9/">보안활용 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EB%B6%81%ED%95%9Capt/">북한APT <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%EB%B3%B4%EC%95%88/">브라우저보안 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98/">브라우저익스텐션 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%ED%99%95%EC%9E%A5%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8/">브라우저확장프로그램 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%82%AC%EA%B3%A0%EB%8C%80%EC%9D%91/">사고대응 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%82%AC%EC%9D%B4%EB%B2%84%EB%B3%B4%EC%95%88%EC%9C%A4%EB%A6%AC/">사이버보안윤리 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%82%AC%ED%9A%8C%EA%B3%B5%ED%95%99/">사회공학 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%8A%A4%ED%81%AC%EB%9E%98%ED%95%91%EA%B3%B5%EA%B2%A9/">스크래핑공격 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%8B%9C%EB%93%9C%ED%94%84%EB%A0%88%EC%9D%B4%EC%A6%88/">시드프레이즈 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%8B%A0%EC%9A%A9%EC%A0%95%EB%B3%B4%EB%B2%95/">신용정보법 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%8B%A0%EC%9A%A9%EC%A0%95%EB%B3%B4%EC%A3%BC%EC%B2%B4%EA%B6%8C%EB%A6%AC/">신용정보주체권리 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%8B%A0%EC%9B%90%EB%8F%84%EC%9A%A9/">신원도용 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%95%84%EB%8F%99%EB%B3%B4%ED%98%B8/">아동보호 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%95%85%EC%84%B1%EC%BD%94%EB%93%9C/">악성코드 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%95%94%ED%98%B8%ED%99%94/">암호화 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%95%94%ED%98%B8%ED%99%94%EC%97%86%EB%8A%94%EA%B0%88%EC%B7%A8/">암호화없는갈취 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%95%94%ED%98%B8%ED%99%94%ED%8F%90/">암호화폐 <sup><strong><sup>2</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%95%94%ED%98%B8%ED%99%94%ED%8F%90%ED%83%88%EC%B7%A8/">암호화폐탈취 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%97%90%EB%84%88%EC%A7%80%EB%B3%B4%EC%95%88/">에너지보안 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%97%B4%EB%9E%8C%EA%B6%8C/">열람권 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%98%88%EC%99%B8%EC%B2%98%EB%A6%AC/">예외처리 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%99%80%EC%9D%B4%ED%8D%BC%EC%95%85%EC%84%B1%EC%BD%94%EB%93%9C/">와이퍼악성코드 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%99%B8%EB%B6%80%EC%8B%9C%EC%8A%A4%ED%85%9C%EB%B3%B4%EC%95%88/">외부시스템보안 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%9A%B0%EC%A3%BC%EC%82%B0%EC%97%85/">우주산업 <sup><strong><sup>2</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%9B%90%EA%B2%A9%EA%B7%BC%EB%AC%B4%EB%B3%B4%EC%95%88/">원격근무보안 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%9C%84%EC%9E%A5%EC%B7%A8%EC%97%85/">위장취업 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%9C%A0%EC%8B%AC%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C/">유심정보유출 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%9C%A0%EC%B6%9C%ED%86%B5%EC%A7%80/">유출통지 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%9D%98%EB%A3%8C%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%B9%A8%ED%95%B4/">의료데이터침해 <sup><strong><sup>3</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%9D%B4%EC%A4%91%EA%B0%88%EC%B7%A8/">이중갈취 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%9D%B5%EB%AA%85%EC%A0%95%EB%B3%B4/">익명정보 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%9D%B8%EC%A6%9D%ED%82%A4%EA%B4%80%EB%A6%AC/">인증키관리 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%9E%90%EB%8F%99%ED%99%94%EA%B2%B0%EC%A0%95%EA%B1%B0%EB%B6%80/">자동화결정거부 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/">자료구조 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%9E%90%EC%B2%B4%EB%B3%B4%EA%B4%80%EC%A7%80%EA%B0%91/">자체보관지갑 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%9E%AC%EC%83%9D%EC%97%90%EB%84%88%EC%A7%80/">재생에너지 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%A0%84%EC%9E%90%EA%B8%88%EC%9C%B5%EA%B1%B0%EB%9E%98%EB%B2%95/">전자금융거래법 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%A0%84%EC%9E%90%EC%83%81%EA%B1%B0%EB%9E%98/">전자상거래 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%A0%91%EA%B7%BC%EB%A7%A4%EC%B2%B4/">접근매체 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%A0%91%EA%B7%BC%ED%86%B5%EC%A0%9C/">접근통제 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%A0%91%EC%86%8D%EA%B8%B0%EB%A1%9D/">접속기록 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%A0%95%EB%B3%B4%EC%A3%BC%EC%B2%B4/">정보주체 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%A7%9D%EB%B2%95/">정보통신망법 <sup><strong><sup>2</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%A0%95%EB%B6%80%EA%B3%84%EC%95%BD%EC%97%85%EC%B2%B4/">정부계약업체 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%A0%95%EB%B6%80%EA%B8%B0%EA%B4%80%EC%B9%A8%ED%95%B4/">정부기관침해 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%A0%95%EB%B6%80%EC%B9%A8%ED%95%B4/">정부침해 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%A0%95%EC%A0%95%EC%82%AD%EC%A0%9C%EA%B6%8C/">정정삭제권 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%A0%9C3%EC%9E%90%EC%A0%9C%EA%B3%B5/">제3자제공 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%A0%9C3%EC%9E%90%EC%B9%A8%ED%95%B4/">제3자침해 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%A0%9C%EB%A1%9C%EB%8D%B0%EC%9D%B4/">제로데이 <sup><strong><sup>5</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%A0%9C%EC%96%B4%EB%AC%B8/">제어문 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%A3%BC%EB%AF%BC%EB%93%B1%EB%A1%9D%EB%B2%88%ED%98%B8%EC%88%98%EC%A7%91%EC%A0%9C%ED%95%9C/">주민등록번호수집제한 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%A4%91%EC%9A%94%EC%9D%B8%ED%94%84%EB%9D%BC/">중요인프라 <sup><strong><sup>2</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%A7%80%EC%A0%81%EC%9E%AC%EC%82%B0%EA%B6%8C/">지적재산권 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%B2%98%EB%A6%AC%EB%B0%A9%EC%B9%A8/">처리방침 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%B2%98%EB%A6%AC%EC%9C%84%ED%83%81/">처리위탁 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%B2%98%EB%A6%AC%EC%A0%95%EC%A7%80%EA%B6%8C/">처리정지권 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%B5%9C%EC%86%8C%EC%88%98%EC%A7%91/">최소수집 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%B7%A8%EC%95%BD%EC%A0%90/">취약점 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%B7%A8%EC%95%BD%EC%A0%90%EA%B4%80%EB%A6%AC/">취약점관리 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%B8%A1%EB%A9%B4%EC%9D%B4%EB%8F%99/">측면이동 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%B9%A8%ED%95%B4%EC%82%AC%EA%B3%A0%EB%8C%80%EC%9D%91/">침해사고대응 <sup><strong><sup>2</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%BD%94%EB%93%9C%EC%9D%B8%EC%A0%9D%EC%85%98/">코드인젝션 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%EC%BF%A0%ED%8C%A1/">쿠팡 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%ED%81%AC%EB%A6%AC%EC%8A%A4%EB%A7%88%EC%8A%A4%EA%B3%B5%EA%B2%A9/">크리스마스공격 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%EB%B3%B4%EC%95%88/">클라우드보안 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%EC%95%85%EC%9A%A9/">클라우드악용 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%ED%81%B4%EB%A1%9C%EC%A0%80/">클로저 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%ED%83%90%EC%A7%80%EC%A7%80%EC%97%B0/">탐지지연 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%ED%87%B4%EC%82%AC%EC%9E%90%EB%B3%B4%EC%95%88/">퇴사자보안 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%ED%88%AC%EB%AA%85%EC%84%B1/">투명성 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%ED%8C%A8%EC%B9%98%EA%B4%80%EB%A6%AC/">패치관리 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%ED%94%BC%EC%8B%B1/">피싱 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%ED%94%BC%EC%8B%B1%EC%BA%A0%ED%8E%98%EC%9D%B8/">피싱캠페인 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%ED%95%98%EB%93%9C%EC%BD%94%EB%94%A9%EC%9E%90%EA%B2%A9%EC%A6%9D%EB%AA%85/">하드코딩자격증명 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%ED%95%A8%EC%88%98/">함수 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%ED%95%AD%EA%B3%B5%EC%82%B0%EC%97%85/">항공산업 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%ED%95%B4%EC%99%B8%EC%9D%B4%EC%A0%84/">해외이전 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%ED%97%AC%EC%8A%A4%EC%BC%80%EC%96%B4%EB%B3%B4%EC%95%88/">헬스케어보안 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%ED%99%98%EC%9E%90%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C/">환자정보유출 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+</ul>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

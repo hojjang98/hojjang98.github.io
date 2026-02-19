@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>ESA on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/esa/</link>
+    <description>Recent content in ESA on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sun, 11 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/esa/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>European Space Agency (ESA) 데이터 침해 사건</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week02/esa_data_breach/</link>
+      <pubDate>Sun, 11 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week02/esa_data_breach/</guid>
+      <description>ESA가 2주 간격으로 두 차례 침해를 당해 총 700GB의 우주선 운영 절차 및 하청업체 기밀 문서가 유출된 사건 분석</description>
+    </item>
+  </channel>
+</rss>

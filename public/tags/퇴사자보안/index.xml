@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>퇴사자보안 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%ED%87%B4%EC%82%AC%EC%9E%90%EB%B3%B4%EC%95%88/</link>
+    <description>Recent content in 퇴사자보안 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sun, 21 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%ED%87%B4%EC%82%AC%EC%9E%90%EB%B3%B4%EC%95%88/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>쿠팡 개인정보 3,370만 건 유출 사건</title>
+      <link>http://localhost:1313/security-issues-analysis/2025/week51/coupang_data_breach/</link>
+      <pubDate>Sun, 21 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2025/week51/coupang_data_breach/</guid>
+      <description>퇴사자의 인증키 탈취로 약 3,370만 건의 고객 개인정보가 유출된 쿠팡 사건 분석</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>브라우저익스텐션 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98/</link>
+    <description>Recent content in 브라우저익스텐션 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sun, 18 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Trust Wallet 크롬 익스텐션 공급망 공격으로 850만 달러 암호화폐 탈취</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week03/trust_wallet_supply_chain_attack/</link>
+      <pubDate>Sun, 18 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week03/trust_wallet_supply_chain_attack/</guid>
+      <description>유출된 Chrome Web Store API 키를 악용해 Trust Wallet 익스텐션 버전 2.68에 악성 코드를 삽입, 850만 달러의 암호화폐를 탈취한 크리스마스 공급망 공격 분석</description>
+    </item>
+  </channel>
+</rss>

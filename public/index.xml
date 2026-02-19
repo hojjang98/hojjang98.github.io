@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Wed, 18 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Day 13: 신용정보법</title>
+      <link>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/04_%EC%8B%A0%EC%9A%A9%EC%A0%95%EB%B3%B4%EB%B2%95/day13_%EC%8B%A0%EC%9A%A9%EC%A0%95%EB%B3%B4%EB%B2%95/</link>
+      <pubDate>Wed, 18 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/04_%EC%8B%A0%EC%9A%A9%EC%A0%95%EB%B3%B4%EB%B2%95/day13_%EC%8B%A0%EC%9A%A9%EC%A0%95%EB%B3%B4%EB%B2%95/</guid>
+      <description>개인신용정보의 수집·제공 제한, 신용정보주체의 권리(열람, 정정·삭제, 동의철회), 마이데이터 제도를 학습합니다.</description>
+    </item>
+    <item>
+      <title>Day 12: 전자금융거래법</title>
+      <link>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/03_%EC%A0%84%EC%9E%90%EA%B8%88%EC%9C%B5%EA%B1%B0%EB%9E%98%EB%B2%95/day12_%EC%A0%84%EC%9E%90%EA%B8%88%EC%9C%B5%EA%B1%B0%EB%9E%98%EB%B2%95/</link>
+      <pubDate>Tue, 17 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/03_%EC%A0%84%EC%9E%90%EA%B8%88%EC%9C%B5%EA%B1%B0%EB%9E%98%EB%B2%95/day12_%EC%A0%84%EC%9E%90%EA%B8%88%EC%9C%B5%EA%B1%B0%EB%9E%98%EB%B2%95/</guid>
+      <description>전자금융거래의 안전성 확보 의무, 접근매체 이중 인증, 거래기록 5년 보존, 사고 발생 시 무과실 책임 원칙을 학습합니다.</description>
+    </item>
+    <item>
+      <title>Day 11: 아동·영상정보·가명정보 특칙</title>
+      <link>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day11_%EC%95%84%EB%8F%99%EC%98%81%EC%83%81%EC%A0%95%EB%B3%B4%EA%B0%80%EB%AA%85%EC%A0%95%EB%B3%B4/</link>
+      <pubDate>Mon, 16 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day11_%EC%95%84%EB%8F%99%EC%98%81%EC%83%81%EC%A0%95%EB%B3%B4%EA%B0%80%EB%AA%85%EC%A0%95%EB%B3%B4/</guid>
+      <description>만 14세 미만 아동 개인정보 처리 시 법정대리인 동의, CCTV 설치·운영 제한, 가명정보 처리 특례를 학습합니다.</description>
+    </item>
+    <item>
+      <title>Apple dyld 제로데이 취약점 사건 분석</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week07/apple_dyld-_zero_day/</link>
+      <pubDate>Sun, 15 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week07/apple_dyld-_zero_day/</guid>
+      <description>Google TAG가 발견한 Apple dyld 컴포넌트 메모리 손상 취약점이 WebKit 취약점과 연계된 다단계 공격 체인으로 특정 고가치 표적을 대상으로 악용된 사건 분석</description>
+    </item>
+    <item>
+      <title>Conduent 대규모 데이터 유출 사건 분석</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week07/conduent_data_breach/</link>
+      <pubDate>Sun, 15 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week07/conduent_data_breach/</guid>
+      <description>SafePay 랜섬웨어 그룹이 정부 기술 계약업체 Conduent에서 84일간 탐지되지 않고 8.5TB를 유출해 2,500만 명 이상의 의료·개인정보가 노출된 사건 분석</description>
+    </item>
+    <item>
+      <title>Ivanti EPMM 제로데이 취약점 대규모 악용 사건 분석</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week07/ivanti_epmm_zero_day/</link>
+      <pubDate>Sun, 15 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week07/ivanti_epmm_zero_day/</guid>
+      <description>CVSS 9.8의 Ivanti EPMM 코드 인젝션 제로데이가 EU 집행위원회 등 유럽 정부기관을 침해하고 공개 24시간 내 대규모 익스플로잇 캠페인으로 이어진 사건 분석</description>
+    </item>
+    <item>
+      <title>Day 10: ISMS-P 인증 기준 및 침해사고 대응</title>
+      <link>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/02_%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%A7%9D%EB%B2%95/day10_isms-p%EC%9D%B8%EC%A6%9D%EA%B8%B0%EC%A4%80/</link>
+      <pubDate>Fri, 13 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/02_%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%A7%9D%EB%B2%95/day10_isms-p%EC%9D%B8%EC%A6%9D%EA%B8%B0%EC%A4%80/</guid>
+      <description>ISMS-P의 5개 영역 22개 인증기준 102개 통제항목과 인증 절차, 침해사고 신고 의무 및 대응 체계를 학습합니다.</description>
+    </item>
+    <item>
+      <title>Day 09: 정보통신망법 기초</title>
+      <link>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/02_%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%A7%9D%EB%B2%95/day09_%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%A7%9D%EB%B2%95_%EA%B8%B0%EC%B4%88/</link>
+      <pubDate>Thu, 12 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/02_%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%A7%9D%EB%B2%95/day09_%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%A7%9D%EB%B2%95_%EA%B8%B0%EC%B4%88/</guid>
+      <description>정보통신서비스 제공자에 적용되는 정보통신망법의 기본 개념, CISO 지정 의무, ISMS-P 인증 대상을 학습합니다.</description>
+    </item>
+    <item>
+      <title>Day 08: 개인정보 처리방침</title>
+      <link>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day08_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%B2%98%EB%A6%AC%EB%B0%A9%EC%B9%A8/</link>
+      <pubDate>Wed, 11 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day08_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%B2%98%EB%A6%AC%EB%B0%A9%EC%B9%A8/</guid>
+      <description>개인정보 처리방침의 필수 기재 사항 10가지, 공개 방법, 변경 시 의무 사항과 실제 운영과의 일치 중요성을 학습합니다.</description>
+    </item>
+    <item>
+      <title>Day 07: 개인정보 유출 및 침해사고 대응</title>
+      <link>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day07_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C%EB%B0%8F%EC%B9%A8%ED%95%B4%EC%82%AC%EA%B3%A0%EB%8C%80%EC%9D%91/</link>
+      <pubDate>Tue, 10 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day07_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C%EB%B0%8F%EC%B9%A8%ED%95%B4%EC%82%AC%EA%B3%A0%EB%8C%80%EC%9D%91/</guid>
+      <description>개인정보 유출 시 통지·신고 의무, 침해사고 대응 6단계 프로세스(준비→탐지→분석→대응→복구→재발방지)를 학습합니다.</description>
+    </item>
+    <item>
+      <title>Day 06: 개인정보의 안전성 확보 조치</title>
+      <link>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day06_%EC%95%88%EC%A0%84%EC%84%B1%ED%99%95%EB%B3%B4%EC%A1%B0%EC%B9%98/</link>
+      <pubDate>Mon, 09 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day06_%EC%95%88%EC%A0%84%EC%84%B1%ED%99%95%EB%B3%B4%EC%A1%B0%EC%B9%98/</guid>
+      <description>개인정보 보호를 위한 기술적·관리적·물리적 안전조치와 내부 관리계획 수립, 개인정보 영향평가 제도를 학습합니다.</description>
+    </item>
+    <item>
+      <title>Metro4Shell - React Native Metro Server 원격 코드 실행 취약점 공격</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week06/metro4shell_react_native_rce/</link>
+      <pubDate>Sun, 08 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week06/metro4shell_react_native_rce/</guid>
+      <description>React Native Metro 개발 서버의 인증 없는 RCE 취약점을 악용한 실제 공격이 관측되었으며, EPSS 점수와 무관하게 PoC 공개 직후 공격이 시작된 개발 인프라 보안 사례 분석</description>
+    </item>
+    <item>
+      <title>Substack 데이터 유출 사건</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week06/substack_data_breach/</link>
+      <pubDate>Sun, 08 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week06/substack_data_breach/</guid>
+      <description>4개월간 탐지되지 않은 스크래핑 공격으로 Substack 사용자 70만 명의 이메일·전화번호·메타데이터가 유출된 사건과 탐지 지연의 심각성 분석</description>
+    </item>
+    <item>
+      <title>폴란드 재생에너지 인프라 대상 협공 사이버 공격</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week06/poland_energy_infrastructure_attack/</link>
+      <pubDate>Sun, 08 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week06/poland_energy_infrastructure_attack/</guid>
+      <description>러시아 연계 Static Tundra 그룹이 극한 추위 속 신년 직전을 노려 폴란드 풍력·태양광 발전소 30개소 이상을 협조 공격하고 와이퍼 악성코드로 제어 시스템을 마비시킨 사건 분석</description>
+    </item>
+    <item>
+      <title>Day 05: 정보주체의 권리</title>
+      <link>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day05_%EC%A0%95%EB%B3%B4%EC%A3%BC%EC%B2%B4%EC%9D%98%EA%B6%8C%EB%A6%AC/</link>
+      <pubDate>Fri, 06 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day05_%EC%A0%95%EB%B3%B4%EC%A3%BC%EC%B2%B4%EC%9D%98%EA%B6%8C%EB%A6%AC/</guid>
+      <description>정보주체의 8가지 권리(열람, 정정·삭제, 처리정지, 동의철회 등)와 권리 행사 절차 및 개인정보처리자의 대응 의무를 학습합니다.</description>
+    </item>
+    <item>
+      <title>Day 04: 개인정보의 제공 및 처리 위탁</title>
+      <link>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day04_%EC%A0%9C%EA%B3%B5%EB%B0%8F%EC%9C%84%ED%83%81/</link>
+      <pubDate>Thu, 05 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day04_%EC%A0%9C%EA%B3%B5%EB%B0%8F%EC%9C%84%ED%83%81/</guid>
+      <description>개인정보의 제3자 제공 요건, 처리 위탁 절차와 계약 사항, 국외 이전 시 안전성 확보 조치를 학습합니다.</description>
+    </item>
+    <item>
+      <title>Day 03: 개인정보의 수집 및 이용</title>
+      <link>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day03_%EC%88%98%EC%A7%91%EB%B0%8F%EC%9D%B4%EC%9A%A9/</link>
+      <pubDate>Wed, 04 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day03_%EC%88%98%EC%A7%91%EB%B0%8F%EC%9D%B4%EC%9A%A9/</guid>
+      <description>개인정보 수집의 법적 근거, 동의 절차, 최소 수집 원칙, 목적 외 이용 금지 원칙을 학습합니다.</description>
+    </item>
+    <item>
+      <title>Day 02: 개인정보의 정의와 범위</title>
+      <link>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day02_%EC%A0%95%EC%9D%98%EC%99%80%EB%B2%94%EC%9C%84/</link>
+      <pubDate>Tue, 03 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day02_%EC%A0%95%EC%9D%98%EC%99%80%EB%B2%94%EC%9C%84/</guid>
+      <description>개인정보, 민감정보, 고유식별정보, 가명정보, 익명정보의 정의와 각각의 처리 요건 및 구별 기준을 학습합니다.</description>
+    </item>
+    <item>
+      <title>Day 01: 개인정보보호법 - 기본 개념 및 목적</title>
+      <link>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day01_%EA%B8%B0%EB%B3%B8%EA%B0%9C%EB%85%90%EB%B0%8F%EB%AA%A9%EC%A0%81/</link>
+      <pubDate>Mon, 02 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day01_%EA%B8%B0%EB%B3%B8%EA%B0%9C%EB%85%90%EB%B0%8F%EB%AA%A9%EC%A0%81/</guid>
+      <description>개인정보보호법의 제정 배경, 목적, 적용 범위와 기본 용어 정의를 학습하고 보안 컨설팅 관점에서의 시사점을 파악합니다.</description>
+    </item>
+    <item>
+      <title>Dartmouth College Oracle EBS 제로데이 공격 (2025년 8월)</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week05/dartmouth_oracle_clop_breach/</link>
+      <pubDate>Sun, 01 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week05/dartmouth_oracle_clop_breach/</guid>
+      <description>Clop 그룹이 Oracle EBS 제로데이 취약점을 악용해 Dartmouth College를 포함한 100개 이상 조직에서 대규모 데이터를 탈취한 캠페인 분석</description>
+    </item>
+    <item>
+      <title>Grubhub 데이터 유출 - Salesloft Drift 공급망 공격의 연쇄 효과 (2026년 1월)</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week05/grubhub_salesloft_breach/</link>
+      <pubDate>Sun, 01 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week05/grubhub_salesloft_breach/</guid>
+      <description>Salesloft Drift 침해로 탈취된 OAuth 토큰이 Grubhub의 Salesforce와 Zendesk까지 연쇄 침해로 이어진 다층 공급망 공격 분석</description>
+    </item>
+    <item>
+      <title>Nike 데이터 유출 사건 - WorldLeaks 랜섬웨어 그룹 (2026년 1월)</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week05/nike_worldleakse_breach/</link>
+      <pubDate>Sun, 01 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week05/nike_worldleakse_breach/</guid>
+      <description>WorldLeaks 그룹이 Nike의 미출시 Jordan Brand 디자인을 포함한 1.4TB 데이터를 탈취하고 다크웹 공개로 압박한 데이터 갈취 공격 분석</description>
+    </item>
+    <item>
+      <title>Central Maine Healthcare Data Breach Exposes Sensitive Patient Information</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week04/central_maine_healthcare_breach/</link>
+      <pubDate>Sun, 25 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week04/central_maine_healthcare_breach/</guid>
+      <description>74일간 탐지되지 않은 공격으로 145,381명의 환자 개인정보, 치료정보, 보험 정보가 유출된 Central Maine Healthcare 침해 사건 분석</description>
+    </item>
+    <item>
+      <title>Global-e E-commerce Supply Chain Breach Exposes Customer Data Across Multiple Brands</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week04/global_e_supply_chain_breach/</link>
+      <pubDate>Sun, 25 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week04/global_e_supply_chain_breach/</guid>
+      <description>전자상거래 플랫폼 Global-e 침해로 Ledger를 포함한 다수 브랜드의 고객 주문 데이터 2억 건 이상이 노출된 공급망 공격 분석</description>
+    </item>
+    <item>
+      <title>Oltenia Energy Complex Ransomware Attack Disrupts Romanian Critical Infrastructure</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week04/oltenia_energy_ransomware/</link>
+      <pubDate>Sun, 25 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week04/oltenia_energy_ransomware/</guid>
+      <description>크리스마스 연휴를 노린 Gentlemen 랜섬웨어 그룹이 루마니아 전력 30%를 공급하는 Oltenia 에너지 복합체의 ERP·이메일 시스템을 마비시킨 사건 분석</description>
+    </item>
+    <item>
+      <title>Manage My Health 뉴질랜드 의료 포털 랜섬웨어 공격으로 12만 명 환자 정보 유출</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week03/manage_my_health_randsomeware/</link>
+      <pubDate>Sun, 18 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week03/manage_my_health_randsomeware/</guid>
+      <description>유효한 사용자 비밀번호로 &amp;lsquo;정문 침입&amp;rsquo;한 Kazu 랜섬웨어 그룹이 뉴질랜드 최대 환자 포털에서 12만 6천 명의 의료 정보를 탈취한 사건 분석</description>
+    </item>
+    <item>
+      <title>Trust Wallet 크롬 익스텐션 공급망 공격으로 850만 달러 암호화폐 탈취</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week03/trust_wallet_supply_chain_attack/</link>
+      <pubDate>Sun, 18 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week03/trust_wallet_supply_chain_attack/</guid>
+      <description>유출된 Chrome Web Store API 키를 악용해 Trust Wallet 익스텐션 버전 2.68에 악성 코드를 삽입, 850만 달러의 암호화폐를 탈취한 크리스마스 공급망 공격 분석</description>
+    </item>
+    <item>
+      <title>유럽우주국(ESA) 외부 서버 침해로 200GB 데이터 탈취 주장</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week03/esa_external_server_breach/</link>
+      <pubDate>Sun, 18 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week03/esa_external_server_breach/</guid>
+      <description>해커 &amp;lsquo;888&amp;rsquo;이 ESA의 JIRA·Bitbucket 외부 서버를 침해해 소스 코드, API 토큰, 하드코딩된 자격증명 등 200GB 데이터를 탈취한 사건 분석</description>
+    </item>
+    <item>
+      <title>European Space Agency (ESA) 데이터 침해 사건</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week02/esa_data_breach/</link>
+      <pubDate>Sun, 11 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week02/esa_data_breach/</guid>
+      <description>ESA가 2주 간격으로 두 차례 침해를 당해 총 700GB의 우주선 운영 절차 및 하청업체 기밀 문서가 유출된 사건 분석</description>
+    </item>
+    <item>
+      <title>Ledger 고객 데이터 유출 사건 (Global-e 공급망 침해)</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week02/ledger_globale_braech/</link>
+      <pubDate>Sun, 11 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week02/ledger_globale_braech/</guid>
+      <description>Ledger의 전자상거래 파트너 Global-e 침해로 고객 주문 데이터가 유출되고 즉각적인 피싱 캠페인으로 이어진 사건 분석</description>
+    </item>
+    <item>
+      <title>사이버보안 전문가들의 BlackCat 랜섬웨어 범죄 자백 사건</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week02/blackcat_insider_threat/</link>
+      <pubDate>Sun, 11 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week02/blackcat_insider_threat/</guid>
+      <description>인시던트 대응 전문가와 랜섬웨어 협상가가 BlackCat 랜섬웨어로 미국 기업을 직접 공격한 사건 분석</description>
+    </item>
+    <item>
+      <title>Korean Air 직원 데이터 유출 사건 (공급망 공격)</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week01/korean_air_breach/</link>
+      <pubDate>Sun, 04 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week01/korean_air_breach/</guid>
+      <description>Oracle EBS 제로데이 취약점을 통한 공급망 공격으로 대한항공 직원 3만 명 정보가 유출된 사건 분석</description>
+    </item>
+    <item>
+      <title>Marquis Software 랜섬웨어 공격으로 인한 미국 금융기관 대규모 유출</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week01/marquis_ransomeware_breach/</link>
+      <pubDate>Sun, 04 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week01/marquis_ransomeware_breach/</guid>
+      <description>SonicWall 취약점을 악용한 Akira 랜섬웨어 공격으로 74개 미국 금융기관 고객 78만 명 정보가 유출된 사건 분석</description>
+    </item>
+    <item>
+      <title>악성 Chrome 확장프로그램으로 인한 AI 대화 유출 사건</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week01/chrome_extension_malware/</link>
+      <pubDate>Sun, 04 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week01/chrome_extension_malware/</guid>
+      <description>AI 도구로 위장한 악성 Chrome 확장프로그램 2개가 90만 명의 ChatGPT·DeepSeek 대화를 탈취한 사건 분석</description>
+    </item>
+    <item>
+      <title>Azure Blob Storage를 악용한 HTML Smuggling 피싱 캠페인</title>
+      <link>http://localhost:1313/security-issues-analysis/2025/week52/azure_blob_storage_phishing/</link>
+      <pubDate>Sun, 28 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2025/week52/azure_blob_storage_phishing/</guid>
+      <description>Microsoft Azure Blob Storage를 악용한 HTML Smuggling 기법의 대규모 피싱 캠페인 분석</description>
+    </item>
+    <item>
+      <title>SK텔레콤 유심 정보 유출 사고</title>
+      <link>http://localhost:1313/security-issues-analysis/2025/week52/skt_usim_breach_analysis/</link>
+      <pubDate>Sun, 28 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2025/week52/skt_usim_breach_analysis/</guid>
+      <description>BPFDoor 악성코드 감염으로 약 2,696만 건의 유심 정보가 유출된 SK텔레콤 사고 분석</description>
+    </item>
+    <item>
+      <title>Trust Wallet Chrome Extension 공급망 공격</title>
+      <link>http://localhost:1313/security-issues-analysis/2025/week52/trsut_wallet_supply_chain_attack/</link>
+      <pubDate>Sun, 28 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2025/week52/trsut_wallet_supply_chain_attack/</guid>
+      <description>크리스마스 이브에 발생한 Trust Wallet Chrome 확장 프로그램 공급망 공격 및 700만 달러 탈취 분석</description>
+    </item>
+    <item>
+      <title>Microsoft Edge 브라우저 보안 취약점 (CVE-2025-14372, CVE-2025-14373)</title>
+      <link>http://localhost:1313/security-issues-analysis/2025/week51/edge_vulnearabilities/</link>
+      <pubDate>Sun, 21 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2025/week51/edge_vulnearabilities/</guid>
+      <description>Microsoft Edge V8 엔진의 Use-After-Free 및 XSS 취약점 발견 및 패치 분석</description>
+    </item>
+    <item>
+      <title>딥페이크 기술을 활용한 북한 IT 인력 위장 취업 사기</title>
+      <link>http://localhost:1313/security-issues-analysis/2025/week51/deepfake_interview/</link>
+      <pubDate>Sun, 21 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2025/week51/deepfake_interview/</guid>
+      <description>딥페이크 기술로 화상 면접을 통과한 북한 IT 인력의 위장 취업 사례 분석</description>
+    </item>
+    <item>
+      <title>쿠팡 개인정보 3,370만 건 유출 사건</title>
+      <link>http://localhost:1313/security-issues-analysis/2025/week51/coupang_data_breach/</link>
+      <pubDate>Sun, 21 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2025/week51/coupang_data_breach/</guid>
+      <description>퇴사자의 인증키 탈취로 약 3,370만 건의 고객 개인정보가 유출된 쿠팡 사건 분석</description>
+    </item>
+    <item>
+      <title>2025.10.31 (Day 5) 파이썬 예외 처리·로깅 및 보안 감사 로그 설계</title>
+      <link>http://localhost:1313/daily_logs/week01/20251031_code_resilience_and_logging/</link>
+      <pubDate>Fri, 31 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week01/20251031_code_resilience_and_logging/</guid>
+      <description>파이썬 예외 처리, 로깅 학습 및 보안 감사 로그 설계 실습</description>
+    </item>
+    <item>
+      <title>2025.10.30 (Day 4) 파이썬 함수·클로저·스코프와 보안 게이트웨이 설계</title>
+      <link>http://localhost:1313/daily_logs/week01/20251030_python_function_lambda/</link>
+      <pubDate>Thu, 30 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week01/20251030_python_function_lambda/</guid>
+      <description>파이썬 함수, 클로저, 스코프 개념 학습 및 보안 게이트웨이 설계 실습</description>
+    </item>
+    <item>
+      <title>2025.10.29 (Day 3) 파이썬 제어문·문자열·날짜 처리 및 보안 자동화 기초</title>
+      <link>http://localhost:1313/daily_logs/week01/20251029_python_control_string_date/</link>
+      <pubDate>Wed, 29 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week01/20251029_python_control_string_date/</guid>
+      <description>파이썬 제어문, 문자열, 날짜 처리 학습 및 보안 자동화 기초 실습</description>
+    </item>
+    <item>
+      <title>2025.10.28 (Day 2) 파이썬 클래스/제어문 및 보안 시스템 설계 로그</title>
+      <link>http://localhost:1313/daily_logs/week01/20251028_python_basic_dict/</link>
+      <pubDate>Tue, 28 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week01/20251028_python_basic_dict/</guid>
+      <description>파이썬 클래스, 제어문 학습 및 보안 시스템 설계 인사이트 정리</description>
+    </item>
+    <item>
+      <title>2025.10.27 (Day 1) 파이썬 기초 및 보안 활용 종합 학습 로그</title>
+      <link>http://localhost:1313/daily_logs/week01/20251027_python_basic_types/</link>
+      <pubDate>Mon, 27 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week01/20251027_python_basic_types/</guid>
+      <description>파이썬 기초 문법과 보안 분야 활용 방법 종합 학습</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/security_law_study/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security_law_study/readme/</guid>
+      <description>&lt;h1 id=&#34;보안법-학습-저장소&#34;&gt;보안법 학습 저장소&lt;/h1&gt;
+&lt;p&gt;SK쉴더스 보안 컨설팅 팀 준비를 위한 보안 관련 법률 및 실무 지식 학습 자료&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

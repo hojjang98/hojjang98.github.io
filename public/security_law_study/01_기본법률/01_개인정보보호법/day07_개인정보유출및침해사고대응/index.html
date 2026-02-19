@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Day 07: 개인정보 유출 및 침해사고 대응 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="개인정보보호법, 유출통지, 침해사고대응, 72시간신고, ISMS-P">
+<meta name="description" content="개인정보 유출 시 통지·신고 의무, 침해사고 대응 6단계 프로세스(준비→탐지→분석→대응→복구→재발방지)를 학습합니다.">
+<meta name="author" content="map[autoswitchappearance:false bio:보안법규 분석과 실무 중심 거버넌스를 기록합니다. colorscheme:ocean defaultappearance:light enablecodecopy:true enableimagelazyloading:true enableimagewebp:true enablequicklink:true enablesearch:true fingerprintalgorithm:sha256 headline:Security Governance &amp; Legal Analysis image:profile.jpg links:[map[github:https://github.com/hojjang98]] name:Hojun Choi]">
+<link rel="canonical" href="http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day07_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C%EB%B0%8F%EC%B9%A8%ED%95%B4%EC%82%AC%EA%B3%A0%EB%8C%80%EC%9D%91/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a29c24210eb31d9ce56f669c66a35c9c51b17376b7764e336a49af7dec914cf0.css" integrity="sha256-opwkIQ6zHZzlb2acZqNcnFGxc3a3dk4zakmvfeyRTPA=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day07_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C%EB%B0%8F%EC%B9%A8%ED%95%B4%EC%82%AC%EA%B3%A0%EB%8C%80%EC%9D%91/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/" title="프로젝트">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/security-law-study/" title="Security-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/" title="논문 리뷰">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Day 07: 개인정보 유출 및 침해사고 대응
+    </h1>
+    <div class="post-meta"><span title='2026-02-10 00:00:00 +0000 UTC'>2026년 2월 10일</span>&nbsp;·&nbsp;<span>map[autoswitchappearance:false bio:보안법규 분석과 실무 중심 거버넌스를 기록합니다. colorscheme:ocean defaultappearance:light enablecodecopy:true enableimagelazyloading:true enableimagewebp:true enablequicklink:true enablesearch:true fingerprintalgorithm:sha256 headline:Security Governance &amp; Legal Analysis image:profile.jpg links:[map[github:https://github.com/hojjang98]] name:Hojun Choi]</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="day-07-개인정보-유출-및-침해사고-대응">Day 07: 개인정보 유출 및 침해사고 대응<a hidden class="anchor" aria-hidden="true" href="#day-07-개인정보-유출-및-침해사고-대응">#</a></h1>
+<h2 id="1-개인정보-유출의-개요">1. 개인정보 유출의 개요<a hidden class="anchor" aria-hidden="true" href="#1-개인정보-유출의-개요">#</a></h2>
+<h3 id="11-개인정보-유출이란">1.1 개인정보 유출이란?<a hidden class="anchor" aria-hidden="true" href="#11-개인정보-유출이란">#</a></h3>
+<p>개인정보가 <strong>권한 없는 자에게 제공</strong>되거나, 개인정보처리자가 <strong>통제를 상실</strong>하거나 <strong>원치 않는 방식으로 외부에 공개</strong>되는 것</p>
+<h3 id="12-유출의-유형">1.2 유출의 유형<a hidden class="anchor" aria-hidden="true" href="#12-유출의-유형">#</a></h3>
+<h4 id="1-기술적-침해에-의한-유출">(1) 기술적 침해에 의한 유출<a hidden class="anchor" aria-hidden="true" href="#1-기술적-침해에-의한-유출">#</a></h4>
+<ul>
+<li>해킹, 악성코드, SQL 인젝션 등 외부 공격</li>
+<li>시스템 취약점 악용</li>
+<li>랜섬웨어 감염</li>
+</ul>
+<h4 id="2-내부자에-의한-유출">(2) 내부자에 의한 유출<a hidden class="anchor" aria-hidden="true" href="#2-내부자에-의한-유출">#</a></h4>
+<ul>
+<li>직원의 고의적 유출</li>
+<li>실수에 의한 유출 (잘못된 수신자 전송 등)</li>
+<li>퇴직자의 개인정보 무단 반출</li>
+</ul>
+<h4 id="3-물리적-유출">(3) 물리적 유출<a hidden class="anchor" aria-hidden="true" href="#3-물리적-유출">#</a></h4>
+<ul>
+<li>서류, 저장매체 분실 또는 도난</li>
+<li>출력물 미파기</li>
+</ul>
+<h4 id="4-위탁사제3자에-의한-유출">(4) 위탁사·제3자에 의한 유출<a hidden class="anchor" aria-hidden="true" href="#4-위탁사제3자에-의한-유출">#</a></h4>
+<ul>
+<li>수탁자의 보안 사고</li>
+<li>제3자 제공 이후 유출</li>
+</ul>
+<h3 id="13-유출과-유사-개념-구분">1.3 유출과 유사 개념 구분<a hidden class="anchor" aria-hidden="true" href="#13-유출과-유사-개념-구분">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>구분</th>
+          <th>내용</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>유출</td>
+          <td>외부로 개인정보가 나가는 것</td>
+      </tr>
+      <tr>
+          <td>위조</td>
+          <td>존재하지 않는 개인정보를 만드는 것</td>
+      </tr>
+      <tr>
+          <td>변조</td>
+          <td>개인정보를 사실과 다르게 변경하는 것</td>
+      </tr>
+      <tr>
+          <td>훼손</td>
+          <td>개인정보를 손상·파괴하는 것</td>
+      </tr>
+      <tr>
+          <td>침해</td>
+          <td>위 모든 상황을 포괄하는 개념</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="2-개인정보-유출-통지-의무-법-제34조">2. 개인정보 유출 통지 의무 (법 제34조)<a hidden class="anchor" aria-hidden="true" href="#2-개인정보-유출-통지-의무-법-제34조">#</a></h2>
+<h3 id="21-통지-의무-발생-요건">2.1 통지 의무 발생 요건<a hidden class="anchor" aria-hidden="true" href="#21-통지-의무-발생-요건">#</a></h3>
+<p>개인정보처리자가 개인정보가 <strong>유출되었음을 알게 된 때</strong> 통지 의무 발생</p>
+<p><strong>&ldquo;알게 된 때&quot;의 판단:</strong></p>
+<ul>
+<li>해킹 사실을 인지한 시점</li>
+<li>직원의 유출 사실을 확인한 시점</li>
+<li>외부 제보로 유출 사실을 확인한 시점</li>
+</ul>
+<h3 id="22-정보주체에-대한-통지">2.2 정보주체에 대한 통지<a hidden class="anchor" aria-hidden="true" href="#22-정보주체에-대한-통지">#</a></h3>
+<h4 id="1-통지-시한">(1) 통지 시한<a hidden class="anchor" aria-hidden="true" href="#1-통지-시한">#</a></h4>
+<p><strong>지체 없이</strong> (사실을 인지한 후 72시간 이내 권고)</p>
+<p><strong>단, 다음의 경우 추가 조사 후 통지 가능:</strong></p>
+<ul>
+<li>유출 규모 파악이 어려운 경우</li>
+<li>유출 경로 확인이 필요한 경우</li>
+</ul>
+<h4 id="2-통지-내용-법-제34조-제1항">(2) 통지 내용 (법 제34조 제1항)<a hidden class="anchor" aria-hidden="true" href="#2-통지-내용-법-제34조-제1항">#</a></h4>
+<ol>
+<li>유출된 <strong>개인정보의 항목</strong></li>
+<li>유출이 <strong>발생한 시점</strong></li>
+<li>이용자가 취할 수 있는 <strong>조치</strong></li>
+<li>개인정보처리자의 <strong>대응 조치</strong></li>
+<li>정보주체가 피해를 최소화하기 위한 <strong>담당부서 연락처</strong></li>
+</ol>
+<h4 id="3-통지-방법">(3) 통지 방법<a hidden class="anchor" aria-hidden="true" href="#3-통지-방법">#</a></h4>
+<ul>
+<li><strong>서면, 전자우편, 팩스, 전화, 문자</strong> 등 정보주체에게 개별 통지</li>
+<li>유출된 개인정보의 확인이 곤란한 경우 → 홈페이지 공지 또는 사업장 게시 (30일 이상)</li>
+</ul>
+<h4 id="4-통지-예외">(4) 통지 예외<a hidden class="anchor" aria-hidden="true" href="#4-통지-예외">#</a></h4>
+<ul>
+<li>연락처를 알 수 없는 경우</li>
+<li>개별 통지가 현저히 곤란한 경우</li>
+</ul>
+<p>→ 인터넷 홈페이지 공지 (30일 이상 게시)</p>
+<h3 id="23-개인정보보호위원회-신고-의무-법-제34조-제3항">2.3 개인정보보호위원회 신고 의무 (법 제34조 제3항)<a hidden class="anchor" aria-hidden="true" href="#23-개인정보보호위원회-신고-의무-법-제34조-제3항">#</a></h3>
+<h4 id="1-신고-대상">(1) 신고 대상<a hidden class="anchor" aria-hidden="true" href="#1-신고-대상">#</a></h4>
+<p>다음 중 하나에 해당하는 경우:</p>
+<ol>
+<li><strong>1천명 이상</strong>의 정보주체에 관한 개인정보가 유출된 경우</li>
+<li><strong>민감정보 또는 고유식별정보</strong>가 유출된 경우</li>
+<li>이용자 수가 일일 평균 <strong>100만명 이상</strong>인 정보통신서비스 제공자의 개인정보가 유출된 경우</li>
+</ol>
+<h4 id="2-신고-시한">(2) 신고 시한<a hidden class="anchor" aria-hidden="true" href="#2-신고-시한">#</a></h4>
+<p>유출 사실을 안 때로부터 <strong>72시간 이내</strong></p>
+<p><strong>단, 72시간 이내 신고가 불가능한 경우:</strong></p>
+<ul>
+<li>사유와 함께 신고 가능한 시기를 먼저 통보</li>
+<li>이후 상세 신고</li>
+</ul>
+<h4 id="3-신고-기관">(3) 신고 기관<a hidden class="anchor" aria-hidden="true" href="#3-신고-기관">#</a></h4>
+<ul>
+<li><strong>개인정보보호위원회</strong> 또는</li>
+<li><strong>한국인터넷진흥원</strong> (위임)</li>
+<li>신고 방법: 개인정보포털(<a href="https://www.privacy.go.kr">www.privacy.go.kr</a>) 또는 팩스, 서면</li>
+</ul>
+<h4 id="4-신고-내용">(4) 신고 내용<a hidden class="anchor" aria-hidden="true" href="#4-신고-내용">#</a></h4>
+<ol>
+<li>유출된 <strong>개인정보의 항목</strong></li>
+<li>유출 <strong>발생 시점 및 경위</strong></li>
+<li>유출 <strong>규모</strong> (정보주체 수)</li>
+<li>피해를 최소화하기 위해 취한 <strong>조치</strong></li>
+<li><strong>대응 조치</strong> 및 향후 계획</li>
+<li><strong>담당부서 연락처</strong></li>
+</ol>
+<h2 id="3-침해사고-대응-절차-isms-p-기준">3. 침해사고 대응 절차 (ISMS-P 기준)<a hidden class="anchor" aria-hidden="true" href="#3-침해사고-대응-절차-isms-p-기준">#</a></h2>
+<h3 id="31-사고-대응-6단계-프로세스">3.1 사고 대응 6단계 프로세스<a hidden class="anchor" aria-hidden="true" href="#31-사고-대응-6단계-프로세스">#</a></h3>
+<pre tabindex="0"><code>[1단계] 준비 → [2단계] 탐지 → [3단계] 분석
+     ↓
+[6단계] 재발방지 ← [5단계] 복구 ← [4단계] 대응
+</code></pre><h3 id="32-1단계-준비-preparation">3.2 1단계: 준비 (Preparation)<a hidden class="anchor" aria-hidden="true" href="#32-1단계-준비-preparation">#</a></h3>
+<h4 id="목적">목적<a hidden class="anchor" aria-hidden="true" href="#목적">#</a></h4>
+<p>침해사고 발생에 대비한 <strong>사전 준비</strong> 체계 구축</p>
+<h4 id="주요-활동">주요 활동<a hidden class="anchor" aria-hidden="true" href="#주요-활동">#</a></h4>
+<ul>
+<li><strong>사고 대응팀</strong> 구성 및 역할 정의</li>
+<li><strong>비상 연락망</strong> 구축</li>
+<li><strong>사고 대응 절차</strong> 문서화</li>
+<li><strong>백업 및 복구 체계</strong> 구축</li>
+<li><strong>모의훈련</strong> 정기 실시 (연 1회 이상)</li>
+<li>관련 <strong>법률 및 규정</strong> 숙지</li>
+</ul>
+<h4 id="사전-준비-항목">사전 준비 항목<a hidden class="anchor" aria-hidden="true" href="#사전-준비-항목">#</a></h4>
+<ul>
+<li>침해사고 대응 매뉴얼 수립</li>
+<li>포렌식 도구 준비</li>
+<li>백업 데이터 관리</li>
+<li>외부 전문기관 연락처 확보 (KISA 등)</li>
+</ul>
+<h3 id="33-2단계-탐지-detection">3.3 2단계: 탐지 (Detection)<a hidden class="anchor" aria-hidden="true" href="#33-2단계-탐지-detection">#</a></h3>
+<h4 id="목적-1">목적<a hidden class="anchor" aria-hidden="true" href="#목적-1">#</a></h4>
+<p>침해사고 또는 이상 징후를 <strong>신속하게 발견</strong></p>
+<h4 id="탐지-수단">탐지 수단<a hidden class="anchor" aria-hidden="true" href="#탐지-수단">#</a></h4>
+<ul>
+<li><strong>SIEM</strong> (Security Information and Event Management): 보안 이벤트 통합 분석</li>
+<li><strong>IDS/IPS</strong>: 네트워크 침입 탐지·방지</li>
+<li><strong>백신 프로그램</strong>: 악성코드 탐지</li>
+<li><strong>접속 기록 모니터링</strong>: 이상 접근 패턴 탐지</li>
+<li><strong>DLP</strong> (Data Loss Prevention): 개인정보 유출 탐지</li>
+</ul>
+<h4 id="이상-징후-예시">이상 징후 예시<a hidden class="anchor" aria-hidden="true" href="#이상-징후-예시">#</a></h4>
+<ul>
+<li>비정상적인 대용량 데이터 전송</li>
+<li>새벽 시간대 비인가 접속</li>
+<li>다수의 로그인 실패</li>
+<li>알 수 없는 외부 IP의 접속</li>
+<li>비정상적인 쿼리 실행 (SQL Injection 시도)</li>
+</ul>
+<h3 id="34-3단계-분석-analysis">3.4 3단계: 분석 (Analysis)<a hidden class="anchor" aria-hidden="true" href="#34-3단계-분석-analysis">#</a></h3>
+<h4 id="목적-2">목적<a hidden class="anchor" aria-hidden="true" href="#목적-2">#</a></h4>
+<p>사고의 <strong>범위, 원인, 영향</strong>을 파악</p>
+<h4 id="주요-분석-항목">주요 분석 항목<a hidden class="anchor" aria-hidden="true" href="#주요-분석-항목">#</a></h4>
+<ol>
+<li><strong>사고 유형 파악</strong>: 해킹, 내부 유출, 랜섬웨어 등</li>
+<li><strong>피해 범위 파악</strong>: 유출된 개인정보의 항목 및 규모</li>
+<li><strong>침해 경로 분석</strong>: 공격 벡터 및 취약점 파악</li>
+<li><strong>타임라인 재구성</strong>: 언제, 어떻게 침해가 발생했는지</li>
+</ol>
+<h4 id="디지털-포렌식">디지털 포렌식<a hidden class="anchor" aria-hidden="true" href="#디지털-포렌식">#</a></h4>
+<ul>
+<li><strong>증거 보전</strong>: 로그, 시스템 이미지 등 원본 증거 보전</li>
+<li><strong>무결성 확보</strong>: 해시값 등으로 증거 무결성 확인</li>
+<li><strong>분석 보고서 작성</strong></li>
+</ul>
+<h4 id="초동-조치">초동 조치<a hidden class="anchor" aria-hidden="true" href="#초동-조치">#</a></h4>
+<ul>
+<li>감염 또는 침해된 시스템 <strong>격리</strong></li>
+<li>공격자의 추가 침입 차단</li>
+<li>증거 보전 (시스템 종료 전 메모리 덤프 등)</li>
+</ul>
+<h3 id="35-4단계-대응-containment--eradication">3.5 4단계: 대응 (Containment &amp; Eradication)<a hidden class="anchor" aria-hidden="true" href="#35-4단계-대응-containment--eradication">#</a></h3>
+<h4 id="목적-3">목적<a hidden class="anchor" aria-hidden="true" href="#목적-3">#</a></h4>
+<p>사고를 <strong>억제</strong>하고 <strong>근본 원인을 제거</strong></p>
+<h4 id="단기-대응">단기 대응<a hidden class="anchor" aria-hidden="true" href="#단기-대응">#</a></h4>
+<ol>
+<li><strong>침해 시스템 격리</strong> (네트워크 차단)</li>
+<li><strong>공격 차단</strong> (방화벽 규칙 추가, 계정 잠금 등)</li>
+<li><strong>악성코드 제거</strong></li>
+<li><strong>취약점 패치</strong></li>
+<li><strong>계정 비밀번호 전체 초기화</strong></li>
+</ol>
+<h4 id="장기-대응">장기 대응<a hidden class="anchor" aria-hidden="true" href="#장기-대응">#</a></h4>
+<ol>
+<li><strong>근본 원인 제거</strong>: 취약점 제거, 보안 설정 강화</li>
+<li><strong>보안 아키텍처 개선</strong>: 재발 방지를 위한 구조적 개선</li>
+<li><strong>피해 개인정보 유출 최소화 조치</strong></li>
+</ol>
+<h4 id="법적-대응">법적 대응<a hidden class="anchor" aria-hidden="true" href="#법적-대응">#</a></h4>
+<ul>
+<li>개인정보보호위원회 신고 (해당 시)</li>
+<li>수사기관 신고 (형사 사건 해당 시)</li>
+<li>피해자 통지</li>
+</ul>
+<h3 id="36-5단계-복구-recovery">3.6 5단계: 복구 (Recovery)<a hidden class="anchor" aria-hidden="true" href="#36-5단계-복구-recovery">#</a></h3>
+<h4 id="목적-4">목적<a hidden class="anchor" aria-hidden="true" href="#목적-4">#</a></h4>
+<p>정상적인 <strong>서비스 운영 재개</strong></p>
+<h4 id="복구-절차">복구 절차<a hidden class="anchor" aria-hidden="true" href="#복구-절차">#</a></h4>
+<ol>
+<li><strong>피해 시스템 복구</strong>
+<ul>
+<li>백업 데이터로 복원</li>
+<li>클린 시스템 재구축</li>
+</ul>
+</li>
+<li><strong>보안 패치 적용</strong> 후 서비스 재개</li>
+<li><strong>모니터링 강화</strong>: 복구 후 이상 징후 집중 모니터링</li>
+<li><strong>데이터 무결성 검증</strong></li>
+</ol>
+<h4 id="복구-우선순위">복구 우선순위<a hidden class="anchor" aria-hidden="true" href="#복구-우선순위">#</a></h4>
+<ol>
+<li>핵심 비즈니스 서비스</li>
+<li>개인정보 보호 관련 시스템</li>
+<li>일반 지원 시스템</li>
+</ol>
+<h4 id="rtorpo-고려">RTO/RPO 고려<a hidden class="anchor" aria-hidden="true" href="#rtorpo-고려">#</a></h4>
+<ul>
+<li><strong>RTO</strong> (Recovery Time Objective): 복구 목표 시간</li>
+<li><strong>RPO</strong> (Recovery Point Objective): 복구 목표 시점 (데이터 손실 허용 범위)</li>
+</ul>
+<h3 id="37-6단계-재발-방지-post-incident-activity">3.7 6단계: 재발 방지 (Post-Incident Activity)<a hidden class="anchor" aria-hidden="true" href="#37-6단계-재발-방지-post-incident-activity">#</a></h3>
+<h4 id="목적-5">목적<a hidden class="anchor" aria-hidden="true" href="#목적-5">#</a></h4>
+<p>동일 사고의 <strong>재발 방지</strong> 및 보안 수준 향상</p>
+<h4 id="주요-활동-1">주요 활동<a hidden class="anchor" aria-hidden="true" href="#주요-활동-1">#</a></h4>
+<ol>
+<li>
+<p><strong>사고 분석 보고서 작성</strong></p>
+<ul>
+<li>사고 경위, 원인, 피해 규모</li>
+<li>대응 과정 및 결과</li>
+<li>개선 사항</li>
+</ul>
+</li>
+<li>
+<p><strong>재발 방지 대책 수립</strong></p>
+<ul>
+<li>기술적 개선 (패치, 설정 변경, 시스템 개선)</li>
+<li>관리적 개선 (프로세스 개선, 교육 강화)</li>
+<li>물리적 개선</li>
+</ul>
+</li>
+<li>
+<p><strong>피해자 사후 관리</strong></p>
+<ul>
+<li>추가 피해 발생 모니터링</li>
+<li>피해 구제 지원</li>
+</ul>
+</li>
+<li>
+<p><strong>보고 및 공유</strong></p>
+<ul>
+<li>경영진 보고</li>
+<li>유관 부서 공유</li>
+<li>필요 시 업계 공유</li>
+</ul>
+</li>
+</ol>
+<h2 id="4-유출-통지-시-고려사항">4. 유출 통지 시 고려사항<a hidden class="anchor" aria-hidden="true" href="#4-유출-통지-시-고려사항">#</a></h2>
+<h3 id="41-통지-문안-작성-원칙">4.1 통지 문안 작성 원칙<a hidden class="anchor" aria-hidden="true" href="#41-통지-문안-작성-원칙">#</a></h3>
+<ul>
+<li><strong>명확하고 이해하기 쉬운 언어</strong> 사용</li>
+<li><strong>전문 용어 최소화</strong></li>
+<li><strong>정보주체가 취할 수 있는 조치</strong> 구체적 안내</li>
+<li><strong>지나친 기술적 내용 지양</strong></li>
+</ul>
+<h3 id="42-통지-문안-예시">4.2 통지 문안 예시<a hidden class="anchor" aria-hidden="true" href="#42-통지-문안-예시">#</a></h3>
+<pre tabindex="0"><code>[개인정보 유출 안내]
+
+○○주식회사는 소중한 고객 여러분의 개인정보가 
+외부로 유출된 사실을 알리게 되어 깊이 사과드립니다.
+
+1. 유출 확인 일시: 2025년 X월 X일
+2. 유출된 개인정보 항목: 이름, 이메일, 연락처
+3. 유출 경위: 외부 해킹 공격으로 인해 일부 서버에 
+   침입이 발생하여 개인정보가 유출된 것으로 확인됩니다.
+4. 피해 최소화를 위한 조치:
+   - 해킹 경로 차단 완료
+   - 취약점 패치 완료
+   - 관련 당국 신고 완료
+5. 고객 여러분이 취하실 수 있는 조치:
+   - 비밀번호 즉시 변경
+   - 동일 비밀번호 사용 중인 타 사이트 비밀번호 변경
+   - 이상 금융거래 발생 시 즉시 신고
+6. 문의처: 개인정보 침해신고센터 (☎ 118)
+   담당자: ○○팀 ○○○ (☎ 02-XXX-XXXX)
+</code></pre><h3 id="43-2차-피해-방지-안내">4.3 2차 피해 방지 안내<a hidden class="anchor" aria-hidden="true" href="#43-2차-피해-방지-안내">#</a></h3>
+<p>유출 통지 시 정보주체에게 안내할 사항:</p>
+<ol>
+<li><strong>비밀번호 즉시 변경</strong></li>
+<li><strong>동일 비밀번호 사용 사이트 변경</strong></li>
+<li><strong>본인인증 수단 변경</strong> (주민등록번호 유출 시)</li>
+<li><strong>금융 사기 주의</strong> (금융정보 유출 시)</li>
+<li><strong>스미싱, 피싱 주의</strong></li>
+<li><strong>개인정보 침해신고센터 신고</strong> (118)</li>
+</ol>
+<h2 id="5-주요-기관-및-연락처">5. 주요 기관 및 연락처<a hidden class="anchor" aria-hidden="true" href="#5-주요-기관-및-연락처">#</a></h2>
+<h3 id="51-신고-및-지원-기관">5.1 신고 및 지원 기관<a hidden class="anchor" aria-hidden="true" href="#51-신고-및-지원-기관">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>기관</th>
+          <th>역할</th>
+          <th>연락처</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>개인정보보호위원회</td>
+          <td>행정처분, 과징금</td>
+          <td>privacy.go.kr</td>
+      </tr>
+      <tr>
+          <td>한국인터넷진흥원 (KISA)</td>
+          <td>침해사고 대응 지원</td>
+          <td>krcert.or.kr</td>
+      </tr>
+      <tr>
+          <td>개인정보 침해신고센터</td>
+          <td>피해 신고·상담</td>
+          <td>118</td>
+      </tr>
+      <tr>
+          <td>경찰청 사이버수사대</td>
+          <td>형사 수사</td>
+          <td>cyberbureau.police.go.kr</td>
+      </tr>
+      <tr>
+          <td>금융보안원</td>
+          <td>금융권 침해 대응</td>
+          <td>fsec.or.kr</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="52-kisa-침해사고-신고">5.2 KISA 침해사고 신고<a hidden class="anchor" aria-hidden="true" href="#52-kisa-침해사고-신고">#</a></h3>
+<ul>
+<li><strong>전화</strong>: 118</li>
+<li><strong>이메일</strong>: <a href="mailto:kisc@krcert.or.kr">kisc@krcert.or.kr</a></li>
+<li><strong>온라인</strong>: <a href="https://www.boho.or.kr/">https://www.boho.or.kr/</a></li>
+</ul>
+<h2 id="6-보안-컨설팅-관점의-시사점">6. 보안 컨설팅 관점의 시사점<a hidden class="anchor" aria-hidden="true" href="#6-보안-컨설팅-관점의-시사점">#</a></h2>
+<h3 id="61-사전-예방-체계-구축">6.1 사전 예방 체계 구축<a hidden class="anchor" aria-hidden="true" href="#61-사전-예방-체계-구축">#</a></h3>
+<p>컨설팅 시 클라이언트에게 강조할 사항:</p>
+<ul>
+<li><strong>정기적인 취약점 진단</strong> (연 1회 이상)</li>
+<li><strong>모의침투 테스트</strong> (중요 시스템)</li>
+<li><strong>보안 모니터링</strong> 체계 구축</li>
+<li><strong>DLP 솔루션</strong> 도입 검토</li>
+<li><strong>내부자 위협</strong> 관리 체계</li>
+</ul>
+<h3 id="62-침해사고-대응-계획-수립-지원">6.2 침해사고 대응 계획 수립 지원<a hidden class="anchor" aria-hidden="true" href="#62-침해사고-대응-계획-수립-지원">#</a></h3>
+<p>클라이언트가 준비해야 할 사항:</p>
+<ul>
+<li><strong>IR (Incident Response) 계획서</strong> 수립</li>
+<li><strong>BCP/DRP</strong> 수립</li>
+<li><strong>정기 모의훈련</strong> 실시</li>
+<li><strong>외부 전문기관과의 협력 체계</strong> 구축</li>
+</ul>
+<h3 id="63-유출-통지-프로세스-설계">6.3 유출 통지 프로세스 설계<a hidden class="anchor" aria-hidden="true" href="#63-유출-통지-프로세스-설계">#</a></h3>
+<ul>
+<li><strong>통지 대상 데이터베이스</strong> 확보 (연락처 정보)</li>
+<li><strong>통지 문안 사전 준비</strong></li>
+<li><strong>통지 채널 확보</strong> (이메일, SMS, 우편 등)</li>
+<li><strong>72시간 내 신고</strong> 프로세스 수립</li>
+</ul>
+<h3 id="64-법적-리스크-관리">6.4 법적 리스크 관리<a hidden class="anchor" aria-hidden="true" href="#64-법적-리스크-관리">#</a></h3>
+<p>컨설팅에서 고려해야 할 법적 요소:</p>
+<ul>
+<li>과징금: 위반 행위 관련 <strong>매출액의 3% 이하</strong></li>
+<li>과태료: 최대 <strong>3천만원</strong></li>
+<li>징벌적 손해배상: <strong>실제 손해액의 3배 이하</strong></li>
+<li>형사처벌: <strong>5년 이하 징역 또는 5천만원 이하 벌금</strong></li>
+</ul>
+<h2 id="7-실무-사례">7. 실무 사례<a hidden class="anchor" aria-hidden="true" href="#7-실무-사례">#</a></h2>
+<h3 id="사례-1-대형-쇼핑몰-해킹-사고">사례 1: 대형 쇼핑몰 해킹 사고<a hidden class="anchor" aria-hidden="true" href="#사례-1-대형-쇼핑몰-해킹-사고">#</a></h3>
+<p><strong>상황:</strong>
+대형 쇼핑몰의 DB 서버가 SQL 인젝션 공격을 받아 고객 200만명의 이름, 이메일, 연락처가 유출됨</p>
+<p><strong>대응 절차:</strong></p>
+<ol>
+<li><strong>탐지</strong>: SIEM에서 비정상 쿼리 탐지, 보안팀 확인</li>
+<li><strong>분석</strong>: 침해 경로 분석, 유출 규모 파악 (200만명)</li>
+<li><strong>대응</strong>:
+<ul>
+<li>침해 서버 즉시 격리</li>
+<li>SQL 인젝션 취약점 패치</li>
+<li>방화벽 규칙 강화</li>
+</ul>
+</li>
+<li><strong>신고</strong>: 유출 인지 후 72시간 이내 개인정보보호위원회 신고</li>
+<li><strong>통지</strong>: 200만명 이메일 개별 통지</li>
+<li><strong>복구</strong>: 패치 완료 후 서비스 재개</li>
+<li><strong>재발방지</strong>: 웹 방화벽(WAF) 도입, 정기 모의해킹 실시</li>
+</ol>
+<h3 id="사례-2-직원의-고의적-개인정보-유출">사례 2: 직원의 고의적 개인정보 유출<a hidden class="anchor" aria-hidden="true" href="#사례-2-직원의-고의적-개인정보-유출">#</a></h3>
+<p><strong>상황:</strong>
+콜센터 직원이 퇴직 전 고객 5만명의 개인정보를 USB에 저장하여 반출</p>
+<p><strong>대응 절차:</strong></p>
+<ol>
+<li><strong>탐지</strong>: DLP 솔루션에서 대용량 복사 탐지, 감사팀 조사</li>
+<li><strong>분석</strong>: 반출 데이터 범위 확인</li>
+<li><strong>대응</strong>:
+<ul>
+<li>해당 직원 즉시 업무 배제</li>
+<li>USB 회수 및 데이터 삭제 확인</li>
+<li>수사기관 고소</li>
+</ul>
+</li>
+<li><strong>신고</strong>: 개인정보보호위원회 신고 (1천명 이상)</li>
+<li><strong>통지</strong>: 피해 고객 5만명 SMS 통지</li>
+<li><strong>재발방지</strong>:
+<ul>
+<li>USB 사용 정책 강화</li>
+<li>모든 직원 DLP 솔루션 적용</li>
+<li>퇴직자 계정 관리 강화</li>
+</ul>
+</li>
+</ol>
+<h3 id="사례-3-랜섬웨어-감염">사례 3: 랜섬웨어 감염<a hidden class="anchor" aria-hidden="true" href="#사례-3-랜섬웨어-감염">#</a></h3>
+<p><strong>상황:</strong>
+중소 의료기관이 랜섬웨어에 감염되어 환자 정보가 포함된 파일이 암호화됨</p>
+<p><strong>대응 절차:</strong></p>
+<ol>
+<li><strong>탐지</strong>: 파일 암호화 알림, 관리자 확인</li>
+<li><strong>분석</strong>: 감염 경로 분석, 개인정보 유출 여부 확인</li>
+<li><strong>대응</strong>:
+<ul>
+<li>감염 시스템 즉시 격리</li>
+<li>백업 데이터로 복구 시도</li>
+<li>KISA에 침해사고 신고</li>
+</ul>
+</li>
+<li><strong>유출 여부 판단</strong>:
+<ul>
+<li>랜섬웨어만으로는 유출이 아닌 경우도 있음</li>
+<li>외부 유출 증거가 있으면 통지·신고 의무 발생</li>
+</ul>
+</li>
+<li><strong>복구</strong>: 백업 데이터 복원</li>
+<li><strong>재발방지</strong>:
+<ul>
+<li>오프라인 백업 체계 구축</li>
+<li>직원 보안 교육 강화 (피싱 이메일 주의)</li>
+<li>취약점 패치 강화</li>
+</ul>
+</li>
+</ol>
+<h2 id="8-자주-묻는-질문-faq">8. 자주 묻는 질문 (FAQ)<a hidden class="anchor" aria-hidden="true" href="#8-자주-묻는-질문-faq">#</a></h2>
+<p><strong>Q1. 유출 사실을 인지했지만 정확한 규모를 모를 경우 어떻게 해야 하나요?</strong>
+A. 알고 있는 정보를 바탕으로 우선 신고하고, 이후 추가 조사 결과를 보고하면 됩니다. 72시간 이내 신고가 원칙이므로 조사 완료를 기다리는 것은 바람직하지 않습니다.</p>
+<p><strong>Q2. 유출된 개인정보가 이미 공개된 정보라면 통지해야 하나요?</strong>
+A. 네. 개인정보가 공개된 정보라도 정보주체의 의사에 반하여 유출된 경우 통지 의무가 발생합니다.</p>
+<p><strong>Q3. 수탁자(처리 위탁 업체)에서 유출이 발생한 경우 누가 신고해야 하나요?</strong>
+A. 원칙적으로 <strong>위탁자(개인정보처리자)가 신고</strong>해야 합니다. 수탁자는 위탁자에게 즉시 통보할 의무가 있습니다.</p>
+<p><strong>Q4. 내부 직원의 개인 노트북에 개인정보가 저장되어 있다가 분실된 경우 유출인가요?</strong>
+A. 네. 개인정보처리자의 통제를 벗어난 경우이므로 유출에 해당합니다. 유출 통지 및 신고 의무가 발생합니다.</p>
+<p><strong>Q5. 홈페이지 공지로 통지를 대신할 수 있나요?</strong>
+A. 원칙은 개별 통지입니다. 연락처를 알 수 없거나 개별 통지가 현저히 곤란한 경우에만 홈페이지 공지로 대신할 수 있으며, 30일 이상 게시해야 합니다.</p>
+<h2 id="9-체크리스트">9. 체크리스트<a hidden class="anchor" aria-hidden="true" href="#9-체크리스트">#</a></h2>
+<h3 id="사전-준비">사전 준비<a hidden class="anchor" aria-hidden="true" href="#사전-준비">#</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 침해사고 대응 매뉴얼이 수립되어 있는가?</li>
+<li><input disabled="" type="checkbox"> 사고 대응팀이 구성되어 있고 역할이 명확한가?</li>
+<li><input disabled="" type="checkbox"> 비상 연락망이 구축되어 있는가?</li>
+<li><input disabled="" type="checkbox"> 정기적인 백업 체계가 운영 중인가?</li>
+<li><input disabled="" type="checkbox"> 연 1회 이상 모의훈련을 실시하는가?</li>
+</ul>
+<h3 id="탐지분석">탐지·분석<a hidden class="anchor" aria-hidden="true" href="#탐지분석">#</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 보안 모니터링 체계가 구축되어 있는가?</li>
+<li><input disabled="" type="checkbox"> 이상 징후 탐지 시 즉시 보고 절차가 있는가?</li>
+<li><input disabled="" type="checkbox"> 디지털 포렌식을 위한 증거 보전 절차가 있는가?</li>
+</ul>
+<h3 id="대응신고">대응·신고<a hidden class="anchor" aria-hidden="true" href="#대응신고">#</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 1천명 이상 유출 시 72시간 이내 신고 프로세스가 있는가?</li>
+<li><input disabled="" type="checkbox"> 정보주체 통지 문안이 사전에 준비되어 있는가?</li>
+<li><input disabled="" type="checkbox"> 개별 통지를 위한 연락처 데이터베이스가 최신 상태인가?</li>
+</ul>
+<h3 id="복구재발방지">복구·재발방지<a hidden class="anchor" aria-hidden="true" href="#복구재발방지">#</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 복구 우선순위가 사전에 정의되어 있는가?</li>
+<li><input disabled="" type="checkbox"> 사고 후 분석 보고서를 작성하는가?</li>
+<li><input disabled="" type="checkbox"> 재발 방지 대책을 수립하고 이행하는가?</li>
+</ul>
+<h2 id="학습-정리">학습 정리<a hidden class="anchor" aria-hidden="true" href="#학습-정리">#</a></h2>
+<p>오늘 학습한 핵심 내용:</p>
+<ul>
+<li>개인정보 유출 인지 후 지체 없이 (72시간 이내) 정보주체 통지</li>
+<li>1천명 이상 유출 시 개인정보보호위원회에 72시간 이내 신고</li>
+<li>침해사고 대응은 준비→탐지→분석→대응→복구→재발방지 6단계</li>
+<li>수탁자 유출 시 위탁자가 신고 의무</li>
+<li>사전 준비(IR 계획, 백업, 모의훈련)가 가장 중요</li>
+<li>법적 제재: 과징금 매출액 3%, 징벌적 손해배상 3배</li>
+</ul>
+<h2 id="다음-학습-주제">다음 학습 주제<a hidden class="anchor" aria-hidden="true" href="#다음-학습-주제">#</a></h2>
+<p>Day 08: 개인정보 처리방침 - 처리방침의 작성 및 공개 의무</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/">개인정보보호법</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%9C%A0%EC%B6%9C%ED%86%B5%EC%A7%80/">유출통지</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%B9%A8%ED%95%B4%EC%82%AC%EA%B3%A0%EB%8C%80%EC%9D%91/">침해사고대응</a></li>
+      <li><a href="http://localhost:1313/tags/72%EC%8B%9C%EA%B0%84%EC%8B%A0%EA%B3%A0/">72시간신고</a></li>
+      <li><a href="http://localhost:1313/tags/isms-p/">ISMS-P</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>랜섬웨어 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%EB%9E%9C%EC%84%AC%EC%9B%A8%EC%96%B4/</link>
+    <description>Recent content in 랜섬웨어 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sun, 15 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%EB%9E%9C%EC%84%AC%EC%9B%A8%EC%96%B4/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Conduent 대규모 데이터 유출 사건 분석</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week07/conduent_data_breach/</link>
+      <pubDate>Sun, 15 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week07/conduent_data_breach/</guid>
+      <description>SafePay 랜섬웨어 그룹이 정부 기술 계약업체 Conduent에서 84일간 탐지되지 않고 8.5TB를 유출해 2,500만 명 이상의 의료·개인정보가 노출된 사건 분석</description>
+    </item>
+    <item>
+      <title>Nike 데이터 유출 사건 - WorldLeaks 랜섬웨어 그룹 (2026년 1월)</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week05/nike_worldleakse_breach/</link>
+      <pubDate>Sun, 01 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week05/nike_worldleakse_breach/</guid>
+      <description>WorldLeaks 그룹이 Nike의 미출시 Jordan Brand 디자인을 포함한 1.4TB 데이터를 탈취하고 다크웹 공개로 압박한 데이터 갈취 공격 분석</description>
+    </item>
+    <item>
+      <title>Oltenia Energy Complex Ransomware Attack Disrupts Romanian Critical Infrastructure</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week04/oltenia_energy_ransomware/</link>
+      <pubDate>Sun, 25 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week04/oltenia_energy_ransomware/</guid>
+      <description>크리스마스 연휴를 노린 Gentlemen 랜섬웨어 그룹이 루마니아 전력 30%를 공급하는 Oltenia 에너지 복합체의 ERP·이메일 시스템을 마비시킨 사건 분석</description>
+    </item>
+    <item>
+      <title>Manage My Health 뉴질랜드 의료 포털 랜섬웨어 공격으로 12만 명 환자 정보 유출</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week03/manage_my_health_randsomeware/</link>
+      <pubDate>Sun, 18 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week03/manage_my_health_randsomeware/</guid>
+      <description>유효한 사용자 비밀번호로 &amp;lsquo;정문 침입&amp;rsquo;한 Kazu 랜섬웨어 그룹이 뉴질랜드 최대 환자 포털에서 12만 6천 명의 의료 정보를 탈취한 사건 분석</description>
+    </item>
+    <item>
+      <title>사이버보안 전문가들의 BlackCat 랜섬웨어 범죄 자백 사건</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week02/blackcat_insider_threat/</link>
+      <pubDate>Sun, 11 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week02/blackcat_insider_threat/</guid>
+      <description>인시던트 대응 전문가와 랜섬웨어 협상가가 BlackCat 랜섬웨어로 미국 기업을 직접 공격한 사건 분석</description>
+    </item>
+    <item>
+      <title>Korean Air 직원 데이터 유출 사건 (공급망 공격)</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week01/korean_air_breach/</link>
+      <pubDate>Sun, 04 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week01/korean_air_breach/</guid>
+      <description>Oracle EBS 제로데이 취약점을 통한 공급망 공격으로 대한항공 직원 3만 명 정보가 유출된 사건 분석</description>
+    </item>
+    <item>
+      <title>Marquis Software 랜섬웨어 공격으로 인한 미국 금융기관 대규모 유출</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week01/marquis_ransomeware_breach/</link>
+      <pubDate>Sun, 04 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week01/marquis_ransomeware_breach/</guid>
+      <description>SonicWall 취약점을 악용한 Akira 랜섬웨어 공격으로 74개 미국 금융기관 고객 78만 명 정보가 유출된 사건 분석</description>
+    </item>
+  </channel>
+</rss>

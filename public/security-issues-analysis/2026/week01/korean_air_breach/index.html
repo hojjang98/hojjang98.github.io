@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Korean Air 직원 데이터 유출 사건 (공급망 공격) | HJ&#39;s Security Note</title>
+<meta name="keywords" content="공급망공격, 제로데이, Oracle, Cl0p, 랜섬웨어, 항공산업">
+<meta name="description" content="Oracle EBS 제로데이 취약점을 통한 공급망 공격으로 대한항공 직원 3만 명 정보가 유출된 사건 분석">
+<meta name="author" content="map[autoswitchappearance:false bio:보안법규 분석과 실무 중심 거버넌스를 기록합니다. colorscheme:ocean defaultappearance:light enablecodecopy:true enableimagelazyloading:true enableimagewebp:true enablequicklink:true enablesearch:true fingerprintalgorithm:sha256 headline:Security Governance &amp; Legal Analysis image:profile.jpg links:[map[github:https://github.com/hojjang98]] name:Hojun Choi]">
+<link rel="canonical" href="http://localhost:1313/security-issues-analysis/2026/week01/korean_air_breach/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a29c24210eb31d9ce56f669c66a35c9c51b17376b7764e336a49af7dec914cf0.css" integrity="sha256-opwkIQ6zHZzlb2acZqNcnFGxc3a3dk4zakmvfeyRTPA=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/security-issues-analysis/2026/week01/korean_air_breach/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/" title="프로젝트">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/security-law-study/" title="Security-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/" title="논문 리뷰">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Korean Air 직원 데이터 유출 사건 (공급망 공격)
+    </h1>
+    <div class="post-meta"><span title='2026-01-04 00:00:00 +0000 UTC'>2026년 1월 4일</span>&nbsp;·&nbsp;<span>map[autoswitchappearance:false bio:보안법규 분석과 실무 중심 거버넌스를 기록합니다. colorscheme:ocean defaultappearance:light enablecodecopy:true enableimagelazyloading:true enableimagewebp:true enablequicklink:true enablesearch:true fingerprintalgorithm:sha256 headline:Security Governance &amp; Legal Analysis image:profile.jpg links:[map[github:https://github.com/hojjang98]] name:Hojun Choi]</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="korean-air-직원-데이터-유출-사건-공급망-공격">Korean Air 직원 데이터 유출 사건 (공급망 공격)<a hidden class="anchor" aria-hidden="true" href="#korean-air-직원-데이터-유출-사건-공급망-공격">#</a></h1>
+<h2 id="기사-정보">기사 정보<a hidden class="anchor" aria-hidden="true" href="#기사-정보">#</a></h2>
+<ul>
+<li><strong>출처</strong>: SecurityWeek, BleepingComputer, SecurityAffairs</li>
+<li><strong>작성일</strong>: 2025-12-29</li>
+<li><strong>링크</strong>:
+<ul>
+<li><a href="https://www.securityweek.com/korean-air-data-compromised-in-oracle-ebs-hack/">https://www.securityweek.com/korean-air-data-compromised-in-oracle-ebs-hack/</a></li>
+<li><a href="https://www.bleepingcomputer.com/news/security/korean-air-data-breach-exposes-data-of-thousands-of-employees/">https://www.bleepingcomputer.com/news/security/korean-air-data-breach-exposes-data-of-thousands-of-employees/</a></li>
+</ul>
+</li>
+<li><strong>카테고리</strong>: 공급망 공격 / 데이터 유출 / 제로데이 취약점</li>
+</ul>
+<hr>
+<h2 id="핵심-요약">핵심 요약<a hidden class="anchor" aria-hidden="true" href="#핵심-요약">#</a></h2>
+<p>대한항공의 기내식/면세점 공급업체인 KC&amp;D Service가 Oracle E-Business Suite 제로데이 취약점(CVE-2025-61882)을 통해 공격받아 약 30,000명의 대한항공 직원 정보(이름, 계좌번호)가 유출됨. Cl0p 랜섬웨어 그룹이 배후로 확인되었으며, 동일 캠페인으로 하버드, 워싱턴 포스트, 로지텍 등 100개 이상 조직이 피해를 입음.</p>
+<hr>
+<h2 id="사건이슈-배경">사건/이슈 배경<a hidden class="anchor" aria-hidden="true" href="#사건이슈-배경">#</a></h2>
+<h3 id="무슨-일이-일어났는가">무슨 일이 일어났는가?<a hidden class="anchor" aria-hidden="true" href="#무슨-일이-일어났는가">#</a></h3>
+<p>2025년 12월 29일, 대한항공은 내부 공지를 통해 전·현직 직원 약 30,000명의 개인정보 유출을 공개했다. 공격은 대한항공의 직접 시스템이 아닌, 2020년에 분사한 기내식 및 면세점 운영 업체인 KC&amp;D Service의 ERP 서버를 통해 발생했다. KC&amp;D는 현재 사모펀드 Hahn &amp; Company가 소유하고 있으며, 대한항공 직원 정보를 여전히 보관하고 있었다.</p>
+<p>공격자들은 Oracle E-Business Suite의 BI Publisher Integration 컴포넌트에 존재하는 제로데이 취약점(CVE-2025-61882, CVSS 9.8)을 악용했다. 이 취약점은 인증 없이 원격 코드 실행이 가능하며, 2025년 8월부터 활발히 악용되기 시작했다.</p>
+<h3 id="누가-관련되었는가">누가 관련되었는가?<a hidden class="anchor" aria-hidden="true" href="#누가-관련되었는가">#</a></h3>
+<ul>
+<li><strong>공격자/위협 주체</strong>: Cl0p 랜섬웨어 그룹 (TA505/FIN11로도 알려짐) - 러시아 연계 위협 그룹</li>
+<li><strong>직접 피해자</strong>: KC&amp;D Service (Korean Air Catering &amp; Duty-Free)</li>
+<li><strong>간접 피해자</strong>: 대한항공 직원 약 30,000명</li>
+<li><strong>기타 관련 당사자</strong>:
+<ul>
+<li>Oracle (취약점 존재 소프트웨어 공급자)</li>
+<li>동일 캠페인 피해 조직: Envoy Air, Harvard University, Washington Post, Logitech, University of Pennsylvania, University of Phoenix, Canon, Mazda 등 100개 이상</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="원인-분석">원인 분석<a hidden class="anchor" aria-hidden="true" href="#원인-분석">#</a></h2>
+<h3 id="기술적-원인">기술적 원인<a hidden class="anchor" aria-hidden="true" href="#기술적-원인">#</a></h3>
+<ol>
+<li>
+<p><strong>제로데이 취약점 악용</strong>: CVE-2025-61882는 Oracle EBS의 BI Publisher Integration 컴포넌트에 존재하는 치명적 취약점으로, 다음과 같은 공격 체인을 가능하게 함</p>
+<ul>
+<li>SSRF(Server-Side Request Forgery): 악의적 XML을 포함한 HTTP POST 요청</li>
+<li>CRLF Injection: HTTP 헤더 조작</li>
+<li>Request Smuggling: 인터넷에 노출된 Oracle EBS 애플리케이션 공격</li>
+<li>악성 XSLT 템플릿 로딩 및 실행을 통한 서버 코드 실행</li>
+</ul>
+</li>
+<li>
+<p><strong>인증 우회</strong>: 공격자는 사용자명이나 패스워드 없이 시스템에 접근 가능</p>
+</li>
+<li>
+<p><strong>패치 지연</strong>: Oracle이 10월 초 취약점을 발견하고 패치를 제공했지만, 이미 8월부터 공격이 진행되고 있었음</p>
+</li>
+</ol>
+<h3 id="관리적절차적-원인">관리적/절차적 원인<a hidden class="anchor" aria-hidden="true" href="#관리적절차적-원인">#</a></h3>
+<ol>
+<li>
+<p><strong>공급망 관리 부재</strong>: 대한항공은 2020년 KC&amp;D를 매각했음에도, KC&amp;D가 여전히 직원의 민감한 정보(계좌번호 포함)를 보유하고 있었음. 분사 후 데이터 보유 및 접근 권한에 대한 명확한 관리 절차가 부족했음</p>
+</li>
+<li>
+<p><strong>제3자 보안 감독 미흡</strong>: 공급업체의 보안 상태 및 직원 데이터 보호 수준에 대한 지속적 모니터링 체계가 없었던 것으로 보임</p>
+</li>
+<li>
+<p><strong>사고 탐지 지연</strong>: 2025년 8월부터 공격이 시작되었으나, 12월 말에야 발견됨. Cl0p는 11월 21일 KC&amp;D를 자신들의 유출 사이트에 게시하고 약 500GB의 데이터를 공개했음</p>
+</li>
+</ol>
+<h3 id="인적-원인">인적 원인<a hidden class="anchor" aria-hidden="true" href="#인적-원인">#</a></h3>
+<p>기사에서 인적 원인(예: 피싱, 사회공학 등)에 대한 언급은 없음. 공격은 순수하게 기술적 취약점 악용으로 이루어진 것으로 확인됨.</p>
+<hr>
+<h2 id="영향-및-파급효과">영향 및 파급효과<a hidden class="anchor" aria-hidden="true" href="#영향-및-파급효과">#</a></h2>
+<h3 id="직접적-영향">직접적 영향<a hidden class="anchor" aria-hidden="true" href="#직접적-영향">#</a></h3>
+<ol>
+<li><strong>개인정보 유출</strong>: 약 30,000명의 대한항공 직원 이름 및 계좌번호 노출</li>
+<li><strong>데이터 공개</strong>: Cl0p가 약 500GB의 데이터를 다크웹 유출 사이트에 토렌트로 공개</li>
+<li><strong>고객 데이터는 무사</strong>: 대한항공은 고객 정보나 운영 시스템은 영향받지 않았다고 발표</li>
+</ol>
+<h3 id="간접적-영향">간접적 영향<a hidden class="anchor" aria-hidden="true" href="#간접적-영향">#</a></h3>
+<ol>
+<li><strong>금융 사기 위험</strong>: 계좌번호는 패스워드와 달리 빠르게 변경하기 어려워, 무단 이체나 타겟 사회공학 공격 위험 증가</li>
+<li><strong>직원 신뢰도 저하</strong>: 회사의 데이터 보호 능력에 대한 직원들의 신뢰 손상 가능</li>
+<li><strong>항공 산업 전반 위협</strong>: 같은 기간 아시아나항공도 별도 사건으로 약 10,000명 직원 정보 유출. 항공 산업이 공격 대상으로 부각됨</li>
+<li><strong>산업 전반 파급</strong>: 동일 Oracle EBS 캠페인으로 교육기관(하버드, 펜실베이니아대), 언론(워싱턴 포스트), 제조업(로지텍, 마쓰다) 등 다양한 산업 피해</li>
+</ol>
+<h3 id="예상-피해-규모">예상 피해 규모<a hidden class="anchor" aria-hidden="true" href="#예상-피해-규모">#</a></h3>
+<ul>
+<li>University of Phoenix의 경우 동일 캠페인으로 350만 명 데이터 유출 및 1년 무료 신용 모니터링, 100만 달러 신원 도용 보험 제공</li>
+<li>Cl0p는 2019년 이후 6년간 1,000개 이상 조직을 공격한 것으로 알려짐</li>
+<li>미국 국무부는 Cl0p과 외국 정부의 연관성에 대한 정보 제공 시 1,000만 달러 현상금 제시</li>
+</ul>
+<hr>
+<h2 id="예방-및-대응-방안">예방 및 대응 방안<a hidden class="anchor" aria-hidden="true" href="#예방-및-대응-방안">#</a></h2>
+<h3 id="사전-예방-방법">사전 예방 방법<a hidden class="anchor" aria-hidden="true" href="#사전-예방-방법">#</a></h3>
+<ol>
+<li>
+<p><strong>공급망 보안 강화</strong></p>
+<ul>
+<li>제3자/공급업체와의 데이터 공유 최소화 원칙</li>
+<li>분사/매각 시 데이터 보유 필요성 재평가 및 명확한 데이터 처리 계약</li>
+<li>공급업체 보안 수준 정기 감사 및 인증 요구</li>
+</ul>
+</li>
+<li>
+<p><strong>취약점 관리 체계 구축</strong></p>
+<ul>
+<li>사용 중인 엔터프라이즈 소프트웨어의 보안 패치 모니터링 강화</li>
+<li>제로데이 위협에 대비한 다층 방어(Defense in Depth) 전략</li>
+<li>중요 시스템의 인터넷 노출 최소화</li>
+</ul>
+</li>
+<li>
+<p><strong>데이터 보호 강화</strong></p>
+<ul>
+<li>민감 정보(특히 금융 정보)의 암호화 저장</li>
+<li>최소 권한 원칙 적용</li>
+<li>데이터 접근 로그 모니터링</li>
+</ul>
+</li>
+</ol>
+<h3 id="사고-발생-시-대응-방안">사고 발생 시 대응 방안<a hidden class="anchor" aria-hidden="true" href="#사고-발생-시-대응-방안">#</a></h3>
+<ol>
+<li>
+<p><strong>즉각 대응</strong> (대한항공 실제 조치)</p>
+<ul>
+<li>긴급 보안 조치 실시</li>
+<li>KC&amp;D와의 디지털 연결 차단</li>
+<li>한국인터넷진흥원(KISA) 신고</li>
+</ul>
+</li>
+<li>
+<p><strong>피해자 보호</strong></p>
+<ul>
+<li>영향받은 직원에게 의심스러운 문자/이메일 주의 경고</li>
+<li>피싱 후속 공격 가능성 교육</li>
+<li>금융기관과 협력하여 계좌 모니터링 강화</li>
+</ul>
+</li>
+<li>
+<p><strong>포렌식 조사</strong></p>
+<ul>
+<li>외부 보안 전문가와 협력하여 침해 범위 정확히 파악</li>
+<li>공격 경로 및 타임라인 재구성</li>
+</ul>
+</li>
+</ol>
+<h3 id="재발-방지-대책">재발 방지 대책<a hidden class="anchor" aria-hidden="true" href="#재발-방지-대책">#</a></h3>
+<ol>
+<li>
+<p><strong>공급망 보안 정책 재정립</strong></p>
+<ul>
+<li>분사/매각 시 데이터 마이그레이션 및 삭제 의무화</li>
+<li>공급업체 보안 SLA(Service Level Agreement) 명문화</li>
+<li>정기적 보안 감사 실시</li>
+</ul>
+</li>
+<li>
+<p><strong>엔터프라이즈 소프트웨어 보안 강화</strong></p>
+<ul>
+<li>Oracle EBS와 같은 핵심 시스템의 취약점 스캐닝 자동화</li>
+<li>패치 관리 프로세스 개선 (제로데이 대응 포함)</li>
+</ul>
+</li>
+<li>
+<p><strong>사고 탐지 능력 향상</strong></p>
+<ul>
+<li>SIEM(Security Information and Event Management) 구축</li>
+<li>이상 행위 탐지 시스템 도입</li>
+<li>제3자 시스템 포함 통합 모니터링</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="개인-인사이트">개인 인사이트<a hidden class="anchor" aria-hidden="true" href="#개인-인사이트">#</a></h2>
+<h3 id="배운-점">배운 점<a hidden class="anchor" aria-hidden="true" href="#배운-점">#</a></h3>
+<ol>
+<li>
+<p><strong>제로데이의 광범위한 영향</strong>: CVE-2025-61882 하나로 100개 이상의 조직이 피해를 입었다. 널리 사용되는 엔터프라이즈 소프트웨어의 제로데이는 단일 조직이 아닌 산업 전체에 영향을 미칠 수 있다.</p>
+</li>
+<li>
+<p><strong>공급망 공격의 복잡성</strong>: 공격자는 대한항공을 직접 공격하지 않고, 이미 분사된 공급업체를 통해 간접적으로 데이터에 접근했다. 조직 간 데이터 흐름과 보유 관계를 명확히 파악하고 관리하는 것이 중요하다.</p>
+</li>
+<li>
+<p><strong>Cl0p의 공격 패턴</strong>: Cl0p는 과거 MOVEit Transfer(2023), GoAnywhere MFT, Accellion FTA 등 파일 전송 솔루션의 제로데이를 악용해왔다. 이번에는 ERP 시스템(Oracle EBS)으로 대상을 확장했으며, 최근에는 Gladinet CentreStack으로 이동한 것으로 보고됨. 이들은 널리 사용되는 소프트웨어의 취약점을 체계적으로 악용하는 패턴을 보인다.</p>
+</li>
+<li>
+<p><strong>분사/매각 후 데이터 관리</strong>: 조직이 분사되거나 매각된 후에도 개인정보가 계속 보관될 수 있다. 이런 상황에서의 데이터 소유권, 보호 책임, 삭제 의무 등을 명확히 정의해야 한다.</p>
+</li>
+<li>
+<p><strong>계좌번호 유출의 심각성</strong>: 패스워드는 즉시 변경 가능하지만, 계좌번호는 변경이 어렵다. 금융 정보 유출은 장기적인 사기 위험을 초래할 수 있어 특히 위험하다.</p>
+</li>
+</ol>
+<h3 id="느낀-점">느낀 점<a hidden class="anchor" aria-hidden="true" href="#느낀-점">#</a></h3>
+<p>이 사건은 현대 기업의 디지털 생태계가 얼마나 상호연결되어 있는지, 그리고 그로 인한 보안 위험이 얼마나 복잡한지를 보여준다. 대한항공은 KC&amp;D를 2020년에 매각했지만, 5년이 지난 2025년에도 그 공급업체를 통해 피해를 입었다. 이는 단순히 자사 시스템만 보호하는 것이 아니라, 비즈니스 파트너, 공급망 전체의 보안 수준을 관리해야 한다는 것을 의미한다.</p>
+<p>또한 Cl0p와 같은 조직화된 위협 그룹은 단순히 기회주의적으로 공격하는 것이 아니라, 널리 사용되는 소프트웨어의 취약점을 찾아 체계적으로 대규모 캠페인을 진행한다. 이는 개별 조직의 노력만으로는 방어가 어려우며, 소프트웨어 공급자, 정부 기관, 보안 커뮤니티의 협력이 필요함을 시사한다.</p>
+<h2 id="관련-자료">관련 자료<a hidden class="anchor" aria-hidden="true" href="#관련-자료">#</a></h2>
+<ul>
+<li>CVE-2025-61882 상세 정보: Oracle E-Business Suite BI Publisher Integration 취약점</li>
+<li>Cl0p 랜섬웨어 그룹 프로필: 2019년 이후 활동, TA505/FIN11과 연관</li>
+<li>유사 사례: MOVEit Transfer 캠페인 (2023)</li>
+<li>미국 국무부 Cl0p 현상금: $10,000,000</li>
+</ul>
+<hr>
+<p><strong>분석일</strong>: 2026-01-11<br>
+<strong>키워드</strong>: <code>#공급망공격</code> <code>#제로데이</code> <code>#Oracle</code> <code>#Cl0p</code> <code>#랜섬웨어</code> <code>#항공산업</code></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/%EA%B3%B5%EA%B8%89%EB%A7%9D%EA%B3%B5%EA%B2%A9/">공급망공격</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%A0%9C%EB%A1%9C%EB%8D%B0%EC%9D%B4/">제로데이</a></li>
+      <li><a href="http://localhost:1313/tags/oracle/">Oracle</a></li>
+      <li><a href="http://localhost:1313/tags/cl0p/">Cl0p</a></li>
+      <li><a href="http://localhost:1313/tags/%EB%9E%9C%EC%84%AC%EC%9B%A8%EC%96%B4/">랜섬웨어</a></li>
+      <li><a href="http://localhost:1313/tags/%ED%95%AD%EA%B3%B5%EC%82%B0%EC%97%85/">항공산업</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

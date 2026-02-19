@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>딥페이크 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%EB%94%A5%ED%8E%98%EC%9D%B4%ED%81%AC/</link>
+    <description>Recent content in 딥페이크 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sun, 21 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%EB%94%A5%ED%8E%98%EC%9D%B4%ED%81%AC/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>딥페이크 기술을 활용한 북한 IT 인력 위장 취업 사기</title>
+      <link>http://localhost:1313/security-issues-analysis/2025/week51/deepfake_interview/</link>
+      <pubDate>Sun, 21 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2025/week51/deepfake_interview/</guid>
+      <description>딥페이크 기술로 화상 면접을 통과한 북한 IT 인력의 위장 취업 사례 분석</description>
+    </item>
+  </channel>
+</rss>

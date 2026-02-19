@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>NIS2 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/nis2/</link>
+    <description>Recent content in NIS2 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sun, 25 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/nis2/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Oltenia Energy Complex Ransomware Attack Disrupts Romanian Critical Infrastructure</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week04/oltenia_energy_ransomware/</link>
+      <pubDate>Sun, 25 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week04/oltenia_energy_ransomware/</guid>
+      <description>크리스마스 연휴를 노린 Gentlemen 랜섬웨어 그룹이 루마니아 전력 30%를 공급하는 Oltenia 에너지 복합체의 ERP·이메일 시스템을 마비시킨 사건 분석</description>
+    </item>
+  </channel>
+</rss>

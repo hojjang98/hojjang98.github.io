@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>ShinyHunters on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/shinyhunters/</link>
+    <description>Recent content in ShinyHunters on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sun, 01 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/shinyhunters/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Grubhub 데이터 유출 - Salesloft Drift 공급망 공격의 연쇄 효과 (2026년 1월)</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week05/grubhub_salesloft_breach/</link>
+      <pubDate>Sun, 01 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week05/grubhub_salesloft_breach/</guid>
+      <description>Salesloft Drift 침해로 탈취된 OAuth 토큰이 Grubhub의 Salesforce와 Zendesk까지 연쇄 침해로 이어진 다층 공급망 공격 분석</description>
+    </item>
+  </channel>
+</rss>

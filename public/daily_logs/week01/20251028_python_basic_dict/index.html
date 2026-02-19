@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>2025.10.28 (Day 2) 파이썬 클래스/제어문 및 보안 시스템 설계 로그 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="Python, OOP, 보안시스템설계, SK쉴더스루키즈">
+<meta name="description" content="파이썬 클래스, 제어문 학습 및 보안 시스템 설계 인사이트 정리">
+<meta name="author" content="map[autoswitchappearance:false bio:보안법규 분석과 실무 중심 거버넌스를 기록합니다. colorscheme:ocean defaultappearance:light enablecodecopy:true enableimagelazyloading:true enableimagewebp:true enablequicklink:true enablesearch:true fingerprintalgorithm:sha256 headline:Security Governance &amp; Legal Analysis image:profile.jpg links:[map[github:https://github.com/hojjang98]] name:Hojun Choi]">
+<link rel="canonical" href="http://localhost:1313/daily_logs/week01/20251028_python_basic_dict/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a29c24210eb31d9ce56f669c66a35c9c51b17376b7764e336a49af7dec914cf0.css" integrity="sha256-opwkIQ6zHZzlb2acZqNcnFGxc3a3dk4zakmvfeyRTPA=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/daily_logs/week01/20251028_python_basic_dict/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/" title="프로젝트">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/security-law-study/" title="Security-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/" title="논문 리뷰">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      2025.10.28 (Day 2) 파이썬 클래스/제어문 및 보안 시스템 설계 로그
+    </h1>
+    <div class="post-meta"><span title='2025-10-28 00:00:00 +0000 UTC'>2025년 10월 28일</span>&nbsp;·&nbsp;<span>map[autoswitchappearance:false bio:보안법규 분석과 실무 중심 거버넌스를 기록합니다. colorscheme:ocean defaultappearance:light enablecodecopy:true enableimagelazyloading:true enableimagewebp:true enablequicklink:true enablesearch:true fingerprintalgorithm:sha256 headline:Security Governance &amp; Legal Analysis image:profile.jpg links:[map[github:https://github.com/hojjang98]] name:Hojun Choi]</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="20251028-day-2-클래스-함수-제어구문-딕셔너리-활용">2025.10.28 (Day 2) 클래스, 함수, 제어구문, 딕셔너리 활용<a hidden class="anchor" aria-hidden="true" href="#20251028-day-2-클래스-함수-제어구문-딕셔너리-활용">#</a></h1>
+<h2 id="1-주요-개념-요약">1. 주요 개념 요약<a hidden class="anchor" aria-hidden="true" href="#1-주요-개념-요약">#</a></h2>
+<ul>
+<li><strong>변수와 자료형</strong>: 파이썬의 모든 요소는 객체로 취급된다. 기본 타입과 참조 타입의 특성을 명확히 이해하는 것은 데이터 무결성과 메모리 안전성을 확보하는 기초가 된다. 특히 입력 검증 단계에서 리터럴 값에 대한 타입 확인은 필수적이다.</li>
+<li><strong>함수와 메서드</strong>: 함수는 독립적 실행이 가능한 반면, 메서드는 특정 클래스나 인스턴스에 종속된다. 보안 로직 설계 시 해싱이나 암호화 같은 공통 기능은 함수로, 세션 관리나 사용자 객체 조작 등은 메서드로 구현하여 역할을 분리한다.</li>
+<li><strong>클래스와 객체지향 설계</strong>: 클래스는 보안 시스템의 구성을 명사(속성)와 동사(메서드)로 정의하는 설계도 역할을 한다. Event, Detector 등의 클래스를 설계함으로써 책임 소재를 분리하고 탐지 규칙 적용의 확장성을 높일 수 있다.</li>
+<li><strong>제어구문</strong>: 조건문과 반복문은 필터링 로직의 핵심이다. 리스트 컴프리헨션을 활용하면 로그 데이터에서 특정 필드만 추출하거나 이상 징후를 탐지하는 로직을 간결하게 표현할 수 있다.</li>
+<li><strong>딕셔너리와 구조화</strong>: 키-값 구조는 SIEM 이벤트나 API 응답 표현에 최적화되어 있다. <code>.get()</code> 메서드를 통해 KeyError를 방지하고 기본값을 설정하는 패턴은 데이터 정형화와 자동화 구현 시 안정성을 높인다.</li>
+</ul>
+<hr>
+<h2 id="2-실습-코드-및-응용">2. 실습 코드 및 응용<a hidden class="anchor" aria-hidden="true" href="#2-실습-코드-및-응용">#</a></h2>
+<h3 id="a-리스트-컴프리헨션">A. 리스트 컴프리헨션<a hidden class="anchor" aria-hidden="true" href="#a-리스트-컴프리헨션">#</a></h3>
+<ul>
+<li>단순 반복을 넘어 로그 데이터의 특정 패턴을 빠르게 계산하거나 공격 시도 횟수를 집계하는 필터링 용도로 활용된다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 리스트 내 원소 가공 예시</span>
+</span></span><span style="display:flex;"><span>lst <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>]
+</span></span><span style="display:flex;"><span>res <span style="color:#f92672">=</span> [x <span style="color:#f92672">**</span> <span style="color:#ae81ff">2</span> <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> lst]
+</span></span></code></pre></div><h3 id="b-얕은-복사copy와-깊은-복사deepcopy">B. 얕은 복사(Copy)와 깊은 복사(Deepcopy)<a hidden class="anchor" aria-hidden="true" href="#b-얕은-복사copy와-깊은-복사deepcopy">#</a></h3>
+<ul>
+<li>보안 시스템에서 원본 로그 데이터나 세션 정보의 변조를 막기 위해 <code>deepcopy</code>를 활용한다. 이는 SIEM 전처리 및 모델 학습 과정에서 데이터 무결성을 유지하는 중요한 수단이다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> copy
+</span></span><span style="display:flex;"><span>cache_deep <span style="color:#f92672">=</span> copy<span style="color:#f92672">.</span>deepcopy(obj) <span style="color:#75715e"># 객체 자체를 복제하여 원본 보호</span>
+</span></span></code></pre></div><h3 id="c-딕셔너리-안전-접근">C. 딕셔너리 안전 접근<a hidden class="anchor" aria-hidden="true" href="#c-딕셔너리-안전-접근">#</a></h3>
+<ul>
+<li>JSON 기반 보안 로그 파싱 시 필드 누락으로 인한 시스템 중단을 방지한다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>user <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;admin&#34;</span>, <span style="color:#e6db74">&#34;role&#34;</span>: <span style="color:#e6db74">&#34;user&#34;</span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 키 부재 시 unknown 반환으로 서비스 안정성 확보</span>
+</span></span><span style="display:flex;"><span>print(user<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;id&#34;</span>, <span style="color:#e6db74">&#34;unknown&#34;</span>))
+</span></span></code></pre></div><hr>
+<h2 id="3-보안-관점-분석">3. 보안 관점 분석<a hidden class="anchor" aria-hidden="true" href="#3-보안-관점-분석">#</a></h2>
+<ul>
+<li><strong>객체지향 기반 보안 모듈</strong>: 대부분의 보안 솔루션은 모듈화된 설계를 위해 객체지향을 채택한다. 클래스 구조를 이해하면 SOC나 CERT 환경에서 탐지 규칙을 코드 형태로 체계적으로 관리할 수 있다.</li>
+<li><strong>함수와 메서드의 역할 경계</strong>: 암호화 및 정규화와 같은 공통 연산은 독립 함수로, 세션 폐기(<code>invalidate</code>)와 같은 상태 변화는 인스턴스 메서드로 정의하여 보안 정책의 일관성을 유지한다.</li>
+<li><strong>탐지 정밀도 설계</strong>: 반복문과 조건문의 정교한 조합은 오탐(False Positive)과 미탐(False Negative)의 균형을 결정한다. 동일 IP의 반복적 로그인 실패 탐지 등이 대표적인 활용 사례이다.</li>
+<li><strong>데이터 무결성과 예외 처리</strong>: 탐지 로직 수행 중 발생할 수 있는 데이터 오염을 방지하기 위해 깊은 복사를 지향하며, 단일 예외가 전체 탐지 엔진의 중단으로 이어지지 않도록 예외 상황을 보안 이벤트로 전환하여 관리한다.</li>
+</ul>
+<hr>
+<h2 id="4-요약">4. 요약<a hidden class="anchor" aria-hidden="true" href="#4-요약">#</a></h2>
+<ol>
+<li>파이썬의 핵심 문법 구조는 탐지 엔진, 로그 파서 등 보안 시스템 설계의 근간이 된다.</li>
+<li>딕셔너리 기반의 데이터 모델링과 안전한 접근 패턴은 시스템의 견고함을 결정한다.</li>
+<li>복사 전략과 일관된 예외 처리를 통해 데이터 무결성을 확보하고 안정적인 탐지 시스템을 운영해야 한다.</li>
+</ol>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/python/">Python</a></li>
+      <li><a href="http://localhost:1313/tags/oop/">OOP</a></li>
+      <li><a href="http://localhost:1313/tags/%EB%B3%B4%EC%95%88%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%84%A4%EA%B3%84/">보안시스템설계</a></li>
+      <li><a href="http://localhost:1313/tags/sk%EC%89%B4%EB%8D%94%EC%8A%A4%EB%A3%A8%ED%82%A4%EC%A6%88/">SK쉴더스루키즈</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

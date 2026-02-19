@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>클라우드악용 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%EC%95%85%EC%9A%A9/</link>
+    <description>Recent content in 클라우드악용 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sun, 28 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%EC%95%85%EC%9A%A9/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Azure Blob Storage를 악용한 HTML Smuggling 피싱 캠페인</title>
+      <link>http://localhost:1313/security-issues-analysis/2025/week52/azure_blob_storage_phishing/</link>
+      <pubDate>Sun, 28 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2025/week52/azure_blob_storage_phishing/</guid>
+      <description>Microsoft Azure Blob Storage를 악용한 HTML Smuggling 기법의 대규모 피싱 캠페인 분석</description>
+    </item>
+  </channel>
+</rss>

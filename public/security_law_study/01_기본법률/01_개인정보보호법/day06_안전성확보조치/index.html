@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Day 06: 개인정보의 안전성 확보 조치 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="개인정보보호법, 암호화, 접근통제, 접속기록, 내부관리계획, 개인정보영향평가">
+<meta name="description" content="개인정보 보호를 위한 기술적·관리적·물리적 안전조치와 내부 관리계획 수립, 개인정보 영향평가 제도를 학습합니다.">
+<meta name="author" content="map[autoswitchappearance:false bio:보안법규 분석과 실무 중심 거버넌스를 기록합니다. colorscheme:ocean defaultappearance:light enablecodecopy:true enableimagelazyloading:true enableimagewebp:true enablequicklink:true enablesearch:true fingerprintalgorithm:sha256 headline:Security Governance &amp; Legal Analysis image:profile.jpg links:[map[github:https://github.com/hojjang98]] name:Hojun Choi]">
+<link rel="canonical" href="http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day06_%EC%95%88%EC%A0%84%EC%84%B1%ED%99%95%EB%B3%B4%EC%A1%B0%EC%B9%98/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a29c24210eb31d9ce56f669c66a35c9c51b17376b7764e336a49af7dec914cf0.css" integrity="sha256-opwkIQ6zHZzlb2acZqNcnFGxc3a3dk4zakmvfeyRTPA=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day06_%EC%95%88%EC%A0%84%EC%84%B1%ED%99%95%EB%B3%B4%EC%A1%B0%EC%B9%98/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/" title="프로젝트">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/security-law-study/" title="Security-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/" title="논문 리뷰">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Day 06: 개인정보의 안전성 확보 조치
+    </h1>
+    <div class="post-meta"><span title='2026-02-09 00:00:00 +0000 UTC'>2026년 2월 9일</span>&nbsp;·&nbsp;<span>map[autoswitchappearance:false bio:보안법규 분석과 실무 중심 거버넌스를 기록합니다. colorscheme:ocean defaultappearance:light enablecodecopy:true enableimagelazyloading:true enableimagewebp:true enablequicklink:true enablesearch:true fingerprintalgorithm:sha256 headline:Security Governance &amp; Legal Analysis image:profile.jpg links:[map[github:https://github.com/hojjang98]] name:Hojun Choi]</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="day-06-개인정보의-안전성-확보-조치">Day 06: 개인정보의 안전성 확보 조치<a hidden class="anchor" aria-hidden="true" href="#day-06-개인정보의-안전성-확보-조치">#</a></h1>
+<h2 id="1-안전성-확보-조치의-개요">1. 안전성 확보 조치의 개요<a hidden class="anchor" aria-hidden="true" href="#1-안전성-확보-조치의-개요">#</a></h2>
+<h3 id="11-안전성-확보-조치란">1.1 안전성 확보 조치란?<a hidden class="anchor" aria-hidden="true" href="#11-안전성-확보-조치란">#</a></h3>
+<p>개인정보처리자가 개인정보를 처리함에 있어 개인정보가 <strong>분실, 도난, 유출, 위조, 변조 또는 훼손</strong>되지 않도록 안전성을 확보하기 위해 취해야 하는 <strong>기술적·관리적·물리적 조치</strong>를 말합니다.</p>
+<h3 id="12-법적-근거">1.2 법적 근거<a hidden class="anchor" aria-hidden="true" href="#12-법적-근거">#</a></h3>
+<ul>
+<li><strong>법 제29조</strong>: 안전성 확보 조치 의무</li>
+<li><strong>시행령 제30조</strong>: 안전성 확보 조치 기준</li>
+<li><strong>개인정보의 안전성 확보조치 기준</strong> (개인정보보호위원회 고시): 구체적 이행 기준</li>
+</ul>
+<h3 id="13-안전조치의-3가지-영역">1.3 안전조치의 3가지 영역<a hidden class="anchor" aria-hidden="true" href="#13-안전조치의-3가지-영역">#</a></h3>
+<ol>
+<li><strong>기술적 조치</strong>: 정보시스템에 적용하는 보안 기술</li>
+<li><strong>관리적 조치</strong>: 내부 관리계획, 교육, 접근 통제 등</li>
+<li><strong>물리적 조치</strong>: 물리적 시설 보안</li>
+</ol>
+<h2 id="2-관리적-안전조치">2. 관리적 안전조치<a hidden class="anchor" aria-hidden="true" href="#2-관리적-안전조치">#</a></h2>
+<h3 id="21-내부-관리계획-수립시행-고시-제4조">2.1 내부 관리계획 수립·시행 (고시 제4조)<a hidden class="anchor" aria-hidden="true" href="#21-내부-관리계획-수립시행-고시-제4조">#</a></h3>
+<p>개인정보 처리자는 다음 사항을 포함한 <strong>내부 관리계획</strong>을 수립·시행해야 합니다:</p>
+<h4 id="내부-관리계획-포함-사항">내부 관리계획 포함 사항<a hidden class="anchor" aria-hidden="true" href="#내부-관리계획-포함-사항">#</a></h4>
+<ol>
+<li><strong>개인정보 보호책임자의 지정</strong>에 관한 사항</li>
+<li><strong>개인정보 보호책임자 및 개인정보취급자의 역할 및 책임</strong>에 관한 사항</li>
+<li><strong>개인정보의 안전성 확보에 필요한 조치</strong>에 관한 사항</li>
+<li><strong>개인정보취급자에 대한 교육</strong>에 관한 사항</li>
+<li><strong>개인정보 처리업무를 위탁하는 경우</strong> 수탁자에 대한 관리 및 감독에 관한 사항</li>
+<li><strong>그 밖에 개인정보 보호를 위해 필요한 사항</strong></li>
+</ol>
+<h4 id="수립-주기">수립 주기<a hidden class="anchor" aria-hidden="true" href="#수립-주기">#</a></h4>
+<ul>
+<li>최소 연 1회 이상 검토 및 개선</li>
+</ul>
+<h4 id="실무-예시">실무 예시<a hidden class="anchor" aria-hidden="true" href="#실무-예시">#</a></h4>
+<pre tabindex="0"><code>&lt;내부 관리계획 목차 예시&gt;
+1. 목적
+2. 적용 범위
+3. 개인정보 보호 조직
+   3.1 개인정보 보호책임자
+   3.2 개인정보취급자
+4. 개인정보의 안전성 확보 조치
+   4.1 접근 통제
+   4.2 암호화
+   4.3 접속 기록 보관
+5. 개인정보 처리 단계별 절차
+6. 교육 계획
+7. 위탁 관리
+8. 침해사고 대응
+</code></pre><h3 id="22-개인정보-보호책임자-지정-법-제31조">2.2 개인정보 보호책임자 지정 (법 제31조)<a hidden class="anchor" aria-hidden="true" href="#22-개인정보-보호책임자-지정-법-제31조">#</a></h3>
+<h4 id="지정-의무">지정 의무<a hidden class="anchor" aria-hidden="true" href="#지정-의무">#</a></h4>
+<p>개인정보처리자는 <strong>개인정보 보호책임자</strong>를 지정해야 합니다.</p>
+<h4 id="지정-대상">지정 대상<a hidden class="anchor" aria-hidden="true" href="#지정-대상">#</a></h4>
+<ul>
+<li>공공기관: 의무</li>
+<li>민간: 다음 중 하나에 해당하는 경우
+<ul>
+<li>전년도 말 기준 <strong>직전 3개월간 개인정보가 저장·관리되고 있는 이용자 수가 일일평균 100만명 이상</strong>인 정보통신서비스 제공자</li>
+<li>개인정보 처리자 중 대통령령으로 정한 기준에 해당하는 자</li>
+</ul>
+</li>
+</ul>
+<h4 id="책임자-요건">책임자 요건<a hidden class="anchor" aria-hidden="true" href="#책임자-요건">#</a></h4>
+<ul>
+<li>개인정보 보호 업무를 총괄하여 책임질 수 있는 지위에 있는 사람</li>
+<li>임원급 이상 권장</li>
+</ul>
+<h4 id="주요-업무">주요 업무<a hidden class="anchor" aria-hidden="true" href="#주요-업무">#</a></h4>
+<ol>
+<li>개인정보 보호 계획의 수립 및 시행</li>
+<li>개인정보 처리 실태 및 관행의 정기적인 조사 및 개선</li>
+<li>개인정보 처리와 관련한 불만의 처리 및 피해 구제</li>
+<li>개인정보 유출 및 오용·남용 방지를 위한 내부통제시스템의 구축</li>
+<li>개인정보 보호 교육 계획 수립 및 시행</li>
+<li>개인정보파일의 보호 및 관리·감독</li>
+<li>개인정보 처리방침의 수립·변경 및 시행</li>
+<li>개인정보 보호 관련 자료의 관리</li>
+<li>처리 목적이 달성되거나 보유기간이 지난 개인정보의 파기</li>
+</ol>
+<h3 id="23-개인정보취급자에-대한-교육-고시-제4조-제4항">2.3 개인정보취급자에 대한 교육 (고시 제4조 제4항)<a hidden class="anchor" aria-hidden="true" href="#23-개인정보취급자에-대한-교육-고시-제4조-제4항">#</a></h3>
+<h4 id="교육-의무">교육 의무<a hidden class="anchor" aria-hidden="true" href="#교육-의무">#</a></h4>
+<ul>
+<li>개인정보취급자에게 <strong>연 1회 이상</strong> 개인정보 보호 교육 실시</li>
+</ul>
+<h4 id="교육-내용">교육 내용<a hidden class="anchor" aria-hidden="true" href="#교육-내용">#</a></h4>
+<ol>
+<li>개인정보 보호 법령 및 내부 관리계획</li>
+<li>개인정보 보호 관련 역할과 책임</li>
+<li>개인정보 침해사고 대응 절차</li>
+<li>개인정보 유출 방지 및 보안 조치</li>
+<li>최신 개인정보 보호 동향</li>
+</ol>
+<h4 id="교육-방법">교육 방법<a hidden class="anchor" aria-hidden="true" href="#교육-방법">#</a></h4>
+<ul>
+<li>집합 교육</li>
+<li>온라인 교육</li>
+<li>외부 전문기관 교육</li>
+</ul>
+<h4 id="교육-이력-관리">교육 이력 관리<a hidden class="anchor" aria-hidden="true" href="#교육-이력-관리">#</a></h4>
+<ul>
+<li>교육 일시, 내용, 참석자 기록 보관</li>
+</ul>
+<h3 id="24-접근-권한의-관리-고시-제5조">2.4 접근 권한의 관리 (고시 제5조)<a hidden class="anchor" aria-hidden="true" href="#24-접근-권한의-관리-고시-제5조">#</a></h3>
+<h4 id="접근-권한-부여">접근 권한 부여<a hidden class="anchor" aria-hidden="true" href="#접근-권한-부여">#</a></h4>
+<ul>
+<li>개인정보취급자에게 <strong>업무 수행에 필요한 최소한의 범위</strong>로 접근 권한 부여</li>
+<li>직무 변경 시 즉시 권한 변경 또는 말소</li>
+</ul>
+<h4 id="권한-관리-원칙">권한 관리 원칙<a hidden class="anchor" aria-hidden="true" href="#권한-관리-원칙">#</a></h4>
+<ul>
+<li><strong>최소 권한의 원칙</strong> (Principle of Least Privilege)</li>
+<li><strong>직무 분리</strong> (Separation of Duties)</li>
+<li><strong>Need-to-Know 원칙</strong></li>
+</ul>
+<h4 id="권한-부여-절차">권한 부여 절차<a hidden class="anchor" aria-hidden="true" href="#권한-부여-절차">#</a></h4>
+<ol>
+<li>권한 신청</li>
+<li>승인</li>
+<li>권한 부여</li>
+<li>정기적 권한 검토 (최소 연 1회)</li>
+<li>퇴직·직무 변경 시 즉시 말소</li>
+</ol>
+<h4 id="특수-권한-관리">특수 권한 관리<a hidden class="anchor" aria-hidden="true" href="#특수-권한-관리">#</a></h4>
+<ul>
+<li>관리자 권한은 최소한으로 제한</li>
+<li>특수 권한(root, administrator 등) 사용 시 로그 기록</li>
+</ul>
+<h3 id="25-접근-통제-고시-제6조">2.5 접근 통제 (고시 제6조)<a hidden class="anchor" aria-hidden="true" href="#25-접근-통제-고시-제6조">#</a></h3>
+<h4 id="접근-통제-대상">접근 통제 대상<a hidden class="anchor" aria-hidden="true" href="#접근-통제-대상">#</a></h4>
+<ul>
+<li>개인정보처리시스템</li>
+<li>개인정보가 저장된 데이터베이스</li>
+<li>개인정보가 저장된 보조저장매체</li>
+</ul>
+<h4 id="접근-통제-방법">접근 통제 방법<a hidden class="anchor" aria-hidden="true" href="#접근-통제-방법">#</a></h4>
+<ol>
+<li>
+<p><strong>사용자 계정 관리</strong></p>
+<ul>
+<li>개인별 계정 부여 (공용 계정 금지)</li>
+<li>비밀번호 설정 규칙 준수</li>
+</ul>
+</li>
+<li>
+<p><strong>세션 관리</strong></p>
+<ul>
+<li>일정 시간 동안 입력이 없으면 자동 로그아웃</li>
+</ul>
+</li>
+<li>
+<p><strong>네트워크 접근 통제</strong></p>
+<ul>
+<li>방화벽 설치</li>
+<li>IP 주소 기반 접근 제한</li>
+<li>VPN 등 안전한 접속 수단 제공</li>
+</ul>
+</li>
+<li>
+<p><strong>외부에서의 접근 통제</strong></p>
+<ul>
+<li>인터넷을 통한 외부 접속 시 안전한 인증 수단 적용</li>
+<li>가상사설망(VPN) 또는 전용선 등 안전한 접속 수단 이용</li>
+</ul>
+</li>
+</ol>
+<h2 id="3-기술적-안전조치">3. 기술적 안전조치<a hidden class="anchor" aria-hidden="true" href="#3-기술적-안전조치">#</a></h2>
+<h3 id="31-개인정보의-암호화-고시-제7조">3.1 개인정보의 암호화 (고시 제7조)<a hidden class="anchor" aria-hidden="true" href="#31-개인정보의-암호화-고시-제7조">#</a></h3>
+<h4 id="암호화-대상">암호화 대상<a hidden class="anchor" aria-hidden="true" href="#암호화-대상">#</a></h4>
+<h5 id="1-필수-암호화-대상">(1) 필수 암호화 대상<a hidden class="anchor" aria-hidden="true" href="#1-필수-암호화-대상">#</a></h5>
+<ul>
+<li><strong>비밀번호</strong>: 일방향 암호화 저장</li>
+<li><strong>주민등록번호</strong>: 암호화 저장 또는 안전한 일방향 암호화 저장</li>
+<li><strong>고유식별정보</strong> (여권번호, 운전면허번호, 외국인등록번호): 암호화 저장</li>
+<li><strong>바이오정보</strong> (지문, 홍채, 음성, 필적 등): 암호화 저장</li>
+<li><strong>인터넷 구간 전송 시</strong>: 암호화 전송</li>
+</ul>
+<h5 id="2-권고-암호화-대상">(2) 권고 암호화 대상<a hidden class="anchor" aria-hidden="true" href="#2-권고-암호화-대상">#</a></h5>
+<ul>
+<li>민감정보</li>
+<li>신용카드번호, 계좌번호</li>
+</ul>
+<h4 id="암호화-기준">암호화 기준<a hidden class="anchor" aria-hidden="true" href="#암호화-기준">#</a></h4>
+<h5 id="비밀번호">비밀번호<a hidden class="anchor" aria-hidden="true" href="#비밀번호">#</a></h5>
+<ul>
+<li><strong>일방향 암호화</strong> (복호화 불가능)</li>
+<li>안전한 해시 알고리즘 사용 (SHA-256 이상)</li>
+<li><strong>솔트(Salt)</strong> 적용 권장</li>
+</ul>
+<h5 id="주민등록번호-등-고유식별정보">주민등록번호 등 고유식별정보<a hidden class="anchor" aria-hidden="true" href="#주민등록번호-등-고유식별정보">#</a></h5>
+<ul>
+<li><strong>양방향 암호화</strong> 또는 <strong>일방향 암호화</strong></li>
+<li>안전한 암호 알고리즘 사용:
+<ul>
+<li>대칭키: AES-256, ARIA-256</li>
+<li>비대칭키: RSA-2048 이상</li>
+</ul>
+</li>
+</ul>
+<h5 id="전송-구간-암호화">전송 구간 암호화<a hidden class="anchor" aria-hidden="true" href="#전송-구간-암호화">#</a></h5>
+<ul>
+<li><strong>TLS 1.2 이상</strong> 사용</li>
+<li>안전한 암호화 스위트 적용</li>
+</ul>
+<h4 id="암호키-관리">암호키 관리<a hidden class="anchor" aria-hidden="true" href="#암호키-관리">#</a></h4>
+<ul>
+<li>암호키는 개인정보와 <strong>별도 분리 보관</strong></li>
+<li>암호키 접근 권한 통제</li>
+<li>정기적인 암호키 변경 (최소 연 1회 이상 권장)</li>
+</ul>
+<h3 id="32-접속-기록의-보관-및-점검-고시-제8조">3.2 접속 기록의 보관 및 점검 (고시 제8조)<a hidden class="anchor" aria-hidden="true" href="#32-접속-기록의-보관-및-점검-고시-제8조">#</a></h3>
+<h4 id="접속-기록-보관-의무">접속 기록 보관 의무<a hidden class="anchor" aria-hidden="true" href="#접속-기록-보관-의무">#</a></h4>
+<p>개인정보취급자가 개인정보처리시스템에 접속한 기록을 <strong>최소 2년 이상</strong> 보관·관리해야 합니다.</p>
+<p><strong>기록 대상 (100만명 이상 정보통신서비스 제공자는 6개월 이상)</strong></p>
+<h4 id="기록-항목">기록 항목<a hidden class="anchor" aria-hidden="true" href="#기록-항목">#</a></h4>
+<ol>
+<li>접속자 ID</li>
+<li>접속 일시</li>
+<li>접속자 IP 주소</li>
+<li>처리한 정보주체 정보</li>
+<li>수행 업무 (열람, 수정, 삭제 등)</li>
+</ol>
+<h4 id="접속-기록-점검">접속 기록 점검<a hidden class="anchor" aria-hidden="true" href="#접속-기록-점검">#</a></h4>
+<ul>
+<li><strong>월 1회 이상</strong> 접속 기록 점검</li>
+<li>이상 징후 발견 시 즉시 대응</li>
+<li>점검 결과 기록 보관</li>
+</ul>
+<h4 id="접속-기록-위변조-방지">접속 기록 위변조 방지<a hidden class="anchor" aria-hidden="true" href="#접속-기록-위변조-방지">#</a></h4>
+<ul>
+<li>접속 기록을 안전하게 보관하여 <strong>위·변조 방지</strong></li>
+<li>백업 및 이중화</li>
+</ul>
+<h3 id="33-보안-프로그램-설치-및-운영-고시-제9조">3.3 보안 프로그램 설치 및 운영 (고시 제9조)<a hidden class="anchor" aria-hidden="true" href="#33-보안-프로그램-설치-및-운영-고시-제9조">#</a></h3>
+<h4 id="악성코드-방지">악성코드 방지<a hidden class="anchor" aria-hidden="true" href="#악성코드-방지">#</a></h4>
+<ul>
+<li><strong>백신 프로그램</strong> 설치 및 운영</li>
+<li>최신 버전 유지 및 <strong>실시간 감시</strong></li>
+<li>정기적인 <strong>패턴 업데이트</strong></li>
+</ul>
+<h4 id="보안-패치">보안 패치<a hidden class="anchor" aria-hidden="true" href="#보안-패치">#</a></h4>
+<ul>
+<li>운영체제, 응용 프로그램의 <strong>보안 패치</strong>를 주기적으로 점검·적용</li>
+<li>중요 보안 패치는 <strong>즉시 적용</strong></li>
+</ul>
+<h3 id="34-개인정보의-파기-고시-제10조">3.4 개인정보의 파기 (고시 제10조)<a hidden class="anchor" aria-hidden="true" href="#34-개인정보의-파기-고시-제10조">#</a></h3>
+<h4 id="파기-시점">파기 시점<a hidden class="anchor" aria-hidden="true" href="#파기-시점">#</a></h4>
+<ul>
+<li>개인정보의 <strong>보유기간 경과</strong></li>
+<li>개인정보의 <strong>처리 목적 달성</strong></li>
+<li>서비스 해지 또는 <strong>이용자 탈퇴</strong></li>
+</ul>
+<h4 id="파기-방법">파기 방법<a hidden class="anchor" aria-hidden="true" href="#파기-방법">#</a></h4>
+<h5 id="1-전자적-파일">(1) 전자적 파일<a hidden class="anchor" aria-hidden="true" href="#1-전자적-파일">#</a></h5>
+<ul>
+<li><strong>복구 및 재생되지 않도록 안전하게 삭제</strong></li>
+<li>방법:
+<ul>
+<li>완전 삭제 (Low Level Format)</li>
+<li>덮어쓰기 (Overwriting)</li>
+<li>물리적 파쇄 (저장매체 파괴)</li>
+</ul>
+</li>
+</ul>
+<h5 id="2-기록물-인쇄물-서면-등">(2) 기록물, 인쇄물, 서면 등<a hidden class="anchor" aria-hidden="true" href="#2-기록물-인쇄물-서면-등">#</a></h5>
+<ul>
+<li><strong>파쇄 또는 소각</strong></li>
+</ul>
+<h5 id="3-파기-불가-시-법령상-보존-의무">(3) 파기 불가 시 (법령상 보존 의무)<a hidden class="anchor" aria-hidden="true" href="#3-파기-불가-시-법령상-보존-의무">#</a></h5>
+<ul>
+<li>다른 개인정보와 <strong>분리 보관</strong></li>
+<li>별도 데이터베이스 또는 별도 저장 공간 활용</li>
+<li>보존 기간 경과 후 즉시 파기</li>
+</ul>
+<h4 id="파기-절차">파기 절차<a hidden class="anchor" aria-hidden="true" href="#파기-절차">#</a></h4>
+<ol>
+<li>파기 대상 개인정보 선정</li>
+<li>파기 계획 수립</li>
+<li>파기 실행</li>
+<li>파기 완료 기록 및 보관</li>
+</ol>
+<h4 id="파기-이력-관리">파기 이력 관리<a hidden class="anchor" aria-hidden="true" href="#파기-이력-관리">#</a></h4>
+<ul>
+<li>파기 일시, 방법, 담당자 기록 보관</li>
+</ul>
+<h2 id="4-물리적-안전조치">4. 물리적 안전조치<a hidden class="anchor" aria-hidden="true" href="#4-물리적-안전조치">#</a></h2>
+<h3 id="41-물리적-접근-통제-고시-제11조">4.1 물리적 접근 통제 (고시 제11조)<a hidden class="anchor" aria-hidden="true" href="#41-물리적-접근-통제-고시-제11조">#</a></h3>
+<h4 id="통제-대상">통제 대상<a hidden class="anchor" aria-hidden="true" href="#통제-대상">#</a></h4>
+<ul>
+<li>전산실, 자료 보관실 등 개인정보를 보관하고 있는 <strong>물리적 보관 장소</strong></li>
+</ul>
+<h4 id="통제-방법">통제 방법<a hidden class="anchor" aria-hidden="true" href="#통제-방법">#</a></h4>
+<ol>
+<li><strong>출입 통제 절차</strong> 수립·운영</li>
+<li><strong>출입 기록</strong> 보관 및 관리 (최소 3년)</li>
+<li><strong>출입자 인증</strong> (출입증, 생체인증, 비밀번호 등)</li>
+<li><strong>CCTV</strong> 설치 등 물리적 감시</li>
+</ol>
+<h4 id="보관-시설-보안">보관 시설 보안<a hidden class="anchor" aria-hidden="true" href="#보관-시설-보안">#</a></h4>
+<ul>
+<li><strong>잠금장치</strong> 설치</li>
+<li><strong>화재 감지·소화 설비</strong> 설치</li>
+<li><strong>온·습도 조절 장치</strong></li>
+</ul>
+<h3 id="42-개인정보의-안전한-보관-고시-제12조">4.2 개인정보의 안전한 보관 (고시 제12조)<a hidden class="anchor" aria-hidden="true" href="#42-개인정보의-안전한-보관-고시-제12조">#</a></h3>
+<h4 id="서면-자료">서면 자료<a hidden class="anchor" aria-hidden="true" href="#서면-자료">#</a></h4>
+<ul>
+<li><strong>잠금장치가 있는 캐비닛</strong> 또는 서랍에 보관</li>
+<li>접근 권한이 있는 자만 열람 가능</li>
+</ul>
+<h4 id="보조저장매체">보조저장매체<a hidden class="anchor" aria-hidden="true" href="#보조저장매체">#</a></h4>
+<ul>
+<li><strong>암호화</strong> 저장</li>
+<li><strong>잠금장치</strong>가 있는 안전한 장소에 보관</li>
+<li>외부 반출 시 승인 절차 및 기록</li>
+</ul>
+<h4 id="개인정보-파기-장비">개인정보 파기 장비<a hidden class="anchor" aria-hidden="true" href="#개인정보-파기-장비">#</a></h4>
+<ul>
+<li>파쇄기 등 파기 장비 비치</li>
+</ul>
+<h2 id="5-개인정보-영향평가-법-제33조">5. 개인정보 영향평가 (법 제33조)<a hidden class="anchor" aria-hidden="true" href="#5-개인정보-영향평가-법-제33조">#</a></h2>
+<h3 id="51-영향평가란">5.1 영향평가란?<a hidden class="anchor" aria-hidden="true" href="#51-영향평가란">#</a></h3>
+<p>개인정보파일의 운용으로 인해 <strong>정보주체의 개인정보 침해가 우려되는 경우</strong>, 그 위험요인을 분석·평가하여 개선 방안을 도출하는 절차</p>
+<h3 id="52-평가-대상">5.2 평가 대상<a hidden class="anchor" aria-hidden="true" href="#52-평가-대상">#</a></h3>
+<p>다음 중 하나에 해당하는 경우 <strong>의무적으로</strong> 개인정보 영향평가를 수행해야 합니다:</p>
+<ol>
+<li><strong>5만명 이상의 정보주체에 관한</strong> 민감정보 또는 고유식별정보의 처리가 수반되는 개인정보파일의 <strong>구축·운용 또는 변경</strong></li>
+<li>100만명 이상의 정보주체에 관한 개인정보파일의 <strong>구축·운용 또는 변경</strong></li>
+<li>법 제33조 제1항에 따른 <strong>영향평가를 받은 후 개인정보 검색체계 등 개인정보파일의 운용 체계를 변경</strong>하는 경우</li>
+</ol>
+<h3 id="53-평가-시기">5.3 평가 시기<a hidden class="anchor" aria-hidden="true" href="#53-평가-시기">#</a></h3>
+<p>개인정보파일 <strong>운용 전</strong> 또는 <strong>변경 전</strong>에 수행</p>
+<h3 id="54-평가-기관">5.4 평가 기관<a hidden class="anchor" aria-hidden="true" href="#54-평가-기관">#</a></h3>
+<ul>
+<li><strong>한국인터넷진흥원</strong> 또는 개인정보보호위원회가 지정한 기관</li>
+</ul>
+<h3 id="55-평가-항목">5.5 평가 항목<a hidden class="anchor" aria-hidden="true" href="#55-평가-항목">#</a></h3>
+<ol>
+<li>처리하는 개인정보의 <strong>수, 종류, 민감도</strong></li>
+<li>개인정보의 <strong>처리 목적 및 필요성</strong></li>
+<li>개인정보 <strong>유출 시 영향</strong></li>
+<li>개인정보 <strong>기술적·관리적·물리적 보호조치</strong></li>
+<li>개인정보 <strong>처리 업무 흐름</strong></li>
+<li>개인정보 <strong>침해 위험도</strong></li>
+</ol>
+<h3 id="56-평가-결과-조치">5.6 평가 결과 조치<a hidden class="anchor" aria-hidden="true" href="#56-평가-결과-조치">#</a></h3>
+<ul>
+<li>평가 결과 <strong>개선 권고사항</strong>이 있으면 이를 <strong>반영</strong>하거나 <strong>불반영 사유를 소명</strong>해야 함</li>
+<li>평가 결과는 <strong>공개</strong> (다만, 공개 시 개인정보 침해 우려가 있는 부분은 제외)</li>
+</ul>
+<h2 id="6-보안-컨설팅-관점의-설계-원칙">6. 보안 컨설팅 관점의 설계 원칙<a hidden class="anchor" aria-hidden="true" href="#6-보안-컨설팅-관점의-설계-원칙">#</a></h2>
+<h3 id="61-심층-방어-defense-in-depth">6.1 심층 방어 (Defense in Depth)<a hidden class="anchor" aria-hidden="true" href="#61-심층-방어-defense-in-depth">#</a></h3>
+<p>단일 보안 통제가 아닌 <strong>다층적 보안 통제</strong>를 적용:</p>
+<ul>
+<li>네트워크 레벨: 방화벽, IPS</li>
+<li>시스템 레벨: 접근 통제, 패치 관리</li>
+<li>애플리케이션 레벨: 입력 검증, 세션 관리</li>
+<li>데이터 레벨: 암호화</li>
+</ul>
+<h3 id="62-zero-trust-원칙">6.2 Zero Trust 원칙<a hidden class="anchor" aria-hidden="true" href="#62-zero-trust-원칙">#</a></h3>
+<p><strong>&ldquo;신뢰하되 검증하라&quot;가 아닌 &ldquo;절대 신뢰하지 말고 항상 검증하라&rdquo;</strong></p>
+<ul>
+<li>모든 접근 요청에 대해 인증·인가</li>
+<li>내부 네트워크라도 접근 통제 적용</li>
+</ul>
+<h3 id="63-privacy-by-design">6.3 Privacy by Design<a hidden class="anchor" aria-hidden="true" href="#63-privacy-by-design">#</a></h3>
+<p>시스템 설계 단계부터 개인정보보호를 고려:</p>
+<ul>
+<li>필요 최소한의 개인정보만 수집·처리</li>
+<li>기본값을 가장 프라이버시 친화적으로 설정</li>
+<li>암호화, 접근통제 등 보안 조치를 설계 단계부터 반영</li>
+</ul>
+<h3 id="64-보안-사고-대응-체계">6.4 보안 사고 대응 체계<a hidden class="anchor" aria-hidden="true" href="#64-보안-사고-대응-체계">#</a></h3>
+<p>침해사고 발생에 대비한 <strong>사전 준비</strong>:</p>
+<ul>
+<li>사고 대응 절차 수립</li>
+<li>비상 연락망 구축</li>
+<li>정기적인 모의훈련</li>
+<li>백업 및 복구 체계</li>
+</ul>
+<h2 id="7-실무-사례">7. 실무 사례<a hidden class="anchor" aria-hidden="true" href="#7-실무-사례">#</a></h2>
+<h3 id="사례-1-전자상거래-사이트">사례 1: 전자상거래 사이트<a hidden class="anchor" aria-hidden="true" href="#사례-1-전자상거래-사이트">#</a></h3>
+<h4 id="관리적-조치">관리적 조치<a hidden class="anchor" aria-hidden="true" href="#관리적-조치">#</a></h4>
+<ul>
+<li>내부 관리계획 수립</li>
+<li>개인정보 보호책임자 지정 (임원급)</li>
+<li>연 1회 이상 교육 실시</li>
+<li>접근 권한 관리 (직무별 차등 부여)</li>
+</ul>
+<h4 id="기술적-조치">기술적 조치<a hidden class="anchor" aria-hidden="true" href="#기술적-조치">#</a></h4>
+<ul>
+<li>비밀번호: SHA-256 + Salt 일방향 암호화</li>
+<li>신용카드번호: AES-256 암호화</li>
+<li>HTTPS 적용 (TLS 1.2)</li>
+<li>접속 기록 2년 보관, 월 1회 점검</li>
+<li>백신 프로그램 설치 및 자동 업데이트</li>
+</ul>
+<h4 id="물리적-조치">물리적 조치<a hidden class="anchor" aria-hidden="true" href="#물리적-조치">#</a></h4>
+<ul>
+<li>서버실 출입 통제 (지문 인식)</li>
+<li>출입 기록 3년 보관</li>
+<li>CCTV 설치</li>
+<li>화재 감지기 및 소화 설비</li>
+</ul>
+<h3 id="사례-2-병원-정보시스템">사례 2: 병원 정보시스템<a hidden class="anchor" aria-hidden="true" href="#사례-2-병원-정보시스템">#</a></h3>
+<h4 id="관리적-조치-1">관리적 조치<a hidden class="anchor" aria-hidden="true" href="#관리적-조치-1">#</a></h4>
+<ul>
+<li>의료정보 접근 권한: 진료과별, 직무별 차등</li>
+<li>퇴직 직원 계정 즉시 삭제</li>
+<li>개인정보 보호 서약서 징구</li>
+</ul>
+<h4 id="기술적-조치-1">기술적 조치<a hidden class="anchor" aria-hidden="true" href="#기술적-조치-1">#</a></h4>
+<ul>
+<li>진료 기록 암호화 (민감정보)</li>
+<li>주민등록번호 암호화</li>
+<li>접속 기록 보관: 6개월 이상</li>
+<li>외부 접속 차단 (VPN만 허용)</li>
+</ul>
+<h4 id="물리적-조치-1">물리적 조치<a hidden class="anchor" aria-hidden="true" href="#물리적-조치-1">#</a></h4>
+<ul>
+<li>진료 기록 보관실 출입 통제</li>
+<li>의무기록 파기 시 전문 파쇄 업체 위탁</li>
+</ul>
+<h3 id="사례-3-클라우드-서비스-이용-기업">사례 3: 클라우드 서비스 이용 기업<a hidden class="anchor" aria-hidden="true" href="#사례-3-클라우드-서비스-이용-기업">#</a></h3>
+<h4 id="관리적-조치-2">관리적 조치<a hidden class="anchor" aria-hidden="true" href="#관리적-조치-2">#</a></h4>
+<ul>
+<li>클라우드 서비스 제공자와 위탁 계약 체결</li>
+<li>정기적인 보안 점검 실시</li>
+</ul>
+<h4 id="기술적-조치-2">기술적 조치<a hidden class="anchor" aria-hidden="true" href="#기술적-조치-2">#</a></h4>
+<ul>
+<li>클라우드 저장 전 암호화</li>
+<li>전송 구간 암호화 (TLS)</li>
+<li>접근 통제 (IAM 활용)</li>
+</ul>
+<h4 id="물리적-조치-2">물리적 조치<a hidden class="anchor" aria-hidden="true" href="#물리적-조치-2">#</a></h4>
+<ul>
+<li>클라우드 제공자의 물리적 보안 수준 확인</li>
+<li>데이터 센터 위치 및 보안 인증 확인</li>
+</ul>
+<h2 id="8-자주-발생하는-위반-사례">8. 자주 발생하는 위반 사례<a hidden class="anchor" aria-hidden="true" href="#8-자주-발생하는-위반-사례">#</a></h2>
+<h3 id="위반-사례-1-비밀번호-평문-저장">위반 사례 1: 비밀번호 평문 저장<a hidden class="anchor" aria-hidden="true" href="#위반-사례-1-비밀번호-평문-저장">#</a></h3>
+<p>데이터베이스에 비밀번호를 암호화하지 않고 평문으로 저장</p>
+<p><strong>올바른 방법:</strong></p>
+<ul>
+<li>일방향 암호화 (SHA-256 이상 + Salt)</li>
+</ul>
+<h3 id="위반-사례-2-주민등록번호-미암호화">위반 사례 2: 주민등록번호 미암호화<a hidden class="anchor" aria-hidden="true" href="#위반-사례-2-주민등록번호-미암호화">#</a></h3>
+<p>주민등록번호를 암호화하지 않고 저장</p>
+<p><strong>올바른 방법:</strong></p>
+<ul>
+<li>AES-256 등 안전한 알고리즘으로 암호화</li>
+</ul>
+<h3 id="위반-사례-3-http로-개인정보-전송">위반 사례 3: HTTP로 개인정보 전송<a hidden class="anchor" aria-hidden="true" href="#위반-사례-3-http로-개인정보-전송">#</a></h3>
+<p>HTTPS가 아닌 HTTP로 개인정보 전송</p>
+<p><strong>올바른 방법:</strong></p>
+<ul>
+<li>HTTPS(TLS 1.2 이상) 적용</li>
+</ul>
+<h3 id="위반-사례-4-접속-기록-미보관">위반 사례 4: 접속 기록 미보관<a hidden class="anchor" aria-hidden="true" href="#위반-사례-4-접속-기록-미보관">#</a></h3>
+<p>개인정보 접속 기록을 보관하지 않음</p>
+<p><strong>올바른 방법:</strong></p>
+<ul>
+<li>최소 2년 이상 보관</li>
+</ul>
+<h3 id="위반-사례-5-퇴직자-계정-미삭제">위반 사례 5: 퇴직자 계정 미삭제<a hidden class="anchor" aria-hidden="true" href="#위반-사례-5-퇴직자-계정-미삭제">#</a></h3>
+<p>퇴직한 직원의 계정을 삭제하지 않음</p>
+<p><strong>올바른 방법:</strong></p>
+<ul>
+<li>퇴직 즉시 계정 삭제 또는 권한 회수</li>
+</ul>
+<h3 id="위반-사례-6-공용-계정-사용">위반 사례 6: 공용 계정 사용<a hidden class="anchor" aria-hidden="true" href="#위반-사례-6-공용-계정-사용">#</a></h3>
+<p>여러 명이 하나의 계정을 공동 사용</p>
+<p><strong>올바른 방법:</strong></p>
+<ul>
+<li>개인별 계정 부여</li>
+</ul>
+<h3 id="위반-사례-7-보안-패치-미적용">위반 사례 7: 보안 패치 미적용<a hidden class="anchor" aria-hidden="true" href="#위반-사례-7-보안-패치-미적용">#</a></h3>
+<p>중요 보안 취약점에 대한 패치를 장기간 미적용</p>
+<p><strong>올바른 방법:</strong></p>
+<ul>
+<li>보안 패치 정기 점검 및 즉시 적용</li>
+</ul>
+<h2 id="9-체크리스트">9. 체크리스트<a hidden class="anchor" aria-hidden="true" href="#9-체크리스트">#</a></h2>
+<h3 id="관리적-조치-3">관리적 조치<a hidden class="anchor" aria-hidden="true" href="#관리적-조치-3">#</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 내부 관리계획을 수립하고 연 1회 이상 점검하는가?</li>
+<li><input disabled="" type="checkbox"> 개인정보 보호책임자를 지정했는가?</li>
+<li><input disabled="" type="checkbox"> 개인정보취급자에게 연 1회 이상 교육을 실시하는가?</li>
+<li><input disabled="" type="checkbox"> 개인별 계정을 부여하고 최소 권한 원칙을 적용하는가?</li>
+<li><input disabled="" type="checkbox"> 퇴직·직무변경 시 즉시 권한을 회수하는가?</li>
+</ul>
+<h3 id="기술적-조치-3">기술적 조치<a hidden class="anchor" aria-hidden="true" href="#기술적-조치-3">#</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 비밀번호를 안전하게 일방향 암호화하는가?</li>
+<li><input disabled="" type="checkbox"> 주민등록번호 등 고유식별정보를 암호화하는가?</li>
+<li><input disabled="" type="checkbox"> 개인정보를 인터넷으로 전송 시 암호화하는가?</li>
+<li><input disabled="" type="checkbox"> 접속 기록을 2년 이상 보관하고 월 1회 점검하는가?</li>
+<li><input disabled="" type="checkbox"> 백신 프로그램을 설치하고 최신 상태로 유지하는가?</li>
+<li><input disabled="" type="checkbox"> 보안 패치를 주기적으로 적용하는가?</li>
+<li><input disabled="" type="checkbox"> 개인정보를 안전하게 파기하는가?</li>
+</ul>
+<h3 id="물리적-조치-3">물리적 조치<a hidden class="anchor" aria-hidden="true" href="#물리적-조치-3">#</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 개인정보 보관 장소에 출입 통제를 하는가?</li>
+<li><input disabled="" type="checkbox"> 출입 기록을 3년 이상 보관하는가?</li>
+<li><input disabled="" type="checkbox"> 서면 개인정보를 잠금장치가 있는 곳에 보관하는가?</li>
+</ul>
+<h3 id="개인정보-영향평가">개인정보 영향평가<a hidden class="anchor" aria-hidden="true" href="#개인정보-영향평가">#</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 영향평가 대상에 해당하는가?</li>
+<li><input disabled="" type="checkbox"> 영향평가를 수행했는가?</li>
+<li><input disabled="" type="checkbox"> 평가 결과 개선 권고사항을 반영했는가?</li>
+</ul>
+<h2 id="10-최신-보안-동향-및-강화된-조치">10. 최신 보안 동향 및 강화된 조치<a hidden class="anchor" aria-hidden="true" href="#10-최신-보안-동향-및-강화된-조치">#</a></h2>
+<h3 id="101-다단계-인증-mfa-multi-factor-authentication">10.1 다단계 인증 (MFA: Multi-Factor Authentication)<a hidden class="anchor" aria-hidden="true" href="#101-다단계-인증-mfa-multi-factor-authentication">#</a></h3>
+<p>비밀번호 외에 추가 인증 수단 적용:</p>
+<ul>
+<li>SMS 인증</li>
+<li>OTP (One-Time Password)</li>
+<li>생체 인증 (지문, 얼굴 인식)</li>
+</ul>
+<h3 id="102-데이터-무결성-검증">10.2 데이터 무결성 검증<a hidden class="anchor" aria-hidden="true" href="#102-데이터-무결성-검증">#</a></h3>
+<p>개인정보의 위·변조 방지를 위한 무결성 검증:</p>
+<ul>
+<li>해시값 비교</li>
+<li>전자서명</li>
+</ul>
+<h3 id="103-aiml-기반-이상-탐지">10.3 AI/ML 기반 이상 탐지<a hidden class="anchor" aria-hidden="true" href="#103-aiml-기반-이상-탐지">#</a></h3>
+<p>접속 기록 분석을 통한 이상 징후 자동 탐지:</p>
+<ul>
+<li>비정상적인 접근 패턴 감지</li>
+<li>대량 다운로드 탐지</li>
+<li>이상 시간대 접속 경고</li>
+</ul>
+<h3 id="104-개인정보-비식별화">10.4 개인정보 비식별화<a hidden class="anchor" aria-hidden="true" href="#104-개인정보-비식별화">#</a></h3>
+<p>개인정보의 활용을 위한 비식별 조치:</p>
+<ul>
+<li>가명처리</li>
+<li>총계처리</li>
+<li>데이터 삭제</li>
+<li>범주화</li>
+<li>데이터 마스킹</li>
+</ul>
+<h3 id="105-개인정보-라이프사이클-관리">10.5 개인정보 라이프사이클 관리<a hidden class="anchor" aria-hidden="true" href="#105-개인정보-라이프사이클-관리">#</a></h3>
+<p>수집부터 파기까지 전 단계 관리:</p>
+<pre tabindex="0"><code>수집 → 저장 → 이용 → 제공 → 파기
+  ↓      ↓      ↓      ↓      ↓
+암호화  접근통제  목적제한  동의확인  안전파기
+</code></pre><h2 id="학습-정리">학습 정리<a hidden class="anchor" aria-hidden="true" href="#학습-정리">#</a></h2>
+<p>오늘 학습한 핵심 내용:</p>
+<ul>
+<li>안전성 확보 조치는 관리적·기술적·물리적 조치로 구분</li>
+<li>내부 관리계획 수립, 보호책임자 지정, 정기 교육이 필수</li>
+<li>비밀번호는 일방향 암호화, 고유식별정보는 양방향 암호화</li>
+<li>접속 기록을 2년 이상 보관하고 월 1회 점검</li>
+<li>개인정보 보관 장소에 물리적 접근 통제 필요</li>
+<li>5만명 이상 민감정보 또는 100만명 이상 개인정보 처리 시 영향평가 의무</li>
+<li>심층 방어, Zero Trust, Privacy by Design 원칙 적용</li>
+</ul>
+<h2 id="다음-학습-주제">다음 학습 주제<a hidden class="anchor" aria-hidden="true" href="#다음-학습-주제">#</a></h2>
+<p>Day 07: 개인정보 유출 및 침해사고 대응 - 개인정보 유출 사고 발생 시 대응 절차와 법적 의무</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/">개인정보보호법</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%95%94%ED%98%B8%ED%99%94/">암호화</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%A0%91%EA%B7%BC%ED%86%B5%EC%A0%9C/">접근통제</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%A0%91%EC%86%8D%EA%B8%B0%EB%A1%9D/">접속기록</a></li>
+      <li><a href="http://localhost:1313/tags/%EB%82%B4%EB%B6%80%EA%B4%80%EB%A6%AC%EA%B3%84%ED%9A%8D/">내부관리계획</a></li>
+      <li><a href="http://localhost:1313/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%98%81%ED%96%A5%ED%8F%89%EA%B0%80/">개인정보영향평가</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

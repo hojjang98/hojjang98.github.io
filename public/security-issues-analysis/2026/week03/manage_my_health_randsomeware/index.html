@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Manage My Health 뉴질랜드 의료 포털 랜섬웨어 공격으로 12만 명 환자 정보 유출 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="랜섬웨어, 의료데이터침해, 기본보안위생, MFA부재, 데이터최소화, Kazu">
+<meta name="description" content="유효한 사용자 비밀번호로 &lsquo;정문 침입&rsquo;한 Kazu 랜섬웨어 그룹이 뉴질랜드 최대 환자 포털에서 12만 6천 명의 의료 정보를 탈취한 사건 분석">
+<meta name="author" content="map[autoswitchappearance:false bio:보안법규 분석과 실무 중심 거버넌스를 기록합니다. colorscheme:ocean defaultappearance:light enablecodecopy:true enableimagelazyloading:true enableimagewebp:true enablequicklink:true enablesearch:true fingerprintalgorithm:sha256 headline:Security Governance &amp; Legal Analysis image:profile.jpg links:[map[github:https://github.com/hojjang98]] name:Hojun Choi]">
+<link rel="canonical" href="http://localhost:1313/security-issues-analysis/2026/week03/manage_my_health_randsomeware/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a29c24210eb31d9ce56f669c66a35c9c51b17376b7764e336a49af7dec914cf0.css" integrity="sha256-opwkIQ6zHZzlb2acZqNcnFGxc3a3dk4zakmvfeyRTPA=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/security-issues-analysis/2026/week03/manage_my_health_randsomeware/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/" title="프로젝트">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/security-law-study/" title="Security-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/" title="논문 리뷰">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Manage My Health 뉴질랜드 의료 포털 랜섬웨어 공격으로 12만 명 환자 정보 유출
+    </h1>
+    <div class="post-meta"><span title='2026-01-18 00:00:00 +0000 UTC'>2026년 1월 18일</span>&nbsp;·&nbsp;<span>map[autoswitchappearance:false bio:보안법규 분석과 실무 중심 거버넌스를 기록합니다. colorscheme:ocean defaultappearance:light enablecodecopy:true enableimagelazyloading:true enableimagewebp:true enablequicklink:true enablesearch:true fingerprintalgorithm:sha256 headline:Security Governance &amp; Legal Analysis image:profile.jpg links:[map[github:https://github.com/hojjang98]] name:Hojun Choi]</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="manage-my-health-뉴질랜드-의료-포털-랜섬웨어-공격으로-12만-명-환자-정보-유출">Manage My Health 뉴질랜드 의료 포털 랜섬웨어 공격으로 12만 명 환자 정보 유출<a hidden class="anchor" aria-hidden="true" href="#manage-my-health-뉴질랜드-의료-포털-랜섬웨어-공격으로-12만-명-환자-정보-유출">#</a></h1>
+<h2 id="기사-정보">기사 정보<a hidden class="anchor" aria-hidden="true" href="#기사-정보">#</a></h2>
+<ul>
+<li><strong>출처</strong>: RNZ (Radio New Zealand)</li>
+<li><strong>작성일</strong>: 2025-12-30 ~ 2026-01-14 (지속 업데이트)</li>
+<li><strong>링크</strong>: <a href="https://www.rnz.co.nz/news/national/584053/manage-my-health-data-breach-a-timeline-of-what-happened-and-everything-we-know-so-far">https://www.rnz.co.nz/news/national/584053/manage-my-health-data-breach-a-timeline-of-what-happened-and-everything-we-know-so-far</a></li>
+<li><strong>카테고리</strong>: 랜섬웨어/의료 데이터 침해</li>
+</ul>
+<hr>
+<h2 id="핵심-요약">핵심 요약<a hidden class="anchor" aria-hidden="true" href="#핵심-요약">#</a></h2>
+<blockquote>
+<p>뉴질랜드 최대 환자 포털인 Manage My Health(MMH)가 2025년 12월 30일 랜섬웨어 공격을 받아 약 12만 6천 명(전체 사용자의 7%)의 민감한 의료 정보가 유출되었다. &ldquo;Kazu&quot;라는 랜섬웨어 그룹이 약 108GB(또는 428,337개 파일)의 데이터를 탈취했다고 주장하며 6만 달러의 몸값을 요구했다. CEO는 공격자가 &ldquo;유효한 사용자 비밀번호&quot;를 사용해 &ldquo;정문으로 들어왔다&quot;고 밝혔으며, 이는 기본적인 보안 프로토콜 부재를 시사한다. 보안 전문가들은 이 침해가 &ldquo;기본 보안 위생&quot;만으로 예방 가능했다고 지적했다.</p>
+</blockquote>
+<hr>
+<h2 id="사건이슈-배경">사건/이슈 배경<a hidden class="anchor" aria-hidden="true" href="#사건이슈-배경">#</a></h2>
+<h3 id="무슨-일이-일어났는가">무슨 일이 일어났는가?<a hidden class="anchor" aria-hidden="true" href="#무슨-일이-일어났는가">#</a></h3>
+<p><strong>침해 발견 및 초기 대응 (12월 30일)</strong>
+2025년 12월 30일, Manage My Health(MMH)가 자사 시스템에서 사이버 공격을 탐지했다. MMH는 뉴질랜드에서 180만 명 이상이 사용하는 최대 환자 포털로, 의료 예약, 건강 기록, 처방전 조회 등을 제공한다.</p>
+<p>같은 날, &ldquo;Kazu&quot;라는 랜섬웨어 그룹이 사이버범죄 포럼에 침해 주장을 게시하고 데이터 샘플을 공개했다. 공격자는 약 428,337개 파일(108GB 또는 4.15TB라는 상충되는 주장도 있음)을 탈취했다고 밝혔다.</p>
+<p><strong>몸값 요구 및 기한 (12월 30일 ~ 1월 중순)</strong>
+Kazu는 초기에 6만 달러의 몸값을 요구하며 1월 15일을 지불 기한으로 설정했다. 그러나 1월 3일 Telegram에서 48시간 내에 지불하지 않으면 모든 데이터를 공개하겠다고 위협하며 기한을 앞당겼다.</p>
+<p><strong>공식 확인 및 대응 (1월 1일 ~ 3일)</strong>
+1월 1~3일, MMH는 일련의 성명을 발표하며 Health New Zealand, 뉴질랜드 경찰, 기타 정부 기관 및 독립적인 국제 포렌식 컨설턴트와 협력하여 사고에 대응하고 있다고 밝혔다.</p>
+<p>뉴질랜드 보건부 장관 Simeon Brown은 1월 5일 이 사건을 &ldquo;매우 우려스럽다(incredibly concerning)&ldquo;고 묘사하며, 정부가 &ldquo;특히 Health New Zealand와 General Practice New Zealand 내에서 상당한 자원을 투입하고 있다&quot;고 밝혔다.</p>
+<p><strong>침입 방법 공개 (1월 중순)</strong>
+MMH CEO Vino Ramayah는 공격자가 &ldquo;유효한 사용자 비밀번호&quot;를 사용해 웹사이트의 &ldquo;정문으로 들어왔다&quot;고 밝혔다. 이는 자격 증명 도용 또는 취약한 비밀번호 관리를 시사한다.</p>
+<p>Kazu는 NZ Herald와의 인터뷰에서 &ldquo;시스템에 깨진 접근 제어 취약점(broken access control vulnerability)&ldquo;이 있었다고 주장했다. 또한 &ldquo;시스템 업데이트와 취약점 수정을 하지 않은 것이 완전히 그들의 잘못&quot;이라며 &ldquo;침해 발표 후 몇 시간 만에 수정했다&quot;고 밝혔다.</p>
+<p><strong>보안 평가 결과</strong>
+BlackVeil Security의 보안 스캔 결과, MMH는 100점 만점에 65점(D 등급)을 받았다. 주요 문제점:</p>
+<ul>
+<li>19개의 하위 도메인이 발견되었으나 DNSSEC가 0%</li>
+<li>하위 도메인 이메일 정책이 없어 모든 하위 도메인이 스푸핑 가능</li>
+<li>로그인 포털의 보호가 마케팅 사이트보다 약함</li>
+<li>.com 도메인이 파킹되어 있어 브랜드 사칭 위험</li>
+<li>DMARC가 p=none으로 설정되어 이메일 스푸핑에 대한 보호가 전무</li>
+<li>HTTP 엔드포인트가 보안 헤더 없이 404 반환</li>
+</ul>
+<p><strong>영향 범위</strong>
+MMH는 약 12만 6천 명(전체 사용자의 6-7%)이 영향을 받았다고 추정했다. 유출된 데이터에는 의료 기록, 검사 결과, 처방전 데이터, 환자-의료진 커뮤니케이션이 포함되었다고 주장되었다.</p>
+<p><strong>추가 문제 발견</strong></p>
+<ul>
+<li>과거에 계정을 폐쇄한 사용자의 데이터도 여전히 포털에 남아있었다</li>
+<li>MMH 사용을 중단한 환자의 새로운 의료 정보가 계속 데이터베이스에 추가되고 있었다</li>
+<li>일부 환자는 영향을 받았다는 통지를 받았으나 나중에 영향받지 않았다는 상충되는 정보를 받았다</li>
+</ul>
+<p><strong>정부 대응</strong>
+보건부 장관 Brown은 무슨 일이 있었는지, 어떤 데이터 보호가 있었는지, 보건 시스템 전반에 걸친 의료 데이터에 대한 제3자 접근과 관련해 무엇을 더 해야 하는지를 조사하는 독립적인 검토를 지시했다.</p>
+<h3 id="누가-관련되었는가">누가 관련되었는가?<a hidden class="anchor" aria-hidden="true" href="#누가-관련되었는가">#</a></h3>
+<ul>
+<li><strong>공격자/위협 주체</strong>: &ldquo;Kazu&rdquo; 랜섬웨어 그룹 (단일 해커인지 그룹인지 불명확)</li>
+<li><strong>피해자/영향 받은 대상</strong>: Manage My Health 사용자 약 12만 6천 명, 일반의(GP) 진료소, 뉴질랜드 보건 시스템</li>
+<li><strong>기타 관련 당사자</strong>: Health New Zealand, 뉴질랜드 경찰, 일반의 협회, 국제 포렌식 컨설턴트, MMH CEO Vino Ramayah</li>
+</ul>
+<hr>
+<h2 id="원인-분석">원인 분석<a hidden class="anchor" aria-hidden="true" href="#원인-분석">#</a></h2>
+<h3 id="기술적-원인">기술적 원인<a hidden class="anchor" aria-hidden="true" href="#기술적-원인">#</a></h3>
+<p><strong>1. 취약한 인증 및 접근 제어</strong></p>
+<ul>
+<li>CEO가 공격자가 &ldquo;유효한 사용자 비밀번호&quot;를 사용해 접근했다고 밝혔다</li>
+<li>다단계 인증(MFA)이 침해 후에야 구현되었다는 점에서, 침해 당시에는 MFA가 없었음을 시사한다</li>
+<li>Kazu는 &ldquo;깨진 접근 제어 취약점&quot;을 언급했다</li>
+</ul>
+<p><strong>2. 패치되지 않은 취약점</strong></p>
+<ul>
+<li>Kazu는 &ldquo;시스템 업데이트와 취약점 수정을 하지 않은 것&quot;을 지적했다</li>
+<li>침해 발표 후 &ldquo;몇 시간 만에&rdquo; 수정되었다는 것은 알려진 취약점이 방치되어 있었음을 시사한다</li>
+</ul>
+<p><strong>3. 기본적인 DNS 및 이메일 보안 부재</strong></p>
+<ul>
+<li>DNSSEC 0% - DNS 스푸핑에 취약</li>
+<li>DMARC가 p=none으로 설정 - 이메일 스푸핑 방지 효과 전무</li>
+<li>하위 도메인 이메일 정책 부재 - 모든 하위 도메인이 스푸핑 가능</li>
+</ul>
+<p><strong>4. 웹 애플리케이션 보안 헤더 부재</strong></p>
+<ul>
+<li>HTTP 엔드포인트가 보안 헤더 없이 404 반환</li>
+<li>로그인 포털의 보호가 마케팅 사이트보다 약함</li>
+<li>기본적인 웹 보안 모범 사례가 적용되지 않았다</li>
+</ul>
+<p><strong>5. 데이터 보존 정책 부재</strong></p>
+<ul>
+<li>폐쇄된 계정의 데이터가 여전히 시스템에 남아있었다</li>
+<li>사용을 중단한 환자의 새로운 의료 정보가 계속 추가되고 있었다</li>
+<li>데이터 최소화 원칙이 적용되지 않았다</li>
+</ul>
+<h3 id="관리적절차적-원인">관리적/절차적 원인<a hidden class="anchor" aria-hidden="true" href="#관리적절차적-원인">#</a></h3>
+<p><strong>1. 기본 보안 프로토콜 부재</strong></p>
+<ul>
+<li>BlackVeil Security의 분석가는 &ldquo;기본 보안 프로토콜 부족&quot;을 지적했다</li>
+<li>보안 전문가 Daniel Ayers는 이를 &ldquo;뉴질랜드 규모에서 재앙적(catastrophic on the New Zealand scale)&ldquo;이라고 묘사했다</li>
+</ul>
+<p><strong>2. 취약점 관리 프로세스 부족</strong></p>
+<ul>
+<li>알려진 취약점이 패치되지 않았다</li>
+<li>정기적인 보안 평가 및 침투 테스트가 이루어지지 않았을 가능성이 높다</li>
+</ul>
+<p><strong>3. 사고 대응 및 커뮤니케이션 문제</strong></p>
+<ul>
+<li>환자들에게 상충되는 정보 제공 (영향받았다가 나중에 영향받지 않았다고 통보)</li>
+<li>0800 전화선이 통화량을 감당하지 못했다</li>
+<li>웹사이트가 정보를 찾는 사람들의 수를 처리하지 못했다</li>
+<li>GP들이 어떤 진료소가 영향받았는지 알지 못했다</li>
+</ul>
+<p><strong>4. 데이터 거버넌스 부재</strong></p>
+<ul>
+<li>과거 사용자 데이터 보존 정책이 없었다</li>
+<li>데이터 수명 주기 관리가 이루어지지 않았다</li>
+<li>GDPR 유사 규정의 데이터 최소화 원칙이 적용되지 않았다</li>
+</ul>
+<p><strong>5. 제3자 의료 데이터 접근 감독 부족</strong></p>
+<ul>
+<li>보건부 장관이 제3자의 의료 데이터 접근에 대한 검토를 지시했다</li>
+<li>MMH는 민간 소유 회사로, 정부의 직접적인 감독이 부족했을 가능성이 있다</li>
+</ul>
+<h3 id="인적-원인">인적 원인<a hidden class="anchor" aria-hidden="true" href="#인적-원인">#</a></h3>
+<p><strong>1. 보안 인식 부족</strong></p>
+<ul>
+<li>CEO가 &ldquo;공을 놓쳤다(dropped the ball)&ldquo;고 인정했다</li>
+<li>기본적인 보안 관행이 적용되지 않았다는 것은 조직 전반의 보안 인식 부족을 시사한다</li>
+</ul>
+<p><strong>2. 경영진의 보안 우선순위 부족</strong></p>
+<ul>
+<li>180만 명의 민감한 의료 데이터를 다루는 회사가 D 등급의 보안 수준을 가지고 있었다</li>
+<li>보안이 비즈니스 우선순위로 간주되지 않았을 가능성이 높다</li>
+</ul>
+<p><strong>3. 자격 증명 위생 부족</strong></p>
+<ul>
+<li>&ldquo;유효한 사용자 비밀번호&quot;가 공격에 사용되었다는 것은 비밀번호 관리가 취약했음을 시사한다</li>
+<li>강력한 비밀번호 정책, 정기적인 비밀번호 변경, MFA 같은 기본 조치가 없었다</li>
+</ul>
+<hr>
+<h2 id="영향-및-파급효과">영향 및 파급효과<a hidden class="anchor" aria-hidden="true" href="#영향-및-파급효과">#</a></h2>
+<h3 id="직접적-영향">직접적 영향<a hidden class="anchor" aria-hidden="true" href="#직접적-영향">#</a></h3>
+<p><strong>1. 환자 데이터 유출</strong></p>
+<ul>
+<li>약 12만 6천 명(전체 사용자의 7%)의 민감한 의료 정보가 유출되었다</li>
+<li>유출된 데이터 유형 (Kazu 주장):
+<ul>
+<li>의료 기록</li>
+<li>검사 결과</li>
+<li>처방전 데이터</li>
+<li>환자-의료진 커뮤니케이션</li>
+<li>개인 식별 정보</li>
+</ul>
+</li>
+<li>데이터 양: 약 108GB 또는 428,337개 파일 (일부 출처는 4.15TB라고 주장)</li>
+</ul>
+<p><strong>2. 서비스 중단</strong></p>
+<ul>
+<li>온라인 셀프서비스가 일시 중단되었다</li>
+<li>웹사이트가 트래픽을 감당하지 못하고 다운되었다</li>
+<li>해외 뉴질랜드인은 보안상의 이유로 앱을 더 이상 사용할 수 없다고 통보받았다</li>
+</ul>
+<p><strong>3. 몸값 요구</strong></p>
+<ul>
+<li>초기 요구: 30만 달러 → 6만 달러로 축소</li>
+<li>마감일: 1월 15일 → 1월 3일 48시간 이내로 단축 (나중에 1월 9일로 재조정)</li>
+<li>Monero(XMR) 암호화폐로만 지불 요구</li>
+</ul>
+<p><strong>4. 법적 조치</strong></p>
+<ul>
+<li>MMH가 High Court로부터 금지명령을 받아 누구도 탈취된 데이터에 접근하거나 공유할 수 없도록 했다</li>
+</ul>
+<p><strong>5. 2차 피해 위험</strong></p>
+<ul>
+<li>DMARC 보호 부재로 인해 피해자를 대상으로 한 피싱 캠페인이 정당한 도메인을 사용할 수 있다</li>
+<li>약 12만 6천 명의 영향받은 사용자가 신원 도용, 계정 침해, 추가 프라이버시 침해 위험에 노출되었다</li>
+</ul>
+<h3 id="간접적-영향">간접적 영향<a hidden class="anchor" aria-hidden="true" href="#간접적-영향">#</a></h3>
+<p><strong>1. 뉴질랜드 의료 시스템에 대한 신뢰 하락</strong></p>
+<ul>
+<li>환자들이 디지털 의료 서비스 사용을 주저할 수 있다</li>
+<li>GP 진료소들이 환자들의 불안한 질문에 답해야 했지만 정보가 부족했다</li>
+<li>일부 환자는 MMH를 사용하지 않는 GP로 옮기려 할 수 있다</li>
+</ul>
+<p><strong>2. 의료 디지털화에 대한 우려</strong></p>
+<ul>
+<li>의료 데이터의 디지털화 및 중앙집중화의 위험성이 부각되었다</li>
+<li>제3자 의료 플랫폼에 대한 감독 강화 요구가 증가할 것으로 예상된다</li>
+</ul>
+<p><strong>3. 법률 및 규제 변화 가능성</strong></p>
+<ul>
+<li>변호사들이 &ldquo;데이터 보호에 실패한 기업에 대한 더 강력한 처벌&quot;을 요구했다</li>
+<li>보건부 장관이 독립적인 검토를 지시했다</li>
+<li>향후 더 엄격한 의료 데이터 보호 규정이 도입될 가능성이 있다</li>
+</ul>
+<p><strong>4. 다른 의료 플랫폼에 대한 조사 증가</strong></p>
+<ul>
+<li>뉴질랜드의 다른 의료 기술 플랫폼이 보안 평가를 받을 가능성이 높다</li>
+<li>유사한 취약점이 있는 다른 조직들이 선제적 조치를 취할 수 있다</li>
+</ul>
+<p><strong>5. 정치적 영향</strong></p>
+<ul>
+<li>침해 보고 2주 후에도 총리 Christopher Luxon이 공개 성명을 내지 않았다</li>
+<li>야당이 정부의 대응을 비판할 가능성이 있다</li>
+</ul>
+<h3 id="예상-피해-규모">예상 피해 규모<a hidden class="anchor" aria-hidden="true" href="#예상-피해-규모">#</a></h3>
+<ul>
+<li><strong>영향받은 개인</strong>: 약 12만 6천 명</li>
+<li><strong>잠재적 영향 인구</strong>: 180만 명(전체 사용자)이 자신의 데이터가 위험에 처했을 수 있다고 우려</li>
+<li><strong>몸값 요구</strong>: 6만 달러</li>
+<li><strong>장기적 비용</strong>: 포렌식 조사, 시스템 강화, 법적 비용, 명성 손상, 규제 벌금 가능성</li>
+<li><strong>사회적 비용</strong>: 의료 시스템에 대한 신뢰 하락, 디지털 의료 채택 지연</li>
+</ul>
+<hr>
+<h2 id="예방-및-대응-방안">예방 및 대응 방안<a hidden class="anchor" aria-hidden="true" href="#예방-및-대응-방안">#</a></h2>
+<h3 id="사전-예방-방법">사전 예방 방법<a hidden class="anchor" aria-hidden="true" href="#사전-예방-방법">#</a></h3>
+<ol>
+<li>
+<p><strong>다단계 인증(MFA) 구현</strong>: 모든 사용자 계정, 특히 관리자 계정에 MFA를 의무화한다. 이는 자격 증명 도용으로 인한 무단 접근을 크게 줄일 수 있다.</p>
+</li>
+<li>
+<p><strong>강력한 비밀번호 정책</strong>: 최소 길이, 복잡성 요구사항, 정기적인 변경을 포함하는 강력한 비밀번호 정책을 수립하고 시행한다.</p>
+</li>
+<li>
+<p><strong>정기적인 취약점 스캐닝 및 패치 관리</strong>: 알려진 취약점을 정기적으로 스캔하고, 중요 패치를 신속히 적용하는 프로세스를 구축한다.</p>
+</li>
+<li>
+<p><strong>기본 웹 및 이메일 보안 구현</strong>: DNSSEC 활성화, DMARC를 p=reject로 설정, 적절한 보안 헤더(CSP, HSTS, X-Frame-Options 등) 구현한다.</p>
+</li>
+<li>
+<p><strong>데이터 최소화 및 보존 정책</strong>: 필요 이상의 데이터를 보관하지 않고, 폐쇄된 계정의 데이터를 적시에 삭제하는 정책을 수립하고 자동화한다.</p>
+</li>
+</ol>
+<h3 id="사고-발생-시-대응-방안">사고 발생 시 대응 방안<a hidden class="anchor" aria-hidden="true" href="#사고-발생-시-대응-방안">#</a></h3>
+<ol>
+<li>
+<p><strong>즉각적인 시스템 격리 및 침해 범위 파악</strong>: 영향받은 시스템을 격리하고, 독립적인 포렌식 전문가를 동원하여 침해 범위를 정확히 파악한다.</p>
+</li>
+<li>
+<p><strong>영향받은 개인에게 신속하고 명확한 통지</strong>: 일관되고 정확한 정보를 제공한다. 상충되는 정보를 피한다. 영향받은 개인이 취할 수 있는 구체적인 조치를 안내한다.</p>
+</li>
+<li>
+<p><strong>커뮤니케이션 채널 확보</strong>: 증가한 문의량을 처리할 수 있도록 충분한 전화선, 웹사이트 용량, 지원 인력을 확보한다.</p>
+</li>
+<li>
+<p><strong>긴급 보안 강화</strong>: 침해에 악용된 취약점을 즉시 패치하고, MFA 같은 추가 보안 조치를 긴급 배포한다.</p>
+</li>
+<li>
+<p><strong>법 집행 기관 및 규제 기관 협력</strong>: 경찰, 프라이버시 위원회 등 관련 기관과 신속히 협력하여 조사를 지원하고 법적 요구사항을 준수한다.</p>
+</li>
+</ol>
+<h3 id="재발-방지-대책">재발 방지 대책<a hidden class="anchor" aria-hidden="true" href="#재발-방지-대책">#</a></h3>
+<p><strong>조직(MMH 및 유사 의료 플랫폼) 차원:</strong></p>
+<ol>
+<li>
+<p><strong>포괄적인 보안 프로그램 구축</strong>:</p>
+<ul>
+<li>정기적인 보안 평가 및 침투 테스트</li>
+<li>취약점 관리 프로그램</li>
+<li>보안 개발 수명 주기(SDLC) 구현</li>
+<li>보안 운영 센터(SOC) 설립 또는 위탁</li>
+</ul>
+</li>
+<li>
+<p><strong>기술적 보안 강화</strong>:</p>
+<ul>
+<li>MFA 의무화</li>
+<li>Zero Trust 아키텍처 구현</li>
+<li>네트워크 세그멘테이션</li>
+<li>침입 탐지 및 방지 시스템(IDS/IPS)</li>
+<li>데이터 손실 방지(DLP) 솔루션</li>
+<li>암호화 강화(전송 중 및 저장 중)</li>
+</ul>
+</li>
+<li>
+<p><strong>보안 모니터링 및 로깅</strong>:</p>
+<ul>
+<li>SIEM 시스템 구축</li>
+<li>이상 징후 탐지</li>
+<li>실시간 경보</li>
+<li>로그 보존 및 분석</li>
+</ul>
+</li>
+<li>
+<p><strong>데이터 거버넌스 강화</strong>:</p>
+<ul>
+<li>데이터 분류 정책</li>
+<li>데이터 보존 및 삭제 정책 자동화</li>
+<li>접근 제어 정기 검토</li>
+<li>최소 권한 원칙 적용</li>
+</ul>
+</li>
+<li>
+<p><strong>사고 대응 및 비즈니스 연속성</strong>:</p>
+<ul>
+<li>사고 대응 플레이북 개발 및 정기 훈련</li>
+<li>재해 복구 계획</li>
+<li>백업 검증 및 테스트</li>
+<li>커뮤니케이션 계획</li>
+</ul>
+</li>
+<li>
+<p><strong>보안 문화 조성</strong>:</p>
+<ul>
+<li>전 직원 대상 정기적인 보안 인식 교육</li>
+<li>경영진의 보안 우선순위화</li>
+<li>보안을 KPI에 포함</li>
+<li>&ldquo;보안이 모두의 책임&rdquo; 문화 구축</li>
+</ul>
+</li>
+</ol>
+<p><strong>정부 및 규제 기관 차원:</strong></p>
+<ol>
+<li>
+<p><strong>제3자 의료 플랫폼에 대한 감독 강화</strong>: 정기적인 보안 감사를 의무화하고, 최소 보안 기준을 설정한다.</p>
+</li>
+<li>
+<p><strong>데이터 보호 규정 강화</strong>: GDPR 유사 규정 도입, 데이터 침해에 대한 엄격한 처벌, 신속한 침해 통지 의무화를 고려한다.</p>
+</li>
+<li>
+<p><strong>의료 사이버보안 프레임워크 개발</strong>: 의료 산업 특화 사이버보안 프레임워크를 개발하고 채택을 장려한다.</p>
+</li>
+<li>
+<p><strong>사이버보안 지원 프로그램</strong>: 중소 의료 조직을 위한 보안 교육, 평가, 개선 지원 프로그램을 제공한다.</p>
+</li>
+</ol>
+<p><strong>환자 및 사용자 차원:</strong></p>
+<ol>
+<li>민감한 의료 데이터를 다루는 플랫폼 선택 시 보안 수준을 고려한다</li>
+<li>가능한 경우 MFA를 활성화한다</li>
+<li>강력하고 고유한 비밀번호를 사용한다</li>
+<li>더 이상 사용하지 않는 계정은 삭제를 요청한다</li>
+<li>의심스러운 활동을 즉시 보고한다</li>
+</ol>
+<hr>
+<h2 id="개인-인사이트">개인 인사이트<a hidden class="anchor" aria-hidden="true" href="#개인-인사이트">#</a></h2>
+<h3 id="배운-점">배운 점<a hidden class="anchor" aria-hidden="true" href="#배운-점">#</a></h3>
+<p><strong>1. &ldquo;기본 보안 위생&quot;의 치명적 중요성</strong></p>
+<ul>
+<li>BlackVeil Security 분석가가 &ldquo;기본 보안 위생만으로 예방 가능했다&quot;고 지적했다</li>
+<li>MFA, 강력한 비밀번호 정책, 정기적인 패치, DNSSEC, DMARC 같은 기본 조치가 없었다</li>
+<li>고급 보안 기술보다 기본적인 보안 관행의 철저한 실행이 더 중요할 수 있다</li>
+</ul>
+<p><strong>2. &ldquo;유효한 사용자 비밀번호&quot;의 위험성</strong></p>
+<ul>
+<li>CEO가 공격자가 &ldquo;유효한 사용자 비밀번호&quot;로 접근했다고 밝혔다</li>
+<li>이는 피싱, 자격 증명 스터핑, 또는 내부자 위협을 시사한다</li>
+<li>MFA가 있었다면 이 공격을 막을 수 있었을 가능성이 높다</li>
+</ul>
+<p><strong>3. 데이터 최소화의 중요성</strong></p>
+<ul>
+<li>과거 사용자의 데이터가 여전히 시스템에 남아있어 불필요하게 유출 위험에 노출되었다</li>
+<li>필요 이상의 데이터를 보관하는 것은 침해 시 피해 범위를 확대한다</li>
+<li>&ldquo;수집하지 않은 데이터는 유출될 수 없다&quot;는 원칙이 중요하다</li>
+</ul>
+<p><strong>4. 보안 스코어링의 유용성</strong></p>
+<ul>
+<li>BlackVeil Security의 자동 스캔이 100점 만점에 65점(D 등급)이라는 객관적 평가를 제공했다</li>
+<li>이러한 외부 평가는 조직이 자신의 보안 수준을 객관적으로 파악하는 데 유용하다</li>
+<li>고객과 협력자도 이러한 평가를 참고할 수 있다</li>
+</ul>
+<p><strong>5. 침해 후 커뮤니케이션의 중요성</strong></p>
+<ul>
+<li>MMH는 상충되는 정보를 제공하고, 웹사이트와 전화선이 다운되는 등 커뮤니케이션에 실패했다</li>
+<li>사고 대응 계획에는 커뮤니케이션 전략과 인프라 확장 계획이 포함되어야 한다</li>
+<li>투명하고 일관된 커뮤니케이션이 신뢰 유지에 중요하다</li>
+</ul>
+<p><strong>6. &ldquo;뉴질랜드 규모의 재앙&rdquo;</strong></p>
+<ul>
+<li>한 보안 전문가가 이를 &ldquo;뉴질랜드 규모에서 재앙적&quot;이라고 묘사했다</li>
+<li>작은 국가나 지역에서는 단일 침해가 인구의 상당 부분에 영향을 미칠 수 있다</li>
+<li>중소 규모 조직이나 시장에서도 사이버보안이 국가적 우선순위가 되어야 한다</li>
+</ul>
+<p><strong>7. 랜섬웨어 그룹의 협상 전술</strong></p>
+<ul>
+<li>Kazu는 초기 30만 달러에서 6만 달러로 요구를 낮췄다(&ldquo;빠르게 거래를 성사시키기 위해&rdquo;)</li>
+<li>마감일을 여러 차례 조정했다(1월 15일 → 48시간 → 1월 9일)</li>
+<li>이는 랜섬웨어 그룹이 비즈니스처럼 운영되며, 실용적이고 협상 가능한 접근 방식을 취한다는 것을 보여준다</li>
+</ul>
+<p><strong>8. 의료 데이터의 특별한 민감성</strong></p>
+<ul>
+<li>의료 데이터는 개인의 가장 민감한 정보를 포함한다</li>
+<li>보건부 장관이 &ldquo;고도로 개인적이고 민감한 환자 정보&quot;라고 강조했다</li>
+<li>의료 플랫폼은 일반 웹사이트보다 훨씬 높은 보안 기준을 적용해야 한다</li>
+</ul>
+<h3 id="느낀-점">느낀 점<a hidden class="anchor" aria-hidden="true" href="#느낀-점">#</a></h3>
+<p>이번 사건은 180만 명의 민감한 의료 데이터를 다루는 조직이 기본적인 보안 관행조차 적용하지 않았다는 점에서 충격적이다. D 등급의 보안 점수, MFA 부재, 패치되지 않은 취약점, DMARC 미적용 등은 2025년 기준으로 용납할 수 없는 수준이다.</p>
+<p>CEO가 &ldquo;공을 놓쳤다&quot;고 인정한 것은 솔직하지만, 이는 조직 문화와 경영진의 우선순위에 근본적인 문제가 있음을 시사한다. 보안은 사후적 대응이 아니라 사전적 투자가 필요한 영역이다.</p>
+<p>특히 우려스러운 것은 공격자가 &ldquo;유효한 사용자 비밀번호&quot;를 사용해 &ldquo;정문으로 들어왔다&quot;는 점이다. MFA만 있었어도 이 공격을 막을 수 있었을 가능성이 높다. 이는 고급 보안 기술보다 기본적인 보안 관행의 철저한 실행이 얼마나 중요한지를 보여준다.</p>
+<p>데이터 최소화 원칙의 위반도 심각하다. 과거에 계정을 폐쇄한 사용자의 데이터가 여전히 시스템에 남아있고, 심지어 새로운 의료 정보가 계속 추가되고 있었다. 이는 GDPR 같은 데이터 보호 규정의 기본 원칙을 무시한 것이다.</p>
+<p>침해 후 커뮤니케이션 실패도 문제다. 상충되는 정보, 다운된 웹사이트와 전화선, 정보 부족한 GP들은 혼란과 불안을 가중시켰다. 사고 대응 계획에는 기술적 조치뿐만 아니라 커뮤니케이션 전략과 인프라 확장 계획도 포함되어야 한다.</p>
+<p>이 사건은 제3자 의료 플랫폼에 대한 정부 감독이 필요함을 보여준다. MMH는 민간 회사지만 공공 보건 인프라의 중요한 부분이다. 최소 보안 기준 설정, 정기 감사, 엄격한 규제가 필요하다.</p>
+<p>마지막으로, 환자들도 자신의 데이터를 맡기는 플랫폼의 보안 수준을 고려해야 한다. 편리함만큼이나 보안도 중요한 선택 기준이 되어야 한다. 조직의 보안 점수나 인증을 확인하고, MFA 같은 추가 보호 조치를 활용하는 것이 중요하다.</p>
+<h2 id="관련-자료">관련 자료<a hidden class="anchor" aria-hidden="true" href="#관련-자료">#</a></h2>
+<ul>
+<li>RNZ 타임라인: <a href="https://www.rnz.co.nz/news/national/584053/manage-my-health-data-breach-a-timeline-of-what-happened-and-everything-we-know-so-far">https://www.rnz.co.nz/news/national/584053/manage-my-health-data-breach-a-timeline-of-what-happened-and-everything-we-know-so-far</a></li>
+<li>BlackVeil Security 상세 분석: <a href="https://blackveilsecurity.com/blog/managemyhealth-breach-analysis-2025">https://blackveilsecurity.com/blog/managemyhealth-breach-analysis-2025</a></li>
+<li>Kazu 랜섬웨어 그룹 배경: <a href="https://www.rnz.co.nz/news/national/583417/who-are-the-hackers-behind-manage-my-health-s-cyber-attack">https://www.rnz.co.nz/news/national/583417/who-are-the-hackers-behind-manage-my-health-s-cyber-attack</a></li>
+<li>NZ Herald 해커 인터뷰: <a href="https://www.nzherald.co.nz/nz/hacker-claiming-to-be-behind-managemyhealth-breach-i-do-it-for-the-money-and-im-in-negotiations-to-get-it/premium/FC2PYCTFXVEOXN4Q27ONTQIDKA/">https://www.nzherald.co.nz/nz/hacker-claiming-to-be-behind-managemyhealth-breach-i-do-it-for-the-money-and-im-in-negotiations-to-get-it/premium/FC2PYCTFXVEOXN4Q27ONTQIDKA/</a></li>
+<li>Infosecurity Magazine 정부 대응: <a href="https://www.infosecurity-magazine.com/news/new-zealand-orders-review-manage">https://www.infosecurity-magazine.com/news/new-zealand-orders-review-manage</a></li>
+</ul>
+<hr>
+<p><strong>분석일</strong>: 2026-01-18<br>
+<strong>키워드</strong>: <code>#랜섬웨어</code> <code>#의료데이터침해</code> <code>#기본보안위생</code> <code>#MFA부재</code> <code>#데이터최소화</code> <code>#Kazu</code> <code>#뉴질랜드</code></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/%EB%9E%9C%EC%84%AC%EC%9B%A8%EC%96%B4/">랜섬웨어</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%9D%98%EB%A3%8C%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%B9%A8%ED%95%B4/">의료데이터침해</a></li>
+      <li><a href="http://localhost:1313/tags/%EA%B8%B0%EB%B3%B8%EB%B3%B4%EC%95%88%EC%9C%84%EC%83%9D/">기본보안위생</a></li>
+      <li><a href="http://localhost:1313/tags/mfa%EB%B6%80%EC%9E%AC/">MFA부재</a></li>
+      <li><a href="http://localhost:1313/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%B5%9C%EC%86%8C%ED%99%94/">데이터최소화</a></li>
+      <li><a href="http://localhost:1313/tags/kazu/">Kazu</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

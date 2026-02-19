@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Grubhub 데이터 유출 - Salesloft Drift 공급망 공격의 연쇄 효과 (2026년 1월) | HJ&#39;s Security Note</title>
+<meta name="keywords" content="공급망공격, OAuth토큰, SaaS보안, ShinyHunters, 측면이동, Salesforce">
+<meta name="description" content="Salesloft Drift 침해로 탈취된 OAuth 토큰이 Grubhub의 Salesforce와 Zendesk까지 연쇄 침해로 이어진 다층 공급망 공격 분석">
+<meta name="author" content="map[autoswitchappearance:false bio:보안법규 분석과 실무 중심 거버넌스를 기록합니다. colorscheme:ocean defaultappearance:light enablecodecopy:true enableimagelazyloading:true enableimagewebp:true enablequicklink:true enablesearch:true fingerprintalgorithm:sha256 headline:Security Governance &amp; Legal Analysis image:profile.jpg links:[map[github:https://github.com/hojjang98]] name:Hojun Choi]">
+<link rel="canonical" href="http://localhost:1313/security-issues-analysis/2026/week05/grubhub_salesloft_breach/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a29c24210eb31d9ce56f669c66a35c9c51b17376b7764e336a49af7dec914cf0.css" integrity="sha256-opwkIQ6zHZzlb2acZqNcnFGxc3a3dk4zakmvfeyRTPA=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/security-issues-analysis/2026/week05/grubhub_salesloft_breach/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/" title="프로젝트">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/security-law-study/" title="Security-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/" title="논문 리뷰">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Grubhub 데이터 유출 - Salesloft Drift 공급망 공격의 연쇄 효과 (2026년 1월)
+    </h1>
+    <div class="post-meta"><span title='2026-02-01 00:00:00 +0000 UTC'>2026년 2월 1일</span>&nbsp;·&nbsp;<span>map[autoswitchappearance:false bio:보안법규 분석과 실무 중심 거버넌스를 기록합니다. colorscheme:ocean defaultappearance:light enablecodecopy:true enableimagelazyloading:true enableimagewebp:true enablequicklink:true enablesearch:true fingerprintalgorithm:sha256 headline:Security Governance &amp; Legal Analysis image:profile.jpg links:[map[github:https://github.com/hojjang98]] name:Hojun Choi]</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="grubhub-데이터-유출---salesloft-drift-공급망-공격의-연쇄-효과-2026년-1월">Grubhub 데이터 유출 - Salesloft Drift 공급망 공격의 연쇄 효과 (2026년 1월)<a hidden class="anchor" aria-hidden="true" href="#grubhub-데이터-유출---salesloft-drift-공급망-공격의-연쇄-효과-2026년-1월">#</a></h1>
+<h2 id="1-사건-개요">1. 사건 개요<a hidden class="anchor" aria-hidden="true" href="#1-사건-개요">#</a></h2>
+<h3 id="기본-정보">기본 정보<a hidden class="anchor" aria-hidden="true" href="#기본-정보">#</a></h3>
+<ul>
+<li>공개 시기: 2026년 1월 15일</li>
+<li>실제 침해 시기: 명확히 공개되지 않음 (2025년 8월 이후로 추정)</li>
+<li>피해 조직: Grubhub (미국 음식 배달 플랫폼)</li>
+<li>공격 그룹: ShinyHunters (데이터 탈취 전문 사이버범죄 그룹)</li>
+<li>사건 유형: 공급망 공격을 통한 다중 침해 (Salesforce → Zendesk)</li>
+</ul>
+<h3 id="피해-규모">피해 규모<a hidden class="anchor" aria-hidden="true" href="#피해-규모">#</a></h3>
+<ul>
+<li>영향 받은 사용자 수: 명확히 공개되지 않음 (수천만 명 추정)</li>
+<li>침해된 시스템: Salesforce (2025년 2월), Zendesk (2025년 후반)</li>
+<li>데이터 유형: 고객 지원 관련 정보, 내부 시스템 데이터</li>
+</ul>
+<h3 id="조직-배경">조직 배경<a hidden class="anchor" aria-hidden="true" href="#조직-배경">#</a></h3>
+<ul>
+<li>본사: 미국 시카고</li>
+<li>서비스: 음식 주문 및 배달 플랫폼</li>
+<li>사용자 규모: 연간 수천만 명의 미국인 서비스</li>
+<li>활성 배달 기사: 수만 명</li>
+</ul>
+<h2 id="2-원인-분석">2. 원인 분석<a hidden class="anchor" aria-hidden="true" href="#2-원인-분석">#</a></h2>
+<h3 id="기술적-원인">기술적 원인<a hidden class="anchor" aria-hidden="true" href="#기술적-원인">#</a></h3>
+<h4 id="공급망-공격의-다층-구조">공급망 공격의 다층 구조<a hidden class="anchor" aria-hidden="true" href="#공급망-공격의-다층-구조">#</a></h4>
+<p><strong>1단계: Salesloft Drift 침해 (2025년 8월)</strong></p>
+<ul>
+<li>공격 기간: 2025년 8월 8일 ~ 8월 18일</li>
+<li>공격 대상: Salesloft의 Salesforce 통합 OAuth 토큰</li>
+<li>공격 방식: 도난된 OAuth 토큰을 사용한 사전 인증된 접근</li>
+<li>영향 범위: 최소 760개 조직 (31개 공개 확인, 실제는 훨씬 많을 것으로 추정)</li>
+</ul>
+<p><strong>2단계: Salesforce 데이터 탈취 (2025년 2월)</strong></p>
+<ul>
+<li>Grubhub의 Salesforce 환경 침해</li>
+<li>OAuth 토큰을 통한 정당한 접근으로 위장</li>
+<li>고객 관계 관리 (CRM) 데이터 탈취</li>
+</ul>
+<p><strong>3단계: 자격증명 수집 및 측면 이동</strong></p>
+<ul>
+<li>Salesforce에서 다음 정보 탈취:
+<ul>
+<li>추가 자격증명 (credentials)</li>
+<li>클라우드 서비스 접근 키</li>
+<li>데이터 분석 플랫폼 토큰</li>
+<li>Zendesk 접근 정보</li>
+</ul>
+</li>
+</ul>
+<p><strong>4단계: Zendesk 침해 (2025년 후반)</strong></p>
+<ul>
+<li>도난된 자격증명을 사용하여 Zendesk 시스템 접근</li>
+<li>Grubhub의 고객 지원 채팅 시스템 침해</li>
+<li>주문, 계정 문제, 청구 관련 데이터 탈취</li>
+</ul>
+<h4 id="기술적-방어-실패-지점">기술적 방어 실패 지점<a hidden class="anchor" aria-hidden="true" href="#기술적-방어-실패-지점">#</a></h4>
+<p><strong>접근 토큰 관리 실패</strong></p>
+<ul>
+<li>OAuth 토큰의 장기 유효 기간 설정</li>
+<li>Salesloft Drift 침해 후 영향 받은 토큰 회전 지연 또는 미실시</li>
+<li>토큰 사용에 대한 지속적인 모니터링 부재</li>
+</ul>
+<p><strong>측면 이동 탐지 실패</strong></p>
+<ul>
+<li>Salesforce에서 Zendesk로의 비정상적인 접근 패턴 미탐지</li>
+<li>서로 다른 SaaS 플랫폼 간의 연관성 분석 부족</li>
+<li>통합된 보안 모니터링 체계 부재</li>
+</ul>
+<p><strong>자격증명 보안 부족</strong></p>
+<ul>
+<li>Salesforce 내에 저장된 다른 시스템의 자격증명이 평문 또는 약한 암호화 상태</li>
+<li>시스템 간 자격증명 분리 원칙 미준수</li>
+<li>Secrets 관리 솔루션 미적용</li>
+</ul>
+<p><strong>시간 지연 탐지</strong></p>
+<ul>
+<li>2025년 8월 Salesloft 침해 발생</li>
+<li>2026년 1월까지도 지속적인 공격 발견</li>
+<li>약 5개월 이상의 지속적인 접근 허용</li>
+</ul>
+<h3 id="관리적-원인">관리적 원인<a hidden class="anchor" aria-hidden="true" href="#관리적-원인">#</a></h3>
+<h4 id="공급망-보안-거버넌스-부족">공급망 보안 거버넌스 부족<a hidden class="anchor" aria-hidden="true" href="#공급망-보안-거버넌스-부족">#</a></h4>
+<ul>
+<li>
+<p><strong>제3자 리스크 관리 미흡</strong>:</p>
+<ul>
+<li>Salesloft/Drift와 같은 통합 도구의 보안 평가 부족</li>
+<li>OAuth 통합 승인 프로세스의 허술함</li>
+<li>제3자 침해 시 영향 평가 및 대응 계획 부재</li>
+</ul>
+</li>
+<li>
+<p><strong>통합 관리 부실</strong>:</p>
+<ul>
+<li>Salesforce와 연결된 모든 애플리케이션 및 통합 목록 미파악</li>
+<li>각 통합의 권한 범위 및 접근 수준 검토 부족</li>
+<li>불필요한 통합 제거 프로세스 부재</li>
+</ul>
+</li>
+</ul>
+<h4 id="saas-보안-관리-체계-부족">SaaS 보안 관리 체계 부족<a hidden class="anchor" aria-hidden="true" href="#saas-보안-관리-체계-부족">#</a></h4>
+<ul>
+<li>
+<p><strong>SaaS 가시성 부족</strong>:</p>
+<ul>
+<li>조직 내에서 사용 중인 모든 SaaS 애플리케이션 파악 미흡</li>
+<li>섀도우 IT (승인되지 않은 SaaS 사용) 통제 부족</li>
+<li>SaaS 간 데이터 흐름 및 통합 관계 미파악</li>
+</ul>
+</li>
+<li>
+<p><strong>SaaS 보안 태세 관리 (SSPM) 미적용</strong>:</p>
+<ul>
+<li>Salesforce, Zendesk 등의 보안 설정 지속적 모니터링 부재</li>
+<li>보안 모범 사례 대비 편차 탐지 부족</li>
+<li>잘못된 설정 자동 수정 메커니즘 부재</li>
+</ul>
+</li>
+</ul>
+<h4 id="사고-대응-지연">사고 대응 지연<a hidden class="anchor" aria-hidden="true" href="#사고-대응-지연">#</a></h4>
+<ul>
+<li>Salesloft Drift 침해가 2025년 8월에 발생했으나, 영향 받은 조직들의 대응이 지연됨</li>
+<li>FBI가 2025년 9월 Salesforce 관련 경고를 발표했으나 충분한 조치 미실시</li>
+<li>침해 사실 공개까지 상당한 시간 소요</li>
+</ul>
+<h3 id="인적-원인">인적 원인<a hidden class="anchor" aria-hidden="true" href="#인적-원인">#</a></h3>
+<h4 id="보안-인식-부족">보안 인식 부족<a hidden class="anchor" aria-hidden="true" href="#보안-인식-부족">#</a></h4>
+<ul>
+<li>OAuth 토큰의 위험성에 대한 이해 부족</li>
+<li>제3자 통합 승인 시 보안 검토 생략</li>
+<li>Salesloft 침해 공지 후에도 자사 환경 점검 미실시</li>
+</ul>
+<h4 id="조직-간-협력-부족">조직 간 협력 부족<a hidden class="anchor" aria-hidden="true" href="#조직-간-협력-부족">#</a></h4>
+<ul>
+<li>Salesforce 관리 팀과 Zendesk 관리 팀 간 정보 공유 부족</li>
+<li>보안 팀과 IT 운영 팀 간 협력 체계 미흡</li>
+<li>통합 관리에 대한 명확한 책임 소재 부재</li>
+</ul>
+<h2 id="3-영향-분석">3. 영향 분석<a hidden class="anchor" aria-hidden="true" href="#3-영향-분석">#</a></h2>
+<h3 id="데이터-보호-영향">데이터 보호 영향<a hidden class="anchor" aria-hidden="true" href="#데이터-보호-영향">#</a></h3>
+<h4 id="두-차례-침해의-중첩">두 차례 침해의 중첩<a hidden class="anchor" aria-hidden="true" href="#두-차례-침해의-중첩">#</a></h4>
+<ul>
+<li>
+<p><strong>Salesforce 침해 (2025년 2월)</strong>:</p>
+<ul>
+<li>CRM 데이터: 고객 정보, 거래 내역, 상호작용 기록</li>
+<li>내부 비즈니스 데이터: 전략 문서, 파트너 정보</li>
+</ul>
+</li>
+<li>
+<p><strong>Zendesk 침해 (2025년 후반)</strong>:</p>
+<ul>
+<li>고객 지원 티켓: 문제 내용, 계정 세부사항</li>
+<li>계정 메모: 내부 직원이 작성한 고객 관련 메모</li>
+<li>청구 및 주문 문의 내용</li>
+</ul>
+</li>
+<li>
+<p><strong>중첩 데이터</strong>:</p>
+<ul>
+<li>같은 고객에 대한 정보가 두 시스템 모두에서 유출</li>
+<li>더욱 완전한 프로파일 구성 가능</li>
+</ul>
+</li>
+</ul>
+<h4 id="공식-입장과의-불일치">공식 입장과의 불일치<a hidden class="anchor" aria-hidden="true" href="#공식-입장과의-불일치">#</a></h4>
+<ul>
+<li>Grubhub 공식 발표: &ldquo;민감한 정보, 재무 정보, 주문 내역은 영향 받지 않음&rdquo;</li>
+<li>실제 상황: Zendesk에는 청구 문의, 계정 접근, 주문 문제 관련 정보 포함 가능</li>
+<li>이러한 불일치는 사용자 혼란 및 신뢰 저하 유발</li>
+</ul>
+<h3 id="갈취-및-협박">갈취 및 협박<a hidden class="anchor" aria-hidden="true" href="#갈취-및-협박">#</a></h3>
+<h4 id="shinyhunters의-요구">ShinyHunters의 요구<a hidden class="anchor" aria-hidden="true" href="#shinyhunters의-요구">#</a></h4>
+<ul>
+<li>Bitcoin 지불 요구</li>
+<li>미지불 시 다크웹에 데이터 공개 위협</li>
+<li>두 차례 침해 데이터를 모두 레버리지로 사용</li>
+</ul>
+<h4 id="grubhub의-대응">Grubhub의 대응<a hidden class="anchor" aria-hidden="true" href="#grubhub의-대응">#</a></h4>
+<ul>
+<li>제3자 사이버보안 업체 고용</li>
+<li>법 집행 기관에 신고</li>
+<li>갈취금 지불 여부는 공개하지 않음</li>
+</ul>
+<h3 id="운영-영향">운영 영향<a hidden class="anchor" aria-hidden="true" href="#운영-영향">#</a></h3>
+<ul>
+<li>사고 조사 및 복구를 위한 IT 리소스 집중</li>
+<li>고객 문의 대응을 위한 추가 인력 배치</li>
+<li>시스템 보안 강화 작업</li>
+<li>평판 관리 및 PR 활동</li>
+</ul>
+<h3 id="법적-및-규제-영향">법적 및 규제 영향<a hidden class="anchor" aria-hidden="true" href="#법적-및-규제-영향">#</a></h3>
+<h4 id="데이터-유출-통지-의무">데이터 유출 통지 의무<a hidden class="anchor" aria-hidden="true" href="#데이터-유출-통지-의무">#</a></h4>
+<ul>
+<li>영향 받은 사용자 범위 및 수 미공개</li>
+<li>구체적인 통지 계획 미발표</li>
+<li>일부 주에서는 통지 의무 위반 시 벌금 부과 가능</li>
+</ul>
+<h4 id="잠재적-소송">잠재적 소송<a hidden class="anchor" aria-hidden="true" href="#잠재적-소송">#</a></h4>
+<ul>
+<li>집단 소송 가능성</li>
+<li>부적절한 데이터 보호 주장</li>
+<li>적시 통지 실패 주장</li>
+</ul>
+<h3 id="산업-전반-영향">산업 전반 영향<a hidden class="anchor" aria-hidden="true" href="#산업-전반-영향">#</a></h3>
+<h4 id="salesloft-drift-침해의-파급효과">Salesloft Drift 침해의 파급효과<a hidden class="anchor" aria-hidden="true" href="#salesloft-drift-침해의-파급효과">#</a></h4>
+<p>확인된 피해 조직 (일부):</p>
+<ul>
+<li>Dynatrace</li>
+<li>Cloudflare</li>
+<li>Palo Alto Networks</li>
+<li>Grubhub</li>
+<li>기타 760개 이상 조직 추정</li>
+</ul>
+<h4 id="업계-교훈">업계 교훈<a hidden class="anchor" aria-hidden="true" href="#업계-교훈">#</a></h4>
+<ul>
+<li>SaaS 통합의 보안 위험성 인식 증가</li>
+<li>OAuth 토큰 관리의 중요성 부각</li>
+<li>제3자 리스크 관리 필요성 강조</li>
+</ul>
+<h2 id="4-shinyhunters-그룹-분석">4. ShinyHunters 그룹 분석<a hidden class="anchor" aria-hidden="true" href="#4-shinyhunters-그룹-분석">#</a></h2>
+<h3 id="그룹-특성">그룹 특성<a hidden class="anchor" aria-hidden="true" href="#그룹-특성">#</a></h3>
+<ul>
+<li>활동 시작: 2020년경</li>
+<li>전문 분야: 대규모 데이터 탈취 및 판매</li>
+<li>운영 방식: 암호화 없는 순수 데이터 갈취</li>
+<li>동기: 금전적 이익</li>
+</ul>
+<h3 id="주요-공격-이력">주요 공격 이력<a hidden class="anchor" aria-hidden="true" href="#주요-공격-이력">#</a></h3>
+<h4 id="2025년-주요-활동">2025년 주요 활동<a hidden class="anchor" aria-hidden="true" href="#2025년-주요-활동">#</a></h4>
+<ul>
+<li><strong>Salesloft Drift 캠페인</strong>: 760개 이상 조직 침해</li>
+<li><strong>대규모 데이터 유출 위협</strong>: 39개 기업에서 10억 건 이상의 레코드 탈취 주장</li>
+<li>다른 사이버범죄 그룹과 협력</li>
+</ul>
+<h4 id="과거-주요-사건">과거 주요 사건<a hidden class="anchor" aria-hidden="true" href="#과거-주요-사건">#</a></h4>
+<ul>
+<li>Microsoft GitHub private repositories 침해 주장</li>
+<li>다수의 기업 및 플랫폼 데이터베이스 판매</li>
+<li>다크웹 포럼에서 활발한 활동</li>
+</ul>
+<h3 id="공격-방식의-특징">공격 방식의 특징<a hidden class="anchor" aria-hidden="true" href="#공격-방식의-특징">#</a></h3>
+<h4 id="공급망-공격-선호">공급망 공격 선호<a hidden class="anchor" aria-hidden="true" href="#공급망-공격-선호">#</a></h4>
+<ul>
+<li>널리 사용되는 SaaS 플랫폼의 취약점 또는 통합 악용</li>
+<li>한 번의 침해로 다수의 하위 고객 공격 가능</li>
+<li>효율성과 확장성 극대화</li>
+</ul>
+<h4 id="순수-데이터-갈취">순수 데이터 갈취<a hidden class="anchor" aria-hidden="true" href="#순수-데이터-갈취">#</a></h4>
+<ul>
+<li>랜섬웨어 그룹과 달리 암호화 단계 생략</li>
+<li>데이터 탈취 및 공개 위협만으로 갈취</li>
+<li>피해 조직의 운영 중단 최소화로 협상 가능성 증가</li>
+</ul>
+<h4 id="비즈니스-모델">비즈니스 모델<a hidden class="anchor" aria-hidden="true" href="#비즈니스-모델">#</a></h4>
+<ul>
+<li>데이터 판매: 다크웹에서 데이터베이스 판매</li>
+<li>갈취: 피해 조직에 직접 연락하여 Bitcoin 요구</li>
+<li>명성 구축: 성공적인 침해를 공개하여 평판 향상</li>
+</ul>
+<h2 id="5-예방-및-대응-방안">5. 예방 및 대응 방안<a hidden class="anchor" aria-hidden="true" href="#5-예방-및-대응-방안">#</a></h2>
+<h3 id="기술적-대응">기술적 대응<a hidden class="anchor" aria-hidden="true" href="#기술적-대응">#</a></h3>
+<h4 id="oauth-토큰-및-자격증명-관리">OAuth 토큰 및 자격증명 관리<a hidden class="anchor" aria-hidden="true" href="#oauth-토큰-및-자격증명-관리">#</a></h4>
+<ul>
+<li>
+<p><strong>토큰 수명 주기 관리</strong>:</p>
+<ul>
+<li>단기 유효 기간 설정 (예: 1시간, 24시간)</li>
+<li>정기적인 토큰 회전 (rotation)</li>
+<li>사용하지 않는 토큰 자동 무효화</li>
+</ul>
+</li>
+<li>
+<p><strong>Secrets 관리 솔루션 도입</strong>:</p>
+<ul>
+<li>HashiCorp Vault, AWS Secrets Manager, Azure Key Vault 등</li>
+<li>자격증명의 중앙 집중식 관리</li>
+<li>접근 로깅 및 감사</li>
+</ul>
+</li>
+<li>
+<p><strong>최소 권한 원칙</strong>:</p>
+<ul>
+<li>OAuth 통합 시 필요한 최소한의 권한만 부여</li>
+<li>정기적인 권한 검토 및 축소</li>
+</ul>
+</li>
+</ul>
+<h4 id="saas-보안-강화">SaaS 보안 강화<a hidden class="anchor" aria-hidden="true" href="#saas-보안-강화">#</a></h4>
+<ul>
+<li>
+<p><strong>SaaS 보안 태세 관리 (SSPM)</strong>:</p>
+<ul>
+<li>Salesforce, Zendesk 등의 보안 설정 지속 모니터링</li>
+<li>잘못된 설정 자동 탐지 및 알림</li>
+<li>보안 모범 사례 대비 벤치마킹</li>
+</ul>
+</li>
+<li>
+<p><strong>통합 인벤토리 및 모니터링</strong>:</p>
+<ul>
+<li>모든 SaaS 통합 목록 작성 및 유지</li>
+<li>각 통합의 권한 및 데이터 접근 범위 문서화</li>
+<li>불필요한 통합 제거</li>
+</ul>
+</li>
+<li>
+<p><strong>CASB (Cloud Access Security Broker)</strong>:</p>
+<ul>
+<li>SaaS 애플리케이션 접근 통제</li>
+<li>데이터 유출 방지</li>
+<li>섀도우 IT 탐지</li>
+</ul>
+</li>
+</ul>
+<h4 id="측면-이동-탐지">측면 이동 탐지<a hidden class="anchor" aria-hidden="true" href="#측면-이동-탐지">#</a></h4>
+<ul>
+<li>
+<p><strong>UEBA (User and Entity Behavior Analytics)</strong>:</p>
+<ul>
+<li>비정상적인 접근 패턴 탐지</li>
+<li>시스템 간 이동 모니터링</li>
+<li>자격증명 도용 탐지</li>
+</ul>
+</li>
+<li>
+<p><strong>통합 로그 분석</strong>:</p>
+<ul>
+<li>SIEM을 통한 Salesforce, Zendesk 등 로그 통합</li>
+<li>연관 이벤트 분석</li>
+<li>자동화된 경보 생성</li>
+</ul>
+</li>
+</ul>
+<h4 id="공급망-침해-대응">공급망 침해 대응<a hidden class="anchor" aria-hidden="true" href="#공급망-침해-대응">#</a></h4>
+<ul>
+<li>
+<p><strong>침해 지표 (IOC) 즉시 적용</strong>:</p>
+<ul>
+<li>Salesloft Drift 침해 IOC를 자사 환경에서 검색</li>
+<li>CISA, FBI 등의 권고사항 즉시 적용</li>
+</ul>
+</li>
+<li>
+<p><strong>영향 평가 자동화</strong>:</p>
+<ul>
+<li>제3자 침해 발생 시 자동으로 자사 환경 점검</li>
+<li>영향 받은 통합 및 시스템 식별</li>
+<li>우선순위에 따른 대응</li>
+</ul>
+</li>
+</ul>
+<h3 id="관리적-대응">관리적 대응<a hidden class="anchor" aria-hidden="true" href="#관리적-대응">#</a></h3>
+<h4 id="제3자-리스크-관리-강화">제3자 리스크 관리 강화<a hidden class="anchor" aria-hidden="true" href="#제3자-리스크-관리-강화">#</a></h4>
+<ul>
+<li>
+<p><strong>공급업체 보안 평가</strong>:</p>
+<ul>
+<li>Salesloft, Drift 등 통합 도구 선정 시 보안 평가</li>
+<li>SOC 2, ISO 27001 등 인증 확인</li>
+<li>정기적인 재평가</li>
+</ul>
+</li>
+<li>
+<p><strong>계약서 조항</strong>:</p>
+<ul>
+<li>침해 발생 시 즉시 통지 의무</li>
+<li>침해 시 책임 및 손해배상 조항</li>
+<li>정기적인 보안 감사 권한</li>
+</ul>
+</li>
+</ul>
+<h4 id="saas-거버넌스">SaaS 거버넌스<a hidden class="anchor" aria-hidden="true" href="#saas-거버넌스">#</a></h4>
+<ul>
+<li>
+<p><strong>SaaS 승인 프로세스</strong>:</p>
+<ul>
+<li>새로운 SaaS 도입 시 보안 검토 필수</li>
+<li>IT 및 보안 팀 승인 필요</li>
+<li>섀도우 IT 금지 정책</li>
+</ul>
+</li>
+<li>
+<p><strong>정기적인 통합 검토</strong>:</p>
+<ul>
+<li>분기별 또는 반기별 모든 통합 검토</li>
+<li>더 이상 사용하지 않는 통합 제거</li>
+<li>과도한 권한 축소</li>
+</ul>
+</li>
+</ul>
+<h4 id="사고-대응-계획">사고 대응 계획<a hidden class="anchor" aria-hidden="true" href="#사고-대응-계획">#</a></h4>
+<ul>
+<li>
+<p><strong>공급망 침해 시나리오 포함</strong>:</p>
+<ul>
+<li>Salesloft와 같은 제3자 침해 발생 시 대응 절차</li>
+<li>영향 평가 체크리스트</li>
+<li>통지 및 커뮤니케이션 계획</li>
+</ul>
+</li>
+<li>
+<p><strong>신속한 대응 체계</strong>:</p>
+<ul>
+<li>24/7 보안 운영 센터 (SOC)</li>
+<li>자동화된 경보 및 에스컬레이션</li>
+<li>사전 정의된 대응 플레이북</li>
+</ul>
+</li>
+</ul>
+<h3 id="인적-대응">인적 대응<a hidden class="anchor" aria-hidden="true" href="#인적-대응">#</a></h3>
+<h4 id="보안-인식-교육">보안 인식 교육<a hidden class="anchor" aria-hidden="true" href="#보안-인식-교육">#</a></h4>
+<ul>
+<li>
+<p><strong>OAuth 및 통합 보안 교육</strong>:</p>
+<ul>
+<li>개발자 및 IT 관리자 대상</li>
+<li>OAuth 토큰의 위험성 및 관리 방법</li>
+<li>안전한 통합 구현 원칙</li>
+</ul>
+</li>
+<li>
+<p><strong>제3자 리스크 인식</strong>:</p>
+<ul>
+<li>모든 직원 대상</li>
+<li>공급망 공격 사례 및 영향</li>
+<li>의심스러운 활동 보고 절차</li>
+</ul>
+</li>
+</ul>
+<h4 id="역할-및-책임-명확화">역할 및 책임 명확화<a hidden class="anchor" aria-hidden="true" href="#역할-및-책임-명확화">#</a></h4>
+<ul>
+<li>SaaS 통합 관리 책임자 지정</li>
+<li>제3자 리스크 관리 전담 팀</li>
+<li>크로스 팀 협력 체계 (Salesforce 팀, Zendesk 팀, 보안 팀)</li>
+</ul>
+<h3 id="법적-및-커뮤니케이션-대응">법적 및 커뮤니케이션 대응<a hidden class="anchor" aria-hidden="true" href="#법적-및-커뮤니케이션-대응">#</a></h3>
+<h4 id="투명한-커뮤니케이션">투명한 커뮤니케이션<a hidden class="anchor" aria-hidden="true" href="#투명한-커뮤니케이션">#</a></h4>
+<ul>
+<li>영향 받은 사용자에게 명확하고 구체적인 정보 제공</li>
+<li>취해진 조치 및 향후 계획 공유</li>
+<li>지속적인 업데이트</li>
+</ul>
+<h4 id="법적-준비">법적 준비<a hidden class="anchor" aria-hidden="true" href="#법적-준비">#</a></h4>
+<ul>
+<li>데이터 유출 통지 법규 준수</li>
+<li>집단 소송 대비</li>
+<li>사이버 보험 청구 검토</li>
+</ul>
+<h2 id="6-컨설팅-관점">6. 컨설팅 관점<a hidden class="anchor" aria-hidden="true" href="#6-컨설팅-관점">#</a></h2>
+<h3 id="고객사-커뮤니케이션-전략">고객사 커뮤니케이션 전략<a hidden class="anchor" aria-hidden="true" href="#고객사-커뮤니케이션-전략">#</a></h3>
+<h4 id="비기술-직원-대상">비기술 직원 대상<a hidden class="anchor" aria-hidden="true" href="#비기술-직원-대상">#</a></h4>
+<p>Grubhub에서 발생한 사건은 직접적인 해킹이라기보다는 연쇄 반응에 가깝습니다.</p>
+<p>먼저 Salesloft라는 회사가 해킹당했고, 이 회사는 많은 기업이 Salesforce와 연결하는 데 사용하는 도구를 제공합니다. 해커들은 Salesloft를 통해 Grubhub의 Salesforce 계정에 접근할 수 있는 열쇠를 얻었습니다.</p>
+<p>그 다음, Salesforce에서 Zendesk라는 고객 지원 시스템에 접근할 수 있는 또 다른 열쇠를 찾아냈습니다. 결국 해커들은 한 번의 침입으로 두 개의 중요한 시스템에 모두 접근할 수 있었습니다.</p>
+<p>이는 집의 현관문 열쇠를 도난당했는데, 그 집 안에 차 열쇠와 금고 열쇠가 보관되어 있어서 모두 털리게 된 것과 비슷합니다.</p>
+<h4 id="기술팀-대상">기술팀 대상<a hidden class="anchor" aria-hidden="true" href="#기술팀-대상">#</a></h4>
+<p>이 사건은 SaaS 공급망 공격의 전형적인 사례입니다. 공격 체인은 다음과 같습니다:</p>
+<ol>
+<li><strong>초기 침투</strong>: Salesloft Drift의 Salesforce OAuth 통합 토큰 탈취 (2025년 8월)</li>
+<li><strong>1차 측면 이동</strong>: 도난된 OAuth 토큰으로 Grubhub의 Salesforce 환경 접근 (2025년 2월)</li>
+<li><strong>자격증명 수집</strong>: Salesforce 내에 저장된 Zendesk 접근 자격증명 탈취</li>
+<li><strong>2차 측면 이동</strong>: Zendesk 시스템 침투 및 고객 지원 데이터 탈취</li>
+</ol>
+<p>기술적 방어 실패 지점:</p>
+<ul>
+<li>OAuth 토큰의 장기 유효 기간 및 회전 부재</li>
+<li>Salesloft 침해 후 영향 받은 토큰 즉시 무효화 실패</li>
+<li>Secrets 관리 솔루션 미적용으로 Salesforce 내 평문 자격증명 노출</li>
+<li>측면 이동 탐지 메커니즘 부재 (UEBA, 통합 로그 분석)</li>
+</ul>
+<p>AppOmni CSO Cory Michal의 지적대로, 공격자는 한 번의 침해로 얻은 OAuth 토큰 캐시를 통해 시간을 두고 선택적으로 고가치 조직을 공격할 수 있습니다. 재침입 없이 사전 인증된 접근을 유지하는 것이 핵심입니다.</p>
+<h4 id="경영진-대상">경영진 대상<a hidden class="anchor" aria-hidden="true" href="#경영진-대상">#</a></h4>
+<p>이 사건은 디지털 공급망의 복잡성과 위험성을 보여줍니다. Grubhub는 직접 해킹당한 것이 아니라, 신뢰했던 제3자 (Salesloft)를 통해 침해되었습니다.</p>
+<p>더욱 우려되는 점은 같은 방법으로 최소 760개 조직이 영향을 받았다는 것입니다. Cloudflare, Palo Alto Networks와 같은 보안 회사들조차 피해를 입었습니다.</p>
+<p>재무적 영향은 다층적입니다:</p>
+<ul>
+<li>사고 대응 및 포렌식 비용</li>
+<li>잠재적 갈취금 (ShinyHunters의 Bitcoin 요구)</li>
+<li>법적 소송 및 규제 벌금</li>
+<li>평판 손상으로 인한 고객 이탈</li>
+<li>보안 강화 투자</li>
+</ul>
+<p>Salesforce와 Zendesk는 현대 비즈니스의 핵심 인프라입니다. 이러한 시스템의 침해는 고객 데이터뿐만 아니라 내부 비즈니스 프로세스 전체를 위협합니다.</p>
+<p>SaaS 보안은 더 이상 IT 부서만의 문제가 아니며, 전사적인 리스크 관리 차원에서 접근해야 합니다.</p>
+<h3 id="예상-질문-및-답변">예상 질문 및 답변<a hidden class="anchor" aria-hidden="true" href="#예상-질문-및-답변">#</a></h3>
+<p>Q1: 내 주문 정보나 신용카드 정보가 유출되었나요?
+A: Grubhub는 재무 정보와 주문 내역은 영향 받지 않았다고 발표했습니다. 하지만 Zendesk에는 청구 문의나 주문 문제 관련 정보가 포함될 수 있어, 정확한 범위는 불명확합니다.</p>
+<p>Q2: 왜 Grubhub가 직접 해킹당한 것이 아닌가요?
+A: Grubhub가 사용하는 Salesloft라는 제3자 도구가 먼저 침해되었고, 해커들은 그곳에서 Grubhub 시스템에 접근할 수 있는 열쇠를 얻었습니다. 이를 공급망 공격이라고 합니다.</p>
+<p>Q3: 얼마나 많은 회사가 영향을 받았나요?
+A: Salesloft Drift 침해로 최소 760개 조직이 영향을 받은 것으로 추정되며, 31개 조직이 공개적으로 확인되었습니다.</p>
+<p>Q4: Grubhub는 왜 구체적인 정보를 공개하지 않나요?
+A: 일반적으로 기업들은 조사가 진행 중일 때, 법적 이유로, 또는 협상 중일 때 세부사항을 제한적으로 공개합니다. 하지만 투명성 부족은 사용자 신뢰를 저해할 수 있습니다.</p>
+<p>Q5: 사용자는 어떻게 대응해야 하나요?
+A:</p>
+<ul>
+<li>Grubhub 계정 비밀번호 변경 (다른 곳에서 재사용하지 말 것)</li>
+<li>비밀번호 관리자 사용 권장</li>
+<li>계정 활동 모니터링</li>
+<li>의심스러운 이메일이나 피싱 시도 주의</li>
+<li>다단계 인증 (MFA) 활성화 (가능한 경우)</li>
+</ul>
+<p>Q6: 이런 공격을 어떻게 예방할 수 있나요?
+A: 조직 차원에서는 OAuth 토큰 관리 강화, SaaS 보안 태세 관리, 제3자 리스크 평가, 측면 이동 탐지 시스템 구축 등이 필요합니다.</p>
+<h3 id="권고사항-요약">권고사항 요약<a hidden class="anchor" aria-hidden="true" href="#권고사항-요약">#</a></h3>
+<h4 id="즉시-조치-긴급">즉시 조치 (긴급)<a hidden class="anchor" aria-hidden="true" href="#즉시-조치-긴급">#</a></h4>
+<ol>
+<li>Salesloft Drift 침해 IOC를 자사 환경에서 검색</li>
+<li>Salesforce 및 Zendesk 접근 로그 검토 (2025년 8월 이후)</li>
+<li>의심스러운 OAuth 토큰 즉시 무효화</li>
+<li>Salesforce 내 저장된 자격증명 검토 및 회전</li>
+<li>영향 받은 고객 파악 및 통지 준비</li>
+</ol>
+<h4 id="단기-조치-1-3개월">단기 조치 (1-3개월)<a hidden class="anchor" aria-hidden="true" href="#단기-조치-1-3개월">#</a></h4>
+<ol>
+<li>모든 OAuth 토큰 회전 및 단기 유효 기간 설정</li>
+<li>Secrets 관리 솔루션 도입</li>
+<li>SSPM 도구 배포 (Salesforce, Zendesk 등)</li>
+<li>통합 인벤토리 작성 및 불필요한 통합 제거</li>
+<li>SIEM 통합 및 경보 규칙 구성</li>
+</ol>
+<h4 id="중장기-조치-3-12개월">중장기 조치 (3-12개월)<a hidden class="anchor" aria-hidden="true" href="#중장기-조치-3-12개월">#</a></h4>
+<ol>
+<li>CASB 솔루션 도입</li>
+<li>UEBA 시스템 구축</li>
+<li>SaaS 거버넌스 프레임워크 수립</li>
+<li>제3자 리스크 관리 프로그램 강화</li>
+<li>정기적인 보안 인식 교육</li>
+</ol>
+<h2 id="7-학습-내용-및-인사이트">7. 학습 내용 및 인사이트<a hidden class="anchor" aria-hidden="true" href="#7-학습-내용-및-인사이트">#</a></h2>
+<h3 id="핵심-학습-사항">핵심 학습 사항<a hidden class="anchor" aria-hidden="true" href="#핵심-학습-사항">#</a></h3>
+<ol>
+<li>
+<p><strong>공급망 공격의 연쇄 효과</strong></p>
+<ul>
+<li>한 곳의 침해가 수백 개 조직에 영향을 미칠 수 있습니다.</li>
+<li>Salesloft → Salesforce → Zendesk로 이어지는 다층 공격 체인은 현대 IT 환경의 상호 연결성을 악용합니다.</li>
+<li>직접적인 방어만으로는 부족하며, 신뢰하는 제3자의 보안도 검증해야 합니다.</li>
+</ul>
+</li>
+<li>
+<p><strong>OAuth 토큰의 치명적 위험성</strong></p>
+<ul>
+<li>OAuth 토큰은 비밀번호만큼, 어쩌면 그 이상으로 중요합니다.</li>
+<li>장기간 유효한 토큰은 공격자에게 지속적인 접근 권한을 부여합니다.</li>
+<li>AppOmni CSO의 지적처럼, 한 번 탈취된 토큰 캐시로 공격자는 재침입 없이 선택적으로 조직을 공격할 수 있습니다.</li>
+</ul>
+</li>
+<li>
+<p><strong>측면 이동의 위험성</strong></p>
+<ul>
+<li>공격자는 한 시스템 (Salesforce)에서 다른 시스템 (Zendesk)으로 이동했습니다.</li>
+<li>Salesforce 내에 저장된 자격증명이 이러한 이동을 가능하게 했습니다.</li>
+<li>시스템 간 자격증명 분리 및 Secrets 관리가 필수적입니다.</li>
+</ul>
+</li>
+<li>
+<p><strong>SaaS 보안의 복잡성</strong></p>
+<ul>
+<li>전통적인 온프레미스 보안 모델은 SaaS 환경에 적합하지 않습니다.</li>
+<li>각 SaaS 애플리케이션은 자체적인 보안 설정, 통합, 권한 체계를 가지고 있습니다.</li>
+<li>SSPM, CASB와 같은 SaaS 특화 보안 도구가 필요합니다.</li>
+</ul>
+</li>
+<li>
+<p><strong>장기 잠복의 위험성</strong></p>
+<ul>
+<li>2025년 8월 Salesloft 침해부터 2026년 1월 Grubhub 공개까지 약 5개월의 시간차가 있었습니다.</li>
+<li>이는 공격자들이 서두르지 않고 고가치 타겟을 선별하여 공격한다는 것을 의미합니다.</li>
+<li>과거 침해의 잔여 효과가 오랜 시간 동안 지속될 수 있습니다.</li>
+</ul>
+</li>
+<li>
+<p><strong>갈취 모델의 진화</strong></p>
+<ul>
+<li>ShinyHunters는 암호화를 하지 않고 순수하게 데이터 탈취 및 공개 위협만으로 갈취합니다.</li>
+<li>이는 피해 조직의 운영 중단을 최소화하면서도 효과적인 압박을 가합니다.</li>
+<li>데이터 보호는 단순히 백업만의 문제가 아닙니다.</li>
+</ul>
+</li>
+</ol>
+<h3 id="추가-학습-필요-영역">추가 학습 필요 영역<a hidden class="anchor" aria-hidden="true" href="#추가-학습-필요-영역">#</a></h3>
+<ol>
+<li>Salesloft Drift 침해의 기술적 세부사항 및 IOC</li>
+<li>OAuth 2.0 보안 모범 사례 및 토큰 관리 전략</li>
+<li>SaaS 보안 태세 관리 (SSPM) 도구 비교 및 선정</li>
+<li>CASB 솔루션의 기능 및 효과성</li>
+<li>ShinyHunters 그룹의 TTP 및 과거 공격 패턴</li>
+<li>Salesforce 및 Zendesk 보안 강화 가이드</li>
+<li>제3자 리스크 관리 프레임워크 (NIST, ISO 등)</li>
+</ol>
+<h3 id="보안-담당자를-위한-실무-적용-포인트">보안 담당자를 위한 실무 적용 포인트<a hidden class="anchor" aria-hidden="true" href="#보안-담당자를-위한-실무-적용-포인트">#</a></h3>
+<ol>
+<li>
+<p><strong>즉시 자사 환경 점검</strong>:</p>
+<ul>
+<li>Salesloft, Drift 사용 여부 확인</li>
+<li>Salesforce 통합 목록 검토</li>
+<li>2025년 8월 이후 의심스러운 활동 검색</li>
+</ul>
+</li>
+<li>
+<p><strong>OAuth 토큰 관리 강화</strong>:</p>
+<ul>
+<li>모든 활성 OAuth 토큰 목록 작성</li>
+<li>유효 기간 단축 (가능한 경우)</li>
+<li>정기적인 회전 일정 수립</li>
+<li>사용하지 않는 토큰 무효화</li>
+</ul>
+</li>
+<li>
+<p><strong>Secrets 관리 솔루션 도입</strong>:</p>
+<ul>
+<li>Salesforce 등 SaaS 내에 평문 자격증명 저장 금지</li>
+<li>중앙 집중식 Secrets 관리</li>
+<li>접근 로깅 및 감사</li>
+</ul>
+</li>
+<li>
+<p><strong>SaaS 가시성 확보</strong>:</p>
+<ul>
+<li>조직 내 모든 SaaS 애플리케이션 목록 작성</li>
+<li>각 SaaS 간 통합 관계 매핑</li>
+<li>섀도우 IT 탐지 및 통제</li>
+</ul>
+</li>
+<li>
+<p><strong>측면 이동 탐지</strong>:</p>
+<ul>
+<li>SIEM 통합으로 여러 SaaS의 로그 통합 분석</li>
+<li>UEBA로 비정상적인 접근 패턴 탐지</li>
+<li>시스템 간 이동 경로 모니터링</li>
+</ul>
+</li>
+<li>
+<p><strong>제3자 리스크 관리</strong>:</p>
+<ul>
+<li>모든 SaaS 공급업체 보안 평가</li>
+<li>침해 발생 시 즉시 통지 요구</li>
+<li>정기적인 재평가</li>
+</ul>
+</li>
+<li>
+<p><strong>사고 대응 훈련</strong>:</p>
+<ul>
+<li>공급망 침해 시나리오 포함</li>
+<li>신속한 영향 평가 절차</li>
+<li>크로스 팀 협력 연습</li>
+</ul>
+</li>
+</ol>
+<p>이번 Grubhub 사건은 현대 IT 환경의 상호 연결성이 가져오는 위험을 명확히 보여줍니다. 한 곳의 약한 고리가 전체 체인을 위협할 수 있으며, 보안은 자사 시스템뿐만 아니라 신뢰하는 모든 제3자까지 확장되어야 합니다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/%EA%B3%B5%EA%B8%89%EB%A7%9D%EA%B3%B5%EA%B2%A9/">공급망공격</a></li>
+      <li><a href="http://localhost:1313/tags/oauth%ED%86%A0%ED%81%B0/">OAuth토큰</a></li>
+      <li><a href="http://localhost:1313/tags/saas%EB%B3%B4%EC%95%88/">SaaS보안</a></li>
+      <li><a href="http://localhost:1313/tags/shinyhunters/">ShinyHunters</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%B8%A1%EB%A9%B4%EC%9D%B4%EB%8F%99/">측면이동</a></li>
+      <li><a href="http://localhost:1313/tags/salesforce/">Salesforce</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

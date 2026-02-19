@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>내부자위협 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%EB%82%B4%EB%B6%80%EC%9E%90%EC%9C%84%ED%98%91/</link>
+    <description>Recent content in 내부자위협 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sun, 11 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%EB%82%B4%EB%B6%80%EC%9E%90%EC%9C%84%ED%98%91/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>사이버보안 전문가들의 BlackCat 랜섬웨어 범죄 자백 사건</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week02/blackcat_insider_threat/</link>
+      <pubDate>Sun, 11 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week02/blackcat_insider_threat/</guid>
+      <description>인시던트 대응 전문가와 랜섬웨어 협상가가 BlackCat 랜섬웨어로 미국 기업을 직접 공격한 사건 분석</description>
+    </item>
+    <item>
+      <title>쿠팡 개인정보 3,370만 건 유출 사건</title>
+      <link>http://localhost:1313/security-issues-analysis/2025/week51/coupang_data_breach/</link>
+      <pubDate>Sun, 21 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2025/week51/coupang_data_breach/</guid>
+      <description>퇴사자의 인증키 탈취로 약 3,370만 건의 고객 개인정보가 유출된 쿠팡 사건 분석</description>
+    </item>
+  </channel>
+</rss>
