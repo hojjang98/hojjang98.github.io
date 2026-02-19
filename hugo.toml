@@ -21,6 +21,31 @@ summaryLength = 30
   home = ["HTML", "RSS", "JSON"]
   section = ["HTML", "RSS"]
 
+[params]
+  homeInfoParams.Title = "HJ's Security Note"
+  homeInfoParams.Content = "보안법규 분석과 실무 중심 거버넌스를 기록합니다."
+
+[params.profileMode]
+  enabled = true
+  title = "Hojun Choi"
+  subtitle = "Security Governance & Legal Analysis"
+  imageUrl = "profile.jpg"
+  imageWidth = 120
+  imageHeight = 120
+  imageTitle = "Profile"
+
+[[params.profileMode.buttons]]
+  name = "보안법 공부"
+  url = "/categories/security-law-study"
+
+[[params.profileMode.buttons]]
+  name = "보안 시사 분석"
+  url = "/categories/security-issues-analysis"
+
+[[params.profileMode.buttons]]
+  name = "논문 리뷰"
+  url = "/categories/paper-review"
+
 [privacy]
   [privacy.youtube]
     privacyEnhanced = true
