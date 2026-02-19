@@ -35,6 +35,38 @@ summaryLength = 30
   imageHeight = 120
   imageTitle = "Profile"
 
+[[params.profileMode.buttons]]
+  name = "보안법 공부"
+  url = "/categories/security-law-study"
+
+[[params.profileMode.buttons]]
+  name = "보안 시사 분석"
+  url = "/categories/security-issues-analysis"
+
+[[params.profileMode.buttons]]
+  name = "프로젝트"
+  url = "/categories/projects"
+
+[[params.profileMode.buttons]]
+  name = "논문 리뷰"
+  url = "/categories/paper-review"
+
+[params.homeInfoParams]
+  Title = "안녕하세요, 보안 컨설팅을 준비하는 최호준입니다."
+  Content = """
+SK쉴더스 루키즈 28기로 보안 실무를 익히며, 매일 배운 것들을 이곳에 기록하고 있습니다.
+
+**이런 내용을 기록합니다**
+
+- 보안법규 & 거버넌스
+- 보안 시사 분석  
+- 일일 학습 로그
+- 프로젝트
+- 논문 리뷰
+
+보안은 기술만으로 완성되지 않습니다. 법과 제도, 그리고 사람을 이해하는 컨설턴트가 되는 것이 목표입니다.
+"""
+
 [privacy]
   [privacy.youtube]
     privacyEnhanced = true
