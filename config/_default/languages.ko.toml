@@ -4,12 +4,4 @@ hasCJKLanguage = true
 
 [params]
   dateFormat = "2006년 1월 2일"
-  
-  [params.author]
-    name = "Hojun Choi"
-    image = "profile.jpg"
-    headline = "Security Governance & Legal Analysis"
-    bio = "보안법규 분석과 실무 중심 거버넌스를 기록합니다."
     
-    [[params.author.links]]
-      github = "https://github.com/hojjang98"
