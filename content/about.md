@@ -1,10 +1,7 @@
 ---
 title: "소개"
-date: 2026-02-19
 draft: false
-showAuthor: false
-showDate: false
-showReadingTime: false
+hideMeta: true
 ---
 
 안녕하세요, 보안 컨설팅을 준비하는 최호준입니다.
