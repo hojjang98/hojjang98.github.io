@@ -6,9 +6,6 @@ languageCode = "ko-kr"
 enableRobotsTXT = true
 summaryLength = 30
 
-[author]
-  name = "HJ"
-
 [pagination]
   pagerSize = 10
 
@@ -26,6 +23,9 @@ summaryLength = 30
   showReadingTime = true
   showBreadCrumbs = true
 
+[params.author]
+  name = "HJ"
+
 [params.profileMode]
   enabled = true
   title = "Hojun Choi"
@@ -34,6 +34,10 @@ summaryLength = 30
   imageWidth = 120
   imageHeight = 120
   imageTitle = "Profile"
+
+[[params.profileMode.buttons]]
+  name = "소개"
+  url = "/about"
 
 [[params.profileMode.buttons]]
   name = "보안법 공부"
@@ -51,6 +55,6 @@ summaryLength = 30
   name = "논문 리뷰"
   url = "/categories/paper-review"
 
-[[params.profileMode.buttons]]
-  name = "소개"
-  url = "/about"
+[privacy]
+  [privacy.youtube]
+    privacyEnhanced = true
