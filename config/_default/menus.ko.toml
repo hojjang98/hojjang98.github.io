@@ -1,4 +1,9 @@
 [[main]]
+  name = "소개"
+  url = "/about"
+  weight = 5
+
+[[main]]
   name = "일일 로그"
   pageRef = "categories/daily-logs"
   weight = 10
