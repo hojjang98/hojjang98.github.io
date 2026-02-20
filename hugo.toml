@@ -20,11 +20,8 @@ summaryLength = 30
 
 [params]
   showShareButtons = false
-  showReadingTime = true
+  showReadingTime = false
   showBreadCrumbs = true
-
-[params.author]
-  name = "HJ"
 
 [params.profileMode]
   enabled = true
