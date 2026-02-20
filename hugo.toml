@@ -41,7 +41,7 @@ summaryLength = 30
 
 [[params.profileMode.buttons]]
   name = "보안법 공부"
-  url = "/categories/security-law-study"
+  url = "/categories/cyber-law-study"
 
 [[params.profileMode.buttons]]
   name = "보안 시사 분석"

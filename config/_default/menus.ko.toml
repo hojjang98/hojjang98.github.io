@@ -15,7 +15,7 @@
 
 [[main]]
   name = "보안법 공부"
-  pageRef = "categories/security-law-study"
+  pageRef = "categories/cyber-law-study"
   weight = 30
 
 [[main]]
