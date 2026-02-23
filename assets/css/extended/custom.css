@@ -1,0 +1,10 @@
+/* 코드 블록 내부 줄바꿈 강제 */
+pre {
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+}
+
+pre code {
+    white-space: pre-wrap !important;
+}
