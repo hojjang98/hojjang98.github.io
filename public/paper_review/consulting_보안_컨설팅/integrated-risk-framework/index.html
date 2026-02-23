@@ -1,0 +1,3235 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Towards an Integrated Risk Analysis Security Framework | HJ&#39;s Security Note</title>
+<meta name="keywords" content="보안컨설팅, 위험분석, 위험관리, MARISMA, 체계적문헌고찰, 동적위험관리">
+<meta name="description" content="30개 위험 분석 방법론의 체계적 비교를 통해 10가지 핵심 약점을 식별하고, 동적 학습 순환과 패턴 기반 접근으로 이를 해결하는 MARISMA 프레임워크를 제안한 연구">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/integrated-risk-framework/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a29c24210eb31d9ce56f669c66a35c9c51b17376b7764e336a49af7dec914cf0.css" integrity="sha256-opwkIQ6zHZzlb2acZqNcnFGxc3a3dk4zakmvfeyRTPA=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/integrated-risk-framework/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/" title="프로젝트">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">홈</a>&nbsp;»&nbsp;<a href="http://localhost:1313/paper_review/">논문 리뷰</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Towards an Integrated Risk Analysis Security Framework
+    </h1>
+    <div class="post-meta"><span title='2026-01-27 00:00:00 +0000 UTC'>2026년 1월 27일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="research-review-towards-an-integrated-risk-analysis-security-framework">Research Review: Towards an Integrated Risk Analysis Security Framework<a hidden class="anchor" aria-hidden="true" href="#research-review-towards-an-integrated-risk-analysis-security-framework">#</a></h1>
+<blockquote>
+<p><strong>Analyzed Date:</strong> 2026.01.27<br>
+<strong>Keywords:</strong> Risk_Assessment, Risk_Management, MARISMA, Systematic_Review, SME_Security<br>
+<strong>Source:</strong> Frontiers of Computer Science, 2024, Vol. 18(3), Article 183808<br>
+<strong>DOI:</strong> 10.1007/s11704-023-1582-6<br>
+<strong>Link:</strong> <a href="https://link.springer.com/article/10.1007/s11704-023-1582-6">https://link.springer.com/article/10.1007/s11704-023-1582-6</a></p>
+</blockquote>
+<hr>
+<h2 id="why-this-paper">Why This Paper?<a hidden class="anchor" aria-hidden="true" href="#why-this-paper">#</a></h2>
+<h3 id="선정-배경">선정 배경<a hidden class="anchor" aria-hidden="true" href="#선정-배경">#</a></h3>
+<p><strong>도메인 탐색 결과:</strong><br>
+8주간 여러 논문을 읽고, 13주차부터는 SOC 관련 논문을 읽은 후, 최종 프로젝트 희망이 보안 컨설팅 방향으로 전환됨에 따라 체계적으로 컨설팅 전문성을 쌓기 위한 새로운 학습 단계 시작.</p>
+<p><strong>이 논문을 선택한 이유:</strong></p>
+<ul>
+<li>2024년 최신 연구로, 30개의 위험 분석 방법론을 체계적으로 비교 분석</li>
+<li>학술적 분석뿐 아니라 실제 스페인, 콜롬비아, 에콰도르, 아르헨티나 기업에 적용 중인 MARISMA 프레임워크 포함</li>
+<li>취약점 진단, 위험 평가, 보안 체계 구축 등 예상 프로젝트 주제와 직접 연관</li>
+<li>Systematic Literature Review 방법론으로 기존 연구의 한계를 명확히 식별</li>
+</ul>
+<p><strong>학습 목표:</strong></p>
+<ol>
+<li>현대 위험 분석 방법론의 10가지 핵심 약점 이해</li>
+<li>실무 적용 가능한 위험 평가 프레임워크 설계 원칙 습득</li>
+<li>SME 환경에서의 보안 컨설팅 접근법 학습</li>
+</ol>
+<hr>
+<h2 id="day-1--research-context--motivation">Day 1 – Research Context &amp; Motivation<a hidden class="anchor" aria-hidden="true" href="#day-1--research-context--motivation">#</a></h2>
+<p><em>(정보 사회의 생존 조건: 적응형 위험 분석의 필요성)</em></p>
+<h3 id="1-연구-배경-전통적-위험-분석의-한계">1. 연구 배경: 전통적 위험 분석의 한계<a hidden class="anchor" aria-hidden="true" href="#1-연구-배경-전통적-위험-분석의-한계">#</a></h3>
+<p><strong>디지털 전환 시대의 보안 역설</strong></p>
+<p>현대 기업들은 사이버 보안에 막대한 투자를 하고 있지만, 위협의 수와 영향은 오히려 증가하고 있다. 특히 정보 시스템은 기업 경쟁력의 핵심 요소가 되었으며, 정보와 프로세스는 기업의 가장 중요한 자산으로 인식되고 있다.</p>
+<p><strong>전통적 위험 분석의 3가지 구조적 문제</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>문제 영역</th>
+          <th>구체적 한계</th>
+          <th>비즈니스 영향</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>기술 진화 속도</strong></td>
+          <td>고전적 위험 분석 모델이 Cloud, IoT, Big Data, CPS 등 신기술 환경의 위험을 제대로 반영하지 못함</td>
+          <td>알려지지 않은 위험과 취약점 노출</td>
+      </tr>
+      <tr>
+          <td><strong>협업 필요성 증가</strong></td>
+          <td>기업 간 연계, 제3자 서비스, 다자간 프로젝트 등에서 발생하는 <strong>연관 위험(Associative Risk)</strong> 및 <strong>계층적 위험(Hierarchical Risk)</strong> 미반영</td>
+          <td>공급망 공격 등 간접 위험 관리 실패</td>
+      </tr>
+      <tr>
+          <td><strong>정적 분석의 한계</strong></td>
+          <td>위험 분석은 비용이 많이 드는 프로세스이며, 기존 방법론은 변경 시마다 전체 분석을 반복하도록 설계되지 않음</td>
+          <td>수개월~수년 전 위험 평가 결과로 현재를 판단하는 오류</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>중소기업(SME)의 이중 위기</strong></p>
+<p>대기업과 달리 SME는:</p>
+<ul>
+<li>적절한 가이드라인 없이 보안 시스템 개발</li>
+<li>불충분한 자원과 낮은 보안 문화</li>
+<li>복잡한 위험 분석 방법론을 적용할 인력/예산 부족</li>
+</ul>
+<p>시장의 보안 도구들은 문제의 일부만 해결하며, 포괄적이고 통합된 방식으로 접근하지 못한다.</p>
+<p><strong>연구 문제의식</strong></p>
+<blockquote>
+<p>&ldquo;현대 기술 환경(Cloud, IoT, Big Data)과 협업 비즈니스 모델에 적합하면서, 동시에 SME도 실용적으로 적용할 수 있는 <strong>동적이고 적응형인</strong> 위험 분석 프레임워크를 어떻게 설계할 것인가?&rdquo;</p>
+</blockquote>
+<h3 id="2-핵심-개념-위험-관리의-진화">2. 핵심 개념: 위험 관리의 진화<a hidden class="anchor" aria-hidden="true" href="#2-핵심-개념-위험-관리의-진화">#</a></h3>
+<h4 id="a-위험-분석의-기본-개념">A. 위험 분석의 기본 개념<a hidden class="anchor" aria-hidden="true" href="#a-위험-분석의-기본-개념">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>개념</th>
+          <th>정의</th>
+          <th>컨설팅 맥락에서의 의미</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>위험 분석 (Risk Analysis)</strong></td>
+          <td>자산, 위협, 취약점을 식별하고 위험 수준을 평가하는 프로세스</td>
+          <td>고객사의 현재 보안 상태를 객관적으로 진단하는 기반</td>
+      </tr>
+      <tr>
+          <td><strong>위험 관리 (Risk Management)</strong></td>
+          <td>식별된 위험을 감소, 전이, 수용, 회피하는 통제 전략</td>
+          <td>진단 결과를 바탕으로 실행 가능한 보안 개선 로드맵 제시</td>
+      </tr>
+      <tr>
+          <td><strong>연관 위험 (Associative Risk)</strong></td>
+          <td>파트너사, 공급업체, 클라우드 제공자 등 외부 관계에서 발생하는 위험</td>
+          <td>공급망 보안, SaaS 의존성, 아웃소싱 리스크 평가</td>
+      </tr>
+      <tr>
+          <td><strong>계층적 위험 (Hierarchical Risk)</strong></td>
+          <td>시스템 구성요소 간 종속성으로 인해 한 계층의 위험이 다른 계층으로 전파되는 위험</td>
+          <td>인프라 장애가 애플리케이션에 미치는 영향 등 종속성 분석</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="b-새로운-기술-패러다임이-가져온-위험-변화">B. 새로운 기술 패러다임이 가져온 위험 변화<a hidden class="anchor" aria-hidden="true" href="#b-새로운-기술-패러다임이-가져온-위험-변화">#</a></h4>
+<p><strong>Cloud Computing의 영향</strong></p>
+<ul>
+<li>물리적 경계의 소멸 → 전통적 경계 기반 보안 모델 무력화</li>
+<li>가상화된 자원 → 물리 서버뿐 아니라 가상 서버의 위험 고려 필요</li>
+<li>제3자 의존성 → 클라우드 제공자의 보안 수준에 직접 영향받음</li>
+</ul>
+<p><strong>IoT 환경의 특수성</strong></p>
+<ul>
+<li>수많은 엔드포인트 → 공격 표면 기하급수적 증가</li>
+<li>물리-디지털 융합 → OT(Operational Technology) 보안 고려 필요</li>
+<li>제한된 자원 기기 → 전통적 보안 솔루션 적용 어려움</li>
+</ul>
+<p><strong>Industry 4.0 / CPS의 도전</strong></p>
+<ul>
+<li>사이버-물리 시스템 연동 → 사이버 공격이 물리적 피해로 직결</li>
+<li>SCADA 시스템 보안 → 중요 기반시설 보호의 새로운 차원</li>
+</ul>
+<h3 id="3-연구-방법-systematic-literature-review">3. 연구 방법: Systematic Literature Review<a hidden class="anchor" aria-hidden="true" href="#3-연구-방법-systematic-literature-review">#</a></h3>
+<p>본 논문은 <strong>Kitchenham의 체계적 문헌 고찰(Systematic Review) 프로토콜</strong>을 따른다. 이 방법론은 의학 연구를 위해 개발되었으나, 정보 시스템 연구에 적합하도록 조정되었다.</p>
+<h4 id="연구-설계-구조">연구 설계 구조<a hidden class="anchor" aria-hidden="true" href="#연구-설계-구조">#</a></h4>
+<pre tabindex="0"><code>[연구 질문 정의]
+    ↓
+[검색 전략 수립]
+ - 데이터 소스: ACM, IEEE, Elsevier, Springer, Taylor&amp;Francis, Wiley
+ - 검색 기간: 2011-2022 (11년)
+ - 키워드: Risk Analysis, Risk Management, SME, Cloud, IoT, Dynamic, 
+           Associative Risk, Hierarchical Risk
+    ↓
+[연구 선별 기준]
+ - 포함 기준: 제목/키워드/초록 분석
+ - 제외 기준: 요약/결론 정밀 분석
+    ↓
+[최종 선정]
+ 초기: 6,635개 논문
+ → 최종: 30개 핵심 연구
+</code></pre><h4 id="선정된-연구의-분류">선정된 연구의 분류<a hidden class="anchor" aria-hidden="true" href="#선정된-연구의-분류">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>유형</th>
+          <th>개수</th>
+          <th>예시</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Process</strong></td>
+          <td>4</td>
+          <td>위험 평가 절차, 단계별 워크플로우</td>
+      </tr>
+      <tr>
+          <td><strong>Framework</strong></td>
+          <td>9</td>
+          <td>위험 관리 구조, 아키텍처</td>
+      </tr>
+      <tr>
+          <td><strong>Model</strong></td>
+          <td>9</td>
+          <td>위험 계산 모델, 수학적 표현</td>
+      </tr>
+      <tr>
+          <td><strong>Methodology</strong></td>
+          <td>6</td>
+          <td>통합된 방법론 (프로세스 + 모델)</td>
+      </tr>
+      <tr>
+          <td><strong>Others</strong></td>
+          <td>2</td>
+          <td>기타 관련 연구</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="4-연구의-핵심-기여">4. 연구의 핵심 기여<a hidden class="anchor" aria-hidden="true" href="#4-연구의-핵심-기여">#</a></h3>
+<h4 id="a-학술적-기여-10가지-약점의-체계적-식별">A. 학술적 기여: 10가지 약점의 체계적 식별<a hidden class="anchor" aria-hidden="true" href="#a-학술적-기여-10가지-약점의-체계적-식별">#</a></h4>
+<p>본 연구는 30개의 기존 연구를 12가지 평가 기준으로 분석하여, 현대 위험 분석 방법론의 10가지 핵심 약점을 도출했다:</p>
+<table>
+  <thead>
+      <tr>
+          <th>약점 코드</th>
+          <th>약점 명칭</th>
+          <th>설명</th>
+          <th>현실적 영향</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>AC</strong></td>
+          <td>Adaptive Catalogues</td>
+          <td>시간에 따라 변화하는 요소 카탈로그 부재</td>
+          <td>새로운 위협에 대응하기 위해 방법론 전체를 재설계해야 함</td>
+      </tr>
+      <tr>
+          <td><strong>HA</strong></td>
+          <td>Hierarchy &amp; Associativity</td>
+          <td>계층적/연관적 위험 구조 미반영</td>
+          <td>클라우드, 공급망 등 간접 위험 평가 불가</td>
+      </tr>
+      <tr>
+          <td><strong>RKL</strong></td>
+          <td>Reuse Knowledge &amp; Learning</td>
+          <td>과거 분석 결과 재사용 및 학습 메커니즘 부족</td>
+          <td>매번 처음부터 분석, 경험 축적 불가</td>
+      </tr>
+      <tr>
+          <td><strong>DY</strong></td>
+          <td>Dynamic &amp; Evolutionary</td>
+          <td>정적 분석, 변화 시 전체 재평가 필요</td>
+          <td>수개월 전 결과로 현재 위험 판단</td>
+      </tr>
+      <tr>
+          <td><strong>CC</strong></td>
+          <td>Collaborative Capability</td>
+          <td>기업 간 협업 위험 관리 불가</td>
+          <td>파트너사 보안 수준 공유/조율 불가</td>
+      </tr>
+      <tr>
+          <td><strong>AE</strong></td>
+          <td>Valuation of Elements</td>
+          <td>자산, 영향 등의 정량적 평가 메커니즘 부족</td>
+          <td>비용 대비 효과 계산 어려움</td>
+      </tr>
+      <tr>
+          <td><strong>DM</strong></td>
+          <td>Dynamic Metrics</td>
+          <td>고정된 위험 계산 공식</td>
+          <td>산업/상황별 맞춤형 위험 측정 불가</td>
+      </tr>
+      <tr>
+          <td><strong>LLS</strong></td>
+          <td>Low Level of Subjectivity</td>
+          <td>높은 주관성 → 제3자가 결과 신뢰 어려움</td>
+          <td>외부 감사, 인증 시 객관성 부족</td>
+      </tr>
+      <tr>
+          <td><strong>SLC</strong></td>
+          <td>Simplicity &amp; Low Cost</td>
+          <td>복잡도 높아 SME 적용 불가</td>
+          <td>실무 도입률 저조</td>
+      </tr>
+      <tr>
+          <td><strong>TS</strong></td>
+          <td>Tool Support</td>
+          <td>자동화 도구 부재 → 수작업 의존</td>
+          <td>시간/비용 과다, 일관성 부족</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="b-실무-기여-marisma-프레임워크-제안">B. 실무 기여: MARISMA 프레임워크 제안<a hidden class="anchor" aria-hidden="true" href="#b-실무-기여-marisma-프레임워크-제안">#</a></h4>
+<p>논문은 식별된 10가지 약점을 해결하기 위해 <strong>MARISMA</strong>(Methodology for the Analysis of Risks on Information Systems, using Meta-pattern and Adaptability) 프레임워크를 제안한다.</p>
+<p><strong>MARISMA의 4대 구성 요소</strong></p>
+<pre tabindex="0"><code>┌─────────────────────────────────────────┐
+│  1. Meta-Pattern (CAT 구조)             │
+│  - Control, Asset, Threat의 관계 정의   │
+│  - 모든 위험 분석 패턴의 공통 구조       │
+└─────────────────────────────────────────┘
+              ↓
+┌─────────────────────────────────────────┐
+│  2. 3가지 핵심 프로세스                  │
+│  - RPG: 위험 패턴 생성                   │
+│  - RAMG: 위험 분석 및 관리               │
+│  - DRM: 동적 위험 관리                   │
+└─────────────────────────────────────────┘
+              ↓
+┌─────────────────────────────────────────┐
+│  3. Knowledge Base (패턴 저장소)         │
+│  - 산업별/기술별 위험 패턴 축적          │
+│  - 인스턴스 간 학습 공유                 │
+└─────────────────────────────────────────┘
+              ↓
+┌─────────────────────────────────────────┐
+│  4. eMARISMA Tool (클라우드 기반)        │
+│  - Java/Grails 기반 자동화 도구          │
+│  - MySQL, Spring Security 활용           │
+└─────────────────────────────────────────┘
+</code></pre><p><strong>실제 적용 현황</strong></p>
+<ul>
+<li>적용 국가: 스페인, 콜롬비아, 에콰도르, 아르헨티나</li>
+<li>적용 섹터: 정부, 중요 기반시설, 석유화학, 화학, 조선</li>
+<li>지속적 개선: 실무 적용 피드백으로 프레임워크 진화 중</li>
+</ul>
+<h3 id="5-컨설팅-관점-인사이트">5. 컨설팅 관점 인사이트<a hidden class="anchor" aria-hidden="true" href="#5-컨설팅-관점-인사이트">#</a></h3>
+<p><strong>적용 가능성: 왜 이 연구가 컨설팅 실무에 중요한가</strong></p>
+<ol>
+<li>
+<p><strong>체계적 분석 프레임워크 제공</strong></p>
+<ul>
+<li>30개 방법론의 장단점을 한눈에 비교 가능</li>
+<li>고객사 상황에 맞는 방법론 선택 시 근거 자료로 활용</li>
+</ul>
+</li>
+<li>
+<p><strong>SME 특화 접근</strong></p>
+<ul>
+<li>대부분의 고객사가 SME라는 현실 반영</li>
+<li>복잡도와 실용성의 균형점 제시</li>
+</ul>
+</li>
+<li>
+<p><strong>동적 위험 관리의 중요성</strong></p>
+<ul>
+<li>일회성 진단이 아닌 지속적 관리 모델</li>
+<li>컨설팅 이후 유지보수 계약으로 연결 가능</li>
+</ul>
+</li>
+</ol>
+<p><strong>기존 학습과의 연결</strong></p>
+<ul>
+<li>SOC 논문들: 위협 탐지/분석 기술 → 이 논문: 위험을 어떻게 <strong>평가하고 관리</strong>할 것인가</li>
+<li>Bulgurcu (2010): 인간 행동 측면 → 이 논문: 조직 전체 위험 관리 측면</li>
+<li>보완 관계: 탐지 기술 + 인간 요소 + 위험 관리 = 통합 보안 컨설팅</li>
+</ul>
+<p><strong>현실적 고려사항</strong></p>
+<ul>
+<li>MARISMA는 연구팀의 spin-off 회사를 통해 상용화</li>
+<li>실제 도입 시 eMARISMA 도구 비용, 교육 기간, 조직 변화 관리 필요</li>
+<li>한국 환경에서는 ISMS-P, ISO 27001과의 매핑 작업 선행되어야 함</li>
+</ul>
+<hr>
+<p><strong>Day 1 마무리:</strong><br>
+오늘은 현대 위험 분석의 구조적 한계를 이해했다. 기술 진화 속도, 협업 증가, 정적 분석의 한계라는 3대 문제가 전통적 방법론을 무력화시키고 있으며, 특히 SME는 복잡한 방법론을 적용할 여력이 없다. 이 논문은 30개 연구의 체계적 분석을 통해 10가지 약점을 식별하고, MARISMA라는 실무 검증된 해결책을 제시한다. 내일은 이 30개 연구들이 구체적으로 어떤 접근을 시도했는지, 그리고 왜 실패했는지를 심층 분석할 예정이다.</p>
+<h1 id="research-review-towards-an-integrated-risk-analysis-security-framework-1">Research Review: Towards an Integrated Risk Analysis Security Framework<a hidden class="anchor" aria-hidden="true" href="#research-review-towards-an-integrated-risk-analysis-security-framework-1">#</a></h1>
+<blockquote>
+<p><strong>Day 2 Focus:</strong> 30개 선정 연구의 상세 분석 및 비교<br>
+<strong>Source:</strong> Section 4 (Information Collection) &amp; Table 2 (Main Contributions)</p>
+</blockquote>
+<hr>
+<h2 id="day-2--selected-studies-analysis">Day 2 – Selected Studies Analysis<a hidden class="anchor" aria-hidden="true" href="#day-2--selected-studies-analysis">#</a></h2>
+<p><em>(30개 위험 분석 연구의 접근법과 한계)</em></p>
+<h3 id="1-연구-분석-개요">1. 연구 분석 개요<a hidden class="anchor" aria-hidden="true" href="#1-연구-분석-개요">#</a></h3>
+<p>논문은 6,635개의 초기 결과에서 선별 기준을 적용하여 최종 30개의 연구를 선정했다. 각 연구는 5가지 유형으로 분류되었다:</p>
+<p><strong>분류 기준:</strong></p>
+<ul>
+<li><strong>Process</strong>: 목표 달성을 위한 연속적 단계의 활동 집합</li>
+<li><strong>Framework</strong>: 위험 관리 프레임워크 구축을 지원하는 계층 구조</li>
+<li><strong>Model</strong>: 복잡한 시스템의 이해를 돕기 위한 표현 도구</li>
+<li><strong>Methodology</strong>: Process와 Model을 통합한 체계적 접근법</li>
+<li><strong>Others</strong>: 위 범주에 완전히 맞지 않지만 유용한 개념을 포함한 연구</li>
+</ul>
+<h3 id="2-process-유형-연구-4개">2. Process 유형 연구 (4개)<a hidden class="anchor" aria-hidden="true" href="#2-process-유형-연구-4개">#</a></h3>
+<h4 id="p1-hybrid-information-security-risk-assessment-procedure-56">P1: Hybrid Information Security Risk Assessment Procedure [56]<a hidden class="anchor" aria-hidden="true" href="#p1-hybrid-information-security-risk-assessment-procedure-56">#</a></h4>
+<p><strong>핵심 접근:</strong></p>
+<ul>
+<li>DEMATEL(Decision Making Trial and Evaluation Laboratory)과 ANP(Analytic Network Process) 결합</li>
+<li>ISO/IEC 27001의 3개 보안 통제 영역에 초점</li>
+</ul>
+<p><strong>평가 절차:</strong></p>
+<ol>
+<li>시스템 특성 파악</li>
+<li>위협과 취약점 식별</li>
+<li>위험 평가</li>
+<li>영향 분석</li>
+<li>위험 결정</li>
+<li>통제 권고사항</li>
+</ol>
+<p><strong>한계:</strong></p>
+<ul>
+<li>유연성 부족, 근본적으로 이론적</li>
+<li>실무 적용 복잡도 높음</li>
+<li>연관 및 계층적 요인 미고려</li>
+</ul>
+<h4 id="p2-fuzzy-logic-based-system-for-enterprise-collaboration-57">P2: Fuzzy Logic-Based System for Enterprise Collaboration [57]<a hidden class="anchor" aria-hidden="true" href="#p2-fuzzy-logic-based-system-for-enterprise-collaboration-57">#</a></h4>
+<p><strong>핵심 접근:</strong></p>
+<ul>
+<li>협업 생애주기 4단계(사전 생성, 생성, 운영, 종료)의 위험 요인 식별</li>
+<li>각 위험을 확률과 영향으로 기술</li>
+</ul>
+<p><strong>실무 검증:</strong></p>
+<ul>
+<li>Collaboration Risk Evaluator (CRE) 프로토타입 웹 서비스 개발</li>
+<li>실제 사용 사례로 검증</li>
+</ul>
+<p><strong>한계:</strong></p>
+<ul>
+<li>모든 유형의 기업과 섹터에 적용 가능성 고려 부족</li>
+<li>지식 재사용 메커니즘 없음</li>
+</ul>
+<h4 id="p3-sdn-information-security-risk-assessment-58">P3: SDN Information Security Risk Assessment [58]<a hidden class="anchor" aria-hidden="true" href="#p3-sdn-information-security-risk-assessment-58">#</a></h4>
+<p><strong>핵심 접근:</strong></p>
+<ul>
+<li>Software Defined Network(SDN) 아키텍처 기반</li>
+<li>Pythagorean Fuzzy Sets를 활용한 불확실성 고려</li>
+<li>다기준 의사결정(MCDM) 방법 개발</li>
+</ul>
+<p><strong>기여:</strong></p>
+<ul>
+<li>퍼지 기법으로 연관 요인 고려 가능</li>
+<li>SDN 속성과 취약점 간 영향 관계 파악</li>
+</ul>
+<p><strong>한계:</strong></p>
+<ul>
+<li>근본적으로 이론적 연구</li>
+<li>복잡한 실무 사례에서 결과 검증 없음</li>
+</ul>
+<h4 id="p4-integrated-risk-assessment-via-fuzzy-theory-59">P4: Integrated Risk Assessment via Fuzzy Theory [59]<a hidden class="anchor" aria-hidden="true" href="#p4-integrated-risk-assessment-via-fuzzy-theory-59">#</a></h4>
+<p><strong>핵심 접근:</strong></p>
+<ul>
+<li>환경 요인으로 인한 불완전한 결과나 높은 불확실성을 다루기 위한 퍼지 기법</li>
+<li>철도 분야에 특화되었으나 IT 분야로 외삽 가능</li>
+</ul>
+<p><strong>기여:</strong></p>
+<ul>
+<li>질적/양적 기법 모두 사용</li>
+<li>계층적 관계 고려</li>
+<li>사례 연구 정의</li>
+</ul>
+<p><strong>한계:</strong></p>
+<ul>
+<li>근본적으로 이론적 연구</li>
+<li>복잡한 실무 사례에서 결과 검증 없음</li>
+</ul>
+<h3 id="3-framework-유형-연구-9개">3. Framework 유형 연구 (9개)<a hidden class="anchor" aria-hidden="true" href="#3-framework-유형-연구-9개">#</a></h3>
+<h4 id="f1-comprehensive-framework-for-enterprise-information-security-60">F1: Comprehensive Framework for Enterprise Information Security [60]<a hidden class="anchor" aria-hidden="true" href="#f1-comprehensive-framework-for-enterprise-information-security-60">#</a></h4>
+<p><strong>구조:</strong></p>
+<ul>
+<li>2개의 구조적 차원: 범위, 평가 기준</li>
+<li>2개의 절차적 차원: 프로세스, 평가 도구</li>
+<li>STOPE(Strategy, Technology, Organization, People, Environment) 관점</li>
+<li>DMAIC(Define, Measure, Analyse, Improve, Control) 순환 단계</li>
+</ul>
+<p><strong>한계:</strong></p>
+<ul>
+<li>이론적 연구</li>
+<li>실무 사례 적용 결과 없음</li>
+</ul>
+<h4 id="f2-knowledge-based-risk-management-kbrm-61">F2: Knowledge-Based Risk Management (KBRM) [61]<a hidden class="anchor" aria-hidden="true" href="#f2-knowledge-based-risk-management-kbrm-61">#</a></h4>
+<p><strong>핵심 개념:</strong></p>
+<ul>
+<li>지식 관리(KM) 프로세스로 위험 관리 효과성 향상</li>
+<li>5가지 활동: 지식 기반 위험 식별, 포착, 공유, 평가, 교육</li>
+</ul>
+<p><strong>기여:</strong></p>
+<ul>
+<li>지식 관리를 위험 분석에 적용한 최초 시도</li>
+</ul>
+<p><strong>한계:</strong></p>
+<ul>
+<li>이론적 연구</li>
+<li>실무 검증 없음</li>
+</ul>
+<h4 id="f3-info-structure-for-isra-62">F3: Info-structure for ISRA [62]<a hidden class="anchor" aria-hidden="true" href="#f3-info-structure-for-isra-62">#</a></h4>
+<p><strong>목적:</strong></p>
+<ul>
+<li>기업이 가장 적합한 위험 관리 방법론을 선택하고 이해하도록 정보 구조화</li>
+</ul>
+<p><strong>기여:</strong></p>
+<ul>
+<li>위험 평가 전 필요한 정보 수집 프레임워크</li>
+<li>동적 위험과 관계적 측면의 중요성 강조</li>
+</ul>
+<p><strong>한계:</strong></p>
+<ul>
+<li>이론적 연구</li>
+<li>SME에 적용하기 어려운 주요 방법론만 고려</li>
+<li>실무 검증 없음</li>
+</ul>
+<h4 id="f4-dynamic-risk-management-framework-63">F4: Dynamic Risk Management Framework [63]<a hidden class="anchor" aria-hidden="true" href="#f4-dynamic-risk-management-framework-63">#</a></h4>
+<p><strong>핵심 개념:</strong></p>
+<ul>
+<li>PDCA(Plan-Do-Check-Act) 전략 기반 동적 위험 평가</li>
+<li>초기 평가 후 지속적 평가 순환</li>
+</ul>
+<p><strong>기여:</strong></p>
+<ul>
+<li>위험 평가 프로세스 내 동적 개념의 중요성 증가</li>
+</ul>
+<p><strong>한계:</strong></p>
+<ul>
+<li>매우 초기 단계</li>
+<li>실무 검증 없음</li>
+</ul>
+<h4 id="f5-fuzzy-reinforcement-for-software-risk-assessment-64">F5: Fuzzy Reinforcement for Software Risk Assessment [64]<a hidden class="anchor" aria-hidden="true" href="#f5-fuzzy-reinforcement-for-software-risk-assessment-64">#</a></h4>
+<p><strong>핵심 접근:</strong></p>
+<ul>
+<li>소프트웨어 프로젝트 개발에서 불확실성 관리</li>
+<li>퍼지 기법 기반 위험 평가 프레임워크 개발 기반</li>
+</ul>
+<p><strong>한계:</strong></p>
+<ul>
+<li>이론적 연구</li>
+<li>실무 검증 없음</li>
+</ul>
+<h4 id="f6-core-unified-risk-framework-curf-21">F6: Core Unified Risk Framework (CURF) [21]<a hidden class="anchor" aria-hidden="true" href="#f6-core-unified-risk-framework-curf-21">#</a></h4>
+<p><strong>목적:</strong></p>
+<ul>
+<li>정보 시스템 위험 평가 방법들을 비교하는 프레임워크</li>
+</ul>
+<p><strong>기여:</strong></p>
+<ul>
+<li>동적 프레임워크 필요성 명시</li>
+<li>클라우드 컴퓨팅 적응과 지식 재사용 포함</li>
+</ul>
+<p><strong>한계:</strong></p>
+<ul>
+<li>비교 방법 제시만 하고 새로운 제안 없음</li>
+</ul>
+<h4 id="f7-fuzzy-methodology-for-ram-analysis-65">F7: Fuzzy Methodology for RAM Analysis [65]<a hidden class="anchor" aria-hidden="true" href="#f7-fuzzy-methodology-for-ram-analysis-65">#</a></h4>
+<p><strong>핵심 접근:</strong></p>
+<ul>
+<li>FMEA(Failure Mode and Effect Analysis) 기반</li>
+<li>규칙 기반 접근법과 퍼지 기법 활용</li>
+<li>Fuzzy Lambda-Tau(FLT)로 신뢰성, 가용성, 유지보수성(RAM) 계산</li>
+</ul>
+<p><strong>적용 범위:</strong></p>
+<ul>
+<li>화학 처리 플랜트에 초점</li>
+<li>모든 정보 시스템에 적응 가능할 만큼 일반적</li>
+<li>중요 기반시설 위험 분석의 중요성 강화</li>
+</ul>
+<p><strong>한계:</strong></p>
+<ul>
+<li>이론적 연구</li>
+<li>실무 검증 없음</li>
+</ul>
+<h4 id="f8-lisra---lightweight-security-risk-assessment-66">F8: LiSRA - Lightweight Security Risk Assessment [66]<a hidden class="anchor" aria-hidden="true" href="#f8-lisra---lightweight-security-risk-assessment-66">#</a></h4>
+<p><strong>목적:</strong></p>
+<ul>
+<li>모든 유형 조직, 특히 SME 적응을 위한 의사결정 지원</li>
+</ul>
+<p><strong>기여:</strong></p>
+<ul>
+<li>기존 보안 활동 고려</li>
+<li>요소 간 의존성 고려 (연관 관계 강조)</li>
+<li>질적 기법으로 빠르고 쉬운 초기 평가</li>
+<li>이전 구현의 지식 활용 메커니즘</li>
+</ul>
+<p><strong>한계:</strong></p>
+<ul>
+<li>이론적 연구</li>
+<li>실무 검증 없음</li>
+</ul>
+<h4 id="f9-bprim---business-process-risk-integrated-method-67">F9: BPRIM - Business Process-Risk Integrated Method [67]<a hidden class="anchor" aria-hidden="true" href="#f9-bprim---business-process-risk-integrated-method-67">#</a></h4>
+<p><strong>핵심 개념:</strong></p>
+<ul>
+<li>위험 관리와 비즈니스 프로세스 관리 통합</li>
+<li>BPM과 ERM 생애주기 결합</li>
+<li>위험 메타모델 (일반 수준에서 정의, 다양한 영역에 적응 가능)</li>
+<li>반형식적 그래픽 모델링 언어</li>
+</ul>
+<p><strong>지원 도구:</strong></p>
+<ul>
+<li>프로세스 모델링만 지원, 위험 버전 미지원</li>
+<li>현재 버전은 위험 관리보다 비즈니스 프로세스 관리에 가까움</li>
+</ul>
+<p><strong>실무 적용:</strong></p>
+<ul>
+<li>의료 섹터 일부 실무 사례 테스트</li>
+<li>다른 섹터에서의 효과성은 아직 미분석</li>
+</ul>
+<h3 id="4-model-유형-연구-9개">4. Model 유형 연구 (9개)<a hidden class="anchor" aria-hidden="true" href="#4-model-유형-연구-9개">#</a></h3>
+<h4 id="mo1-iss-risk-assessment-under-uncertain-environment-68">MO1: ISS Risk Assessment under Uncertain Environment [68]<a hidden class="anchor" aria-hidden="true" href="#mo1-iss-risk-assessment-under-uncertain-environment-68">#</a></h4>
+<p><strong>핵심 이론:</strong></p>
+<ul>
+<li>Evidence Theory(베이지안 주관 확률 이론의 일반화) 기반</li>
+<li>정보 보안 시스템 위험 평가에서 불확실성이 중요하다는 가정</li>
+</ul>
+<p><strong>기여:</strong></p>
+<ul>
+<li>퍼지 측정으로 BBA(Basic Belief Assignment) 정의</li>
+<li>전문가 예측 증거 간 충돌로 인한 불확실성 감소</li>
+</ul>
+<p><strong>실무 적용:</strong></p>
+<ul>
+<li>클라우드 컴퓨팅 환경에 적용 가능</li>
+<li>실무 사례 연구로 검증</li>
+<li>매우 일반적이며 소프트웨어 도구 지원 없음</li>
+</ul>
+<h4 id="mo2-vikor-dematel-anp-model-69">MO2: VIKOR-DEMATEL-ANP Model [69]<a hidden class="anchor" aria-hidden="true" href="#mo2-vikor-dematel-anp-model-69">#</a></h4>
+<p><strong>핵심 접근:</strong></p>
+<ul>
+<li>VIKOR, DEMATEL, ANP를 결합한 다기준 의사결정(MCDM) 모델</li>
+<li>상호 의존성과 피드백을 보이는 충돌 기준 해결</li>
+</ul>
+<p><strong>4단계 프로세스:</strong></p>
+<ol>
+<li>위험 평가</li>
+<li>위험 완화</li>
+<li>위험 모니터링 및 검토</li>
+<li>위험 관리 개선</li>
+</ol>
+<p><strong>특징:</strong></p>
+<ul>
+<li>PDCA 전략으로 개발된 지속적 순환</li>
+<li>사례 연구로 모델 적용 및 정제</li>
+<li>매우 일반적이며 소프트웨어 도구 지원 없음</li>
+</ul>
+<h4 id="mo3-causal-relationships-and-vulnerability-propagation-70">MO3: Causal Relationships and Vulnerability Propagation [70]<a hidden class="anchor" aria-hidden="true" href="#mo3-causal-relationships-and-vulnerability-propagation-70">#</a></h4>
+<p><strong>핵심 개념:</strong></p>
+<ul>
+<li>위험 요인 간 인과 관계 식별</li>
+<li>취약점 전파의 복잡성과 불확실성 분석</li>
+<li>보안 취약점이 위험 요인의 인과 체인을 통해 다양한 경로로 전파/확대</li>
+</ul>
+<p><strong>방법론:</strong></p>
+<ul>
+<li>베이지안 네트워크 개발</li>
+<li>관찰 사례와 도메인 전문가 지식 기반</li>
+</ul>
+<p><strong>한계:</strong></p>
+<ul>
+<li>이론적 연구</li>
+<li>실무 검증 없음</li>
+</ul>
+<p><strong>관련 연구:</strong>
+Wang et al. [71]도 베이지안 네트워크를 위험 분석에 사용, 주로 이론적 관점</p>
+<h4 id="mo4-situation-awareness-model-sa-isrm-72">MO4: Situation Awareness Model (SA-ISRM) [72]<a hidden class="anchor" aria-hidden="true" href="#mo4-situation-awareness-model-sa-isrm-72">#</a></h4>
+<p><strong>목적:</strong></p>
+<ul>
+<li>정보 보안 위험 관리 프로세스 보완</li>
+<li>실무에서의 결함 완화 (잘못된 의사결정, 부적절한 보안 전략 초래)</li>
+</ul>
+<p><strong>접근:</strong></p>
+<ul>
+<li>기업 전체의 위험 관련 정보 수집, 분석, 커뮤니케이션</li>
+<li>미국 국가 안보 정보 기업의 사례 연구로 정제</li>
+</ul>
+<p><strong>한계:</strong></p>
+<ul>
+<li>모든 유형의 기업과 섹터에 대한 적용 가능성 미고려</li>
+<li>지식 재사용 메커니즘 없음</li>
+</ul>
+<h4 id="mo5-security-data-driven-approach-26">MO5: Security Data-Driven Approach [26]<a hidden class="anchor" aria-hidden="true" href="#mo5-security-data-driven-approach-26">#</a></h4>
+<p><strong>핵심 개념:</strong></p>
+<ul>
+<li>조직의 데이터 생애주기 프로세스 지향 (생성, 편집, 시각화, 처리, 전송, 저장)</li>
+<li>자산 계층(논리적, 물리적, 인적)에 적응</li>
+<li>사전 정의된 패턴 활용</li>
+</ul>
+<p><strong>구조:</strong></p>
+<ul>
+<li>보안 요구사항의 피라미드</li>
+<li>각 피라미드는 계층적 다층 구조: 보안 문제, 관련 비즈니스 프로세스, 추출된 보안 데이터, 관련 자산, 식별된 위험, 보안 통제의 최적 조합</li>
+</ul>
+<p><strong>검증:</strong></p>
+<ul>
+<li>간단한 비교 사례 연구</li>
+<li>매우 일반적이며 소프트웨어 도구 지원 없음</li>
+</ul>
+<h4 id="mo6-threat-occurrence-predictive-models-73">MO6: Threat-Occurrence Predictive Models [73]<a hidden class="anchor" aria-hidden="true" href="#mo6-threat-occurrence-predictive-models-73">#</a></h4>
+<p><strong>핵심 개념:</strong></p>
+<ul>
+<li>더 현실적인 위험 추정 달성</li>
+<li>예측 모델로 효율성 증가</li>
+<li>과거 위협 빈도를 미래 위협 확률로 대체</li>
+<li>로지스틱 회귀 접근법 사용</li>
+</ul>
+<p><strong>기여:</strong></p>
+<ul>
+<li>동적 적응의 중요성 (조직의 실제 조건과 변화 고려)</li>
+<li>모든 유형 기업, 특히 SME 적응 중요성 강조</li>
+<li>사례 연구로 모델 적용 및 정제</li>
+</ul>
+<p><strong>한계:</strong></p>
+<ul>
+<li>동적 적응 측면 미고려</li>
+<li>지식 재사용 메커니즘 없음</li>
+</ul>
+<h4 id="mo7-data-breach-management-model-74">MO7: Data Breach Management Model [74]<a hidden class="anchor" aria-hidden="true" href="#mo7-data-breach-management-model-74">#</a></h4>
+<p><strong>초점:</strong></p>
+<ul>
+<li>조직의 데이터 보안</li>
+<li>보안 사고 관리 및 동적 보안 환경에서의 데이터 유출 관리</li>
+</ul>
+<p><strong>기여:</strong></p>
+<ul>
+<li>위험에 대한 전체적 접근법 중요성</li>
+<li>데이터 유출 위험 및 관련 관리에 특화</li>
+<li>휴리스틱 기법으로 동적 역량 적응 필요성</li>
+<li>계층적 관계 고려</li>
+<li>사례 연구 정의</li>
+</ul>
+<p><strong>한계:</strong></p>
+<ul>
+<li>이론적 연구</li>
+<li>실무 검증 없음</li>
+</ul>
+<h4 id="mo8-bi-objective-integer-programming-for-cyber-infrastructure-75">MO8: Bi-Objective Integer Programming for Cyber-infrastructure [75]<a hidden class="anchor" aria-hidden="true" href="#mo8-bi-objective-integer-programming-for-cyber-infrastructure-75">#</a></h4>
+<p><strong>핵심 접근:</strong></p>
+<ul>
+<li>확률적-결정론적 위험 평가 모델</li>
+<li>각 검토/개선 순환에서 보안 통제 집합 선택</li>
+<li>주어진 예산 내 잔여 위험 최적화</li>
+</ul>
+<p><strong>기여:</strong></p>
+<ul>
+<li>기술적 의사결정과 경제적 의사결정 통합</li>
+<li>예산 제약이라는 실제 시나리오 반영</li>
+<li>이중 확률적-결정론적 접근으로 불확실성 고려</li>
+</ul>
+<p><strong>적용:</strong></p>
+<ul>
+<li>IT 기반 공급망에 초점</li>
+<li>다른 영역에도 적용 가능</li>
+</ul>
+<p><strong>한계:</strong></p>
+<ul>
+<li>이론적 연구</li>
+<li>실무 검증 없음</li>
+</ul>
+<h4 id="mo9-configurable-dependency-model-for-scada-76">MO9: Configurable Dependency Model for SCADA [76]<a hidden class="anchor" aria-hidden="true" href="#mo9-configurable-dependency-model-for-scada-76">#</a></h4>
+<p><strong>목적:</strong></p>
+<ul>
+<li>산업 제어 시스템(ICS) 전용 목표 지향 위험 분석 모델</li>
+<li>SCADA 장치의 기술적/비기술적 하위 요소 간 다중 의존성 동적 평가</li>
+</ul>
+<p><strong>기여:</strong></p>
+<ul>
+<li>동적 및 적응형 모델의 중요성</li>
+<li>시스템의 특정 컨텍스트 의존성 고려</li>
+<li>변화하는 상황에 적응</li>
+<li>특정 섹터/기술에 적응된 위험 분석 프로세스 필요성</li>
+<li>물 제어 시스템 사례 연구</li>
+</ul>
+<p><strong>한계:</strong></p>
+<ul>
+<li>의존성 재구성이 수동</li>
+<li>도메인 전문가 필요</li>
+<li>순수 운영 기술(OT) 환경 외 시스템에 외삽 어려움</li>
+</ul>
+<h3 id="5-methodology-유형-연구-6개">5. Methodology 유형 연구 (6개)<a hidden class="anchor" aria-hidden="true" href="#5-methodology-유형-연구-6개">#</a></h3>
+<h4 id="me1-magerit-fuzzification-77">ME1: MAGERIT Fuzzification [77]<a hidden class="anchor" aria-hidden="true" href="#me1-magerit-fuzzification-77">#</a></h4>
+<p><strong>핵심 접근:</strong></p>
+<ul>
+<li>MAGERIT 방법론을 퍼지 계산 모델로 확장</li>
+<li>전통적 방법론의 측정 기법에서 불확실성 정도 감소</li>
+</ul>
+<p><strong>기여:</strong></p>
+<ul>
+<li>측정 값, 의존성, 빈도, 자산 저하를 표현하는 언어적 용어 척도</li>
+<li>정보 시스템 자산 간 관계가 내부적이며 제3자 의존적일 수 있음 인정</li>
+<li>연관 요인 고려 필요성 지지</li>
+</ul>
+<p><strong>한계:</strong></p>
+<ul>
+<li>이론적 연구</li>
+<li>실무 검증 없음</li>
+</ul>
+<h4 id="me2-fmea-with-fuzzy-similarity-78">ME2: FMEA with Fuzzy Similarity [78]<a hidden class="anchor" aria-hidden="true" href="#me2-fmea-with-fuzzy-similarity-78">#</a></h4>
+<p><strong>핵심 접근:</strong></p>
+<ul>
+<li>FMEA 기법, 특히 규칙 기반 접근법과 퍼지 기법 통합</li>
+<li>퍼지 숫자의 측정 값 유사성과 가능성 이론 통합</li>
+</ul>
+<p><strong>목적:</strong></p>
+<ul>
+<li>위험 분석에서 자의성 감소, 따라서 불확실성 감소</li>
+</ul>
+<p><strong>한계:</strong></p>
+<ul>
+<li>이론적 연구</li>
+<li>실무 검증 없음</li>
+</ul>
+<h4 id="me3-functional-qsra-for-critical-infrastructure-79">ME3: Functional QSRA for Critical Infrastructure [79]<a hidden class="anchor" aria-hidden="true" href="#me3-functional-qsra-for-critical-infrastructure-79">#</a></h4>
+<p><strong>핵심 접근:</strong></p>
+<ul>
+<li>중요 기반시설 지향 정량적 보안 위험 평가 방법론</li>
+<li>동시 위협 및 취약점 평가 접근</li>
+<li>Bow Tie 위험 모델을 베이지안 네트워크 모델에 매핑</li>
+<li>위험/취약점 확률을 잠재적 손실 값과 통합</li>
+</ul>
+<p><strong>관련 연구:</strong>
+Abdo et al. [80]도 화학 시설에 초점을 맞춘 Bow Tie 모델 사용</p>
+<p><strong>특징:</strong></p>
+<ul>
+<li>화학 시설에 초점 (실제 사례 연구 준비)</li>
+<li>요소 구성 및 커스터마이징으로 모든 중요 기반시설에 적응 가능</li>
+<li>전문가 지식 필요</li>
+</ul>
+<p><strong>검증:</strong></p>
+<ul>
+<li>사례 연구로 방법론 적용 및 정제</li>
+<li>매우 일반적이며 소프트웨어 도구 지원 없음</li>
+</ul>
+<h4 id="me4-risk-assessment-for-iot-81">ME4: Risk Assessment for IoT [81]<a hidden class="anchor" aria-hidden="true" href="#me4-risk-assessment-for-iot-81">#</a></h4>
+<p><strong>핵심 접근:</strong></p>
+<ul>
+<li>IoT 환경에 적용 가능한 위험 분석 및 관리 방법론</li>
+<li>질적 및 양적 방법</li>
+<li>각 시나리오에 적응된 공격 트리 구축</li>
+<li>Exploitability Value 기준</li>
+</ul>
+<p><strong>프로세스:</strong></p>
+<ul>
+<li>질적 수준으로 시스템 공격 난이도 평가</li>
+<li>구체적 양적 값으로 변환</li>
+<li>식별된 취약점 간 의존성 그래프 기반으로 전체 exploitability value 계산</li>
+</ul>
+<p><strong>한계:</strong></p>
+<ul>
+<li>본질적으로 이론적</li>
+<li>실무 사례 적용했으나 너무 전역적</li>
+<li>프로세스 상세 정보 부족</li>
+<li>유지보수에 높은 수준의 전문가 지식 필요</li>
+<li>물리적 구성요소 공격 위험에 주로 초점 (너무 특화됨)</li>
+</ul>
+<h4 id="me5-dynamic-simulation-for-sme-cyber-risk-82">ME5: Dynamic Simulation for SME Cyber Risk [82]<a hidden class="anchor" aria-hidden="true" href="#me5-dynamic-simulation-for-sme-cyber-risk-82">#</a></h4>
+<p><strong>목적:</strong></p>
+<ul>
+<li>SME 지향 사이버 위험 평가 방법론</li>
+<li>사이버 보안 투자 의사결정 지원 지표 및 동적 메트릭</li>
+</ul>
+<p><strong>특징:</strong></p>
+<ul>
+<li>소규모 기업에 간단히 적용 가능</li>
+<li>동적 조직 복잡성 적응</li>
+<li>시간 경과에 따른 사이버 위험 및 관련 동적 특성 평가</li>
+</ul>
+<p><strong>도구:</strong></p>
+<ul>
+<li>SMECRA(SME Cyber Risk Assessment) 지원 도구 제공</li>
+</ul>
+<p><strong>한계:</strong></p>
+<ul>
+<li>경제적 관점에서 위험 시나리오 시뮬레이션에 주로 초점</li>
+<li>글로벌 위험 관리 미지원</li>
+</ul>
+<h4 id="me6-fuzzy-model-for-human-robot-systems-83">ME6: Fuzzy Model for Human-Robot Systems [83]<a hidden class="anchor" aria-hidden="true" href="#me6-fuzzy-model-for-human-robot-systems-83">#</a></h4>
+<p><strong>목적:</strong></p>
+<ul>
+<li>새로운 운영 패러다임(인간과 로봇의 상호 의존성) 적응 특화 위험 분석 방법론</li>
+</ul>
+<p><strong>기여:</strong></p>
+<ul>
+<li>변화하고 예측 불가능한 환경(HMI)을 위한 특화 위험 분석 프로세스 중요성</li>
+<li>높은 불확실성과 잠재적 위험 상황 고려</li>
+<li>퍼지 집합 이론과 z-numbers를 사용한 MCDM 기반 방법론</li>
+</ul>
+<p><strong>한계:</strong></p>
+<ul>
+<li>근본적으로 이론적 연구</li>
+<li>실무 사례 미테스트</li>
+<li>지원 도구 없음</li>
+<li>지식 재사용 메커니즘 미고려</li>
+<li>상당한 전문가 지식 없이 적용 어려움</li>
+</ul>
+<h3 id="6-others-유형-연구-2개">6. Others 유형 연구 (2개)<a hidden class="anchor" aria-hidden="true" href="#6-others-유형-연구-2개">#</a></h3>
+<h4 id="o1-risk-improvement-factor-formula-84">O1: Risk Improvement Factor Formula [84]<a hidden class="anchor" aria-hidden="true" href="#o1-risk-improvement-factor-formula-84">#</a></h4>
+<p><strong>제안:</strong></p>
+<ul>
+<li>조직의 정보 보안 위험 분석 프로세스를 위한 질적 접근</li>
+<li>위험 수준에 대한 점진적 개선 요인 고려</li>
+</ul>
+<p><strong>기여:</strong></p>
+<ul>
+<li>의사결정의 중요한 요인으로 고려 가능</li>
+</ul>
+<p><strong>한계:</strong></p>
+<ul>
+<li>이론적 연구</li>
+<li>실무 검증 없음</li>
+</ul>
+<h4 id="o2-security-risk-in-hybrid-data-centers-85">O2: Security Risk in Hybrid Data Centers [85]<a hidden class="anchor" aria-hidden="true" href="#o2-security-risk-in-hybrid-data-centers-85">#</a></h4>
+<p><strong>내용:</strong></p>
+<ul>
+<li>데이터 센터 특정 분야의 위험 분석 및 관리 프로세스 필요성에 관한 논의 연구</li>
+<li>특정 메커니즘 제안/정의 없음</li>
+</ul>
+<p><strong>관련 개념:</strong></p>
+<ul>
+<li>물리적 서버뿐 아니라 가상 서버가 받는 위험도 포함 필요</li>
+<li>클라우드 컴퓨팅 새 필요사항과 연계</li>
+<li>전통적 물리 시스템과 가상 시스템 공존</li>
+<li>가상화로 파생된 연관 위험</li>
+</ul>
+<p><strong>초기 작업:</strong></p>
+<ul>
+<li>데이터 센터 초점의 위험 및 취약점 초기 선정 (가상 서버 특화 포함)</li>
+<li>VoIP 서비스의 가용성 측면 평가 사례 연구 (초기 단계, 상세 부족)</li>
+</ul>
+<h3 id="7-day-2-종합-분석">7. Day 2 종합 분석<a hidden class="anchor" aria-hidden="true" href="#7-day-2-종합-분석">#</a></h3>
+<p><strong>주요 발견:</strong></p>
+<ol>
+<li>
+<p><strong>이론과 실무의 격차</strong></p>
+<ul>
+<li>30개 연구 중 대다수가 이론적 수준</li>
+<li>실무 사례로 검증된 연구: P2, MO1, MO2, MO4, MO5, MO6, MO9, ME3, ME4, ME5, O2 일부</li>
+<li>복잡한 실무 환경에서 정제/검증된 연구는 소수</li>
+</ul>
+</li>
+<li>
+<p><strong>기법적 접근의 공통점</strong></p>
+<ul>
+<li>퍼지 기법(Fuzzy Techniques) 광범위 사용: 불확실성 감소 목적</li>
+<li>MCDM(다기준 의사결정) 방법 선호</li>
+<li>베이지안 네트워크 활용: 인과 관계 및 불확실성 모델링</li>
+</ul>
+</li>
+<li>
+<p><strong>도구 지원 부족</strong></p>
+<ul>
+<li>대부분의 연구가 소프트웨어 도구 미제공</li>
+<li>도구 제공 사례: P2(CRE), ME5(SMECRA), F9(일부)</li>
+<li>실무 적용을 위한 자동화 부족</li>
+</ul>
+</li>
+<li>
+<p><strong>특화 vs 일반화</strong></p>
+<ul>
+<li>특정 도메인 특화: SDN(P3), 철도(P4), SCADA/ICS(MO9), IoT(ME4), HMI(ME6)</li>
+<li>일반화 추구: 대부분의 Framework와 Model</li>
+<li>특화 연구는 실무 적용 가능성 높으나 범용성 낮음</li>
+</ul>
+</li>
+<li>
+<p><strong>주요 기법 트렌드</strong></p>
+<ul>
+<li>DEMATEL-ANP 조합</li>
+<li>VIKOR-DEMATEL-ANP 통합</li>
+<li>Fuzzy 기법 (Fuzzy Sets, Fuzzy Logic, Fuzzy MCDM)</li>
+<li>FMEA (Failure Mode and Effect Analysis)</li>
+<li>Bayesian Networks</li>
+<li>PDCA (Plan-Do-Check-Act) 순환</li>
+</ul>
+</li>
+</ol>
+<hr>
+<p><strong>Day 2 마무리:</strong><br>
+30개 연구의 상세 분석을 통해 현재 위험 분석 연구의 풍경을 파악했다. 대다수 연구가 이론적 수준에 머물러 있으며, 퍼지 기법과 다기준 의사결정 방법을 선호한다. 실무 검증이 이루어진 연구는 소수이며, 자동화 도구 지원은 거의 없다. 특정 도메인(IoT, SCADA, 클라우드)에 특화된 연구들이 등장하고 있으나, 범용적 적용 가능성은 제한적이다. 내일 Day 3에서는 Table 3의 12가지 기준으로 이 30개 연구를 정량적으로 비교 분석하여, 어떤 연구도 모든 요구사항을 충족하지 못한다는 것을 확인할 예정이다.</p>
+<h1 id="research-review-towards-an-integrated-risk-analysis-security-framework-2">Research Review: Towards an Integrated Risk Analysis Security Framework<a hidden class="anchor" aria-hidden="true" href="#research-review-towards-an-integrated-risk-analysis-security-framework-2">#</a></h1>
+<blockquote>
+<p><strong>Day 3 Focus:</strong> 12가지 기준 기반 정량적 비교 분석<br>
+<strong>Source:</strong> Section 5 (Analysis of Results) &amp; Table 3</p>
+</blockquote>
+<hr>
+<h2 id="day-3--comparative-analysis-results">Day 3 – Comparative Analysis Results<a hidden class="anchor" aria-hidden="true" href="#day-3--comparative-analysis-results">#</a></h2>
+<p><em>(Table 3: 30개 연구의 체계적 비교와 한계)</em></p>
+<h3 id="1-평가-프레임워크-12가지-기준">1. 평가 프레임워크: 12가지 기준<a hidden class="anchor" aria-hidden="true" href="#1-평가-프레임워크-12가지-기준">#</a></h3>
+<p>논문은 30개 선정 연구를 12가지 기준으로 평가했다. 각 기준은 3단계로 평가된다:</p>
+<ul>
+<li><strong>Yes</strong>: 완전히 충족</li>
+<li><strong>Part</strong>: 부분적으로 충족</li>
+<li><strong>No</strong>: 미충족</li>
+</ul>
+<h4 id="기준-110-과학-커뮤니티가-식별한-바람직한-특성">기준 1~10: 과학 커뮤니티가 식별한 바람직한 특성<a hidden class="anchor" aria-hidden="true" href="#기준-110-과학-커뮤니티가-식별한-바람직한-특성">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>코드</th>
+          <th>명칭</th>
+          <th>정의</th>
+          <th>출처/근거</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>AC</strong></td>
+          <td>Adaptive Catalogues</td>
+          <td>유연성을 높이기 위한 적응형 카탈로그 필요성</td>
+          <td>[39, 81, 86]</td>
+      </tr>
+      <tr>
+          <td><strong>HA</strong></td>
+          <td>Hierarchy and Associativity</td>
+          <td>연관 및 계층 구조 고려 필요. Cloud 전환으로 중요성 증가</td>
+          <td>[87-89]</td>
+      </tr>
+      <tr>
+          <td><strong>RKL</strong></td>
+          <td>Reuse Knowledge and Learning</td>
+          <td>이전 위험 분석의 지식 재사용으로 더 나은 분석 수행</td>
+          <td>[90], 의사결정 지원 기법 [73, 91, 92]</td>
+      </tr>
+      <tr>
+          <td><strong>DY</strong></td>
+          <td>Dynamic and Evolutionary</td>
+          <td>위험 분석은 비용 많이 드는 프로세스. 정적 그림이 아닌 동적 시스템 필요</td>
+          <td>[49]</td>
+      </tr>
+      <tr>
+          <td><strong>CC</strong></td>
+          <td>Collaborative Capability</td>
+          <td>여러 기업이 위험 시스템을 정렬하여 더 효율적 관리</td>
+          <td>[93, 94]</td>
+      </tr>
+      <tr>
+          <td><strong>AE</strong></td>
+          <td>Valuation of Elements</td>
+          <td>위험 관련 요소의 정량적 평가 메커니즘 부족</td>
+          <td>[95], 비용 계산 [96]</td>
+      </tr>
+      <tr>
+          <td><strong>DM</strong></td>
+          <td>Dynamic Metrics</td>
+          <td>동적 위험 메트릭 개발 및 자동화 필요</td>
+          <td>[97], 적절한 메트릭 필요성 [98]</td>
+      </tr>
+      <tr>
+          <td><strong>LLS</strong></td>
+          <td>Low Level of Subjectivity</td>
+          <td>주관적 측면 많아 제3자가 객관적 결과 신뢰 어려움</td>
+          <td>[99, 100]</td>
+      </tr>
+      <tr>
+          <td><strong>SLC</strong></td>
+          <td>Simplicity and Low Cost</td>
+          <td>많은 방법론의 높은 복잡도. 단순성과 실용적 지향 중요</td>
+          <td>[101, 102], 특히 SME [103-106]</td>
+      </tr>
+      <tr>
+          <td><strong>TS</strong></td>
+          <td>Tool Support</td>
+          <td>자동화 도구 지원이 근본적 요소</td>
+          <td>[60, 107], NATO 강조</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="기준-1112-저자들이-action-research로-추가한-특성">기준 11~12: 저자들이 Action Research로 추가한 특성<a hidden class="anchor" aria-hidden="true" href="#기준-1112-저자들이-action-research로-추가한-특성">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>코드</th>
+          <th>명칭</th>
+          <th>정의</th>
+          <th>추가 근거</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>GS</strong></td>
+          <td>Global Scope</td>
+          <td>모델이 기업의 정보 시스템 보안에 전역적으로 적용되는지, 하위 집합만인지</td>
+          <td>실무 경험</td>
+      </tr>
+      <tr>
+          <td><strong>PC</strong></td>
+          <td>Practical Cases</td>
+          <td>실무 사례 기반으로 개발 및 정제되어 실제 적용 가능성 강화</td>
+          <td>실무 경험</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="2-table-3-정량적-분석-결과">2. Table 3 정량적 분석 결과<a hidden class="anchor" aria-hidden="true" href="#2-table-3-정량적-분석-결과">#</a></h3>
+<h4 id="a-process-유형-p1-p4">A. Process 유형 (P1-P4)<a hidden class="anchor" aria-hidden="true" href="#a-process-유형-p1-p4">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>연구</th>
+          <th>AC</th>
+          <th>HA</th>
+          <th>RKL</th>
+          <th>DY</th>
+          <th>CC</th>
+          <th>AE</th>
+          <th>DM</th>
+          <th>LLS</th>
+          <th>SLC</th>
+          <th>TS</th>
+          <th>GS</th>
+          <th>PC</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>P1</strong></td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td><strong>P2</strong></td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>Yes</td>
+          <td>No</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td><strong>P3</strong></td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>Part</td>
+      </tr>
+      <tr>
+          <td><strong>P4</strong></td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>주요 발견:</strong></p>
+<ul>
+<li>모든 Process가 AC, RKL, DY, CC, DM, GS 미충족</li>
+<li>HA는 모두 부분적으로만 충족 (Part)</li>
+<li>P2만 도구 지원(TS)과 실무 사례(PC)에서 Yes</li>
+<li>대부분 이론적이며 실무 검증 부족</li>
+</ul>
+<h4 id="b-framework-유형-f1-f9">B. Framework 유형 (F1-F9)<a hidden class="anchor" aria-hidden="true" href="#b-framework-유형-f1-f9">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>연구</th>
+          <th>AC</th>
+          <th>HA</th>
+          <th>RKL</th>
+          <th>DY</th>
+          <th>CC</th>
+          <th>AE</th>
+          <th>DM</th>
+          <th>LLS</th>
+          <th>SLC</th>
+          <th>TS</th>
+          <th>GS</th>
+          <th>PC</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>F1</strong></td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td><strong>F2</strong></td>
+          <td>No</td>
+          <td>No</td>
+          <td>Yes</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td><strong>F3</strong></td>
+          <td>No</td>
+          <td>Part</td>
+          <td>Yes</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>Yes</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td><strong>F4</strong></td>
+          <td>No</td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>No</td>
+          <td>Yes</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td><strong>F5</strong></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td><strong>F6</strong></td>
+          <td>No</td>
+          <td>Part</td>
+          <td>Yes</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>Yes</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td><strong>F7</strong></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>No</td>
+          <td>Yes</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td><strong>F8</strong></td>
+          <td>No</td>
+          <td>Part</td>
+          <td>Yes</td>
+          <td>No</td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>No</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td><strong>F9</strong></td>
+          <td>Part</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>Part</td>
+          <td>Yes</td>
+          <td>Part</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>주요 발견:</strong></p>
+<ul>
+<li>F2, F3, F6, F8이 RKL(지식 재사용)에서 Yes</li>
+<li>F8이 가장 많은 기준 충족 (SLC, TS, GS 포함)</li>
+<li>F9가 유일하게 AC를 부분 충족</li>
+<li>CC(협업 능력)는 모든 Framework가 미충족</li>
+<li>대부분 실무 사례(PC) 없음</li>
+</ul>
+<h4 id="c-model-유형-mo1-mo9">C. Model 유형 (MO1-MO9)<a hidden class="anchor" aria-hidden="true" href="#c-model-유형-mo1-mo9">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>연구</th>
+          <th>AC</th>
+          <th>HA</th>
+          <th>RKL</th>
+          <th>DY</th>
+          <th>CC</th>
+          <th>AE</th>
+          <th>DM</th>
+          <th>LLS</th>
+          <th>SLC</th>
+          <th>TS</th>
+          <th>GS</th>
+          <th>PC</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>MO1</strong></td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>No</td>
+          <td>Yes</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td><strong>MO2</strong></td>
+          <td>No</td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>Yes</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td><strong>MO3</strong></td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>No</td>
+          <td>Yes</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td><strong>MO4</strong></td>
+          <td>No</td>
+          <td>Part</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>Yes</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td><strong>MO5</strong></td>
+          <td>Part</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>Part</td>
+      </tr>
+      <tr>
+          <td><strong>MO6</strong></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>Part</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>Yes</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td><strong>MO7</strong></td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td><strong>MO8</strong></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td><strong>MO9</strong></td>
+          <td>Part</td>
+          <td>Yes</td>
+          <td>No</td>
+          <td>Yes</td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>Yes</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>주요 발견:</strong></p>
+<ul>
+<li>MO9가 HA에서 유일한 Yes (SCADA 의존성 모델)</li>
+<li>MO9가 DY에서도 Yes (동적 평가)</li>
+<li>Model 유형이 GS와 PC에서 상대적으로 높은 비율</li>
+<li>MO1, MO2, MO4, MO6, MO9가 실무 사례 보유</li>
+<li>AC, CC, DM은 거의 모든 Model이 미충족</li>
+</ul>
+<h4 id="d-methodology-유형-me1-me6">D. Methodology 유형 (ME1-ME6)<a hidden class="anchor" aria-hidden="true" href="#d-methodology-유형-me1-me6">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>연구</th>
+          <th>AC</th>
+          <th>HA</th>
+          <th>RKL</th>
+          <th>DY</th>
+          <th>CC</th>
+          <th>AE</th>
+          <th>DM</th>
+          <th>LLS</th>
+          <th>SLC</th>
+          <th>TS</th>
+          <th>GS</th>
+          <th>PC</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>ME1</strong></td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>No</td>
+          <td>Yes</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td><strong>ME2</strong></td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>No</td>
+          <td>Yes</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td><strong>ME3</strong></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td><strong>ME4</strong></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td><strong>ME5</strong></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>Yes</td>
+          <td>No</td>
+          <td>Part</td>
+          <td>Yes</td>
+          <td>No</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>No</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td><strong>ME6</strong></td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>Yes</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>주요 발견:</strong></p>
+<ul>
+<li>ME5가 DY와 DM에서 Yes (동적 시뮬레이션)</li>
+<li>ME5가 SLC, TS에서도 Yes (SME 지향, SMECRA 도구)</li>
+<li>ME3, ME4, ME5가 실무 사례 보유</li>
+<li>ME6이 LLS에서 유일한 Yes</li>
+<li>AC, RKL, CC는 모든 Methodology가 미충족</li>
+</ul>
+<h4 id="e-others-유형-o1-o2">E. Others 유형 (O1-O2)<a hidden class="anchor" aria-hidden="true" href="#e-others-유형-o1-o2">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>연구</th>
+          <th>AC</th>
+          <th>HA</th>
+          <th>RKL</th>
+          <th>DY</th>
+          <th>CC</th>
+          <th>AE</th>
+          <th>DM</th>
+          <th>LLS</th>
+          <th>SLC</th>
+          <th>TS</th>
+          <th>GS</th>
+          <th>PC</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>O1</strong></td>
+          <td>No</td>
+          <td>No</td>
+          <td>Yes</td>
+          <td>No</td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>Yes</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td><strong>O2</strong></td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>Part</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>Part</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="3-기준별-종합-분석">3. 기준별 종합 분석<a hidden class="anchor" aria-hidden="true" href="#3-기준별-종합-분석">#</a></h3>
+<h4 id="기준별-충족-현황-yes-개수">기준별 충족 현황 (Yes 개수)<a hidden class="anchor" aria-hidden="true" href="#기준별-충족-현황-yes-개수">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>기준</th>
+          <th>Yes 개수</th>
+          <th>주요 충족 연구</th>
+          <th>해석</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>AC</strong></td>
+          <td>0개</td>
+          <td>없음</td>
+          <td>적응형 카탈로그를 완전히 구현한 연구 전무</td>
+      </tr>
+      <tr>
+          <td><strong>HA</strong></td>
+          <td>1개</td>
+          <td>MO9</td>
+          <td>SCADA 의존성 모델만 계층/연관 구조 완전 지원</td>
+      </tr>
+      <tr>
+          <td><strong>RKL</strong></td>
+          <td>4개</td>
+          <td>F2, F3, F6, F8, O1</td>
+          <td>지식 재사용은 일부 Framework에서만 구현</td>
+      </tr>
+      <tr>
+          <td><strong>DY</strong></td>
+          <td>2개</td>
+          <td>MO9, ME5</td>
+          <td>동적 위험 관리는 극소수만 달성</td>
+      </tr>
+      <tr>
+          <td><strong>CC</strong></td>
+          <td>0개</td>
+          <td>없음</td>
+          <td>기업 간 협업 위험 관리 연구 전무</td>
+      </tr>
+      <tr>
+          <td><strong>AE</strong></td>
+          <td>0개</td>
+          <td>없음</td>
+          <td>요소의 정량적 평가를 완전히 구현한 연구 없음</td>
+      </tr>
+      <tr>
+          <td><strong>DM</strong></td>
+          <td>1개</td>
+          <td>ME5</td>
+          <td>동적 메트릭은 SME 시뮬레이션에서만 구현</td>
+      </tr>
+      <tr>
+          <td><strong>LLS</strong></td>
+          <td>1개</td>
+          <td>ME6</td>
+          <td>낮은 주관성은 HMI 퍼지 모델에서만 달성</td>
+      </tr>
+      <tr>
+          <td><strong>SLC</strong></td>
+          <td>3개</td>
+          <td>F8, ME5</td>
+          <td>단순성/저비용은 SME 특화 연구에서만</td>
+      </tr>
+      <tr>
+          <td><strong>TS</strong></td>
+          <td>4개</td>
+          <td>P2, F8, F9(Part), ME5</td>
+          <td>자동화 도구 제공 연구는 소수</td>
+      </tr>
+      <tr>
+          <td><strong>GS</strong></td>
+          <td>14개</td>
+          <td>다수</td>
+          <td>전역 범위 적용은 상대적으로 많은 연구가 추구</td>
+      </tr>
+      <tr>
+          <td><strong>PC</strong></td>
+          <td>9개</td>
+          <td>일부</td>
+          <td>실무 사례 검증은 30개 중 9개만</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="기준별-미충족-비율">기준별 미충족 비율<a hidden class="anchor" aria-hidden="true" href="#기준별-미충족-비율">#</a></h4>
+<p><strong>완전 미충족 기준 (모든 연구가 No):</strong></p>
+<ul>
+<li>AC (Adaptive Catalogues): 100% 미충족</li>
+<li>CC (Collaborative Capability): 100% 미충족</li>
+</ul>
+<p><strong>거의 미충족 기준 (Yes 1-2개):</strong></p>
+<ul>
+<li>HA (Hierarchy &amp; Associativity): 96.7% 미충족</li>
+<li>DY (Dynamic &amp; Evolutionary): 93.3% 미충족</li>
+<li>DM (Dynamic Metrics): 96.7% 미충족</li>
+<li>LLS (Low Level of Subjectivity): 96.7% 미충족</li>
+</ul>
+<p><strong>상대적으로 나은 기준 (Yes 3개 이상):</strong></p>
+<ul>
+<li>RKL (Reuse Knowledge &amp; Learning): 4개 Yes</li>
+<li>TS (Tool Support): 4개 Yes</li>
+<li>GS (Global Scope): 14개 Yes</li>
+<li>PC (Practical Cases): 9개 Yes</li>
+</ul>
+<h3 id="4-논문의-결론-section-5-원문-기반">4. 논문의 결론 (Section 5 원문 기반)<a hidden class="anchor" aria-hidden="true" href="#4-논문의-결론-section-5-원문-기반">#</a></h3>
+<p>논문은 Table 3 분석을 통해 다음을 결론짓는다:</p>
+<h4 id="ac---adaptive-catalogues">AC - Adaptive Catalogues<a hidden class="anchor" aria-hidden="true" href="#ac---adaptive-catalogues">#</a></h4>
+<blockquote>
+<p>&ldquo;Practically no proposal orients part of its operation towards the existence of element catalogues that can vary over time without altering the methodology.&rdquo;</p>
+</blockquote>
+<p><strong>해석:</strong> 사실상 어떤 제안도 방법론을 변경하지 않고 시간에 따라 변화하는 요소 카탈로그 존재를 지향하지 않음.</p>
+<h4 id="ha---hierarchy-and-associativity">HA - Hierarchy and Associativity<a hidden class="anchor" aria-hidden="true" href="#ha---hierarchy-and-associativity">#</a></h4>
+<blockquote>
+<p>&ldquo;None of the proposals fully takes into account the concepts of hierarchy and associativity among risk analyses, leaving aside fundamental concepts such as shared assets or dependencies among different risk analyses. However, many have already begun to consider that this aspect is fundamental.&rdquo;</p>
+</blockquote>
+<p><strong>해석:</strong> 어떤 제안도 계층과 연관성 개념을 완전히 고려하지 않음. 공유 자산이나 서로 다른 위험 분석 간 의존성 같은 근본 개념 누락. 그러나 많은 연구가 이 측면이 근본적임을 인식하기 시작함.</p>
+<h4 id="rkl---knowledge-reuse-and-learning">RKL - Knowledge Reuse and Learning<a hidden class="anchor" aria-hidden="true" href="#rkl---knowledge-reuse-and-learning">#</a></h4>
+<blockquote>
+<p>&ldquo;Only a few proposals highlight the need to be able to reuse knowledge for future implementations. But few of them implement adequate processes for knowledge reuse, and especially for learning from experience.&rdquo;</p>
+</blockquote>
+<p><strong>해석:</strong> 소수만 미래 구현을 위한 지식 재사용 필요성 강조. 그러나 적절한 재사용 프로세스를 구현한 연구는 더 적으며, 특히 경험으로부터 학습하는 메커니즘은 거의 없음.</p>
+<h4 id="dy---dynamic-and-evolutionary">DY - Dynamic and Evolutionary<a hidden class="anchor" aria-hidden="true" href="#dy---dynamic-and-evolutionary">#</a></h4>
+<blockquote>
+<p>&ldquo;Some proposals highlight the need for risk analysis to be dynamic, but without providing complete solutions with which to make the system dynamic. The remaining proposals do not consider this characteristic.&rdquo;</p>
+</blockquote>
+<p><strong>해석:</strong> 일부 제안만 동적 위험 분석 필요성 강조하나, 시스템을 동적으로 만들 완전한 솔루션 미제공. 나머지 제안들은 이 특성을 고려하지 않음.</p>
+<h4 id="cc---collaborative-capacity">CC - Collaborative Capacity<a hidden class="anchor" aria-hidden="true" href="#cc---collaborative-capacity">#</a></h4>
+<blockquote>
+<p>&ldquo;None of the proposals studied considers the concept of collaborative networks among companies as a solution by which to better protect companies from external threats.&rdquo;</p>
+</blockquote>
+<p><strong>해석:</strong> 연구된 제안 중 어떤 것도 외부 위협으로부터 기업을 더 잘 보호하기 위한 솔루션으로서 기업 간 협업 네트워크 개념을 고려하지 않음.</p>
+<h4 id="ae---valuation-of-elements">AE - Valuation of Elements<a hidden class="anchor" aria-hidden="true" href="#ae---valuation-of-elements">#</a></h4>
+<blockquote>
+<p>&ldquo;Not all the proposals contemplate the valuation of elements as part of this, i.e., taking into account aspects such as the quantitative value of assets, impacts, etc. However, quite a few of them do analyse some of these aspects.&rdquo;</p>
+</blockquote>
+<p><strong>해석:</strong> 모든 제안이 요소 평가를 고려하지는 않음 (자산의 정량적 가치, 영향 등). 그러나 상당수가 일부 측면은 분석함.</p>
+<h4 id="dm---dynamic-metrics">DM - Dynamic Metrics<a hidden class="anchor" aria-hidden="true" href="#dm---dynamic-metrics">#</a></h4>
+<blockquote>
+<p>&ldquo;Although many of the proposals include formulas with which to calculate risk, none of them consider the possibility of these formulas being dynamic, i.e., that they could be sufficiently versatile to calculate risk in different ways from the basic elements of the risk analysis.&rdquo;</p>
+</blockquote>
+<p><strong>해석:</strong> 많은 제안이 위험 계산 공식 포함하나, 이 공식이 동적일 가능성을 고려한 연구는 없음. 즉, 위험 분석의 기본 요소로부터 다양한 방식으로 위험을 계산할 수 있을 만큼 충분히 다재다능한 공식 없음.</p>
+<h4 id="lls---low-level-of-subjectivity">LLS - Low Level of Subjectivity<a hidden class="anchor" aria-hidden="true" href="#lls---low-level-of-subjectivity">#</a></h4>
+<blockquote>
+<p>&ldquo;With regard to the development of additional mechanisms with which to reduce the level of subjectivity, some proposals have made efforts in this direction, albeit at a conceptual level.&rdquo;</p>
+</blockquote>
+<p><strong>해석:</strong> 주관성 수준 감소를 위한 추가 메커니즘 개발과 관련하여, 일부 제안이 이 방향으로 노력했으나 개념 수준에 그침.</p>
+<h4 id="slc---simplicity-and-low-cost">SLC - Simplicity and Low Cost<a hidden class="anchor" aria-hidden="true" href="#slc---simplicity-and-low-cost">#</a></h4>
+<blockquote>
+<p>&ldquo;The orientation towards simple methodologies and models that can be applied by SMEs has barely been taken into account as a differentiating factor in the proposals studied, signifying that no real mechanisms have been developed that would allow these proposals to be really useful for SMEs.&rdquo;</p>
+</blockquote>
+<p><strong>해석:</strong> SME가 적용 가능한 단순 방법론/모델 지향은 연구된 제안에서 차별화 요소로 거의 고려되지 않음. 이는 SME에 실제로 유용한 제안을 가능하게 할 실제 메커니즘이 개발되지 않았음을 의미.</p>
+<h4 id="ts---tool-support">TS - Tool Support<a hidden class="anchor" aria-hidden="true" href="#ts---tool-support">#</a></h4>
+<blockquote>
+<p>&ldquo;Some proposals have already identified the need to be supported by tools in order to automate part of their processes. Other proposals have developed partial tools that support part of the process.&rdquo;</p>
+</blockquote>
+<p><strong>해석:</strong> 일부 제안은 프로세스 일부 자동화를 위한 도구 지원 필요성 식별. 다른 제안들은 프로세스 일부를 지원하는 부분 도구 개발.</p>
+<h4 id="gs---global-scope">GS - Global Scope<a hidden class="anchor" aria-hidden="true" href="#gs---global-scope">#</a></h4>
+<blockquote>
+<p>&ldquo;Although some proposals are already oriented towards their application in the scope of an Information System as a whole, there are still many that are focused on specific areas. This signifies that they should be complemented with other mechanisms in order to achieve a risk analysis with a complete scope.&rdquo;</p>
+</blockquote>
+<p><strong>해석:</strong> 일부 제안이 정보 시스템 전체 범위 적용을 지향하나, 여전히 많은 연구가 특정 영역에 초점. 이는 완전한 범위의 위험 분석 달성을 위해 다른 메커니즘으로 보완되어야 함을 의미.</p>
+<h4 id="pc---practical-cases">PC - Practical Cases<a hidden class="anchor" aria-hidden="true" href="#pc---practical-cases">#</a></h4>
+<blockquote>
+<p>&ldquo;Most of the proposals contemplate risk analysis from a theoretical point of view, without establishing concrete risk-management mechanisms based on practical cases.&rdquo;</p>
+</blockquote>
+<p><strong>해석:</strong> 대부분의 제안이 이론적 관점에서 위험 분석을 고려하며, 실무 사례 기반의 구체적 위험 관리 메커니즘을 확립하지 않음.</p>
+<h3 id="5-핵심-통찰">5. 핵심 통찰<a hidden class="anchor" aria-hidden="true" href="#5-핵심-통찰">#</a></h3>
+<p><strong>논문이 명시적으로 밝힌 결론:</strong></p>
+<blockquote>
+<p>&ldquo;As Table 3 shows, very few papers describe complex case studies that show the possibility of applying the proposed model or methodology in practice, and the benefits that could be attained from doing so. Moreover, although some of them attempt to develop dynamic low-cost processes, they have a high level of complexity as regards their implementation.&rdquo;</p>
+</blockquote>
+<p><strong>번역:</strong> Table 3이 보여주듯, 제안된 모델/방법론을 실무에 적용할 가능성과 그로부터 얻을 수 있는 이점을 보여주는 복잡한 사례 연구를 기술한 논문은 매우 적음. 더욱이, 일부는 동적 저비용 프로세스 개발을 시도하나 구현과 관련하여 높은 복잡도를 가짐.</p>
+<blockquote>
+<p>&ldquo;It will be noted that none of the proposals studied has all the characteristics required for them to be implemented in any type of company, regardless of its characteristics and size.&rdquo;</p>
+</blockquote>
+<p><strong>번역:</strong> 연구된 제안 중 어떤 것도 특성과 규모에 관계없이 모든 유형의 기업에 구현되기 위해 필요한 모든 특성을 갖추지 못했음을 주목해야 함.</p>
+<p><strong>정량적 증거:</strong></p>
+<ul>
+<li>30개 연구 중 <strong>0개</strong>가 12가지 기준을 모두 충족</li>
+<li>30개 연구 중 <strong>0개</strong>가 10개 이상 기준 충족</li>
+<li>가장 높은 점수: MO9와 ME5가 각각 4-5개 기준에서 Yes/Part</li>
+<li>평균적으로 각 연구는 12개 기준 중 1-3개만 충족</li>
+</ul>
+<hr>
+<p><strong>Day 3 마무리:</strong><br>
+Table 3의 정량적 분석은 명확한 결론을 제시한다: <strong>30개 연구 중 어떤 것도 현대 위험 분석의 모든 요구사항을 충족하지 못한다.</strong> 특히 AC(적응형 카탈로그)와 CC(협업 능력)는 단 하나의 연구도 구현하지 못했으며, HA(계층/연관성), DY(동적), DM(동적 메트릭), LLS(낮은 주관성)는 각각 1-2개 연구만 완전 충족했다. 대부분의 연구가 이론적 수준에 머물러 있으며(PC 30개 중 9개만 Yes), SME가 실제로 적용 가능한 단순하고 저비용인 솔루션(SLC)은 3개만 제공했다. 이러한 체계적 분석 결과가 MARISMA 프레임워크 개발의 직접적 동기가 되었다. 내일 Day 4에서는 MARISMA가 이 10가지 약점을 어떻게 해결하는지 구체적으로 분석할 예정이다.</p>
+<h1 id="research-review-towards-an-integrated-risk-analysis-security-framework-3">Research Review: Towards an Integrated Risk Analysis Security Framework<a hidden class="anchor" aria-hidden="true" href="#research-review-towards-an-integrated-risk-analysis-security-framework-3">#</a></h1>
+<blockquote>
+<p><strong>Day 4 Focus:</strong> MARISMA 프레임워크의 구조와 약점 해결 메커니즘<br>
+<strong>Source:</strong> Section 6 (The MARISMA Framework)</p>
+</blockquote>
+<hr>
+<h2 id="day-4--marisma-framework-analysis">Day 4 – MARISMA Framework Analysis<a hidden class="anchor" aria-hidden="true" href="#day-4--marisma-framework-analysis">#</a></h2>
+<p><em>(10가지 약점의 체계적 해결: 이론에서 실무로)</em></p>
+<h3 id="1-marisma-개요">1. MARISMA 개요<a hidden class="anchor" aria-hidden="true" href="#1-marisma-개요">#</a></h3>
+<p><strong>정식 명칭:</strong><br>
+MARISMA = <strong>M</strong>ethodology for the <strong>A</strong>nalysis of <strong>RI</strong>sks on Information <strong>S</strong>ystems, using <strong>M</strong>eta-pattern and <strong>A</strong>daptability</p>
+<p><strong>개발 배경:</strong></p>
+<blockquote>
+<p>&ldquo;The shortcomings identified during the systematic review have been used as the basis on which to propose the development of a framework called MARISMA.&rdquo;</p>
+</blockquote>
+<p>체계적 문헌 고찰에서 식별된 약점들을 기반으로 개발된 프레임워크.</p>
+<p><strong>개발 과정:</strong></p>
+<blockquote>
+<p>&ldquo;The MARISMA framework originated as the main result of several PhD theses of members of our research team. It has been developed using an iterative and incremental process and is directly applied to customers of our spin-offs.&rdquo;</p>
+</blockquote>
+<ul>
+<li>연구팀 여러 박사 논문의 주요 결과물</li>
+<li>반복적이고 점진적인 프로세스로 개발</li>
+<li>Spin-off 회사의 고객에게 직접 적용 중</li>
+</ul>
+<h3 id="2-marisma의-4대-구성-요소">2. MARISMA의 4대 구성 요소<a hidden class="anchor" aria-hidden="true" href="#2-marisma의-4대-구성-요소">#</a></h3>
+<h4 id="구성-요소-1-meta-pattern-cat-구조">구성 요소 1: Meta-Pattern (CAT 구조)<a hidden class="anchor" aria-hidden="true" href="#구성-요소-1-meta-pattern-cat-구조">#</a></h4>
+<p><strong>정의:</strong></p>
+<blockquote>
+<p>&ldquo;The first of these elements is a structure denominated as a meta-pattern (number 1 in Fig. 1), whose objective is to support the different information models of the methodology, and which contains the elements required in order to be able to perform a risk analysis and its subsequent management.&rdquo;</p>
+</blockquote>
+<p><strong>CAT 구조:</strong></p>
+<ul>
+<li><strong>C</strong>ontrol (통제)</li>
+<li><strong>A</strong>sset (자산)</li>
+<li><strong>T</strong>hreat (위협)</li>
+</ul>
+<p><strong>특징:</strong></p>
+<blockquote>
+<p>&ldquo;This meta-pattern is made up of three base elements, denominated as Control-Asset-Threat (CAT) (see Fig. 2), and two matrices connecting these elements. The meta-pattern is a common structure for all the patterns (normative schemes in which to perform the risk analysis) that are applied in the methodology.&rdquo;</p>
+</blockquote>
+<ul>
+<li>3개 기본 요소 + 2개의 연결 매트릭스</li>
+<li>모든 패턴(위험 분석 수행을 위한 규범적 스킴)의 공통 구조</li>
+<li>방법론에 적용되는 모든 패턴의 기반</li>
+</ul>
+<h4 id="구성-요소-2-3가지-핵심-프로세스">구성 요소 2: 3가지 핵심 프로세스<a hidden class="anchor" aria-hidden="true" href="#구성-요소-2-3가지-핵심-프로세스">#</a></h4>
+<p><strong>2-1. RPG (Risk Pattern Generator) Process</strong></p>
+<p><strong>목적:</strong></p>
+<blockquote>
+<p>&ldquo;The RPG (Risk Pattern Generator) Process, whose objective is the Generation of patterns for risk analysis, including their relationships and the knowledge acquired in the different implementations&rdquo;</p>
+</blockquote>
+<ul>
+<li>위험 분석용 패턴 생성</li>
+<li>관계 포함</li>
+<li>다양한 구현에서 획득한 지식 포함</li>
+</ul>
+<p><strong>2-2. RAMG (Risk Analysis and Management Generator) Process</strong></p>
+<p><strong>목적:</strong></p>
+<blockquote>
+<p>&ldquo;The RAMG (Risk Analysis and Management Generator) Process, which deals with the Generation of risk analysis and management through the instantiation of the most appropriate pattern.&rdquo;</p>
+</blockquote>
+<ul>
+<li>가장 적합한 패턴의 인스턴스화를 통한 위험 분석 및 관리 생성</li>
+</ul>
+<p><strong>추가 기능:</strong></p>
+<blockquote>
+<p>&ldquo;It also allows the definition of dynamic metrics with which to value assets and the risk calculation formula itself, thus making it possible to solve the problems of AE - Valuation of Elements and DM - Dynamic Metrics&rdquo;</p>
+</blockquote>
+<ul>
+<li>자산 가치 평가를 위한 동적 메트릭 정의</li>
+<li>위험 계산 공식 자체 정의</li>
+<li><strong>AE와 DM 문제 해결</strong></li>
+</ul>
+<p><strong>2-3. DRM (Dynamic Risk Management) Process</strong></p>
+<p><strong>목적:</strong></p>
+<blockquote>
+<p>&ldquo;The DRM (Dynamic Risk Management) Process, which deals with the dynamic maintenance of risk analysis through the use of the matrices that interconnect the different artefacts&rdquo;</p>
+</blockquote>
+<ul>
+<li>서로 다른 요소를 상호 연결하는 매트릭스 사용</li>
+<li>위험 분석의 동적 유지관리</li>
+</ul>
+<p><strong>작동 메커니즘:</strong></p>
+<blockquote>
+<p>&ldquo;that allow the system to recalculate the risk as security incidents occur, the defined metrics fail, or the expert systems generate suggestions.&rdquo;</p>
+</blockquote>
+<ul>
+<li>보안 사고 발생 시 위험 재계산</li>
+<li>정의된 메트릭 실패 시 위험 재계산</li>
+<li>전문가 시스템이 제안 생성 시 위험 재계산</li>
+</ul>
+<h4 id="구성-요소-3-knowledge-base">구성 요소 3: Knowledge Base<a hidden class="anchor" aria-hidden="true" href="#구성-요소-3-knowledge-base">#</a></h4>
+<p><strong>구조:</strong></p>
+<blockquote>
+<p>&ldquo;This framework also has a third element. This is a knowledge base of patterns (number 3 in Fig. 1) that allows the maintenance of different normative patterns, along with the knowledge acquired from their instantiation in the different risk analyses.&rdquo;</p>
+</blockquote>
+<ul>
+<li>다양한 규범적 패턴 유지</li>
+<li>서로 다른 위험 분석에서의 인스턴스화로부터 획득한 지식 유지</li>
+</ul>
+<h4 id="구성-요소-4-emarisma-tool">구성 요소 4: eMARISMA Tool<a hidden class="anchor" aria-hidden="true" href="#구성-요소-4-emarisma-tool">#</a></h4>
+<p><strong>기술 스택:</strong></p>
+<blockquote>
+<p>&ldquo;The eMARISMA tool is based on cloud computing and was developed using an open architecture based on Java technology under Grails. Its security layers are based on Spring Security and ACL (Access Control List) and its relational schema is supported by MySQL.&rdquo;</p>
+</blockquote>
+<ul>
+<li>클라우드 컴퓨팅 기반</li>
+<li>Java/Grails 기반 오픈 아키텍처</li>
+<li>Spring Security와 ACL로 보안 계층 구현</li>
+<li>MySQL 관계형 스키마</li>
+</ul>
+<p><strong>아키텍처 (Fig. 5):</strong></p>
+<blockquote>
+<p>&ldquo;It is divided into two independent parts (see Fig.5). On the one hand, there is the pattern generator, which functions as a pattern repository and a knowledge repository. On the other, there is the risk and event analysis manager, which can be located on different servers, and which communicates with the pattern module in order to instantiate patterns and send new knowledge to it.&rdquo;</p>
+</blockquote>
+<p><strong>두 개의 독립적 부분:</strong></p>
+<ol>
+<li>
+<p><strong>Pattern Generator</strong></p>
+<ul>
+<li>패턴 저장소로 기능</li>
+<li>지식 저장소로 기능</li>
+</ul>
+</li>
+<li>
+<p><strong>Risk and Event Analysis Manager</strong></p>
+<ul>
+<li>다른 서버에 위치 가능</li>
+<li>패턴 모듈과 통신하여 패턴 인스턴스화</li>
+<li>새로운 지식을 패턴 모듈에 전송</li>
+</ul>
+</li>
+</ol>
+<h3 id="3-marisma의-약점-해결-메커니즘">3. MARISMA의 약점 해결 메커니즘<a hidden class="anchor" aria-hidden="true" href="#3-marisma의-약점-해결-메커니즘">#</a></h3>
+<p>논문은 각 구성 요소가 어떻게 10가지 약점을 해결하는지 명시적으로 설명한다:</p>
+<h4 id="해결-메커니즘-1-ac-adaptive-catalogues">해결 메커니즘 1: AC (Adaptive Catalogues)<a hidden class="anchor" aria-hidden="true" href="#해결-메커니즘-1-ac-adaptive-catalogues">#</a></h4>
+<p><strong>문제:</strong></p>
+<blockquote>
+<p>&ldquo;The use of the Meta-pattern makes it possible to solve the problem of having &lsquo;AC - Adaptive Catalogues&rsquo;, by providing a knowledge base with different patterns that can evolve&rdquo;</p>
+</blockquote>
+<p><strong>해결책:</strong></p>
+<ul>
+<li>Meta-pattern 사용으로 진화 가능한 서로 다른 패턴의 지식 베이스 제공</li>
+</ul>
+<p><strong>추가 혁신:</strong></p>
+<blockquote>
+<p>&ldquo;and in which controls have been included as an integrated element. Most existing methodologies do not, however, consider controls or safeguards until the risk management phase, considering it an independent element of assets, threats and vulnerabilities, and thus complicating the development and monitoring of risk analysis.&rdquo;</p>
+</blockquote>
+<ul>
+<li>Control을 통합 요소로 포함 (CAT 구조)</li>
+<li>기존 방법론: 위험 관리 단계까지 Control 미고려 → 자산/위협/취약점과 독립적 요소로 간주</li>
+<li>MARISMA: Control을 처음부터 통합 → 위험 분석 개발 및 모니터링 단순화</li>
+</ul>
+<h4 id="해결-메커니즘-2-rkl-reuse-knowledge-and-learning">해결 메커니즘 2: RKL (Reuse Knowledge and Learning)<a hidden class="anchor" aria-hidden="true" href="#해결-메커니즘-2-rkl-reuse-knowledge-and-learning">#</a></h4>
+<p><strong>문제 해결:</strong></p>
+<blockquote>
+<p>&ldquo;Furthermore, the ability to learn from these patterns, along with the concept of legacy, which is implemented through the use of inter-pattern relationships, both make it possible to fulfil the need for &lsquo;RKL - Reuse of Knowledge and Learning&rsquo;, since this structure allows this knowledge to be stored and the patterns to evolve over time.&rdquo;</p>
+</blockquote>
+<p><strong>해결책:</strong></p>
+<ul>
+<li>패턴으로부터 학습하는 능력</li>
+<li>Legacy 개념 (패턴 간 관계를 통해 구현)</li>
+<li>지식 저장 가능</li>
+<li>시간 경과에 따른 패턴 진화</li>
+</ul>
+<h4 id="해결-메커니즘-3-dy-dynamic-and-evolutionary">해결 메커니즘 3: DY (Dynamic and Evolutionary)<a hidden class="anchor" aria-hidden="true" href="#해결-메커니즘-3-dy-dynamic-and-evolutionary">#</a></h4>
+<p><strong>복잡한 상호작용:</strong></p>
+<p><strong>3개 프로세스 간 정보 교환:</strong></p>
+<blockquote>
+<p>&ldquo;The &lsquo;DY - Dynamic and evolutionary&rsquo; problem is solved by using the three processes of the methodology. These processes exchange information in order to make the system learn and evolve:&rdquo;</p>
+</blockquote>
+<p><strong>단계별 동작:</strong></p>
+<p><strong>(i) 이벤트 생성:</strong></p>
+<blockquote>
+<p>&ldquo;The generation of an event in the DRM process causes:&rdquo;</p>
+</blockquote>
+<p><strong>(ii) 인스턴스 진화:</strong></p>
+<blockquote>
+<p>&ldquo;The instance associated with the event to evolve by changing aspects such as the level of coverage of a control, or the probability of occurrence of a threat associated with the RAMG process&rdquo;</p>
+</blockquote>
+<ul>
+<li>DRM 프로세스에서 이벤트 생성</li>
+<li>RAMG 프로세스 관련 인스턴스 진화</li>
+<li>Control 커버리지 수준 변경</li>
+<li>위협 발생 확률 변경</li>
+</ul>
+<p><strong>(iii) 패턴 변화:</strong></p>
+<blockquote>
+<p>&ldquo;Changes in the pattern associated with the instance that was created by the RPG process, thus allowing it to readjust the relationships between its elements, and to readjust elements associated with the temporary external risk, thereby helping to create a global security shield among the companies that use that pattern&rdquo;</p>
+</blockquote>
+<ul>
+<li>RPG 프로세스가 생성한 인스턴스 관련 패턴 변화</li>
+<li>요소 간 관계 재조정</li>
+<li>임시 외부 위험 관련 요소 재조정</li>
+<li>해당 패턴 사용 기업들 간 글로벌 보안 실드 생성 지원</li>
+</ul>
+<p><strong>(iv) Legacy를 통한 지식 전파:</strong></p>
+<blockquote>
+<p>&ldquo;Furthermore, when a pattern undergoes changes as a result of the learning of the instances, these also evolve by means of the legacy principle, and the acquired knowledge is transmitted&rdquo;</p>
+</blockquote>
+<ul>
+<li>인스턴스 학습 결과로 패턴 변화</li>
+<li>Legacy 원칙으로 진화</li>
+<li>획득한 지식 전파</li>
+</ul>
+<p><strong>(v) 모든 인스턴스로 진화 전파:</strong></p>
+<blockquote>
+<p>&ldquo;The changes that produce evolution in the patterns are eventually transmitted to all the instances in order to help them to improve, thus producing an evolution in them.&rdquo;</p>
+</blockquote>
+<ul>
+<li>패턴의 진화를 생성하는 변화가 모든 인스턴스에 전송</li>
+<li>인스턴스 개선 지원</li>
+<li>인스턴스에서 진화 생성</li>
+</ul>
+<h4 id="해결-메커니즘-4-lls-low-level-of-subjectivity">해결 메커니즘 4: LLS (Low Level of Subjectivity)<a hidden class="anchor" aria-hidden="true" href="#해결-메커니즘-4-lls-low-level-of-subjectivity">#</a></h4>
+<p><strong>두 가지 접근:</strong></p>
+<blockquote>
+<p>&ldquo;The problem of &lsquo;LLS - Low Level of Subjectivity&rsquo; has been solved by implementing different methods: on the one hand, in the RAMG process we perform a pre-audit with a higher level of accuracy that reduces the initial level of ambiguity&rdquo;</p>
+</blockquote>
+<p><strong>방법 1: Pre-audit (RAMG 프로세스)</strong></p>
+<ul>
+<li>더 높은 정확도의 사전 감사 수행</li>
+<li>초기 모호성 수준 감소</li>
+</ul>
+<p><strong>방법 2: Expert System (DRM 프로세스)</strong></p>
+<blockquote>
+<p>&ldquo;and on the other, in the DRM process we have implemented an expert system of suggestions that learns from the events in order to make the system tend towards reality as security events occur.&rdquo;</p>
+</blockquote>
+<ul>
+<li>제안 전문가 시스템 구현</li>
+<li>이벤트로부터 학습</li>
+<li>보안 이벤트 발생 시 시스템이 현실에 가깝게 경향</li>
+</ul>
+<h4 id="해결-메커니즘-5-cc-collaborative-capacity">해결 메커니즘 5: CC (Collaborative Capacity)<a hidden class="anchor" aria-hidden="true" href="#해결-메커니즘-5-cc-collaborative-capacity">#</a></h4>
+<p><strong>패턴 Legacy 활용:</strong></p>
+<blockquote>
+<p>&ldquo;The &lsquo;CC - Collaborative Capacity&rsquo; problem is solved through the use of pattern legacy, along with the ability to acquire and share the information obtained in the DRM process among the different instances of a pattern, or its ascendants-descendants.&rdquo;</p>
+</blockquote>
+<p><strong>해결책:</strong></p>
+<ul>
+<li>Pattern Legacy 사용</li>
+<li>DRM 프로세스에서 얻은 정보를 패턴의 서로 다른 인스턴스 간 획득 및 공유</li>
+<li>또는 조상-자손 간 공유</li>
+</ul>
+<h4 id="해결-메커니즘-6-slc--ts-simplicity-low-cost-tool-support">해결 메커니즘 6: SLC &amp; TS (Simplicity, Low Cost, Tool Support)<a hidden class="anchor" aria-hidden="true" href="#해결-메커니즘-6-slc--ts-simplicity-low-cost-tool-support">#</a></h4>
+<p><strong>통합 해결:</strong></p>
+<blockquote>
+<p>&ldquo;In order to automate all the tasks and take advantage of the learning and dynamism capabilities, the eMARISMA tool has been implemented, thus providing a solution to the problems of &lsquo;SLC - Simplicity and Low Cost&rsquo; and &lsquo;TS - Supported by Tools&rsquo;.&rdquo;</p>
+</blockquote>
+<p><strong>해결책:</strong></p>
+<ul>
+<li>eMARISMA 도구 구현</li>
+<li>모든 작업 자동화</li>
+<li>학습 및 동적 특성 활용</li>
+<li><strong>SLC와 TS 문제 동시 해결</strong></li>
+</ul>
+<h4 id="해결-메커니즘-7-ae--dm-valuation-of-elements-dynamic-metrics">해결 메커니즘 7: AE &amp; DM (Valuation of Elements, Dynamic Metrics)<a hidden class="anchor" aria-hidden="true" href="#해결-메커니즘-7-ae--dm-valuation-of-elements-dynamic-metrics">#</a></h4>
+<p><strong>RAMG 프로세스 기능:</strong>
+앞서 명시됨 - RAMG 프로세스가 동적 메트릭 정의 허용</p>
+<ul>
+<li>자산 가치 평가</li>
+<li>위험 계산 공식 자체</li>
+<li><strong>AE와 DM 문제 해결</strong></li>
+</ul>
+<h4 id="해결-메커니즘-8-gs--pc-global-scope-practical-cases">해결 메커니즘 8: GS &amp; PC (Global Scope, Practical Cases)<a hidden class="anchor" aria-hidden="true" href="#해결-메커니즘-8-gs--pc-global-scope-practical-cases">#</a></h4>
+<p><strong>Knowledge Base와 Tool의 역할:</strong></p>
+<blockquote>
+<p>&ldquo;The tool also makes it possible to support the knowledge base, allowing specialised patterns to be obtained for different application scopes. This, therefore, provides a solution to the problem of &lsquo;GS - Scope of application&rsquo;, in addition to having a wide base of practical cases that allow the system to learn and evolve in the face of changing circumstances and technologies. A solution to the problem of &lsquo;PC - Practical Cases&rsquo; is, therefore, provided.&rdquo;</p>
+</blockquote>
+<p><strong>해결책:</strong></p>
+<ul>
+<li>도구가 지식 베이스 지원</li>
+<li>다양한 적용 범위를 위한 특화 패턴 획득 가능</li>
+<li><strong>GS 문제 해결</strong></li>
+<li>변화하는 상황과 기술에 직면하여 시스템이 학습하고 진화할 수 있는 광범위한 실무 사례 기반</li>
+<li><strong>PC 문제 해결</strong></li>
+</ul>
+<h3 id="4-실무-적용-현황">4. 실무 적용 현황<a hidden class="anchor" aria-hidden="true" href="#4-실무-적용-현황">#</a></h3>
+<h4 id="적용-규모">적용 규모<a hidden class="anchor" aria-hidden="true" href="#적용-규모">#</a></h4>
+<p><strong>지리적 범위:</strong></p>
+<blockquote>
+<p>&ldquo;We are specifically applying MARISMA in order to carry out the risk analysis and management of dozens of companies in Spain, Colombia, Ecuador, and Argentina&rdquo;</p>
+</blockquote>
+<ul>
+<li>스페인, 콜롬비아, 에콰도르, 아르헨티나</li>
+<li>수십 개 기업</li>
+</ul>
+<p><strong>산업 섹터:</strong></p>
+<blockquote>
+<p>&ldquo;and from different sectors, such as government, critical infrastructures, hydrocarbons, chemical, and naval.&rdquo;</p>
+</blockquote>
+<ul>
+<li>정부</li>
+<li>중요 기반시설 (Critical Infrastructures)</li>
+<li>석유화학 (Hydrocarbons)</li>
+<li>화학 (Chemical)</li>
+<li>조선 (Naval)</li>
+</ul>
+<h4 id="지속적-개선-프로세스">지속적 개선 프로세스<a hidden class="anchor" aria-hidden="true" href="#지속적-개선-프로세스">#</a></h4>
+<p><strong>피드백 루프:</strong></p>
+<blockquote>
+<p>&ldquo;This has allowed us to evaluate and improve each component of the risk analysis and management framework.&rdquo;</p>
+</blockquote>
+<ul>
+<li>위험 분석 및 관리 프레임워크의 각 구성 요소 평가</li>
+<li>각 구성 요소 개선</li>
+</ul>
+<p><strong>개발 방식:</strong></p>
+<blockquote>
+<p>&ldquo;It has been developed using an iterative and incremental process&rdquo;</p>
+</blockquote>
+<ul>
+<li>반복적이고 점진적인 프로세스</li>
+</ul>
+<h3 id="5-약점-해결-매핑-요약">5. 약점 해결 매핑 요약<a hidden class="anchor" aria-hidden="true" href="#5-약점-해결-매핑-요약">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>약점</th>
+          <th>해결 구성 요소</th>
+          <th>해결 메커니즘</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>AC</strong></td>
+          <td>Meta-Pattern</td>
+          <td>진화 가능한 패턴 지식 베이스, Control 통합</td>
+      </tr>
+      <tr>
+          <td><strong>HA</strong></td>
+          <td><em>논문에 명시적 언급 없음</em></td>
+          <td><em>CAT 구조로 암묵적 지원 추정</em></td>
+      </tr>
+      <tr>
+          <td><strong>RKL</strong></td>
+          <td>Meta-Pattern, Knowledge Base</td>
+          <td>패턴으로부터 학습, Legacy 개념, 지식 저장 및 진화</td>
+      </tr>
+      <tr>
+          <td><strong>DY</strong></td>
+          <td>3 Processes (RPG, RAMG, DRM)</td>
+          <td>프로세스 간 정보 교환, 이벤트 기반 재계산, Legacy 전파</td>
+      </tr>
+      <tr>
+          <td><strong>CC</strong></td>
+          <td>Pattern Legacy, DRM Process</td>
+          <td>패턴 인스턴스 간 정보 공유, 조상-자손 간 공유</td>
+      </tr>
+      <tr>
+          <td><strong>AE</strong></td>
+          <td>RAMG Process</td>
+          <td>동적 메트릭으로 자산 가치 평가 정의</td>
+      </tr>
+      <tr>
+          <td><strong>DM</strong></td>
+          <td>RAMG Process</td>
+          <td>위험 계산 공식 동적 정의</td>
+      </tr>
+      <tr>
+          <td><strong>LLS</strong></td>
+          <td>RAMG (Pre-audit), DRM (Expert System)</td>
+          <td>사전 감사로 모호성 감소, 전문가 시스템으로 현실 경향</td>
+      </tr>
+      <tr>
+          <td><strong>SLC</strong></td>
+          <td>eMARISMA Tool</td>
+          <td>작업 자동화</td>
+      </tr>
+      <tr>
+          <td><strong>TS</strong></td>
+          <td>eMARISMA Tool</td>
+          <td>작업 자동화, 학습/동적 특성 활용</td>
+      </tr>
+      <tr>
+          <td><strong>GS</strong></td>
+          <td>Knowledge Base, Tool</td>
+          <td>다양한 적용 범위를 위한 특화 패턴</td>
+      </tr>
+      <tr>
+          <td><strong>PC</strong></td>
+          <td>Knowledge Base, Real Deployment</td>
+          <td>광범위한 실무 사례 기반, 4개국 수십 개 기업 적용</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>주목할 점:</strong></p>
+<ul>
+<li>HA(Hierarchy &amp; Associativity)에 대한 명시적 해결 메커니즘 설명이 Section 6에 없음</li>
+<li>그러나 CAT Meta-Pattern 구조 자체가 Control-Asset-Threat 간 관계를 다루므로 암묵적으로 지원하는 것으로 해석 가능</li>
+</ul>
+<h3 id="6-marisma의-핵심-혁신">6. MARISMA의 핵심 혁신<a hidden class="anchor" aria-hidden="true" href="#6-marisma의-핵심-혁신">#</a></h3>
+<h4 id="혁신-1-control의-통합">혁신 1: Control의 통합<a hidden class="anchor" aria-hidden="true" href="#혁신-1-control의-통합">#</a></h4>
+<p><strong>기존 방법론의 문제:</strong></p>
+<blockquote>
+<p>&ldquo;Most existing methodologies do not, however, consider controls or safeguards until the risk management phase, considering it an independent element of assets, threats and vulnerabilities&rdquo;</p>
+</blockquote>
+<ul>
+<li>Control을 위험 관리 단계까지 미고려</li>
+<li>자산/위협/취약점과 독립적 요소로 간주</li>
+<li>위험 분석 개발 및 모니터링 복잡화</li>
+</ul>
+<p><strong>MARISMA의 접근:</strong></p>
+<ul>
+<li>CAT 구조로 Control을 처음부터 통합</li>
+<li>자산, 위협과 동등한 1급 요소로 취급</li>
+<li>위험 분석 개발 및 모니터링 단순화</li>
+</ul>
+<h4 id="혁신-2-동적-학습-순환">혁신 2: 동적 학습 순환<a hidden class="anchor" aria-hidden="true" href="#혁신-2-동적-학습-순환">#</a></h4>
+<p><strong>5단계 순환:</strong></p>
+<pre tabindex="0"><code>[DRM: 이벤트 발생]
+    ↓
+[RAMG: 인스턴스 진화]
+    ↓
+[RPG: 패턴 변화]
+    ↓
+[Legacy: 지식 전파]
+    ↓
+[모든 인스턴스로 진화 전파]
+    ↓
+[DRM으로 순환]
+</code></pre><p>이 순환이 <strong>DY 문제의 핵심 해결 메커니즘</strong></p>
+<h4 id="혁신-3-글로벌-보안-실드">혁신 3: 글로벌 보안 실드<a hidden class="anchor" aria-hidden="true" href="#혁신-3-글로벌-보안-실드">#</a></h4>
+<p><strong>개념:</strong></p>
+<blockquote>
+<p>&ldquo;thereby helping to create a global security shield among the companies that use that pattern&rdquo;</p>
+</blockquote>
+<ul>
+<li>동일 패턴 사용 기업들 간 지식 공유</li>
+<li>한 기업의 보안 이벤트가 다른 기업의 위험 평가에 기여</li>
+<li>집단 지성을 통한 보안 강화</li>
+</ul>
+<p>이것이 <strong>CC 문제의 핵심 해결 메커니즘</strong></p>
+<h4 id="혁신-4-이중-불확실성-감소">혁신 4: 이중 불확실성 감소<a hidden class="anchor" aria-hidden="true" href="#혁신-4-이중-불확실성-감소">#</a></h4>
+<p><strong>방법 1: RAMG의 Pre-audit</strong></p>
+<ul>
+<li>초기 모호성 감소</li>
+<li>더 높은 정확도</li>
+</ul>
+<p><strong>방법 2: DRM의 Expert System</strong></p>
+<ul>
+<li>이벤트로부터 학습</li>
+<li>시간 경과에 따라 현실에 수렴</li>
+</ul>
+<p>두 방법의 조합이 <strong>LLS 문제 해결</strong></p>
+<h3 id="7-한계-및-미해결-영역">7. 한계 및 미해결 영역<a hidden class="anchor" aria-hidden="true" href="#7-한계-및-미해결-영역">#</a></h3>
+<p><strong>논문이 명시하지 않은 것:</strong></p>
+<ol>
+<li>
+<p><strong>HA 해결 메커니즘:</strong> 논문 Section 6에서 HA를 어떻게 해결하는지 명시적 설명 없음</p>
+</li>
+<li>
+<p><strong>정량적 성능 평가:</strong> 실무 적용 현황은 언급되나, MARISMA의 정량적 성능 비교 (예: 위험 탐지율, 오탐율, 적용 시간 등) 없음</p>
+</li>
+<li>
+<p><strong>비용 분석:</strong> &ldquo;Low Cost&quot;를 해결한다고 주장하나, 실제 도입 비용, 운영 비용에 대한 구체적 수치 없음</p>
+</li>
+<li>
+<p><strong>비교 평가:</strong> MARISMA를 Table 3의 12가지 기준으로 평가한 결과 미제시</p>
+</li>
+<li>
+<p><strong>한계 인정:</strong> 논문이 MARISMA의 한계를 명시적으로 논의하지 않음</p>
+</li>
+</ol>
+<h3 id="8-future-work">8. Future Work<a hidden class="anchor" aria-hidden="true" href="#8-future-work">#</a></h3>
+<p><strong>논문의 명시적 언급:</strong></p>
+<blockquote>
+<p>&ldquo;As future work, we intend to continue evolving the framework in order to further optimise the solutions to each of the shortcomings identified. This will be done by employing the knowledge base that is being obtained using current implementations, which will be achieved through the use of artificial intelligence techniques.&rdquo;</p>
+</blockquote>
+<p><strong>향후 계획:</strong></p>
+<ul>
+<li>프레임워크 지속 진화</li>
+<li>식별된 각 약점에 대한 솔루션 최적화</li>
+<li>현재 구현에서 얻어지는 지식 베이스 활용</li>
+<li><strong>인공지능 기법 사용</strong></li>
+</ul>
+<hr>
+<p><strong>Day 4 마무리:</strong><br>
+MARISMA 프레임워크는 체계적 문헌 고찰에서 식별된 10가지 약점에 대한 통합 솔루션이다. 4대 구성 요소(Meta-Pattern, 3 Processes, Knowledge Base, eMARISMA Tool)는 각각 특정 약점을 타겟한다. 특히 3개 프로세스 간 정보 교환을 통한 5단계 동적 학습 순환은 DY 문제의 핵심 해결책이며, Pattern Legacy를 통한 기업 간 지식 공유는 CC 문제를 해결한다. Control을 CAT 구조로 통합한 것은 기존 방법론과의 근본적 차별점이다. 4개국 수십 개 기업에 실제 적용되어 지속적으로 개선되고 있다는 점에서 PC(실무 사례) 문제도 해결했다. 그러나 HA 해결 메커니즘은 명시적으로 설명되지 않았으며, 정량적 성능 평가와 한계 논의는 부재하다. 향후 AI 기법을 활용한 추가 최적화가 계획되어 있다.</p>
+<h1 id="research-review-towards-an-integrated-risk-analysis-security-framework-4">Research Review: Towards an Integrated Risk Analysis Security Framework<a hidden class="anchor" aria-hidden="true" href="#research-review-towards-an-integrated-risk-analysis-security-framework-4">#</a></h1>
+<blockquote>
+<p><strong>Day 5 Focus:</strong> 컨설팅 관점 종합 및 실무 적용 전략<br>
+<strong>Analyzed Date:</strong> 2025.01.31</p>
+</blockquote>
+<hr>
+<h2 id="day-5--consulting-perspective-and-key-takeaways">Day 5 – Consulting Perspective and Key Takeaways<a hidden class="anchor" aria-hidden="true" href="#day-5--consulting-perspective-and-key-takeaways">#</a></h2>
+<p><em>(위험 분석의 패러다임 전환: 정적에서 동적으로)</em></p>
+<h3 id="1-5일간-학습-여정-종합">1. 5일간 학습 여정 종합<a hidden class="anchor" aria-hidden="true" href="#1-5일간-학습-여정-종합">#</a></h3>
+<h4 id="a-무엇을-배웠나">A. 무엇을 배웠나<a hidden class="anchor" aria-hidden="true" href="#a-무엇을-배웠나">#</a></h4>
+<p><strong>Day 1: 연구 배경 및 동기</strong></p>
+<pre tabindex="0"><code>현대 위험 분석의 3대 구조적 문제
+    ↓
+동적이고 적응형인 프레임워크의 필요성
+    ↓
+→ 전통적 방법론은 Cloud/IoT/협업 환경에 근본적으로 부적합
+</code></pre><p><strong>Day 2: 30개 연구 상세 분석</strong></p>
+<pre tabindex="0"><code>Process/Framework/Model/Methodology 5가지 유형
+    ↓
+퍼지 기법, MCDM, 베이지안 네트워크 선호
+    ↓
+→ 학계는 불확실성 감소에 주력하나 대부분 이론적 수준
+</code></pre><p><strong>Day 3: Table 3 비교 분석</strong></p>
+<pre tabindex="0"><code>12가지 기준으로 30개 연구 정량 평가
+    ↓
+AC/CC 100% 미충족, HA/DY/DM 96.7% 미충족
+    ↓
+→ 단 하나의 연구도 모든 현대 요구사항을 충족하지 못함
+</code></pre><p><strong>Day 4: MARISMA 프레임워크</strong></p>
+<pre tabindex="0"><code>CAT Meta-Pattern + 3 Processes + Knowledge Base + eMARISMA Tool
+    ↓
+10가지 약점의 체계적 해결, 5단계 동적 학습 순환
+    ↓
+→ 4개국 수십 개 기업 적용으로 실무 검증 완료
+</code></pre><p><strong>Day 5 (지금): 컨설팅 관점 통합</strong></p>
+<p>지금까지 배운 것을 보안 컨설팅 관점에서 어떻게 이해하고 활용할 것인가?</p>
+<h3 id="2-논문에서-배운-핵심-원리-정리">2. 논문에서 배운 핵심 원리 정리<a hidden class="anchor" aria-hidden="true" href="#2-논문에서-배운-핵심-원리-정리">#</a></h3>
+<h4 id="a-기술적-메커니즘의-본질적-이해">A. 기술적 메커니즘의 본질적 이해<a hidden class="anchor" aria-hidden="true" href="#a-기술적-메커니즘의-본질적-이해">#</a></h4>
+<p><strong>원리 1: 적응형 카탈로그의 필요성</strong></p>
+<p>논문이 작동하는 핵심 원리는 고정된 위협/자산/통제 목록이 아닌, 시간에 따라 진화하는 패턴 기반 접근이다. MARISMA의 Meta-Pattern은 CAT 구조를 통해 새로운 요소가 추가되어도 방법론 자체를 변경할 필요가 없도록 설계되었다.</p>
+<p><strong>왜 작동하는가:</strong></p>
+<ul>
+<li>패턴은 구체적 요소가 아닌 관계의 구조를 정의</li>
+<li>Knowledge Base가 산업별/기술별 패턴을 누적</li>
+<li>새로운 위협(예: Zero-day)이 등장해도 기존 CAT 관계에 추가만 하면 됨</li>
+</ul>
+<p><strong>왜 한계가 있는가:</strong></p>
+<ul>
+<li>초기 패턴 생성에 도메인 전문가 필요</li>
+<li>패턴의 품질이 Knowledge Base 의존적</li>
+<li>완전히 새로운 기술 패러다임(예: 양자 컴퓨팅)에는 새로운 패턴 체계 필요 가능</li>
+</ul>
+<p><strong>원리 2: 동적 학습 순환의 메커니즘</strong></p>
+<p>MARISMA의 핵심은 DRM → RAMG → RPG → Legacy → 전체 인스턴스로 이어지는 5단계 순환이다. 한 기업에서 발생한 보안 사고가 패턴을 변화시키고, 이 변화가 동일 패턴을 사용하는 모든 기업으로 전파된다.</p>
+<p><strong>왜 작동하는가:</strong></p>
+<ul>
+<li>이벤트 기반 자동 재계산 (수동 재분석 불필요)</li>
+<li>집단 지성 활용 (한 기업의 경험이 다른 기업에 기여)</li>
+<li>Legacy 개념으로 패턴 간 지식 상속</li>
+</ul>
+<p><strong>왜 한계가 있는가:</strong></p>
+<ul>
+<li>패턴 공유 참여 기업 수에 비례하여 효과 증가 (초기 단계에서는 학습 데이터 부족)</li>
+<li>악의적 이벤트 주입 가능성 (보안 검증 메커니즘 필요)</li>
+<li>서로 다른 산업 간 패턴 공유는 노이즈 발생 가능</li>
+</ul>
+<p><strong>원리 3: Control의 1급 요소화</strong></p>
+<p>기존 방법론은 자산/위협/취약점 분석 후 Control을 별도로 고려하지만, MARISMA는 CAT 구조로 Control을 처음부터 통합한다.</p>
+<p><strong>왜 작동하는가:</strong></p>
+<ul>
+<li>Control 효과를 실시간 추적 가능</li>
+<li>Control 커버리지 변화 시 위험 자동 재계산</li>
+<li>통제 투자 대비 위험 감소 효과 정량화</li>
+</ul>
+<p><strong>왜 한계가 있는가:</strong></p>
+<ul>
+<li>모든 Control을 사전 정의해야 함 (새로운 보안 기술 등장 시 업데이트 필요)</li>
+<li>Control 간 상호작용 효과는 복잡도 증가</li>
+</ul>
+<h4 id="b-일반화-가능한-원칙">B. 일반화 가능한 원칙<a hidden class="anchor" aria-hidden="true" href="#b-일반화-가능한-원칙">#</a></h4>
+<p><strong>다른 상황에 적용 가능한 교훈:</strong></p>
+<ol>
+<li>
+<p><strong>체계적 문헌 고찰의 가치</strong></p>
+<ul>
+<li>새로운 프레임워크 개발 전, 기존 연구의 약점을 체계적으로 분석</li>
+<li>Kitchenham 프로토콜은 정보 시스템 연구에도 적용 가능</li>
+<li>12가지 객관적 기준으로 정량 평가하여 주관성 배제</li>
+</ul>
+</li>
+<li>
+<p><strong>이론과 실무의 간극</strong></p>
+<ul>
+<li>30개 연구 중 9개만 실무 사례 보유</li>
+<li>학술 연구가 실무에서 검증되지 않으면 복잡도만 높고 채택률 낮음</li>
+<li>Action Research로 실무 피드백을 지속적으로 반영해야 함</li>
+</ul>
+</li>
+<li>
+<p><strong>SME 관점의 중요성</strong></p>
+<ul>
+<li>대부분 고객사가 SME임에도 불구하고 기존 연구는 복잡도 무시</li>
+<li>단순성과 저비용은 실무 채택의 핵심 요소</li>
+<li>자동화 도구 없이는 SME가 방법론 적용 불가</li>
+</ul>
+</li>
+</ol>
+<p><strong>유사 문제 해결에 활용 가능한 접근법:</strong></p>
+<p>이 논문의 접근 방식(체계적 문헌 고찰 → 약점 식별 → 해결 프레임워크 개발 → 실무 검증)은 다른 보안 영역에도 적용 가능하다:</p>
+<ul>
+<li><strong>침입 탐지 시스템</strong>: 기존 IDS 연구의 약점 분석 → 동적 학습 기반 IDS 개발</li>
+<li><strong>보안 정책 준수</strong>: 기존 ISP 준수 연구 약점 분석 → 행동 변화 유도 프레임워크</li>
+<li><strong>클라우드 보안</strong>: 기존 클라우드 보안 방법론 약점 → 멀티 클라우드 통합 프레임워크</li>
+</ul>
+<p>핵심은 &ldquo;기존 연구의 공통 약점을 체계적으로 식별하고, 이를 모두 해결하는 통합 솔루션 제시&quot;라는 구조다.</p>
+<h3 id="3-기업-환경에서의-적용-가능성-분석">3. 기업 환경에서의 적용 가능성 분석<a hidden class="anchor" aria-hidden="true" href="#3-기업-환경에서의-적용-가능성-분석">#</a></h3>
+<h4 id="a-해결하는-비즈니스-문제">A. 해결하는 비즈니스 문제<a hidden class="anchor" aria-hidden="true" href="#a-해결하는-비즈니스-문제">#</a></h4>
+<p><strong>보안 측면:</strong></p>
+<ul>
+<li>클라우드/IoT 환경의 새로운 위협에 대한 동적 대응</li>
+<li>공급망 및 파트너사 연관 위험 관리</li>
+<li>보안 사고 발생 시 자동 위험 재평가 및 통제 조정</li>
+</ul>
+<p><strong>비즈니스 측면:</strong></p>
+<ul>
+<li>수개월 전 위험 평가 결과로 현재를 판단하는 오류 제거</li>
+<li>위험 분석 비용 및 시간 절감 (자동화 도구)</li>
+<li>보안 투자 대비 위험 감소 효과 정량화 (ROI 산출 가능)</li>
+</ul>
+<p><strong>규제 측면:</strong></p>
+<ul>
+<li>ISO 27001, ISMS-P 등 위험 기반 접근법 요구사항 충족</li>
+<li>외부 감사 시 객관적 위험 평가 결과 제시</li>
+<li>지속적 위험 관리 프로세스 입증</li>
+</ul>
+<h4 id="b-적합한-기업-프로필">B. 적합한 기업 프로필<a hidden class="anchor" aria-hidden="true" href="#b-적합한-기업-프로필">#</a></h4>
+<p><strong>산업:</strong></p>
+<ul>
+<li><strong>높은 적합성</strong>: 금융, 정부, 중요 기반시설, 제조(Industry 4.0), 헬스케어
+<ul>
+<li>이유: 규제 준수 필요성 높음, 위험 평가 주기적 수행 필수</li>
+</ul>
+</li>
+<li><strong>중간 적합성</strong>: IT 서비스, 전자상거래, 물류
+<ul>
+<li>이유: 클라우드/제3자 의존성 높으나 규제 압력 상대적으로 낮음</li>
+</ul>
+</li>
+<li><strong>낮은 적합성</strong>: 소규모 소매, 단순 제조
+<ul>
+<li>이유: 위험 분석 투자 대비 효과 낮음</li>
+</ul>
+</li>
+</ul>
+<p><strong>기업 규모:</strong></p>
+<ul>
+<li><strong>최적</strong>: 중견기업 (직원 100-1000명)
+<ul>
+<li>이유: SME 지향 설계, 복잡도 적정, eMARISMA 도구 비용 감당 가능</li>
+</ul>
+</li>
+<li><strong>적합</strong>: 대기업 (자회사별 적용)
+<ul>
+<li>이유: 각 자회사를 별도 인스턴스로 관리, 그룹 차원에서 패턴 공유</li>
+</ul>
+</li>
+<li><strong>도전적</strong>: 소기업 (직원 50명 미만)
+<ul>
+<li>이유: 초기 패턴 생성 비용, 전문 인력 부족</li>
+</ul>
+</li>
+</ul>
+<p><strong>보안 성숙도:</strong></p>
+<ul>
+<li><strong>Level 1-2 (초기/관리)</strong>: 적합하지 않음
+<ul>
+<li>이유: 기본 자산 관리, 위협 식별 프로세스 미구축</li>
+</ul>
+</li>
+<li><strong>Level 3 (정의)</strong>: 적합
+<ul>
+<li>이유: 위험 분석 프로세스 존재, 동적 관리로 성숙도 향상 가능</li>
+</ul>
+</li>
+<li><strong>Level 4-5 (측정/최적화)</strong>: 매우 적합
+<ul>
+<li>이유: 메트릭 기반 관리, 지속적 개선 문화 존재</li>
+</ul>
+</li>
+</ul>
+<p><strong>기술 스택:</strong></p>
+<ul>
+<li><strong>필수</strong>: 클라우드 인프라 (eMARISMA가 클라우드 기반)</li>
+<li><strong>유리</strong>: 마이크로서비스 아키텍처, 컨테이너 환경 (동적 자산 관리)</li>
+<li><strong>중립</strong>: 온프레미스 레거시 시스템 (패턴 정의 가능하나 동적 특성 제한적)</li>
+</ul>
+<h4 id="c-도입-시-고려사항">C. 도입 시 고려사항<a hidden class="anchor" aria-hidden="true" href="#c-도입-시-고려사항">#</a></h4>
+<p><strong>비용:</strong></p>
+<ul>
+<li>초기 투자: eMARISMA 라이선스 + 컨설팅 (패턴 생성)
+<ul>
+<li>논문에 구체적 수치 없으나, 연구팀 spin-off 회사 상용화 → 견적 필요</li>
+</ul>
+</li>
+<li>운영 비용: 클라우드 인프라, 연간 라이선스 갱신</li>
+<li>교육 비용: 위험 관리 담당자 교육 (RPG, RAMG, DRM 프로세스 이해)</li>
+</ul>
+<p><strong>인력:</strong></p>
+<ul>
+<li>필요 인력: 위험 관리 전문가 1-2명, 보안 담당자 2-3명</li>
+<li>교육 기간: 기본 사용 1주, 고급 패턴 커스터마이징 1개월</li>
+<li>외부 의존: 초기 패턴 생성은 MARISMA 전문 컨설턴트 필요</li>
+</ul>
+<p><strong>기술:</strong></p>
+<ul>
+<li>필요 인프라: 클라우드 계정 (AWS/Azure/GCP), MySQL 호환 DB</li>
+<li>기존 시스템 통합: API 연동으로 SIEM, 자산 관리 시스템 데이터 수집</li>
+<li>네트워크: 인터넷 연결 필수 (클라우드 기반)</li>
+</ul>
+<p><strong>시간:</strong></p>
+<ul>
+<li>도입 기간: 최소 3개월
+<ul>
+<li>1개월: 현행 위험 분석 프로세스 분석</li>
+<li>1개월: 초기 패턴 생성 및 커스터마이징</li>
+<li>1개월: 파일럿 테스트 및 검증</li>
+</ul>
+</li>
+<li>안정화 기간: 6개월-1년
+<ul>
+<li>이유: 동적 학습 순환이 효과를 발휘하려면 충분한 이벤트 누적 필요</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-컨설팅-시나리오별-활용-방안">4. 컨설팅 시나리오별 활용 방안<a hidden class="anchor" aria-hidden="true" href="#4-컨설팅-시나리오별-활용-방안">#</a></h3>
+<h4 id="a-보안-진단점검">A. 보안 진단/점검<a hidden class="anchor" aria-hidden="true" href="#a-보안-진단점검">#</a></h4>
+<p><strong>이 논문의 관점을 어떻게 적용할 수 있나:</strong></p>
+<p>고객사의 현재 위험 분석 방법론을 Table 3의 12가지 기준으로 평가하여, 어떤 약점이 있는지 객관적으로 진단할 수 있다.</p>
+<p><strong>점검 항목 예시:</strong></p>
+<ol>
+<li>
+<p><strong>AC (Adaptive Catalogues)</strong></p>
+<ul>
+<li>질문: 새로운 위협(예: Log4Shell)이 등장했을 때, 위험 분석 방법론 자체를 변경해야 합니까?</li>
+<li>평가: 변경 필요 시 AC 미충족 → 적응형 카탈로그 필요</li>
+</ul>
+</li>
+<li>
+<p><strong>DY (Dynamic &amp; Evolutionary)</strong></p>
+<ul>
+<li>질문: 마지막 위험 분석은 언제 수행했습니까? 그 이후 시스템/위협 환경 변화를 반영했습니까?</li>
+<li>평가: 6개월 이상 경과 시 DY 미충족 → 동적 위험 관리 필요</li>
+</ul>
+</li>
+<li>
+<p><strong>CC (Collaborative Capability)</strong></p>
+<ul>
+<li>질문: 주요 파트너사/클라우드 제공자의 보안 사고가 귀사에 미치는 위험을 평가합니까?</li>
+<li>평가: 미평가 시 CC 미충족 → 협업 위험 관리 필요</li>
+</ul>
+</li>
+<li>
+<p><strong>TS (Tool Support)</strong></p>
+<ul>
+<li>질문: 위험 분석이 Excel/문서 기반 수작업입니까, 아니면 자동화 도구를 사용합니까?</li>
+<li>평가: 수작업 시 TS 미충족 → 자동화 도구 도입 필요</li>
+</ul>
+</li>
+<li>
+<p><strong>PC (Practical Cases)</strong></p>
+<ul>
+<li>질문: 현재 위험 분석 방법론이 실제 보안 사고 예방/탐지에 기여한 사례가 있습니까?</li>
+<li>평가: 사례 없으면 PC 미충족 → 실무 검증된 방법론 필요</li>
+</ul>
+</li>
+</ol>
+<h4 id="b-보안-체계-수립">B. 보안 체계 수립<a hidden class="anchor" aria-hidden="true" href="#b-보안-체계-수립">#</a></h4>
+<p><strong>어떤 보안 전략 수립에 참고할 수 있나:</strong></p>
+<p>MARISMA의 CAT Meta-Pattern과 3 Processes는 위험 기반 보안 전략 수립의 청사진으로 활용 가능하다.</p>
+<p><strong>적용 예시:</strong></p>
+<ol>
+<li>
+<p><strong>위험 기반 보안 투자 우선순위 결정</strong></p>
+<ul>
+<li>RAMG 프로세스: 자산별 위험 정량화</li>
+<li>동적 메트릭: 통제 투자 대비 위험 감소 효과 계산</li>
+<li>결과: 예산 제약 하에서 최대 위험 감소 달성하는 통제 조합 도출</li>
+</ul>
+</li>
+<li>
+<p><strong>클라우드 전환 위험 관리 프로세스</strong></p>
+<ul>
+<li>RPG: 클라우드 특화 위험 패턴 생성 (IaaS/PaaS/SaaS별)</li>
+<li>HA: 클라우드 제공자 의존성 계층 모델링</li>
+<li>DRM: 클라우드 보안 이벤트 자동 수집 및 위험 재평가</li>
+</ul>
+</li>
+<li>
+<p><strong>공급망 보안 관리 체계</strong></p>
+<ul>
+<li>CC: 주요 파트너사와 위험 패턴 공유</li>
+<li>Legacy: 업스트림 파트너의 보안 사고가 다운스트림으로 전파되는 메커니즘 모델링</li>
+<li>Knowledge Base: 산업별 공급망 위험 사례 축적</li>
+</ul>
+</li>
+</ol>
+<h4 id="c-기술-자문">C. 기술 자문<a hidden class="anchor" aria-hidden="true" href="#c-기술-자문">#</a></h4>
+<p><strong>고객사의 어떤 질문에 답할 수 있게 되었나:</strong></p>
+<p><strong>질문 1: &ldquo;우리 회사에 ISO 27001 인증이 필요한가요? 투자 대비 효과가 있을까요?&rdquo;</strong></p>
+<p>답변: ISO 27001은 위험 기반 접근법을 요구합니다. Santos-Olmo 2024 연구에 따르면, 전통적 위험 분석 방법론은 정적이고 비용이 높아 SME에 부담이 됩니다. 하지만 동적 위험 관리 프레임워크(예: MARISMA)를 도입하면 초기 분석 이후 자동화된 유지관리가 가능하여, 인증 유지 비용이 크게 감소합니다. 귀사가 클라우드/IoT를 활용한다면 동적 프레임워크 도입 후 ISO 27001 인증을 추진하는 것이 효율적입니다.</p>
+<p><strong>질문 2: &ldquo;클라우드로 전환하면서 어떤 새로운 위험이 생기나요? 기존 위험 분석 방법으로 충분한가요?&rdquo;</strong></p>
+<p>답변: 클라우드 전환은 연관 위험(Associative Risk)과 계층적 위험(Hierarchical Risk)을 발생시킵니다. 논문 분석 결과, 30개 기존 연구 중 단 1개(MO9, SCADA 특화)만 계층/연관 구조를 완전히 반영했습니다. 귀사의 현재 방법론이 클라우드 제공자의 보안 수준, 가상 서버 위험, 제3자 의존성을 평가하지 못한다면 부적합합니다. 적응형 카탈로그와 연관 위험 모델링을 지원하는 프레임워크가 필요합니다.</p>
+<p><strong>질문 3: &ldquo;위험 분석을 외부 컨설팅사에 맡기는 것과 내부 역량으로 하는 것 중 어느 것이 나은가요?&rdquo;</strong></p>
+<p>답변: 이는 보안 성숙도와 규모에 따라 다릅니다. 논문의 Table 3 분석에서 대부분의 위험 분석 방법론은 전문가 지식에 크게 의존합니다(복잡도 높음). 초기 단계(성숙도 Level 1-2)라면 외부 컨설팅으로 패턴 생성 후, 동적 관리 도구를 활용하여 내부 운영하는 하이브리드 접근이 효율적입니다. 중요한 것은 지식 재사용(RKL)과 학습 메커니즘이 있어야 외부 의존도를 점진적으로 낮출 수 있다는 점입니다.</p>
+<h3 id="5-프레임워크규제표준과의-연계">5. 프레임워크/규제/표준과의 연계<a hidden class="anchor" aria-hidden="true" href="#5-프레임워크규제표준과의-연계">#</a></h3>
+<h4 id="a-isms-p--iso-27001-관점">A. ISMS-P / ISO 27001 관점<a hidden class="anchor" aria-hidden="true" href="#a-isms-p--iso-27001-관점">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>통제 항목</th>
+          <th>논문의 기여</th>
+          <th>적용 방법</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>5.1 정보보호 정책</strong></td>
+          <td>위험 기반 정책 수립 근거 제공</td>
+          <td>MARISMA 위험 평가 결과를 정책 우선순위 결정에 반영</td>
+      </tr>
+      <tr>
+          <td><strong>8.2 위험 평가</strong></td>
+          <td>동적 위험 평가 프로세스</td>
+          <td>DRM 프로세스로 연속적 위험 재평가 (연 1회 평가 → 실시간)</td>
+      </tr>
+      <tr>
+          <td><strong>8.3 위험 처리</strong></td>
+          <td>통제 효과 정량화</td>
+          <td>RAMG의 동적 메트릭으로 통제 투자 대비 위험 감소 측정</td>
+      </tr>
+      <tr>
+          <td><strong>A.5.1 자산 관리</strong></td>
+          <td>자산 간 의존성 모델링</td>
+          <td>CAT Meta-Pattern의 Asset 계층 구조 활용</td>
+      </tr>
+      <tr>
+          <td><strong>A.15.1 공급망 보안</strong></td>
+          <td>제3자 위험 평가</td>
+          <td>CC(협업 능력)로 파트너사 위험 통합 관리</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>ISO 27001 요구사항 충족:</strong></p>
+<ul>
+<li>Clause 6.1.2 (위험 평가): MARISMA의 RAMG 프로세스가 체계적 위험 평가 방법 제공</li>
+<li>Clause 6.1.3 (위험 처리): Control을 CAT 구조에 통합하여 처리 계획 자동 생성</li>
+<li>Clause 9.3 (경영 검토): DRM의 이벤트 기반 리포트로 실시간 현황 제공</li>
+</ul>
+<h4 id="b-산업별-특화-표준">B. 산업별 특화 표준<a hidden class="anchor" aria-hidden="true" href="#b-산업별-특화-표준">#</a></h4>
+<p><strong>금융:</strong></p>
+<ul>
+<li>전자금융감독규정 제37조(정보기술부문 위험 평가): 동적 위험 평가로 분기별 요구사항 충족</li>
+<li>금융보안원 사이버 위기 경보 체계: DRM 이벤트와 연동하여 위험 수준 자동 조정</li>
+</ul>
+<p><strong>의료:</strong></p>
+<ul>
+<li>개인정보보호법 제29조(안전성 확보 조치): 의료 데이터 위험 분석에 MARISMA 패턴 적용</li>
+<li>의료법 제21조(전자의무기록): EMR 시스템 위험을 계층적으로 모델링</li>
+</ul>
+<p><strong>제조:</strong></p>
+<ul>
+<li>산업보안 가이드(산업통상자원부): 기술 유출 위험을 연관 위험으로 모델링</li>
+<li>IEC 62443 (산업 자동화 보안): OT/IT 융합 환경의 계층적 위험 평가</li>
+</ul>
+<h4 id="c-보안-성숙도-모델">C. 보안 성숙도 모델<a hidden class="anchor" aria-hidden="true" href="#c-보안-성숙도-모델">#</a></h4>
+<p><strong>성숙도 향상:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>단계</th>
+          <th>Before (전통적 위험 분석)</th>
+          <th>After (MARISMA 도입)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Level 1: 초기</strong></td>
+          <td>위험 분석 프로세스 없음</td>
+          <td>RPG로 초기 패턴 생성, 기본 위험 평가 시작</td>
+      </tr>
+      <tr>
+          <td><strong>Level 2: 관리</strong></td>
+          <td>연 1회 수동 위험 분석, 결과 문서화</td>
+          <td>RAMG로 분기별 자동 평가, eMARISMA 대시보드</td>
+      </tr>
+      <tr>
+          <td><strong>Level 3: 정의</strong></td>
+          <td>표준 프로세스 존재하나 정적</td>
+          <td>DRM으로 이벤트 기반 동적 재평가, 메트릭 정의</td>
+      </tr>
+      <tr>
+          <td><strong>Level 4: 측정</strong></td>
+          <td>위험 메트릭 존재하나 고정</td>
+          <td>동적 메트릭으로 산업/상황별 맞춤형 측정</td>
+      </tr>
+      <tr>
+          <td><strong>Level 5: 최적화</strong></td>
+          <td>개선이 반응적(사고 후)</td>
+          <td>예측적 개선(패턴 학습, Legacy 전파)</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>MARISMA의 성숙도 향상 메커니즘:</strong></p>
+<ul>
+<li>Level 2 → 3: 자동화 도구(eMARISMA)로 프로세스 표준화</li>
+<li>Level 3 → 4: 동적 메트릭으로 측정 기반 관리 가능</li>
+<li>Level 4 → 5: Knowledge Base 학습으로 지속적 개선</li>
+</ul>
+<h3 id="6-컨설턴트로서-얻은-인사이트">6. 컨설턴트로서 얻은 인사이트<a hidden class="anchor" aria-hidden="true" href="#6-컨설턴트로서-얻은-인사이트">#</a></h3>
+<h4 id="a-고객-조언-역량">A. 고객 조언 역량<a hidden class="anchor" aria-hidden="true" href="#a-고객-조언-역량">#</a></h4>
+<p><strong>이 논문을 읽기 전:</strong></p>
+<ul>
+<li>위험 분석은 NIST, ISO 27005, MAGERIT 등 잘 알려진 프레임워크 중 선택하면 된다고 생각</li>
+<li>고객사의 &ldquo;위험 분석이 너무 복잡하고 비싸다&quot;는 불만에 &ldquo;그래도 해야 한다&quot;고만 답변</li>
+<li>클라우드/IoT 환경의 새로운 위험에 대해 추상적으로만 설명</li>
+</ul>
+<p><strong>이 논문을 읽은 후:</strong></p>
+<ul>
+<li>30개 방법론의 구체적 약점을 근거로 고객사 현황 진단 가능</li>
+<li>&ldquo;복잡도와 비용 문제는 동적 자동화로 해결 가능하다&quot;는 구체적 대안 제시</li>
+<li>클라우드/IoT의 연관 위험, 계층적 위험을 구조적으로 설명 가능</li>
+</ul>
+<p><strong>구체적 예시:</strong></p>
+<p>고객: &ldquo;우리 회사는 100명 규모 제조업체인데, ISO 27001 컨설팅사가 제시한 위험 분석 프로세스가 너무 복잡해서 포기하려고 합니다. 간단한 방법 없나요?&rdquo;</p>
+<p>나: &ldquo;귀사와 같은 SME를 위해 설계된 위험 분석 프레임워크가 있습니다. 제가 분석한 연구에 따르면, 기존 방법론 30개 중 단 3개만 SME에 적합한 단순성을 제공합니다(Table 3의 SLC 기준). 중요한 것은 초기 패턴 생성 이후 자동화 도구로 유지관리 비용을 낮추는 것입니다. 귀사 산업(제조)에 특화된 위험 패턴을 활용하면 초기 구축 시간을 50% 이상 단축할 수 있습니다. 또한 클라우드 기반 도구를 사용하면 전담 인력 없이도 운영 가능합니다.&rdquo;</p>
+<h4 id="b-기술솔루션-평가-기준">B. 기술/솔루션 평가 기준<a hidden class="anchor" aria-hidden="true" href="#b-기술솔루션-평가-기준">#</a></h4>
+<p><strong>평가 기준:</strong></p>
+<p>Table 3의 12가지 기준을 위험 분석 솔루션 평가에 활용할 수 있다:</p>
+<table>
+  <thead>
+      <tr>
+          <th>기준</th>
+          <th>설명</th>
+          <th>평가 방법</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>AC (Adaptive Catalogues)</strong></td>
+          <td>새로운 위협/기술 추가 시 방법론 변경 필요 여부</td>
+          <td>신규 위협(예: AI 기반 공격) 시나리오로 테스트</td>
+      </tr>
+      <tr>
+          <td><strong>DY (Dynamic)</strong></td>
+          <td>변화 발생 시 자동 재평가 여부</td>
+          <td>자산 변경 시나리오로 재계산 시간 측정</td>
+      </tr>
+      <tr>
+          <td><strong>TS (Tool Support)</strong></td>
+          <td>자동화 도구 제공 여부 및 수준</td>
+          <td>Excel 기반(하), 전용 도구(중), API 통합(상)</td>
+      </tr>
+      <tr>
+          <td><strong>SLC (Simplicity &amp; Low Cost)</strong></td>
+          <td>SME 적용 가능성</td>
+          <td>초기 구축 비용, 교육 기간, 운영 인력 필요 수</td>
+      </tr>
+      <tr>
+          <td><strong>PC (Practical Cases)</strong></td>
+          <td>실무 검증 사례 존재 여부</td>
+          <td>유사 산업/규모 고객사 레퍼런스 요청</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>유사 기술 비교:</strong></p>
+<p>MARISMA 접근법과 유사한 상용 솔루션 평가 시:</p>
+<ul>
+<li><strong>RSA Archer</strong>: GRC 플랫폼이나 동적 학습 순환 부족 → DY 미흡</li>
+<li><strong>ServiceNow IRM</strong>: 워크플로우 자동화 강점이나 패턴 기반 아님 → AC 미흡</li>
+<li><strong>RiskLens (FAIR 기반)</strong>: 정량적 평가 강점이나 정적 분석 → DY 미흡</li>
+<li><strong>MARISMA 접근</strong>: AC, DY, RKL 모두 충족하나 상용 도구 성숙도는 검증 필요</li>
+</ul>
+<h4 id="c-전문성-영역">C. 전문성 영역<a hidden class="anchor" aria-hidden="true" href="#c-전문성-영역">#</a></h4>
+<p><strong>답할 수 있는 질문:</strong></p>
+<ol>
+<li>
+<p><strong>위험 분석 방법론 선택</strong></p>
+<ul>
+<li>&ldquo;우리 회사에 NIST와 ISO 27005 중 어느 것이 적합한가요?&rdquo;</li>
+<li>&ldquo;클라우드 환경에 특화된 위험 분석 방법론이 있나요?&rdquo;</li>
+</ul>
+</li>
+<li>
+<p><strong>동적 위험 관리</strong></p>
+<ul>
+<li>&ldquo;DevOps 환경에서 매일 배포하는데, 매번 위험 분석을 어떻게 하나요?&rdquo;</li>
+<li>&ldquo;실시간 위험 모니터링이 가능한가요?&rdquo;</li>
+</ul>
+</li>
+<li>
+<p><strong>협업 위험 관리</strong></p>
+<ul>
+<li>&ldquo;주요 파트너사의 보안 수준을 우리 위험 평가에 어떻게 반영하나요?&rdquo;</li>
+<li>&ldquo;공급망 보안 사고가 우리에게 미치는 영향을 어떻게 계산하나요?&rdquo;</li>
+</ul>
+</li>
+</ol>
+<p><strong>아직 답할 수 없는 질문:</strong></p>
+<ol>
+<li>
+<p><strong>AI/ML 기반 위험 예측</strong></p>
+<ul>
+<li>&ldquo;기계 학습으로 미래 위협을 예측할 수 있나요?&rdquo;</li>
+<li>(MARISMA는 패턴 기반이나 AI 기법은 향후 연구)</li>
+</ul>
+</li>
+<li>
+<p><strong>양자 컴퓨팅 위협</strong></p>
+<ul>
+<li>&ldquo;양자 컴퓨팅 시대의 암호화 위험을 어떻게 평가하나요?&rdquo;</li>
+<li>(완전히 새로운 기술 패러다임, 기존 패턴 적용 어려움)</li>
+</ul>
+</li>
+<li>
+<p><strong>정량적 비교</strong></p>
+<ul>
+<li>&ldquo;MARISMA와 FAIR 방법론의 정확도를 정량적으로 비교하면?&rdquo;</li>
+<li>(논문에 성능 비교 실험 없음, 추가 연구 필요)</li>
+</ul>
+</li>
+</ol>
+<h3 id="7-5일간-리뷰-종합">7. 5일간 리뷰 종합<a hidden class="anchor" aria-hidden="true" href="#7-5일간-리뷰-종합">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>Day</th>
+          <th>주제</th>
+          <th>핵심 학습</th>
+          <th>컨설팅 활용</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Day 1</strong></td>
+          <td>연구 배경 및 동기</td>
+          <td>전통적 위험 분석의 3대 한계, Systematic Review 방법론</td>
+          <td>고객사 현황 진단 시 구조적 문제 설명 근거</td>
+      </tr>
+      <tr>
+          <td><strong>Day 2</strong></td>
+          <td>30개 연구 상세 분석</td>
+          <td>Process/Framework/Model/Methodology 유형별 특징, 퍼지/MCDM 트렌드</td>
+          <td>기존 솔루션의 한계를 구체적 연구 인용하여 설명</td>
+      </tr>
+      <tr>
+          <td><strong>Day 3</strong></td>
+          <td>Table 3 비교 분석</td>
+          <td>12가지 기준으로 정량 평가, 모든 연구가 불완전</td>
+          <td>솔루션 선택 시 객관적 평가 기준 제공</td>
+      </tr>
+      <tr>
+          <td><strong>Day 4</strong></td>
+          <td>MARISMA 프레임워크</td>
+          <td>CAT Meta-Pattern, 5단계 동적 학습 순환, 4개국 실무 적용</td>
+          <td>동적 위험 관리의 구체적 구현 사례 제시</td>
+      </tr>
+      <tr>
+          <td><strong>Day 5</strong></td>
+          <td>컨설팅 관점 통합</td>
+          <td>SME 적합성, ISO 27001 연계, 성숙도 향상 경로</td>
+          <td>고객사별 맞춤형 위험 관리 전략 수립</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="8-최종-개인-인사이트">8. 최종 개인 인사이트<a hidden class="anchor" aria-hidden="true" href="#8-최종-개인-인사이트">#</a></h3>
+<h4 id="a-이-논문이-나의-컨설팅-역량에-기여한-점">A. 이 논문이 나의 컨설팅 역량에 기여한 점<a hidden class="anchor" aria-hidden="true" href="#a-이-논문이-나의-컨설팅-역량에-기여한-점">#</a></h4>
+<p><strong>핵심 배움 1: 체계적 분석의 가치</strong></p>
+<p>이 논문은 단순히 &ldquo;MARISMA가 좋다&quot;고 주장하지 않고, 30개 연구를 12가지 기준으로 정량 분석하여 모든 기존 방법론의 한계를 객관적으로 입증했다. 이는 컨설턴트로서 &ldquo;왜 이 솔루션을 추천하는가?&ldquo;라는 질문에 답할 때 매우 강력한 근거가 된다. 앞으로 나는 솔루션 제안 시 반드시 대안 비교와 객관적 평가 기준을 제시할 것이다.</p>
+<p><strong>핵심 배움 2: 이론과 실무의 간극</strong></p>
+<p>30개 연구 중 9개만 실무 사례를 보유했고, 대부분은 &ldquo;이론적으로 가능하다&quot;는 수준에 그쳤다. 이는 학술 연구와 실무 적용 사이에 거대한 간극이 있음을 보여준다. 컨설턴트로서 나는 고객에게 &ldquo;논문에 나온다&quot;는 이유만으로 검증되지 않은 방법론을 추천해서는 안 된다. 실무 검증 사례, 도구 성숙도, 교육 가용성을 모두 확인해야 한다.</p>
+<p><strong>핵심 배움 3: SME 관점의 중요성</strong></p>
+<p>기존 연구들은 대부분 SME의 제약(예산, 인력, 복잡도)을 무시했다. 하지만 실제 고객사 대부분은 SME다. MARISMA가 SLC(Simplicity &amp; Low Cost)와 TS(Tool Support)를 해결한 것은 실무 채택률을 높이는 핵심 전략이다. 앞으로 나는 모든 컨설팅 제안서에서 &ldquo;SME가 실제로 운영 가능한가?&ldquo;를 핵심 평가 기준으로 삼을 것이다.</p>
+<h4 id="b-bulgurcu-2010과의-비교-종합">B. Bulgurcu 2010과의 비교 종합<a hidden class="anchor" aria-hidden="true" href="#b-bulgurcu-2010과의-비교-종합">#</a></h4>
+<p><strong>2편의 논문을 읽고 나니:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>논문</th>
+          <th>핵심 아이디어</th>
+          <th>강점</th>
+          <th>약점</th>
+          <th>적용 시나리오</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Bulgurcu 2010 (ISP Compliance)</strong></td>
+          <td>계획된 행동 이론으로 직원의 정책 준수 행동 설명</td>
+          <td>인간 심리 요인 고려, 실증 연구로 검증</td>
+          <td>기술적 통제 미다룸, 정책 설계 원칙 부족</td>
+          <td>보안 인식 교육, 정책 준수율 향상 프로그램</td>
+      </tr>
+      <tr>
+          <td><strong>Santos-Olmo 2024 (Risk Framework)</strong></td>
+          <td>동적 패턴 기반 위험 분석 프레임워크</td>
+          <td>조직 전체 위험 관리, 실무 검증(4개국), 자동화 도구</td>
+          <td>인간 행동 요인 미다룸, 정량적 성능 비교 없음</td>
+          <td>위험 기반 보안 전략 수립, ISO 27001 인증</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>통합적 이해:</strong></p>
+<p>두 논문을 결합하면 완전한 보안 컨설팅 프레임워크가 된다:</p>
+<ul>
+<li><strong>Santos-Olmo 2024</strong>: 조직의 위험을 체계적으로 평가하고 관리</li>
+<li><strong>Bulgurcu 2010</strong>: 정책을 설계하고 직원의 준수 행동을 유도</li>
+</ul>
+<p>예를 들어, MARISMA로 &ldquo;내부자 위협&quot;이라는 위험을 식별했다면, Bulgurcu의 TPB 모델로 &ldquo;왜 직원이 정보 유출하는가&quot;를 이해하고, 태도(Attitude), 주관적 규범(Subjective Norm), 지각된 행동 통제(PBC)를 개선하는 정책을 설계할 수 있다.</p>
+<h4 id="c-다음-학습-방향">C. 다음 학습 방향<a hidden class="anchor" aria-hidden="true" href="#c-다음-학습-방향">#</a></h4>
+<p><strong>우선순위 1: 실무 적용 사례 심층 분석</strong></p>
+<ul>
+<li>주제: MARISMA가 실제로 적용된 산업별 사례 연구</li>
+<li>목표: 석유화학, 정부, 조선 섹터에서 어떻게 커스터마이징했는지 학습</li>
+<li>예상 출처: MARISMA 연구팀의 후속 논문, Spin-off 회사 백서</li>
+</ul>
+<p><strong>우선순위 2: 동적 위험 관리의 기술적 구현</strong></p>
+<ul>
+<li>주제: 실시간 이벤트 수집, 위험 재계산 알고리즘, API 통합</li>
+<li>목표: eMARISMA 같은 도구를 직접 설계할 수 있는 기술 역량</li>
+<li>예상 출처: SIEM 통합, 위험 계산 엔진 관련 기술 논문</li>
+</ul>
+<p><strong>우선순위 3: AI/ML 기반 위험 예측</strong></p>
+<ul>
+<li>주제: 머신러닝으로 위협 발생 확률 예측, 이상 탐지</li>
+<li>목표: MARISMA의 향후 연구 방향(AI 기법 활용) 선행 학습</li>
+<li>예상 출처: 사이버 위협 인텔리전스, 예측 보안 분석 논문</li>
+</ul>
+<p><strong>장기 목표:</strong></p>
+<ul>
+<li>6개월 후: 3개 이상 산업(금융, 제조, 헬스케어)의 위험 관리 프레임워크 비교 분석 완료</li>
+<li>1년 후: 동적 위험 관리 기반 보안 컨설팅 방법론 정립, 실제 고객사 적용 1건 이상</li>
+</ul>
+<h3 id="9-최종-결론">9. 최종 결론<a hidden class="anchor" aria-hidden="true" href="#9-최종-결론">#</a></h3>
+<h4 id="a-santos-olmo-2024의-의의">A. Santos-Olmo 2024의 의의<a hidden class="anchor" aria-hidden="true" href="#a-santos-olmo-2024의-의의">#</a></h4>
+<p><strong>학술적 의의:</strong></p>
+<p>이 논문은 11년간(2011-2022) 위험 분석 연구를 Kitchenham 프로토콜로 체계적으로 검토하여, 학계의 현황을 종합했다. 12가지 객관적 기준으로 30개 연구를 정량 비교한 것은 후속 연구자들에게 명확한 방향을 제시한다. 특히 &ldquo;모든 기존 연구가 불완전하다&quot;는 것을 데이터로 입증한 점이 강력하다.</p>
+<p><strong>실무적 의의:</strong></p>
+<p>MARISMA 프레임워크는 4개국 수십 개 기업에 실제 적용되어, 동적 위험 관리가 이론이 아닌 현실임을 증명했다. eMARISMA 도구는 SME도 위험 분석을 지속 가능하게 운영할 수 있음을 보여준다. Spin-off 회사 설립은 학술 연구가 상용화로 이어진 모범 사례다.</p>
+<p><strong>나에게 주는 의의:</strong></p>
+<p>이 논문은 보안 컨설팅이 &ldquo;기술 전문성&quot;만으로는 부족하고, &ldquo;체계적 분석 역량&quot;과 &ldquo;실무 적용 가능성 판단&quot;이 필수임을 깨닫게 했다. 앞으로 나는:</p>
+<ol>
+<li>솔루션 제안 시 객관적 비교 분석 제시</li>
+<li>이론적 방법론의 실무 적용 가능성 비판적 검토</li>
+<li>SME 관점에서 복잡도/비용/운영 가능성 우선 고려</li>
+</ol>
+<h4 id="b-보안-컨설턴트로서의-다짐">B. 보안 컨설턴트로서의 다짐<a hidden class="anchor" aria-hidden="true" href="#b-보안-컨설턴트로서의-다짐">#</a></h4>
+<p><strong>&ldquo;알고 있다&quot;에서 &ldquo;설명할 수 있다&quot;로</strong></p>
+<pre tabindex="0"><code>Phase 1 (완료): 논문 이해
+- Bulgurcu 2010: 정책 준수 행동 이론
+- Santos-Olmo 2024: 동적 위험 분석 프레임워크
+
+Phase 2 (진행 중): 연결
+- 인간 요인 + 조직 위험 관리 = 통합 보안 컨설팅
+- 이론 연구 vs 실무 검증의 간극 이해
+
+Phase 3 (다음): 적용
+- 실제 고객사에 Table 3 기반 진단 적용
+- SME 대상 위험 관리 간소화 프로세스 제안
+
+Phase 4 (목표): 전문성
+- 위험 분석 방법론 전문가로 성장
+- 동적 위험 관리 도입 컨설팅 수행
+</code></pre><p><strong>단순한 &ldquo;기술 이해자&quot;가 아닌:</strong></p>
+<ul>
+<li>원리를 설명할 수 있는 컨설턴트: 왜 MARISMA가 작동하는가? 왜 한계가 있는가?</li>
+<li>고객 상황에 맞는 조언을 할 수 있는 자문가: 귀사는 Level 3 성숙도니까 MARISMA 적합</li>
+<li>기술과 비즈니스를 연결할 수 있는 전문가: 위험 감소가 규제 준수 비용 절감으로 연결</li>
+</ul>
+<p><strong>이론과 실무의 균형:</strong></p>
+<ul>
+<li>논문으로 깊이 있는 이해: 체계적 문헌 고찰, 정량 비교, 이론적 토대</li>
+<li>사례로 적용 방법 학습: 4개국 적용 사례, 산업별 패턴, 도구 구현</li>
+<li>실무에서 검증하고 개선: 실제 고객사에 적용 → 피드백 → 방법론 정제</li>
+</ul>
+<hr>
+<p><strong>5일간 리뷰 완료</strong></p>
+<p>이제 이 지식을 컨설팅 현장에서 활용할 준비가 되었다.<br>
+다음 단계는 실제 고객사에 적용하여 이론을 검증하고, 한국 환경에 맞게 커스터마이징하는 것이다.</p>
+<hr>
+<h2 id="tags">Tags<a hidden class="anchor" aria-hidden="true" href="#tags">#</a></h2>
+<p><code>#보안컨설팅</code> <code>#SecurityConsulting</code> <code>#RiskAssessment</code> <code>#RiskManagement</code> <code>#MARISMA</code> <code>#SystematicReview</code> <code>#SME_Security</code> <code>#컨설팅역량</code> <code>#실무적용</code> <code>#PaperReview</code></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/%EB%B3%B4%EC%95%88%EC%BB%A8%EC%84%A4%ED%8C%85/">보안컨설팅</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%9C%84%ED%97%98%EB%B6%84%EC%84%9D/">위험분석</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%9C%84%ED%97%98%EA%B4%80%EB%A6%AC/">위험관리</a></li>
+      <li><a href="http://localhost:1313/tags/marisma/">MARISMA</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%B2%B4%EA%B3%84%EC%A0%81%EB%AC%B8%ED%97%8C%EA%B3%A0%EC%B0%B0/">체계적문헌고찰</a></li>
+      <li><a href="http://localhost:1313/tags/%EB%8F%99%EC%A0%81%EC%9C%84%ED%97%98%EA%B4%80%EB%A6%AC/">동적위험관리</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

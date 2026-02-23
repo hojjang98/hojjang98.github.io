@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>기술유출방지 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%EA%B8%B0%EC%88%A0%EC%9C%A0%EC%B6%9C%EB%B0%A9%EC%A7%80/</link>
+    <description>Recent content in 기술유출방지 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Thu, 19 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%EA%B8%B0%EC%88%A0%EC%9C%A0%EC%B6%9C%EB%B0%A9%EC%A7%80/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Day 14: 산업기술보호법</title>
+      <link>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/05_%EC%82%B0%EC%97%85%EA%B8%B0%EC%88%A0%EB%B3%B4%ED%98%B8%EB%B2%95/day14_%EC%82%B0%EC%97%85%EA%B8%B0%EC%88%A0%EB%B3%B4%ED%98%B8%EB%B2%95/</link>
+      <pubDate>Thu, 19 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/05_%EC%82%B0%EC%97%85%EA%B8%B0%EC%88%A0%EB%B3%B4%ED%98%B8%EB%B2%95/day14_%EC%82%B0%EC%97%85%EA%B8%B0%EC%88%A0%EB%B3%B4%ED%98%B8%EB%B2%95/</guid>
+      <description>국가핵심기술과 산업기술의 정의, 수출 승인 및 M&amp;amp;A 신고 절차, 보호지침 수립과 보안심사 제도, 기술 유출 시 처벌 규정을 학습합니다.</description>
+    </item>
+  </channel>
+</rss>

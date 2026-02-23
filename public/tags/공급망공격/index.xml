@@ -6,8 +6,15 @@
     <description>Recent content in 공급망공격 on HJ&#39;s Security Note</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sun, 01 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 22 Feb 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/%EA%B3%B5%EA%B8%89%EB%A7%9D%EA%B3%B5%EA%B2%A9/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cline CLI Supply Chain Attack - npm Token Theft via AI Coding Tool</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week08/cline_cli_supply_chain_attack/</link>
+      <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week08/cline_cli_supply_chain_attack/</guid>
+      <description>AI 코딩 어시스턴트 Cline CLI에서 발생한 공급망 공격 사례로, 프롬프트 인젝션, GitHub Actions 캐시 포이즈닝, npm 토큰 미폐기가 결합되어 약 4,000건의 악성 패키지 다운로드가 발생한 사건 분석</description>
+    </item>
     <item>
       <title>Dartmouth College Oracle EBS 제로데이 공격 (2025년 8월)</title>
       <link>http://localhost:1313/security-issues-analysis/2026/week05/dartmouth_oracle_clop_breach/</link>

@@ -6,8 +6,337 @@
     <description>Recent content in Tags on HJ&#39;s Security Note</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Wed, 18 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 23 Feb 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>C-SCRM</title>
+      <link>http://localhost:1313/tags/c-scrm/</link>
+      <pubDate>Mon, 23 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/c-scrm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>공급망보안</title>
+      <link>http://localhost:1313/tags/%EA%B3%B5%EA%B8%89%EB%A7%9D%EB%B3%B4%EC%95%88/</link>
+      <pubDate>Mon, 23 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EA%B3%B5%EA%B8%89%EB%A7%9D%EB%B3%B4%EC%95%88/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>공급망사이버리스크</title>
+      <link>http://localhost:1313/tags/%EA%B3%B5%EA%B8%89%EB%A7%9D%EC%82%AC%EC%9D%B4%EB%B2%84%EB%A6%AC%EC%8A%A4%ED%81%AC/</link>
+      <pubDate>Mon, 23 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EA%B3%B5%EA%B8%89%EB%A7%9D%EC%82%AC%EC%9D%B4%EB%B2%84%EB%A6%AC%EC%8A%A4%ED%81%AC/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>리스크전파</title>
+      <link>http://localhost:1313/tags/%EB%A6%AC%EC%8A%A4%ED%81%AC%EC%A0%84%ED%8C%8C/</link>
+      <pubDate>Mon, 23 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EB%A6%AC%EC%8A%A4%ED%81%AC%EC%A0%84%ED%8C%8C/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>보안컨설팅</title>
+      <link>http://localhost:1313/tags/%EB%B3%B4%EC%95%88%EC%BB%A8%EC%84%A4%ED%8C%85/</link>
+      <pubDate>Mon, 23 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EB%B3%B4%EC%95%88%EC%BB%A8%EC%84%A4%ED%8C%85/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>써드파티리스크</title>
+      <link>http://localhost:1313/tags/%EC%8D%A8%EB%93%9C%ED%8C%8C%ED%8B%B0%EB%A6%AC%EC%8A%A4%ED%81%AC/</link>
+      <pubDate>Mon, 23 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EC%8D%A8%EB%93%9C%ED%8C%8C%ED%8B%B0%EB%A6%AC%EC%8A%A4%ED%81%AC/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>체계적문헌고찰</title>
+      <link>http://localhost:1313/tags/%EC%B2%B4%EA%B3%84%EC%A0%81%EB%AC%B8%ED%97%8C%EA%B3%A0%EC%B0%B0/</link>
+      <pubDate>Mon, 23 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EC%B2%B4%EA%B3%84%EC%A0%81%EB%AC%B8%ED%97%8C%EA%B3%A0%EC%B0%B0/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>침투지점</title>
+      <link>http://localhost:1313/tags/%EC%B9%A8%ED%88%AC%EC%A7%80%EC%A0%90/</link>
+      <pubDate>Mon, 23 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EC%B9%A8%ED%88%AC%EC%A7%80%EC%A0%90/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>AI코딩도구</title>
+      <link>http://localhost:1313/tags/ai%EC%BD%94%EB%94%A9%EB%8F%84%EA%B5%AC/</link>
+      <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/ai%EC%BD%94%EB%94%A9%EB%8F%84%EA%B5%AC/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>DevSecOps</title>
+      <link>http://localhost:1313/tags/devsecops/</link>
+      <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/devsecops/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Npm</title>
+      <link>http://localhost:1313/tags/npm/</link>
+      <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/npm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>PII노출</title>
+      <link>http://localhost:1313/tags/pii%EB%85%B8%EC%B6%9C/</link>
+      <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/pii%EB%85%B8%EC%B6%9C/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>SSN유출</title>
+      <link>http://localhost:1313/tags/ssn%EC%9C%A0%EC%B6%9C/</link>
+      <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/ssn%EC%9C%A0%EC%B6%9C/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>UEBA</title>
+      <link>http://localhost:1313/tags/ueba/</link>
+      <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/ueba/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>공급망공격</title>
+      <link>http://localhost:1313/tags/%EA%B3%B5%EA%B8%89%EB%A7%9D%EA%B3%B5%EA%B2%A9/</link>
+      <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EA%B3%B5%EA%B8%89%EB%A7%9D%EA%B3%B5%EA%B2%A9/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>금융데이터유출</title>
+      <link>http://localhost:1313/tags/%EA%B8%88%EC%9C%B5%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%9C%A0%EC%B6%9C/</link>
+      <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EA%B8%88%EC%9C%B5%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%9C%A0%EC%B6%9C/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>내부자위협</title>
+      <link>http://localhost:1313/tags/%EB%82%B4%EB%B6%80%EC%9E%90%EC%9C%84%ED%98%91/</link>
+      <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EB%82%B4%EB%B6%80%EC%9E%90%EC%9C%84%ED%98%91/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>데이터침해</title>
+      <link>http://localhost:1313/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%B9%A8%ED%95%B4/</link>
+      <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%B9%A8%ED%95%B4/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>사고분석</title>
+      <link>http://localhost:1313/tags/%EC%82%AC%EA%B3%A0%EB%B6%84%EC%84%9D/</link>
+      <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EC%82%AC%EA%B3%A0%EB%B6%84%EC%84%9D/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>소프트웨어오류</title>
+      <link>http://localhost:1313/tags/%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EC%98%A4%EB%A5%98/</link>
+      <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EC%98%A4%EB%A5%98/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>자격증명탈취</title>
+      <link>http://localhost:1313/tags/%EC%9E%90%EA%B2%A9%EC%A6%9D%EB%AA%85%ED%83%88%EC%B7%A8/</link>
+      <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EC%9E%90%EA%B2%A9%EC%A6%9D%EB%AA%85%ED%83%88%EC%B7%A8/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>접근제어취약점</title>
+      <link>http://localhost:1313/tags/%EC%A0%91%EA%B7%BC%EC%A0%9C%EC%96%B4%EC%B7%A8%EC%95%BD%EC%A0%90/</link>
+      <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EC%A0%91%EA%B7%BC%EC%A0%9C%EC%96%B4%EC%B7%A8%EC%95%BD%EC%A0%90/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>정부시스템침해</title>
+      <link>http://localhost:1313/tags/%EC%A0%95%EB%B6%80%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%B9%A8%ED%95%B4/</link>
+      <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EC%A0%95%EB%B6%80%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%B9%A8%ED%95%B4/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>제로트러스트</title>
+      <link>http://localhost:1313/tags/%EC%A0%9C%EB%A1%9C%ED%8A%B8%EB%9F%AC%EC%8A%A4%ED%8A%B8/</link>
+      <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EC%A0%9C%EB%A1%9C%ED%8A%B8%EB%9F%AC%EC%8A%A4%ED%8A%B8/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>프롬프트인젝션</title>
+      <link>http://localhost:1313/tags/%ED%94%84%EB%A1%AC%ED%94%84%ED%8A%B8%EC%9D%B8%EC%A0%9D%EC%85%98/</link>
+      <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%ED%94%84%EB%A1%AC%ED%94%84%ED%8A%B8%EC%9D%B8%EC%A0%9D%EC%85%98/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>PKI</title>
+      <link>http://localhost:1313/tags/pki/</link>
+      <pubDate>Sat, 21 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/pki/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>공동인증서</title>
+      <link>http://localhost:1313/tags/%EA%B3%B5%EB%8F%99%EC%9D%B8%EC%A6%9D%EC%84%9C/</link>
+      <pubDate>Sat, 21 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EA%B3%B5%EB%8F%99%EC%9D%B8%EC%A6%9D%EC%84%9C/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>민간전자서명</title>
+      <link>http://localhost:1313/tags/%EB%AF%BC%EA%B0%84%EC%A0%84%EC%9E%90%EC%84%9C%EB%AA%85/</link>
+      <pubDate>Sat, 21 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EB%AF%BC%EA%B0%84%EC%A0%84%EC%9E%90%EC%84%9C%EB%AA%85/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>본인확인</title>
+      <link>http://localhost:1313/tags/%EB%B3%B8%EC%9D%B8%ED%99%95%EC%9D%B8/</link>
+      <pubDate>Sat, 21 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EB%B3%B8%EC%9D%B8%ED%99%95%EC%9D%B8/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>비대칭암호화</title>
+      <link>http://localhost:1313/tags/%EB%B9%84%EB%8C%80%EC%B9%AD%EC%95%94%ED%98%B8%ED%99%94/</link>
+      <pubDate>Sat, 21 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EB%B9%84%EB%8C%80%EC%B9%AD%EC%95%94%ED%98%B8%ED%99%94/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>전자계약</title>
+      <link>http://localhost:1313/tags/%EC%A0%84%EC%9E%90%EA%B3%84%EC%95%BD/</link>
+      <pubDate>Sat, 21 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EC%A0%84%EC%9E%90%EA%B3%84%EC%95%BD/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>전자서명법</title>
+      <link>http://localhost:1313/tags/%EC%A0%84%EC%9E%90%EC%84%9C%EB%AA%85%EB%B2%95/</link>
+      <pubDate>Sat, 21 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EC%A0%84%EC%9E%90%EC%84%9C%EB%AA%85%EB%B2%95/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>NDA</title>
+      <link>http://localhost:1313/tags/nda/</link>
+      <pubDate>Fri, 20 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/nda/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>부정경쟁방지법</title>
+      <link>http://localhost:1313/tags/%EB%B6%80%EC%A0%95%EA%B2%BD%EC%9F%81%EB%B0%A9%EC%A7%80%EB%B2%95/</link>
+      <pubDate>Fri, 20 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EB%B6%80%EC%A0%95%EA%B2%BD%EC%9F%81%EB%B0%A9%EC%A7%80%EB%B2%95/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>비밀관리성</title>
+      <link>http://localhost:1313/tags/%EB%B9%84%EB%B0%80%EA%B4%80%EB%A6%AC%EC%84%B1/</link>
+      <pubDate>Fri, 20 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EB%B9%84%EB%B0%80%EA%B4%80%EB%A6%AC%EC%84%B1/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>영업비밀</title>
+      <link>http://localhost:1313/tags/%EC%98%81%EC%97%85%EB%B9%84%EB%B0%80/</link>
+      <pubDate>Fri, 20 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EC%98%81%EC%97%85%EB%B9%84%EB%B0%80/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>징벌적손해배상</title>
+      <link>http://localhost:1313/tags/%EC%A7%95%EB%B2%8C%EC%A0%81%EC%86%90%ED%95%B4%EB%B0%B0%EC%83%81/</link>
+      <pubDate>Fri, 20 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EC%A7%95%EB%B2%8C%EC%A0%81%EC%86%90%ED%95%B4%EB%B0%B0%EC%83%81/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>퇴직자관리</title>
+      <link>http://localhost:1313/tags/%ED%87%B4%EC%A7%81%EC%9E%90%EA%B4%80%EB%A6%AC/</link>
+      <pubDate>Fri, 20 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%ED%87%B4%EC%A7%81%EC%9E%90%EA%B4%80%EB%A6%AC/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>국가핵심기술</title>
+      <link>http://localhost:1313/tags/%EA%B5%AD%EA%B0%80%ED%95%B5%EC%8B%AC%EA%B8%B0%EC%88%A0/</link>
+      <pubDate>Thu, 19 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EA%B5%AD%EA%B0%80%ED%95%B5%EC%8B%AC%EA%B8%B0%EC%88%A0/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>기술유출방지</title>
+      <link>http://localhost:1313/tags/%EA%B8%B0%EC%88%A0%EC%9C%A0%EC%B6%9C%EB%B0%A9%EC%A7%80/</link>
+      <pubDate>Thu, 19 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EA%B8%B0%EC%88%A0%EC%9C%A0%EC%B6%9C%EB%B0%A9%EC%A7%80/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>보안서약</title>
+      <link>http://localhost:1313/tags/%EB%B3%B4%EC%95%88%EC%84%9C%EC%95%BD/</link>
+      <pubDate>Thu, 19 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EB%B3%B4%EC%95%88%EC%84%9C%EC%95%BD/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>보안심사</title>
+      <link>http://localhost:1313/tags/%EB%B3%B4%EC%95%88%EC%8B%AC%EC%82%AC/</link>
+      <pubDate>Thu, 19 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EB%B3%B4%EC%95%88%EC%8B%AC%EC%82%AC/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>산업기술보호법</title>
+      <link>http://localhost:1313/tags/%EC%82%B0%EC%97%85%EA%B8%B0%EC%88%A0%EB%B3%B4%ED%98%B8%EB%B2%95/</link>
+      <pubDate>Thu, 19 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EC%82%B0%EC%97%85%EA%B8%B0%EC%88%A0%EB%B3%B4%ED%98%B8%EB%B2%95/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>CSA-Index</title>
+      <link>http://localhost:1313/tags/csa-index/</link>
+      <pubDate>Wed, 18 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/csa-index/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ISMS-P</title>
+      <link>http://localhost:1313/tags/isms-p/</link>
+      <pubDate>Wed, 18 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/isms-p/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ISO27001</title>
+      <link>http://localhost:1313/tags/iso27001/</link>
+      <pubDate>Wed, 18 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/iso27001/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>감사효과성</title>
+      <link>http://localhost:1313/tags/%EA%B0%90%EC%82%AC%ED%9A%A8%EA%B3%BC%EC%84%B1/</link>
+      <pubDate>Wed, 18 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EA%B0%90%EC%82%AC%ED%9A%A8%EA%B3%BC%EC%84%B1/</guid>
+      <description></description>
+    </item>
     <item>
       <title>개인신용정보</title>
       <link>http://localhost:1313/tags/%EA%B0%9C%EC%9D%B8%EC%8B%A0%EC%9A%A9%EC%A0%95%EB%B3%B4/</link>
@@ -23,10 +352,38 @@
       <description></description>
     </item>
     <item>
+      <title>내부감사</title>
+      <link>http://localhost:1313/tags/%EB%82%B4%EB%B6%80%EA%B0%90%EC%82%AC/</link>
+      <pubDate>Wed, 18 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EB%82%B4%EB%B6%80%EA%B0%90%EC%82%AC/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>리스크성숙도</title>
+      <link>http://localhost:1313/tags/%EB%A6%AC%EC%8A%A4%ED%81%AC%EC%84%B1%EC%88%99%EB%8F%84/</link>
+      <pubDate>Wed, 18 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EB%A6%AC%EC%8A%A4%ED%81%AC%EC%84%B1%EC%88%99%EB%8F%84/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>마이데이터</title>
       <link>http://localhost:1313/tags/%EB%A7%88%EC%9D%B4%EB%8D%B0%EC%9D%B4%ED%84%B0/</link>
       <pubDate>Wed, 18 Feb 2026 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/%EB%A7%88%EC%9D%B4%EB%8D%B0%EC%9D%B4%ED%84%B0/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>보안진단</title>
+      <link>http://localhost:1313/tags/%EB%B3%B4%EC%95%88%EC%A7%84%EB%8B%A8/</link>
+      <pubDate>Wed, 18 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EB%B3%B4%EC%95%88%EC%A7%84%EB%8B%A8/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>사이버보안감사</title>
+      <link>http://localhost:1313/tags/%EC%82%AC%EC%9D%B4%EB%B2%84%EB%B3%B4%EC%95%88%EA%B0%90%EC%82%AC/</link>
+      <pubDate>Wed, 18 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EC%82%AC%EC%9D%B4%EB%B2%84%EB%B3%B4%EC%95%88%EA%B0%90%EC%82%AC/</guid>
       <description></description>
     </item>
     <item>
@@ -265,13 +622,6 @@
       <link>http://localhost:1313/tags/ciso/</link>
       <pubDate>Thu, 12 Feb 2026 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/ciso/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>ISMS-P</title>
-      <link>http://localhost:1313/tags/isms-p/</link>
-      <pubDate>Thu, 12 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/isms-p/</guid>
       <description></description>
     </item>
     <item>
@@ -667,20 +1017,6 @@
       <description></description>
     </item>
     <item>
-      <title>공급망공격</title>
-      <link>http://localhost:1313/tags/%EA%B3%B5%EA%B8%89%EB%A7%9D%EA%B3%B5%EA%B2%A9/</link>
-      <pubDate>Sun, 01 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/%EA%B3%B5%EA%B8%89%EB%A7%9D%EA%B3%B5%EA%B2%A9/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>공급망보안</title>
-      <link>http://localhost:1313/tags/%EA%B3%B5%EA%B8%89%EB%A7%9D%EB%B3%B4%EC%95%88/</link>
-      <pubDate>Sun, 01 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/%EA%B3%B5%EA%B8%89%EB%A7%9D%EB%B3%B4%EC%95%88/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>대학보안</title>
       <link>http://localhost:1313/tags/%EB%8C%80%ED%95%99%EB%B3%B4%EC%95%88/</link>
       <pubDate>Sun, 01 Feb 2026 00:00:00 +0000</pubDate>
@@ -713,6 +1049,34 @@
       <link>http://localhost:1313/tags/%EC%B8%A1%EB%A9%B4%EC%9D%B4%EB%8F%99/</link>
       <pubDate>Sun, 01 Feb 2026 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/%EC%B8%A1%EB%A9%B4%EC%9D%B4%EB%8F%99/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>MARISMA</title>
+      <link>http://localhost:1313/tags/marisma/</link>
+      <pubDate>Tue, 27 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/marisma/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>동적위험관리</title>
+      <link>http://localhost:1313/tags/%EB%8F%99%EC%A0%81%EC%9C%84%ED%97%98%EA%B4%80%EB%A6%AC/</link>
+      <pubDate>Tue, 27 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EB%8F%99%EC%A0%81%EC%9C%84%ED%97%98%EA%B4%80%EB%A6%AC/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>위험관리</title>
+      <link>http://localhost:1313/tags/%EC%9C%84%ED%97%98%EA%B4%80%EB%A6%AC/</link>
+      <pubDate>Tue, 27 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EC%9C%84%ED%97%98%EA%B4%80%EB%A6%AC/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>위험분석</title>
+      <link>http://localhost:1313/tags/%EC%9C%84%ED%97%98%EB%B6%84%EC%84%9D/</link>
+      <pubDate>Tue, 27 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EC%9C%84%ED%97%98%EB%B6%84%EC%84%9D/</guid>
       <description></description>
     </item>
     <item>
@@ -772,6 +1136,62 @@
       <description></description>
     </item>
     <item>
+      <title>Anomaly-Detection</title>
+      <link>http://localhost:1313/tags/anomaly-detection/</link>
+      <pubDate>Thu, 22 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/anomaly-detection/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Base-Rate-Fallacy</title>
+      <link>http://localhost:1313/tags/base-rate-fallacy/</link>
+      <pubDate>Thu, 22 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/base-rate-fallacy/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Evaluation-Methodology</title>
+      <link>http://localhost:1313/tags/evaluation-methodology/</link>
+      <pubDate>Thu, 22 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/evaluation-methodology/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Machine-Learning</title>
+      <link>http://localhost:1313/tags/machine-learning/</link>
+      <pubDate>Thu, 22 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/machine-learning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Network-Intrusion-Detection</title>
+      <link>http://localhost:1313/tags/network-intrusion-detection/</link>
+      <pubDate>Thu, 22 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/network-intrusion-detection/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Operational-Deployment</title>
+      <link>http://localhost:1313/tags/operational-deployment/</link>
+      <pubDate>Thu, 22 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/operational-deployment/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Semantic-Gap</title>
+      <link>http://localhost:1313/tags/semantic-gap/</link>
+      <pubDate>Thu, 22 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/semantic-gap/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Sommer-Paxson</title>
+      <link>http://localhost:1313/tags/sommer-paxson/</link>
+      <pubDate>Thu, 22 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/sommer-paxson/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>API키유출</title>
       <link>http://localhost:1313/tags/api%ED%82%A4%EC%9C%A0%EC%B6%9C/</link>
       <pubDate>Sun, 18 Jan 2026 00:00:00 +0000</pubDate>
@@ -828,13 +1248,6 @@
       <description></description>
     </item>
     <item>
-      <title>데이터침해</title>
-      <link>http://localhost:1313/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%B9%A8%ED%95%B4/</link>
-      <pubDate>Sun, 18 Jan 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%B9%A8%ED%95%B4/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>반복침해</title>
       <link>http://localhost:1313/tags/%EB%B0%98%EB%B3%B5%EC%B9%A8%ED%95%B4/</link>
       <pubDate>Sun, 18 Jan 2026 00:00:00 +0000</pubDate>
@@ -874,6 +1287,118 @@
       <link>http://localhost:1313/tags/%ED%95%98%EB%93%9C%EC%BD%94%EB%94%A9%EC%9E%90%EA%B2%A9%EC%A6%9D%EB%AA%85/</link>
       <pubDate>Sun, 18 Jan 2026 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/%ED%95%98%EB%93%9C%EC%BD%94%EB%94%A9%EC%9E%90%EA%B2%A9%EC%A6%9D%EB%AA%85/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Actionable-Intelligence</title>
+      <link>http://localhost:1313/tags/actionable-intelligence/</link>
+      <pubDate>Fri, 16 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/actionable-intelligence/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Data-Exfiltration</title>
+      <link>http://localhost:1313/tags/data-exfiltration/</link>
+      <pubDate>Fri, 16 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/data-exfiltration/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>DNS-Tunneling</title>
+      <link>http://localhost:1313/tags/dns-tunneling/</link>
+      <pubDate>Fri, 16 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/dns-tunneling/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Information-Theory</title>
+      <link>http://localhost:1313/tags/information-theory/</link>
+      <pubDate>Fri, 16 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/information-theory/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Kolmogorov-Complexity</title>
+      <link>http://localhost:1313/tags/kolmogorov-complexity/</link>
+      <pubDate>Fri, 16 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/kolmogorov-complexity/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Network-Forensics</title>
+      <link>http://localhost:1313/tags/network-forensics/</link>
+      <pubDate>Fri, 16 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/network-forensics/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>USENIX-Security</title>
+      <link>http://localhost:1313/tags/usenix-security/</link>
+      <pubDate>Fri, 16 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/usenix-security/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Vern-Paxson</title>
+      <link>http://localhost:1313/tags/vern-paxson/</link>
+      <pubDate>Fri, 16 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/vern-paxson/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>APT-Detection</title>
+      <link>http://localhost:1313/tags/apt-detection/</link>
+      <pubDate>Mon, 12 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/apt-detection/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Evolutionary-Modeling</title>
+      <link>http://localhost:1313/tags/evolutionary-modeling/</link>
+      <pubDate>Mon, 12 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/evolutionary-modeling/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Graph-Sketching</title>
+      <link>http://localhost:1313/tags/graph-sketching/</link>
+      <pubDate>Mon, 12 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/graph-sketching/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>NDSS-2020</title>
+      <link>http://localhost:1313/tags/ndss-2020/</link>
+      <pubDate>Mon, 12 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/ndss-2020/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Provenance-Graphs</title>
+      <link>http://localhost:1313/tags/provenance-graphs/</link>
+      <pubDate>Mon, 12 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/provenance-graphs/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>SK-Shieldus-Rookies</title>
+      <link>http://localhost:1313/tags/sk-shieldus-rookies/</link>
+      <pubDate>Mon, 12 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/sk-shieldus-rookies/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>SOC</title>
+      <link>http://localhost:1313/tags/soc/</link>
+      <pubDate>Mon, 12 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/soc/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>UNICORN</title>
+      <link>http://localhost:1313/tags/unicorn/</link>
+      <pubDate>Mon, 12 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/unicorn/</guid>
       <description></description>
     </item>
     <item>
@@ -930,13 +1455,6 @@
       <link>http://localhost:1313/tags/%EA%B5%AD%EC%A0%9C%ED%98%91%EB%A0%A5/</link>
       <pubDate>Sun, 11 Jan 2026 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/%EA%B5%AD%EC%A0%9C%ED%98%91%EB%A0%A5/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>내부자위협</title>
-      <link>http://localhost:1313/tags/%EB%82%B4%EB%B6%80%EC%9E%90%EC%9C%84%ED%98%91/</link>
-      <pubDate>Sun, 11 Jan 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/%EB%82%B4%EB%B6%80%EC%9E%90%EC%9C%84%ED%98%91/</guid>
       <description></description>
     </item>
     <item>
@@ -1028,6 +1546,55 @@
       <link>http://localhost:1313/tags/%ED%95%AD%EA%B3%B5%EC%82%B0%EC%97%85/</link>
       <pubDate>Sun, 04 Jan 2026 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/%ED%95%AD%EA%B3%B5%EC%82%B0%EC%97%85/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ACSAC</title>
+      <link>http://localhost:1313/tags/acsac/</link>
+      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/acsac/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Beehive</title>
+      <link>http://localhost:1313/tags/beehive/</link>
+      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/beehive/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Behavioral-Detection</title>
+      <link>http://localhost:1313/tags/behavioral-detection/</link>
+      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/behavioral-detection/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Clustering</title>
+      <link>http://localhost:1313/tags/clustering/</link>
+      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/clustering/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Dirty-Logs</title>
+      <link>http://localhost:1313/tags/dirty-logs/</link>
+      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/dirty-logs/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Enterprise-Security</title>
+      <link>http://localhost:1313/tags/enterprise-security/</link>
+      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/enterprise-security/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Log-Analysis</title>
+      <link>http://localhost:1313/tags/log-analysis/</link>
+      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/log-analysis/</guid>
       <description></description>
     </item>
     <item>
@@ -1150,6 +1717,55 @@
       <description></description>
     </item>
     <item>
+      <title>Execution-Flow</title>
+      <link>http://localhost:1313/tags/execution-flow/</link>
+      <pubDate>Mon, 22 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/execution-flow/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Explainable-AI</title>
+      <link>http://localhost:1313/tags/explainable-ai/</link>
+      <pubDate>Mon, 22 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/explainable-ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hadoop-Security</title>
+      <link>http://localhost:1313/tags/hadoop-security/</link>
+      <pubDate>Mon, 22 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/hadoop-security/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Linear-Relationships</title>
+      <link>http://localhost:1313/tags/linear-relationships/</link>
+      <pubDate>Mon, 22 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/linear-relationships/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Log-Invariants</title>
+      <link>http://localhost:1313/tags/log-invariants/</link>
+      <pubDate>Mon, 22 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/log-invariants/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Rule-Mining</title>
+      <link>http://localhost:1313/tags/rule-mining/</link>
+      <pubDate>Mon, 22 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/rule-mining/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>USENIX-ATC</title>
+      <link>http://localhost:1313/tags/usenix-atc/</link>
+      <pubDate>Mon, 22 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/usenix-atc/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>AI보안</title>
       <link>http://localhost:1313/tags/ai%EB%B3%B4%EC%95%88/</link>
       <pubDate>Sun, 21 Dec 2025 00:00:00 +0000</pubDate>
@@ -1269,6 +1885,391 @@
       <description></description>
     </item>
     <item>
+      <title>ICS-Security</title>
+      <link>http://localhost:1313/tags/ics-security/</link>
+      <pubDate>Fri, 19 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/ics-security/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>IEC-62443</title>
+      <link>http://localhost:1313/tags/iec-62443/</link>
+      <pubDate>Fri, 19 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/iec-62443/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>MITM</title>
+      <link>http://localhost:1313/tags/mitm/</link>
+      <pubDate>Fri, 19 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/mitm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>NIST-SP-800-82</title>
+      <link>http://localhost:1313/tags/nist-sp-800-82/</link>
+      <pubDate>Fri, 19 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/nist-sp-800-82/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>OT-보안</title>
+      <link>http://localhost:1313/tags/ot-%EB%B3%B4%EC%95%88/</link>
+      <pubDate>Fri, 19 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/ot-%EB%B3%B4%EC%95%88/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>PLC-Exploitation</title>
+      <link>http://localhost:1313/tags/plc-exploitation/</link>
+      <pubDate>Fri, 19 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/plc-exploitation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Stuxnet</title>
+      <link>http://localhost:1313/tags/stuxnet/</link>
+      <pubDate>Fri, 19 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/stuxnet/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Supply-Chain-Security</title>
+      <link>http://localhost:1313/tags/supply-chain-security/</link>
+      <pubDate>Fri, 19 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/supply-chain-security/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>사이버물리공격</title>
+      <link>http://localhost:1313/tags/%EC%82%AC%EC%9D%B4%EB%B2%84%EB%AC%BC%EB%A6%AC%EA%B3%B5%EA%B2%A9/</link>
+      <pubDate>Fri, 19 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EC%82%AC%EC%9D%B4%EB%B2%84%EB%AC%BC%EB%A6%AC%EA%B3%B5%EA%B2%A9/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ISA</title>
+      <link>http://localhost:1313/tags/isa/</link>
+      <pubDate>Wed, 17 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/isa/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>TPB</title>
+      <link>http://localhost:1313/tags/tpb/</link>
+      <pubDate>Wed, 17 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/tpb/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>계획된행동이론</title>
+      <link>http://localhost:1313/tags/%EA%B3%84%ED%9A%8D%EB%90%9C%ED%96%89%EB%8F%99%EC%9D%B4%EB%A1%A0/</link>
+      <pubDate>Wed, 17 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EA%B3%84%ED%9A%8D%EB%90%9C%ED%96%89%EB%8F%99%EC%9D%B4%EB%A1%A0/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>보안인식</title>
+      <link>http://localhost:1313/tags/%EB%B3%B4%EC%95%88%EC%9D%B8%EC%8B%9D/</link>
+      <pubDate>Wed, 17 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EB%B3%B4%EC%95%88%EC%9D%B8%EC%8B%9D/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>보안정책준수</title>
+      <link>http://localhost:1313/tags/%EB%B3%B4%EC%95%88%EC%A0%95%EC%B1%85%EC%A4%80%EC%88%98/</link>
+      <pubDate>Wed, 17 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EB%B3%B4%EC%95%88%EC%A0%95%EC%B1%85%EC%A4%80%EC%88%98/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>인적보안</title>
+      <link>http://localhost:1313/tags/%EC%9D%B8%EC%A0%81%EB%B3%B4%EC%95%88/</link>
+      <pubDate>Wed, 17 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EC%9D%B8%EC%A0%81%EB%B3%B4%EC%95%88/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>합리적선택</title>
+      <link>http://localhost:1313/tags/%ED%95%A9%EB%A6%AC%EC%A0%81%EC%84%A0%ED%83%9D/</link>
+      <pubDate>Wed, 17 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%ED%95%A9%EB%A6%AC%EC%A0%81%EC%84%A0%ED%83%9D/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>행동보안학</title>
+      <link>http://localhost:1313/tags/%ED%96%89%EB%8F%99%EB%B3%B4%EC%95%88%ED%95%99/</link>
+      <pubDate>Wed, 17 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%ED%96%89%EB%8F%99%EB%B3%B4%EC%95%88%ED%95%99/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Co-Residency</title>
+      <link>http://localhost:1313/tags/co-residency/</link>
+      <pubDate>Mon, 01 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/co-residency/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Prime&#43;Probe</title>
+      <link>http://localhost:1313/tags/prime&#43;probe/</link>
+      <pubDate>Mon, 01 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/prime&#43;probe/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>멀티테넌시</title>
+      <link>http://localhost:1313/tags/%EB%A9%80%ED%8B%B0%ED%85%8C%EB%84%8C%EC%8B%9C/</link>
+      <pubDate>Mon, 01 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EB%A9%80%ED%8B%B0%ED%85%8C%EB%84%8C%EC%8B%9C/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>측면채널공격</title>
+      <link>http://localhost:1313/tags/%EC%B8%A1%EB%A9%B4%EC%B1%84%EB%84%90%EA%B3%B5%EA%B2%A9/</link>
+      <pubDate>Mon, 01 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EC%B8%A1%EB%A9%B4%EC%B1%84%EB%84%90%EA%B3%B5%EA%B2%A9/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>캐시공격</title>
+      <link>http://localhost:1313/tags/%EC%BA%90%EC%8B%9C%EA%B3%B5%EA%B2%A9/</link>
+      <pubDate>Mon, 01 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EC%BA%90%EC%8B%9C%EA%B3%B5%EA%B2%A9/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Fuzzing</title>
+      <link>http://localhost:1313/tags/fuzzing/</link>
+      <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/fuzzing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ICSE-2024</title>
+      <link>http://localhost:1313/tags/icse-2024/</link>
+      <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/icse-2024/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>LLM</title>
+      <link>http://localhost:1313/tags/llm/</link>
+      <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/llm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Prompt-Engineering</title>
+      <link>http://localhost:1313/tags/prompt-engineering/</link>
+      <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/prompt-engineering/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Software-Testing</title>
+      <link>http://localhost:1313/tags/software-testing/</link>
+      <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/software-testing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Universal-Fuzzing</title>
+      <link>http://localhost:1313/tags/universal-fuzzing/</link>
+      <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/universal-fuzzing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Vulnerability-Discovery</title>
+      <link>http://localhost:1313/tags/vulnerability-discovery/</link>
+      <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/vulnerability-discovery/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Adversarial-AI</title>
+      <link>http://localhost:1313/tags/adversarial-ai/</link>
+      <pubDate>Sat, 22 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/adversarial-ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Autonomous-Agent</title>
+      <link>http://localhost:1313/tags/autonomous-agent/</link>
+      <pubDate>Sat, 22 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/autonomous-agent/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cyber-Security</title>
+      <link>http://localhost:1313/tags/cyber-security/</link>
+      <pubDate>Sat, 22 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/cyber-security/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Exploit-Automation</title>
+      <link>http://localhost:1313/tags/exploit-automation/</link>
+      <pubDate>Sat, 22 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/exploit-automation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>GPT-4</title>
+      <link>http://localhost:1313/tags/gpt-4/</link>
+      <pubDate>Sat, 22 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/gpt-4/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>LLM-Security</title>
+      <link>http://localhost:1313/tags/llm-security/</link>
+      <pubDate>Sat, 22 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/llm-security/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>One-Day-Vulnerability</title>
+      <link>http://localhost:1313/tags/one-day-vulnerability/</link>
+      <pubDate>Sat, 22 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/one-day-vulnerability/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ReAct</title>
+      <link>http://localhost:1313/tags/react/</link>
+      <pubDate>Sat, 22 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/react/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>CERT</title>
+      <link>http://localhost:1313/tags/cert/</link>
+      <pubDate>Fri, 14 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/cert/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>SOAR</title>
+      <link>http://localhost:1313/tags/soar/</link>
+      <pubDate>Fri, 14 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/soar/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ThreatIntelligence</title>
+      <link>http://localhost:1313/tags/threatintelligence/</link>
+      <pubDate>Fri, 14 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/threatintelligence/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>자동화</title>
+      <link>http://localhost:1313/tags/%EC%9E%90%EB%8F%99%ED%99%94/</link>
+      <pubDate>Fri, 14 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EC%9E%90%EB%8F%99%ED%99%94/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>침해대응</title>
+      <link>http://localhost:1313/tags/%EC%B9%A8%ED%95%B4%EB%8C%80%EC%9D%91/</link>
+      <pubDate>Fri, 14 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EC%B9%A8%ED%95%B4%EB%8C%80%EC%9D%91/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ACM-CCS</title>
+      <link>http://localhost:1313/tags/acm-ccs/</link>
+      <pubDate>Sat, 08 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/acm-ccs/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Deep-Learning</title>
+      <link>http://localhost:1313/tags/deep-learning/</link>
+      <pubDate>Sat, 08 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/deep-learning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>DeepLog</title>
+      <link>http://localhost:1313/tags/deeplog/</link>
+      <pubDate>Sat, 08 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/deeplog/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>LSTM</title>
+      <link>http://localhost:1313/tags/lstm/</link>
+      <pubDate>Sat, 08 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/lstm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Root-Cause-Analysis</title>
+      <link>http://localhost:1313/tags/root-cause-analysis/</link>
+      <pubDate>Sat, 08 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/root-cause-analysis/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Sequence-Modeling</title>
+      <link>http://localhost:1313/tags/sequence-modeling/</link>
+      <pubDate>Sat, 08 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/sequence-modeling/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cloud-Security</title>
+      <link>http://localhost:1313/tags/cloud-security/</link>
+      <pubDate>Fri, 07 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/cloud-security/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>IEEE-Research</title>
+      <link>http://localhost:1313/tags/ieee-research/</link>
+      <pubDate>Fri, 07 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/ieee-research/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>IoT-Security</title>
+      <link>http://localhost:1313/tags/iot-security/</link>
+      <pubDate>Fri, 07 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/iot-security/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Network-Segmentation</title>
+      <link>http://localhost:1313/tags/network-segmentation/</link>
+      <pubDate>Fri, 07 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/network-segmentation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Policy-Driven-Security</title>
+      <link>http://localhost:1313/tags/policy-driven-security/</link>
+      <pubDate>Fri, 07 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/policy-driven-security/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Zero-Trust</title>
+      <link>http://localhost:1313/tags/zero-trust/</link>
+      <pubDate>Fri, 07 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/zero-trust/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ZTA</title>
+      <link>http://localhost:1313/tags/zta/</link>
+      <pubDate>Fri, 07 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/zta/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Python</title>
       <link>http://localhost:1313/tags/python/</link>
       <pubDate>Fri, 31 Oct 2025 00:00:00 +0000</pubDate>
@@ -1371,6 +2372,76 @@
       <link>http://localhost:1313/tags/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/</link>
       <pubDate>Mon, 27 Oct 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>COBIT5</title>
+      <link>http://localhost:1313/tags/cobit5/</link>
+      <pubDate>Sun, 09 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/cobit5/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ISO27014</title>
+      <link>http://localhost:1313/tags/iso27014/</link>
+      <pubDate>Sun, 09 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/iso27014/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>거버넌스프레임워크</title>
+      <link>http://localhost:1313/tags/%EA%B1%B0%EB%B2%84%EB%84%8C%EC%8A%A4%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC/</link>
+      <pubDate>Sun, 09 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EA%B1%B0%EB%B2%84%EB%84%8C%EC%8A%A4%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>보안거버넌스</title>
+      <link>http://localhost:1313/tags/%EB%B3%B4%EC%95%88%EA%B1%B0%EB%B2%84%EB%84%8C%EC%8A%A4/</link>
+      <pubDate>Sun, 09 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EB%B3%B4%EC%95%88%EA%B1%B0%EB%B2%84%EB%84%8C%EC%8A%A4/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>핵심성공요인</title>
+      <link>http://localhost:1313/tags/%ED%95%B5%EC%8B%AC%EC%84%B1%EA%B3%B5%EC%9A%94%EC%9D%B8/</link>
+      <pubDate>Sun, 09 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%ED%95%B5%EC%8B%AC%EC%84%B1%EA%B3%B5%EC%9A%94%EC%9D%B8/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>거버넌스</title>
+      <link>http://localhost:1313/tags/%EA%B1%B0%EB%B2%84%EB%84%8C%EC%8A%A4/</link>
+      <pubDate>Mon, 03 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EA%B1%B0%EB%B2%84%EB%84%8C%EC%8A%A4/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>규범주의</title>
+      <link>http://localhost:1313/tags/%EA%B7%9C%EB%B2%94%EC%A3%BC%EC%9D%98/</link>
+      <pubDate>Mon, 03 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EA%B7%9C%EB%B2%94%EC%A3%BC%EC%9D%98/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>조직관리</title>
+      <link>http://localhost:1313/tags/%EC%A1%B0%EC%A7%81%EA%B4%80%EB%A6%AC/</link>
+      <pubDate>Mon, 03 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EC%A1%B0%EC%A7%81%EA%B4%80%EB%A6%AC/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>컴플라이언스</title>
+      <link>http://localhost:1313/tags/%EC%BB%B4%ED%94%8C%EB%9D%BC%EC%9D%B4%EC%96%B8%EC%8A%A4/</link>
+      <pubDate>Mon, 03 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%EC%BB%B4%ED%94%8C%EB%9D%BC%EC%9D%B4%EC%96%B8%EC%8A%A4/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>합리주의</title>
+      <link>http://localhost:1313/tags/%ED%95%A9%EB%A6%AC%EC%A3%BC%EC%9D%98/</link>
+      <pubDate>Mon, 03 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%ED%95%A9%EB%A6%AC%EC%A3%BC%EC%9D%98/</guid>
       <description></description>
     </item>
   </channel>

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Day 01: 개인정보보호법 - 기본 개념 및 목적 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="개인정보보호법, 법률기초, 정보주체, 개인정보처리자">
+<meta name="description" content="개인정보보호법의 제정 배경, 목적, 적용 범위와 기본 용어 정의를 학습하고 보안 컨설팅 관점에서의 시사점을 파악합니다.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day01_%EA%B8%B0%EB%B3%B8%EA%B0%9C%EB%85%90%EB%B0%8F%EB%AA%A9%EC%A0%81/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a29c24210eb31d9ce56f669c66a35c9c51b17376b7764e336a49af7dec914cf0.css" integrity="sha256-opwkIQ6zHZzlb2acZqNcnFGxc3a3dk4zakmvfeyRTPA=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day01_%EA%B8%B0%EB%B3%B8%EA%B0%9C%EB%85%90%EB%B0%8F%EB%AA%A9%EC%A0%81/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/" title="프로젝트">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">홈</a>&nbsp;»&nbsp;<a href="http://localhost:1313/cyber_law_study/">보안 컨설팅 공부</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Day 01: 개인정보보호법 - 기본 개념 및 목적
+    </h1>
+    <div class="post-meta"><span title='2026-02-02 00:00:00 +0000 UTC'>2026년 2월 2일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="day-01-개인정보보호법---기본-개념-및-목적">Day 01: 개인정보보호법 - 기본 개념 및 목적<a hidden class="anchor" aria-hidden="true" href="#day-01-개인정보보호법---기본-개념-및-목적">#</a></h1>
+<h2 id="1-개인정보보호법이란">1. 개인정보보호법이란?<a hidden class="anchor" aria-hidden="true" href="#1-개인정보보호법이란">#</a></h2>
+<p>개인정보보호법은 개인정보의 처리 및 보호에 관한 사항을 정함으로써 개인의 자유와 권리를 보호하고, 나아가 개인의 존엄과 가치를 구현하기 위해 제정된 법률입니다.</p>
+<h3 id="제정-배경">제정 배경<a hidden class="anchor" aria-hidden="true" href="#제정-배경">#</a></h3>
+<ul>
+<li>2011년 3월 29일 제정, 2011년 9월 30일 시행</li>
+<li>IT 기술 발전으로 개인정보 침해 위험 증가</li>
+<li>공공부문과 민간부문을 아우르는 통합 법률 필요</li>
+<li>개인정보 자기결정권 보장</li>
+</ul>
+<h2 id="2-법의-목적-제1조">2. 법의 목적 (제1조)<a hidden class="anchor" aria-hidden="true" href="#2-법의-목적-제1조">#</a></h2>
+<p>개인정보보호법 제1조는 다음과 같은 목적을 명시합니다:</p>
+<ol>
+<li><strong>개인정보 처리 및 보호에 관한 사항 규정</strong></li>
+<li><strong>개인의 자유와 권리 보호</strong></li>
+<li><strong>개인의 존엄과 가치 구현</strong></li>
+</ol>
+<h2 id="3-적용-범위">3. 적용 범위<a hidden class="anchor" aria-hidden="true" href="#3-적용-범위">#</a></h2>
+<h3 id="31-적용-대상">3.1 적용 대상<a hidden class="anchor" aria-hidden="true" href="#31-적용-대상">#</a></h3>
+<ul>
+<li><strong>공공기관</strong>: 국가기관, 지방자치단체, 공공단체 등</li>
+<li><strong>민간 사업자</strong>: 개인정보를 처리하는 모든 개인, 법인, 단체 등</li>
+<li><strong>비영리단체</strong>: 종교단체, 동창회 등도 포함</li>
+</ul>
+<h3 id="32-적용-제외">3.2 적용 제외<a hidden class="anchor" aria-hidden="true" href="#32-적용-제외">#</a></h3>
+<ul>
+<li>국가안전보장과 관련된 정보 분석</li>
+<li>공중위생 등 공공의 안전을 위해 긴급히 필요한 경우 (일부)</li>
+</ul>
+<h3 id="33-다른-법률과의-관계-제6조">3.3 다른 법률과의 관계 (제6조)<a hidden class="anchor" aria-hidden="true" href="#33-다른-법률과의-관계-제6조">#</a></h3>
+<ul>
+<li>개인정보보호법은 일반법</li>
+<li>다른 법률에 특별한 규정이 있는 경우 그 법률을 우선 적용</li>
+<li>예: 신용정보법, 정보통신망법 등</li>
+</ul>
+<h2 id="4-주요-용어-정의-제2조">4. 주요 용어 정의 (제2조)<a hidden class="anchor" aria-hidden="true" href="#4-주요-용어-정의-제2조">#</a></h2>
+<h3 id="41-개인정보">4.1 개인정보<a hidden class="anchor" aria-hidden="true" href="#41-개인정보">#</a></h3>
+<p>살아 있는 개인에 관한 정보로서 다음 중 하나에 해당하는 정보:</p>
+<ul>
+<li>성명, 주민등록번호 및 영상 등을 통하여 개인을 알아볼 수 있는 정보</li>
+<li>해당 정보만으로는 특정 개인을 알아볼 수 없더라도 다른 정보와 쉽게 결합하여 알아볼 수 있는 정보</li>
+</ul>
+<h3 id="42-처리">4.2 처리<a hidden class="anchor" aria-hidden="true" href="#42-처리">#</a></h3>
+<p>개인정보의 수집, 생성, 연계, 연동, 기록, 저장, 보유, 가공, 편집, 검색, 출력, 정정, 복구, 이용, 제공, 공개, 파기, 그 밖에 이와 유사한 행위</p>
+<h3 id="43-정보주체">4.3 정보주체<a hidden class="anchor" aria-hidden="true" href="#43-정보주체">#</a></h3>
+<p>처리되는 정보에 의하여 알아볼 수 있는 사람으로서 그 정보의 주체가 되는 사람</p>
+<h3 id="44-개인정보처리자">4.4 개인정보처리자<a hidden class="anchor" aria-hidden="true" href="#44-개인정보처리자">#</a></h3>
+<p>업무를 목적으로 개인정보파일을 운용하기 위하여 스스로 또는 다른 사람을 통하여 개인정보를 처리하는 공공기관, 법인, 단체 및 개인 등</p>
+<h3 id="45-개인정보파일">4.5 개인정보파일<a hidden class="anchor" aria-hidden="true" href="#45-개인정보파일">#</a></h3>
+<p>개인정보를 쉽게 검색할 수 있도록 일정한 규칙에 따라 체계적으로 배열하거나 구성한 개인정보의 집합물</p>
+<h2 id="5-개인정보-보호의-기본-원칙-제3조">5. 개인정보 보호의 기본 원칙 (제3조)<a hidden class="anchor" aria-hidden="true" href="#5-개인정보-보호의-기본-원칙-제3조">#</a></h2>
+<h3 id="51-개인정보의-처리-목적-명확화">5.1 개인정보의 처리 목적 명확화<a hidden class="anchor" aria-hidden="true" href="#51-개인정보의-처리-목적-명확화">#</a></h3>
+<ul>
+<li>목적에 필요한 범위에서 최소한으로 수집</li>
+<li>목적 외 용도로 활용 금지</li>
+</ul>
+<h3 id="52-정보주체의-권리-보장">5.2 정보주체의 권리 보장<a hidden class="anchor" aria-hidden="true" href="#52-정보주체의-권리-보장">#</a></h3>
+<ul>
+<li>개인정보의 처리에 관한 정보를 제공받을 권리</li>
+<li>개인정보 처리 동의 여부, 동의 범위 선택 및 결정 권리</li>
+<li>개인정보의 처리 여부 확인 및 열람 요구 권리</li>
+<li>개인정보의 처리 정지, 정정, 삭제, 파기 요구 권리</li>
+<li>개인정보 침해로 인한 구제 권리</li>
+</ul>
+<h3 id="53-안전한-관리">5.3 안전한 관리<a hidden class="anchor" aria-hidden="true" href="#53-안전한-관리">#</a></h3>
+<ul>
+<li>개인정보의 안전성 확보에 필요한 조치 의무</li>
+<li>익명처리 등 개인정보를 안전하게 관리</li>
+</ul>
+<h3 id="54-책임의-명확화">5.4 책임의 명확화<a hidden class="anchor" aria-hidden="true" href="#54-책임의-명확화">#</a></h3>
+<ul>
+<li>개인정보 처리에 관한 불만의 처리</li>
+<li>피해 구제를 위한 필요한 조치 이행</li>
+</ul>
+<h2 id="6-보안-컨설팅-관점에서의-시사점">6. 보안 컨설팅 관점에서의 시사점<a hidden class="anchor" aria-hidden="true" href="#6-보안-컨설팅-관점에서의-시사점">#</a></h2>
+<h3 id="61-법률-준수의-중요성">6.1 법률 준수의 중요성<a hidden class="anchor" aria-hidden="true" href="#61-법률-준수의-중요성">#</a></h3>
+<ul>
+<li>모든 정보시스템 설계 시 개인정보보호법 준수가 기본</li>
+<li>단순한 기술적 보안을 넘어 법률적 요구사항 충족 필요</li>
+</ul>
+<h3 id="62-전-생애주기-관리">6.2 전 생애주기 관리<a hidden class="anchor" aria-hidden="true" href="#62-전-생애주기-관리">#</a></h3>
+<ul>
+<li>수집부터 파기까지 모든 단계에서 법적 의무 존재</li>
+<li>컨설팅 시 각 단계별 통제 방안 설계 필요</li>
+</ul>
+<h3 id="63-예방적-접근">6.3 예방적 접근<a hidden class="anchor" aria-hidden="true" href="#63-예방적-접근">#</a></h3>
+<ul>
+<li>사후 대응보다 사전 예방이 핵심</li>
+<li>Privacy by Design 원칙 적용</li>
+</ul>
+<h2 id="7-실무-적용-예시">7. 실무 적용 예시<a hidden class="anchor" aria-hidden="true" href="#7-실무-적용-예시">#</a></h2>
+<h3 id="예시-1-회원가입-시스템-설계">예시 1: 회원가입 시스템 설계<a hidden class="anchor" aria-hidden="true" href="#예시-1-회원가입-시스템-설계">#</a></h3>
+<ul>
+<li>필수 정보와 선택 정보 명확히 구분</li>
+<li>목적별 동의 체크박스 분리</li>
+<li>개인정보 수집 이용 동의서 제공</li>
+</ul>
+<h3 id="예시-2-개인정보-보호체계-구축">예시 2: 개인정보 보호체계 구축<a hidden class="anchor" aria-hidden="true" href="#예시-2-개인정보-보호체계-구축">#</a></h3>
+<ul>
+<li>개인정보 처리방침 수립</li>
+<li>개인정보 보호책임자 지정</li>
+<li>내부 관리계획 수립</li>
+</ul>
+<h2 id="8-위반-시-제재">8. 위반 시 제재<a hidden class="anchor" aria-hidden="true" href="#8-위반-시-제재">#</a></h2>
+<h3 id="형사처벌">형사처벌<a hidden class="anchor" aria-hidden="true" href="#형사처벌">#</a></h3>
+<ul>
+<li>개인정보를 목적 외 용도로 이용하거나 제3자에게 제공한 경우: 5년 이하 징역 또는 5천만원 이하 벌금</li>
+</ul>
+<h3 id="과징금">과징금<a hidden class="anchor" aria-hidden="true" href="#과징금">#</a></h3>
+<ul>
+<li>매출액의 3% 이하 (2020년 개정)</li>
+</ul>
+<h3 id="과태료">과태료<a hidden class="anchor" aria-hidden="true" href="#과태료">#</a></h3>
+<ul>
+<li>법 위반 정도에 따라 차등 부과</li>
+</ul>
+<h2 id="학습-정리">학습 정리<a hidden class="anchor" aria-hidden="true" href="#학습-정리">#</a></h2>
+<p>오늘 학습한 핵심 내용:</p>
+<ul>
+<li>개인정보보호법은 개인의 자유와 권리를 보호하기 위한 법률</li>
+<li>공공과 민간 모두에게 적용되는 포괄적 법률</li>
+<li>개인정보, 처리, 정보주체 등 핵심 용어 이해</li>
+<li>목적 명확화, 최소 수집, 정보주체 권리 보장 등 기본 원칙 준수 필요</li>
+</ul>
+<h2 id="다음-학습-주제">다음 학습 주제<a hidden class="anchor" aria-hidden="true" href="#다음-학습-주제">#</a></h2>
+<p>Day 02: 개인정보의 정의와 범위 - 무엇이 개인정보인가?</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/">개인정보보호법</a></li>
+      <li><a href="http://localhost:1313/tags/%EB%B2%95%EB%A5%A0%EA%B8%B0%EC%B4%88/">법률기초</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%A0%95%EB%B3%B4%EC%A3%BC%EC%B2%B4/">정보주체</a></li>
+      <li><a href="http://localhost:1313/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%B2%98%EB%A6%AC%EC%9E%90/">개인정보처리자</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

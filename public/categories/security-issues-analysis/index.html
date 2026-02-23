@@ -8,7 +8,7 @@
 <title>Security-Issues-Analysis | HJ&#39;s Security Note</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
-<meta name="author" content="map[autoswitchappearance:false bio:보안법규 분석과 실무 중심 거버넌스를 기록합니다. colorscheme:ocean defaultappearance:light enablecodecopy:true enableimagelazyloading:true enableimagewebp:true enablequicklink:true enablesearch:true fingerprintalgorithm:sha256 headline:Security Governance &amp; Legal Analysis image:profile.jpg links:[map[github:https://github.com/hojjang98]] name:Hojun Choi]">
+<meta name="author" content="">
 <link rel="canonical" href="http://localhost:1313/categories/security-issues-analysis/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.a29c24210eb31d9ce56f669c66a35c9c51b17376b7764e336a49af7dec914cf0.css" integrity="sha256-opwkIQ6zHZzlb2acZqNcnFGxc3a3dk4zakmvfeyRTPA=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
@@ -103,6 +103,11 @@
         </div>
         <ul id="menu">
             <li>
+                <a href="http://localhost:1313/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
                 <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
                     <span>일일 로그</span>
                 </a>
@@ -113,7 +118,7 @@
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/security-law-study/" title="Security-Law-Study">
+                <a href="http://localhost:1313/categories/cyber-law-study/" title="Cyber-Law-Study">
                     <span>보안법 공부</span>
                 </a>
             </li>
@@ -128,7 +133,7 @@
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/" title="논문 리뷰">
+                <a href="http://localhost:1313/categories/paper-review/" title="Paper-Review">
                     <span>논문 리뷰</span>
                 </a>
             </li>
@@ -136,11 +141,47 @@
     </nav>
 </header>
 <main class="main"> 
-<header class="page-header">
+<header class="page-header"><div class="breadcrumbs"><a href="http://localhost:1313/">홈</a>&nbsp;»&nbsp;<a href="http://localhost:1313/categories/">Categories</a></div>
   <h1>
     Security-Issues-Analysis
   </h1>
 </header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Cline CLI Supply Chain Attack - npm Token Theft via AI Coding Tool
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>AI 코딩 어시스턴트 Cline CLI에서 발생한 공급망 공격 사례로, 프롬프트 인젝션, GitHub Actions 캐시 포이즈닝, npm 토큰 미폐기가 결합되어 약 4,000건의 악성 패키지 다운로드가 발생한 사건 분석</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-22 00:00:00 +0000 UTC'>2026년 2월 22일</span></footer>
+  <a class="entry-link" aria-label="post link to Cline CLI Supply Chain Attack - npm Token Theft via AI Coding Tool" href="http://localhost:1313/security-issues-analysis/2026/week08/cline_cli_supply_chain_attack/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">France FICOBA Bank Account Database Breach - National Financial DB Access via Stolen Government Credentials
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>프랑스 국가 은행 계좌 등록 데이터베이스 FICOBA에서 공무원 자격증명 탈취를 통해 약 120만 개 계좌 정보가 노출된 사건으로, 합법적 접근 경로를 악용한 공격의 탐지 한계와 제로 트러스트 원칙의 중요성을 보여주는 사례</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-22 00:00:00 +0000 UTC'>2026년 2월 22일</span></footer>
+  <a class="entry-link" aria-label="post link to France FICOBA Bank Account Database Breach - National Financial DB Access via Stolen Government Credentials" href="http://localhost:1313/security-issues-analysis/2026/week08/ficoba_breach/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">PayPal Working Capital 6개월 데이터 침해 — 소프트웨어 오류 기인 장기 개인정보 노출
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>PayPal Working Capital 서비스의 코딩 오류로 SSN, 생년월일 등 고위험 개인정보가 6개월간 노출된 사건으로, 외부 공격이 아닌 내부 소프트웨어 결함에 의한 데이터 침해의 위험성과 민감 데이터 처리 경로에 대한 보안 검토 프로세스의 중요성을 보여주는 사례</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-22 00:00:00 +0000 UTC'>2026년 2월 22일</span></footer>
+  <a class="entry-link" aria-label="post link to PayPal Working Capital 6개월 데이터 침해 — 소프트웨어 오류 기인 장기 개인정보 노출" href="http://localhost:1313/security-issues-analysis/2026/week08/paypal_working_capital_breach/"></a>
+</article>
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
@@ -150,7 +191,7 @@
   <div class="entry-content">
     <p>Google TAG가 발견한 Apple dyld 컴포넌트 메모리 손상 취약점이 WebKit 취약점과 연계된 다단계 공격 체인으로 특정 고가치 표적을 대상으로 악용된 사건 분석</p>
   </div>
-  <footer class="entry-footer"><span title='2026-02-15 00:00:00 +0000 UTC'>2026년 2월 15일</span>&nbsp;·&nbsp;<span>map[autoswitchappearance:false bio:보안법규 분석과 실무 중심 거버넌스를 기록합니다. colorscheme:ocean defaultappearance:light enablecodecopy:true enableimagelazyloading:true enableimagewebp:true enablequicklink:true enablesearch:true fingerprintalgorithm:sha256 headline:Security Governance &amp; Legal Analysis image:profile.jpg links:[map[github:https://github.com/hojjang98]] name:Hojun Choi]</span></footer>
+  <footer class="entry-footer"><span title='2026-02-15 00:00:00 +0000 UTC'>2026년 2월 15일</span></footer>
   <a class="entry-link" aria-label="post link to Apple dyld 제로데이 취약점 사건 분석" href="http://localhost:1313/security-issues-analysis/2026/week07/apple_dyld-_zero_day/"></a>
 </article>
 
@@ -162,7 +203,7 @@
   <div class="entry-content">
     <p>SafePay 랜섬웨어 그룹이 정부 기술 계약업체 Conduent에서 84일간 탐지되지 않고 8.5TB를 유출해 2,500만 명 이상의 의료·개인정보가 노출된 사건 분석</p>
   </div>
-  <footer class="entry-footer"><span title='2026-02-15 00:00:00 +0000 UTC'>2026년 2월 15일</span>&nbsp;·&nbsp;<span>map[autoswitchappearance:false bio:보안법규 분석과 실무 중심 거버넌스를 기록합니다. colorscheme:ocean defaultappearance:light enablecodecopy:true enableimagelazyloading:true enableimagewebp:true enablequicklink:true enablesearch:true fingerprintalgorithm:sha256 headline:Security Governance &amp; Legal Analysis image:profile.jpg links:[map[github:https://github.com/hojjang98]] name:Hojun Choi]</span></footer>
+  <footer class="entry-footer"><span title='2026-02-15 00:00:00 +0000 UTC'>2026년 2월 15일</span></footer>
   <a class="entry-link" aria-label="post link to Conduent 대규모 데이터 유출 사건 분석" href="http://localhost:1313/security-issues-analysis/2026/week07/conduent_data_breach/"></a>
 </article>
 
@@ -174,7 +215,7 @@
   <div class="entry-content">
     <p>CVSS 9.8의 Ivanti EPMM 코드 인젝션 제로데이가 EU 집행위원회 등 유럽 정부기관을 침해하고 공개 24시간 내 대규모 익스플로잇 캠페인으로 이어진 사건 분석</p>
   </div>
-  <footer class="entry-footer"><span title='2026-02-15 00:00:00 +0000 UTC'>2026년 2월 15일</span>&nbsp;·&nbsp;<span>map[autoswitchappearance:false bio:보안법규 분석과 실무 중심 거버넌스를 기록합니다. colorscheme:ocean defaultappearance:light enablecodecopy:true enableimagelazyloading:true enableimagewebp:true enablequicklink:true enablesearch:true fingerprintalgorithm:sha256 headline:Security Governance &amp; Legal Analysis image:profile.jpg links:[map[github:https://github.com/hojjang98]] name:Hojun Choi]</span></footer>
+  <footer class="entry-footer"><span title='2026-02-15 00:00:00 +0000 UTC'>2026년 2월 15일</span></footer>
   <a class="entry-link" aria-label="post link to Ivanti EPMM 제로데이 취약점 대규모 악용 사건 분석" href="http://localhost:1313/security-issues-analysis/2026/week07/ivanti_epmm_zero_day/"></a>
 </article>
 
@@ -186,7 +227,7 @@
   <div class="entry-content">
     <p>React Native Metro 개발 서버의 인증 없는 RCE 취약점을 악용한 실제 공격이 관측되었으며, EPSS 점수와 무관하게 PoC 공개 직후 공격이 시작된 개발 인프라 보안 사례 분석</p>
   </div>
-  <footer class="entry-footer"><span title='2026-02-08 00:00:00 +0000 UTC'>2026년 2월 8일</span>&nbsp;·&nbsp;<span>map[autoswitchappearance:false bio:보안법규 분석과 실무 중심 거버넌스를 기록합니다. colorscheme:ocean defaultappearance:light enablecodecopy:true enableimagelazyloading:true enableimagewebp:true enablequicklink:true enablesearch:true fingerprintalgorithm:sha256 headline:Security Governance &amp; Legal Analysis image:profile.jpg links:[map[github:https://github.com/hojjang98]] name:Hojun Choi]</span></footer>
+  <footer class="entry-footer"><span title='2026-02-08 00:00:00 +0000 UTC'>2026년 2월 8일</span></footer>
   <a class="entry-link" aria-label="post link to Metro4Shell - React Native Metro Server 원격 코드 실행 취약점 공격" href="http://localhost:1313/security-issues-analysis/2026/week06/metro4shell_react_native_rce/"></a>
 </article>
 
@@ -198,7 +239,7 @@
   <div class="entry-content">
     <p>4개월간 탐지되지 않은 스크래핑 공격으로 Substack 사용자 70만 명의 이메일·전화번호·메타데이터가 유출된 사건과 탐지 지연의 심각성 분석</p>
   </div>
-  <footer class="entry-footer"><span title='2026-02-08 00:00:00 +0000 UTC'>2026년 2월 8일</span>&nbsp;·&nbsp;<span>map[autoswitchappearance:false bio:보안법규 분석과 실무 중심 거버넌스를 기록합니다. colorscheme:ocean defaultappearance:light enablecodecopy:true enableimagelazyloading:true enableimagewebp:true enablequicklink:true enablesearch:true fingerprintalgorithm:sha256 headline:Security Governance &amp; Legal Analysis image:profile.jpg links:[map[github:https://github.com/hojjang98]] name:Hojun Choi]</span></footer>
+  <footer class="entry-footer"><span title='2026-02-08 00:00:00 +0000 UTC'>2026년 2월 8일</span></footer>
   <a class="entry-link" aria-label="post link to Substack 데이터 유출 사건" href="http://localhost:1313/security-issues-analysis/2026/week06/substack_data_breach/"></a>
 </article>
 
@@ -210,7 +251,7 @@
   <div class="entry-content">
     <p>러시아 연계 Static Tundra 그룹이 극한 추위 속 신년 직전을 노려 폴란드 풍력·태양광 발전소 30개소 이상을 협조 공격하고 와이퍼 악성코드로 제어 시스템을 마비시킨 사건 분석</p>
   </div>
-  <footer class="entry-footer"><span title='2026-02-08 00:00:00 +0000 UTC'>2026년 2월 8일</span>&nbsp;·&nbsp;<span>map[autoswitchappearance:false bio:보안법규 분석과 실무 중심 거버넌스를 기록합니다. colorscheme:ocean defaultappearance:light enablecodecopy:true enableimagelazyloading:true enableimagewebp:true enablequicklink:true enablesearch:true fingerprintalgorithm:sha256 headline:Security Governance &amp; Legal Analysis image:profile.jpg links:[map[github:https://github.com/hojjang98]] name:Hojun Choi]</span></footer>
+  <footer class="entry-footer"><span title='2026-02-08 00:00:00 +0000 UTC'>2026년 2월 8일</span></footer>
   <a class="entry-link" aria-label="post link to 폴란드 재생에너지 인프라 대상 협공 사이버 공격" href="http://localhost:1313/security-issues-analysis/2026/week06/poland_energy_infrastructure_attack/"></a>
 </article>
 
@@ -222,44 +263,8 @@
   <div class="entry-content">
     <p>Clop 그룹이 Oracle EBS 제로데이 취약점을 악용해 Dartmouth College를 포함한 100개 이상 조직에서 대규모 데이터를 탈취한 캠페인 분석</p>
   </div>
-  <footer class="entry-footer"><span title='2026-02-01 00:00:00 +0000 UTC'>2026년 2월 1일</span>&nbsp;·&nbsp;<span>map[autoswitchappearance:false bio:보안법규 분석과 실무 중심 거버넌스를 기록합니다. colorscheme:ocean defaultappearance:light enablecodecopy:true enableimagelazyloading:true enableimagewebp:true enablequicklink:true enablesearch:true fingerprintalgorithm:sha256 headline:Security Governance &amp; Legal Analysis image:profile.jpg links:[map[github:https://github.com/hojjang98]] name:Hojun Choi]</span></footer>
+  <footer class="entry-footer"><span title='2026-02-01 00:00:00 +0000 UTC'>2026년 2월 1일</span></footer>
   <a class="entry-link" aria-label="post link to Dartmouth College Oracle EBS 제로데이 공격 (2025년 8월)" href="http://localhost:1313/security-issues-analysis/2026/week05/dartmouth_oracle_clop_breach/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Grubhub 데이터 유출 - Salesloft Drift 공급망 공격의 연쇄 효과 (2026년 1월)
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Salesloft Drift 침해로 탈취된 OAuth 토큰이 Grubhub의 Salesforce와 Zendesk까지 연쇄 침해로 이어진 다층 공급망 공격 분석</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-01 00:00:00 +0000 UTC'>2026년 2월 1일</span>&nbsp;·&nbsp;<span>map[autoswitchappearance:false bio:보안법규 분석과 실무 중심 거버넌스를 기록합니다. colorscheme:ocean defaultappearance:light enablecodecopy:true enableimagelazyloading:true enableimagewebp:true enablequicklink:true enablesearch:true fingerprintalgorithm:sha256 headline:Security Governance &amp; Legal Analysis image:profile.jpg links:[map[github:https://github.com/hojjang98]] name:Hojun Choi]</span></footer>
-  <a class="entry-link" aria-label="post link to Grubhub 데이터 유출 - Salesloft Drift 공급망 공격의 연쇄 효과 (2026년 1월)" href="http://localhost:1313/security-issues-analysis/2026/week05/grubhub_salesloft_breach/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Nike 데이터 유출 사건 - WorldLeaks 랜섬웨어 그룹 (2026년 1월)
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>WorldLeaks 그룹이 Nike의 미출시 Jordan Brand 디자인을 포함한 1.4TB 데이터를 탈취하고 다크웹 공개로 압박한 데이터 갈취 공격 분석</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-01 00:00:00 +0000 UTC'>2026년 2월 1일</span>&nbsp;·&nbsp;<span>map[autoswitchappearance:false bio:보안법규 분석과 실무 중심 거버넌스를 기록합니다. colorscheme:ocean defaultappearance:light enablecodecopy:true enableimagelazyloading:true enableimagewebp:true enablequicklink:true enablesearch:true fingerprintalgorithm:sha256 headline:Security Governance &amp; Legal Analysis image:profile.jpg links:[map[github:https://github.com/hojjang98]] name:Hojun Choi]</span></footer>
-  <a class="entry-link" aria-label="post link to Nike 데이터 유출 사건 - WorldLeaks 랜섬웨어 그룹 (2026년 1월)" href="http://localhost:1313/security-issues-analysis/2026/week05/nike_worldleakse_breach/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Central Maine Healthcare Data Breach Exposes Sensitive Patient Information
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>74일간 탐지되지 않은 공격으로 145,381명의 환자 개인정보, 치료정보, 보험 정보가 유출된 Central Maine Healthcare 침해 사건 분석</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-01-25 00:00:00 +0000 UTC'>2026년 1월 25일</span>&nbsp;·&nbsp;<span>map[autoswitchappearance:false bio:보안법규 분석과 실무 중심 거버넌스를 기록합니다. colorscheme:ocean defaultappearance:light enablecodecopy:true enableimagelazyloading:true enableimagewebp:true enablequicklink:true enablesearch:true fingerprintalgorithm:sha256 headline:Security Governance &amp; Legal Analysis image:profile.jpg links:[map[github:https://github.com/hojjang98]] name:Hojun Choi]</span></footer>
-  <a class="entry-link" aria-label="post link to Central Maine Healthcare Data Breach Exposes Sensitive Patient Information" href="http://localhost:1313/security-issues-analysis/2026/week04/central_maine_healthcare_breach/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

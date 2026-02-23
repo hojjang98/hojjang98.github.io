@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>전자서명법 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/cyber_law_study/02_%EC%82%B0%EC%97%85%EB%B3%84%EA%B7%9C%EC%A0%9C/01_%EC%A0%84%EC%9E%90%EC%84%9C%EB%AA%85%EB%B2%95/</link>
+    <description>Recent content in 전자서명법 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sat, 21 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/cyber_law_study/02_%EC%82%B0%EC%97%85%EB%B3%84%EA%B7%9C%EC%A0%9C/01_%EC%A0%84%EC%9E%90%EC%84%9C%EB%AA%85%EB%B2%95/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Day 16: 전자서명법</title>
+      <link>http://localhost:1313/cyber_law_study/02_%EC%82%B0%EC%97%85%EB%B3%84%EA%B7%9C%EC%A0%9C/01_%EC%A0%84%EC%9E%90%EC%84%9C%EB%AA%85%EB%B2%95/day16_%EC%A0%84%EC%9E%90%EC%84%9C%EB%AA%85%EB%B2%95/</link>
+      <pubDate>Sat, 21 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/cyber_law_study/02_%EC%82%B0%EC%97%85%EB%B3%84%EA%B7%9C%EC%A0%9C/01_%EC%A0%84%EC%9E%90%EC%84%9C%EB%AA%85%EB%B2%95/day16_%EC%A0%84%EC%9E%90%EC%84%9C%EB%AA%85%EB%B2%95/</guid>
+      <description>전자서명의 법적 효력, 공동인증서와 민간 전자서명의 차이, 전자서명 생성·검증 과정, 전자서명인증사업자의 의무, 개인키 보호 및 전자 계약 시스템 구축 방법을 학습합니다.</description>
+    </item>
+  </channel>
+</rss>

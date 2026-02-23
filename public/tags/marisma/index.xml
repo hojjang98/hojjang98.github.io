@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>MARISMA on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/marisma/</link>
+    <description>Recent content in MARISMA on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Tue, 27 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/marisma/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Towards an Integrated Risk Analysis Security Framework</title>
+      <link>http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/integrated-risk-framework/</link>
+      <pubDate>Tue, 27 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/integrated-risk-framework/</guid>
+      <description>30개 위험 분석 방법론의 체계적 비교를 통해 10가지 핵심 약점을 식별하고, 동적 학습 순환과 패턴 기반 접근으로 이를 해결하는 MARISMA 프레임워크를 제안한 연구</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>사이버물리공격 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%EC%82%AC%EC%9D%B4%EB%B2%84%EB%AC%BC%EB%A6%AC%EA%B3%B5%EA%B2%A9/</link>
+    <description>Recent content in 사이버물리공격 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Fri, 19 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%EC%82%AC%EC%9D%B4%EB%B2%84%EB%AC%BC%EB%A6%AC%EA%B3%B5%EA%B2%A9/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>To Kill a Centrifuge: Stuxnet이 증명한 사이버-물리 무기의 파괴력과 OT 보안의 교훈</title>
+      <link>http://localhost:1313/paper_review/ot_security_ot_ics_%EB%B3%B4%EC%95%88/to_kill_a_centrifuge_review/</link>
+      <pubDate>Fri, 19 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/ot_security_ot_ics_%EB%B3%B4%EC%95%88/to_kill_a_centrifuge_review/</guid>
+      <description>사이버 공격이 어떻게 물리적 파괴로 이어지는가? Ralph Langner의 기술 분석을 통해 Stuxnet의 두 가지 공격 루틴(과압/로터 속도), 제어 시스템 레벨의 MITM 기법, 그리고 Air Gap의 한계를 심층 분석하고 실무적인 OT 보안 체크리스트를 도출합니다.</description>
+    </item>
+  </channel>
+</rss>

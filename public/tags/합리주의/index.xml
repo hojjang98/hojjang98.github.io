@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>합리주의 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%ED%95%A9%EB%A6%AC%EC%A3%BC%EC%9D%98/</link>
+    <description>Recent content in 합리주의 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Mon, 03 Feb 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%ED%95%A9%EB%A6%AC%EC%A3%BC%EC%9D%98/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A Framework for Organizational Compliance Management Tactics</title>
+      <link>http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/compliance_tactics_framework/</link>
+      <pubDate>Mon, 03 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/compliance_tactics_framework/</guid>
+      <description>합리주의와 규범주의 이론을 통합하여 조직 컴플라이언스를 달성하기 위한 전술을 전사-집단-개인 수준에서 분류한 2차원 프레임워크 연구</description>
+    </item>
+  </channel>
+</rss>

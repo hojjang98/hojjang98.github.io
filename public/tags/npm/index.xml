@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Npm on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/npm/</link>
+    <description>Recent content in Npm on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sun, 22 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/npm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cline CLI Supply Chain Attack - npm Token Theft via AI Coding Tool</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week08/cline_cli_supply_chain_attack/</link>
+      <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week08/cline_cli_supply_chain_attack/</guid>
+      <description>AI 코딩 어시스턴트 Cline CLI에서 발생한 공급망 공격 사례로, 프롬프트 인젝션, GitHub Actions 캐시 포이즈닝, npm 토큰 미폐기가 결합되어 약 4,000건의 악성 패키지 다운로드가 발생한 사건 분석</description>
+    </item>
+  </channel>
+</rss>

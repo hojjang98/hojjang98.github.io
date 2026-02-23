@@ -6,27 +6,83 @@
     <description>Recent content on HJ&#39;s Security Note</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Wed, 18 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 23 Feb 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Managing Cyber Risk in Supply Chains: A Review and Research Agenda</title>
+      <link>http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/cyber_risk_supply_chain/</link>
+      <pubDate>Mon, 23 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/cyber_risk_supply_chain/</guid>
+      <description>공급망 맥락에서 사이버 리스크를 체계적으로 분류하고, 침투 지점(PoP)과 리스크 전파 모델을 통해 조직 경계를 넘어서는 위협을 이해하기 위한 개념적 프레임워크를 제시한 체계적 문헌 고찰 연구</description>
+    </item>
+    <item>
+      <title>Cline CLI Supply Chain Attack - npm Token Theft via AI Coding Tool</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week08/cline_cli_supply_chain_attack/</link>
+      <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week08/cline_cli_supply_chain_attack/</guid>
+      <description>AI 코딩 어시스턴트 Cline CLI에서 발생한 공급망 공격 사례로, 프롬프트 인젝션, GitHub Actions 캐시 포이즈닝, npm 토큰 미폐기가 결합되어 약 4,000건의 악성 패키지 다운로드가 발생한 사건 분석</description>
+    </item>
+    <item>
+      <title>France FICOBA Bank Account Database Breach - National Financial DB Access via Stolen Government Credentials</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week08/ficoba_breach/</link>
+      <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week08/ficoba_breach/</guid>
+      <description>프랑스 국가 은행 계좌 등록 데이터베이스 FICOBA에서 공무원 자격증명 탈취를 통해 약 120만 개 계좌 정보가 노출된 사건으로, 합법적 접근 경로를 악용한 공격의 탐지 한계와 제로 트러스트 원칙의 중요성을 보여주는 사례</description>
+    </item>
+    <item>
+      <title>PayPal Working Capital 6개월 데이터 침해 — 소프트웨어 오류 기인 장기 개인정보 노출</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week08/paypal_working_capital_breach/</link>
+      <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week08/paypal_working_capital_breach/</guid>
+      <description>PayPal Working Capital 서비스의 코딩 오류로 SSN, 생년월일 등 고위험 개인정보가 6개월간 노출된 사건으로, 외부 공격이 아닌 내부 소프트웨어 결함에 의한 데이터 침해의 위험성과 민감 데이터 처리 경로에 대한 보안 검토 프로세스의 중요성을 보여주는 사례</description>
+    </item>
+    <item>
+      <title>Day 16: 전자서명법</title>
+      <link>http://localhost:1313/cyber_law_study/02_%EC%82%B0%EC%97%85%EB%B3%84%EA%B7%9C%EC%A0%9C/01_%EC%A0%84%EC%9E%90%EC%84%9C%EB%AA%85%EB%B2%95/day16_%EC%A0%84%EC%9E%90%EC%84%9C%EB%AA%85%EB%B2%95/</link>
+      <pubDate>Sat, 21 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/cyber_law_study/02_%EC%82%B0%EC%97%85%EB%B3%84%EA%B7%9C%EC%A0%9C/01_%EC%A0%84%EC%9E%90%EC%84%9C%EB%AA%85%EB%B2%95/day16_%EC%A0%84%EC%9E%90%EC%84%9C%EB%AA%85%EB%B2%95/</guid>
+      <description>전자서명의 법적 효력, 공동인증서와 민간 전자서명의 차이, 전자서명 생성·검증 과정, 전자서명인증사업자의 의무, 개인키 보호 및 전자 계약 시스템 구축 방법을 학습합니다.</description>
+    </item>
+    <item>
+      <title>Day 15: 부정경쟁방지 및 영업비밀보호에 관한 법률</title>
+      <link>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/06_%EB%B6%80%EC%A0%95%EA%B2%BD%EC%9F%81%EB%B0%A9%EC%A7%80%EB%B2%95/day15_%EB%B6%80%EC%A0%95%EA%B2%BD%EC%9F%81%EB%B0%A9%EC%A7%80%EB%B2%95/</link>
+      <pubDate>Fri, 20 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/06_%EB%B6%80%EC%A0%95%EA%B2%BD%EC%9F%81%EB%B0%A9%EC%A7%80%EB%B2%95/day15_%EB%B6%80%EC%A0%95%EA%B2%BD%EC%9F%81%EB%B0%A9%EC%A7%80%EB%B2%95/</guid>
+      <description>영업비밀의 3가지 요건(비공지성, 경제적 유용성, 비밀관리성), 침해 유형과 법적 구제, 퇴직자 관리 및 비밀유지계약 체결 방법을 학습합니다.</description>
+    </item>
+    <item>
+      <title>Day 14: 산업기술보호법</title>
+      <link>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/05_%EC%82%B0%EC%97%85%EA%B8%B0%EC%88%A0%EB%B3%B4%ED%98%B8%EB%B2%95/day14_%EC%82%B0%EC%97%85%EA%B8%B0%EC%88%A0%EB%B3%B4%ED%98%B8%EB%B2%95/</link>
+      <pubDate>Thu, 19 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/05_%EC%82%B0%EC%97%85%EA%B8%B0%EC%88%A0%EB%B3%B4%ED%98%B8%EB%B2%95/day14_%EC%82%B0%EC%97%85%EA%B8%B0%EC%88%A0%EB%B3%B4%ED%98%B8%EB%B2%95/</guid>
+      <description>국가핵심기술과 산업기술의 정의, 수출 승인 및 M&amp;amp;A 신고 절차, 보호지침 수립과 보안심사 제도, 기술 유출 시 처벌 규정을 학습합니다.</description>
+    </item>
+    <item>
       <title>Day 13: 신용정보법</title>
-      <link>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/04_%EC%8B%A0%EC%9A%A9%EC%A0%95%EB%B3%B4%EB%B2%95/day13_%EC%8B%A0%EC%9A%A9%EC%A0%95%EB%B3%B4%EB%B2%95/</link>
+      <link>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/04_%EC%8B%A0%EC%9A%A9%EC%A0%95%EB%B3%B4%EB%B2%95/day13_%EC%8B%A0%EC%9A%A9%EC%A0%95%EB%B3%B4%EB%B2%95/</link>
       <pubDate>Wed, 18 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/04_%EC%8B%A0%EC%9A%A9%EC%A0%95%EB%B3%B4%EB%B2%95/day13_%EC%8B%A0%EC%9A%A9%EC%A0%95%EB%B3%B4%EB%B2%95/</guid>
+      <guid>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/04_%EC%8B%A0%EC%9A%A9%EC%A0%95%EB%B3%B4%EB%B2%95/day13_%EC%8B%A0%EC%9A%A9%EC%A0%95%EB%B3%B4%EB%B2%95/</guid>
       <description>개인신용정보의 수집·제공 제한, 신용정보주체의 권리(열람, 정정·삭제, 동의철회), 마이데이터 제도를 학습합니다.</description>
     </item>
     <item>
+      <title>Effectiveness of Cybersecurity Audit: 사이버보안 감사 효과성 측정과 리스크 성숙도의 상관관계</title>
+      <link>http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/cybersecurity_audit_effectivness/</link>
+      <pubDate>Wed, 18 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/cybersecurity_audit_effectivness/</guid>
+      <description>사이버보안 감사는 실제로 효과가 있는가? 계획-수행-보고 3개 차원의 CSA Index를 통해 감사 효과성이 리스크 관리 성숙도를 높이는 핵심 동인임을 입증하고, 감사 품질과 이사회 보고 사이의 단절 위험을 경고한 실증 연구.</description>
+    </item>
+    <item>
       <title>Day 12: 전자금융거래법</title>
-      <link>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/03_%EC%A0%84%EC%9E%90%EA%B8%88%EC%9C%B5%EA%B1%B0%EB%9E%98%EB%B2%95/day12_%EC%A0%84%EC%9E%90%EA%B8%88%EC%9C%B5%EA%B1%B0%EB%9E%98%EB%B2%95/</link>
+      <link>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/03_%EC%A0%84%EC%9E%90%EA%B8%88%EC%9C%B5%EA%B1%B0%EB%9E%98%EB%B2%95/day12_%EC%A0%84%EC%9E%90%EA%B8%88%EC%9C%B5%EA%B1%B0%EB%9E%98%EB%B2%95/</link>
       <pubDate>Tue, 17 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/03_%EC%A0%84%EC%9E%90%EA%B8%88%EC%9C%B5%EA%B1%B0%EB%9E%98%EB%B2%95/day12_%EC%A0%84%EC%9E%90%EA%B8%88%EC%9C%B5%EA%B1%B0%EB%9E%98%EB%B2%95/</guid>
+      <guid>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/03_%EC%A0%84%EC%9E%90%EA%B8%88%EC%9C%B5%EA%B1%B0%EB%9E%98%EB%B2%95/day12_%EC%A0%84%EC%9E%90%EA%B8%88%EC%9C%B5%EA%B1%B0%EB%9E%98%EB%B2%95/</guid>
       <description>전자금융거래의 안전성 확보 의무, 접근매체 이중 인증, 거래기록 5년 보존, 사고 발생 시 무과실 책임 원칙을 학습합니다.</description>
     </item>
     <item>
       <title>Day 11: 아동·영상정보·가명정보 특칙</title>
-      <link>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day11_%EC%95%84%EB%8F%99%EC%98%81%EC%83%81%EC%A0%95%EB%B3%B4%EA%B0%80%EB%AA%85%EC%A0%95%EB%B3%B4/</link>
+      <link>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day11_%EC%95%84%EB%8F%99%EC%98%81%EC%83%81%EC%A0%95%EB%B3%B4%EA%B0%80%EB%AA%85%EC%A0%95%EB%B3%B4/</link>
       <pubDate>Mon, 16 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day11_%EC%95%84%EB%8F%99%EC%98%81%EC%83%81%EC%A0%95%EB%B3%B4%EA%B0%80%EB%AA%85%EC%A0%95%EB%B3%B4/</guid>
+      <guid>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day11_%EC%95%84%EB%8F%99%EC%98%81%EC%83%81%EC%A0%95%EB%B3%B4%EA%B0%80%EB%AA%85%EC%A0%95%EB%B3%B4/</guid>
       <description>만 14세 미만 아동 개인정보 처리 시 법정대리인 동의, CCTV 설치·운영 제한, 가명정보 처리 특례를 학습합니다.</description>
     </item>
     <item>
@@ -52,37 +108,37 @@
     </item>
     <item>
       <title>Day 10: ISMS-P 인증 기준 및 침해사고 대응</title>
-      <link>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/02_%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%A7%9D%EB%B2%95/day10_isms-p%EC%9D%B8%EC%A6%9D%EA%B8%B0%EC%A4%80/</link>
+      <link>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/02_%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%A7%9D%EB%B2%95/day10_isms-p%EC%9D%B8%EC%A6%9D%EA%B8%B0%EC%A4%80/</link>
       <pubDate>Fri, 13 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/02_%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%A7%9D%EB%B2%95/day10_isms-p%EC%9D%B8%EC%A6%9D%EA%B8%B0%EC%A4%80/</guid>
+      <guid>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/02_%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%A7%9D%EB%B2%95/day10_isms-p%EC%9D%B8%EC%A6%9D%EA%B8%B0%EC%A4%80/</guid>
       <description>ISMS-P의 5개 영역 22개 인증기준 102개 통제항목과 인증 절차, 침해사고 신고 의무 및 대응 체계를 학습합니다.</description>
     </item>
     <item>
       <title>Day 09: 정보통신망법 기초</title>
-      <link>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/02_%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%A7%9D%EB%B2%95/day09_%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%A7%9D%EB%B2%95_%EA%B8%B0%EC%B4%88/</link>
+      <link>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/02_%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%A7%9D%EB%B2%95/day09_%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%A7%9D%EB%B2%95_%EA%B8%B0%EC%B4%88/</link>
       <pubDate>Thu, 12 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/02_%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%A7%9D%EB%B2%95/day09_%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%A7%9D%EB%B2%95_%EA%B8%B0%EC%B4%88/</guid>
+      <guid>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/02_%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%A7%9D%EB%B2%95/day09_%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%A7%9D%EB%B2%95_%EA%B8%B0%EC%B4%88/</guid>
       <description>정보통신서비스 제공자에 적용되는 정보통신망법의 기본 개념, CISO 지정 의무, ISMS-P 인증 대상을 학습합니다.</description>
     </item>
     <item>
       <title>Day 08: 개인정보 처리방침</title>
-      <link>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day08_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%B2%98%EB%A6%AC%EB%B0%A9%EC%B9%A8/</link>
+      <link>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day08_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%B2%98%EB%A6%AC%EB%B0%A9%EC%B9%A8/</link>
       <pubDate>Wed, 11 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day08_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%B2%98%EB%A6%AC%EB%B0%A9%EC%B9%A8/</guid>
+      <guid>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day08_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%B2%98%EB%A6%AC%EB%B0%A9%EC%B9%A8/</guid>
       <description>개인정보 처리방침의 필수 기재 사항 10가지, 공개 방법, 변경 시 의무 사항과 실제 운영과의 일치 중요성을 학습합니다.</description>
     </item>
     <item>
       <title>Day 07: 개인정보 유출 및 침해사고 대응</title>
-      <link>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day07_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C%EB%B0%8F%EC%B9%A8%ED%95%B4%EC%82%AC%EA%B3%A0%EB%8C%80%EC%9D%91/</link>
+      <link>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day07_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C%EB%B0%8F%EC%B9%A8%ED%95%B4%EC%82%AC%EA%B3%A0%EB%8C%80%EC%9D%91/</link>
       <pubDate>Tue, 10 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day07_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C%EB%B0%8F%EC%B9%A8%ED%95%B4%EC%82%AC%EA%B3%A0%EB%8C%80%EC%9D%91/</guid>
+      <guid>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day07_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C%EB%B0%8F%EC%B9%A8%ED%95%B4%EC%82%AC%EA%B3%A0%EB%8C%80%EC%9D%91/</guid>
       <description>개인정보 유출 시 통지·신고 의무, 침해사고 대응 6단계 프로세스(준비→탐지→분석→대응→복구→재발방지)를 학습합니다.</description>
     </item>
     <item>
       <title>Day 06: 개인정보의 안전성 확보 조치</title>
-      <link>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day06_%EC%95%88%EC%A0%84%EC%84%B1%ED%99%95%EB%B3%B4%EC%A1%B0%EC%B9%98/</link>
+      <link>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day06_%EC%95%88%EC%A0%84%EC%84%B1%ED%99%95%EB%B3%B4%EC%A1%B0%EC%B9%98/</link>
       <pubDate>Mon, 09 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day06_%EC%95%88%EC%A0%84%EC%84%B1%ED%99%95%EB%B3%B4%EC%A1%B0%EC%B9%98/</guid>
+      <guid>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day06_%EC%95%88%EC%A0%84%EC%84%B1%ED%99%95%EB%B3%B4%EC%A1%B0%EC%B9%98/</guid>
       <description>개인정보 보호를 위한 기술적·관리적·물리적 안전조치와 내부 관리계획 수립, 개인정보 영향평가 제도를 학습합니다.</description>
     </item>
     <item>
@@ -108,37 +164,37 @@
     </item>
     <item>
       <title>Day 05: 정보주체의 권리</title>
-      <link>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day05_%EC%A0%95%EB%B3%B4%EC%A3%BC%EC%B2%B4%EC%9D%98%EA%B6%8C%EB%A6%AC/</link>
+      <link>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day05_%EC%A0%95%EB%B3%B4%EC%A3%BC%EC%B2%B4%EC%9D%98%EA%B6%8C%EB%A6%AC/</link>
       <pubDate>Fri, 06 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day05_%EC%A0%95%EB%B3%B4%EC%A3%BC%EC%B2%B4%EC%9D%98%EA%B6%8C%EB%A6%AC/</guid>
+      <guid>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day05_%EC%A0%95%EB%B3%B4%EC%A3%BC%EC%B2%B4%EC%9D%98%EA%B6%8C%EB%A6%AC/</guid>
       <description>정보주체의 8가지 권리(열람, 정정·삭제, 처리정지, 동의철회 등)와 권리 행사 절차 및 개인정보처리자의 대응 의무를 학습합니다.</description>
     </item>
     <item>
       <title>Day 04: 개인정보의 제공 및 처리 위탁</title>
-      <link>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day04_%EC%A0%9C%EA%B3%B5%EB%B0%8F%EC%9C%84%ED%83%81/</link>
+      <link>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day04_%EC%A0%9C%EA%B3%B5%EB%B0%8F%EC%9C%84%ED%83%81/</link>
       <pubDate>Thu, 05 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day04_%EC%A0%9C%EA%B3%B5%EB%B0%8F%EC%9C%84%ED%83%81/</guid>
+      <guid>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day04_%EC%A0%9C%EA%B3%B5%EB%B0%8F%EC%9C%84%ED%83%81/</guid>
       <description>개인정보의 제3자 제공 요건, 처리 위탁 절차와 계약 사항, 국외 이전 시 안전성 확보 조치를 학습합니다.</description>
     </item>
     <item>
       <title>Day 03: 개인정보의 수집 및 이용</title>
-      <link>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day03_%EC%88%98%EC%A7%91%EB%B0%8F%EC%9D%B4%EC%9A%A9/</link>
+      <link>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day03_%EC%88%98%EC%A7%91%EB%B0%8F%EC%9D%B4%EC%9A%A9/</link>
       <pubDate>Wed, 04 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day03_%EC%88%98%EC%A7%91%EB%B0%8F%EC%9D%B4%EC%9A%A9/</guid>
+      <guid>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day03_%EC%88%98%EC%A7%91%EB%B0%8F%EC%9D%B4%EC%9A%A9/</guid>
       <description>개인정보 수집의 법적 근거, 동의 절차, 최소 수집 원칙, 목적 외 이용 금지 원칙을 학습합니다.</description>
     </item>
     <item>
       <title>Day 02: 개인정보의 정의와 범위</title>
-      <link>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day02_%EC%A0%95%EC%9D%98%EC%99%80%EB%B2%94%EC%9C%84/</link>
+      <link>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day02_%EC%A0%95%EC%9D%98%EC%99%80%EB%B2%94%EC%9C%84/</link>
       <pubDate>Tue, 03 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day02_%EC%A0%95%EC%9D%98%EC%99%80%EB%B2%94%EC%9C%84/</guid>
+      <guid>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day02_%EC%A0%95%EC%9D%98%EC%99%80%EB%B2%94%EC%9C%84/</guid>
       <description>개인정보, 민감정보, 고유식별정보, 가명정보, 익명정보의 정의와 각각의 처리 요건 및 구별 기준을 학습합니다.</description>
     </item>
     <item>
       <title>Day 01: 개인정보보호법 - 기본 개념 및 목적</title>
-      <link>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day01_%EA%B8%B0%EB%B3%B8%EA%B0%9C%EB%85%90%EB%B0%8F%EB%AA%A9%EC%A0%81/</link>
+      <link>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day01_%EA%B8%B0%EB%B3%B8%EA%B0%9C%EB%85%90%EB%B0%8F%EB%AA%A9%EC%A0%81/</link>
       <pubDate>Mon, 02 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day01_%EA%B8%B0%EB%B3%B8%EA%B0%9C%EB%85%90%EB%B0%8F%EB%AA%A9%EC%A0%81/</guid>
+      <guid>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day01_%EA%B8%B0%EB%B3%B8%EA%B0%9C%EB%85%90%EB%B0%8F%EB%AA%A9%EC%A0%81/</guid>
       <description>개인정보보호법의 제정 배경, 목적, 적용 범위와 기본 용어 정의를 학습하고 보안 컨설팅 관점에서의 시사점을 파악합니다.</description>
     </item>
     <item>
@@ -163,6 +219,13 @@
       <description>WorldLeaks 그룹이 Nike의 미출시 Jordan Brand 디자인을 포함한 1.4TB 데이터를 탈취하고 다크웹 공개로 압박한 데이터 갈취 공격 분석</description>
     </item>
     <item>
+      <title>Towards an Integrated Risk Analysis Security Framework</title>
+      <link>http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/integrated-risk-framework/</link>
+      <pubDate>Tue, 27 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/integrated-risk-framework/</guid>
+      <description>30개 위험 분석 방법론의 체계적 비교를 통해 10가지 핵심 약점을 식별하고, 동적 학습 순환과 패턴 기반 접근으로 이를 해결하는 MARISMA 프레임워크를 제안한 연구</description>
+    </item>
+    <item>
       <title>Central Maine Healthcare Data Breach Exposes Sensitive Patient Information</title>
       <link>http://localhost:1313/security-issues-analysis/2026/week04/central_maine_healthcare_breach/</link>
       <pubDate>Sun, 25 Jan 2026 00:00:00 +0000</pubDate>
@@ -184,6 +247,13 @@
       <description>크리스마스 연휴를 노린 Gentlemen 랜섬웨어 그룹이 루마니아 전력 30%를 공급하는 Oltenia 에너지 복합체의 ERP·이메일 시스템을 마비시킨 사건 분석</description>
     </item>
     <item>
+      <title>Outside the Closed World: On Using Machine Learning For Network Intrusion Detection 구조 분석</title>
+      <link>http://localhost:1313/paper_review/soc_%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C/outside_closed_world/</link>
+      <pubDate>Thu, 22 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/soc_%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C/outside_closed_world/</guid>
+      <description>네트워크 침입 탐지 분야에서 머신러닝 도입이 직면한 실무적 한계(Semantic Gap, Base-Rate Fallacy 등)를 분석하고, 실 운영 환경에 성공적으로 적용하기 위한 평가 방법론과 가이드라인을 제시한 연구</description>
+    </item>
+    <item>
       <title>Manage My Health 뉴질랜드 의료 포털 랜섬웨어 공격으로 12만 명 환자 정보 유출</title>
       <link>http://localhost:1313/security-issues-analysis/2026/week03/manage_my_health_randsomeware/</link>
       <pubDate>Sun, 18 Jan 2026 00:00:00 +0000</pubDate>
@@ -203,6 +273,20 @@
       <pubDate>Sun, 18 Jan 2026 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/security-issues-analysis/2026/week03/esa_external_server_breach/</guid>
       <description>해커 &amp;lsquo;888&amp;rsquo;이 ESA의 JIRA·Bitbucket 외부 서버를 침해해 소스 코드, API 토큰, 하드코딩된 자격증명 등 200GB 데이터를 탈취한 사건 분석</description>
+    </item>
+    <item>
+      <title>Practical Comprehensive Bounds on Surreptitious Communication Over DNS 구조 분석</title>
+      <link>http://localhost:1313/paper_review/soc_%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C/soc_dns_tunneling_paxson/</link>
+      <pubDate>Fri, 16 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/soc_%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C/soc_dns_tunneling_paxson/</guid>
+      <description>정보 이론과 콜모고로프 복잡도를 활용하여 DNS 터널링을 통한 데이터 유출의 이론적 한계를 정의하고, 실무적으로 탐지 가능한 수준의 데이터 전송률과 보안 경계값을 도출한 연구</description>
+    </item>
+    <item>
+      <title>Research Review: UNICORN - Runtime Provenance-Based Detector for APT</title>
+      <link>http://localhost:1313/paper_review/soc_%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C/unicorn_systemlevel_provenance_apt/</link>
+      <pubDate>Mon, 12 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/soc_%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C/unicorn_systemlevel_provenance_apt/</guid>
+      <description>TB급 시스템 로그를 Graph Sketching으로 압축하고 시스템의 시계열적 변화를 학습하는 Evolutionary Modeling을 통해, 시그니처 없는 Low-and-Slow APT 공격을 실시간으로 탐지하는 프레임워크 연구</description>
     </item>
     <item>
       <title>European Space Agency (ESA) 데이터 침해 사건</title>
@@ -247,6 +331,13 @@
       <description>AI 도구로 위장한 악성 Chrome 확장프로그램 2개가 90만 명의 ChatGPT·DeepSeek 대화를 탈취한 사건 분석</description>
     </item>
     <item>
+      <title>Beehive: Large-Scale Log Analysis for Detecting Suspicious Activity in Enterprise Networks 구조 분석</title>
+      <link>http://localhost:1313/paper_review/soc_%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C/large_scale_enterprise_log_analysis/</link>
+      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/soc_%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C/large_scale_enterprise_log_analysis/</guid>
+      <description>엔터프라이즈 환경의 방대한 로그에서 사용자 행동 기반의 특징을 추출하고 클러스터링을 통해 시그니처 없는 신종 공격과 내부 보안 위협을 탐지하는 대규모 로그 분석 프레임워크 연구</description>
+    </item>
+    <item>
       <title>Azure Blob Storage를 악용한 HTML Smuggling 피싱 캠페인</title>
       <link>http://localhost:1313/security-issues-analysis/2025/week52/azure_blob_storage_phishing/</link>
       <pubDate>Sun, 28 Dec 2025 00:00:00 +0000</pubDate>
@@ -268,6 +359,13 @@
       <description>크리스마스 이브에 발생한 Trust Wallet Chrome 확장 프로그램 공급망 공격 및 700만 달러 탈취 분석</description>
     </item>
     <item>
+      <title>Mining Invariants from Console Logs for System Problem Detection 구조 분석</title>
+      <link>http://localhost:1313/paper_review/soc_%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C/invariants_mining/</link>
+      <pubDate>Mon, 22 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/soc_%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C/invariants_mining/</guid>
+      <description>시스템 로그 내 메시지 간의 선형적 상관관계를 분석하여 &amp;lsquo;불변량(Invariants)&amp;lsquo;을 추출하고, 이를 통해 복잡한 분산 시스템의 비정상 실행 흐름을 높은 설명력으로 탐지하는 자동화 기법 연구</description>
+    </item>
+    <item>
       <title>Microsoft Edge 브라우저 보안 취약점 (CVE-2025-14372, CVE-2025-14373)</title>
       <link>http://localhost:1313/security-issues-analysis/2025/week51/edge_vulnearabilities/</link>
       <pubDate>Sun, 21 Dec 2025 00:00:00 +0000</pubDate>
@@ -287,6 +385,62 @@
       <pubDate>Sun, 21 Dec 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/security-issues-analysis/2025/week51/coupang_data_breach/</guid>
       <description>퇴사자의 인증키 탈취로 약 3,370만 건의 고객 개인정보가 유출된 쿠팡 사건 분석</description>
+    </item>
+    <item>
+      <title>To Kill a Centrifuge: Stuxnet이 증명한 사이버-물리 무기의 파괴력과 OT 보안의 교훈</title>
+      <link>http://localhost:1313/paper_review/ot_security_ot_ics_%EB%B3%B4%EC%95%88/to_kill_a_centrifuge_review/</link>
+      <pubDate>Fri, 19 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/ot_security_ot_ics_%EB%B3%B4%EC%95%88/to_kill_a_centrifuge_review/</guid>
+      <description>사이버 공격이 어떻게 물리적 파괴로 이어지는가? Ralph Langner의 기술 분석을 통해 Stuxnet의 두 가지 공격 루틴(과압/로터 속도), 제어 시스템 레벨의 MITM 기법, 그리고 Air Gap의 한계를 심층 분석하고 실무적인 OT 보안 체크리스트를 도출합니다.</description>
+    </item>
+    <item>
+      <title>Information Security Policy Compliance: An Empirical Study of Rationality-Based Beliefs and Information Security Awareness</title>
+      <link>http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/isp-compliance-bulgurcu/</link>
+      <pubDate>Wed, 17 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/isp-compliance-bulgurcu/</guid>
+      <description>직원들이 왜 보안 정책을 준수하거나 위반하는가? 계획된 행동 이론(TPB)에 합리적 비용-편익 분석과 보안 인식(ISA)을 결합하여 인적 보안의 메커니즘을 실증적으로 분석한 고전 연구.</description>
+    </item>
+    <item>
+      <title>Hey, You, Get Off of My Cloud: Exploring Information Leakage in Third-Party Compute Clouds</title>
+      <link>http://localhost:1313/paper_review/cloud_security_%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C_%EB%B3%B4%EC%95%88/get_off_my_cloud/</link>
+      <pubDate>Mon, 01 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/cloud_security_%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C_%EB%B3%B4%EC%95%88/get_off_my_cloud/</guid>
+      <description>클라우드 환경에서 하이퍼바이저 격리의 한계를 실증하고, 공유 CPU 캐시를 이용한 측면 채널 공격으로 암호화 키를 추출한 클라우드 보안의 전환점이 된 연구</description>
+    </item>
+    <item>
+      <title>Research Review: Fuzz4All - Universal Fuzzing with Large Language Models</title>
+      <link>http://localhost:1313/paper_review/vuln_assessment_%EC%B7%A8%EC%95%BD%EC%A0%90_%EC%A7%84%EB%8B%A8/fuzz4all/</link>
+      <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/vuln_assessment_%EC%B7%A8%EC%95%BD%EC%A0%90_%EC%A7%84%EB%8B%A8/fuzz4all/</guid>
+      <description>LLM의 추론 능력을 활용하여 문법적 종속성 없이 다양한 언어를 퍼징하는 Autoprompting 메커니즘을 제안하고, 76개의 신규 버그를 발견하여 지능형 생성 기반 퍼징의 효용성을 입증한 연구</description>
+    </item>
+    <item>
+      <title>Research Review: LLM 에이전트의 자율적 One-day 취약점 익스플로잇 분석</title>
+      <link>http://localhost:1313/paper_review/pentest_%EB%AA%A8%EC%9D%98%ED%95%B4%ED%82%B9/llm_agents_exploit/</link>
+      <pubDate>Sat, 22 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/pentest_%EB%AA%A8%EC%9D%98%ED%95%B4%ED%82%B9/llm_agents_exploit/</guid>
+      <description>GPT-4 기반의 자율 에이전트가 별도의 힌트 없이도 실제 CVE 취약점을 스스로 익스플로잇할 수 있음을 실증하고, LLM의 공격적 활용 가능성과 그에 따른 보안 위협을 분석한 연구</description>
+    </item>
+    <item>
+      <title>Advancing Autonomous Incident Response: Leveraging LLMs and Cyber Threat Intelligence</title>
+      <link>http://localhost:1313/paper_review/cert_%EC%B9%A8%ED%95%B4%EB%8C%80%EC%9D%91/llm_ti_framework/</link>
+      <pubDate>Fri, 14 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/cert_%EC%B9%A8%ED%95%B4%EB%8C%80%EC%9D%91/llm_ti_framework/</guid>
+      <description>LLM과 위협 인텔리전스를 결합하여 CERT의 사고 대응 프로세스를 자동화하고, 지속 학습형 보안 대응 시스템을 구현한 연구</description>
+    </item>
+    <item>
+      <title>DeepLog: Anomaly Detection and Diagnosis from System Logs 구조 분석</title>
+      <link>http://localhost:1313/paper_review/soc_%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C/deeplog_review/</link>
+      <pubDate>Sat, 08 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/soc_%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C/deeplog_review/</guid>
+      <description>LSTM을 활용하여 시스템 로그를 자연어처럼 모델링함으로써 비정상 패턴을 탐지하고, 파라미터 값 변화와 워크플로우 분석을 통해 장애의 근본 원인까지 진단하는 딥러닝 기반 로그 분석 프레임워크 연구</description>
+    </item>
+    <item>
+      <title>Cloud &amp; IoT 환경을 위한 Zero Trust Architecture(ZTA) 구조 분석</title>
+      <link>http://localhost:1313/paper_review/si_integration_%EB%B3%B4%EC%95%88_si/zero_trust/</link>
+      <pubDate>Fri, 07 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/si_integration_%EB%B3%B4%EC%95%88_si/zero_trust/</guid>
+      <description>Cloud와 IoT가 결합된 복잡한 네트워크 환경에서 기존 경계 보안의 한계를 극복하기 위해 제로 트러스트 아키텍처(ZTA)를 적용하고, 정책 기반 접근 제어와 동적 세분화 방안을 제시한 연구</description>
     </item>
     <item>
       <title>2025.10.31 (Day 5) 파이썬 예외 처리·로깅 및 보안 감사 로그 설계</title>
@@ -324,12 +478,35 @@
       <description>파이썬 기초 문법과 보안 분야 활용 방법 종합 학습</description>
     </item>
     <item>
+      <title>A Proposed Best-practice Framework for Information Security Governance</title>
+      <link>http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/bestpractice_framework/</link>
+      <pubDate>Sun, 09 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/bestpractice_framework/</guid>
+      <description>ISO 27014와 COBIT 5를 통합하여 전사적 보안 거버넌스를 구축하기 위한 5대 영역과 17개 핵심 성공 요인을 제시한 프레임워크 연구</description>
+    </item>
+    <item>
+      <title>A Framework for Organizational Compliance Management Tactics</title>
+      <link>http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/compliance_tactics_framework/</link>
+      <pubDate>Mon, 03 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/compliance_tactics_framework/</guid>
+      <description>합리주의와 규범주의 이론을 통합하여 조직 컴플라이언스를 달성하기 위한 전술을 전사-집단-개인 수준에서 분류한 2차원 프레임워크 연구</description>
+    </item>
+    <item>
       <title></title>
-      <link>http://localhost:1313/security_law_study/readme/</link>
+      <link>http://localhost:1313/cyber_law_study/readme/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/security_law_study/readme/</guid>
+      <guid>http://localhost:1313/cyber_law_study/readme/</guid>
       <description>&lt;h1 id=&#34;보안법-학습-저장소&#34;&gt;보안법 학습 저장소&lt;/h1&gt;
 &lt;p&gt;SK쉴더스 보안 컨설팅 팀 준비를 위한 보안 관련 법률 및 실무 지식 학습 자료&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>소개</title>
+      <link>http://localhost:1313/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/about/</guid>
+      <description>&lt;p&gt;안녕하세요, 보안 컨설팅을 준비하는 최호준입니다.&lt;/p&gt;
+&lt;p&gt;SK쉴더스 루키즈 28기로 보안 실무를 익히며, 매일 배운 것들을 이곳에 기록하고 있습니다.&lt;br&gt;
+단순한 공부 노트가 아닌, 실무에서 바로 쓸 수 있는 인사이트를 담으려 합니다.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

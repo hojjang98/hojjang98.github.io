@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>정부시스템침해 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%EC%A0%95%EB%B6%80%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%B9%A8%ED%95%B4/</link>
+    <description>Recent content in 정부시스템침해 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sun, 22 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%EC%A0%95%EB%B6%80%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%B9%A8%ED%95%B4/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>France FICOBA Bank Account Database Breach - National Financial DB Access via Stolen Government Credentials</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week08/ficoba_breach/</link>
+      <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week08/ficoba_breach/</guid>
+      <description>프랑스 국가 은행 계좌 등록 데이터베이스 FICOBA에서 공무원 자격증명 탈취를 통해 약 120만 개 계좌 정보가 노출된 사건으로, 합법적 접근 경로를 악용한 공격의 탐지 한계와 제로 트러스트 원칙의 중요성을 보여주는 사례</description>
+    </item>
+  </channel>
+</rss>

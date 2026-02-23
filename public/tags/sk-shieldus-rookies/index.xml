@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>SK-Shieldus-Rookies on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/sk-shieldus-rookies/</link>
+    <description>Recent content in SK-Shieldus-Rookies on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Mon, 12 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/sk-shieldus-rookies/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Research Review: UNICORN - Runtime Provenance-Based Detector for APT</title>
+      <link>http://localhost:1313/paper_review/soc_%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C/unicorn_systemlevel_provenance_apt/</link>
+      <pubDate>Mon, 12 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/soc_%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C/unicorn_systemlevel_provenance_apt/</guid>
+      <description>TB급 시스템 로그를 Graph Sketching으로 압축하고 시스템의 시계열적 변화를 학습하는 Evolutionary Modeling을 통해, 시그니처 없는 Low-and-Slow APT 공격을 실시간으로 탐지하는 프레임워크 연구</description>
+    </item>
+  </channel>
+</rss>

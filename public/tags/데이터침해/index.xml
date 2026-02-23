@@ -6,8 +6,15 @@
     <description>Recent content in 데이터침해 on HJ&#39;s Security Note</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sun, 18 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 22 Feb 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%B9%A8%ED%95%B4/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PayPal Working Capital 6개월 데이터 침해 — 소프트웨어 오류 기인 장기 개인정보 노출</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week08/paypal_working_capital_breach/</link>
+      <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week08/paypal_working_capital_breach/</guid>
+      <description>PayPal Working Capital 서비스의 코딩 오류로 SSN, 생년월일 등 고위험 개인정보가 6개월간 노출된 사건으로, 외부 공격이 아닌 내부 소프트웨어 결함에 의한 데이터 침해의 위험성과 민감 데이터 처리 경로에 대한 보안 검토 프로세스의 중요성을 보여주는 사례</description>
+    </item>
     <item>
       <title>유럽우주국(ESA) 외부 서버 침해로 200GB 데이터 탈취 주장</title>
       <link>http://localhost:1313/security-issues-analysis/2026/week03/esa_external_server_breach/</link>

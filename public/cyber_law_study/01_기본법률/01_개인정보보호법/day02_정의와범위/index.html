@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Day 02: 개인정보의 정의와 범위 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="개인정보보호법, 민감정보, 고유식별정보, 가명정보, 익명정보">
+<meta name="description" content="개인정보, 민감정보, 고유식별정보, 가명정보, 익명정보의 정의와 각각의 처리 요건 및 구별 기준을 학습합니다.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day02_%EC%A0%95%EC%9D%98%EC%99%80%EB%B2%94%EC%9C%84/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a29c24210eb31d9ce56f669c66a35c9c51b17376b7764e336a49af7dec914cf0.css" integrity="sha256-opwkIQ6zHZzlb2acZqNcnFGxc3a3dk4zakmvfeyRTPA=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day02_%EC%A0%95%EC%9D%98%EC%99%80%EB%B2%94%EC%9C%84/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/" title="프로젝트">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">홈</a>&nbsp;»&nbsp;<a href="http://localhost:1313/cyber_law_study/">보안 컨설팅 공부</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Day 02: 개인정보의 정의와 범위
+    </h1>
+    <div class="post-meta"><span title='2026-02-03 00:00:00 +0000 UTC'>2026년 2월 3일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="day-02-개인정보의-정의와-범위">Day 02: 개인정보의 정의와 범위<a hidden class="anchor" aria-hidden="true" href="#day-02-개인정보의-정의와-범위">#</a></h1>
+<h2 id="1-개인정보란-무엇인가">1. 개인정보란 무엇인가?<a hidden class="anchor" aria-hidden="true" href="#1-개인정보란-무엇인가">#</a></h2>
+<h3 id="11-법적-정의-법-제2조-제1호">1.1 법적 정의 (법 제2조 제1호)<a hidden class="anchor" aria-hidden="true" href="#11-법적-정의-법-제2조-제1호">#</a></h3>
+<p>살아 있는 개인에 관한 정보로서 다음 각 목의 어느 하나에 해당하는 정보:</p>
+<ul>
+<li>성명, 주민등록번호 및 영상 등을 통하여 <strong>개인을 알아볼 수 있는 정보</strong></li>
+<li>해당 정보만으로는 특정 개인을 알아볼 수 없더라도 <strong>다른 정보와 쉽게 결합</strong>하여 알아볼 수 있는 정보</li>
+</ul>
+<h3 id="12-핵심-요건">1.2 핵심 요건<a hidden class="anchor" aria-hidden="true" href="#12-핵심-요건">#</a></h3>
+<ol>
+<li><strong>살아 있는 개인</strong>에 관한 정보 (사망자 정보는 원칙적으로 제외)</li>
+<li><strong>식별 가능성</strong>: 특정 개인을 알아볼 수 있거나, 다른 정보와 결합하여 알아볼 수 있을 것</li>
+</ol>
+<h2 id="2-개인정보의-유형">2. 개인정보의 유형<a hidden class="anchor" aria-hidden="true" href="#2-개인정보의-유형">#</a></h2>
+<h3 id="21-일반-개인정보">2.1 일반 개인정보<a hidden class="anchor" aria-hidden="true" href="#21-일반-개인정보">#</a></h3>
+<p>특별한 제약 없이 정보주체의 동의를 받아 처리할 수 있는 정보</p>
+<p><strong>예시:</strong></p>
+<ul>
+<li>성명, 생년월일, 성별</li>
+<li>주소, 전화번호, 이메일</li>
+<li>학력, 경력</li>
+<li>IP 주소, 쿠키, 접속 로그</li>
+<li>신용카드번호, 계좌번호</li>
+</ul>
+<h3 id="22-민감정보-법-제23조">2.2 민감정보 (법 제23조)<a hidden class="anchor" aria-hidden="true" href="#22-민감정보-법-제23조">#</a></h3>
+<p>정보주체의 사상·신념, 노동조합·정당의 가입·탈퇴, 정치적 견해, 건강, 성생활 등에 관한 정보, 그 밖에 정보주체의 사생활을 현저히 침해할 우려가 있는 개인정보</p>
+<p><strong>예시:</strong></p>
+<ul>
+<li>사상, 신념, 정치적 견해</li>
+<li>건강정보, 의료정보, 진료기록</li>
+<li>성생활 정보</li>
+<li>유전자 정보, 생체인식 정보</li>
+<li>범죄경력 정보</li>
+<li>노동조합, 정당 가입 정보</li>
+</ul>
+<p><strong>처리 요건:</strong></p>
+<ul>
+<li>원칙적으로 처리 금지</li>
+<li>정보주체의 <strong>별도 동의</strong>가 있거나</li>
+<li>법령에서 민감정보 처리를 요구하거나 허용하는 경우에만 처리 가능</li>
+</ul>
+<h3 id="23-고유식별정보-법-제24조">2.3 고유식별정보 (법 제24조)<a hidden class="anchor" aria-hidden="true" href="#23-고유식별정보-법-제24조">#</a></h3>
+<p>개인을 고유하게 구별하기 위해 부여된 식별정보</p>
+<p><strong>법정 고유식별정보:</strong></p>
+<ul>
+<li>주민등록번호</li>
+<li>운전면허번호</li>
+<li>여권번호</li>
+<li>외국인등록번호</li>
+</ul>
+<p><strong>처리 요건:</strong></p>
+<ul>
+<li>원칙적으로 처리 금지</li>
+<li>법령에서 구체적으로 요구하거나 허용하는 경우</li>
+<li>정보주체 또는 제3자의 급박한 생명, 신체, 재산의 이익을 위해 명백히 필요한 경우</li>
+<li>주민등록번호는 더욱 엄격한 요건 (법 제24조의2)</li>
+</ul>
+<h3 id="24-가명정보-법-제2조-제1호의2">2.4 가명정보 (법 제2조 제1호의2)<a hidden class="anchor" aria-hidden="true" href="#24-가명정보-법-제2조-제1호의2">#</a></h3>
+<p>개인정보의 일부를 삭제하거나 일부 또는 전부를 대체하는 등의 방법으로 추가 정보가 없이는 특정 개인을 알아볼 수 없도록 처리한 정보</p>
+<p><strong>특징:</strong></p>
+<ul>
+<li>통계작성, 과학적 연구, 공익적 기록보존 등의 목적으로 정보주체의 동의 없이 처리 가능</li>
+<li>가명정보만으로는 특정 개인을 알아볼 수 없음</li>
+<li>가명처리 시 원래 상태로 복원하기 위한 추가 정보는 별도 분리 보관</li>
+</ul>
+<h3 id="25-익명정보">2.5 익명정보<a hidden class="anchor" aria-hidden="true" href="#25-익명정보">#</a></h3>
+<p>시간, 비용, 기술 등을 합리적으로 고려할 때 <strong>더 이상 개인을 알아볼 수 없는</strong> 정보</p>
+<p><strong>특징:</strong></p>
+<ul>
+<li>개인정보보호법의 적용 대상이 아님</li>
+<li>통계 자료, 빅데이터 분석 등에 자유롭게 활용 가능</li>
+<li>진정한 익명화는 기술적으로 어려움</li>
+</ul>
+<h2 id="3-개인정보-해당-여부-판단-기준">3. 개인정보 해당 여부 판단 기준<a hidden class="anchor" aria-hidden="true" href="#3-개인정보-해당-여부-판단-기준">#</a></h2>
+<h3 id="31-식별가능성-판단">3.1 식별가능성 판단<a hidden class="anchor" aria-hidden="true" href="#31-식별가능성-판단">#</a></h3>
+<p>다음 사항을 종합적으로 고려:</p>
+<ul>
+<li>해당 정보의 <strong>속성</strong></li>
+<li>다른 정보와의 <strong>결합 용이성</strong></li>
+<li>해당 정보가 <strong>이용되는 맥락</strong></li>
+</ul>
+<h3 id="32-결합-가능성-판단">3.2 결합 가능성 판단<a hidden class="anchor" aria-hidden="true" href="#32-결합-가능성-판단">#</a></h3>
+<p>&ldquo;쉽게 결합&quot;할 수 있는지 여부는 다음을 고려:</p>
+<ul>
+<li>다른 정보의 <strong>입수 가능성</strong></li>
+<li>결합에 필요한 <strong>시간, 비용, 기술</strong></li>
+<li>정보처리자의 <strong>의도나 동기</strong></li>
+</ul>
+<h3 id="33-실무-판단-예시">3.3 실무 판단 예시<a hidden class="anchor" aria-hidden="true" href="#33-실무-판단-예시">#</a></h3>
+<p><strong>개인정보에 해당하는 경우:</strong></p>
+<ul>
+<li>이름 + 전화번호</li>
+<li>학번 또는 사번 (조직 내에서 식별 가능)</li>
+<li>차량번호 (차량등록정보와 결합 시 소유자 식별)</li>
+<li>계좌번호 (금융기관에서 예금주 식별 가능)</li>
+<li>휴대전화번호 (통신사에서 가입자 식별 가능)</li>
+<li>쿠키, 광고식별자 (다른 정보와 결합 시 개인 식별 가능)</li>
+</ul>
+<p><strong>개인정보 해당 여부가 불분명한 경우:</strong></p>
+<ul>
+<li>기업 대표번호</li>
+<li>회사 이메일 주소 (예: <a href="mailto:info@company.com">info@company.com</a>)</li>
+<li>공개된 명함 정보 (맥락에 따라 판단)</li>
+</ul>
+<p><strong>개인정보에 해당하지 않는 경우:</strong></p>
+<ul>
+<li>완전히 익명화된 통계 자료</li>
+<li>개인과 무관한 사업자 정보</li>
+</ul>
+<h2 id="4-민감정보와-일반-개인정보의-구별">4. 민감정보와 일반 개인정보의 구별<a hidden class="anchor" aria-hidden="true" href="#4-민감정보와-일반-개인정보의-구별">#</a></h2>
+<h3 id="사례-1-병원-방문-기록">사례 1: 병원 방문 기록<a hidden class="anchor" aria-hidden="true" href="#사례-1-병원-방문-기록">#</a></h3>
+<ul>
+<li><strong>&quot;△△병원 방문&rdquo;</strong> → 일반 개인정보</li>
+<li><strong>&quot;△△정신건강의학과 방문&quot;</strong> → 민감정보 (건강정보)</li>
+<li><strong>&ldquo;우울증 진단&rdquo;</strong> → 민감정보</li>
+</ul>
+<h3 id="사례-2-단체-가입-정보">사례 2: 단체 가입 정보<a hidden class="anchor" aria-hidden="true" href="#사례-2-단체-가입-정보">#</a></h3>
+<ul>
+<li><strong>&quot;○○동호회 가입&quot;</strong> → 일반 개인정보</li>
+<li><strong>&quot;○○노동조합 가입&quot;</strong> → 민감정보</li>
+<li><strong>&quot;○○정당 당원&quot;</strong> → 민감정보</li>
+</ul>
+<h2 id="5-가명정보와-익명정보의-구별">5. 가명정보와 익명정보의 구별<a hidden class="anchor" aria-hidden="true" href="#5-가명정보와-익명정보의-구별">#</a></h2>
+<h3 id="51-비교표">5.1 비교표<a hidden class="anchor" aria-hidden="true" href="#51-비교표">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>구분</th>
+          <th>가명정보</th>
+          <th>익명정보</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>재식별 가능성</td>
+          <td>추가 정보 이용 시 재식별 가능</td>
+          <td>재식별 불가능</td>
+      </tr>
+      <tr>
+          <td>법적 성격</td>
+          <td>개인정보에 해당</td>
+          <td>개인정보 미해당</td>
+      </tr>
+      <tr>
+          <td>적용 법률</td>
+          <td>개인정보보호법 적용</td>
+          <td>개인정보보호법 적용 안됨</td>
+      </tr>
+      <tr>
+          <td>동의 필요성</td>
+          <td>특정 목적(통계, 연구 등)에 한해 동의 불요</td>
+          <td>동의 불필요</td>
+      </tr>
+      <tr>
+          <td>제3자 제공</td>
+          <td>특정 요건 충족 시 가능</td>
+          <td>자유롭게 가능</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="52-가명처리-예시">5.2 가명처리 예시<a hidden class="anchor" aria-hidden="true" href="#52-가명처리-예시">#</a></h3>
+<p><strong>원본 데이터:</strong></p>
+<ul>
+<li>홍길동, 800101-1234567, 서울시 강남구 테헤란로 123</li>
+</ul>
+<p><strong>가명처리 후:</strong></p>
+<ul>
+<li>ID_00123, 1980년대생, 남성, 서울시 강남구</li>
+</ul>
+<h2 id="6-영상정보cctv의-개인정보-해당성">6. 영상정보(CCTV)의 개인정보 해당성<a hidden class="anchor" aria-hidden="true" href="#6-영상정보cctv의-개인정보-해당성">#</a></h2>
+<h3 id="61-개인정보-해당-여부">6.1 개인정보 해당 여부<a hidden class="anchor" aria-hidden="true" href="#61-개인정보-해당-여부">#</a></h3>
+<ul>
+<li>영상에 <strong>사람의 얼굴, 차량번호 등이 포함</strong>되어 개인을 식별할 수 있으면 개인정보</li>
+<li>단순히 사람의 형체만 보이는 경우도 맥락에 따라 개인정보 가능</li>
+</ul>
+<h3 id="62-영상정보처리기기-설치운영-시-준수사항-법-제25조">6.2 영상정보처리기기 설치·운영 시 준수사항 (법 제25조)<a hidden class="anchor" aria-hidden="true" href="#62-영상정보처리기기-설치운영-시-준수사항-법-제25조">#</a></h3>
+<ul>
+<li>공개된 장소에 설치 시 안내판 설치</li>
+<li>설치 목적과 장소의 정당성</li>
+<li>촬영 범위 최소화</li>
+<li>보관 기간 명시 및 준수</li>
+</ul>
+<h2 id="7-보안-컨설팅-관점의-시사점">7. 보안 컨설팅 관점의 시사점<a hidden class="anchor" aria-hidden="true" href="#7-보안-컨설팅-관점의-시사점">#</a></h2>
+<h3 id="71-개인정보-영향평가-pia">7.1 개인정보 영향평가 (PIA)<a hidden class="anchor" aria-hidden="true" href="#71-개인정보-영향평가-pia">#</a></h3>
+<p>시스템 설계 단계에서 다음을 평가:</p>
+<ul>
+<li>처리하는 정보가 개인정보에 해당하는가?</li>
+<li>민감정보나 고유식별정보를 포함하는가?</li>
+<li>불필요한 개인정보 수집은 없는가?</li>
+</ul>
+<h3 id="72-민감정보-처리-시스템-설계">7.2 민감정보 처리 시스템 설계<a hidden class="anchor" aria-hidden="true" href="#72-민감정보-처리-시스템-설계">#</a></h3>
+<ul>
+<li>접근 권한 강화</li>
+<li>암호화 필수 적용</li>
+<li>별도 동의 관리 시스템</li>
+<li>감사 로그 강화</li>
+</ul>
+<h3 id="73-가명익명-처리-설계">7.3 가명·익명 처리 설계<a hidden class="anchor" aria-hidden="true" href="#73-가명익명-처리-설계">#</a></h3>
+<ul>
+<li>데이터 활용 목적에 따라 적절한 수준 선택</li>
+<li>가명정보 처리 시 재식별 방지 조치</li>
+<li>익명처리의 안전성 검증</li>
+</ul>
+<h2 id="8-실무-사례">8. 실무 사례<a hidden class="anchor" aria-hidden="true" href="#8-실무-사례">#</a></h2>
+<h3 id="사례-1-온라인-쇼핑몰">사례 1: 온라인 쇼핑몰<a hidden class="anchor" aria-hidden="true" href="#사례-1-온라인-쇼핑몰">#</a></h3>
+<p><strong>수집 정보:</strong></p>
+<ul>
+<li>일반: 이름, 주소, 전화번호, 이메일</li>
+<li>고유식별: 주민등록번호 (본인인증 시 - 법령 근거 필요)</li>
+<li>민감: 없음 (일반적으로)</li>
+</ul>
+<p><strong>주의사항:</strong></p>
+<ul>
+<li>주민등록번호는 법령에 근거가 없으면 수집 금지</li>
+<li>대체 수단(휴대폰 인증, 아이핀 등) 제공 의무</li>
+</ul>
+<h3 id="사례-2-병원-정보시스템">사례 2: 병원 정보시스템<a hidden class="anchor" aria-hidden="true" href="#사례-2-병원-정보시스템">#</a></h3>
+<p><strong>수집 정보:</strong></p>
+<ul>
+<li>일반: 이름, 연락처</li>
+<li>고유식별: 주민등록번호 (의료법에 근거)</li>
+<li>민감: 진료기록, 질병정보</li>
+</ul>
+<p><strong>주의사항:</strong></p>
+<ul>
+<li>민감정보 별도 동의 필수</li>
+<li>의료법상 기록 보존 의무와 개인정보보호법의 조화</li>
+<li>접근권한 엄격 관리</li>
+</ul>
+<h3 id="사례-3-인사-시스템">사례 3: 인사 시스템<a hidden class="anchor" aria-hidden="true" href="#사례-3-인사-시스템">#</a></h3>
+<p><strong>수집 정보:</strong></p>
+<ul>
+<li>일반: 이름, 연락처, 학력, 경력</li>
+<li>고유식별: 주민등록번호 (근로기준법 등에 근거)</li>
+<li>민감: 건강검진 결과 (산업안전보건법에 근거)</li>
+</ul>
+<p><strong>주의사항:</strong></p>
+<ul>
+<li>채용 시 민감정보 수집 최소화</li>
+<li>건강정보는 법적 근거가 있는 범위 내에서만 수집</li>
+</ul>
+<h2 id="9-자주-묻는-질문-faq">9. 자주 묻는 질문 (FAQ)<a hidden class="anchor" aria-hidden="true" href="#9-자주-묻는-질문-faq">#</a></h2>
+<p><strong>Q1. 법인 정보는 개인정보인가?</strong>
+A. 아니오. 개인정보보호법은 &ldquo;살아있는 개인&quot;에 관한 정보만 보호합니다. 다만 법인 대표자의 개인 정보는 개인정보입니다.</p>
+<p><strong>Q2. 사망자의 정보는 보호되는가?</strong>
+A. 원칙적으로 개인정보보호법의 적용 대상이 아닙니다. 다만 유족의 인격권 침해 등은 민법상 보호될 수 있습니다.</p>
+<p><strong>Q3. IP 주소는 개인정보인가?</strong>
+A. 그 자체로는 개인을 직접 식별할 수 없지만, ISP 등이 보유한 정보와 결합하면 개인 식별이 가능하므로 개인정보에 해당합니다.</p>
+<p><strong>Q4. 가명처리하면 자유롭게 이용할 수 있나?</strong>
+A. 아니요. 가명정보도 개인정보이며, 통계작성, 과학적 연구, 공익적 기록보존 등 특정 목적으로만 정보주체 동의 없이 이용 가능합니다.</p>
+<h2 id="학습-정리">학습 정리<a hidden class="anchor" aria-hidden="true" href="#학습-정리">#</a></h2>
+<p>오늘 학습한 핵심 내용:</p>
+<ul>
+<li>개인정보는 &ldquo;살아있는 개인&quot;을 &ldquo;식별할 수 있는&rdquo; 정보</li>
+<li>민감정보와 고유식별정보는 특별히 엄격한 보호 대상</li>
+<li>가명정보는 개인정보이지만 특정 목적으로 활용 가능</li>
+<li>익명정보는 개인정보가 아님</li>
+<li>정보의 속성, 결합 가능성, 맥락을 고려한 종합 판단 필요</li>
+</ul>
+<h2 id="다음-학습-주제">다음 학습 주제<a hidden class="anchor" aria-hidden="true" href="#다음-학습-주제">#</a></h2>
+<p>Day 03: 개인정보의 수집 및 이용 - 어떻게 수집하고 이용해야 하는가?</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/">개인정보보호법</a></li>
+      <li><a href="http://localhost:1313/tags/%EB%AF%BC%EA%B0%90%EC%A0%95%EB%B3%B4/">민감정보</a></li>
+      <li><a href="http://localhost:1313/tags/%EA%B3%A0%EC%9C%A0%EC%8B%9D%EB%B3%84%EC%A0%95%EB%B3%B4/">고유식별정보</a></li>
+      <li><a href="http://localhost:1313/tags/%EA%B0%80%EB%AA%85%EC%A0%95%EB%B3%B4/">가명정보</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%9D%B5%EB%AA%85%EC%A0%95%EB%B3%B4/">익명정보</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

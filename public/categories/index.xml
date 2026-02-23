@@ -6,20 +6,41 @@
     <description>Recent content in Categories on HJ&#39;s Security Note</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Wed, 18 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 23 Feb 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Security-Law-Study</title>
-      <link>http://localhost:1313/categories/security-law-study/</link>
-      <pubDate>Wed, 18 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/security-law-study/</guid>
+      <title>Paper-Review</title>
+      <link>http://localhost:1313/categories/paper-review/</link>
+      <pubDate>Mon, 23 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/paper-review/</guid>
       <description></description>
     </item>
     <item>
       <title>Security-Issues-Analysis</title>
       <link>http://localhost:1313/categories/security-issues-analysis/</link>
-      <pubDate>Sun, 15 Feb 2026 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/categories/security-issues-analysis/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cyber-Law-Study</title>
+      <link>http://localhost:1313/categories/cyber-law-study/</link>
+      <pubDate>Sat, 21 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/cyber-law-study/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>OT-Security</title>
+      <link>http://localhost:1313/categories/ot-security/</link>
+      <pubDate>Fri, 19 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/ot-security/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Research-Review</title>
+      <link>http://localhost:1313/categories/research-review/</link>
+      <pubDate>Fri, 19 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/research-review/</guid>
       <description></description>
     </item>
     <item>

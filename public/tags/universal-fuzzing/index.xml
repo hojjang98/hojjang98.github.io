@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Universal-Fuzzing on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/universal-fuzzing/</link>
+    <description>Recent content in Universal-Fuzzing on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Fri, 28 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/universal-fuzzing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Research Review: Fuzz4All - Universal Fuzzing with Large Language Models</title>
+      <link>http://localhost:1313/paper_review/vuln_assessment_%EC%B7%A8%EC%95%BD%EC%A0%90_%EC%A7%84%EB%8B%A8/fuzz4all/</link>
+      <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/vuln_assessment_%EC%B7%A8%EC%95%BD%EC%A0%90_%EC%A7%84%EB%8B%A8/fuzz4all/</guid>
+      <description>LLM의 추론 능력을 활용하여 문법적 종속성 없이 다양한 언어를 퍼징하는 Autoprompting 메커니즘을 제안하고, 76개의 신규 버그를 발견하여 지능형 생성 기반 퍼징의 효용성을 입증한 연구</description>
+    </item>
+  </channel>
+</rss>

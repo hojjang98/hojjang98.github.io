@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>SOAR on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/soar/</link>
+    <description>Recent content in SOAR on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Fri, 14 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/soar/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Advancing Autonomous Incident Response: Leveraging LLMs and Cyber Threat Intelligence</title>
+      <link>http://localhost:1313/paper_review/cert_%EC%B9%A8%ED%95%B4%EB%8C%80%EC%9D%91/llm_ti_framework/</link>
+      <pubDate>Fri, 14 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/cert_%EC%B9%A8%ED%95%B4%EB%8C%80%EC%9D%91/llm_ti_framework/</guid>
+      <description>LLM과 위협 인텔리전스를 결합하여 CERT의 사고 대응 프로세스를 자동화하고, 지속 학습형 보안 대응 시스템을 구현한 연구</description>
+    </item>
+  </channel>
+</rss>

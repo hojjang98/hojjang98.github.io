@@ -6,8 +6,15 @@
     <description>Recent content in 내부자위협 on HJ&#39;s Security Note</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sun, 11 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 22 Feb 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/%EB%82%B4%EB%B6%80%EC%9E%90%EC%9C%84%ED%98%91/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>France FICOBA Bank Account Database Breach - National Financial DB Access via Stolen Government Credentials</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week08/ficoba_breach/</link>
+      <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week08/ficoba_breach/</guid>
+      <description>프랑스 국가 은행 계좌 등록 데이터베이스 FICOBA에서 공무원 자격증명 탈취를 통해 약 120만 개 계좌 정보가 노출된 사건으로, 합법적 접근 경로를 악용한 공격의 탐지 한계와 제로 트러스트 원칙의 중요성을 보여주는 사례</description>
+    </item>
     <item>
       <title>사이버보안 전문가들의 BlackCat 랜섬웨어 범죄 자백 사건</title>
       <link>http://localhost:1313/security-issues-analysis/2026/week02/blackcat_insider_threat/</link>

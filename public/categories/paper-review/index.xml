@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Paper-Review on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/categories/paper-review/</link>
+    <description>Recent content in Paper-Review on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Mon, 23 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/paper-review/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Managing Cyber Risk in Supply Chains: A Review and Research Agenda</title>
+      <link>http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/cyber_risk_supply_chain/</link>
+      <pubDate>Mon, 23 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/cyber_risk_supply_chain/</guid>
+      <description>공급망 맥락에서 사이버 리스크를 체계적으로 분류하고, 침투 지점(PoP)과 리스크 전파 모델을 통해 조직 경계를 넘어서는 위협을 이해하기 위한 개념적 프레임워크를 제시한 체계적 문헌 고찰 연구</description>
+    </item>
+    <item>
+      <title>Effectiveness of Cybersecurity Audit: 사이버보안 감사 효과성 측정과 리스크 성숙도의 상관관계</title>
+      <link>http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/cybersecurity_audit_effectivness/</link>
+      <pubDate>Wed, 18 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/cybersecurity_audit_effectivness/</guid>
+      <description>사이버보안 감사는 실제로 효과가 있는가? 계획-수행-보고 3개 차원의 CSA Index를 통해 감사 효과성이 리스크 관리 성숙도를 높이는 핵심 동인임을 입증하고, 감사 품질과 이사회 보고 사이의 단절 위험을 경고한 실증 연구.</description>
+    </item>
+    <item>
+      <title>Towards an Integrated Risk Analysis Security Framework</title>
+      <link>http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/integrated-risk-framework/</link>
+      <pubDate>Tue, 27 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/integrated-risk-framework/</guid>
+      <description>30개 위험 분석 방법론의 체계적 비교를 통해 10가지 핵심 약점을 식별하고, 동적 학습 순환과 패턴 기반 접근으로 이를 해결하는 MARISMA 프레임워크를 제안한 연구</description>
+    </item>
+    <item>
+      <title>Outside the Closed World: On Using Machine Learning For Network Intrusion Detection 구조 분석</title>
+      <link>http://localhost:1313/paper_review/soc_%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C/outside_closed_world/</link>
+      <pubDate>Thu, 22 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/soc_%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C/outside_closed_world/</guid>
+      <description>네트워크 침입 탐지 분야에서 머신러닝 도입이 직면한 실무적 한계(Semantic Gap, Base-Rate Fallacy 등)를 분석하고, 실 운영 환경에 성공적으로 적용하기 위한 평가 방법론과 가이드라인을 제시한 연구</description>
+    </item>
+    <item>
+      <title>Practical Comprehensive Bounds on Surreptitious Communication Over DNS 구조 분석</title>
+      <link>http://localhost:1313/paper_review/soc_%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C/soc_dns_tunneling_paxson/</link>
+      <pubDate>Fri, 16 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/soc_%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C/soc_dns_tunneling_paxson/</guid>
+      <description>정보 이론과 콜모고로프 복잡도를 활용하여 DNS 터널링을 통한 데이터 유출의 이론적 한계를 정의하고, 실무적으로 탐지 가능한 수준의 데이터 전송률과 보안 경계값을 도출한 연구</description>
+    </item>
+    <item>
+      <title>Research Review: UNICORN - Runtime Provenance-Based Detector for APT</title>
+      <link>http://localhost:1313/paper_review/soc_%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C/unicorn_systemlevel_provenance_apt/</link>
+      <pubDate>Mon, 12 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/soc_%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C/unicorn_systemlevel_provenance_apt/</guid>
+      <description>TB급 시스템 로그를 Graph Sketching으로 압축하고 시스템의 시계열적 변화를 학습하는 Evolutionary Modeling을 통해, 시그니처 없는 Low-and-Slow APT 공격을 실시간으로 탐지하는 프레임워크 연구</description>
+    </item>
+    <item>
+      <title>Beehive: Large-Scale Log Analysis for Detecting Suspicious Activity in Enterprise Networks 구조 분석</title>
+      <link>http://localhost:1313/paper_review/soc_%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C/large_scale_enterprise_log_analysis/</link>
+      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/soc_%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C/large_scale_enterprise_log_analysis/</guid>
+      <description>엔터프라이즈 환경의 방대한 로그에서 사용자 행동 기반의 특징을 추출하고 클러스터링을 통해 시그니처 없는 신종 공격과 내부 보안 위협을 탐지하는 대규모 로그 분석 프레임워크 연구</description>
+    </item>
+    <item>
+      <title>Mining Invariants from Console Logs for System Problem Detection 구조 분석</title>
+      <link>http://localhost:1313/paper_review/soc_%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C/invariants_mining/</link>
+      <pubDate>Mon, 22 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/soc_%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C/invariants_mining/</guid>
+      <description>시스템 로그 내 메시지 간의 선형적 상관관계를 분석하여 &amp;lsquo;불변량(Invariants)&amp;lsquo;을 추출하고, 이를 통해 복잡한 분산 시스템의 비정상 실행 흐름을 높은 설명력으로 탐지하는 자동화 기법 연구</description>
+    </item>
+    <item>
+      <title>Information Security Policy Compliance: An Empirical Study of Rationality-Based Beliefs and Information Security Awareness</title>
+      <link>http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/isp-compliance-bulgurcu/</link>
+      <pubDate>Wed, 17 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/isp-compliance-bulgurcu/</guid>
+      <description>직원들이 왜 보안 정책을 준수하거나 위반하는가? 계획된 행동 이론(TPB)에 합리적 비용-편익 분석과 보안 인식(ISA)을 결합하여 인적 보안의 메커니즘을 실증적으로 분석한 고전 연구.</description>
+    </item>
+    <item>
+      <title>Hey, You, Get Off of My Cloud: Exploring Information Leakage in Third-Party Compute Clouds</title>
+      <link>http://localhost:1313/paper_review/cloud_security_%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C_%EB%B3%B4%EC%95%88/get_off_my_cloud/</link>
+      <pubDate>Mon, 01 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/cloud_security_%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C_%EB%B3%B4%EC%95%88/get_off_my_cloud/</guid>
+      <description>클라우드 환경에서 하이퍼바이저 격리의 한계를 실증하고, 공유 CPU 캐시를 이용한 측면 채널 공격으로 암호화 키를 추출한 클라우드 보안의 전환점이 된 연구</description>
+    </item>
+    <item>
+      <title>Research Review: Fuzz4All - Universal Fuzzing with Large Language Models</title>
+      <link>http://localhost:1313/paper_review/vuln_assessment_%EC%B7%A8%EC%95%BD%EC%A0%90_%EC%A7%84%EB%8B%A8/fuzz4all/</link>
+      <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/vuln_assessment_%EC%B7%A8%EC%95%BD%EC%A0%90_%EC%A7%84%EB%8B%A8/fuzz4all/</guid>
+      <description>LLM의 추론 능력을 활용하여 문법적 종속성 없이 다양한 언어를 퍼징하는 Autoprompting 메커니즘을 제안하고, 76개의 신규 버그를 발견하여 지능형 생성 기반 퍼징의 효용성을 입증한 연구</description>
+    </item>
+    <item>
+      <title>Research Review: LLM 에이전트의 자율적 One-day 취약점 익스플로잇 분석</title>
+      <link>http://localhost:1313/paper_review/pentest_%EB%AA%A8%EC%9D%98%ED%95%B4%ED%82%B9/llm_agents_exploit/</link>
+      <pubDate>Sat, 22 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/pentest_%EB%AA%A8%EC%9D%98%ED%95%B4%ED%82%B9/llm_agents_exploit/</guid>
+      <description>GPT-4 기반의 자율 에이전트가 별도의 힌트 없이도 실제 CVE 취약점을 스스로 익스플로잇할 수 있음을 실증하고, LLM의 공격적 활용 가능성과 그에 따른 보안 위협을 분석한 연구</description>
+    </item>
+    <item>
+      <title>Advancing Autonomous Incident Response: Leveraging LLMs and Cyber Threat Intelligence</title>
+      <link>http://localhost:1313/paper_review/cert_%EC%B9%A8%ED%95%B4%EB%8C%80%EC%9D%91/llm_ti_framework/</link>
+      <pubDate>Fri, 14 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/cert_%EC%B9%A8%ED%95%B4%EB%8C%80%EC%9D%91/llm_ti_framework/</guid>
+      <description>LLM과 위협 인텔리전스를 결합하여 CERT의 사고 대응 프로세스를 자동화하고, 지속 학습형 보안 대응 시스템을 구현한 연구</description>
+    </item>
+    <item>
+      <title>DeepLog: Anomaly Detection and Diagnosis from System Logs 구조 분석</title>
+      <link>http://localhost:1313/paper_review/soc_%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C/deeplog_review/</link>
+      <pubDate>Sat, 08 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/soc_%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C/deeplog_review/</guid>
+      <description>LSTM을 활용하여 시스템 로그를 자연어처럼 모델링함으로써 비정상 패턴을 탐지하고, 파라미터 값 변화와 워크플로우 분석을 통해 장애의 근본 원인까지 진단하는 딥러닝 기반 로그 분석 프레임워크 연구</description>
+    </item>
+    <item>
+      <title>Cloud &amp; IoT 환경을 위한 Zero Trust Architecture(ZTA) 구조 분석</title>
+      <link>http://localhost:1313/paper_review/si_integration_%EB%B3%B4%EC%95%88_si/zero_trust/</link>
+      <pubDate>Fri, 07 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/si_integration_%EB%B3%B4%EC%95%88_si/zero_trust/</guid>
+      <description>Cloud와 IoT가 결합된 복잡한 네트워크 환경에서 기존 경계 보안의 한계를 극복하기 위해 제로 트러스트 아키텍처(ZTA)를 적용하고, 정책 기반 접근 제어와 동적 세분화 방안을 제시한 연구</description>
+    </item>
+    <item>
+      <title>A Proposed Best-practice Framework for Information Security Governance</title>
+      <link>http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/bestpractice_framework/</link>
+      <pubDate>Sun, 09 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/bestpractice_framework/</guid>
+      <description>ISO 27014와 COBIT 5를 통합하여 전사적 보안 거버넌스를 구축하기 위한 5대 영역과 17개 핵심 성공 요인을 제시한 프레임워크 연구</description>
+    </item>
+    <item>
+      <title>A Framework for Organizational Compliance Management Tactics</title>
+      <link>http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/compliance_tactics_framework/</link>
+      <pubDate>Mon, 03 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/compliance_tactics_framework/</guid>
+      <description>합리주의와 규범주의 이론을 통합하여 조직 컴플라이언스를 달성하기 위한 전술을 전사-집단-개인 수준에서 분류한 2차원 프레임워크 연구</description>
+    </item>
+  </channel>
+</rss>

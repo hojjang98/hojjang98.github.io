@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Day 13: 신용정보법 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="신용정보법, 개인신용정보, 마이데이터, 금융보안, 신용정보주체권리">
+<meta name="description" content="개인신용정보의 수집·제공 제한, 신용정보주체의 권리(열람, 정정·삭제, 동의철회), 마이데이터 제도를 학습합니다.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/04_%EC%8B%A0%EC%9A%A9%EC%A0%95%EB%B3%B4%EB%B2%95/day13_%EC%8B%A0%EC%9A%A9%EC%A0%95%EB%B3%B4%EB%B2%95/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a29c24210eb31d9ce56f669c66a35c9c51b17376b7764e336a49af7dec914cf0.css" integrity="sha256-opwkIQ6zHZzlb2acZqNcnFGxc3a3dk4zakmvfeyRTPA=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/04_%EC%8B%A0%EC%9A%A9%EC%A0%95%EB%B3%B4%EB%B2%95/day13_%EC%8B%A0%EC%9A%A9%EC%A0%95%EB%B3%B4%EB%B2%95/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/" title="프로젝트">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">홈</a>&nbsp;»&nbsp;<a href="http://localhost:1313/cyber_law_study/">보안 컨설팅 공부</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Day 13: 신용정보법
+    </h1>
+    <div class="post-meta"><span title='2026-02-18 00:00:00 +0000 UTC'>2026년 2월 18일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="day-13-신용정보법">Day 13: 신용정보법<a hidden class="anchor" aria-hidden="true" href="#day-13-신용정보법">#</a></h1>
+<h2 id="1-신용정보법의-개요">1. 신용정보법의 개요<a hidden class="anchor" aria-hidden="true" href="#1-신용정보법의-개요">#</a></h2>
+<h3 id="11-신용정보법이란">1.1 신용정보법이란?<a hidden class="anchor" aria-hidden="true" href="#11-신용정보법이란">#</a></h3>
+<p><strong>정식 명칭</strong>: 신용정보의 이용 및 보호에 관한 법률 (약칭: 신용정보법)</p>
+<p>신용정보업을 건전하게 육성하고 <strong>신용정보의 효율적 이용과 체계적 관리</strong>를 기하며, <strong>신용정보의 오용·남용으로부터 사생활의 비밀 등을 적절히 보호</strong>함으로써 건전한 신용질서의 확립에 이바지하기 위한 법률</p>
+<h3 id="12-제정-배경-및-연혁">1.2 제정 배경 및 연혁<a hidden class="anchor" aria-hidden="true" href="#12-제정-배경-및-연혁">#</a></h3>
+<ul>
+<li><strong>1995년 1월 5일 제정</strong>: &ldquo;신용정보의이용및보호에관한법률&rdquo;</li>
+<li><strong>2020년 8월 5일 전부 개정</strong>: 데이터 3법 개정
+<ul>
+<li>마이데이터 도입</li>
+<li>가명정보 도입</li>
+<li>개인신용정보 보호 강화</li>
+</ul>
+</li>
+</ul>
+<h3 id="13-적용-범위">1.3 적용 범위<a hidden class="anchor" aria-hidden="true" href="#13-적용-범위">#</a></h3>
+<h4 id="적용-대상">적용 대상<a hidden class="anchor" aria-hidden="true" href="#적용-대상">#</a></h4>
+<p><strong>신용정보</strong>를 처리하는 자:</p>
+<ul>
+<li><strong>신용정보회사</strong> (신용조회회사, 신용평가회사, 채권추심회사 등)</li>
+<li><strong>금융기관</strong> (은행, 증권사, 보험사, 카드사 등)</li>
+<li><strong>공공기관</strong></li>
+<li>기타 신용정보를 처리하는 자</li>
+</ul>
+<h4 id="신용정보의-정의-법-제2조-제1호">신용정보의 정의 (법 제2조 제1호)<a hidden class="anchor" aria-hidden="true" href="#신용정보의-정의-법-제2조-제1호">#</a></h4>
+<p><strong>신용정보</strong>: 금융거래 등 <strong>상거래에 있어서 거래 상대방의 신용을 판단할 때 필요한 정보</strong></p>
+<p><strong>1. 특정 신용정보주체를 식별할 수 있는 정보</strong></p>
+<ul>
+<li>성명, 주민등록번호, 주소, 연락처 등</li>
+</ul>
+<p><strong>2. 신용정보주체의 거래 내용을 판단할 수 있는 정보</strong></p>
+<ul>
+<li>대출, 보증, 담보제공</li>
+<li>신용카드 발급·사용</li>
+<li>상품·서비스 구매·이용</li>
+<li>채무 불이행</li>
+</ul>
+<p><strong>3. 신용정보주체의 신용도를 판단할 수 있는 정보</strong></p>
+<ul>
+<li>신용평점</li>
+<li>신용등급</li>
+</ul>
+<p><strong>4. 신용정보주체의 신용거래능력을 판단할 수 있는 정보</strong></p>
+<ul>
+<li>소득, 재산, 채무</li>
+<li>직업, 근속연수</li>
+</ul>
+<h3 id="14-개인정보보호법과의-관계">1.4 개인정보보호법과의 관계<a hidden class="anchor" aria-hidden="true" href="#14-개인정보보호법과의-관계">#</a></h3>
+<ul>
+<li>신용정보법은 <strong>특별법</strong></li>
+<li>신용정보 처리에 대해서는 신용정보법 <strong>우선 적용</strong></li>
+<li>신용정보법에 규정이 없는 사항은 개인정보보호법 적용</li>
+</ul>
+<p><strong>적용 우선순위:</strong></p>
+<pre tabindex="0"><code>신용정보법 (특별법)
+    ↓
+개인정보보호법 (일반법)
+</code></pre><h2 id="2-신용정보법의-주요-내용">2. 신용정보법의 주요 내용<a hidden class="anchor" aria-hidden="true" href="#2-신용정보법의-주요-내용">#</a></h2>
+<h3 id="21-법의-구조">2.1 법의 구조<a hidden class="anchor" aria-hidden="true" href="#21-법의-구조">#</a></h3>
+<p>신용정보법은 크게 <strong>9개 장</strong>으로 구성:</p>
+<pre tabindex="0"><code>제1장 총칙
+제2장 신용정보회사 등
+제3장 신용정보의 이용 및 보호
+제4장 개인신용정보의 보호
+제5장 본인신용정보관리업 (마이데이터)
+제6장 신용정보집중기관 및 신용조사회사
+제7장 감독
+제8장 벌칙
+제9장 보칙
+</code></pre><h3 id="22-보안-컨설팅-관점에서-중요한-조항">2.2 보안 컨설팅 관점에서 중요한 조항<a hidden class="anchor" aria-hidden="true" href="#22-보안-컨설팅-관점에서-중요한-조항">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>조항</th>
+          <th>내용</th>
+          <th>중요도</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>제32조~제40조</td>
+          <td>개인신용정보의 수집·조사, 제공·활용</td>
+          <td>★★★</td>
+      </tr>
+      <tr>
+          <td>제41조</td>
+          <td>개인신용정보의 정확성 보장 등</td>
+          <td>★★</td>
+      </tr>
+      <tr>
+          <td>제42조~제45조</td>
+          <td>신용정보주체의 권리</td>
+          <td>★★★</td>
+      </tr>
+      <tr>
+          <td>제46조</td>
+          <td>개인신용정보 유출 등의 통지</td>
+          <td>★★★</td>
+      </tr>
+      <tr>
+          <td>제48조</td>
+          <td>신용정보의 안전성 확보 의무</td>
+          <td>★★★</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="3-개인신용정보의-수집-및-이용-법-제32조제34조">3. 개인신용정보의 수집 및 이용 (법 제32조~제34조)<a hidden class="anchor" aria-hidden="true" href="#3-개인신용정보의-수집-및-이용-법-제32조제34조">#</a></h2>
+<h3 id="31-개인신용정보-수집조사의-제한-법-제32조">3.1 개인신용정보 수집·조사의 제한 (법 제32조)<a hidden class="anchor" aria-hidden="true" href="#31-개인신용정보-수집조사의-제한-법-제32조">#</a></h3>
+<h4 id="수집-제한-원칙">수집 제한 원칙<a hidden class="anchor" aria-hidden="true" href="#수집-제한-원칙">#</a></h4>
+<p>신용정보회사 등은 다음 중 하나에 해당하는 경우에만 개인신용정보 수집·조사 가능:</p>
+<ol>
+<li><strong>신용정보주체의 동의</strong>를 받은 경우</li>
+<li><strong>법령에 따라 의무를 이행</strong>하기 위해 불가피한 경우</li>
+<li><strong>계약 체결·유지</strong> 등을 위해 불가피한 경우</li>
+</ol>
+<h4 id="수집-금지-정보-법-제32조-제2항">수집 금지 정보 (법 제32조 제2항)<a hidden class="anchor" aria-hidden="true" href="#수집-금지-정보-법-제32조-제2항">#</a></h4>
+<p>다음 정보는 <strong>원칙적으로 수집 금지</strong>:</p>
+<ol>
+<li>
+<p><strong>사상, 신념, 노동조합·정당 가입·탈퇴, 정치적 견해, 건강, 성생활</strong> 등에 관한 정보
+→ <strong>민감정보</strong></p>
+</li>
+<li>
+<p><strong>범죄경력 자료</strong>에 해당하는 정보</p>
+</li>
+<li>
+<p><strong>개인의 질병, 상해 또는 이와 관련한 치료 등</strong>에 관한 정보</p>
+</li>
+</ol>
+<p><strong>예외:</strong></p>
+<ul>
+<li>신용정보주체가 <strong>명시적으로 동의</strong>한 경우</li>
+<li>법령에서 <strong>구체적으로 허용</strong>한 경우</li>
+</ul>
+<h3 id="32-개인신용정보의-제공활용에-대한-동의-법-제34조">3.2 개인신용정보의 제공·활용에 대한 동의 (법 제34조)<a hidden class="anchor" aria-hidden="true" href="#32-개인신용정보의-제공활용에-대한-동의-법-제34조">#</a></h3>
+<h4 id="동의-받을-때-고지사항">동의 받을 때 고지사항<a hidden class="anchor" aria-hidden="true" href="#동의-받을-때-고지사항">#</a></h4>
+<p>개인신용정보를 제공하거나 활용하려는 경우 다음 사항을 <strong>명확하게 고지하고 동의</strong> 필요:</p>
+<ol>
+<li>개인신용정보를 <strong>제공받는 자</strong></li>
+<li>개인신용정보를 <strong>제공받는 자의 이용 목적</strong></li>
+<li><strong>제공하는 개인신용정보의 내용</strong></li>
+<li>개인신용정보를 <strong>제공받는 자의 보유 및 이용 기간</strong></li>
+<li>동의를 거부할 권리 및 <strong>동의 거부 시 불이익</strong> (있는 경우)</li>
+</ol>
+<h4 id="동의-방식">동의 방식<a hidden class="anchor" aria-hidden="true" href="#동의-방식">#</a></h4>
+<ul>
+<li><strong>서면, 전자문서, 구두</strong> 등의 방법</li>
+<li>명확하고 <strong>구체적으로 동의</strong> 받아야 함</li>
+</ul>
+<h4 id="포괄적-동의-금지">포괄적 동의 금지<a hidden class="anchor" aria-hidden="true" href="#포괄적-동의-금지">#</a></h4>
+<ul>
+<li>여러 목적을 하나의 동의로 묶는 것 금지</li>
+<li>각 목적별로 <strong>개별 동의</strong> 필요</li>
+</ul>
+<h3 id="33-개인신용정보의-제공활용-제한-법-제33조-제34조">3.3 개인신용정보의 제공·활용 제한 (법 제33조, 제34조)<a hidden class="anchor" aria-hidden="true" href="#33-개인신용정보의-제공활용-제한-법-제33조-제34조">#</a></h3>
+<h4 id="제3자-제공-제한">제3자 제공 제한<a hidden class="anchor" aria-hidden="true" href="#제3자-제공-제한">#</a></h4>
+<p>개인신용정보는 원칙적으로 <strong>신용정보주체의 동의</strong> 없이 제3자에게 제공 금지</p>
+<p><strong>예외:</strong></p>
+<ol>
+<li><strong>법령에 따라 제공</strong>하는 경우</li>
+<li><strong>계약 이행</strong>을 위해 필요한 경우</li>
+</ol>
+<h4 id="목적-외-이용-금지">목적 외 이용 금지<a hidden class="anchor" aria-hidden="true" href="#목적-외-이용-금지">#</a></h4>
+<p>수집한 개인신용정보를 <strong>당초 수집 목적 외</strong>의 용도로 이용 금지</p>
+<h2 id="4-신용정보주체의-권리-법-제42조제45조">4. 신용정보주체의 권리 (법 제42조~제45조)<a hidden class="anchor" aria-hidden="true" href="#4-신용정보주체의-권리-법-제42조제45조">#</a></h2>
+<h3 id="41-신용정보-열람-요구권-법-제42조">4.1 신용정보 열람 요구권 (법 제42조)<a hidden class="anchor" aria-hidden="true" href="#41-신용정보-열람-요구권-법-제42조">#</a></h3>
+<h4 id="권리의-내용">권리의 내용<a hidden class="anchor" aria-hidden="true" href="#권리의-내용">#</a></h4>
+<p>신용정보주체는 신용정보회사 등에 <strong>자신의 신용정보에 대해 열람</strong> 요구 가능</p>
+<p><strong>열람 대상:</strong></p>
+<ul>
+<li>본인의 <strong>개인신용정보</strong></li>
+<li>개인신용평점 (신용등급)</li>
+</ul>
+<h4 id="열람-방법">열람 방법<a hidden class="anchor" aria-hidden="true" href="#열람-방법">#</a></h4>
+<ul>
+<li><strong>서면, 전화, 전자우편, 인터넷</strong> 등</li>
+<li><strong>연 3회까지 무료</strong> (4회부터 수수료 가능)</li>
+</ul>
+<h4 id="열람-제공-시한">열람 제공 시한<a hidden class="anchor" aria-hidden="true" href="#열람-제공-시한">#</a></h4>
+<p>요구받은 날로부터 <strong>10일 이내</strong></p>
+<h3 id="42-신용정보-정정삭제-요구권-법-제43조">4.2 신용정보 정정·삭제 요구권 (법 제43조)<a hidden class="anchor" aria-hidden="true" href="#42-신용정보-정정삭제-요구권-법-제43조">#</a></h3>
+<h4 id="권리의-내용-1">권리의 내용<a hidden class="anchor" aria-hidden="true" href="#권리의-내용-1">#</a></h4>
+<p>신용정보주체는 <strong>신용정보가 사실과 다른 경우</strong> 정정 요구 가능</p>
+<h4 id="정정삭제-절차">정정·삭제 절차<a hidden class="anchor" aria-hidden="true" href="#정정삭제-절차">#</a></h4>
+<ol>
+<li>신용정보주체가 정정·삭제 요구</li>
+<li>신용정보회사 등이 조사</li>
+<li><strong>7일 이내</strong> 조치 또는 조사 중임을 통지</li>
+<li>조사 완료 후 정정·삭제 또는 거부 통지</li>
+</ol>
+<h4 id="다툼-발생-시">다툼 발생 시<a hidden class="anchor" aria-hidden="true" href="#다툼-발생-시">#</a></h4>
+<p>신용정보주체와 신용정보회사 등 간 다툼이 있는 경우
+→ <strong>금융위원회에 시정 신청</strong> 가능</p>
+<h3 id="43-신용정보-삭제-요구권-법-제44조">4.3 신용정보 삭제 요구권 (법 제44조)<a hidden class="anchor" aria-hidden="true" href="#43-신용정보-삭제-요구권-법-제44조">#</a></h3>
+<h4 id="보유-기간-경과-시-삭제">보유 기간 경과 시 삭제<a hidden class="anchor" aria-hidden="true" href="#보유-기간-경과-시-삭제">#</a></h4>
+<p>신용정보의 <strong>보유 기간이 경과</strong>한 경우 신용정보주체는 삭제 요구 가능</p>
+<p><strong>보유 기간:</strong></p>
+<ul>
+<li>대출 등 <strong>상거래 관계 종료 후 5년</strong></li>
+<li>연체 정보: <strong>연체 해소 후 1년</strong> (단, 장기 연체는 5년)</li>
+</ul>
+<h3 id="44-동의-철회권-법-제37조">4.4 동의 철회권 (법 제37조)<a hidden class="anchor" aria-hidden="true" href="#44-동의-철회권-법-제37조">#</a></h3>
+<h4 id="권리의-내용-2">권리의 내용<a hidden class="anchor" aria-hidden="true" href="#권리의-내용-2">#</a></h4>
+<p>신용정보주체는 <strong>언제든지 동의를 철회</strong> 가능</p>
+<h4 id="철회-방법">철회 방법<a hidden class="anchor" aria-hidden="true" href="#철회-방법">#</a></h4>
+<p>동의한 방법보다 <strong>쉬운 방법으로 철회</strong> 가능해야 함</p>
+<h2 id="5-개인신용정보-유출-통지-법-제46조">5. 개인신용정보 유출 통지 (법 제46조)<a hidden class="anchor" aria-hidden="true" href="#5-개인신용정보-유출-통지-법-제46조">#</a></h2>
+<h3 id="51-유출-통지-의무">5.1 유출 통지 의무<a hidden class="anchor" aria-hidden="true" href="#51-유출-통지-의무">#</a></h3>
+<p>신용정보회사 등은 개인신용정보가 <strong>유출되었음을 알게 된 때</strong> 지체 없이:</p>
+<ol>
+<li><strong>신용정보주체에게 통지</strong></li>
+<li><strong>금융위원회 및 한국인터넷진흥원에 신고</strong></li>
+</ol>
+<h3 id="52-통지-내용">5.2 통지 내용<a hidden class="anchor" aria-hidden="true" href="#52-통지-내용">#</a></h3>
+<ol>
+<li>유출된 <strong>개인신용정보 항목</strong></li>
+<li>유출 <strong>시점과 경위</strong></li>
+<li>유출로 인해 발생 가능한 <strong>피해 최소화 방법</strong></li>
+<li>신용정보회사 등의 <strong>대응 조치</strong></li>
+<li>신용정보주체가 <strong>상담·피해 구제</strong>를 받을 수 있는 담당 부서 및 연락처</li>
+</ol>
+<h3 id="53-통지-방법">5.3 통지 방법<a hidden class="anchor" aria-hidden="true" href="#53-통지-방법">#</a></h3>
+<ul>
+<li><strong>서면, 전자우편, 팩스, 전화, 문자</strong> 등 신용정보주체에게 개별 통지</li>
+<li>연락처를 알 수 없는 경우 → 홈페이지 공지 (30일 이상)</li>
+</ul>
+<h2 id="6-신용정보의-안전성-확보-의무-법-제48조">6. 신용정보의 안전성 확보 의무 (법 제48조)<a hidden class="anchor" aria-hidden="true" href="#6-신용정보의-안전성-확보-의무-법-제48조">#</a></h2>
+<h3 id="61-안전성-확보-조치-의무">6.1 안전성 확보 조치 의무<a hidden class="anchor" aria-hidden="true" href="#61-안전성-확보-조치-의무">#</a></h3>
+<p>신용정보회사 등은 개인신용정보의 <strong>안전성 확보</strong>를 위해 다음 조치를 해야 함:</p>
+<h4 id="1-내부-관리계획-수립시행">(1) 내부 관리계획 수립·시행<a hidden class="anchor" aria-hidden="true" href="#1-내부-관리계획-수립시행">#</a></h4>
+<h4 id="2-접근-권한-관리">(2) 접근 권한 관리<a hidden class="anchor" aria-hidden="true" href="#2-접근-권한-관리">#</a></h4>
+<h4 id="3-접근-통제">(3) 접근 통제<a hidden class="anchor" aria-hidden="true" href="#3-접근-통제">#</a></h4>
+<h4 id="4-개인신용정보-암호화">(4) 개인신용정보 암호화<a hidden class="anchor" aria-hidden="true" href="#4-개인신용정보-암호화">#</a></h4>
+<h4 id="5-접속-기록-보관-및-점검">(5) 접속 기록 보관 및 점검<a hidden class="anchor" aria-hidden="true" href="#5-접속-기록-보관-및-점검">#</a></h4>
+<h4 id="6-보안-프로그램-설치-및-운영">(6) 보안 프로그램 설치 및 운영<a hidden class="anchor" aria-hidden="true" href="#6-보안-프로그램-설치-및-운영">#</a></h4>
+<h4 id="7-물리적-접근-통제">(7) 물리적 접근 통제<a hidden class="anchor" aria-hidden="true" href="#7-물리적-접근-통제">#</a></h4>
+<h3 id="62-구체적인-조치-시행령-제16조">6.2 구체적인 조치 (시행령 제16조)<a hidden class="anchor" aria-hidden="true" href="#62-구체적인-조치-시행령-제16조">#</a></h3>
+<h4 id="1-암호화">(1) 암호화<a hidden class="anchor" aria-hidden="true" href="#1-암호화">#</a></h4>
+<ul>
+<li><strong>고유식별정보</strong> (주민등록번호 등) 암호화</li>
+<li><strong>비밀번호</strong> 일방향 암호화</li>
+<li><strong>생체인식정보</strong> 암호화</li>
+<li><strong>통신 구간</strong> 암호화 (SSL/TLS)</li>
+</ul>
+<h4 id="2-접근-통제">(2) 접근 통제<a hidden class="anchor" aria-hidden="true" href="#2-접근-통제">#</a></h4>
+<ul>
+<li>개인신용정보처리시스템에 대한 <strong>접근 권한 부여 및 통제</strong></li>
+<li>개인별 계정 부여</li>
+</ul>
+<h4 id="3-접속-기록-보관">(3) 접속 기록 보관<a hidden class="anchor" aria-hidden="true" href="#3-접속-기록-보관">#</a></h4>
+<ul>
+<li><strong>3년 이상</strong> 보관</li>
+<li><strong>월 1회 이상</strong> 점검</li>
+</ul>
+<h4 id="4-보안-프로그램">(4) 보안 프로그램<a hidden class="anchor" aria-hidden="true" href="#4-보안-프로그램">#</a></h4>
+<ul>
+<li>백신 프로그램 설치 및 최신 업데이트</li>
+</ul>
+<h4 id="5-물리적-보안">(5) 물리적 보안<a hidden class="anchor" aria-hidden="true" href="#5-물리적-보안">#</a></h4>
+<ul>
+<li>전산실 등 <strong>출입 통제</strong></li>
+</ul>
+<h2 id="7-마이데이터-본인신용정보관리업-법-제2조-제9호의3-제6장의2">7. 마이데이터 (본인신용정보관리업, 법 제2조 제9호의3, 제6장의2)<a hidden class="anchor" aria-hidden="true" href="#7-마이데이터-본인신용정보관리업-법-제2조-제9호의3-제6장의2">#</a></h2>
+<h3 id="71-마이데이터란">7.1 마이데이터란?<a hidden class="anchor" aria-hidden="true" href="#71-마이데이터란">#</a></h3>
+<p><strong>마이데이터</strong> (본인신용정보관리업): 신용정보주체가 <strong>자신의 신용정보를 한 곳에 모아 통합 조회</strong>하고, 이를 기반으로 <strong>맞춤형 금융상품 추천</strong> 등을 받을 수 있도록 하는 서비스</p>
+<p><strong>2020년 8월 신용정보법 개정으로 도입</strong></p>
+<h3 id="72-마이데이터-사업자의-역할">7.2 마이데이터 사업자의 역할<a hidden class="anchor" aria-hidden="true" href="#72-마이데이터-사업자의-역할">#</a></h3>
+<h4 id="1-신용정보-전송-요구">(1) 신용정보 전송 요구<a hidden class="anchor" aria-hidden="true" href="#1-신용정보-전송-요구">#</a></h4>
+<p>신용정보주체의 동의를 받아 <strong>금융기관 등에 신용정보 전송 요구</strong></p>
+<h4 id="2-신용정보-통합-관리">(2) 신용정보 통합 관리<a hidden class="anchor" aria-hidden="true" href="#2-신용정보-통합-관리">#</a></h4>
+<p>여러 금융기관에 흩어진 신용정보를 <strong>한 곳에 모아 관리</strong></p>
+<h4 id="3-맞춤형-서비스-제공">(3) 맞춤형 서비스 제공<a hidden class="anchor" aria-hidden="true" href="#3-맞춤형-서비스-제공">#</a></h4>
+<ul>
+<li>자산 관리</li>
+<li>금융상품 추천</li>
+<li>신용관리</li>
+</ul>
+<h3 id="73-마이데이터-사업자의-의무">7.3 마이데이터 사업자의 의무<a hidden class="anchor" aria-hidden="true" href="#73-마이데이터-사업자의-의무">#</a></h3>
+<h4 id="1-본인-동의">(1) 본인 동의<a hidden class="anchor" aria-hidden="true" href="#1-본인-동의">#</a></h4>
+<p>신용정보주체의 <strong>명시적 동의</strong> 필요</p>
+<h4 id="2-안전성-확보">(2) 안전성 확보<a hidden class="anchor" aria-hidden="true" href="#2-안전성-확보">#</a></h4>
+<p>개인신용정보의 <strong>안전성 확보 조치</strong></p>
+<h4 id="3-목적-외-이용-금지">(3) 목적 외 이용 금지<a hidden class="anchor" aria-hidden="true" href="#3-목적-외-이용-금지">#</a></h4>
+<p>동의받은 목적 외 이용 금지</p>
+<h3 id="74-주요-마이데이터-서비스">7.4 주요 마이데이터 서비스<a hidden class="anchor" aria-hidden="true" href="#74-주요-마이데이터-서비스">#</a></h3>
+<ul>
+<li><strong>토스</strong></li>
+<li><strong>뱅크샐러드</strong></li>
+<li><strong>핀다</strong></li>
+<li><strong>카카오페이</strong></li>
+<li><strong>네이버</strong> 등</li>
+</ul>
+<h2 id="8-보안-컨설팅-관점의-시사점">8. 보안 컨설팅 관점의 시사점<a hidden class="anchor" aria-hidden="true" href="#8-보안-컨설팅-관점의-시사점">#</a></h2>
+<h3 id="81-금융권-신용정보-처리-시스템-설계">8.1 금융권 신용정보 처리 시스템 설계<a hidden class="anchor" aria-hidden="true" href="#81-금융권-신용정보-처리-시스템-설계">#</a></h3>
+<h4 id="1-동의-관리-시스템-cms">(1) 동의 관리 시스템 (CMS)<a hidden class="anchor" aria-hidden="true" href="#1-동의-관리-시스템-cms">#</a></h4>
+<ul>
+<li>개별 동의 관리</li>
+<li>동의 이력 기록</li>
+<li>동의 철회 기능</li>
+</ul>
+<h4 id="2-암호화">(2) 암호화<a hidden class="anchor" aria-hidden="true" href="#2-암호화">#</a></h4>
+<ul>
+<li>주민등록번호 등 고유식별정보 암호화</li>
+<li>비밀번호 일방향 암호화</li>
+<li>통신 구간 암호화</li>
+</ul>
+<h4 id="3-접근-통제-1">(3) 접근 통제<a hidden class="anchor" aria-hidden="true" href="#3-접근-통제-1">#</a></h4>
+<ul>
+<li>최소 권한 부여</li>
+<li>역할 기반 접근 통제 (RBAC)</li>
+</ul>
+<h4 id="4-접속-기록-관리">(4) 접속 기록 관리<a hidden class="anchor" aria-hidden="true" href="#4-접속-기록-관리">#</a></h4>
+<ul>
+<li>3년 이상 보관</li>
+<li>월 1회 이상 점검</li>
+<li>이상 접근 탐지</li>
+</ul>
+<h3 id="82-신용정보-유출-대응-체계">8.2 신용정보 유출 대응 체계<a hidden class="anchor" aria-hidden="true" href="#82-신용정보-유출-대응-체계">#</a></h3>
+<h4 id="사전-준비">사전 준비<a hidden class="anchor" aria-hidden="true" href="#사전-준비">#</a></h4>
+<ol>
+<li>유출 대응 절차 수립</li>
+<li>비상 연락망 구축</li>
+<li>백업 체계 구축</li>
+</ol>
+<h4 id="유출-발생-시">유출 발생 시<a hidden class="anchor" aria-hidden="true" href="#유출-발생-시">#</a></h4>
+<ol>
+<li>유출 사실 확인 및 범위 파악</li>
+<li>신용정보주체 통지 (지체 없이)</li>
+<li>금융위원회·한국인터넷진흥원 신고</li>
+<li>원인 분석 및 재발 방지</li>
+</ol>
+<h3 id="83-마이데이터-사업자-보안">8.3 마이데이터 사업자 보안<a hidden class="anchor" aria-hidden="true" href="#83-마이데이터-사업자-보안">#</a></h3>
+<h4 id="1-api-보안">(1) API 보안<a hidden class="anchor" aria-hidden="true" href="#1-api-보안">#</a></h4>
+<ul>
+<li>금융기관과의 안전한 API 통신</li>
+<li>API 인증 및 암호화</li>
+</ul>
+<h4 id="2-동의-관리">(2) 동의 관리<a hidden class="anchor" aria-hidden="true" href="#2-동의-관리">#</a></h4>
+<ul>
+<li>신용정보주체의 명시적 동의</li>
+<li>동의 범위 명확화</li>
+</ul>
+<h4 id="3-데이터-보안">(3) 데이터 보안<a hidden class="anchor" aria-hidden="true" href="#3-데이터-보안">#</a></h4>
+<ul>
+<li>수집한 신용정보의 안전한 보관</li>
+<li>암호화, 접근 통제</li>
+</ul>
+<h2 id="9-실무-사례">9. 실무 사례<a hidden class="anchor" aria-hidden="true" href="#9-실무-사례">#</a></h2>
+<h3 id="사례-1-은행의-대출-심사">사례 1: 은행의 대출 심사<a hidden class="anchor" aria-hidden="true" href="#사례-1-은행의-대출-심사">#</a></h3>
+<p><strong>상황:</strong>
+고객이 은행에 대출 신청</p>
+<p><strong>신용정보 처리:</strong></p>
+<ol>
+<li>고객 동의: 개인신용정보 조회 동의</li>
+<li>신용조회회사에 신용정보 요청</li>
+<li>신용평점 확인</li>
+<li>대출 심사</li>
+<li>대출 승인 또는 거부</li>
+</ol>
+<p><strong>보안 조치:</strong></p>
+<ul>
+<li>신용정보 암호화</li>
+<li>접근 권한 통제 (대출 담당자만)</li>
+<li>조회 기록 3년 보관</li>
+</ul>
+<h3 id="사례-2-신용카드-발급">사례 2: 신용카드 발급<a hidden class="anchor" aria-hidden="true" href="#사례-2-신용카드-발급">#</a></h3>
+<p><strong>상황:</strong>
+고객이 신용카드 발급 신청</p>
+<p><strong>신용정보 처리:</strong></p>
+<ol>
+<li>고객 동의: 개인신용정보 수집·조회·제공 동의</li>
+<li>신용조회</li>
+<li>카드 발급 심사</li>
+<li>신용정보 보관 (계약 종료 후 5년)</li>
+</ol>
+<p><strong>보안 조치:</strong></p>
+<ul>
+<li>주민등록번호 암호화</li>
+<li>신용정보 접근 권한 제한</li>
+<li>접속 기록 보관 및 점검</li>
+</ul>
+<h3 id="사례-3-마이데이터-서비스">사례 3: 마이데이터 서비스<a hidden class="anchor" aria-hidden="true" href="#사례-3-마이데이터-서비스">#</a></h3>
+<p><strong>상황:</strong>
+고객이 마이데이터 앱 (예: 토스) 가입</p>
+<p><strong>처리 절차:</strong></p>
+<ol>
+<li>고객 동의: 여러 금융기관의 신용정보 전송 요구 동의</li>
+<li>마이데이터 사업자가 각 금융기관에 API로 정보 요청</li>
+<li>금융기관이 신용정보 전송</li>
+<li>마이데이터 앱에서 통합 조회</li>
+<li>맞춤형 금융상품 추천</li>
+</ol>
+<p><strong>보안 조치:</strong></p>
+<ul>
+<li>API 암호화 통신</li>
+<li>수집 정보 암호화 저장</li>
+<li>동의 범위 내에서만 이용</li>
+</ul>
+<h2 id="10-체크리스트">10. 체크리스트<a hidden class="anchor" aria-hidden="true" href="#10-체크리스트">#</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> 개인신용정보 수집 시 동의를 받는가?</li>
+<li><input disabled="" type="checkbox"> 민감정보 수집 시 별도 동의를 받는가?</li>
+<li><input disabled="" type="checkbox"> 제3자 제공 시 개별 동의를 받는가?</li>
+<li><input disabled="" type="checkbox"> 포괄적 동의를 받지 않는가?</li>
+<li><input disabled="" type="checkbox"> 신용정보주체가 열람을 요구할 수 있는 절차가 있는가?</li>
+<li><input disabled="" type="checkbox"> 신용정보주체가 정정·삭제를 요구할 수 있는 절차가 있는가?</li>
+<li><input disabled="" type="checkbox"> 보유 기간 경과 후 신용정보를 삭제하는가?</li>
+<li><input disabled="" type="checkbox"> 유출 시 통지·신고 체계가 마련되어 있는가?</li>
+<li><input disabled="" type="checkbox"> 개인신용정보를 암호화하는가?</li>
+<li><input disabled="" type="checkbox"> 접속 기록을 3년 이상 보관하고 월 1회 점검하는가?</li>
+</ul>
+<h2 id="학습-정리">학습 정리<a hidden class="anchor" aria-hidden="true" href="#학습-정리">#</a></h2>
+<p>오늘 학습한 핵심 내용:</p>
+<ul>
+<li>신용정보법은 신용정보의 이용 및 보호를 위한 특별법</li>
+<li>개인신용정보 수집·제공 시 명시적 동의 필요, 포괄적 동의 금지</li>
+<li>민감정보(건강, 사상 등)는 원칙적 수집 금지</li>
+<li>신용정보주체는 열람, 정정·삭제, 동의 철회 권리 보유</li>
+<li>유출 시 신용정보주체 통지 + 금융위원회·KISA 신고</li>
+<li>안전성 확보 조치: 암호화, 접근 통제, 접속 기록 3년 보관 등</li>
+<li>마이데이터는 신용정보를 한 곳에 모아 관리하는 서비스</li>
+<li>금융권은 신용정보법 + 전자금융거래법 + 개인정보보호법 모두 준수 필요</li>
+</ul>
+<h2 id="다음-학습-주제">다음 학습 주제<a hidden class="anchor" aria-hidden="true" href="#다음-학습-주제">#</a></h2>
+<p>이것으로 개인정보보호법, 정보통신망법, 전자금융거래법, 신용정보법의 핵심 내용을 모두 학습했습니다!</p>
+<p>다음 단계는 <strong>산업별 규제</strong> 또는 <strong>인증 및 국제 표준</strong>으로 넘어갈 수 있습니다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/%EC%8B%A0%EC%9A%A9%EC%A0%95%EB%B3%B4%EB%B2%95/">신용정보법</a></li>
+      <li><a href="http://localhost:1313/tags/%EA%B0%9C%EC%9D%B8%EC%8B%A0%EC%9A%A9%EC%A0%95%EB%B3%B4/">개인신용정보</a></li>
+      <li><a href="http://localhost:1313/tags/%EB%A7%88%EC%9D%B4%EB%8D%B0%EC%9D%B4%ED%84%B0/">마이데이터</a></li>
+      <li><a href="http://localhost:1313/tags/%EA%B8%88%EC%9C%B5%EB%B3%B4%EC%95%88/">금융보안</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%8B%A0%EC%9A%A9%EC%A0%95%EB%B3%B4%EC%A3%BC%EC%B2%B4%EA%B6%8C%EB%A6%AC/">신용정보주체권리</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

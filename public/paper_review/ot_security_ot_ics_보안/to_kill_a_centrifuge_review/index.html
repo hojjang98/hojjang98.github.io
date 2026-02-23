@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>To Kill a Centrifuge: Stuxnet이 증명한 사이버-물리 무기의 파괴력과 OT 보안의 교훈 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="Stuxnet, ICS-Security, OT-보안, 사이버물리공격, PLC-Exploitation, MITM, IEC-62443, NIST-SP-800-82, Supply-Chain-Security">
+<meta name="description" content="사이버 공격이 어떻게 물리적 파괴로 이어지는가? Ralph Langner의 기술 분석을 통해 Stuxnet의 두 가지 공격 루틴(과압/로터 속도), 제어 시스템 레벨의 MITM 기법, 그리고 Air Gap의 한계를 심층 분석하고 실무적인 OT 보안 체크리스트를 도출합니다.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/paper_review/ot_security_ot_ics_%EB%B3%B4%EC%95%88/to_kill_a_centrifuge_review/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a29c24210eb31d9ce56f669c66a35c9c51b17376b7764e336a49af7dec914cf0.css" integrity="sha256-opwkIQ6zHZzlb2acZqNcnFGxc3a3dk4zakmvfeyRTPA=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/paper_review/ot_security_ot_ics_%EB%B3%B4%EC%95%88/to_kill_a_centrifuge_review/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/" title="프로젝트">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">홈</a>&nbsp;»&nbsp;<a href="http://localhost:1313/paper_review/">논문 리뷰</a></div>
+    <h1 class="post-title entry-hint-parent">
+      To Kill a Centrifuge: Stuxnet이 증명한 사이버-물리 무기의 파괴력과 OT 보안의 교훈
+    </h1>
+    <div class="post-meta"><span title='2025-12-19 00:00:00 +0000 UTC'>2025년 12월 19일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="research-review-to-kill-a-centrifuge-a-technical-analysis-of-what-stuxnets-creators-tried-to-achieve">Research Review: To Kill a Centrifuge: A Technical Analysis of What Stuxnet&rsquo;s Creators Tried to Achieve<a hidden class="anchor" aria-hidden="true" href="#research-review-to-kill-a-centrifuge-a-technical-analysis-of-what-stuxnets-creators-tried-to-achieve">#</a></h1>
+<blockquote>
+<p><strong>Analyzed Date:</strong> 2025.12.15
+<strong>Keywords:</strong> Stuxnet, Cyber-Physical_Attack, ICS_Security, PLC_Exploitation, SCADA
+<strong>Source:</strong> The Langner Group (2013) <a href="https://www.langner.com/wp-content/uploads/2017/03/to-kill-a-centrifuge.pdf">Full Text Link</a></p>
+</blockquote>
+<hr>
+<h2 id="day-1--research-context-and-stuxnet-overview">Day 1 – Research Context and Stuxnet Overview<a hidden class="anchor" aria-hidden="true" href="#day-1--research-context-and-stuxnet-overview">#</a></h2>
+<p><em>(연구 배경 및 Stuxnet 개요)</em></p>
+<h3 id="1-stuxnet의-역사적-의의">1. Stuxnet의 역사적 의의<a hidden class="anchor" aria-hidden="true" href="#1-stuxnet의-역사적-의의">#</a></h3>
+<h4 id="a-사이버-전쟁의-서막">A. 사이버 전쟁의 서막<a hidden class="anchor" aria-hidden="true" href="#a-사이버-전쟁의-서막">#</a></h4>
+<ul>
+<li><strong>정의:</strong> Stuxnet은 역사상 최초의 사이버-물리 무기(Cyber-Physical Weapon)로 기록됩니다. 2010년 발견 이전까지 사이버 공격은 주로 데이터 탈취, 서비스 거부, 금전적 손실에 초점을 맞췄습니다.</li>
+<li><strong>패러다임 전환:</strong> Stuxnet은 <strong>디지털 수단으로 물리적 파괴</strong>를 달성한 최초의 사례입니다. 이는 사이버 보안의 범위가 정보 보호를 넘어 물리적 안전까지 확장되어야 함을 입증하였습니다.</li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>구분</th>
+          <th>기존 사이버 공격</th>
+          <th>Stuxnet</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>목표</strong></td>
+          <td>데이터, 시스템 가용성</td>
+          <td>물리적 장비 파괴</td>
+      </tr>
+      <tr>
+          <td><strong>영향</strong></td>
+          <td>정보 유출, 서비스 중단</td>
+          <td>원심분리기 로터 손상</td>
+      </tr>
+      <tr>
+          <td><strong>대상</strong></td>
+          <td>IT 시스템</td>
+          <td>산업제어시스템(ICS)</td>
+      </tr>
+      <tr>
+          <td><strong>복잡성</strong></td>
+          <td>단일 레이어</td>
+          <td>IT → ICS → 물리적 레이어</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="b-저자-ralph-langner의-역할">B. 저자 Ralph Langner의 역할<a hidden class="anchor" aria-hidden="true" href="#b-저자-ralph-langner의-역할">#</a></h4>
+<ul>
+<li><strong>기여:</strong> Ralph Langner는 독일의 ICS 보안 전문가로, Stuxnet의 실제 공격 대상(이란 나탄즈 핵시설)을 최초로 규명하였습니다.</li>
+<li><strong>분석 범위:</strong> 그의 분석은 단순 악성코드 역공학을 넘어 <strong>공격 대상 플랜트의 물리적 설계, 계측 시스템, 제어 로직</strong>까지 포괄합니다.</li>
+</ul>
+<h3 id="2-공격-대상-이란-나탄즈-핵시설">2. 공격 대상: 이란 나탄즈 핵시설<a hidden class="anchor" aria-hidden="true" href="#2-공격-대상-이란-나탄즈-핵시설">#</a></h3>
+<h4 id="a-ir-1-원심분리기의-취약점">A. IR-1 원심분리기의 취약점<a hidden class="anchor" aria-hidden="true" href="#a-ir-1-원심분리기의-취약점">#</a></h4>
+<ul>
+<li><strong>배경:</strong> 이란의 우라늄 농축 프로그램은 <strong>IR-1 원심분리기</strong>를 사용합니다. 이 설계는 1970년대 유럽 Urenco 설계를 파키스탄 핵 밀매업자 A.Q. Khan이 유출한 것입니다.</li>
+<li><strong>핵심 취약점:</strong>
+<ul>
+<li><strong>로터 취약성:</strong> 63,000 RPM으로 회전하는 로터는 진동, 과압, 과속에 매우 민감합니다.</li>
+<li><strong>낮은 신뢰성:</strong> 파키스탄보다 10년 이상 긴 개발 기간에도 불구하고 지속적인 고장이 발생하였습니다.</li>
+<li><strong>보상 설계:</strong> 신뢰성 문제를 극복하기 위한 과도한 계측/제어 시스템이 도입되었습니다.</li>
+</ul>
+</li>
+</ul>
+<h4 id="b-캐스케이드-보호-시스템-cps">B. 캐스케이드 보호 시스템 (CPS)<a hidden class="anchor" aria-hidden="true" href="#b-캐스케이드-보호-시스템-cps">#</a></h4>
+<ul>
+<li><strong>목적:</strong> 이란은 원심분리기의 낮은 신뢰성을 보상하기 위해 캐스케이드 보호 시스템(Cascade Protection System)을 구축하였습니다.</li>
+<li><strong>핵심 기능:</strong></li>
+</ul>
+<pre tabindex="0"><code>┌─────────────────────────────────────────────────────────────┐
+│                   Cascade Protection System                  │
+├─────────────────────────────────────────────────────────────┤
+│  기능 1: 개별 원심분리기 격리                                │
+│  - 진동 감지 시 해당 원심분리기를 밸브로 차단                │
+│  - 프로세스 중단 없이 고장 장비 교체 가능                    │
+├─────────────────────────────────────────────────────────────┤
+│  기능 2: 스테이지 배기 밸브                                  │
+│  - 다수 원심분리기 격리 시 발생하는 과압 해소                │
+│  - 압력 컨트롤러가 자동으로 배기 밸브 제어                   │
+└─────────────────────────────────────────────────────────────┘
+</code></pre><ul>
+<li><strong>전략적 중요성:</strong> CPS는 이란 핵 프로그램의 <strong>핵심 기술 자산</strong>입니다. 이것 없이는 신뢰성 낮은 IR-1으로 지속적인 우라늄 농축이 불가능합니다. Stuxnet은 바로 이 시스템을 공격하였습니다.</li>
+</ul>
+<h3 id="3-사이버-물리-공격의-3단계-모델">3. 사이버-물리 공격의 3단계 모델<a hidden class="anchor" aria-hidden="true" href="#3-사이버-물리-공격의-3단계-모델">#</a></h3>
+<p>Langner가 제시한 정교한 사이버-물리 공격의 3단계 모델은 다음과 같습니다:</p>
+<pre tabindex="0"><code>┌─────────────────────────────────────────────────────────────┐
+│                    Layer 3: Physical Layer                   │
+│         밸브, 전기 드라이브 등 → 물리적 취약점 악용          │
+│                         ↑ 피해 발생                          │
+├─────────────────────────────────────────────────────────────┤
+│           Layer 2: Industrial Control System Layer           │
+│   PLC, 주파수 변환기, 압력 컨트롤러 → 프로세스 조작          │
+│                         ↑ 조작                               │
+├─────────────────────────────────────────────────────────────┤
+│                    Layer 1: IT Layer                         │
+│        네트워크, OS, IT 애플리케이션 → 전파/침투             │
+└─────────────────────────────────────────────────────────────┘
+</code></pre><ul>
+<li><strong>핵심 통찰:</strong> 정교한 사이버-물리 공격을 이해하려면 <strong>세 레이어 모두</strong>와 그 상호작용을 이해해야 합니다. IT 보안 관점만으로는 Stuxnet의 본질을 파악할 수 없습니다.</li>
+</ul>
+<h3 id="4-개인-인사이트-personal-insight">4. 개인 인사이트 (Personal Insight)<a hidden class="anchor" aria-hidden="true" href="#4-개인-인사이트-personal-insight">#</a></h3>
+<p>Day 1 분석을 통해 Stuxnet이 단순한 악성코드가 아니라 <strong>새로운 형태의 무기</strong>임을 이해하였습니다. 주요 통찰은 다음과 같습니다:</p>
+<ul>
+<li><strong>패러다임 전환:</strong> &ldquo;사이버 공격 = 데이터 유출&quot;이라는 기존 관념이 완전히 깨졌습니다.</li>
+<li><strong>도메인 지식의 중요성:</strong> 공격자는 IT뿐 아니라 <strong>핵공학, 제어공학, 플랜트 설계</strong>까지 이해해야 했습니다.</li>
+<li><strong>실무적 함의:</strong> OT/ICS 보안 컨설팅 시, 물리적 프로세스의 취약점이 사이버 공격의 목표가 될 수 있음을 반드시 고려해야 합니다.</li>
+</ul>
+<hr>
+<h1 id="research-review-to-kill-a-centrifuge-a-technical-analysis-of-what-stuxnets-creators-tried-to-achieve-1">Research Review: To Kill a Centrifuge: A Technical Analysis of What Stuxnet&rsquo;s Creators Tried to Achieve<a hidden class="anchor" aria-hidden="true" href="#research-review-to-kill-a-centrifuge-a-technical-analysis-of-what-stuxnets-creators-tried-to-achieve-1">#</a></h1>
+<blockquote>
+<p><strong>Analyzed Date:</strong> 2025.12.16
+<strong>Keywords:</strong> Overpressure_Attack, Rotor_Speed_Attack, S7-417, S7-315, MITM_ICS
+<strong>Source:</strong> The Langner Group (2013) <a href="https://www.langner.com/wp-content/uploads/2017/03/to-kill-a-centrifuge.pdf">Full Text Link</a></p>
+</blockquote>
+<hr>
+<h2 id="day-2--attack-vector-analysis">Day 2 – Attack Vector Analysis<a hidden class="anchor" aria-hidden="true" href="#day-2--attack-vector-analysis">#</a></h2>
+<p><em>(공격 벡터 분석)</em></p>
+<h3 id="1-두-가지-공격-루틴">1. 두 가지 공격 루틴<a hidden class="anchor" aria-hidden="true" href="#1-두-가지-공격-루틴">#</a></h3>
+<p>Stuxnet에는 <strong>두 가지 완전히 다른 공격 루틴</strong>이 포함되어 있습니다. 대부분의 분석이 두 번째(로터 속도) 공격에 집중하였으나, 첫 번째(과압) 공격이 훨씬 더 복잡하고 정교합니다.</p>
+<table>
+  <thead>
+      <tr>
+          <th>구분</th>
+          <th>과압 공격 (2007~)</th>
+          <th>로터 속도 공격 (2009~)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>대상 컨트롤러</strong></td>
+          <td>Siemens S7-417</td>
+          <td>Siemens S7-315</td>
+      </tr>
+      <tr>
+          <td><strong>공격 대상</strong></td>
+          <td>캐스케이드 보호 시스템</td>
+          <td>원심분리기 구동 시스템</td>
+      </tr>
+      <tr>
+          <td><strong>복잡도</strong></td>
+          <td>극도로 복잡</td>
+          <td>상대적으로 단순</td>
+      </tr>
+      <tr>
+          <td><strong>은닉성</strong></td>
+          <td>매우 높음 (MITM)</td>
+          <td>낮음 (탐지 위험 수용)</td>
+      </tr>
+      <tr>
+          <td><strong>물리적 메커니즘</strong></td>
+          <td>과압으로 로터 응력 증가</td>
+          <td>과속 및 공진 주파수 통과</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="2-과압-공격-overpressure-attack---s7-417">2. 과압 공격 (Overpressure Attack) - S7-417<a hidden class="anchor" aria-hidden="true" href="#2-과압-공격-overpressure-attack---s7-417">#</a></h3>
+<h4 id="a-공격-메커니즘">A. 공격 메커니즘<a hidden class="anchor" aria-hidden="true" href="#a-공격-메커니즘">#</a></h4>
+<ul>
+<li><strong>원리:</strong> 캐스케이드의 첫 번째와 마지막 스테이지를 격리하여 UF6 가스의 유출을 차단하고, 동시에 배기 밸브를 닫아 과압을 유발합니다.</li>
+</ul>
+<pre tabindex="0"><code>정상 상태:
+[Feed] → [Stage 1] → [Stage 2] → ... → [Stage 15] → [Product/Tails]
+          ↓            ↓                   ↓
+       [배기밸브]   [배기밸브]          [배기밸브]
+          ↓            ↓                   ↓
+       ─────────── [Dump System] ───────────
+
+공격 상태:
+[Feed] → [Stage 1] ✗ [Stage 2] → ... → [Stage 14] ✗ [Stage 15]
+         (격리)                            (격리)
+          ↓ 차단       ↓ 차단               ↓ 차단
+       [배기밸브]   [배기밸브]          [배기밸브]
+       
+→ UF6 가스 유입은 계속되나 유출 차단 → 압력 상승 → 로터 응력 증가
+</code></pre><h4 id="b-man-in-the-middle-mitm-구현">B. Man-in-the-Middle (MITM) 구현<a hidden class="anchor" aria-hidden="true" href="#b-man-in-the-middle-mitm-구현">#</a></h4>
+<p>Stuxnet의 가장 정교한 부분은 <strong>제어 시스템 레벨에서의 MITM 공격</strong>입니다:</p>
+<ol>
+<li><strong>Prime (녹화):</strong> 공격 전 21초간 정상 운영 센서 값을 캡처합니다.</li>
+<li><strong>Replay (재생):</strong> 공격 중 녹화된 데이터를 SCADA 화면에 반복 재생합니다.</li>
+<li><strong>Isolate (격리):</strong> 정상 제어 로직을 실제 입출력과 분리하여 가짜 데이터만 전달합니다.</li>
+<li><strong>Manipulate (조작):</strong> 압력 컨트롤러의 센서 캘리브레이션을 조작하여 배기 밸브를 비활성화합니다.</li>
+</ol>
+<ul>
+<li><strong>핵심 통찰:</strong> 운영자는 화면에서 <strong>완전히 정상적인 값</strong>을 보지만, 실제로는 공격이 진행 중입니다. 이것이 무결성 공격(Integrity Attack)의 본질입니다.</li>
+</ul>
+<h4 id="c-저수율low-yield-무기-설계">C. 저수율(Low-Yield) 무기 설계<a hidden class="anchor" aria-hidden="true" href="#c-저수율low-yield-무기-설계">#</a></h4>
+<ul>
+<li><strong>설계 의도:</strong> Stuxnet은 <strong>파국적 파괴를 의도적으로 회피</strong>하였습니다.</li>
+<li><strong>전략적 목표:</strong>
+<ul>
+<li>원심분리기 상태를 지속적으로 모니터링하며 임계점 직전에 공격을 중단합니다.</li>
+<li>갑작스러운 대량 파괴보다 <strong>수명 단축</strong>을 목표로 합니다.</li>
+<li>이란 엔지니어들이 원인을 파악하지 못하게 하여 <strong>심리적 좌절감</strong>을 유발합니다.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="3-로터-속도-공격-rotor-speed-attack---s7-315">3. 로터 속도 공격 (Rotor Speed Attack) - S7-315<a hidden class="anchor" aria-hidden="true" href="#3-로터-속도-공격-rotor-speed-attack---s7-315">#</a></h3>
+<h4 id="a-공격-메커니즘-1">A. 공격 메커니즘<a hidden class="anchor" aria-hidden="true" href="#a-공격-메커니즘-1">#</a></h4>
+<ul>
+<li><strong>정상 운영:</strong> 63,000 RPM (일정)</li>
+<li><strong>공격 시퀀스:</strong></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>시퀀스</th>
+          <th>동작</th>
+          <th>효과</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>시퀀스 1</strong> (매월)</td>
+          <td>63,000 → 84,600 RPM (15분)</td>
+          <td>로터 벽 압력 증가, 재료 피로 누적</td>
+      </tr>
+      <tr>
+          <td><strong>시퀀스 2</strong> (다음 달)</td>
+          <td>63,000 → 120 RPM → 63,000 RPM (50분)</td>
+          <td>공진 주파수 반복 통과, 진동으로 로터 파손</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="b-은닉성-감소">B. 은닉성 감소<a hidden class="anchor" aria-hidden="true" href="#b-은닉성-감소">#</a></h4>
+<p>로터 속도 공격은 과압 공격보다 <strong>훨씬 덜 은밀</strong>합니다:</p>
+<table>
+  <thead>
+      <tr>
+          <th>과압 공격</th>
+          <th>로터 속도 공격</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>센서 값 녹화/재생</td>
+          <td>단순히 제어 로직 일시 중단</td>
+      </tr>
+      <tr>
+          <td>정교한 MITM</td>
+          <td>SCADA에 정적 값 표시</td>
+      </tr>
+      <tr>
+          <td>탐지 거의 불가능</td>
+          <td>숙련 엔지니어가 진단 시 탐지 가능</td>
+      </tr>
+      <tr>
+          <td>청각적 변화 없음</td>
+          <td>164개 원심분리기 동시 감속 시 <strong>청각적 탐지 가능</strong></td>
+      </tr>
+  </tbody>
+</table>
+<ul>
+<li><strong>핵심 통찰:</strong> 공격자들은 <strong>OPSEC(작전 보안)을 의도적으로 완화</strong>하였습니다. Langner는 이를 &ldquo;탐지 위험을 수용하며 한계를 밀어붙이기(pushing the envelope)&ldquo;로 해석합니다.</li>
+</ul>
+<h3 id="4-캠페인-전략의-변화">4. 캠페인 전략의 변화<a hidden class="anchor" aria-hidden="true" href="#4-캠페인-전략의-변화">#</a></h3>
+<h4 id="a-이해관계자-변화-추정">A. 이해관계자 변화 추정<a hidden class="anchor" aria-hidden="true" href="#a-이해관계자-변화-추정">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>초기 (2007~2008)</th>
+          <th>후기 (2009~2010)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>핵 비확산 전문가 중심</td>
+          <td>InfoSec/사이버전 전문가 합류</td>
+      </tr>
+      <tr>
+          <td>극도의 은밀성 중시</td>
+          <td>제로데이, 도난 인증서 적극 활용</td>
+      </tr>
+      <tr>
+          <td>나탄즈 특화</td>
+          <td>자가 복제로 전 세계 전파</td>
+      </tr>
+      <tr>
+          <td>단일 목표 집중</td>
+          <td>사이버 무기 기술 실험장</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="b-전략적-함의">B. 전략적 함의<a hidden class="anchor" aria-hidden="true" href="#b-전략적-함의">#</a></h4>
+<ul>
+<li><strong>핵심 분석:</strong> Stuxnet은 <strong>이란 핵 프로그램 지연</strong>이라는 원래 목표를 넘어서, <strong>사이버 무기의 실효성을 입증</strong>하는 역사적 실험이 되었습니다.</li>
+</ul>
+<h3 id="5-개인-인사이트-personal-insight">5. 개인 인사이트 (Personal Insight)<a hidden class="anchor" aria-hidden="true" href="#5-개인-인사이트-personal-insight">#</a></h3>
+<p>Day 2 분석을 통해 Stuxnet의 <strong>기술적 정교함</strong>을 파악하였습니다. 주요 통찰은 다음과 같습니다:</p>
+<ul>
+<li><strong>두 공격의 대조:</strong> 과압 공격의 극도의 정교함 vs 로터 속도 공격의 단순함은 캠페인 중 <strong>전략 변화</strong>를 시사합니다.</li>
+<li><strong>MITM의 ICS 적용:</strong> IT 보안의 MITM 개념이 <strong>제어시스템 레벨</strong>에서 구현되었습니다.</li>
+<li><strong>실무적 함의:</strong> 공격자도 은닉성과 효과 사이에서 트레이드오프에 직면합니다. 이는 방어자에게 탐지 기회가 존재함을 의미합니다.</li>
+</ul>
+<hr>
+<h1 id="research-review-to-kill-a-centrifuge-a-technical-analysis-of-what-stuxnets-creators-tried-to-achieve-2">Research Review: To Kill a Centrifuge: A Technical Analysis of What Stuxnet&rsquo;s Creators Tried to Achieve<a hidden class="anchor" aria-hidden="true" href="#research-review-to-kill-a-centrifuge-a-technical-analysis-of-what-stuxnets-creators-tried-to-achieve-2">#</a></h1>
+<blockquote>
+<p><strong>Analyzed Date:</strong> 2025.12.17
+<strong>Keywords:</strong> Air_Gap_Bypass, Defense_in_Depth, IEC_62443, Supply_Chain_Attack, Contractor_Security
+<strong>Source:</strong> The Langner Group (2013) <a href="https://www.langner.com/wp-content/uploads/2017/03/to-kill-a-centrifuge.pdf">Full Text Link</a></p>
+</blockquote>
+<hr>
+<h2 id="day-3--defensive-implications-and-framework-integration">Day 3 – Defensive Implications and Framework Integration<a hidden class="anchor" aria-hidden="true" href="#day-3--defensive-implications-and-framework-integration">#</a></h2>
+<p><em>(방어적 시사점 및 프레임워크 연계)</em></p>
+<h3 id="1-stuxnet에-대한-일반적-오해">1. Stuxnet에 대한 일반적 오해<a hidden class="anchor" aria-hidden="true" href="#1-stuxnet에-대한-일반적-오해">#</a></h3>
+<p>Langner는 Stuxnet에 대한 여러 <strong>오해</strong>를 지적합니다:</p>
+<table>
+  <thead>
+      <tr>
+          <th>오해</th>
+          <th>실제</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>&ldquo;Air Gap이면 안전&rdquo;</td>
+          <td>Stuxnet은 <strong>USB와 계약업체</strong>를 통해 Air Gap 우회</td>
+      </tr>
+      <tr>
+          <td>&ldquo;안티바이러스로 방어 가능&rdquo;</td>
+          <td>2007년 버전은 <strong>6년간 미탐지</strong>, 맞춤형 악성코드는 시그니처 없음</td>
+      </tr>
+      <tr>
+          <td>&ldquo;보안 패치 적용이 해결책&rdquo;</td>
+          <td>ICS 레벨 취약점은 기능(Feature)이지 버그가 아님</td>
+      </tr>
+      <tr>
+          <td>&ldquo;국가 수준 자원만 가능&rdquo;</td>
+          <td>공격 <strong>전술과 기법</strong>은 복제 가능, 규모 확장으로 정교함 대체 가능</td>
+      </tr>
+      <tr>
+          <td>&ldquo;단일 목표 특화라 재사용 불가&rdquo;</td>
+          <td>공격 방법론은 <strong>범용적</strong>, 다른 목표에 적용 가능</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="2-효과-없는-방어-수단">2. 효과 없는 방어 수단<a hidden class="anchor" aria-hidden="true" href="#2-효과-없는-방어-수단">#</a></h3>
+<h4 id="a-air-gap의-한계">A. Air Gap의 한계<a hidden class="anchor" aria-hidden="true" href="#a-air-gap의-한계">#</a></h4>
+<ul>
+<li><strong>침투 경로:</strong> 공격자는 네트워크가 아닌 <strong>물리적 접근 권한을 가진 계약업체</strong>를 통해 침투하였습니다.</li>
+</ul>
+<pre tabindex="0"><code>[공격자] → [계약업체 노트북 감염] → [USB/물리적 접근] → [나탄즈 내부]
+
+※ Air Gap은 네트워크 수준에서만 유효
+※ 물리적 접근 권한을 가진 신뢰된 내부자(계약업체)를 통해 우회
+</code></pre><h4 id="b-안티바이러스ids의-한계">B. 안티바이러스/IDS의 한계<a hidden class="anchor" aria-hidden="true" href="#b-안티바이러스ids의-한계">#</a></h4>
+<ul>
+<li><strong>시그니처 기반:</strong> 알려지지 않은 맞춤형 악성코드는 탐지가 불가능합니다.</li>
+<li><strong>네트워크 모니터링:</strong> 정상 트래픽으로 위장한 공격은 탐지가 어렵습니다.</li>
+<li><strong>행위 분석:</strong> ICS 환경의 &ldquo;정상&rdquo; 행위 정의 자체가 어렵습니다.</li>
+</ul>
+<h4 id="c-보안-패치의-한계">C. 보안 패치의 한계<a hidden class="anchor" aria-hidden="true" href="#c-보안-패치의-한계">#</a></h4>
+<p>Stuxnet이 악용한 ICS 레벨 취약점들은 버그가 아닌 <strong>정상 기능</strong>입니다:</p>
+<table>
+  <thead>
+      <tr>
+          <th>악용된 기능</th>
+          <th>설명</th>
+          <th>패치 가능 여부</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>드라이버 DLL 하이재킹</td>
+          <td>Step7 소프트웨어의 정상 로딩 메커니즘</td>
+          <td>패치 대상 아님</td>
+      </tr>
+      <tr>
+          <td>입력 프로세스 이미지 조작</td>
+          <td>PLC 메모리 쓰기 기능</td>
+          <td>패치 불가</td>
+      </tr>
+      <tr>
+          <td>PROFIBUS 직접 통신</td>
+          <td>정상 산업 프로토콜 기능</td>
+          <td>패치 불가</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="3-효과적인-방어-전략">3. 효과적인 방어 전략<a hidden class="anchor" aria-hidden="true" href="#3-효과적인-방어-전략">#</a></h3>
+<h4 id="a-플랜트-레벨-취약점-분석">A. 플랜트 레벨 취약점 분석<a hidden class="anchor" aria-hidden="true" href="#a-플랜트-레벨-취약점-분석">#</a></h4>
+<p>Langner가 제안하는 <strong>사이버-물리 공격 엔지니어링 방법론의 역적용</strong>입니다:</p>
+<ol>
+<li><strong>1단계 - 물리적 취약점 식별:</strong> HAZOP(위험/운전성 분석) 검토, 보호/안전 시스템 식별</li>
+<li><strong>2단계 - 사이버 공격 경로 분석:</strong> 해당 물리적 취약점을 악용할 수 있는 제어시스템 식별</li>
+<li><strong>3단계 - 플랜트 레벨 취약점 도출:</strong> IT → ICS → 물리적 피해의 전체 체인 문서화</li>
+</ol>
+<h4 id="b-계약업체-보안-강화">B. 계약업체 보안 강화<a hidden class="anchor" aria-hidden="true" href="#b-계약업체-보안-강화">#</a></h4>
+<p>Stuxnet의 침투 경로는 <strong>계약업체</strong>였습니다:</p>
+<table>
+  <thead>
+      <tr>
+          <th>취약점</th>
+          <th>대응</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>계약업체 노트북/USB</td>
+          <td>반입 전 검사, 전용 장비 제공</td>
+      </tr>
+      <tr>
+          <td>물리적 접근 권한</td>
+          <td>최소 권한 원칙, 동반 감시</td>
+      </tr>
+      <tr>
+          <td>원격 접속</td>
+          <td>VPN 터널의 세그먼테이션</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="c-심층-방어-defense-in-depth">C. 심층 방어 (Defense in Depth)<a hidden class="anchor" aria-hidden="true" href="#c-심층-방어-defense-in-depth">#</a></h4>
+<p>Purdue 모델 기반의 계층적 방어 구조입니다:</p>
+<pre tabindex="0"><code>┌─────────────────────────────────────────────────────────────┐
+│                    Level 5: Enterprise                       │
+│                    (인터넷, 기업 네트워크)                   │
+├─────────────────────────────────────────────────────────────┤
+│                    Level 4: Business                         │
+│                    (ERP, 이메일 등)                          │
+├─────────────── DMZ / Firewall ──────────────────────────────┤
+│                    Level 3: Operations                       │
+│                    (SCADA 서버, 히스토리안)                  │
+├─────────────── Industrial Firewall ─────────────────────────┤
+│                    Level 2: Control                          │
+│                    (HMI, Engineering Station)                │
+├─────────────────────────────────────────────────────────────┤
+│                    Level 1: Field Control                    │
+│                    (PLC, RTU)                                │
+├─────────────────────────────────────────────────────────────┤
+│                    Level 0: Process                          │
+│                    (센서, 액추에이터, 밸브)                  │
+└─────────────────────────────────────────────────────────────┘
+</code></pre><h3 id="4-프레임워크-연계">4. 프레임워크 연계<a hidden class="anchor" aria-hidden="true" href="#4-프레임워크-연계">#</a></h3>
+<h4 id="a-iec-62443과의-연계">A. IEC 62443과의 연계<a hidden class="anchor" aria-hidden="true" href="#a-iec-62443과의-연계">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>IEC 62443 영역</th>
+          <th>Stuxnet 교훈 적용</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>62443-2-1 (보안 프로그램)</strong></td>
+          <td>계약업체/공급망 보안 정책 필수</td>
+      </tr>
+      <tr>
+          <td><strong>62443-3-2 (위험 평가)</strong></td>
+          <td>사이버-물리 시나리오 기반 위험 평가</td>
+      </tr>
+      <tr>
+          <td><strong>62443-3-3 (시스템 보안 요건)</strong></td>
+          <td>영역(Zone)/도관(Conduit) 기반 네트워크 분리</td>
+      </tr>
+      <tr>
+          <td><strong>62443-4-1 (제품 개발)</strong></td>
+          <td>보안 기능이 아닌 보안 &ldquo;기능&quot;의 오용 방지</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="b-nist-sp-800-82와의-연계">B. NIST SP 800-82와의 연계<a hidden class="anchor" aria-hidden="true" href="#b-nist-sp-800-82와의-연계">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>NIST 800-82 권고</th>
+          <th>Stuxnet 관점</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>네트워크 아키텍처</td>
+          <td>Air Gap만으로 불충분, 물리적 접근 통제 병행</td>
+      </tr>
+      <tr>
+          <td>침입 탐지</td>
+          <td>제어 레이어 이상 탐지 필요, 네트워크만으론 부족</td>
+      </tr>
+      <tr>
+          <td>인시던트 대응</td>
+          <td>제어시스템 포렌식 역량 필수</td>
+      </tr>
+      <tr>
+          <td>보안 인식</td>
+          <td>계약업체까지 확대, 사이버-물리 위협 교육</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="c-mitre-attck-for-ics-연계">C. MITRE ATT&amp;CK for ICS 연계<a hidden class="anchor" aria-hidden="true" href="#c-mitre-attck-for-ics-연계">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>Tactic</th>
+          <th>Technique</th>
+          <th>Stuxnet 적용</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Initial Access</td>
+          <td>Replication Through Removable Media</td>
+          <td>USB를 통한 전파</td>
+      </tr>
+      <tr>
+          <td>Execution</td>
+          <td>Execution through API</td>
+          <td>Step7 DLL 하이재킹</td>
+      </tr>
+      <tr>
+          <td>Persistence</td>
+          <td>Module Firmware</td>
+          <td>PLC 코드 주입</td>
+      </tr>
+      <tr>
+          <td>Evasion</td>
+          <td>Rootkit</td>
+          <td>센서 값 위조 (MITM)</td>
+      </tr>
+      <tr>
+          <td>Impact</td>
+          <td>Manipulation of Control</td>
+          <td>밸브/속도 조작</td>
+      </tr>
+      <tr>
+          <td>Impact</td>
+          <td>Damage to Property</td>
+          <td>원심분리기 로터 손상</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="5-개인-인사이트-personal-insight-1">5. 개인 인사이트 (Personal Insight)<a hidden class="anchor" aria-hidden="true" href="#5-개인-인사이트-personal-insight-1">#</a></h3>
+<p>Day 3 분석을 통해 Stuxnet이 <strong>방어 전략에 주는 교훈</strong>을 정리하였습니다. 주요 통찰은 다음과 같습니다:</p>
+<ul>
+<li><strong>Air Gap 신화의 붕괴:</strong> 네트워크 격리만으로는 물리적 접근 경로를 차단할 수 없습니다.</li>
+<li><strong>기능이 취약점:</strong> ICS 환경에서는 버그가 아닌 <strong>정상 기능</strong>이 악용될 수 있습니다.</li>
+<li><strong>실무적 함의:</strong> OT/ICS 보안 컨설팅 시, 네트워크 분리 상태뿐 아니라 <strong>물리적 접근 경로, 계약업체 보안, 제어 로직 무결성 검증</strong>까지 점검해야 합니다.</li>
+</ul>
+<h1 id="research-review-to-kill-a-centrifuge-a-technical-analysis-of-what-stuxnets-creators-tried-to-achieve-3">Research Review: To Kill a Centrifuge: A Technical Analysis of What Stuxnet&rsquo;s Creators Tried to Achieve<a hidden class="anchor" aria-hidden="true" href="#research-review-to-kill-a-centrifuge-a-technical-analysis-of-what-stuxnets-creators-tried-to-achieve-3">#</a></h1>
+<blockquote>
+<p><strong>Analyzed Date:</strong> 2025.12.18
+<strong>Keywords:</strong> Research_Limitations, Industroyer, Triton, PIPEDREAM, ICS_Malware_Evolution
+<strong>Source:</strong> The Langner Group (2013) <a href="https://www.langner.com/wp-content/uploads/2017/03/to-kill-a-centrifuge.pdf">Full Text Link</a></p>
+</blockquote>
+<hr>
+<h2 id="day-4--limitations-and-subsequent-ics-attacks">Day 4 – Limitations and Subsequent ICS Attacks<a hidden class="anchor" aria-hidden="true" href="#day-4--limitations-and-subsequent-ics-attacks">#</a></h2>
+<p><em>(연구 한계점 및 후속 ICS 공격 사례)</em></p>
+<h3 id="1-연구의-기술적-한계점">1. 연구의 기술적 한계점<a hidden class="anchor" aria-hidden="true" href="#1-연구의-기술적-한계점">#</a></h3>
+<p>본 논문은 Stuxnet에 대한 가장 포괄적인 기술 분석을 제공하였으나, 다음과 같은 한계점이 존재합니다.</p>
+<h4 id="a-정보-접근의-제약">A. 정보 접근의 제약<a hidden class="anchor" aria-hidden="true" href="#a-정보-접근의-제약">#</a></h4>
+<ul>
+<li><strong>기밀 정보 의존:</strong> 나탄즈 핵시설의 정확한 설계도와 운영 데이터는 기밀로 분류되어 있어, 분석의 일부는 <strong>공개 영상, IAEA 보고서, 추론</strong>에 의존하였습니다.</li>
+<li><strong>공격 효과 정량화 불가:</strong> Stuxnet이 실제로 파괴한 원심분리기의 정확한 수량과 이란 핵 프로그램 지연 기간은 <strong>검증이 불가능</strong>합니다.</li>
+<li><strong>공격자 의도 추정:</strong> 공격 전략의 변화(과압 → 로터 속도)에 대한 분석은 코드 역공학에 기반한 <strong>추정</strong>입니다.</li>
+</ul>
+<h4 id="b-기술적-재현의-어려움">B. 기술적 재현의 어려움<a hidden class="anchor" aria-hidden="true" href="#b-기술적-재현의-어려움">#</a></h4>
+<ul>
+<li><strong>환경 특수성:</strong> Stuxnet은 <strong>특정 Siemens PLC 모델, 특정 주파수 변환기, 특정 캐스케이드 구성</strong>을 타겟으로 하여, 다른 환경에서의 재현 실험이 제한적입니다.</li>
+<li><strong>테스트베드 부재:</strong> 실제 우라늄 농축 시설을 모방한 테스트 환경 구축이 현실적으로 불가능합니다.</li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>한계 영역</th>
+          <th>구체적 내용</th>
+          <th>영향</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>정보 접근</strong></td>
+          <td>나탄즈 시설 기밀, 공격자 미확인</td>
+          <td>일부 분석이 추정에 의존</td>
+      </tr>
+      <tr>
+          <td><strong>효과 측정</strong></td>
+          <td>실제 피해 규모 미공개</td>
+          <td>공격 성공 여부 정량화 불가</td>
+      </tr>
+      <tr>
+          <td><strong>재현성</strong></td>
+          <td>특수 환경 타겟팅</td>
+          <td>범용적 검증 어려움</td>
+      </tr>
+      <tr>
+          <td><strong>시간적 제약</strong></td>
+          <td>2013년 분석</td>
+          <td>이후 발전된 공격 기법 미포함</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="c-범용화-가능성에-대한-논쟁">C. 범용화 가능성에 대한 논쟁<a hidden class="anchor" aria-hidden="true" href="#c-범용화-가능성에-대한-논쟁">#</a></h4>
+<ul>
+<li><strong>Langner의 주장:</strong> 공격 <strong>전술과 기법</strong>은 범용적이며, 다른 ICS 환경에 적용 가능합니다.</li>
+<li><strong>반론:</strong> Stuxnet 수준의 공격은 <strong>수년간의 정보 수집, 테스트 환경 구축, 국가 수준 자원</strong>이 필요하여 일반 공격자의 복제가 어렵습니다.</li>
+<li><strong>현실:</strong> 이후 등장한 ICS 악성코드들이 Langner의 주장을 뒷받침하였습니다.</li>
+</ul>
+<h3 id="2-후속-ics-공격-사례-분석">2. 후속 ICS 공격 사례 분석<a hidden class="anchor" aria-hidden="true" href="#2-후속-ics-공격-사례-분석">#</a></h3>
+<p>Stuxnet 이후 등장한 주요 ICS 악성코드들은 사이버-물리 공격이 <strong>일회성이 아닌 지속적 위협</strong>임을 증명하였습니다.</p>
+<h4 id="a-industroyer--crashoverride-2016">A. Industroyer / CrashOverride (2016)<a hidden class="anchor" aria-hidden="true" href="#a-industroyer--crashoverride-2016">#</a></h4>
+<pre tabindex="0"><code>┌─────────────────────────────────────────────────────────────┐
+│                    Industroyer (2016)                        │
+├─────────────────────────────────────────────────────────────┤
+│  타겟: 우크라이나 전력망 (Ukrenergo)                         │
+│  영향: 키예프 일부 지역 1시간 정전                           │
+│  특징: ICS 프로토콜 직접 구현 (IEC 61850, IEC 104, OPC DA)   │
+├─────────────────────────────────────────────────────────────┤
+│  Stuxnet과의 비교:                                           │
+│  - Stuxnet: 특정 PLC 타겟 → Industroyer: 프로토콜 범용 공격 │
+│  - 모듈형 설계로 다양한 전력 시스템에 적용 가능              │
+└─────────────────────────────────────────────────────────────┘
+</code></pre><ul>
+<li><strong>핵심 교훈:</strong> 공격자가 <strong>ICS 프로토콜 자체</strong>를 무기화할 수 있음을 증명하였습니다. 더 이상 특정 벤더 취약점에 의존하지 않습니다.</li>
+</ul>
+<h4 id="b-triton--trisis-2017">B. Triton / TRISIS (2017)<a hidden class="anchor" aria-hidden="true" href="#b-triton--trisis-2017">#</a></h4>
+<pre tabindex="0"><code>┌─────────────────────────────────────────────────────────────┐
+│                      Triton (2017)                           │
+├─────────────────────────────────────────────────────────────┤
+│  타겟: 중동 석유화학 시설의 안전계장시스템 (SIS)             │
+│  대상 장비: Schneider Electric Triconex Safety Controller    │
+│  목적: 안전 시스템 무력화 → 물리적 재해 유발 가능성          │
+├─────────────────────────────────────────────────────────────┤
+│  Stuxnet과의 비교:                                           │
+│  - Stuxnet: 프로세스 제어 시스템(PCS) 공격                   │
+│  - Triton: 안전계장시스템(SIS) 공격 → 인명 피해 가능성       │
+│  - 최초로 &#34;Safety System&#34;을 직접 타겟팅한 악성코드           │
+└─────────────────────────────────────────────────────────────┘
+</code></pre><ul>
+<li><strong>핵심 교훈:</strong> 공격자의 목표가 <strong>프로세스 방해</strong>를 넘어 <strong>인명 피해 유발</strong>까지 확장될 수 있음을 경고하였습니다.</li>
+</ul>
+<h4 id="c-pipedream--incontroller-2022">C. PIPEDREAM / Incontroller (2022)<a hidden class="anchor" aria-hidden="true" href="#c-pipedream--incontroller-2022">#</a></h4>
+<pre tabindex="0"><code>┌─────────────────────────────────────────────────────────────┐
+│                    PIPEDREAM (2022)                          │
+├─────────────────────────────────────────────────────────────┤
+│  특징: 실제 배포 전 발견된 &#34;ICS 공격 툴킷&#34;                   │
+│  타겟: Schneider Electric, OMRON PLC, OPC UA 서버            │
+│  능력: 스캐닝, 정찰, 조작, 파괴 기능 모듈화                  │
+├─────────────────────────────────────────────────────────────┤
+│  Stuxnet과의 비교:                                           │
+│  - Stuxnet: 단일 목표 맞춤형                                 │
+│  - PIPEDREAM: 다중 벤더/프로토콜 지원 범용 툴킷              │
+│  - &#34;ICS 공격의 Metasploit&#34;으로 불림                          │
+└─────────────────────────────────────────────────────────────┘
+</code></pre><ul>
+<li><strong>핵심 교훈:</strong> ICS 공격이 <strong>툴킷화/상품화</strong>되어 진입 장벽이 낮아지고 있음을 시사합니다.</li>
+</ul>
+<h3 id="3-ics-악성코드의-진화-추세">3. ICS 악성코드의 진화 추세<a hidden class="anchor" aria-hidden="true" href="#3-ics-악성코드의-진화-추세">#</a></h3>
+<h4 id="a-진화-타임라인">A. 진화 타임라인<a hidden class="anchor" aria-hidden="true" href="#a-진화-타임라인">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>연도</th>
+          <th>악성코드</th>
+          <th>타겟</th>
+          <th>진화 포인트</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>2010</td>
+          <td><strong>Stuxnet</strong></td>
+          <td>이란 원심분리기</td>
+          <td>최초의 사이버-물리 무기</td>
+      </tr>
+      <tr>
+          <td>2016</td>
+          <td><strong>Industroyer</strong></td>
+          <td>우크라이나 전력망</td>
+          <td>ICS 프로토콜 직접 구현</td>
+      </tr>
+      <tr>
+          <td>2017</td>
+          <td><strong>Triton</strong></td>
+          <td>중동 SIS</td>
+          <td>안전 시스템 타겟팅</td>
+      </tr>
+      <tr>
+          <td>2022</td>
+          <td><strong>PIPEDREAM</strong></td>
+          <td>다중 벤더 PLC</td>
+          <td>범용 ICS 공격 툴킷</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="b-주요-진화-특성">B. 주요 진화 특성<a hidden class="anchor" aria-hidden="true" href="#b-주요-진화-특성">#</a></h4>
+<ul>
+<li><strong>특수성 → 범용성:</strong> Stuxnet의 단일 목표 맞춤형에서 PIPEDREAM의 다중 벤더 지원으로 진화하였습니다.</li>
+<li><strong>프로세스 → 안전:</strong> 생산 프로세스 방해에서 안전 시스템 무력화로 목표가 확대되었습니다.</li>
+<li><strong>국가 → 툴킷:</strong> 국가 수준 자원 필요에서 재사용 가능한 툴킷으로 진입 장벽이 하락하였습니다.</li>
+</ul>
+<h3 id="4-학술적-영향-및-후속-연구">4. 학술적 영향 및 후속 연구<a hidden class="anchor" aria-hidden="true" href="#4-학술적-영향-및-후속-연구">#</a></h3>
+<h4 id="a-stuxnet이-촉발한-연구-분야">A. Stuxnet이 촉발한 연구 분야<a hidden class="anchor" aria-hidden="true" href="#a-stuxnet이-촉발한-연구-분야">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>연구 분야</th>
+          <th>설명</th>
+          <th>대표 연구</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>ICS 프로토콜 보안</strong></td>
+          <td>Modbus, DNP3, IEC 104 등의 취약점 분석</td>
+          <td>S4 Conference 발표들</td>
+      </tr>
+      <tr>
+          <td><strong>PLC 펌웨어 분석</strong></td>
+          <td>PLC 로직 검증 및 무결성 확인 기법</td>
+          <td>Project Basecamp (2012)</td>
+      </tr>
+      <tr>
+          <td><strong>사이버-물리 시뮬레이션</strong></td>
+          <td>ICS 테스트베드 구축 방법론</td>
+          <td>INL, NIST 테스트베드</td>
+      </tr>
+      <tr>
+          <td><strong>ICS 위협 인텔리전스</strong></td>
+          <td>ICS 특화 ATT&amp;CK 프레임워크</td>
+          <td>MITRE ATT&amp;CK for ICS</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="b-산업적-대응">B. 산업적 대응<a hidden class="anchor" aria-hidden="true" href="#b-산업적-대응">#</a></h4>
+<ul>
+<li><strong>ICS-CERT 강화:</strong> 미국 CISA의 ICS-CERT가 전담 조직으로 확대되었습니다.</li>
+<li><strong>IEC 62443 채택 가속:</strong> 산업 사이버보안 표준의 의무화가 확산되었습니다.</li>
+<li><strong>OT SOC 등장:</strong> IT SOC와 별도로 OT 전용 보안관제센터가 구축되기 시작하였습니다.</li>
+</ul>
+<h3 id="5-개인-인사이트-personal-insight-2">5. 개인 인사이트 (Personal Insight)<a hidden class="anchor" aria-hidden="true" href="#5-개인-인사이트-personal-insight-2">#</a></h3>
+<p>Day 4 분석을 통해 Stuxnet이 <strong>ICS 보안 역사의 전환점</strong>이었음을 재확인하였습니다. 주요 통찰은 다음과 같습니다:</p>
+<ul>
+<li><strong>Langner의 선견지명:</strong> 2013년 &ldquo;공격 기법은 복제 가능하다&quot;는 주장이 Industroyer, Triton, PIPEDREAM으로 입증되었습니다.</li>
+<li><strong>위협의 민주화:</strong> ICS 공격이 툴킷화되면서 국가 수준이 아닌 공격자도 위협이 될 수 있습니다.</li>
+<li><strong>실무적 함의:</strong> OT/ICS 보안 컨설팅 시, Stuxnet만이 아니라 **후속 악성코드들의 TTP(전술, 기술, 절차)**까지 포함한 위협 모델링이 필요합니다. 특히 안전계장시스템(SIS)에 대한 별도의 보안 평가가 필수적입니다.</li>
+</ul>
+<h1 id="research-review-to-kill-a-centrifuge-a-technical-analysis-of-what-stuxnets-creators-tried-to-achieve-4">Research Review: To Kill a Centrifuge: A Technical Analysis of What Stuxnet&rsquo;s Creators Tried to Achieve<a hidden class="anchor" aria-hidden="true" href="#research-review-to-kill-a-centrifuge-a-technical-analysis-of-what-stuxnets-creators-tried-to-achieve-4">#</a></h1>
+<blockquote>
+<p><strong>Analyzed Date:</strong> 2025.12.19
+<strong>Keywords:</strong> Final_Synthesis, OT_Security_Consulting, ICS_Checklist, Cyber_Physical_Defense, Security_Assessment
+<strong>Source:</strong> The Langner Group (2013) <a href="https://www.langner.com/wp-content/uploads/2017/03/to-kill-a-centrifuge.pdf">Full Text Link</a></p>
+</blockquote>
+<hr>
+<h2 id="day-5--conclusion-and-practical-implications">Day 5 – Conclusion and Practical Implications<a hidden class="anchor" aria-hidden="true" href="#day-5--conclusion-and-practical-implications">#</a></h2>
+<p><em>(최종 결론 및 실무적 시사점)</em></p>
+<h3 id="1-연구-최종-요약">1. 연구 최종 요약<a hidden class="anchor" aria-hidden="true" href="#1-연구-최종-요약">#</a></h3>
+<p>본 논문은 Stuxnet에 대한 가장 포괄적인 기술 분석을 통해 <strong>사이버-물리 공격의 본질</strong>을 규명하였습니다.</p>
+<h4 id="a-핵심-발견-사항">A. 핵심 발견 사항<a hidden class="anchor" aria-hidden="true" href="#a-핵심-발견-사항">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>영역</th>
+          <th>핵심 내용</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>공격 구조</strong></td>
+          <td>IT → ICS → Physical의 3단계 공격 모델</td>
+      </tr>
+      <tr>
+          <td><strong>두 가지 공격</strong></td>
+          <td>과압 공격(S7-417, MITM) + 로터 속도 공격(S7-315)</td>
+      </tr>
+      <tr>
+          <td><strong>설계 철학</strong></td>
+          <td>파국적 파괴 회피, 저수율(Low-Yield) 무기로 수명 단축 + 심리적 좌절 유발</td>
+      </tr>
+      <tr>
+          <td><strong>침투 경로</strong></td>
+          <td>Air Gap 우회 - 계약업체/USB를 통한 물리적 접근</td>
+      </tr>
+      <tr>
+          <td><strong>은닉 기법</strong></td>
+          <td>제어시스템 레벨 MITM, 센서 값 녹화/재생</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="b-stuxnet이-증명한-것">B. Stuxnet이 증명한 것<a hidden class="anchor" aria-hidden="true" href="#b-stuxnet이-증명한-것">#</a></h4>
+<ul>
+<li><strong>사이버 무기의 실효성:</strong> 디지털 수단만으로 물리적 파괴가 가능합니다.</li>
+<li><strong>Air Gap의 한계:</strong> 네트워크 격리는 물리적 접근 경로를 차단하지 못합니다.</li>
+<li><strong>기능이 취약점:</strong> ICS 환경에서는 정상 기능이 악용될 수 있습니다.</li>
+<li><strong>도메인 융합의 필요성:</strong> IT 보안만으로는 OT 환경을 보호할 수 없습니다.</li>
+</ul>
+<h3 id="2-otics-보안-패러다임의-변화">2. OT/ICS 보안 패러다임의 변화<a hidden class="anchor" aria-hidden="true" href="#2-otics-보안-패러다임의-변화">#</a></h3>
+<h4 id="a-before-vs-after-stuxnet">A. Before vs After Stuxnet<a hidden class="anchor" aria-hidden="true" href="#a-before-vs-after-stuxnet">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>Before Stuxnet</th>
+          <th>After Stuxnet</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>&ldquo;ICS는 격리되어 있어 안전하다&rdquo;</td>
+          <td>Air Gap은 우회 가능하다</td>
+      </tr>
+      <tr>
+          <td>&ldquo;IT 보안 기법을 적용하면 된다&rdquo;</td>
+          <td>ICS 특화 위협 모델이 필요하다</td>
+      </tr>
+      <tr>
+          <td>&ldquo;사이버 공격 = 데이터 유출&rdquo;</td>
+          <td>사이버 공격 = 물리적 파괴 가능</td>
+      </tr>
+      <tr>
+          <td>&ldquo;국가 수준만 위협이 된다&rdquo;</td>
+          <td>기법 확산으로 진입 장벽이 하락하고 있다</td>
+      </tr>
+      <tr>
+          <td>&ldquo;보안 패치로 해결 가능하다&rdquo;</td>
+          <td>기능(Feature)은 패치 대상이 아니다</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="b-새로운-보안-원칙">B. 새로운 보안 원칙<a hidden class="anchor" aria-hidden="true" href="#b-새로운-보안-원칙">#</a></h4>
+<ol>
+<li><strong>Assume Breach:</strong> OT 환경도 침해를 가정하고 탐지/대응 역량을 구축해야 합니다.</li>
+<li><strong>Defense in Depth:</strong> 네트워크 경계뿐 아니라 각 레벨(Purdue 모델)에서 방어해야 합니다.</li>
+<li><strong>Physical-Cyber Integration:</strong> 안전(Safety) 분석과 보안(Security) 분석을 통합해야 합니다.</li>
+<li><strong>Supply Chain Security:</strong> 계약업체와 공급망이 가장 약한 고리가 될 수 있습니다.</li>
+</ol>
+<h3 id="3-otics-보안-컨설팅-체크리스트">3. OT/ICS 보안 컨설팅 체크리스트<a hidden class="anchor" aria-hidden="true" href="#3-otics-보안-컨설팅-체크리스트">#</a></h3>
+<p>Day 1~5 분석을 종합하여 실무에서 활용 가능한 체크리스트를 도출하였습니다.</p>
+<h4 id="a-자산-식별-및-위험-평가">A. 자산 식별 및 위험 평가<a hidden class="anchor" aria-hidden="true" href="#a-자산-식별-및-위험-평가">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>점검 항목</th>
+          <th>세부 내용</th>
+          <th>참조</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>□ 물리적 취약점 식별</td>
+          <td>프로세스의 물리적 취약점(과압, 과속, 과열 등) 파악</td>
+          <td>Day 1</td>
+      </tr>
+      <tr>
+          <td>□ 제어시스템 매핑</td>
+          <td>해당 취약점을 조작할 수 있는 PLC/DCS 식별</td>
+          <td>Day 2</td>
+      </tr>
+      <tr>
+          <td>□ 공격 경로 분석</td>
+          <td>IT → ICS → Physical 전체 체인 문서화</td>
+          <td>Day 1</td>
+      </tr>
+      <tr>
+          <td>□ 안전시스템 분리 평가</td>
+          <td>SIS가 PCS와 독립적으로 운영되는지 확인</td>
+          <td>Day 4</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="b-네트워크-아키텍처-점검">B. 네트워크 아키텍처 점검<a hidden class="anchor" aria-hidden="true" href="#b-네트워크-아키텍처-점검">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>점검 항목</th>
+          <th>세부 내용</th>
+          <th>참조</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>□ Purdue 모델 준수</td>
+          <td>Level 0~5 계층 분리 상태 확인</td>
+          <td>Day 3</td>
+      </tr>
+      <tr>
+          <td>□ DMZ 구성</td>
+          <td>IT/OT 경계에 DMZ 존재 여부</td>
+          <td>Day 3</td>
+      </tr>
+      <tr>
+          <td>□ 프로토콜 분석</td>
+          <td>사용 중인 ICS 프로토콜(Modbus, DNP3 등) 보안 평가</td>
+          <td>Day 4</td>
+      </tr>
+      <tr>
+          <td>□ 원격 접속 통제</td>
+          <td>VPN, 점프 서버 등 원격 접속 경로 점검</td>
+          <td>Day 3</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="c-물리적-접근-통제">C. 물리적 접근 통제<a hidden class="anchor" aria-hidden="true" href="#c-물리적-접근-통제">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>점검 항목</th>
+          <th>세부 내용</th>
+          <th>참조</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>□ 계약업체 보안 정책</td>
+          <td>외부 인력의 장비 반입/접근 통제 절차</td>
+          <td>Day 3</td>
+      </tr>
+      <tr>
+          <td>□ USB/이동식 매체 통제</td>
+          <td>이동식 저장장치 사용 정책 및 기술적 통제</td>
+          <td>Day 3</td>
+      </tr>
+      <tr>
+          <td>□ 엔지니어링 워크스테이션</td>
+          <td>프로그래밍 장비의 보안 상태 및 접근 통제</td>
+          <td>Day 2</td>
+      </tr>
+      <tr>
+          <td>□ 물리적 접근 로그</td>
+          <td>제어실/캐비닛 접근 기록 관리</td>
+          <td>Day 3</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="d-탐지-및-대응-역량">D. 탐지 및 대응 역량<a hidden class="anchor" aria-hidden="true" href="#d-탐지-및-대응-역량">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>점검 항목</th>
+          <th>세부 내용</th>
+          <th>참조</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>□ OT 네트워크 모니터링</td>
+          <td>ICS 트래픽 이상 탐지 시스템 운영 여부</td>
+          <td>Day 3</td>
+      </tr>
+      <tr>
+          <td>□ PLC 로직 무결성 검증</td>
+          <td>제어 로직 변경 탐지 메커니즘</td>
+          <td>Day 2</td>
+      </tr>
+      <tr>
+          <td>□ 센서 값 검증</td>
+          <td>물리적 측정과 제어시스템 값의 교차 검증</td>
+          <td>Day 2</td>
+      </tr>
+      <tr>
+          <td>□ ICS 포렌식 역량</td>
+          <td>OT 환경 침해사고 조사 절차 및 역량</td>
+          <td>Day 4</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="e-거버넌스-및-표준-준수">E. 거버넌스 및 표준 준수<a hidden class="anchor" aria-hidden="true" href="#e-거버넌스-및-표준-준수">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>점검 항목</th>
+          <th>세부 내용</th>
+          <th>참조</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>□ IEC 62443 적용</td>
+          <td>영역(Zone)/도관(Conduit) 정의 및 보안 수준(SL) 설정</td>
+          <td>Day 3</td>
+      </tr>
+      <tr>
+          <td>□ NIST SP 800-82 참조</td>
+          <td>ICS 보안 권고사항 이행 여부</td>
+          <td>Day 3</td>
+      </tr>
+      <tr>
+          <td>□ 사이버-물리 위협 모델링</td>
+          <td>MITRE ATT&amp;CK for ICS 기반 위협 시나리오</td>
+          <td>Day 4</td>
+      </tr>
+      <tr>
+          <td>□ 보안 인식 교육</td>
+          <td>운영자/엔지니어 대상 OT 보안 교육</td>
+          <td>Day 3</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="4-프레임워크-최종-연계">4. 프레임워크 최종 연계<a hidden class="anchor" aria-hidden="true" href="#4-프레임워크-최종-연계">#</a></h3>
+<h4 id="a-iec-62443-매핑">A. IEC 62443 매핑<a hidden class="anchor" aria-hidden="true" href="#a-iec-62443-매핑">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>IEC 62443 파트</th>
+          <th>Stuxnet 교훈</th>
+          <th>체크리스트 연계</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>2-1 (보안 프로그램)</td>
+          <td>계약업체 보안 정책 필수</td>
+          <td>섹션 C</td>
+      </tr>
+      <tr>
+          <td>3-2 (위험 평가)</td>
+          <td>사이버-물리 시나리오 포함</td>
+          <td>섹션 A</td>
+      </tr>
+      <tr>
+          <td>3-3 (시스템 요건)</td>
+          <td>Zone/Conduit 분리</td>
+          <td>섹션 B</td>
+      </tr>
+      <tr>
+          <td>4-2 (컴포넌트 요건)</td>
+          <td>PLC/HMI 보안 기능</td>
+          <td>섹션 D</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="b-nist-csf-매핑">B. NIST CSF 매핑<a hidden class="anchor" aria-hidden="true" href="#b-nist-csf-매핑">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>CSF 기능</th>
+          <th>적용 내용</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Identify</strong></td>
+          <td>자산 식별, 물리적 취약점 분석</td>
+      </tr>
+      <tr>
+          <td><strong>Protect</strong></td>
+          <td>네트워크 분리, 접근 통제, 계약업체 관리</td>
+      </tr>
+      <tr>
+          <td><strong>Detect</strong></td>
+          <td>OT 모니터링, PLC 무결성 검증</td>
+      </tr>
+      <tr>
+          <td><strong>Respond</strong></td>
+          <td>ICS 포렌식, 인시던트 대응 절차</td>
+      </tr>
+      <tr>
+          <td><strong>Recover</strong></td>
+          <td>제어 로직 백업/복구, 운영 연속성</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="5-개인-인사이트-personal-insight-3">5. 개인 인사이트 (Personal Insight)<a hidden class="anchor" aria-hidden="true" href="#5-개인-인사이트-personal-insight-3">#</a></h3>
+<p>Day 1~5 전체 분석을 통해 Stuxnet 연구가 OT/ICS 보안에 주는 <strong>근본적인 교훈</strong>을 정리하였습니다.</p>
+<h4 id="a-5가지-핵심-교훈">A. 5가지 핵심 교훈<a hidden class="anchor" aria-hidden="true" href="#a-5가지-핵심-교훈">#</a></h4>
+<ol>
+<li><strong>보안은 하드웨어까지:</strong> 논리적 방어(하이퍼바이저, 방화벽)를 넘어 물리적 레벨까지 고려해야 합니다.</li>
+<li><strong>가장 약한 고리:</strong> 계약업체와 공급망이 정교한 공격의 침투 경로가 됩니다.</li>
+<li><strong>기능의 양면성:</strong> ICS의 정상 기능(원격 프로그래밍, 프로토콜 통신)이 무기화될 수 있습니다.</li>
+<li><strong>Safety ≠ Security:</strong> 안전시스템(SIS)도 사이버 공격의 대상이 될 수 있습니다.</li>
+<li><strong>진화하는 위협:</strong> Stuxnet 이후 ICS 악성코드는 더 범용적이고 접근 가능해지고 있습니다.</li>
+</ol>
+<h4 id="b-컨설턴트로서의-역할-재정의">B. 컨설턴트로서의 역할 재정의<a hidden class="anchor" aria-hidden="true" href="#b-컨설턴트로서의-역할-재정의">#</a></h4>
+<ul>
+<li><strong>기술적 깊이:</strong> IT 보안을 넘어 제어공학, 프로세스 엔지니어링에 대한 이해가 필요합니다.</li>
+<li><strong>통합적 시각:</strong> Safety(안전)와 Security(보안)를 통합하여 평가해야 합니다.</li>
+<li><strong>현실적 위협 모델:</strong> 국가 수준 공격만이 아닌, 툴킷화된 위협까지 고려해야 합니다.</li>
+</ul>
+<h4 id="c-실무적-함의">C. 실무적 함의<a hidden class="anchor" aria-hidden="true" href="#c-실무적-함의">#</a></h4>
+<p>OT/ICS 보안 컨설팅 수행 시, 본 논문 분석에서 도출된 체크리스트와 프레임워크 매핑을 활용하여 <strong>체계적이고 포괄적인 보안 평가</strong>를 수행할 수 있습니다. 특히 물리적 접근 경로, 계약업체 보안, 제어 로직 무결성 검증은 기존 IT 보안 평가에서 놓치기 쉬운 영역으로, 반드시 점검해야 합니다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/stuxnet/">Stuxnet</a></li>
+      <li><a href="http://localhost:1313/tags/ics-security/">ICS-Security</a></li>
+      <li><a href="http://localhost:1313/tags/ot-%EB%B3%B4%EC%95%88/">OT-보안</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%82%AC%EC%9D%B4%EB%B2%84%EB%AC%BC%EB%A6%AC%EA%B3%B5%EA%B2%A9/">사이버물리공격</a></li>
+      <li><a href="http://localhost:1313/tags/plc-exploitation/">PLC-Exploitation</a></li>
+      <li><a href="http://localhost:1313/tags/mitm/">MITM</a></li>
+      <li><a href="http://localhost:1313/tags/iec-62443/">IEC-62443</a></li>
+      <li><a href="http://localhost:1313/tags/nist-sp-800-82/">NIST-SP-800-82</a></li>
+      <li><a href="http://localhost:1313/tags/supply-chain-security/">Supply-Chain-Security</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,1700 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Research Review: UNICORN - Runtime Provenance-Based Detector for APT | HJ&#39;s Security Note</title>
+<meta name="keywords" content="SOC, APT-Detection, Provenance-Graphs, Anomaly-Detection, Graph-Sketching, Evolutionary-Modeling, UNICORN, NDSS-2020, SK-Shieldus-Rookies">
+<meta name="description" content="TB급 시스템 로그를 Graph Sketching으로 압축하고 시스템의 시계열적 변화를 학습하는 Evolutionary Modeling을 통해, 시그니처 없는 Low-and-Slow APT 공격을 실시간으로 탐지하는 프레임워크 연구">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/paper_review/soc_%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C/unicorn_systemlevel_provenance_apt/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a29c24210eb31d9ce56f669c66a35c9c51b17376b7764e336a49af7dec914cf0.css" integrity="sha256-opwkIQ6zHZzlb2acZqNcnFGxc3a3dk4zakmvfeyRTPA=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/paper_review/soc_%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C/unicorn_systemlevel_provenance_apt/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/" title="프로젝트">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">홈</a>&nbsp;»&nbsp;<a href="http://localhost:1313/paper_review/">논문 리뷰</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Research Review: UNICORN - Runtime Provenance-Based Detector for APT
+    </h1>
+    <div class="post-meta"><span title='2026-01-12 00:00:00 +0000 UTC'>2026년 1월 12일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="research-review-unicorn-runtime-provenance-based-detector-for-advanced-persistent-threats">Research Review: UNICORN: Runtime Provenance-Based Detector for Advanced Persistent Threats<a hidden class="anchor" aria-hidden="true" href="#research-review-unicorn-runtime-provenance-based-detector-for-advanced-persistent-threats">#</a></h1>
+<blockquote>
+<p><strong>Analyzed Date:</strong> 2026.01.08 - 2026.01.12<br>
+<strong>Keywords:</strong> APT Detection, Provenance Graphs, Anomaly Detection, Graph Sketching, Evolutionary Modeling<br>
+<strong>Source:</strong> Network and Distributed System Security Symposium (NDSS), 2020, pp. 1-18<br>
+<strong>Link:</strong> <a href="https://www.ndss-symposium.org/ndss-paper/unicorn-runtime-provenance-based-detector-for-advanced-persistent-threats/">https://www.ndss-symposium.org/ndss-paper/unicorn-runtime-provenance-based-detector-for-advanced-persistent-threats/</a></p>
+</blockquote>
+<hr>
+<h2 id="why-this-paper">Why This Paper?<a hidden class="anchor" aria-hidden="true" href="#why-this-paper">#</a></h2>
+<h3 id="선정-배경">선정 배경<a hidden class="anchor" aria-hidden="true" href="#선정-배경">#</a></h3>
+<p><strong>이 논문을 선택한 이유:</strong></p>
+<ul>
+<li>Beehive에서 학습한 네트워크 로그 분석을 더 깊은 레벨인 시스템 호출 수준 provenance 그래프로 확장</li>
+<li>SOC의 최종 보스인 APT 탐지 - 가장 탐지하기 어려운 공격 유형을 다룸</li>
+<li>단순 탐지를 넘어 long-running 시스템에서 stealthy 공격을 어떻게 찾아내는지에 대한 방법론</li>
+<li>그래프 기반 분석은 현대 SOC의 핵심 기술 - EDR, XDR의 기반 원리</li>
+</ul>
+<p><strong>학습 목표:</strong></p>
+<ol>
+<li>Provenance 그래프 기반 APT 탐지의 원리와 실무 적용 방법 이해</li>
+<li>Graph sketching과 evolutionary modeling이라는 새로운 접근법 학습</li>
+<li>Long-running APT 캠페인을 탐지하는 SOC 역량 강화</li>
+</ol>
+<hr>
+<h2 id="day-1--research-context--motivation">Day 1 – Research Context &amp; Motivation<a hidden class="anchor" aria-hidden="true" href="#day-1--research-context--motivation">#</a></h2>
+<p><em>(APT의 핵심 특성과 탐지의 근본적 어려움)</em></p>
+<h3 id="1-연구-배경-low-and-slow-apt-탐지의-한계">1. 연구 배경: Low-and-Slow APT 탐지의 한계<a hidden class="anchor" aria-hidden="true" href="#1-연구-배경-low-and-slow-apt-탐지의-한계">#</a></h3>
+<p><strong>APT의 중요성</strong></p>
+<p>APT는 현대 사이버 보안의 가장 심각한 위협이다. 일반 공격과 달리 APT는:</p>
+<ul>
+<li>Long timescale: 수개월에서 수년에 걸쳐 진행</li>
+<li>Stealthy: 정상 트래픽에 섞여 들어가 탐지 회피</li>
+<li>Zero-day exploits: 사전 시그니처가 없어 기존 탐지 우회</li>
+<li>Targeted: 특정 조직을 정교하게 공격</li>
+</ul>
+<p><strong>현실의 한계</strong></p>
+<p>기존 APT 탐지 시스템들의 문제점:</p>
+<ol>
+<li>
+<p><strong>Syscall trace 기반 접근법의 한계</strong></p>
+<ul>
+<li>Host-based IDS는 짧은 시퀀스만 분석</li>
+<li>Long-term context 부족 - APT의 긴 시간 스팬을 포착 못 함</li>
+<li>정상 행위와 구분 어려움</li>
+</ul>
+</li>
+<li>
+<p><strong>Static model의 한계</strong></p>
+<ul>
+<li>Long-running 시스템의 동적 행동 변화 포착 못 함</li>
+<li>시스템이 진화하면 false positive 급증</li>
+</ul>
+</li>
+<li>
+<p><strong>Dynamic model의 한계</strong></p>
+<ul>
+<li>Runtime 중 모델 업데이트 시 공격자가 모델을 점진적으로 poisoning 가능</li>
+<li>Low-and-slow 공격이 정상으로 학습됨</li>
+</ul>
+</li>
+</ol>
+<p><strong>연구 문제의식</strong></p>
+<p>어떻게 long-running 시스템에서 low-and-slow APT 공격을 정확하게 탐지할 것인가? 특히:</p>
+<ul>
+<li>시그니처 없이 zero-day 탐지</li>
+<li>수개월간의 시스템 실행 history를 효율적으로 분석</li>
+<li>모델 poisoning 방지하면서도 시스템 진화 대응</li>
+</ul>
+<h3 id="2-핵심-개념">2. 핵심 개념<a hidden class="anchor" aria-hidden="true" href="#2-핵심-개념">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>개념</th>
+          <th>정의</th>
+          <th>SOC 맥락에서의 의미</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Provenance Graph</strong></td>
+          <td>시스템 전체의 인과관계를 표현하는 방향 그래프. 노드는 프로세스/파일/소켓, 엣지는 시스템 콜 관계</td>
+          <td>단순 로그 분석을 넘어 전체 attack chain을 추적. 공격자가 어떻게 lateral movement 했는지 시각화</td>
+      </tr>
+      <tr>
+          <td><strong>Graph Sketching</strong></td>
+          <td>큰 그래프를 고정 크기의 요약 벡터로 압축하는 기법. Weisfeiler-Lehman 알고리즘 기반</td>
+          <td>수십 GB 규모의 audit log를 메모리에 올릴 수 있는 크기로 압축하여 실시간 분석 가능</td>
+      </tr>
+      <tr>
+          <td><strong>Evolutionary Modeling</strong></td>
+          <td>시스템의 시간에 따른 상태 변화를 여러 sub-model로 학습하는 방법</td>
+          <td>시스템 업데이트, 사용자 행동 변화 등을 반영하면서도 급격한 이상은 탐지</td>
+      </tr>
+      <tr>
+          <td><strong>Low-and-Slow Attack</strong></td>
+          <td>수개월에 걸쳐 천천히 진행되어 탐지를 회피하는 APT 공격 패턴</td>
+          <td>일반 IDS는 burst traffic만 탐지. SOC는 장기 baseline과 비교하여 미세한 drift 감지 필요</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="3-이론적-기반-provenance-based-anomaly-detection">3. 이론적 기반: Provenance-Based Anomaly Detection<a hidden class="anchor" aria-hidden="true" href="#3-이론적-기반-provenance-based-anomaly-detection">#</a></h3>
+<pre tabindex="0"><code>[Audit Logs] → [Provenance Graph Construction]
+                        ↓
+            [Streaming Graph Histogram]
+                        ↓
+            [Graph Sketching (HistoSketch)]
+                        ↓
+            [Evolutionary Clustering Model]
+                        ↓
+            [Anomaly Detection via State Transition]
+</code></pre><p><strong>핵심 아이디어:</strong></p>
+<p>UNICORN은 4단계 파이프라인으로 APT를 탐지한다:</p>
+<ol>
+<li><strong>Provenance graph 수집</strong>: Linux Audit, Windows ETW 등에서 시스템 전체의 인과관계 그래프 생성</li>
+<li><strong>Streaming histogram</strong>: R-hop neighborhood를 탐색하여 각 vertex 주변의 구조적 특징을 histogram으로 요약</li>
+<li><strong>Graph sketching</strong>: Histogram을 고정 크기 벡터로 압축 (HistoSketch) - gradually forgetting 기법으로 최근 활동에 가중치</li>
+<li><strong>Evolutionary model</strong>: Training 중 생성된 여러 시점의 sketch를 clustering하여 시스템의 정상 상태 전이 패턴 학습</li>
+</ol>
+<p>Detection 시에는 새로운 sketch가 학습한 cluster에 fit하는지, 그리고 state transition이 valid한지 검사한다.</p>
+<h3 id="4-연구의-핵심-기여">4. 연구의 핵심 기여<a hidden class="anchor" aria-hidden="true" href="#4-연구의-핵심-기여">#</a></h3>
+<p><strong>학술적 기여:</strong></p>
+<ol>
+<li>
+<p><strong>Graph sketching 기반 APT 탐지 프레임워크</strong></p>
+<ul>
+<li>Long-running 시스템의 전체 history를 고정 크기 데이터 구조로 요약</li>
+<li>Weisfeiler-Lehman 알고리즘을 streaming 환경에 적용</li>
+<li>Time-weighted histogram으로 인과관계와 시간 locality 동시 반영</li>
+</ul>
+</li>
+<li>
+<p><strong>Evolutionary modeling</strong></p>
+<ul>
+<li>단일 training trace에서 시간에 따른 여러 시스템 상태를 학습</li>
+<li>Concept drift 대응하면서도 model poisoning 방지</li>
+<li>State transition 기반 anomaly detection</li>
+</ul>
+</li>
+<li>
+<p><strong>APT 특성에 특화된 4가지 설계 원칙</strong></p>
+<ul>
+<li>L1: Rich historical context - R-hop graph exploration</li>
+<li>L2: Contextualized analysis - Causality-based graph neighborhood</li>
+<li>L3: Robust long-term modeling - Evolutionary model without runtime update</li>
+<li>L4: Space efficiency - In-memory histogram, no full graph storage</li>
+</ul>
+</li>
+</ol>
+<p><strong>SOC 실무 기여:</strong></p>
+<ol>
+<li>
+<p><strong>시그니처 없는 Zero-day APT 탐지</strong></p>
+<ul>
+<li>Anomaly-based 접근으로 unseen attack pattern 탐지</li>
+<li>DARPA dataset에서 모든 APT 공격 탐지 성공</li>
+</ul>
+</li>
+<li>
+<p><strong>기존 SOTA 대비 성능 향상</strong></p>
+<ul>
+<li>StreamSpot 대비 precision 24% 향상, accuracy 30% 향상</li>
+<li>False positive 대폭 감소</li>
+</ul>
+</li>
+<li>
+<p><strong>Real-time 실용성</strong></p>
+<ul>
+<li>평균 CPU 사용률 &lt;5%</li>
+<li>Memory footprint: ~200MB (TB 규모 audit log 처리)</li>
+<li>Processing speed: 평균 11,000 events/second</li>
+</ul>
+</li>
+</ol>
+<h3 id="5-soc-관점-인사이트">5. SOC 관점 인사이트<a hidden class="anchor" aria-hidden="true" href="#5-soc-관점-인사이트">#</a></h3>
+<p><strong>실무 적용 가능성:</strong></p>
+<p>UNICORN은 EDR/XDR의 차세대 백엔드 엔진으로 활용 가능하다. 현재 대부분의 EDR은 rule-based이지만, UNICORN의 provenance 기반 anomaly detection은:</p>
+<ul>
+<li>Supply chain attack 같은 신종 APT 탐지</li>
+<li>Insider threat의 long-term behavior 추적</li>
+<li>Threat hunting 시 공격 전체 kill chain 재구성</li>
+</ul>
+<p><strong>기존 학습과의 연결:</strong></p>
+<ul>
+<li><strong>DeepLog와의 비교</strong>: DeepLog는 단일 시스템의 log sequence anomaly. UNICORN은 전체 시스템의 graph structure anomaly</li>
+<li><strong>Lou et al.과의 비교</strong>: Invariants mining은 rule-based. UNICORN은 clustering-based unsupervised learning</li>
+<li><strong>Beehive와의 비교</strong>: Beehive는 network-level workflow. UNICORN은 system-level provenance graph</li>
+</ul>
+<p>Progression: Log sequence → Network workflow → System provenance graph</p>
+<p><strong>현실적 고려사항:</strong></p>
+<ol>
+<li><strong>Ground truth 문제</strong>: APT는 실제 환경에서 label이 불명확. 어떻게 모델 평가?</li>
+<li><strong>Parameter tuning</strong>: R, |S|, λ 등 하이퍼파라미터를 각 환경에 맞게 조정 필요</li>
+<li><strong>Provenance overhead</strong>: CamFlow 같은 whole-system provenance 수집의 성능 오버헤드</li>
+<li><strong>False positive 관리</strong>: 정상 시스템 업데이트도 anomaly로 탐지 가능 - 정기적 재학습 필요</li>
+</ol>
+<hr>
+<h2 id="day-2--research-model-hypotheses-and-methodology">Day 2 – Research Model, Hypotheses, and Methodology<a hidden class="anchor" aria-hidden="true" href="#day-2--research-model-hypotheses-and-methodology">#</a></h2>
+<p><em>(Graph Sketching과 Evolutionary Modeling의 설계)</em></p>
+<h3 id="1-연구-모델-개요">1. 연구 모델 개요<a hidden class="anchor" aria-hidden="true" href="#1-연구-모델-개요">#</a></h3>
+<pre tabindex="0"><code>[Training Phase]
+Streaming Provenance Graph
+    ↓
+[1] Incremental Histogram Construction (R-hop exploration)
+    ↓
+[2] Periodic Sketching (gradually forgetting with λ)
+    ↓
+[3] Sketch Collection over time: S(t₁), S(t₂), ..., S(tₙ)
+    ↓
+[4] Evolutionary Clustering: Group sketches into clusters
+    ↓
+[5] State Transition Model: Track cluster sequences
+
+[Detection Phase]
+New Streaming Graph → Histogram → Sketch → S(t_new)
+    ↓
+Check: (1) Does S(t_new) fit any cluster?
+       (2) Is state transition valid?
+    ↓
+[Anomaly if either fails]
+</code></pre><p><strong>설계 철학:</strong></p>
+<p>UNICORN은 APT의 4가지 특성에 대응하도록 설계되었다:</p>
+<ol>
+<li><strong>Long-running</strong>: Graph sketching으로 수개월 history를 고정 크기로 요약</li>
+<li><strong>Stealthy</strong>: Evolutionary modeling으로 미세한 deviation 탐지</li>
+<li><strong>Zero-day</strong>: Unsupervised anomaly detection - 사전 시그니처 불필요</li>
+<li><strong>Contextualized</strong>: R-hop exploration으로 causal relationship 포함</li>
+</ol>
+<h3 id="2-연구-가설-핵심-가정">2. 연구 가설 (핵심 가정)<a hidden class="anchor" aria-hidden="true" href="#2-연구-가설-핵심-가정">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>가정</th>
+          <th>내용</th>
+          <th>근거</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>A1: Provenance graphs capture APT</strong></td>
+          <td>시스템 전체의 인과관계 그래프는 APT의 전체 attack chain을 포함한다</td>
+          <td>APT는 시스템 콜을 통해 실행되며, provenance는 모든 시스템 콜 관계를 기록</td>
+      </tr>
+      <tr>
+          <td><strong>A2: APT는 정상과 구조적으로 다르다</strong></td>
+          <td>APT의 provenance graph 구조는 정상 시스템 행동과 통계적으로 구분 가능하다</td>
+          <td>공격자의 reconnaissance, exploitation, exfiltration은 정상 workflow와 다른 graph pattern 생성</td>
+      </tr>
+      <tr>
+          <td><strong>A3: Sketch preserves anomaly signal</strong></td>
+          <td>Graph를 sketch로 압축해도 anomaly detection에 필요한 정보는 보존된다</td>
+          <td>Weisfeiler-Lehman 기반 histogram은 graph isomorphism test에 준하는 구별력</td>
+      </tr>
+      <tr>
+          <td><strong>A4: System evolution is gradual</strong></td>
+          <td>정상 시스템의 행동 변화는 점진적이며, 급격한 변화는 anomaly다</td>
+          <td>소프트웨어 업데이트, 사용자 습관 변화는 서서히 진행되며, APT 공격은 갑작스럽게 나타남</td>
+      </tr>
+      <tr>
+          <td><strong>A5: No adversarial model poisoning</strong></td>
+          <td>Kernel과 provenance 수집 시스템은 신뢰할 수 있다</td>
+          <td>Attested boot, LSM integrity로 보장. 또는 off-host analysis</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="3-연구-방법론">3. 연구 방법론<a hidden class="anchor" aria-hidden="true" href="#3-연구-방법론">#</a></h3>
+<h4 id="a-데이터-수집">A. 데이터 수집<a hidden class="anchor" aria-hidden="true" href="#a-데이터-수집">#</a></h4>
+<p><strong>데이터 소스:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>소스</th>
+          <th>수집 정보</th>
+          <th>용도</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Linux Audit</strong></td>
+          <td>syscall trace (open, read, write, fork, exec, connect, etc.)</td>
+          <td>프로세스-파일-네트워크 간 인과관계 그래프 생성</td>
+      </tr>
+      <tr>
+          <td><strong>CamFlow</strong></td>
+          <td>Kernel-level provenance capture</td>
+          <td>Controlled lab 환경 supply chain attack 시나리오</td>
+      </tr>
+      <tr>
+          <td><strong>DARPA TC Datasets</strong></td>
+          <td>CADETS, ClearScope, THEIA from 3 OS platforms</td>
+          <td>Real APT campaign 평가</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>데이터 규모:</strong></p>
+<ul>
+<li><strong>DARPA datasets</strong>: 2주간 adversarial engagement
+<ul>
+<li>CADETS (FreeBSD): 90.9M events, 451 GB raw data</li>
+<li>ClearScope (Linux): 31.8M events, 164 GB</li>
+<li>THEIA (Linux): 78.5M events, 312 GB</li>
+</ul>
+</li>
+<li><strong>Supply Chain scenarios</strong>: 125 benign + 25 attack graphs per scenario</li>
+<li>APT는 전체 audit data의 0.001% 미만 - extreme imbalance</li>
+</ul>
+<p><strong>데이터 특성 및 문제점:</strong></p>
+<ul>
+<li><strong>Heterogeneity</strong>: 다양한 OS, 다양한 provenance capture 시스템</li>
+<li><strong>High volume</strong>: TB 단위 audit log - 메모리에 올릴 수 없음</li>
+<li><strong>Temporal locality</strong>: 최근 행동이 더 중요하지만, 오래된 인과관계도 유지 필요</li>
+<li><strong>Partial ordering</strong>: Provenance edge 도착 순서가 실제 발생 순서와 다를 수 있음</li>
+</ul>
+<h4 id="b-핵심-알고리즘기법">B. 핵심 알고리즘/기법<a hidden class="anchor" aria-hidden="true" href="#b-핵심-알고리즘기법">#</a></h4>
+<p><strong>[1] Incremental Histogram Construction</strong></p>
+<p>목적: Streaming provenance graph의 구조적 특징을 효율적으로 추출</p>
+<p>방법:</p>
+<pre tabindex="0"><code>1. 초기화: 각 vertex v에 label l(v) 할당 (프로세스, 파일, 소켓 등)
+2. For iteration r = 0 to R:
+   a. 각 vertex v의 r-hop neighborhood 수집
+   b. Multiset M(v) = {l(u) | u는 v의 r-hop neighbor}
+   c. Hash M(v) → new label l&#39;(v)
+   d. Histogram H[l&#39;(v)] += weight(v, r)
+3. Weight function:
+   - Temporal locality: w(t) = λ^(-Δt) (gradually forgetting)
+   - Causal dependency: w(path_length) = 1 (no discount for causal edges)
+</code></pre><p>핵심 아이디어:</p>
+<ul>
+<li>Weisfeiler-Lehman 알고리즘의 streaming 버전</li>
+<li>R-hop exploration으로 local graph structure를 label로 인코딩</li>
+<li>Gradually forgetting: 시간 경과에 따라 weight decay, 단 인과관계는 유지</li>
+</ul>
+<p><strong>[2] Graph Sketching (HistoSketch)</strong></p>
+<p>목적: 무한히 증가하는 histogram을 고정 크기 |S|로 압축</p>
+<p>방법:</p>
+<pre tabindex="0"><code>1. Top-|S| frequent histogram elements 선택
+2. Normalize: Jaccard similarity 계산을 위해 확률 분포로 변환
+3. Sketch S(t) = {(label, frequency) | top |S| elements}
+4. Constant time update:
+   - New edge 도착 시 affected vertices만 업데이트
+   - Batch processing으로 overhead 감소
+</code></pre><p>Trade-off:</p>
+<ul>
+<li>|S| 크면: 더 많은 정보, 더 높은 계산 비용</li>
+<li>|S| 작으면: 정보 손실, 빠른 계산</li>
+</ul>
+<p>실험에서는 |S| = 2000이 적절함을 확인.</p>
+<p><strong>[3] Evolutionary Clustering</strong></p>
+<p>목적: Training execution의 여러 시점에서 생성된 sketch를 clustering하여 시스템의 정상 상태 학습</p>
+<p>방법:</p>
+<pre tabindex="0"><code>1. Training 중 T개의 sketch 생성: {S(t₁), S(t₂), ..., S(tₜ)}
+2. Sketch 간 Jaccard distance 계산:
+   d(S_i, S_j) = 1 - |S_i ∩ S_j| / |S_i ∪ S_j|
+3. Hierarchical clustering with distance threshold θ
+4. 각 cluster C_k는 시스템의 한 &#34;meta-state&#34;를 표현
+5. Evolution E = ordered sequence of cluster indices
+   예: [C₁, C₁, C₂, C₃, C₂, C₃, C₃, ...]
+</code></pre><p>Evolutionary model의 장점:</p>
+<ul>
+<li>Single training trace에서 multiple system states 학습</li>
+<li>Concept drift 자동 반영 (시스템이 진화하면 새 cluster 생성)</li>
+<li>Model poisoning 방지 (training 후 model freeze)</li>
+</ul>
+<h4 id="c-피처변수-설계">C. 피처/변수 설계<a hidden class="anchor" aria-hidden="true" href="#c-피처변수-설계">#</a></h4>
+<p><strong>피처 설계 원칙:</strong></p>
+<p>Graph의 local structure를 label로 인코딩. 각 label은 특정 r-hop neighborhood pattern을 대표.</p>
+<p><strong>주요 피처:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>피처</th>
+          <th>설명</th>
+          <th>계산 방법</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Vertex label</strong></td>
+          <td>노드 유형 (process, file, socket, pipe)</td>
+          <td>Provenance graph의 node type</td>
+      </tr>
+      <tr>
+          <td><strong>Edge label</strong></td>
+          <td>Relation 유형 (read, write, exec, connect)</td>
+          <td>System call type</td>
+      </tr>
+      <tr>
+          <td><strong>R-hop subgraph hash</strong></td>
+          <td>r-hop neighborhood의 구조적 fingerprint</td>
+          <td>Weisfeiler-Lehman hash</td>
+      </tr>
+      <tr>
+          <td><strong>Histogram element</strong></td>
+          <td>(hash, count) pair</td>
+          <td>각 subgraph pattern의 출현 빈도</td>
+      </tr>
+      <tr>
+          <td><strong>Sketch vector</strong></td>
+          <td>Top-</td>
+          <td>S</td>
+      </tr>
+  </tbody>
+</table>
+<p>특징:</p>
+<ul>
+<li>No manual feature engineering - 알고리즘이 자동으로 meaningful pattern 추출</li>
+<li>Heterogeneous graph labels 지원 - 다양한 entity와 relation type</li>
+<li>Temporal weighting - gradually forgetting으로 recency 반영</li>
+</ul>
+<h4 id="d-평가-방법">D. 평가 방법<a hidden class="anchor" aria-hidden="true" href="#d-평가-방법">#</a></h4>
+<p><strong>평가 지표:</strong></p>
+<ul>
+<li><strong>Precision</strong>: TP / (TP + FP) - 탐지한 것 중 실제 공격 비율</li>
+<li><strong>Recall</strong>: TP / (TP + FN) - 실제 공격 중 탐지한 비율</li>
+<li><strong>Accuracy</strong>: (TP + TN) / (TP + TN + FP + FN)</li>
+<li><strong>F1-Score</strong>: 2 × (Precision × Recall) / (Precision + Recall)</li>
+</ul>
+<p><strong>비교 대상:</strong></p>
+<ul>
+<li><strong>StreamSpot</strong>: 기존 SOTA graph-based anomaly detector</li>
+<li><strong>Holmes &amp; Poirot</strong>: Rule-based provenance analysis (DARPA dataset에서만)</li>
+<li><strong>Baseline configuration</strong>: R=1 (no graph exploration)</li>
+</ul>
+<p><strong>Cross-validation:</strong></p>
+<ul>
+<li>DARPA: 90% training, 10% testing</li>
+<li>Supply Chain: 5-fold cross-validation (100 benign training, 25 benign + 25 attack testing)</li>
+</ul>
+<h3 id="4-soc-관점-인사이트">4. SOC 관점 인사이트<a hidden class="anchor" aria-hidden="true" href="#4-soc-관점-인사이트">#</a></h3>
+<p><strong>방법론의 실무 적용성:</strong></p>
+<p>장점:</p>
+<ul>
+<li><strong>Unsupervised learning</strong>: SOC에 label된 APT 데이터가 없어도 작동</li>
+<li><strong>Real-time streaming</strong>: Batch processing 불필요, 실시간 모니터링 가능</li>
+<li><strong>Explainability</strong>: 어떤 graph structure가 anomaly인지 histogram element로 설명 가능</li>
+</ul>
+<p>한계:</p>
+<ul>
+<li><strong>Parameter tuning 필요</strong>: R, |S|, λ, θ를 각 환경에 맞게 조정</li>
+<li><strong>Initial training 필요</strong>: Clean baseline 확보 - 이미 침투된 상태라면?</li>
+<li><strong>Concept drift 대응</strong>: 주기적 재학습 필요 (얼마나 자주?)</li>
+</ul>
+<p><strong>기존 SOC 툴과의 차별점:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>도구/방법</th>
+          <th>탐지 방식</th>
+          <th>강점</th>
+          <th>약점</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Traditional SIEM</strong></td>
+          <td>Rule/signature-based</td>
+          <td>알려진 공격 확실히 탐지, 설명 쉬움</td>
+          <td>Zero-day 못 잡음, rule 유지보수 비용</td>
+      </tr>
+      <tr>
+          <td><strong>UEBA</strong></td>
+          <td>User behavior analytics</td>
+          <td>Insider threat 탐지</td>
+          <td>User-level만 보고 system-level 인과관계 부족</td>
+      </tr>
+      <tr>
+          <td><strong>EDR (Rule-based)</strong></td>
+          <td>IoC matching</td>
+          <td>빠름, FP 적음</td>
+          <td>APT는 IoC 없이 진행</td>
+      </tr>
+      <tr>
+          <td><strong>UNICORN</strong></td>
+          <td>Provenance graph anomaly</td>
+          <td>Zero-day APT 탐지, 전체 attack chain 추적</td>
+          <td>Parameter tuning 필요, 초기 학습 필요</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>SOC Workflow 통합 전략:</strong></p>
+<pre tabindex="0"><code>[1] Endpoint: CamFlow/Auditd → Provenance stream
+       ↓
+[2] UNICORN Backend: Real-time graph sketching &amp; anomaly detection
+       ↓
+[3] Alert Generation: Anomalous sketch → High-risk process/file 추출
+       ↓
+[4] SIEM Integration: Enrich alert with threat intelligence
+       ↓
+[5] SOC Analyst: Graph visualization으로 attack chain 확인
+       ↓
+[6] Response: Kill process, isolate host, forensic collection
+</code></pre><p>UNICORN을 SIEM의 advanced detection engine으로 통합하면:</p>
+<ul>
+<li>L1: SIEM rule로 1차 필터링</li>
+<li>L2: UNICORN anomaly detection으로 APT 후보 추출</li>
+<li>L3: Analyst가 graph 시각화로 최종 판단</li>
+</ul>
+<hr>
+<h2 id="day-3--empirical-results-and-hypothesis-testing">Day 3 – Empirical Results and Hypothesis Testing<a hidden class="anchor" aria-hidden="true" href="#day-3--empirical-results-and-hypothesis-testing">#</a></h2>
+<p><em>(UNICORN의 APT 탐지 성능 검증)</em></p>
+<h3 id="1-평가-환경">1. 평가 환경<a hidden class="anchor" aria-hidden="true" href="#1-평가-환경">#</a></h3>
+<p><strong>실험 설정:</strong></p>
+<ol>
+<li>
+<p><strong>StreamSpot Benchmark</strong></p>
+<ul>
+<li>데이터: 600 provenance graphs (5 scenario types)</li>
+<li>환경: Controlled simulation</li>
+</ul>
+</li>
+<li>
+<p><strong>DARPA TC Engagement 3</strong></p>
+<ul>
+<li>기간: 2주간 red team vs blue team engagement</li>
+<li>데이터: 3개 OS 플랫폼 (FreeBSD, Linux, Linux)</li>
+<li>환경: Realistic enterprise network</li>
+<li>특징: APT 공격 비율 &lt;0.001% of audit data</li>
+</ul>
+</li>
+<li>
+<p><strong>Supply Chain Attack</strong></p>
+<ul>
+<li>환경: CamFlow on Ubuntu 16.04</li>
+<li>데이터: 2개 시나리오 (SC-1, SC-2) × 125 benign + 25 attack</li>
+<li>특징: Attackers know system a priori (harder to detect)</li>
+</ul>
+</li>
+</ol>
+<p><strong>실험 전략:</strong></p>
+<ul>
+<li><strong>Q1</strong>: Can UNICORN detect APTs accurately?</li>
+<li><strong>Q2</strong>: How important is R-hop exploration?</li>
+<li><strong>Q3</strong>: Does λ decay (gradually forgetting) improve detection?</li>
+<li><strong>Q4</strong>: Evolutionary vs static clustering?</li>
+<li><strong>Q5</strong>: Real-time capability?</li>
+<li><strong>Q6</strong>: CPU/memory overhead?</li>
+</ul>
+<h3 id="2-주요-발견">2. 주요 발견<a hidden class="anchor" aria-hidden="true" href="#2-주요-발견">#</a></h3>
+<p><strong>전체 결과 요약:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>Dataset</th>
+          <th>Precision</th>
+          <th>Recall</th>
+          <th>Accuracy</th>
+          <th>F1-Score</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>StreamSpot (R=1)</strong></td>
+          <td>~0.94</td>
+          <td>~0.99</td>
+          <td>~0.97</td>
+          <td>~0.96</td>
+      </tr>
+      <tr>
+          <td><strong>StreamSpot (R=3)</strong></td>
+          <td><strong>0.99</strong></td>
+          <td><strong>1.00</strong></td>
+          <td><strong>0.99</strong></td>
+          <td><strong>0.99</strong></td>
+      </tr>
+      <tr>
+          <td><strong>DARPA-CADETS</strong></td>
+          <td>1.00</td>
+          <td>1.00</td>
+          <td>N/A</td>
+          <td>1.00</td>
+      </tr>
+      <tr>
+          <td><strong>DARPA-ClearScope</strong></td>
+          <td>1.00</td>
+          <td>1.00</td>
+          <td>N/A</td>
+          <td>1.00</td>
+      </tr>
+      <tr>
+          <td><strong>DARPA-THEIA</strong></td>
+          <td>1.00</td>
+          <td>1.00</td>
+          <td>N/A</td>
+          <td>1.00</td>
+      </tr>
+      <tr>
+          <td><strong>SC-1</strong></td>
+          <td>0.96</td>
+          <td>1.00</td>
+          <td>0.98</td>
+          <td>0.98</td>
+      </tr>
+      <tr>
+          <td><strong>SC-2</strong></td>
+          <td>0.91</td>
+          <td>1.00</td>
+          <td>0.95</td>
+          <td>0.95</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>기존 방법과의 비교:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>Method</th>
+          <th>Precision</th>
+          <th>Accuracy</th>
+          <th>Improvement</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>StreamSpot (baseline)</strong></td>
+          <td>~0.75</td>
+          <td>~0.69</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td><strong>UNICORN (R=3)</strong></td>
+          <td>0.99</td>
+          <td>0.99</td>
+          <td>+32% precision, +43% accuracy</td>
+      </tr>
+  </tbody>
+</table>
+<p>UNICORN은 StreamSpot 대비:</p>
+<ul>
+<li><strong>Precision 24% 향상</strong> (0.75 → 0.99)</li>
+<li><strong>Accuracy 30% 향상</strong> (0.69 → 0.99)</li>
+<li>R=3 (graph exploration)이 R=1보다 크게 우수</li>
+</ul>
+<h3 id="3-상세-분석">3. 상세 분석<a hidden class="anchor" aria-hidden="true" href="#3-상세-분석">#</a></h3>
+<h4 id="a-darpa-real-apt-detection">A. DARPA Real APT Detection<a hidden class="anchor" aria-hidden="true" href="#a-darpa-real-apt-detection">#</a></h4>
+<p><strong>관찰:</strong></p>
+<p>UNICORN은 3개 플랫폼 모두에서:</p>
+<ul>
+<li><strong>Precision 1.00</strong>: False positive 0개</li>
+<li><strong>Recall 1.00</strong>: 모든 APT 공격 탐지</li>
+</ul>
+<p><strong>해석:</strong></p>
+<p>DARPA 시나리오에서 APT가 잘 탐지된 이유:</p>
+<ol>
+<li><strong>Reconnaissance phase가 명확</strong>: 공격자가 vulnerability 찾는 과정이 trace에 나타남</li>
+<li><strong>Unusual system call sequence</strong>: Exploitation은 정상 user behavior와 명확히 다름</li>
+<li><strong>Causal dependency 추적</strong>: Data exfiltration의 전체 provenance chain 포착</li>
+</ol>
+<p>Holmes와 Poirot (rule-based)도 모든 공격 탐지했지만:</p>
+<ul>
+<li>사전 expert knowledge 필요</li>
+<li>New attack vector에는 대응 못 함</li>
+<li>UNICORN은 unsupervised로 동일한 성능</li>
+</ul>
+<p><strong>실무 시사점:</strong></p>
+<p>DARPA 수준의 APT는 SOC에서 충분히 탐지 가능하다. 단, 조건:</p>
+<ul>
+<li>Clean training data (attacker-free baseline)</li>
+<li>Sufficient context (R≥3 hop exploration)</li>
+<li>Proper tuning (|S|=2000, λ appropriate)</li>
+</ul>
+<h4 id="b-supply-chain-attack-scenarios">B. Supply Chain Attack Scenarios<a hidden class="anchor" aria-hidden="true" href="#b-supply-chain-attack-scenarios">#</a></h4>
+<p><strong>시나리오 설계:</strong></p>
+<p><strong>SC-1: Simulated software update</strong></p>
+<ul>
+<li>Benign: User downloads Firefox updates, installs normally</li>
+<li>Attack: Trojanized Firefox installer executes backdoor</li>
+<li>특징: Installer behavior is similar to benign</li>
+</ul>
+<p><strong>SC-2: Document processing</strong></p>
+<ul>
+<li>Benign: User opens PDFs, runs office applications</li>
+<li>Attack: Malicious PDF exploits viewer, drops payload</li>
+<li>특징: Initial trigger (open PDF) is benign</li>
+</ul>
+<p><strong>결과:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>Scenario</th>
+          <th>Precision</th>
+          <th>Recall</th>
+          <th>False Positives</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>SC-1</td>
+          <td>0.96</td>
+          <td>1.00</td>
+          <td>1/25</td>
+      </tr>
+      <tr>
+          <td>SC-2</td>
+          <td>0.91</td>
+          <td>1.00</td>
+          <td>2-3/25</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Why lower than DARPA?</strong></p>
+<p>Supply chain 시나리오가 더 어려운 이유:</p>
+<ol>
+<li><strong>No reconnaissance phase</strong>: Attacker knows system, 직접 exploit</li>
+<li><strong>Initial benign trigger</strong>: Software update나 PDF open은 정상 행동</li>
+<li><strong>Gradual payload execution</strong>: Backdoor가 천천히 실행되어 gradually forgetting에 걸릴 수 있음</li>
+</ol>
+<p><strong>실무 시사점:</strong></p>
+<p>Supply chain attack 탐지를 위해서는:</p>
+<ul>
+<li><strong>Contextual analysis 강화</strong>: R을 3 이상으로</li>
+<li><strong>Evolutionary model 확장</strong>: 더 많은 training execution으로 edge case 포함</li>
+<li><strong>Hybrid approach</strong>: UNICORN + rule-based for known supply chain patterns</li>
+</ul>
+<h4 id="c-graph-analysis-importance">C. Graph Analysis Importance<a hidden class="anchor" aria-hidden="true" href="#c-graph-analysis-importance">#</a></h4>
+<p><strong>실험: R-hop 영향</strong></p>
+<p>SC-1 dataset으로 R을 변화시키며 성능 측정:</p>
+<table>
+  <thead>
+      <tr>
+          <th>R (hop count)</th>
+          <th>Precision</th>
+          <th>Recall</th>
+          <th>F1</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>R = 1</td>
+          <td>0.89</td>
+          <td>0.96</td>
+          <td>0.92</td>
+      </tr>
+      <tr>
+          <td>R = 3 (baseline)</td>
+          <td>0.96</td>
+          <td>1.00</td>
+          <td>0.98</td>
+      </tr>
+      <tr>
+          <td>R = 5</td>
+          <td>0.98</td>
+          <td>1.00</td>
+          <td>0.99</td>
+      </tr>
+      <tr>
+          <td>R = 7</td>
+          <td>0.98</td>
+          <td>1.00</td>
+          <td>0.99</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>해석:</strong></p>
+<p>R-hop exploration이 중요한 이유:</p>
+<ul>
+<li><strong>Causal context</strong>: R=1은 직접 연결만, R=3은 multi-step attack chain 포착</li>
+<li><strong>Disambiguation</strong>: 동일한 local pattern이라도 wider context로 benign vs attack 구분</li>
+</ul>
+<p>예시:</p>
+<pre tabindex="0"><code>R=1: process A → read file X (정상? 공격?)
+R=3: process A → read file X ← written by process B ← spawned by suspicious downloader
+→ 명확히 attack chain
+</code></pre><p><strong>실무 적용:</strong></p>
+<p>SOC에서 R 선택:</p>
+<ul>
+<li><strong>R=1</strong>: 빠르지만 부정확 → 실시간 1차 필터</li>
+<li><strong>R=3</strong>: 균형점 → 대부분의 APT 탐지</li>
+<li><strong>R=5+</strong>: 높은 정확도 → Threat hunting, forensic analysis</li>
+</ul>
+<h4 id="d-evolutionary-modeling-vs-static-clustering">D. Evolutionary Modeling vs Static Clustering<a hidden class="anchor" aria-hidden="true" href="#d-evolutionary-modeling-vs-static-clustering">#</a></h4>
+<p><strong>실험:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>Approach</th>
+          <th>Description</th>
+          <th>Precision</th>
+          <th>Recall</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Static clustering</strong></td>
+          <td>Single clustering on all training sketches</td>
+          <td>0.88</td>
+          <td>0.96</td>
+      </tr>
+      <tr>
+          <td><strong>Evolutionary (UNICORN)</strong></td>
+          <td>Time-ordered clustering</td>
+          <td>0.96</td>
+          <td>1.00</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Why evolutionary better?</strong></p>
+<ol>
+<li>
+<p><strong>Concept drift 반영</strong>: Static은 시스템 초기와 말기를 동일하게 취급, Evolutionary는 진화 과정을 state transition으로 학습</p>
+</li>
+<li>
+<p><strong>False positive 감소</strong>: Static은 정상 업데이트가 anomaly로 탐지됨, Evolutionary는 점진적 변화를 valid state transition으로 인정</p>
+</li>
+<li>
+<p><strong>Context-aware detection</strong>: Static은 각 sketch를 독립적으로 평가, Evolutionary는 이전 상태로부터의 transition 유효성 검사</p>
+</li>
+</ol>
+<p><strong>실무 적용:</strong></p>
+<p>Long-running SOC 환경에서 시스템은 끊임없이 변화 (패치, 업데이트, user behavior drift). Static model은 빠르게 obsolete. Evolutionary model은 변화를 흡수하면서도 급격한 anomaly 탐지.</p>
+<h3 id="4-성능-효율성">4. 성능 효율성<a hidden class="anchor" aria-hidden="true" href="#4-성능-효율성">#</a></h3>
+<p><strong>Processing Speed:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>Dataset</th>
+          <th>Events/sec</th>
+          <th>Latency</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>SC-1</td>
+          <td>11,000</td>
+          <td>&lt;100ms</td>
+      </tr>
+      <tr>
+          <td>SC-2</td>
+          <td>10,500</td>
+          <td>&lt;100ms</td>
+      </tr>
+      <tr>
+          <td>DARPA-CADETS</td>
+          <td>9,800</td>
+          <td>&lt;150ms</td>
+      </tr>
+  </tbody>
+</table>
+<p>→ Real-time monitoring에 충분</p>
+<p><strong>Resource Usage:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>Metric</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Average CPU</td>
+          <td>&lt;5%</td>
+      </tr>
+      <tr>
+          <td>Peak CPU</td>
+          <td>12%</td>
+      </tr>
+      <tr>
+          <td>Memory footprint</td>
+          <td>~200MB</td>
+      </tr>
+      <tr>
+          <td>Raw data size</td>
+          <td>TB scale</td>
+      </tr>
+  </tbody>
+</table>
+<p>→ Commodity hardware에서 실행 가능</p>
+<h3 id="5-soc-관점-실무-인사이트">5. SOC 관점 실무 인사이트<a hidden class="anchor" aria-hidden="true" href="#5-soc-관점-실무-인사이트">#</a></h3>
+<p><strong>탐지 측면:</strong></p>
+<p>성공 사례: Multi-stage attacks, data exfiltration, credential dumping, backdoor installation</p>
+<p>개선 필요: Fileless attacks (memory-only execution), living-off-the-land (PowerShell, wmic), low-volume exfiltration</p>
+<p><strong>대응 측면:</strong></p>
+<p>우선순위화 전략:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Priority</th>
+          <th>Condition</th>
+          <th>Action</th>
+          <th>SLA</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>P1-Critical</strong></td>
+          <td>State transition invalid + High-risk process</td>
+          <td>Immediate isolation</td>
+          <td>&lt;5min</td>
+      </tr>
+      <tr>
+          <td><strong>P2-High</strong></td>
+          <td>Sketch outlier (distance &gt; 2σ)</td>
+          <td>Analyst review</td>
+          <td>&lt;1hr</td>
+      </tr>
+      <tr>
+          <td><strong>P3-Medium</strong></td>
+          <td>Sketch outlier (distance &gt; 1.5σ)</td>
+          <td>Queue for investigation</td>
+          <td>&lt;24hr</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>분석 측면:</strong></p>
+<p>패턴 인사이트: UNICORN이 발견한 APT 패턴 (supply chain의 subtle variation, stealthy exfiltration의 daily unusual network spike)</p>
+<p>Ground Truth 문제: APT evaluation의 근본적 어려움 - 실제 환경에서 &ldquo;benign&quot;이라 가정한 데이터에 이미 APT가 숨어있을 수 있음</p>
+<hr>
+<h2 id="day-4--research-limitations-and-scholarly-impact">Day 4 – Research Limitations and Scholarly Impact<a hidden class="anchor" aria-hidden="true" href="#day-4--research-limitations-and-scholarly-impact">#</a></h2>
+<p><em>(UNICORN의 한계와 provenance 기반 탐지의 발전)</em></p>
+<h3 id="1-연구의-한계점">1. 연구의 한계점<a hidden class="anchor" aria-hidden="true" href="#1-연구의-한계점">#</a></h3>
+<h4 id="a-parameter-sensitivity-and-tuning-overhead">A. Parameter Sensitivity and Tuning Overhead<a hidden class="anchor" aria-hidden="true" href="#a-parameter-sensitivity-and-tuning-overhead">#</a></h4>
+<p><strong>문제:</strong></p>
+<p>UNICORN은 여러 하이퍼파라미터에 의존:</p>
+<ul>
+<li>R (hop count): 1-7 범위, 성능에 큰 영향</li>
+<li>|S| (sketch size): 500-5000, memory-accuracy trade-off</li>
+<li>λ (decay factor): 0.990-0.999, forgetting rate</li>
+<li>θ (clustering threshold): Cluster 개수 결정</li>
+</ul>
+<p>각 환경마다 optimal parameter가 다름. 논문에서는 OpenTuner로 자동 tuning했지만 grid search 비용이 크고, 새로운 환경마다 re-tuning 필요.</p>
+<p><strong>해결 방안:</strong></p>
+<ol>
+<li><strong>Transfer learning</strong>: 유사 환경의 parameter를 starting point로 사용</li>
+<li><strong>Adaptive parameter selection</strong>: Runtime metric으로 자동 조정</li>
+<li><strong>Default configuration</strong>: 논문의 권장값 (R=3, |S|=2000, λ=0.998)을 baseline으로</li>
+</ol>
+<h4 id="b-ground-truth-and-labeling-challenge">B. Ground Truth and Labeling Challenge<a hidden class="anchor" aria-hidden="true" href="#b-ground-truth-and-labeling-challenge">#</a></h4>
+<p><strong>문제:</strong></p>
+<p>APT 평가의 근본적 어려움:</p>
+<ol>
+<li>Training data가 정말 clean한가? APT는 이미 수개월 전 침투했을 수 있음</li>
+<li>Detection의 완전성: DARPA는 red team 공격만 labeled, 다른 숨어있는 공격은?</li>
+<li>FP vs TP의 애매함: &ldquo;FP&quot;로 분류한 것 중 일부가 실제 공격일 수 있음</li>
+</ol>
+<p><strong>해결 방안:</strong></p>
+<ol>
+<li><strong>Honeypot-based baseline</strong>: 격리된 환경에서 clean baseline 확보</li>
+<li><strong>Multi-stage validation</strong>: UNICORN alert → Threat intel cross-check → Analyst review</li>
+<li><strong>Conservative labeling</strong>: &ldquo;Suspicious but unconfirmed&quot;를 별도 카테고리로</li>
+</ol>
+<h4 id="c-fileless-and-lolbas-attacks">C. Fileless and LOLBAS Attacks<a hidden class="anchor" aria-hidden="true" href="#c-fileless-and-lolbas-attacks">#</a></h4>
+<p><strong>문제:</strong></p>
+<p>UNICORN은 provenance graph에 의존하는데, 일부 공격은 흔적이 적음:</p>
+<ol>
+<li><strong>Fileless malware</strong>: Memory-only execution (reflective DLL injection)</li>
+<li><strong>Living-off-the-land binaries</strong>: PowerShell, wmic, certutil 등 정상 도구 악용</li>
+<li><strong>Kernel-level rootkits</strong>: Provenance 수집 자체를 우회</li>
+</ol>
+<p><strong>해결 방안:</strong></p>
+<ol>
+<li><strong>Behavioral context enrichment</strong>: 누가, 언제, 무엇을 실행했는지 추가 context</li>
+<li><strong>Memory forensics 통합</strong>: Provenance 외에 periodic memory scan</li>
+<li><strong>Hybrid approach</strong>: UNICORN + YARA rules</li>
+</ol>
+<h4 id="d-computational-scalability">D. Computational Scalability<a hidden class="anchor" aria-hidden="true" href="#d-computational-scalability">#</a></h4>
+<p><strong>문제:</strong></p>
+<p>논문의 evaluation은 수백 host 규모. 하지만 enterprise는 수만-수십만 endpoints.</p>
+<p><strong>해결 방안:</strong></p>
+<ol>
+<li><strong>Hierarchical architecture</strong>: Endpoint → Regional aggregator → Central SOC</li>
+<li><strong>Edge computing</strong>: Endpoint에서 sketch 생성, 중앙에는 sketch만 전송</li>
+<li><strong>Distributed clustering</strong>: Apache Spark 기반 parallel processing</li>
+</ol>
+<h3 id="2-후속-연구-동향">2. 후속 연구 동향<a hidden class="anchor" aria-hidden="true" href="#2-후속-연구-동향">#</a></h3>
+<h4 id="a-인용-수와-영향력">A. 인용 수와 영향력<a hidden class="anchor" aria-hidden="true" href="#a-인용-수와-영향력">#</a></h4>
+<ul>
+<li>발표: 2020년 NDSS</li>
+<li>현재 인용 수: ~310회 (연평균 ~62회)</li>
+<li>Provenance 기반 APT 탐지의 주요 reference로 자리잡음</li>
+</ul>
+<h4 id="b-연구-트렌드의-변화">B. 연구 트렌드의 변화<a hidden class="anchor" aria-hidden="true" href="#b-연구-트렌드의-변화">#</a></h4>
+<pre tabindex="0"><code>[2015-2017] Rule-based provenance (Holmes, Poirot)
+    ↓
+[2017-2019] ML-based anomaly (StreamSpot)
+    ↓
+[2020] UNICORN (Graph sketching + Evolutionary modeling)
+    ↓
+[2021-현재] Advanced provenance ML (Deep learning, GNN, Transformer)
+</code></pre><h4 id="c-주요-후속-연구">C. 주요 후속 연구<a hidden class="anchor" aria-hidden="true" href="#c-주요-후속-연구">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>연구</th>
+          <th>연도</th>
+          <th>핵심 기여</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>TBDetector</strong></td>
+          <td>2021</td>
+          <td>Transformer with self-attention for long-term context</td>
+      </tr>
+      <tr>
+          <td><strong>PROGRAPHE</strong></td>
+          <td>2022</td>
+          <td>Graph Neural Network on provenance</td>
+      </tr>
+      <tr>
+          <td><strong>TFLAG</strong></td>
+          <td>2023</td>
+          <td>Temporal GNN + deviation network</td>
+      </tr>
+      <tr>
+          <td><strong>PROVNINJA</strong></td>
+          <td>2022</td>
+          <td>Adversarial attack on provenance detectors (UNICORN detection 100% → 35%)</td>
+      </tr>
+      <tr>
+          <td><strong>MirGuard</strong></td>
+          <td>2023</td>
+          <td>Robustness against graph manipulation</td>
+      </tr>
+      <tr>
+          <td><strong>NODLINK</strong></td>
+          <td>2024</td>
+          <td>Online fine-grained APT across hosts</td>
+      </tr>
+  </tbody>
+</table>
+<p>개선점: UNICORN의 hand-crafted histogram → learnable embedding, R-hop exploration → attention mechanism, Fixed sketch size → dynamic representation</p>
+<p>Trade-off: Explainability 감소, Training 비용 증가, Parameter tuning 더 복잡</p>
+<h3 id="3-실무-영향">3. 실무 영향<a hidden class="anchor" aria-hidden="true" href="#3-실무-영향">#</a></h3>
+<h4 id="a-산업-표준화">A. 산업 표준화<a hidden class="anchor" aria-hidden="true" href="#a-산업-표준화">#</a></h4>
+<p><strong>UNICORN 이후:</strong></p>
+<ul>
+<li>DARPA Transparent Computing Program에서 provenance 수집 표준화</li>
+<li>Operating System 지원: Linux eBPF, Windows ETW, macOS Endpoint Security</li>
+<li>Provenance 개념이 EDR/XDR의 핵심 기능으로</li>
+</ul>
+<h4 id="b-주요-벤더-채택">B. 주요 벤더 채택<a hidden class="anchor" aria-hidden="true" href="#b-주요-벤더-채택">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>벤더</th>
+          <th>기술</th>
+          <th>UNICORN 영향</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>CrowdStrike Falcon</strong></td>
+          <td>Indicator of Attack (IoA) graph</td>
+          <td>Causal graph 기반 탐지, R-hop context</td>
+      </tr>
+      <tr>
+          <td><strong>Microsoft Defender ATP</strong></td>
+          <td>Advanced Hunting with KQL</td>
+          <td>Provenance query, multi-hop relationship</td>
+      </tr>
+      <tr>
+          <td><strong>SentinelOne</strong></td>
+          <td>Storyline behavioral AI</td>
+          <td>Process tree를 graph로 표현, anomaly detection</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="c-오픈소스커뮤니티-영향">C. 오픈소스/커뮤니티 영향<a hidden class="anchor" aria-hidden="true" href="#c-오픈소스커뮤니티-영향">#</a></h4>
+<ul>
+<li><strong>CamFlow</strong>: UNICORN 저자 주도, Linux kernel provenance capture</li>
+<li><strong>SPADE</strong>: Multi-platform provenance 수집 프레임워크</li>
+<li><strong>StreamSpot</strong>: UNICORN baseline, community가 재현 실험 수행</li>
+</ul>
+<h3 id="4-soc-관점-인사이트-1">4. SOC 관점 인사이트<a hidden class="anchor" aria-hidden="true" href="#4-soc-관점-인사이트-1">#</a></h3>
+<p><strong>한계를 인식한 실무 적용 전략:</strong></p>
+<p>전략 1: Defense-in-Depth (L1 signature-based → L2 UNICORN anomaly → L3 analyst review → L4 threat hunting)</p>
+<p>전략 2: Hybrid Supervised + Unsupervised (Known APT TTP rule + UNICORN unsupervised + correlation)</p>
+<p>전략 3: Continuous Model Validation and Update (월간 재학습 사이클)</p>
+<p><strong>도입 로드맵:</strong></p>
+<ul>
+<li><strong>Short-term (1-3개월)</strong>: PoC (pilot hosts, baseline training, parameter tuning)</li>
+<li><strong>Mid-term (3-6개월)</strong>: Production rollout (critical servers, SOAR integration)</li>
+<li><strong>Long-term (6-12개월)</strong>: Enterprise scale (all endpoints, distributed architecture)</li>
+</ul>
+<hr>
+<h2 id="day-5--conclusions-and-practical-implications">Day 5 – Conclusions and Practical Implications<a hidden class="anchor" aria-hidden="true" href="#day-5--conclusions-and-practical-implications">#</a></h2>
+<p><em>(SOC 실무에 UNICORN 적용하기)</em></p>
+<h3 id="1-5일간-학습-여정-종합">1. 5일간 학습 여정 종합<a hidden class="anchor" aria-hidden="true" href="#1-5일간-학습-여정-종합">#</a></h3>
+<p><strong>Day 1:</strong> APT 탐지의 근본 문제 → Provenance graph 기반 접근의 필요성</p>
+<p><strong>Day 2:</strong> UNICORN의 설계 철학 (Graph sketching + Evolutionary modeling) → Long-term, space-efficient, robust</p>
+<p><strong>Day 3:</strong> 실증적 검증 (DARPA 100% detection, StreamSpot +24% precision) → R=3의 중요성</p>
+<p><strong>Day 4:</strong> 한계와 발전 (Parameter tuning, fileless attack) → 후속 연구 → 산업 표준으로</p>
+<p><strong>Day 5:</strong> 실무 통합 - 어떻게 실제 SOC에 적용할 것인가?</p>
+<h3 id="2-이론적-기여-정리">2. 이론적 기여 정리<a hidden class="anchor" aria-hidden="true" href="#2-이론적-기여-정리">#</a></h3>
+<p><strong>학술적 의의:</strong></p>
+<ol>
+<li>Graph Sketching for APT Detection (long-running provenance를 고정 크기로 압축)</li>
+<li>Evolutionary Modeling (concept drift 대응 + model poisoning 방지)</li>
+<li>APT-Specific Design Principles (L1-L4)</li>
+</ol>
+<p><strong>패러다임 전환:</strong></p>
+<p>Before: APT detection = Signature matching, Provenance = Forensics, Anomaly = Static baseline</p>
+<p>After: APT detection = Unsupervised graph anomaly, Provenance = Real-time monitoring, Anomaly = Evolutionary model</p>
+<h3 id="3-soc-실무-적용-전략">3. SOC 실무 적용 전략<a hidden class="anchor" aria-hidden="true" href="#3-soc-실무-적용-전략">#</a></h3>
+<h4 id="a-탐지-역량-강화">A. 탐지 역량 강화<a hidden class="anchor" aria-hidden="true" href="#a-탐지-역량-강화">#</a></h4>
+<p><strong>시나리오 1: Supply Chain Attack</strong></p>
+<p>탐지 룰: Installer process의 R=3 neighborhood 분석 → unexpected child process 발견</p>
+<p>임계값: Distance &gt; 0.5 (anomalous)</p>
+<p>자동 대응: Process suspend → memory snapshot → network block</p>
+<p>기대 효과: MTTD 수일 → 수분, MTTR 수시간 → 수분, FP &lt;5%</p>
+<p><strong>시나리오 2: Data Exfiltration</strong></p>
+<p>탐지 룰: Sensitive file read → network upload correlation 분석</p>
+<p>임계값: Volume &gt;10MB/1hr, destination not in whitelist</p>
+<p>자동 대응: Block connection → isolate host → notify team</p>
+<p><strong>시나리오 3: Lateral Movement</strong></p>
+<p>탐지 룰: Inter-host connection (SSH, RDP) → target host activity 분석</p>
+<p>MITRE ATT&amp;CK: T1021, T1003, T1082</p>
+<p>자동 대응: Alert → increase logging → containment</p>
+<h4 id="b-대응-역량-강화">B. 대응 역량 강화<a hidden class="anchor" aria-hidden="true" href="#b-대응-역량-강화">#</a></h4>
+<p><strong>우선순위화:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>Priority</th>
+          <th>Condition</th>
+          <th>SLA</th>
+          <th>Owner</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>P1-Critical</strong></td>
+          <td>State transition invalid + High-risk TTP</td>
+          <td>&lt;5min</td>
+          <td>L3 Senior</td>
+      </tr>
+      <tr>
+          <td><strong>P2-High</strong></td>
+          <td>Sketch distance &gt; 2σ + Medium-risk TTP</td>
+          <td>&lt;30min</td>
+          <td>L2</td>
+      </tr>
+      <tr>
+          <td><strong>P3-Medium</strong></td>
+          <td>Sketch distance &gt; 1.5σ</td>
+          <td>&lt;2hr</td>
+          <td>L1</td>
+      </tr>
+      <tr>
+          <td><strong>P4-Low</strong></td>
+          <td>Marginal anomaly</td>
+          <td>&lt;24hr</td>
+          <td>Auto</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>플레이북:</strong></p>
+<p>Data Exfiltration (P1): [AUTO] Block network + Isolate + Capture | [MANUAL] Assess + Hunt</p>
+<p>Lateral Movement (P2): [AUTO] Alert + Log | [MANUAL] Map path + Contain + Revoke</p>
+<p>Supply Chain (P2): [AUTO] Suspend + Quarantine | [MANUAL] Reverse engineer + Notify vendor</p>
+<p><strong>티켓 예시:</strong></p>
+<pre tabindex="0"><code>🚨 UNICORN APT ALERT
+제목: [P1-CRITICAL] Credential Dumping - DC01
+심각도: Critical
+담당자: L3-Senior-Team
+SLA: &lt;5 minutes
+
+━━━ 탐지 정보 ━━━
+Method: UNICORN Evolutionary Model
+Sketch Distance: 2.34σ
+State Transition: INVALID
+
+━━━ 공격 행위 ━━━
+Host: DC01 (Domain Controller)
+Process: powershell.exe → lsass.exe memory → C:\temp\c.txt → 192.0.2.123
+
+━━━ MITRE ATT&amp;CK ━━━
+• T1003.001 - LSASS Memory
+• T1059.001 - PowerShell
+
+━━━ 자동 대응 (완료) ━━━
+✅ Network blocked
+✅ Host isolated
+✅ Memory captured
+
+━━━ 권장 조치 ━━━
+1. [URGENT] Review memory dump
+2. [URGENT] Reset domain passwords
+3. [URGENT] Hunt similar activity
+</code></pre><h4 id="c-분석-역량-강화">C. 분석 역량 강화<a hidden class="anchor" aria-hidden="true" href="#c-분석-역량-강화">#</a></h4>
+<p><strong>Threat Hunting:</strong></p>
+<p>Hidden C2 Communication:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> hostname, process, remote_ip, <span style="color:#66d9ef">COUNT</span>(<span style="color:#f92672">*</span>) <span style="color:#66d9ef">as</span> conn_count
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> provenance_graph
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> <span style="color:#66d9ef">timestamp</span> <span style="color:#f92672">&gt;</span> NOW() <span style="color:#f92672">-</span> INTERVAL <span style="color:#e6db74">&#39;7 days&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">AND</span> remote_ip <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">IN</span> (<span style="color:#66d9ef">SELECT</span> ip <span style="color:#66d9ef">FROM</span> whitelist)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">AND</span> protocol <span style="color:#66d9ef">IN</span> (<span style="color:#e6db74">&#39;HTTPS&#39;</span>, <span style="color:#e6db74">&#39;DNS&#39;</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">AND</span> conn_count <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">GROUP</span> <span style="color:#66d9ef">BY</span> hostname, process, remote_ip;
+</span></span></code></pre></div><p><strong>ROI 측정:</strong></p>
+<p>경영진 보고서:</p>
+<pre tabindex="0"><code>UNICORN 도입 6개월 성과
+
+핵심 지표:
+- APT 탐지: 12건 (+200%)
+- 침해 차단: 100%
+- False Positive: 92% 감소
+- MTTD: 47일 → 2.3일 (95% 개선)
+
+투자 대비 효과:
+- 도입 비용: $500K
+- 방지한 피해액: $8M
+- ROI: 1,600%
+</code></pre><h3 id="4-프레임워크표준-연계">4. 프레임워크/표준 연계<a hidden class="anchor" aria-hidden="true" href="#4-프레임워크표준-연계">#</a></h3>
+<h4 id="a-mitre-attck-매핑">A. MITRE ATT&amp;CK 매핑<a hidden class="anchor" aria-hidden="true" href="#a-mitre-attck-매핑">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>UNICORN 탐지</th>
+          <th>ATT&amp;CK</th>
+          <th>탐지 로직</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Credential Dumping</td>
+          <td>T1003.001 LSASS</td>
+          <td>Process → read lsass memory</td>
+      </tr>
+      <tr>
+          <td>Data Exfiltration</td>
+          <td>T1041 Exfiltration</td>
+          <td>File read → network upload</td>
+      </tr>
+      <tr>
+          <td>Lateral Movement</td>
+          <td>T1021 Remote Services</td>
+          <td>Unusual SSH/RDP connection</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="b-nist-cybersecurity-framework">B. NIST Cybersecurity Framework<a hidden class="anchor" aria-hidden="true" href="#b-nist-cybersecurity-framework">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>NIST</th>
+          <th>UNICORN 활용</th>
+          <th>적용</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Identify</td>
+          <td>Asset discovery</td>
+          <td>정상 baseline 프로파일링</td>
+      </tr>
+      <tr>
+          <td>Protect</td>
+          <td>Proactive blocking</td>
+          <td>Supply chain 설치 전 차단</td>
+      </tr>
+      <tr>
+          <td>Detect</td>
+          <td>Real-time anomaly</td>
+          <td>APT 조기 발견</td>
+      </tr>
+      <tr>
+          <td>Respond</td>
+          <td>Automated containment</td>
+          <td>P1 alert 시 자동 격리</td>
+      </tr>
+      <tr>
+          <td>Recover</td>
+          <td>Attack chain reconstruction</td>
+          <td>침해 범위 정확히 파악</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="5-실전-체크리스트">5. 실전 체크리스트<a hidden class="anchor" aria-hidden="true" href="#5-실전-체크리스트">#</a></h3>
+<h4 id="a-도입-전-준비">A. 도입 전 준비<a hidden class="anchor" aria-hidden="true" href="#a-도입-전-준비">#</a></h4>
+<p><strong>시스템 요구사항:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Linux kernel 4.4+ (eBPF) 또는 CamFlow</li>
+<li><input disabled="" type="checkbox"> CPU: 4 cores+, RAM: 16GB+, Disk: 1TB+</li>
+<li><input disabled="" type="checkbox"> Network: 10Gbps+</li>
+</ul>
+<p><strong>데이터 품질:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Audit logging 활성화</li>
+<li><input disabled="" type="checkbox"> Provenance completeness 검증</li>
+<li><input disabled="" type="checkbox"> Baseline period 확정 (최소 30일)</li>
+</ul>
+<p><strong>조직 준비도:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> SOC team training</li>
+<li><input disabled="" type="checkbox"> Stakeholder alignment</li>
+<li><input disabled="" type="checkbox"> Budget approval</li>
+</ul>
+<h4 id="b-phase-1-파일럿-week-1-8">B. Phase 1: 파일럿 (Week 1-8)<a hidden class="anchor" aria-hidden="true" href="#b-phase-1-파일럿-week-1-8">#</a></h4>
+<p>Week 1-2: Infrastructure setup
+Week 3-6: Baseline training
+Week 7-10: Pilot detection
+Week 11-12: Evaluation &amp; Decision</p>
+<h4 id="c-phase-2-확장-week-9-24">C. Phase 2: 확장 (Week 9-24)<a hidden class="anchor" aria-hidden="true" href="#c-phase-2-확장-week-9-24">#</a></h4>
+<p>Week 13-16: Critical servers (100-200대)
+Week 17-20: SOAR integration
+Week 21-24: Tuning and optimization</p>
+<h4 id="d-phase-3-최적화-week-25-52">D. Phase 3: 최적화 (Week 25-52)<a hidden class="anchor" aria-hidden="true" href="#d-phase-3-최적화-week-25-52">#</a></h4>
+<p>Week 25-36: Full enterprise deployment
+Week 37-48: Advanced capabilities
+Week 49-52: Continuous improvement</p>
+<h3 id="6-5일간-리뷰-종합">6. 5일간 리뷰 종합<a hidden class="anchor" aria-hidden="true" href="#6-5일간-리뷰-종합">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>Day</th>
+          <th>주제</th>
+          <th>핵심 학습</th>
+          <th>실무 적용</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Day 1</strong></td>
+          <td>APT 탐지 근본 문제</td>
+          <td>Provenance graph 필요</td>
+          <td>EDR/XDR 백엔드</td>
+      </tr>
+      <tr>
+          <td><strong>Day 2</strong></td>
+          <td>UNICORN 설계</td>
+          <td>Graph sketching + Evolutionary</td>
+          <td>Unsupervised learning</td>
+      </tr>
+      <tr>
+          <td><strong>Day 3</strong></td>
+          <td>실증적 검증</td>
+          <td>DARPA 100%, +24% precision</td>
+          <td>R=3 필수, real-time 가능</td>
+      </tr>
+      <tr>
+          <td><strong>Day 4</strong></td>
+          <td>한계와 발전</td>
+          <td>Parameter tuning, fileless 한계</td>
+          <td>Defense-in-depth</td>
+      </tr>
+      <tr>
+          <td><strong>Day 5</strong></td>
+          <td>실무 통합</td>
+          <td>Supply chain, exfiltration 탐지</td>
+          <td>ATT&amp;CK 매핑, SOAR</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="7-최종-개인-인사이트">7. 최종 개인 인사이트<a hidden class="anchor" aria-hidden="true" href="#7-최종-개인-인사이트">#</a></h3>
+<h4 id="a-이-논문이-나의-soc-역량에-기여한-점">A. 이 논문이 나의 SOC 역량에 기여한 점<a hidden class="anchor" aria-hidden="true" href="#a-이-논문이-나의-soc-역량에-기여한-점">#</a></h4>
+<p><strong>핵심 배움 1: APT 탐지는 Context가 전부</strong></p>
+<p>UNICORN의 R-hop exploration이 증명: 단순 local pattern이 아니라 wider causal context를 보는 것이 핵심. SOC analyst가 수동으로 하던 &ldquo;공격 연결고리 찾기&quot;를 자동화.</p>
+<p><strong>핵심 배움 2: Evolutionary Modeling은 현실적 필연</strong></p>
+<p>시스템은 변한다. Static model은 빠르게 obsolete. Evolutionary model은 점진적 변화는 흡수하면서 급격한 anomaly 탐지.</p>
+<p><strong>핵심 배움 3: 완벽한 솔루션은 없다</strong></p>
+<p>UNICORN도 한계가 있다 (fileless, LOLBAS, parameter tuning). 실무에서는 multi-layer defense가 답.</p>
+<p><strong>핵심 배움 4: 학술 연구가 산업을 바꾼다</strong></p>
+<p>UNICORN 발표 후 5년 만에 provenance 기반 탐지가 EDR/XDR 표준이 됨.</p>
+<p><strong>핵심 배움 5: 이론과 실무의 균형</strong></p>
+<p>논문의 &ldquo;100% detection&quot;과 실제 배포는 다르다. 하지만 이론적 기반 없이 경험만으로는 한계. 균형이 필요.</p>
+<h4 id="b-4편의-논문과의-비교-종합">B. [4편의 논문]과의 비교 종합<a hidden class="anchor" aria-hidden="true" href="#b-4편의-논문과의-비교-종합">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>논문</th>
+          <th>핵심 아이디어</th>
+          <th>강점</th>
+          <th>약점</th>
+          <th>적용 시나리오</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>DeepLog</strong></td>
+          <td>Deep learning on log sequence</td>
+          <td>Zero-day 탐지</td>
+          <td>Single-host only</td>
+          <td>단일 시스템 anomaly</td>
+      </tr>
+      <tr>
+          <td><strong>Lou et al.</strong></td>
+          <td>Invariants mining</td>
+          <td>Explainable rules</td>
+          <td>Rule extraction 비용</td>
+          <td>Stable system</td>
+      </tr>
+      <tr>
+          <td><strong>Beehive</strong></td>
+          <td>Network workflow graph</td>
+          <td>Enterprise-wide view</td>
+          <td>Network-level만</td>
+          <td>Network intrusion</td>
+      </tr>
+      <tr>
+          <td><strong>UNICORN</strong></td>
+          <td>Provenance graph sketching</td>
+          <td>System-level causality</td>
+          <td>Parameter tuning</td>
+          <td>APT detection</td>
+      </tr>
+  </tbody>
+</table>
+<p>통합 전략: L1 DeepLog (endpoint) → L2 Beehive (network) → L3 UNICORN (system APT) → L4 Lou et al. (validation)</p>
+<h4 id="c-면접-대비-핵심-메시지-1분">C. 면접 대비 핵심 메시지 (1분)<a hidden class="anchor" aria-hidden="true" href="#c-면접-대비-핵심-메시지-1분">#</a></h4>
+<p>&ldquo;UNICORN은 APT 탐지의 핵심 문제를 해결한 연구입니다.</p>
+<p>첫째, Low-and-slow APT는 기존 탐지를 우회합니다. UNICORN은 provenance graph와 evolutionary modeling으로 수개월 공격도 탐지합니다.</p>
+<p>둘째, Graph sketching으로 TB 규모를 200MB로 실시간 분석. DARPA에서 100% 탐지율 달성.</p>
+<p>셋째, 2020년 발표 후 CrowdStrike, Microsoft 등이 provenance 기반 탐지를 채택하는 계기가 되었습니다.</p>
+<p>결론적으로, 이 논문을 통해 APT 탐지에서 context와 causality의 중요성을 배웠고, 실무에서 UNICORN을 SIEM의 advanced detection engine으로 통합하여 supply chain attack, credential dumping, lateral movement를 조기 차단하는 전략을 수립할 수 있게 되었습니다.&rdquo;</p>
+<h4 id="d-다음-학습-방향">D. 다음 학습 방향<a hidden class="anchor" aria-hidden="true" href="#d-다음-학습-방향">#</a></h4>
+<p><strong>우선순위 1: Deep Learning 기반 Provenance 분석</strong></p>
+<ul>
+<li>TBDetector (Transformer), PROGRAPHE (GNN)</li>
+<li>학습 목표: UNICORN의 hand-crafted feature를 deep learning으로 대체</li>
+</ul>
+<p><strong>우선순위 2: Adversarial Robustness</strong></p>
+<ul>
+<li>PROVNINJA, MirGuard</li>
+<li>학습 목표: 공격자가 UNICORN 우회하는 방법과 방어</li>
+</ul>
+<p><strong>우선순위 3: Cross-Host Attack Campaign</strong></p>
+<ul>
+<li>NODLINK, Cyber Persistence Detector</li>
+<li>학습 목표: Multi-host correlation 기법</li>
+</ul>
+<p><strong>우선순위 4: Explainable AI for Security</strong></p>
+<ul>
+<li>Provenance graph visualization</li>
+<li>학습 목표: Black-box detector 결과를 analyst가 이해</li>
+</ul>
+<p><strong>장기 목표:</strong></p>
+<ul>
+<li>6개월 후: UNICORN 기반 APT 탐지 시스템 PoC 구현</li>
+<li>1년 후: 자체 탐지 룰 개발</li>
+<li>2년 후: Provenance 기반 탐지 전문가로 컨퍼런스 발표</li>
+</ul>
+<h3 id="8-최종-결론">8. 최종 결론<a hidden class="anchor" aria-hidden="true" href="#8-최종-결론">#</a></h3>
+<h4 id="a-unicorn의-유산">A. UNICORN의 유산<a hidden class="anchor" aria-hidden="true" href="#a-unicorn의-유산">#</a></h4>
+<p>2020년 논문 하나가 provenance 기반 APT 탐지를 학술 연구에서 산업 표준으로 끌어올림. 2025년 현재도 DARPA TC dataset의 baseline detector로 사용. 후속 연구들의 비교 대상.</p>
+<h4 id="b-soc-분석가로서의-다짐">B. SOC 분석가로서의 다짐<a hidden class="anchor" aria-hidden="true" href="#b-soc-분석가로서의-다짐">#</a></h4>
+<p>&ldquo;알고 있다&quot;에서 &ldquo;할 수 있다&quot;로</p>
+<p>Phase 1 (완료): 논문 이해 (DeepLog, Lou et al., Beehive, UNICORN)
+Phase 2 (진행 중): 실습 (CamFlow + Python으로 PoC)
+Phase 3 (다음): 실무 적용 (SOC 환경에 배포)
+Phase 4 (목표): 기여 (오픈소스, 컨퍼런스)</p>
+<p>단순한 &ldquo;도구 사용자&quot;가 아닌 원리를 이해하는 전문가, 실무 적용 전략을 세우는 설계자, 새로운 방법을 만드는 연구자.</p>
+<p><strong>다음 논문에서 또 만나요!</strong></p>
+<hr>
+<h2 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h2>
+<p>[1] Han, X., Pasquier, T., Bates, A., Mickens, J., &amp; Seltzer, M. (2020). UNICORN: Runtime Provenance-Based Detector for Advanced Persistent Threats. <em>Network and Distributed System Security Symposium (NDSS)</em>, pp. 1-18. <a href="https://doi.org/10.14722/ndss.2020.24046">https://doi.org/10.14722/ndss.2020.24046</a></p>
+<p>[2] Manzoor, E., Milajerdi, S. M., &amp; Akoglu, L. (2016). Fast Memory-efficient Anomaly Detection in Streaming Heterogeneous Graphs. <em>ACM SIGKDD</em>.</p>
+<p>[3] Milajerdi, S. M., Gjomemo, R., Eshete, B., Sekar, R., &amp; Venkatakrishnan, V. (2019). HOLMES: Real-time APT Detection through Correlation of Suspicious Information Flows. <em>IEEE S&amp;P</em>.</p>
+<hr>
+<h2 id="tags">Tags<a hidden class="anchor" aria-hidden="true" href="#tags">#</a></h2>
+<p><code>#SOC</code> <code>#APTDetection</code> <code>#ProvenanceGraphs</code> <code>#AnomalyDetection</code> <code>#GraphSketching</code> <code>#EvolutionaryModeling</code> <code>#UNICORN</code> <code>#NDSS2020</code> <code>#SKShieldusRookies</code></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/soc/">SOC</a></li>
+      <li><a href="http://localhost:1313/tags/apt-detection/">APT-Detection</a></li>
+      <li><a href="http://localhost:1313/tags/provenance-graphs/">Provenance-Graphs</a></li>
+      <li><a href="http://localhost:1313/tags/anomaly-detection/">Anomaly-Detection</a></li>
+      <li><a href="http://localhost:1313/tags/graph-sketching/">Graph-Sketching</a></li>
+      <li><a href="http://localhost:1313/tags/evolutionary-modeling/">Evolutionary-Modeling</a></li>
+      <li><a href="http://localhost:1313/tags/unicorn/">UNICORN</a></li>
+      <li><a href="http://localhost:1313/tags/ndss-2020/">NDSS-2020</a></li>
+      <li><a href="http://localhost:1313/tags/sk-shieldus-rookies/">SK-Shieldus-Rookies</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

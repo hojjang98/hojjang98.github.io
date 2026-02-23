@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>캐시공격 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%EC%BA%90%EC%8B%9C%EA%B3%B5%EA%B2%A9/</link>
+    <description>Recent content in 캐시공격 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Mon, 01 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%EC%BA%90%EC%8B%9C%EA%B3%B5%EA%B2%A9/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hey, You, Get Off of My Cloud: Exploring Information Leakage in Third-Party Compute Clouds</title>
+      <link>http://localhost:1313/paper_review/cloud_security_%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C_%EB%B3%B4%EC%95%88/get_off_my_cloud/</link>
+      <pubDate>Mon, 01 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/cloud_security_%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C_%EB%B3%B4%EC%95%88/get_off_my_cloud/</guid>
+      <description>클라우드 환경에서 하이퍼바이저 격리의 한계를 실증하고, 공유 CPU 캐시를 이용한 측면 채널 공격으로 암호화 키를 추출한 클라우드 보안의 전환점이 된 연구</description>
+    </item>
+  </channel>
+</rss>

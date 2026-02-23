@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Day 05: 정보주체의 권리 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="개인정보보호법, 열람권, 정정삭제권, 처리정지권, 동의철회, 자동화결정거부">
+<meta name="description" content="정보주체의 8가지 권리(열람, 정정·삭제, 처리정지, 동의철회 등)와 권리 행사 절차 및 개인정보처리자의 대응 의무를 학습합니다.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day05_%EC%A0%95%EB%B3%B4%EC%A3%BC%EC%B2%B4%EC%9D%98%EA%B6%8C%EB%A6%AC/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a29c24210eb31d9ce56f669c66a35c9c51b17376b7764e336a49af7dec914cf0.css" integrity="sha256-opwkIQ6zHZzlb2acZqNcnFGxc3a3dk4zakmvfeyRTPA=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day05_%EC%A0%95%EB%B3%B4%EC%A3%BC%EC%B2%B4%EC%9D%98%EA%B6%8C%EB%A6%AC/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/" title="프로젝트">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">홈</a>&nbsp;»&nbsp;<a href="http://localhost:1313/cyber_law_study/">보안 컨설팅 공부</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Day 05: 정보주체의 권리
+    </h1>
+    <div class="post-meta"><span title='2026-02-06 00:00:00 +0000 UTC'>2026년 2월 6일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="day-05-정보주체의-권리">Day 05: 정보주체의 권리<a hidden class="anchor" aria-hidden="true" href="#day-05-정보주체의-권리">#</a></h1>
+<h2 id="1-정보주체-권리의-개요">1. 정보주체 권리의 개요<a hidden class="anchor" aria-hidden="true" href="#1-정보주체-권리의-개요">#</a></h2>
+<p>개인정보보호법은 정보주체(개인정보의 주체가 되는 사람)에게 자신의 개인정보에 대한 <strong>통제권</strong>을 부여합니다. 이를 <strong>개인정보 자기결정권</strong>이라고 합니다.</p>
+<h3 id="11-정보주체의-8가지-권리">1.1 정보주체의 8가지 권리<a hidden class="anchor" aria-hidden="true" href="#11-정보주체의-8가지-권리">#</a></h3>
+<ol>
+<li><strong>열람권</strong> (제35조)</li>
+<li><strong>정정·삭제 요구권</strong> (제36조)</li>
+<li><strong>처리정지 요구권</strong> (제37조)</li>
+<li><strong>동의 철회권</strong> (제37조 해석상)</li>
+<li><strong>손해배상 청구권</strong> (제39조)</li>
+<li><strong>설명 요구권</strong> (제37조의2)</li>
+<li><strong>자동화 결정에 대한 거부권</strong> (제37조의2)</li>
+<li><strong>가명정보에 대한 처리 중지 요구권</strong> (제28조의4)</li>
+</ol>
+<h2 id="2-열람-요구권-법-제35조">2. 열람 요구권 (법 제35조)<a hidden class="anchor" aria-hidden="true" href="#2-열람-요구권-법-제35조">#</a></h2>
+<h3 id="21-권리의-내용">2.1 권리의 내용<a hidden class="anchor" aria-hidden="true" href="#21-권리의-내용">#</a></h3>
+<p>정보주체는 개인정보처리자에게 자신의 개인정보에 대해 <strong>열람을 요구</strong>할 수 있습니다.</p>
+<p><strong>열람 대상:</strong></p>
+<ul>
+<li>개인정보의 항목</li>
+<li>개인정보의 이용 목적</li>
+<li>개인정보의 보유 기간</li>
+<li>개인정보의 제3자 제공 현황 (제공받은 자, 제공 목적, 제공 항목)</li>
+</ul>
+<h3 id="22-처리-절차">2.2 처리 절차<a hidden class="anchor" aria-hidden="true" href="#22-처리-절차">#</a></h3>
+<h4 id="1-요구-방법">(1) 요구 방법<a hidden class="anchor" aria-hidden="true" href="#1-요구-방법">#</a></h4>
+<ul>
+<li>서면, 전자우편, 팩스, 인터넷 홈페이지 등</li>
+<li>개인정보처리자가 지정한 방법</li>
+</ul>
+<h4 id="2-본인-확인">(2) 본인 확인<a hidden class="anchor" aria-hidden="true" href="#2-본인-확인">#</a></h4>
+<ul>
+<li>열람 요구 시 본인 확인 절차 필수</li>
+<li>대리인이 요구하는 경우 위임장 등 확인</li>
+</ul>
+<h4 id="3-열람-제공">(3) 열람 제공<a hidden class="anchor" aria-hidden="true" href="#3-열람-제공">#</a></h4>
+<ul>
+<li>요구받은 날로부터 <strong>10일 이내</strong> 열람 기회 제공</li>
+<li>10일 이내 열람이 어려운 경우 그 사유를 알리고 최대 <strong>10일 연장</strong> 가능</li>
+</ul>
+<h4 id="4-열람-방법">(4) 열람 방법<a hidden class="anchor" aria-hidden="true" href="#4-열람-방법">#</a></h4>
+<ul>
+<li>사본 발급</li>
+<li>인터넷 홈페이지 열람</li>
+<li>방문 열람</li>
+<li>수수료 징수 가능 (실비 범위 내)</li>
+</ul>
+<h3 id="23-열람-제한-사유-법-제35조-제4항">2.3 열람 제한 사유 (법 제35조 제4항)<a hidden class="anchor" aria-hidden="true" href="#23-열람-제한-사유-법-제35조-제4항">#</a></h3>
+<p>다음의 경우 열람을 제한할 수 있습니다:</p>
+<ol>
+<li>법률에 따라 열람이 금지되거나 제한되는 경우</li>
+<li>다른 사람의 생명·신체를 해할 우려가 있거나 다른 사람의 재산과 그 밖의 이익을 부당하게 침해할 우려가 있는 경우</li>
+<li>공공기관이 다음 업무를 수행할 때 중대한 지장을 초래하는 경우:
+<ul>
+<li>조세의 부과·징수 또는 환급</li>
+<li>학력·기능·채용 시험 관리</li>
+<li>감사·감독·검사</li>
+<li>기타 공공기관의 내부 검토 과정</li>
+</ul>
+</li>
+</ol>
+<p><strong>열람 제한 시 의무:</strong></p>
+<ul>
+<li>제한 사유와 이의제기 방법을 서면 등으로 통지</li>
+<li>열람이 가능한 부분만이라도 열람 기회 제공</li>
+</ul>
+<h2 id="3-정정삭제-요구권-법-제36조">3. 정정·삭제 요구권 (법 제36조)<a hidden class="anchor" aria-hidden="true" href="#3-정정삭제-요구권-법-제36조">#</a></h2>
+<h3 id="31-권리의-내용">3.1 권리의 내용<a hidden class="anchor" aria-hidden="true" href="#31-권리의-내용">#</a></h3>
+<p>정보주체는 개인정보처리자에게 자신의 개인정보를 <strong>정정하거나 삭제</strong>할 것을 요구할 수 있습니다.</p>
+<p><strong>정정 요구:</strong></p>
+<ul>
+<li>개인정보가 사실과 다른 경우</li>
+<li>예: 주소 변경, 오타 수정</li>
+</ul>
+<p><strong>삭제 요구:</strong></p>
+<ul>
+<li>수집·이용 목적이 달성된 경우</li>
+<li>동의를 철회한 경우</li>
+<li>불필요하거나 과도하게 수집된 경우</li>
+</ul>
+<h3 id="32-처리-절차">3.2 처리 절차<a hidden class="anchor" aria-hidden="true" href="#32-처리-절차">#</a></h3>
+<h4 id="1-정정삭제-요구-접수">(1) 정정·삭제 요구 접수<a hidden class="anchor" aria-hidden="true" href="#1-정정삭제-요구-접수">#</a></h4>
+<ul>
+<li>서면, 전자우편, 인터넷 등</li>
+</ul>
+<h4 id="2-조치-및-통지">(2) 조치 및 통지<a hidden class="anchor" aria-hidden="true" href="#2-조치-및-통지">#</a></h4>
+<ul>
+<li>요구받은 날로부터 <strong>10일 이내</strong> 조치 후 결과 통지</li>
+<li>정당한 사유가 없는 한 지체 없이 조치</li>
+</ul>
+<h4 id="3-조치-결과-통지">(3) 조치 결과 통지<a hidden class="anchor" aria-hidden="true" href="#3-조치-결과-통지">#</a></h4>
+<ul>
+<li>정정 또는 삭제 완료 통지</li>
+<li>거부 시 거부 사유 및 이의제기 방법 통지</li>
+</ul>
+<h3 id="33-삭제-제한-사유">3.3 삭제 제한 사유<a hidden class="anchor" aria-hidden="true" href="#33-삭제-제한-사유">#</a></h3>
+<p>다음의 경우 삭제를 거부할 수 있습니다:</p>
+<ol>
+<li><strong>법률에 특별한 규정</strong>이 있거나 법령상 의무를 준수하기 위해 불가피한 경우
+<ul>
+<li>예: 전자상거래법에 따른 거래기록 보존 의무</li>
+<li>예: 통신비밀보호법에 따른 통신자료 보존 의무</li>
+</ul>
+</li>
+<li>다른 법률에 따라 그 개인정보가 <strong>수집 대상</strong>으로 명시되어 있는 경우</li>
+</ol>
+<h3 id="34-제3자-제공-사실-통지-의무">3.4 제3자 제공 사실 통지 의무<a hidden class="anchor" aria-hidden="true" href="#34-제3자-제공-사실-통지-의무">#</a></h3>
+<p>정정 또는 삭제를 완료한 경우, 그 개인정보를 <strong>제3자에게 제공한 적이 있으면</strong> 제3자에게도 정정·삭제 사실을 통지해야 합니다.</p>
+<p>단, 통지가 불가능하거나 과도한 노력이 필요한 경우는 예외입니다.</p>
+<h2 id="4-처리정지-요구권-법-제37조">4. 처리정지 요구권 (법 제37조)<a hidden class="anchor" aria-hidden="true" href="#4-처리정지-요구권-법-제37조">#</a></h2>
+<h3 id="41-권리의-내용">4.1 권리의 내용<a hidden class="anchor" aria-hidden="true" href="#41-권리의-내용">#</a></h3>
+<p>정보주체는 자신의 개인정보 <strong>처리의 정지</strong>를 요구할 수 있습니다.</p>
+<p><strong>처리정지란?</strong></p>
+<ul>
+<li>개인정보의 이용, 제공, 공개 등을 중단하는 것</li>
+<li>삭제는 아니지만 사실상 이용을 못하게 하는 것</li>
+</ul>
+<h3 id="42-처리-절차">4.2 처리 절차<a hidden class="anchor" aria-hidden="true" href="#42-처리-절차">#</a></h3>
+<h4 id="1-정지-요구-접수">(1) 정지 요구 접수<a hidden class="anchor" aria-hidden="true" href="#1-정지-요구-접수">#</a></h4>
+<ul>
+<li>서면, 전자우편, 인터넷 등</li>
+</ul>
+<h4 id="2-조치">(2) 조치<a hidden class="anchor" aria-hidden="true" href="#2-조치">#</a></h4>
+<ul>
+<li>요구받은 날로부터 <strong>10일 이내</strong> 처리정지</li>
+<li>개인정보의 전부 또는 일부에 대해 처리정지</li>
+</ul>
+<h4 id="3-결과-통지">(3) 결과 통지<a hidden class="anchor" aria-hidden="true" href="#3-결과-통지">#</a></h4>
+<ul>
+<li>처리정지 완료 통지</li>
+<li>거부 시 거부 사유 및 이의제기 방법 통지</li>
+</ul>
+<h3 id="43-처리정지-거부-사유-법-제37조-제2항">4.3 처리정지 거부 사유 (법 제37조 제2항)<a hidden class="anchor" aria-hidden="true" href="#43-처리정지-거부-사유-법-제37조-제2항">#</a></h3>
+<p>다음의 경우 처리정지 요구를 거부할 수 있습니다:</p>
+<ol>
+<li>법률에 특별한 규정이 있거나 법령상 의무를 준수하기 위해 불가피한 경우</li>
+<li>다른 사람의 생명·신체를 해할 우려가 있거나 다른 사람의 재산과 그 밖의 이익을 부당하게 침해할 우려가 있는 경우</li>
+<li>공공기관이 개인정보를 처리하지 아니하면 다른 법률에서 정하는 소관 업무를 수행할 수 없는 경우</li>
+<li>개인정보를 처리하지 아니하면 정보주체와 약정한 서비스를 제공하지 못하는 등 계약의 이행이 곤란한 경우로서 정보주체가 그 계약의 해지 의사를 명확하게 밝히지 아니한 경우</li>
+</ol>
+<h3 id="44-처리정지-요구의-예시">4.4 처리정지 요구의 예시<a hidden class="anchor" aria-hidden="true" href="#44-처리정지-요구의-예시">#</a></h3>
+<p><strong>예시 1: 마케팅 목적 이용 정지</strong></p>
+<ul>
+<li>회원 가입 시 마케팅 동의를 했지만, 이후 광고를 받고 싶지 않은 경우</li>
+<li>처리정지 요구 가능</li>
+</ul>
+<p><strong>예시 2: 제3자 제공 정지</strong></p>
+<ul>
+<li>제휴사에 개인정보 제공에 동의했지만, 이후 제공을 원하지 않는 경우</li>
+<li>처리정지 요구 가능</li>
+</ul>
+<h2 id="5-동의-철회권">5. 동의 철회권<a hidden class="anchor" aria-hidden="true" href="#5-동의-철회권">#</a></h2>
+<h3 id="51-권리의-내용">5.1 권리의 내용<a hidden class="anchor" aria-hidden="true" href="#51-권리의-내용">#</a></h3>
+<p>정보주체는 언제든지 개인정보 처리에 대한 <strong>동의를 철회</strong>할 수 있습니다.</p>
+<p><strong>법적 근거:</strong></p>
+<ul>
+<li>명문 규정은 없으나 제37조 처리정지 요구권의 해석상 인정</li>
+<li>동의 방법보다 철회 방법이 쉬워야 함 (법 제22조 제3항)</li>
+</ul>
+<h3 id="52-철회의-효과">5.2 철회의 효과<a hidden class="anchor" aria-hidden="true" href="#52-철회의-효과">#</a></h3>
+<ul>
+<li>동의 철회 시점부터 개인정보 처리 중단</li>
+<li>과거에 적법하게 처리한 것까지 위법이 되는 것은 아님</li>
+<li>철회 후에는 지체 없이 파기 (법률상 보존 의무가 있는 경우 제외)</li>
+</ul>
+<h3 id="53-동의-철회-방법">5.3 동의 철회 방법<a hidden class="anchor" aria-hidden="true" href="#53-동의-철회-방법">#</a></h3>
+<p><strong>원칙:</strong></p>
+<ul>
+<li>동의한 방법보다 쉽게 철회할 수 있어야 함</li>
+<li>예: 인터넷으로 동의했으면 인터넷으로도 철회 가능해야 함</li>
+</ul>
+<p><strong>실무 예시:</strong></p>
+<ul>
+<li>홈페이지에 &ldquo;회원탈퇴&rdquo; 메뉴 제공</li>
+<li>&ldquo;수신거부&rdquo; 링크 제공 (이메일, SMS)</li>
+<li>고객센터 전화로도 철회 가능</li>
+</ul>
+<p><strong>위법 사례:</strong></p>
+<ul>
+<li>온라인으로 동의했는데 철회는 서면 우편으로만 가능</li>
+<li>고객센터 전화 연결이 어렵게 설계</li>
+</ul>
+<h2 id="6-설명-요구권-법-제37조의2">6. 설명 요구권 (법 제37조의2)<a hidden class="anchor" aria-hidden="true" href="#6-설명-요구권-법-제37조의2">#</a></h2>
+<h3 id="61-권리의-내용-2020년-8월-신설">6.1 권리의 내용 (2020년 8월 신설)<a hidden class="anchor" aria-hidden="true" href="#61-권리의-내용-2020년-8월-신설">#</a></h3>
+<p>정보주체는 다음에 대해 <strong>설명을 요구</strong>할 수 있습니다:</p>
+<ol>
+<li>개인정보의 처리에 관한 정보</li>
+<li>열람, 정정·삭제, 처리정지 등 권리 행사 방법</li>
+</ol>
+<h3 id="62-설명-내용">6.2 설명 내용<a hidden class="anchor" aria-hidden="true" href="#62-설명-내용">#</a></h3>
+<p>개인정보처리자는 정보주체가 쉽게 이해할 수 있도록 다음을 설명해야 합니다:</p>
+<ul>
+<li>개인정보의 수집 출처</li>
+<li>처리 목적</li>
+<li>제3자 제공 현황</li>
+<li>권리 행사 방법</li>
+</ul>
+<h3 id="63-설명-방법">6.3 설명 방법<a hidden class="anchor" aria-hidden="true" href="#63-설명-방법">#</a></h3>
+<ul>
+<li>서면, 전자우편, 전화 등</li>
+<li>정보주체가 요구하는 방법</li>
+</ul>
+<h2 id="7-자동화된-결정에-대한-거부권-법-제37조의2">7. 자동화된 결정에 대한 거부권 (법 제37조의2)<a hidden class="anchor" aria-hidden="true" href="#7-자동화된-결정에-대한-거부권-법-제37조의2">#</a></h2>
+<h3 id="71-권리의-내용-2020년-8월-신설">7.1 권리의 내용 (2020년 8월 신설)<a hidden class="anchor" aria-hidden="true" href="#71-권리의-내용-2020년-8월-신설">#</a></h3>
+<p>정보주체는 <strong>자동화된 결정</strong>만으로 자신에게 법률적 효과를 미치거나 상당한 영향을 미치는 경우, 이에 대해 <strong>거부</strong>할 수 있습니다.</p>
+<p><strong>자동화된 결정이란?</strong></p>
+<ul>
+<li>사람의 개입 없이 컴퓨터 등 정보처리장치만으로 이루어지는 결정</li>
+<li>예: AI 신용평가, 자동화된 채용 심사, 프로파일링 기반 의사결정</li>
+</ul>
+<h3 id="72-적용-요건">7.2 적용 요건<a hidden class="anchor" aria-hidden="true" href="#72-적용-요건">#</a></h3>
+<p>다음 요건을 모두 충족하는 경우:</p>
+<ol>
+<li><strong>완전 자동화된</strong> 처리</li>
+<li><strong>개인정보를 이용한</strong> 처리</li>
+<li>정보주체에게 <strong>법률적 효과</strong> 또는 <strong>상당한 영향</strong>을 미치는 경우</li>
+</ol>
+<p><strong>법률적 효과:</strong></p>
+<ul>
+<li>대출 거부, 보험 거부, 채용 탈락 등</li>
+</ul>
+<p><strong>상당한 영향:</strong></p>
+<ul>
+<li>맞춤형 가격 책정으로 불이익</li>
+<li>서비스 이용 제한</li>
+</ul>
+<h3 id="73-거부권-행사의-효과">7.3 거부권 행사의 효과<a hidden class="anchor" aria-hidden="true" href="#73-거부권-행사의-효과">#</a></h3>
+<p>정보주체가 거부권을 행사하면:</p>
+<ul>
+<li>자동화된 결정에 대해 <strong>설명을 요구</strong>할 수 있음</li>
+<li>이의를 제기하고 <strong>사람의 개입에 의한 재처리</strong>를 요구할 수 있음</li>
+</ul>
+<h3 id="74-예외-거부권이-제한되는-경우">7.4 예외 (거부권이 제한되는 경우)<a hidden class="anchor" aria-hidden="true" href="#74-예외-거부권이-제한되는-경우">#</a></h3>
+<p>다음의 경우 거부권이 제한될 수 있습니다:</p>
+<ol>
+<li>정보주체의 <strong>명시적인 동의</strong>가 있는 경우</li>
+<li><strong>법률에 특별한 규정</strong>이 있는 경우</li>
+<li>정보주체와의 <strong>계약 체결 및 이행</strong>을 위해 필요한 경우</li>
+</ol>
+<h2 id="8-가명정보-처리-중지-요구권-법-제28조의4">8. 가명정보 처리 중지 요구권 (법 제28조의4)<a hidden class="anchor" aria-hidden="true" href="#8-가명정보-처리-중지-요구권-법-제28조의4">#</a></h2>
+<h3 id="81-권리의-내용-2020년-8월-신설">8.1 권리의 내용 (2020년 8월 신설)<a hidden class="anchor" aria-hidden="true" href="#81-권리의-내용-2020년-8월-신설">#</a></h3>
+<p>정보주체는 자신을 알아볼 수 있는 <strong>가명정보</strong>를 처리하는 것으로 인해 <strong>정당한 이익이 침해</strong>받는 경우, 해당 가명정보의 처리 중지를 요구할 수 있습니다.</p>
+<h3 id="82-적용-요건">8.2 적용 요건<a hidden class="anchor" aria-hidden="true" href="#82-적용-요건">#</a></h3>
+<ol>
+<li>가명정보로 <strong>정보주체를 알아볼 수 있는</strong> 경우</li>
+<li>가명정보 처리로 정보주체의 <strong>정당한 이익이 침해</strong>되는 경우</li>
+</ol>
+<h3 id="83-처리-절차">8.3 처리 절차<a hidden class="anchor" aria-hidden="true" href="#83-처리-절차">#</a></h3>
+<p>개인정보처리자는 요구를 받으면:</p>
+<ul>
+<li>정당한 사유가 없는 한 <strong>지체 없이 처리 중지</strong></li>
+<li>처리 중지 결과를 정보주체에게 통지</li>
+</ul>
+<h2 id="9-손해배상-청구권-법-제39조">9. 손해배상 청구권 (법 제39조)<a hidden class="anchor" aria-hidden="true" href="#9-손해배상-청구권-법-제39조">#</a></h2>
+<h3 id="91-권리의-내용">9.1 권리의 내용<a hidden class="anchor" aria-hidden="true" href="#91-권리의-내용">#</a></h3>
+<p>정보주체는 개인정보처리자의 법 위반으로 <strong>손해를 입은 경우</strong> 손해배상을 청구할 수 있습니다.</p>
+<h3 id="92-손해배상-요건">9.2 손해배상 요건<a hidden class="anchor" aria-hidden="true" href="#92-손해배상-요건">#</a></h3>
+<h4 id="1-개인정보처리자의-법-위반">(1) 개인정보처리자의 법 위반<a hidden class="anchor" aria-hidden="true" href="#1-개인정보처리자의-법-위반">#</a></h4>
+<ul>
+<li>개인정보보호법 또는 같은 법에 따른 명령 위반</li>
+</ul>
+<h4 id="2-손해-발생">(2) 손해 발생<a hidden class="anchor" aria-hidden="true" href="#2-손해-발생">#</a></h4>
+<ul>
+<li>재산적 손해: 금전적 피해</li>
+<li>정신적 손해: 위자료</li>
+</ul>
+<h4 id="3-인과관계">(3) 인과관계<a hidden class="anchor" aria-hidden="true" href="#3-인과관계">#</a></h4>
+<ul>
+<li>법 위반과 손해 사이의 인과관계</li>
+</ul>
+<h3 id="93-입증책임의-전환-법-제39조-제2항">9.3 입증책임의 전환 (법 제39조 제2항)<a hidden class="anchor" aria-hidden="true" href="#93-입증책임의-전환-법-제39조-제2항">#</a></h3>
+<p>개인정보처리자는 다음을 입증해야 합니다:</p>
+<ol>
+<li><strong>고의 또는 과실이 없었다는 것</strong></li>
+<li><strong>손해 발생의 원인이 자신에게 없다는 것</strong></li>
+</ol>
+<p>즉, 정보주체는 손해만 입증하면 되고, 개인정보처리자가 자신의 무과실을 입증해야 합니다.</p>
+<h3 id="94-손해배상액">9.4 손해배상액<a hidden class="anchor" aria-hidden="true" href="#94-손해배상액">#</a></h3>
+<h4 id="1-실제-손해">(1) 실제 손해<a hidden class="anchor" aria-hidden="true" href="#1-실제-손해">#</a></h4>
+<ul>
+<li>입증된 손해액 전액</li>
+</ul>
+<h4 id="2-법정손해배상-법-제39조의2-2020년-8월-신설">(2) 법정손해배상 (법 제39조의2, 2020년 8월 신설)<a hidden class="anchor" aria-hidden="true" href="#2-법정손해배상-법-제39조의2-2020년-8월-신설">#</a></h4>
+<p>정보주체가 재산적 손해를 입증하기 어려운 경우, <strong>300만원 이하의 범위</strong>에서 법원이 상당한 손해액을 인정할 수 있습니다.</p>
+<p><strong>적용 요건:</strong></p>
+<ul>
+<li>고의 또는 중대한 과실로 개인정보를 분실·도난·유출·위조·변조·훼손한 경우</li>
+<li>정보주체가 재산적 손해 입증이 어려운 경우</li>
+</ul>
+<h4 id="3-징벌적-손해배상-법-제39조의3-2023년-9월-신설">(3) 징벌적 손해배상 (법 제39조의3, 2023년 9월 신설)<a hidden class="anchor" aria-hidden="true" href="#3-징벌적-손해배상-법-제39조의3-2023년-9월-신설">#</a></h4>
+<p>고의 또는 중대한 과실로 개인정보를 유출하여 정보주체에게 손해를 입힌 경우:</p>
+<ul>
+<li>실제 손해액의 <strong>3배 이하</strong> (다만, 5억원을 초과할 수 없음)</li>
+<li>고의 또는 중대한 과실 입증 필요</li>
+</ul>
+<h2 id="10-권리-행사-절차-종합">10. 권리 행사 절차 종합<a hidden class="anchor" aria-hidden="true" href="#10-권리-행사-절차-종합">#</a></h2>
+<h3 id="101-일반적인-권리-행사-흐름">10.1 일반적인 권리 행사 흐름<a hidden class="anchor" aria-hidden="true" href="#101-일반적인-권리-행사-흐름">#</a></h3>
+<pre tabindex="0"><code>정보주체 요구 → 본인 확인 → 처리 (10일 이내) → 결과 통지
+</code></pre><h3 id="102-개인정보처리자의-의무">10.2 개인정보처리자의 의무<a hidden class="anchor" aria-hidden="true" href="#102-개인정보처리자의-의무">#</a></h3>
+<h4 id="1-권리-행사-방법-안내">(1) 권리 행사 방법 안내<a hidden class="anchor" aria-hidden="true" href="#1-권리-행사-방법-안내">#</a></h4>
+<ul>
+<li>개인정보 처리방침에 권리 행사 방법 명시</li>
+<li>홈페이지에 안내 게시</li>
+</ul>
+<h4 id="2-권리-행사-창구-마련">(2) 권리 행사 창구 마련<a hidden class="anchor" aria-hidden="true" href="#2-권리-행사-창구-마련">#</a></h4>
+<ul>
+<li>고객센터, 홈페이지, 이메일 등</li>
+<li>쉽게 접근 가능해야 함</li>
+</ul>
+<h4 id="3-신속한-처리">(3) 신속한 처리<a hidden class="anchor" aria-hidden="true" href="#3-신속한-처리">#</a></h4>
+<ul>
+<li>10일 이내 처리 원칙</li>
+<li>부득이한 경우 10일 연장 가능 (연장 사유 통지)</li>
+</ul>
+<h4 id="4-거부-시-사유-설명">(4) 거부 시 사유 설명<a hidden class="anchor" aria-hidden="true" href="#4-거부-시-사유-설명">#</a></h4>
+<ul>
+<li>거부 사유를 구체적으로 설명</li>
+<li>이의제기 방법 안내</li>
+</ul>
+<h4 id="5-불이익-금지">(5) 불이익 금지<a hidden class="anchor" aria-hidden="true" href="#5-불이익-금지">#</a></h4>
+<ul>
+<li>권리 행사를 이유로 불이익을 주어서는 안 됨</li>
+<li>예: 서비스 이용 제한, 차별적 대우</li>
+</ul>
+<h3 id="103-법정대리인의-권리-행사">10.3 법정대리인의 권리 행사<a hidden class="anchor" aria-hidden="true" href="#103-법정대리인의-권리-행사">#</a></h3>
+<p>만 14세 미만 아동의 경우, <strong>법정대리인</strong>이 권리를 행사할 수 있습니다.</p>
+<h2 id="11-보안-컨설팅-관점의-설계-원칙">11. 보안 컨설팅 관점의 설계 원칙<a hidden class="anchor" aria-hidden="true" href="#11-보안-컨설팅-관점의-설계-원칙">#</a></h2>
+<h3 id="111-권리-행사-지원-시스템">11.1 권리 행사 지원 시스템<a hidden class="anchor" aria-hidden="true" href="#111-권리-행사-지원-시스템">#</a></h3>
+<h4 id="온라인-시스템">온라인 시스템<a hidden class="anchor" aria-hidden="true" href="#온라인-시스템">#</a></h4>
+<ul>
+<li>회원 정보 조회/수정 기능</li>
+<li>회원 탈퇴 기능</li>
+<li>개인정보 열람 요청 기능</li>
+<li>다운로드 기능 (데이터 이동권)</li>
+</ul>
+<h4 id="오프라인-채널">오프라인 채널<a hidden class="anchor" aria-hidden="true" href="#오프라인-채널">#</a></h4>
+<ul>
+<li>고객센터 전화, 이메일</li>
+<li>서면 요청 접수</li>
+</ul>
+<h3 id="112-본인-확인-절차">11.2 본인 확인 절차<a hidden class="anchor" aria-hidden="true" href="#112-본인-확인-절차">#</a></h3>
+<h4 id="온라인">온라인<a hidden class="anchor" aria-hidden="true" href="#온라인">#</a></h4>
+<ul>
+<li>로그인 (ID/PW)</li>
+<li>본인인증 (휴대폰, 아이핀 등)</li>
+</ul>
+<h4 id="오프라인">오프라인<a hidden class="anchor" aria-hidden="true" href="#오프라인">#</a></h4>
+<ul>
+<li>신분증 사본</li>
+<li>위임장 및 인감증명 (대리인)</li>
+</ul>
+<h3 id="113-처리-기한-관리">11.3 처리 기한 관리<a hidden class="anchor" aria-hidden="true" href="#113-처리-기한-관리">#</a></h3>
+<ul>
+<li>요청 접수일 기록</li>
+<li>10일 기한 추적</li>
+<li>자동 알림 시스템</li>
+</ul>
+<h3 id="114-이력-관리">11.4 이력 관리<a hidden class="anchor" aria-hidden="true" href="#114-이력-관리">#</a></h3>
+<ul>
+<li>요청 내용 기록</li>
+<li>처리 결과 기록</li>
+<li>통지 내역 보관</li>
+</ul>
+<h2 id="12-실무-사례">12. 실무 사례<a hidden class="anchor" aria-hidden="true" href="#12-실무-사례">#</a></h2>
+<h3 id="사례-1-열람-요구">사례 1: 열람 요구<a hidden class="anchor" aria-hidden="true" href="#사례-1-열람-요구">#</a></h3>
+<p><strong>상황:</strong>
+고객이 쇼핑몰에 자신의 개인정보 열람 요청</p>
+<p><strong>처리:</strong></p>
+<ol>
+<li>본인 확인 (로그인 또는 본인인증)</li>
+<li>보유 정보 제공:
+<ul>
+<li>이름, 연락처, 주소</li>
+<li>최근 구매 이력</li>
+<li>제3자 제공 내역 (배송사 등)</li>
+</ul>
+</li>
+<li>10일 이내 열람 기회 제공</li>
+</ol>
+<h3 id="사례-2-정정-요구">사례 2: 정정 요구<a hidden class="anchor" aria-hidden="true" href="#사례-2-정정-요구">#</a></h3>
+<p><strong>상황:</strong>
+고객이 주소 변경을 요청</p>
+<p><strong>처리:</strong></p>
+<ol>
+<li>본인 확인</li>
+<li>주소 정보 수정</li>
+<li>수정 완료 통지</li>
+<li>배송사에도 변경 사실 통지 (제3자 제공한 경우)</li>
+</ol>
+<h3 id="사례-3-삭제-요구">사례 3: 삭제 요구<a hidden class="anchor" aria-hidden="true" href="#사례-3-삭제-요구">#</a></h3>
+<p><strong>상황:</strong>
+회원 탈퇴 요청</p>
+<p><strong>처리:</strong></p>
+<ol>
+<li>본인 확인</li>
+<li>회원 정보 삭제</li>
+<li>단, 전자상거래법에 따라 거래 기록은 5년 보존</li>
+<li>보존 근거 및 기간 안내</li>
+</ol>
+<h3 id="사례-4-처리정지-요구">사례 4: 처리정지 요구<a hidden class="anchor" aria-hidden="true" href="#사례-4-처리정지-요구">#</a></h3>
+<p><strong>상황:</strong>
+마케팅 메일 수신 거부 요청</p>
+<p><strong>처리:</strong></p>
+<ol>
+<li>수신 거부 처리</li>
+<li>이메일 발송 중단</li>
+<li>다만 거래 관련 필수 안내는 계속 발송 가능 (계약 이행)</li>
+</ol>
+<h3 id="사례-5-동의-철회">사례 5: 동의 철회<a hidden class="anchor" aria-hidden="true" href="#사례-5-동의-철회">#</a></h3>
+<p><strong>상황:</strong>
+제휴사 제공 동의 철회</p>
+<p><strong>처리:</strong></p>
+<ol>
+<li>제3자 제공 중단</li>
+<li>이미 제공된 정보는 제휴사에 삭제 요청</li>
+<li>철회 완료 통지</li>
+</ol>
+<h3 id="사례-6-자동화된-결정-거부">사례 6: 자동화된 결정 거부<a hidden class="anchor" aria-hidden="true" href="#사례-6-자동화된-결정-거부">#</a></h3>
+<p><strong>상황:</strong>
+AI 신용평가 결과에 대한 이의 제기</p>
+<p><strong>처리:</strong></p>
+<ol>
+<li>자동화된 평가 근거 설명</li>
+<li>사람의 개입에 의한 재평가 실시</li>
+<li>재평가 결과 통지</li>
+</ol>
+<h2 id="13-자주-발생하는-위반-사례">13. 자주 발생하는 위반 사례<a hidden class="anchor" aria-hidden="true" href="#13-자주-발생하는-위반-사례">#</a></h2>
+<h3 id="위반-사례-1-회원-탈퇴-어렵게-만들기">위반 사례 1: 회원 탈퇴 어렵게 만들기<a hidden class="anchor" aria-hidden="true" href="#위반-사례-1-회원-탈퇴-어렵게-만들기">#</a></h3>
+<ul>
+<li>온라인 가입은 쉽지만 탈퇴는 전화나 서면으로만 가능</li>
+<li>고객센터 연결이 어렵게 설계</li>
+</ul>
+<p><strong>올바른 방법:</strong></p>
+<ul>
+<li>가입한 방법과 동일하거나 더 쉬운 방법으로 탈퇴 가능</li>
+</ul>
+<h3 id="위반-사례-2-열람-요구-무시">위반 사례 2: 열람 요구 무시<a hidden class="anchor" aria-hidden="true" href="#위반-사례-2-열람-요구-무시">#</a></h3>
+<ul>
+<li>고객의 열람 요청을 10일 넘게 방치</li>
+</ul>
+<p><strong>올바른 방법:</strong></p>
+<ul>
+<li>10일 이내 열람 기회 제공</li>
+<li>부득이한 경우 연장 사유 통지 후 최대 10일 연장</li>
+</ul>
+<h3 id="위반-사례-3-정정-요구-거부">위반 사례 3: 정정 요구 거부<a hidden class="anchor" aria-hidden="true" href="#위반-사례-3-정정-요구-거부">#</a></h3>
+<ul>
+<li>정당한 사유 없이 정보 수정 거부</li>
+</ul>
+<p><strong>올바른 방법:</strong></p>
+<ul>
+<li>정당한 요구는 즉시 수정</li>
+<li>거부 시 구체적인 사유 및 이의제기 방법 안내</li>
+</ul>
+<h3 id="위반-사례-4-권리-행사에-불이익">위반 사례 4: 권리 행사에 불이익<a hidden class="anchor" aria-hidden="true" href="#위반-사례-4-권리-행사에-불이익">#</a></h3>
+<ul>
+<li>수신거부 한 고객에게 서비스 이용 제한</li>
+</ul>
+<p><strong>올바른 방법:</strong></p>
+<ul>
+<li>권리 행사를 이유로 불이익을 주어서는 안 됨</li>
+</ul>
+<h2 id="14-체크리스트">14. 체크리스트<a hidden class="anchor" aria-hidden="true" href="#14-체크리스트">#</a></h2>
+<p>개인정보처리자는 다음을 확인하세요:</p>
+<ul>
+<li><input disabled="" type="checkbox"> 정보주체가 쉽게 권리를 행사할 수 있는 창구가 마련되어 있는가?</li>
+<li><input disabled="" type="checkbox"> 권리 행사 방법을 개인정보 처리방침에 명시했는가?</li>
+<li><input disabled="" type="checkbox"> 본인 확인 절차가 마련되어 있는가?</li>
+<li><input disabled="" type="checkbox"> 10일 이내 처리하는 시스템이 구축되어 있는가?</li>
+<li><input disabled="" type="checkbox"> 거부 시 사유를 구체적으로 설명하는가?</li>
+<li><input disabled="" type="checkbox"> 동의 철회 방법이 동의 방법보다 쉬운가?</li>
+<li><input disabled="" type="checkbox"> 회원 탈퇴가 온라인으로 가능한가?</li>
+<li><input disabled="" type="checkbox"> 제3자에게 제공한 경우 정정·삭제 사실을 통지하는가?</li>
+<li><input disabled="" type="checkbox"> 권리 행사 이력을 기록·관리하는가?</li>
+<li><input disabled="" type="checkbox"> 자동화된 결정에 대한 설명 및 이의제기 방법을 제공하는가?</li>
+</ul>
+<h2 id="15-이의제기-및-구제-절차">15. 이의제기 및 구제 절차<a hidden class="anchor" aria-hidden="true" href="#15-이의제기-및-구제-절차">#</a></h2>
+<p>정보주체가 권리 행사를 했으나 개인정보처리자가 거부하거나 만족스럽지 않은 경우:</p>
+<h3 id="151-내부-이의제기">15.1 내부 이의제기<a hidden class="anchor" aria-hidden="true" href="#151-내부-이의제기">#</a></h3>
+<ul>
+<li>개인정보 보호책임자에게 이의 제기</li>
+<li>개인정보 분쟁조정위원회에 신청 전 단계</li>
+</ul>
+<h3 id="152-외부-구제-수단">15.2 외부 구제 수단<a hidden class="anchor" aria-hidden="true" href="#152-외부-구제-수단">#</a></h3>
+<h4 id="1-개인정보-분쟁조정위원회-법-제40조">(1) 개인정보 분쟁조정위원회 (법 제40조)<a hidden class="anchor" aria-hidden="true" href="#1-개인정보-분쟁조정위원회-법-제40조">#</a></h4>
+<ul>
+<li>분쟁 조정 신청</li>
+<li>무료, 신속한 해결</li>
+<li>조정 성립 시 재판상 화해 효력</li>
+</ul>
+<h4 id="2-개인정보보호위원회">(2) 개인정보보호위원회<a hidden class="anchor" aria-hidden="true" href="#2-개인정보보호위원회">#</a></h4>
+<ul>
+<li>침해 신고 및 상담</li>
+<li>시정 명령 요청</li>
+</ul>
+<h4 id="3-민사소송">(3) 민사소송<a hidden class="anchor" aria-hidden="true" href="#3-민사소송">#</a></h4>
+<ul>
+<li>법원에 손해배상 청구 소송</li>
+</ul>
+<h4 id="4-형사고소">(4) 형사고소<a hidden class="anchor" aria-hidden="true" href="#4-형사고소">#</a></h4>
+<ul>
+<li>검찰 또는 경찰에 고소</li>
+</ul>
+<h4 id="5-한국인터넷진흥원-개인정보침해신고센터">(5) 한국인터넷진흥원 개인정보침해신고센터<a hidden class="anchor" aria-hidden="true" href="#5-한국인터넷진흥원-개인정보침해신고센터">#</a></h4>
+<ul>
+<li>전화: 118</li>
+<li>온라인: privacy.kisa.or.kr</li>
+</ul>
+<h2 id="학습-정리">학습 정리<a hidden class="anchor" aria-hidden="true" href="#학습-정리">#</a></h2>
+<p>오늘 학습한 핵심 내용:</p>
+<ul>
+<li>정보주체는 자신의 개인정보에 대해 열람, 정정·삭제, 처리정지, 동의 철회 등의 권리를 가짐</li>
+<li>개인정보처리자는 요구받은 날로부터 10일 이내 처리해야 함</li>
+<li>동의 철회는 동의한 방법보다 쉬워야 함</li>
+<li>자동화된 결정에 대해 설명을 요구하고 거부할 수 있음</li>
+<li>법 위반으로 손해 발생 시 손해배상 청구 가능 (입증책임 전환)</li>
+<li>권리 행사를 이유로 불이익을 주어서는 안 됨</li>
+</ul>
+<h2 id="다음-학습-주제">다음 학습 주제<a hidden class="anchor" aria-hidden="true" href="#다음-학습-주제">#</a></h2>
+<p>Day 06: 개인정보의 안전성 확보 조치 - 개인정보를 안전하게 관리하기 위한 기술적·관리적 조치</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/">개인정보보호법</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%97%B4%EB%9E%8C%EA%B6%8C/">열람권</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%A0%95%EC%A0%95%EC%82%AD%EC%A0%9C%EA%B6%8C/">정정삭제권</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%B2%98%EB%A6%AC%EC%A0%95%EC%A7%80%EA%B6%8C/">처리정지권</a></li>
+      <li><a href="http://localhost:1313/tags/%EB%8F%99%EC%9D%98%EC%B2%A0%ED%9A%8C/">동의철회</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%9E%90%EB%8F%99%ED%99%94%EA%B2%B0%EC%A0%95%EA%B1%B0%EB%B6%80/">자동화결정거부</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

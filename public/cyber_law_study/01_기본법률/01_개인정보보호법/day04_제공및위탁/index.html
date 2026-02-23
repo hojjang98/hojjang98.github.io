@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Day 04: 개인정보의 제공 및 처리 위탁 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="개인정보보호법, 제3자제공, 처리위탁, 해외이전, 공동이용">
+<meta name="description" content="개인정보의 제3자 제공 요건, 처리 위탁 절차와 계약 사항, 국외 이전 시 안전성 확보 조치를 학습합니다.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day04_%EC%A0%9C%EA%B3%B5%EB%B0%8F%EC%9C%84%ED%83%81/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a29c24210eb31d9ce56f669c66a35c9c51b17376b7764e336a49af7dec914cf0.css" integrity="sha256-opwkIQ6zHZzlb2acZqNcnFGxc3a3dk4zakmvfeyRTPA=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/day04_%EC%A0%9C%EA%B3%B5%EB%B0%8F%EC%9C%84%ED%83%81/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/" title="프로젝트">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">홈</a>&nbsp;»&nbsp;<a href="http://localhost:1313/cyber_law_study/">보안 컨설팅 공부</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Day 04: 개인정보의 제공 및 처리 위탁
+    </h1>
+    <div class="post-meta"><span title='2026-02-05 00:00:00 +0000 UTC'>2026년 2월 5일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="day-04-개인정보의-제공-및-처리-위탁">Day 04: 개인정보의 제공 및 처리 위탁<a hidden class="anchor" aria-hidden="true" href="#day-04-개인정보의-제공-및-처리-위탁">#</a></h1>
+<h2 id="1-개인정보의-제3자-제공">1. 개인정보의 제3자 제공<a hidden class="anchor" aria-hidden="true" href="#1-개인정보의-제3자-제공">#</a></h2>
+<h3 id="11-제3자-제공이란">1.1 제3자 제공이란?<a hidden class="anchor" aria-hidden="true" href="#11-제3자-제공이란">#</a></h3>
+<p>개인정보처리자가 수집한 개인정보를 <strong>당초 수집 목적과 합리적으로 관련된 범위를 넘어</strong> 다른 개인정보처리자에게 제공하는 것</p>
+<h3 id="12-제3자-제공의-요건-법-제17조">1.2 제3자 제공의 요건 (법 제17조)<a hidden class="anchor" aria-hidden="true" href="#12-제3자-제공의-요건-법-제17조">#</a></h3>
+<p>다음 중 하나에 해당하는 경우에만 제3자에게 제공할 수 있습니다:</p>
+<h4 id="1-정보주체의-동의를-받은-경우">(1) 정보주체의 동의를 받은 경우<a hidden class="anchor" aria-hidden="true" href="#1-정보주체의-동의를-받은-경우">#</a></h4>
+<p>가장 일반적인 제공 근거</p>
+<p><strong>동의 받을 때 고지사항:</strong></p>
+<ol>
+<li>개인정보를 <strong>제공받는 자</strong></li>
+<li>개인정보를 제공받는 자의 <strong>개인정보 이용 목적</strong></li>
+<li><strong>제공하는 개인정보의 항목</strong></li>
+<li>개인정보를 제공받는 자의 개인정보 <strong>보유 및 이용 기간</strong></li>
+<li>동의를 거부할 권리가 있다는 사실 및 <strong>동의 거부에 따른 불이익</strong> (있는 경우)</li>
+</ol>
+<h4 id="2-법률에-특별한-규정이-있거나-법령상-의무를-준수하기-위하여-불가피한-경우">(2) 법률에 특별한 규정이 있거나 법령상 의무를 준수하기 위하여 불가피한 경우<a hidden class="anchor" aria-hidden="true" href="#2-법률에-특별한-규정이-있거나-법령상-의무를-준수하기-위하여-불가피한-경우">#</a></h4>
+<p>예시:</p>
+<ul>
+<li>국세청의 세무조사를 위한 제공</li>
+<li>법원의 영장에 따른 제공</li>
+<li>금융실명법에 따른 금융정보 제공</li>
+</ul>
+<h4 id="3-공공기관이-법령-등에서-정하는-소관-업무의-수행을-위하여-불가피한-경우">(3) 공공기관이 법령 등에서 정하는 소관 업무의 수행을 위하여 불가피한 경우<a hidden class="anchor" aria-hidden="true" href="#3-공공기관이-법령-등에서-정하는-소관-업무의-수행을-위하여-불가피한-경우">#</a></h4>
+<h4 id="4-정보주체와의-계약의-체결-및-이행을-위하여-불가피하게-필요한-경우">(4) 정보주체와의 계약의 체결 및 이행을 위하여 불가피하게 필요한 경우<a hidden class="anchor" aria-hidden="true" href="#4-정보주체와의-계약의-체결-및-이행을-위하여-불가피하게-필요한-경우">#</a></h4>
+<p>예시:</p>
+<ul>
+<li>배송 업체에 배송 정보 제공</li>
+<li>결제 대행사에 결제 정보 제공</li>
+</ul>
+<h4 id="5-정보주체-또는-그-법정대리인이-의사표시를-할-수-없는-상태에-있거나-주소불명-등으로-사전-동의를-받을-수-없는-경우로서-명백히-정보주체-또는-제3자의-급박한-생명-신체-재산의-이익을-위하여-필요하다고-인정되는-경우">(5) 정보주체 또는 그 법정대리인이 의사표시를 할 수 없는 상태에 있거나 주소불명 등으로 사전 동의를 받을 수 없는 경우로서 명백히 정보주체 또는 제3자의 급박한 생명, 신체, 재산의 이익을 위하여 필요하다고 인정되는 경우<a hidden class="anchor" aria-hidden="true" href="#5-정보주체-또는-그-법정대리인이-의사표시를-할-수-없는-상태에-있거나-주소불명-등으로-사전-동의를-받을-수-없는-경우로서-명백히-정보주체-또는-제3자의-급박한-생명-신체-재산의-이익을-위하여-필요하다고-인정되는-경우">#</a></h4>
+<h4 id="6-개인정보처리자의-정당한-이익을-달성하기-위하여-필요한-경우로서-명백하게-정보주체의-권리보다-우선하는-경우">(6) 개인정보처리자의 정당한 이익을 달성하기 위하여 필요한 경우로서 명백하게 정보주체의 권리보다 우선하는 경우<a hidden class="anchor" aria-hidden="true" href="#6-개인정보처리자의-정당한-이익을-달성하기-위하여-필요한-경우로서-명백하게-정보주체의-권리보다-우선하는-경우">#</a></h4>
+<h3 id="13-제3자-제공-시-주의사항">1.3 제3자 제공 시 주의사항<a hidden class="anchor" aria-hidden="true" href="#13-제3자-제공-시-주의사항">#</a></h3>
+<h4 id="목적-제한">목적 제한<a hidden class="anchor" aria-hidden="true" href="#목적-제한">#</a></h4>
+<ul>
+<li>당초 수집 목적과 합리적 관련성이 있어야 함</li>
+<li>제공받는 자는 제공받은 목적 범위 내에서만 이용 가능</li>
+</ul>
+<h4 id="투명성-확보">투명성 확보<a hidden class="anchor" aria-hidden="true" href="#투명성-확보">#</a></h4>
+<ul>
+<li>제공 사실을 정보주체에게 고지</li>
+<li>개인정보 처리방침에 제3자 제공 내역 명시</li>
+</ul>
+<h4 id="안전성-확보">안전성 확보<a hidden class="anchor" aria-hidden="true" href="#안전성-확보">#</a></h4>
+<ul>
+<li>제공받는 자의 개인정보 보호 수준 확인</li>
+<li>안전한 전송 방법 사용 (암호화 등)</li>
+</ul>
+<h2 id="2-개인정보-처리-위탁">2. 개인정보 처리 위탁<a hidden class="anchor" aria-hidden="true" href="#2-개인정보-처리-위탁">#</a></h2>
+<h3 id="21-처리-위탁이란">2.1 처리 위탁이란?<a hidden class="anchor" aria-hidden="true" href="#21-처리-위탁이란">#</a></h3>
+<p>개인정보처리자가 개인정보의 처리 업무를 <strong>제3자에게 맡기는</strong> 것</p>
+<p><strong>핵심 특징:</strong></p>
+<ul>
+<li>위탁자는 여전히 개인정보처리자로서 책임을 짐</li>
+<li>수탁자는 위탁받은 업무 범위 내에서만 개인정보 처리</li>
+<li>위탁자의 지휘·감독을 받음</li>
+</ul>
+<h3 id="22-위탁과-제3자-제공의-차이">2.2 위탁과 제3자 제공의 차이<a hidden class="anchor" aria-hidden="true" href="#22-위탁과-제3자-제공의-차이">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>구분</th>
+          <th>제3자 제공</th>
+          <th>처리 위탁</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>주체성</td>
+          <td>제공받는 자가 독립적 개인정보처리자</td>
+          <td>수탁자는 위탁자의 지휘·감독 하에 처리</td>
+      </tr>
+      <tr>
+          <td>이용 목적</td>
+          <td>제공받는 자의 고유 목적</td>
+          <td>위탁자의 업무 목적</td>
+      </tr>
+      <tr>
+          <td>책임</td>
+          <td>각자 독립적으로 책임</td>
+          <td>위탁자가 주된 책임 (수탁자는 연대책임)</td>
+      </tr>
+      <tr>
+          <td>동의</td>
+          <td>별도 동의 필요 (원칙)</td>
+          <td>고지 또는 공개 (동의 불필요)</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="23-위탁의-요건-법-제26조">2.3 위탁의 요건 (법 제26조)<a hidden class="anchor" aria-hidden="true" href="#23-위탁의-요건-법-제26조">#</a></h3>
+<h4 id="1-위탁-사실-고지-또는-공개">(1) 위탁 사실 고지 또는 공개<a hidden class="anchor" aria-hidden="true" href="#1-위탁-사실-고지-또는-공개">#</a></h4>
+<p>정보주체에게 다음 사항을 알려야 합니다:</p>
+<ol>
+<li>위탁받는 자 (수탁자)</li>
+<li>위탁하는 업무의 내용</li>
+</ol>
+<p><strong>고지 방법:</strong></p>
+<ul>
+<li>개인정보 처리방침에 명시</li>
+<li>인터넷 홈페이지 게재</li>
+<li>사업장 게시 등</li>
+</ul>
+<h4 id="2-위탁-계약-체결">(2) 위탁 계약 체결<a hidden class="anchor" aria-hidden="true" href="#2-위탁-계약-체결">#</a></h4>
+<p>위탁계약서에 다음 내용을 포함해야 합니다:</p>
+<ol>
+<li>위탁업무 수행 목적 외 개인정보의 처리 금지</li>
+<li>개인정보의 기술적·관리적 보호조치</li>
+<li>재위탁 제한</li>
+<li>수탁자에 대한 관리·감독</li>
+<li>손해배상 등 책임에 관한 사항</li>
+</ol>
+<p><strong>표준 개인정보 위탁계약서 활용 권장</strong></p>
+<h4 id="3-수탁자에-대한-관리감독">(3) 수탁자에 대한 관리·감독<a hidden class="anchor" aria-hidden="true" href="#3-수탁자에-대한-관리감독">#</a></h4>
+<p>위탁자는 수탁자가 개인정보를 안전하게 처리하는지 관리·감독해야 합니다:</p>
+<ul>
+<li>정기적인 점검 실시</li>
+<li>수탁자의 개인정보 처리 현황 모니터링</li>
+<li>위반 사항 발견 시 시정 요구</li>
+</ul>
+<h3 id="24-재위탁">2.4 재위탁<a hidden class="anchor" aria-hidden="true" href="#24-재위탁">#</a></h3>
+<p>수탁자가 위탁받은 업무를 다시 제3자에게 위탁하는 것</p>
+<p><strong>요건:</strong></p>
+<ul>
+<li>원칙적으로 위탁자의 동의 필요</li>
+<li>재위탁 사실을 정보주체에게 고지 또는 공개</li>
+<li>재수탁자에 대해서도 동일한 안전성 확보 의무</li>
+</ul>
+<h2 id="3-공동-이용">3. 공동 이용<a hidden class="anchor" aria-hidden="true" href="#3-공동-이용">#</a></h2>
+<h3 id="31-특정-개인정보를-공동으로-이용하는-경우-법-제28조의2">3.1 특정 개인정보를 공동으로 이용하는 경우 (법 제28조의2)<a hidden class="anchor" aria-hidden="true" href="#31-특정-개인정보를-공동으로-이용하는-경우-법-제28조의2">#</a></h3>
+<p>관계 법령에 따라 설립된 <strong>조합, 협회 등</strong>이 <strong>설립 목적을 달성하기 위해</strong> 구성원의 개인정보를 공동으로 이용하는 경우</p>
+<p><strong>조건:</strong></p>
+<ul>
+<li>정보주체에게 다음 사항을 알리고 동의를 받아야 함:
+<ol>
+<li>공동 이용 목적</li>
+<li>공동 이용자의 범위</li>
+<li>공동 이용 항목</li>
+<li>공동 이용자의 개인정보 보호책임자의 성명 및 연락처</li>
+</ol>
+</li>
+</ul>
+<p><strong>예시:</strong></p>
+<ul>
+<li>신용카드사들의 신용정보 공동 이용</li>
+<li>의료기관 간 진료정보 공동 이용</li>
+</ul>
+<h2 id="4-해외-이전">4. 해외 이전<a hidden class="anchor" aria-hidden="true" href="#4-해외-이전">#</a></h2>
+<h3 id="41-개인정보의-국외-이전-법-제17조의2-제39조의3">4.1 개인정보의 국외 이전 (법 제17조의2, 제39조의3)<a hidden class="anchor" aria-hidden="true" href="#41-개인정보의-국외-이전-법-제17조의2-제39조의3">#</a></h3>
+<p>개인정보를 <strong>국외의 제3자에게 제공</strong>하거나 <strong>국외에서 처리</strong>하는 경우</p>
+<h4 id="이전-요건">이전 요건<a hidden class="anchor" aria-hidden="true" href="#이전-요건">#</a></h4>
+<p>다음 사항을 정보주체에게 알리고 동의를 받아야 합니다:</p>
+<ol>
+<li>이전되는 <strong>개인정보 항목</strong></li>
+<li>개인정보가 이전되는 <strong>국가, 이전일시 및 이전방법</strong></li>
+<li>개인정보를 <strong>이전받는 자의 성명 (법인인 경우 명칭 및 정보관리책임자의 연락처)</strong></li>
+<li>개인정보를 이전받는 자의 <strong>개인정보 이용목적 및 보유·이용 기간</strong></li>
+</ol>
+<h4 id="안전성-확보-의무">안전성 확보 의무<a hidden class="anchor" aria-hidden="true" href="#안전성-확보-의무">#</a></h4>
+<ul>
+<li>이전받는 국가의 개인정보 보호 수준 확인</li>
+<li>적정한 보호조치 마련
+<ul>
+<li>표준계약서 (SCC: Standard Contractual Clauses) 체결</li>
+<li>BCR (Binding Corporate Rules) 수립</li>
+<li>국제 인증 취득</li>
+</ul>
+</li>
+</ul>
+<h4 id="주요-국가별-보호-수준">주요 국가별 보호 수준<a hidden class="anchor" aria-hidden="true" href="#주요-국가별-보호-수준">#</a></h4>
+<ul>
+<li><strong>EU</strong>: GDPR 적용, 매우 엄격</li>
+<li><strong>미국</strong>: 분야별 개별 법률, Privacy Shield 무효화 이후 SCC 활용</li>
+<li><strong>일본</strong>: 개인정보보호법, 한국과 유사</li>
+<li><strong>중국</strong>: 개인정보보호법, 데이터 국지화 요구 강함</li>
+</ul>
+<h2 id="5-보안-컨설팅-관점의-설계-원칙">5. 보안 컨설팅 관점의 설계 원칙<a hidden class="anchor" aria-hidden="true" href="#5-보안-컨설팅-관점의-설계-원칙">#</a></h2>
+<h3 id="51-제3자-제공-관리">5.1 제3자 제공 관리<a hidden class="anchor" aria-hidden="true" href="#51-제3자-제공-관리">#</a></h3>
+<h4 id="제공-동의-관리">제공 동의 관리<a hidden class="anchor" aria-hidden="true" href="#제공-동의-관리">#</a></h4>
+<ul>
+<li>제공 내역별로 개별 동의 획득</li>
+<li>동의 이력 기록 및 관리</li>
+<li>동의 철회 기능 제공</li>
+</ul>
+<h4 id="제공-로그-관리">제공 로그 관리<a hidden class="anchor" aria-hidden="true" href="#제공-로그-관리">#</a></h4>
+<ul>
+<li>누가, 언제, 무엇을, 누구에게 제공했는지 기록</li>
+<li>최소 3년 이상 보관 (법적 요구)</li>
+<li>정기적인 제공 내역 검토</li>
+</ul>
+<h4 id="안전한-전송">안전한 전송<a hidden class="anchor" aria-hidden="true" href="#안전한-전송">#</a></h4>
+<ul>
+<li>암호화 전송 (TLS 등)</li>
+<li>접근 권한 통제</li>
+<li>전송 오류 검증</li>
+</ul>
+<h3 id="52-위탁-관리-체계">5.2 위탁 관리 체계<a hidden class="anchor" aria-hidden="true" href="#52-위탁-관리-체계">#</a></h3>
+<h4 id="위탁-계약-관리">위탁 계약 관리<a hidden class="anchor" aria-hidden="true" href="#위탁-계약-관리">#</a></h4>
+<ul>
+<li>표준 위탁계약서 활용</li>
+<li>계약 갱신 주기 관리</li>
+<li>계약 내용 이행 여부 점검</li>
+</ul>
+<h4 id="수탁자-평가-및-관리">수탁자 평가 및 관리<a hidden class="anchor" aria-hidden="true" href="#수탁자-평가-및-관리">#</a></h4>
+<ul>
+<li>수탁자 선정 시 보안 수준 평가</li>
+<li>정기 점검 (연 1회 이상 권장)</li>
+<li>위반 시 시정 조치 및 계약 해지</li>
+</ul>
+<h4 id="위탁-현황-공개">위탁 현황 공개<a hidden class="anchor" aria-hidden="true" href="#위탁-현황-공개">#</a></h4>
+<ul>
+<li>홈페이지 등에 수탁자 명단 공개</li>
+<li>위탁 업무 내용 명시</li>
+<li>변경 시 즉시 업데이트</li>
+</ul>
+<h3 id="53-해외-이전-관리">5.3 해외 이전 관리<a hidden class="anchor" aria-hidden="true" href="#53-해외-이전-관리">#</a></h3>
+<h4 id="이전-필요성-검토">이전 필요성 검토<a hidden class="anchor" aria-hidden="true" href="#이전-필요성-검토">#</a></h4>
+<ul>
+<li>국내 처리 가능 여부 우선 검토</li>
+<li>이전 시 최소한의 정보만 이전</li>
+</ul>
+<h4 id="법적-요건-충족">법적 요건 충족<a hidden class="anchor" aria-hidden="true" href="#법적-요건-충족">#</a></h4>
+<ul>
+<li>별도 동의 획득</li>
+<li>적정 국가 또는 적정 보호조치 확인</li>
+<li>표준계약서 체결</li>
+</ul>
+<h4 id="이전-현황-관리">이전 현황 관리<a hidden class="anchor" aria-hidden="true" href="#이전-현황-관리">#</a></h4>
+<ul>
+<li>이전 국가, 수령자, 항목 등 기록</li>
+<li>정기적인 안전성 평가</li>
+</ul>
+<h2 id="6-실무-사례">6. 실무 사례<a hidden class="anchor" aria-hidden="true" href="#6-실무-사례">#</a></h2>
+<h3 id="사례-1-전자상거래-배송-위탁">사례 1: 전자상거래 배송 위탁<a hidden class="anchor" aria-hidden="true" href="#사례-1-전자상거래-배송-위탁">#</a></h3>
+<p><strong>상황:</strong>
+쇼핑몰이 배송 업무를 물류 회사에 위탁</p>
+<p><strong>처리 방법:</strong></p>
+<ol>
+<li>개인정보 처리방침에 명시
+<ul>
+<li>수탁자: ○○택배</li>
+<li>위탁 업무: 상품 배송</li>
+</ul>
+</li>
+<li>위탁계약 체결
+<ul>
+<li>배송 목적 외 이용 금지 명시</li>
+<li>배송 완료 후 즉시 파기 의무 명시</li>
+</ul>
+</li>
+<li>정기 점검 실시 (연 1회 이상)</li>
+</ol>
+<h3 id="사례-2-고객센터-운영-위탁">사례 2: 고객센터 운영 위탁<a hidden class="anchor" aria-hidden="true" href="#사례-2-고객센터-운영-위탁">#</a></h3>
+<p><strong>상황:</strong>
+기업이 고객센터 운영을 전문 업체에 위탁</p>
+<p><strong>처리 방법:</strong></p>
+<ol>
+<li>위탁 사실 고지
+<ul>
+<li>수탁자: ○○컨택센터</li>
+<li>위탁 업무: 고객 상담 및 불만 처리</li>
+</ul>
+</li>
+<li>상담원 교육
+<ul>
+<li>개인정보보호 교육 실시</li>
+<li>상담 내용 녹취 시 고지</li>
+</ul>
+</li>
+<li>접근 권한 관리
+<ul>
+<li>필요 최소한의 정보만 접근 가능</li>
+<li>접근 로그 기록 및 모니터링</li>
+</ul>
+</li>
+</ol>
+<h3 id="사례-3-마케팅-대행사에-제공">사례 3: 마케팅 대행사에 제공<a hidden class="anchor" aria-hidden="true" href="#사례-3-마케팅-대행사에-제공">#</a></h3>
+<p><strong>상황:</strong>
+기업이 마케팅을 위해 광고 대행사에 고객 정보 제공</p>
+<p><strong>처리 방법:</strong></p>
+<ol>
+<li>별도 동의 획득 필수 (제3자 제공)
+<ul>
+<li>제공받는 자: ○○광고</li>
+<li>제공 목적: 맞춤형 광고</li>
+<li>제공 항목: 이름, 이메일, 관심사</li>
+<li>보유 기간: 캠페인 종료 시까지</li>
+</ul>
+</li>
+<li>제공 로그 기록</li>
+<li>캠페인 종료 후 파기 확인</li>
+</ol>
+<h3 id="사례-4-클라우드-서비스-이용">사례 4: 클라우드 서비스 이용<a hidden class="anchor" aria-hidden="true" href="#사례-4-클라우드-서비스-이용">#</a></h3>
+<p><strong>상황:</strong>
+기업이 AWS, Azure 등 해외 클라우드에 개인정보 저장</p>
+<p><strong>처리 방법:</strong></p>
+<ol>
+<li>국외 이전 동의 획득
+<ul>
+<li>이전 국가: 미국, 아일랜드 등</li>
+<li>이전받는 자: AWS, Microsoft 등</li>
+<li>이전 항목 명시</li>
+</ul>
+</li>
+<li>표준계약서 (SCC) 체결</li>
+<li>암호화 등 안전성 확보 조치</li>
+<li>정기적인 보안 점검</li>
+</ol>
+<h3 id="사례-5-금융권-신용정보-공동-이용">사례 5: 금융권 신용정보 공동 이용<a hidden class="anchor" aria-hidden="true" href="#사례-5-금융권-신용정보-공동-이용">#</a></h3>
+<p><strong>상황:</strong>
+신용카드사들이 신용정보를 공동 이용</p>
+<p><strong>처리 방법:</strong></p>
+<ol>
+<li>법적 근거: 신용정보법</li>
+<li>정보주체 동의
+<ul>
+<li>공동 이용 목적: 신용평가</li>
+<li>공동 이용자: 신용정보집중기관 및 회원사</li>
+</ul>
+</li>
+<li>공동 이용 현황 공개</li>
+</ol>
+<h2 id="7-자주-발생하는-위반-사례">7. 자주 발생하는 위반 사례<a hidden class="anchor" aria-hidden="true" href="#7-자주-발생하는-위반-사례">#</a></h2>
+<h3 id="위반-사례-1-위탁-미고지">위반 사례 1: 위탁 미고지<a hidden class="anchor" aria-hidden="true" href="#위반-사례-1-위탁-미고지">#</a></h3>
+<p>홈페이지에 수탁자 정보를 공개하지 않음</p>
+<p><strong>올바른 방법:</strong>
+개인정보 처리방침에 수탁자 명단 및 위탁 업무 내용 명시</p>
+<h3 id="위반-사례-2-위탁계약서-미체결">위반 사례 2: 위탁계약서 미체결<a hidden class="anchor" aria-hidden="true" href="#위반-사례-2-위탁계약서-미체결">#</a></h3>
+<p>구두 약속만으로 위탁 처리</p>
+<p><strong>올바른 방법:</strong>
+반드시 서면 계약 체결, 필수 조항 포함</p>
+<h3 id="위반-사례-3-제공-동의-없이-마케팅-업체에-제공">위반 사례 3: 제공 동의 없이 마케팅 업체에 제공<a hidden class="anchor" aria-hidden="true" href="#위반-사례-3-제공-동의-없이-마케팅-업체에-제공">#</a></h3>
+<p>회원가입 시 수집한 정보를 별도 동의 없이 광고사에 제공</p>
+<p><strong>올바른 방법:</strong>
+제3자 제공 목적으로 별도 동의 획득</p>
+<h3 id="위반-사례-4-해외-이전-시-별도-동의-미획득">위반 사례 4: 해외 이전 시 별도 동의 미획득<a hidden class="anchor" aria-hidden="true" href="#위반-사례-4-해외-이전-시-별도-동의-미획득">#</a></h3>
+<p>클라우드 이용 시 해외 이전 사실을 고지하지 않음</p>
+<p><strong>올바른 방법:</strong>
+국외 이전 시 별도 동의 획득, 이전 국가 및 수령자 명시</p>
+<h3 id="위반-사례-5-수탁자-관리감독-소홀">위반 사례 5: 수탁자 관리·감독 소홀<a hidden class="anchor" aria-hidden="true" href="#위반-사례-5-수탁자-관리감독-소홀">#</a></h3>
+<p>위탁 후 수탁자의 개인정보 처리 실태를 전혀 점검하지 않음</p>
+<p><strong>올바른 방법:</strong>
+정기적인 현장 점검 및 서면 점검 실시</p>
+<h2 id="8-체크리스트">8. 체크리스트<a hidden class="anchor" aria-hidden="true" href="#8-체크리스트">#</a></h2>
+<h3 id="제3자-제공-시">제3자 제공 시<a hidden class="anchor" aria-hidden="true" href="#제3자-제공-시">#</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 제공에 대한 법적 근거가 있는가? (동의, 법령 등)</li>
+<li><input disabled="" type="checkbox"> 제공 시 고지사항을 모두 안내했는가? (제공받는 자, 목적, 항목, 기간, 거부권)</li>
+<li><input disabled="" type="checkbox"> 제공 로그를 기록하고 있는가?</li>
+<li><input disabled="" type="checkbox"> 안전한 전송 방법을 사용하는가?</li>
+</ul>
+<h3 id="위탁-시">위탁 시<a hidden class="anchor" aria-hidden="true" href="#위탁-시">#</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 위탁 사실을 정보주체에게 고지했는가?</li>
+<li><input disabled="" type="checkbox"> 위탁계약서에 필수 조항이 포함되어 있는가?</li>
+<li><input disabled="" type="checkbox"> 수탁자에 대한 정기 점검을 실시하는가?</li>
+<li><input disabled="" type="checkbox"> 재위탁 시 별도 동의를 받았는가?</li>
+</ul>
+<h3 id="해외-이전-시">해외 이전 시<a hidden class="anchor" aria-hidden="true" href="#해외-이전-시">#</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 국외 이전에 대한 별도 동의를 받았는가?</li>
+<li><input disabled="" type="checkbox"> 이전 국가, 수령자, 항목 등을 명확히 고지했는가?</li>
+<li><input disabled="" type="checkbox"> 표준계약서(SCC) 또는 적정 보호조치를 마련했는가?</li>
+<li><input disabled="" type="checkbox"> 이전받는 국가의 개인정보 보호 수준을 확인했는가?</li>
+</ul>
+<h2 id="9-위탁-vs-제3자-제공-판단-예시">9. 위탁 vs 제3자 제공 판단 예시<a hidden class="anchor" aria-hidden="true" href="#9-위탁-vs-제3자-제공-판단-예시">#</a></h2>
+<h3 id="예시-1-배송-업무">예시 1: 배송 업무<a hidden class="anchor" aria-hidden="true" href="#예시-1-배송-업무">#</a></h3>
+<ul>
+<li><strong>관계</strong>: 위탁</li>
+<li><strong>이유</strong>: 쇼핑몰의 배송 업무를 대행, 쇼핑몰의 지휘·감독 하에 처리</li>
+<li><strong>처리</strong>: 고지 (동의 불필요)</li>
+</ul>
+<h3 id="예시-2-제휴-마케팅">예시 2: 제휴 마케팅<a hidden class="anchor" aria-hidden="true" href="#예시-2-제휴-마케팅">#</a></h3>
+<ul>
+<li><strong>관계</strong>: 제3자 제공</li>
+<li><strong>이유</strong>: 제휴사가 자신의 마케팅 목적으로 독립적으로 이용</li>
+<li><strong>처리</strong>: 별도 동의 필요</li>
+</ul>
+<h3 id="예시-3-결제-대행">예시 3: 결제 대행<a hidden class="anchor" aria-hidden="true" href="#예시-3-결제-대행">#</a></h3>
+<ul>
+<li><strong>관계</strong>: 위탁 (일반적으로)</li>
+<li><strong>이유</strong>: 쇼핑몰의 결제 업무를 대행</li>
+<li><strong>처리</strong>: 고지 (동의 불필요)</li>
+<li><strong>단, PG사가 자체 목적으로 이용하면 제3자 제공</strong></li>
+</ul>
+<h3 id="예시-4-클라우드-서비스">예시 4: 클라우드 서비스<a hidden class="anchor" aria-hidden="true" href="#예시-4-클라우드-서비스">#</a></h3>
+<ul>
+<li><strong>관계</strong>: 위탁</li>
+<li><strong>이유</strong>: 데이터 저장 업무를 대행, IaaS 형태</li>
+<li><strong>처리</strong>: 고지 (동의 불필요, 단 해외 이전 시 별도 동의)</li>
+</ul>
+<h3 id="예시-5-공동-마케팅">예시 5: 공동 마케팅<a hidden class="anchor" aria-hidden="true" href="#예시-5-공동-마케팅">#</a></h3>
+<ul>
+<li><strong>관계</strong>: 제3자 제공 또는 공동 이용</li>
+<li><strong>이유</strong>: 각 기업이 독립적으로 마케팅 목적으로 이용</li>
+<li><strong>처리</strong>: 별도 동의 필요</li>
+</ul>
+<h2 id="학습-정리">학습 정리<a hidden class="anchor" aria-hidden="true" href="#학습-정리">#</a></h2>
+<p>오늘 학습한 핵심 내용:</p>
+<ul>
+<li>제3자 제공은 별도 동의가 필요 (원칙)</li>
+<li>제공 시 제공받는 자, 목적, 항목, 기간, 거부권을 고지</li>
+<li>위탁은 고지 또는 공개하고, 위탁계약 체결 필수</li>
+<li>위탁자는 수탁자를 관리·감독할 책임</li>
+<li>재위탁 시에도 동일한 요건 충족 필요</li>
+<li>해외 이전 시 별도 동의 및 적정 보호조치 마련</li>
+<li>위탁과 제3자 제공을 정확히 구분하여 처리</li>
+</ul>
+<h2 id="다음-학습-주제">다음 학습 주제<a hidden class="anchor" aria-hidden="true" href="#다음-학습-주제">#</a></h2>
+<p>Day 05: 정보주체의 권리 - 정보주체는 어떤 권리를 가지는가?</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/">개인정보보호법</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%A0%9C3%EC%9E%90%EC%A0%9C%EA%B3%B5/">제3자제공</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%B2%98%EB%A6%AC%EC%9C%84%ED%83%81/">처리위탁</a></li>
+      <li><a href="http://localhost:1313/tags/%ED%95%B4%EC%99%B8%EC%9D%B4%EC%A0%84/">해외이전</a></li>
+      <li><a href="http://localhost:1313/tags/%EA%B3%B5%EB%8F%99%EC%9D%B4%EC%9A%A9/">공동이용</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

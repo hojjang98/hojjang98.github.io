@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Semantic-Gap on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/semantic-gap/</link>
+    <description>Recent content in Semantic-Gap on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Thu, 22 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/semantic-gap/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Outside the Closed World: On Using Machine Learning For Network Intrusion Detection 구조 분석</title>
+      <link>http://localhost:1313/paper_review/soc_%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C/outside_closed_world/</link>
+      <pubDate>Thu, 22 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/soc_%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C/outside_closed_world/</guid>
+      <description>네트워크 침입 탐지 분야에서 머신러닝 도입이 직면한 실무적 한계(Semantic Gap, Base-Rate Fallacy 등)를 분석하고, 실 운영 환경에 성공적으로 적용하기 위한 평가 방법론과 가이드라인을 제시한 연구</description>
+    </item>
+  </channel>
+</rss>

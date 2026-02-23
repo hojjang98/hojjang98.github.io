@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Hadoop-Security on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/hadoop-security/</link>
+    <description>Recent content in Hadoop-Security on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Mon, 22 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/hadoop-security/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mining Invariants from Console Logs for System Problem Detection 구조 분석</title>
+      <link>http://localhost:1313/paper_review/soc_%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C/invariants_mining/</link>
+      <pubDate>Mon, 22 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/soc_%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C/invariants_mining/</guid>
+      <description>시스템 로그 내 메시지 간의 선형적 상관관계를 분석하여 &amp;lsquo;불변량(Invariants)&amp;lsquo;을 추출하고, 이를 통해 복잡한 분산 시스템의 비정상 실행 흐름을 높은 설명력으로 탐지하는 자동화 기법 연구</description>
+    </item>
+  </channel>
+</rss>

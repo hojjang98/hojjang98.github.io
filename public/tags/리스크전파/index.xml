@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>리스크전파 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%EB%A6%AC%EC%8A%A4%ED%81%AC%EC%A0%84%ED%8C%8C/</link>
+    <description>Recent content in 리스크전파 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Mon, 23 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%EB%A6%AC%EC%8A%A4%ED%81%AC%EC%A0%84%ED%8C%8C/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Managing Cyber Risk in Supply Chains: A Review and Research Agenda</title>
+      <link>http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/cyber_risk_supply_chain/</link>
+      <pubDate>Mon, 23 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/cyber_risk_supply_chain/</guid>
+      <description>공급망 맥락에서 사이버 리스크를 체계적으로 분류하고, 침투 지점(PoP)과 리스크 전파 모델을 통해 조직 경계를 넘어서는 위협을 이해하기 위한 개념적 프레임워크를 제시한 체계적 문헌 고찰 연구</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Research Review: Fuzz4All - Universal Fuzzing with Large Language Models | HJ&#39;s Security Note</title>
+<meta name="keywords" content="Fuzzing, LLM, Universal-Fuzzing, Software-Testing, Prompt-Engineering, ICSE-2024, Vulnerability-Discovery">
+<meta name="description" content="LLM의 추론 능력을 활용하여 문법적 종속성 없이 다양한 언어를 퍼징하는 Autoprompting 메커니즘을 제안하고, 76개의 신규 버그를 발견하여 지능형 생성 기반 퍼징의 효용성을 입증한 연구">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/paper_review/vuln_assessment_%EC%B7%A8%EC%95%BD%EC%A0%90_%EC%A7%84%EB%8B%A8/fuzz4all/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a29c24210eb31d9ce56f669c66a35c9c51b17376b7764e336a49af7dec914cf0.css" integrity="sha256-opwkIQ6zHZzlb2acZqNcnFGxc3a3dk4zakmvfeyRTPA=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/paper_review/vuln_assessment_%EC%B7%A8%EC%95%BD%EC%A0%90_%EC%A7%84%EB%8B%A8/fuzz4all/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/" title="프로젝트">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">홈</a>&nbsp;»&nbsp;<a href="http://localhost:1313/paper_review/">논문 리뷰</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Research Review: Fuzz4All - Universal Fuzzing with Large Language Models
+    </h1>
+    <div class="post-meta"><span title='2025-11-28 00:00:00 +0000 UTC'>2025년 11월 28일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>[Research Review] Fuzz4All: Universal Fuzzing with Large Language Models</p>
+<blockquote>
+<p><strong>Analyzed Period:</strong> 2025.11.24 - 11.28
+<strong>Keywords:</strong> Fuzzing, LLM, Universal Fuzzing, Software Testing, ICSE 2024
+<strong>Source:</strong> <a href="https://arxiv.org/abs/2308.04748">arXiv:2308.04748</a></p>
+</blockquote>
+<hr>
+<h2 id="day-1--research-context--motivation">Day 1 – Research Context &amp; Motivation<a hidden class="anchor" aria-hidden="true" href="#day-1--research-context--motivation">#</a></h2>
+<p><em>(보편적 퍼징의 필요성과 기존 기술의 한계)</em></p>
+<h3 id="1-연구-배경-background">1. 연구 배경 (Background)<a hidden class="anchor" aria-hidden="true" href="#1-연구-배경-background">#</a></h3>
+<ul>
+<li><strong>퍼징(Fuzzing)의 기술적 장벽:</strong> 무작위 데이터를 입력해 결함을 찾는 퍼징은 효율적이지만, 대상 언어의 문법을 정의하거나 하네스 코드를 작성하는 등 초기 구축 비용이 매우 높습니다.</li>
+<li><strong>프로그래밍 언어의 파편화:</strong> 현대 소프트웨어 환경은 C/C++ 외에도 Go, Rust, Qiskit 등 다양한 언어로 구성됩니다. 새로운 언어가 등장할 때마다 전용 퍼저를 개발하는 것은 리소스 측면에서 비효율적입니다.</li>
+</ul>
+<h3 id="2-기존-연구의-한계">2. 기존 연구의 한계<a hidden class="anchor" aria-hidden="true" href="#2-기존-연구의-한계">#</a></h3>
+<ul>
+<li><strong>LLM 기반 퍼징의 낮은 유효성:</strong> 기존의 LLM 활용 시도는 구문 오류(Syntax Error) 비율이 높았습니다. 컴파일조차 되지 않는 코드가 많아 실제 로직을 검증하는 단계로 진입하지 못하는 문제가 지속되었습니다.</li>
+</ul>
+<h3 id="3-핵심-연구-목표-및-제안">3. 핵심 연구 목표 및 제안<a hidden class="anchor" aria-hidden="true" href="#3-핵심-연구-목표-및-제안">#</a></h3>
+<ul>
+<li><strong>Universal Fuzzing:</strong> 특정 언어에 대한 문법 정의 없이 LLM의 지식만으로 모든 언어를 대상으로 작동하는 퍼저를 구축합니다.</li>
+<li><strong>Autoprompting:</strong> 사용자가 문서를 직접 요약할 필요 없이, 대상 시스템의 문서나 예제 코드를 기반으로 LLM이 스스로 퍼징용 프롬프트를 생성하고 최적화합니다.</li>
+</ul>
+<hr>
+<h2 id="day-2--architecture--mechanism">Day 2 – Architecture &amp; Mechanism<a hidden class="anchor" aria-hidden="true" href="#day-2--architecture--mechanism">#</a></h2>
+<p><em>(문법 없이 범용 테스트 케이스를 생성하는 구조)</em></p>
+<h3 id="1-fuzz4all의-3단계-구조">1. Fuzz4All의 3단계 구조<a hidden class="anchor" aria-hidden="true" href="#1-fuzz4all의-3단계-구조">#</a></h3>
+<p>Fuzz4All은 입력 생성과 실행 및 검증 단계를 분리하여 범용성을 확보했습니다.</p>
+<table>
+  <thead>
+      <tr>
+          <th>단계 (Phase)</th>
+          <th>핵심 역할</th>
+          <th>주체</th>
+          <th>설명</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>P1: Target Analysis</strong></td>
+          <td><strong>Autoprompting</strong></td>
+          <td>LLM</td>
+          <td>타겟의 예제나 문서를 기반으로 최적화된 프롬프트 자동 생성</td>
+      </tr>
+      <tr>
+          <td><strong>P2: Input Generation</strong></td>
+          <td><strong>Code Synthesis</strong></td>
+          <td>LLM</td>
+          <td>유효한 테스트 케이스 코드 생성</td>
+      </tr>
+      <tr>
+          <td><strong>P3: Execution &amp; Feedback</strong></td>
+          <td><strong>Validation</strong></td>
+          <td>Host</td>
+          <td>코드 실행 및 크래시 탐지 후 LLM에 결과 피드백</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="2-핵심-메커니즘">2. 핵심 메커니즘<a hidden class="anchor" aria-hidden="true" href="#2-핵심-메커니즘">#</a></h3>
+<ul>
+<li><strong>Autoprompting:</strong> API 문서나 코드 스니펫을 주입하여 LLM이 스스로 버그 유발 코드를 생성하도록 유도합니다. 초기 코드에 오류가 발생하면 에러 메시지를 다시 입력해 프롬프트를 정제합니다.</li>
+<li><strong>Grammar Engine으로서의 LLM:</strong> LLM이 내재한 방대한 언어 지식을 활용해 구문 오류를 최소화하고, API 호출 순서나 매개변수 타입 등 의미론적 유효성을 확보합니다.</li>
+</ul>
+<hr>
+<h2 id="day-3--experiments--evaluation">Day 3 – Experiments &amp; Evaluation<a hidden class="anchor" aria-hidden="true" href="#day-3--experiments--evaluation">#</a></h2>
+<p><em>(정량적 성능 및 버그 발견 결과)</em></p>
+<h3 id="1-주요-평가-지표">1. 주요 평가 지표<a hidden class="anchor" aria-hidden="true" href="#1-주요-평가-지표">#</a></h3>
+<ul>
+<li><strong>Code Coverage:</strong> 테스트 케이스가 커버한 코드 라인 비율.</li>
+<li><strong>Validity Rate:</strong> 생성된 테스트 케이스가 구문 오류 없이 실행 가능한 비율.</li>
+<li><strong>Bug Count:</strong> 발견된 신규 버그 및 CVE 개수.</li>
+</ul>
+<h3 id="2-주요-실험-결과">2. 주요 실험 결과<a hidden class="anchor" aria-hidden="true" href="#2-주요-실험-결과">#</a></h3>
+<ul>
+<li><strong>버그 발견:</strong> 9개 타겟 시스템에서 <strong>76개의 신규 버그</strong>를 발견했습니다. 이는 기존 커버리지 기반 퍼저로는 찾기 어려운 로직 버그를 다수 포함합니다.</li>
+<li><strong>코드 커버리지:</strong> 복잡한 시스템에서 기존 모델 대비 <strong>평균 15%~40%p 이상의 커버리지 증가</strong>를 기록했습니다.</li>
+<li><strong>유효성 입증:</strong> Autoprompting을 통해 LLM에 정확한 문맥을 제공함으로써, 수동 프롬프트 대비 테스트 케이스의 유효성 비율을 크게 높였습니다.</li>
+</ul>
+<hr>
+<h2 id="day-4--limitations-and-future-research">Day 4 – Limitations and Future Research<a hidden class="anchor" aria-hidden="true" href="#day-4--limitations-and-future-research">#</a></h2>
+<p><em>(기술적 제약 및 향후 발전 방향)</em></p>
+<h3 id="1-기술적-난제-및-상용화-장벽">1. 기술적 난제 및 상용화 장벽<a hidden class="anchor" aria-hidden="true" href="#1-기술적-난제-및-상용화-장벽">#</a></h3>
+<ul>
+<li><strong>비용 및 토큰 관리:</strong> GPT-4와 같은 상용 모델 API 의존도가 높아 대규모 퍼징 시 비용 부담이 큽니다.</li>
+<li><strong>상태 관리(State Management)의 한계:</strong> 현재 메커니즘은 상태 비저장(Stateless) 함수에 최적화되어 있어, 복잡한 상태 변화를 추적해야 하는 애플리케이션에서는 효율이 떨어집니다.</li>
+<li><strong>비결정성:</strong> LLM의 확률적 특성으로 인해 동일 프롬프트에도 다른 결과가 생성될 수 있어 버그 재현의 신뢰도 문제가 발생할 수 있습니다.</li>
+</ul>
+<h3 id="2-향후-발전-방향">2. 향후 발전 방향<a hidden class="anchor" aria-hidden="true" href="#2-향후-발전-방향">#</a></h3>
+<ul>
+<li><strong>경량화 모델 개발:</strong> 지식 증류(Distillation)를 통해 보안에 특화된 경량 오픈소스 LLM을 훈련시켜 로컬 환경에서 비용 없이 구동하는 연구가 필요합니다.</li>
+<li><strong>지능형 피드백 루프:</strong> 단순 성공/실패를 넘어 새로운 코드 경로(Coverage) 진입 여부를 LLM에게 피드백하여 탐색 성능을 극대화해야 합니다.</li>
+</ul>
+<hr>
+<h2 id="day-5--conclusion-and-final-assessment">Day 5 – Conclusion and Final Assessment<a hidden class="anchor" aria-hidden="true" href="#day-5--conclusion-and-final-assessment">#</a></h2>
+<p><em>(취약점 진단 분야의 미래)</em></p>
+<h3 id="1-연구-최종-요약">1. 연구 최종 요약<a hidden class="anchor" aria-hidden="true" href="#1-연구-최종-요약">#</a></h3>
+<p>Fuzz4All은 LLM의 추론 능력을 활용해 기존 퍼징의 <strong>문법적 종속성</strong> 문제를 해결했습니다. 단일 프레임워크로 다양한 언어에서 유효한 테스트 케이스를 생성하고 76개의 신규 버그를 찾아내며 실효성을 입증했습니다.</p>
+<h3 id="2-산업적-함의">2. 산업적 함의<a hidden class="anchor" aria-hidden="true" href="#2-산업적-함의">#</a></h3>
+<p>이 연구는 퍼징 기술의 패러다임을 무작위 변조(Mutation-based)에서 **지능형 생성(Generation-based)**으로 전환하는 이정표입니다. 새로운 라이브러리나 API 진단 시 환경 구축 시간을 단축하여 경제적 효율성을 높였습니다.</p>
+<h3 id="3-종합-평가">3. 종합 평가<a hidden class="anchor" aria-hidden="true" href="#3-종합-평가">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>관점</th>
+          <th>강점 (High Return)</th>
+          <th>한계 (High Cost)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>성능</strong></td>
+          <td>높은 커버리지, 다수의 버그 발견</td>
+          <td>복잡한 상태 관리 시스템에 취약</td>
+      </tr>
+      <tr>
+          <td><strong>효율성</strong></td>
+          <td>문법 정의 불필요, 빠른 환경 구축</td>
+          <td>상용 API 비용 및 토큰 소모</td>
+      </tr>
+      <tr>
+          <td><strong>지속성</strong></td>
+          <td>유효한 시드 공급원으로 활용 가능</td>
+          <td>모델 성능 및 비용에 따른 확장성 제약</td>
+      </tr>
+  </tbody>
+</table>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/fuzzing/">Fuzzing</a></li>
+      <li><a href="http://localhost:1313/tags/llm/">LLM</a></li>
+      <li><a href="http://localhost:1313/tags/universal-fuzzing/">Universal-Fuzzing</a></li>
+      <li><a href="http://localhost:1313/tags/software-testing/">Software-Testing</a></li>
+      <li><a href="http://localhost:1313/tags/prompt-engineering/">Prompt-Engineering</a></li>
+      <li><a href="http://localhost:1313/tags/icse-2024/">ICSE-2024</a></li>
+      <li><a href="http://localhost:1313/tags/vulnerability-discovery/">Vulnerability-Discovery</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

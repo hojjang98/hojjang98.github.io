@@ -10,9 +10,9 @@
     <atom:link href="http://localhost:1313/tags/%EC%8B%A0%EC%9A%A9%EC%A0%95%EB%B3%B4%EB%B2%95/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Day 13: 신용정보법</title>
-      <link>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/04_%EC%8B%A0%EC%9A%A9%EC%A0%95%EB%B3%B4%EB%B2%95/day13_%EC%8B%A0%EC%9A%A9%EC%A0%95%EB%B3%B4%EB%B2%95/</link>
+      <link>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/04_%EC%8B%A0%EC%9A%A9%EC%A0%95%EB%B3%B4%EB%B2%95/day13_%EC%8B%A0%EC%9A%A9%EC%A0%95%EB%B3%B4%EB%B2%95/</link>
       <pubDate>Wed, 18 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/security_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/04_%EC%8B%A0%EC%9A%A9%EC%A0%95%EB%B3%B4%EB%B2%95/day13_%EC%8B%A0%EC%9A%A9%EC%A0%95%EB%B3%B4%EB%B2%95/</guid>
+      <guid>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/04_%EC%8B%A0%EC%9A%A9%EC%A0%95%EB%B3%B4%EB%B2%95/day13_%EC%8B%A0%EC%9A%A9%EC%A0%95%EB%B3%B4%EB%B2%95/</guid>
       <description>개인신용정보의 수집·제공 제한, 신용정보주체의 권리(열람, 정정·삭제, 동의철회), 마이데이터 제도를 학습합니다.</description>
     </item>
   </channel>

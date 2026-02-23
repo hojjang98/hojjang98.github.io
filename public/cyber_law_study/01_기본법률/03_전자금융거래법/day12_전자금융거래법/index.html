@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Day 12: 전자금융거래법 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="전자금융거래법, 접근매체, 무과실책임, 거래기록보존, 금융보안">
+<meta name="description" content="전자금융거래의 안전성 확보 의무, 접근매체 이중 인증, 거래기록 5년 보존, 사고 발생 시 무과실 책임 원칙을 학습합니다.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/03_%EC%A0%84%EC%9E%90%EA%B8%88%EC%9C%B5%EA%B1%B0%EB%9E%98%EB%B2%95/day12_%EC%A0%84%EC%9E%90%EA%B8%88%EC%9C%B5%EA%B1%B0%EB%9E%98%EB%B2%95/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a29c24210eb31d9ce56f669c66a35c9c51b17376b7764e336a49af7dec914cf0.css" integrity="sha256-opwkIQ6zHZzlb2acZqNcnFGxc3a3dk4zakmvfeyRTPA=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/03_%EC%A0%84%EC%9E%90%EA%B8%88%EC%9C%B5%EA%B1%B0%EB%9E%98%EB%B2%95/day12_%EC%A0%84%EC%9E%90%EA%B8%88%EC%9C%B5%EA%B1%B0%EB%9E%98%EB%B2%95/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/" title="프로젝트">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">홈</a>&nbsp;»&nbsp;<a href="http://localhost:1313/cyber_law_study/">보안 컨설팅 공부</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Day 12: 전자금융거래법
+    </h1>
+    <div class="post-meta"><span title='2026-02-17 00:00:00 +0000 UTC'>2026년 2월 17일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="day-12-전자금융거래법">Day 12: 전자금융거래법<a hidden class="anchor" aria-hidden="true" href="#day-12-전자금융거래법">#</a></h1>
+<h2 id="1-전자금융거래법의-개요">1. 전자금융거래법의 개요<a hidden class="anchor" aria-hidden="true" href="#1-전자금융거래법의-개요">#</a></h2>
+<h3 id="11-전자금융거래법이란">1.1 전자금융거래법이란?<a hidden class="anchor" aria-hidden="true" href="#11-전자금융거래법이란">#</a></h3>
+<p><strong>정식 명칭</strong>: 전자금융거래법</p>
+<p>전자금융거래의 <strong>법률관계를 명확</strong>히 하고 <strong>전자금융거래의 안전성과 신뢰성</strong>을 확보함으로써 <strong>전자금융업무의 건전한 발전</strong>과 <strong>이용자를 보호</strong>하기 위한 법률</p>
+<h3 id="12-제정-배경">1.2 제정 배경<a hidden class="anchor" aria-hidden="true" href="#12-제정-배경">#</a></h3>
+<ul>
+<li><strong>2006년 4월 28일 제정</strong></li>
+<li>인터넷뱅킹, 모바일뱅킹 등 전자금융 서비스 확대</li>
+<li>기존 금융 관련 법률로는 전자금융거래 규율에 한계</li>
+<li>전자금융거래 이용자 보호 필요성 증대</li>
+</ul>
+<h3 id="13-적용-범위">1.3 적용 범위<a hidden class="anchor" aria-hidden="true" href="#13-적용-범위">#</a></h3>
+<h4 id="적용-대상">적용 대상<a hidden class="anchor" aria-hidden="true" href="#적용-대상">#</a></h4>
+<p><strong>전자금융거래</strong>를 하는 자:</p>
+<ul>
+<li><strong>금융기관</strong> (은행, 증권사, 보험사 등)</li>
+<li><strong>전자금융업자</strong> (간편결제, 전자지급 등)</li>
+<li><strong>전자금융보조업자</strong> (PG사, VAN사 등)</li>
+</ul>
+<h4 id="전자금융거래의-정의-법-제2조-제1호">전자금융거래의 정의 (법 제2조 제1호)<a hidden class="anchor" aria-hidden="true" href="#전자금융거래의-정의-법-제2조-제1호">#</a></h4>
+<p>금융기관 또는 전자금융업자가 <strong>전자적 장치를 통하여 금융상품 및 서비스를 제공</strong>하고, 이용자가 금융기관 또는 전자금융업자의 종사자와 직접 대면하거나 의사소통을 하지 아니하고 <strong>자동화된 방식으로 이를 이용</strong>하는 거래</p>
+<p><strong>예시:</strong></p>
+<ul>
+<li>인터넷뱅킹</li>
+<li>모바일뱅킹</li>
+<li>ATM 거래</li>
+<li>간편결제 (토스, 카카오페이 등)</li>
+<li>전자지갑</li>
+</ul>
+<h3 id="14-개인정보보호법정보통신망법과의-관계">1.4 개인정보보호법·정보통신망법과의 관계<a hidden class="anchor" aria-hidden="true" href="#14-개인정보보호법정보통신망법과의-관계">#</a></h3>
+<ul>
+<li>전자금융거래법은 <strong>특별법</strong></li>
+<li>전자금융거래 관련 개인정보 처리는 전자금융거래법 <strong>우선 적용</strong></li>
+<li>전자금융거래법에 규정이 없는 사항은 개인정보보호법·정보통신망법 적용</li>
+</ul>
+<h2 id="2-전자금융거래법의-주요-내용">2. 전자금융거래법의 주요 내용<a hidden class="anchor" aria-hidden="true" href="#2-전자금융거래법의-주요-내용">#</a></h2>
+<h3 id="21-법의-구조">2.1 법의 구조<a hidden class="anchor" aria-hidden="true" href="#21-법의-구조">#</a></h3>
+<p>전자금융거래법은 크게 <strong>7개 장</strong>으로 구성:</p>
+<pre tabindex="0"><code>제1장 총칙
+제2장 전자금융업
+제3장 전자금융거래
+제4장 전자지급수단
+제5장 전자지급결제대행업 및 결제대금예치업
+제6장 감독 및 검사
+제7장 벌칙
+</code></pre><h3 id="22-보안-컨설팅-관점에서-중요한-조항">2.2 보안 컨설팅 관점에서 중요한 조항<a hidden class="anchor" aria-hidden="true" href="#22-보안-컨설팅-관점에서-중요한-조항">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>조항</th>
+          <th>내용</th>
+          <th>중요도</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>제6조</td>
+          <td>안전성 확보 의무</td>
+          <td>★★★</td>
+      </tr>
+      <tr>
+          <td>제9조</td>
+          <td>전자금융거래 기록의 생성 및 보존</td>
+          <td>★★★</td>
+      </tr>
+      <tr>
+          <td>제21조</td>
+          <td>접근 매체의 선정과 사용 및 관리</td>
+          <td>★★★</td>
+      </tr>
+      <tr>
+          <td>제21조의2</td>
+          <td>안전성 확보 의무</td>
+          <td>★★★</td>
+      </tr>
+      <tr>
+          <td>제22조</td>
+          <td>전자적 전송의 기록 및 보존 등</td>
+          <td>★★</td>
+      </tr>
+      <tr>
+          <td>제37조</td>
+          <td>지급정보의 위조·변조 금지 등</td>
+          <td>★★</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="3-안전성-확보-의무-법-제21조의2">3. 안전성 확보 의무 (법 제21조의2)<a hidden class="anchor" aria-hidden="true" href="#3-안전성-확보-의무-법-제21조의2">#</a></h2>
+<h3 id="31-안전성-확보-의무의-내용">3.1 안전성 확보 의무의 내용<a hidden class="anchor" aria-hidden="true" href="#31-안전성-확보-의무의-내용">#</a></h3>
+<p>금융기관 및 전자금융업자는 <strong>전자금융거래의 안전성과 신뢰성을 확보</strong>하기 위하여 다음의 조치를 취해야 함:</p>
+<h4 id="1-전자금융거래의-안전성-확보">(1) 전자금융거래의 안전성 확보<a hidden class="anchor" aria-hidden="true" href="#1-전자금융거래의-안전성-확보">#</a></h4>
+<ul>
+<li><strong>암호 기술</strong> 적용</li>
+<li><strong>전자적 침해행위 방지</strong> 및 탐지 시스템 구축</li>
+<li>그 밖에 안전성 확보에 필요한 조치</li>
+</ul>
+<h4 id="2-이용자-정보의-안전성-확보">(2) 이용자 정보의 안전성 확보<a hidden class="anchor" aria-hidden="true" href="#2-이용자-정보의-안전성-확보">#</a></h4>
+<ul>
+<li>이용자의 <strong>개인정보 및 전자금융거래 정보</strong>의 유출·변조·훼손 방지</li>
+<li><strong>접근 통제 장치</strong> 설치·운영</li>
+<li>그 밖에 이용자 정보 보호에 필요한 조치</li>
+</ul>
+<h3 id="32-구체적인-안전성-확보-조치-시행령-제11조의2">3.2 구체적인 안전성 확보 조치 (시행령 제11조의2)<a hidden class="anchor" aria-hidden="true" href="#32-구체적인-안전성-확보-조치-시행령-제11조의2">#</a></h3>
+<h4 id="1-정보기술부문">(1) 정보기술부문<a hidden class="anchor" aria-hidden="true" href="#1-정보기술부문">#</a></h4>
+<p><strong>가. 접근 통제</strong></p>
+<ul>
+<li>전자금융거래 처리 시스템에 대한 <strong>접근 권한 부여 및 통제</strong></li>
+<li>관리자 및 업무 담당자의 <strong>업무 범위에 따른 권한 차등 부여</strong></li>
+</ul>
+<p><strong>나. 암호화</strong></p>
+<ul>
+<li>이용자의 <strong>개인정보 및 거래정보 암호화</strong></li>
+<li>비밀번호, 계좌번호, 거래내역 등 주요 정보 암호화</li>
+</ul>
+<p><strong>다. 해킹 방지</strong></p>
+<ul>
+<li><strong>침입차단시스템</strong> (방화벽) 설치·운영</li>
+<li><strong>침입탐지시스템</strong> (IDS) 또는 <strong>침입방지시스템</strong> (IPS) 설치·운영</li>
+<li>보안 취약점 점검 및 개선</li>
+</ul>
+<p><strong>라. 전산실 보안</strong></p>
+<ul>
+<li>전산실 등 <strong>물리적 접근 통제</strong></li>
+</ul>
+<p><strong>마. 백업</strong></p>
+<ul>
+<li>전자금융거래 정보의 <strong>정기적인 백업</strong></li>
+</ul>
+<h4 id="2-인력-및-조직">(2) 인력 및 조직<a hidden class="anchor" aria-hidden="true" href="#2-인력-및-조직">#</a></h4>
+<p><strong>가. 보안 조직</strong></p>
+<ul>
+<li>정보보호 <strong>최고책임자(CISO)</strong> 지정</li>
+<li>정보보호 <strong>전담 조직</strong> 구성</li>
+</ul>
+<p><strong>나. 교육</strong></p>
+<ul>
+<li>임직원에 대한 <strong>정기적인 보안 교육</strong></li>
+</ul>
+<p><strong>다. 내부 통제</strong></p>
+<ul>
+<li>내부 통제 <strong>정책 및 절차</strong> 수립·시행</li>
+</ul>
+<h4 id="3-물리적-보안">(3) 물리적 보안<a hidden class="anchor" aria-hidden="true" href="#3-물리적-보안">#</a></h4>
+<p><strong>가. 전산실 보안</strong></p>
+<ul>
+<li>출입 통제</li>
+<li>CCTV 설치</li>
+<li>화재 감지·소화 설비</li>
+</ul>
+<p><strong>나. 중요 문서 관리</strong></p>
+<ul>
+<li>중요 문서의 안전한 보관 및 파기</li>
+</ul>
+<h2 id="4-전자금융거래-기록의-생성-및-보존-법-제22조">4. 전자금융거래 기록의 생성 및 보존 (법 제22조)<a hidden class="anchor" aria-hidden="true" href="#4-전자금융거래-기록의-생성-및-보존-법-제22조">#</a></h2>
+<h3 id="41-기록-생성-의무">4.1 기록 생성 의무<a hidden class="anchor" aria-hidden="true" href="#41-기록-생성-의무">#</a></h3>
+<p>금융기관 및 전자금융업자는 전자금융거래에 관한 <strong>기록을 생성</strong>하여야 함</p>
+<p><strong>기록 대상:</strong></p>
+<ul>
+<li>거래 내용</li>
+<li>전자적 전송·처리 기록</li>
+</ul>
+<h3 id="42-기록-보존-의무">4.2 기록 보존 의무<a hidden class="anchor" aria-hidden="true" href="#42-기록-보존-의무">#</a></h3>
+<h4 id="보존-기간">보존 기간<a hidden class="anchor" aria-hidden="true" href="#보존-기간">#</a></h4>
+<p><strong>5년간</strong> 보존 (법 제22조 제1항)</p>
+<h4 id="보존-대상">보존 대상<a hidden class="anchor" aria-hidden="true" href="#보존-대상">#</a></h4>
+<ol>
+<li><strong>거래 지시에 관한 기록</strong>: 거래 계좌번호, 거래 종류 및 금액, 거래 상대방 등</li>
+<li><strong>전자적 전송에 관한 기록</strong>: 전송 시간, 송수신자 등</li>
+<li>그 밖에 전자금융거래의 <strong>안전성과 신뢰성 확보</strong>에 필요한 기록</li>
+</ol>
+<h4 id="기록-관리">기록 관리<a hidden class="anchor" aria-hidden="true" href="#기록-관리">#</a></h4>
+<ul>
+<li><strong>위·변조 방지</strong> 조치</li>
+<li><strong>안전한 보관</strong></li>
+<li>이용자 요구 시 <strong>제공</strong> (열람권 보장)</li>
+</ul>
+<h3 id="43-이용자의-거래-지시-확인-의무">4.3 이용자의 거래 지시 확인 의무<a hidden class="anchor" aria-hidden="true" href="#43-이용자의-거래-지시-확인-의무">#</a></h3>
+<p>금융기관 및 전자금융업자는 이용자로부터 거래 지시를 받은 경우, 그 <strong>내용을 이용자에게 알려야</strong> 함</p>
+<p><strong>통지 방법:</strong></p>
+<ul>
+<li>SMS</li>
+<li>이메일</li>
+<li>앱 푸시 알림</li>
+<li>기타 전자적 방법</li>
+</ul>
+<p><strong>통지 내용:</strong></p>
+<ul>
+<li>거래 내용</li>
+<li>거래 금액</li>
+<li>거래 일시</li>
+</ul>
+<h2 id="5-접근-매체-법-제2조-제10호-제21조">5. 접근 매체 (법 제2조 제10호, 제21조)<a hidden class="anchor" aria-hidden="true" href="#5-접근-매체-법-제2조-제10호-제21조">#</a></h2>
+<h3 id="51-접근-매체의-정의">5.1 접근 매체의 정의<a hidden class="anchor" aria-hidden="true" href="#51-접근-매체의-정의">#</a></h3>
+<p><strong>접근 매체</strong>: 전자금융거래에 있어서 거래 지시를 하거나 이용자 및 거래 내용의 진실성과 정확성을 확보하기 위하여 사용되는 수단 또는 정보</p>
+<p><strong>예시:</strong></p>
+<ul>
+<li>신용카드, 체크카드</li>
+<li>전자식 카드 (IC 카드)</li>
+<li><strong>공동인증서</strong> (구 공인인증서)</li>
+<li><strong>OTP</strong> (One-Time Password)</li>
+<li>비밀번호</li>
+<li>생체정보</li>
+</ul>
+<h3 id="52-접근-매체의-선정-법-제21조-제1항">5.2 접근 매체의 선정 (법 제21조 제1항)<a hidden class="anchor" aria-hidden="true" href="#52-접근-매체의-선정-법-제21조-제1항">#</a></h3>
+<p>금융기관 및 전자금융업자는 <strong>안전성과 신뢰성이 확보될 수 있도록</strong> 접근 매체를 선정·관리해야 함</p>
+<p><strong>안전성 확보 방법:</strong></p>
+<ul>
+<li><strong>2개 이상의 접근 매체 조합</strong> (이중 인증)
+<ul>
+<li>예: 비밀번호 + OTP</li>
+<li>예: 공동인증서 + 비밀번호</li>
+</ul>
+</li>
+<li><strong>생체정보</strong> 등 위조·변조가 어려운 매체 사용</li>
+</ul>
+<h3 id="53-접근-매체의-위변조-방지-의무-법-제21조-제2항">5.3 접근 매체의 위·변조 방지 의무 (법 제21조 제2항)<a hidden class="anchor" aria-hidden="true" href="#53-접근-매체의-위변조-방지-의무-법-제21조-제2항">#</a></h3>
+<p>금융기관 및 전자금융업자는 <strong>접근 매체의 위조나 변조를 방지</strong>하기 위한 적절한 조치를 취해야 함</p>
+<p><strong>조치 예시:</strong></p>
+<ul>
+<li>암호화</li>
+<li>전자 서명</li>
+<li>OTP와 같은 일회용 비밀번호</li>
+</ul>
+<h3 id="54-접근-매체의-사용-및-관리-법-제21조-제3항제5항">5.4 접근 매체의 사용 및 관리 (법 제21조 제3항~제5항)<a hidden class="anchor" aria-hidden="true" href="#54-접근-매체의-사용-및-관리-법-제21조-제3항제5항">#</a></h3>
+<h4 id="이용자의-의무">이용자의 의무<a hidden class="anchor" aria-hidden="true" href="#이용자의-의무">#</a></h4>
+<ul>
+<li>접근 매체를 <strong>안전하게 관리</strong></li>
+<li>제3자에게 <strong>대여·양도 금지</strong></li>
+</ul>
+<h4 id="금융기관전자금융업자의-의무">금융기관·전자금융업자의 의무<a hidden class="anchor" aria-hidden="true" href="#금융기관전자금융업자의-의무">#</a></h4>
+<ul>
+<li>접근 매체 발급 시 <strong>안전한 관리 방법</strong> 안내</li>
+<li>접근 매체 <strong>분실·도난 신고</strong> 접수 체계 마련</li>
+</ul>
+<h3 id="55-접근-매체-분실도난-시-대응">5.5 접근 매체 분실·도난 시 대응<a hidden class="anchor" aria-hidden="true" href="#55-접근-매체-분실도난-시-대응">#</a></h3>
+<h4 id="이용자의-신고">이용자의 신고<a hidden class="anchor" aria-hidden="true" href="#이용자의-신고">#</a></h4>
+<ul>
+<li>분실·도난 즉시 금융기관에 <strong>신고</strong></li>
+</ul>
+<h4 id="금융기관의-조치">금융기관의 조치<a hidden class="anchor" aria-hidden="true" href="#금융기관의-조치">#</a></h4>
+<ul>
+<li>신고 접수 즉시 <strong>해당 접근 매체 사용 정지</strong></li>
+<li>부정 사용 방지 조치</li>
+</ul>
+<h2 id="6-사고-발생-시-책임-법-제9조-제10조">6. 사고 발생 시 책임 (법 제9조, 제10조)<a hidden class="anchor" aria-hidden="true" href="#6-사고-발생-시-책임-법-제9조-제10조">#</a></h2>
+<h3 id="61-금융기관전자금융업자의-책임-법-제9조">6.1 금융기관·전자금융업자의 책임 (법 제9조)<a hidden class="anchor" aria-hidden="true" href="#61-금융기관전자금융업자의-책임-법-제9조">#</a></h3>
+<h4 id="원칙-무과실-책임">원칙: 무과실 책임<a hidden class="anchor" aria-hidden="true" href="#원칙-무과실-책임">#</a></h4>
+<p>금융기관 또는 전자금융업자는 접근 매체의 <strong>위조나 변조로 발생한 사고</strong>에 대해 <strong>책임</strong>을 짐</p>
+<p><strong>즉, 이용자의 과실이 없으면 금융기관이 책임</strong></p>
+<h4 id="예외">예외<a hidden class="anchor" aria-hidden="true" href="#예외">#</a></h4>
+<p>다음의 경우 책임 면제:</p>
+<ol>
+<li>사고 발생이 <strong>이용자의 고의나 중대한 과실</strong>로 발생한 경우</li>
+<li><strong>법인</strong>이 아닌 <strong>이용자</strong>가 <strong>제3자에게 접근 매체를 대여하거나 사용을 위임한 경우</strong> 또는 양도나 담보 목적으로 제공한 경우</li>
+</ol>
+<h3 id="62-이용자의-책임-법-제10조">6.2 이용자의 책임 (법 제10조)<a hidden class="anchor" aria-hidden="true" href="#62-이용자의-책임-법-제10조">#</a></h3>
+<h4 id="이용자의-과실">이용자의 과실<a hidden class="anchor" aria-hidden="true" href="#이용자의-과실">#</a></h4>
+<p>이용자가 접근 매체를 <strong>제3자에게 대여·양도하거나 사용을 위임</strong>한 경우
+→ 이용자가 책임</p>
+<h4 id="이용자의-경과실">이용자의 경과실<a hidden class="anchor" aria-hidden="true" href="#이용자의-경과실">#</a></h4>
+<p>이용자에게 경과실이 있는 경우
+→ 금융기관과 <strong>책임을 분담</strong>할 수 있음 (약관으로 정함)</p>
+<p><strong>예시:</strong></p>
+<ul>
+<li>비밀번호를 타인이 쉽게 알 수 있는 정보로 설정</li>
+<li>접근 매체를 타인이 쉽게 접근할 수 있는 곳에 보관</li>
+</ul>
+<h3 id="63-책임의-한도-법-제9조-제2항">6.3 책임의 한도 (법 제9조 제2항)<a hidden class="anchor" aria-hidden="true" href="#63-책임의-한도-법-제9조-제2항">#</a></h3>
+<p>금융기관 또는 전자금융업자가 책임을 지는 경우, <strong>사고 발생 시점의 손해액</strong>을 기준으로 배상</p>
+<h2 id="7-전자금융감독규정-금융감독원-규정">7. 전자금융감독규정 (금융감독원 규정)<a hidden class="anchor" aria-hidden="true" href="#7-전자금융감독규정-금융감독원-규정">#</a></h2>
+<h3 id="71-전자금융감독규정이란">7.1 전자금융감독규정이란?<a hidden class="anchor" aria-hidden="true" href="#71-전자금융감독규정이란">#</a></h3>
+<p><strong>금융감독원</strong>이 제정한 금융기관의 <strong>전자금융업무 감독을 위한 세부 규정</strong></p>
+<h3 id="72-주요-내용">7.2 주요 내용<a hidden class="anchor" aria-hidden="true" href="#72-주요-내용">#</a></h3>
+<h4 id="1-정보보호-최고책임자ciso-지정">(1) 정보보호 최고책임자(CISO) 지정<a hidden class="anchor" aria-hidden="true" href="#1-정보보호-최고책임자ciso-지정">#</a></h4>
+<ul>
+<li>금융기관은 <strong>CISO</strong> 지정 의무</li>
+<li>임원급 이상</li>
+</ul>
+<h4 id="2-정보보호-조직">(2) 정보보호 조직<a hidden class="anchor" aria-hidden="true" href="#2-정보보호-조직">#</a></h4>
+<ul>
+<li>정보보호 <strong>전담 조직</strong> 구성</li>
+</ul>
+<h4 id="3-전자금융사고-대응">(3) 전자금융사고 대응<a hidden class="anchor" aria-hidden="true" href="#3-전자금융사고-대응">#</a></h4>
+<ul>
+<li>전자금융사고 <strong>대응 절차</strong> 수립</li>
+<li><strong>모의훈련</strong> 정기 실시</li>
+</ul>
+<h4 id="4-보안성-심의">(4) 보안성 심의<a hidden class="anchor" aria-hidden="true" href="#4-보안성-심의">#</a></h4>
+<ul>
+<li>신규 전자금융서비스 도입 시 <strong>보안성 심의</strong></li>
+</ul>
+<h4 id="5-정기-점검">(5) 정기 점검<a hidden class="anchor" aria-hidden="true" href="#5-정기-점검">#</a></h4>
+<ul>
+<li><strong>취약점 진단</strong> 정기 실시</li>
+<li><strong>모의해킹</strong> 실시</li>
+</ul>
+<h4 id="6-개인정보-보호">(6) 개인정보 보호<a hidden class="anchor" aria-hidden="true" href="#6-개인정보-보호">#</a></h4>
+<ul>
+<li>개인정보 <strong>암호화</strong> 의무</li>
+<li>개인정보 <strong>접근 통제</strong></li>
+</ul>
+<h2 id="8-보안-컨설팅-관점의-시사점">8. 보안 컨설팅 관점의 시사점<a hidden class="anchor" aria-hidden="true" href="#8-보안-컨설팅-관점의-시사점">#</a></h2>
+<h3 id="81-금융권-보안-컨설팅의-특징">8.1 금융권 보안 컨설팅의 특징<a hidden class="anchor" aria-hidden="true" href="#81-금융권-보안-컨설팅의-특징">#</a></h3>
+<p>금융권은 타 산업 대비 <strong>보안 요구 수준이 매우 높음</strong>:</p>
+<ul>
+<li>법적 규제 강화 (전자금융거래법, 전자금융감독규정)</li>
+<li>금융감독원의 엄격한 감독</li>
+<li>높은 보안 사고 위험</li>
+</ul>
+<h3 id="82-금융권-컨설팅-시-중점-사항">8.2 금융권 컨설팅 시 중점 사항<a hidden class="anchor" aria-hidden="true" href="#82-금융권-컨설팅-시-중점-사항">#</a></h3>
+<h4 id="1-법규-준수-compliance">(1) 법규 준수 (Compliance)<a hidden class="anchor" aria-hidden="true" href="#1-법규-준수-compliance">#</a></h4>
+<ul>
+<li>전자금융거래법</li>
+<li>전자금융감독규정</li>
+<li>개인정보보호법</li>
+</ul>
+<h4 id="2-접근-매체-보안">(2) 접근 매체 보안<a hidden class="anchor" aria-hidden="true" href="#2-접근-매체-보안">#</a></h4>
+<ul>
+<li>이중 인증 구현</li>
+<li>OTP, 생체인증 등 도입</li>
+</ul>
+<h4 id="3-거래-기록-관리">(3) 거래 기록 관리<a hidden class="anchor" aria-hidden="true" href="#3-거래-기록-관리">#</a></h4>
+<ul>
+<li>5년간 보존</li>
+<li>위·변조 방지</li>
+</ul>
+<h4 id="4-침해사고-대응-체계">(4) 침해사고 대응 체계<a hidden class="anchor" aria-hidden="true" href="#4-침해사고-대응-체계">#</a></h4>
+<ul>
+<li>24시간 모니터링</li>
+<li>사고 대응팀 구성</li>
+</ul>
+<h4 id="5-정기-보안-점검">(5) 정기 보안 점검<a hidden class="anchor" aria-hidden="true" href="#5-정기-보안-점검">#</a></h4>
+<ul>
+<li>취약점 진단 (분기 1회 이상)</li>
+<li>모의해킹 (연 1회 이상)</li>
+</ul>
+<h3 id="83-금융권-보안-인증">8.3 금융권 보안 인증<a hidden class="anchor" aria-hidden="true" href="#83-금융권-보안-인증">#</a></h3>
+<p>금융권에서 요구하는 주요 보안 인증:</p>
+<ul>
+<li><strong>ISMS-P</strong> (정보보호 및 개인정보보호 관리체계)</li>
+<li><strong>ISO 27001</strong> (정보보호 관리체계 국제 표준)</li>
+<li><strong>PCI-DSS</strong> (신용카드 정보보호 표준)</li>
+</ul>
+<h2 id="9-실무-사례">9. 실무 사례<a hidden class="anchor" aria-hidden="true" href="#9-실무-사례">#</a></h2>
+<h3 id="사례-1-인터넷뱅킹-보안-강화">사례 1: 인터넷뱅킹 보안 강화<a hidden class="anchor" aria-hidden="true" href="#사례-1-인터넷뱅킹-보안-강화">#</a></h3>
+<p><strong>상황:</strong>
+은행의 인터넷뱅킹 서비스</p>
+<p><strong>적용 법률:</strong></p>
+<ul>
+<li>전자금융거래법</li>
+<li>전자금융감독규정</li>
+</ul>
+<p><strong>보안 조치:</strong></p>
+<ol>
+<li><strong>접근 매체</strong>: 공동인증서 + OTP 이중 인증</li>
+<li><strong>암호화</strong>: SSL/TLS 통신 암호화, 개인정보 DB 암호화</li>
+<li><strong>거래 기록</strong>: 5년간 보존, 로그 위·변조 방지</li>
+<li><strong>침해 탐지</strong>: IPS, 이상 거래 탐지 시스템 (FDS)</li>
+<li><strong>정기 점검</strong>: 분기별 취약점 진단, 연 1회 모의해킹</li>
+</ol>
+<h3 id="사례-2-간편결제-서비스">사례 2: 간편결제 서비스<a hidden class="anchor" aria-hidden="true" href="#사례-2-간편결제-서비스">#</a></h3>
+<p><strong>상황:</strong>
+간편결제 앱 (예: 토스, 카카오페이)</p>
+<p><strong>적용 법률:</strong></p>
+<ul>
+<li>전자금융거래법 (전자금융업자)</li>
+</ul>
+<p><strong>보안 조치:</strong></p>
+<ol>
+<li><strong>접근 매체</strong>: 생체인증 (지문, 얼굴 인식) + 비밀번호</li>
+<li><strong>거래 알림</strong>: 거래 발생 시 즉시 SMS 또는 푸시 알림</li>
+<li><strong>이상 거래 탐지</strong>: AI 기반 이상 거래 탐지</li>
+<li><strong>개인정보 보호</strong>: 신용카드 번호 등 암호화</li>
+</ol>
+<h3 id="사례-3-전자금융사고-대응">사례 3: 전자금융사고 대응<a hidden class="anchor" aria-hidden="true" href="#사례-3-전자금융사고-대응">#</a></h3>
+<p><strong>상황:</strong>
+ATM 스키밍 사고 발생</p>
+<p><strong>대응:</strong></p>
+<ol>
+<li>사고 인지 즉시 해당 ATM 사용 정지</li>
+<li>영향받은 고객 파악</li>
+<li>고객에게 즉시 통지 및 카드 재발급 안내</li>
+<li>금융감독원에 보고</li>
+<li>피해 고객 보상</li>
+<li>재발 방지 대책 수립 (ATM 보안 강화)</li>
+</ol>
+<h2 id="10-체크리스트">10. 체크리스트<a hidden class="anchor" aria-hidden="true" href="#10-체크리스트">#</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> 전자금융거래 안전성 확보 조치를 하고 있는가?</li>
+<li><input disabled="" type="checkbox"> 암호화를 적용하고 있는가?</li>
+<li><input disabled="" type="checkbox"> 침입차단·탐지 시스템을 설치·운영하는가?</li>
+<li><input disabled="" type="checkbox"> 전자금융거래 기록을 5년간 보존하는가?</li>
+<li><input disabled="" type="checkbox"> 이용자에게 거래 지시 내용을 통지하는가?</li>
+<li><input disabled="" type="checkbox"> 접근 매체를 안전하게 선정·관리하는가?</li>
+<li><input disabled="" type="checkbox"> 이중 인증을 적용하는가?</li>
+<li><input disabled="" type="checkbox"> 접근 매체 분실·도난 신고 체계가 있는가?</li>
+<li><input disabled="" type="checkbox"> CISO를 지정했는가?</li>
+<li><input disabled="" type="checkbox"> 정기적인 취약점 진단·모의해킹을 실시하는가?</li>
+</ul>
+<h2 id="학습-정리">학습 정리<a hidden class="anchor" aria-hidden="true" href="#학습-정리">#</a></h2>
+<p>오늘 학습한 핵심 내용:</p>
+<ul>
+<li>전자금융거래법은 전자금융거래의 안전성과 이용자 보호를 위한 법률</li>
+<li>금융기관·전자금융업자는 안전성 확보 의무 (암호화, 침해 방지, 접근 통제 등)</li>
+<li>전자금융거래 기록을 5년간 보존</li>
+<li>접근 매체는 안전성 확보를 위해 이중 인증 권장</li>
+<li>접근 매체 위·변조 사고 발생 시 금융기관이 책임 (무과실 책임)</li>
+<li>전자금융감독규정에 따라 CISO 지정, 정기 점검 등 의무</li>
+<li>금융권은 보안 요구 수준이 매우 높음</li>
+</ul>
+<h2 id="다음-학습-주제">다음 학습 주제<a hidden class="anchor" aria-hidden="true" href="#다음-학습-주제">#</a></h2>
+<p>Day 13: 신용정보법 - 신용정보의 이용 및 보호에 관한 법률</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/%EC%A0%84%EC%9E%90%EA%B8%88%EC%9C%B5%EA%B1%B0%EB%9E%98%EB%B2%95/">전자금융거래법</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%A0%91%EA%B7%BC%EB%A7%A4%EC%B2%B4/">접근매체</a></li>
+      <li><a href="http://localhost:1313/tags/%EB%AC%B4%EA%B3%BC%EC%8B%A4%EC%B1%85%EC%9E%84/">무과실책임</a></li>
+      <li><a href="http://localhost:1313/tags/%EA%B1%B0%EB%9E%98%EA%B8%B0%EB%A1%9D%EB%B3%B4%EC%A1%B4/">거래기록보존</a></li>
+      <li><a href="http://localhost:1313/tags/%EA%B8%88%EC%9C%B5%EB%B3%B4%EC%95%88/">금융보안</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

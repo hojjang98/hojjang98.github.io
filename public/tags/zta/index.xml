@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>ZTA on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/zta/</link>
+    <description>Recent content in ZTA on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Fri, 07 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/zta/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cloud &amp; IoT 환경을 위한 Zero Trust Architecture(ZTA) 구조 분석</title>
+      <link>http://localhost:1313/paper_review/si_integration_%EB%B3%B4%EC%95%88_si/zero_trust/</link>
+      <pubDate>Fri, 07 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/si_integration_%EB%B3%B4%EC%95%88_si/zero_trust/</guid>
+      <description>Cloud와 IoT가 결합된 복잡한 네트워크 환경에서 기존 경계 보안의 한계를 극복하기 위해 제로 트러스트 아키텍처(ZTA)를 적용하고, 정책 기반 접근 제어와 동적 세분화 방안을 제시한 연구</description>
+    </item>
+  </channel>
+</rss>

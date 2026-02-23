@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Managing Cyber Risk in Supply Chains: A Review and Research Agenda | HJ&#39;s Security Note</title>
+<meta name="keywords" content="보안컨설팅, 공급망보안, 써드파티리스크, C-SCRM, 리스크전파, 침투지점, 체계적문헌고찰, 공급망사이버리스크">
+<meta name="description" content="공급망 맥락에서 사이버 리스크를 체계적으로 분류하고, 침투 지점(PoP)과 리스크 전파 모델을 통해 조직 경계를 넘어서는 위협을 이해하기 위한 개념적 프레임워크를 제시한 체계적 문헌 고찰 연구">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/cyber_risk_supply_chain/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a29c24210eb31d9ce56f669c66a35c9c51b17376b7764e336a49af7dec914cf0.css" integrity="sha256-opwkIQ6zHZzlb2acZqNcnFGxc3a3dk4zakmvfeyRTPA=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/cyber_risk_supply_chain/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/" title="프로젝트">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">홈</a>&nbsp;»&nbsp;<a href="http://localhost:1313/paper_review/">논문 리뷰</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Managing Cyber Risk in Supply Chains: A Review and Research Agenda
+    </h1>
+    <div class="post-meta"><span title='2026-02-23 00:00:00 +0000 UTC'>2026년 2월 23일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="research-review-managing-cyber-risk-in-supply-chains-a-review-and-research-agenda">Research Review: Managing Cyber Risk in Supply Chains: A Review and Research Agenda<a hidden class="anchor" aria-hidden="true" href="#research-review-managing-cyber-risk-in-supply-chains-a-review-and-research-agenda">#</a></h1>
+<blockquote>
+<p><strong>Analyzed Date:</strong> 2026.02.23 - 2026.02.27
+<strong>Keywords:</strong> Supply Chain Cyber Risk, Cyber Supply Chain, Points of Penetration, Risk Propagation, C-SCRM
+<strong>Source:</strong> Supply Chain Management: An International Journal, 2020, Vol. 25, No. 2, pp. 223-240 <a href="https://doi.org/10.1108/SCM-10-2018-0357">https://doi.org/10.1108/SCM-10-2018-0357</a></p>
+</blockquote>
+<hr>
+<h2 id="why-this-paper">Why This Paper?<a hidden class="anchor" aria-hidden="true" href="#why-this-paper">#</a></h2>
+<h3 id="선정-배경">선정 배경<a hidden class="anchor" aria-hidden="true" href="#선정-배경">#</a></h3>
+<p><strong>이 논문을 선택한 이유:</strong></p>
+<ul>
+<li>이전 5편이 모두 조직 내부를 다뤘다면, 이 논문은 조직 경계 밖 써드파티 및 공급망으로 시야를 확장하는 첫 논문</li>
+<li>보안 컨설팅 실무에서 고객사가 가장 간과하는 영역인 공급망 보안 리스크의 개념적 지형을 제공</li>
+<li>리스크 분류, 침투 지점, 전파 경로, 완화 전략의 전 과정을 체계화하여 진단 및 자문 역량 강화</li>
+<li>SolarWinds, NotPetya 등 공급망 공격 사례가 잦아지는 현실에서 ISMS-P 공급망 보안 통제 항목 대응의 이론적 기반 확보</li>
+</ul>
+<p><strong>학습 목표:</strong></p>
+<ol>
+<li>공급망 사이버 리스크의 5가지 유형 분류와 3가지 침투 지점(PoP) 개념 습득</li>
+<li>리스크 전파 모델(1차-2차-3차 전파)과 시간 단계별 완화 전략 프레임워크 이해</li>
+<li>IT 보안-조직 보안-공급망 보안의 통합 모델을 컨설팅 진단 도구로 전환하는 역량 확보</li>
+</ol>
+<hr>
+<h2 id="day-1---research-context--motivation">Day 1 - Research Context &amp; Motivation<a hidden class="anchor" aria-hidden="true" href="#day-1---research-context--motivation">#</a></h2>
+<p><em>(공급망 통합이 만들어낸 새로운 사이버 리스크 지형)</em></p>
+<h3 id="1-연구-배경-공급망-통합이-낳은-새로운-취약성">1. 연구 배경: 공급망 통합이 낳은 새로운 취약성<a hidden class="anchor" aria-hidden="true" href="#1-연구-배경-공급망-통합이-낳은-새로운-취약성">#</a></h3>
+<p><strong>공급망 사이버 리스크의 중요성</strong></p>
+<p>현대 공급망은 IT 인프라를 통해 복수의 조직이 연결된 사이버 공급망(Cyber Supply Chain, CSC)으로 진화했다. 이러한 통합은 운영 효율성을 높이지만, 동시에 모든 연결 노드가 잠재적 위협 경로가 되는 구조적 취약성을 낳는다. 2018년 글로벌 위험 설문(Gartner, AXA, Deloitte 등)에서 사이버 보안과 데이터 침해가 기업의 1위 위험으로 지목되었음에도 불구하고, 공급망 맥락에서의 사이버 리스크 연구는 현저히 부족한 상태였다.</p>
+<p>Industry 4.0이 가속화하면서 IoT, 블록체인, AI, 가상현실 등의 기술이 공급망 파트너 간 연결을 심화하고 있다. 이 과정에서 사이버 보안 대응은 디지털화 속도를 따라가지 못하고 있으며, 공급망은 의도치 않게 취약성의 범위를 확장해왔다. Boone(2017)이 지적하듯, 기업들은 다양한 파트너와 무분별하게 협력하는 과정에서 스스로 공격 면적을 넓혀왔다.</p>
+<p><strong>현실의 한계</strong></p>
+<p>기존 사이버 리스크 연구의 핵심 문제는 기업 내부 관점에 갇혀 있다는 점이다. 대부분의 연구가 단일 조직의 IT 보안, 즉 방화벽, 침입탐지, 데이터 암호화에 집중하면서 파트너 간 경계를 가로지르는 사이버 위협을 다루지 않았다. 또한 기존 분류 체계(Gordon &amp; Ford의 Type I/II, NCSC의 표적/비표적 분류 등)는 의도적 공격자 행위만을 대상으로 하며, 물리적 위협, 시스템 고장, 내부자 위협 등 비의도적 리스크를 포괄하지 못했다. 이 논문이 SLR을 수행한 1990-2017년 사이에 공급망 맥락을 다룬 논문은 전체 검색 결과 중 41편에 불과했으며, 이는 사이버 보안 분야 전체 연구량에 비해 극히 미미한 수준이다.</p>
+<p><strong>연구 문제의식</strong></p>
+<p>조직들은 공급망 맥락에서 사이버 리스크를 어떻게 관리할 것인가?</p>
+<p>이 질문에 답하기 위해 저자들은 리스크 유형 식별, 분류, 평가, 완화라는 전 과정을 체계화하고자 했다.</p>
+<h3 id="2-핵심-개념">2. 핵심 개념<a hidden class="anchor" aria-hidden="true" href="#2-핵심-개념">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>개념</th>
+          <th>정의</th>
+          <th>컨설팅 맥락에서의 의미</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>사이버 공급망(CSC)</strong></td>
+          <td>IT 시스템을 활용하여 고객 요구사항을 충족하는 공급망으로, IT 인프라와 기술의 네트워크를 통해 가상 네트워크에서 데이터를 연결·구축·공유하는 구조</td>
+          <td>고객사가 거래하는 모든 협력사, 클라우드 제공자, SaaS 벤더가 보안 관리 범위에 포함됨을 의미</td>
+      </tr>
+      <tr>
+          <td><strong>공급망 사이버 리스크</strong></td>
+          <td>공급망 인프라의 무결성을 위협하는 우발적 또는 의도적 IT 사건으로, 연쇄적 혼란을 초래하는 것</td>
+          <td>단일 벤더의 침해가 고객사 전체 운영에 영향을 미칠 수 있음을 고객에게 설명하는 근거</td>
+      </tr>
+      <tr>
+          <td><strong>침투 지점(PoP, Points of Penetration)</strong></td>
+          <td>사이버 리스크가 공급망 네트워크에 진입할 가능성이 가장 높은 취약 지점으로 기술적, 인적, 물리적 차원으로 분류</td>
+          <td>고객사의 써드파티 위험 진단 시 어느 계층에서 취약성이 발생하는지 식별하는 분석 틀</td>
+      </tr>
+      <tr>
+          <td><strong>리스크 전파(Risk Propagation)</strong></td>
+          <td>사이버 리스크가 발생 지점에서 1차(운영 중단), 2차(공급망 파트너 영향), 3차(사회 전반 영향)로 확산되는 현상</td>
+          <td>고객사에 보안 투자의 필요성을 설명할 때 피해의 범위와 수준을 단계적으로 제시하는 근거</td>
+      </tr>
+      <tr>
+          <td><strong>C-SCRM</strong></td>
+          <td>Cyber Supply Chain Risk Management의 약어로, IT 네트워크·하드웨어·소프트웨어의 설계-개발-생산-통합-배포 전 과정에 걸친 리스크 평가 및 완화 활동</td>
+          <td>공급망 보안 관리 체계 구축 프로젝트의 범위와 목적을 정의하는 공식 용어</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="3-이론적-기반-체계적-문헌-고찰slr과-텍스트-마이닝">3. 이론적 기반: 체계적 문헌 고찰(SLR)과 텍스트 마이닝<a hidden class="anchor" aria-hidden="true" href="#3-이론적-기반-체계적-문헌-고찰slr과-텍스트-마이닝">#</a></h3>
+<pre tabindex="0"><code>[연구 설계 구조]
+
+IDENTIFICATION (식별 단계)
+- Scopus + ProQuest 검색: 초기 9,493건
+- 중복 제거 후 1,434편 선정
+        ↓
+DATA SCREENING (선별 단계)
+- 제목·초록 스크리닝
+- 외부 전문가 검증
+- 최종 41편 확정
+        ↓
+DATA ANALYSIS (분석 단계)
+- QDA Miner 텍스트 마이닝
+- 연결성 기반 클러스터 분석
+- 덴드로그램 기반 주제 도출
+        ↓
+5개 메타 주제 (Meta Themes)
+① 사이버 리스크 유형
+② 침투 지점(PoP)
+③ 리스크 전파 경로
+④ 보안 과제
+⑤ 완화 방안
+        ↓
+통합 개념 모델 도출
+(IT 보안 - 조직 보안 - 공급망 보안의 상호연결 구조)
+</code></pre><p><strong>핵심 아이디어:</strong></p>
+<p>이 논문은 단순한 문헌 요약을 넘어 텍스트 마이닝과 클러스터 분석이라는 데이터 기반 방법론을 적용하여 연구자의 편향을 최소화했다. Webster &amp; Watson(2002)의 개념 중심 접근법을 채택하여 특정 저자나 저널이 아닌 개념 자체를 분석 단위로 삼았으며, 이를 통해 공급망 사이버 리스크라는 신흥 분야의 지형을 처음으로 체계화했다.</p>
+<h3 id="4-연구의-핵심-기여">4. 연구의 핵심 기여<a hidden class="anchor" aria-hidden="true" href="#4-연구의-핵심-기여">#</a></h3>
+<p><strong>학술적 기여:</strong></p>
+<ul>
+<li>공급망 맥락의 사이버 리스크를 다룬 최초의 체계적 문헌 고찰(SLR) 수행</li>
+<li>기존 이분법적 분류(의도적/비의도적, 내부/외부)를 넘어 5가지 리스크 유형과 3차원 PoP 분류 체계 제시</li>
+<li>리스크 전파 모델을 통해 공급망 연결성이 피해 확산에 미치는 메커니즘 이론화</li>
+<li>인적/행동적 요소가 기술적 요소 못지않게 중요한 보안 취약점임을 문헌적으로 확인</li>
+</ul>
+<p><strong>실무 기여:</strong></p>
+<ul>
+<li>시간 단계별 완화 전략(공격 전-중-후) 분류표(Table III) 제공으로 위험 대응 체계 설계의 실무 기준 제시</li>
+<li>IT 보안-조직 보안-공급망 보안의 통합 개념 모델(Figure 10)을 통해 간학제적 협력의 필요성과 방향 제시</li>
+<li>인적 자원이 공급망에서 가장 예측 불가한 위협 요소임을 실증하고, 인식 교육과 훈련의 우선순위 정당화</li>
+</ul>
+<h3 id="5-컨설팅-관점-인사이트">5. 컨설팅 관점 인사이트<a hidden class="anchor" aria-hidden="true" href="#5-컨설팅-관점-인사이트">#</a></h3>
+<p><strong>적용 가능성:</strong></p>
+<p>이 논문의 가장 직접적인 컨설팅 활용 가치는 공급망 사이버 리스크 진단의 언어와 구조를 제공한다는 점이다. 고객사가 써드파티 보안을 왜 관리해야 하는지 막연히 느끼더라도, PoP 개념으로 어디서 위험이 들어오는지, 전파 모델로 피해가 얼마나 확산되는지를 시각적으로 설명할 수 있게 된다.</p>
+<p><strong>기존 학습과의 연결:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>기존 논문</th>
+          <th>내부 관점</th>
+          <th>이번 논문과의 연결</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Gashgari(2017)</td>
+          <td>이사회가 내부 보안 의사결정을 통제</td>
+          <td>써드파티까지 거버넌스 범위 확장</td>
+      </tr>
+      <tr>
+          <td>Foorthuis(2011)</td>
+          <td>조직 내 컴플라이언스 전술</td>
+          <td>공급망 파트너 간 표준 가이드라인 부재 문제로 연결</td>
+      </tr>
+      <tr>
+          <td>Santos-Olmo(2024)</td>
+          <td>조직 내부 리스크 분석</td>
+          <td>공급망 맥락의 동적 리스크 분석 필요성으로 확장</td>
+      </tr>
+      <tr>
+          <td>Bulgurcu(2010)</td>
+          <td>개인 직원의 정책 준수 행동</td>
+          <td>공급망 파트너 직원의 보안 행동이 자사에도 영향을 미침</td>
+      </tr>
+      <tr>
+          <td>Slapničar(2022)</td>
+          <td>내부 감사의 효과성</td>
+          <td>공급망 보안에서 공급업체 감사(Supplier Audit)의 필요성으로 연결</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>현실적 고려사항:</strong></p>
+<p>공급망 보안 관리는 자사 통제권 밖의 영역을 다룬다는 점에서 근본적 한계가 있다. 논문도 지적하듯, ISO 표준 인증은 직접 공급업체(Tier 1)에만 적용 가능하며 그 이상으로 확장하기 어렵다. 고객사에 공급망 보안 체계를 제안할 때 이 현실적 제약을 솔직히 인정하면서 관리 가능한 범위와 우선순위를 함께 제시해야 한다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/%EB%B3%B4%EC%95%88%EC%BB%A8%EC%84%A4%ED%8C%85/">보안컨설팅</a></li>
+      <li><a href="http://localhost:1313/tags/%EA%B3%B5%EA%B8%89%EB%A7%9D%EB%B3%B4%EC%95%88/">공급망보안</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%8D%A8%EB%93%9C%ED%8C%8C%ED%8B%B0%EB%A6%AC%EC%8A%A4%ED%81%AC/">써드파티리스크</a></li>
+      <li><a href="http://localhost:1313/tags/c-scrm/">C-SCRM</a></li>
+      <li><a href="http://localhost:1313/tags/%EB%A6%AC%EC%8A%A4%ED%81%AC%EC%A0%84%ED%8C%8C/">리스크전파</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%B9%A8%ED%88%AC%EC%A7%80%EC%A0%90/">침투지점</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%B2%B4%EA%B3%84%EC%A0%81%EB%AC%B8%ED%97%8C%EA%B3%A0%EC%B0%B0/">체계적문헌고찰</a></li>
+      <li><a href="http://localhost:1313/tags/%EA%B3%B5%EA%B8%89%EB%A7%9D%EC%82%AC%EC%9D%B4%EB%B2%84%EB%A6%AC%EC%8A%A4%ED%81%AC/">공급망사이버리스크</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

@@ -6,8 +6,29 @@
     <description>Recent content in Security-Issues-Analysis on HJ&#39;s Security Note</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sun, 15 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 22 Feb 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/security-issues-analysis/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cline CLI Supply Chain Attack - npm Token Theft via AI Coding Tool</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week08/cline_cli_supply_chain_attack/</link>
+      <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week08/cline_cli_supply_chain_attack/</guid>
+      <description>AI 코딩 어시스턴트 Cline CLI에서 발생한 공급망 공격 사례로, 프롬프트 인젝션, GitHub Actions 캐시 포이즈닝, npm 토큰 미폐기가 결합되어 약 4,000건의 악성 패키지 다운로드가 발생한 사건 분석</description>
+    </item>
+    <item>
+      <title>France FICOBA Bank Account Database Breach - National Financial DB Access via Stolen Government Credentials</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week08/ficoba_breach/</link>
+      <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week08/ficoba_breach/</guid>
+      <description>프랑스 국가 은행 계좌 등록 데이터베이스 FICOBA에서 공무원 자격증명 탈취를 통해 약 120만 개 계좌 정보가 노출된 사건으로, 합법적 접근 경로를 악용한 공격의 탐지 한계와 제로 트러스트 원칙의 중요성을 보여주는 사례</description>
+    </item>
+    <item>
+      <title>PayPal Working Capital 6개월 데이터 침해 — 소프트웨어 오류 기인 장기 개인정보 노출</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week08/paypal_working_capital_breach/</link>
+      <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week08/paypal_working_capital_breach/</guid>
+      <description>PayPal Working Capital 서비스의 코딩 오류로 SSN, 생년월일 등 고위험 개인정보가 6개월간 노출된 사건으로, 외부 공격이 아닌 내부 소프트웨어 결함에 의한 데이터 침해의 위험성과 민감 데이터 처리 경로에 대한 보안 검토 프로세스의 중요성을 보여주는 사례</description>
+    </item>
     <item>
       <title>Apple dyld 제로데이 취약점 사건 분석</title>
       <link>http://localhost:1313/security-issues-analysis/2026/week07/apple_dyld-_zero_day/</link>

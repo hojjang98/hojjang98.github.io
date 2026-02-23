@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Day 09: 정보통신망법 기초 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="정보통신망법, CISO, ISMS-P, 주민등록번호수집제한, 개인정보보호책임자">
+<meta name="description" content="정보통신서비스 제공자에 적용되는 정보통신망법의 기본 개념, CISO 지정 의무, ISMS-P 인증 대상을 학습합니다.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/02_%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%A7%9D%EB%B2%95/day09_%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%A7%9D%EB%B2%95_%EA%B8%B0%EC%B4%88/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a29c24210eb31d9ce56f669c66a35c9c51b17376b7764e336a49af7dec914cf0.css" integrity="sha256-opwkIQ6zHZzlb2acZqNcnFGxc3a3dk4zakmvfeyRTPA=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/02_%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%A7%9D%EB%B2%95/day09_%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%A7%9D%EB%B2%95_%EA%B8%B0%EC%B4%88/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/" title="프로젝트">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">홈</a>&nbsp;»&nbsp;<a href="http://localhost:1313/cyber_law_study/">보안 컨설팅 공부</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Day 09: 정보통신망법 기초
+    </h1>
+    <div class="post-meta"><span title='2026-02-12 00:00:00 +0000 UTC'>2026년 2월 12일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="day-09-정보통신망법-기초">Day 09: 정보통신망법 기초<a hidden class="anchor" aria-hidden="true" href="#day-09-정보통신망법-기초">#</a></h1>
+<h2 id="1-정보통신망법의-개요">1. 정보통신망법의 개요<a hidden class="anchor" aria-hidden="true" href="#1-정보통신망법의-개요">#</a></h2>
+<h3 id="11-정보통신망법이란">1.1 정보통신망법이란?<a hidden class="anchor" aria-hidden="true" href="#11-정보통신망법이란">#</a></h3>
+<p><strong>정식 명칭</strong>: 정보통신망 이용촉진 및 정보보호 등에 관한 법률 (약칭: 정보통신망법)</p>
+<p>정보통신망의 이용을 촉진하고, 정보통신서비스를 이용하는 자의 <strong>개인정보를 보호</strong>함과 아동·청소년을 보호하며, 정보통신망을 건전하고 안전하게 이용할 수 있는 환경을 조성하기 위한 법률</p>
+<h3 id="12-제정-배경-및-연혁">1.2 제정 배경 및 연혁<a hidden class="anchor" aria-hidden="true" href="#12-제정-배경-및-연혁">#</a></h3>
+<ul>
+<li><strong>1999년 2월 8일 제정</strong>: 정보통신망 발전 촉진 목적</li>
+<li><strong>2001년 개정</strong>: 개인정보보호 조항 대폭 강화</li>
+<li><strong>2020년 개정</strong>: 개인정보보호법과의 중복 조항 정리</li>
+</ul>
+<h3 id="13-적용-범위">1.3 적용 범위<a hidden class="anchor" aria-hidden="true" href="#13-적용-범위">#</a></h3>
+<h4 id="적용-대상">적용 대상<a hidden class="anchor" aria-hidden="true" href="#적용-대상">#</a></h4>
+<p><strong>정보통신서비스 제공자</strong> (ISP: Information Service Provider)</p>
+<ul>
+<li>전기통신사업법에 따른 전기통신사업자</li>
+<li>영리 목적으로 정보통신서비스를 제공하는 자</li>
+</ul>
+<p><strong>주요 대상:</strong></p>
+<ul>
+<li>통신사 (SKT, KT, LG U+ 등)</li>
+<li>인터넷 포털 (네이버, 카카오 등)</li>
+<li>온라인 쇼핑몰</li>
+<li>게임 서비스</li>
+<li>SNS, 메신저 서비스</li>
+<li>기타 온라인 서비스</li>
+</ul>
+<h4 id="개인정보보호법과의-관계">개인정보보호법과의 관계<a hidden class="anchor" aria-hidden="true" href="#개인정보보호법과의-관계">#</a></h4>
+<ul>
+<li>정보통신망법은 <strong>특별법</strong></li>
+<li>정보통신서비스 제공자의 개인정보 처리에 대해서는 정보통신망법 <strong>우선 적용</strong></li>
+<li>정보통신망법에 규정이 없는 사항은 개인정보보호법 적용</li>
+</ul>
+<h2 id="2-정보통신망법의-주요-내용">2. 정보통신망법의 주요 내용<a hidden class="anchor" aria-hidden="true" href="#2-정보통신망법의-주요-내용">#</a></h2>
+<h3 id="21-법의-구조">2.1 법의 구조<a hidden class="anchor" aria-hidden="true" href="#21-법의-구조">#</a></h3>
+<p>정보통신망법은 크게 <strong>6개 장</strong>으로 구성:</p>
+<pre tabindex="0"><code>제1장 총칙
+제2장 정보통신망의 이용 촉진
+제3장 개인정보의 보호 ← 보안 컨설팅에서 가장 중요
+제4장 정보통신망의 안전성 확보 등
+제5장 통신과금서비스 등
+제6장 보칙 및 벌칙
+</code></pre><h3 id="22-보안-컨설팅-관점에서-중요한-조항">2.2 보안 컨설팅 관점에서 중요한 조항<a hidden class="anchor" aria-hidden="true" href="#22-보안-컨설팅-관점에서-중요한-조항">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>조항</th>
+          <th>내용</th>
+          <th>중요도</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>제22조~제28조</td>
+          <td>개인정보 수집·이용·제공</td>
+          <td>★★★</td>
+      </tr>
+      <tr>
+          <td>제29조~제31조</td>
+          <td>개인정보 보호 조치</td>
+          <td>★★★</td>
+      </tr>
+      <tr>
+          <td>제32조</td>
+          <td>본인확인기관</td>
+          <td>★★</td>
+      </tr>
+      <tr>
+          <td>제44조의7</td>
+          <td>정보보호 최고책임자(CISO) 지정</td>
+          <td>★★★</td>
+      </tr>
+      <tr>
+          <td>제45조~제47조</td>
+          <td>정보보호 관리체계(ISMS) 인증</td>
+          <td>★★★</td>
+      </tr>
+      <tr>
+          <td>제48조</td>
+          <td>침해사고 대응</td>
+          <td>★★★</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="3-개인정보보호법과의-차이점">3. 개인정보보호법과의 차이점<a hidden class="anchor" aria-hidden="true" href="#3-개인정보보호법과의-차이점">#</a></h2>
+<h3 id="31-주요-차이점-비교">3.1 주요 차이점 비교<a hidden class="anchor" aria-hidden="true" href="#31-주요-차이점-비교">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>구분</th>
+          <th>개인정보보호법</th>
+          <th>정보통신망법</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>적용 대상</td>
+          <td>모든 개인정보처리자</td>
+          <td>정보통신서비스 제공자</td>
+      </tr>
+      <tr>
+          <td>법의 성격</td>
+          <td>일반법</td>
+          <td>특별법</td>
+      </tr>
+      <tr>
+          <td>주민등록번호</td>
+          <td>원칙적 수집 금지</td>
+          <td>본인확인 등 법정 사유 시 가능</td>
+      </tr>
+      <tr>
+          <td>보호책임자</td>
+          <td>개인정보 보호책임자</td>
+          <td>개인정보 보호책임자 + CISO</td>
+      </tr>
+      <tr>
+          <td>인증제도</td>
+          <td>개인정보 영향평가</td>
+          <td>ISMS-P 인증</td>
+      </tr>
+      <tr>
+          <td>과징금 한도</td>
+          <td>매출액 3%</td>
+          <td>매출액 3%</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="32-중복-적용-시-우선순위">3.2 중복 적용 시 우선순위<a hidden class="anchor" aria-hidden="true" href="#32-중복-적용-시-우선순위">#</a></h3>
+<p><strong>정보통신서비스 제공자의 경우:</strong></p>
+<ol>
+<li>정보통신망법에 규정이 있으면 → <strong>정보통신망법 적용</strong></li>
+<li>정보통신망법에 규정이 없으면 → <strong>개인정보보호법 적용</strong></li>
+</ol>
+<p><strong>예시:</strong></p>
+<ul>
+<li>온라인 쇼핑몰(정보통신서비스 제공자)의 고객 개인정보 처리
+→ 정보통신망법 우선 적용</li>
+<li>오프라인 마트의 고객 개인정보 처리
+→ 개인정보보호법 적용</li>
+</ul>
+<h2 id="4-개인정보의-수집이용제공-법-제22조제25조">4. 개인정보의 수집·이용·제공 (법 제22조~제25조)<a hidden class="anchor" aria-hidden="true" href="#4-개인정보의-수집이용제공-법-제22조제25조">#</a></h2>
+<h3 id="41-개인정보의-수집이용-법-제22조">4.1 개인정보의 수집·이용 (법 제22조)<a hidden class="anchor" aria-hidden="true" href="#41-개인정보의-수집이용-법-제22조">#</a></h3>
+<h4 id="수집-제한-원칙">수집 제한 원칙<a hidden class="anchor" aria-hidden="true" href="#수집-제한-원칙">#</a></h4>
+<p>정보통신서비스 제공자는 다음 중 하나에 해당하는 경우에만 개인정보 수집 가능:</p>
+<ol>
+<li><strong>이용자의 동의</strong>를 받은 경우</li>
+<li><strong>법률에 특별한 규정</strong>이 있는 경우</li>
+<li><strong>계약의 이행</strong>을 위해 불가피한 경우</li>
+</ol>
+<h4 id="동의-받을-때-고지사항-개인정보보호법과-유사">동의 받을 때 고지사항 (개인정보보호법과 유사)<a hidden class="anchor" aria-hidden="true" href="#동의-받을-때-고지사항-개인정보보호법과-유사">#</a></h4>
+<ol>
+<li>개인정보의 <strong>수집·이용 목적</strong></li>
+<li><strong>수집하는 개인정보의 항목</strong></li>
+<li>개인정보의 <strong>보유 및 이용 기간</strong></li>
+<li>동의를 거부할 권리 및 <strong>동의 거부 시 불이익</strong></li>
+</ol>
+<h3 id="42-개인정보의-제공-법-제24조의2">4.2 개인정보의 제공 (법 제24조의2)<a hidden class="anchor" aria-hidden="true" href="#42-개인정보의-제공-법-제24조의2">#</a></h3>
+<h4 id="제공-제한-원칙">제공 제한 원칙<a hidden class="anchor" aria-hidden="true" href="#제공-제한-원칙">#</a></h4>
+<p>원칙적으로 <strong>이용자의 동의</strong> 없이 제3자에게 제공 금지</p>
+<p><strong>예외:</strong></p>
+<ol>
+<li>이용자의 <strong>동의</strong>를 받은 경우</li>
+<li><strong>법률에 특별한 규정</strong>이 있는 경우</li>
+<li>이용자 또는 제3자의 <strong>급박한 생명·신체·재산</strong>의 이익을 위해 필요한 경우</li>
+</ol>
+<h4 id="동의-받을-때-고지사항">동의 받을 때 고지사항<a hidden class="anchor" aria-hidden="true" href="#동의-받을-때-고지사항">#</a></h4>
+<ol>
+<li>개인정보를 <strong>제공받는 자</strong></li>
+<li>개인정보를 제공받는 자의 <strong>이용 목적</strong></li>
+<li><strong>제공하는 개인정보의 항목</strong></li>
+<li>개인정보를 제공받는 자의 <strong>보유 및 이용 기간</strong></li>
+<li>동의를 거부할 권리 및 <strong>동의 거부 시 불이익</strong></li>
+</ol>
+<h3 id="43-주민등록번호의-처리-제한-법-제23조의2">4.3 주민등록번호의 처리 제한 (법 제23조의2)<a hidden class="anchor" aria-hidden="true" href="#43-주민등록번호의-처리-제한-법-제23조의2">#</a></h3>
+<h4 id="원칙-주민등록번호-수집-금지">원칙: 주민등록번호 수집 금지<a hidden class="anchor" aria-hidden="true" href="#원칙-주민등록번호-수집-금지">#</a></h4>
+<p>정보통신서비스 제공자는 원칙적으로 주민등록번호를 수집·이용할 수 없음</p>
+<h4 id="예외-법령상-의무-이행-등">예외: 법령상 의무 이행 등<a hidden class="anchor" aria-hidden="true" href="#예외-법령상-의무-이행-등">#</a></h4>
+<p>다음의 경우에만 수집 가능:</p>
+<ol>
+<li><strong>법령에서 구체적으로 주민등록번호 처리를 요구</strong>하거나 허용한 경우</li>
+<li><strong>정보통신망 이용촉진 및 정보보호 등에 관한 법률 시행령</strong>에서 정한 경우:
+<ul>
+<li>본인확인기관을 통한 본인확인</li>
+<li>성인 인증</li>
+<li>법률상 의무 이행</li>
+</ul>
+</li>
+</ol>
+<h4 id="대체-수단-제공-의무">대체 수단 제공 의무<a hidden class="anchor" aria-hidden="true" href="#대체-수단-제공-의무">#</a></h4>
+<p>주민등록번호를 사용하지 않는 <strong>본인확인 수단</strong>을 제공해야 함:</p>
+<ul>
+<li>휴대폰 본인인증</li>
+<li>아이핀(I-PIN)</li>
+<li>공동인증서</li>
+<li>생체인증 등</li>
+</ul>
+<h2 id="5-개인정보-보호-조치-법-제28조">5. 개인정보 보호 조치 (법 제28조)<a hidden class="anchor" aria-hidden="true" href="#5-개인정보-보호-조치-법-제28조">#</a></h2>
+<h3 id="51-안전성-확보-조치-의무">5.1 안전성 확보 조치 의무<a hidden class="anchor" aria-hidden="true" href="#51-안전성-확보-조치-의무">#</a></h3>
+<p>정보통신서비스 제공자는 개인정보의 <strong>안전성 확보에 필요한 기술적·관리적 조치</strong>를 해야 함</p>
+<h4 id="기술적-조치">기술적 조치<a hidden class="anchor" aria-hidden="true" href="#기술적-조치">#</a></h4>
+<ol>
+<li>
+<p><strong>개인정보의 암호화</strong></p>
+<ul>
+<li>비밀번호: 일방향 암호화</li>
+<li>주민등록번호, 신용카드번호 등: 양방향 암호화</li>
+<li>통신 구간 암호화 (HTTPS)</li>
+</ul>
+</li>
+<li>
+<p><strong>접근 통제</strong></p>
+<ul>
+<li>개인정보처리시스템 접근 권한 관리</li>
+<li>접근 통제 시스템 설치</li>
+</ul>
+</li>
+<li>
+<p><strong>접속 기록 보관 및 점검</strong></p>
+<ul>
+<li>최소 6개월 이상 보관</li>
+<li>월 1회 이상 점검</li>
+</ul>
+</li>
+<li>
+<p><strong>보안 프로그램 설치</strong></p>
+<ul>
+<li>백신 프로그램 설치</li>
+<li>보안 패치</li>
+</ul>
+</li>
+</ol>
+<h4 id="관리적-조치">관리적 조치<a hidden class="anchor" aria-hidden="true" href="#관리적-조치">#</a></h4>
+<ol>
+<li>내부 관리계획 수립</li>
+<li>개인정보 보호책임자 지정</li>
+<li>개인정보 취급자 교육</li>
+<li>접근 권한 관리</li>
+</ol>
+<h3 id="52-개인정보-유출-통지-법-제27조의3">5.2 개인정보 유출 통지 (법 제27조의3)<a hidden class="anchor" aria-hidden="true" href="#52-개인정보-유출-통지-법-제27조의3">#</a></h3>
+<h4 id="통지-의무">통지 의무<a hidden class="anchor" aria-hidden="true" href="#통지-의무">#</a></h4>
+<p>정보통신서비스 제공자는 개인정보 유출 사실을 <strong>알게 된 때</strong> 지체 없이:</p>
+<ol>
+<li><strong>이용자에게 통지</strong></li>
+<li><strong>한국인터넷진흥원에 신고</strong></li>
+</ol>
+<h4 id="통지-내용">통지 내용<a hidden class="anchor" aria-hidden="true" href="#통지-내용">#</a></h4>
+<ol>
+<li>유출된 <strong>개인정보 항목</strong></li>
+<li>유출 <strong>시점과 경위</strong></li>
+<li>이용자가 취할 수 있는 <strong>조치</strong></li>
+<li>정보통신서비스 제공자의 <strong>대응 조치</strong></li>
+<li><strong>담당 부서 및 연락처</strong></li>
+</ol>
+<h2 id="6-정보보호-최고책임자ciso-법-제45조의3">6. 정보보호 최고책임자(CISO) (법 제45조의3)<a hidden class="anchor" aria-hidden="true" href="#6-정보보호-최고책임자ciso-법-제45조의3">#</a></h2>
+<h3 id="61-ciso-지정-의무">6.1 CISO 지정 의무<a hidden class="anchor" aria-hidden="true" href="#61-ciso-지정-의무">#</a></h3>
+<p>다음 정보통신서비스 제공자는 <strong>CISO(Chief Information Security Officer)</strong> 지정 의무:</p>
+<ol>
+<li>전년도 말 기준 <strong>직전 3개월간 일일평균 이용자 수가 100만명 이상</strong>인 자</li>
+<li><strong>정보통신서비스 부문 전년도 매출액이 100억원 이상</strong>인 자</li>
+</ol>
+<h3 id="62-ciso의-자격-요건">6.2 CISO의 자격 요건<a hidden class="anchor" aria-hidden="true" href="#62-ciso의-자격-요건">#</a></h3>
+<ul>
+<li><strong>임원급</strong> 이상 권장</li>
+<li>정보보호 업무 총괄 권한 보유</li>
+<li>독립적인 지위 보장</li>
+</ul>
+<h3 id="63-ciso의-업무">6.3 CISO의 업무<a hidden class="anchor" aria-hidden="true" href="#63-ciso의-업무">#</a></h3>
+<ol>
+<li>정보보호 <strong>관리체계 수립 및 운영</strong></li>
+<li>정보보호 <strong>취약점 분석·평가 및 개선</strong></li>
+<li>침해사고의 <strong>예방 및 대응</strong></li>
+<li>정보보호 <strong>사전 점검 및 사후 조치</strong></li>
+<li>정보보호 <strong>교육 및 훈련</strong></li>
+<li>정보보호 <strong>예산 및 인력 운영</strong></li>
+</ol>
+<h3 id="64-개인정보-보호책임자cpo와의-차이">6.4 개인정보 보호책임자(CPO)와의 차이<a hidden class="anchor" aria-hidden="true" href="#64-개인정보-보호책임자cpo와의-차이">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>구분</th>
+          <th>CISO</th>
+          <th>CPO</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>법적 근거</td>
+          <td>정보통신망법</td>
+          <td>개인정보보호법</td>
+      </tr>
+      <tr>
+          <td>주요 업무</td>
+          <td>정보보호 전반</td>
+          <td>개인정보보호</td>
+      </tr>
+      <tr>
+          <td>지정 대상</td>
+          <td>일정 규모 이상 정보통신서비스 제공자</td>
+          <td>모든 개인정보처리자 (일부 예외)</td>
+      </tr>
+      <tr>
+          <td>겸직 가능 여부</td>
+          <td>CPO와 겸직 가능</td>
+          <td>CISO와 겸직 가능</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>실무상 CISO와 CPO를 동일인이 겸임하는 경우가 많음</strong></p>
+<h2 id="7-정보보호-관리체계isms-인증-법-제47조">7. 정보보호 관리체계(ISMS) 인증 (법 제47조)<a hidden class="anchor" aria-hidden="true" href="#7-정보보호-관리체계isms-인증-법-제47조">#</a></h2>
+<h3 id="71-isms-p-인증이란">7.1 ISMS-P 인증이란?<a hidden class="anchor" aria-hidden="true" href="#71-isms-p-인증이란">#</a></h3>
+<p><strong>ISMS-P</strong>: Information Security Management System - Personal information &amp; information security management system</p>
+<p>정보보호 및 개인정보보호 관리체계 인증</p>
+<h3 id="72-인증-의무-대상">7.2 인증 의무 대상<a hidden class="anchor" aria-hidden="true" href="#72-인증-의무-대상">#</a></h3>
+<p>다음에 해당하는 정보통신서비스 제공자는 <strong>ISMS-P 인증 의무</strong>:</p>
+<ol>
+<li><strong>일일평균 이용자 수 100만명 이상</strong>인 정보통신서비스 제공자</li>
+<li><strong>전년도 매출액 100억원 이상</strong>인 정보통신서비스 제공자</li>
+<li><strong>전년도 직전 3개월간 개인정보 100만명 이상</strong> 보유한 정보통신서비스 제공자</li>
+</ol>
+<h3 id="73-인증-절차">7.3 인증 절차<a hidden class="anchor" aria-hidden="true" href="#73-인증-절차">#</a></h3>
+<pre tabindex="0"><code>[1단계] 인증 신청
+    ↓
+[2단계] 서면 심사
+    ↓
+[3단계] 현장 심사
+    ↓
+[4단계] 인증위원회 심의
+    ↓
+[5단계] 인증서 발급
+</code></pre><h3 id="74-인증-유효-기간">7.4 인증 유효 기간<a hidden class="anchor" aria-hidden="true" href="#74-인증-유효-기간">#</a></h3>
+<ul>
+<li><strong>3년</strong></li>
+<li>매년 <strong>사후 관리 심사</strong> 실시</li>
+</ul>
+<h2 id="8-보안-컨설팅-관점의-시사점">8. 보안 컨설팅 관점의 시사점<a hidden class="anchor" aria-hidden="true" href="#8-보안-컨설팅-관점의-시사점">#</a></h2>
+<h3 id="81-정보통신서비스-제공자-판단">8.1 정보통신서비스 제공자 판단<a hidden class="anchor" aria-hidden="true" href="#81-정보통신서비스-제공자-판단">#</a></h3>
+<p>클라이언트가 정보통신서비스 제공자인지 판단:</p>
+<ul>
+<li>온라인 서비스를 제공하는가?</li>
+<li>영리 목적인가?
+→ Yes이면 정보통신망법 적용</li>
+</ul>
+<h3 id="82-ciso-지정-대상-여부-확인">8.2 CISO 지정 대상 여부 확인<a hidden class="anchor" aria-hidden="true" href="#82-ciso-지정-대상-여부-확인">#</a></h3>
+<ul>
+<li>일일평균 이용자 100만명 이상?</li>
+<li>매출액 100억원 이상?
+→ CISO 지정 필요</li>
+</ul>
+<h3 id="83-isms-p-인증-대상-여부-확인">8.3 ISMS-P 인증 대상 여부 확인<a hidden class="anchor" aria-hidden="true" href="#83-isms-p-인증-대상-여부-확인">#</a></h3>
+<ul>
+<li>일일평균 이용자 100만명 이상?</li>
+<li>매출액 100억원 이상?</li>
+<li>개인정보 100만명 이상 보유?
+→ ISMS-P 인증 필요</li>
+</ul>
+<h3 id="84-주민등록번호-수집-최소화">8.4 주민등록번호 수집 최소화<a hidden class="anchor" aria-hidden="true" href="#84-주민등록번호-수집-최소화">#</a></h3>
+<ul>
+<li>법적 근거가 있는가?</li>
+<li>대체 수단을 제공하는가?
+→ 원칙적으로 수집 금지, 대체 수단 제공 필수</li>
+</ul>
+<h2 id="9-실무-사례">9. 실무 사례<a hidden class="anchor" aria-hidden="true" href="#9-실무-사례">#</a></h2>
+<h3 id="사례-1-스타트업-온라인-쇼핑몰">사례 1: 스타트업 온라인 쇼핑몰<a hidden class="anchor" aria-hidden="true" href="#사례-1-스타트업-온라인-쇼핑몰">#</a></h3>
+<p><strong>상황:</strong>
+이용자 5만명, 매출 10억원인 온라인 쇼핑몰</p>
+<p><strong>적용 법률:</strong></p>
+<ul>
+<li>정보통신서비스 제공자 → <strong>정보통신망법 적용</strong></li>
+</ul>
+<p><strong>컨설팅 조언:</strong></p>
+<ul>
+<li>CISO 지정 의무 없음 (100만명 미만, 100억원 미만)</li>
+<li>ISMS-P 인증 의무 없음</li>
+<li>다만, 개인정보 보호책임자는 지정 필요</li>
+<li>주민등록번호 수집 시 대체 수단 제공</li>
+</ul>
+<h3 id="사례-2-대형-포털">사례 2: 대형 포털<a hidden class="anchor" aria-hidden="true" href="#사례-2-대형-포털">#</a></h3>
+<p><strong>상황:</strong>
+일일 이용자 1,000만명, 매출 5,000억원</p>
+<p><strong>적용 법률:</strong></p>
+<ul>
+<li>정보통신서비스 제공자 → <strong>정보통신망법 적용</strong></li>
+</ul>
+<p><strong>컨설팅 조언:</strong></p>
+<ul>
+<li><strong>CISO 지정 의무</strong> (100만명 이상, 100억원 이상)</li>
+<li><strong>ISMS-P 인증 의무</strong> (100만명 이상)</li>
+<li>주민등록번호 수집 최소화, 대체 수단 제공</li>
+<li>침해사고 대응 체계 구축</li>
+</ul>
+<h2 id="10-체크리스트">10. 체크리스트<a hidden class="anchor" aria-hidden="true" href="#10-체크리스트">#</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> 우리 회사가 정보통신서비스 제공자에 해당하는가?</li>
+<li><input disabled="" type="checkbox"> CISO 지정 대상에 해당하는가?</li>
+<li><input disabled="" type="checkbox"> ISMS-P 인증 대상에 해당하는가?</li>
+<li><input disabled="" type="checkbox"> 주민등록번호를 수집하는 경우 법적 근거가 있는가?</li>
+<li><input disabled="" type="checkbox"> 주민등록번호 대체 수단을 제공하는가?</li>
+<li><input disabled="" type="checkbox"> 개인정보 수집 시 동의를 받고 있는가?</li>
+<li><input disabled="" type="checkbox"> 개인정보를 제3자에게 제공 시 별도 동의를 받는가?</li>
+<li><input disabled="" type="checkbox"> 개인정보 암호화를 하고 있는가?</li>
+<li><input disabled="" type="checkbox"> 접속 기록을 6개월 이상 보관하는가?</li>
+<li><input disabled="" type="checkbox"> 개인정보 유출 시 통지·신고 체계가 마련되어 있는가?</li>
+</ul>
+<h2 id="학습-정리">학습 정리<a hidden class="anchor" aria-hidden="true" href="#학습-정리">#</a></h2>
+<p>오늘 학습한 핵심 내용:</p>
+<ul>
+<li>정보통신망법은 정보통신서비스 제공자에 적용되는 특별법</li>
+<li>개인정보보호법보다 우선 적용 (정보통신서비스 제공자의 경우)</li>
+<li>주민등록번호 원칙적 수집 금지, 대체 수단 제공 의무</li>
+<li>일정 규모 이상 사업자는 CISO 지정 의무</li>
+<li>ISMS-P 인증 의무 대상 확인 필요</li>
+<li>개인정보 유출 시 이용자 통지 + 한국인터넷진흥원 신고</li>
+</ul>
+<h2 id="다음-학습-주제">다음 학습 주제<a hidden class="anchor" aria-hidden="true" href="#다음-학습-주제">#</a></h2>
+<p>Day 10: 정보통신망법 심화 - ISMS-P 인증 기준 및 침해사고 대응</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%A7%9D%EB%B2%95/">정보통신망법</a></li>
+      <li><a href="http://localhost:1313/tags/ciso/">CISO</a></li>
+      <li><a href="http://localhost:1313/tags/isms-p/">ISMS-P</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%A3%BC%EB%AF%BC%EB%93%B1%EB%A1%9D%EB%B2%88%ED%98%B8%EC%88%98%EC%A7%91%EC%A0%9C%ED%95%9C/">주민등록번호수집제한</a></li>
+      <li><a href="http://localhost:1313/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EC%B1%85%EC%9E%84%EC%9E%90/">개인정보보호책임자</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
