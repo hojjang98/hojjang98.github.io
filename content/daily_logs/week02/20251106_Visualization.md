@@ -3,16 +3,17 @@ title: "2025.11.06 (Day 9) Matplotlib · Seaborn 기반 로그 시각화 및 데
 date: 2025-11-06
 draft: false
 tags: ["Python", "Matplotlib", "Seaborn", "Pandas", "로그시각화", "이상탐지", "보안활용", "SK쉴더스루키즈"]
+categories: ["daily-logs"]
 summary: "Matplotlib과 Seaborn을 활용한 보안 로그 시각화 기초 학습. 로그인 실패율·지연시간 분석, 사용자별 이상 패턴 탐지, 피벗 기반 히트맵 구성 방법 정리."
 ---
 
 # 2025.11.06 (Day 9) [Matplotlib · Seaborn 기반 로그 시각화 및 데이터 분석]
 
-## 1. 핵심 개념 정리 (Concepts & Theory)
+## 1. 핵심 개념 정리(Concepts & Theory)
 
 | # | 핵심 개념 | 간결한 설명 | 적용 예시 |
 |:---:|:---:|:---|:---|
-| 1 | **Matplotlib 기본 구조** | `figure`, `axes`, `subplot` 개념을 이해하고, 단일/다중 그래프를 자유롭게 배치 | 라인플롯, 서브플롯, 축 설정 |
+| 1 | **Matplotlib 기본 구조** | `figure`, `axes`, `subplot` 개념을 이해하고, 단일/다중 그래프를 자유롭게 배치 가능 | 라인플롯, 서브플롯, 축 설정 |
 | 2 | **Pandas와 시각화의 결합** | 그룹화(`groupby`), 피벗(`pivot_table`), 집계(`agg`)를 통해 통계형 시각화 구현 | 시간대별 평균, 사용자별 실패율 계산 |
 | 3 | **통계형 시각화 도구** | `boxplot`, `heatmap`, `countplot`을 이용해 이상치 탐지 및 상관관계 파악 | IQR 계산, 상관계수 시각화 |
 | 4 | **보안 로그 응용 데이터셋** | 더미 로그인 로그 생성 후, 상태·지연시간·사용자 패턴을 통계적으로 시각화 | 로그인 성공률, 지연시간 평균 |

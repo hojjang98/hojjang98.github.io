@@ -3,16 +3,17 @@ title: "2025.11.07 (Day 10) Folium · Plotly · Streamlit 기반 시각화 실�
 date: 2025-11-07
 draft: false
 tags: ["Python", "Folium", "Plotly", "Streamlit", "로그시각화", "보안대시보드", "보안활용", "SK쉴더스루키즈"]
+categories: ["daily-logs"]
 summary: "Folium 지도 시각화, Plotly 인터랙티브 그래프, Streamlit 대시보드 구성 실습. 공격 지점·시간대별 패턴 분석을 위한 보안 시각화 파이프라인 구성 방법 정리."
 ---
 
 # 2025.11.07 (Day 10) [Folium · Plotly · Streamlit 기반 시각화 실습]
 
-## 1. 핵심 개념 정리 (Concepts & Theory)
+## 1. 핵심 개념 정리(Concepts & Theory)
 
 | # | 핵심 개념 | 간결한 설명 | 적용 예시 |
 |:---:|:---:|:---|:---|
-| 1 | **Matplotlib 한글 폰트 설정** | Windows 환경에서 그래프 내 한글 깨짐을 방지하기 위해 `malgun.ttf`를 수동 등록하고, `unicode_minus` 옵션으로 마이너스 부호 오류를 해결함. | `font_manager.FontProperties(fname=path)` / `plt.rcParams['axes.unicode_minus']=False` |
+| 1 | **Matplotlib 한글 폰트 설정** | Windows 환경에서 그래프 내 한글 깨짐을 방지하기 위해 `malgun.ttf`를 수동 등록, `unicode_minus` 옵션으로 마이너스 부호 오류를 해결함. | `font_manager.FontProperties(fname=path)` / `plt.rcParams['axes.unicode_minus']=False` |
 | 2 | **Folium 지도 시각화** | 위도·경도 좌표를 기반으로 HTML 인터랙티브 지도를 생성하고, 마커·원형·팝업 요소를 이용해 위치 데이터를 시각적으로 표현함. | `folium.Map(location=[lat, lng])`, `folium.Marker(...).add_to(map)` |
 | 3 | **Pandas 데이터 연동** | 엑셀 데이터를 불러와 반복문으로 각 위치를 지도에 표시함. | `for name, lat, lng in zip(data.index, data['위도'], data['경도']): ...` |
 | 4 | **Plotly Express 시각화** | 막대그래프·산점도를 통해 수치형 데이터를 인터랙티브하게 비교·탐색함. | `px.bar(df, x='Country', y='Gdp')`, `px.scatter(df, x='Population', y='Gdp')` |

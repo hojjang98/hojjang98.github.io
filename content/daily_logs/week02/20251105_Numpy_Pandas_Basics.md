@@ -3,18 +3,19 @@ title: "2025.11.05 (Day 8) Numpy & Pandas 기반 로그 정규화 학습 로그"
 date: 2025-11-05
 draft: false
 tags: ["Python", "Numpy", "Pandas", "로그정규화", "이상탐지", "보안활용", "SK쉴더스루키즈"]
+categories: ["daily-logs"]
 summary: "Numpy와 Pandas를 활용한 보안 로그 정규화 기초 학습. loadtxt, DataFrame 변환, 결측치 처리, 타입 변환을 통한 로그 전처리 파이프라인 구성 방법 정리."
 ---
 
 # 2025.11.05 (Day 8) [Numpy & Pandas 기반 로그 정규화]
 
-## 1. 핵심 개념 정리 (Concepts & Theory)
+## 1. 핵심 개념 정리(Concepts & Theory)
 
 | # | 핵심 개념 | 간결한 설명 | 적용 예시 |
 |:---:|:---:|:---|:---|
 | 1 | **`np.loadtxt()` / `np.genfromtxt()`** | 텍스트 기반 로그 파일을 배열 형태로 고속 로드하는 함수. CSV나 공백 구분 로그의 초기 샘플링에 유용함. | `raw = np.loadtxt('log.csv', delimiter=',', dtype=str)` |
 | 2 | **`pd.DataFrame()` 변환** | Numpy 배열을 Pandas의 표 형식 데이터로 전환하여, 결측치·타입 변환·정렬·슬라이싱 등 고급 처리를 수행할 수 있음. | `df = pd.DataFrame(raw[1:], columns=raw[0])` |
-| 3 | **데이터 정규화 (Normalization)** | 로그 데이터의 형식·타입 불일치를 정규화하여, 이후 분석·탐지 모델의 입력 일관성을 확보함. | `df['timestamp'] = pd.to_datetime(df['timestamp'])` |
+| 3 | **데이터 정규화 (Normalization)** | 로그 데이터의 형식·타입 불일치를 정규화하여, 이후 분석·탐지 모델의 입력 일관성을 확보 가능함. | `df['timestamp'] = pd.to_datetime(df['timestamp'])` |
 | 4 | **결측치 처리 (`fillna`, `dropna`)** | 로그 전처리의 기본으로, 비어 있는 필드를 N/A로 대체하거나 제거함. | `df.fillna('N/A', inplace=True)` |
 | 5 | **타입 변환(`astype`) & 슬라이싱** | 로그의 수치형/시간형 필드를 명확히 변환해 정렬 및 비교 연산을 가능하게 함. | `df['value'] = df['value'].astype(float)` |
 

@@ -3,12 +3,13 @@ title: "2025.11.04 (Day 7) Numpy & Pandas 기초 / 데이터 처리 및 EDA 학�
 date: 2025-11-04
 draft: false
 tags: ["Python", "Numpy", "Pandas", "EDA", "이상탐지", "보안활용", "SK쉴더스루키즈"]
+categories: ["daily-logs"]
 summary: "Numpy & Pandas 기반 로그 적재, 결측값 처리, JSON 변환, 기초 이상 탐지 흐름 학습"
 ---
 
 # 2025.11.04 (Day 7) [Numpy & Pandas 기초 / 데이터 처리 및 EDA]
 
-## 1. 핵심 개념 정리 (Concepts)
+## 1. 핵심 개념 정리(Concepts)
 
 - 핵심1 — **Numpy 배열과 벡터화 연산**: 대량 로그·이벤트 데이터에서 반복문 없이 고속 연산을 수행해 실시간 피처 계산과 통계량 산출에 적합하다.
 - 핵심2 — **Pandas Series / DataFrame 구조**: CSV·JSON·API로 유입되는 다양한 보안 데이터(로그, 스캐너 결과 등)를 컬럼 단위로 정형화해 전처리·분석을 일관되게 수행할 수 있다.
@@ -55,7 +56,7 @@ anomaly_idx = np.where(np.abs(zscore) > 3)[0]
 # 확장 아이디어: 이동 윈도우 기반 통계로 실시간 이상치 스코어 구현
 ```
 
-- **사용 맥락**: 로그 적재 → 전처리 → 결측 보정 → 피처화 → 기초 이상 탐지 흐름에 바로 적용한다.
+- **사용 맥락**: 로그 적재 → 전처리 → 결측 보정 → 피처화 → 기초 이상 탐지 흐름에 바로 적용가능하다.
 - **확장 아이디어**: 위 코드를 함수화(`load_logs()`, `normalize_series()`, `score_anomaly()`)해 ETL 모듈로 만들고 결과를 경보/대시보드로 연동한다.
 
 ---
