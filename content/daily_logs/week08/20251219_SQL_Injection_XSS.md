@@ -370,7 +370,7 @@ url = http://169.254.169.254/latest/meta-data/iam/security-credentials/
 |:---:|:---|:---|:---|
 | **정보 수집** | - 단시간 대량 404 에러<br>- /admin, /backup 등 민감 경로 접근<br>- OPTIONS 메서드 사용 | `192.168.1.100 - [19/Dec/2024:10:23:45] "GET /admin/ HTTP/1.1" 404`<br>`192.168.1.100 - [19/Dec/2024:10:23:46] "GET /backup/ HTTP/1.1" 404` | - Rate Limiting 적용<br>- 스캐너 User-Agent 차단<br>- IP 임시 차단 |
 | **취약점 스캔** | - Nikto, Wikto User-Agent<br>- 비정상 URL 패턴 (../, %00 등)<br>- 대량 파라미터 조합 시도 | `User-Agent: Nikto/2.1.6`<br>`GET /../../../etc/passwd HTTP/1.1` | - WAF 시그니처 업데이트<br>- 비정상 패턴 차단 룰 적용 |
-| **인젝션 시도** | - SQL 키워드 (UNION, SELECT 등)<br>- XSS 페이로드 (<script>, onerror= 등)<br>- 500 에러 급증 | `GET /search?q='+OR+1=1-- HTTP/1.1`<br>`POST /comment data=<script>alert(1)</script>` | - Prepared Statement 강제<br>- 입력 검증 강화<br>- WAF 차단 |
+| **인젝션 시도** | - SQL 키워드 (UNION, SELECT 등)<br>- XSS 페이로드 (<script>&#44; onerror= 등)<br>- 500 에러 급증| `GET /search?q='+OR+1=1-- HTTP/1.1`<br>`POST /comment data=<script>alert(1)</script>` | - Prepared Statement 강제<br>- 입력 검증 강화<br>- WAF 차단 |
 | **권한 상승** | - 파라미터 변조 (id=1 → id=2)<br>- 숨겨진 필드 조작 (role=user → role=admin)<br>- 403 이후 200 응답 | `GET /account?id=5678 (다른 사용자 ID)` | - 세션 기반 권한 검증<br>- 로그 상관 분석<br>- 이상 행위 알림 |
 | **지속성 확보** | - 웹셸 업로드 (.php, .jsp, .aspx)<br>- cron/scheduled task 등록<br>- 백도어 계정 생성 | `POST /upload file=shell.php`<br>`새 계정 생성: admin2 (관리자 그룹)` | - 파일 업로드 제한<br>- 파일 무결성 모니터링<br>- 계정 생성 알림 |
 
