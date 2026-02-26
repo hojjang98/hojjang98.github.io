@@ -219,17 +219,16 @@ SOC 분석가 입장에서는:
 
 이 논문의 핵심은 **4단계 파이프라인**으로 구성된다:
 
-```
-[비정형 로그] 
-    ↓ (1) Log Parsing
-[구조화 로그: 시그니처 + 파라미터]
-    ↓ (2) Log Message Grouping
-[메시지 카운트 벡터]
-    ↓ (3) Invariant Mining
-[불변성 집합]
-    ↓ (4) Anomaly Detection
-[이상 탐지 결과]
-```
+[비정형 로그]  
+    ↓ (1) Log Parsing  
+[구조화 로그: 시그니처 + 파라미터]  
+    ↓ (2) Log Message Grouping  
+[메시지 카운트 벡터]  
+    ↓ (3) Invariant Mining  
+[불변성 집합]  
+    ↓ (4) Anomaly Detection  
+[이상 탐지 결과]  
+
 
 각 단계를 자세히 살펴보자.
 
@@ -996,13 +995,12 @@ Feature vector의 residual value가 threshold 초과
 #### C. SOC 운영 시나리오별 전략
 
 **시나리오 1: 명확한 워크플로우 시스템 (예: ETL 파이프라인)**
-```
-권장: Invariants Mining 단독
-이유:
-- 실행 흐름이 명확 → 불변성 학습 용이
-- 즉시 대응 필요 → 설명 가능성 필수
-- 파라미터 ID 존재 (작업ID, 배치ID 등)
-```
+권장: Invariants Mining 단독  
+이유:  
+- 실행 흐름이 명확 → 불변성 학습 용이  
+- 즉시 대응 필요 → 설명 가능성 필수  
+- 파라미터 ID 존재 (작업ID, 배치ID 등)  
+
 
 **시나리오 2: 복잡한 상호작용 시스템 (예: 마이크로서비스)**
 ```
@@ -1014,10 +1012,9 @@ Feature vector의 residual value가 threshold 초과
 ```
 
 **시나리오 3: 파라미터 ID 없는 시스템 (예: 단순 로그)**
-```
-권장: DeepLog 또는 PCA
-이유: 파라미터 그룹핑 불가 → Invariants 적용 불가
-```
+권장: DeepLog 또는 PCA  
+이유: 파라미터 그룹핑 불가 → Invariants 적용 불가  
+
 
 ---
 
@@ -1036,12 +1033,10 @@ Feature vector의 residual value가 threshold 초과
 - **실무 관점**이 명확히 반영됨
 
 **3. 설명 가능성의 실전 가치**
-```
-PCA 결과: "Feature 3이 3.7σ 벗어남"
-Invariants: "JVM 시작 100개, 종료 95개 → 5개 프로세스 좀비"
+PCA 결과: "Feature 3이 3.7σ 벗어남"  
+Invariants: "JVM 시작 100개, 종료 95개 → 5개 프로세스 좀비"  
+→ 후자가 SOC 티켓에 바로 쓸 수 있는 정보  
 
-→ 후자가 SOC 티켓에 바로 쓸 수 있는 정보
-```
 
 **4. 2010년 논문이 2024년에도 유효한 이유**
 - XAI(eXplainable AI) 트렌드가 2015년 이후 본격화
@@ -1107,17 +1102,15 @@ Invariants: "JVM 시작 100개, 종료 95개 → 5개 프로세스 좀비"
 **파라미터 의존성의 실무적 의미:**
 
 적용 가능한 시스템:
-```
-좋은 예:
-"Request ID: 12345 - Processing started"
-"Request ID: 12345 - Processing completed"
-→ Request ID로 그룹핑 가능
+좋은 예:  
+"Request ID: 12345 - Processing started"  
+"Request ID: 12345 - Processing completed"  
+→ Request ID로 그룹핑 가능  
+나쁜 예:  
+"ERROR: Connection timeout"  
+"ERROR: Null pointer exception"  
+→ 파라미터 없음, 그룹핑 불가  
 
-나쁜 예:
-"ERROR: Connection timeout"
-"ERROR: Null pointer exception"
-→ 파라미터 없음, 그룹핑 불가
-```
 
 **선형 관계 제약의 예시:**
 
@@ -1290,17 +1283,14 @@ Task A' 완료 → Task A 강제 종료
 | **해석 가능성** | 중간 | 높음 |
 
 **FSA의 치명적 약점:**
-```
-인터리빙 시나리오:
-Task 1: A1 → B1 → C1
-Task 2: A2 → B2 → C2
+인터리빙 시나리오:  
+Task 1: A1 → B1 → C1  
+Task 2: A2 → B2 → C2  
+실제 로그: A1 → A2 → B1 → B2 → C1 → C2  
+FSA: 상태 전환 추적 불가 (혼란)  
+Invariants: 개수만 확인 (문제없음)  
+  c(A) = c(B) = c(C) = 2 ✓  
 
-실제 로그: A1 → A2 → B1 → B2 → C1 → C2
-
-FSA: 상태 전환 추적 불가 (혼란)
-Invariants: 개수만 확인 (문제없음)
-  c(A) = c(B) = c(C) = 2 ✓
-```
 
 #### B. Daikon과의 차이
 
@@ -1637,20 +1627,17 @@ Day 5: 실무 적용
 | **프로비저닝 자동화** | 리소스 ID 추적으로 생성-삭제 균형 확인 | 리소스 누수 방지 |
 
 **실전 예시: ETL 파이프라인**
-```
-학습된 불변성:
-1. count("Extract started") = count("Load completed")
-2. count("Transform error") + count("Load completed") = count("Extract started")
+학습된 불변성:  
+1. count("Extract started") = count("Load completed")  
+2. count("Transform error") + count("Load completed") = count("Extract started")  
+탐지 결과:  
+Extract: 1000건  
+Transform error: 50건  
+Load completed: 945건  
+→ 불변성 2 위반: 1000 ≠ 50 + 945  
+→ 5건의 데이터가 에러도 아닌데 사라짐  
+→ 즉시 조사 필요  
 
-탐지 결과:
-Extract: 1000건
-Transform error: 50건
-Load completed: 945건
-
-→ 불변성 2 위반: 1000 ≠ 50 + 945
-→ 5건의 데이터가 에러도 아닌데 사라짐
-→ 즉시 조사 필요
-```
 
 #### 2. 1차 필터로 활용
 

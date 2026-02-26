@@ -81,17 +81,16 @@ APT는 현대 사이버 보안의 가장 심각한 위협이다. 일반 공격�
 
 ### 3. 이론적 기반: Provenance-Based Anomaly Detection
 
-```
-[Audit Logs] → [Provenance Graph Construction]
-                        ↓
-            [Streaming Graph Histogram]
-                        ↓
-            [Graph Sketching (HistoSketch)]
-                        ↓
-            [Evolutionary Clustering Model]
-                        ↓
-            [Anomaly Detection via State Transition]
-```
+[Audit Logs] → [Provenance Graph Construction]  
+                        ↓  
+            [Streaming Graph Histogram]  
+                        ↓  
+            [Graph Sketching (HistoSketch)]  
+                        ↓  
+            [Evolutionary Clustering Model]  
+                        ↓  
+            [Anomaly Detection via State Transition]  
+
 
 **핵심 아이디어:**
 
@@ -170,28 +169,26 @@ Progression: Log sequence → Network workflow → System provenance graph
 
 ### 1. 연구 모델 개요
 
-```
-[Training Phase]
-Streaming Provenance Graph
-    ↓
-[1] Incremental Histogram Construction (R-hop exploration)
-    ↓
-[2] Periodic Sketching (gradually forgetting with λ)
-    ↓
-[3] Sketch Collection over time: S(t₁), S(t₂), ..., S(tₙ)
-    ↓
-[4] Evolutionary Clustering: Group sketches into clusters
-    ↓
-[5] State Transition Model: Track cluster sequences
+[Training Phase]  
+Streaming Provenance Graph  
+    ↓  
+[1] Incremental Histogram Construction (R-hop exploration)  
+    ↓  
+[2] Periodic Sketching (gradually forgetting with λ)  
+    ↓  
+[3] Sketch Collection over time: S(t₁), S(t₂), ..., S(tₙ)  
+    ↓  
+[4] Evolutionary Clustering: Group sketches into clusters  
+    ↓  
+[5] State Transition Model: Track cluster sequences  
+[Detection Phase]  
+New Streaming Graph → Histogram → Sketch → S(t_new)  
+    ↓  
+Check: (1) Does S(t_new) fit any cluster?  
+       (2) Is state transition valid?  
+    ↓  
+[Anomaly if either fails]  
 
-[Detection Phase]
-New Streaming Graph → Histogram → Sketch → S(t_new)
-    ↓
-Check: (1) Does S(t_new) fit any cluster?
-       (2) Is state transition valid?
-    ↓
-[Anomaly if either fails]
-```
 
 **설계 철학:**
 
@@ -370,19 +367,18 @@ Graph의 local structure를 label로 인코딩. 각 label은 특정 r-hop neighb
 
 **SOC Workflow 통합 전략:**
 
-```
-[1] Endpoint: CamFlow/Auditd → Provenance stream
-       ↓
-[2] UNICORN Backend: Real-time graph sketching & anomaly detection
-       ↓
-[3] Alert Generation: Anomalous sketch → High-risk process/file 추출
-       ↓
-[4] SIEM Integration: Enrich alert with threat intelligence
-       ↓
-[5] SOC Analyst: Graph visualization으로 attack chain 확인
-       ↓
-[6] Response: Kill process, isolate host, forensic collection
-```
+[1] Endpoint: CamFlow/Auditd → Provenance stream  
+       ↓  
+[2] UNICORN Backend: Real-time graph sketching & anomaly detection  
+       ↓  
+[3] Alert Generation: Anomalous sketch → High-risk process/file 추출  
+       ↓  
+[4] SIEM Integration: Enrich alert with threat intelligence  
+       ↓  
+[5] SOC Analyst: Graph visualization으로 attack chain 확인  
+       ↓  
+[6] Response: Kill process, isolate host, forensic collection  
+
 
 UNICORN을 SIEM의 advanced detection engine으로 통합하면:
 - L1: SIEM rule로 1차 필터링
@@ -532,11 +528,10 @@ R-hop exploration이 중요한 이유:
 - **Disambiguation**: 동일한 local pattern이라도 wider context로 benign vs attack 구분
 
 예시:
-```
-R=1: process A → read file X (정상? 공격?)
-R=3: process A → read file X ← written by process B ← spawned by suspicious downloader
-→ 명확히 attack chain
-```
+R=1: process A → read file X (정상? 공격?)  
+R=3: process A → read file X ← written by process B ← spawned by suspicious downloader  
+→ 명확히 attack chain  
+
 
 **실무 적용:**
 
@@ -691,15 +686,14 @@ UNICORN은 provenance graph에 의존하는데, 일부 공격은 흔적이 적�
 
 #### B. 연구 트렌드의 변화
 
-```
-[2015-2017] Rule-based provenance (Holmes, Poirot)
-    ↓
-[2017-2019] ML-based anomaly (StreamSpot)
-    ↓
-[2020] UNICORN (Graph sketching + Evolutionary modeling)
-    ↓
-[2021-현재] Advanced provenance ML (Deep learning, GNN, Transformer)
-```
+[2015-2017] Rule-based provenance (Holmes, Poirot)  
+    ↓  
+[2017-2019] ML-based anomaly (StreamSpot)  
+    ↓  
+[2020] UNICORN (Graph sketching + Evolutionary modeling)  
+    ↓  
+[2021-현재] Advanced provenance ML (Deep learning, GNN, Transformer)  
+
 
 #### C. 주요 후속 연구
 
@@ -837,36 +831,30 @@ Lateral Movement (P2): [AUTO] Alert + Log | [MANUAL] Map path + Contain + Revoke
 Supply Chain (P2): [AUTO] Suspend + Quarantine | [MANUAL] Reverse engineer + Notify vendor
 
 **티켓 예시:**
-```
-🚨 UNICORN APT ALERT
-제목: [P1-CRITICAL] Credential Dumping - DC01
-심각도: Critical
-담당자: L3-Senior-Team
-SLA: <5 minutes
+🚨 UNICORN APT ALERT  
+제목: [P1-CRITICAL] Credential Dumping - DC01  
+심각도: Critical  
+담당자: L3-Senior-Team  
+SLA: <5 minutes  
+━━━ 탐지 정보 ━━━  
+Method: UNICORN Evolutionary Model  
+Sketch Distance: 2.34σ  
+State Transition: INVALID  
+━━━ 공격 행위 ━━━  
+Host: DC01 (Domain Controller)  
+Process: powershell.exe → lsass.exe memory → C:\temp\c.txt → 192.0.2.123  
+━━━ MITRE ATT&CK ━━━  
+• T1003.001 - LSASS Memory  
+• T1059.001 - PowerShell  
+━━━ 자동 대응 (완료) ━━━  
+✅ Network blocked  
+✅ Host isolated  
+✅ Memory captured  
+━━━ 권장 조치 ━━━  
+1. [URGENT] Review memory dump  
+2. [URGENT] Reset domain passwords  
+3. [URGENT] Hunt similar activity  
 
-━━━ 탐지 정보 ━━━
-Method: UNICORN Evolutionary Model
-Sketch Distance: 2.34σ
-State Transition: INVALID
-
-━━━ 공격 행위 ━━━
-Host: DC01 (Domain Controller)
-Process: powershell.exe → lsass.exe memory → C:\temp\c.txt → 192.0.2.123
-
-━━━ MITRE ATT&CK ━━━
-• T1003.001 - LSASS Memory
-• T1059.001 - PowerShell
-
-━━━ 자동 대응 (완료) ━━━
-✅ Network blocked
-✅ Host isolated
-✅ Memory captured
-
-━━━ 권장 조치 ━━━
-1. [URGENT] Review memory dump
-2. [URGENT] Reset domain passwords
-3. [URGENT] Hunt similar activity
-```
 
 #### C. 분석 역량 강화
 

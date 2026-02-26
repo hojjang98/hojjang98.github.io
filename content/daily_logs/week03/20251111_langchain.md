@@ -61,13 +61,9 @@ qa = RetrievalQA.from_chain_type(
 query = "파이썬에서 리스트와 튜플의 차이는?"
 answer = qa.run(query)
 print(answer)
-```
-
-### C. Streamlit UI 구현
-
-* Streamlit을 통해 질문 입력 → RAG 검색 → LLM 응답 확인을 직관적인 대화형 인터페이스로 전환한다.
-
-```python
+### C. Streamlit UI 구현  
+* Streamlit을 통해 질문 입력 → RAG 검색 → LLM 응답 확인을 직관적인 대화형 인터페이스로 전환한다.  
+python
 import streamlit as st
 
 st.title('LangChain + RAG 기반 OpenAI Dashboard')

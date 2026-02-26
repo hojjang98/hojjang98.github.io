@@ -32,223 +32,222 @@ summary: "VMware로 Web(Nginx) - WAS(Tomcat) - DB(MariaDB) 3계층 아키텍처 
 
 ### 아키텍처 구성도
 
-```
-[사용자/클라이언트]
-        |
-        | HTTP/HTTPS (Port 80/443)
-        ↓
-+------------------+
-|   Web Server     |  ← VM1: Ubuntu 24.04
-|   (Nginx)        |     IP: 192.168.186.128
-|   Port: 80       |
-+------------------+
-        |
-        | Reverse Proxy (Port 8080)
-        ↓
-+------------------+
-|   WAS Server     |  ← VM2: Ubuntu 24.04
-|   (Tomcat)       |     IP: 192.168.186.129
-|   Port: 8080     |
-+------------------+
-        |
-        | JDBC Connection (Port 3306)
-        ↓
-+------------------+
-|   DB Server      |  ← VM3: Ubuntu 24.04
-|  (MariaDB)       |     IP: 192.168.186.130
-|   Port: 3306     |
-+------------------+
+[사용자/클라이언트]  
+        |  
+        | HTTP/HTTPS (Port 80/443)  
+        ↓  
++------------------+  
+|   Web Server     |  ← VM1: Ubuntu 24.04  
+|   (Nginx)        |     IP: 192.168.186.128  
+|   Port: 80       |  
++------------------+  
+        |  
+        | Reverse Proxy (Port 8080)  
+        ↓  
++------------------+  
+|   WAS Server     |  ← VM2: Ubuntu 24.04  
+|   (Tomcat)       |     IP: 192.168.186.129  
+|   Port: 8080     |  
++------------------+  
+        |  
+        | JDBC Connection (Port 3306)  
+        ↓  
++------------------+  
+|   DB Server      |  ← VM3: Ubuntu 24.04  
+|  (MariaDB)       |     IP: 192.168.186.130  
+|   Port: 3306     |  
++------------------+  
+  
+보안 규칙:  
+- 외부 → Web: 80, 443 허용  
+- Web → WAS: 8080 허용  
+- WAS → DB: 3306 허용  
+- 관리자 → All: SSH 22 허용 (특정 IP만)  
+- 기타 모든 포트: 차단  
+```  
+  
+### (A) VMware 환경 준비 및 초기 설정  
+  
+**실습 0: VMware 및 Ubuntu 설치**  
+  
+```bash  
+[1단계] VMware Workstation 설치  
+1. VMware Workstation Pro/Player 다운로드 및 설치  
+2. 라이선스 입력 (Pro) 또는 무료 버전 선택 (Player)  
+  
+[2단계] Ubuntu 24.04 VM 생성 (3대 반복)  
+VMware → "Create a New Virtual Machine"  
+  - Typical 선택  
+  - ISO 이미지: Ubuntu 24.04 LTS Desktop ISO 선택  
+  - Full name: webserver / wasserver / dbserver  
+  - Location: 적절한 경로 지정  
+  - Disk size: 20GB (기본값)  
+  - Memory: 4GB (4096 MB)  
+  - Processors: 2 cores  
+  - Network Adapter: NAT 또는 Bridged  
+  
+[3단계] Ubuntu 기본 설치  
+1. 언어: English 선택 (한글은 콘솔에서 깨짐)  
+2. Keyboard: English (US)  
+3. Installation type: Normal installation  
+4. 사용자 계정:  
+   - Your name: student (예시)  
+   - Computer name: webserver / wasserver / dbserver  
+   - Username: student  
+   - Password: 본인 설정 (예: P@ssw0rd)  
+5. 설치 완료 후 재부팅  
+  
+[4단계] 초기 시스템 설정 (3대 모두)  
+# 콘솔 로그인 후  
+sudo su  # root 권한 전환  
+  
+# 필수 패키지 설치  
+apt-get update  
+apt-get install -y net-tools openssh-server vim curl wget  
+  
+# 시스템 전체 업그레이드  
+apt-get upgrade -y  
+  
+# IP 주소 확인  
+ifconfig  
+# 또는  
+ip addr show  
+  
+# 예시 결과:  
+# webserver: 192.168.186.128  
+# wasserver: 192.168.186.129  
+# dbserver:  192.168.186.130  
+  
+[5단계] GUI → CLI 모드 전환 (선택 사항, 리소스 절약)  
+sudo systemctl set-default multi-user.target  
+reboot  
+  
+# 부팅 후 CLI 화면으로 로그인  
+# 다시 GUI로 돌아가려면:  
+# sudo systemctl set-default graphical.target  
+# reboot  
+  
+[6단계] SSH 접속 테스트 (PuTTY 또는 터미널)  
+# Windows: PuTTY 사용  
+# Linux/Mac: 터미널 사용  
+ssh student@192.168.186.128  
+  
+# 정상 접속 확인 후 이후 작업은 SSH로 진행  
+```  
+  
+### (B) Tier 1: Web Server (Nginx) 구성  
+  
+**실습 1: Nginx 웹 서버 설치 및 설정**  
+  
+```bash  
+# ========================================  
+# VM1 (webserver) - IP: 192.168.186.128  
+# ========================================  
+  
+[1단계] Nginx 설치  
+sudo su  # root 권한 전환  
+apt-get install nginx -y  
+  
+[2단계] 설치 확인  
+# Nginx 프로세스 확인  
+netstat -antp | grep nginx  
+# 출력 예:  
+# tcp  0  0 0.0.0.0:80  0.0.0.0:*  LISTEN  1234/nginx: master  
+  
+# 또는 ss 명령어 사용  
+ss -tlnp | grep nginx  
+  
+# Nginx 버전 확인  
+nginx -v  
+# 출력 예: nginx version: nginx/1.24.0 (Ubuntu)  
+  
+[3단계] 자동 실행 설정  
+# 부팅 시 자동 시작 활성화  
+systemctl enable nginx  
+  
+# 자동 시작 비활성화 (필요 시)  
+# systemctl disable nginx  
+  
+# 현재 자동 실행 상태 확인  
+systemctl is-enabled nginx  
+# 출력: enabled  
+  
+[4단계] 서비스 관리  
+# 서비스 시작  
+systemctl start nginx  
+  
+# 서비스 중지  
+systemctl stop nginx  
+  
+# 서비스 재시작 (설정 변경 후 반영)  
+systemctl restart nginx  
+  
+# 서비스 상태 확인  
+systemctl status nginx  
+# 출력에서 "active (running)" 확인  
+  
+# 설정 파일 문법 검사  
+nginx -t  
+# 출력: nginx: configuration file /etc/nginx/nginx.conf syntax is ok  
+  
+[5단계] 기본 웹 페이지 수정  
+# 기본 index.html 삭제  
+rm -f /var/www/html/index.nginx-debian.html  
+  
+# 새로운 index.html 생성  
+vi /var/www/html/index.html  
+  
+# 아래 내용 입력 (vi 에디터: i 눌러 입력 모드, ESC 후 :wq로 저장)  
+<html>  
+   <head>  
+      <title>My Web Server</title>  
+   </head>  
+   <body>  
+      <h1>Hello from Web Server!</h1>  
+      <p>This is the Nginx web server (Tier 1)</p>  
+      <p>Current time: <script>document.write(new Date().toLocaleString());</script></p>  
+   </body>  
+</html>  
+  
+[6단계] 웹 브라우저에서 접속 테스트  
+# 호스트 PC의 브라우저에서 접속  
+http://192.168.186.128  
+  
+# 또는 curl 명령어로 테스트  
+curl http://192.168.186.128  
+  
+# 정상 응답: 위에서 작성한 HTML 내용 출력  
+  
+[7단계] Nginx 로그 확인  
+# 접근 로그 (모든 HTTP 요청 기록)  
+tail -f /var/log/nginx/access.log  
+  
+# 에러 로그 (오류 발생 시 기록)  
+tail -f /var/log/nginx/error.log  
+  
+# 로그 형식 예:  
+# 192.168.186.1 - - [17/Dec/2024:10:30:45 +0900] "GET / HTTP/1.1" 200 ...  
+```  
+  
+**Nginx 주요 설정 파일 구조**  
+  
+```bash  
+/etc/nginx/  
+├── nginx.conf              # 메인 설정 파일  
+├── sites-available/        # 사이트 설정 (가용)  
+│   └── default             # 기본 사이트 설정  
+├── sites-enabled/          # 사이트 설정 (활성화, 심볼릭 링크)  
+│   └── default -> ../sites-available/default  
+├── conf.d/                 # 추가 설정 파일  
+└── modules-enabled/        # 활성화된 모듈  
+  
+/var/www/html/              # 웹 문서 루트 디렉토리  
+└── index.html              # 기본 페이지  
+  
+/var/log/nginx/             # 로그 디렉토리  
+├── access.log              # 접근 로그  
+└── error.log               # 에러 로그  
 
-보안 규칙:
-- 외부 → Web: 80, 443 허용
-- Web → WAS: 8080 허용
-- WAS → DB: 3306 허용
-- 관리자 → All: SSH 22 허용 (특정 IP만)
-- 기타 모든 포트: 차단
-```
-
-### (A) VMware 환경 준비 및 초기 설정
-
-**실습 0: VMware 및 Ubuntu 설치**
-
-```bash
-[1단계] VMware Workstation 설치
-1. VMware Workstation Pro/Player 다운로드 및 설치
-2. 라이선스 입력 (Pro) 또는 무료 버전 선택 (Player)
-
-[2단계] Ubuntu 24.04 VM 생성 (3대 반복)
-VMware → "Create a New Virtual Machine"
-  - Typical 선택
-  - ISO 이미지: Ubuntu 24.04 LTS Desktop ISO 선택
-  - Full name: webserver / wasserver / dbserver
-  - Location: 적절한 경로 지정
-  - Disk size: 20GB (기본값)
-  - Memory: 4GB (4096 MB)
-  - Processors: 2 cores
-  - Network Adapter: NAT 또는 Bridged
-
-[3단계] Ubuntu 기본 설치
-1. 언어: English 선택 (한글은 콘솔에서 깨짐)
-2. Keyboard: English (US)
-3. Installation type: Normal installation
-4. 사용자 계정:
-   - Your name: student (예시)
-   - Computer name: webserver / wasserver / dbserver
-   - Username: student
-   - Password: 본인 설정 (예: P@ssw0rd)
-5. 설치 완료 후 재부팅
-
-[4단계] 초기 시스템 설정 (3대 모두)
-# 콘솔 로그인 후
-sudo su  # root 권한 전환
-
-# 필수 패키지 설치
-apt-get update
-apt-get install -y net-tools openssh-server vim curl wget
-
-# 시스템 전체 업그레이드
-apt-get upgrade -y
-
-# IP 주소 확인
-ifconfig
-# 또는
-ip addr show
-
-# 예시 결과:
-# webserver: 192.168.186.128
-# wasserver: 192.168.186.129
-# dbserver:  192.168.186.130
-
-[5단계] GUI → CLI 모드 전환 (선택 사항, 리소스 절약)
-sudo systemctl set-default multi-user.target
-reboot
-
-# 부팅 후 CLI 화면으로 로그인
-# 다시 GUI로 돌아가려면:
-# sudo systemctl set-default graphical.target
-# reboot
-
-[6단계] SSH 접속 테스트 (PuTTY 또는 터미널)
-# Windows: PuTTY 사용
-# Linux/Mac: 터미널 사용
-ssh student@192.168.186.128
-
-# 정상 접속 확인 후 이후 작업은 SSH로 진행
-```
-
-### (B) Tier 1: Web Server (Nginx) 구성
-
-**실습 1: Nginx 웹 서버 설치 및 설정**
-
-```bash
-# ========================================
-# VM1 (webserver) - IP: 192.168.186.128
-# ========================================
-
-[1단계] Nginx 설치
-sudo su  # root 권한 전환
-apt-get install nginx -y
-
-[2단계] 설치 확인
-# Nginx 프로세스 확인
-netstat -antp | grep nginx
-# 출력 예:
-# tcp  0  0 0.0.0.0:80  0.0.0.0:*  LISTEN  1234/nginx: master
-
-# 또는 ss 명령어 사용
-ss -tlnp | grep nginx
-
-# Nginx 버전 확인
-nginx -v
-# 출력 예: nginx version: nginx/1.24.0 (Ubuntu)
-
-[3단계] 자동 실행 설정
-# 부팅 시 자동 시작 활성화
-systemctl enable nginx
-
-# 자동 시작 비활성화 (필요 시)
-# systemctl disable nginx
-
-# 현재 자동 실행 상태 확인
-systemctl is-enabled nginx
-# 출력: enabled
-
-[4단계] 서비스 관리
-# 서비스 시작
-systemctl start nginx
-
-# 서비스 중지
-systemctl stop nginx
-
-# 서비스 재시작 (설정 변경 후 반영)
-systemctl restart nginx
-
-# 서비스 상태 확인
-systemctl status nginx
-# 출력에서 "active (running)" 확인
-
-# 설정 파일 문법 검사
-nginx -t
-# 출력: nginx: configuration file /etc/nginx/nginx.conf syntax is ok
-
-[5단계] 기본 웹 페이지 수정
-# 기본 index.html 삭제
-rm -f /var/www/html/index.nginx-debian.html
-
-# 새로운 index.html 생성
-vi /var/www/html/index.html
-
-# 아래 내용 입력 (vi 에디터: i 눌러 입력 모드, ESC 후 :wq로 저장)
-<html>
-   <head>
-      <title>My Web Server</title>
-   </head>
-   <body>
-      <h1>Hello from Web Server!</h1>
-      <p>This is the Nginx web server (Tier 1)</p>
-      <p>Current time: <script>document.write(new Date().toLocaleString());</script></p>
-   </body>
-</html>
-
-[6단계] 웹 브라우저에서 접속 테스트
-# 호스트 PC의 브라우저에서 접속
-http://192.168.186.128
-
-# 또는 curl 명령어로 테스트
-curl http://192.168.186.128
-
-# 정상 응답: 위에서 작성한 HTML 내용 출력
-
-[7단계] Nginx 로그 확인
-# 접근 로그 (모든 HTTP 요청 기록)
-tail -f /var/log/nginx/access.log
-
-# 에러 로그 (오류 발생 시 기록)
-tail -f /var/log/nginx/error.log
-
-# 로그 형식 예:
-# 192.168.186.1 - - [17/Dec/2024:10:30:45 +0900] "GET / HTTP/1.1" 200 ...
-```
-
-**Nginx 주요 설정 파일 구조**
-
-```bash
-/etc/nginx/
-├── nginx.conf              # 메인 설정 파일
-├── sites-available/        # 사이트 설정 (가용)
-│   └── default             # 기본 사이트 설정
-├── sites-enabled/          # 사이트 설정 (활성화, 심볼릭 링크)
-│   └── default -> ../sites-available/default
-├── conf.d/                 # 추가 설정 파일
-└── modules-enabled/        # 활성화된 모듈
-
-/var/www/html/              # 웹 문서 루트 디렉토리
-└── index.html              # 기본 페이지
-
-/var/log/nginx/             # 로그 디렉토리
-├── access.log              # 접근 로그
-└── error.log               # 에러 로그
-```
 
 ### (C) Tier 2: WAS Server (Tomcat) 구성
 
@@ -403,13 +402,9 @@ tail -f /opt/tomcat/logs/localhost_access_log.*.txt
 
 # 애플리케이션 로그
 tail -f /opt/tomcat/logs/localhost.*.log
-```
-
-### (D) Nginx → Tomcat 리버스 프록시 설정
-
-**실습 3: Nginx를 Tomcat의 리버스 프록시로 구성**
-
-```bash
+### (D) Nginx → Tomcat 리버스 프록시 설정  
+**실습 3: Nginx를 Tomcat의 리버스 프록시로 구성**  
+bash
 # ========================================
 # VM1 (webserver) - IP: 192.168.186.128
 # ========================================
@@ -1059,68 +1054,58 @@ ESC
 /pattern    # 패턴 검색
 :1,10d      # 1~10줄 삭제
 :%s/old/new/g  # 전체 치환
-```
-
-### 포트 및 프로토콜 참조표
-
-| 서비스 | 포트 | 프로토콜 | 용도 |
-|:---:|:---:|:---:|:---|
-| HTTP | 80 | TCP | 웹 서버 (암호화 없음) |
-| HTTPS | 443 | TCP | 웹 서버 (SSL/TLS 암호화) |
-| SSH | 22 | TCP | 원격 접속 |
-| Tomcat | 8080 | TCP | WAS (HTTP Alternative) |
-| Tomcat AJP | 8009 | TCP | Nginx ↔ Tomcat 연동 (비활성화 권장) |
-| MySQL/MariaDB | 3306 | TCP | 데이터베이스 |
-| PostgreSQL | 5432 | TCP | 데이터베이스 |
-| MongoDB | 27017 | TCP | NoSQL 데이터베이스 |
-| Redis | 6379 | TCP | 인메모리 DB/캐시 |
-| DNS | 53 | UDP/TCP | 도메인 이름 해석 |
-| FTP | 21 | TCP | 파일 전송 (비보안, 사용 지양) |
-| SFTP | 22 | TCP | 안전한 파일 전송 (SSH 기반) |
-
-### 보안 체크리스트
-
-**Nginx**
-- [ ] `server_tokens off;` (버전 정보 숨김)
-- [ ] SSL/TLS 설정 (HTTPS 적용)
-- [ ] Rate Limiting 설정
-- [ ] IP 화이트리스트 적용 (필요 시)
-- [ ] 보안 헤더 추가 (X-Frame-Options, CSP 등)
-- [ ] Access Log 활성화 및 정기 분석
-- [ ] 불필요한 HTTP 메서드 차단 (TRACE, OPTIONS 등)
-
-**Tomcat**
-- [ ] Manager 앱 기본 계정 변경 또는 삭제
-- [ ] 불필요한 예제 앱 삭제 (examples, docs, host-manager)
-- [ ] AJP 커넥터 비활성화 (Ghostcat 취약점)
-- [ ] 에러 페이지 커스터마이징 (상세 정보 숨김)
-- [ ] HTTPS Connector 설정 (필요 시)
-- [ ] Access Log 활성화
-- [ ] 최신 버전 유지 (정기 패치)
-
-**MariaDB**
-- [ ] Root 원격 접속 차단 (localhost만 허용)
-- [ ] 애플리케이션별 전용 계정 생성
-- [ ] 최소 권한 부여 (필요한 DB/테이블만)
-- [ ] `bind-address`를 특정 IP로 제한
-- [ ] 강력한 비밀번호 정책 적용
-- [ ] SSL/TLS 연결 설정
-- [ ] 정기 백업 자동화
-- [ ] Slow Query Log 활성화
-
-**OS/네트워크**
-- [ ] 방화벽 활성화 (ufw/iptables)
-- [ ] 필요한 포트만 개방
-- [ ] SSH Root 로그인 금지
-- [ ] SSH 키 인증 사용
-- [ ] Fail2ban 설치 및 설정
-- [ ] 불필요한 서비스 비활성화
-- [ ] 정기 시스템 업데이트
-
-### 트러블슈팅 가이드
-
-**Nginx → Tomcat 프록시 실패**
-```bash
+### 포트 및 프로토콜 참조표  
+| 서비스 | 포트 | 프로토콜 | 용도 |  
+|:---:|:---:|:---:|:---|  
+| HTTP | 80 | TCP | 웹 서버 (암호화 없음) |  
+| HTTPS | 443 | TCP | 웹 서버 (SSL/TLS 암호화) |  
+| SSH | 22 | TCP | 원격 접속 |  
+| Tomcat | 8080 | TCP | WAS (HTTP Alternative) |  
+| Tomcat AJP | 8009 | TCP | Nginx ↔ Tomcat 연동 (비활성화 권장) |  
+| MySQL/MariaDB | 3306 | TCP | 데이터베이스 |  
+| PostgreSQL | 5432 | TCP | 데이터베이스 |  
+| MongoDB | 27017 | TCP | NoSQL 데이터베이스 |  
+| Redis | 6379 | TCP | 인메모리 DB/캐시 |  
+| DNS | 53 | UDP/TCP | 도메인 이름 해석 |  
+| FTP | 21 | TCP | 파일 전송 (비보안, 사용 지양) |  
+| SFTP | 22 | TCP | 안전한 파일 전송 (SSH 기반) |  
+### 보안 체크리스트  
+**Nginx**  
+- [ ] `server_tokens off;` (버전 정보 숨김)  
+- [ ] SSL/TLS 설정 (HTTPS 적용)  
+- [ ] Rate Limiting 설정  
+- [ ] IP 화이트리스트 적용 (필요 시)  
+- [ ] 보안 헤더 추가 (X-Frame-Options, CSP 등)  
+- [ ] Access Log 활성화 및 정기 분석  
+- [ ] 불필요한 HTTP 메서드 차단 (TRACE, OPTIONS 등)  
+**Tomcat**  
+- [ ] Manager 앱 기본 계정 변경 또는 삭제  
+- [ ] 불필요한 예제 앱 삭제 (examples, docs, host-manager)  
+- [ ] AJP 커넥터 비활성화 (Ghostcat 취약점)  
+- [ ] 에러 페이지 커스터마이징 (상세 정보 숨김)  
+- [ ] HTTPS Connector 설정 (필요 시)  
+- [ ] Access Log 활성화  
+- [ ] 최신 버전 유지 (정기 패치)  
+**MariaDB**  
+- [ ] Root 원격 접속 차단 (localhost만 허용)  
+- [ ] 애플리케이션별 전용 계정 생성  
+- [ ] 최소 권한 부여 (필요한 DB/테이블만)  
+- [ ] `bind-address`를 특정 IP로 제한  
+- [ ] 강력한 비밀번호 정책 적용  
+- [ ] SSL/TLS 연결 설정  
+- [ ] 정기 백업 자동화  
+- [ ] Slow Query Log 활성화  
+**OS/네트워크**  
+- [ ] 방화벽 활성화 (ufw/iptables)  
+- [ ] 필요한 포트만 개방  
+- [ ] SSH Root 로그인 금지  
+- [ ] SSH 키 인증 사용  
+- [ ] Fail2ban 설치 및 설정  
+- [ ] 불필요한 서비스 비활성화  
+- [ ] 정기 시스템 업데이트  
+### 트러블슈팅 가이드  
+**Nginx → Tomcat 프록시 실패**  
+bash
 # 1. Tomcat이 실행 중인지 확인
 systemctl status tomcat
 netstat -antp | grep 8080

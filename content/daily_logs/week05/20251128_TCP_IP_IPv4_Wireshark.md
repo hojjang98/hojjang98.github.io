@@ -133,16 +133,12 @@ Internet Protocol Version 4
     Header Checksum: 0xb1e8
     Source Address: 192.168.1.100
     Destination Address: 192.168.1.200
-```
+**주요 필드 분석:**  
+- **TTL (Time to Live)**: 64 → 일반적으로 Linux/Unix는 64, Windows는 128로 설정. 비정상적으로 낮은 TTL 값은 루프나 변조를 의심할 수 있습니다.  
+- **Flags - Don't Fragment**: 설정 시 패킷이 MTU보다 크면 ICMP "Fragmentation Needed" 메시지를 받습니다. **Path MTU Discovery**에 사용됩니다.  
+- **Protocol**: 6 = TCP, 17 = UDP, 1 = ICMP. 상위 계층 프로토콜을 식별합니다.  
+**비정상 패킷 탐지 예시:**  
 
-**주요 필드 분석:**
-- **TTL (Time to Live)**: 64 → 일반적으로 Linux/Unix는 64, Windows는 128로 설정. 비정상적으로 낮은 TTL 값은 루프나 변조를 의심할 수 있습니다.
-- **Flags - Don't Fragment**: 설정 시 패킷이 MTU보다 크면 ICMP "Fragmentation Needed" 메시지를 받습니다. **Path MTU Discovery**에 사용됩니다.
-- **Protocol**: 6 = TCP, 17 = UDP, 1 = ICMP. 상위 계층 프로토콜을 식별합니다.
-
-**비정상 패킷 탐지 예시:**
-
-```
 # SYN Flood 공격 탐지
 - 대량의 SYN 패킷이 다양한 출발지 IP에서 발생
 - SYN-ACK에 대한 ACK 응답이 없음
@@ -156,38 +152,27 @@ Internet Protocol Version 4
 - 짧은 시간에 동일 출발지에서 다양한 포트로 연결 시도
 - 대량의 RST 패킷 (포트가 닫혀있음)
 - Wireshark 필터: tcp.flags.reset == 1
-```
+---  
+## 3. 실무/보안 관점 분석 (Insight & Scenario Mapping)  
+| 분야 | 적용 시나리오 |  
+|:---:|:---|  
+| **SOC / 관제** | **실시간 트래픽 모니터링**: IDS/IPS에서 Wireshark와 유사한 패킷 분석 엔진(Suricata, Snort)을 사용하여 비정상 패턴을 탐지합니다. **베이스라인 트래픽**을 설정하고, 통계적 이상(급증하는 SYN 패킷, 비정상 TTL, 알려지지 않은 프로토콜)을 자동 알림합니다. |  
+| **CERT / 사고 대응** | **포렌식 패킷 분석**: 침해 사고 시 네트워크 탭(SPAN/Mirror Port)이나 방화벽에서 수집한 PCAP 파일을 Wireshark로 분석합니다. **공격 타임라인 재구성**: 초기 침투 패킷 식별 → C&C 통신 추적 → 데이터 유출 탐지. DNS 쿼리 분석(`dns.qry.name`)으로 DGA(Domain Generation Algorithm) 기반 멀웨어 탐지. |  
+| **네트워크 운영** | **성능 최적화 및 문제 해결**: `tcp.analysis.retransmission` 필터로 재전송 패킷을 찾아 네트워크 품질 문제를 식별합니다. **서브넷 설계**: 부서별/보안 등급별로 서브넷을 분리하여 VLAN과 결합, 방화벽 규칙으로 **Micro-Segmentation** 구현. (DMZ, Internal, Management 서브넷 분리로 측면 이동 차단) |  
+---  
+## 4. 개인 인사이트 및 다음 단계 (Reflection & Next Steps)  
+* **배운 점/느낀 점:**  
+  - **네트워크는 보안의 기초 중 기초**입니다. 모든 통신은 네트워크를 통해 이루어지므로, IP 헤더와 TCP/UDP 헤더를 읽을 수 있는 능력은 **공격과 방어 모두의 필수 역량**입니다.  
+  - **Wireshark의 강력함**: 교재에서 배운 이론적 개념(OSI 7계층, IPv4 헤더)을 실제 패킷으로 직접 확인하니 훨씬 명확하게 이해되었습니다. 특히 3-Way Handshake를 패킷 단위로 보면서 TCP의 연결 지향적 특성을 체감했습니다.  
+  - **서브넷의 중요성**: 단순히 IP 주소를 나누는 것이 아니라, **보안 경계**를 만드는 것임을 깨달았습니다.  
+* **심화 방향:**  
+  - **TCP/UDP 심화**: TCP의 흐름 제어, 혼잡 제어, UDP의 특성과 활용 사례 학습  
+  - **공격 시나리오 재현**: 실습 환경에서 SYN Flood, ARP Spoofing, DNS Spoofing 등의 공격을 직접 재현하고 Wireshark로 탐지 시그니처 개발  
+  - **IDS/IPS 룰 작성**: Suricata나 Snort 룰을 작성하여 특정 공격 패턴을 자동 탐지하는 시스템 구축  
+---  
+## 5. 추가 참고사항 (Quick Reference)  
+### IPv4 주소 클래스  
 
----
-
-## 3. 실무/보안 관점 분석 (Insight & Scenario Mapping)
-
-| 분야 | 적용 시나리오 |
-|:---:|:---|
-| **SOC / 관제** | **실시간 트래픽 모니터링**: IDS/IPS에서 Wireshark와 유사한 패킷 분석 엔진(Suricata, Snort)을 사용하여 비정상 패턴을 탐지합니다. **베이스라인 트래픽**을 설정하고, 통계적 이상(급증하는 SYN 패킷, 비정상 TTL, 알려지지 않은 프로토콜)을 자동 알림합니다. |
-| **CERT / 사고 대응** | **포렌식 패킷 분석**: 침해 사고 시 네트워크 탭(SPAN/Mirror Port)이나 방화벽에서 수집한 PCAP 파일을 Wireshark로 분석합니다. **공격 타임라인 재구성**: 초기 침투 패킷 식별 → C&C 통신 추적 → 데이터 유출 탐지. DNS 쿼리 분석(`dns.qry.name`)으로 DGA(Domain Generation Algorithm) 기반 멀웨어 탐지. |
-| **네트워크 운영** | **성능 최적화 및 문제 해결**: `tcp.analysis.retransmission` 필터로 재전송 패킷을 찾아 네트워크 품질 문제를 식별합니다. **서브넷 설계**: 부서별/보안 등급별로 서브넷을 분리하여 VLAN과 결합, 방화벽 규칙으로 **Micro-Segmentation** 구현. (DMZ, Internal, Management 서브넷 분리로 측면 이동 차단) |
-
----
-
-## 4. 개인 인사이트 및 다음 단계 (Reflection & Next Steps)
-
-* **배운 점/느낀 점:**
-  - **네트워크는 보안의 기초 중 기초**입니다. 모든 통신은 네트워크를 통해 이루어지므로, IP 헤더와 TCP/UDP 헤더를 읽을 수 있는 능력은 **공격과 방어 모두의 필수 역량**입니다.
-  - **Wireshark의 강력함**: 교재에서 배운 이론적 개념(OSI 7계층, IPv4 헤더)을 실제 패킷으로 직접 확인하니 훨씬 명확하게 이해되었습니다. 특히 3-Way Handshake를 패킷 단위로 보면서 TCP의 연결 지향적 특성을 체감했습니다.
-  - **서브넷의 중요성**: 단순히 IP 주소를 나누는 것이 아니라, **보안 경계**를 만드는 것임을 깨달았습니다.
-
-* **심화 방향:**
-  - **TCP/UDP 심화**: TCP의 흐름 제어, 혼잡 제어, UDP의 특성과 활용 사례 학습
-  - **공격 시나리오 재현**: 실습 환경에서 SYN Flood, ARP Spoofing, DNS Spoofing 등의 공격을 직접 재현하고 Wireshark로 탐지 시그니처 개발
-  - **IDS/IPS 룰 작성**: Suricata나 Snort 룰을 작성하여 특정 공격 패턴을 자동 탐지하는 시스템 구축
-
----
-
-## 5. 추가 참고사항 (Quick Reference)
-
-### IPv4 주소 클래스
-```
 Class A: 0.0.0.0     ~ 127.255.255.255  (첫 비트 0)       /8
 Class B: 128.0.0.0   ~ 191.255.255.255  (첫 비트 10)      /16
 Class C: 192.0.0.0   ~ 223.255.255.255  (첫 비트 110)     /24

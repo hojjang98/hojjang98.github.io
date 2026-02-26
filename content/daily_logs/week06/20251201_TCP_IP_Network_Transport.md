@@ -99,68 +99,52 @@ router2(config-if)# exit
 
 ! 정적 라우팅 설정
 router2(config)# ip route 0.0.0.0 0.0.0.0 10.0.0.2
-```
-
-**PC 설정 및 연결 테스트:**
-
-PC2 설정:
-- IP: 192.168.10.2
-- Subnet Mask: 255.255.255.0
-- Default Gateway: 192.168.10.1
-
-PC3 설정:
-- IP: 192.168.20.2
-- Subnet Mask: 255.255.255.0
-- Default Gateway: 192.168.20.1
-
-PC2에서 연결 테스트:
-C:\> ping 192.168.10.1      (Router1 확인)
-C:\> ping 192.168.20.2      (PC3까지 확인)
-C:\> tracert 192.168.20.2   (경로 확인: Router1 → Router0 → Router2 → PC3)
-
-
-### (B) Wireshark ARP 패킷 분석
-
-**ARP Request (브로드캐스트):**
-
-Ethernet II
-    Destination: Broadcast (ff:ff:ff:ff:ff:ff)
-    Source: 00:0c:29:3a:2f:1a
-    Type: ARP (0x0806)
-
-Address Resolution Protocol (request)
-    Hardware type: Ethernet (1)
-    Protocol type: IPv4 (0x0800)
-    Hardware size: 6
-    Protocol size: 4
-    Opcode: request (1)
-    Sender MAC address: 00:0c:29:3a:2f:1a
-    Sender IP address: 192.168.1.100
-    Target MAC address: 00:00:00:00:00:00  (아직 모름)
-    Target IP address: 192.168.1.1         (알고 싶은 IP)
-
-
-**ARP Reply (유니캐스트):**
-
-Ethernet II
-    Destination: 00:0c:29:3a:2f:1a  (요청자에게만)
-    Source: 00:50:56:c0:00:08      (자신의 MAC)
-    Type: ARP (0x0806)
-
-Address Resolution Protocol (reply)
-    Hardware type: Ethernet (1)
-    Protocol type: IPv4 (0x0800)
-    Hardware size: 6
-    Protocol size: 4
-    Opcode: reply (2)
-    Sender MAC address: 00:50:56:c0:00:08  (자신의 MAC)
-    Sender IP address: 192.168.1.1
-    Target MAC address: 00:0c:29:3a:2f:1a  (요청자 MAC)
-    Target IP address: 192.168.1.100
-
-
-**ARP 캐시 확인 (Linux/Windows):**
-```bash
+**PC 설정 및 연결 테스트:**  
+PC2 설정:  
+- IP: 192.168.10.2  
+- Subnet Mask: 255.255.255.0  
+- Default Gateway: 192.168.10.1  
+PC3 설정:  
+- IP: 192.168.20.2  
+- Subnet Mask: 255.255.255.0  
+- Default Gateway: 192.168.20.1  
+PC2에서 연결 테스트:  
+C:\> ping 192.168.10.1      (Router1 확인)  
+C:\> ping 192.168.20.2      (PC3까지 확인)  
+C:\> tracert 192.168.20.2   (경로 확인: Router1 → Router0 → Router2 → PC3)  
+### (B) Wireshark ARP 패킷 분석  
+**ARP Request (브로드캐스트):**  
+Ethernet II  
+    Destination: Broadcast (ff:ff:ff:ff:ff:ff)  
+    Source: 00:0c:29:3a:2f:1a  
+    Type: ARP (0x0806)  
+Address Resolution Protocol (request)  
+    Hardware type: Ethernet (1)  
+    Protocol type: IPv4 (0x0800)  
+    Hardware size: 6  
+    Protocol size: 4  
+    Opcode: request (1)  
+    Sender MAC address: 00:0c:29:3a:2f:1a  
+    Sender IP address: 192.168.1.100  
+    Target MAC address: 00:00:00:00:00:00  (아직 모름)  
+    Target IP address: 192.168.1.1         (알고 싶은 IP)  
+**ARP Reply (유니캐스트):**  
+Ethernet II  
+    Destination: 00:0c:29:3a:2f:1a  (요청자에게만)  
+    Source: 00:50:56:c0:00:08      (자신의 MAC)  
+    Type: ARP (0x0806)  
+Address Resolution Protocol (reply)  
+    Hardware type: Ethernet (1)  
+    Protocol type: IPv4 (0x0800)  
+    Hardware size: 6  
+    Protocol size: 4  
+    Opcode: reply (2)  
+    Sender MAC address: 00:50:56:c0:00:08  (자신의 MAC)  
+    Sender IP address: 192.168.1.1  
+    Target MAC address: 00:0c:29:3a:2f:1a  (요청자 MAC)  
+    Target IP address: 192.168.1.100  
+**ARP 캐시 확인 (Linux/Windows):**  
+bash
 # Linux
 arp -a
 ip neigh show

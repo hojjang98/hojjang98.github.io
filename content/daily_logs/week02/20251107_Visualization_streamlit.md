@@ -46,12 +46,9 @@ data = pd.read_excel(file_path, index_col=0)
 for name, lat, lng in zip(data.index, data['위도'], data['경도']):
     folium.Marker([lat, lng], popup=name).add_to(map)
 map
-```
-
-Pandas의 반복문을 통해 다수의 지리 데이터를 자동 시각화함으로써, 데이터프레임 → 지도 표현의 자연스러운 연결을 익혔다. 동일한 방식으로 공격 발생 지점, 로그 수집 위치 등 보안 이벤트를 지도상에 표시할 수 있다.
-
-### (3) Plotly Express – 인터랙티브 데이터 탐색
-```python
+Pandas의 반복문을 통해 다수의 지리 데이터를 자동 시각화함으로써, 데이터프레임 → 지도 표현의 자연스러운 연결을 익혔다. 동일한 방식으로 공격 발생 지점, 로그 수집 위치 등 보안 이벤트를 지도상에 표시할 수 있다.  
+### (3) Plotly Express – 인터랙티브 데이터 탐색  
+python
 import plotly.express as px
 df = pd.DataFrame({
     'Country': ['한국', '미국', '일본', '호주'],

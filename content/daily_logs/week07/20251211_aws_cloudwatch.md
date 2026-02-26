@@ -150,105 +150,79 @@ aws ssm put-parameter \
 aws ssm get-parameter \
   --name "/myapp/database/password" \
   --with-decryption
-```
-
----
-
-## 3. 서비스 분류 및 비교
-
-### 데이터 분석 파이프라인 구성
-
-| 단계 | 서비스 | 역할 |
-|:---:|:---|:---|
-| 수집 | Kinesis Data Streams, Kinesis Firehose | 실시간 스트리밍 데이터 수집 |
-| 저장 | S3, OpenSearch | 원본 데이터 저장 및 인덱싱 |
-| 변환 | Glue, Lambda | ETL 처리, 데이터 정규화 |
-| 분석 | Athena, OpenSearch | SQL 쿼리, 전문 검색 |
-| 시각화 | QuickSight, OpenSearch Dashboards | 대시보드, 리포트 생성 |
-
-### ML 서비스 선택 가이드
-
-| 요구사항 | 추천 서비스 | 비고 |
-|:---:|:---|:---|
-| 커스텀 모델 학습 필요 | SageMaker | 전체 ML 파이프라인 지원 |
-| 이미지/비디오 분석 | Rekognition | 사전 학습된 모델 즉시 사용 |
-| 텍스트 분석 | Comprehend | 감정 분석, 개체 인식 |
-| 음성 → 텍스트 | Transcribe | 실시간/배치 변환 |
-| 텍스트 → 음성 | Polly | 다국어 음성 합성 |
-| 챗봇 구축 | Lex | Alexa와 동일 기술 |
-| 사기 탐지 | Fraud Detector | 결제/계정 부정 행위 탐지 |
-
-### 시스템 관리 서비스 활용
-
-| 서비스 | 주요 기능 | 보안 활용 사례 |
-|:---:|:---|:---|
-| Systems Manager | 통합 관리 플랫폼 | Session Manager로 SSH 키 없이 접속, Patch Manager로 보안 패치 자동화 |
-| CloudWatch | 모니터링 및 알람 | 비정상 메트릭 탐지 시 SNS 알림, 로그 기반 보안 이벤트 탐지 |
-| CloudFormation | IaC | 보안 구성 표준화, 드리프트 탐지로 수동 변경 감지 |
-| Organizations | 멀티 계정 관리 | SCP로 보안 정책 강제, 통합 CloudTrail 설정 |
-| Trusted Advisor | 자동 점검 | 보안 그룹 오픈 포트, IAM 취약점 자동 탐지 |
-
----
-
-## 4. 실무/보안 관점 분석
-
-| 분야 | 시나리오 |
-|:---:|:---|
-| 보안 로그 분석 파이프라인 | CloudTrail/VPC Flow Logs → S3 저장 → Athena로 SQL 쿼리 또는 Kinesis Firehose → OpenSearch로 실시간 분석. QuickSight로 보안 대시보드 구축 |
-| 실시간 위협 탐지 | Kinesis Data Streams로 로그 실시간 수집 → Lambda로 패턴 매칭 → 의심 이벤트 SNS 알림. 또는 OpenSearch에서 실시간 쿼리 |
-| ML 기반 이상 탐지 | CloudWatch 메트릭을 SageMaker로 학습하여 이상 패턴 탐지 모델 구축. 또는 GuardDuty의 ML 기반 탐지 활용 |
-| 시스템 보안 강화 | Session Manager로 SSH 포트(22) 닫기, Patch Manager로 보안 패치 자동 적용, Parameter Store로 비밀번호 안전 관리 |
-| 멀티 계정 보안 거버넌스 | Organizations + SCP로 전 계정에 보안 정책 강제. Security Hub로 모든 계정의 보안 현황 통합 모니터링 |
-
----
-
-## 5. 배운 점 및 심화 방향
-
-### 배운 점
-
-- AWS는 데이터 수집부터 분석, 시각화까지 전체 파이프라인을 서버리스로 구축 가능. Kinesis + S3 + Athena 조합으로 비용 효율적인 로그 분석 환경 구성
-- ML 서비스는 사전 학습된 모델을 API로 호출하는 방식이라 ML 전문 지식 없이도 활용 가능. Rekognition, Comprehend 등은 즉시 사용 가능
-- Systems Manager의 Session Manager는 SSH 키 관리 부담을 없애고 CloudTrail에 세션 로그를 남겨 감사 추적 용이. 보안 관점에서 SSH 포트를 열지 않아도 됨
-- CloudWatch는 단순 모니터링을 넘어 로그 기반 메트릭 필터로 보안 이벤트 탐지 가능. Root 로그인, 보안 그룹 변경 등 중요 이벤트 실시간 알림 구성
-
-### 심화 방향
-
-- SIEM 구축: CloudTrail + VPC Flow Logs + GuardDuty → Kinesis Firehose → OpenSearch로 통합 보안 모니터링 대시보드 구축
-- 자동 대응: CloudWatch Alarm → SNS → Lambda → 보안 그룹 자동 차단 또는 인스턴스 격리 파이프라인
-- IaC 보안: CloudFormation 템플릿에 보안 모범 사례 적용, cfn-lint로 템플릿 검증, StackSets로 멀티 계정 배포
-- Athena 보안 쿼리: CloudTrail 로그에서 비정상 API 호출 패턴 쿼리 라이브러리 구축
-
----
-
-## 6. Quick Reference
-
-### CloudWatch 주요 메트릭
-
-| 네임스페이스 | 메트릭 | 설명 |
-|:---:|:---|:---|
-| AWS/EC2 | CPUUtilization | CPU 사용률(%) |
-| AWS/EC2 | NetworkIn/Out | 네트워크 트래픽(바이트) |
-| AWS/EBS | VolumeReadOps | 볼륨 읽기 작업 수 |
-| AWS/RDS | DatabaseConnections | DB 연결 수 |
-| AWS/Lambda | Invocations | 함수 호출 수 |
-| AWS/Lambda | Errors | 함수 오류 수 |
-| AWS/ALB | RequestCount | 요청 수 |
-| AWS/ALB | TargetResponseTime | 응답 시간 |
-
-### Systems Manager 주요 기능
-
-| 기능 | 설명 | 보안 활용 |
-|:---:|:---|:---|
-| Session Manager | 브라우저/CLI로 EC2 접속 | SSH 포트 닫기, 세션 로깅 |
-| Run Command | 원격 명령 실행 | 대규모 서버 점검 스크립트 |
-| Patch Manager | OS 패치 자동화 | 보안 패치 일괄 적용 |
-| Parameter Store | 설정값/비밀 저장 | DB 비밀번호 안전 관리 |
-| Inventory | 소프트웨어 인벤토리 | 설치된 SW 현황 파악 |
-| State Manager | 원하는 상태 유지 | 보안 설정 강제 적용 |
-
-### Athena CloudTrail 쿼리 예제
-
-```sql
+---  
+## 3. 서비스 분류 및 비교  
+### 데이터 분석 파이프라인 구성  
+| 단계 | 서비스 | 역할 |  
+|:---:|:---|:---|  
+| 수집 | Kinesis Data Streams, Kinesis Firehose | 실시간 스트리밍 데이터 수집 |  
+| 저장 | S3, OpenSearch | 원본 데이터 저장 및 인덱싱 |  
+| 변환 | Glue, Lambda | ETL 처리, 데이터 정규화 |  
+| 분석 | Athena, OpenSearch | SQL 쿼리, 전문 검색 |  
+| 시각화 | QuickSight, OpenSearch Dashboards | 대시보드, 리포트 생성 |  
+### ML 서비스 선택 가이드  
+| 요구사항 | 추천 서비스 | 비고 |  
+|:---:|:---|:---|  
+| 커스텀 모델 학습 필요 | SageMaker | 전체 ML 파이프라인 지원 |  
+| 이미지/비디오 분석 | Rekognition | 사전 학습된 모델 즉시 사용 |  
+| 텍스트 분석 | Comprehend | 감정 분석, 개체 인식 |  
+| 음성 → 텍스트 | Transcribe | 실시간/배치 변환 |  
+| 텍스트 → 음성 | Polly | 다국어 음성 합성 |  
+| 챗봇 구축 | Lex | Alexa와 동일 기술 |  
+| 사기 탐지 | Fraud Detector | 결제/계정 부정 행위 탐지 |  
+### 시스템 관리 서비스 활용  
+| 서비스 | 주요 기능 | 보안 활용 사례 |  
+|:---:|:---|:---|  
+| Systems Manager | 통합 관리 플랫폼 | Session Manager로 SSH 키 없이 접속, Patch Manager로 보안 패치 자동화 |  
+| CloudWatch | 모니터링 및 알람 | 비정상 메트릭 탐지 시 SNS 알림, 로그 기반 보안 이벤트 탐지 |  
+| CloudFormation | IaC | 보안 구성 표준화, 드리프트 탐지로 수동 변경 감지 |  
+| Organizations | 멀티 계정 관리 | SCP로 보안 정책 강제, 통합 CloudTrail 설정 |  
+| Trusted Advisor | 자동 점검 | 보안 그룹 오픈 포트, IAM 취약점 자동 탐지 |  
+---  
+## 4. 실무/보안 관점 분석  
+| 분야 | 시나리오 |  
+|:---:|:---|  
+| 보안 로그 분석 파이프라인 | CloudTrail/VPC Flow Logs → S3 저장 → Athena로 SQL 쿼리 또는 Kinesis Firehose → OpenSearch로 실시간 분석. QuickSight로 보안 대시보드 구축 |  
+| 실시간 위협 탐지 | Kinesis Data Streams로 로그 실시간 수집 → Lambda로 패턴 매칭 → 의심 이벤트 SNS 알림. 또는 OpenSearch에서 실시간 쿼리 |  
+| ML 기반 이상 탐지 | CloudWatch 메트릭을 SageMaker로 학습하여 이상 패턴 탐지 모델 구축. 또는 GuardDuty의 ML 기반 탐지 활용 |  
+| 시스템 보안 강화 | Session Manager로 SSH 포트(22) 닫기, Patch Manager로 보안 패치 자동 적용, Parameter Store로 비밀번호 안전 관리 |  
+| 멀티 계정 보안 거버넌스 | Organizations + SCP로 전 계정에 보안 정책 강제. Security Hub로 모든 계정의 보안 현황 통합 모니터링 |  
+---  
+## 5. 배운 점 및 심화 방향  
+### 배운 점  
+- AWS는 데이터 수집부터 분석, 시각화까지 전체 파이프라인을 서버리스로 구축 가능. Kinesis + S3 + Athena 조합으로 비용 효율적인 로그 분석 환경 구성  
+- ML 서비스는 사전 학습된 모델을 API로 호출하는 방식이라 ML 전문 지식 없이도 활용 가능. Rekognition, Comprehend 등은 즉시 사용 가능  
+- Systems Manager의 Session Manager는 SSH 키 관리 부담을 없애고 CloudTrail에 세션 로그를 남겨 감사 추적 용이. 보안 관점에서 SSH 포트를 열지 않아도 됨  
+- CloudWatch는 단순 모니터링을 넘어 로그 기반 메트릭 필터로 보안 이벤트 탐지 가능. Root 로그인, 보안 그룹 변경 등 중요 이벤트 실시간 알림 구성  
+### 심화 방향  
+- SIEM 구축: CloudTrail + VPC Flow Logs + GuardDuty → Kinesis Firehose → OpenSearch로 통합 보안 모니터링 대시보드 구축  
+- 자동 대응: CloudWatch Alarm → SNS → Lambda → 보안 그룹 자동 차단 또는 인스턴스 격리 파이프라인  
+- IaC 보안: CloudFormation 템플릿에 보안 모범 사례 적용, cfn-lint로 템플릿 검증, StackSets로 멀티 계정 배포  
+- Athena 보안 쿼리: CloudTrail 로그에서 비정상 API 호출 패턴 쿼리 라이브러리 구축  
+---  
+## 6. Quick Reference  
+### CloudWatch 주요 메트릭  
+| 네임스페이스 | 메트릭 | 설명 |  
+|:---:|:---|:---|  
+| AWS/EC2 | CPUUtilization | CPU 사용률(%) |  
+| AWS/EC2 | NetworkIn/Out | 네트워크 트래픽(바이트) |  
+| AWS/EBS | VolumeReadOps | 볼륨 읽기 작업 수 |  
+| AWS/RDS | DatabaseConnections | DB 연결 수 |  
+| AWS/Lambda | Invocations | 함수 호출 수 |  
+| AWS/Lambda | Errors | 함수 오류 수 |  
+| AWS/ALB | RequestCount | 요청 수 |  
+| AWS/ALB | TargetResponseTime | 응답 시간 |  
+### Systems Manager 주요 기능  
+| 기능 | 설명 | 보안 활용 |  
+|:---:|:---|:---|  
+| Session Manager | 브라우저/CLI로 EC2 접속 | SSH 포트 닫기, 세션 로깅 |  
+| Run Command | 원격 명령 실행 | 대규모 서버 점검 스크립트 |  
+| Patch Manager | OS 패치 자동화 | 보안 패치 일괄 적용 |  
+| Parameter Store | 설정값/비밀 저장 | DB 비밀번호 안전 관리 |  
+| Inventory | 소프트웨어 인벤토리 | 설치된 SW 현황 파악 |  
+| State Manager | 원하는 상태 유지 | 보안 설정 강제 적용 |  
+### Athena CloudTrail 쿼리 예제  
+sql
 -- 최근 24시간 Root 계정 활동 조회
 SELECT eventTime, eventName, sourceIPAddress, userAgent
 FROM cloudtrail_logs

@@ -160,33 +160,30 @@ summary: "ISO 27014와 COBIT 5를 통합하여 전사적 보안 거버넌스를 
 목적: 전 조직 레벨 ISG 구현을 안내하는 기반 마련
 
 방법:
-```
-1. ISO 27014의 6개 원칙 추출
-   - Establish organisation-wide IS
-   - Adopt a risk-based approach
-   - Foster a security-positive environment
-   - Ensure conformance with internal/external requirements
-   - Set the direction of investment decisions
-   - Review performance in relation to business outcomes
+1. ISO 27014의 6개 원칙 추출  
+   - Establish organisation-wide IS  
+   - Adopt a risk-based approach  
+   - Foster a security-positive environment  
+   - Ensure conformance with internal/external requirements  
+   - Set the direction of investment decisions  
+   - Review performance in relation to business outcomes  
+2. COBIT 5 for IS의 12개 원칙 추출  
+   - Focus on Business  
+   - Adopt risk-based approach  
+   - Foster an IS-positive culture  
+   - Comply with legal and regulatory requirement  
+   - Evaluate current and future information threats  
+   - Promote continuous improvement in IS  
+   - Deliver quality and value to stakeholders  
+   - Protect classified information  
+   - Concentrate in critical business application  
+   - Develop systems securely  
+   - Act in a professional and ethical manner  
+   - Provide timely and accurate information on IS performance  
+3. 중복 제거 및 의미적 유사성 통합  
+4. 논리적 조화 및 종합  
+→ 14개 통합 지침 원칙 도출  
 
-2. COBIT 5 for IS의 12개 원칙 추출
-   - Focus on Business
-   - Adopt risk-based approach
-   - Foster an IS-positive culture
-   - Comply with legal and regulatory requirement
-   - Evaluate current and future information threats
-   - Promote continuous improvement in IS
-   - Deliver quality and value to stakeholders
-   - Protect classified information
-   - Concentrate in critical business application
-   - Develop systems securely
-   - Act in a professional and ethical manner
-   - Provide timely and accurate information on IS performance
-
-3. 중복 제거 및 의미적 유사성 통합
-4. 논리적 조화 및 종합
-→ 14개 통합 지침 원칙 도출
-```
 
 **Stage 2: CSF 식별**
 

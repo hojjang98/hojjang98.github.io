@@ -100,168 +100,167 @@ summary: "웹 해킹 역사, 정보 수집 기법(Burp Suite/Google Dork/Wikto),
 
 # 5. [Target] - [Site map] 탭에서 탐색
 # 방문한 페이지의 디렉터리 구조, 파일 목록, 파라미터 확인
-```
+  
+**분석 포인트:**  
+```  
+디렉터리 구조 예시:  
+├── /  
+├── /images/  
+├── /css/  
+├── /js/  
+├── /api/  
+│   ├── /user  
+│   └── /product  
+├── /admin/        # ⚠️ 관리자 페이지 노출?  
+└── /backup/       # ⚠️ 백업 파일 노출?  
+  
+확인 항목:  
+✓ URL 파라미터 (GET 방식 데이터 전달)  
+✓ 쿠키 구조 (세션 관리 방식)  
+✓ 응답 헤더 (Server, X-Powered-By 등)  
+✓ 숨겨진 디렉터리/파일  
+✓ API 엔드포인트  
+```  
+  
+**보안 인사이트:**  
+- Site Map에서 /admin, /test, /dev 같은 경로 발견 시 접근 제어 확인 필요  
+- 쿠키에 HttpOnly, Secure 플래그 없으면 XSS 공격에 취약  
+- 응답 헤더에 서버 버전 정보 노출 시 알려진 취약점 악용 가능  
+  
+### 실습 2-2: 웹 스캐닝으로 웹 사이트 정보 수집하기  
+  
+**목표:** Wikto를 사용한 자동화된 취약점 스캐닝  
+  
+**실습 환경:**  
+- Windows 10/11  
+- Wikto 7.1 (SensePost)  
+- 테스트 대상: 허가된 서버 또는 자체 구축 환경  
+  
+**실습 단계:**  
+```bash  
+# 1. Wikto 다운로드 및 설치  
+# https://github.com/sensepost/wikto  
+# C:\Scanner\Wikto 폴더에 압축 해제  
+  
+# 2. Wikto 실행  
+# [Start] - [All Programs] - [SensePost] - [Wikto]  
+  
+# 3. Nikto Database 로드  
+# <Load Nikto Database> 클릭  
+# 취약점 데이터베이스 로드 (수천 개 항목)  
+  
+# 4. 스캔 설정  
+# Target: http://localhost:8080 (또는 테스트 서버)  
+# Port: 80 (HTTP) 또는 443 (HTTPS)  
+  
+# ⚠️ 주의사항: 본인 소유 또는 허가받은 서버만 스캔!  
+# 무단 스캔 시 정보통신망법 위반 (형사 처벌 가능)  
+```  
+  
+**스캐닝 원리:**  
+```  
+Wikto 동작 방식:  
+1. HTTP Request 전송  
+   GET /admin/ HTTP/1.1  
+   GET /backup/ HTTP/1.1  
+   GET /test/ HTTP/1.1  
+   ... (데이터베이스에 등록된 수천 개 경로 시도)  
+  
+2. Response Code 분석  
+   200 OK → 존재하는 리소스  
+   401 Unauthorized → 인증 필요 (존재 확인)  
+   403 Forbidden → 접근 거부 (존재 확인)  
+   404 Not Found → 존재하지 않음  
+  
+3. 취약점 매칭  
+   알려진 취약점 패턴과 응답 비교  
+   CVE 번호 매핑  
+```  
+  
+**발견 가능한 취약점:**  
+- 디렉터리 리스팅  
+- 기본 관리자 페이지  
+- 백업 파일 (.bak, .old, .backup)  
+- 설정 파일 (config.php, web.config)  
+- 오래된 버전의 웹 서버/프레임워크  
+- 알려진 CVE 취약점  
+  
+**보안 고려사항:**  
+```  
+웹 스캐닝 탐지 패턴:  
+- 단시간 대량 404 에러 발생  
+- User-Agent: Nikto, Wikto 등 스캐너 시그니처  
+- 비정상적인 URL 패턴 (/../../etc/passwd)  
+- 동일 IP에서 순차적인 경로 접근  
+  
+방어 방법:  
+→ WAF에 Rate Limiting 적용  
+→ 스캐너 User-Agent 차단  
+→ Fail2ban 설정 (특정 임계값 초과 시 IP 차단)  
+```  
+  
+### 실습 2-3: WebGoat 설치하기  
+  
+**목표:** OWASP WebGoat 취약점 학습 환경 구축  
+  
+**실습 환경:**  
+- Windows 10/11  
+- Java Runtime Environment (JRE)  
+- WebGoat 7.1  
+  
+**실습 단계:**  
+```bash  
+# 1. JRE 설치 확인  
+java -version  
+# 없으면 https://www.java.com 에서 설치  
+  
+# 2. WebGoat 다운로드  
+# https://github.com/WebGoat/WebGoat/releases/tag/7.1  
+# webgoat-container-7.1-exec.jar 다운로드  
+  
+# 3. 폴더 생성 및 파일 복사  
+C:\WebGoat7.1\webgoat-container-7.1-exec.jar  
+  
+# 4. WebGoat 실행  
+cd C:\WebGoat7.1  
+java -jar webgoat-container-7.1-exec.jar  
+  
+# 실행 성공 메시지:  
+# INFO - Browse to http://localhost:8080/WebGoat and happy hacking!  
+  
+# 5. 브라우저로 접속  
+# http://localhost:8080/WebGoat  
+# Username: guest  
+# Password: guest  
+```  
+  
+**WebGoat 구조:**  
+```  
+WebGoat 제공 학습 과정:  
+├── Introduction (소개)  
+├── General (일반 취약점)  
+│   ├── HTTP Basics  
+│   ├── HTTP Splitting  
+│   └── ...  
+├── Access Control (접근 제어)  
+│   ├── Bypass Business Layer  
+│   ├── LAB: Role Based Access Control  
+│   └── ...  
+├── AJAX Security (Ajax 보안)  
+├── Authentication Flaws (인증 취약점)  
+├── Code Quality (코드 품질)  
+├── Concurrency (동시성)  
+├── Cross-Site Scripting (XSS)  
+├── Improper Error Handling (오류 처리)  
+├── Injection Flaws (인젝션)  
+├── Insecure Communication (불안전한 통신)  
+├── Insecure Configuration (설정 오류)  
+├── Insecure Storage (저장소 보안)  
+├── Malicious Code (악성 코드)  
+├── Parameter Tampering (파라미터 변조)  
+├── Session Management (세션 관리)  
+└── Web Services (웹 서비스)  
 
-**분석 포인트:**
-```
-디렉터리 구조 예시:
-├── /
-├── /images/
-├── /css/
-├── /js/
-├── /api/
-│   ├── /user
-│   └── /product
-├── /admin/        # ⚠️ 관리자 페이지 노출?
-└── /backup/       # ⚠️ 백업 파일 노출?
-
-확인 항목:
-✓ URL 파라미터 (GET 방식 데이터 전달)
-✓ 쿠키 구조 (세션 관리 방식)
-✓ 응답 헤더 (Server, X-Powered-By 등)
-✓ 숨겨진 디렉터리/파일
-✓ API 엔드포인트
-```
-
-**보안 인사이트:**
-- Site Map에서 /admin, /test, /dev 같은 경로 발견 시 접근 제어 확인 필요
-- 쿠키에 HttpOnly, Secure 플래그 없으면 XSS 공격에 취약
-- 응답 헤더에 서버 버전 정보 노출 시 알려진 취약점 악용 가능
-
-### 실습 2-2: 웹 스캐닝으로 웹 사이트 정보 수집하기
-
-**목표:** Wikto를 사용한 자동화된 취약점 스캐닝
-
-**실습 환경:**
-- Windows 10/11
-- Wikto 7.1 (SensePost)
-- 테스트 대상: 허가된 서버 또는 자체 구축 환경
-
-**실습 단계:**
-```bash
-# 1. Wikto 다운로드 및 설치
-# https://github.com/sensepost/wikto
-# C:\Scanner\Wikto 폴더에 압축 해제
-
-# 2. Wikto 실행
-# [Start] - [All Programs] - [SensePost] - [Wikto]
-
-# 3. Nikto Database 로드
-# <Load Nikto Database> 클릭
-# 취약점 데이터베이스 로드 (수천 개 항목)
-
-# 4. 스캔 설정
-# Target: http://localhost:8080 (또는 테스트 서버)
-# Port: 80 (HTTP) 또는 443 (HTTPS)
-
-# ⚠️ 주의사항: 본인 소유 또는 허가받은 서버만 스캔!
-# 무단 스캔 시 정보통신망법 위반 (형사 처벌 가능)
-```
-
-**스캐닝 원리:**
-```
-Wikto 동작 방식:
-1. HTTP Request 전송
-   GET /admin/ HTTP/1.1
-   GET /backup/ HTTP/1.1
-   GET /test/ HTTP/1.1
-   ... (데이터베이스에 등록된 수천 개 경로 시도)
-
-2. Response Code 분석
-   200 OK → 존재하는 리소스
-   401 Unauthorized → 인증 필요 (존재 확인)
-   403 Forbidden → 접근 거부 (존재 확인)
-   404 Not Found → 존재하지 않음
-
-3. 취약점 매칭
-   알려진 취약점 패턴과 응답 비교
-   CVE 번호 매핑
-```
-
-**발견 가능한 취약점:**
-- 디렉터리 리스팅
-- 기본 관리자 페이지
-- 백업 파일 (.bak, .old, .backup)
-- 설정 파일 (config.php, web.config)
-- 오래된 버전의 웹 서버/프레임워크
-- 알려진 CVE 취약점
-
-**보안 고려사항:**
-```
-웹 스캐닝 탐지 패턴:
-- 단시간 대량 404 에러 발생
-- User-Agent: Nikto, Wikto 등 스캐너 시그니처
-- 비정상적인 URL 패턴 (/../../etc/passwd)
-- 동일 IP에서 순차적인 경로 접근
-
-방어 방법:
-→ WAF에 Rate Limiting 적용
-→ 스캐너 User-Agent 차단
-→ Fail2ban 설정 (특정 임계값 초과 시 IP 차단)
-```
-
-### 실습 2-3: WebGoat 설치하기
-
-**목표:** OWASP WebGoat 취약점 학습 환경 구축
-
-**실습 환경:**
-- Windows 10/11
-- Java Runtime Environment (JRE)
-- WebGoat 7.1
-
-**실습 단계:**
-```bash
-# 1. JRE 설치 확인
-java -version
-# 없으면 https://www.java.com 에서 설치
-
-# 2. WebGoat 다운로드
-# https://github.com/WebGoat/WebGoat/releases/tag/7.1
-# webgoat-container-7.1-exec.jar 다운로드
-
-# 3. 폴더 생성 및 파일 복사
-C:\WebGoat7.1\webgoat-container-7.1-exec.jar
-
-# 4. WebGoat 실행
-cd C:\WebGoat7.1
-java -jar webgoat-container-7.1-exec.jar
-
-# 실행 성공 메시지:
-# INFO - Browse to http://localhost:8080/WebGoat and happy hacking!
-
-# 5. 브라우저로 접속
-# http://localhost:8080/WebGoat
-# Username: guest
-# Password: guest
-```
-
-**WebGoat 구조:**
-```
-WebGoat 제공 학습 과정:
-├── Introduction (소개)
-├── General (일반 취약점)
-│   ├── HTTP Basics
-│   ├── HTTP Splitting
-│   └── ...
-├── Access Control (접근 제어)
-│   ├── Bypass Business Layer
-│   ├── LAB: Role Based Access Control
-│   └── ...
-├── AJAX Security (Ajax 보안)
-├── Authentication Flaws (인증 취약점)
-├── Code Quality (코드 품질)
-├── Concurrency (동시성)
-├── Cross-Site Scripting (XSS)
-├── Improper Error Handling (오류 처리)
-├── Injection Flaws (인젝션)
-├── Insecure Communication (불안전한 통신)
-├── Insecure Configuration (설정 오류)
-├── Insecure Storage (저장소 보안)
-├── Malicious Code (악성 코드)
-├── Parameter Tampering (파라미터 변조)
-├── Session Management (세션 관리)
-└── Web Services (웹 서비스)
-```
 
 **학습 활용 방안:**
 - 각 취약점별 실습 환경 제공
@@ -457,43 +456,30 @@ location ~ /(admin|config|backup) {
     auth_basic "Restricted Area";
     auth_basic_user_file /etc/nginx/.htpasswd;
 }
-```
-
----
-
-## 6. 배운 점 및 인사이트
-
-### 새로 알게 된 점
-
-- **웹 해킹의 역사적 맥락:** 방화벽과 IDS가 도입되면서 역설적으로 웹 해킹이 발전했다는 점이 흥미롭다. 네트워크 공격이 어려워지자 80번 포트로 공격이 집중된 것.
-- **정보 수집의 중요성:** 실제 공격의 80%가 정보 수집 단계. Burp Suite, Google Dork, 웹 스캐너 등 다양한 도구를 조합하면 놀라울 정도로 많은 정보 획득 가능.
-- **OWASP Top 10의 변화:** 시대에 따라 취약점 트렌드가 변한다. 2021년 "안전하지 않은 설계", "SSRF"가 신규 추가된 것은 클라우드 환경과 공급망 공격을 반영한 것.
-- **Google Dork의 위력:** 검색 연산자만으로도 관리자 페이지, 백업 파일, 민감 문서를 찾을 수 있다. 공개 정보 관리의 중요성 실감.
-- **WebGoat의 교육적 가치:** 안전하게 웹 취약점을 실습할 수 있는 환경. 공격자 관점을 이해해야 방어할 수 있다는 점에서 모든 보안 직무 종사자에게 필수.
-
-### 이전 학습과의 연결고리
-
-- **Day 34(인터넷과 웹의 이해)와 연계:** HTTP 프로토콜, 메서드, 상태 코드를 이해했기에 웹 공격 원리 파악이 수월했다. 특히 500 에러가 SQL Injection 탐지 신호가 된다는 연결고리.
-- **Burp Suite 실습 확장:** Day 34에서는 HTTP 패킷 분석에 집중했다면, 오늘은 Site Map을 통한 디렉터리 탐색, 취약점 발견으로 확장.
-- **네트워크 보안 → 웹 보안 전환:** 방화벽, IDS 같은 네트워크 보안 장비가 웹 해킹 발전의 촉매제가 되었다는 역사적 맥락. 방어 수단이 새로운 공격 벡터를 만든 아이러니.
-
-### 실무 적용 아이디어
-
-**SOC 분석가 관점:**
-- **웹 공격 탐지 시나리오 작성:** 정보 수집 → 스캔 → 공격 → 권한 상승 → 지속성 확보 단계별 탐지 룰 개발. 특히 스캐너 User-Agent, 대량 404 에러 패턴 모니터링.
-- **로그 상관 분석:** 동일 IP에서 /admin, /backup 접근 시도 후 500 에러 발생 → SQL Injection 의심. 이런 패턴을 SIEM 룰로 구현.
-- **정보 노출 사전 점검:** 정기적으로 자사 도메인에 Google Dork 적용하여 민감 정보 노출 여부 확인. `site:company.com filetype:pdf` 같은 검색으로 유출된 문서 탐지.
-
-**보안 컨설턴트 관점:**
-- **모의해킹 방법론:** 오늘 배운 정보 수집 기법(Burp Suite, Google Dork, 웹 스캐너)을 체계화하여 모의해킹 초기 단계 프로세스로 활용.
-- **OWASP Top 10 기반 점검:** 고객사 웹 애플리케이션 점검 시 OWASP Top 10을 체크리스트로 사용. 특히 2021년 신규 항목(안전하지 않은 설계, SSRF)은 최신 트렌드 반영.
-
----
-
-## 7. Quick Reference
-
-### 정보 수집 도구 명령어 모음
-```bash
+---  
+## 6. 배운 점 및 인사이트  
+### 새로 알게 된 점  
+- **웹 해킹의 역사적 맥락:** 방화벽과 IDS가 도입되면서 역설적으로 웹 해킹이 발전했다는 점이 흥미롭다. 네트워크 공격이 어려워지자 80번 포트로 공격이 집중된 것.  
+- **정보 수집의 중요성:** 실제 공격의 80%가 정보 수집 단계. Burp Suite, Google Dork, 웹 스캐너 등 다양한 도구를 조합하면 놀라울 정도로 많은 정보 획득 가능.  
+- **OWASP Top 10의 변화:** 시대에 따라 취약점 트렌드가 변한다. 2021년 "안전하지 않은 설계", "SSRF"가 신규 추가된 것은 클라우드 환경과 공급망 공격을 반영한 것.  
+- **Google Dork의 위력:** 검색 연산자만으로도 관리자 페이지, 백업 파일, 민감 문서를 찾을 수 있다. 공개 정보 관리의 중요성 실감.  
+- **WebGoat의 교육적 가치:** 안전하게 웹 취약점을 실습할 수 있는 환경. 공격자 관점을 이해해야 방어할 수 있다는 점에서 모든 보안 직무 종사자에게 필수.  
+### 이전 학습과의 연결고리  
+- **Day 34(인터넷과 웹의 이해)와 연계:** HTTP 프로토콜, 메서드, 상태 코드를 이해했기에 웹 공격 원리 파악이 수월했다. 특히 500 에러가 SQL Injection 탐지 신호가 된다는 연결고리.  
+- **Burp Suite 실습 확장:** Day 34에서는 HTTP 패킷 분석에 집중했다면, 오늘은 Site Map을 통한 디렉터리 탐색, 취약점 발견으로 확장.  
+- **네트워크 보안 → 웹 보안 전환:** 방화벽, IDS 같은 네트워크 보안 장비가 웹 해킹 발전의 촉매제가 되었다는 역사적 맥락. 방어 수단이 새로운 공격 벡터를 만든 아이러니.  
+### 실무 적용 아이디어  
+**SOC 분석가 관점:**  
+- **웹 공격 탐지 시나리오 작성:** 정보 수집 → 스캔 → 공격 → 권한 상승 → 지속성 확보 단계별 탐지 룰 개발. 특히 스캐너 User-Agent, 대량 404 에러 패턴 모니터링.  
+- **로그 상관 분석:** 동일 IP에서 /admin, /backup 접근 시도 후 500 에러 발생 → SQL Injection 의심. 이런 패턴을 SIEM 룰로 구현.  
+- **정보 노출 사전 점검:** 정기적으로 자사 도메인에 Google Dork 적용하여 민감 정보 노출 여부 확인. `site:company.com filetype:pdf` 같은 검색으로 유출된 문서 탐지.  
+**보안 컨설턴트 관점:**  
+- **모의해킹 방법론:** 오늘 배운 정보 수집 기법(Burp Suite, Google Dork, 웹 스캐너)을 체계화하여 모의해킹 초기 단계 프로세스로 활용.  
+- **OWASP Top 10 기반 점검:** 고객사 웹 애플리케이션 점검 시 OWASP Top 10을 체크리스트로 사용. 특히 2021년 신규 항목(안전하지 않은 설계, SSRF)은 최신 트렌드 반영.  
+---  
+## 7. Quick Reference  
+### 정보 수집 도구 명령어 모음  
+bash
 # Burp Suite 프록시 설정
 # 브라우저 프록시: 127.0.0.1:8080
 # Intercept Off로 설정 후 Site Map 확인
