@@ -51,7 +51,7 @@ st.markdown("""
 
 # 데이터 통계 요약 (data_loader.py 사용)
 # ... (생략)
-```
+```python
 
 ### (B) 추천 시스템 UI (movie_recommendation.py)
 

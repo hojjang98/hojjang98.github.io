@@ -30,7 +30,7 @@ collection = chroma_client.get_collection(
     name="movies",
     embedding_function=embedding_function # embedding_function은 llm_utils에서 정의 가능
 )
-```
+```python
 
 ### (B) LLM 유틸리티 함수 (llm_utils.py)
 
@@ -47,7 +47,7 @@ def get_openai_client():
 # (LangChain Chain 또는 커스텀 RAG 함수가 여기에 통합됨)
 # analyze_movie_success(title)
 # recommend_movies(query)
-```
+```python
 
 ### (C) 추천 검색 흐름 (movie_recommendation.py)
 

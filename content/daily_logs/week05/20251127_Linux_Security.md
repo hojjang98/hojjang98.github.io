@@ -123,7 +123,7 @@ tar xvf /backup/bk.tar              # 풀기
 tar zcvf /backup/bk.tar.gz /backup/*          # 압축하며 묶기
 tar zxvf /backup/bk.tar.gz                    # 압축 해제하며 풀기
 tar xvfz /backup/bk.tar.gz -C /tmp/           # 특정 디렉터리에 압축 해제
-```
+```bash
 
 ### (B) 실습 결과 및 분석
 

@@ -62,3 +62,6 @@ summaryLength = 30
 [privacy]
   [privacy.youtube]
     privacyEnhanced = true
+
+[minify]
+  disableHTML = true  # HTML minify 비활성화

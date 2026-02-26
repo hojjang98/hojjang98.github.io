@@ -149,7 +149,7 @@ Set-Cookie: PHPSESSID=xyz789; path=/
 <html>
 ...
 </html>
-```
+```sql
 
 **분석 포인트:**
 - Request 헤더: User-Agent, Cookie, Referer 등 중요 정보 확인
