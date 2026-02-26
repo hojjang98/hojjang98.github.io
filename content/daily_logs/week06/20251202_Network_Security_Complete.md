@@ -28,6 +28,7 @@ summary: "애플리케이션 계층 프로토콜(HTTP/DNS/DHCP), Untangle 방화
 
 **HTTP/HTTPS 요청 분석 (Wireshark):**
 
+```
 # HTTP 요청 (평문)
 GET / HTTP/1.1
 Host: example.com
@@ -48,6 +49,7 @@ Encrypted Application Data
 Wireshark 필터: tls.handshake.type == 1  (Client Hello)
 → 암호화된 데이터는 Wireshark에서도 내용 확인 불가
    (서버의 Private Key 없이는 복호화 불가)
+```
 
 
 **DNS 쿼리 분석:**
@@ -431,7 +433,7 @@ sudo grep "192.168.2.80" /var/log/suricata/fast.log
 
 ### Wireshark 필터 (애플리케이션 계층)
 
-
+```
 # HTTP
 http
 http.request
@@ -472,6 +474,7 @@ ssh.protocol contains "2.0"
 # Telnet (매우 위험!)
 telnet
 tcp.port == 23
+```
 
 
 ### 보안 체크리스트

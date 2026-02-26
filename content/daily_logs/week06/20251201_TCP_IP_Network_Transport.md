@@ -222,8 +222,7 @@ Internet Control Message Protocol
     Type: 11 (Time-to-live exceeded)
     Code: 0 (Time to live exceeded in transit)
 
-# traceroute가 TTL을 1씩 증가시키며 보내면
-# 각 라우터가 ICMP Time Exceeded를 회신하여 경로를 추적
+traceroute가 TTL을 1씩 증가시키며 보내면, 각 라우터가 ICMP Time Exceeded를 회신하여 경로를 추적합니다.
 
 
 ### (D) TCP 3-Way Handshake 실습
@@ -476,6 +475,7 @@ Flags (6비트):
 
 ### Cisco 라우터 주요 명령어
 
+```
 # 모드 전환
 enable                        # User → Privileged 모드
 configure terminal            # Privileged → Global Config 모드
@@ -508,10 +508,12 @@ traceroute 8.8.8.8           # 경로 추적
 # 설정 저장
 copy running-config startup-config
 write memory                  # 동일
+```
 
 
 ### Wireshark 필터 (네트워크 & 트랜스포트 계층)
 
+```
 # ARP
 arp                                      # 모든 ARP 패킷
 arp.opcode == 1                          # ARP Request
@@ -537,6 +539,7 @@ tcp.stream eq 0                          # 첫 번째 TCP 스트림
 ip.src == 192.168.1.100 and tcp.port == 443
 arp or icmp
 tcp.flags.syn == 1 and ip.dst == 192.168.1.1
+```
 
 
 ### nmap 스캔 기법 요약

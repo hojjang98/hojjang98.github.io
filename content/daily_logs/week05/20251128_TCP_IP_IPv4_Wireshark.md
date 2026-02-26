@@ -26,6 +26,7 @@ summary: "OSI 7계층·IPv4 주소 체계·헤더 구조 학습 및 Wireshark를
 
 **IPv4 주소 계산 실습:**
 
+```
 # 예제 1: 192.168.10.130/25 네트워크 분석
 IP 주소: 192.168.10.130
 서브넷 마스크: 255.255.255.128 (/25)
@@ -45,10 +46,12 @@ Mask: 11111111.11111111.11111111.10000000
 /27 = 255.255.255.224 (32개 주소, 30개 호스트)
 /28 = 255.255.255.240 (16개 주소, 14개 호스트)
 /30 = 255.255.255.252 (4개 주소, 2개 호스트 - P2P 링크용)
+```
 
 
 **Wireshark 캡처 필터 (BPF 문법):**
 
+```
 # 특정 호스트의 모든 트래픽
 host 192.168.1.100
 
@@ -68,10 +71,12 @@ dst host 192.168.1.200
 
 # 조합 예시 (192.168.1.100에서 80포트로 가는 TCP 트래픽)
 tcp and src host 192.168.1.100 and dst port 80
+```
 
 
 **Wireshark 디스플레이 필터:**
 
+```
 # IP 주소 필터
 ip.addr == 192.168.1.100           # 출발지 또는 목적지
 ip.src == 192.168.1.100            # 출발지만
@@ -91,6 +96,7 @@ http.request.uri contains "login"  # URI에 login 포함
 # 조합 예시
 tcp.flags.syn == 1 and ip.src == 192.168.1.100 and tcp.dstport == 22
 http.request.method == "POST" and http.request.uri contains "admin"
+```
 
 
 **리눅스에서 네트워크 명령어:**
@@ -136,6 +142,7 @@ Internet Protocol Version 4
 
 **비정상 패킷 탐지 예시:**
 
+```
 # SYN Flood 공격 탐지
 - 대량의 SYN 패킷이 다양한 출발지 IP에서 발생
 - SYN-ACK에 대한 ACK 응답이 없음
@@ -149,6 +156,8 @@ Internet Protocol Version 4
 - 짧은 시간에 동일 출발지에서 다양한 포트로 연결 시도
 - 대량의 RST 패킷 (포트가 닫혀있음)
 - Wireshark 필터: tcp.flags.reset == 1
+```
+
 ---
 
 ## 3. 실무/보안 관점 분석 (Insight & Scenario Mapping)
@@ -193,6 +202,7 @@ Class E: 240.0.0.0   ~ 255.255.255.255  (첫 비트 1111)    실험용/예약
 
 ### IPv4 헤더 필드 요약
 
+```
 Version (4bit)          : IP 버전 (4)
 IHL (4bit)              : 헤더 길이 (5 = 20바이트, 옵션 없음)
 Total Length (16bit)    : 전체 패킷 크기 (헤더 + 데이터)
@@ -204,10 +214,12 @@ Protocol (8bit)         : 상위 프로토콜 (1=ICMP, 6=TCP, 17=UDP)
 Header Checksum (16bit) : 헤더 무결성 검증
 Source IP (32bit)       : 출발지 주소
 Destination IP (32bit)  : 목적지 주소
+```
 
 
 ### 주요 프로토콜 번호
 
+```
 1   : ICMP
 6   : TCP
 17  : UDP
@@ -215,19 +227,23 @@ Destination IP (32bit)  : 목적지 주소
 50  : ESP (IPsec)
 51  : AH (IPsec)
 89  : OSPF
+```
 
 
 ### Wireshark 단축키
 
+```
 Ctrl + K : 캡처 시작
 Ctrl + E : 캡처 중지
 Ctrl + F : 패킷 찾기
 Ctrl + G : 특정 패킷 번호로 이동
 Ctrl + Alt + Shift + T : TCP Stream 따라가기
+```
 
 
 ### tcpdump 주요 옵션
 
+```
 -i <interface>  : 캡처할 인터페이스 지정
 -c <count>      : 지정된 개수만큼만 캡처
 -w <file>       : PCAP 파일로 저장
@@ -241,4 +257,5 @@ Ctrl + Alt + Shift + T : TCP Stream 따라가기
 tcpdump -i eth0 -w capture.pcap 'tcp port 80'
 tcpdump -i any -c 100 -n 'src host 192.168.1.100'
 tcpdump -i eth0 -A 'tcp port 80 and (tcp[13] & 2 != 0)'  # SYN 플래그
+```
 
