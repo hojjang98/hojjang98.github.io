@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c \":*)",
+      "Bash(python -c \":*)",
+      "Bash(python c:/Users/ghwns/HJ_Blog/check_files.py)"
+    ]
+  }
+}

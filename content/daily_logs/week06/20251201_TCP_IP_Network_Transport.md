@@ -394,6 +394,7 @@ STATE 종류:
 
 ### ARP 패킷 구조
 
+```
 Hardware Type: Ethernet (1)
 Protocol Type: IPv4 (0x0800)
 Hardware Address Length: 6 (MAC 주소 길이)
@@ -407,10 +408,12 @@ Sender Hardware Address: 송신자 MAC
 Sender Protocol Address: 송신자 IP
 Target Hardware Address: 수신자 MAC (Request 시 00:00:00:00:00:00)
 Target Protocol Address: 수신자 IP
+```
 
 
 ### ICMP 주요 타입 & 코드
 
+```
 Type 0: Echo Reply (ping 응답)
 Type 3: Destination Unreachable
   - Code 0: Network unreachable
@@ -426,10 +429,12 @@ Type 11: Time Exceeded
   - Code 1: Fragment reassembly time exceeded
 Type 13: Timestamp Request
 Type 14: Timestamp Reply
+```
 
 
 ### TCP 플래그
 
+```
 Flags (6비트):
   URG (Urgent): 긴급 데이터
   ACK (Acknowledgment): 확인 응답
@@ -447,10 +452,12 @@ Flags (6비트):
   FA  : FIN+ACK (연결 종료 확인)
   R   : RST (연결 강제 종료)
   RA  : RST+ACK
+```
 
 
 ### 잘 알려진 포트 번호 (Well-Known Ports: 0-1023)
 
+```
 20/21  : FTP (File Transfer Protocol)
 22     : SSH (Secure Shell)
 23     : Telnet
@@ -471,6 +478,7 @@ Flags (6비트):
 
 동적 포트 (Dynamic Ports: 49152-65535):
 클라이언트가 임시로 사용
+```
 
 
 ### Cisco 라우터 주요 명령어
@@ -544,6 +552,7 @@ tcp.flags.syn == 1 and ip.dst == 192.168.1.1
 
 ### nmap 스캔 기법 요약
 
+```
 스캔 방식              명령어              특징
 ----------------      ----------------   ------------------
 TCP SYN Scan          -sS                Half-open, 빠름, 로그 회피
@@ -562,4 +571,5 @@ NULL Scan             -sN                플래그 없음
 -T3  : Normal (기본값)
 -T4  : Aggressive (빠름)
 -T5  : Insane (매우 빠름)
+```
 

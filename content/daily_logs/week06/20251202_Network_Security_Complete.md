@@ -243,6 +243,7 @@ sudo systemctl status suricata
 
 **Suricata 룰 문법:**
 
+```
 Action Protocol Source_IP Source_Port Direction Dest_IP Dest_Port (Rule_Options)
 
 Action:
@@ -263,6 +264,7 @@ Rule_Options:
 - content: "GET /admin";         # 페이로드 검색
 - nocase;                        # 대소문자 구분 안 함
 - flow: to_server, established;  # 트래픽 방향 및 세션 상태
+```
 
 
 **실습 룰 작성:**
