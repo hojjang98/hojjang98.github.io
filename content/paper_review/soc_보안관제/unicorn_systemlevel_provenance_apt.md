@@ -244,17 +244,18 @@ UNICORN은 APT의 4가지 특성에 대응하도록 설계되었다:
 목적: Streaming provenance graph의 구조적 특징을 효율적으로 추출
 
 방법:
-```
-1. 초기화: 각 vertex v에 label l(v) 할당 (프로세스, 파일, 소켓 등)
-2. For iteration r = 0 to R:
-   a. 각 vertex v의 r-hop neighborhood 수집
-   b. Multiset M(v) = {l(u) | u는 v의 r-hop neighbor}
-   c. Hash M(v) → new label l'(v)
-   d. Histogram H[l'(v)] += weight(v, r)
-3. Weight function:
-   - Temporal locality: w(t) = λ^(-Δt) (gradually forgetting)
-   - Causal dependency: w(path_length) = 1 (no discount for causal edges)
-```
+
+1. 초기화: 각 vertex v에 label l(v) 할당 (프로세스, 파일, 소켓 등)  
+2. For iteration r = 0 to R:  
+   a. 각 vertex v의 r-hop neighborhood 수집  
+   b. Multiset M(v) = {l(u) | u는 v의 r-hop neighbor}  
+   c. Hash M(v) → new label l'(v)  
+   d. Histogram H[l'(v)] += weight(v, r)  
+3. Weight function:  
+   - Temporal locality: w(t) = λ^(-Δt) (gradually forgetting)  
+   - Causal dependency: w(path_length) = 1 (no discount for causal edges)  
+
+
 
 핵심 아이디어:
 - Weisfeiler-Lehman 알고리즘의 streaming 버전
