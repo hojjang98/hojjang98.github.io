@@ -27,7 +27,7 @@ summary: "애플리케이션 계층 프로토콜(HTTP/DNS/DHCP), Untangle 방화
 ### (A) 애플리케이션 계층 프로토콜 실습
 
 **HTTP/HTTPS 요청 분석 (Wireshark):**
-```
+
 # HTTP 요청 (평문)
 GET / HTTP/1.1
 Host: example.com
@@ -48,7 +48,7 @@ Encrypted Application Data
 Wireshark 필터: tls.handshake.type == 1  (Client Hello)
 → 암호화된 데이터는 Wireshark에서도 내용 확인 불가
    (서버의 Private Key 없이는 복호화 불가)
-```
+
 
 **DNS 쿼리 분석:**
 ```bash
@@ -83,7 +83,7 @@ Domain Name System (response)
 ```
 
 **DHCP DORA 과정 (Wireshark):**
-```
+
 패킷 1: DHCP Discover
     Bootstrap Protocol (Discover)
     Client MAC address: 00:0c:29:3a:2f:1a
@@ -115,19 +115,19 @@ Domain Name System (response)
     Option: (1) Subnet Mask = 255.255.255.0
     Option: (3) Router = 192.168.1.1
     Option: (6) Domain Name Server = 8.8.8.8, 8.8.4.4
-```
+
 
 ### (B) Untangle 방화벽 실습
 
 **네트워크 토폴로지:**
-```
+
 [로컬 PC] ←(NAT 포트포워딩: 3030→80)→ [Untangle Firewall: WAN=10.0.2.10, Internal=192.168.2.1, DMZ=192.168.3.1] ←→ [Internal Server: 192.168.2.80] / [Web Server: 192.168.3.90]
-```
+
 
 **방화벽 룰 설정 실습:**
 
 **1. Server → Web Server HTTP 차단:**
-```
+
 Description: Block HTTP from Server to Web Server
 Source Address: 192.168.2.80
 Destination Address: 192.168.3.90
@@ -138,10 +138,10 @@ Flag: Enabled
 
 결과:
 Server에서 http://192.168.3.90 접속 → 연결 시간 초과
-```
+
 
 **2. Server → Web Server SSH 허용, 나머지 차단:**
-```
+
 룰 1 (우선순위 높음):
 Description: Allow SSH from Server to Web Server
 Source Address: 192.168.2.80
@@ -162,10 +162,10 @@ Flag: Enabled
 결과:
 Server에서 ssh ubuntu@192.168.3.90 → 접속 성공
 Server에서 http://192.168.3.90 → 차단
-```
+
 
 **3. 외부 → Web Server HTTP 접속 (포트 포워딩):**
-```
+
 # VirtualBox NAT 포트 포워딩 설정
 Name: http_port_forward
 Protocol: TCP
@@ -193,10 +193,10 @@ Flag: Enabled
 
 결과:
 로컬 PC 브라우저에서 http://127.0.0.1:3030 → Web Server 접속 성공
-```
+
 
 **4. Outbound Traffic 허용:**
-```
+
 Description: Allow outbound traffic
 Source Interface: Internal, Interface3 (DMZ)
 Destination Interface: External
@@ -206,7 +206,7 @@ Flag: Enabled
 
 결과:
 Server/Web Server에서 외부 인터넷(www.wikipedia.org 등) 접속 성공
-```
+
 
 ### (C) Suricata IDS/IPS 실습
 
@@ -240,7 +240,7 @@ sudo systemctl status suricata
 ```
 
 **Suricata 룰 문법:**
-```
+
 Action Protocol Source_IP Source_Port Direction Dest_IP Dest_Port (Rule_Options)
 
 Action:
@@ -261,7 +261,7 @@ Rule_Options:
 - content: "GET /admin";         # 페이로드 검색
 - nocase;                        # 대소문자 구분 안 함
 - flow: to_server, established;  # 트래픽 방향 및 세션 상태
-```
+
 
 **실습 룰 작성:**
 
@@ -401,7 +401,7 @@ sudo grep "192.168.2.80" /var/log/suricata/fast.log
 
 ### 방화벽 정책 설계 원칙
 
-```
+
 1. Default Deny (기본 차단)
    - 모든 트래픽을 차단한 후, 필요한 것만 허용
    - 마지막 룰: "모두 차단"
@@ -427,11 +427,11 @@ sudo grep "192.168.2.80" /var/log/suricata/fast.log
 6. 정기 검토
    - 분기별 불필요한 룰 제거
    - 로그 분석 후 정책 최적화
-```
+
 
 ### Wireshark 필터 (애플리케이션 계층)
 
-```
+
 # HTTP
 http
 http.request
@@ -472,12 +472,12 @@ ssh.protocol contains "2.0"
 # Telnet (매우 위험!)
 telnet
 tcp.port == 23
-```
+
 
 ### 보안 체크리스트
 
 **웹 서버:**
-```
+
 ☑ HTTPS 적용 (인증서 유효성 확인)
 ☑ HTTP → HTTPS 리다이렉션
 ☑ HSTS 헤더 설정
@@ -485,24 +485,24 @@ tcp.port == 23
 ☑ Directory Listing 비활성화
 ☑ 에러 메시지에서 버전 정보 숨김
 ☑ 최신 보안 패치 적용
-```
+
 
 **방화벽:**
-```
+
 ☑ Default Deny 정책
 ☑ 관리 인터페이스 내부망에서만 접근
 ☑ 불필요한 포트 모두 차단
 ☑ 로그 레벨 적절히 설정
 ☑ 룰 순서 검증
 ☑ 변경 이력 관리
-```
+
 
 **IDS/IPS:**
-```
+
 ☑ 최신 룰셋 업데이트
 ☑ 오탐 룰 튜닝
 ☑ 임계값 설정
 ☑ 로그 정기 검토
 ☑ SIEM 연동
 ☑ 성능 모니터링 (패킷 드롭 확인)
-```
+

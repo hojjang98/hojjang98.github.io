@@ -102,7 +102,7 @@ router2(config)# ip route 0.0.0.0 0.0.0.0 10.0.0.2
 ```
 
 **PC 설정 및 연결 테스트:**
-```
+
 PC2 설정:
 - IP: 192.168.10.2
 - Subnet Mask: 255.255.255.0
@@ -117,12 +117,12 @@ PC2에서 연결 테스트:
 C:\> ping 192.168.10.1      (Router1 확인)
 C:\> ping 192.168.20.2      (PC3까지 확인)
 C:\> tracert 192.168.20.2   (경로 확인: Router1 → Router0 → Router2 → PC3)
-```
+
 
 ### (B) Wireshark ARP 패킷 분석
 
 **ARP Request (브로드캐스트):**
-```
+
 Ethernet II
     Destination: Broadcast (ff:ff:ff:ff:ff:ff)
     Source: 00:0c:29:3a:2f:1a
@@ -138,10 +138,10 @@ Address Resolution Protocol (request)
     Sender IP address: 192.168.1.100
     Target MAC address: 00:00:00:00:00:00  (아직 모름)
     Target IP address: 192.168.1.1         (알고 싶은 IP)
-```
+
 
 **ARP Reply (유니캐스트):**
-```
+
 Ethernet II
     Destination: 00:0c:29:3a:2f:1a  (요청자에게만)
     Source: 00:50:56:c0:00:08      (자신의 MAC)
@@ -157,7 +157,7 @@ Address Resolution Protocol (reply)
     Sender IP address: 192.168.1.1
     Target MAC address: 00:0c:29:3a:2f:1a  (요청자 MAC)
     Target IP address: 192.168.1.100
-```
+
 
 **ARP 캐시 확인 (Linux/Windows):**
 ```bash
@@ -177,7 +177,7 @@ ip neigh flush all       # 전체 삭제 (Linux)
 ### (C) Wireshark ICMP 패킷 분석
 
 **ICMP Echo Request (ping 요청):**
-```
+
 Internet Protocol Version 4
     Source: 192.168.1.100
     Destination: 8.8.8.8
@@ -189,10 +189,10 @@ Internet Control Message Protocol
     Identifier: 0x0001
     Sequence number: 1
     Data (48 bytes)
-```
+
 
 **ICMP Echo Reply (ping 응답):**
-```
+
 Internet Protocol Version 4
     Source: 8.8.8.8
     Destination: 192.168.1.100
@@ -204,7 +204,7 @@ Internet Control Message Protocol
     Identifier: 0x0001
     Sequence number: 1
     Data (48 bytes)
-```
+
 
 **ICMP Destination Unreachable:**
 ```
@@ -217,14 +217,14 @@ Internet Control Message Protocol
 ```
 
 **ICMP Time Exceeded (traceroute):**
-```
+
 Internet Control Message Protocol
     Type: 11 (Time-to-live exceeded)
     Code: 0 (Time to live exceeded in transit)
 
 # traceroute가 TTL을 1씩 증가시키며 보내면
 # 각 라우터가 ICMP Time Exceeded를 회신하여 경로를 추적
-```
+
 
 ### (D) TCP 3-Way Handshake 실습
 
@@ -235,19 +235,19 @@ nslookup dictionary.cambridge.org
 ```
 
 **2. Wireshark 필터 설정:**
-```
+
 ip.addr == 54.251.164.119 and tcp.port == 443
-```
+
 
 **3. 브라우저에서 접속:**
-```
+
 https://dictionary.cambridge.org
-```
+
 
 **4. Wireshark에서 확인한 3-Way Handshake:**
 
 **패킷 #1 (SYN):**
-```
+
 Transmission Control Protocol
     Source Port: 54321 (클라이언트 랜덤 포트)
     Destination Port: 443 (HTTPS)
@@ -260,10 +260,10 @@ Transmission Control Protocol
         .... .0.. .... = SYN: Set
         .... ..0. .... = FIN: Not set
     Window size: 65535
-```
+
 
 **패킷 #2 (SYN+ACK):**
-```
+
 Transmission Control Protocol
     Source Port: 443
     Destination Port: 54321
@@ -276,10 +276,10 @@ Transmission Control Protocol
         .... .1.. .... = SYN: Set
         .... ..0. .... = FIN: Not set
     Window size: 29200
-```
+
 
 **패킷 #3 (ACK):**
-```
+
 Transmission Control Protocol
     Source Port: 54321
     Destination Port: 443
@@ -294,7 +294,7 @@ Transmission Control Protocol
     Window size: 65535
 
 → 연결 확립 완료, 이후 데이터 전송 시작
-```
+
 
 ### (E) 포트 스캔 실습 (nmap)
 
@@ -346,7 +346,7 @@ nmap -F 192.168.1.100
 ```
 
 **nmap 결과 해석:**
-```
+
 PORT     STATE    SERVICE
 22/tcp   open     ssh
 80/tcp   open     http
@@ -358,7 +358,7 @@ STATE 종류:
 - closed: 포트 닫힘, 서비스 없음
 - filtered: 방화벽에 의해 필터링됨
 - open|filtered: 불확실 (UDP 스캔 시 흔함)
-```
+
 
 ---
 
@@ -394,7 +394,7 @@ STATE 종류:
 ## 5. 추가 참고사항 (Quick Reference)
 
 ### ARP 패킷 구조
-```
+
 Hardware Type: Ethernet (1)
 Protocol Type: IPv4 (0x0800)
 Hardware Address Length: 6 (MAC 주소 길이)
@@ -408,10 +408,10 @@ Sender Hardware Address: 송신자 MAC
 Sender Protocol Address: 송신자 IP
 Target Hardware Address: 수신자 MAC (Request 시 00:00:00:00:00:00)
 Target Protocol Address: 수신자 IP
-```
+
 
 ### ICMP 주요 타입 & 코드
-```
+
 Type 0: Echo Reply (ping 응답)
 Type 3: Destination Unreachable
   - Code 0: Network unreachable
@@ -427,10 +427,10 @@ Type 11: Time Exceeded
   - Code 1: Fragment reassembly time exceeded
 Type 13: Timestamp Request
 Type 14: Timestamp Reply
-```
+
 
 ### TCP 플래그
-```
+
 Flags (6비트):
   URG (Urgent): 긴급 데이터
   ACK (Acknowledgment): 확인 응답
@@ -448,10 +448,10 @@ Flags (6비트):
   FA  : FIN+ACK (연결 종료 확인)
   R   : RST (연결 강제 종료)
   RA  : RST+ACK
-```
+
 
 ### 잘 알려진 포트 번호 (Well-Known Ports: 0-1023)
-```
+
 20/21  : FTP (File Transfer Protocol)
 22     : SSH (Secure Shell)
 23     : Telnet
@@ -472,10 +472,10 @@ Flags (6비트):
 
 동적 포트 (Dynamic Ports: 49152-65535):
 클라이언트가 임시로 사용
-```
+
 
 ### Cisco 라우터 주요 명령어
-```
+
 # 모드 전환
 enable                        # User → Privileged 모드
 configure terminal            # Privileged → Global Config 모드
@@ -508,10 +508,10 @@ traceroute 8.8.8.8           # 경로 추적
 # 설정 저장
 copy running-config startup-config
 write memory                  # 동일
-```
+
 
 ### Wireshark 필터 (네트워크 & 트랜스포트 계층)
-```
+
 # ARP
 arp                                      # 모든 ARP 패킷
 arp.opcode == 1                          # ARP Request
@@ -537,10 +537,10 @@ tcp.stream eq 0                          # 첫 번째 TCP 스트림
 ip.src == 192.168.1.100 and tcp.port == 443
 arp or icmp
 tcp.flags.syn == 1 and ip.dst == 192.168.1.1
-```
+
 
 ### nmap 스캔 기법 요약
-```
+
 스캔 방식              명령어              특징
 ----------------      ----------------   ------------------
 TCP SYN Scan          -sS                Half-open, 빠름, 로그 회피
@@ -559,4 +559,4 @@ NULL Scan             -sN                플래그 없음
 -T3  : Normal (기본값)
 -T4  : Aggressive (빠름)
 -T5  : Insane (매우 빠름)
-```
+
