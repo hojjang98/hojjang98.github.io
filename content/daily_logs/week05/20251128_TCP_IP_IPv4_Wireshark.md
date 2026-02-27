@@ -1,8 +1,10 @@
 ---
 title: "2025.11.28 (Day 25) - TCP/IP 네트워크 보안: IPv4 프로토콜 & Wireshark 패킷 분석"
 date: 2025-11-28
+draft: false
 tags: ["TCP/IP", "IPv4", "Wireshark", "네트워크보안", "패킷분석"]
-categories: ["SK Shieldus Rookies 28"]
+categories: ["daily-logs"]
+summary: "OSI 7계층 vs TCP/IP 모델, IPv4 헤더 구조 분석, Wireshark 캡처/디스플레이 필터 실습, 비정상 패킷 탐지"
 ---
 
 # 📄 2025.11.28 (Day 25) - TCP/IP 네트워크 보안: IPv4 프로토콜 & Wireshark 패킷 분석

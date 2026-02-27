@@ -1,8 +1,10 @@
 ---
 title: "2025.11.25 (Day 22) - Linux 시스템 관리: 권한 통제, 쉘 기초 및 Vi"
 date: 2025-11-25
+draft: false
 tags: ["Linux", "SetUID", "StickyBit", "Umask", "Shell", "보안"]
-categories: ["SK Shieldus Rookies 28"]
+categories: ["daily-logs"]
+summary: "계정 파일 구조(/etc/passwd, /etc/shadow), SetUID 권한 상승 위협 재현, 쉘 지역/환경 변수 상속 실습"
 ---
 
 # 📄 2025.11.25 (Day 22) - Linux 시스템 관리: 권한 통제, 쉘 기초 및 Vi

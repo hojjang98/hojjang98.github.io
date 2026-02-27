@@ -1,8 +1,10 @@
 ---
 title: "2025.11.26 (Day 23) - Linux Shell 심화: I/O 제어, 정규식, 프로세스 관리"
 date: 2025-11-26
+draft: false
 tags: ["Linux", "Shell", "정규식", "프로세스", "Redirection", "cron"]
-categories: ["SK Shieldus Rookies 28"]
+categories: ["daily-logs"]
+summary: "표준 입출력 리다이렉션, 파이프, 정규식(grep/awk), 프로세스 관리(kill/ps), cron/at 스케줄링 실습"
 ---
 
 # 📄 2025.11.26 (Day 23) - Linux Shell 심화: I/O 제어, 정규식, 프로세스 관리

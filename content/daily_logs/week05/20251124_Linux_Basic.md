@@ -1,8 +1,10 @@
 ---
 title: "2025.11.24 (Day 21) - Linux 시스템 기초 및 파일 접근 통제"
 date: 2025-11-24
+draft: false
 tags: ["Linux", "권한관리", "Setuid", "Umask", "보안"]
-categories: ["SK Shieldus Rookies 28"]
+categories: ["daily-logs"]
+summary: "리눅스 파일 권한 모델(UGO), Setuid/Sticky Bit 특수 권한, Umask 설정을 통한 최소 권한 원칙 적용"
 ---
 
 # 📄 2025.11.24 (Day 21) - Linux 시스템 기초 및 파일 접근 통제
