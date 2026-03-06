@@ -1,6 +1,6 @@
 ---
 title: "Day 23: PCI-DSS 카드 정보 보호 표준"
-date: 2026-03-06
+date: 2026-03-05
 categories: ["cyber-law-study"]
 tags: ["PCI-DSS", "결제보안", "카드데이터", "QSA", "ASV", "CDE", "보안컨설팅", "금융보안", "CHD", "SAD", "토큰화"]
 draft: false
