@@ -1,6 +1,6 @@
 ---
 title: "Day 25: SOC 2 (Service Organization Control 2)"
-date: 2026-03-06
+date: 2026-03-07
 categories: ["cyber-law-study"]
 tags: ["SOC2", "AICPA", "TSC", "내부통제", "클라우드보안", "SaaS보안", "보안감사", "보안컨설팅", "TypeII", "신뢰서비스기준"]
 draft: false
