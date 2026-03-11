@@ -153,22 +153,6 @@ summary: "기술적 통제만으로 해결되지 않는 직원 행동 문제를 
 
 ---
 
-## References
-
-[1] Da Veiga, A., & Eloff, J.H.P. (2010). A framework and assessment instrument for information security culture. *Computers & Security*, 29(2), 196–207. https://doi.org/10.1016/j.cose.2009.09.002
-
-[2] Schein, E.H. (1985). *Organizational culture and leadership*. Jossey-Bass.
-
-[3] Bulgurcu, B., Cavusoglu, H., & Benbasat, I. (2010). Information security policy compliance: An empirical study of rationality-based beliefs and information security awareness. *MIS Quarterly*, 34(3), 523–548.
-
-[4] Gashgari, G., Walters, R., & Wills, G. (2017). A proposed best-practice framework for information security governance. *Proceedings of the 2nd International Conference on Internet of Things, Big Data and Security*, 295–301.
-
----
-
-보안컨설팅  /  SecurityConsulting  /  InformationSecurityCulture  /  OrganisationalCulture  /  ISCF  /  ISCA  /  PaperReview  /  SKShieldusRookies
-
----
-
 ## Day 2 – Research Model, Hypotheses, and Methodology
 *(3계층 순환 구조로 보안 문화를 설계하고, 85개 문항으로 측정한다)*
 
@@ -332,7 +316,7 @@ Day 3에서는 이 연구의 실증 결과를 구체적으로 들여다본다. 1
 
 ---
 
-## References  ( Day 2 추가 )
+## References  
 
 [1] Da Veiga, A., & Eloff, J.H.P. (2010). A framework and assessment instrument for information security culture. *Computers & Security*, 29(2), 196–207. https://doi.org/10.1016/j.cose.2009.09.002
 
