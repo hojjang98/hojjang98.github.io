@@ -1,6 +1,6 @@
 ---
 title: "Week 19 — 파이널 프로젝트: 산출물 마스터 플랜 확정 (Team LIBERO)"
-date: 2026-03-09
+date: 2026-03-16
 draft: false
 tags: ["파이널프로젝트", "개인정보보호", "위수탁관리", "컨설팅", "산출물관리", "하랑항공", "TeamLIBERO", "SK쉴더스루키즈"]
 categories: ["projects"]
