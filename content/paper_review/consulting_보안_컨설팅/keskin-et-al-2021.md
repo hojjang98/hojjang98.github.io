@@ -150,6 +150,173 @@ C-TPRM의 핵심은 신용 점수 체계와 유사한 방식으로 조직의 사
 
 ---
 
+## Day 2 - Research Model, Hypotheses, and Methodology
+*(동일 조직, 다른 점수 - 비침습적 C-TPRM 도구들은 얼마나 일치하는가)*
+
+### 1. 연구 모델 개요
+
+[ 연구 설계 전체 구조 ]
+
+[ 탐색적 문헌 검토 ]  기존 C-TPRM 방법론 정리
+
+    - 상용 C-TPRM 도구 9개 조사  ( BitSight, FICO, RiskRecon 등 )
+    - 공통 지표 6개 카테고리 도출
+
+    >> →
+
+[ 파일럿 실증 분석 ]  동일 조직 대상 다중 도구 비교
+
+    - TPRA 회원사 중 4개 도구 선정  ( FICO, BitSight, RiskRecon, ComplyScore )
+    - University at Albany 대상 스캔 수행
+
+    >> ↓
+
+[ 결과 정규화 ]  0 - 100 스케일 변환
+
+    >> ↓
+
+[ 정량적 비교  +  정성적 비교 ]
+
+    >> ↓
+
+[ 일관성 및 신뢰성 평가 ]
+
+설계 철학 :
+
+저자들은 C-TPRM 분야가 아직 표준화가 미비한 신흥 영역임을 전제하고, 시장에 존재하는 도구들의 현황을 탐색적으로 파악하는 데 초점을 맞췄다. 이론 검증보다는 현실 진단에 가까운 연구로, 신용 점수 체계에서 여러 신용 평가 기관의 점수가 수렴하는 것처럼 C-TPRM 점수도 수렴해야 한다는 전제를 검증하는 구조다.
+
+---
+
+### 2. 연구 가설 (핵심 가정)
+
+이 논문은 가설 검증 연구가 아닌 탐색적 비교 연구이므로, 핵심 가정으로 정리한다.
+
+| 가정 | 내용 | 근거 |
+|------|------|------|
+| A1 | 신용 점수처럼, 서로 다른 C-TPRM 도구들도 동일 조직에 대해 유사한 위험 수준을 산출해야 한다 | 신용 평가 기관(Equifax, TransUnion, Experian)은 공통 계산 방법론을 사용하여 수렴된 결과를 제공함 |
+| A2 | 비침습적 방법으로도 조직의 사이버 보안 수준을 의미 있게 평가할 수 있다 | 공개 데이터(인증서, IP, 다크웹 등)는 보안 수준의 간접 지표로 활용 가능 |
+| A3 | C-TPRM 도구들이 사용하는 평가 지표 간에는 공통 기반이 존재한다 | 사이버 위험의 구성 요소(취약점, 위협, 영향)는 도구에 무관하게 유사한 개념 구조를 공유 |
+
+---
+
+### 3. 연구 방법론
+
+#### A. 데이터 수집
+
+데이터 소스 :
+
+| 소스 | 수집 정보 | 용도 |
+|------|-----------|------|
+| TPRA(Third-Party Risk Association) 회원사 목록 | C-TPRM 서비스 제공 기업 명단 | 포함 기준에 맞는 도구 후보 식별 |
+| FICO, BitSight, RiskRecon, ComplyScore | University at Albany에 대한 비침습적 스캔 보고서 | 정량·정성 비교 분석의 원본 데이터 |
+| 공개 웹 데이터 (각 도구가 수집) | IP 주소, SSL 인증서, 봇넷 레지스터, 다크웹 유출 데이터 등 | 각 도구의 위험 점수 산출 원천 |
+
+데이터 수집 절차 :
+
+TPRA 회원 자격을 갖춘 도구들 중 사이버 보안 평가를 수행하는지 확인 후, 10개 기업에 공식 초청장을 발송했다. 이 중 4개 기업(FICO, BitSight, RiskRecon, ComplyScore)만이 비침습적 스캔 보고서 제공에 동의했으며, 나머지는 사전 비용 납부 또는 기타 조건을 요구하여 제외됐다.
+
+수집 과정 특이사항 :
+
+| 도구 | 사전 데모 필요 | 소요 시간 | 비용 |
+|------|--------------|-----------|------|
+| FICO | 불필요 | 즉시 | 무료 |
+| BitSight | 필요 (실시간) | 3일 | 면제 |
+| RiskRecon | 필요 (실시간) | 1주 | 면제 |
+| ComplyScore | 불필요 | 2주 | 무료 (초기 점수만) |
+
+ComplyScore의 경우, 이 연구에서 획득한 점수는 비침습적 스캔에 의한 초기 점수이며, 완전한 평가는 유료 계약 후 현장 조사를 포함한 심층 방법론으로 진행된다.
+
+#### B. 핵심 분석 기법
+
+비침습적 위험 점수화 비교 방법론
+
+목적 :  서로 다른 척도를 사용하는 4개 도구의 결과를 동일 기준으로 비교하기 위한 정규화 및 비교 분석
+
+방법 :
+
+    - 각 도구로부터 University at Albany 대상 스캔 보고서 수집
+    - 전체 점수를 0 - 100 범위로 정규화
+        - FICO  ( 850점 만점 )  >>  정규화
+        - BitSight  ( 900점 만점 )  >>  정규화
+        - RiskRecon  ( 10점 만점 )  >>  정규화
+        - ComplyScore  ( 100점 만점 )  >>  변환 불필요
+    - 정량적 비교  :  정규화된 종합 점수 비교
+    - 정성적 비교  :  각 보고서의 카테고리별 평가 결과 수동 비교
+    - 삼각검증  ( Triangulation )  :  2명의 연구자가 독립적으로 분석 후 결과 대조
+
+삼각검증 적용 이유 :
+
+연구의 신뢰성을 높이기 위해 두 연구자가 분석을 독립적으로 수행하고 결과를 비교하는 방식을 채택했다. 이는 단일 연구자의 주관적 해석 가능성을 줄이기 위한 설계상의 선택이다.
+
+#### C. 평가 지표 체계 (6개 공통 카테고리)
+
+이 논문은 시장에 존재하는 C-TPRM 도구들이 공통적으로 사용하는 지표를 6개 카테고리로 정리했다.
+
+| 카테고리 | 평가 내용 | 주요 스캔 대상 |
+|----------|-----------|---------------|
+| 엔드포인트 행동 | 액세스 권한, 자산 관리, 감사 로깅 등 엔드디바이스의 보안 상태 | 브라우저, OS, 안티바이러스, RBL(Real-time Blackhole Lists) |
+| 네트워크 설정 오류 | 네트워킹 장치의 설정 오류 및 보안 모범 사례 준수 여부 | 포트 상태, PostgreSQL DB, SSL 인증서, 방화우/라우터 설정 |
+| 소프트웨어 및 서비스 | 패치 관리, 프로토콜 적정성, 설정 상태 | HSTS preloading, CMS, X-XMS, 국가취약점데이터베이스(NVD) 대조 |
+| 웹 도메인 | 웹 도메인 및 콘텐츠 관리 시스템의 취약점 | FTP, HTTP, IP 주소, DNS 데이터, 이메일 서버 포트 |
+| 기업 정보  ( Firmographic ) | 재무, 규모 등 조직 정보 및 소셜 엔지니어링 노출 | 유출 기업 이메일, 공식 웹사이트, 정보 유출 여부 |
+| 과거 침해 이력 | 보고된 과거 침해 사고 및 당시 대응 이력 | 타이포스쿼팅 도메인, 시스템 로그, 패치 버전 이력 |
+
+#### D. 평가 방법
+
+정량적 평가 :
+
+    - 4개 도구의 정규화 점수를 직접 수치 비교
+    - 향후 연구 방향으로 ANOVA(종합 점수 일관성 분석), MANOVA(카테고리별 점수 반영 일관성 분석), 사후 검정  ( post hoc tests ) 적용 제안
+
+정성적 평가 :
+
+    - 각 보고서의 카테고리별 서술적 평가 결과를 수동으로 비교
+    - 도구별 강조 항목, 해석 방식, 권고사항의 차이를 분석
+
+비교 대상 :
+
+신용 점수 체계(Equifax, TransUnion, Experian)를 C-TPRM 벤치마크로 삼았다. 신용 점수 기관들은 공통 계산 방법론을 사용하므로 개인의 신용 점수가 기관 간에 대체로 수렴하는데, C-TPRM 도구들도 이와 유사한 수렴성을 보여야 한다는 것이 비교의 전제다.
+
+---
+
+### 4. 컨설팅 관점 인사이트
+
+방법론의 실무 적용성 :
+
+장점 :
+
+    - 6개 지표 카테고리는 고객사 벤더 심사 체크리스트 설계의 직접적 기초로 활용 가능
+    - 비침습적 방법이므로 벤더의 협조 없이 선제적 위험 파악 가능, 계약 전 사전 심사에 유용
+    - 정규화 비교 방법론은 고객사가 여러 도구를 동시에 사용할 때 결과 해석 기준으로 적용 가능
+
+한계 :
+
+    - 단일 조직  ( University at Albany )을 대상으로 한 파일럿 연구로, 일반화에 한계가 있음
+    - ComplyScore의 경우 비침습적 초기 점수만 포함되어 도구 간 비교의 동등성이 완전하지 않음
+    - 4개 도구만 포함되었으며, 나머지 6개 도구는 비용 또는 조건 문제로 제외됨
+
+기존 보안 솔루션과의 차별점 :
+
+| 접근 방법 | 방식 | 강점 | 약점 |
+|-----------|------|------|------|
+| 전통적 침투 테스트 | 직접 개입, 허가 필요 | 심층적, 실제 취약점 확인 | 비용·시간 소요, 벤더 협조 필수 |
+| 설문/체크리스트 | 벤더 자기신고 방식 | 내부 통제 정보 획득 가능 | 주관적, 허위 보고 가능성 |
+| 비침습적 위험 점수화 | 공개 데이터 자동 수집·분석 | 확장성 높음, 즉시 실행 가능, 벤더 협조 불필요 | 내부 통제 파악 불가, 도구 간 결과 불일치 |
+
+---
+
+## References
+
+[1] Keskin, O.F., Caramancion, K.M., Tatar, I., Raza, O., & Tatar, U. (2021). Cyber Third-Party Risk Management: A Comparison of Non-Intrusive Risk Scoring Reports. Electronics, 10(10), 1168.
+
+[2] Ghadge, A., Weiß, M., Caldwell, N.D., & Wilding, R. (2020). Managing cyber risk in supply chains: A review and research agenda. Supply Chain Management: An International Journal, 25(2), 223-240.
+
+[3] Gordon, L.A., & Loeb, M.P. (2002). The economics of information security investment. ACM Transactions on Information and System Security, 5(4), 438-457.
+
+[4] Santos-Olmo, A., et al. (2024). Integrated risk analysis framework.
+
+---
+
 ## Tags
 
-보안컨설팅  /  SecurityConsulting  /  C-TPRM  /  VendorRisk  /  NonIntrusiveAssessment  /  RiskScoring  /  SupplyChainCybersecurity  /  PaperReview  /  SKShieldusRookies
+보안컨설팅  /  SecurityConsulting  /  C-TPRM  /  VendorRisk  /  NonIntrusiveAssessment  /  RiskScoring  /  SupplyChainCybersecurity  /  RiskNormalization  /  PaperReview  /  SKShieldusRookies
