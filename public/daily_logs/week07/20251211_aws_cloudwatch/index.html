@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>2025.12.11 (Day 34) - AWS 기타 서비스: 데이터 분석, 기계 학습, 시스템 관리 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="AWS, Kinesis, Athena, OpenSearch, SageMaker, CloudWatch, Systems-Manager, CloudFormation, Organizations">
+<meta name="description" content="Kinesis/Athena/OpenSearch 데이터 분석 파이프라인, SageMaker/Rekognition 등 ML 서비스, Systems Manager Session Manager, CloudWatch 알람 및 메트릭 필터 실습">
+<meta name="author" content="">
+<link rel="canonical" href="https://hojjang98.github.io/daily_logs/week07/20251211_aws_cloudwatch/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.290573799e582c418c4bd84f2bca757d0a77fd1bf9f5c43942030e706df68ec8.css" integrity="sha256-KQVzeZ5YLEGMS9hPK8p1fQp3/Rv59cQ5QgMOcG32jsg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/daily_logs/week07/20251211_aws_cloudwatch/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://hojjang98.github.io/daily_logs/week07/20251211_aws_cloudwatch/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="2025.12.11 (Day 34) - AWS 기타 서비스: 데이터 분석, 기계 학습, 시스템 관리">
+  <meta property="og:description" content="Kinesis/Athena/OpenSearch 데이터 분석 파이프라인, SageMaker/Rekognition 등 ML 서비스, Systems Manager Session Manager, CloudWatch 알람 및 메트릭 필터 실습">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="daily_logs">
+    <meta property="article:published_time" content="2025-12-11T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-12-11T00:00:00+00:00">
+    <meta property="article:tag" content="AWS">
+    <meta property="article:tag" content="Kinesis">
+    <meta property="article:tag" content="Athena">
+    <meta property="article:tag" content="OpenSearch">
+    <meta property="article:tag" content="SageMaker">
+    <meta property="article:tag" content="CloudWatch">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2025.12.11 (Day 34) - AWS 기타 서비스: 데이터 분석, 기계 학습, 시스템 관리">
+<meta name="twitter:description" content="Kinesis/Athena/OpenSearch 데이터 분석 파이프라인, SageMaker/Rekognition 등 ML 서비스, Systems Manager Session Manager, CloudWatch 알람 및 메트릭 필터 실습">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "6개월, 혹은 그 이상의 보안 여정",
+      "item": "https://hojjang98.github.io/daily_logs/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "2025.12.11 (Day 34) - AWS 기타 서비스: 데이터 분석, 기계 학습, 시스템 관리",
+      "item": "https://hojjang98.github.io/daily_logs/week07/20251211_aws_cloudwatch/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "2025.12.11 (Day 34) - AWS 기타 서비스: 데이터 분석, 기계 학습, 시스템 관리",
+  "name": "2025.12.11 (Day 34) - AWS 기타 서비스: 데이터 분석, 기계 학습, 시스템 관리",
+  "description": "Kinesis/Athena/OpenSearch 데이터 분석 파이프라인, SageMaker/Rekognition 등 ML 서비스, Systems Manager Session Manager, CloudWatch 알람 및 메트릭 필터 실습",
+  "keywords": [
+    "AWS", "Kinesis", "Athena", "OpenSearch", "SageMaker", "CloudWatch", "Systems-Manager", "CloudFormation", "Organizations"
+  ],
+  "articleBody": "📄 2025.12.11 (Day 34) - AWS 기타 서비스: 데이터 분석, 기계 학습, 시스템 관리 1. 핵심 개념 정리 데이터 수집 및 분석 서비스 # 핵심 개념 설명 실무/보안 관점 1 Amazon Kinesis 실시간 스트리밍 데이터 수집 및 처리 서비스. Data Streams(데이터 수집), Firehose(전송), Analytics(분석) 세 가지 구성요소 제공 실시간 로그 분석, 클릭스트림 분석에 활용. 보안 로그를 실시간으로 S3/OpenSearch로 전송하여 SIEM 구축 가능 2 Amazon Athena S3에 저장된 데이터를 표준 SQL로 직접 쿼리하는 서버리스 서비스. 별도 인프라 구축 없이 즉시 분석 가능 CloudTrail, VPC Flow Logs를 S3에 저장 후 Athena로 쿼리하여 보안 분석. 스캔한 데이터량 기준 과금 3 Amazon OpenSearch Elasticsearch 기반 검색 및 분석 서비스. 로그 분석, 실시간 모니터링 대시보드 구축에 활용 SIEM 구축의 핵심. CloudWatch Logs, Kinesis에서 로그를 수집하여 보안 이벤트 검색 및 시각화 4 AWS Glue 서버리스 ETL(추출, 변환, 적재) 서비스. 데이터 카탈로그 기능으로 데이터 레이크의 메타데이터 관리 여러 소스의 보안 로그를 표준 형식으로 변환하여 분석 용이하게 함. Athena와 연동하여 스키마 자동 검색 5 Amazon QuickSight 클라우드 기반 BI(Business Intelligence) 서비스. 대시보드 및 시각화 보고서 생성 보안 메트릭 대시보드 구축. 경영진 보고용 보안 현황 리포트 자동 생성 기계 학습 서비스 # 핵심 개념 설명 실무/보안 관점 6 Amazon SageMaker 머신러닝 모델을 구축, 학습, 배포하는 완전 관리형 플랫폼. Jupyter 노트북 환경 제공 이상 탐지 모델 학습, 악성코드 분류 모델 개발에 활용. 보안 분석가도 AutoML 기능으로 ML 모델 구축 가능 7 Amazon Rekognition 이미지 및 비디오 분석 서비스. 얼굴 인식, 객체 탐지, 텍스트 추출 기능 제공 출입 통제 시스템, CCTV 영상 분석에 활용. 부적절한 콘텐츠 자동 탐지 8 Amazon Comprehend 자연어 처리(NLP) 서비스. 텍스트에서 감정, 핵심 구문, 개체 추출 피싱 이메일 탐지, 고객 피드백 분석, 문서 분류 자동화에 활용 9 Amazon Lex 챗봇 구축 서비스. 음성 및 텍스트 기반 대화형 인터페이스 생성 IT 헬프데스크 챗봇, 보안 인시던트 접수 자동화에 활용 10 Amazon Polly 텍스트를 자연스러운 음성으로 변환하는 서비스. 다양한 언어 및 음성 지원 접근성 향상, 알림 음성 안내 시스템 구축 11 Amazon Transcribe 음성을 텍스트로 변환하는 서비스. 실시간 및 배치 변환 지원 콜센터 통화 녹음 분석, 회의록 자동 생성 12 Amazon Translate 기계 번역 서비스. 다국어 콘텐츠 실시간 번역 글로벌 서비스 다국어 지원, 외국어 위협 인텔리전스 분석 13 Amazon Fraud Detector 머신러닝 기반 사기 탐지 서비스. 온라인 결제, 계정 탈취 등 부정 행위 탐지 이상 로그인 탐지, 결제 사기 방지에 활용 AWS 시스템 관리 서비스 # 핵심 개념 설명 실무/보안 관점 14 AWS Systems Manager EC2 및 온프레미스 서버를 통합 관리하는 서비스. Session Manager, Patch Manager, Parameter Store 등 다양한 기능 제공 SSH 키 없이 EC2 접속(Session Manager), 패치 자동화, 민감 정보 안전한 저장(Parameter Store) 15 Amazon CloudWatch AWS 리소스 모니터링 및 로그 관리 서비스. 메트릭 수집, 알람 설정, 대시보드 생성 기능 제공 보안 메트릭 모니터링, 임계치 초과 시 SNS 알림. 로그 기반 메트릭 필터로 보안 이벤트 탐지 16 AWS CloudFormation 인프라를 코드로 관리(IaC)하는 서비스. YAML/JSON 템플릿으로 AWS 리소스 프로비저닝 자동화 보안 구성을 코드로 표준화. 드리프트 탐지로 수동 변경 감지. 변경 세트로 배포 전 영향 분석 17 AWS Organizations 여러 AWS 계정을 중앙에서 관리. OU(조직 단위) 구성, SCP(서비스 제어 정책)로 권한 제한 멀티 계정 보안 거버넌스. SCP로 특정 서비스/리전 사용 금지. 통합 결제로 비용 관리 18 AWS Trusted Advisor AWS 환경을 자동으로 점검하여 비용 최적화, 성능, 보안, 내결함성 권장사항 제공 보안 그룹 오픈 포트, 미사용 IAM 키, MFA 미설정 등 보안 취약점 자동 탐지 2. 실습 내용 실습 21: CloudWatch 경보 만들기 SNS Topic 생성 및 이메일 구독:\nSNS Topic 생성:\naws sns create-topic –name oooo-SecurityNotices 이메일 구독 추가 (이메일로 확인 링크 발송됨):\naws sns subscribe 주요 파라미터: –topic-arn arn:aws:sns:ap-northeast-2:123456789012:oooo-SecurityNotices –protocol email –notification-endpoint your-email@example.com 구독 확인 (이메일에서 Confirm subscription 클릭 후):\naws sns list-subscriptions-by-topic –topic-arn [SNS Topic ARN] CloudWatch Alarm 생성:\naws cloudwatch put-metric-alarm 주요 파라미터: –alarm-name oooo-bastion-cpu-util –alarm-description “Bastion server CPU utilization exceeds 60%” –metric-name CPUUtilization –namespace AWS/EC2 –statistic Average –period 300 (5분 간격) –threshold 60 –comparison-operator GreaterThanThreshold –dimensions Name=InstanceId,Value=i-0instanceid –evaluation-periods 1 –alarm-actions: SNS Topic ARN –treat-missing-data notBreaching 경보 상태 확인: aws cloudwatch describe-alarms –alarm-names oooo-bastion-cpu-util CPU 부하 테스트:\nsudo yum -y install stress → EC2 인스턴스에 접속 후 stress 패키지 설치 sudo stress –timeout 600 –cpu 1 → 600초(10분) 동안 CPU 부하 발생 더 높은 부하: sudo stress –timeout 60 –cpu 4 –vm 4 –vm-bytes 1024m –hdd 1 –hdd-bytes 1024m CloudWatch 로그 기반 메트릭 필터 (보안 활용) Root 로그인 탐지 메트릭 필터 생성:\naws logs put-metric-filter 주요 파라미터: –log-group-name CloudTrail/logs –filter-name RootAccountUsage –filter-pattern: userIdentity.type = “Root” AND userIdentity.invokedBy NOT EXISTS AND eventType != “AwsServiceEvent” –metric-transformations: metricName=RootAccountUsageCount metricNamespace=SecurityMetrics metricValue=1 메트릭 기반 경보 생성:\naws cloudwatch put-metric-alarm 주요 파라미터: –alarm-name RootAccountUsageAlarm –metric-name RootAccountUsageCount –namespace SecurityMetrics –statistic Sum –period 300 –threshold 1 –comparison-operator GreaterThanOrEqualToThreshold –evaluation-periods 1 –alarm-actions: SNS Topic ARN Systems Manager Session Manager 활용 Session Manager로 EC2 접속 (SSH 키 불필요):\naws ssm start-session –target i-0instanceid 명령 실행 (Run Command):\naws ssm send-command 주요 파라미터: –instance-ids i-0instanceid –document-name “AWS-RunShellScript” –parameters commands=[“df -h”,“free -m”] Parameter Store에 민감 정보 저장:\naws ssm put-parameter 주요 파라미터: –name “/myapp/database/password” –value “MySecurePassword123” –type SecureString Parameter Store에서 값 조회:\naws ssm get-parameter 주요 파라미터: –name “/myapp/database/password” –with-decryption 3. 서비스 분류 및 비교 데이터 분석 파이프라인 구성 단계 서비스 역할 수집 Kinesis Data Streams, Kinesis Firehose 실시간 스트리밍 데이터 수집 저장 S3, OpenSearch 원본 데이터 저장 및 인덱싱 변환 Glue, Lambda ETL 처리, 데이터 정규화 분석 Athena, OpenSearch SQL 쿼리, 전문 검색 시각화 QuickSight, OpenSearch Dashboards 대시보드, 리포트 생성 ML 서비스 선택 가이드 요구사항 추천 서비스 비고 커스텀 모델 학습 필요 SageMaker 전체 ML 파이프라인 지원 이미지/비디오 분석 Rekognition 사전 학습된 모델 즉시 사용 텍스트 분석 Comprehend 감정 분석, 개체 인식 음성 → 텍스트 Transcribe 실시간/배치 변환 텍스트 → 음성 Polly 다국어 음성 합성 챗봇 구축 Lex Alexa와 동일 기술 사기 탐지 Fraud Detector 결제/계정 부정 행위 탐지 시스템 관리 서비스 활용 서비스 주요 기능 보안 활용 사례 Systems Manager 통합 관리 플랫폼 Session Manager로 SSH 키 없이 접속, Patch Manager로 보안 패치 자동화 CloudWatch 모니터링 및 알람 비정상 메트릭 탐지 시 SNS 알림, 로그 기반 보안 이벤트 탐지 CloudFormation IaC 보안 구성 표준화, 드리프트 탐지로 수동 변경 감지 Organizations 멀티 계정 관리 SCP로 보안 정책 강제, 통합 CloudTrail 설정 Trusted Advisor 자동 점검 보안 그룹 오픈 포트, IAM 취약점 자동 탐지 4. 실무/보안 관점 분석 분야 시나리오 보안 로그 분석 파이프라인 CloudTrail/VPC Flow Logs → S3 저장 → Athena로 SQL 쿼리 또는 Kinesis Firehose → OpenSearch로 실시간 분석. QuickSight로 보안 대시보드 구축 실시간 위협 탐지 Kinesis Data Streams로 로그 실시간 수집 → Lambda로 패턴 매칭 → 의심 이벤트 SNS 알림. 또는 OpenSearch에서 실시간 쿼리 ML 기반 이상 탐지 CloudWatch 메트릭을 SageMaker로 학습하여 이상 패턴 탐지 모델 구축. 또는 GuardDuty의 ML 기반 탐지 활용 시스템 보안 강화 Session Manager로 SSH 포트(22) 닫기, Patch Manager로 보안 패치 자동 적용, Parameter Store로 비밀번호 안전 관리 멀티 계정 보안 거버넌스 Organizations + SCP로 전 계정에 보안 정책 강제. Security Hub로 모든 계정의 보안 현황 통합 모니터링 5. 배운 점 및 심화 방향 배운 점: AWS는 데이터 수집부터 분석, 시각화까지 전체 파이프라인을 서버리스로 구축 가능. Kinesis + S3 + Athena 조합으로 비용 효율적인 로그 분석 환경 구성. ML 서비스는 사전 학습된 모델을 API로 호출하는 방식이라 ML 전문 지식 없이도 활용 가능. Rekognition, Comprehend 등은 즉시 사용 가능. Systems Manager의 Session Manager는 SSH 키 관리 부담을 없애고 CloudTrail에 세션 로그를 남겨 감사 추적 용이. 보안 관점에서 SSH 포트를 열지 않아도 됨. CloudWatch는 단순 모니터링을 넘어 로그 기반 메트릭 필터로 보안 이벤트 탐지 가능. Root 로그인, 보안 그룹 변경 등 중요 이벤트 실시간 알림 구성. 심화 방향: SIEM 구축(CloudTrail + VPC Flow Logs + GuardDuty → Kinesis Firehose → OpenSearch 통합 보안 모니터링 대시보드 구축), 자동 대응(CloudWatch Alarm → SNS → Lambda → 보안 그룹 자동 차단 또는 인스턴스 격리 파이프라인), IaC 보안(CloudFormation 템플릿에 보안 모범 사례 적용, cfn-lint로 템플릿 검증, StackSets로 멀티 계정 배포), Athena 보안 쿼리(CloudTrail 로그에서 비정상 API 호출 패턴 쿼리 라이브러리 구축). 6. Quick Reference CloudWatch 주요 메트릭 네임스페이스 메트릭 설명 AWS/EC2 CPUUtilization CPU 사용률(%) AWS/EC2 NetworkIn/Out 네트워크 트래픽(바이트) AWS/EBS VolumeReadOps 볼륨 읽기 작업 수 AWS/RDS DatabaseConnections DB 연결 수 AWS/Lambda Invocations 함수 호출 수 AWS/Lambda Errors 함수 오류 수 AWS/ALB RequestCount 요청 수 AWS/ALB TargetResponseTime 응답 시간 Systems Manager 주요 기능 기능 설명 보안 활용 Session Manager 브라우저/CLI로 EC2 접속 SSH 포트 닫기, 세션 로깅 Run Command 원격 명령 실행 대규모 서버 점검 스크립트 Patch Manager OS 패치 자동화 보안 패치 일괄 적용 Parameter Store 설정값/비밀 저장 DB 비밀번호 안전 관리 Inventory 소프트웨어 인벤토리 설치된 SW 현황 파악 State Manager 원하는 상태 유지 보안 설정 강제 적용 Athena CloudTrail 쿼리 예제 최근 24시간 Root 계정 활동 조회:\n대상 테이블: cloudtrail_logs 조건: userIdentity.type = ‘Root’ AND eventTime \u003e 최근 24시간 조회 필드: eventTime, eventName, sourceIPAddress, userAgent 정렬: eventTime DESC 특정 S3 버킷 접근 기록 조회:\n대상 테이블: cloudtrail_logs 조건: eventSource = ‘s3.amazonaws.com’ AND requestParameters에 버킷명 포함 조회 필드: eventTime, userIdentity.userName, eventName, requestParameters 정렬: eventTime DESC, 최대 100건 실패한 API 호출 조회:\n대상 테이블: cloudtrail_logs 조건: errorCode IS NOT NULL 조회 필드: eventTime, eventName, errorCode, errorMessage, userIdentity.userName 정렬: eventTime DESC, 최대 50건 비용 최적화 팁 서비스 비용 최적화 방법 Athena 파티셔닝 적용, 컬럼 기반 형식(Parquet) 사용으로 스캔량 감소 CloudWatch 불필요한 상세 모니터링 비활성화, 로그 보관 기간 설정 Kinesis 샤드 수 적절히 조절, 필요시 Firehose 버퍼링 활용 OpenSearch 인스턴스 크기 최적화, UltraWarm으로 오래된 데이터 이동 SageMaker 스팟 인스턴스 활용, 사용 안 할 때 노트북 중지 AWS 서비스 약어 정리 약어 전체 명칭 설명 SSM Systems Manager 시스템 통합 관리 SNS Simple Notification Service 알림 서비스 SQS Simple Queue Service 메시지 큐 SES Simple Email Service 이메일 서비스 ETL Extract, Transform, Load 데이터 추출/변환/적재 IaC Infrastructure as Code 코드형 인프라 BI Business Intelligence 비즈니스 인텔리전스 NLP Natural Language Processing 자연어 처리 ",
+  "wordCount" : "3602",
+  "inLanguage": "ko",
+  "datePublished": "2025-12-11T00:00:00Z",
+  "dateModified": "2025-12-11T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/daily_logs/week07/20251211_aws_cloudwatch/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://hojjang98.github.io/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/daily_logs/">6개월, 혹은 그 이상의 보안 여정</a></div>
+    <h1 class="post-title entry-hint-parent">
+      2025.12.11 (Day 34) - AWS 기타 서비스: 데이터 분석, 기계 학습, 시스템 관리
+    </h1>
+    <div class="post-meta"><span title='2025-12-11 00:00:00 +0000 UTC'>2025년 12월 11일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="-20251211-day-34---aws-기타-서비스-데이터-분석-기계-학습-시스템-관리">📄 2025.12.11 (Day 34) - AWS 기타 서비스: 데이터 분석, 기계 학습, 시스템 관리<a hidden class="anchor" aria-hidden="true" href="#-20251211-day-34---aws-기타-서비스-데이터-분석-기계-학습-시스템-관리">#</a></h1>
+<hr>
+<h2 id="1-핵심-개념-정리">1. 핵심 개념 정리<a hidden class="anchor" aria-hidden="true" href="#1-핵심-개념-정리">#</a></h2>
+<h3 id="데이터-수집-및-분석-서비스">데이터 수집 및 분석 서비스<a hidden class="anchor" aria-hidden="true" href="#데이터-수집-및-분석-서비스">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">#</th>
+          <th style="text-align: left">핵심 개념</th>
+          <th style="text-align: left">설명</th>
+          <th style="text-align: left">실무/보안 관점</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>1</strong></td>
+          <td style="text-align: left"><strong>Amazon Kinesis</strong></td>
+          <td style="text-align: left">실시간 스트리밍 데이터 수집 및 처리 서비스. Data Streams(데이터 수집), Firehose(전송), Analytics(분석) 세 가지 구성요소 제공</td>
+          <td style="text-align: left">실시간 로그 분석, 클릭스트림 분석에 활용. 보안 로그를 실시간으로 S3/OpenSearch로 전송하여 SIEM 구축 가능</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>2</strong></td>
+          <td style="text-align: left"><strong>Amazon Athena</strong></td>
+          <td style="text-align: left">S3에 저장된 데이터를 표준 SQL로 직접 쿼리하는 서버리스 서비스. 별도 인프라 구축 없이 즉시 분석 가능</td>
+          <td style="text-align: left">CloudTrail, VPC Flow Logs를 S3에 저장 후 Athena로 쿼리하여 보안 분석. 스캔한 데이터량 기준 과금</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>3</strong></td>
+          <td style="text-align: left"><strong>Amazon OpenSearch</strong></td>
+          <td style="text-align: left">Elasticsearch 기반 검색 및 분석 서비스. 로그 분석, 실시간 모니터링 대시보드 구축에 활용</td>
+          <td style="text-align: left">SIEM 구축의 핵심. CloudWatch Logs, Kinesis에서 로그를 수집하여 보안 이벤트 검색 및 시각화</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>4</strong></td>
+          <td style="text-align: left"><strong>AWS Glue</strong></td>
+          <td style="text-align: left">서버리스 ETL(추출, 변환, 적재) 서비스. 데이터 카탈로그 기능으로 데이터 레이크의 메타데이터 관리</td>
+          <td style="text-align: left">여러 소스의 보안 로그를 표준 형식으로 변환하여 분석 용이하게 함. Athena와 연동하여 스키마 자동 검색</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>5</strong></td>
+          <td style="text-align: left"><strong>Amazon QuickSight</strong></td>
+          <td style="text-align: left">클라우드 기반 BI(Business Intelligence) 서비스. 대시보드 및 시각화 보고서 생성</td>
+          <td style="text-align: left">보안 메트릭 대시보드 구축. 경영진 보고용 보안 현황 리포트 자동 생성</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="기계-학습-서비스">기계 학습 서비스<a hidden class="anchor" aria-hidden="true" href="#기계-학습-서비스">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">#</th>
+          <th style="text-align: left">핵심 개념</th>
+          <th style="text-align: left">설명</th>
+          <th style="text-align: left">실무/보안 관점</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>6</strong></td>
+          <td style="text-align: left"><strong>Amazon SageMaker</strong></td>
+          <td style="text-align: left">머신러닝 모델을 구축, 학습, 배포하는 완전 관리형 플랫폼. Jupyter 노트북 환경 제공</td>
+          <td style="text-align: left">이상 탐지 모델 학습, 악성코드 분류 모델 개발에 활용. 보안 분석가도 AutoML 기능으로 ML 모델 구축 가능</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>7</strong></td>
+          <td style="text-align: left"><strong>Amazon Rekognition</strong></td>
+          <td style="text-align: left">이미지 및 비디오 분석 서비스. 얼굴 인식, 객체 탐지, 텍스트 추출 기능 제공</td>
+          <td style="text-align: left">출입 통제 시스템, CCTV 영상 분석에 활용. 부적절한 콘텐츠 자동 탐지</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>8</strong></td>
+          <td style="text-align: left"><strong>Amazon Comprehend</strong></td>
+          <td style="text-align: left">자연어 처리(NLP) 서비스. 텍스트에서 감정, 핵심 구문, 개체 추출</td>
+          <td style="text-align: left">피싱 이메일 탐지, 고객 피드백 분석, 문서 분류 자동화에 활용</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>9</strong></td>
+          <td style="text-align: left"><strong>Amazon Lex</strong></td>
+          <td style="text-align: left">챗봇 구축 서비스. 음성 및 텍스트 기반 대화형 인터페이스 생성</td>
+          <td style="text-align: left">IT 헬프데스크 챗봇, 보안 인시던트 접수 자동화에 활용</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>10</strong></td>
+          <td style="text-align: left"><strong>Amazon Polly</strong></td>
+          <td style="text-align: left">텍스트를 자연스러운 음성으로 변환하는 서비스. 다양한 언어 및 음성 지원</td>
+          <td style="text-align: left">접근성 향상, 알림 음성 안내 시스템 구축</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>11</strong></td>
+          <td style="text-align: left"><strong>Amazon Transcribe</strong></td>
+          <td style="text-align: left">음성을 텍스트로 변환하는 서비스. 실시간 및 배치 변환 지원</td>
+          <td style="text-align: left">콜센터 통화 녹음 분석, 회의록 자동 생성</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>12</strong></td>
+          <td style="text-align: left"><strong>Amazon Translate</strong></td>
+          <td style="text-align: left">기계 번역 서비스. 다국어 콘텐츠 실시간 번역</td>
+          <td style="text-align: left">글로벌 서비스 다국어 지원, 외국어 위협 인텔리전스 분석</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>13</strong></td>
+          <td style="text-align: left"><strong>Amazon Fraud Detector</strong></td>
+          <td style="text-align: left">머신러닝 기반 사기 탐지 서비스. 온라인 결제, 계정 탈취 등 부정 행위 탐지</td>
+          <td style="text-align: left">이상 로그인 탐지, 결제 사기 방지에 활용</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="aws-시스템-관리-서비스">AWS 시스템 관리 서비스<a hidden class="anchor" aria-hidden="true" href="#aws-시스템-관리-서비스">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">#</th>
+          <th style="text-align: left">핵심 개념</th>
+          <th style="text-align: left">설명</th>
+          <th style="text-align: left">실무/보안 관점</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>14</strong></td>
+          <td style="text-align: left"><strong>AWS Systems Manager</strong></td>
+          <td style="text-align: left">EC2 및 온프레미스 서버를 통합 관리하는 서비스. Session Manager, Patch Manager, Parameter Store 등 다양한 기능 제공</td>
+          <td style="text-align: left">SSH 키 없이 EC2 접속(Session Manager), 패치 자동화, 민감 정보 안전한 저장(Parameter Store)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>15</strong></td>
+          <td style="text-align: left"><strong>Amazon CloudWatch</strong></td>
+          <td style="text-align: left">AWS 리소스 모니터링 및 로그 관리 서비스. 메트릭 수집, 알람 설정, 대시보드 생성 기능 제공</td>
+          <td style="text-align: left">보안 메트릭 모니터링, 임계치 초과 시 SNS 알림. 로그 기반 메트릭 필터로 보안 이벤트 탐지</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>16</strong></td>
+          <td style="text-align: left"><strong>AWS CloudFormation</strong></td>
+          <td style="text-align: left">인프라를 코드로 관리(IaC)하는 서비스. YAML/JSON 템플릿으로 AWS 리소스 프로비저닝 자동화</td>
+          <td style="text-align: left">보안 구성을 코드로 표준화. 드리프트 탐지로 수동 변경 감지. 변경 세트로 배포 전 영향 분석</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>17</strong></td>
+          <td style="text-align: left"><strong>AWS Organizations</strong></td>
+          <td style="text-align: left">여러 AWS 계정을 중앙에서 관리. OU(조직 단위) 구성, SCP(서비스 제어 정책)로 권한 제한</td>
+          <td style="text-align: left">멀티 계정 보안 거버넌스. SCP로 특정 서비스/리전 사용 금지. 통합 결제로 비용 관리</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>18</strong></td>
+          <td style="text-align: left"><strong>AWS Trusted Advisor</strong></td>
+          <td style="text-align: left">AWS 환경을 자동으로 점검하여 비용 최적화, 성능, 보안, 내결함성 권장사항 제공</td>
+          <td style="text-align: left">보안 그룹 오픈 포트, 미사용 IAM 키, MFA 미설정 등 보안 취약점 자동 탐지</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="2-실습-내용">2. 실습 내용<a hidden class="anchor" aria-hidden="true" href="#2-실습-내용">#</a></h2>
+<h3 id="실습-21-cloudwatch-경보-만들기">실습 21: CloudWatch 경보 만들기<a hidden class="anchor" aria-hidden="true" href="#실습-21-cloudwatch-경보-만들기">#</a></h3>
+<p><strong>SNS Topic 생성 및 이메일 구독:</strong></p>
+<ol>
+<li>
+<p>SNS Topic 생성:</p>
+<ul>
+<li><strong>aws sns create-topic &ndash;name oooo-SecurityNotices</strong></li>
+</ul>
+</li>
+<li>
+<p>이메일 구독 추가 (이메일로 확인 링크 발송됨):</p>
+<ul>
+<li><strong>aws sns subscribe</strong> 주요 파라미터:
+<ul>
+<li>&ndash;topic-arn arn:aws:sns:ap-northeast-2:123456789012:oooo-SecurityNotices</li>
+<li>&ndash;protocol email</li>
+<li>&ndash;notification-endpoint <a href="mailto:your-email@example.com">your-email@example.com</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>구독 확인 (이메일에서 Confirm subscription 클릭 후):</p>
+<ul>
+<li><strong>aws sns list-subscriptions-by-topic &ndash;topic-arn</strong> [SNS Topic ARN]</li>
+</ul>
+</li>
+</ol>
+<hr>
+<p><strong>CloudWatch Alarm 생성:</strong></p>
+<ul>
+<li><strong>aws cloudwatch put-metric-alarm</strong> 주요 파라미터:
+<ul>
+<li>&ndash;alarm-name oooo-bastion-cpu-util</li>
+<li>&ndash;alarm-description &ldquo;Bastion server CPU utilization exceeds 60%&rdquo;</li>
+<li>&ndash;metric-name CPUUtilization</li>
+<li>&ndash;namespace AWS/EC2</li>
+<li>&ndash;statistic Average</li>
+<li>&ndash;period 300 (5분 간격)</li>
+<li>&ndash;threshold 60</li>
+<li>&ndash;comparison-operator GreaterThanThreshold</li>
+<li>&ndash;dimensions Name=InstanceId,Value=i-0instanceid</li>
+<li>&ndash;evaluation-periods 1</li>
+<li>&ndash;alarm-actions: SNS Topic ARN</li>
+<li>&ndash;treat-missing-data notBreaching</li>
+</ul>
+</li>
+<li>경보 상태 확인: <strong>aws cloudwatch describe-alarms &ndash;alarm-names oooo-bastion-cpu-util</strong></li>
+</ul>
+<hr>
+<p><strong>CPU 부하 테스트:</strong></p>
+<ul>
+<li><strong>sudo yum -y install stress</strong> → EC2 인스턴스에 접속 후 stress 패키지 설치</li>
+<li><strong>sudo stress &ndash;timeout 600 &ndash;cpu 1</strong> → 600초(10분) 동안 CPU 부하 발생</li>
+<li>더 높은 부하: <strong>sudo stress &ndash;timeout 60 &ndash;cpu 4 &ndash;vm 4 &ndash;vm-bytes 1024m &ndash;hdd 1 &ndash;hdd-bytes 1024m</strong></li>
+</ul>
+<hr>
+<h3 id="cloudwatch-로그-기반-메트릭-필터-보안-활용">CloudWatch 로그 기반 메트릭 필터 (보안 활용)<a hidden class="anchor" aria-hidden="true" href="#cloudwatch-로그-기반-메트릭-필터-보안-활용">#</a></h3>
+<p><strong>Root 로그인 탐지 메트릭 필터 생성:</strong></p>
+<ul>
+<li><strong>aws logs put-metric-filter</strong> 주요 파라미터:
+<ul>
+<li>&ndash;log-group-name CloudTrail/logs</li>
+<li>&ndash;filter-name RootAccountUsage</li>
+<li>&ndash;filter-pattern: userIdentity.type = &ldquo;Root&rdquo; AND userIdentity.invokedBy NOT EXISTS AND eventType != &ldquo;AwsServiceEvent&rdquo;</li>
+<li>&ndash;metric-transformations:
+<ul>
+<li>metricName=RootAccountUsageCount</li>
+<li>metricNamespace=SecurityMetrics</li>
+<li>metricValue=1</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>메트릭 기반 경보 생성:</strong></p>
+<ul>
+<li><strong>aws cloudwatch put-metric-alarm</strong> 주요 파라미터:
+<ul>
+<li>&ndash;alarm-name RootAccountUsageAlarm</li>
+<li>&ndash;metric-name RootAccountUsageCount</li>
+<li>&ndash;namespace SecurityMetrics</li>
+<li>&ndash;statistic Sum</li>
+<li>&ndash;period 300</li>
+<li>&ndash;threshold 1</li>
+<li>&ndash;comparison-operator GreaterThanOrEqualToThreshold</li>
+<li>&ndash;evaluation-periods 1</li>
+<li>&ndash;alarm-actions: SNS Topic ARN</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="systems-manager-session-manager-활용">Systems Manager Session Manager 활용<a hidden class="anchor" aria-hidden="true" href="#systems-manager-session-manager-활용">#</a></h3>
+<p><strong>Session Manager로 EC2 접속 (SSH 키 불필요):</strong></p>
+<ul>
+<li><strong>aws ssm start-session &ndash;target i-0instanceid</strong></li>
+</ul>
+<p><strong>명령 실행 (Run Command):</strong></p>
+<ul>
+<li><strong>aws ssm send-command</strong> 주요 파라미터:
+<ul>
+<li>&ndash;instance-ids i-0instanceid</li>
+<li>&ndash;document-name &ldquo;AWS-RunShellScript&rdquo;</li>
+<li>&ndash;parameters commands=[&ldquo;df -h&rdquo;,&ldquo;free -m&rdquo;]</li>
+</ul>
+</li>
+</ul>
+<p><strong>Parameter Store에 민감 정보 저장:</strong></p>
+<ul>
+<li><strong>aws ssm put-parameter</strong> 주요 파라미터:
+<ul>
+<li>&ndash;name &ldquo;/myapp/database/password&rdquo;</li>
+<li>&ndash;value &ldquo;MySecurePassword123&rdquo;</li>
+<li>&ndash;type SecureString</li>
+</ul>
+</li>
+</ul>
+<p><strong>Parameter Store에서 값 조회:</strong></p>
+<ul>
+<li><strong>aws ssm get-parameter</strong> 주요 파라미터:
+<ul>
+<li>&ndash;name &ldquo;/myapp/database/password&rdquo;</li>
+<li>&ndash;with-decryption</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="3-서비스-분류-및-비교">3. 서비스 분류 및 비교<a hidden class="anchor" aria-hidden="true" href="#3-서비스-분류-및-비교">#</a></h2>
+<h3 id="데이터-분석-파이프라인-구성">데이터 분석 파이프라인 구성<a hidden class="anchor" aria-hidden="true" href="#데이터-분석-파이프라인-구성">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">단계</th>
+          <th style="text-align: left">서비스</th>
+          <th style="text-align: left">역할</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">수집</td>
+          <td style="text-align: left">Kinesis Data Streams, Kinesis Firehose</td>
+          <td style="text-align: left">실시간 스트리밍 데이터 수집</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">저장</td>
+          <td style="text-align: left">S3, OpenSearch</td>
+          <td style="text-align: left">원본 데이터 저장 및 인덱싱</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">변환</td>
+          <td style="text-align: left">Glue, Lambda</td>
+          <td style="text-align: left">ETL 처리, 데이터 정규화</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">분석</td>
+          <td style="text-align: left">Athena, OpenSearch</td>
+          <td style="text-align: left">SQL 쿼리, 전문 검색</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">시각화</td>
+          <td style="text-align: left">QuickSight, OpenSearch Dashboards</td>
+          <td style="text-align: left">대시보드, 리포트 생성</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="ml-서비스-선택-가이드">ML 서비스 선택 가이드<a hidden class="anchor" aria-hidden="true" href="#ml-서비스-선택-가이드">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">요구사항</th>
+          <th style="text-align: left">추천 서비스</th>
+          <th style="text-align: left">비고</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">커스텀 모델 학습 필요</td>
+          <td style="text-align: left">SageMaker</td>
+          <td style="text-align: left">전체 ML 파이프라인 지원</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">이미지/비디오 분석</td>
+          <td style="text-align: left">Rekognition</td>
+          <td style="text-align: left">사전 학습된 모델 즉시 사용</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">텍스트 분석</td>
+          <td style="text-align: left">Comprehend</td>
+          <td style="text-align: left">감정 분석, 개체 인식</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">음성 → 텍스트</td>
+          <td style="text-align: left">Transcribe</td>
+          <td style="text-align: left">실시간/배치 변환</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">텍스트 → 음성</td>
+          <td style="text-align: left">Polly</td>
+          <td style="text-align: left">다국어 음성 합성</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">챗봇 구축</td>
+          <td style="text-align: left">Lex</td>
+          <td style="text-align: left">Alexa와 동일 기술</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">사기 탐지</td>
+          <td style="text-align: left">Fraud Detector</td>
+          <td style="text-align: left">결제/계정 부정 행위 탐지</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="시스템-관리-서비스-활용">시스템 관리 서비스 활용<a hidden class="anchor" aria-hidden="true" href="#시스템-관리-서비스-활용">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">서비스</th>
+          <th style="text-align: left">주요 기능</th>
+          <th style="text-align: left">보안 활용 사례</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">Systems Manager</td>
+          <td style="text-align: left">통합 관리 플랫폼</td>
+          <td style="text-align: left">Session Manager로 SSH 키 없이 접속, Patch Manager로 보안 패치 자동화</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">CloudWatch</td>
+          <td style="text-align: left">모니터링 및 알람</td>
+          <td style="text-align: left">비정상 메트릭 탐지 시 SNS 알림, 로그 기반 보안 이벤트 탐지</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">CloudFormation</td>
+          <td style="text-align: left">IaC</td>
+          <td style="text-align: left">보안 구성 표준화, 드리프트 탐지로 수동 변경 감지</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Organizations</td>
+          <td style="text-align: left">멀티 계정 관리</td>
+          <td style="text-align: left">SCP로 보안 정책 강제, 통합 CloudTrail 설정</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Trusted Advisor</td>
+          <td style="text-align: left">자동 점검</td>
+          <td style="text-align: left">보안 그룹 오픈 포트, IAM 취약점 자동 탐지</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="4-실무보안-관점-분석">4. 실무/보안 관점 분석<a hidden class="anchor" aria-hidden="true" href="#4-실무보안-관점-분석">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">분야</th>
+          <th style="text-align: left">시나리오</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>보안 로그 분석 파이프라인</strong></td>
+          <td style="text-align: left">CloudTrail/VPC Flow Logs → S3 저장 → Athena로 SQL 쿼리 또는 Kinesis Firehose → OpenSearch로 실시간 분석. QuickSight로 보안 대시보드 구축</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>실시간 위협 탐지</strong></td>
+          <td style="text-align: left">Kinesis Data Streams로 로그 실시간 수집 → Lambda로 패턴 매칭 → 의심 이벤트 SNS 알림. 또는 OpenSearch에서 실시간 쿼리</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>ML 기반 이상 탐지</strong></td>
+          <td style="text-align: left">CloudWatch 메트릭을 SageMaker로 학습하여 이상 패턴 탐지 모델 구축. 또는 GuardDuty의 ML 기반 탐지 활용</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>시스템 보안 강화</strong></td>
+          <td style="text-align: left">Session Manager로 SSH 포트(22) 닫기, Patch Manager로 보안 패치 자동 적용, Parameter Store로 비밀번호 안전 관리</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>멀티 계정 보안 거버넌스</strong></td>
+          <td style="text-align: left">Organizations + SCP로 전 계정에 보안 정책 강제. Security Hub로 모든 계정의 보안 현황 통합 모니터링</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="5-배운-점-및-심화-방향">5. 배운 점 및 심화 방향<a hidden class="anchor" aria-hidden="true" href="#5-배운-점-및-심화-방향">#</a></h2>
+<ul>
+<li><strong>배운 점</strong>: AWS는 데이터 수집부터 분석, 시각화까지 전체 파이프라인을 서버리스로 구축 가능. Kinesis + S3 + Athena 조합으로 비용 효율적인 로그 분석 환경 구성. ML 서비스는 사전 학습된 모델을 API로 호출하는 방식이라 ML 전문 지식 없이도 활용 가능. Rekognition, Comprehend 등은 즉시 사용 가능. Systems Manager의 Session Manager는 SSH 키 관리 부담을 없애고 CloudTrail에 세션 로그를 남겨 감사 추적 용이. 보안 관점에서 SSH 포트를 열지 않아도 됨. CloudWatch는 단순 모니터링을 넘어 로그 기반 메트릭 필터로 보안 이벤트 탐지 가능. Root 로그인, 보안 그룹 변경 등 중요 이벤트 실시간 알림 구성.</li>
+<li><strong>심화 방향</strong>: SIEM 구축(CloudTrail + VPC Flow Logs + GuardDuty → Kinesis Firehose → OpenSearch 통합 보안 모니터링 대시보드 구축), 자동 대응(CloudWatch Alarm → SNS → Lambda → 보안 그룹 자동 차단 또는 인스턴스 격리 파이프라인), IaC 보안(CloudFormation 템플릿에 보안 모범 사례 적용, cfn-lint로 템플릿 검증, StackSets로 멀티 계정 배포), Athena 보안 쿼리(CloudTrail 로그에서 비정상 API 호출 패턴 쿼리 라이브러리 구축).</li>
+</ul>
+<hr>
+<h2 id="6-quick-reference">6. Quick Reference<a hidden class="anchor" aria-hidden="true" href="#6-quick-reference">#</a></h2>
+<h3 id="cloudwatch-주요-메트릭">CloudWatch 주요 메트릭<a hidden class="anchor" aria-hidden="true" href="#cloudwatch-주요-메트릭">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">네임스페이스</th>
+          <th style="text-align: left">메트릭</th>
+          <th style="text-align: left">설명</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">AWS/EC2</td>
+          <td style="text-align: left">CPUUtilization</td>
+          <td style="text-align: left">CPU 사용률(%)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">AWS/EC2</td>
+          <td style="text-align: left">NetworkIn/Out</td>
+          <td style="text-align: left">네트워크 트래픽(바이트)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">AWS/EBS</td>
+          <td style="text-align: left">VolumeReadOps</td>
+          <td style="text-align: left">볼륨 읽기 작업 수</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">AWS/RDS</td>
+          <td style="text-align: left">DatabaseConnections</td>
+          <td style="text-align: left">DB 연결 수</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">AWS/Lambda</td>
+          <td style="text-align: left">Invocations</td>
+          <td style="text-align: left">함수 호출 수</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">AWS/Lambda</td>
+          <td style="text-align: left">Errors</td>
+          <td style="text-align: left">함수 오류 수</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">AWS/ALB</td>
+          <td style="text-align: left">RequestCount</td>
+          <td style="text-align: left">요청 수</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">AWS/ALB</td>
+          <td style="text-align: left">TargetResponseTime</td>
+          <td style="text-align: left">응답 시간</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="systems-manager-주요-기능">Systems Manager 주요 기능<a hidden class="anchor" aria-hidden="true" href="#systems-manager-주요-기능">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">기능</th>
+          <th style="text-align: left">설명</th>
+          <th style="text-align: left">보안 활용</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">Session Manager</td>
+          <td style="text-align: left">브라우저/CLI로 EC2 접속</td>
+          <td style="text-align: left">SSH 포트 닫기, 세션 로깅</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Run Command</td>
+          <td style="text-align: left">원격 명령 실행</td>
+          <td style="text-align: left">대규모 서버 점검 스크립트</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Patch Manager</td>
+          <td style="text-align: left">OS 패치 자동화</td>
+          <td style="text-align: left">보안 패치 일괄 적용</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Parameter Store</td>
+          <td style="text-align: left">설정값/비밀 저장</td>
+          <td style="text-align: left">DB 비밀번호 안전 관리</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Inventory</td>
+          <td style="text-align: left">소프트웨어 인벤토리</td>
+          <td style="text-align: left">설치된 SW 현황 파악</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">State Manager</td>
+          <td style="text-align: left">원하는 상태 유지</td>
+          <td style="text-align: left">보안 설정 강제 적용</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="athena-cloudtrail-쿼리-예제">Athena CloudTrail 쿼리 예제<a hidden class="anchor" aria-hidden="true" href="#athena-cloudtrail-쿼리-예제">#</a></h3>
+<p>최근 24시간 Root 계정 활동 조회:</p>
+<ul>
+<li>대상 테이블: cloudtrail_logs</li>
+<li>조건: userIdentity.type = &lsquo;Root&rsquo; AND eventTime &gt; 최근 24시간</li>
+<li>조회 필드: eventTime, eventName, sourceIPAddress, userAgent</li>
+<li>정렬: eventTime DESC</li>
+</ul>
+<p>특정 S3 버킷 접근 기록 조회:</p>
+<ul>
+<li>대상 테이블: cloudtrail_logs</li>
+<li>조건: eventSource = &lsquo;s3.amazonaws.com&rsquo; AND requestParameters에 버킷명 포함</li>
+<li>조회 필드: eventTime, userIdentity.userName, eventName, requestParameters</li>
+<li>정렬: eventTime DESC, 최대 100건</li>
+</ul>
+<p>실패한 API 호출 조회:</p>
+<ul>
+<li>대상 테이블: cloudtrail_logs</li>
+<li>조건: errorCode IS NOT NULL</li>
+<li>조회 필드: eventTime, eventName, errorCode, errorMessage, userIdentity.userName</li>
+<li>정렬: eventTime DESC, 최대 50건</li>
+</ul>
+<h3 id="비용-최적화-팁">비용 최적화 팁<a hidden class="anchor" aria-hidden="true" href="#비용-최적화-팁">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">서비스</th>
+          <th style="text-align: left">비용 최적화 방법</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">Athena</td>
+          <td style="text-align: left">파티셔닝 적용, 컬럼 기반 형식(Parquet) 사용으로 스캔량 감소</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">CloudWatch</td>
+          <td style="text-align: left">불필요한 상세 모니터링 비활성화, 로그 보관 기간 설정</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Kinesis</td>
+          <td style="text-align: left">샤드 수 적절히 조절, 필요시 Firehose 버퍼링 활용</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">OpenSearch</td>
+          <td style="text-align: left">인스턴스 크기 최적화, UltraWarm으로 오래된 데이터 이동</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">SageMaker</td>
+          <td style="text-align: left">스팟 인스턴스 활용, 사용 안 할 때 노트북 중지</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="aws-서비스-약어-정리">AWS 서비스 약어 정리<a hidden class="anchor" aria-hidden="true" href="#aws-서비스-약어-정리">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">약어</th>
+          <th style="text-align: left">전체 명칭</th>
+          <th style="text-align: left">설명</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">SSM</td>
+          <td style="text-align: left">Systems Manager</td>
+          <td style="text-align: left">시스템 통합 관리</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">SNS</td>
+          <td style="text-align: left">Simple Notification Service</td>
+          <td style="text-align: left">알림 서비스</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">SQS</td>
+          <td style="text-align: left">Simple Queue Service</td>
+          <td style="text-align: left">메시지 큐</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">SES</td>
+          <td style="text-align: left">Simple Email Service</td>
+          <td style="text-align: left">이메일 서비스</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">ETL</td>
+          <td style="text-align: left">Extract, Transform, Load</td>
+          <td style="text-align: left">데이터 추출/변환/적재</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">IaC</td>
+          <td style="text-align: left">Infrastructure as Code</td>
+          <td style="text-align: left">코드형 인프라</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">BI</td>
+          <td style="text-align: left">Business Intelligence</td>
+          <td style="text-align: left">비즈니스 인텔리전스</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">NLP</td>
+          <td style="text-align: left">Natural Language Processing</td>
+          <td style="text-align: left">자연어 처리</td>
+      </tr>
+  </tbody>
+</table>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://hojjang98.github.io/tags/aws/">AWS</a></li>
+      <li><a href="https://hojjang98.github.io/tags/kinesis/">Kinesis</a></li>
+      <li><a href="https://hojjang98.github.io/tags/athena/">Athena</a></li>
+      <li><a href="https://hojjang98.github.io/tags/opensearch/">OpenSearch</a></li>
+      <li><a href="https://hojjang98.github.io/tags/sagemaker/">SageMaker</a></li>
+      <li><a href="https://hojjang98.github.io/tags/cloudwatch/">CloudWatch</a></li>
+      <li><a href="https://hojjang98.github.io/tags/systems-manager/">Systems-Manager</a></li>
+      <li><a href="https://hojjang98.github.io/tags/cloudformation/">CloudFormation</a></li>
+      <li><a href="https://hojjang98.github.io/tags/organizations/">Organizations</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

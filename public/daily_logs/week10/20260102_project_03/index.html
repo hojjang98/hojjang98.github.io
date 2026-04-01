@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>2026.01.02 (Day 47) - Python 스캐너 15개 완성 및 통합 테스트 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="Python, 취약점스캐너, 통합테스트, 오프라인협업, XSS, SQLInjection, 동적스캐너, 웹크롤러, DNA-Lab">
+<meta name="description" content="Python 웹 취약점 스캐너 12개에서 15개로 확장 완료(OS Command Injection/SSRF/HTTP Method 추가), WebCrawler &#43; DynamicScanner 연동, 오프라인 통합 테스트에서 8개 이슈 발견/해결, TXT/HTML/PDF 3종 리포트 자동 생성 시스템 구현">
+<meta name="author" content="">
+<link rel="canonical" href="https://hojjang98.github.io/daily_logs/week10/20260102_project_03/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.290573799e582c418c4bd84f2bca757d0a77fd1bf9f5c43942030e706df68ec8.css" integrity="sha256-KQVzeZ5YLEGMS9hPK8p1fQp3/Rv59cQ5QgMOcG32jsg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/daily_logs/week10/20260102_project_03/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://hojjang98.github.io/daily_logs/week10/20260102_project_03/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="2026.01.02 (Day 47) - Python 스캐너 15개 완성 및 통합 테스트">
+  <meta property="og:description" content="Python 웹 취약점 스캐너 12개에서 15개로 확장 완료(OS Command Injection/SSRF/HTTP Method 추가), WebCrawler &#43; DynamicScanner 연동, 오프라인 통합 테스트에서 8개 이슈 발견/해결, TXT/HTML/PDF 3종 리포트 자동 생성 시스템 구현">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="daily_logs">
+    <meta property="article:published_time" content="2026-01-02T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-01-02T00:00:00+00:00">
+    <meta property="article:tag" content="Python">
+    <meta property="article:tag" content="취약점스캐너">
+    <meta property="article:tag" content="통합테스트">
+    <meta property="article:tag" content="오프라인협업">
+    <meta property="article:tag" content="XSS">
+    <meta property="article:tag" content="SQLInjection">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2026.01.02 (Day 47) - Python 스캐너 15개 완성 및 통합 테스트">
+<meta name="twitter:description" content="Python 웹 취약점 스캐너 12개에서 15개로 확장 완료(OS Command Injection/SSRF/HTTP Method 추가), WebCrawler &#43; DynamicScanner 연동, 오프라인 통합 테스트에서 8개 이슈 발견/해결, TXT/HTML/PDF 3종 리포트 자동 생성 시스템 구현">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "6개월, 혹은 그 이상의 보안 여정",
+      "item": "https://hojjang98.github.io/daily_logs/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "2026.01.02 (Day 47) - Python 스캐너 15개 완성 및 통합 테스트",
+      "item": "https://hojjang98.github.io/daily_logs/week10/20260102_project_03/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "2026.01.02 (Day 47) - Python 스캐너 15개 완성 및 통합 테스트",
+  "name": "2026.01.02 (Day 47) - Python 스캐너 15개 완성 및 통합 테스트",
+  "description": "Python 웹 취약점 스캐너 12개에서 15개로 확장 완료(OS Command Injection/SSRF/HTTP Method 추가), WebCrawler + DynamicScanner 연동, 오프라인 통합 테스트에서 8개 이슈 발견/해결, TXT/HTML/PDF 3종 리포트 자동 생성 시스템 구현",
+  "keywords": [
+    "Python", "취약점스캐너", "통합테스트", "오프라인협업", "XSS", "SQLInjection", "동적스캐너", "웹크롤러", "DNA-Lab"
+  ],
+  "articleBody": "📄 2026.01.02 (Day 47) - Python 스캐너 15개 완성 및 통합 테스트 1. 핵심 성과 정리 주요 달성 사항 # 성과 세부 내용 완성도 1 웹 페이지 완성 팀원이 DNA Lab 페이지 거의 완벽하게 구현 95% 2 Python 스캐너 개발 15개 취약점 탐지 스크립트 거의 완료 90% 3 오프라인 협업 실시간 통합 테스트 및 이슈 해결 진행 중 4 보완 사항 도출 스캐너 정확도 개선 포인트 식별 우선순위 정리 5 팀 시너지 각자 영역 완성 후 상호 검토 단계 진입 협업 가속화 오늘의 주요 활동 시간대 활동 참여자 산출물 오전 각자 개발 마무리 개별 작업 웹 페이지, 스캐너 초안 오후 초반 통합 테스트 1차 전체 버그 리스트 오후 중반 스캐너 실행 및 분석 호짱 + 백엔드 탐지 결과 리포트 오후 후반 개선 방안 토론 전체 보완 계획서 저녁 우선순위 설정 전체 내일 작업 목록 2. Python 스캐너 개발 완료 구현 완료된 스캐너 목록 (15개) # 스캐너명 구현 상태 주요 기능 파일 크기 1 01_xss_scanner.py ✅ 완료 Stored/Reflected/DOM XSS 탐지 8KB 2 02_sqli_scanner.py ✅ 완료 MyBatis Mapper 정적 분석 + 로그인/검색 SQLi 7KB 3 03_os_command_injection_scanner.py ✅ 완료 Runtime.exec() 코드 검사 + Blind 테스트 9KB 4 04_csrf_scanner.py ✅ 완료 CSRF 토큰 검증 + SameSite 쿠키 확인 4KB 5 05_weak_password.py ✅ 완료 약한 비밀번호 허용 + Brute Force 방어 4KB 6 06_access_control_scanner.py ✅ 완료 수평/수직 권한 상승 + IDOR 10KB 7 07_password_recovery.py ✅ 완료 비밀번호 복구 토큰 검증 6KB 8 08_session_scanner.py ✅ 완료 세션 타임아웃 + Session Fixation 6KB 9 09_cookie_scanner.py ✅ 완료 쿠키 변조 권한 상승 테스트 8KB 10 10_file_transfer_scanner.py ✅ 완료 악성 파일 업로드 + Path Traversal 9KB 11 11_path_traversal_scanner.py ✅ 완료 경로 조작으로 시스템 파일 접근 6KB 12 12_error_page_scanner.py ✅ 완료 Soft-404 + 스택 트레이스 노출 4KB 13 13_formatting_scanner.py ✅ 완료 String.format() 오남용 검사 7KB 14 14_http_method_scanner.py ✅ 완료 TRACE/PUT/DELETE 메소드 허용 3KB 15 15_ssrf_scanner.py ✅ 완료 SSRF + 내부망 접근 7KB 핵심 구현 아키텍처 main.py - 통합 실행 스크립트 구조:\n15개 스캐너를 번호, 이름, 모듈명, 타입으로 등록 importlib.import_module()으로 동적 모듈 로딩 스캐너 타입별 파라미터 전달 방식 구분 xss, access, session, cookie, format, ssrf, os_cmd 타입: scan(target_url, login_info) 형식 file, error, http_method 타입: scan(target_url, crawl_result) 형식 나머지: scan(target_url) 형식 스캔 모드 3가지:\nStatic Scan - Whitebox(소스코드 분석) + Basic Blackbox(기본 HTTP 테스트) Dynamic Scan - WebCrawler로 자동 탐색 + Active Scan(공격 시뮬레이션) Full Scan - Static + Dynamic 통합 실행 실행 흐름 예시:\n[*] Running XSS scanner (1/15)... -\u003e [!] VULNERABLE [*] Running SQL Injection scanner (2/15)... -\u003e [+] Safe [*] Running OS Command Injection scanner (3/15)... -\u003e [!] VULNERABLE 3. 주요 스캐너 구현 상세 XSS Scanner - Whitebox + Blackbox 혼합 Thymeleaf 템플릿 정적 분석 (Whitebox):\ntemplates 디렉토리 내 HTML 파일 전체 탐색 th:utext 사용 시 XSS 취약 -\u003e [Static] 파일명:라인번호 - th:utext 사용 리포트 인라인 표현식 [[${...}]] 패턴 탐지 -\u003e XSS 취약 판정 권장 수정: th:utext -\u003e th:text 변경 (자동 이스케이프 적용) 동적 XSS 테스트 (Blackbox):\n테스트 페이로드: , /board/write 엔드포인트에 POST 요청으로 페이로드 삽입 응답에서 페이로드가 이스케이프 없이 렌더링되는지 확인 판정 기준: payload in response.text AND \u003c 문자 존재 SQL Injection Scanner - MyBatis Mapper 분석 MyBatis XML 파일 정적 분석 (Whitebox):\nxml.etree.ElementTree로 Mapper 파일 파싱 select/insert/update/delete 쿼리에서 ${변수명} 패턴 탐지 ${} 발견 시 취약 판정 -\u003e #{}으로 변경 권고 정규표현식: re.findall(r'\\$\\{([^}]+)\\}', query_text) 로그인 우회 테스트 (Blackbox):\n페이로드 1: username=admin'#, password=anything (주석 처리) 페이로드 2: username=admin' OR '1'='1, password=anything (항상 참) 성공 지표: 응답에 ’logout’, ‘mypage’, ‘admin’ 키워드 포함 여부 OS Command Injection Scanner - 시간 지연 테스트 Blind Command Injection 방식:\nWindows 페이로드: 127.0.0.1 \u0026 timeout 5 Linux 페이로드: 127.0.0.1; sleep 5 /admin/system/ping 엔드포인트에 POST 요청 timeout=15 설정으로 무한 대기 방지 판정 기준: 응답 시간 4초 이상이면 명령어 실행된 것으로 판단 Access Control Scanner - 쿠키 변조 권한 상승 실제 공격 시뮬레이션:\n일반 계정으로 로그인 -\u003e 기본 쿠키 획득 role 쿠키 변조: ‘admin’, ‘administrator’, ‘ADMIN’ 시도 관리자 페이지 (/admin/system, /admin/dna/applications) 접근 시도 판정 기준: HTTP 200 응답 응답 본문 500자 이상 ‘access denied’, ‘forbidden’ 키워드 미포함 주요 개선 포인트: 단순 HTTP 상태 코드만으로 판정하면 오탐 발생 -\u003e 응답 본문 내용도 함께 확인\nFile Transfer Scanner - OS별 페이로드 악성 파일 업로드 테스트:\nWindows 위험 파일: malware.exe(MZ 헤더 시그니처 포함), script.ps1 Linux 위험 파일: shell.sh, webshell.jsp(JSP 기본 문법) platform.system()으로 현재 OS 확인 후 적절한 테스트 파일 선택 업로드 후 응답에 ‘success’, ‘uploaded’ 키워드 포함 시 취약 판정 Error Page Scanner - Soft-404 탐지 잘못된 에러 처리 탐지:\n존재하지 않을 법한 경로 테스트: /this_should_404_zzzz, /%ZZ, /error_test_1234 Soft-404 탐지: 없는 페이지인데 200 OK 반환하고 메인 페이지로 리다이렉트 스택 트레이스 노출 탐지: exception, stack trace, whitelabel error page, org.springframework, apache tomcat 키워드 확인 4. 동적 스캐너 구현 WebCrawler - BFS 기반 자동 페이지 탐색 크롤링 전략:\n로그인 시도 (login_info 제공 시) 시작 URL과 공통 경로(/board/list, /board/write, /employee/search, /support/ticket, /user/mypage, /admin/system)를 초기 큐에 추가 BFS(너비 우선 탐색)로 최대 100페이지 탐색 페이지 파싱:\nBeautifulSoup으로 HTML 파싱 태그에서 링크 추출 -\u003e 유효한 링크만 큐에 추가 태그에서 action, method, 입력 필드(input, textarea) 추출 추출된 폼 정보를 DynamicScanner에 전달 DynamicScanner - 크롤링 데이터 기반 공격 폼 기반 XSS 테스트:\n크롤링으로 수집한 모든 폼에 XSS 페이로드 삽입 페이로드: , submit/hidden 타입 제외한 모든 입력 필드에 페이로드 적용 POST 폼은 session.post(), GET 폼은 session.get() 사용 판정 기준: 응답에 페이로드 포함 AND HTML 태그 비이스케이프 확인 URL 파라미터 SQLi 테스트:\n크롤링으로 수집한 URL에서 쿼리 파라미터 추출 각 파라미터에 ' 페이로드 삽입 후 요청 응답에 ‘sql’, ‘syntax’, ‘mysql’ 키워드 포함 시 취약 판정 5. 통합 테스트 및 발견 이슈 실시간 협업 테스트 프로세스 테스트 환경 구성:\n팀원 PC: DNA Lab 웹앱 실행 (http://localhost:8080) 호짱 PC: 스캐너 실행 (python main.py -t http://192.168.1.100:8080) 실시간으로 발견된 이슈를 함께 화면 보며 분석 및 수정 발견된 주요 이슈 # 이슈 증상 원인 분석 해결 방법 1 XSS 미탐지 브라우저에선 alert 뜨는데 스캐너는 안전 판정 작은따옴표 포함 페이로드가 SQL 에러로 DB 저장 실패 페이로드 사용 2 SQL Injection 오탐 정상 기능도 취약으로 판정 SQL 에러 메시지만으로 판단 응답 코드 + 인증 우회 성공 여부 동시 확인 3 Command Injection 타임아웃 스캐너가 무한 대기 sleep 명령어 실행 시 timeout 부족 timeout=15 설정 + elapsed_time 측정 4 Cookie 변조 미탐지 실제로 권한 상승되는데 안전 판정 단순 status_code만 확인 응답 길이 + 실패 키워드 부재 확인 5 File Upload 백신 오탐 다운로드한 스캐너가 바이러스로 차단 실제 악성 바이트 시그니처 포함 OS별 무해한 테스트 파일로 변경 6 Path Traversal 경로 이슈 Linux에서 Windows 경로 테스트 OS 구분 없이 모든 페이로드 시도 platform.system()으로 OS 확인 후 적절한 페이로드 사용 7 Error Page Soft-404 404 페이지가 200으로 반환 메인 페이지로 리다이렉트 최종 URL 경로 확인 로직 추가 8 Dynamic Scanner 세션 끊김 크롤링 중 인증 풀림 Session 객체 미공유 self.session 공유 구조로 변경 6. 팀원 간 토론 내용 토론 1: 스캐너 정확도 개선 문제 제기:\n프론트엔드: “스캐너가 너무 공격적이지 않나요? 정상 기능도 취약점으로 잡는 것 같은데요.” 호짱: “맞아요. XSS 스캐너가 이스케이프된 것도 취약으로 잡네요.” 백엔드: “발표 때 오탐 지적받으면 곤란할 것 같은데…” 해결 방안 - 2단계 검증 추가:\n기존(단순): 페이로드가 응답에 포함되면 취약 개선: 페이로드 포함 AND HTML 이스케이프(\u0026lt;) 미포함 AND 이 페이로드는 왜 안 잡히죠?” 백엔드: “작은따옴표 때문에 SQL 에러 나서 DB에 안 들어가네요.” 프론트엔드: “작은따옴표 없는 페이로드 쓰면 되겠네요!” 호짱: “ 로 바꿔볼게요… 잡혔습니다!” Case 2: Cookie 변조 로직 개선 (10분 완성)\n호짱: “쿠키 role=admin으로 바꿔도 안전으로 나와요.” 백엔드: “200 OK 떴는데요?” 호짱: “근데 본문에 ‘Access Denied’ 있어요.” 프론트엔드: “상태 코드만 보지 말고 본문 내용도 확인해야겠네요.” 해결: res.status_code == 200 AND len(res.text) \u003e 500 AND 'access denied' not in res.text.lower() 8. 리포트 생성 시스템 3가지 형식 자동 생성 TXT 리포트 구조:\n[ DNA Lab Security Scan Report ]\rTime: 2025-01-02 15:30:45\rTarget: http://localhost:8080\r============================================================\r[Summary]\rTotal Scans: 15\rVulnerable Scans: 9\rSafe Scans: 6\rTotal Findings: 23\r============================================================\r1. XSS (Cross-Site Scripting) [!]\r[Details]\r- [Static] board/view.html:15 - th:utext 사용\r- [Dynamic] Stored XSS 취약 (/board/write)\r[Fix] th:utext를 th:text로 변경 | 입력값 HTML 이스케이프 처리\r------------------------------------------------------------\rHTML 리포트: 시각화된 대시보드 형식, 카드 형태로 Vulnerable(9)/Safe(6)/Total Findings(23) 표시, 취약점별 VULNERABLE/SAFE 배지와 상세 내용 포함\nPDF 리포트 (선택): WeasyPrint 라이브러리 설치 시 HTML -\u003e PDF 자동 변환, 미설치 시 “WeasyPrint not installed” 메시지 출력\n9. 배운 점 및 인사이트 기술적 성장 Whitebox 분석 기술:\nXML 파싱: xml.etree.ElementTree로 MyBatis Mapper 분석 정규표현식: re.findall(r'\\$\\{([^}]+)\\}', text) 패턴 매칭 파일 시스템 탐색: os.walk()로 재귀적 파일 검색 소스 코드 패턴 분석: 취약한 코딩 패턴 자동 탐지 Blackbox 테스팅 기술:\nrequests.Session(): 로그인 상태 유지하며 여러 요청 시간 기반 Blind 공격: time.time() 측정으로 명령어 실행 확인 쿠키 조작: session.cookies.set()으로 권한 변조 응답 분석: HTTP 코드 + HTML 내용 + 응답 시간 종합 판단 자동화 스크립트 설계:\n모듈화: 각 스캐너 독립 실행 가능 통일된 인터페이스: scan() 함수, 표준 result 딕셔너리 에러 핸들링: try-except로 한 스캐너 실패해도 전체 중단 안 됨 확장성: 새 스캐너 추가 시 main.py에 한 줄만 추가 협업 프로세스 개선 오프라인의 힘:\n물리적 근접성: 같은 화면 보며 즉시 이해 컨텍스트 공유: 문제 인식부터 해결까지 같은 맥락 집단 지성: 한 명이 막히면 다른 사람이 아이디어 제공 즉각 검증: 수정 -\u003e 테스트 사이클이 분 단위 효율적 역할 분담:\n호짱: 스캐너 로직 구현 + 테스트 실행 백엔드: 취약점 삽입 + URL/파라미터 정보 제공 프론트엔드: HTML 구조 설명 + 템플릿 엔진 동작 설명 문서화: 발견 사항 기록 + 개선 방안 정리 보안 테스팅 인사이트 오탐/미탐 트레이드오프:\n공격적 탐지 (민감도 높음): 오탐 높지만 미탐 낮음 보수적 탐지 (민감도 낮음): 오탐 낮지만 미탐 높음 균형점: 2단계 검증 (1차: 빠른 탐지, 2차: 정밀 검증) 실전 공격 vs 테스트:\n실제 해커: 시간 무제한, 창의적 우회 기법 사용 자동화 스캐너: 알려진 패턴 탐지, 시간 제약 보완 방법: 수동 침투 테스트 병행, 정기적 업데이트 취약점 우선순위:\nCritical: 인증 우회 (SQLi), 권한 상승 (Cookie 변조) High: 코드 실행 (OS Command Injection), 데이터 유출 (Path Traversal) Medium: XSS, CSRF, 세션 관리 Low: 정보 노출 (Error Page), HTTP Method 10. 남은 작업 및 내일 계획 스캐너 마무리 작업 우선순위 1 (필수 - 내일 오전):\n모든 스캐너 2차 검증 로직 추가 오탐 사례 재테스트 및 수정 config.json 최종 엔드포인트 매칭 에러 로깅 체계화 우선순위 2 (권장 - 내일 오후):\n페이로드 다양화 (현재 3-5개 -\u003e 10개) 실행 시간 최적화 리포트 가독성 개선 문서화 작업 취약점별 상세 설명 작성 (각 1페이지) 대응 방안 가이드 (Before/After 코드) 23andMe 사건 타임라인 정리 발표 자료 초안 (30슬라이드 목표) 11. Quick Reference 스캐너 실행 명령어 기본 실행 (대화형 모드): python main.py 타겟 URL 지정: python main.py -t http://192.168.1.100:8080 스캔 모드: 1(Static), 2(Dynamic), 3(Full) 선택 결과 확인: cat reports/scan_report_20250102_*.txt 또는 HTML 파일 브라우저 열기 주요 파일 구조 vulnerability_scanner/\r├── main.py # 통합 실행 스크립트\r├── config.json # 타겟 URL, 로그인 정보\r├── dynamic_scanner.py # 동적 스캐너\r├── crawler.py # 웹 크롤러\r├── 01_xss_scanner.py # XSS 탐지\r├── 02_sqli_scanner.py # SQL Injection 탐지\r├── ... # (15개 스캐너)\r└── reports/ # 결과 리포트\r├── scan_report_*.txt\r├── scan_report_*.html\r└── scan_report_*.pdf\r트러블슈팅 체크리스트 스캐너가 안 돌아갈 때:\n타겟 웹앱 실행 중? (http://localhost:8080 접속 확인) config.json URL 정확? (target_url 확인) Python 라이브러리 설치? (pip install requests beautifulsoup4) 방화벽/백신 차단? (일시 비활성화 테스트) 취약점이 안 잡힐 때:\n실제로 취약? (브라우저에서 수동 확인) 로그인 필요? (config.json의 login 정보 확인) URL 경로 정확? (엔드포인트 오타 확인) 페이로드 적절? (작은따옴표 SQL 에러 등) Today’s Insight:\n오프라인 협업의 위력을 체감한 하루였다. Python 스캐너 15개를 거의 완성하고, 팀원이 완성도 높은 DNA Lab 웹 페이지를 가져온 덕분에 본격적인 통합 테스트에 돌입했다. 실시간으로 이슈를 발견하고 함께 화면을 보며 해결하는 과정에서 온라인 협업 대비 8배의 효율성을 경험했다. 특히 XSS 페이로드에서 작은따옴표가 SQL 에러를 일으켜 DB 저장에 실패하는 문제를 5분 만에 발견하고 해결한 것은 물리적 근접성의 힘이었다.\nWhitebox와 Blackbox를 혼합한 15개 스캐너는 정적 코드 분석으로 정확한 취약점 위치를 파악하고, 동적 테스트로 실제 공격 가능성을 검증하는 이중 구조를 갖췄다. 웹 크롤러와 연동된 동적 스캐너는 자동으로 폼과 URL을 수집해 공격을 시뮬레이션하며, 최대 50개 페이지를 탐색한다.\n내일은 오탐을 줄이기 위한 2차 검증 로직 추가와 보안 강화 버전 개발을 시작하며, 취약한 상태와 안전한 상태의 명확한 대비를 준비할 것이다.\n",
+  "wordCount" : "5231",
+  "inLanguage": "ko",
+  "datePublished": "2026-01-02T00:00:00Z",
+  "dateModified": "2026-01-02T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/daily_logs/week10/20260102_project_03/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://hojjang98.github.io/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/daily_logs/">6개월, 혹은 그 이상의 보안 여정</a></div>
+    <h1 class="post-title entry-hint-parent">
+      2026.01.02 (Day 47) - Python 스캐너 15개 완성 및 통합 테스트
+    </h1>
+    <div class="post-meta"><span title='2026-01-02 00:00:00 +0000 UTC'>2026년 1월 2일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="-20260102-day-47---python-스캐너-15개-완성-및-통합-테스트">📄 2026.01.02 (Day 47) - Python 스캐너 15개 완성 및 통합 테스트<a hidden class="anchor" aria-hidden="true" href="#-20260102-day-47---python-스캐너-15개-완성-및-통합-테스트">#</a></h1>
+<hr>
+<h2 id="1-핵심-성과-정리">1. 핵심 성과 정리<a hidden class="anchor" aria-hidden="true" href="#1-핵심-성과-정리">#</a></h2>
+<h3 id="주요-달성-사항">주요 달성 사항<a hidden class="anchor" aria-hidden="true" href="#주요-달성-사항">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">#</th>
+          <th style="text-align: left">성과</th>
+          <th style="text-align: left">세부 내용</th>
+          <th style="text-align: center">완성도</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">1</td>
+          <td style="text-align: left">웹 페이지 완성</td>
+          <td style="text-align: left">팀원이 DNA Lab 페이지 거의 완벽하게 구현</td>
+          <td style="text-align: center">95%</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">2</td>
+          <td style="text-align: left">Python 스캐너 개발</td>
+          <td style="text-align: left">15개 취약점 탐지 스크립트 거의 완료</td>
+          <td style="text-align: center">90%</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">3</td>
+          <td style="text-align: left">오프라인 협업</td>
+          <td style="text-align: left">실시간 통합 테스트 및 이슈 해결</td>
+          <td style="text-align: center">진행 중</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">4</td>
+          <td style="text-align: left">보완 사항 도출</td>
+          <td style="text-align: left">스캐너 정확도 개선 포인트 식별</td>
+          <td style="text-align: center">우선순위 정리</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">5</td>
+          <td style="text-align: left">팀 시너지</td>
+          <td style="text-align: left">각자 영역 완성 후 상호 검토 단계 진입</td>
+          <td style="text-align: center">협업 가속화</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="오늘의-주요-활동">오늘의 주요 활동<a hidden class="anchor" aria-hidden="true" href="#오늘의-주요-활동">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">시간대</th>
+          <th style="text-align: left">활동</th>
+          <th style="text-align: center">참여자</th>
+          <th style="text-align: left">산출물</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>오전</strong></td>
+          <td style="text-align: left">각자 개발 마무리</td>
+          <td style="text-align: center">개별 작업</td>
+          <td style="text-align: left">웹 페이지, 스캐너 초안</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>오후 초반</strong></td>
+          <td style="text-align: left">통합 테스트 1차</td>
+          <td style="text-align: center">전체</td>
+          <td style="text-align: left">버그 리스트</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>오후 중반</strong></td>
+          <td style="text-align: left">스캐너 실행 및 분석</td>
+          <td style="text-align: center">호짱 + 백엔드</td>
+          <td style="text-align: left">탐지 결과 리포트</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>오후 후반</strong></td>
+          <td style="text-align: left">개선 방안 토론</td>
+          <td style="text-align: center">전체</td>
+          <td style="text-align: left">보완 계획서</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>저녁</strong></td>
+          <td style="text-align: left">우선순위 설정</td>
+          <td style="text-align: center">전체</td>
+          <td style="text-align: left">내일 작업 목록</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="2-python-스캐너-개발-완료">2. Python 스캐너 개발 완료<a hidden class="anchor" aria-hidden="true" href="#2-python-스캐너-개발-완료">#</a></h2>
+<h3 id="구현-완료된-스캐너-목록-15개">구현 완료된 스캐너 목록 (15개)<a hidden class="anchor" aria-hidden="true" href="#구현-완료된-스캐너-목록-15개">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">#</th>
+          <th style="text-align: left">스캐너명</th>
+          <th style="text-align: center">구현 상태</th>
+          <th style="text-align: left">주요 기능</th>
+          <th style="text-align: center">파일 크기</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">1</td>
+          <td style="text-align: left">01_xss_scanner.py</td>
+          <td style="text-align: center">✅ 완료</td>
+          <td style="text-align: left">Stored/Reflected/DOM XSS 탐지</td>
+          <td style="text-align: center">8KB</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">2</td>
+          <td style="text-align: left">02_sqli_scanner.py</td>
+          <td style="text-align: center">✅ 완료</td>
+          <td style="text-align: left">MyBatis Mapper 정적 분석 + 로그인/검색 SQLi</td>
+          <td style="text-align: center">7KB</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">3</td>
+          <td style="text-align: left">03_os_command_injection_scanner.py</td>
+          <td style="text-align: center">✅ 완료</td>
+          <td style="text-align: left">Runtime.exec() 코드 검사 + Blind 테스트</td>
+          <td style="text-align: center">9KB</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">4</td>
+          <td style="text-align: left">04_csrf_scanner.py</td>
+          <td style="text-align: center">✅ 완료</td>
+          <td style="text-align: left">CSRF 토큰 검증 + SameSite 쿠키 확인</td>
+          <td style="text-align: center">4KB</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">5</td>
+          <td style="text-align: left">05_weak_password.py</td>
+          <td style="text-align: center">✅ 완료</td>
+          <td style="text-align: left">약한 비밀번호 허용 + Brute Force 방어</td>
+          <td style="text-align: center">4KB</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">6</td>
+          <td style="text-align: left">06_access_control_scanner.py</td>
+          <td style="text-align: center">✅ 완료</td>
+          <td style="text-align: left">수평/수직 권한 상승 + IDOR</td>
+          <td style="text-align: center">10KB</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">7</td>
+          <td style="text-align: left">07_password_recovery.py</td>
+          <td style="text-align: center">✅ 완료</td>
+          <td style="text-align: left">비밀번호 복구 토큰 검증</td>
+          <td style="text-align: center">6KB</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">8</td>
+          <td style="text-align: left">08_session_scanner.py</td>
+          <td style="text-align: center">✅ 완료</td>
+          <td style="text-align: left">세션 타임아웃 + Session Fixation</td>
+          <td style="text-align: center">6KB</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">9</td>
+          <td style="text-align: left">09_cookie_scanner.py</td>
+          <td style="text-align: center">✅ 완료</td>
+          <td style="text-align: left">쿠키 변조 권한 상승 테스트</td>
+          <td style="text-align: center">8KB</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">10</td>
+          <td style="text-align: left">10_file_transfer_scanner.py</td>
+          <td style="text-align: center">✅ 완료</td>
+          <td style="text-align: left">악성 파일 업로드 + Path Traversal</td>
+          <td style="text-align: center">9KB</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">11</td>
+          <td style="text-align: left">11_path_traversal_scanner.py</td>
+          <td style="text-align: center">✅ 완료</td>
+          <td style="text-align: left">경로 조작으로 시스템 파일 접근</td>
+          <td style="text-align: center">6KB</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">12</td>
+          <td style="text-align: left">12_error_page_scanner.py</td>
+          <td style="text-align: center">✅ 완료</td>
+          <td style="text-align: left">Soft-404 + 스택 트레이스 노출</td>
+          <td style="text-align: center">4KB</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">13</td>
+          <td style="text-align: left">13_formatting_scanner.py</td>
+          <td style="text-align: center">✅ 완료</td>
+          <td style="text-align: left">String.format() 오남용 검사</td>
+          <td style="text-align: center">7KB</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">14</td>
+          <td style="text-align: left">14_http_method_scanner.py</td>
+          <td style="text-align: center">✅ 완료</td>
+          <td style="text-align: left">TRACE/PUT/DELETE 메소드 허용</td>
+          <td style="text-align: center">3KB</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">15</td>
+          <td style="text-align: left">15_ssrf_scanner.py</td>
+          <td style="text-align: center">✅ 완료</td>
+          <td style="text-align: left">SSRF + 내부망 접근</td>
+          <td style="text-align: center">7KB</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="핵심-구현-아키텍처">핵심 구현 아키텍처<a hidden class="anchor" aria-hidden="true" href="#핵심-구현-아키텍처">#</a></h3>
+<p><strong>main.py - 통합 실행 스크립트 구조:</strong></p>
+<ul>
+<li>15개 스캐너를 번호, 이름, 모듈명, 타입으로 등록</li>
+<li><code>importlib.import_module()</code>으로 동적 모듈 로딩</li>
+<li>스캐너 타입별 파라미터 전달 방식 구분
+<ul>
+<li>xss, access, session, cookie, format, ssrf, os_cmd 타입: <code>scan(target_url, login_info)</code> 형식</li>
+<li>file, error, http_method 타입: <code>scan(target_url, crawl_result)</code> 형식</li>
+<li>나머지: <code>scan(target_url)</code> 형식</li>
+</ul>
+</li>
+</ul>
+<p><strong>스캔 모드 3가지:</strong></p>
+<ol>
+<li>Static Scan - Whitebox(소스코드 분석) + Basic Blackbox(기본 HTTP 테스트)</li>
+<li>Dynamic Scan - WebCrawler로 자동 탐색 + Active Scan(공격 시뮬레이션)</li>
+<li>Full Scan - Static + Dynamic 통합 실행</li>
+</ol>
+<p><strong>실행 흐름 예시:</strong></p>
+<ul>
+<li><code>[*] Running XSS scanner (1/15)...</code> -&gt; <code>[!] VULNERABLE</code></li>
+<li><code>[*] Running SQL Injection scanner (2/15)...</code> -&gt; <code>[+] Safe</code></li>
+<li><code>[*] Running OS Command Injection scanner (3/15)...</code> -&gt; <code>[!] VULNERABLE</code></li>
+</ul>
+<hr>
+<h2 id="3-주요-스캐너-구현-상세">3. 주요 스캐너 구현 상세<a hidden class="anchor" aria-hidden="true" href="#3-주요-스캐너-구현-상세">#</a></h2>
+<h3 id="xss-scanner---whitebox--blackbox-혼합">XSS Scanner - Whitebox + Blackbox 혼합<a hidden class="anchor" aria-hidden="true" href="#xss-scanner---whitebox--blackbox-혼합">#</a></h3>
+<p><strong>Thymeleaf 템플릿 정적 분석 (Whitebox):</strong></p>
+<ul>
+<li>templates 디렉토리 내 HTML 파일 전체 탐색</li>
+<li><code>th:utext</code> 사용 시 XSS 취약 -&gt; <code>[Static] 파일명:라인번호 - th:utext 사용</code> 리포트</li>
+<li>인라인 표현식 <code>[[${...}]]</code> 패턴 탐지 -&gt; XSS 취약 판정</li>
+<li>권장 수정: <code>th:utext</code> -&gt; <code>th:text</code> 변경 (자동 이스케이프 적용)</li>
+</ul>
+<p><strong>동적 XSS 테스트 (Blackbox):</strong></p>
+<ul>
+<li>테스트 페이로드: <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code>, <code>&lt;img src=x onerror=alert('XSS')&gt;</code></li>
+<li>/board/write 엔드포인트에 POST 요청으로 페이로드 삽입</li>
+<li>응답에서 페이로드가 이스케이프 없이 렌더링되는지 확인</li>
+<li>판정 기준: payload in response.text AND <code>&lt;</code> 문자 존재</li>
+</ul>
+<hr>
+<h3 id="sql-injection-scanner---mybatis-mapper-분석">SQL Injection Scanner - MyBatis Mapper 분석<a hidden class="anchor" aria-hidden="true" href="#sql-injection-scanner---mybatis-mapper-분석">#</a></h3>
+<p><strong>MyBatis XML 파일 정적 분석 (Whitebox):</strong></p>
+<ul>
+<li><code>xml.etree.ElementTree</code>로 Mapper 파일 파싱</li>
+<li>select/insert/update/delete 쿼리에서 <code>${변수명}</code> 패턴 탐지</li>
+<li><code>${}</code> 발견 시 취약 판정 -&gt; <code>#{}</code>으로 변경 권고</li>
+<li>정규표현식: <code>re.findall(r'\$\{([^}]+)\}', query_text)</code></li>
+</ul>
+<p><strong>로그인 우회 테스트 (Blackbox):</strong></p>
+<ul>
+<li>페이로드 1: username=<code>admin'#</code>, password=anything (주석 처리)</li>
+<li>페이로드 2: username=<code>admin' OR '1'='1</code>, password=anything (항상 참)</li>
+<li>성공 지표: 응답에 &rsquo;logout&rsquo;, &lsquo;mypage&rsquo;, &lsquo;admin&rsquo; 키워드 포함 여부</li>
+</ul>
+<hr>
+<h3 id="os-command-injection-scanner---시간-지연-테스트">OS Command Injection Scanner - 시간 지연 테스트<a hidden class="anchor" aria-hidden="true" href="#os-command-injection-scanner---시간-지연-테스트">#</a></h3>
+<p><strong>Blind Command Injection 방식:</strong></p>
+<ul>
+<li>Windows 페이로드: <code>127.0.0.1 &amp; timeout 5</code></li>
+<li>Linux 페이로드: <code>127.0.0.1; sleep 5</code></li>
+<li>/admin/system/ping 엔드포인트에 POST 요청</li>
+<li><code>timeout=15</code> 설정으로 무한 대기 방지</li>
+<li>판정 기준: 응답 시간 4초 이상이면 명령어 실행된 것으로 판단</li>
+</ul>
+<hr>
+<h3 id="access-control-scanner---쿠키-변조-권한-상승">Access Control Scanner - 쿠키 변조 권한 상승<a hidden class="anchor" aria-hidden="true" href="#access-control-scanner---쿠키-변조-권한-상승">#</a></h3>
+<p><strong>실제 공격 시뮬레이션:</strong></p>
+<ol>
+<li>일반 계정으로 로그인 -&gt; 기본 쿠키 획득</li>
+<li>role 쿠키 변조: &lsquo;admin&rsquo;, &lsquo;administrator&rsquo;, &lsquo;ADMIN&rsquo; 시도</li>
+<li>관리자 페이지 (/admin/system, /admin/dna/applications) 접근 시도</li>
+<li>판정 기준:
+<ul>
+<li>HTTP 200 응답</li>
+<li>응답 본문 500자 이상</li>
+<li>&lsquo;access denied&rsquo;, &lsquo;forbidden&rsquo; 키워드 미포함</li>
+</ul>
+</li>
+</ol>
+<p><strong>주요 개선 포인트:</strong> 단순 HTTP 상태 코드만으로 판정하면 오탐 발생 -&gt; 응답 본문 내용도 함께 확인</p>
+<hr>
+<h3 id="file-transfer-scanner---os별-페이로드">File Transfer Scanner - OS별 페이로드<a hidden class="anchor" aria-hidden="true" href="#file-transfer-scanner---os별-페이로드">#</a></h3>
+<p><strong>악성 파일 업로드 테스트:</strong></p>
+<ul>
+<li>Windows 위험 파일: malware.exe(MZ 헤더 시그니처 포함), script.ps1</li>
+<li>Linux 위험 파일: shell.sh, webshell.jsp(JSP 기본 문법)</li>
+<li><code>platform.system()</code>으로 현재 OS 확인 후 적절한 테스트 파일 선택</li>
+<li>업로드 후 응답에 &lsquo;success&rsquo;, &lsquo;uploaded&rsquo; 키워드 포함 시 취약 판정</li>
+</ul>
+<hr>
+<h3 id="error-page-scanner---soft-404-탐지">Error Page Scanner - Soft-404 탐지<a hidden class="anchor" aria-hidden="true" href="#error-page-scanner---soft-404-탐지">#</a></h3>
+<p><strong>잘못된 에러 처리 탐지:</strong></p>
+<ul>
+<li>존재하지 않을 법한 경로 테스트: <code>/this_should_404_zzzz</code>, <code>/%ZZ</code>, <code>/error_test_1234</code></li>
+<li>Soft-404 탐지: 없는 페이지인데 200 OK 반환하고 메인 페이지로 리다이렉트</li>
+<li>스택 트레이스 노출 탐지: exception, stack trace, whitelabel error page, org.springframework, apache tomcat 키워드 확인</li>
+</ul>
+<hr>
+<h2 id="4-동적-스캐너-구현">4. 동적 스캐너 구현<a hidden class="anchor" aria-hidden="true" href="#4-동적-스캐너-구현">#</a></h2>
+<h3 id="webcrawler---bfs-기반-자동-페이지-탐색">WebCrawler - BFS 기반 자동 페이지 탐색<a hidden class="anchor" aria-hidden="true" href="#webcrawler---bfs-기반-자동-페이지-탐색">#</a></h3>
+<p><strong>크롤링 전략:</strong></p>
+<ol>
+<li>로그인 시도 (login_info 제공 시)</li>
+<li>시작 URL과 공통 경로(/board/list, /board/write, /employee/search, /support/ticket, /user/mypage, /admin/system)를 초기 큐에 추가</li>
+<li>BFS(너비 우선 탐색)로 최대 100페이지 탐색</li>
+</ol>
+<p><strong>페이지 파싱:</strong></p>
+<ul>
+<li>BeautifulSoup으로 HTML 파싱</li>
+<li><code>&lt;a href&gt;</code> 태그에서 링크 추출 -&gt; 유효한 링크만 큐에 추가</li>
+<li><code>&lt;form&gt;</code> 태그에서 action, method, 입력 필드(input, textarea) 추출</li>
+<li>추출된 폼 정보를 DynamicScanner에 전달</li>
+</ul>
+<hr>
+<h3 id="dynamicscanner---크롤링-데이터-기반-공격">DynamicScanner - 크롤링 데이터 기반 공격<a hidden class="anchor" aria-hidden="true" href="#dynamicscanner---크롤링-데이터-기반-공격">#</a></h3>
+<p><strong>폼 기반 XSS 테스트:</strong></p>
+<ul>
+<li>크롤링으로 수집한 모든 폼에 XSS 페이로드 삽입</li>
+<li>페이로드: <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code>, <code>&lt;img src=x onerror=alert('XSS')&gt;</code></li>
+<li>submit/hidden 타입 제외한 모든 입력 필드에 페이로드 적용</li>
+<li>POST 폼은 session.post(), GET 폼은 session.get() 사용</li>
+<li>판정 기준: 응답에 페이로드 포함 AND HTML 태그 비이스케이프 확인</li>
+</ul>
+<p><strong>URL 파라미터 SQLi 테스트:</strong></p>
+<ul>
+<li>크롤링으로 수집한 URL에서 쿼리 파라미터 추출</li>
+<li>각 파라미터에 <code>'</code> 페이로드 삽입 후 요청</li>
+<li>응답에 &lsquo;sql&rsquo;, &lsquo;syntax&rsquo;, &lsquo;mysql&rsquo; 키워드 포함 시 취약 판정</li>
+</ul>
+<hr>
+<h2 id="5-통합-테스트-및-발견-이슈">5. 통합 테스트 및 발견 이슈<a hidden class="anchor" aria-hidden="true" href="#5-통합-테스트-및-발견-이슈">#</a></h2>
+<h3 id="실시간-협업-테스트-프로세스">실시간 협업 테스트 프로세스<a hidden class="anchor" aria-hidden="true" href="#실시간-협업-테스트-프로세스">#</a></h3>
+<p><strong>테스트 환경 구성:</strong></p>
+<ul>
+<li>팀원 PC: DNA Lab 웹앱 실행 (http://localhost:8080)</li>
+<li>호짱 PC: 스캐너 실행 (<code>python main.py -t http://192.168.1.100:8080</code>)</li>
+<li>실시간으로 발견된 이슈를 함께 화면 보며 분석 및 수정</li>
+</ul>
+<h3 id="발견된-주요-이슈">발견된 주요 이슈<a hidden class="anchor" aria-hidden="true" href="#발견된-주요-이슈">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">#</th>
+          <th style="text-align: left">이슈</th>
+          <th style="text-align: left">증상</th>
+          <th style="text-align: left">원인 분석</th>
+          <th style="text-align: left">해결 방법</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">1</td>
+          <td style="text-align: left">XSS 미탐지</td>
+          <td style="text-align: left">브라우저에선 alert 뜨는데 스캐너는 안전 판정</td>
+          <td style="text-align: left">작은따옴표 포함 페이로드가 SQL 에러로 DB 저장 실패</td>
+          <td style="text-align: left"><code>&lt;img src=x onerror=alert(1)&gt;</code> 페이로드 사용</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">2</td>
+          <td style="text-align: left">SQL Injection 오탐</td>
+          <td style="text-align: left">정상 기능도 취약으로 판정</td>
+          <td style="text-align: left">SQL 에러 메시지만으로 판단</td>
+          <td style="text-align: left">응답 코드 + 인증 우회 성공 여부 동시 확인</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">3</td>
+          <td style="text-align: left">Command Injection 타임아웃</td>
+          <td style="text-align: left">스캐너가 무한 대기</td>
+          <td style="text-align: left">sleep 명령어 실행 시 timeout 부족</td>
+          <td style="text-align: left">timeout=15 설정 + elapsed_time 측정</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">4</td>
+          <td style="text-align: left">Cookie 변조 미탐지</td>
+          <td style="text-align: left">실제로 권한 상승되는데 안전 판정</td>
+          <td style="text-align: left">단순 status_code만 확인</td>
+          <td style="text-align: left">응답 길이 + 실패 키워드 부재 확인</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">5</td>
+          <td style="text-align: left">File Upload 백신 오탐</td>
+          <td style="text-align: left">다운로드한 스캐너가 바이러스로 차단</td>
+          <td style="text-align: left">실제 악성 바이트 시그니처 포함</td>
+          <td style="text-align: left">OS별 무해한 테스트 파일로 변경</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">6</td>
+          <td style="text-align: left">Path Traversal 경로 이슈</td>
+          <td style="text-align: left">Linux에서 Windows 경로 테스트</td>
+          <td style="text-align: left">OS 구분 없이 모든 페이로드 시도</td>
+          <td style="text-align: left">platform.system()으로 OS 확인 후 적절한 페이로드 사용</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">7</td>
+          <td style="text-align: left">Error Page Soft-404</td>
+          <td style="text-align: left">404 페이지가 200으로 반환</td>
+          <td style="text-align: left">메인 페이지로 리다이렉트</td>
+          <td style="text-align: left">최종 URL 경로 확인 로직 추가</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">8</td>
+          <td style="text-align: left">Dynamic Scanner 세션 끊김</td>
+          <td style="text-align: left">크롤링 중 인증 풀림</td>
+          <td style="text-align: left">Session 객체 미공유</td>
+          <td style="text-align: left">self.session 공유 구조로 변경</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="6-팀원-간-토론-내용">6. 팀원 간 토론 내용<a hidden class="anchor" aria-hidden="true" href="#6-팀원-간-토론-내용">#</a></h2>
+<h3 id="토론-1-스캐너-정확도-개선">토론 1: 스캐너 정확도 개선<a hidden class="anchor" aria-hidden="true" href="#토론-1-스캐너-정확도-개선">#</a></h3>
+<p><strong>문제 제기:</strong></p>
+<ul>
+<li>프론트엔드: &ldquo;스캐너가 너무 공격적이지 않나요? 정상 기능도 취약점으로 잡는 것 같은데요.&rdquo;</li>
+<li>호짱: &ldquo;맞아요. XSS 스캐너가 이스케이프된 것도 취약으로 잡네요.&rdquo;</li>
+<li>백엔드: &ldquo;발표 때 오탐 지적받으면 곤란할 것 같은데&hellip;&rdquo;</li>
+</ul>
+<p><strong>해결 방안 - 2단계 검증 추가:</strong></p>
+<ul>
+<li>기존(단순): 페이로드가 응답에 포함되면 취약</li>
+<li>개선: 페이로드 포함 AND HTML 이스케이프(<code>&amp;lt;</code>) 미포함 AND <code>&lt;script&gt;</code> 태그 직접 존재 -&gt; 고신뢰도(high) 취약</li>
+<li>이스케이프 처리된 경우 -&gt; 저신뢰도(low)로 분류 -&gt; 안전 판정</li>
+</ul>
+<hr>
+<h3 id="토론-2-12개---15개로-확장">토론 2: 12개 -&gt; 15개로 확장<a hidden class="anchor" aria-hidden="true" href="#토론-2-12개---15개로-확장">#</a></h3>
+<p><strong>확장 결정 과정:</strong></p>
+<ul>
+<li>호짱: &ldquo;OWASP Top 10 기준으로 12개 만들었는데 충분할까요?&rdquo;</li>
+<li>백엔드: &ldquo;OS Command Injection은 어때요? Log4Shell 같은 사건도 있었고&hellip;&rdquo;</li>
+<li>프론트엔드: &ldquo;SSRF도 클라우드 환경에서 중요하다고 들었어요.&rdquo;</li>
+<li>문서화: &ldquo;HTTP Method 검증도 REST API 보안의 기본이죠.&rdquo;</li>
+</ul>
+<p><strong>추가된 3개:</strong></p>
+<ol>
+<li><strong>03_os_command_injection_scanner.py</strong> (9KB) - Runtime.exec() 코드 검사, Blind Command Injection (시간 지연 기반)</li>
+<li><strong>15_ssrf_scanner.py</strong> (7KB) - 내부망 접근 테스트, URL 요청 코드 검증</li>
+<li><strong>14_http_method_scanner.py</strong> (3KB) - TRACE/PUT/DELETE 허용 확인, XST 취약점 탐지</li>
+</ol>
+<hr>
+<h3 id="토론-3-whitebox-vs-blackbox-비율">토론 3: Whitebox vs Blackbox 비율<a hidden class="anchor" aria-hidden="true" href="#토론-3-whitebox-vs-blackbox-비율">#</a></h3>
+<p><strong>현재 비율:</strong></p>
+<ul>
+<li>Whitebox (정적 분석): 40% - Thymeleaf 템플릿, MyBatis XML, Java 소스 코드</li>
+<li>Blackbox (동적 테스트): 60% - HTTP 요청/응답 기반 실제 공격 시뮬레이션</li>
+</ul>
+<p><strong>장단점:</strong></p>
+<ul>
+<li>Whitebox 장점: 정확한 취약점 위치 파악 / 단점: 소스 코드 접근 필요</li>
+<li>Blackbox 장점: 실제 공격 가능성 검증 / 단점: 오탐/미탐 가능성</li>
+</ul>
+<p><strong>최종 전략:</strong></p>
+<ul>
+<li>중요 취약점(XSS, SQLi, Access Control): Whitebox + Blackbox 병행</li>
+<li>설정 관련(CSRF, Session, Cookie): Whitebox 위주</li>
+<li>파일/네트워크 관련(File Transfer, SSRF): Blackbox 위주</li>
+</ul>
+<hr>
+<h2 id="7-오프라인-협업의-효과">7. 오프라인 협업의 효과<a hidden class="anchor" aria-hidden="true" href="#7-오프라인-협업의-효과">#</a></h2>
+<h3 id="실시간-피드백-루프">실시간 피드백 루프<a hidden class="anchor" aria-hidden="true" href="#실시간-피드백-루프">#</a></h3>
+<p><strong>속도 비교:</strong></p>
+<ul>
+<li>온라인 협업 (예상): 문제 발견 -&gt; Slack 메시지 -&gt; 답변 대기 (10분~1시간) -&gt; 수정 커밋 -&gt; Pull 받기 -&gt; 재테스트 = 한 이슈당 평균 2시간</li>
+<li>오프라인 협업 (실제): 문제 발견 -&gt; 바로 말하기 (5초) -&gt; 함께 화면 보며 수정 (10분) -&gt; 즉시 재테스트 = 한 이슈당 평균 15분</li>
+<li><strong>효율성: 8배 향상</strong></li>
+</ul>
+<h3 id="즉석-문제-해결-사례">즉석 문제 해결 사례<a hidden class="anchor" aria-hidden="true" href="#즉석-문제-해결-사례">#</a></h3>
+<p><strong>Case 1: XSS 페이로드 협업 개발 (5분 해결)</strong></p>
+<ul>
+<li>호짱: &ldquo;<code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code> 이 페이로드는 왜 안 잡히죠?&rdquo;</li>
+<li>백엔드: &ldquo;작은따옴표 때문에 SQL 에러 나서 DB에 안 들어가네요.&rdquo;</li>
+<li>프론트엔드: &ldquo;작은따옴표 없는 페이로드 쓰면 되겠네요!&rdquo;</li>
+<li>호짱: &ldquo;<code>&lt;img src=x onerror=alert(1)&gt;</code> 로 바꿔볼게요&hellip; 잡혔습니다!&rdquo;</li>
+</ul>
+<p><strong>Case 2: Cookie 변조 로직 개선 (10분 완성)</strong></p>
+<ul>
+<li>호짱: &ldquo;쿠키 role=admin으로 바꿔도 안전으로 나와요.&rdquo;</li>
+<li>백엔드: &ldquo;200 OK 떴는데요?&rdquo;</li>
+<li>호짱: &ldquo;근데 본문에 &lsquo;Access Denied&rsquo; 있어요.&rdquo;</li>
+<li>프론트엔드: &ldquo;상태 코드만 보지 말고 본문 내용도 확인해야겠네요.&rdquo;</li>
+<li>해결: <code>res.status_code == 200 AND len(res.text) &gt; 500 AND 'access denied' not in res.text.lower()</code></li>
+</ul>
+<hr>
+<h2 id="8-리포트-생성-시스템">8. 리포트 생성 시스템<a hidden class="anchor" aria-hidden="true" href="#8-리포트-생성-시스템">#</a></h2>
+<h3 id="3가지-형식-자동-생성">3가지 형식 자동 생성<a hidden class="anchor" aria-hidden="true" href="#3가지-형식-자동-생성">#</a></h3>
+<p><strong>TXT 리포트 구조:</strong></p>
+<pre><code>[ DNA Lab Security Scan Report ]
+Time: 2025-01-02 15:30:45
+Target: http://localhost:8080
+============================================================
+
+[Summary]
+Total Scans: 15
+Vulnerable Scans: 9
+Safe Scans: 6
+Total Findings: 23
+============================================================
+
+1. XSS (Cross-Site Scripting) [!]
+   [Details]
+   - [Static] board/view.html:15 - th:utext 사용
+   - [Dynamic] Stored XSS 취약 (/board/write)
+   [Fix] th:utext를 th:text로 변경 | 입력값 HTML 이스케이프 처리
+------------------------------------------------------------
+</code></pre>
+<p><strong>HTML 리포트:</strong> 시각화된 대시보드 형식, 카드 형태로 Vulnerable(9)/Safe(6)/Total Findings(23) 표시, 취약점별 VULNERABLE/SAFE 배지와 상세 내용 포함</p>
+<p><strong>PDF 리포트 (선택):</strong> WeasyPrint 라이브러리 설치 시 HTML -&gt; PDF 자동 변환, 미설치 시 &ldquo;WeasyPrint not installed&rdquo; 메시지 출력</p>
+<hr>
+<h2 id="9-배운-점-및-인사이트">9. 배운 점 및 인사이트<a hidden class="anchor" aria-hidden="true" href="#9-배운-점-및-인사이트">#</a></h2>
+<h3 id="기술적-성장">기술적 성장<a hidden class="anchor" aria-hidden="true" href="#기술적-성장">#</a></h3>
+<p><strong>Whitebox 분석 기술:</strong></p>
+<ul>
+<li>XML 파싱: <code>xml.etree.ElementTree</code>로 MyBatis Mapper 분석</li>
+<li>정규표현식: <code>re.findall(r'\$\{([^}]+)\}', text)</code> 패턴 매칭</li>
+<li>파일 시스템 탐색: <code>os.walk()</code>로 재귀적 파일 검색</li>
+<li>소스 코드 패턴 분석: 취약한 코딩 패턴 자동 탐지</li>
+</ul>
+<p><strong>Blackbox 테스팅 기술:</strong></p>
+<ul>
+<li><code>requests.Session()</code>: 로그인 상태 유지하며 여러 요청</li>
+<li>시간 기반 Blind 공격: <code>time.time()</code> 측정으로 명령어 실행 확인</li>
+<li>쿠키 조작: <code>session.cookies.set()</code>으로 권한 변조</li>
+<li>응답 분석: HTTP 코드 + HTML 내용 + 응답 시간 종합 판단</li>
+</ul>
+<p><strong>자동화 스크립트 설계:</strong></p>
+<ul>
+<li>모듈화: 각 스캐너 독립 실행 가능</li>
+<li>통일된 인터페이스: <code>scan()</code> 함수, 표준 result 딕셔너리</li>
+<li>에러 핸들링: try-except로 한 스캐너 실패해도 전체 중단 안 됨</li>
+<li>확장성: 새 스캐너 추가 시 main.py에 한 줄만 추가</li>
+</ul>
+<h3 id="협업-프로세스-개선">협업 프로세스 개선<a hidden class="anchor" aria-hidden="true" href="#협업-프로세스-개선">#</a></h3>
+<p><strong>오프라인의 힘:</strong></p>
+<ul>
+<li>물리적 근접성: 같은 화면 보며 즉시 이해</li>
+<li>컨텍스트 공유: 문제 인식부터 해결까지 같은 맥락</li>
+<li>집단 지성: 한 명이 막히면 다른 사람이 아이디어 제공</li>
+<li>즉각 검증: 수정 -&gt; 테스트 사이클이 분 단위</li>
+</ul>
+<p><strong>효율적 역할 분담:</strong></p>
+<ul>
+<li>호짱: 스캐너 로직 구현 + 테스트 실행</li>
+<li>백엔드: 취약점 삽입 + URL/파라미터 정보 제공</li>
+<li>프론트엔드: HTML 구조 설명 + 템플릿 엔진 동작 설명</li>
+<li>문서화: 발견 사항 기록 + 개선 방안 정리</li>
+</ul>
+<h3 id="보안-테스팅-인사이트">보안 테스팅 인사이트<a hidden class="anchor" aria-hidden="true" href="#보안-테스팅-인사이트">#</a></h3>
+<p><strong>오탐/미탐 트레이드오프:</strong></p>
+<ul>
+<li>공격적 탐지 (민감도 높음): 오탐 높지만 미탐 낮음</li>
+<li>보수적 탐지 (민감도 낮음): 오탐 낮지만 미탐 높음</li>
+<li>균형점: 2단계 검증 (1차: 빠른 탐지, 2차: 정밀 검증)</li>
+</ul>
+<p><strong>실전 공격 vs 테스트:</strong></p>
+<ul>
+<li>실제 해커: 시간 무제한, 창의적 우회 기법 사용</li>
+<li>자동화 스캐너: 알려진 패턴 탐지, 시간 제약</li>
+<li>보완 방법: 수동 침투 테스트 병행, 정기적 업데이트</li>
+</ul>
+<p><strong>취약점 우선순위:</strong></p>
+<ol>
+<li>Critical: 인증 우회 (SQLi), 권한 상승 (Cookie 변조)</li>
+<li>High: 코드 실행 (OS Command Injection), 데이터 유출 (Path Traversal)</li>
+<li>Medium: XSS, CSRF, 세션 관리</li>
+<li>Low: 정보 노출 (Error Page), HTTP Method</li>
+</ol>
+<hr>
+<h2 id="10-남은-작업-및-내일-계획">10. 남은 작업 및 내일 계획<a hidden class="anchor" aria-hidden="true" href="#10-남은-작업-및-내일-계획">#</a></h2>
+<h3 id="스캐너-마무리-작업">스캐너 마무리 작업<a hidden class="anchor" aria-hidden="true" href="#스캐너-마무리-작업">#</a></h3>
+<p><strong>우선순위 1 (필수 - 내일 오전):</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> 모든 스캐너 2차 검증 로직 추가</li>
+<li><input disabled="" type="checkbox"> 오탐 사례 재테스트 및 수정</li>
+<li><input disabled="" type="checkbox"> config.json 최종 엔드포인트 매칭</li>
+<li><input disabled="" type="checkbox"> 에러 로깅 체계화</li>
+</ul>
+<p><strong>우선순위 2 (권장 - 내일 오후):</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> 페이로드 다양화 (현재 3-5개 -&gt; 10개)</li>
+<li><input disabled="" type="checkbox"> 실행 시간 최적화</li>
+<li><input disabled="" type="checkbox"> 리포트 가독성 개선</li>
+</ul>
+<h3 id="문서화-작업">문서화 작업<a hidden class="anchor" aria-hidden="true" href="#문서화-작업">#</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 취약점별 상세 설명 작성 (각 1페이지)</li>
+<li><input disabled="" type="checkbox"> 대응 방안 가이드 (Before/After 코드)</li>
+<li><input disabled="" type="checkbox"> 23andMe 사건 타임라인 정리</li>
+<li><input disabled="" type="checkbox"> 발표 자료 초안 (30슬라이드 목표)</li>
+</ul>
+<hr>
+<h2 id="11-quick-reference">11. Quick Reference<a hidden class="anchor" aria-hidden="true" href="#11-quick-reference">#</a></h2>
+<h3 id="스캐너-실행-명령어">스캐너 실행 명령어<a hidden class="anchor" aria-hidden="true" href="#스캐너-실행-명령어">#</a></h3>
+<ul>
+<li>기본 실행 (대화형 모드): <code>python main.py</code></li>
+<li>타겟 URL 지정: <code>python main.py -t http://192.168.1.100:8080</code></li>
+<li>스캔 모드: 1(Static), 2(Dynamic), 3(Full) 선택</li>
+<li>결과 확인: <code>cat reports/scan_report_20250102_*.txt</code> 또는 HTML 파일 브라우저 열기</li>
+</ul>
+<h3 id="주요-파일-구조">주요 파일 구조<a hidden class="anchor" aria-hidden="true" href="#주요-파일-구조">#</a></h3>
+<pre><code>vulnerability_scanner/
+├── main.py                   # 통합 실행 스크립트
+├── config.json              # 타겟 URL, 로그인 정보
+├── dynamic_scanner.py       # 동적 스캐너
+├── crawler.py               # 웹 크롤러
+├── 01_xss_scanner.py        # XSS 탐지
+├── 02_sqli_scanner.py       # SQL Injection 탐지
+├── ...                      # (15개 스캐너)
+└── reports/                 # 결과 리포트
+    ├── scan_report_*.txt
+    ├── scan_report_*.html
+    └── scan_report_*.pdf
+</code></pre>
+<h3 id="트러블슈팅-체크리스트">트러블슈팅 체크리스트<a hidden class="anchor" aria-hidden="true" href="#트러블슈팅-체크리스트">#</a></h3>
+<p><strong>스캐너가 안 돌아갈 때:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> 타겟 웹앱 실행 중? (http://localhost:8080 접속 확인)</li>
+<li><input disabled="" type="checkbox"> config.json URL 정확? (target_url 확인)</li>
+<li><input disabled="" type="checkbox"> Python 라이브러리 설치? (<code>pip install requests beautifulsoup4</code>)</li>
+<li><input disabled="" type="checkbox"> 방화벽/백신 차단? (일시 비활성화 테스트)</li>
+</ul>
+<p><strong>취약점이 안 잡힐 때:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> 실제로 취약? (브라우저에서 수동 확인)</li>
+<li><input disabled="" type="checkbox"> 로그인 필요? (config.json의 login 정보 확인)</li>
+<li><input disabled="" type="checkbox"> URL 경로 정확? (엔드포인트 오타 확인)</li>
+<li><input disabled="" type="checkbox"> 페이로드 적절? (작은따옴표 SQL 에러 등)</li>
+</ul>
+<hr>
+<p><strong>Today&rsquo;s Insight:</strong></p>
+<p>오프라인 협업의 위력을 체감한 하루였다. Python 스캐너 15개를 거의 완성하고, 팀원이 완성도 높은 DNA Lab 웹 페이지를 가져온 덕분에 본격적인 통합 테스트에 돌입했다. 실시간으로 이슈를 발견하고 함께 화면을 보며 해결하는 과정에서 온라인 협업 대비 8배의 효율성을 경험했다. 특히 XSS 페이로드에서 작은따옴표가 SQL 에러를 일으켜 DB 저장에 실패하는 문제를 5분 만에 발견하고 해결한 것은 물리적 근접성의 힘이었다.</p>
+<p>Whitebox와 Blackbox를 혼합한 15개 스캐너는 정적 코드 분석으로 정확한 취약점 위치를 파악하고, 동적 테스트로 실제 공격 가능성을 검증하는 이중 구조를 갖췄다. 웹 크롤러와 연동된 동적 스캐너는 자동으로 폼과 URL을 수집해 공격을 시뮬레이션하며, 최대 50개 페이지를 탐색한다.</p>
+<p>내일은 오탐을 줄이기 위한 2차 검증 로직 추가와 보안 강화 버전 개발을 시작하며, 취약한 상태와 안전한 상태의 명확한 대비를 준비할 것이다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://hojjang98.github.io/tags/python/">Python</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%B7%A8%EC%95%BD%EC%A0%90%EC%8A%A4%EC%BA%90%EB%84%88/">취약점스캐너</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%ED%86%B5%ED%95%A9%ED%85%8C%EC%8A%A4%ED%8A%B8/">통합테스트</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%98%A4%ED%94%84%EB%9D%BC%EC%9D%B8%ED%98%91%EC%97%85/">오프라인협업</a></li>
+      <li><a href="https://hojjang98.github.io/tags/xss/">XSS</a></li>
+      <li><a href="https://hojjang98.github.io/tags/sqlinjection/">SQLInjection</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%8F%99%EC%A0%81%EC%8A%A4%EC%BA%90%EB%84%88/">동적스캐너</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%9B%B9%ED%81%AC%EB%A1%A4%EB%9F%AC/">웹크롤러</a></li>
+      <li><a href="https://hojjang98.github.io/tags/dna-lab/">DNA-Lab</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Day 27: 전자금융감독규정 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="고시, 전자금융감독규정, CISO, 망분리, 보안관제, 암호화, 전자금융거래법">
+<meta name="description" content="금융위원회 고시인 전자금융감독규정의 주요 조항을 학습합니다. CISO 지정, 접근통제, 암호화, 망분리, 보안관제 등 금융권 보안 실무 기준을 정리합니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/07_%EA%B3%A0%EC%8B%9C%EB%B0%8F%EC%A7%80%EC%B9%A8/day27_%EC%A0%84%EC%9E%90%EA%B8%88%EC%9C%B5%EA%B0%90%EB%8F%85%EA%B7%9C%EC%A0%95/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.290573799e582c418c4bd84f2bca757d0a77fd1bf9f5c43942030e706df68ec8.css" integrity="sha256-KQVzeZ5YLEGMS9hPK8p1fQp3/Rv59cQ5QgMOcG32jsg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/07_%EA%B3%A0%EC%8B%9C%EB%B0%8F%EC%A7%80%EC%B9%A8/day27_%EC%A0%84%EC%9E%90%EA%B8%88%EC%9C%B5%EA%B0%90%EB%8F%85%EA%B7%9C%EC%A0%95/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/07_%EA%B3%A0%EC%8B%9C%EB%B0%8F%EC%A7%80%EC%B9%A8/day27_%EC%A0%84%EC%9E%90%EA%B8%88%EC%9C%B5%EA%B0%90%EB%8F%85%EA%B7%9C%EC%A0%95/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="Day 27: 전자금융감독규정">
+  <meta property="og:description" content="금융위원회 고시인 전자금융감독규정의 주요 조항을 학습합니다. CISO 지정, 접근통제, 암호화, 망분리, 보안관제 등 금융권 보안 실무 기준을 정리합니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="cyber_law_study">
+    <meta property="article:published_time" content="2026-03-11T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-03-11T00:00:00+00:00">
+    <meta property="article:tag" content="고시">
+    <meta property="article:tag" content="전자금융감독규정">
+    <meta property="article:tag" content="CISO">
+    <meta property="article:tag" content="망분리">
+    <meta property="article:tag" content="보안관제">
+    <meta property="article:tag" content="암호화">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Day 27: 전자금융감독규정">
+<meta name="twitter:description" content="금융위원회 고시인 전자금융감독규정의 주요 조항을 학습합니다. CISO 지정, 접근통제, 암호화, 망분리, 보안관제 등 금융권 보안 실무 기준을 정리합니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "보안 컨설팅 공부",
+      "item": "https://hojjang98.github.io/cyber_law_study/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  4 ,
+      "name": "Day 27: 전자금융감독규정",
+      "item": "https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/07_%EA%B3%A0%EC%8B%9C%EB%B0%8F%EC%A7%80%EC%B9%A8/day27_%EC%A0%84%EC%9E%90%EA%B8%88%EC%9C%B5%EA%B0%90%EB%8F%85%EA%B7%9C%EC%A0%95/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Day 27: 전자금융감독규정",
+  "name": "Day 27: 전자금융감독규정",
+  "description": "금융위원회 고시인 전자금융감독규정의 주요 조항을 학습합니다. CISO 지정, 접근통제, 암호화, 망분리, 보안관제 등 금융권 보안 실무 기준을 정리합니다.",
+  "keywords": [
+    "고시", "전자금융감독규정", "CISO", "망분리", "보안관제", "암호화", "전자금융거래법"
+  ],
+  "articleBody": "Day 27: 전자금융감독규정 1. 전자금융감독규정의 개요 1.1 전자금융감독규정이란? 정식 명칭 : 전자금융감독규정\n성격 : 금융위원회 고시\n법적 근거 : 전자금융거래법 제21조의2 (안전성 확보 의무)\n최신 개정 : 2024년 1월\n1.2 법률 체계 [법령 체계]\n- 전자금융거래법 (법률) - 전자금융거래법 시행령 (대통령령) - 전자금융감독규정 (금융위원회 고시) ← 오늘 학습! - 전자금융감독규정 시행세칙 (금융감독원) 전자금융거래법 제21조의2 :\n“금융회사등은 전자금융거래의 안전성과 신뢰성을 확보할 수 있도록 전자적 전송이나 처리를 위한 인력, 시설, 전자적 장치 등의 정보기술부문 및 전자금융업무에 관하여 금융위원회가 정하는 기준을 준수하여야 한다”\n전자금융감독규정 : 위 법률의 구체적 시행 기준\n1.3 적용 대상 금융회사등 - **은행** (시중은행, 지방은행, 인터넷전문은행) - **금융투자회사** (증권사) - **보험회사** - **여신전문금융회사** (카드사, 캐피탈) - **저축은행** - **전자금융업자** (간편결제, 송금업 등) - **전자금융보조업자** 핀테크 기업 포함\n1.4 2024년 주요 개정 사항 (1) 클라우드 보안 강화 클라우드 이용 시 보안 요구사항 명시\n(2) 제로 트러스트 (Zero Trust) Zero Trust 보안 모델 도입 권장\n(3) AI 보안 AI 시스템 활용 시 보안 고려사항 추가\n(4) 랜섬웨어 대응 랜섬웨어 대비 백업·복구 체계 강화\n(5) 양자내성암호 (PQC) 양자컴퓨터 시대 대비 암호 전환 계획 수립\n2. 전체 구조 2.1 5개 장 [제1장 총칙]\n- 목적, 정의, 적용범위 [제2장 전자금융업무 관리체계]\n- 제4조: CISO 지정 - 제5조: 정보기술부문 인력 - 제6조: 정보보호위원회 [제3장 전자금융업무 위험관리]\n- 제9조: 보안정책 - 제10조: 접근통제 - 제11조: 암호 - 제12조: 백신 - 제13조: 보안관제 - 제14조: 침입차단·탐지 - 제15조: 취약점 점검 및 모의해킹 - 제16조: 망분리 - 제17조: 매체 보안 - 제18조: 보안성 검토 - 제19조: 사고 대응 - 제20조: 재해복구 [제4장 전자금융업무 운영관리]\n- 시스템 개발 - 변경관리 - 외부위탁 [제5장 보칙]\n- 검사, 제재 3. 제2장: 전자금융업무 관리체계 3.1 제4조: 정보보호최고책임자(CISO) 지정 조문 핵심 금융회사등은 **정보보호최고책임자(CISO)**를 지정해야 함\nCISO 자격 요건 [대형 금융회사 - 총자산 2조원 이상 은행, 자산 10조원 이상 보험사 등]\n- **임원급** 이상 - 정보기술 또는 정보보호 분야 **7년 이상** 실무 경력 [중소형 금융회사]\n- 정보기술 또는 정보보호 분야 **5년 이상** 실무 경력 CISO 역할 및 책임 - 1. 정보보호 정책 수립 및 시행 - 2. 정보보호 조직 구성 및 운영 - 3. 정보보호 투자 및 예산 편성 - 4. 정보보호 교육 및 훈련 - 5. 정보보호 사고 대응 - 6. 정보보호 위험 관리 독립성 보장 CISO는 업무 수행에 독립성 보장\n- 정보시스템 개발·운영 부서로부터 독립 - 이사회 또는 최고경영자에게 직접 보고 3.2 제5조: 정보기술부문 인력 적정 인력 확보 정보보호 전담 인력 확보\n[대형 금융회사]\n- 정보보호 전담 조직 구성 - CISO 직속 [중소형 금융회사]\n- 정보보호 담당자 지정 자격 요건 정보보호 관련 자격 보유 권장 :\n- 정보보호전문가 (SIS) - 정보보안기사 - CISSP - CISA 3.3 제6조: 정보보호위원회 설치 의무 정보보호위원회 설치·운영\n구성 - 위원장: CISO - 위원: 정보보호 관련 부서장 - 외부 전문가 포함 가능 역할 - 1. 정보보호 정책 심의 - 2. 정보보호 예산 심의 - 3. 중요 정보보호 사안 의결 - 4. 정보보호 사고 대응 방안 수립 운영 분기 1회 이상 개최\n4. 제3장: 전자금융업무 위험관리 4.1 제9조: 보안정책 정보보호정책 수립 전사 정보보호정책 수립·시행\n필수 포함 사항 - 1. 정보보호 목표 및 원칙 - 2. 정보보호 조직 및 책임 - 3. 정보자산 분류 및 관리 - 4. 접근통제 - 5. 암호화 - 6. 백업 및 복구 - 7. 사고 대응 - 8. 교육 및 훈련 - 9. 보안성 검토 - 10. 외부위탁 보안 정책 관리 - **최소 연 1회** 검토·개정 - 이사회 또는 최고경영자 승인 - 전 임직원 공지 4.2 제10조: 접근통제 사용자 계정 관리 개인별 고유 ID 부여 (공용 계정 금지)\n[특권 계정(관리자 계정) 관리]\n- 별도 관리 - 사용 로그 기록 - 정기 검토 인증 [본인 확인]\n- ID + 비밀번호 - 2차 인증 (OTP, 생체인증 등) [비밀번호 정책]\n- 영문, 숫자, 특수문자 조합 - 최소 8자 이상 (10자 이상 권장) - 추측 가능한 비밀번호 금지 - 주기적 변경 (90일 이내 권장) 권한 관리 최소 권한 원칙 - 업무상 필요한 최소 권한만 부여\n[권한 정기 검토]\n- **분기 1회 이상** - 불필요 권한 회수 [퇴직자 계정]\n- 퇴직 즉시 삭제 또는 비활성화 세션 관리 - 자동 로그아웃: 일정 시간 미사용 시 자동 종료 - 동시 접속 제한: 동일 ID 중복 로그인 통제 4.3 제11조: 암호 (가장 중요!) 암호화 대상 필수 암호화 :\n- 1. 비밀번호 - 2. 계좌번호 - 3. 카드번호 - 4. 주민등록번호 - 5. 생체정보 - 6. 개인정보 암호화 방식 [저장 시 - 비밀번호]\n- 일방향 암호화 (해시) - SHA-256 이상 - bcrypt, scrypt, PBKDF2 권장 - Salt 적용 [저장 시 - 계좌번호, 카드번호 등]\n- 양방향 암호화 - AES-256 - ARIA-256 - SEED-256 [전송 시]\n- **TLS 1.2 이상** (HTTPS) - VPN [보관 시 - 백업 등]\n- 암호화 상태로 보관 암호키 관리 [암호키 생성]\n- 안전한 난수 생성기 사용 - 키 길이: 128비트 이상 (256비트 권장) [암호키 저장]\n- **데이터와 분리** 보관 - HSM (Hardware Security Module) 사용 권장 - 접근 통제 [암호키 변경]\n- 정기적 변경 (연 1회 이상) - 유출 의심 시 즉시 변경 [암호키 폐기]\n- 안전한 방법으로 완전 삭제 양자내성암호 (PQC) - 2024년 추가 양자컴퓨터 위협 대비 :\n- PQC (Post-Quantum Cryptography) 전환 계획 수립 - 단계적 도입 검토 4.4 제12조: 악성프로그램 방지 백신 소프트웨어 [설치 및 운영]\n- 모든 시스템에 백신 설치 - 최신 버전 유지 - 정의 파일 자동 업데이트 [검사]\n- 실시간 검사 - **주기적 전체 검사** (최소 주 1회) 백신 관리 - 백신 로그 보관 - 악성코드 탐지 시 즉시 조치 4.5 제13조: 보안관제 보안관제센터 (SOC) [대형 금융회사]\n- 자체 보안관제센터 구축·운영 [중소형 금융회사]\n- 외부 전문기관 위탁 가능 관제 대상 - 침입탐지시스템 (IDS/IPS) - 방화벽 - 웹방화벽 (WAF) - 데이터베이스 접근통제 (DAC) - 서버·네트워크 장비 관제 시간 24시간 365일 실시간 관제\n이상 징후 탐지 및 대응 - 실시간 알림 - 즉시 조치 - 로그 기록 4.6 제14조: 침입차단 및 탐지 방화벽 [설치 위치]\n- 인터넷 구간 - 네트워크 경계 - 내부 네트워크 분리 구간 [정책]\n- 기본 차단 (Deny All) - 필요한 트래픽만 허용 (Allow) - 최소 권한 원칙 [관리]\n- 방화벽 정책 정기 검토 (분기 1회) - 불필요 정책 삭제 침입탐지·차단시스템 (IDS/IPS) [설치]\n- 네트워크 IDS/IPS - 호스트 IDS/IPS [탐지 규칙]\n- 최신 공격 패턴 반영 - 정기 업데이트 웹방화벽 (WAF) 인터넷뱅킹, 전자금융 서비스에 WAF 필수 설치\n[방어 대상]\n- SQL Injection - XSS (Cross-Site Scripting) - CSRF - DDoS 4.7 제15조: 취약점 점검 및 모의해킹 취약점 점검 주기 : 분기 1회 이상\n[점검 대상]\n- 서버 (OS, 미들웨어, DBMS) - 네트워크 장비 - 보안 장비 - 애플리케이션 [점검 항목]\n- 보안 패치 적용 여부 - 불필요한 서비스 실행 여부 - 계정 관리 (기본 계정, 불필요 계정) - 취약한 설정 [조치]\n- 발견된 취약점 **즉시 조치** - 조치 불가 시 **보완 대책** 수립 모의해킹 (침투 테스트) 주기 : 연 1회 이상\n[대상]\n- 인터넷뱅킹 - 모바일뱅킹 - 전자금융 서비스 - 중요 시스템 [방법]\n- **외부 전문기관** 수행 - 실제 해킹 기법 사용 - 시스템 안전성 확인 [결과]\n- 취약점 보고서 작성 - 발견된 취약점 조치 - 조치 결과 검증 4.8 제16조: 망분리 망분리 의무 금융회사는 업무망과 인터넷망 분리 의무\n망분리 방식 [물리적 망분리]\n- PC 2대 사용 (업무용 + 인터넷용) [논리적 망분리]\n- 가상화 기술 사용 (VDI) - 1대 PC에서 2개 망 접속 망분리 예외 [제한적 연계]\n- 업무상 필요 시 **보안USB** 또는 **망연계 솔루션** 사용 - 자료 전송 시 **악성코드 검사** - 전송 기록 보관 망분리 점검 [정기 점검]\n- 망분리 정책 준수 여부 - 우회 시도 탐지 4.9 제17조: 보조저장매체 보안 보조저장매체 관리 [보조저장매체 종류]\n- USB - 외장 하드디스크 - CD/DVD - SD 카드 [보안 조치]\n- **승인된 보안USB**만 사용 - 일반 USB 차단 (DLP) - 암호화된 보조저장매체 사용 반출입 관리 [반출 시]\n- 승인 절차 - 암호화 - 반출 대장 기록 [폐기 시]\n- 데이터 완전 삭제 - 물리적 파쇄 4.10 제18조: 보안성 검토 사전 보안성 검토 [대상]\n- 신규 시스템 도입 - 주요 시스템 변경 - 외부 서비스 도입 [검토 시점]\n- 개발 전 (설계 단계) - 개발 중 - 개발 완료 후 (상용화 전) [검토 내용]\n- 보안 요구사항 반영 - 보안 취약점 - 암호화 적용 - 접근통제 시큐어 코딩 : 개발 단계에서 보안 고려, OWASP Top 10 대응\n4.11 제19조: 침해사고 대응 침해사고 정의 - 해킹 - 악성코드 감염 - DDoS 공격 - 정보 유출 - 시스템 장애 사고 대응 체계 침해사고 대응팀 (CERT) 구성 :\n- CISO 총괄 - 보안, IT, 법무, 홍보 등 유관 부서 사고 대응 절차 :\n- 1. 탐지 및 인지 - 2. 분석 및 평가 - 3. 대응 조치 (차단, 격리, 복구) - 4. 보고 (경영진, 금융감독원, 개인정보보호위원회) - 5. 사후 분석 (원인 분석, 재발 방지) 신고 [금융감독원 신고]\n- 중대 침해사고 발생 시 **즉시 신고** [개인정보 유출]\n- 개인정보보호위원회 신고 (지체 없이) - 정보주체 통지 (지체 없이) 침해사고 대응 훈련 모의 훈련 :\n- **연 1회 이상** - 시나리오 기반 - 전 직원 참여 4.12 제20조: 재해복구 재해복구시스템 구축 [대형 금융회사]\n- 재해복구센터 구축 의무 [중소형 금융회사]\n- 재해복구 방안 수립 재해복구 목표 - **RTO (Recovery Time Objective)**: 목표 복구 시간 - 은행: **4시간 이내** - **RPO (Recovery Point Objective)**: 목표 복구 시점 - 데이터 손실 최소화 백업 [정기 백업]\n- **일일 백업** - 중요 데이터 실시간 백업 [백업 보관]\n- 원본과 **물리적으로 분리**된 장소 - 암호화 상태로 보관 [백업 테스트]\n- **분기 1회 이상** 복구 테스트 재해복구 훈련 모의 훈련 :\n- **연 1회 이상** - 실제 재해 시나리오 - 복구 시간 측정 5. 제4장: 전자금융업무 운영관리 5.1 시스템 개발 개발 보안 시큐어 코딩 :\n- OWASP Top 10 대응 - SQL Injection 방지 - XSS 방지 - CSRF 방지 소스코드 보안 점검 :\n- 정적 분석 도구 (SAST) - 동적 분석 도구 (DAST) 개발·운영 분리 [개발 환경 vs 운영 환경 분리]\n- 개발망 / 운영망 - 개발 DB / 운영 DB 실 데이터 사용 금지 : 개발·테스트 시 마스킹 데이터 사용\n5.2 변경관리 변경관리 절차 - 1. 변경 요청 - 2. 영향 분석 - 3. 승인 (변경자문위원회) - 4. 테스트 - 5. 적용 - 6. 사후 검증 긴급 변경 [긴급 상황 - 보안 패치, 장애 복구]\n- 사후 승인 가능 - 변경 기록 유지 5.3 외부위탁 위탁 계약 계약서 필수 포함 :\n- 보안 요구사항 - 보안 책임 - 보안 사고 시 책임 - 재위탁 금지 또는 사전 승인 위탁 업체 관리 [선정 시]\n- 보안 수준 평가 - 정보보호 인증 (ISMS-P, ISO 27001 등) 확인 [관리]\n- 정기 보안 점검 (**연 1회 이상**) - 보안 교육 [계약 종료 시]\n- 데이터 반환 또는 삭제 - 삭제 증명서 제출 6. 금융회사 규모별 차등 적용 6.1 대형 금융회사 기준 :\n- 총자산 2조원 이상 은행 - 총자산 10조원 이상 보험사 - 기타 금융위원회가 정하는 기준 적용 :\n- CISO 임원급 (7년 이상 경력) - 보안관제센터 구축 - 재해복구센터 구축 6.2 중소형 금융회사 완화 적용 :\n- CISO 5년 경력 - 보안관제 외부 위탁 가능 - 재해복구 방안 수립 (센터 구축 선택) 7. 금융보안원 가이드라인 7.1 금융보안원 설립 : 금융위원회 산하 특수법인, 금융권 보안 전문기관\n역할 :\n- 금융권 보안 가이드라인 제공 - 보안 위협 정보 공유 - 보안 사고 대응 지원 - 보안 교육 7.2 주요 가이드라인 - 금융분야 클라우드 이용 가이드라인: 클라우드 도입 시 보안 고려사항 - 금융분야 주요 정보 유출 방지 가이드: DLP 구현 방안 - 전자금융 보안 가이드: 전자금융 서비스 보안 기준 - 모바일뱅킹 보안 가이드: 모바일 앱 보안 요구사항 8. 클라우드 보안 (2024년 강화) 8.1 클라우드 이용 시 고려사항 사전 검토 [보안성 평가]\n- 클라우드 사업자 보안 수준 - 인증 (ISMS-P, ISO 27001, CSA STAR 등) [계약]\n- 보안 책임 명시 - SLA - 데이터 소재지 - 데이터 반환·삭제 데이터 보호 [암호화]\n- 클라우드 저장 데이터 암호화 - 암호키는 금융회사가 관리 [접근통제]\n- 클라우드 관리자 계정 통제 - MFA 적용 모니터링 [로그 관리]\n- 클라우드 접속 로그 수집 - 정기 검토 [보안 관제]\n- 클라우드 환경 포함 8.2 멀티 클라우드 / 하이브리드 클라우드 - 보안 일관성: 모든 클라우드 환경에 동일한 보안 정책 적용 - 데이터 이동: 클라우드 간 데이터 이동 시 암호화 9. 제로 트러스트 (Zero Trust) - 2024년 추가 9.1 제로 트러스트 개념 “절대 신뢰하지 말고, 항상 검증하라”\n[전통적 보안]\n- 네트워크 경계 (내부 = 안전, 외부 = 위험) [제로 트러스트]\n- 내부도 신뢰하지 않음 - 모든 접근 검증 9.2 제로 트러스트 적용 - 신원 확인: 모든 사용자 인증, MFA - 장치 확인: 보안 상태 확인 (백신, 패치 등) - 최소 권한: 필요한 자원에만 접근 - 마이크로 세그멘테이션: 네트워크 세분화 - 지속적 모니터링: 모든 활동 로그 기록 10. AI 보안 (2024년 추가) 10.1 AI 시스템 보안 AI 모델 보안 [모델 탈취 방지]\n- 접근통제 - 암호화 [적대적 공격 (Adversarial Attack) 방어]\n- 입력 데이터 검증 AI 학습 데이터 보안 [개인정보 포함 시]\n- 비식별화 - 암호화 [데이터 품질]\n- 오염된 데이터 방지 10.2 AI 활용 보안 [AI 기반 보안 솔루션]\n- 이상 탐지: AI로 비정상 거래 탐지 - 위협 인텔리전스: AI로 신종 위협 분석 11. 랜섬웨어 대응 (2024년 강화) 11.1 예방 [백업 - 3-2-1 원칙]\n- 3개 백업본 - 2종류 매체 - 1개는 오프사이트 [백업 격리]\n- 네트워크 분리 - 읽기 전용 11.2 탐지 [이상 징후 모니터링]\n- 대량 파일 암호화 - 특정 확장자 변경 11.3 대응 [격리]\n- 감염 시스템 즉시 네트워크 차단 [복구]\n- 백업으로 복구 - 랜섬 지불 금지 원칙 12. 실무 체크리스트 조직 및 인력 - [ ] CISO를 지정했는가? - [ ] 정보보호 전담 조직을 구성했는가? - [ ] 정보보호위원회를 분기 1회 운영하는가? 보안정책 - [ ] 정보보호정책을 수립했는가? - [ ] 연 1회 정책을 검토·개정하는가? 접근통제 - [ ] 개인별 고유 ID를 부여하는가? - [ ] 관리자 계정을 별도 관리하는가? - [ ] 분기 1회 권한을 검토하는가? - [ ] 퇴직자 계정을 즉시 삭제하는가? 암호 - [ ] 비밀번호를 해시(SHA-256 이상)로 저장하는가? - [ ] 계좌번호, 카드번호를 암호화(AES-256)하는가? - [ ] 전송 시 TLS 1.2 이상을 사용하는가? - [ ] 암호키를 데이터와 분리 보관하는가? - [ ] 암호키를 연 1회 변경하는가? 보안관제 - [ ] 24시간 365일 보안관제를 수행하는가? 취약점 관리 - [ ] 분기 1회 취약점 점검을 수행하는가? - [ ] 연 1회 모의해킹을 수행하는가? - [ ] 발견된 취약점을 즉시 조치하는가? 망분리 - [ ] 업무망과 인터넷망을 분리했는가? - [ ] 보안USB만 사용하는가? 사고 대응 - [ ] 침해사고 대응팀(CERT)을 구성했는가? - [ ] 연 1회 침해사고 대응 훈련을 하는가? 재해복구 - [ ] 일일 백업을 수행하는가? - [ ] 백업본을 별도 장소에 보관하는가? - [ ] 분기 1회 복구 테스트를 하는가? - [ ] 연 1회 재해복구 훈련을 하는가? 변경관리 - [ ] 변경관리 절차가 있는가? - [ ] 변경 전 테스트를 수행하는가? 외부위탁 - [ ] 위탁 계약서에 보안 조항이 있는가? - [ ] 연 1회 위탁 업체 보안 점검을 하는가? 13. 위반 시 제재 13.1 금융감독원 제재 [검사]\n- 정기 검사 - 수시 검사 [제재]\n- 경고 - 주의 - 과태료 - 업무정지 (중대 위반 시) 13.2 실제 사례 - A은행: 망분리 미흡 → 경고 + 개선명령 - B카드사: 개인정보 암호화 미흡 → 과태료 5,000만원 - C증권사: 모의해킹 미실시 → 주의 학습 정리 오늘 학습한 핵심 내용 :\n- 전자금융감독규정은 전자금융거래법의 구체적 시행 기준 (금융위원회 고시) - 금융회사등 의무 적용 - CISO 지정 (임원급 7년 또는 5년 경력) - 암호화: 비밀번호(해시), 계좌번호·카드번호(AES-256), 전송(TLS 1.2) - 보안관제 24시간 365일 - 취약점 점검 분기 1회, 모의해킹 연 1회 - 망분리 의무 - 침해사고 대응팀 구성, 연 1회 훈련 - 재해복구: RTO 4시간, 일일 백업, 분기 1회 복구 테스트 - 2024년 개정: 클라우드, 제로 트러스트, AI, 랜섬웨어, PQC 다음 학습 주제 Day 28: 클라우드 보안 인증제도 (CSAP)\n",
+  "wordCount" : "6162",
+  "inLanguage": "ko",
+  "datePublished": "2026-03-11T00:00:00Z",
+  "dateModified": "2026-03-11T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/07_%EA%B3%A0%EC%8B%9C%EB%B0%8F%EC%A7%80%EC%B9%A8/day27_%EC%A0%84%EC%9E%90%EA%B8%88%EC%9C%B5%EA%B0%90%EB%8F%85%EA%B7%9C%EC%A0%95/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://hojjang98.github.io/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/cyber_law_study/">보안 컨설팅 공부</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Day 27: 전자금융감독규정
+    </h1>
+    <div class="post-meta"><span title='2026-03-11 00:00:00 +0000 UTC'>2026년 3월 11일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="day-27-전자금융감독규정">Day 27: 전자금융감독규정<a hidden class="anchor" aria-hidden="true" href="#day-27-전자금융감독규정">#</a></h1>
+<h2 id="1-전자금융감독규정의-개요">1. 전자금융감독규정의 개요<a hidden class="anchor" aria-hidden="true" href="#1-전자금융감독규정의-개요">#</a></h2>
+<h3 id="11-전자금융감독규정이란">1.1 전자금융감독규정이란?<a hidden class="anchor" aria-hidden="true" href="#11-전자금융감독규정이란">#</a></h3>
+<p><strong>정식 명칭</strong> : 전자금융감독규정</p>
+<p><strong>성격</strong> : 금융위원회 <strong>고시</strong></p>
+<p><strong>법적 근거</strong> : 전자금융거래법 제21조의2 (안전성 확보 의무)</p>
+<p><strong>최신 개정</strong> : 2024년 1월</p>
+<h3 id="12-법률-체계">1.2 법률 체계<a hidden class="anchor" aria-hidden="true" href="#12-법률-체계">#</a></h3>
+<p>[법령 체계]</p>
+<pre><code>- 전자금융거래법 (법률)
+- 전자금융거래법 시행령 (대통령령)
+- 전자금융감독규정 (금융위원회 고시) ← 오늘 학습!
+- 전자금융감독규정 시행세칙 (금융감독원)
+</code></pre>
+<p><strong>전자금융거래법 제21조의2</strong> :</p>
+<p>&ldquo;금융회사등은 전자금융거래의 안전성과 신뢰성을 확보할 수 있도록 전자적 전송이나 처리를 위한 인력, 시설, 전자적 장치 등의 정보기술부문 및 전자금융업무에 관하여 금융위원회가 정하는 기준을 준수하여야 한다&rdquo;</p>
+<p><strong>전자금융감독규정</strong> : 위 법률의 구체적 시행 기준</p>
+<h3 id="13-적용-대상">1.3 적용 대상<a hidden class="anchor" aria-hidden="true" href="#13-적용-대상">#</a></h3>
+<h4 id="금융회사등">금융회사등<a hidden class="anchor" aria-hidden="true" href="#금융회사등">#</a></h4>
+<pre><code>- **은행** (시중은행, 지방은행, 인터넷전문은행)
+- **금융투자회사** (증권사)
+- **보험회사**
+- **여신전문금융회사** (카드사, 캐피탈)
+- **저축은행**
+- **전자금융업자** (간편결제, 송금업 등)
+- **전자금융보조업자**
+</code></pre>
+<p><strong>핀테크 기업 포함</strong></p>
+<h3 id="14-2024년-주요-개정-사항">1.4 2024년 주요 개정 사항<a hidden class="anchor" aria-hidden="true" href="#14-2024년-주요-개정-사항">#</a></h3>
+<h4 id="1-클라우드-보안-강화">(1) 클라우드 보안 강화<a hidden class="anchor" aria-hidden="true" href="#1-클라우드-보안-강화">#</a></h4>
+<p>클라우드 이용 시 보안 요구사항 명시</p>
+<h4 id="2-제로-트러스트-zero-trust">(2) 제로 트러스트 (Zero Trust)<a hidden class="anchor" aria-hidden="true" href="#2-제로-트러스트-zero-trust">#</a></h4>
+<p>Zero Trust 보안 모델 도입 권장</p>
+<h4 id="3-ai-보안">(3) AI 보안<a hidden class="anchor" aria-hidden="true" href="#3-ai-보안">#</a></h4>
+<p>AI 시스템 활용 시 보안 고려사항 추가</p>
+<h4 id="4-랜섬웨어-대응">(4) 랜섬웨어 대응<a hidden class="anchor" aria-hidden="true" href="#4-랜섬웨어-대응">#</a></h4>
+<p>랜섬웨어 대비 백업·복구 체계 강화</p>
+<h4 id="5-양자내성암호-pqc">(5) 양자내성암호 (PQC)<a hidden class="anchor" aria-hidden="true" href="#5-양자내성암호-pqc">#</a></h4>
+<p>양자컴퓨터 시대 대비 암호 전환 계획 수립</p>
+<h2 id="2-전체-구조">2. 전체 구조<a hidden class="anchor" aria-hidden="true" href="#2-전체-구조">#</a></h2>
+<h3 id="21-5개-장">2.1 5개 장<a hidden class="anchor" aria-hidden="true" href="#21-5개-장">#</a></h3>
+<p>[제1장 총칙]</p>
+<pre><code>- 목적, 정의, 적용범위
+</code></pre>
+<p>[제2장 전자금융업무 관리체계]</p>
+<pre><code>- 제4조: CISO 지정
+- 제5조: 정보기술부문 인력
+- 제6조: 정보보호위원회
+</code></pre>
+<p>[제3장 전자금융업무 위험관리]</p>
+<pre><code>- 제9조: 보안정책
+- 제10조: 접근통제
+- 제11조: 암호
+- 제12조: 백신
+- 제13조: 보안관제
+- 제14조: 침입차단·탐지
+- 제15조: 취약점 점검 및 모의해킹
+- 제16조: 망분리
+- 제17조: 매체 보안
+- 제18조: 보안성 검토
+- 제19조: 사고 대응
+- 제20조: 재해복구
+</code></pre>
+<p>[제4장 전자금융업무 운영관리]</p>
+<pre><code>- 시스템 개발
+- 변경관리
+- 외부위탁
+</code></pre>
+<p>[제5장 보칙]</p>
+<pre><code>- 검사, 제재
+</code></pre>
+<h2 id="3-제2장-전자금융업무-관리체계">3. 제2장: 전자금융업무 관리체계<a hidden class="anchor" aria-hidden="true" href="#3-제2장-전자금융업무-관리체계">#</a></h2>
+<h3 id="31-제4조-정보보호최고책임자ciso-지정">3.1 제4조: 정보보호최고책임자(CISO) 지정<a hidden class="anchor" aria-hidden="true" href="#31-제4조-정보보호최고책임자ciso-지정">#</a></h3>
+<h4 id="조문-핵심">조문 핵심<a hidden class="anchor" aria-hidden="true" href="#조문-핵심">#</a></h4>
+<p>금융회사등은 **정보보호최고책임자(CISO)**를 지정해야 함</p>
+<h4 id="ciso-자격-요건">CISO 자격 요건<a hidden class="anchor" aria-hidden="true" href="#ciso-자격-요건">#</a></h4>
+<p>[대형 금융회사 - 총자산 2조원 이상 은행, 자산 10조원 이상 보험사 등]</p>
+<pre><code>- **임원급** 이상
+- 정보기술 또는 정보보호 분야 **7년 이상** 실무 경력
+</code></pre>
+<p>[중소형 금융회사]</p>
+<pre><code>- 정보기술 또는 정보보호 분야 **5년 이상** 실무 경력
+</code></pre>
+<h4 id="ciso-역할-및-책임">CISO 역할 및 책임<a hidden class="anchor" aria-hidden="true" href="#ciso-역할-및-책임">#</a></h4>
+<pre><code>- 1. 정보보호 정책 수립 및 시행
+- 2. 정보보호 조직 구성 및 운영
+- 3. 정보보호 투자 및 예산 편성
+- 4. 정보보호 교육 및 훈련
+- 5. 정보보호 사고 대응
+- 6. 정보보호 위험 관리
+</code></pre>
+<h4 id="독립성-보장">독립성 보장<a hidden class="anchor" aria-hidden="true" href="#독립성-보장">#</a></h4>
+<p>CISO는 <strong>업무 수행에 독립성</strong> 보장</p>
+<pre><code>- 정보시스템 개발·운영 부서로부터 독립
+- 이사회 또는 최고경영자에게 직접 보고
+</code></pre>
+<h3 id="32-제5조-정보기술부문-인력">3.2 제5조: 정보기술부문 인력<a hidden class="anchor" aria-hidden="true" href="#32-제5조-정보기술부문-인력">#</a></h3>
+<h4 id="적정-인력-확보">적정 인력 확보<a hidden class="anchor" aria-hidden="true" href="#적정-인력-확보">#</a></h4>
+<p><strong>정보보호 전담 인력</strong> 확보</p>
+<p>[대형 금융회사]</p>
+<pre><code>- 정보보호 전담 조직 구성
+- CISO 직속
+</code></pre>
+<p>[중소형 금융회사]</p>
+<pre><code>- 정보보호 담당자 지정
+</code></pre>
+<h4 id="자격-요건">자격 요건<a hidden class="anchor" aria-hidden="true" href="#자격-요건">#</a></h4>
+<p>정보보호 관련 자격 보유 권장 :</p>
+<pre><code>- 정보보호전문가 (SIS)
+- 정보보안기사
+- CISSP
+- CISA
+</code></pre>
+<h3 id="33-제6조-정보보호위원회">3.3 제6조: 정보보호위원회<a hidden class="anchor" aria-hidden="true" href="#33-제6조-정보보호위원회">#</a></h3>
+<h4 id="설치-의무">설치 의무<a hidden class="anchor" aria-hidden="true" href="#설치-의무">#</a></h4>
+<p><strong>정보보호위원회</strong> 설치·운영</p>
+<h4 id="구성">구성<a hidden class="anchor" aria-hidden="true" href="#구성">#</a></h4>
+<pre><code>- 위원장: CISO
+- 위원: 정보보호 관련 부서장
+- 외부 전문가 포함 가능
+</code></pre>
+<h4 id="역할">역할<a hidden class="anchor" aria-hidden="true" href="#역할">#</a></h4>
+<pre><code>- 1. 정보보호 정책 심의
+- 2. 정보보호 예산 심의
+- 3. 중요 정보보호 사안 의결
+- 4. 정보보호 사고 대응 방안 수립
+</code></pre>
+<h4 id="운영">운영<a hidden class="anchor" aria-hidden="true" href="#운영">#</a></h4>
+<p><strong>분기 1회 이상</strong> 개최</p>
+<h2 id="4-제3장-전자금융업무-위험관리">4. 제3장: 전자금융업무 위험관리<a hidden class="anchor" aria-hidden="true" href="#4-제3장-전자금융업무-위험관리">#</a></h2>
+<h3 id="41-제9조-보안정책">4.1 제9조: 보안정책<a hidden class="anchor" aria-hidden="true" href="#41-제9조-보안정책">#</a></h3>
+<h4 id="정보보호정책-수립">정보보호정책 수립<a hidden class="anchor" aria-hidden="true" href="#정보보호정책-수립">#</a></h4>
+<p><strong>전사 정보보호정책</strong> 수립·시행</p>
+<h4 id="필수-포함-사항">필수 포함 사항<a hidden class="anchor" aria-hidden="true" href="#필수-포함-사항">#</a></h4>
+<pre><code>- 1. 정보보호 목표 및 원칙
+- 2. 정보보호 조직 및 책임
+- 3. 정보자산 분류 및 관리
+- 4. 접근통제
+- 5. 암호화
+- 6. 백업 및 복구
+- 7. 사고 대응
+- 8. 교육 및 훈련
+- 9. 보안성 검토
+- 10. 외부위탁 보안
+</code></pre>
+<h4 id="정책-관리">정책 관리<a hidden class="anchor" aria-hidden="true" href="#정책-관리">#</a></h4>
+<pre><code>- **최소 연 1회** 검토·개정
+- 이사회 또는 최고경영자 승인
+- 전 임직원 공지
+</code></pre>
+<h3 id="42-제10조-접근통제">4.2 제10조: 접근통제<a hidden class="anchor" aria-hidden="true" href="#42-제10조-접근통제">#</a></h3>
+<h4 id="사용자-계정-관리">사용자 계정 관리<a hidden class="anchor" aria-hidden="true" href="#사용자-계정-관리">#</a></h4>
+<p><strong>개인별 고유 ID</strong> 부여 (공용 계정 금지)</p>
+<p>[특권 계정(관리자 계정) 관리]</p>
+<pre><code>- 별도 관리
+- 사용 로그 기록
+- 정기 검토
+</code></pre>
+<h4 id="인증">인증<a hidden class="anchor" aria-hidden="true" href="#인증">#</a></h4>
+<p>[본인 확인]</p>
+<pre><code>- ID + 비밀번호
+- 2차 인증 (OTP, 생체인증 등)
+</code></pre>
+<p>[비밀번호 정책]</p>
+<pre><code>- 영문, 숫자, 특수문자 조합
+- 최소 8자 이상 (10자 이상 권장)
+- 추측 가능한 비밀번호 금지
+- 주기적 변경 (90일 이내 권장)
+</code></pre>
+<h4 id="권한-관리">권한 관리<a hidden class="anchor" aria-hidden="true" href="#권한-관리">#</a></h4>
+<p><strong>최소 권한 원칙</strong> - 업무상 필요한 최소 권한만 부여</p>
+<p>[권한 정기 검토]</p>
+<pre><code>- **분기 1회 이상**
+- 불필요 권한 회수
+</code></pre>
+<p>[퇴직자 계정]</p>
+<pre><code>- 퇴직 즉시 삭제 또는 비활성화
+</code></pre>
+<h4 id="세션-관리">세션 관리<a hidden class="anchor" aria-hidden="true" href="#세션-관리">#</a></h4>
+<pre><code>- 자동 로그아웃: 일정 시간 미사용 시 자동 종료
+- 동시 접속 제한: 동일 ID 중복 로그인 통제
+</code></pre>
+<h3 id="43-제11조-암호-가장-중요">4.3 제11조: 암호 (가장 중요!)<a hidden class="anchor" aria-hidden="true" href="#43-제11조-암호-가장-중요">#</a></h3>
+<h4 id="암호화-대상">암호화 대상<a hidden class="anchor" aria-hidden="true" href="#암호화-대상">#</a></h4>
+<p><strong>필수 암호화</strong> :</p>
+<pre><code>- 1. 비밀번호
+- 2. 계좌번호
+- 3. 카드번호
+- 4. 주민등록번호
+- 5. 생체정보
+- 6. 개인정보
+</code></pre>
+<h4 id="암호화-방식">암호화 방식<a hidden class="anchor" aria-hidden="true" href="#암호화-방식">#</a></h4>
+<p>[저장 시 - 비밀번호]</p>
+<pre><code>- 일방향 암호화 (해시)
+- SHA-256 이상
+- bcrypt, scrypt, PBKDF2 권장
+- Salt 적용
+</code></pre>
+<p>[저장 시 - 계좌번호, 카드번호 등]</p>
+<pre><code>- 양방향 암호화
+- AES-256
+- ARIA-256
+- SEED-256
+</code></pre>
+<p>[전송 시]</p>
+<pre><code>- **TLS 1.2 이상** (HTTPS)
+- VPN
+</code></pre>
+<p>[보관 시 - 백업 등]</p>
+<pre><code>- 암호화 상태로 보관
+</code></pre>
+<h4 id="암호키-관리">암호키 관리<a hidden class="anchor" aria-hidden="true" href="#암호키-관리">#</a></h4>
+<p>[암호키 생성]</p>
+<pre><code>- 안전한 난수 생성기 사용
+- 키 길이: 128비트 이상 (256비트 권장)
+</code></pre>
+<p>[암호키 저장]</p>
+<pre><code>- **데이터와 분리** 보관
+- HSM (Hardware Security Module) 사용 권장
+- 접근 통제
+</code></pre>
+<p>[암호키 변경]</p>
+<pre><code>- 정기적 변경 (연 1회 이상)
+- 유출 의심 시 즉시 변경
+</code></pre>
+<p>[암호키 폐기]</p>
+<pre><code>- 안전한 방법으로 완전 삭제
+</code></pre>
+<h4 id="양자내성암호-pqc---2024년-추가">양자내성암호 (PQC) - 2024년 추가<a hidden class="anchor" aria-hidden="true" href="#양자내성암호-pqc---2024년-추가">#</a></h4>
+<p><strong>양자컴퓨터 위협 대비</strong> :</p>
+<pre><code>- PQC (Post-Quantum Cryptography) 전환 계획 수립
+- 단계적 도입 검토
+</code></pre>
+<h3 id="44-제12조-악성프로그램-방지">4.4 제12조: 악성프로그램 방지<a hidden class="anchor" aria-hidden="true" href="#44-제12조-악성프로그램-방지">#</a></h3>
+<h4 id="백신-소프트웨어">백신 소프트웨어<a hidden class="anchor" aria-hidden="true" href="#백신-소프트웨어">#</a></h4>
+<p>[설치 및 운영]</p>
+<pre><code>- 모든 시스템에 백신 설치
+- 최신 버전 유지
+- 정의 파일 자동 업데이트
+</code></pre>
+<p>[검사]</p>
+<pre><code>- 실시간 검사
+- **주기적 전체 검사** (최소 주 1회)
+</code></pre>
+<h4 id="백신-관리">백신 관리<a hidden class="anchor" aria-hidden="true" href="#백신-관리">#</a></h4>
+<pre><code>- 백신 로그 보관
+- 악성코드 탐지 시 즉시 조치
+</code></pre>
+<h3 id="45-제13조-보안관제">4.5 제13조: 보안관제<a hidden class="anchor" aria-hidden="true" href="#45-제13조-보안관제">#</a></h3>
+<h4 id="보안관제센터-soc">보안관제센터 (SOC)<a hidden class="anchor" aria-hidden="true" href="#보안관제센터-soc">#</a></h4>
+<p>[대형 금융회사]</p>
+<pre><code>- 자체 보안관제센터 구축·운영
+</code></pre>
+<p>[중소형 금융회사]</p>
+<pre><code>- 외부 전문기관 위탁 가능
+</code></pre>
+<h4 id="관제-대상">관제 대상<a hidden class="anchor" aria-hidden="true" href="#관제-대상">#</a></h4>
+<pre><code>- 침입탐지시스템 (IDS/IPS)
+- 방화벽
+- 웹방화벽 (WAF)
+- 데이터베이스 접근통제 (DAC)
+- 서버·네트워크 장비
+</code></pre>
+<h4 id="관제-시간">관제 시간<a hidden class="anchor" aria-hidden="true" href="#관제-시간">#</a></h4>
+<p><strong>24시간 365일</strong> 실시간 관제</p>
+<h4 id="이상-징후-탐지-및-대응">이상 징후 탐지 및 대응<a hidden class="anchor" aria-hidden="true" href="#이상-징후-탐지-및-대응">#</a></h4>
+<pre><code>- 실시간 알림
+- 즉시 조치
+- 로그 기록
+</code></pre>
+<h3 id="46-제14조-침입차단-및-탐지">4.6 제14조: 침입차단 및 탐지<a hidden class="anchor" aria-hidden="true" href="#46-제14조-침입차단-및-탐지">#</a></h3>
+<h4 id="방화벽">방화벽<a hidden class="anchor" aria-hidden="true" href="#방화벽">#</a></h4>
+<p>[설치 위치]</p>
+<pre><code>- 인터넷 구간
+- 네트워크 경계
+- 내부 네트워크 분리 구간
+</code></pre>
+<p>[정책]</p>
+<pre><code>- 기본 차단 (Deny All)
+- 필요한 트래픽만 허용 (Allow)
+- 최소 권한 원칙
+</code></pre>
+<p>[관리]</p>
+<pre><code>- 방화벽 정책 정기 검토 (분기 1회)
+- 불필요 정책 삭제
+</code></pre>
+<h4 id="침입탐지차단시스템-idsips">침입탐지·차단시스템 (IDS/IPS)<a hidden class="anchor" aria-hidden="true" href="#침입탐지차단시스템-idsips">#</a></h4>
+<p>[설치]</p>
+<pre><code>- 네트워크 IDS/IPS
+- 호스트 IDS/IPS
+</code></pre>
+<p>[탐지 규칙]</p>
+<pre><code>- 최신 공격 패턴 반영
+- 정기 업데이트
+</code></pre>
+<h4 id="웹방화벽-waf">웹방화벽 (WAF)<a hidden class="anchor" aria-hidden="true" href="#웹방화벽-waf">#</a></h4>
+<p>인터넷뱅킹, 전자금융 서비스에 <strong>WAF 필수 설치</strong></p>
+<p>[방어 대상]</p>
+<pre><code>- SQL Injection
+- XSS (Cross-Site Scripting)
+- CSRF
+- DDoS
+</code></pre>
+<h3 id="47-제15조-취약점-점검-및-모의해킹">4.7 제15조: 취약점 점검 및 모의해킹<a hidden class="anchor" aria-hidden="true" href="#47-제15조-취약점-점검-및-모의해킹">#</a></h3>
+<h4 id="취약점-점검">취약점 점검<a hidden class="anchor" aria-hidden="true" href="#취약점-점검">#</a></h4>
+<p><strong>주기</strong> : <strong>분기 1회 이상</strong></p>
+<p>[점검 대상]</p>
+<pre><code>- 서버 (OS, 미들웨어, DBMS)
+- 네트워크 장비
+- 보안 장비
+- 애플리케이션
+</code></pre>
+<p>[점검 항목]</p>
+<pre><code>- 보안 패치 적용 여부
+- 불필요한 서비스 실행 여부
+- 계정 관리 (기본 계정, 불필요 계정)
+- 취약한 설정
+</code></pre>
+<p>[조치]</p>
+<pre><code>- 발견된 취약점 **즉시 조치**
+- 조치 불가 시 **보완 대책** 수립
+</code></pre>
+<h4 id="모의해킹-침투-테스트">모의해킹 (침투 테스트)<a hidden class="anchor" aria-hidden="true" href="#모의해킹-침투-테스트">#</a></h4>
+<p><strong>주기</strong> : <strong>연 1회 이상</strong></p>
+<p>[대상]</p>
+<pre><code>- 인터넷뱅킹
+- 모바일뱅킹
+- 전자금융 서비스
+- 중요 시스템
+</code></pre>
+<p>[방법]</p>
+<pre><code>- **외부 전문기관** 수행
+- 실제 해킹 기법 사용
+- 시스템 안전성 확인
+</code></pre>
+<p>[결과]</p>
+<pre><code>- 취약점 보고서 작성
+- 발견된 취약점 조치
+- 조치 결과 검증
+</code></pre>
+<h3 id="48-제16조-망분리">4.8 제16조: 망분리<a hidden class="anchor" aria-hidden="true" href="#48-제16조-망분리">#</a></h3>
+<h4 id="망분리-의무">망분리 의무<a hidden class="anchor" aria-hidden="true" href="#망분리-의무">#</a></h4>
+<p>금융회사는 <strong>업무망과 인터넷망 분리</strong> 의무</p>
+<h4 id="망분리-방식">망분리 방식<a hidden class="anchor" aria-hidden="true" href="#망분리-방식">#</a></h4>
+<p>[물리적 망분리]</p>
+<pre><code>- PC 2대 사용 (업무용 + 인터넷용)
+</code></pre>
+<p>[논리적 망분리]</p>
+<pre><code>- 가상화 기술 사용 (VDI)
+- 1대 PC에서 2개 망 접속
+</code></pre>
+<h4 id="망분리-예외">망분리 예외<a hidden class="anchor" aria-hidden="true" href="#망분리-예외">#</a></h4>
+<p>[제한적 연계]</p>
+<pre><code>- 업무상 필요 시 **보안USB** 또는 **망연계 솔루션** 사용
+- 자료 전송 시 **악성코드 검사**
+- 전송 기록 보관
+</code></pre>
+<h4 id="망분리-점검">망분리 점검<a hidden class="anchor" aria-hidden="true" href="#망분리-점검">#</a></h4>
+<p>[정기 점검]</p>
+<pre><code>- 망분리 정책 준수 여부
+- 우회 시도 탐지
+</code></pre>
+<h3 id="49-제17조-보조저장매체-보안">4.9 제17조: 보조저장매체 보안<a hidden class="anchor" aria-hidden="true" href="#49-제17조-보조저장매체-보안">#</a></h3>
+<h4 id="보조저장매체-관리">보조저장매체 관리<a hidden class="anchor" aria-hidden="true" href="#보조저장매체-관리">#</a></h4>
+<p>[보조저장매체 종류]</p>
+<pre><code>- USB
+- 외장 하드디스크
+- CD/DVD
+- SD 카드
+</code></pre>
+<p>[보안 조치]</p>
+<pre><code>- **승인된 보안USB**만 사용
+- 일반 USB 차단 (DLP)
+- 암호화된 보조저장매체 사용
+</code></pre>
+<h4 id="반출입-관리">반출입 관리<a hidden class="anchor" aria-hidden="true" href="#반출입-관리">#</a></h4>
+<p>[반출 시]</p>
+<pre><code>- 승인 절차
+- 암호화
+- 반출 대장 기록
+</code></pre>
+<p>[폐기 시]</p>
+<pre><code>- 데이터 완전 삭제
+- 물리적 파쇄
+</code></pre>
+<h3 id="410-제18조-보안성-검토">4.10 제18조: 보안성 검토<a hidden class="anchor" aria-hidden="true" href="#410-제18조-보안성-검토">#</a></h3>
+<h4 id="사전-보안성-검토">사전 보안성 검토<a hidden class="anchor" aria-hidden="true" href="#사전-보안성-검토">#</a></h4>
+<p>[대상]</p>
+<pre><code>- 신규 시스템 도입
+- 주요 시스템 변경
+- 외부 서비스 도입
+</code></pre>
+<p>[검토 시점]</p>
+<pre><code>- 개발 전 (설계 단계)
+- 개발 중
+- 개발 완료 후 (상용화 전)
+</code></pre>
+<p>[검토 내용]</p>
+<pre><code>- 보안 요구사항 반영
+- 보안 취약점
+- 암호화 적용
+- 접근통제
+</code></pre>
+<p><strong>시큐어 코딩</strong> : 개발 단계에서 보안 고려, OWASP Top 10 대응</p>
+<h3 id="411-제19조-침해사고-대응">4.11 제19조: 침해사고 대응<a hidden class="anchor" aria-hidden="true" href="#411-제19조-침해사고-대응">#</a></h3>
+<h4 id="침해사고-정의">침해사고 정의<a hidden class="anchor" aria-hidden="true" href="#침해사고-정의">#</a></h4>
+<pre><code>- 해킹
+- 악성코드 감염
+- DDoS 공격
+- 정보 유출
+- 시스템 장애
+</code></pre>
+<h4 id="사고-대응-체계">사고 대응 체계<a hidden class="anchor" aria-hidden="true" href="#사고-대응-체계">#</a></h4>
+<p><strong>침해사고 대응팀 (CERT) 구성</strong> :</p>
+<pre><code>- CISO 총괄
+- 보안, IT, 법무, 홍보 등 유관 부서
+</code></pre>
+<p><strong>사고 대응 절차</strong> :</p>
+<pre><code>- 1. 탐지 및 인지
+- 2. 분석 및 평가
+- 3. 대응 조치 (차단, 격리, 복구)
+- 4. 보고 (경영진, 금융감독원, 개인정보보호위원회)
+- 5. 사후 분석 (원인 분석, 재발 방지)
+</code></pre>
+<h4 id="신고">신고<a hidden class="anchor" aria-hidden="true" href="#신고">#</a></h4>
+<p>[금융감독원 신고]</p>
+<pre><code>- 중대 침해사고 발생 시 **즉시 신고**
+</code></pre>
+<p>[개인정보 유출]</p>
+<pre><code>- 개인정보보호위원회 신고 (지체 없이)
+- 정보주체 통지 (지체 없이)
+</code></pre>
+<h4 id="침해사고-대응-훈련">침해사고 대응 훈련<a hidden class="anchor" aria-hidden="true" href="#침해사고-대응-훈련">#</a></h4>
+<p><strong>모의 훈련</strong> :</p>
+<pre><code>- **연 1회 이상**
+- 시나리오 기반
+- 전 직원 참여
+</code></pre>
+<h3 id="412-제20조-재해복구">4.12 제20조: 재해복구<a hidden class="anchor" aria-hidden="true" href="#412-제20조-재해복구">#</a></h3>
+<h4 id="재해복구시스템-구축">재해복구시스템 구축<a hidden class="anchor" aria-hidden="true" href="#재해복구시스템-구축">#</a></h4>
+<p>[대형 금융회사]</p>
+<pre><code>- 재해복구센터 구축 의무
+</code></pre>
+<p>[중소형 금융회사]</p>
+<pre><code>- 재해복구 방안 수립
+</code></pre>
+<h4 id="재해복구-목표">재해복구 목표<a hidden class="anchor" aria-hidden="true" href="#재해복구-목표">#</a></h4>
+<pre><code>- **RTO (Recovery Time Objective)**: 목표 복구 시간 - 은행: **4시간 이내**
+- **RPO (Recovery Point Objective)**: 목표 복구 시점 - 데이터 손실 최소화
+</code></pre>
+<h4 id="백업">백업<a hidden class="anchor" aria-hidden="true" href="#백업">#</a></h4>
+<p>[정기 백업]</p>
+<pre><code>- **일일 백업**
+- 중요 데이터 실시간 백업
+</code></pre>
+<p>[백업 보관]</p>
+<pre><code>- 원본과 **물리적으로 분리**된 장소
+- 암호화 상태로 보관
+</code></pre>
+<p>[백업 테스트]</p>
+<pre><code>- **분기 1회 이상** 복구 테스트
+</code></pre>
+<h4 id="재해복구-훈련">재해복구 훈련<a hidden class="anchor" aria-hidden="true" href="#재해복구-훈련">#</a></h4>
+<p><strong>모의 훈련</strong> :</p>
+<pre><code>- **연 1회 이상**
+- 실제 재해 시나리오
+- 복구 시간 측정
+</code></pre>
+<h2 id="5-제4장-전자금융업무-운영관리">5. 제4장: 전자금융업무 운영관리<a hidden class="anchor" aria-hidden="true" href="#5-제4장-전자금융업무-운영관리">#</a></h2>
+<h3 id="51-시스템-개발">5.1 시스템 개발<a hidden class="anchor" aria-hidden="true" href="#51-시스템-개발">#</a></h3>
+<h4 id="개발-보안">개발 보안<a hidden class="anchor" aria-hidden="true" href="#개발-보안">#</a></h4>
+<p><strong>시큐어 코딩</strong> :</p>
+<pre><code>- OWASP Top 10 대응
+- SQL Injection 방지
+- XSS 방지
+- CSRF 방지
+</code></pre>
+<p><strong>소스코드 보안 점검</strong> :</p>
+<pre><code>- 정적 분석 도구 (SAST)
+- 동적 분석 도구 (DAST)
+</code></pre>
+<h4 id="개발운영-분리">개발·운영 분리<a hidden class="anchor" aria-hidden="true" href="#개발운영-분리">#</a></h4>
+<p>[개발 환경 vs 운영 환경 분리]</p>
+<pre><code>- 개발망 / 운영망
+- 개발 DB / 운영 DB
+</code></pre>
+<p><strong>실 데이터 사용 금지</strong> : 개발·테스트 시 <strong>마스킹 데이터</strong> 사용</p>
+<h3 id="52-변경관리">5.2 변경관리<a hidden class="anchor" aria-hidden="true" href="#52-변경관리">#</a></h3>
+<h4 id="변경관리-절차">변경관리 절차<a hidden class="anchor" aria-hidden="true" href="#변경관리-절차">#</a></h4>
+<pre><code>- 1. 변경 요청
+- 2. 영향 분석
+- 3. 승인 (변경자문위원회)
+- 4. 테스트
+- 5. 적용
+- 6. 사후 검증
+</code></pre>
+<h4 id="긴급-변경">긴급 변경<a hidden class="anchor" aria-hidden="true" href="#긴급-변경">#</a></h4>
+<p>[긴급 상황 - 보안 패치, 장애 복구]</p>
+<pre><code>- 사후 승인 가능
+- 변경 기록 유지
+</code></pre>
+<h3 id="53-외부위탁">5.3 외부위탁<a hidden class="anchor" aria-hidden="true" href="#53-외부위탁">#</a></h3>
+<h4 id="위탁-계약">위탁 계약<a hidden class="anchor" aria-hidden="true" href="#위탁-계약">#</a></h4>
+<p><strong>계약서 필수 포함</strong> :</p>
+<pre><code>- 보안 요구사항
+- 보안 책임
+- 보안 사고 시 책임
+- 재위탁 금지 또는 사전 승인
+</code></pre>
+<h4 id="위탁-업체-관리">위탁 업체 관리<a hidden class="anchor" aria-hidden="true" href="#위탁-업체-관리">#</a></h4>
+<p>[선정 시]</p>
+<pre><code>- 보안 수준 평가
+- 정보보호 인증 (ISMS-P, ISO 27001 등) 확인
+</code></pre>
+<p>[관리]</p>
+<pre><code>- 정기 보안 점검 (**연 1회 이상**)
+- 보안 교육
+</code></pre>
+<p>[계약 종료 시]</p>
+<pre><code>- 데이터 반환 또는 삭제
+- 삭제 증명서 제출
+</code></pre>
+<h2 id="6-금융회사-규모별-차등-적용">6. 금융회사 규모별 차등 적용<a hidden class="anchor" aria-hidden="true" href="#6-금융회사-규모별-차등-적용">#</a></h2>
+<h3 id="61-대형-금융회사">6.1 대형 금융회사<a hidden class="anchor" aria-hidden="true" href="#61-대형-금융회사">#</a></h3>
+<p><strong>기준</strong> :</p>
+<pre><code>- 총자산 2조원 이상 은행
+- 총자산 10조원 이상 보험사
+- 기타 금융위원회가 정하는 기준
+</code></pre>
+<p><strong>적용</strong> :</p>
+<pre><code>- CISO 임원급 (7년 이상 경력)
+- 보안관제센터 구축
+- 재해복구센터 구축
+</code></pre>
+<h3 id="62-중소형-금융회사">6.2 중소형 금융회사<a hidden class="anchor" aria-hidden="true" href="#62-중소형-금융회사">#</a></h3>
+<p><strong>완화 적용</strong> :</p>
+<pre><code>- CISO 5년 경력
+- 보안관제 외부 위탁 가능
+- 재해복구 방안 수립 (센터 구축 선택)
+</code></pre>
+<h2 id="7-금융보안원-가이드라인">7. 금융보안원 가이드라인<a hidden class="anchor" aria-hidden="true" href="#7-금융보안원-가이드라인">#</a></h2>
+<h3 id="71-금융보안원">7.1 금융보안원<a hidden class="anchor" aria-hidden="true" href="#71-금융보안원">#</a></h3>
+<p><strong>설립</strong> : 금융위원회 산하 특수법인, 금융권 보안 전문기관</p>
+<p><strong>역할</strong> :</p>
+<pre><code>- 금융권 보안 가이드라인 제공
+- 보안 위협 정보 공유
+- 보안 사고 대응 지원
+- 보안 교육
+</code></pre>
+<h3 id="72-주요-가이드라인">7.2 주요 가이드라인<a hidden class="anchor" aria-hidden="true" href="#72-주요-가이드라인">#</a></h3>
+<pre><code>- 금융분야 클라우드 이용 가이드라인: 클라우드 도입 시 보안 고려사항
+- 금융분야 주요 정보 유출 방지 가이드: DLP 구현 방안
+- 전자금융 보안 가이드: 전자금융 서비스 보안 기준
+- 모바일뱅킹 보안 가이드: 모바일 앱 보안 요구사항
+</code></pre>
+<h2 id="8-클라우드-보안-2024년-강화">8. 클라우드 보안 (2024년 강화)<a hidden class="anchor" aria-hidden="true" href="#8-클라우드-보안-2024년-강화">#</a></h2>
+<h3 id="81-클라우드-이용-시-고려사항">8.1 클라우드 이용 시 고려사항<a hidden class="anchor" aria-hidden="true" href="#81-클라우드-이용-시-고려사항">#</a></h3>
+<h4 id="사전-검토">사전 검토<a hidden class="anchor" aria-hidden="true" href="#사전-검토">#</a></h4>
+<p>[보안성 평가]</p>
+<pre><code>- 클라우드 사업자 보안 수준
+- 인증 (ISMS-P, ISO 27001, CSA STAR 등)
+</code></pre>
+<p>[계약]</p>
+<pre><code>- 보안 책임 명시
+- SLA
+- 데이터 소재지
+- 데이터 반환·삭제
+</code></pre>
+<h4 id="데이터-보호">데이터 보호<a hidden class="anchor" aria-hidden="true" href="#데이터-보호">#</a></h4>
+<p>[암호화]</p>
+<pre><code>- 클라우드 저장 데이터 암호화
+- 암호키는 금융회사가 관리
+</code></pre>
+<p>[접근통제]</p>
+<pre><code>- 클라우드 관리자 계정 통제
+- MFA 적용
+</code></pre>
+<h4 id="모니터링">모니터링<a hidden class="anchor" aria-hidden="true" href="#모니터링">#</a></h4>
+<p>[로그 관리]</p>
+<pre><code>- 클라우드 접속 로그 수집
+- 정기 검토
+</code></pre>
+<p>[보안 관제]</p>
+<pre><code>- 클라우드 환경 포함
+</code></pre>
+<h3 id="82-멀티-클라우드--하이브리드-클라우드">8.2 멀티 클라우드 / 하이브리드 클라우드<a hidden class="anchor" aria-hidden="true" href="#82-멀티-클라우드--하이브리드-클라우드">#</a></h3>
+<pre><code>- 보안 일관성: 모든 클라우드 환경에 동일한 보안 정책 적용
+- 데이터 이동: 클라우드 간 데이터 이동 시 암호화
+</code></pre>
+<h2 id="9-제로-트러스트-zero-trust---2024년-추가">9. 제로 트러스트 (Zero Trust) - 2024년 추가<a hidden class="anchor" aria-hidden="true" href="#9-제로-트러스트-zero-trust---2024년-추가">#</a></h2>
+<h3 id="91-제로-트러스트-개념">9.1 제로 트러스트 개념<a hidden class="anchor" aria-hidden="true" href="#91-제로-트러스트-개념">#</a></h3>
+<p><strong>&ldquo;절대 신뢰하지 말고, 항상 검증하라&rdquo;</strong></p>
+<p>[전통적 보안]</p>
+<pre><code>- 네트워크 경계 (내부 = 안전, 외부 = 위험)
+</code></pre>
+<p>[제로 트러스트]</p>
+<pre><code>- 내부도 신뢰하지 않음
+- 모든 접근 검증
+</code></pre>
+<h3 id="92-제로-트러스트-적용">9.2 제로 트러스트 적용<a hidden class="anchor" aria-hidden="true" href="#92-제로-트러스트-적용">#</a></h3>
+<pre><code>- 신원 확인: 모든 사용자 인증, MFA
+- 장치 확인: 보안 상태 확인 (백신, 패치 등)
+- 최소 권한: 필요한 자원에만 접근
+- 마이크로 세그멘테이션: 네트워크 세분화
+- 지속적 모니터링: 모든 활동 로그 기록
+</code></pre>
+<h2 id="10-ai-보안-2024년-추가">10. AI 보안 (2024년 추가)<a hidden class="anchor" aria-hidden="true" href="#10-ai-보안-2024년-추가">#</a></h2>
+<h3 id="101-ai-시스템-보안">10.1 AI 시스템 보안<a hidden class="anchor" aria-hidden="true" href="#101-ai-시스템-보안">#</a></h3>
+<h4 id="ai-모델-보안">AI 모델 보안<a hidden class="anchor" aria-hidden="true" href="#ai-모델-보안">#</a></h4>
+<p>[모델 탈취 방지]</p>
+<pre><code>- 접근통제
+- 암호화
+</code></pre>
+<p>[적대적 공격 (Adversarial Attack) 방어]</p>
+<pre><code>- 입력 데이터 검증
+</code></pre>
+<h4 id="ai-학습-데이터-보안">AI 학습 데이터 보안<a hidden class="anchor" aria-hidden="true" href="#ai-학습-데이터-보안">#</a></h4>
+<p>[개인정보 포함 시]</p>
+<pre><code>- 비식별화
+- 암호화
+</code></pre>
+<p>[데이터 품질]</p>
+<pre><code>- 오염된 데이터 방지
+</code></pre>
+<h3 id="102-ai-활용-보안">10.2 AI 활용 보안<a hidden class="anchor" aria-hidden="true" href="#102-ai-활용-보안">#</a></h3>
+<p>[AI 기반 보안 솔루션]</p>
+<pre><code>- 이상 탐지: AI로 비정상 거래 탐지
+- 위협 인텔리전스: AI로 신종 위협 분석
+</code></pre>
+<h2 id="11-랜섬웨어-대응-2024년-강화">11. 랜섬웨어 대응 (2024년 강화)<a hidden class="anchor" aria-hidden="true" href="#11-랜섬웨어-대응-2024년-강화">#</a></h2>
+<h3 id="111-예방">11.1 예방<a hidden class="anchor" aria-hidden="true" href="#111-예방">#</a></h3>
+<p>[백업 - 3-2-1 원칙]</p>
+<pre><code>- 3개 백업본
+- 2종류 매체
+- 1개는 오프사이트
+</code></pre>
+<p>[백업 격리]</p>
+<pre><code>- 네트워크 분리
+- 읽기 전용
+</code></pre>
+<h3 id="112-탐지">11.2 탐지<a hidden class="anchor" aria-hidden="true" href="#112-탐지">#</a></h3>
+<p>[이상 징후 모니터링]</p>
+<pre><code>- 대량 파일 암호화
+- 특정 확장자 변경
+</code></pre>
+<h3 id="113-대응">11.3 대응<a hidden class="anchor" aria-hidden="true" href="#113-대응">#</a></h3>
+<p>[격리]</p>
+<pre><code>- 감염 시스템 즉시 네트워크 차단
+</code></pre>
+<p>[복구]</p>
+<pre><code>- 백업으로 복구
+- 랜섬 지불 금지 원칙
+</code></pre>
+<h2 id="12-실무-체크리스트">12. 실무 체크리스트<a hidden class="anchor" aria-hidden="true" href="#12-실무-체크리스트">#</a></h2>
+<h3 id="조직-및-인력">조직 및 인력<a hidden class="anchor" aria-hidden="true" href="#조직-및-인력">#</a></h3>
+<pre><code>- [ ] CISO를 지정했는가?
+- [ ] 정보보호 전담 조직을 구성했는가?
+- [ ] 정보보호위원회를 분기 1회 운영하는가?
+</code></pre>
+<h3 id="보안정책">보안정책<a hidden class="anchor" aria-hidden="true" href="#보안정책">#</a></h3>
+<pre><code>- [ ] 정보보호정책을 수립했는가?
+- [ ] 연 1회 정책을 검토·개정하는가?
+</code></pre>
+<h3 id="접근통제">접근통제<a hidden class="anchor" aria-hidden="true" href="#접근통제">#</a></h3>
+<pre><code>- [ ] 개인별 고유 ID를 부여하는가?
+- [ ] 관리자 계정을 별도 관리하는가?
+- [ ] 분기 1회 권한을 검토하는가?
+- [ ] 퇴직자 계정을 즉시 삭제하는가?
+</code></pre>
+<h3 id="암호">암호<a hidden class="anchor" aria-hidden="true" href="#암호">#</a></h3>
+<pre><code>- [ ] 비밀번호를 해시(SHA-256 이상)로 저장하는가?
+- [ ] 계좌번호, 카드번호를 암호화(AES-256)하는가?
+- [ ] 전송 시 TLS 1.2 이상을 사용하는가?
+- [ ] 암호키를 데이터와 분리 보관하는가?
+- [ ] 암호키를 연 1회 변경하는가?
+</code></pre>
+<h3 id="보안관제">보안관제<a hidden class="anchor" aria-hidden="true" href="#보안관제">#</a></h3>
+<pre><code>- [ ] 24시간 365일 보안관제를 수행하는가?
+</code></pre>
+<h3 id="취약점-관리">취약점 관리<a hidden class="anchor" aria-hidden="true" href="#취약점-관리">#</a></h3>
+<pre><code>- [ ] 분기 1회 취약점 점검을 수행하는가?
+- [ ] 연 1회 모의해킹을 수행하는가?
+- [ ] 발견된 취약점을 즉시 조치하는가?
+</code></pre>
+<h3 id="망분리">망분리<a hidden class="anchor" aria-hidden="true" href="#망분리">#</a></h3>
+<pre><code>- [ ] 업무망과 인터넷망을 분리했는가?
+- [ ] 보안USB만 사용하는가?
+</code></pre>
+<h3 id="사고-대응">사고 대응<a hidden class="anchor" aria-hidden="true" href="#사고-대응">#</a></h3>
+<pre><code>- [ ] 침해사고 대응팀(CERT)을 구성했는가?
+- [ ] 연 1회 침해사고 대응 훈련을 하는가?
+</code></pre>
+<h3 id="재해복구">재해복구<a hidden class="anchor" aria-hidden="true" href="#재해복구">#</a></h3>
+<pre><code>- [ ] 일일 백업을 수행하는가?
+- [ ] 백업본을 별도 장소에 보관하는가?
+- [ ] 분기 1회 복구 테스트를 하는가?
+- [ ] 연 1회 재해복구 훈련을 하는가?
+</code></pre>
+<h3 id="변경관리">변경관리<a hidden class="anchor" aria-hidden="true" href="#변경관리">#</a></h3>
+<pre><code>- [ ] 변경관리 절차가 있는가?
+- [ ] 변경 전 테스트를 수행하는가?
+</code></pre>
+<h3 id="외부위탁">외부위탁<a hidden class="anchor" aria-hidden="true" href="#외부위탁">#</a></h3>
+<pre><code>- [ ] 위탁 계약서에 보안 조항이 있는가?
+- [ ] 연 1회 위탁 업체 보안 점검을 하는가?
+</code></pre>
+<h2 id="13-위반-시-제재">13. 위반 시 제재<a hidden class="anchor" aria-hidden="true" href="#13-위반-시-제재">#</a></h2>
+<h3 id="131-금융감독원-제재">13.1 금융감독원 제재<a hidden class="anchor" aria-hidden="true" href="#131-금융감독원-제재">#</a></h3>
+<p>[검사]</p>
+<pre><code>- 정기 검사
+- 수시 검사
+</code></pre>
+<p>[제재]</p>
+<pre><code>- 경고
+- 주의
+- 과태료
+- 업무정지 (중대 위반 시)
+</code></pre>
+<h3 id="132-실제-사례">13.2 실제 사례<a hidden class="anchor" aria-hidden="true" href="#132-실제-사례">#</a></h3>
+<pre><code>- A은행: 망분리 미흡 → 경고 + 개선명령
+- B카드사: 개인정보 암호화 미흡 → 과태료 5,000만원
+- C증권사: 모의해킹 미실시 → 주의
+</code></pre>
+<h2 id="학습-정리">학습 정리<a hidden class="anchor" aria-hidden="true" href="#학습-정리">#</a></h2>
+<p>오늘 학습한 핵심 내용 :</p>
+<pre><code>- 전자금융감독규정은 전자금융거래법의 구체적 시행 기준 (금융위원회 고시)
+- 금융회사등 의무 적용
+- CISO 지정 (임원급 7년 또는 5년 경력)
+- 암호화: 비밀번호(해시), 계좌번호·카드번호(AES-256), 전송(TLS 1.2)
+- 보안관제 24시간 365일
+- 취약점 점검 분기 1회, 모의해킹 연 1회
+- 망분리 의무
+- 침해사고 대응팀 구성, 연 1회 훈련
+- 재해복구: RTO 4시간, 일일 백업, 분기 1회 복구 테스트
+- 2024년 개정: 클라우드, 제로 트러스트, AI, 랜섬웨어, PQC
+</code></pre>
+<h2 id="다음-학습-주제">다음 학습 주제<a hidden class="anchor" aria-hidden="true" href="#다음-학습-주제">#</a></h2>
+<p>Day 28: 클라우드 보안 인증제도 (CSAP)</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://hojjang98.github.io/tags/%EA%B3%A0%EC%8B%9C/">고시</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%A0%84%EC%9E%90%EA%B8%88%EC%9C%B5%EA%B0%90%EB%8F%85%EA%B7%9C%EC%A0%95/">전자금융감독규정</a></li>
+      <li><a href="https://hojjang98.github.io/tags/ciso/">CISO</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%A7%9D%EB%B6%84%EB%A6%AC/">망분리</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C/">보안관제</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%95%94%ED%98%B8%ED%99%94/">암호화</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%A0%84%EC%9E%90%EA%B8%88%EC%9C%B5%EA%B1%B0%EB%9E%98%EB%B2%95/">전자금융거래법</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

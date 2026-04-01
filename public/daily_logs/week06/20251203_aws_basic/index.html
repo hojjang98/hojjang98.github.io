@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>2025.12.03 (Day 28) - AWS 클라우드 기초: AWS 개요, 계정 관리, IAM 서비스 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="AWS, 클라우드, IAM, S3, EC2, 보안, 클라우드컴퓨팅">
+<meta name="description" content="클라우드 컴퓨팅 개념, AWS 글로벌 인프라(리전/AZ), IAM 사용자/그룹/역할/정책 설계 원칙, AWS CLI 기본 사용법, S3 버킷 생성 실습">
+<meta name="author" content="">
+<link rel="canonical" href="https://hojjang98.github.io/daily_logs/week06/20251203_aws_basic/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.290573799e582c418c4bd84f2bca757d0a77fd1bf9f5c43942030e706df68ec8.css" integrity="sha256-KQVzeZ5YLEGMS9hPK8p1fQp3/Rv59cQ5QgMOcG32jsg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/daily_logs/week06/20251203_aws_basic/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://hojjang98.github.io/daily_logs/week06/20251203_aws_basic/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="2025.12.03 (Day 28) - AWS 클라우드 기초: AWS 개요, 계정 관리, IAM 서비스">
+  <meta property="og:description" content="클라우드 컴퓨팅 개념, AWS 글로벌 인프라(리전/AZ), IAM 사용자/그룹/역할/정책 설계 원칙, AWS CLI 기본 사용법, S3 버킷 생성 실습">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="daily_logs">
+    <meta property="article:published_time" content="2025-12-03T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-12-03T00:00:00+00:00">
+    <meta property="article:tag" content="AWS">
+    <meta property="article:tag" content="클라우드">
+    <meta property="article:tag" content="IAM">
+    <meta property="article:tag" content="S3">
+    <meta property="article:tag" content="EC2">
+    <meta property="article:tag" content="보안">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2025.12.03 (Day 28) - AWS 클라우드 기초: AWS 개요, 계정 관리, IAM 서비스">
+<meta name="twitter:description" content="클라우드 컴퓨팅 개념, AWS 글로벌 인프라(리전/AZ), IAM 사용자/그룹/역할/정책 설계 원칙, AWS CLI 기본 사용법, S3 버킷 생성 실습">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "6개월, 혹은 그 이상의 보안 여정",
+      "item": "https://hojjang98.github.io/daily_logs/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "2025.12.03 (Day 28) - AWS 클라우드 기초: AWS 개요, 계정 관리, IAM 서비스",
+      "item": "https://hojjang98.github.io/daily_logs/week06/20251203_aws_basic/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "2025.12.03 (Day 28) - AWS 클라우드 기초: AWS 개요, 계정 관리, IAM 서비스",
+  "name": "2025.12.03 (Day 28) - AWS 클라우드 기초: AWS 개요, 계정 관리, IAM 서비스",
+  "description": "클라우드 컴퓨팅 개념, AWS 글로벌 인프라(리전/AZ), IAM 사용자/그룹/역할/정책 설계 원칙, AWS CLI 기본 사용법, S3 버킷 생성 실습",
+  "keywords": [
+    "AWS", "클라우드", "IAM", "S3", "EC2", "보안", "클라우드컴퓨팅"
+  ],
+  "articleBody": "📄 2025.12.03 (Day 28) - AWS 클라우드 기초: AWS 개요, 계정 관리, IAM 서비스 1. 핵심 개념 정리 # 핵심 개념 간결한 설명 실무/보안 관점에서의 중요성 1 클라우드 컴퓨팅 인터넷을 통해 IT 리소스를 온디맨드(On-Demand) 로 제공하고, 종량제(Pay-as-you-go) 방식으로 사용한 만큼만 비용을 지불하는 모델입니다. 자본 비용을 운영 비용으로 전환하여 초기 투자 부담을 제거합니다. 용량 추정 없이 필요한 만큼 즉시 확장/축소 가능하며, 전 세계 배포가 몇 분 만에 가능합니다. 2 AWS 글로벌 인프라 전 세계에 리전(Region) 과 가용 영역(AZ) 으로 구성된 인프라를 운영합니다. 리전은 지리적으로 분리된 데이터센터 그룹이며, AZ는 리전 내 물리적으로 독립된 데이터센터입니다. 고가용성(HA) 과 재해 복구(DR) 를 위해 다중 AZ 배포가 필수입니다. 리전 선택 시 지연시간, 컴플라이언스(데이터 주권), 비용, 서비스 가용성을 고려해야 합니다. 3 탄력성 (Elasticity) 수요에 따라 리소스를 자동으로 확장(Scale Out) 하거나 축소(Scale In) 할 수 있는 특성입니다. Auto Scaling을 통해 트래픽 증가 시 자동으로 인스턴스를 추가하고, 감소 시 제거하여 비용을 최적화합니다. 트래픽 급증 시 서비스 중단 방지와 비용 효율성을 동시에 달성합니다. 4 AWS 주요 서비스 컴퓨팅(EC2, Lambda), 스토리지(S3, EBS), 데이터베이스(RDS, DynamoDB), 네트워킹(VPC, CloudFront), 보안(IAM, KMS), 관리(CloudWatch, CloudTrail)로 구성됩니다. 각 서비스를 조합하여 사용해야 효과적입니다. 예: EC2(웹 서버) + RDS(DB) + S3(정적 파일) + CloudFront(CDN) + ELB(로드 밸런서). 5 AWS 프리 티어 신규 가입자에게 12개월 동안 제한적으로 무료 서비스를 제공합니다. EC2 t2.micro(750시간/월), S3 5GB, RDS 750시간/월, Lambda 100만 요청/월 등이 포함됩니다. 학습 및 테스트 환경 구축에 적합합니다. 단, 프리 티어 한도 초과 시 과금 발생에 주의해야 하며, CloudWatch Billing Alarm 설정이 필수입니다. 6 IAM (Identity and Access Management) AWS 리소스에 대한 액세스 제어를 담당하는 서비스입니다. 사용자(User), 그룹(Group), 역할(Role), 정책(Policy) 으로 구성됩니다. 보안의 핵심입니다. 루트 계정 사용 최소화, MFA 활성화, 최소 권한 원칙(Least Privilege), 역할 기반 접근 제어가 필수입니다. 7 IAM 사용자 \u0026 그룹 IAM 사용자는 개별 사용자 또는 애플리케이션에 대한 자격 증명입니다. IAM 그룹은 유사한 권한이 필요한 사용자들을 묶어 관리하는 단위로, 그룹에 정책을 연결하면 소속 사용자 모두에게 적용됩니다. 권한 관리의 간소화를 위해 개별 사용자가 아닌 그룹에 권한을 할당해야 합니다. 예: Developers 그룹(EC2, S3 읽기/쓰기), Administrators 그룹(모든 권한). 8 IAM 정책 (Policy) JSON 형식으로 작성된 권한 정의 문서입니다. Effect(Allow/Deny), Action(수행 가능한 작업), Resource(대상 리소스), Condition(적용 조건)으로 구성됩니다. 최소 권한 원칙을 준수해야 합니다. 너무 넓은 권한(예: :)은 보안 위험이 높습니다. Explicit Deny가 Explicit Allow보다 우선합니다. 9 IAM 역할 (Role) 임시 자격 증명을 제공하는 엔티티로, 장기 자격 증명(Access Key) 없이 권한을 위임받습니다. EC2 인스턴스, Lambda 함수, 다른 AWS 계정 등이 역할을 assume하여 권한을 획득합니다. Access Key 하드코딩을 방지하여 보안을 강화합니다. EC2 인스턴스가 S3에 접근할 때 Access Key 대신 IAM 역할을 사용하는 것이 Best Practice입니다. 10 AWS Organizations 여러 AWS 계정을 중앙에서 관리하는 서비스입니다. 조직 단위(OU)로 계정을 그룹화하고, 통합 결제와 SCP(Service Control Policy) 로 계정 수준 권한을 제한합니다. 대규모 조직의 거버넌스 및 비용 절감에 필수입니다. Production OU와 Development OU를 분리하여 서로 다른 정책 적용이 가능합니다. 2. 실습 내용 (A) AWS CLI 기본 사용법 AWS CLI 설치 및 구성:\naws –version → CLI 버전 확인 aws configure → 설정 (Access Key ID, Secret Access Key, 리전, 출력 형식 순서로 입력) Default region name: ap-northeast-2 (서울) Default output format: json aws sts get-caller-identity → 현재 자격 증명 확인 (UserId, Account, Arn 출력) 설정 파일 위치: ~/.aws/credentials → Access Key 저장 ~/.aws/config → 리전 및 출력 형식 저장 S3 기본 명령어:\naws s3 ls → S3 버킷 목록 조회 aws s3 mb s3://my-unique-bucket-name-20251203 –region ap-northeast-2 → 버킷 생성 aws s3 cp test.txt s3://my-unique-bucket-name-20251203/ → 파일 업로드 aws s3 ls s3://my-unique-bucket-name-20251203/ → 버킷 내 파일 목록 aws s3 cp s3://my-unique-bucket-name-20251203/test.txt ./downloaded.txt → 파일 다운로드 aws s3 sync ./local-folder s3://my-unique-bucket-name-20251203/backup/ → 디렉터리 동기화 aws s3 rb s3://my-unique-bucket-name-20251203 –force → 버킷 강제 삭제 (파일 포함) EC2 기본 명령어:\naws ec2 describe-instances → EC2 인스턴스 목록 aws ec2 describe-instances –region us-east-1 → 특정 리전 인스턴스 목록 aws ec2 describe-instances –filters “Name=instance-state-name,Values=running” → 실행 중만 필터링 aws ec2 describe-security-groups → 보안 그룹 목록 (B) IAM 사용자 및 정책 생성 실습 1. IAM 사용자 생성 (Console):\nAWS Management Console → IAM → 사용자(Users) → 사용자 추가 사용자 이름: developer-john 액세스 유형: 프로그래밍 방식 액세스 + AWS Console 액세스 권한 설정: AmazonS3ReadOnlyAccess 연결 태그 추가: Key=Department, Value=Engineering Access Key ID와 Secret Access Key 저장 (다시 볼 수 없음) 2. IAM 그룹 생성 및 사용자 추가:\nIAM → 그룹(Groups) → 그룹 생성 → 그룹 이름: Developers 정책 연결: AmazonEC2FullAccess, AmazonS3FullAccess, AmazonRDSReadOnlyAccess 사용자 → developer-john → 그룹 탭 → 그룹에 사용자 추가 3. IAM 정책 JSON 구조:\nS3 특정 버킷 읽기 권한 예시:\nVersion: “2012-10-17” Statement: Effect: Allow, Action: s3:ListBucket, Resource: arn:aws:s3:::company-data Effect: Allow, Action: s3:GetObject, Resource: arn:aws:s3:::company-data/* EC2 인스턴스 시작/중지 권한 (특정 리전만):\nEffect: Allow Action: ec2:StartInstances, ec2:StopInstances, ec2:DescribeInstances Resource: * Condition: StringEquals → aws:RequestedRegion → ap-northeast-2 시간 기반 액세스 제어 예시:\nEffect: Allow, Action: s3:* Condition: DateGreaterThan(aws:CurrentTime: 2025-01-01) AND DateLessThan(aws:CurrentTime: 2025-12-31) 4. IAM 역할 생성 (EC2 → S3 접근):\nIAM → 역할(Roles) → 역할 만들기 신뢰할 수 있는 엔터티: AWS 서비스 → EC2 권한 정책 연결: AmazonS3FullAccess 역할 이름: EC2-S3-Access-Role EC2 콘솔 → 인스턴스 선택 → 작업 → 보안 → IAM 역할 수정 → EC2-S3-Access-Role 선택 EC2 인스턴스 내부에서 aws s3 ls 실행 → Access Key 없이 S3 접근 가능 (C) AWS Management Console 실습 S3 버킷 생성 및 파일 업로드:\nAWS Console → S3 → 버킷 만들기 버킷 이름: my-first-bucket-20251203 (전역적으로 고유한 이름 필요) AWS 리전: 아시아 태평양(서울) ap-northeast-2 퍼블릭 액세스 차단: 모든 퍼블릭 액세스 차단 (기본값, 권장) 태그: Key=Environment, Value=Learning 버킷 생성 후 파일 업로드 → 객체 URL 확인 (퍼블릭 차단 시 403 Forbidden) 버킷 정책으로 퍼블릭 읽기 허용 (보안 위험 주의):\n적용 방법: 버킷 → 권한(Permissions) 탭 → 퍼블릭 액세스 차단 설정 편집 → 체크 해제 버킷 정책 편집 → JSON 정책 붙여넣기 정책 내용: Effect: Allow, Principal: “”, Action: s3:GetObject, Resource: arn:aws:s3:::my-first-bucket-20251203/ 결과: 브라우저에서 객체 URL 접근 → 파일 내용 표시 (D) AWS Budgets 설정 (과금 방지) 예산 알림 설정:\nAWS Console → Billing and Cost Management → Budgets → Create budget 예산 유형: Cost budget 예산 이름: Monthly-Budget-10USD, 기간: Monthly, 예산 금액: $10.00 알림 설정: Actual cost \u003e= 80% 도달 시 이메일 알림 결과: 월 사용 비용이 $8 초과 시 이메일 알림 발송 CloudWatch Billing Alarm (대체 방법):\nCloudWatch 서비스 이동 (us-east-1 리전 필수) Alarms → Create alarm → Billing → Total Estimated Charge 조건: Greater/Equal than $10 → SNS 주제 생성 → 이메일 추가 3. 실무/보안 관점 분석 분야 적용 시나리오 클라우드 아키텍처 설계 다층 아키텍처: EC2(웹 서버) + RDS(DB) + S3(정적 파일) + CloudFront(CDN) + ELB(로드 밸런서)로 3-Tier 아키텍처 구축. 고가용성 설계: 최소 2개 이상의 AZ에 리소스 분산 배치로 단일 장애점(SPOF) 제거. 재해 복구: 다중 리전 배포, S3 Cross-Region Replication으로 데이터 백업. 보안 \u0026 컴플라이언스 IAM 보안 강화: 루트 계정 MFA 필수 활성화, 루트 계정 Access Key 삭제, 비밀번호 정책 강화(최소 14자, 대소문자/숫자/특수문자, 90일 만료). 최소 권한 원칙: IAM Policy Simulator로 권한 테스트, 불필요한 : 권한 제거. Access Key 관리: 90일마다 교체, CloudTrail로 사용 이력 추적, 코드에 하드코딩 금지. DevOps \u0026 자동화 Infrastructure as Code: AWS CloudFormation 또는 Terraform으로 인프라를 코드화하여 버전 관리. CI/CD 파이프라인: CodeCommit → CodeBuild → CodeDeploy → CodePipeline으로 자동화. 모니터링: CloudWatch로 CPU, 메모리, 디스크 사용률 모니터링, 임계값 초과 시 SNS 알림. 비용 관리 \u0026 FinOps 태그 기반 비용 추적: 모든 리소스에 태그 부여(Environment, Department, Project), 부서별/프로젝트별 비용 분석. 예산 알림: AWS Budgets로 월 예산 설정, Cost Anomaly Detection으로 비정상 비용 증가 자동 탐지. 리소스 최적화: Trusted Advisor로 활용도 낮은 EC2 인스턴스 식별, 미사용 EBS 스냅샷/Elastic IP 삭제. 4. 개인 인사이트 및 다음 단계 배운 점/느낀 점: 클라우드는 “필요한 만큼, 필요한 때에” 리소스를 사용하는 완전히 다른 접근 방식임을 체감했습니다. AWS 보안의 핵심은 IAM임을 명확히 깨달았습니다. 루트 계정 노출, 과도한 권한 부여, Access Key 하드코딩 등 IAM 설정 실수가 대형 데이터 유출 사고로 이어지는 사례가 많으므로, “최소 권한 원칙\"과 “역할 기반 접근 제어\"를 처음부터 습관화해야겠습니다. 심화 방향: EC2 인스턴스 배포(Security Group, Elastic IP, Auto Scaling, Load Balancer 연동), VPC 네트워킹(Public/Private Subnet 분리, Bastion Host), RDS 데이터베이스(Multi-AZ), S3 심화(버전 관리, Lifecycle Policy, CloudFront CDN), CloudFormation/Terraform IaC 실습을 목표로 합니다. 5. 추가 참고사항 (Quick Reference) AWS 주요 서비스 \u0026 보안 고려사항 서비스 카테고리 서비스명 설명 보안 고려사항 컴퓨팅 EC2 가상 서버 Security Group 최소 권한, Key Pair 안전 보관, IMDSv2 사용 Lambda 서버리스 함수 실행 역할 최소 권한, 환경 변수 암호화 스토리지 S3 객체 스토리지 퍼블릭 액세스 차단, 버킷 정책 최소 권한, 암호화(SSE-S3/SSE-KMS) EBS 블록 스토리지 볼륨 암호화, 스냅샷 정기 백업 데이터베이스 RDS 관계형 DB Private Subnet 배치, SSL/TLS 연결, 자동 백업 DynamoDB NoSQL DB IAM 정책으로 테이블 접근 제어, Point-in-Time Recovery 네트워킹 VPC 가상 사설 네트워크 Public/Private Subnet 분리, NACL + Security Group 다층 방어 CloudFront CDN HTTPS 강제, WAF 연동, Geo Restriction Route 53 DNS 서비스 DNSSEC 활성화, Failover Routing 보안 IAM 액세스 관리 루트 계정 MFA, 최소 권한, Access Key 교체 KMS 키 관리 서비스 키 자동 교체, Key Policy 최소 권한 Secrets Manager 비밀번호 저장 자동 교체, VPC Endpoint 사용 모니터링 CloudWatch 모니터링 \u0026 로그 Metric Filter로 이상 탐지, 알람 설정 CloudTrail API 감사 로그 모든 리전 활성화, S3 버킷 암호화 GuardDuty 위협 탐지 자동 활성화 권장, SNS 알림 연동 IAM 정책 JSON 키워드 정리 요소 설명 예시 Version 정책 언어 버전 (항상 “2012-10-17”) “Version”: “2012-10-17” Statement 권한 정의 배열 “Statement”: […] Effect Allow(허용) 또는 Deny(거부) “Effect”: “Allow” Action 수행 가능한 작업 “Action”: “s3:GetObject” Resource 대상 리소스 ARN “Resource”: “arn:aws:s3:::my-bucket/*” Principal 주체 (리소스 기반 정책에서 사용) “Principal”: {“AWS”: “arn:aws:iam::123456789012:user/john”} Condition 조건부 접근 제어 “Condition”: {“IpAddress”: {“aws:SourceIp”: “192.0.2.0/24”}} 자주 사용하는 Condition 연산자:\nStringEquals: 문자열 완전 일치 (aws:username, aws:RequestedRegion) StringLike: 와일드카드 포함 문자열 (s3:prefix) IpAddress: 소스 IP 제한 (aws:SourceIp) DateGreaterThan / DateLessThan: 시간 기반 제한 Bool: Boolean 값 (aws:SecureTransport → HTTPS 강제) NumericLessThan: 숫자 비교 (s3:max-keys) IAM 모범 사례 체크리스트 루트 계정 MFA 활성화 루트 계정 Access Key 삭제 일상 작업용 IAM 사용자 생성 (Administrator 권한) IAM 사용자 MFA 활성화 IAM 비밀번호 정책 강화 (최소 14자, 대소문자/숫자/특수문자) 그룹 기반 권한 관리 (개별 사용자에게 직접 정책 연결 지양) 최소 권한 원칙 적용 (: 권한 금지) Access Key 90일마다 교체 미사용 IAM 사용자 및 Access Key 삭제 EC2 인스턴스에 IAM 역할 연결 (Access Key 하드코딩 금지) CloudTrail 활성화 (모든 API 호출 로깅) IAM Access Analyzer로 외부 공유 리소스 점검 AWS Well-Architected Framework 5가지 기둥 기둥 핵심 원칙 Operational Excellence (운영 우수성) Infrastructure as Code, 모니터링 및 로깅, 장애 대응 프로세스 문서화 Security (보안) IAM 최소 권한, 데이터 암호화(저장 중/전송 중), 다층 방어, 보안 이벤트 탐지 Reliability (안정성) 다중 AZ 배포, Auto Scaling으로 자동 복구, 정기 백업 및 DR 계획 Performance Efficiency (성능 효율성) 적절한 인스턴스 타입 선택, 캐싱(CloudFront, ElastiCache), 서버리스 활용 Cost Optimization (비용 최적화) Reserved Instances/Savings Plans, Auto Scaling, S3 Lifecycle Policy 리전 선택 기준 고려 사항 세부 내역 지연시간 사용자와 가까운 리전. 한국 사용자 → 서울(ap-northeast-2) 비용 리전마다 요금 차이. 일반적으로 us-east-1이 가장 저렴 컴플라이언스 EU GDPR → EU 리전(eu-west-1), 한국 개인정보보호법 → 서울 리전 서비스 가용성 신규 서비스는 주로 us-east-1부터 출시 재해 복구 다중 리전 배포 시 지리적으로 멀리 떨어진 리전 선택 (서울 + 오하이오) 주요 리전 코드:\nap-northeast-2 → 아시아 태평양(서울) ap-northeast-1 → 아시아 태평양(도쿄) us-east-1 → 미국 동부(버지니아) us-west-2 → 미국 서부(오레곤) eu-west-1 → 유럽(아일랜드) ",
+  "wordCount" : "4461",
+  "inLanguage": "ko",
+  "datePublished": "2025-12-03T00:00:00Z",
+  "dateModified": "2025-12-03T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/daily_logs/week06/20251203_aws_basic/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://hojjang98.github.io/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/daily_logs/">6개월, 혹은 그 이상의 보안 여정</a></div>
+    <h1 class="post-title entry-hint-parent">
+      2025.12.03 (Day 28) - AWS 클라우드 기초: AWS 개요, 계정 관리, IAM 서비스
+    </h1>
+    <div class="post-meta"><span title='2025-12-03 00:00:00 +0000 UTC'>2025년 12월 3일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="-20251203-day-28---aws-클라우드-기초-aws-개요-계정-관리-iam-서비스">📄 2025.12.03 (Day 28) - AWS 클라우드 기초: AWS 개요, 계정 관리, IAM 서비스<a hidden class="anchor" aria-hidden="true" href="#-20251203-day-28---aws-클라우드-기초-aws-개요-계정-관리-iam-서비스">#</a></h1>
+<hr>
+<h2 id="1-핵심-개념-정리">1. 핵심 개념 정리<a hidden class="anchor" aria-hidden="true" href="#1-핵심-개념-정리">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">#</th>
+          <th style="text-align: left">핵심 개념</th>
+          <th style="text-align: left">간결한 설명</th>
+          <th style="text-align: left">실무/보안 관점에서의 중요성</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>1</strong></td>
+          <td style="text-align: left"><strong>클라우드 컴퓨팅</strong></td>
+          <td style="text-align: left">인터넷을 통해 IT 리소스를 <strong>온디맨드(On-Demand)</strong> 로 제공하고, <strong>종량제(Pay-as-you-go)</strong> 방식으로 사용한 만큼만 비용을 지불하는 모델입니다.</td>
+          <td style="text-align: left"><strong>자본 비용을 운영 비용으로 전환</strong>하여 초기 투자 부담을 제거합니다. 용량 추정 없이 필요한 만큼 즉시 확장/축소 가능하며, 전 세계 배포가 몇 분 만에 가능합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>2</strong></td>
+          <td style="text-align: left"><strong>AWS 글로벌 인프라</strong></td>
+          <td style="text-align: left">전 세계에 <strong>리전(Region)</strong> 과 <strong>가용 영역(AZ)</strong> 으로 구성된 인프라를 운영합니다. 리전은 지리적으로 분리된 데이터센터 그룹이며, AZ는 리전 내 물리적으로 독립된 데이터센터입니다.</td>
+          <td style="text-align: left"><strong>고가용성(HA)</strong> 과 <strong>재해 복구(DR)</strong> 를 위해 다중 AZ 배포가 필수입니다. 리전 선택 시 지연시간, 컴플라이언스(데이터 주권), 비용, 서비스 가용성을 고려해야 합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>3</strong></td>
+          <td style="text-align: left"><strong>탄력성 (Elasticity)</strong></td>
+          <td style="text-align: left">수요에 따라 리소스를 자동으로 <strong>확장(Scale Out)</strong> 하거나 <strong>축소(Scale In)</strong> 할 수 있는 특성입니다. <strong>Auto Scaling</strong>을 통해 트래픽 증가 시 자동으로 인스턴스를 추가하고, 감소 시 제거하여 비용을 최적화합니다.</td>
+          <td style="text-align: left"><strong>트래픽 급증 시 서비스 중단 방지</strong>와 <strong>비용 효율성</strong>을 동시에 달성합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>4</strong></td>
+          <td style="text-align: left"><strong>AWS 주요 서비스</strong></td>
+          <td style="text-align: left">컴퓨팅(EC2, Lambda), 스토리지(S3, EBS), 데이터베이스(RDS, DynamoDB), 네트워킹(VPC, CloudFront), 보안(IAM, KMS), 관리(CloudWatch, CloudTrail)로 구성됩니다.</td>
+          <td style="text-align: left">각 서비스를 <strong>조합하여 사용</strong>해야 효과적입니다. 예: EC2(웹 서버) + RDS(DB) + S3(정적 파일) + CloudFront(CDN) + ELB(로드 밸런서).</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>5</strong></td>
+          <td style="text-align: left"><strong>AWS 프리 티어</strong></td>
+          <td style="text-align: left">신규 가입자에게 <strong>12개월 동안</strong> 제한적으로 무료 서비스를 제공합니다. EC2 t2.micro(750시간/월), S3 5GB, RDS 750시간/월, Lambda 100만 요청/월 등이 포함됩니다.</td>
+          <td style="text-align: left"><strong>학습 및 테스트 환경 구축</strong>에 적합합니다. 단, 프리 티어 한도 초과 시 <strong>과금 발생</strong>에 주의해야 하며, CloudWatch Billing Alarm 설정이 필수입니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>6</strong></td>
+          <td style="text-align: left"><strong>IAM (Identity and Access Management)</strong></td>
+          <td style="text-align: left">AWS 리소스에 대한 <strong>액세스 제어</strong>를 담당하는 서비스입니다. <strong>사용자(User)</strong>, <strong>그룹(Group)</strong>, <strong>역할(Role)</strong>, <strong>정책(Policy)</strong> 으로 구성됩니다.</td>
+          <td style="text-align: left"><strong>보안의 핵심</strong>입니다. 루트 계정 사용 최소화, MFA 활성화, 최소 권한 원칙(Least Privilege), 역할 기반 접근 제어가 필수입니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>7</strong></td>
+          <td style="text-align: left"><strong>IAM 사용자 &amp; 그룹</strong></td>
+          <td style="text-align: left"><strong>IAM 사용자</strong>는 개별 사용자 또는 애플리케이션에 대한 자격 증명입니다. <strong>IAM 그룹</strong>은 유사한 권한이 필요한 사용자들을 묶어 관리하는 단위로, 그룹에 정책을 연결하면 소속 사용자 모두에게 적용됩니다.</td>
+          <td style="text-align: left"><strong>권한 관리의 간소화</strong>를 위해 개별 사용자가 아닌 그룹에 권한을 할당해야 합니다. 예: Developers 그룹(EC2, S3 읽기/쓰기), Administrators 그룹(모든 권한).</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>8</strong></td>
+          <td style="text-align: left"><strong>IAM 정책 (Policy)</strong></td>
+          <td style="text-align: left">JSON 형식으로 작성된 <strong>권한 정의 문서</strong>입니다. <strong>Effect</strong>(Allow/Deny), <strong>Action</strong>(수행 가능한 작업), <strong>Resource</strong>(대상 리소스), <strong>Condition</strong>(적용 조건)으로 구성됩니다.</td>
+          <td style="text-align: left"><strong>최소 권한 원칙</strong>을 준수해야 합니다. 너무 넓은 권한(예: <em>:</em>)은 보안 위험이 높습니다. <strong>Explicit Deny</strong>가 Explicit Allow보다 우선합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>9</strong></td>
+          <td style="text-align: left"><strong>IAM 역할 (Role)</strong></td>
+          <td style="text-align: left"><strong>임시 자격 증명</strong>을 제공하는 엔티티로, 장기 자격 증명(Access Key) 없이 권한을 위임받습니다. EC2 인스턴스, Lambda 함수, 다른 AWS 계정 등이 역할을 assume하여 권한을 획득합니다.</td>
+          <td style="text-align: left"><strong>Access Key 하드코딩을 방지</strong>하여 보안을 강화합니다. EC2 인스턴스가 S3에 접근할 때 Access Key 대신 IAM 역할을 사용하는 것이 Best Practice입니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>10</strong></td>
+          <td style="text-align: left"><strong>AWS Organizations</strong></td>
+          <td style="text-align: left">여러 AWS 계정을 <strong>중앙에서 관리</strong>하는 서비스입니다. 조직 단위(OU)로 계정을 그룹화하고, <strong>통합 결제</strong>와 <strong>SCP(Service Control Policy)</strong> 로 계정 수준 권한을 제한합니다.</td>
+          <td style="text-align: left"><strong>대규모 조직의 거버넌스</strong> 및 <strong>비용 절감</strong>에 필수입니다. Production OU와 Development OU를 분리하여 서로 다른 정책 적용이 가능합니다.</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="2-실습-내용">2. 실습 내용<a hidden class="anchor" aria-hidden="true" href="#2-실습-내용">#</a></h2>
+<h3 id="a-aws-cli-기본-사용법">(A) AWS CLI 기본 사용법<a hidden class="anchor" aria-hidden="true" href="#a-aws-cli-기본-사용법">#</a></h3>
+<p><strong>AWS CLI 설치 및 구성:</strong></p>
+<ul>
+<li><strong>aws &ndash;version</strong> → CLI 버전 확인</li>
+<li><strong>aws configure</strong> → 설정 (Access Key ID, Secret Access Key, 리전, 출력 형식 순서로 입력)
+<ul>
+<li>Default region name: ap-northeast-2 (서울)</li>
+<li>Default output format: json</li>
+</ul>
+</li>
+<li><strong>aws sts get-caller-identity</strong> → 현재 자격 증명 확인 (UserId, Account, Arn 출력)</li>
+<li>설정 파일 위치:
+<ul>
+<li><strong>~/.aws/credentials</strong> → Access Key 저장</li>
+<li><strong>~/.aws/config</strong> → 리전 및 출력 형식 저장</li>
+</ul>
+</li>
+</ul>
+<p><strong>S3 기본 명령어:</strong></p>
+<ul>
+<li><strong>aws s3 ls</strong> → S3 버킷 목록 조회</li>
+<li><strong>aws s3 mb s3://my-unique-bucket-name-20251203 &ndash;region ap-northeast-2</strong> → 버킷 생성</li>
+<li><strong>aws s3 cp test.txt s3://my-unique-bucket-name-20251203/</strong> → 파일 업로드</li>
+<li><strong>aws s3 ls s3://my-unique-bucket-name-20251203/</strong> → 버킷 내 파일 목록</li>
+<li><strong>aws s3 cp s3://my-unique-bucket-name-20251203/test.txt ./downloaded.txt</strong> → 파일 다운로드</li>
+<li><strong>aws s3 sync ./local-folder s3://my-unique-bucket-name-20251203/backup/</strong> → 디렉터리 동기화</li>
+<li><strong>aws s3 rb s3://my-unique-bucket-name-20251203 &ndash;force</strong> → 버킷 강제 삭제 (파일 포함)</li>
+</ul>
+<p><strong>EC2 기본 명령어:</strong></p>
+<ul>
+<li><strong>aws ec2 describe-instances</strong> → EC2 인스턴스 목록</li>
+<li><strong>aws ec2 describe-instances &ndash;region us-east-1</strong> → 특정 리전 인스턴스 목록</li>
+<li><strong>aws ec2 describe-instances &ndash;filters &ldquo;Name=instance-state-name,Values=running&rdquo;</strong> → 실행 중만 필터링</li>
+<li><strong>aws ec2 describe-security-groups</strong> → 보안 그룹 목록</li>
+</ul>
+<hr>
+<h3 id="b-iam-사용자-및-정책-생성-실습">(B) IAM 사용자 및 정책 생성 실습<a hidden class="anchor" aria-hidden="true" href="#b-iam-사용자-및-정책-생성-실습">#</a></h3>
+<p><strong>1. IAM 사용자 생성 (Console):</strong></p>
+<ol>
+<li>AWS Management Console → IAM → 사용자(Users) → 사용자 추가</li>
+<li>사용자 이름: developer-john</li>
+<li>액세스 유형: 프로그래밍 방식 액세스 + AWS Console 액세스</li>
+<li>권한 설정: AmazonS3ReadOnlyAccess 연결</li>
+<li>태그 추가: Key=Department, Value=Engineering</li>
+<li>Access Key ID와 Secret Access Key 저장 (다시 볼 수 없음)</li>
+</ol>
+<p><strong>2. IAM 그룹 생성 및 사용자 추가:</strong></p>
+<ol>
+<li>IAM → 그룹(Groups) → 그룹 생성 → 그룹 이름: Developers</li>
+<li>정책 연결: AmazonEC2FullAccess, AmazonS3FullAccess, AmazonRDSReadOnlyAccess</li>
+<li>사용자 → developer-john → 그룹 탭 → 그룹에 사용자 추가</li>
+</ol>
+<p><strong>3. IAM 정책 JSON 구조:</strong></p>
+<p>S3 특정 버킷 읽기 권한 예시:</p>
+<ul>
+<li>Version: &ldquo;2012-10-17&rdquo;</li>
+<li>Statement:
+<ul>
+<li>Effect: Allow, Action: s3:ListBucket, Resource: arn:aws:s3:::company-data</li>
+<li>Effect: Allow, Action: s3:GetObject, Resource: arn:aws:s3:::company-data/*</li>
+</ul>
+</li>
+</ul>
+<p>EC2 인스턴스 시작/중지 권한 (특정 리전만):</p>
+<ul>
+<li>Effect: Allow</li>
+<li>Action: ec2:StartInstances, ec2:StopInstances, ec2:DescribeInstances</li>
+<li>Resource: *</li>
+<li>Condition: StringEquals → aws:RequestedRegion → ap-northeast-2</li>
+</ul>
+<p>시간 기반 액세스 제어 예시:</p>
+<ul>
+<li>Effect: Allow, Action: s3:*</li>
+<li>Condition: DateGreaterThan(aws:CurrentTime: 2025-01-01) AND DateLessThan(aws:CurrentTime: 2025-12-31)</li>
+</ul>
+<p><strong>4. IAM 역할 생성 (EC2 → S3 접근):</strong></p>
+<ol>
+<li>IAM → 역할(Roles) → 역할 만들기</li>
+<li>신뢰할 수 있는 엔터티: AWS 서비스 → EC2</li>
+<li>권한 정책 연결: AmazonS3FullAccess</li>
+<li>역할 이름: EC2-S3-Access-Role</li>
+<li>EC2 콘솔 → 인스턴스 선택 → 작업 → 보안 → IAM 역할 수정 → EC2-S3-Access-Role 선택</li>
+<li>EC2 인스턴스 내부에서 <strong>aws s3 ls</strong> 실행 → Access Key 없이 S3 접근 가능</li>
+</ol>
+<hr>
+<h3 id="c-aws-management-console-실습">(C) AWS Management Console 실습<a hidden class="anchor" aria-hidden="true" href="#c-aws-management-console-실습">#</a></h3>
+<p><strong>S3 버킷 생성 및 파일 업로드:</strong></p>
+<ol>
+<li>AWS Console → S3 → 버킷 만들기</li>
+<li>버킷 이름: my-first-bucket-20251203 (전역적으로 고유한 이름 필요)</li>
+<li>AWS 리전: 아시아 태평양(서울) ap-northeast-2</li>
+<li>퍼블릭 액세스 차단: 모든 퍼블릭 액세스 차단 (기본값, 권장)</li>
+<li>태그: Key=Environment, Value=Learning</li>
+<li>버킷 생성 후 파일 업로드 → 객체 URL 확인 (퍼블릭 차단 시 403 Forbidden)</li>
+</ol>
+<p><strong>버킷 정책으로 퍼블릭 읽기 허용 (보안 위험 주의):</strong></p>
+<ul>
+<li>적용 방법:
+<ol>
+<li>버킷 → 권한(Permissions) 탭 → 퍼블릭 액세스 차단 설정 편집 → 체크 해제</li>
+<li>버킷 정책 편집 → JSON 정책 붙여넣기</li>
+<li>정책 내용: Effect: Allow, Principal: &ldquo;<em>&rdquo;, Action: s3:GetObject, Resource: arn:aws:s3:::my-first-bucket-20251203/</em></li>
+</ol>
+</li>
+<li>결과: 브라우저에서 객체 URL 접근 → 파일 내용 표시</li>
+</ul>
+<hr>
+<h3 id="d-aws-budgets-설정-과금-방지">(D) AWS Budgets 설정 (과금 방지)<a hidden class="anchor" aria-hidden="true" href="#d-aws-budgets-설정-과금-방지">#</a></h3>
+<p><strong>예산 알림 설정:</strong></p>
+<ol>
+<li>AWS Console → Billing and Cost Management → Budgets → Create budget</li>
+<li>예산 유형: Cost budget</li>
+<li>예산 이름: Monthly-Budget-10USD, 기간: Monthly, 예산 금액: $10.00</li>
+<li>알림 설정: Actual cost &gt;= 80% 도달 시 이메일 알림</li>
+</ol>
+<ul>
+<li>결과: 월 사용 비용이 $8 초과 시 이메일 알림 발송</li>
+</ul>
+<p><strong>CloudWatch Billing Alarm (대체 방법):</strong></p>
+<ol>
+<li>CloudWatch 서비스 이동 (us-east-1 리전 필수)</li>
+<li>Alarms → Create alarm → Billing → Total Estimated Charge</li>
+<li>조건: Greater/Equal than $10 → SNS 주제 생성 → 이메일 추가</li>
+</ol>
+<hr>
+<h2 id="3-실무보안-관점-분석">3. 실무/보안 관점 분석<a hidden class="anchor" aria-hidden="true" href="#3-실무보안-관점-분석">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">분야</th>
+          <th style="text-align: left">적용 시나리오</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>클라우드 아키텍처 설계</strong></td>
+          <td style="text-align: left"><strong>다층 아키텍처</strong>: EC2(웹 서버) + RDS(DB) + S3(정적 파일) + CloudFront(CDN) + ELB(로드 밸런서)로 3-Tier 아키텍처 구축. <strong>고가용성 설계</strong>: 최소 2개 이상의 AZ에 리소스 분산 배치로 단일 장애점(SPOF) 제거. <strong>재해 복구</strong>: 다중 리전 배포, S3 Cross-Region Replication으로 데이터 백업.</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>보안 &amp; 컴플라이언스</strong></td>
+          <td style="text-align: left"><strong>IAM 보안 강화</strong>: 루트 계정 MFA 필수 활성화, 루트 계정 Access Key 삭제, 비밀번호 정책 강화(최소 14자, 대소문자/숫자/특수문자, 90일 만료). <strong>최소 권한 원칙</strong>: IAM Policy Simulator로 권한 테스트, 불필요한 <em>:</em> 권한 제거. <strong>Access Key 관리</strong>: 90일마다 교체, CloudTrail로 사용 이력 추적, 코드에 하드코딩 금지.</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>DevOps &amp; 자동화</strong></td>
+          <td style="text-align: left"><strong>Infrastructure as Code</strong>: AWS CloudFormation 또는 Terraform으로 인프라를 코드화하여 버전 관리. <strong>CI/CD 파이프라인</strong>: CodeCommit → CodeBuild → CodeDeploy → CodePipeline으로 자동화. <strong>모니터링</strong>: CloudWatch로 CPU, 메모리, 디스크 사용률 모니터링, 임계값 초과 시 SNS 알림.</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>비용 관리 &amp; FinOps</strong></td>
+          <td style="text-align: left"><strong>태그 기반 비용 추적</strong>: 모든 리소스에 태그 부여(Environment, Department, Project), 부서별/프로젝트별 비용 분석. <strong>예산 알림</strong>: AWS Budgets로 월 예산 설정, Cost Anomaly Detection으로 비정상 비용 증가 자동 탐지. <strong>리소스 최적화</strong>: Trusted Advisor로 활용도 낮은 EC2 인스턴스 식별, 미사용 EBS 스냅샷/Elastic IP 삭제.</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="4-개인-인사이트-및-다음-단계">4. 개인 인사이트 및 다음 단계<a hidden class="anchor" aria-hidden="true" href="#4-개인-인사이트-및-다음-단계">#</a></h2>
+<ul>
+<li><strong>배운 점/느낀 점</strong>: 클라우드는 &ldquo;필요한 만큼, 필요한 때에&rdquo; 리소스를 사용하는 완전히 다른 접근 방식임을 체감했습니다. AWS 보안의 핵심은 IAM임을 명확히 깨달았습니다. 루트 계정 노출, 과도한 권한 부여, Access Key 하드코딩 등 IAM 설정 실수가 대형 데이터 유출 사고로 이어지는 사례가 많으므로, &ldquo;최소 권한 원칙&quot;과 &ldquo;역할 기반 접근 제어&quot;를 처음부터 습관화해야겠습니다.</li>
+<li><strong>심화 방향</strong>: EC2 인스턴스 배포(Security Group, Elastic IP, Auto Scaling, Load Balancer 연동), VPC 네트워킹(Public/Private Subnet 분리, Bastion Host), RDS 데이터베이스(Multi-AZ), S3 심화(버전 관리, Lifecycle Policy, CloudFront CDN), CloudFormation/Terraform IaC 실습을 목표로 합니다.</li>
+</ul>
+<hr>
+<h2 id="5-추가-참고사항-quick-reference">5. 추가 참고사항 (Quick Reference)<a hidden class="anchor" aria-hidden="true" href="#5-추가-참고사항-quick-reference">#</a></h2>
+<h3 id="aws-주요-서비스--보안-고려사항">AWS 주요 서비스 &amp; 보안 고려사항<a hidden class="anchor" aria-hidden="true" href="#aws-주요-서비스--보안-고려사항">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">서비스 카테고리</th>
+          <th style="text-align: center">서비스명</th>
+          <th style="text-align: left">설명</th>
+          <th style="text-align: left">보안 고려사항</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>컴퓨팅</strong></td>
+          <td style="text-align: center">EC2</td>
+          <td style="text-align: left">가상 서버</td>
+          <td style="text-align: left">Security Group 최소 권한, Key Pair 안전 보관, IMDSv2 사용</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">Lambda</td>
+          <td style="text-align: left">서버리스 함수</td>
+          <td style="text-align: left">실행 역할 최소 권한, 환경 변수 암호화</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>스토리지</strong></td>
+          <td style="text-align: center">S3</td>
+          <td style="text-align: left">객체 스토리지</td>
+          <td style="text-align: left">퍼블릭 액세스 차단, 버킷 정책 최소 권한, 암호화(SSE-S3/SSE-KMS)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">EBS</td>
+          <td style="text-align: left">블록 스토리지</td>
+          <td style="text-align: left">볼륨 암호화, 스냅샷 정기 백업</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>데이터베이스</strong></td>
+          <td style="text-align: center">RDS</td>
+          <td style="text-align: left">관계형 DB</td>
+          <td style="text-align: left">Private Subnet 배치, SSL/TLS 연결, 자동 백업</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">DynamoDB</td>
+          <td style="text-align: left">NoSQL DB</td>
+          <td style="text-align: left">IAM 정책으로 테이블 접근 제어, Point-in-Time Recovery</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>네트워킹</strong></td>
+          <td style="text-align: center">VPC</td>
+          <td style="text-align: left">가상 사설 네트워크</td>
+          <td style="text-align: left">Public/Private Subnet 분리, NACL + Security Group 다층 방어</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">CloudFront</td>
+          <td style="text-align: left">CDN</td>
+          <td style="text-align: left">HTTPS 강제, WAF 연동, Geo Restriction</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">Route 53</td>
+          <td style="text-align: left">DNS 서비스</td>
+          <td style="text-align: left">DNSSEC 활성화, Failover Routing</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>보안</strong></td>
+          <td style="text-align: center">IAM</td>
+          <td style="text-align: left">액세스 관리</td>
+          <td style="text-align: left">루트 계정 MFA, 최소 권한, Access Key 교체</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">KMS</td>
+          <td style="text-align: left">키 관리 서비스</td>
+          <td style="text-align: left">키 자동 교체, Key Policy 최소 권한</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">Secrets Manager</td>
+          <td style="text-align: left">비밀번호 저장</td>
+          <td style="text-align: left">자동 교체, VPC Endpoint 사용</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>모니터링</strong></td>
+          <td style="text-align: center">CloudWatch</td>
+          <td style="text-align: left">모니터링 &amp; 로그</td>
+          <td style="text-align: left">Metric Filter로 이상 탐지, 알람 설정</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">CloudTrail</td>
+          <td style="text-align: left">API 감사 로그</td>
+          <td style="text-align: left">모든 리전 활성화, S3 버킷 암호화</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">GuardDuty</td>
+          <td style="text-align: left">위협 탐지</td>
+          <td style="text-align: left">자동 활성화 권장, SNS 알림 연동</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="iam-정책-json-키워드-정리">IAM 정책 JSON 키워드 정리<a hidden class="anchor" aria-hidden="true" href="#iam-정책-json-키워드-정리">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">요소</th>
+          <th style="text-align: left">설명</th>
+          <th style="text-align: left">예시</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>Version</strong></td>
+          <td style="text-align: left">정책 언어 버전 (항상 &ldquo;2012-10-17&rdquo;)</td>
+          <td style="text-align: left">&ldquo;Version&rdquo;: &ldquo;2012-10-17&rdquo;</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>Statement</strong></td>
+          <td style="text-align: left">권한 정의 배열</td>
+          <td style="text-align: left">&ldquo;Statement&rdquo;: [&hellip;]</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>Effect</strong></td>
+          <td style="text-align: left">Allow(허용) 또는 Deny(거부)</td>
+          <td style="text-align: left">&ldquo;Effect&rdquo;: &ldquo;Allow&rdquo;</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>Action</strong></td>
+          <td style="text-align: left">수행 가능한 작업</td>
+          <td style="text-align: left">&ldquo;Action&rdquo;: &ldquo;s3:GetObject&rdquo;</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>Resource</strong></td>
+          <td style="text-align: left">대상 리소스 ARN</td>
+          <td style="text-align: left">&ldquo;Resource&rdquo;: &ldquo;arn:aws:s3:::my-bucket/*&rdquo;</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>Principal</strong></td>
+          <td style="text-align: left">주체 (리소스 기반 정책에서 사용)</td>
+          <td style="text-align: left">&ldquo;Principal&rdquo;: {&ldquo;AWS&rdquo;: &ldquo;arn:aws:iam::123456789012:user/john&rdquo;}</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>Condition</strong></td>
+          <td style="text-align: left">조건부 접근 제어</td>
+          <td style="text-align: left">&ldquo;Condition&rdquo;: {&ldquo;IpAddress&rdquo;: {&ldquo;aws:SourceIp&rdquo;: &ldquo;192.0.2.0/24&rdquo;}}</td>
+      </tr>
+  </tbody>
+</table>
+<p>자주 사용하는 Condition 연산자:</p>
+<ul>
+<li><strong>StringEquals</strong>: 문자열 완전 일치 (aws:username, aws:RequestedRegion)</li>
+<li><strong>StringLike</strong>: 와일드카드 포함 문자열 (s3:prefix)</li>
+<li><strong>IpAddress</strong>: 소스 IP 제한 (aws:SourceIp)</li>
+<li><strong>DateGreaterThan / DateLessThan</strong>: 시간 기반 제한</li>
+<li><strong>Bool</strong>: Boolean 값 (aws:SecureTransport → HTTPS 강제)</li>
+<li><strong>NumericLessThan</strong>: 숫자 비교 (s3:max-keys)</li>
+</ul>
+<h3 id="iam-모범-사례-체크리스트">IAM 모범 사례 체크리스트<a hidden class="anchor" aria-hidden="true" href="#iam-모범-사례-체크리스트">#</a></h3>
+<ul>
+<li>루트 계정 MFA 활성화</li>
+<li>루트 계정 Access Key 삭제</li>
+<li>일상 작업용 IAM 사용자 생성 (Administrator 권한)</li>
+<li>IAM 사용자 MFA 활성화</li>
+<li>IAM 비밀번호 정책 강화 (최소 14자, 대소문자/숫자/특수문자)</li>
+<li>그룹 기반 권한 관리 (개별 사용자에게 직접 정책 연결 지양)</li>
+<li>최소 권한 원칙 적용 (<em>:</em> 권한 금지)</li>
+<li>Access Key 90일마다 교체</li>
+<li>미사용 IAM 사용자 및 Access Key 삭제</li>
+<li>EC2 인스턴스에 IAM 역할 연결 (Access Key 하드코딩 금지)</li>
+<li>CloudTrail 활성화 (모든 API 호출 로깅)</li>
+<li>IAM Access Analyzer로 외부 공유 리소스 점검</li>
+</ul>
+<h3 id="aws-well-architected-framework-5가지-기둥">AWS Well-Architected Framework 5가지 기둥<a hidden class="anchor" aria-hidden="true" href="#aws-well-architected-framework-5가지-기둥">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">기둥</th>
+          <th style="text-align: left">핵심 원칙</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>Operational Excellence (운영 우수성)</strong></td>
+          <td style="text-align: left">Infrastructure as Code, 모니터링 및 로깅, 장애 대응 프로세스 문서화</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>Security (보안)</strong></td>
+          <td style="text-align: left">IAM 최소 권한, 데이터 암호화(저장 중/전송 중), 다층 방어, 보안 이벤트 탐지</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>Reliability (안정성)</strong></td>
+          <td style="text-align: left">다중 AZ 배포, Auto Scaling으로 자동 복구, 정기 백업 및 DR 계획</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>Performance Efficiency (성능 효율성)</strong></td>
+          <td style="text-align: left">적절한 인스턴스 타입 선택, 캐싱(CloudFront, ElastiCache), 서버리스 활용</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>Cost Optimization (비용 최적화)</strong></td>
+          <td style="text-align: left">Reserved Instances/Savings Plans, Auto Scaling, S3 Lifecycle Policy</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="리전-선택-기준">리전 선택 기준<a hidden class="anchor" aria-hidden="true" href="#리전-선택-기준">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">고려 사항</th>
+          <th style="text-align: left">세부 내역</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>지연시간</strong></td>
+          <td style="text-align: left">사용자와 가까운 리전. 한국 사용자 → 서울(ap-northeast-2)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>비용</strong></td>
+          <td style="text-align: left">리전마다 요금 차이. 일반적으로 us-east-1이 가장 저렴</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>컴플라이언스</strong></td>
+          <td style="text-align: left">EU GDPR → EU 리전(eu-west-1), 한국 개인정보보호법 → 서울 리전</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>서비스 가용성</strong></td>
+          <td style="text-align: left">신규 서비스는 주로 us-east-1부터 출시</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>재해 복구</strong></td>
+          <td style="text-align: left">다중 리전 배포 시 지리적으로 멀리 떨어진 리전 선택 (서울 + 오하이오)</td>
+      </tr>
+  </tbody>
+</table>
+<p>주요 리전 코드:</p>
+<ul>
+<li>ap-northeast-2 → 아시아 태평양(서울)</li>
+<li>ap-northeast-1 → 아시아 태평양(도쿄)</li>
+<li>us-east-1 → 미국 동부(버지니아)</li>
+<li>us-west-2 → 미국 서부(오레곤)</li>
+<li>eu-west-1 → 유럽(아일랜드)</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://hojjang98.github.io/tags/aws/">AWS</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C/">클라우드</a></li>
+      <li><a href="https://hojjang98.github.io/tags/iam/">IAM</a></li>
+      <li><a href="https://hojjang98.github.io/tags/s3/">S3</a></li>
+      <li><a href="https://hojjang98.github.io/tags/ec2/">EC2</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%B3%B4%EC%95%88/">보안</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%EC%BB%B4%ED%93%A8%ED%8C%85/">클라우드컴퓨팅</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

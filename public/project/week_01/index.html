@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Project 01 — Mini Security Log Monitor | HJ&#39;s Security Note</title>
+<meta name="keywords" content="Python, 보안관제, SOC, 로그분석, SK쉴더스루키즈">
+<meta name="description" content="파이썬 기초 문법을 보안 관점으로 재구성한 입문형 보안 로그 탐지 시스템">
+<meta name="author" content="">
+<link rel="canonical" href="https://hojjang98.github.io/project/week_01/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.290573799e582c418c4bd84f2bca757d0a77fd1bf9f5c43942030e706df68ec8.css" integrity="sha256-KQVzeZ5YLEGMS9hPK8p1fQp3/Rv59cQ5QgMOcG32jsg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/project/week_01/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://hojjang98.github.io/project/week_01/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="Project 01 — Mini Security Log Monitor">
+  <meta property="og:description" content="파이썬 기초 문법을 보안 관점으로 재구성한 입문형 보안 로그 탐지 시스템">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="project">
+    <meta property="article:published_time" content="2025-10-31T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-10-31T00:00:00+00:00">
+    <meta property="article:tag" content="Python">
+    <meta property="article:tag" content="보안관제">
+    <meta property="article:tag" content="SOC">
+    <meta property="article:tag" content="로그분석">
+    <meta property="article:tag" content="SK쉴더스루키즈">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_19/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_18/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_17/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_16/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_15/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_14/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_13/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Project 01 — Mini Security Log Monitor">
+<meta name="twitter:description" content="파이썬 기초 문법을 보안 관점으로 재구성한 입문형 보안 로그 탐지 시스템">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "프로젝트",
+      "item": "https://hojjang98.github.io/project/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Project 01 — Mini Security Log Monitor",
+      "item": "https://hojjang98.github.io/project/week_01/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Project 01 — Mini Security Log Monitor",
+  "name": "Project 01 — Mini Security Log Monitor",
+  "description": "파이썬 기초 문법을 보안 관점으로 재구성한 입문형 보안 로그 탐지 시스템",
+  "keywords": [
+    "Python", "보안관제", "SOC", "로그분석", "SK쉴더스루키즈"
+  ],
+  "articleBody": "Project 01 — Mini Security Log Monitor 전체 소스코드는 GitHub에서 확인할 수 있습니다. hojjang98 / skshielders-rookies-28 — projects/week_01\n개요 Mini Security Log Monitor는 1주차 파이썬 기초 학습 내용을 종합하여 구현한 보안 이벤트 감지 및 기록 시스템이다.\n단순한 문법 연습에 그치지 않고, 입력 검증 -\u003e 이벤트 탐지 -\u003e 예외 처리 -\u003e 감사 로깅으로 이어지는 보안 시스템의 핵심 흐름을 코드 레벨로 구현하는 것을 목표로 삼았다.\n주간 학습 요약 Day 1 (10.27) — 파이썬 기본 타입과 자료구조\n딕셔너리 .get() 안전 접근, 불변성(Immutable) 개념 Day 2 (10.28) — 클래스 · 제어문 · 딕셔너리\n객체지향 탐지 구조 설계, JSON 기반 데이터 모델링 Day 3 (10.29) — 조건문 · 반복문 · 문자열 처리\n문자열 파싱(split), 조건 기반 탐지, 날짜 반복 처리 Day 4 (10.30) — 함수 · 람다 · 클로저 · 데코레이터\n함수 모듈화, 전역 변수 없는 상태 관리, 권한 체크 로직 Day 5 (10.31) — 예외 처리 · 로깅 · 파일 입출력\ntry-except 기반 예외 대응, 로깅 및 JSON 로그 기록 주요 기능 사용자 인증 검증 — 인증되지 않은 사용자의 접근 차단 이벤트 탐지 및 기록 — 로그 파일 내 ERROR, UNAUTHORIZED 등 이벤트 감지 및 저장 사용자 마스킹 처리 — 개인정보 보호를 위한 이름 비식별화 (ad** 형태) 예외 처리 및 경고 — 오류 발생 시 try-except 로 중단 없이 로깅 지속 데코레이터 기반 구조 — 공통 보안 로직(로깅, 권한 체크)을 함수 외부에서 관리 핵심 코드 설명 1. User 클래스 — 인증 상태 관리 사용자 정보와 인증 여부를 하나의 객체로 캡슐화한다. 인증 여부는 authenticated 필드로 관리하며, 기본값은 False 로 설정해 안전한 기본 상태를 유지한다.\nclass User:\rdef __init__(self, name: str, authenticated: bool = False):\rself.name = name\rself.authenticated = authenticated\r2. access_logger 데코레이터 — 공통 로깅 자동화 핵심 설계 원칙은 공통 보안 로직의 분리다. 접근 성공 / 실패 여부를 함수 외부에서 일괄 처리하므로, 개별 함수마다 로깅 코드를 반복할 필요가 없다.\n사용자 이름 앞 두 글자만 남기고 나머지는 * 로 마스킹 ex) admin =\u003e ad***, carol =\u003e ca*** 접근 성공 시 =\u003e result: “SUCCESS” 로 JSON 기록 예외 발생 시 =\u003e result: “FAIL” + 예외 타입 + 메시지 로 JSON 기록 실제 데코레이터 구조 (축약):\ndef access_logger(func):\rdef wrapper(user):\rmasked = user.name[:2] + \"*\" * (len(user.name) - 2)\rtry:\rresult = func(user)\rlog_entry = {\"user\": masked, \"result\": \"SUCCESS\"}\r# access.log 에 JSON 형태로 append\rexcept Exception as e:\rlog_entry = {\"user\": masked, \"result\": \"FAIL\", \"error\": type(e).__name__}\r# 실패 내역도 동일하게 기록\rreturn wrapper\r3. read_secure_log — 권한 기반 로그 열람 @access_logger 데코레이터가 부착된 핵심 함수. 함수 진입 시 가장 먼저 인증 여부를 확인하며, 미인증 사용자는 PermissionError 를 발생시켜 차단한다. 인증 통과 후에는 system.log 에서 ERROR 포함 라인만 필터링해 최근 5건을 반환한다.\n@access_logger\rdef read_secure_log(user):\rif not user.authenticated:\rraise PermissionError(\"인증되지 않은 사용자입니다.\")\rwith open(\"system.log\", \"r\", encoding=\"utf-8\") as f:\rlogs = f.readlines()\rfiltered = [line.strip() for line in logs if \"ERROR\" in line]\rreturn filtered[-5:]\r4. JSON 감사 로그 형식 탐지 결과는 아래와 같은 구조로 access.log 에 한 줄씩 기록된다. JSON 형태를 유지하므로 SIEM 연동이나 추가 분석 파이프라인으로 확장하기 용이하다.\n성공 케이스:\n{\"user\": \"ad***\", \"result\": \"SUCCESS\", \"message\": \"로그 접근 성공\"}\r실패 케이스:\n{\"user\": \"ca***\", \"result\": \"FAIL\", \"error\": \"PermissionError\", \"message\": \"인증되지 않은 사용자입니다.\"}\rSOC 관점 연계 이 프로젝트는 보안관제(SOC) 의 4단계 흐름을 코드 레벨로 축약한 구조다.\n로그 수집 (Collection) — system.log 파일을 읽어 이벤트 수집 이벤트 탐지 (Detection) — 문자열 탐색과 조건문으로 ERROR 이벤트 감지 이벤트 기록 (Logging) — JSON 기반 access.log 에 탐지 결과 저장 감사 및 분석 (Audit) — 마스킹된 사용자 로그로 접근 내역 추적 학습 연결 포인트 dict.get() =\u003e KeyError 방지 및 안전한 데이터 접근 if / for 문 =\u003e 로그 이벤트 탐지 조건 구성 @decorator =\u003e 접근 감사 로직의 공통화 try-except =\u003e 예외 발생 시 안정적 흐름 유지 with open() =\u003e 파일 입출력 자원 안정성 확보 문자열 슬라이싱 =\u003e 사용자 마스킹(ab***) 처리 확장 아이디어 로그 누락 탐지 — 파일 유무 확인 및 누락 이벤트 기록 데이터 무결성 강화 — deepcopy() 와 .get() 기반 안전한 파서 구현 시각화 연계 — Week 2 Streamlit 대시보드로 로그 분석 결과 시각화 이 프로젝트는 Week 1 학습 내용을 모두 아우르며, 데이터 구조화 -\u003e 조건 탐지 -\u003e 로깅 -\u003e 감사 로 이어지는 보안 시스템 로직의 핵심 뼈대를 완성하는 입문형 프로젝트다.\n",
+  "wordCount" : "1454",
+  "inLanguage": "ko",
+  "datePublished": "2025-10-31T00:00:00Z",
+  "dateModified": "2025-10-31T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/project/week_01/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://hojjang98.github.io/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/project/">프로젝트</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Project 01 — Mini Security Log Monitor
+    </h1>
+    <div class="post-meta"><span title='2025-10-31 00:00:00 +0000 UTC'>2025년 10월 31일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="project-01--mini-security-log-monitor">Project 01 — Mini Security Log Monitor<a hidden class="anchor" aria-hidden="true" href="#project-01--mini-security-log-monitor">#</a></h1>
+<blockquote>
+<p>전체 소스코드는 GitHub에서 확인할 수 있습니다.
+<a href="https://github.com/hojjang98/skshielders-rookies-28/tree/main/projects/week_01">hojjang98 / skshielders-rookies-28 — projects/week_01</a></p>
+</blockquote>
+<hr>
+<h2 id="개요">개요<a hidden class="anchor" aria-hidden="true" href="#개요">#</a></h2>
+<p><strong>Mini Security Log Monitor</strong>는 1주차 파이썬 기초 학습 내용을 종합하여 구현한 보안 이벤트 감지 및 기록 시스템이다.</p>
+<p>단순한 문법 연습에 그치지 않고, <strong>입력 검증 -&gt; 이벤트 탐지 -&gt; 예외 처리 -&gt; 감사 로깅</strong>으로 이어지는 보안 시스템의 핵심 흐름을 코드 레벨로 구현하는 것을 목표로 삼았다.</p>
+<hr>
+<h2 id="주간-학습-요약">주간 학습 요약<a hidden class="anchor" aria-hidden="true" href="#주간-학습-요약">#</a></h2>
+<ul>
+<li>
+<p><strong>Day 1 (10.27)</strong> — 파이썬 기본 타입과 자료구조</p>
+<ul>
+<li>딕셔너리 <code>.get()</code> 안전 접근, 불변성(Immutable) 개념</li>
+</ul>
+</li>
+<li>
+<p><strong>Day 2 (10.28)</strong> — 클래스 · 제어문 · 딕셔너리</p>
+<ul>
+<li>객체지향 탐지 구조 설계, JSON 기반 데이터 모델링</li>
+</ul>
+</li>
+<li>
+<p><strong>Day 3 (10.29)</strong> — 조건문 · 반복문 · 문자열 처리</p>
+<ul>
+<li>문자열 파싱(split), 조건 기반 탐지, 날짜 반복 처리</li>
+</ul>
+</li>
+<li>
+<p><strong>Day 4 (10.30)</strong> — 함수 · 람다 · 클로저 · 데코레이터</p>
+<ul>
+<li>함수 모듈화, 전역 변수 없는 상태 관리, 권한 체크 로직</li>
+</ul>
+</li>
+<li>
+<p><strong>Day 5 (10.31)</strong> — 예외 처리 · 로깅 · 파일 입출력</p>
+<ul>
+<li>try-except 기반 예외 대응, 로깅 및 JSON 로그 기록</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="주요-기능">주요 기능<a hidden class="anchor" aria-hidden="true" href="#주요-기능">#</a></h2>
+<ul>
+<li><strong>사용자 인증 검증</strong> — 인증되지 않은 사용자의 접근 차단</li>
+<li><strong>이벤트 탐지 및 기록</strong> — 로그 파일 내 ERROR, UNAUTHORIZED 등 이벤트 감지 및 저장</li>
+<li><strong>사용자 마스킹 처리</strong> — 개인정보 보호를 위한 이름 비식별화 (ad** 형태)</li>
+<li><strong>예외 처리 및 경고</strong> — 오류 발생 시 try-except 로 중단 없이 로깅 지속</li>
+<li><strong>데코레이터 기반 구조</strong> — 공통 보안 로직(로깅, 권한 체크)을 함수 외부에서 관리</li>
+</ul>
+<hr>
+<h2 id="핵심-코드-설명">핵심 코드 설명<a hidden class="anchor" aria-hidden="true" href="#핵심-코드-설명">#</a></h2>
+<h3 id="1-user-클래스--인증-상태-관리">1. User 클래스 — 인증 상태 관리<a hidden class="anchor" aria-hidden="true" href="#1-user-클래스--인증-상태-관리">#</a></h3>
+<p>사용자 정보와 인증 여부를 하나의 객체로 캡슐화한다.
+인증 여부는 <strong>authenticated</strong> 필드로 관리하며, 기본값은 False 로 설정해 안전한 기본 상태를 유지한다.</p>
+<pre><code>class User:
+    def __init__(self, name: str, authenticated: bool = False):
+        self.name = name
+        self.authenticated = authenticated
+</code></pre>
+<hr>
+<h3 id="2-access_logger-데코레이터--공통-로깅-자동화">2. access_logger 데코레이터 — 공통 로깅 자동화<a hidden class="anchor" aria-hidden="true" href="#2-access_logger-데코레이터--공통-로깅-자동화">#</a></h3>
+<p>핵심 설계 원칙은 <strong>공통 보안 로직의 분리</strong>다.
+접근 성공 / 실패 여부를 함수 외부에서 일괄 처리하므로, 개별 함수마다 로깅 코드를 반복할 필요가 없다.</p>
+<ul>
+<li>사용자 이름 앞 두 글자만 남기고 나머지는 * 로 마스킹
+<ul>
+<li>ex) admin =&gt; ad***,  carol =&gt; ca***</li>
+</ul>
+</li>
+<li>접근 성공 시 =&gt; result: &ldquo;SUCCESS&rdquo; 로 JSON 기록</li>
+<li>예외 발생 시 =&gt; result: &ldquo;FAIL&rdquo; + 예외 타입 + 메시지 로 JSON 기록</li>
+</ul>
+<p>실제 데코레이터 구조 (축약):</p>
+<pre><code>def access_logger(func):
+    def wrapper(user):
+        masked = user.name[:2] + &quot;*&quot; * (len(user.name) - 2)
+        try:
+            result = func(user)
+            log_entry = {&quot;user&quot;: masked, &quot;result&quot;: &quot;SUCCESS&quot;}
+            # access.log 에 JSON 형태로 append
+        except Exception as e:
+            log_entry = {&quot;user&quot;: masked, &quot;result&quot;: &quot;FAIL&quot;, &quot;error&quot;: type(e).__name__}
+            # 실패 내역도 동일하게 기록
+    return wrapper
+</code></pre>
+<hr>
+<h3 id="3-read_secure_log--권한-기반-로그-열람">3. read_secure_log — 권한 기반 로그 열람<a hidden class="anchor" aria-hidden="true" href="#3-read_secure_log--권한-기반-로그-열람">#</a></h3>
+<p><strong>@access_logger</strong> 데코레이터가 부착된 핵심 함수.
+함수 진입 시 가장 먼저 인증 여부를 확인하며, 미인증 사용자는 <strong>PermissionError</strong> 를 발생시켜 차단한다.
+인증 통과 후에는 system.log 에서 ERROR 포함 라인만 필터링해 최근 5건을 반환한다.</p>
+<pre><code>@access_logger
+def read_secure_log(user):
+    if not user.authenticated:
+        raise PermissionError(&quot;인증되지 않은 사용자입니다.&quot;)
+    with open(&quot;system.log&quot;, &quot;r&quot;, encoding=&quot;utf-8&quot;) as f:
+        logs = f.readlines()
+    filtered = [line.strip() for line in logs if &quot;ERROR&quot; in line]
+    return filtered[-5:]
+</code></pre>
+<hr>
+<h3 id="4-json-감사-로그-형식">4. JSON 감사 로그 형식<a hidden class="anchor" aria-hidden="true" href="#4-json-감사-로그-형식">#</a></h3>
+<p>탐지 결과는 아래와 같은 구조로 <strong>access.log</strong> 에 한 줄씩 기록된다.
+JSON 형태를 유지하므로 SIEM 연동이나 추가 분석 파이프라인으로 확장하기 용이하다.</p>
+<p>성공 케이스:</p>
+<pre><code>{&quot;user&quot;: &quot;ad***&quot;, &quot;result&quot;: &quot;SUCCESS&quot;, &quot;message&quot;: &quot;로그 접근 성공&quot;}
+</code></pre>
+<p>실패 케이스:</p>
+<pre><code>{&quot;user&quot;: &quot;ca***&quot;, &quot;result&quot;: &quot;FAIL&quot;, &quot;error&quot;: &quot;PermissionError&quot;, &quot;message&quot;: &quot;인증되지 않은 사용자입니다.&quot;}
+</code></pre>
+<hr>
+<h2 id="soc-관점-연계">SOC 관점 연계<a hidden class="anchor" aria-hidden="true" href="#soc-관점-연계">#</a></h2>
+<p>이 프로젝트는 보안관제(SOC) 의 4단계 흐름을 코드 레벨로 축약한 구조다.</p>
+<ul>
+<li><strong>로그 수집 (Collection)</strong> — system.log 파일을 읽어 이벤트 수집</li>
+<li><strong>이벤트 탐지 (Detection)</strong> — 문자열 탐색과 조건문으로 ERROR 이벤트 감지</li>
+<li><strong>이벤트 기록 (Logging)</strong> — JSON 기반 access.log 에 탐지 결과 저장</li>
+<li><strong>감사 및 분석 (Audit)</strong> — 마스킹된 사용자 로그로 접근 내역 추적</li>
+</ul>
+<hr>
+<h2 id="학습-연결-포인트">학습 연결 포인트<a hidden class="anchor" aria-hidden="true" href="#학습-연결-포인트">#</a></h2>
+<ul>
+<li><strong>dict.get()</strong> =&gt; KeyError 방지 및 안전한 데이터 접근</li>
+<li><strong>if / for 문</strong> =&gt; 로그 이벤트 탐지 조건 구성</li>
+<li><strong>@decorator</strong> =&gt; 접근 감사 로직의 공통화</li>
+<li><strong>try-except</strong> =&gt; 예외 발생 시 안정적 흐름 유지</li>
+<li><strong>with open()</strong> =&gt; 파일 입출력 자원 안정성 확보</li>
+<li><strong>문자열 슬라이싱</strong> =&gt; 사용자 마스킹(ab***) 처리</li>
+</ul>
+<hr>
+<h2 id="확장-아이디어">확장 아이디어<a hidden class="anchor" aria-hidden="true" href="#확장-아이디어">#</a></h2>
+<ul>
+<li><strong>로그 누락 탐지</strong> — 파일 유무 확인 및 누락 이벤트 기록</li>
+<li><strong>데이터 무결성 강화</strong> — deepcopy() 와 .get() 기반 안전한 파서 구현</li>
+<li><strong>시각화 연계</strong> — Week 2 Streamlit 대시보드로 로그 분석 결과 시각화</li>
+</ul>
+<hr>
+<blockquote>
+<p>이 프로젝트는 Week 1 학습 내용을 모두 아우르며,
+<strong>데이터 구조화 -&gt; 조건 탐지 -&gt; 로깅 -&gt; 감사</strong> 로 이어지는
+보안 시스템 로직의 핵심 뼈대를 완성하는 입문형 프로젝트다.</p>
+</blockquote>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://hojjang98.github.io/tags/python/">Python</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C/">보안관제</a></li>
+      <li><a href="https://hojjang98.github.io/tags/soc/">SOC</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%A1%9C%EA%B7%B8%EB%B6%84%EC%84%9D/">로그분석</a></li>
+      <li><a href="https://hojjang98.github.io/tags/sk%EC%89%B4%EB%8D%94%EC%8A%A4%EB%A3%A8%ED%82%A4%EC%A6%88/">SK쉴더스루키즈</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

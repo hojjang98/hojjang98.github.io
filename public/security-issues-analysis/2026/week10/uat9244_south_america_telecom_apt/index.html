@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>UAT-9244 남미 통신 인프라 APT — TernDoor·PeerTime·BruteEntry 신규 악성코드 3종 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="중국APT, 통신인프라, TernDoor, PeerTime, BruteEntry, ORB네트워크, DLL사이드로딩">
+<meta name="description" content="Cisco Talos가 공개한 중국 연계 APT 클러스터 UAT-9244가 남미 통신 인프라를 대상으로 TernDoor·PeerTime·BruteEntry 3종의 신규 악성코드를 활용해 2024년부터 장기 침투를 수행한 캠페인을 분석한다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://hojjang98.github.io/security-issues-analysis/2026/week10/uat9244_south_america_telecom_apt/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.290573799e582c418c4bd84f2bca757d0a77fd1bf9f5c43942030e706df68ec8.css" integrity="sha256-KQVzeZ5YLEGMS9hPK8p1fQp3/Rv59cQ5QgMOcG32jsg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/security-issues-analysis/2026/week10/uat9244_south_america_telecom_apt/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://hojjang98.github.io/security-issues-analysis/2026/week10/uat9244_south_america_telecom_apt/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="UAT-9244 남미 통신 인프라 APT — TernDoor·PeerTime·BruteEntry 신규 악성코드 3종">
+  <meta property="og:description" content="Cisco Talos가 공개한 중국 연계 APT 클러스터 UAT-9244가 남미 통신 인프라를 대상으로 TernDoor·PeerTime·BruteEntry 3종의 신규 악성코드를 활용해 2024년부터 장기 침투를 수행한 캠페인을 분석한다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="security-issues-analysis">
+    <meta property="article:published_time" content="2026-03-09T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-03-09T00:00:00+00:00">
+    <meta property="article:tag" content="중국APT">
+    <meta property="article:tag" content="통신인프라">
+    <meta property="article:tag" content="TernDoor">
+    <meta property="article:tag" content="PeerTime">
+    <meta property="article:tag" content="BruteEntry">
+    <meta property="article:tag" content="ORB네트워크">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="UAT-9244 남미 통신 인프라 APT — TernDoor·PeerTime·BruteEntry 신규 악성코드 3종">
+<meta name="twitter:description" content="Cisco Talos가 공개한 중국 연계 APT 클러스터 UAT-9244가 남미 통신 인프라를 대상으로 TernDoor·PeerTime·BruteEntry 3종의 신규 악성코드를 활용해 2024년부터 장기 침투를 수행한 캠페인을 분석한다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "보안 시사 분석",
+      "item": "https://hojjang98.github.io/security-issues-analysis/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "2026",
+      "item": "https://hojjang98.github.io/security-issues-analysis/2026/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Week 10",
+      "item": "https://hojjang98.github.io/security-issues-analysis/2026/week10/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  4 ,
+      "name": "UAT-9244 남미 통신 인프라 APT — TernDoor·PeerTime·BruteEntry 신규 악성코드 3종",
+      "item": "https://hojjang98.github.io/security-issues-analysis/2026/week10/uat9244_south_america_telecom_apt/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "UAT-9244 남미 통신 인프라 APT — TernDoor·PeerTime·BruteEntry 신규 악성코드 3종",
+  "name": "UAT-9244 남미 통신 인프라 APT — TernDoor·PeerTime·BruteEntry 신규 악성코드 3종",
+  "description": "Cisco Talos가 공개한 중국 연계 APT 클러스터 UAT-9244가 남미 통신 인프라를 대상으로 TernDoor·PeerTime·BruteEntry 3종의 신규 악성코드를 활용해 2024년부터 장기 침투를 수행한 캠페인을 분석한다.",
+  "keywords": [
+    "중국APT", "통신인프라", "TernDoor", "PeerTime", "BruteEntry", "ORB네트워크", "DLL사이드로딩"
+  ],
+  "articleBody": "UAT-9244 남미 통신 인프라 APT 캠페인 — TernDoor·PeerTime·BruteEntry 신규 악성코드 3종 사건 개요 Cisco Talos는 2026년 3월 5일 기술 보고서를 통해 UAT-9244라는 신규 추적 클러스터를 공개했다. UAT-9244는 Cisco Talos가 높은 신뢰도로 중국 연계 APT로 평가하며 FamousSparrow 및 Tropic Trooper 그룹과 긴밀하게 연계된 것으로 판단되는 위협 행위자다. 이 그룹은 최소 2024년부터 남미 소재 통신 서비스 제공업체를 표적으로 삼아 Windows 및 Linux 기반 엔드포인트와 네트워크 엣지 디바이스를 집중적으로 침투해왔다.\nTalos는 UAT-9244가 이 캠페인에서 TernDoor, PeerTime, BruteEntry라는 3종의 기존에 알려지지 않은 악성코드 계열을 사용한다는 사실을 확인했다. 각 악성코드는 서로 다른 운영 목적과 감염 대상 환경에 최적화돼 있으며, 이 조합이 통신 인프라 전체 계층에 걸친 장기 침투를 가능하게 한다.\nUAT-9244와 Salt Typhoon은 통신 서비스 제공업체를 공통 표적으로 삼는다는 점에서 유사하나, Talos는 두 클러스터 간의 직접적인 연결 고리를 공식 확인하지 않았다.\n기술적 세부사항 감염 체인 구조 UAT-9244의 초기 감염 이후 악성코드 배포 체인은 DLL 사이드로딩 기법을 기반으로 한다.\n정상 실행 파일 wsprint.exe 가 실행될 때 동일 디렉토리에 위치한 악성 로더 BugSplatRc64.dll 이 함께 로드된다. 이 로더는 WSPrint.dll 파일을 암호화 키 qwiozpVngruhg123 으로 복호화한 뒤 메모리에서 최종 페이로드를 실행한다. 메모리 내 실행으로 디스크 기반 탐지를 회피하며, 최종 페이로드는 TernDoor 임플란트다. 이 방식은 정상 소프트웨어의 서명된 실행 파일을 이용해 악성 DLL을 로드함으로써 정적 탐지 우회 효과를 극대화한다.\nTernDoor (Windows 백도어) TernDoor는 이전에 공개된 CrowDoor 악성코드의 변형이다. UAT-9244는 최소 2024년 11월부터 TernDoor를 능동적으로 개발하고 사용해왔다. CrowDoor와 비교해 명령 코드 체계가 변경됐으며, 이는 탐지 회피를 위한 능동적 코드 진화를 의미한다. TernDoor는 감염 호스트에 대한 지속적 백도어 접근을 제공하며 Windows 기반 엔드포인트를 주 타깃으로 한다.\nTalos는 인증서 피벗 분석을 통해 UAT-9244가 사용하는 추가 IP 주소 18개를 확인했다.\nPeerTime (Linux 백도어) PeerTime은 Linux 기반 임플란트로 ARM, AARCH, PPC, MIPS 등 다양한 아키텍처를 지원하도록 컴파일됐다. 이는 서버, 네트워크 엣지 디바이스, 임베디드 시스템 등 통신 인프라 전반의 다양한 Linux 환경을 포괄할 수 있음을 의미한다.\nPeerTime의 기술적 특이점은 BitTorrent 프로토콜을 C2(명령·제어) 통신에 활용한다는 점이다. 정상적인 P2P 트래픽 패턴에 C2 통신을 혼합함으로써 네트워크 기반 탐지를 회피한다. PeerTime은 셸 스크립트로 배포되며, 배포 시 호스트에 Docker 존재 여부를 확인하는 절차를 포함한다.\nBruteEntry (ORB 네트워크 구축 도구) BruteEntry는 네트워크 엣지 디바이스에 주로 설치되는 브루트 포스 스캐너다. 감염된 엣지 디바이스를 ORB(Operational Relay Box)로 전환해 SSH, Postgres, Tomcat 서버를 대상으로 대규모 자격증명 무차별 대입 공격을 수행하도록 한다. ORB 네트워크는 공격 트래픽의 출처를 은폐하고 IP 기반 차단을 무력화하는 데 사용된다. Google Cloud(Mandiant)는 ORB 네트워크 방식이 사이버 공격 귀속 분석(Attribution)과 IOC 기반 방어 양쪽을 동시에 어렵게 만든다고 평가했다.\n공격 목적 및 피해 구조 Talos 보고서에 따르면 이 캠페인은 장기 지속 접근(Long-term Persistent Access) 을 주 목적으로 한다. 통신 인프라에 대한 장기 침투는 네트워크 트래픽 감청, 가입자 데이터 접근, 통신망 구조 파악, 향후 추가 작전을 위한 발판 확보 등을 가능하게 한다. 공개 피해자 수 및 실제 탈취 데이터 규모는 Talos 보고서에서 명시되지 않았다.\n초기 접근 경로(Initial Access Vector)와 악용된 취약점에 대한 정보 역시 현재 공개된 보고서에서 확인되지 않는다.\n근본 원인 분석 기술적 원인 통신 인프라의 구조적 특성이 APT 침투에 유리한 환경을 제공한다. Windows 서버, Linux 서버, 네트워크 엣지 디바이스가 혼합된 이기종 환경은 단일 보안 정책의 적용이 어렵고, 엣지 디바이스는 업데이트 주기가 느리고 보안 모니터링에서 소외되기 쉽다.\nDLL 사이드로딩과 메모리 내 실행 조합은 기존 엔드포인트 보안 솔루션의 정적 탐지를 효과적으로 우회한다. BitTorrent 프로토콜 기반 C2 통신은 트래픽 패턴 분석 기반 탐지를 어렵게 한다. ORB 방식의 인프라 활용은 IP 기반 차단의 유효 수명을 극단적으로 단축시킨다.\n관리적 원인 남미 통신 인프라의 보안 투자 수준이나 모니터링 역량에 대한 정보는 공개된 보고서에서 확인되지 않는다. 다만 2024년부터 시작된 캠페인이 2026년 3월까지 외부에 공개되지 않았다는 사실은 침해 탐지 지연이 심각했음을 시사한다. 장기 침투(Long-dwell) 환경에서는 탐지 전까지의 시간이 피해 규모를 결정하는 핵심 변수다.\n인적 원인 인적 요인에 대한 정보는 현재 공개된 보고서에서 확인되지 않는다.\n영향 평가 통신 인프라 침해의 특수성 일반 기업 데이터 침해와 달리 통신 서비스 제공업체 침해는 그 조직의 고객, 즉 수백만 명의 일반 가입자 및 법집행 기관의 합법적 도청 인터페이스에 대한 접근을 동시에 의미할 수 있다. Salt Typhoon이 2024년 AT\u0026T, Verizon 등 통신사를 통해 고위 정부 관리의 통신 데이터에 접근한 선례가 이를 구체적으로 보여준다.\nUAT-9244 캠페인의 실제 데이터 탈취 범위는 현재 공개된 정보로 확인이 불가능하다.\nORB 네트워크 방식의 파급 효과 BruteEntry로 ORB화된 엣지 디바이스는 UAT-9244의 실제 공격 인프라와 무관하게 제3의 피해자를 향한 공격 경유지가 된다. 이는 침해된 조직이 의도치 않게 다른 공격의 가담자가 되는 상황을 만든다.\n예방 및 대응 방안 즉각 조치 통신 인프라 운영 조직은 네트워크 엣지 디바이스에서 P2P 유사 트래픽 패턴이나 BitTorrent 프로토콜 통신이 탐지되는지 즉시 점검해야 한다. SSH, Postgres, Tomcat 서비스에 대한 비정상적인 로그인 시도 패턴이 있는지 로그를 확인하고, wsprint.exe · BugSplatRc64.dll · WSPrint.dll 조합이 존재하는지 엔드포인트를 점검해야 한다.\nTalos 보고서에 공개된 IOC(침해 지표) 목록을 즉시 탐지 규칙에 반영하되, ORB 방식의 빠른 인프라 교체를 고려해 IP 기반 차단보다 행동 기반 탐지에 우선순위를 둬야 한다.\n구조적 개선 DLL 사이드로딩 탐지를 위해 프로세스 생성 계층 구조와 DLL 로드 이벤트를 중심으로 행동 기반 탐지 규칙을 구성해야 한다. 엣지 디바이스는 서버와 동일 수준의 펌웨어 검증, 불변 프로비저닝(Immutable Provisioning), 지속적 무결성 모니터링 대상으로 관리해야 한다. 통신 관리 네트워크는 명시적 이그레스 통제와 이상 트래픽 탐지 체계를 갖춘 별도 세그먼트로 격리해야 한다.\n컨설팅 관점 고객사 커뮤니케이션 전략 비기술 직원 대상\n통신 인프라를 노리는 중국 연계 해킹 그룹이 새로운 악성코드 도구 세트를 들고 남미 지역을 공격하고 있다. 이 공격의 특징은 수년에 걸친 장기 침투라는 점이다. 이는 공격자가 즉각적인 이득보다 장기적인 정보 수집과 전략적 접근 유지를 목적으로 한다는 것을 의미한다.\n기술팀 대상\n이 캠페인에서 도출되는 핵심 기술 교훈은 세 가지다.\n첫째, IP 기반 IOC의 유효 수명이 ORB 네트워크 방식으로 인해 극단적으로 단축됐다. 정적 IOC 차단 중심의 방어는 이 위협 행위자에 대해 효과가 제한적이다. 행동 기반 탐지와 TTP(전술·기법·절차) 중심 헌팅으로 전환해야 한다. 둘째, 엣지 디바이스가 단순 네트워크 장비가 아닌 공격 거점(ORB)으로 전환된다는 점에서 엣지 디바이스를 보안 모니터링 사각지대에 두는 기존 관행을 재검토해야 한다. 셋째, BitTorrent 기반 C2 통신은 표준 프록시 및 방화벽 로그에서 잘 드러나지 않으므로 P2P 트래픽 분석 역량을 확보해야 한다. 경영진 대상\n통신 서비스 제공업체는 자사 인프라 보안뿐만 아니라 해당 인프라를 통해 서비스를 받는 기업과 정부 기관의 보안에도 직접적 영향을 미친다. Salt Typhoon이 통신사를 통해 미국 정부 고위 관리의 통신에 접근한 사례가 이를 명확히 보여준다. 이번 UAT-9244 캠페인은 이 구조적 리스크가 반복되고 있음을 확인한다.\n예상 질문 및 답변 Q: UAT-9244가 사용하는 BitTorrent 기반 C2 통신은 왜 탐지가 어려운가?\nA: BitTorrent 프로토콜은 정상적인 P2P 파일 공유 트래픽으로 광범위하게 사용된다. 기업 방화벽이나 IDS/IPS는 BitTorrent 트래픽을 일반적으로 전면 차단하거나 허용하는 이분법적 정책을 적용하는 경우가 많으며, 프로토콜 내부의 개별 통신 내용을 분석하는 DPI(Deep Packet Inspection)까지 적용하는 경우는 드물다. UAT-9244는 이 정상 트래픽에 C2 명령을 혼합함으로써 네트워크 레벨 탐지를 우회한다.\nQ: FamousSparrow 및 Tropic Trooper와의 연관성이 있다면 이 그룹의 역량을 어떻게 평가해야 하는가?\nA: Cisco Talos는 UAT-9244가 이 두 그룹과 도구, TTP, 피해자군(Victimology)에서 중복점을 보인다고 평가한다. FamousSparrow는 2024년 ESET이 공개적으로 보고한 바 있는 그룹으로 호텔, 정부, 엔지니어링 기업을 대상으로 한 사이버 스파이 활동 이력을 가진다. 이 연계성은 UAT-9244가 독립적 신규 행위자가 아니라 기존 중국 APT 생태계의 연장선임을 시사하며, 기존 FamousSparrow/Tropic Trooper 관련 탐지 규칙과 IOC를 참조할 가치가 있음을 의미한다.\n학습 내용 및 시사점 첫째, ORB 네트워크 방식의 확산은 IOC 기반 방어 전략의 근본적 한계를 드러낸다. UAT-9244가 감염된 엣지 디바이스를 중계 노드로 활용해 공격 인프라를 지속적으로 교체한다는 사실은, IP 주소나 도메인 기반의 차단 조치가 이 위협 행위자에게는 일시적 지연 효과에 불과하다는 것을 의미한다. 방어 전략은 IOC 차단에서 TTP 기반 행동 탐지로 중심을 이동해야 한다.\n둘째, 단일 악성코드가 아닌 운영 목적별로 분화된 3종 악성코드 조합(TernDoor·PeerTime·BruteEntry)의 사용은 이 그룹이 통신 인프라의 이기종 환경을 면밀히 연구하고 이에 최적화된 도구 세트를 설계했음을 보여준다. 이는 단순 스크립트 기반 공격이 아닌 고도로 전문화된 APT 역량의 표현이다.\n셋째, 2024년부터 시작된 캠페인이 2026년까지 외부 공개 없이 지속됐다는 사실은 통신 인프라 운영 조직이 장기 침투(Long-dwell) 위협에 대한 헌팅 역량을 갖추지 못한 경우가 많음을 시사한다. 침해 탐지가 외부 제3자(이 경우 Cisco Talos)에 의존한 구조 역시 개선이 필요한 지점이다.\n",
+  "wordCount" : "3906",
+  "inLanguage": "ko",
+  "datePublished": "2026-03-09T00:00:00Z",
+  "dateModified": "2026-03-09T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/security-issues-analysis/2026/week10/uat9244_south_america_telecom_apt/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://hojjang98.github.io/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/security-issues-analysis/">보안 시사 분석</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/security-issues-analysis/2026/">2026</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/security-issues-analysis/2026/week10/">Week 10</a></div>
+    <h1 class="post-title entry-hint-parent">
+      UAT-9244 남미 통신 인프라 APT — TernDoor·PeerTime·BruteEntry 신규 악성코드 3종
+    </h1>
+    <div class="post-meta"><span title='2026-03-09 00:00:00 +0000 UTC'>2026년 3월 9일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="uat-9244-남미-통신-인프라-apt-캠페인--terndoorpeertimebruteentry-신규-악성코드-3종">UAT-9244 남미 통신 인프라 APT 캠페인 — TernDoor·PeerTime·BruteEntry 신규 악성코드 3종<a hidden class="anchor" aria-hidden="true" href="#uat-9244-남미-통신-인프라-apt-캠페인--terndoorpeertimebruteentry-신규-악성코드-3종">#</a></h1>
+<h2 id="사건-개요">사건 개요<a hidden class="anchor" aria-hidden="true" href="#사건-개요">#</a></h2>
+<p>Cisco Talos는 2026년 3월 5일 기술 보고서를 통해 <strong>UAT-9244</strong>라는 신규 추적 클러스터를 공개했다. UAT-9244는 Cisco Talos가 높은 신뢰도로 중국 연계 APT로 평가하며 <strong>FamousSparrow</strong> 및 <strong>Tropic Trooper</strong> 그룹과 긴밀하게 연계된 것으로 판단되는 위협 행위자다. 이 그룹은 최소 2024년부터 남미 소재 통신 서비스 제공업체를 표적으로 삼아 Windows 및 Linux 기반 엔드포인트와 네트워크 엣지 디바이스를 집중적으로 침투해왔다.</p>
+<p>Talos는 UAT-9244가 이 캠페인에서 <strong>TernDoor</strong>, <strong>PeerTime</strong>, <strong>BruteEntry</strong>라는 3종의 기존에 알려지지 않은 악성코드 계열을 사용한다는 사실을 확인했다. 각 악성코드는 서로 다른 운영 목적과 감염 대상 환경에 최적화돼 있으며, 이 조합이 통신 인프라 전체 계층에 걸친 장기 침투를 가능하게 한다.</p>
+<p>UAT-9244와 Salt Typhoon은 통신 서비스 제공업체를 공통 표적으로 삼는다는 점에서 유사하나, Talos는 두 클러스터 간의 직접적인 연결 고리를 공식 확인하지 않았다.</p>
+<h2 id="기술적-세부사항">기술적 세부사항<a hidden class="anchor" aria-hidden="true" href="#기술적-세부사항">#</a></h2>
+<h3 id="감염-체인-구조">감염 체인 구조<a hidden class="anchor" aria-hidden="true" href="#감염-체인-구조">#</a></h3>
+<p>UAT-9244의 초기 감염 이후 악성코드 배포 체인은 <strong>DLL 사이드로딩</strong> 기법을 기반으로 한다.</p>
+<p>정상 실행 파일 <strong>wsprint.exe</strong> 가 실행될 때 동일 디렉토리에 위치한 악성 로더 <strong>BugSplatRc64.dll</strong> 이 함께 로드된다. 이 로더는 <strong>WSPrint.dll</strong> 파일을 암호화 키 <strong>qwiozpVngruhg123</strong> 으로 복호화한 뒤 메모리에서 최종 페이로드를 실행한다. 메모리 내 실행으로 디스크 기반 탐지를 회피하며, 최종 페이로드는 TernDoor 임플란트다. 이 방식은 정상 소프트웨어의 서명된 실행 파일을 이용해 악성 DLL을 로드함으로써 정적 탐지 우회 효과를 극대화한다.</p>
+<h3 id="terndoor-windows-백도어">TernDoor (Windows 백도어)<a hidden class="anchor" aria-hidden="true" href="#terndoor-windows-백도어">#</a></h3>
+<p>TernDoor는 이전에 공개된 <strong>CrowDoor</strong> 악성코드의 변형이다. UAT-9244는 최소 2024년 11월부터 TernDoor를 능동적으로 개발하고 사용해왔다. CrowDoor와 비교해 명령 코드 체계가 변경됐으며, 이는 탐지 회피를 위한 능동적 코드 진화를 의미한다. TernDoor는 감염 호스트에 대한 지속적 백도어 접근을 제공하며 Windows 기반 엔드포인트를 주 타깃으로 한다.</p>
+<p>Talos는 인증서 피벗 분석을 통해 UAT-9244가 사용하는 추가 IP 주소 18개를 확인했다.</p>
+<h3 id="peertime-linux-백도어">PeerTime (Linux 백도어)<a hidden class="anchor" aria-hidden="true" href="#peertime-linux-백도어">#</a></h3>
+<p>PeerTime은 Linux 기반 임플란트로 ARM, AARCH, PPC, MIPS 등 다양한 아키텍처를 지원하도록 컴파일됐다. 이는 서버, 네트워크 엣지 디바이스, 임베디드 시스템 등 통신 인프라 전반의 다양한 Linux 환경을 포괄할 수 있음을 의미한다.</p>
+<p>PeerTime의 기술적 특이점은 <strong>BitTorrent 프로토콜</strong>을 C2(명령·제어) 통신에 활용한다는 점이다. 정상적인 P2P 트래픽 패턴에 C2 통신을 혼합함으로써 네트워크 기반 탐지를 회피한다. PeerTime은 셸 스크립트로 배포되며, 배포 시 호스트에 Docker 존재 여부를 확인하는 절차를 포함한다.</p>
+<h3 id="bruteentry-orb-네트워크-구축-도구">BruteEntry (ORB 네트워크 구축 도구)<a hidden class="anchor" aria-hidden="true" href="#bruteentry-orb-네트워크-구축-도구">#</a></h3>
+<p>BruteEntry는 네트워크 엣지 디바이스에 주로 설치되는 브루트 포스 스캐너다. 감염된 엣지 디바이스를 <strong>ORB</strong>(Operational Relay Box)로 전환해 SSH, Postgres, Tomcat 서버를 대상으로 대규모 자격증명 무차별 대입 공격을 수행하도록 한다. ORB 네트워크는 공격 트래픽의 출처를 은폐하고 IP 기반 차단을 무력화하는 데 사용된다. Google Cloud(Mandiant)는 ORB 네트워크 방식이 사이버 공격 귀속 분석(Attribution)과 IOC 기반 방어 양쪽을 동시에 어렵게 만든다고 평가했다.</p>
+<h3 id="공격-목적-및-피해-구조">공격 목적 및 피해 구조<a hidden class="anchor" aria-hidden="true" href="#공격-목적-및-피해-구조">#</a></h3>
+<p>Talos 보고서에 따르면 이 캠페인은 <strong>장기 지속 접근(Long-term Persistent Access)</strong> 을 주 목적으로 한다. 통신 인프라에 대한 장기 침투는 네트워크 트래픽 감청, 가입자 데이터 접근, 통신망 구조 파악, 향후 추가 작전을 위한 발판 확보 등을 가능하게 한다. 공개 피해자 수 및 실제 탈취 데이터 규모는 Talos 보고서에서 명시되지 않았다.</p>
+<p>초기 접근 경로(Initial Access Vector)와 악용된 취약점에 대한 정보 역시 현재 공개된 보고서에서 확인되지 않는다.</p>
+<h2 id="근본-원인-분석">근본 원인 분석<a hidden class="anchor" aria-hidden="true" href="#근본-원인-분석">#</a></h2>
+<h3 id="기술적-원인">기술적 원인<a hidden class="anchor" aria-hidden="true" href="#기술적-원인">#</a></h3>
+<p>통신 인프라의 구조적 특성이 APT 침투에 유리한 환경을 제공한다. Windows 서버, Linux 서버, 네트워크 엣지 디바이스가 혼합된 이기종 환경은 단일 보안 정책의 적용이 어렵고, 엣지 디바이스는 업데이트 주기가 느리고 보안 모니터링에서 소외되기 쉽다.</p>
+<p>DLL 사이드로딩과 메모리 내 실행 조합은 기존 엔드포인트 보안 솔루션의 정적 탐지를 효과적으로 우회한다. BitTorrent 프로토콜 기반 C2 통신은 트래픽 패턴 분석 기반 탐지를 어렵게 한다. ORB 방식의 인프라 활용은 IP 기반 차단의 유효 수명을 극단적으로 단축시킨다.</p>
+<h3 id="관리적-원인">관리적 원인<a hidden class="anchor" aria-hidden="true" href="#관리적-원인">#</a></h3>
+<p>남미 통신 인프라의 보안 투자 수준이나 모니터링 역량에 대한 정보는 공개된 보고서에서 확인되지 않는다. 다만 2024년부터 시작된 캠페인이 2026년 3월까지 외부에 공개되지 않았다는 사실은 침해 탐지 지연이 심각했음을 시사한다. 장기 침투(Long-dwell) 환경에서는 탐지 전까지의 시간이 피해 규모를 결정하는 핵심 변수다.</p>
+<h3 id="인적-원인">인적 원인<a hidden class="anchor" aria-hidden="true" href="#인적-원인">#</a></h3>
+<p>인적 요인에 대한 정보는 현재 공개된 보고서에서 확인되지 않는다.</p>
+<h2 id="영향-평가">영향 평가<a hidden class="anchor" aria-hidden="true" href="#영향-평가">#</a></h2>
+<h3 id="통신-인프라-침해의-특수성">통신 인프라 침해의 특수성<a hidden class="anchor" aria-hidden="true" href="#통신-인프라-침해의-특수성">#</a></h3>
+<p>일반 기업 데이터 침해와 달리 통신 서비스 제공업체 침해는 그 조직의 고객, 즉 수백만 명의 일반 가입자 및 법집행 기관의 합법적 도청 인터페이스에 대한 접근을 동시에 의미할 수 있다. Salt Typhoon이 2024년 AT&amp;T, Verizon 등 통신사를 통해 고위 정부 관리의 통신 데이터에 접근한 선례가 이를 구체적으로 보여준다.</p>
+<p>UAT-9244 캠페인의 실제 데이터 탈취 범위는 현재 공개된 정보로 확인이 불가능하다.</p>
+<h3 id="orb-네트워크-방식의-파급-효과">ORB 네트워크 방식의 파급 효과<a hidden class="anchor" aria-hidden="true" href="#orb-네트워크-방식의-파급-효과">#</a></h3>
+<p>BruteEntry로 ORB화된 엣지 디바이스는 UAT-9244의 실제 공격 인프라와 무관하게 제3의 피해자를 향한 공격 경유지가 된다. 이는 침해된 조직이 의도치 않게 다른 공격의 가담자가 되는 상황을 만든다.</p>
+<h2 id="예방-및-대응-방안">예방 및 대응 방안<a hidden class="anchor" aria-hidden="true" href="#예방-및-대응-방안">#</a></h2>
+<h3 id="즉각-조치">즉각 조치<a hidden class="anchor" aria-hidden="true" href="#즉각-조치">#</a></h3>
+<p>통신 인프라 운영 조직은 네트워크 엣지 디바이스에서 P2P 유사 트래픽 패턴이나 BitTorrent 프로토콜 통신이 탐지되는지 즉시 점검해야 한다. SSH, Postgres, Tomcat 서비스에 대한 비정상적인 로그인 시도 패턴이 있는지 로그를 확인하고, <strong>wsprint.exe</strong> · <strong>BugSplatRc64.dll</strong> · <strong>WSPrint.dll</strong> 조합이 존재하는지 엔드포인트를 점검해야 한다.</p>
+<p>Talos 보고서에 공개된 <strong>IOC</strong>(침해 지표) 목록을 즉시 탐지 규칙에 반영하되, ORB 방식의 빠른 인프라 교체를 고려해 IP 기반 차단보다 행동 기반 탐지에 우선순위를 둬야 한다.</p>
+<h3 id="구조적-개선">구조적 개선<a hidden class="anchor" aria-hidden="true" href="#구조적-개선">#</a></h3>
+<p>DLL 사이드로딩 탐지를 위해 프로세스 생성 계층 구조와 DLL 로드 이벤트를 중심으로 행동 기반 탐지 규칙을 구성해야 한다. 엣지 디바이스는 서버와 동일 수준의 펌웨어 검증, 불변 프로비저닝(Immutable Provisioning), 지속적 무결성 모니터링 대상으로 관리해야 한다. 통신 관리 네트워크는 명시적 이그레스 통제와 이상 트래픽 탐지 체계를 갖춘 별도 세그먼트로 격리해야 한다.</p>
+<h2 id="컨설팅-관점">컨설팅 관점<a hidden class="anchor" aria-hidden="true" href="#컨설팅-관점">#</a></h2>
+<h3 id="고객사-커뮤니케이션-전략">고객사 커뮤니케이션 전략<a hidden class="anchor" aria-hidden="true" href="#고객사-커뮤니케이션-전략">#</a></h3>
+<p><strong>비기술 직원 대상</strong></p>
+<p>통신 인프라를 노리는 중국 연계 해킹 그룹이 새로운 악성코드 도구 세트를 들고 남미 지역을 공격하고 있다. 이 공격의 특징은 수년에 걸친 장기 침투라는 점이다. 이는 공격자가 즉각적인 이득보다 장기적인 정보 수집과 전략적 접근 유지를 목적으로 한다는 것을 의미한다.</p>
+<p><strong>기술팀 대상</strong></p>
+<p>이 캠페인에서 도출되는 핵심 기술 교훈은 세 가지다.</p>
+<ul>
+<li>첫째, IP 기반 IOC의 유효 수명이 ORB 네트워크 방식으로 인해 극단적으로 단축됐다. 정적 IOC 차단 중심의 방어는 이 위협 행위자에 대해 효과가 제한적이다. 행동 기반 탐지와 <strong>TTP</strong>(전술·기법·절차) 중심 헌팅으로 전환해야 한다.</li>
+<li>둘째, 엣지 디바이스가 단순 네트워크 장비가 아닌 공격 거점(ORB)으로 전환된다는 점에서 엣지 디바이스를 보안 모니터링 사각지대에 두는 기존 관행을 재검토해야 한다.</li>
+<li>셋째, BitTorrent 기반 C2 통신은 표준 프록시 및 방화벽 로그에서 잘 드러나지 않으므로 P2P 트래픽 분석 역량을 확보해야 한다.</li>
+</ul>
+<p><strong>경영진 대상</strong></p>
+<p>통신 서비스 제공업체는 자사 인프라 보안뿐만 아니라 해당 인프라를 통해 서비스를 받는 기업과 정부 기관의 보안에도 직접적 영향을 미친다. Salt Typhoon이 통신사를 통해 미국 정부 고위 관리의 통신에 접근한 사례가 이를 명확히 보여준다. 이번 UAT-9244 캠페인은 이 구조적 리스크가 반복되고 있음을 확인한다.</p>
+<h3 id="예상-질문-및-답변">예상 질문 및 답변<a hidden class="anchor" aria-hidden="true" href="#예상-질문-및-답변">#</a></h3>
+<p>Q: UAT-9244가 사용하는 BitTorrent 기반 C2 통신은 왜 탐지가 어려운가?</p>
+<p>A: BitTorrent 프로토콜은 정상적인 P2P 파일 공유 트래픽으로 광범위하게 사용된다. 기업 방화벽이나 IDS/IPS는 BitTorrent 트래픽을 일반적으로 전면 차단하거나 허용하는 이분법적 정책을 적용하는 경우가 많으며, 프로토콜 내부의 개별 통신 내용을 분석하는 <strong>DPI</strong>(Deep Packet Inspection)까지 적용하는 경우는 드물다. UAT-9244는 이 정상 트래픽에 C2 명령을 혼합함으로써 네트워크 레벨 탐지를 우회한다.</p>
+<p>Q: FamousSparrow 및 Tropic Trooper와의 연관성이 있다면 이 그룹의 역량을 어떻게 평가해야 하는가?</p>
+<p>A: Cisco Talos는 UAT-9244가 이 두 그룹과 도구, TTP, 피해자군(Victimology)에서 중복점을 보인다고 평가한다. FamousSparrow는 2024년 ESET이 공개적으로 보고한 바 있는 그룹으로 호텔, 정부, 엔지니어링 기업을 대상으로 한 사이버 스파이 활동 이력을 가진다. 이 연계성은 UAT-9244가 독립적 신규 행위자가 아니라 기존 중국 APT 생태계의 연장선임을 시사하며, 기존 FamousSparrow/Tropic Trooper 관련 탐지 규칙과 IOC를 참조할 가치가 있음을 의미한다.</p>
+<h2 id="학습-내용-및-시사점">학습 내용 및 시사점<a hidden class="anchor" aria-hidden="true" href="#학습-내용-및-시사점">#</a></h2>
+<p>첫째, ORB 네트워크 방식의 확산은 IOC 기반 방어 전략의 근본적 한계를 드러낸다. UAT-9244가 감염된 엣지 디바이스를 중계 노드로 활용해 공격 인프라를 지속적으로 교체한다는 사실은, IP 주소나 도메인 기반의 차단 조치가 이 위협 행위자에게는 일시적 지연 효과에 불과하다는 것을 의미한다. 방어 전략은 IOC 차단에서 TTP 기반 행동 탐지로 중심을 이동해야 한다.</p>
+<p>둘째, 단일 악성코드가 아닌 운영 목적별로 분화된 3종 악성코드 조합(TernDoor·PeerTime·BruteEntry)의 사용은 이 그룹이 통신 인프라의 이기종 환경을 면밀히 연구하고 이에 최적화된 도구 세트를 설계했음을 보여준다. 이는 단순 스크립트 기반 공격이 아닌 고도로 전문화된 APT 역량의 표현이다.</p>
+<p>셋째, 2024년부터 시작된 캠페인이 2026년까지 외부 공개 없이 지속됐다는 사실은 통신 인프라 운영 조직이 <strong>장기 침투(Long-dwell)</strong> 위협에 대한 헌팅 역량을 갖추지 못한 경우가 많음을 시사한다. 침해 탐지가 외부 제3자(이 경우 Cisco Talos)에 의존한 구조 역시 개선이 필요한 지점이다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://hojjang98.github.io/tags/%EC%A4%91%EA%B5%ADapt/">중국APT</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%ED%86%B5%EC%8B%A0%EC%9D%B8%ED%94%84%EB%9D%BC/">통신인프라</a></li>
+      <li><a href="https://hojjang98.github.io/tags/terndoor/">TernDoor</a></li>
+      <li><a href="https://hojjang98.github.io/tags/peertime/">PeerTime</a></li>
+      <li><a href="https://hojjang98.github.io/tags/bruteentry/">BruteEntry</a></li>
+      <li><a href="https://hojjang98.github.io/tags/orb%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/">ORB네트워크</a></li>
+      <li><a href="https://hojjang98.github.io/tags/dll%EC%82%AC%EC%9D%B4%EB%93%9C%EB%A1%9C%EB%94%A9/">DLL사이드로딩</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>HackerOne Navia BOLA API 침해 - 버그바운티 플랫폼 직원 개인정보 270만 명 노출 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="BOLA, IDOR, API보안, HackerOne, Navia, SSN노출, 서드파티위험, OWASP">
+<meta name="description" content="2025년 12월부터 2026년 1월까지 복리후생 관리 플랫폼 Navia의 BOLA 취약점으로 270만 명 이상의 개인정보가 노출된 사건을 분석한다. 피해 조직 중 하나가 버그바운티 플랫폼 HackerOne이라는 점이 서드파티 보안 관리의 핵심 교훈을 제공한다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://hojjang98.github.io/security-issues-analysis/2026/week12/hackerone_navia_bola_api_breach/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.290573799e582c418c4bd84f2bca757d0a77fd1bf9f5c43942030e706df68ec8.css" integrity="sha256-KQVzeZ5YLEGMS9hPK8p1fQp3/Rv59cQ5QgMOcG32jsg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/security-issues-analysis/2026/week12/hackerone_navia_bola_api_breach/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://hojjang98.github.io/security-issues-analysis/2026/week12/hackerone_navia_bola_api_breach/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="HackerOne Navia BOLA API 침해 - 버그바운티 플랫폼 직원 개인정보 270만 명 노출">
+  <meta property="og:description" content="2025년 12월부터 2026년 1월까지 복리후생 관리 플랫폼 Navia의 BOLA 취약점으로 270만 명 이상의 개인정보가 노출된 사건을 분석한다. 피해 조직 중 하나가 버그바운티 플랫폼 HackerOne이라는 점이 서드파티 보안 관리의 핵심 교훈을 제공한다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="security-issues-analysis">
+    <meta property="article:published_time" content="2026-03-23T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-03-23T00:00:00+00:00">
+    <meta property="article:tag" content="BOLA">
+    <meta property="article:tag" content="IDOR">
+    <meta property="article:tag" content="API보안">
+    <meta property="article:tag" content="HackerOne">
+    <meta property="article:tag" content="Navia">
+    <meta property="article:tag" content="SSN노출">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HackerOne Navia BOLA API 침해 - 버그바운티 플랫폼 직원 개인정보 270만 명 노출">
+<meta name="twitter:description" content="2025년 12월부터 2026년 1월까지 복리후생 관리 플랫폼 Navia의 BOLA 취약점으로 270만 명 이상의 개인정보가 노출된 사건을 분석한다. 피해 조직 중 하나가 버그바운티 플랫폼 HackerOne이라는 점이 서드파티 보안 관리의 핵심 교훈을 제공한다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "보안 시사 분석",
+      "item": "https://hojjang98.github.io/security-issues-analysis/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "2026",
+      "item": "https://hojjang98.github.io/security-issues-analysis/2026/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Week 12",
+      "item": "https://hojjang98.github.io/security-issues-analysis/2026/week12/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  4 ,
+      "name": "HackerOne Navia BOLA API 침해 - 버그바운티 플랫폼 직원 개인정보 270만 명 노출",
+      "item": "https://hojjang98.github.io/security-issues-analysis/2026/week12/hackerone_navia_bola_api_breach/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "HackerOne Navia BOLA API 침해 - 버그바운티 플랫폼 직원 개인정보 270만 명 노출",
+  "name": "HackerOne Navia BOLA API 침해 - 버그바운티 플랫폼 직원 개인정보 270만 명 노출",
+  "description": "2025년 12월부터 2026년 1월까지 복리후생 관리 플랫폼 Navia의 BOLA 취약점으로 270만 명 이상의 개인정보가 노출된 사건을 분석한다. 피해 조직 중 하나가 버그바운티 플랫폼 HackerOne이라는 점이 서드파티 보안 관리의 핵심 교훈을 제공한다.",
+  "keywords": [
+    "BOLA", "IDOR", "API보안", "HackerOne", "Navia", "SSN노출", "서드파티위험", "OWASP"
+  ],
+  "articleBody": "HackerOne / Navia BOLA 취약점 침해 [ 인시던트 개요 ]\n- 침해 발생 기간 - 2025년 12월 22일 - 2026년 1월 15일 - 탐지 일자 - 2026년 1월 23일 ( Navia 내부 탐지 ) - 공개 일자 - 2026년 3월 ( HackerOne, Maine AG 신고 기준 3월 23일 ) - 취약점 유형 - BOLA ( Broken Object Level Authorization, OWASP API Security Top 10 1위 ) - 침해 대상 - Navia Benefit Solutions ( 미국 워싱턴 주, 1989년 설립, 기업 복리후생 관리 서비스 제공 ) - 총 피해 규모 - 2,697,540명 ( Navia 전체 고객 기준 ) - HackerOne 피해 - 287명 직원 - 공격자 귀속 - 미확인 ( unknown actor ) - 현재 상태 - 조사 진행 중, Navia는 데이터 오용 증거 없음을 주장 [ 기술적 세부 사항 ]\n[ BOLA - Broken Object Level Authorization 취약점의 정의 및 위험성 ]\nBOLA는 OWASP API Security Top 10에서 지속적으로 1위를 차지하는 API 보안 취약점이다. 이 취약점의 핵심은, API 엔드포인트가 요청하는 사용자가 특정 객체 ( 데이터 레코드 ) 에 접근할 권한이 있는지를 요청마다 검증하지 않는다는 점이다.\n전형적인 공격 시나리오는 다음과 같다. 인증된 사용자 A가 자신의 데이터를 조회하는 API 요청을 보낼 때, 요청 파라미터에 포함된 객체 식별자 ( 예: user_id=1001 ) 를 임의의 다른 값 ( 예: user_id=1002 ) 으로 변경한다. 서버가 이 변경된 식별자에 대한 권한을 검증하지 않고 데이터를 반환하면 BOLA 취약점이 성립한다. 공격자는 정상적으로 인증된 계정 하나만 있으면 시스템 내 모든 다른 사용자의 데이터에 순차적으로 접근할 수 있다.\nNavia 사건에서 공격자는 이 방식을 활용하여 Navia의 API를 통해 자신에게 허가되지 않은 다른 기업 직원들의 데이터에 접근하였다. 접근 방식은 읽기 전용 ( read-only ) 이었으며, 데이터 변조나 삭제, 랜섬웨어 배포는 발생하지 않았다.\n[ 침해 진행 과정 ]\n공격자는 2025년 12월 22일부터 2026년 1월 15일까지 약 24일간 Navia의 API를 통해 복리후생 관리 시스템 내 데이터에 접근하였다. Navia가 이상 징후를 탐지한 것은 2026년 1월 23일로, 공격자가 시스템에서 이미 이탈한 후였다. Navia는 이후 내부 포렌식 조사를 수행하고 법 집행 기관에 협력하였다.\nNavia는 피해 기업들에 대한 통보 서한을 2026년 2월 20일에 발송하였다. 그러나 HackerOne은 이 서한을 3월에야 수령하였으며, 이 약 1개월의 지연에 대한 충분한 설명을 아직 받지 못하였다고 공식 발표하였다. HackerOne은 2026년 3월 13일 Navia와 직접 미팅을 통해 피해 데이터 범위를 확인하였고, 3월 17일부터 피해 직원들에 대한 개별 통보를 시작하였다.\n[ 노출된 데이터 항목 ]\n피해 직원 및 피부양자의 데이터\n- 사회보장번호 ( SSN ) - 전체 이름 - 주소, 전화번호, 이메일 주소, 생년월일 - 의료 플랜 참여 여부, 비의료 플랜 참여 여부 - 플랜 가입일, 유효 시작일, 종료일 금융 및 의료 청구 세부 정보는 노출되지 않았다. 그러나 노출된 데이터 조합, 특히 SSN과 이름, 생년월일의 조합은 신원 도용 및 정교한 피싱 공격에 충분히 활용될 수 있다.\n[ 근본 원인 분석 ]\n[ 기술적 요인 ]\nNavia의 API는 객체 수준의 접근 권한을 요청마다 서버 측에서 검증하지 않았다. 이는 API 설계 단계에서의 근본적 결함으로, 클라이언트 측 검증이나 UI 기반 접근 제한만으로는 이러한 취약점을 방어할 수 없다. 서버 측의 모든 API 엔드포인트에서 요청된 객체에 대한 사용자 권한을 명시적으로 검증해야 한다.\n또한 BOLA 공격은 각 요청이 개별적으로는 정상 트래픽과 구분되지 않아 탐지가 어렵다. 인증된 사용자가 정상적인 API를 사용하는 방식과 동일하기 때문이다. 비정상적인 속도나 패턴의 객체 식별자 열거 탐지 규칙이 없었던 것으로 추정된다.\n[ 관리적 요인 ]\nAPI 보안 테스트 ( BOLA 포함 ) 가 정기적인 보안 평가 범위에 포함되지 않았거나, 포함되었더라도 이 취약점을 식별하지 못한 것으로 보인다. BOLA는 전통적인 침투 테스트에서 자동화 스캐너로 탐지하기 어렵고, API 로직에 대한 수동 분석이 필요한 취약점이다.\n피해 통보 절차에서도 관리적 문제가 확인되었다. 1월 23일 탐지, 2월 20일 피해 기업 통보 발송, 3월 수령의 진행 과정에서 법적으로 요구되는 통보 기한 내 이행이 되었는지, 그리고 서한이 실제로 수령되었는지에 대한 확인 절차가 부재하였다.\n[ 인적 요인 ]\n복리후생 관리 시스템과 같이 대규모 개인정보를 처리하는 서드파티 SaaS 서비스에 대한 보안 요구 사항 검토가 계약 단계에서 충분히 이루어지지 않는 경향이 있다. 이는 비기술 부서 ( HR, 총무 ) 가 보안팀의 검토 없이 서비스를 계약하는 경우에 자주 발생한다.\n[ 피해 영향 평가 ]\nNavia 단독으로는 2,697,540명의 피해자가 발생하였으며, HackerOne 외에도 다수의 기업 고객사가 영향을 받았다. HackerOne의 경우 287명 직원의 SSN, 이름, 주소, 생년월일, 이메일, 복리후생 정보가 노출되었다.\n이번 사건의 아이러니한 측면은 피해 조직이 HackerOne이라는 점이다. HackerOne은 전 세계 기업들의 보안 취약점을 발견하고 보고하는 버그바운티 플랫폼이다. 버그바운티 플랫폼 자체가 서드파티 벤더의 API 보안 결함으로 직원 데이터를 유출하는 상황은, 직접적인 보안 역량과 공급망 보안 관리 능력이 별개의 문제임을 보여준다.\n노출된 데이터가 현재까지 공개적으로 남용된 증거는 없으나, 고품질 개인정보 ( SSN 포함 ) 는 즉각적인 활용보다는 장기적으로 저장되어 추후 신원 도용이나 피싱 공격에 활용되는 경우가 많다.\n[ 예방 및 대응 조치 ]\n[ 즉각적 조치 ]\n- 피해 직원들에게 신용 모니터링 서비스 즉시 제공 - 3개 주요 신용 기관 ( Equifax, Experian, TransUnion ) 에 신용 동결 ( credit freeze ) 또는 사기 경보 ( fraud alert ) 설정 권고 - SSN 노출 직원들은 IRS Identity Protection PIN 신청 고려 [ 단기 조치 ]\n- HR 및 복리후생 서비스에 활용되는 서드파티 벤더들의 API 보안 수준 평가 - 계약 단계에서 SOC 2 Type II 보고서, 정기 침투 테스트 결과, API 보안 평가 결과 제출을 요구 사항에 포함 [ 장기 조치 ]\n- 자체 서비스의 모든 API 엔드포인트에 대한 BOLA 취약점 점검 수행. 자동화 스캐너만으로는 BOLA를 완전히 탐지하기 어려우므로 API 로직에 대한 수동 보안 검토를 보안 평가 방법론에 포함 - API 게이트웨이에서 특정 객체 식별자에 대한 비정상적인 접근 빈도를 탐지하는 이상 탐지 규칙 설정 [ 컨설팅 커뮤니케이션 전략 ]\n[ 비기술 직원 대상 ]\n이번 사건은 우리 회사의 보안이 아닌 HR 서비스를 제공하는 외부 업체의 보안 결함으로 직원들의 개인정보가 유출된 사례다. 사회보장번호가 노출된 경우 신용 동결 서비스를 즉시 신청하여 자신의 신용 정보가 타인에 의해 사용되지 않도록 보호해야 한다.\n[ 기술팀 대상 ]\nBOLA는 OWASP API Security Top 10 1위 취약점임에도 불구하고, 실제 보안 평가에서 가장 자주 누락되는 취약점 유형 중 하나다. 이유는 자동화 스캐너가 탐지하기 어렵고, API의 비즈니스 로직을 이해한 상태에서의 수동 테스트가 필요하기 때문이다. 모든 API 엔드포인트에서 요청된 객체 ID에 대한 사용자 권한을 서버 측에서 명시적으로 검증하는 코드가 존재하는지 점검해야 한다. 특히 파라미터 변조 ( IDOR 테스트 ) 를 모든 API 보안 테스트 체크리스트에 반드시 포함해야 한다.\n[ 경영진 대상 ]\n이번 사건은 HR 소프트웨어, 복리후생 관리 플랫폼, 급여 서비스 등 비기술 부서에서 독자적으로 계약하는 서드파티 서비스가 중요한 보안 취약 지점이 될 수 있음을 보여준다. 이러한 서비스들은 대규모 직원 개인정보를 처리하지만, 계약 과정에서 보안팀의 검토가 이루어지지 않는 경우가 많다. 모든 서드파티 계약에 보안팀의 검토를 의무화하는 정책이 필요하다.\n[ 법무/컴플라이언스 대상 ]\nSSN 등 민감 개인정보가 포함된 침해 사건에서 통보 지연은 법적 리스크를 발생시킨다. Navia의 통보 서한이 2월 20일에 발송되었으나 HackerOne이 3월에야 수령한 이 간격은, 계약 상 침해 통보 기한과 전달 확인 의무를 명확히 규정해야 함을 보여준다. 서드파티 계약에 침해 통보의 기한 ( 예: 72시간 이내 ) 과 수령 확인 방법을 구체적으로 명시해야 한다.\n[ 예상 Q\u0026A ]\nQ. BOLA 취약점은 어떻게 방어하나?\nA. 방어는 서버 측 코드 레벨에서 이루어져야 한다. 모든 API 요청에서 요청된 객체의 소유자가 현재 인증된 사용자와 일치하는지를 데이터베이스 수준에서 검증하는 쿼리 패턴을 사용해야 한다. 예를 들어, 레코드를 단순히 ID만으로 조회하는 대신 ID와 소유자 ID를 함께 조건으로 거는 방식으로 권한 검증을 쿼리에 내장해야 한다. 또한 API 게이트웨이에서 단일 사용자가 짧은 시간 내에 다수의 서로 다른 객체 ID를 조회하는 패턴을 이상 탐지 규칙으로 설정해야 한다.\nQ. 버그바운티 플랫폼인 HackerOne도 이런 공격에 당하나?\nA. HackerOne의 자체 플랫폼이 침해된 것이 아니라, HR 서비스를 제공하는 서드파티 벤더 ( Navia ) 가 침해된 것이다. 이는 자체 보안 역량이 높더라도, 서드파티 벤더의 보안 수준이 취약하면 동일한 피해를 입을 수 있음을 보여준다. 공급망 보안은 자체 보안 역량과는 별개의 관리 영역이다.\nQ. 데이터가 현재 남용되고 있는지 어떻게 확인하나?\nA. 신용 기관 모니터링 서비스를 통해 자신의 SSN으로 개설된 계좌나 신용 조회를 실시간으로 알림 받을 수 있다. 또한 IRS에 자신의 세금 신고 내역을 주기적으로 확인하여 자신의 SSN으로 허위 세금 환급 신청이 이루어졌는지 점검해야 한다. 현재까지 공개적인 데이터 남용 증거가 없더라도, 탈취된 고품질 개인정보는 장기간 보관되었다가 활용되는 경우가 많으므로 지속적인 모니터링이 필요하다.\n[ 핵심 학습 포인트 ]\n- BOLA 취약점의 특성 - BOLA는 공격자가 특별한 기술 없이도, 합법적으로 인증된 계정 하나만으로 시스템 내 모든 다른 사용자 데이터에 접근할 수 있게 한다. 자동화된 공격이 아닌 수동 파라미터 변조로도 충분히 악용 가능하므로, 정교한 공격 도구가 필요하지 않다. - 보안 사고 발생 시 피해자 통보의 적시성이 법적, 신뢰적 측면에서 모두 중요하다. 침해를 탐지한 후 피해 기업에 통보하는 데 약 4주가 소요되었고, 이 서한이 실제로 수령되기까지 추가 시간이 걸렸다. 서드파티 계약에 명확한 통보 기한과 전달 확인 메커니즘을 명시하는 것이 필수적이다. - HackerOne이라는 보안 전문 조직도 서드파티 벤더 관리 실패로 직원 개인정보를 노출시킨 사례는, 직접적인 보안 역량과 공급망 보안 관리 능력이 별개임을 명확히 보여준다. ",
+  "wordCount" : "3841",
+  "inLanguage": "ko",
+  "datePublished": "2026-03-23T00:00:00Z",
+  "dateModified": "2026-03-23T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/security-issues-analysis/2026/week12/hackerone_navia_bola_api_breach/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://hojjang98.github.io/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/security-issues-analysis/">보안 시사 분석</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/security-issues-analysis/2026/">2026</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/security-issues-analysis/2026/week12/">Week 12</a></div>
+    <h1 class="post-title entry-hint-parent">
+      HackerOne Navia BOLA API 침해 - 버그바운티 플랫폼 직원 개인정보 270만 명 노출
+    </h1>
+    <div class="post-meta"><span title='2026-03-23 00:00:00 +0000 UTC'>2026년 3월 23일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="hackerone--navia-bola-취약점-침해">HackerOne / Navia BOLA 취약점 침해<a hidden class="anchor" aria-hidden="true" href="#hackerone--navia-bola-취약점-침해">#</a></h1>
+<p>[ 인시던트 개요 ]</p>
+<pre><code>- 침해 발생 기간  -  2025년 12월 22일  -  2026년 1월 15일
+- 탐지 일자  -  2026년 1월 23일  ( Navia 내부 탐지 )
+- 공개 일자  -  2026년 3월  ( HackerOne, Maine AG 신고 기준 3월 23일 )
+- 취약점 유형  -  BOLA  ( Broken Object Level Authorization, OWASP API Security Top 10 1위 )
+- 침해 대상  -  Navia Benefit Solutions  ( 미국 워싱턴 주, 1989년 설립, 기업 복리후생 관리 서비스 제공 )
+- 총 피해 규모  -  2,697,540명  ( Navia 전체 고객 기준 )
+- HackerOne 피해  -  287명 직원
+- 공격자 귀속  -  미확인  ( unknown actor )
+- 현재 상태  -  조사 진행 중, Navia는 데이터 오용 증거 없음을 주장
+</code></pre>
+<p>[ 기술적 세부 사항 ]</p>
+<p>[ BOLA - Broken Object Level Authorization 취약점의 정의 및 위험성 ]</p>
+<p>BOLA는 OWASP API Security Top 10에서 지속적으로 1위를 차지하는 API 보안 취약점이다. 이 취약점의 핵심은, API 엔드포인트가 요청하는 사용자가 특정 객체  ( 데이터 레코드 )  에 접근할 권한이 있는지를 요청마다 검증하지 않는다는 점이다.</p>
+<p>전형적인 공격 시나리오는 다음과 같다. 인증된 사용자 A가 자신의 데이터를 조회하는 API 요청을 보낼 때, 요청 파라미터에 포함된 객체 식별자  ( 예: user_id=1001 )  를 임의의 다른 값  ( 예: user_id=1002 )  으로 변경한다. 서버가 이 변경된 식별자에 대한 권한을 검증하지 않고 데이터를 반환하면 BOLA 취약점이 성립한다. 공격자는 정상적으로 인증된 계정 하나만 있으면 시스템 내 모든 다른 사용자의 데이터에 순차적으로 접근할 수 있다.</p>
+<p>Navia 사건에서 공격자는 이 방식을 활용하여 Navia의 API를 통해 자신에게 허가되지 않은 다른 기업 직원들의 데이터에 접근하였다. 접근 방식은 읽기 전용  ( read-only )  이었으며, 데이터 변조나 삭제, 랜섬웨어 배포는 발생하지 않았다.</p>
+<p>[ 침해 진행 과정 ]</p>
+<p>공격자는 2025년 12월 22일부터 2026년 1월 15일까지 약 24일간 Navia의 API를 통해 복리후생 관리 시스템 내 데이터에 접근하였다. Navia가 이상 징후를 탐지한 것은 2026년 1월 23일로, 공격자가 시스템에서 이미 이탈한 후였다. Navia는 이후 내부 포렌식 조사를 수행하고 법 집행 기관에 협력하였다.</p>
+<p>Navia는 피해 기업들에 대한 통보 서한을 2026년 2월 20일에 발송하였다. 그러나 HackerOne은 이 서한을 3월에야 수령하였으며, 이 약 1개월의 지연에 대한 충분한 설명을 아직 받지 못하였다고 공식 발표하였다. HackerOne은 2026년 3월 13일 Navia와 직접 미팅을 통해 피해 데이터 범위를 확인하였고, 3월 17일부터 피해 직원들에 대한 개별 통보를 시작하였다.</p>
+<p>[ 노출된 데이터 항목 ]</p>
+<p>피해 직원 및 피부양자의 데이터</p>
+<pre><code>- 사회보장번호  ( SSN )
+- 전체 이름
+- 주소, 전화번호, 이메일 주소, 생년월일
+- 의료 플랜 참여 여부, 비의료 플랜 참여 여부
+- 플랜 가입일, 유효 시작일, 종료일
+</code></pre>
+<p>금융 및 의료 청구 세부 정보는 노출되지 않았다. 그러나 노출된 데이터 조합, 특히 SSN과 이름, 생년월일의 조합은 신원 도용 및 정교한 피싱 공격에 충분히 활용될 수 있다.</p>
+<p>[ 근본 원인 분석 ]</p>
+<p>[ 기술적 요인 ]</p>
+<p>Navia의 API는 객체 수준의 접근 권한을 요청마다 서버 측에서 검증하지 않았다. 이는 API 설계 단계에서의 근본적 결함으로, 클라이언트 측 검증이나 UI 기반 접근 제한만으로는 이러한 취약점을 방어할 수 없다. 서버 측의 모든 API 엔드포인트에서 요청된 객체에 대한 사용자 권한을 명시적으로 검증해야 한다.</p>
+<p>또한 BOLA 공격은 각 요청이 개별적으로는 정상 트래픽과 구분되지 않아 탐지가 어렵다. 인증된 사용자가 정상적인 API를 사용하는 방식과 동일하기 때문이다. 비정상적인 속도나 패턴의 객체 식별자 열거 탐지 규칙이 없었던 것으로 추정된다.</p>
+<p>[ 관리적 요인 ]</p>
+<p>API 보안 테스트  ( BOLA 포함 )  가 정기적인 보안 평가 범위에 포함되지 않았거나, 포함되었더라도 이 취약점을 식별하지 못한 것으로 보인다. BOLA는 전통적인 침투 테스트에서 자동화 스캐너로 탐지하기 어렵고, API 로직에 대한 수동 분석이 필요한 취약점이다.</p>
+<p>피해 통보 절차에서도 관리적 문제가 확인되었다. 1월 23일 탐지, 2월 20일 피해 기업 통보 발송, 3월 수령의 진행 과정에서 법적으로 요구되는 통보 기한 내 이행이 되었는지, 그리고 서한이 실제로 수령되었는지에 대한 확인 절차가 부재하였다.</p>
+<p>[ 인적 요인 ]</p>
+<p>복리후생 관리 시스템과 같이 대규모 개인정보를 처리하는 서드파티 SaaS 서비스에 대한 보안 요구 사항 검토가 계약 단계에서 충분히 이루어지지 않는 경향이 있다. 이는 비기술 부서  ( HR, 총무 )  가 보안팀의 검토 없이 서비스를 계약하는 경우에 자주 발생한다.</p>
+<p>[ 피해 영향 평가 ]</p>
+<p>Navia 단독으로는 2,697,540명의 피해자가 발생하였으며, HackerOne 외에도 다수의 기업 고객사가 영향을 받았다. HackerOne의 경우 287명 직원의 SSN, 이름, 주소, 생년월일, 이메일, 복리후생 정보가 노출되었다.</p>
+<p>이번 사건의 아이러니한 측면은 피해 조직이 HackerOne이라는 점이다. HackerOne은 전 세계 기업들의 보안 취약점을 발견하고 보고하는 버그바운티 플랫폼이다. 버그바운티 플랫폼 자체가 서드파티 벤더의 API 보안 결함으로 직원 데이터를 유출하는 상황은, 직접적인 보안 역량과 공급망 보안 관리 능력이 별개의 문제임을 보여준다.</p>
+<p>노출된 데이터가 현재까지 공개적으로 남용된 증거는 없으나, 고품질 개인정보  ( SSN 포함 )  는 즉각적인 활용보다는 장기적으로 저장되어 추후 신원 도용이나 피싱 공격에 활용되는 경우가 많다.</p>
+<p>[ 예방 및 대응 조치 ]</p>
+<p>[ 즉각적 조치 ]</p>
+<pre><code>- 피해 직원들에게 신용 모니터링 서비스 즉시 제공
+- 3개 주요 신용 기관  ( Equifax, Experian, TransUnion )  에 신용 동결  ( credit freeze )  또는 사기 경보  ( fraud alert )  설정 권고
+- SSN 노출 직원들은 IRS Identity Protection PIN 신청 고려
+</code></pre>
+<p>[ 단기 조치 ]</p>
+<pre><code>- HR 및 복리후생 서비스에 활용되는 서드파티 벤더들의 API 보안 수준 평가
+- 계약 단계에서 SOC 2 Type II 보고서, 정기 침투 테스트 결과, API 보안 평가 결과 제출을 요구 사항에 포함
+</code></pre>
+<p>[ 장기 조치 ]</p>
+<pre><code>- 자체 서비스의 모든 API 엔드포인트에 대한 BOLA 취약점 점검 수행. 자동화 스캐너만으로는 BOLA를 완전히 탐지하기 어려우므로 API 로직에 대한 수동 보안 검토를 보안 평가 방법론에 포함
+- API 게이트웨이에서 특정 객체 식별자에 대한 비정상적인 접근 빈도를 탐지하는 이상 탐지 규칙 설정
+</code></pre>
+<p>[ 컨설팅 커뮤니케이션 전략 ]</p>
+<p>[ 비기술 직원 대상 ]</p>
+<p>이번 사건은 우리 회사의 보안이 아닌 HR 서비스를 제공하는 외부 업체의 보안 결함으로 직원들의 개인정보가 유출된 사례다. 사회보장번호가 노출된 경우 신용 동결 서비스를 즉시 신청하여 자신의 신용 정보가 타인에 의해 사용되지 않도록 보호해야 한다.</p>
+<p>[ 기술팀 대상 ]</p>
+<p>BOLA는 OWASP API Security Top 10 1위 취약점임에도 불구하고, 실제 보안 평가에서 가장 자주 누락되는 취약점 유형 중 하나다. 이유는 자동화 스캐너가 탐지하기 어렵고, API의 비즈니스 로직을 이해한 상태에서의 수동 테스트가 필요하기 때문이다. 모든 API 엔드포인트에서 요청된 객체 ID에 대한 사용자 권한을 서버 측에서 명시적으로 검증하는 코드가 존재하는지 점검해야 한다. 특히 파라미터 변조  ( IDOR 테스트 )  를 모든 API 보안 테스트 체크리스트에 반드시 포함해야 한다.</p>
+<p>[ 경영진 대상 ]</p>
+<p>이번 사건은 HR 소프트웨어, 복리후생 관리 플랫폼, 급여 서비스 등 비기술 부서에서 독자적으로 계약하는 서드파티 서비스가 중요한 보안 취약 지점이 될 수 있음을 보여준다. 이러한 서비스들은 대규모 직원 개인정보를 처리하지만, 계약 과정에서 보안팀의 검토가 이루어지지 않는 경우가 많다. 모든 서드파티 계약에 보안팀의 검토를 의무화하는 정책이 필요하다.</p>
+<p>[ 법무/컴플라이언스 대상 ]</p>
+<p>SSN 등 민감 개인정보가 포함된 침해 사건에서 통보 지연은 법적 리스크를 발생시킨다. Navia의 통보 서한이 2월 20일에 발송되었으나 HackerOne이 3월에야 수령한 이 간격은, 계약 상 침해 통보 기한과 전달 확인 의무를 명확히 규정해야 함을 보여준다. 서드파티 계약에 침해 통보의 기한  ( 예: 72시간 이내 )  과 수령 확인 방법을 구체적으로 명시해야 한다.</p>
+<p>[ 예상 Q&amp;A ]</p>
+<p>Q. BOLA 취약점은 어떻게 방어하나?</p>
+<p>A. 방어는 서버 측 코드 레벨에서 이루어져야 한다. 모든 API 요청에서 요청된 객체의 소유자가 현재 인증된 사용자와 일치하는지를 데이터베이스 수준에서 검증하는 쿼리 패턴을 사용해야 한다. 예를 들어, 레코드를 단순히 ID만으로 조회하는 대신 ID와 소유자 ID를 함께 조건으로 거는 방식으로 권한 검증을 쿼리에 내장해야 한다. 또한 API 게이트웨이에서 단일 사용자가 짧은 시간 내에 다수의 서로 다른 객체 ID를 조회하는 패턴을 이상 탐지 규칙으로 설정해야 한다.</p>
+<p>Q. 버그바운티 플랫폼인 HackerOne도 이런 공격에 당하나?</p>
+<p>A. HackerOne의 자체 플랫폼이 침해된 것이 아니라, HR 서비스를 제공하는 서드파티 벤더  ( Navia )  가 침해된 것이다. 이는 자체 보안 역량이 높더라도, 서드파티 벤더의 보안 수준이 취약하면 동일한 피해를 입을 수 있음을 보여준다. 공급망 보안은 자체 보안 역량과는 별개의 관리 영역이다.</p>
+<p>Q. 데이터가 현재 남용되고 있는지 어떻게 확인하나?</p>
+<p>A. 신용 기관 모니터링 서비스를 통해 자신의 SSN으로 개설된 계좌나 신용 조회를 실시간으로 알림 받을 수 있다. 또한 IRS에 자신의 세금 신고 내역을 주기적으로 확인하여 자신의 SSN으로 허위 세금 환급 신청이 이루어졌는지 점검해야 한다. 현재까지 공개적인 데이터 남용 증거가 없더라도, 탈취된 고품질 개인정보는 장기간 보관되었다가 활용되는 경우가 많으므로 지속적인 모니터링이 필요하다.</p>
+<p>[ 핵심 학습 포인트 ]</p>
+<pre><code>- BOLA 취약점의 특성  -  BOLA는 공격자가 특별한 기술 없이도, 합법적으로 인증된 계정 하나만으로 시스템 내 모든 다른 사용자 데이터에 접근할 수 있게 한다. 자동화된 공격이 아닌 수동 파라미터 변조로도 충분히 악용 가능하므로, 정교한 공격 도구가 필요하지 않다.
+- 보안 사고 발생 시 피해자 통보의 적시성이 법적, 신뢰적 측면에서 모두 중요하다. 침해를 탐지한 후 피해 기업에 통보하는 데 약 4주가 소요되었고, 이 서한이 실제로 수령되기까지 추가 시간이 걸렸다. 서드파티 계약에 명확한 통보 기한과 전달 확인 메커니즘을 명시하는 것이 필수적이다.
+- HackerOne이라는 보안 전문 조직도 서드파티 벤더 관리 실패로 직원 개인정보를 노출시킨 사례는, 직접적인 보안 역량과 공급망 보안 관리 능력이 별개임을 명확히 보여준다.
+</code></pre>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://hojjang98.github.io/tags/bola/">BOLA</a></li>
+      <li><a href="https://hojjang98.github.io/tags/idor/">IDOR</a></li>
+      <li><a href="https://hojjang98.github.io/tags/api%EB%B3%B4%EC%95%88/">API보안</a></li>
+      <li><a href="https://hojjang98.github.io/tags/hackerone/">HackerOne</a></li>
+      <li><a href="https://hojjang98.github.io/tags/navia/">Navia</a></li>
+      <li><a href="https://hojjang98.github.io/tags/ssn%EB%85%B8%EC%B6%9C/">SSN노출</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%84%9C%EB%93%9C%ED%8C%8C%ED%8B%B0%EC%9C%84%ED%97%98/">서드파티위험</a></li>
+      <li><a href="https://hojjang98.github.io/tags/owasp/">OWASP</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

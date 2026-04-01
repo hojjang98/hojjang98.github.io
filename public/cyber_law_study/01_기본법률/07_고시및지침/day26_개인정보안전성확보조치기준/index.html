@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Day 26: 개인정보의 안전성 확보조치 기준 (고시) | HJ&#39;s Security Note</title>
+<meta name="keywords" content="고시, 안전성확보조치, 암호화, 접근통제, 접속기록, 개인정보보호법">
+<meta name="description" content="개인정보보호위원회 고시인 안전성 확보조치 기준의 10개 조항을 학습합니다. 암호화, 접근 권한 관리, 접속기록 보관 등 실무 적용 기준을 정리합니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/07_%EA%B3%A0%EC%8B%9C%EB%B0%8F%EC%A7%80%EC%B9%A8/day26_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%95%88%EC%A0%84%EC%84%B1%ED%99%95%EB%B3%B4%EC%A1%B0%EC%B9%98%EA%B8%B0%EC%A4%80/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.290573799e582c418c4bd84f2bca757d0a77fd1bf9f5c43942030e706df68ec8.css" integrity="sha256-KQVzeZ5YLEGMS9hPK8p1fQp3/Rv59cQ5QgMOcG32jsg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/07_%EA%B3%A0%EC%8B%9C%EB%B0%8F%EC%A7%80%EC%B9%A8/day26_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%95%88%EC%A0%84%EC%84%B1%ED%99%95%EB%B3%B4%EC%A1%B0%EC%B9%98%EA%B8%B0%EC%A4%80/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/07_%EA%B3%A0%EC%8B%9C%EB%B0%8F%EC%A7%80%EC%B9%A8/day26_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%95%88%EC%A0%84%EC%84%B1%ED%99%95%EB%B3%B4%EC%A1%B0%EC%B9%98%EA%B8%B0%EC%A4%80/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="Day 26: 개인정보의 안전성 확보조치 기준 (고시)">
+  <meta property="og:description" content="개인정보보호위원회 고시인 안전성 확보조치 기준의 10개 조항을 학습합니다. 암호화, 접근 권한 관리, 접속기록 보관 등 실무 적용 기준을 정리합니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="cyber_law_study">
+    <meta property="article:published_time" content="2026-03-10T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-03-10T00:00:00+00:00">
+    <meta property="article:tag" content="고시">
+    <meta property="article:tag" content="안전성확보조치">
+    <meta property="article:tag" content="암호화">
+    <meta property="article:tag" content="접근통제">
+    <meta property="article:tag" content="접속기록">
+    <meta property="article:tag" content="개인정보보호법">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Day 26: 개인정보의 안전성 확보조치 기준 (고시)">
+<meta name="twitter:description" content="개인정보보호위원회 고시인 안전성 확보조치 기준의 10개 조항을 학습합니다. 암호화, 접근 권한 관리, 접속기록 보관 등 실무 적용 기준을 정리합니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "보안 컨설팅 공부",
+      "item": "https://hojjang98.github.io/cyber_law_study/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  4 ,
+      "name": "Day 26: 개인정보의 안전성 확보조치 기준 (고시)",
+      "item": "https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/07_%EA%B3%A0%EC%8B%9C%EB%B0%8F%EC%A7%80%EC%B9%A8/day26_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%95%88%EC%A0%84%EC%84%B1%ED%99%95%EB%B3%B4%EC%A1%B0%EC%B9%98%EA%B8%B0%EC%A4%80/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Day 26: 개인정보의 안전성 확보조치 기준 (고시)",
+  "name": "Day 26: 개인정보의 안전성 확보조치 기준 (고시)",
+  "description": "개인정보보호위원회 고시인 안전성 확보조치 기준의 10개 조항을 학습합니다. 암호화, 접근 권한 관리, 접속기록 보관 등 실무 적용 기준을 정리합니다.",
+  "keywords": [
+    "고시", "안전성확보조치", "암호화", "접근통제", "접속기록", "개인정보보호법"
+  ],
+  "articleBody": "Day 26: 개인정보의 안전성 확보조치 기준 (고시) 1. 안전성 확보조치 기준의 개요 1.1 안전성 확보조치 기준이란? 정식 명칭 : 개인정보의 안전성 확보조치 기준\n성격 : 개인정보보호위원회 고시 (告示)\n법적 근거 : 개인정보보호법 제29조 (안전조치의무)\n최신 개정 : 2023년 9월 15일 시행\n1.2 법률 체계 [법령 체계]\n- 전자금융거래법 (법률) - 개인정보보호법 시행령 (대통령령) - 개인정보보호법 시행규칙 (총리령) - 개인정보의 안전성 확보조치 기준 (고시) ← 오늘 학습! 법률 (개인정보보호법 제29조) :\n“개인정보처리자는 개인정보가 분실·도난·유출·위조·변조 또는 훼손되지 아니하도록 안전성 확보에 필요한 조치를 하여야 한다”\n고시 (안전성 확보조치 기준) : 위 법률의 구체적 시행 기준\n1.3 적용 대상 모든 개인정보처리자\n- 공공기관 - 민간기업 - 개인사업자 - 비영리단체 예외 없음\n1.4 2023년 개정 주요 변화 (1) 암호화 강화 - 개인정보 **전송 시** 암호화 의무 추가 - 바이오정보 암호화 의무 명시 (2) 접속기록 보관 기간 - 접속기록의 접속기록 **3년** 보관 신설 (3) 클라우드 명시 - 클라우드 이용 시 안전성 확보조치 추가 (4) 가명정보 - 가명정보 안전조치 추가 2. 전체 구조 2.1 10개 조항 [10개 조항 전체]\n- 제1조 (목적) - 제2조 (정의) - 제3조 (내부 관리계획의 수립·시행) - 관리적 - 제4조 (접근 권한의 관리) - 기술적 - 제5조 (접근통제) - 기술적 - 제6조 (개인정보의 암호화) - 기술적 - 제7조 (접속기록의 보관 및 점검) - 기술적 - 제8조 (악성프로그램 등 방지) - 기술적 - 제9조 (물리적 안전조치) - 물리적 - 제10조 (재해·재난 대비 안전조치) - 물리적 2.2 3가지 영역 관리적 보호조치 - 제3조: 내부 관리계획 기술적 보호조치 - 제4조: 접근 권한 관리 - 제5조: 접근통제 - 제6조: 암호화 - 제7조: 접속기록 - 제8조: 악성프로그램 방지 물리적 보호조치 - 제9조: 물리적 안전조치 - 제10조: 재해·재난 대비 3. 제3조: 내부 관리계획 수립·시행 3.1 조문 “개인정보처리자는 다음 각 호의 사항을 포함하는 내부 관리계획을 수립·시행하여야 한다”\n3.2 내부 관리계획 필수 포함 사항 (8가지) (1) 개인정보 보호책임자의 지정 개인정보 보호책임자 지정\n(2) 개인정보 보호책임자 및 개인정보취급자의 역할 및 책임 역할 구분 :\n- 보호책임자: 총괄 - 개인정보취급자: 실무 담당 (3) 개인정보취급자에 대한 교육 연 1회 이상 정기 교육\n(4) 접근 권한의 관리 누가, 어떤 개인정보에 접근할 수 있는지\n(5) 접근통제 인증, 권한 관리\n(6) 개인정보의 암호화 암호화 대상 및 방법\n(7) 접속기록의 보관 및 점검 로그 관리\n(8) 악성프로그램 등 방지 백신 등\n3.3 내부 관리계획 구성 예시 [ABC회사 개인정보 내부 관리계획]\n- 1. 목적 - 2. 적용범위 - 3. 개인정보 보호책임자 지정 (성명 / 직위 / 연락처) - 4. 개인정보취급자 역할 및 책임 - 5. 교육 계획 (연 1회) - 6. 접근 권한 관리 방안 - 7. 접근통제 방안 - 8. 암호화 방안 - 9. 접속기록 관리 방안 - 10. 악성프로그램 방지 방안 - 11. 물리적 안전조치 - 12. 재해·재난 대비 4. 제4조: 접근 권한의 관리 4.1 조문 핵심 “개인정보처리자는 개인정보취급자가 담당 업무 수행에 필요한 최소한의 범위로 접근 권한을 부여하여야 한다”\n4.2 주요 내용 (1) 최소 권한 부여 Need-to-know 원칙\n[부서별 접근 권한 예시]\n- 영업팀: 고객 연락처만 (주민등록번호 X) - 배송팀: 배송지만 - CS팀: 전체 프로필 (문의 대응 위해) (2) 권한 부여·변경·말소 절차 [신규 채용]\n- 입사 → 상사 승인 → 계정 생성 → 권한 부여 [부서 이동]\n- 이동 → 기존 권한 회수 → 새 권한 부여 [퇴사]\n- 퇴사 당일 → **즉시 권한 말소** (3) 정기적 권한 검토 최소 연 1회 접근 권한 점검\n[점검 내용]\n- 불필요한 권한 회수 - 퇴사자 계정 확인 4.3 실무 구현 RBAC (Role-Based Access Control) - 역할 기반 접근 제어 [역할별 권한]\n- 영업팀: 고객_기본정보 (이름, 연락처, 이메일) - 인사팀: 직원_전체정보 (주민등록번호, 급여 등) - 개발팀: 개발DB (마스킹된 데이터) - IT팀: 시스템_관리 (서버, 네트워크) 권한 관리 대장 엑셀 또는 시스템으로 관리\n이름 부서 접근 가능 시스템 권한 부여일 승인자 홍길동 영업 CRM 2024-01-15 김부장 이영희 인사 인사시스템 2024-02-01 박이사 5. 제5조: 접근통제 5.1 조문 핵심 개인정보처리시스템에 대한 불법적인 접근 및 침해사고 방지\n5.2 주요 조치 (6가지) (1) 사용자 식별 및 인증 [고유 식별자]\n- 사용자별 **개별 계정** 부여 - 공용 계정 금지 [인증]\n- 비밀번호 - OTP, 생체인증 등 (2) 안전한 비밀번호 사용 비밀번호 기준 (2023년 개정) :\n[개인정보취급자]\n- 영문, 숫자, 특수문자 중 2종류 이상 조합 → **10자리 이상** - 3종류 이상 조합 → 8자리 이상 [일반 이용자]\n- 영문, 숫자, 특수문자 중 2종류 이상 조합 → 10자리 이상 - 3종류 이상 조합 → 8자리 이상 비밀번호 변경 주기 :\n- **정기 변경 의무 삭제** (2023년 개정) - 유출 시 즉시 변경 (3) 비밀번호 보호 [저장 시]\n- 일방향 암호화 (해시) - SHA-256 이상 [전송 시]\n- HTTPS (4) 접근통제 시스템 설치·운영 방화벽, IPS/IDS\n[네트워크 분리]\n- 업무망 / 개발망 / 인터넷망 (5) 불법적인 접근 및 침해사고 기록·보관·점검 접속 로그 관리 (제7조와 연계)\n(6) 개인정보 다운로드 제한 인가된 사용자만 다운로드 가능\n[개인정보처리시스템 100만명 이상 추가 요건]\n- 다운로드 **건수 제한** - 다운로드 **로그 기록** - **경고 메시지** 표시 5.3 실무 구현 예시 [인증 강화 수준별 적용]\n- 일반 계정: ID + 비밀번호 (10자 이상) - 관리자 계정: ID + 비밀번호 + OTP (2차 인증) - 고위험 시스템: 생체인증 추가 [비밀번호 설정 규칙]\n- 최소 10자 이상 - 영문 대소문자, 숫자, 특수문자 중 2종류 이상 - 연속된 문자 금지 (예: 1234, abcd) - 동일 문자 반복 금지 (예: aaaa) - ID와 동일 금지 - 5회 로그인 실패 시 계정 잠금 6. 제6조: 개인정보의 암호화 6.1 암호화 대상 (4가지) (1) 비밀번호 - 일방향 암호화 (해시) 알고리즘 :\n- SHA-256 이상 - bcrypt, scrypt, PBKDF2 권장 솔트(Salt) 사용 권장\n[비밀번호 해시 예시]\n- 평문 비밀번호: password123 - 해시 결과: 5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8 (2) 주민등록번호 [저장 시]\n- 양방향 암호화 (AES-256 등) - 안전한 키 관리 [예외]\n- 법령에서 구체적으로 주민등록번호 처리를 요구·허용한 경우에만 저장 가능 (3) 바이오정보 (2023년 추가) 바이오정보 = 생체인식정보\n- 지문 - 얼굴 - 홍채 - 정맥 - 음성 저장 시 암호화 필수\n(4) 100만명 이상 처리 시 추가 암호화 대상 - 여권번호 - 운전면허번호 - 외국인등록번호 - 민감정보 (건강, 사상·신념, 노조·정당 가입, 유전정보, 범죄경력 등) - 계좌정보 6.2 암호화 알고리즘 양방향 암호화 (대칭키) 알고리즘 :\n- **AES-256** (권장) - ARIA-256 - SEED-256 키 길이 :\n- 최소 128비트 이상 - 256비트 권장 운영 모드 :\n- CBC, GCM 등 일방향 암호화 (해시) - 비밀번호 전용 알고리즘 :\n- SHA-256 이상 - SHA-512 - bcrypt (권장) - scrypt (권장) - PBKDF2 6.3 전송 시 암호화 (2023년 추가) 인터넷 구간 전송 시 :\n- **TLS 1.2 이상** (HTTPS) - VPN 대상 :\n- 고유식별정보 - 민감정보 - 바이오정보 6.4 암호키 관리 암호키 ≠ 암호화된 개인정보 → 별도 저장, 안전한 관리\n[관리 방법]\n- HSM (Hardware Security Module) - KMS (Key Management Service) - 접근 통제 - 정기적 키 변경 6.5 실무 암호화 구현 예시 [DB 암호화 - 나쁜 예]\n- CREATE TABLE users (name VARCHAR, ssn VARCHAR) → 평문 저장 절대 금지 [DB 암호화 - 좋은 예]\n- CREATE TABLE users (name VARCHAR, ssn_encrypted BLOB) → 암호화된 값 저장 [비밀번호 해시 처리 흐름]\n- bcrypt 라이브러리 사용 - hashpw() 함수로 해시값 생성 (gensalt 적용) - checkpw() 함수로 입력값 검증 - 원문 비밀번호는 DB에 저장하지 않음 7. 제7조: 접속기록 보관 및 점검 7.1 보관 기간 [보관 기간 기준]\n- 일반 개인정보처리시스템: **최소 1년 이상** - 100만명 이상 개인정보처리시스템: **최소 2년 이상** - 접속기록의 접속기록 (2023년 개정): **3년 이상** 7.2 기록 대상 [접속기록 필수 포함 항목]\n- 누가: 사용자 ID - 언제: 접속 일시 - 무엇을: 처리한 개인정보 내역 (파일 다운로드, 수정, 삭제 등) - 어디서: 접속 IP 7.3 위·변조 방지 접속기록 위·변조 방지 조치\n- 별도 서버 저장 - 읽기 전용 - 해시값 검증 7.4 정기 점검 최소 월 1회 점검\n[점검 내용]\n- 불법적인 접근 - 대량 다운로드 - 비정상 시간 접속 - 권한 외 접근 7.5 실무 구현 [접속 로그 형식 예시]\n- 2024-03-10 14:23:15 | user_hong | 192.168.1.100 | 고객 정보 조회 | 홍길동 - 2024-03-10 14:25:30 | user_hong | 192.168.1.100 | 개인정보 다운로드 | 1000건 [SIEM 활용 도구]\n- Splunk - ELK Stack - 로그 중앙 집중화 - 실시간 알림 8. 제8조: 악성프로그램 방지 8.1 주요 조치 (1) 백신 소프트웨어 설치·운영 최신 버전 유지\n(2) 자동 업데이트 백신 정의 파일 자동 업데이트\n(3) 주기적 검사 최소 주 1회 이상\n8.2 실무 구현 [PC 환경]\n- Windows Defender (무료) - V3, 알약 등 [서버 환경]\n- ClamAV (Linux) - Trend Micro [네트워크 환경]\n- 차세대 방화벽 (NGFW) - IPS 9. 제9조: 물리적 안전조치 9.1 조문 핵심 개인정보가 포함된 서류, 보조저장매체 등의 물리적 보호\n9.2 주요 조치 (1) 출입통제 전산실, 자료보관실 출입통제\n[방법]\n- 출입카드 - 생체인증 - 출입 기록 (2) 개인정보 보관 잠금장치가 있는 안전한 장소\n[예시]\n- 서류: 잠금 캐비닛 - USB: 금고 - 백업 테이프: 별도 보관실 (3) 반출·파기 기록 개인정보 반출 및 파기 대장 작성\n9.3 실무 구현 [출입통제]\n- 전산실: 출입카드 + 생체인증 - 방문자: 담당자 동행 필수 - CCTV: 24시간 녹화 [문서 관리]\n- 개인정보 문서: 잠금 캐비닛 - 파기 시: 파쇄기 사용 - 파기 대장 작성 10. 제10조: 재해·재난 대비 10.1 주요 조치 (1) 백업 및 보관 개인정보 정기 백업\n[백업 주기]\n- 중요 시스템: 일일 - 일반 시스템: 주간 [보관 장소]\n- **별도 장소** (오프사이트) (2) 복구 계획 재해 복구 계획 (DRP: Disaster Recovery Plan)\n- **RTO (Recovery Time Objective)**: 목표 복구 시간 - **RPO (Recovery Point Objective)**: 목표 복구 시점 (데이터 손실 허용 범위) 10.2 실무 구현 [백업 전략]\n- DB: 일일 백업 (매일 03:00) - 파일 서버: 주간 백업 (매주 일요일) - 백업 보관: AWS S3 (다른 리전) [재해 복구 기준]\n- RTO: 4시간 - RPO: 24시간 - 복구 훈련: 연 1회 11. 개인정보 규모별 요구사항 11.1 100만명 미만 적용 조항 : 제3조~제10조 전체\n[핵심 요구사항]\n- 접속기록 **1년** - 비밀번호 암호화 - 주민등록번호 암호화 - 바이오정보 암호화 11.2 100만명 이상 추가 요구사항 :\n- 접속기록 **2년** 이상 - **고유식별정보, 민감정보, 계좌정보 암호화** 추가 - **다운로드 제한** (건수 제한, 로그, 경고) 12. 실무 체크리스트 관리적 보호조치 - [ ] 내부 관리계획을 수립했는가? - [ ] 개인정보 보호책임자를 지정했는가? - [ ] 개인정보취급자 교육을 연 1회 실시하는가? 기술적 보호조치 - 접근 권한 - [ ] 최소 권한 원칙을 적용하는가? - [ ] 연 1회 권한을 검토하는가? - [ ] 퇴사자 계정을 즉시 삭제하는가? 기술적 보호조치 - 접근통제 - [ ] 사용자별 개별 계정을 부여하는가? - [ ] 비밀번호는 10자 이상인가? - [ ] 방화벽을 설치했는가? 기술적 보호조치 - 암호화 - [ ] 비밀번호를 SHA-256 이상으로 해시하는가? - [ ] 주민등록번호를 AES-256 등으로 암호화하는가? - [ ] 바이오정보를 암호화하는가? - [ ] (100만명 이상) 고유식별정보, 민감정보, 계좌정보를 암호화하는가? - [ ] 개인정보 전송 시 HTTPS(TLS 1.2)를 사용하는가? - [ ] 암호화 키를 안전하게 관리하는가? 기술적 보호조치 - 접속기록 - [ ] 접속기록을 1년(또는 2년) 보관하는가? - [ ] 월 1회 접속기록을 점검하는가? - [ ] 접속기록 위·변조 방지 조치를 했는가? 기술적 보호조치 - 악성프로그램 - [ ] 백신 소프트웨어를 설치했는가? - [ ] 백신을 자동 업데이트하는가? - [ ] 주 1회 검사를 수행하는가? 물리적 보호조치 - [ ] 전산실 출입을 통제하는가? - [ ] 개인정보 문서를 잠금장치에 보관하는가? - [ ] 반출·파기 기록을 유지하는가? 재해·재난 대비 - [ ] 정기적으로 백업하는가? - [ ] 백업본을 별도 장소에 보관하는가? - [ ] 재해 복구 계획이 있는가? 13. 위반 시 제재 13.1 과태료 개인정보보호법 제75조\n3천만원 이하 : 안전성 확보조치 미이행\n[실제 사례]\n- A회사: 비밀번호 평문 저장 → 과태료 1,000만원 - B회사: 주민등록번호 미암호화 → 과태료 2,000만원 - C회사: 접속기록 미보관 → 과태료 500만원 13.2 개인정보보호위원회 시정명령 - 시정 기간 부여 - 미이행 시 과태료 가중 학습 정리 오늘 학습한 핵심 내용 :\n- 안전성 확보조치 기준은 개인정보보호법 제29조의 구체적 시행 기준 (고시) - 10개 조항: 내부 관리계획, 접근 권한, 접근통제, 암호화, 접속기록, 악성프로그램, 물리적 안전조치, 재해·재난 - 제6조 암호화: 비밀번호(해시), 주민등록번호(양방향), 바이오정보(양방향), 전송(TLS) - 암호화 알고리즘: AES-256, SHA-256, bcrypt 등 - 비밀번호 10자 이상, 2023년부터 정기 변경 의무 삭제 - 접속기록: 1년/2년/3년, 월 1회 점검 - 100만명 이상: 접속기록 2년, 고유식별정보 등 암호화, 다운로드 제한 다음 학습 주제 Day 27: 전자금융감독규정 (금융권 보안 실무)\n",
+  "wordCount" : "4925",
+  "inLanguage": "ko",
+  "datePublished": "2026-03-10T00:00:00Z",
+  "dateModified": "2026-03-10T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/07_%EA%B3%A0%EC%8B%9C%EB%B0%8F%EC%A7%80%EC%B9%A8/day26_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%95%88%EC%A0%84%EC%84%B1%ED%99%95%EB%B3%B4%EC%A1%B0%EC%B9%98%EA%B8%B0%EC%A4%80/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://hojjang98.github.io/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/cyber_law_study/">보안 컨설팅 공부</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Day 26: 개인정보의 안전성 확보조치 기준 (고시)
+    </h1>
+    <div class="post-meta"><span title='2026-03-10 00:00:00 +0000 UTC'>2026년 3월 10일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="day-26-개인정보의-안전성-확보조치-기준-고시">Day 26: 개인정보의 안전성 확보조치 기준 (고시)<a hidden class="anchor" aria-hidden="true" href="#day-26-개인정보의-안전성-확보조치-기준-고시">#</a></h1>
+<h2 id="1-안전성-확보조치-기준의-개요">1. 안전성 확보조치 기준의 개요<a hidden class="anchor" aria-hidden="true" href="#1-안전성-확보조치-기준의-개요">#</a></h2>
+<h3 id="11-안전성-확보조치-기준이란">1.1 안전성 확보조치 기준이란?<a hidden class="anchor" aria-hidden="true" href="#11-안전성-확보조치-기준이란">#</a></h3>
+<p><strong>정식 명칭</strong> : 개인정보의 안전성 확보조치 기준</p>
+<p><strong>성격</strong> : 개인정보보호위원회 <strong>고시</strong> (告示)</p>
+<p><strong>법적 근거</strong> : 개인정보보호법 제29조 (안전조치의무)</p>
+<p><strong>최신 개정</strong> : 2023년 9월 15일 시행</p>
+<h3 id="12-법률-체계">1.2 법률 체계<a hidden class="anchor" aria-hidden="true" href="#12-법률-체계">#</a></h3>
+<p>[법령 체계]</p>
+<pre><code>- 전자금융거래법 (법률)
+- 개인정보보호법 시행령 (대통령령)
+- 개인정보보호법 시행규칙 (총리령)
+- 개인정보의 안전성 확보조치 기준 (고시) ← 오늘 학습!
+</code></pre>
+<p><strong>법률 (개인정보보호법 제29조)</strong> :</p>
+<p>&ldquo;개인정보처리자는 개인정보가 분실·도난·유출·위조·변조 또는 훼손되지 아니하도록 안전성 확보에 필요한 조치를 하여야 한다&rdquo;</p>
+<p><strong>고시 (안전성 확보조치 기준)</strong> : 위 법률의 구체적 시행 기준</p>
+<h3 id="13-적용-대상">1.3 적용 대상<a hidden class="anchor" aria-hidden="true" href="#13-적용-대상">#</a></h3>
+<p><strong>모든 개인정보처리자</strong></p>
+<pre><code>- 공공기관
+- 민간기업
+- 개인사업자
+- 비영리단체
+</code></pre>
+<p><strong>예외 없음</strong></p>
+<h3 id="14-2023년-개정-주요-변화">1.4 2023년 개정 주요 변화<a hidden class="anchor" aria-hidden="true" href="#14-2023년-개정-주요-변화">#</a></h3>
+<h4 id="1-암호화-강화">(1) 암호화 강화<a hidden class="anchor" aria-hidden="true" href="#1-암호화-강화">#</a></h4>
+<pre><code>- 개인정보 **전송 시** 암호화 의무 추가
+- 바이오정보 암호화 의무 명시
+</code></pre>
+<h4 id="2-접속기록-보관-기간">(2) 접속기록 보관 기간<a hidden class="anchor" aria-hidden="true" href="#2-접속기록-보관-기간">#</a></h4>
+<pre><code>- 접속기록의 접속기록 **3년** 보관 신설
+</code></pre>
+<h4 id="3-클라우드-명시">(3) 클라우드 명시<a hidden class="anchor" aria-hidden="true" href="#3-클라우드-명시">#</a></h4>
+<pre><code>- 클라우드 이용 시 안전성 확보조치 추가
+</code></pre>
+<h4 id="4-가명정보">(4) 가명정보<a hidden class="anchor" aria-hidden="true" href="#4-가명정보">#</a></h4>
+<pre><code>- 가명정보 안전조치 추가
+</code></pre>
+<h2 id="2-전체-구조">2. 전체 구조<a hidden class="anchor" aria-hidden="true" href="#2-전체-구조">#</a></h2>
+<h3 id="21-10개-조항">2.1 10개 조항<a hidden class="anchor" aria-hidden="true" href="#21-10개-조항">#</a></h3>
+<p>[10개 조항 전체]</p>
+<pre><code>- 제1조 (목적)
+- 제2조 (정의)
+- 제3조 (내부 관리계획의 수립·시행) - 관리적
+- 제4조 (접근 권한의 관리) - 기술적
+- 제5조 (접근통제) - 기술적
+- 제6조 (개인정보의 암호화) - 기술적
+- 제7조 (접속기록의 보관 및 점검) - 기술적
+- 제8조 (악성프로그램 등 방지) - 기술적
+- 제9조 (물리적 안전조치) - 물리적
+- 제10조 (재해·재난 대비 안전조치) - 물리적
+</code></pre>
+<h3 id="22-3가지-영역">2.2 3가지 영역<a hidden class="anchor" aria-hidden="true" href="#22-3가지-영역">#</a></h3>
+<h4 id="관리적-보호조치">관리적 보호조치<a hidden class="anchor" aria-hidden="true" href="#관리적-보호조치">#</a></h4>
+<pre><code>- 제3조: 내부 관리계획
+</code></pre>
+<h4 id="기술적-보호조치">기술적 보호조치<a hidden class="anchor" aria-hidden="true" href="#기술적-보호조치">#</a></h4>
+<pre><code>- 제4조: 접근 권한 관리
+- 제5조: 접근통제
+- 제6조: 암호화
+- 제7조: 접속기록
+- 제8조: 악성프로그램 방지
+</code></pre>
+<h4 id="물리적-보호조치">물리적 보호조치<a hidden class="anchor" aria-hidden="true" href="#물리적-보호조치">#</a></h4>
+<pre><code>- 제9조: 물리적 안전조치
+- 제10조: 재해·재난 대비
+</code></pre>
+<h2 id="3-제3조-내부-관리계획-수립시행">3. 제3조: 내부 관리계획 수립·시행<a hidden class="anchor" aria-hidden="true" href="#3-제3조-내부-관리계획-수립시행">#</a></h2>
+<h3 id="31-조문">3.1 조문<a hidden class="anchor" aria-hidden="true" href="#31-조문">#</a></h3>
+<p>&ldquo;개인정보처리자는 다음 각 호의 사항을 포함하는 <strong>내부 관리계획</strong>을 수립·시행하여야 한다&rdquo;</p>
+<h3 id="32-내부-관리계획-필수-포함-사항-8가지">3.2 내부 관리계획 필수 포함 사항 (8가지)<a hidden class="anchor" aria-hidden="true" href="#32-내부-관리계획-필수-포함-사항-8가지">#</a></h3>
+<h4 id="1-개인정보-보호책임자의-지정">(1) 개인정보 보호책임자의 지정<a hidden class="anchor" aria-hidden="true" href="#1-개인정보-보호책임자의-지정">#</a></h4>
+<p>개인정보 보호책임자 지정</p>
+<h4 id="2-개인정보-보호책임자-및-개인정보취급자의-역할-및-책임">(2) 개인정보 보호책임자 및 개인정보취급자의 역할 및 책임<a hidden class="anchor" aria-hidden="true" href="#2-개인정보-보호책임자-및-개인정보취급자의-역할-및-책임">#</a></h4>
+<p>역할 구분 :</p>
+<pre><code>- 보호책임자: 총괄
+- 개인정보취급자: 실무 담당
+</code></pre>
+<h4 id="3-개인정보취급자에-대한-교육">(3) 개인정보취급자에 대한 교육<a hidden class="anchor" aria-hidden="true" href="#3-개인정보취급자에-대한-교육">#</a></h4>
+<p><strong>연 1회 이상</strong> 정기 교육</p>
+<h4 id="4-접근-권한의-관리">(4) 접근 권한의 관리<a hidden class="anchor" aria-hidden="true" href="#4-접근-권한의-관리">#</a></h4>
+<p>누가, 어떤 개인정보에 접근할 수 있는지</p>
+<h4 id="5-접근통제">(5) 접근통제<a hidden class="anchor" aria-hidden="true" href="#5-접근통제">#</a></h4>
+<p>인증, 권한 관리</p>
+<h4 id="6-개인정보의-암호화">(6) 개인정보의 암호화<a hidden class="anchor" aria-hidden="true" href="#6-개인정보의-암호화">#</a></h4>
+<p>암호화 대상 및 방법</p>
+<h4 id="7-접속기록의-보관-및-점검">(7) 접속기록의 보관 및 점검<a hidden class="anchor" aria-hidden="true" href="#7-접속기록의-보관-및-점검">#</a></h4>
+<p>로그 관리</p>
+<h4 id="8-악성프로그램-등-방지">(8) 악성프로그램 등 방지<a hidden class="anchor" aria-hidden="true" href="#8-악성프로그램-등-방지">#</a></h4>
+<p>백신 등</p>
+<h3 id="33-내부-관리계획-구성-예시">3.3 내부 관리계획 구성 예시<a hidden class="anchor" aria-hidden="true" href="#33-내부-관리계획-구성-예시">#</a></h3>
+<p>[ABC회사 개인정보 내부 관리계획]</p>
+<pre><code>- 1. 목적
+- 2. 적용범위
+- 3. 개인정보 보호책임자 지정 (성명 / 직위 / 연락처)
+- 4. 개인정보취급자 역할 및 책임
+- 5. 교육 계획 (연 1회)
+- 6. 접근 권한 관리 방안
+- 7. 접근통제 방안
+- 8. 암호화 방안
+- 9. 접속기록 관리 방안
+- 10. 악성프로그램 방지 방안
+- 11. 물리적 안전조치
+- 12. 재해·재난 대비
+</code></pre>
+<h2 id="4-제4조-접근-권한의-관리">4. 제4조: 접근 권한의 관리<a hidden class="anchor" aria-hidden="true" href="#4-제4조-접근-권한의-관리">#</a></h2>
+<h3 id="41-조문-핵심">4.1 조문 핵심<a hidden class="anchor" aria-hidden="true" href="#41-조문-핵심">#</a></h3>
+<p>&ldquo;개인정보처리자는 개인정보취급자가 담당 업무 수행에 필요한 <strong>최소한</strong>의 범위로 접근 권한을 부여하여야 한다&rdquo;</p>
+<h3 id="42-주요-내용">4.2 주요 내용<a hidden class="anchor" aria-hidden="true" href="#42-주요-내용">#</a></h3>
+<h4 id="1-최소-권한-부여">(1) 최소 권한 부여<a hidden class="anchor" aria-hidden="true" href="#1-최소-권한-부여">#</a></h4>
+<p><strong>Need-to-know</strong> 원칙</p>
+<p>[부서별 접근 권한 예시]</p>
+<pre><code>- 영업팀: 고객 연락처만 (주민등록번호 X)
+- 배송팀: 배송지만
+- CS팀: 전체 프로필 (문의 대응 위해)
+</code></pre>
+<h4 id="2-권한-부여변경말소-절차">(2) 권한 부여·변경·말소 절차<a hidden class="anchor" aria-hidden="true" href="#2-권한-부여변경말소-절차">#</a></h4>
+<p>[신규 채용]</p>
+<pre><code>- 입사 → 상사 승인 → 계정 생성 → 권한 부여
+</code></pre>
+<p>[부서 이동]</p>
+<pre><code>- 이동 → 기존 권한 회수 → 새 권한 부여
+</code></pre>
+<p>[퇴사]</p>
+<pre><code>- 퇴사 당일 → **즉시 권한 말소**
+</code></pre>
+<h4 id="3-정기적-권한-검토">(3) 정기적 권한 검토<a hidden class="anchor" aria-hidden="true" href="#3-정기적-권한-검토">#</a></h4>
+<p><strong>최소 연 1회</strong> 접근 권한 점검</p>
+<p>[점검 내용]</p>
+<pre><code>- 불필요한 권한 회수
+- 퇴사자 계정 확인
+</code></pre>
+<h3 id="43-실무-구현">4.3 실무 구현<a hidden class="anchor" aria-hidden="true" href="#43-실무-구현">#</a></h3>
+<h4 id="rbac-role-based-access-control---역할-기반-접근-제어">RBAC (Role-Based Access Control) - 역할 기반 접근 제어<a hidden class="anchor" aria-hidden="true" href="#rbac-role-based-access-control---역할-기반-접근-제어">#</a></h4>
+<p>[역할별 권한]</p>
+<pre><code>- 영업팀: 고객_기본정보 (이름, 연락처, 이메일)
+- 인사팀: 직원_전체정보 (주민등록번호, 급여 등)
+- 개발팀: 개발DB (마스킹된 데이터)
+- IT팀: 시스템_관리 (서버, 네트워크)
+</code></pre>
+<h4 id="권한-관리-대장">권한 관리 대장<a hidden class="anchor" aria-hidden="true" href="#권한-관리-대장">#</a></h4>
+<p><strong>엑셀 또는 시스템</strong>으로 관리</p>
+<table>
+  <thead>
+      <tr>
+          <th>이름</th>
+          <th>부서</th>
+          <th>접근 가능 시스템</th>
+          <th>권한 부여일</th>
+          <th>승인자</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>홍길동</td>
+          <td>영업</td>
+          <td>CRM</td>
+          <td>2024-01-15</td>
+          <td>김부장</td>
+      </tr>
+      <tr>
+          <td>이영희</td>
+          <td>인사</td>
+          <td>인사시스템</td>
+          <td>2024-02-01</td>
+          <td>박이사</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="5-제5조-접근통제">5. 제5조: 접근통제<a hidden class="anchor" aria-hidden="true" href="#5-제5조-접근통제">#</a></h2>
+<h3 id="51-조문-핵심">5.1 조문 핵심<a hidden class="anchor" aria-hidden="true" href="#51-조문-핵심">#</a></h3>
+<p>개인정보처리시스템에 대한 <strong>불법적인 접근 및 침해사고 방지</strong></p>
+<h3 id="52-주요-조치-6가지">5.2 주요 조치 (6가지)<a hidden class="anchor" aria-hidden="true" href="#52-주요-조치-6가지">#</a></h3>
+<h4 id="1-사용자-식별-및-인증">(1) 사용자 식별 및 인증<a hidden class="anchor" aria-hidden="true" href="#1-사용자-식별-및-인증">#</a></h4>
+<p>[고유 식별자]</p>
+<pre><code>- 사용자별 **개별 계정** 부여
+- 공용 계정 금지
+</code></pre>
+<p>[인증]</p>
+<pre><code>- 비밀번호
+- OTP, 생체인증 등
+</code></pre>
+<h4 id="2-안전한-비밀번호-사용">(2) 안전한 비밀번호 사용<a hidden class="anchor" aria-hidden="true" href="#2-안전한-비밀번호-사용">#</a></h4>
+<p><strong>비밀번호 기준 (2023년 개정)</strong> :</p>
+<p>[개인정보취급자]</p>
+<pre><code>- 영문, 숫자, 특수문자 중 2종류 이상 조합 → **10자리 이상**
+- 3종류 이상 조합 → 8자리 이상
+</code></pre>
+<p>[일반 이용자]</p>
+<pre><code>- 영문, 숫자, 특수문자 중 2종류 이상 조합 → 10자리 이상
+- 3종류 이상 조합 → 8자리 이상
+</code></pre>
+<p><strong>비밀번호 변경 주기</strong> :</p>
+<pre><code>- **정기 변경 의무 삭제** (2023년 개정)
+- 유출 시 즉시 변경
+</code></pre>
+<h4 id="3-비밀번호-보호">(3) 비밀번호 보호<a hidden class="anchor" aria-hidden="true" href="#3-비밀번호-보호">#</a></h4>
+<p>[저장 시]</p>
+<pre><code>- 일방향 암호화 (해시)
+- SHA-256 이상
+</code></pre>
+<p>[전송 시]</p>
+<pre><code>- HTTPS
+</code></pre>
+<h4 id="4-접근통제-시스템-설치운영">(4) 접근통제 시스템 설치·운영<a hidden class="anchor" aria-hidden="true" href="#4-접근통제-시스템-설치운영">#</a></h4>
+<p><strong>방화벽, IPS/IDS</strong></p>
+<p>[네트워크 분리]</p>
+<pre><code>- 업무망 / 개발망 / 인터넷망
+</code></pre>
+<h4 id="5-불법적인-접근-및-침해사고-기록보관점검">(5) 불법적인 접근 및 침해사고 기록·보관·점검<a hidden class="anchor" aria-hidden="true" href="#5-불법적인-접근-및-침해사고-기록보관점검">#</a></h4>
+<p>접속 로그 관리 (제7조와 연계)</p>
+<h4 id="6-개인정보-다운로드-제한">(6) 개인정보 다운로드 제한<a hidden class="anchor" aria-hidden="true" href="#6-개인정보-다운로드-제한">#</a></h4>
+<p><strong>인가된 사용자만</strong> 다운로드 가능</p>
+<p>[개인정보처리시스템 100만명 이상 추가 요건]</p>
+<pre><code>- 다운로드 **건수 제한**
+- 다운로드 **로그 기록**
+- **경고 메시지** 표시
+</code></pre>
+<h3 id="53-실무-구현-예시">5.3 실무 구현 예시<a hidden class="anchor" aria-hidden="true" href="#53-실무-구현-예시">#</a></h3>
+<p>[인증 강화 수준별 적용]</p>
+<pre><code>- 일반 계정: ID + 비밀번호 (10자 이상)
+- 관리자 계정: ID + 비밀번호 + OTP (2차 인증)
+- 고위험 시스템: 생체인증 추가
+</code></pre>
+<p>[비밀번호 설정 규칙]</p>
+<pre><code>- 최소 10자 이상
+- 영문 대소문자, 숫자, 특수문자 중 2종류 이상
+- 연속된 문자 금지 (예: 1234, abcd)
+- 동일 문자 반복 금지 (예: aaaa)
+- ID와 동일 금지
+- 5회 로그인 실패 시 계정 잠금
+</code></pre>
+<h2 id="6-제6조-개인정보의-암호화">6. 제6조: 개인정보의 암호화<a hidden class="anchor" aria-hidden="true" href="#6-제6조-개인정보의-암호화">#</a></h2>
+<h3 id="61-암호화-대상-4가지">6.1 암호화 대상 (4가지)<a hidden class="anchor" aria-hidden="true" href="#61-암호화-대상-4가지">#</a></h3>
+<h4 id="1-비밀번호---일방향-암호화-해시">(1) 비밀번호 - 일방향 암호화 (해시)<a hidden class="anchor" aria-hidden="true" href="#1-비밀번호---일방향-암호화-해시">#</a></h4>
+<p><strong>알고리즘</strong> :</p>
+<pre><code>- SHA-256 이상
+- bcrypt, scrypt, PBKDF2 권장
+</code></pre>
+<p><strong>솔트(Salt) 사용 권장</strong></p>
+<p>[비밀번호 해시 예시]</p>
+<pre><code>- 평문 비밀번호: password123
+- 해시 결과: 5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8
+</code></pre>
+<h4 id="2-주민등록번호">(2) 주민등록번호<a hidden class="anchor" aria-hidden="true" href="#2-주민등록번호">#</a></h4>
+<p>[저장 시]</p>
+<pre><code>- 양방향 암호화 (AES-256 등)
+- 안전한 키 관리
+</code></pre>
+<p>[예외]</p>
+<pre><code>- 법령에서 구체적으로 주민등록번호 처리를 요구·허용한 경우에만 저장 가능
+</code></pre>
+<h4 id="3-바이오정보-2023년-추가">(3) 바이오정보 (2023년 추가)<a hidden class="anchor" aria-hidden="true" href="#3-바이오정보-2023년-추가">#</a></h4>
+<p><strong>바이오정보 = 생체인식정보</strong></p>
+<pre><code>- 지문
+- 얼굴
+- 홍채
+- 정맥
+- 음성
+</code></pre>
+<p><strong>저장 시 암호화 필수</strong></p>
+<h4 id="4-100만명-이상-처리-시-추가-암호화-대상">(4) 100만명 이상 처리 시 추가 암호화 대상<a hidden class="anchor" aria-hidden="true" href="#4-100만명-이상-처리-시-추가-암호화-대상">#</a></h4>
+<pre><code>- 여권번호
+- 운전면허번호
+- 외국인등록번호
+- 민감정보 (건강, 사상·신념, 노조·정당 가입, 유전정보, 범죄경력 등)
+- 계좌정보
+</code></pre>
+<h3 id="62-암호화-알고리즘">6.2 암호화 알고리즘<a hidden class="anchor" aria-hidden="true" href="#62-암호화-알고리즘">#</a></h3>
+<h4 id="양방향-암호화-대칭키">양방향 암호화 (대칭키)<a hidden class="anchor" aria-hidden="true" href="#양방향-암호화-대칭키">#</a></h4>
+<p><strong>알고리즘</strong> :</p>
+<pre><code>- **AES-256** (권장)
+- ARIA-256
+- SEED-256
+</code></pre>
+<p><strong>키 길이</strong> :</p>
+<pre><code>- 최소 128비트 이상
+- 256비트 권장
+</code></pre>
+<p><strong>운영 모드</strong> :</p>
+<pre><code>- CBC, GCM 등
+</code></pre>
+<h4 id="일방향-암호화-해시---비밀번호-전용">일방향 암호화 (해시) - 비밀번호 전용<a hidden class="anchor" aria-hidden="true" href="#일방향-암호화-해시---비밀번호-전용">#</a></h4>
+<p><strong>알고리즘</strong> :</p>
+<pre><code>- SHA-256 이상
+- SHA-512
+- bcrypt (권장)
+- scrypt (권장)
+- PBKDF2
+</code></pre>
+<h3 id="63-전송-시-암호화-2023년-추가">6.3 전송 시 암호화 (2023년 추가)<a hidden class="anchor" aria-hidden="true" href="#63-전송-시-암호화-2023년-추가">#</a></h3>
+<p><strong>인터넷 구간 전송 시</strong> :</p>
+<pre><code>- **TLS 1.2 이상** (HTTPS)
+- VPN
+</code></pre>
+<p><strong>대상</strong> :</p>
+<pre><code>- 고유식별정보
+- 민감정보
+- 바이오정보
+</code></pre>
+<h3 id="64-암호키-관리">6.4 암호키 관리<a hidden class="anchor" aria-hidden="true" href="#64-암호키-관리">#</a></h3>
+<p><strong>암호키 ≠ 암호화된 개인정보</strong> → <strong>별도 저장, 안전한 관리</strong></p>
+<p>[관리 방법]</p>
+<pre><code>- HSM (Hardware Security Module)
+- KMS (Key Management Service)
+- 접근 통제
+- 정기적 키 변경
+</code></pre>
+<h3 id="65-실무-암호화-구현-예시">6.5 실무 암호화 구현 예시<a hidden class="anchor" aria-hidden="true" href="#65-실무-암호화-구현-예시">#</a></h3>
+<p>[DB 암호화 - 나쁜 예]</p>
+<pre><code>- CREATE TABLE users (name VARCHAR, ssn VARCHAR) → 평문 저장 절대 금지
+</code></pre>
+<p>[DB 암호화 - 좋은 예]</p>
+<pre><code>- CREATE TABLE users (name VARCHAR, ssn_encrypted BLOB) → 암호화된 값 저장
+</code></pre>
+<p>[비밀번호 해시 처리 흐름]</p>
+<pre><code>- bcrypt 라이브러리 사용
+- hashpw() 함수로 해시값 생성 (gensalt 적용)
+- checkpw() 함수로 입력값 검증
+- 원문 비밀번호는 DB에 저장하지 않음
+</code></pre>
+<h2 id="7-제7조-접속기록-보관-및-점검">7. 제7조: 접속기록 보관 및 점검<a hidden class="anchor" aria-hidden="true" href="#7-제7조-접속기록-보관-및-점검">#</a></h2>
+<h3 id="71-보관-기간">7.1 보관 기간<a hidden class="anchor" aria-hidden="true" href="#71-보관-기간">#</a></h3>
+<p>[보관 기간 기준]</p>
+<pre><code>- 일반 개인정보처리시스템: **최소 1년 이상**
+- 100만명 이상 개인정보처리시스템: **최소 2년 이상**
+- 접속기록의 접속기록 (2023년 개정): **3년 이상**
+</code></pre>
+<h3 id="72-기록-대상">7.2 기록 대상<a hidden class="anchor" aria-hidden="true" href="#72-기록-대상">#</a></h3>
+<p>[접속기록 필수 포함 항목]</p>
+<pre><code>- 누가: 사용자 ID
+- 언제: 접속 일시
+- 무엇을: 처리한 개인정보 내역 (파일 다운로드, 수정, 삭제 등)
+- 어디서: 접속 IP
+</code></pre>
+<h3 id="73-위변조-방지">7.3 위·변조 방지<a hidden class="anchor" aria-hidden="true" href="#73-위변조-방지">#</a></h3>
+<p>접속기록 <strong>위·변조 방지 조치</strong></p>
+<pre><code>- 별도 서버 저장
+- 읽기 전용
+- 해시값 검증
+</code></pre>
+<h3 id="74-정기-점검">7.4 정기 점검<a hidden class="anchor" aria-hidden="true" href="#74-정기-점검">#</a></h3>
+<p><strong>최소 월 1회</strong> 점검</p>
+<p>[점검 내용]</p>
+<pre><code>- 불법적인 접근
+- 대량 다운로드
+- 비정상 시간 접속
+- 권한 외 접근
+</code></pre>
+<h3 id="75-실무-구현">7.5 실무 구현<a hidden class="anchor" aria-hidden="true" href="#75-실무-구현">#</a></h3>
+<p>[접속 로그 형식 예시]</p>
+<pre><code>- 2024-03-10 14:23:15  |  user_hong  |  192.168.1.100  |  고객 정보 조회  |  홍길동
+- 2024-03-10 14:25:30  |  user_hong  |  192.168.1.100  |  개인정보 다운로드  |  1000건
+</code></pre>
+<p>[SIEM 활용 도구]</p>
+<pre><code>- Splunk
+- ELK Stack
+- 로그 중앙 집중화
+- 실시간 알림
+</code></pre>
+<h2 id="8-제8조-악성프로그램-방지">8. 제8조: 악성프로그램 방지<a hidden class="anchor" aria-hidden="true" href="#8-제8조-악성프로그램-방지">#</a></h2>
+<h3 id="81-주요-조치">8.1 주요 조치<a hidden class="anchor" aria-hidden="true" href="#81-주요-조치">#</a></h3>
+<h4 id="1-백신-소프트웨어-설치운영">(1) 백신 소프트웨어 설치·운영<a hidden class="anchor" aria-hidden="true" href="#1-백신-소프트웨어-설치운영">#</a></h4>
+<p>최신 버전 유지</p>
+<h4 id="2-자동-업데이트">(2) 자동 업데이트<a hidden class="anchor" aria-hidden="true" href="#2-자동-업데이트">#</a></h4>
+<p>백신 <strong>정의 파일</strong> 자동 업데이트</p>
+<h4 id="3-주기적-검사">(3) 주기적 검사<a hidden class="anchor" aria-hidden="true" href="#3-주기적-검사">#</a></h4>
+<p><strong>최소 주 1회</strong> 이상</p>
+<h3 id="82-실무-구현">8.2 실무 구현<a hidden class="anchor" aria-hidden="true" href="#82-실무-구현">#</a></h3>
+<p>[PC 환경]</p>
+<pre><code>- Windows Defender (무료)
+- V3, 알약 등
+</code></pre>
+<p>[서버 환경]</p>
+<pre><code>- ClamAV (Linux)
+- Trend Micro
+</code></pre>
+<p>[네트워크 환경]</p>
+<pre><code>- 차세대 방화벽 (NGFW)
+- IPS
+</code></pre>
+<h2 id="9-제9조-물리적-안전조치">9. 제9조: 물리적 안전조치<a hidden class="anchor" aria-hidden="true" href="#9-제9조-물리적-안전조치">#</a></h2>
+<h3 id="91-조문-핵심">9.1 조문 핵심<a hidden class="anchor" aria-hidden="true" href="#91-조문-핵심">#</a></h3>
+<p>개인정보가 포함된 <strong>서류, 보조저장매체</strong> 등의 물리적 보호</p>
+<h3 id="92-주요-조치">9.2 주요 조치<a hidden class="anchor" aria-hidden="true" href="#92-주요-조치">#</a></h3>
+<h4 id="1-출입통제">(1) 출입통제<a hidden class="anchor" aria-hidden="true" href="#1-출입통제">#</a></h4>
+<p>전산실, 자료보관실 출입통제</p>
+<p>[방법]</p>
+<pre><code>- 출입카드
+- 생체인증
+- 출입 기록
+</code></pre>
+<h4 id="2-개인정보-보관">(2) 개인정보 보관<a hidden class="anchor" aria-hidden="true" href="#2-개인정보-보관">#</a></h4>
+<p><strong>잠금장치</strong>가 있는 안전한 장소</p>
+<p>[예시]</p>
+<pre><code>- 서류: 잠금 캐비닛
+- USB: 금고
+- 백업 테이프: 별도 보관실
+</code></pre>
+<h4 id="3-반출파기-기록">(3) 반출·파기 기록<a hidden class="anchor" aria-hidden="true" href="#3-반출파기-기록">#</a></h4>
+<p>개인정보 <strong>반출 및 파기 대장</strong> 작성</p>
+<h3 id="93-실무-구현">9.3 실무 구현<a hidden class="anchor" aria-hidden="true" href="#93-실무-구현">#</a></h3>
+<p>[출입통제]</p>
+<pre><code>- 전산실: 출입카드 + 생체인증
+- 방문자: 담당자 동행 필수
+- CCTV: 24시간 녹화
+</code></pre>
+<p>[문서 관리]</p>
+<pre><code>- 개인정보 문서: 잠금 캐비닛
+- 파기 시: 파쇄기 사용
+- 파기 대장 작성
+</code></pre>
+<h2 id="10-제10조-재해재난-대비">10. 제10조: 재해·재난 대비<a hidden class="anchor" aria-hidden="true" href="#10-제10조-재해재난-대비">#</a></h2>
+<h3 id="101-주요-조치">10.1 주요 조치<a hidden class="anchor" aria-hidden="true" href="#101-주요-조치">#</a></h3>
+<h4 id="1-백업-및-보관">(1) 백업 및 보관<a hidden class="anchor" aria-hidden="true" href="#1-백업-및-보관">#</a></h4>
+<p>개인정보 <strong>정기 백업</strong></p>
+<p>[백업 주기]</p>
+<pre><code>- 중요 시스템: 일일
+- 일반 시스템: 주간
+</code></pre>
+<p>[보관 장소]</p>
+<pre><code>- **별도 장소** (오프사이트)
+</code></pre>
+<h4 id="2-복구-계획">(2) 복구 계획<a hidden class="anchor" aria-hidden="true" href="#2-복구-계획">#</a></h4>
+<p><strong>재해 복구 계획</strong> (DRP: Disaster Recovery Plan)</p>
+<pre><code>- **RTO (Recovery Time Objective)**: 목표 복구 시간
+- **RPO (Recovery Point Objective)**: 목표 복구 시점 (데이터 손실 허용 범위)
+</code></pre>
+<h3 id="102-실무-구현">10.2 실무 구현<a hidden class="anchor" aria-hidden="true" href="#102-실무-구현">#</a></h3>
+<p>[백업 전략]</p>
+<pre><code>- DB: 일일 백업 (매일 03:00)
+- 파일 서버: 주간 백업 (매주 일요일)
+- 백업 보관: AWS S3 (다른 리전)
+</code></pre>
+<p>[재해 복구 기준]</p>
+<pre><code>- RTO: 4시간
+- RPO: 24시간
+- 복구 훈련: 연 1회
+</code></pre>
+<h2 id="11-개인정보-규모별-요구사항">11. 개인정보 규모별 요구사항<a hidden class="anchor" aria-hidden="true" href="#11-개인정보-규모별-요구사항">#</a></h2>
+<h3 id="111-100만명-미만">11.1 100만명 미만<a hidden class="anchor" aria-hidden="true" href="#111-100만명-미만">#</a></h3>
+<p><strong>적용 조항</strong> : 제3조~제10조 <strong>전체</strong></p>
+<p>[핵심 요구사항]</p>
+<pre><code>- 접속기록 **1년**
+- 비밀번호 암호화
+- 주민등록번호 암호화
+- 바이오정보 암호화
+</code></pre>
+<h3 id="112-100만명-이상">11.2 100만명 이상<a hidden class="anchor" aria-hidden="true" href="#112-100만명-이상">#</a></h3>
+<p><strong>추가 요구사항</strong> :</p>
+<pre><code>- 접속기록 **2년** 이상
+- **고유식별정보, 민감정보, 계좌정보 암호화** 추가
+- **다운로드 제한** (건수 제한, 로그, 경고)
+</code></pre>
+<h2 id="12-실무-체크리스트">12. 실무 체크리스트<a hidden class="anchor" aria-hidden="true" href="#12-실무-체크리스트">#</a></h2>
+<h3 id="관리적-보호조치-1">관리적 보호조치<a hidden class="anchor" aria-hidden="true" href="#관리적-보호조치-1">#</a></h3>
+<pre><code>- [ ] 내부 관리계획을 수립했는가?
+- [ ] 개인정보 보호책임자를 지정했는가?
+- [ ] 개인정보취급자 교육을 연 1회 실시하는가?
+</code></pre>
+<h3 id="기술적-보호조치---접근-권한">기술적 보호조치 - 접근 권한<a hidden class="anchor" aria-hidden="true" href="#기술적-보호조치---접근-권한">#</a></h3>
+<pre><code>- [ ] 최소 권한 원칙을 적용하는가?
+- [ ] 연 1회 권한을 검토하는가?
+- [ ] 퇴사자 계정을 즉시 삭제하는가?
+</code></pre>
+<h3 id="기술적-보호조치---접근통제">기술적 보호조치 - 접근통제<a hidden class="anchor" aria-hidden="true" href="#기술적-보호조치---접근통제">#</a></h3>
+<pre><code>- [ ] 사용자별 개별 계정을 부여하는가?
+- [ ] 비밀번호는 10자 이상인가?
+- [ ] 방화벽을 설치했는가?
+</code></pre>
+<h3 id="기술적-보호조치---암호화">기술적 보호조치 - 암호화<a hidden class="anchor" aria-hidden="true" href="#기술적-보호조치---암호화">#</a></h3>
+<pre><code>- [ ] 비밀번호를 SHA-256 이상으로 해시하는가?
+- [ ] 주민등록번호를 AES-256 등으로 암호화하는가?
+- [ ] 바이오정보를 암호화하는가?
+- [ ] (100만명 이상) 고유식별정보, 민감정보, 계좌정보를 암호화하는가?
+- [ ] 개인정보 전송 시 HTTPS(TLS 1.2)를 사용하는가?
+- [ ] 암호화 키를 안전하게 관리하는가?
+</code></pre>
+<h3 id="기술적-보호조치---접속기록">기술적 보호조치 - 접속기록<a hidden class="anchor" aria-hidden="true" href="#기술적-보호조치---접속기록">#</a></h3>
+<pre><code>- [ ] 접속기록을 1년(또는 2년) 보관하는가?
+- [ ] 월 1회 접속기록을 점검하는가?
+- [ ] 접속기록 위·변조 방지 조치를 했는가?
+</code></pre>
+<h3 id="기술적-보호조치---악성프로그램">기술적 보호조치 - 악성프로그램<a hidden class="anchor" aria-hidden="true" href="#기술적-보호조치---악성프로그램">#</a></h3>
+<pre><code>- [ ] 백신 소프트웨어를 설치했는가?
+- [ ] 백신을 자동 업데이트하는가?
+- [ ] 주 1회 검사를 수행하는가?
+</code></pre>
+<h3 id="물리적-보호조치-1">물리적 보호조치<a hidden class="anchor" aria-hidden="true" href="#물리적-보호조치-1">#</a></h3>
+<pre><code>- [ ] 전산실 출입을 통제하는가?
+- [ ] 개인정보 문서를 잠금장치에 보관하는가?
+- [ ] 반출·파기 기록을 유지하는가?
+</code></pre>
+<h3 id="재해재난-대비">재해·재난 대비<a hidden class="anchor" aria-hidden="true" href="#재해재난-대비">#</a></h3>
+<pre><code>- [ ] 정기적으로 백업하는가?
+- [ ] 백업본을 별도 장소에 보관하는가?
+- [ ] 재해 복구 계획이 있는가?
+</code></pre>
+<h2 id="13-위반-시-제재">13. 위반 시 제재<a hidden class="anchor" aria-hidden="true" href="#13-위반-시-제재">#</a></h2>
+<h3 id="131-과태료">13.1 과태료<a hidden class="anchor" aria-hidden="true" href="#131-과태료">#</a></h3>
+<p><strong>개인정보보호법 제75조</strong></p>
+<p><strong>3천만원 이하</strong> : 안전성 확보조치 미이행</p>
+<p>[실제 사례]</p>
+<pre><code>- A회사: 비밀번호 평문 저장 → 과태료 1,000만원
+- B회사: 주민등록번호 미암호화 → 과태료 2,000만원
+- C회사: 접속기록 미보관 → 과태료 500만원
+</code></pre>
+<h3 id="132-개인정보보호위원회-시정명령">13.2 개인정보보호위원회 시정명령<a hidden class="anchor" aria-hidden="true" href="#132-개인정보보호위원회-시정명령">#</a></h3>
+<pre><code>- 시정 기간 부여
+- 미이행 시 과태료 가중
+</code></pre>
+<h2 id="학습-정리">학습 정리<a hidden class="anchor" aria-hidden="true" href="#학습-정리">#</a></h2>
+<p>오늘 학습한 핵심 내용 :</p>
+<pre><code>- 안전성 확보조치 기준은 개인정보보호법 제29조의 구체적 시행 기준 (고시)
+- 10개 조항: 내부 관리계획, 접근 권한, 접근통제, 암호화, 접속기록, 악성프로그램, 물리적 안전조치, 재해·재난
+- 제6조 암호화: 비밀번호(해시), 주민등록번호(양방향), 바이오정보(양방향), 전송(TLS)
+- 암호화 알고리즘: AES-256, SHA-256, bcrypt 등
+- 비밀번호 10자 이상, 2023년부터 정기 변경 의무 삭제
+- 접속기록: 1년/2년/3년, 월 1회 점검
+- 100만명 이상: 접속기록 2년, 고유식별정보 등 암호화, 다운로드 제한
+</code></pre>
+<h2 id="다음-학습-주제">다음 학습 주제<a hidden class="anchor" aria-hidden="true" href="#다음-학습-주제">#</a></h2>
+<p>Day 27: 전자금융감독규정 (금융권 보안 실무)</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://hojjang98.github.io/tags/%EA%B3%A0%EC%8B%9C/">고시</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%95%88%EC%A0%84%EC%84%B1%ED%99%95%EB%B3%B4%EC%A1%B0%EC%B9%98/">안전성확보조치</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%95%94%ED%98%B8%ED%99%94/">암호화</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%A0%91%EA%B7%BC%ED%86%B5%EC%A0%9C/">접근통제</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%A0%91%EC%86%8D%EA%B8%B0%EB%A1%9D/">접속기록</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/">개인정보보호법</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

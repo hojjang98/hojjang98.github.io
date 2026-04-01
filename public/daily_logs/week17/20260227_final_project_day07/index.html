@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>2026.02.27 (Day 82) - 위수탁·제3자 제공 개념 정립 &#43; 팀 프로젝트 방향 논의 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="위수탁, 제3자제공, 개인정보보호법, 컨설팅, 팀프로젝트, PASS, NICE, CI/DI">
+<meta name="description" content="개인정보 처리 위수탁과 제3자 제공 구분 기준, 토스·NICE·PASS 법적 구조 분석, 팀 프로젝트 역할 및 멘토링 질문 준비.">
+<meta name="author" content="">
+<link rel="canonical" href="https://hojjang98.github.io/daily_logs/week17/20260227_final_project_day07/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.290573799e582c418c4bd84f2bca757d0a77fd1bf9f5c43942030e706df68ec8.css" integrity="sha256-KQVzeZ5YLEGMS9hPK8p1fQp3/Rv59cQ5QgMOcG32jsg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/daily_logs/week17/20260227_final_project_day07/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://hojjang98.github.io/daily_logs/week17/20260227_final_project_day07/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="2026.02.27 (Day 82) - 위수탁·제3자 제공 개념 정립 &#43; 팀 프로젝트 방향 논의">
+  <meta property="og:description" content="개인정보 처리 위수탁과 제3자 제공 구분 기준, 토스·NICE·PASS 법적 구조 분석, 팀 프로젝트 역할 및 멘토링 질문 준비.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="daily_logs">
+    <meta property="article:published_time" content="2026-02-27T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-02-27T00:00:00+00:00">
+    <meta property="article:tag" content="위수탁">
+    <meta property="article:tag" content="제3자제공">
+    <meta property="article:tag" content="개인정보보호법">
+    <meta property="article:tag" content="컨설팅">
+    <meta property="article:tag" content="팀프로젝트">
+    <meta property="article:tag" content="PASS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2026.02.27 (Day 82) - 위수탁·제3자 제공 개념 정립 &#43; 팀 프로젝트 방향 논의">
+<meta name="twitter:description" content="개인정보 처리 위수탁과 제3자 제공 구분 기준, 토스·NICE·PASS 법적 구조 분석, 팀 프로젝트 역할 및 멘토링 질문 준비.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "6개월, 혹은 그 이상의 보안 여정",
+      "item": "https://hojjang98.github.io/daily_logs/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "2026.02.27 (Day 82) - 위수탁·제3자 제공 개념 정립 + 팀 프로젝트 방향 논의",
+      "item": "https://hojjang98.github.io/daily_logs/week17/20260227_final_project_day07/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "2026.02.27 (Day 82) - 위수탁·제3자 제공 개념 정립 + 팀 프로젝트 방향 논의",
+  "name": "2026.02.27 (Day 82) - 위수탁·제3자 제공 개념 정립 \u002b 팀 프로젝트 방향 논의",
+  "description": "개인정보 처리 위수탁과 제3자 제공 구분 기준, 토스·NICE·PASS 법적 구조 분석, 팀 프로젝트 역할 및 멘토링 질문 준비.",
+  "keywords": [
+    "위수탁", "제3자제공", "개인정보보호법", "컨설팅", "팀프로젝트", "PASS", "NICE", "CI/DI"
+  ],
+  "articleBody": "1. 핵심 개념 정리 개인정보 처리 위수탁 구조 # 핵심 개념 설명 실무/보안 관점 1 개인정보처리자 (위탁자) 개인정보 처리 목적과 방법을 결정하는 주체. 오늘 프로젝트 맥락에서는 토스 위탁자는 수탁사를 선정·관리·감독할 의무를 법적으로 부담 2 수탁자 위탁자의 업무를 대신 처리하는 회사. 위탁자의 이익을 위해 개인정보를 처리 수탁사도 안전조치 의무를 직접 이행해야 하며, 위탁 범위 초과 처리는 법 위반 3 위탁 관계의 핵심 “누구의 이익을 위한 처리인가\"가 위탁 여부를 판단하는 핵심 기준 위탁자 이익 -\u003e 위탁 / 제3자 이익 -\u003e 제3자 제공. 모호할 경우 제3자 제공으로 보수적 판단 4 위탁 계약서 의무 위탁 관계가 성립하면 계약서 작성 필수. 목적·기간·항목·재위탁 제한·안전조치·파기 조항 포함 계약서 없는 위탁은 개인정보보호법 위반. 구두 합의는 법적 효력 없음 5 관리·감독 의무 위탁자는 수탁사가 개인정보를 적법하게 처리하는지 정기적으로 점검해야 함 수탁사 침해 사고 발생 시 위탁자도 책임. 감독 소홀은 과태료 대상 제3자 제공과의 구분 # 핵심 개념 설명 실무/보안 관점 6 제3자 제공 제3자의 이익을 위해 개인정보를 제공하는 것. 원칙적으로 정보주체 동의 필요 위탁으로 잘못 처리하면 동의 없는 제3자 제공이 되어 법 위반으로 직결 7 위탁 vs 제3자 제공 구분 기준 처리 목적의 이익 귀속 주체로 판단. 위탁자 이익 = 위탁 / 수령자 이익 = 제3자 제공 실무에서 경계가 모호한 경우가 많아 계약 구조와 실제 처리 목적을 함께 검토해야 함 8 본인확인기관 (PASS) 이통사가 운영하는 독립 법인. 토스의 수탁사가 아닌 별도 서비스 제공자 PASS는 토스에 인증 서비스를 제공하는 것이므로 위탁이 아닌 독립적 서비스 관계 9 CI/DI 전달 구조 사용자가 PASS 앱에서 인증 완료 -\u003e 결과값(CI/DI)이 NICE를 통해 토스에 전달되는 기술적 연계 기술적 연계가 있다고 해서 위탁 관계가 성립하는 것은 아님. 법적 구조를 별도로 확인해야 함 10 프로젝트에서의 제3자 제공 포함 여부 멘토링을 통해 확정 예정. 포함 시 분석 범위가 크게 확장됨 제3자 제공까지 포함하면 컨설팅 보고서의 완성도는 높아지나 분석 부담도 증가 오늘 프로젝트 역할 구조 정립 # 핵심 개념 설명 실무/보안 관점 11 컨설팅 팀의 역할 위탁자인 토스를 대신하여 수탁사 점검을 수행하는 외부 컨설팅 팀 실제 컨설팅에서도 위탁자가 직접 수탁사를 점검하기 어려울 때 외부 전문가에게 위탁하는 구조가 일반적 12 토스의 위치 개인정보처리자이자 위탁자. 수탁사를 관리·감독할 법적 의무 보유 토스가 수탁사를 제대로 관리하지 않으면 수탁사 사고 시 연대 책임 발생 가능 13 NICE평가정보의 위치 토스로부터 업무를 위탁받은 수탁사. 신용조회·본인확인 관련 처리 담당 수탁사는 위탁받은 업무 범위 내에서만 개인정보 처리 가능. 초과 활용은 위반 14 수탁사 2인 1조 구조 팀원 2명이 수탁사 1개를 담당하는 방식으로 확정 집중적인 분석이 가능하고, 개인정보 처리방침·계약 구조·기술적 보호조치를 한 팀이 통합 검토 가능 15 하향식 질문 전략 어떤 산출물이 필요한지를 먼저 확정한 후, 그에 필요한 정보를 역으로 질문하는 방식 멘토·강사 질문 시 방향 없이 묻는 것보다 산출물 기준으로 질문하면 훨씬 구체적인 답변을 얻을 수 있음 2. 실습 내용 정리 오늘은 ISRM 개인공부 + 개인정보처리방침 분석 + 팀 회의 중심으로 진행. 실습 섹션은 오늘 수행한 분석 활동으로 대체.\n활동 1: 개인정보처리방침 분석 (토스 및 수탁사 중심) 목표: 토스의 개인정보처리방침에서 위수탁 구조와 제3자 제공 현황 파악\n분석 포인트:\n확인 항목:\n수탁사 목록이 처리방침에 공개되어 있는지 (법적 의무사항) 수탁 업무 내용이 구체적으로 기재되어 있는지 제3자 제공 목록과 제공 목적이 명확히 구분되어 있는지 PASS(이통사), NICE 등의 위치가 위탁인지 제3자 제공인지 구조 파악 처리방침 최종 업데이트 날짜가 최신인지 확인 보안 인사이트:\n처리방침에 수탁사가 공개되어 있더라도 실제 계약서와 일치하는지는 별도 확인이 필요하다 핀테크 특성상 수탁사 수가 많고 변동이 잦아 처리방침 최신화 여부 자체가 점검 항목이 된다 기술적 연계(API 연동 등)와 법적 위탁 관계는 반드시 구분해서 분석해야 한다 활동 2: 팀 회의 - 프로젝트 방향 논의 목표: 멘토링 전 팀 내 공통 이해 형성 및 멘토 질문 목록 작성\n회의 구조:\n[의제 1] 위수탁 vs 제3자 제공 개념 공유\n팀원 전체가 동일한 기준으로 구분할 수 있도록 정리 PASS(본인확인기관)의 위치 논의 -\u003e 수탁사 아님, 독립 서비스 제공자로 확인 [의제 2] 수탁사 선정 방향 논의\n현재 6개 수탁사 유지 방향 검토 2명이 수탁사 1개 담당하는 구조 확정 문어다리 구조 시 타 팀과 중복 우려 -\u003e 방향 재검토 필요 [의제 3] 제3자 제공 포함 여부\n포함 시 분석 범위 확장. 멘토 결정에 따르기로 합의 3, 4조 파트 카테고리 재조정 필요성 논의 [의제 4] 멘토 질문 목록 확정\n하향식 질문 방식으로 구성 3시까지 질문 목록 정리 완료 목표 논의 결과 및 미결 사항:\n확정된 사항:\n2명 수탁사 1개 담당 구조 멘토링 질문 목록 작성 완료 하향식 질문 전략 채택 미결 사항 (멘토링 후 확정 예정):\n핀테크(토스) 주제 최종 확정 여부 수탁사 6개 유지 또는 변경 여부 제3자 제공 분석 포함 여부 3, 4조 카테고리 조정 방향 3. 비교·분석 표 위탁 vs 제3자 제공 완전 비교 항목 개인정보 처리 위탁 제3자 제공 오늘 프로젝트 적용 처리 목적 위탁자의 업무를 위해 제3자의 이익을 위해 NICE = 토스 업무를 위해 -\u003e 위탁 이익 귀속 위탁자에게 귀속 수령자(제3자)에게 귀속 PASS = 독립 서비스 -\u003e 위탁 아님 정보주체 동의 원칙 불필요 (처리방침 공개로 대체) 원칙 필요 위탁 범위 착오 시 동의 없는 제3자 제공 위반 계약 의무 위탁 계약서 필수 제공 계약 또는 동의 계약서 존재 여부가 위탁 관계 증명 핵심 감독 의무 위탁자가 수탁사 감독 제공 후 독립 처리 토스가 NICE에 대한 감독 의무 부담 책임 구조 수탁사 사고 시 위탁자도 책임 제공 후 수령자 독립 책임 컨설팅 보고서에서 책임 구조 명확화 필요 오늘 기준 프로젝트 등장인물 정리 주체 역할 법적 지위 컨설팅 관계 우리 팀 (Team Libero) 수탁사 점검 수행 외부 컨설팅 팀 토스를 대신해 점검 수행 토스 개인정보 처리 주체 개인정보처리자(위탁자) 점검 의뢰인 NICE평가정보 신용조회·본인확인 처리 수탁자 점검 대상 콜센터 업체 등 고객 응대 업무 처리 수탁자 점검 대상 PASS (이통사) 본인확인 서비스 제공 독립 서비스 제공자 (본인확인기관) 위탁 관계 아님. 별도 검토 필요 4. 심화 분석 토스 본인인증 기술 연계 구조 분석 구분 주체 역할 법적 관계 분석 포인트 1단계 사용자 PASS 앱에서 인증 수행 정보주체 동의 주체 2단계 PASS (이통사) 인증 결과 생성 및 CI/DI 발급 독립 본인확인기관 토스의 수탁사 아님 3단계 NICE평가정보 CI/DI 값을 토스에 전달하는 중개 역할 토스의 수탁사 데이터 처리 범위 확인 필요 4단계 토스 CI/DI 수신 후 본인 확인 완료 처리 개인정보처리자 수신 데이터 보관·활용 범위 점검 핵심 인사이트:\n기술적으로는 PASS -\u003e NICE -\u003e 토스 순으로 데이터가 흐르지만, 법적 위탁 관계는 토스 \u003c-\u003e NICE 사이에만 성립한다. PASS는 독립 법인으로 별도 서비스 계약 관계이며, 이 구조를 혼동하면 컨설팅 보고서에서 위탁 범위를 잘못 설정하게 된다.\n멘토링 질문 구조 - 하향식 방식 적용 산출물 기준 역방향 질문 구조:\n최종 산출물: 핀테크 기업 개인정보보호 컨설팅 보고서 필요한 분석: 수탁사별 위수탁 계약 적정성 + 기술적 보호조치 이행 현황 필요한 정보: 수탁사 범위 확정 + 제3자 제공 포함 여부 멘토 질문: Q1. 최종 보고서에서 수탁사를 몇 개로 압축하는 것이 적절한가? Q2. 제3자 제공 분석을 포함하면 보고서 완성도가 높아지는가, 아니면 범위 과다로 오히려 품질이 떨어지는가? Q3. 현재 검토 중인 수탁사 카테고리 중 핀테크 관점에서 빠진 영역이 있는가? Q4. 항공사 등 타 업종으로 전환하는 것이 더 나은 시나리오가 있는가? 5. 실무/보안 적용 보안 전문가 관점 - 수탁사 점검 시 핵심 확인 항목 점검 영역 확인 포인트 근거 법령 대응 방안 계약 적정성 - 위탁 계약서 필수 기재사항 포함 여부\n- 재위탁 제한 조항 존재 여부\n- 계약 종료 후 파기 조항 포함 여부 개인정보보호법 제26조 - 표준 위탁 계약서 체크리스트 활용\n- 재위탁 현황 별도 파악 처리방침 공개 - 수탁사 명칭·업무 내용 공개 여부\n- 최신화 여부 확인 개인정보보호법 제26조 4항 - 처리방침 업데이트 주기 확인\n- 현재 수탁사 목록과 대조 기술적 보호조치 - 접근권한 최소화 여부\n- 암호화 적용 여부\n- 접속기록 보관 여부 안전성 확보조치 기준 - 수탁사 보안 설문 또는 현장 점검 수행 관리·감독 이행 - 정기 점검 실시 증적 존재 여부\n- 수탁사 담당자 교육 이행 여부 개인정보보호법 제26조 - 점검 결과 문서화·보관 프로젝트 진행 체크리스트 멘토링 전 준비 사항:\n개념 정립 완료 여부\n위수탁 vs 제3자 제공 구분 기준 팀 내 공유 토스·NICE·PASS 역할 구조 정리 컨설팅 팀의 역할 명확화 멘토 질문 목록 준비\n하향식 질문 방식으로 구성 수탁사 범위 확정 질문 포함 제3자 제공 포함 여부 질문 포함 산출물 기준 역방향 질문 구성 멘토링 후 처리 사항\n핀테크(토스) 주제 최종 확정 수탁사 목록 최종 확정 제3자 제공 포함 범위 결정 WBS 작성 시작 프로젝트 수행계획서 작성 시작 6. 배운 점 및 인사이트 새로 알게 된 점 PASS의 법적 위치: PASS(이통사)는 토스의 수탁사가 아닌 독립 본인확인기관으로, 기술적 연계와 법적 위탁 관계는 별개라는 점이 명확해짐 CI/DI 전달 구조: 인증 결과가 PASS -\u003e NICE -\u003e 토스로 흐르는 기술적 구조와 위탁 관계가 일치하지 않는다는 것을 구체적 사례로 이해 하향식 질문의 실효성: 막연하게 “어떻게 해야 하나요?“보다 산출물 기준으로 역방향 질문을 구성하면 훨씬 구체적인 피드백을 받을 수 있음 제3자 제공 포함의 트레이드오프: 분석 완성도 vs 범위 과다 간의 균형을 멘토 피드백을 통해 결정해야 하는 판단 문제임을 인식 개인정보처리방침 분석의 실용성: 처리방침 자체가 수탁사 현황·제3자 제공 구조를 파악하는 1차 자료가 됨을 직접 확인 이전 학습과의 연결고리 Day 81 위수탁 안내서 학습과 연계: 어제 정리한 위탁 계약서 필수 기재사항·수탁자 관리감독 의무가 오늘 프로젝트 점검 항목으로 직접 연결됨 ISMS-P 학습과 연계: 위탁사 관리 항목이 ISMS-P 인증 심사의 수탁자 관리 영역과 정확히 대응됨을 재확인 기술적 보호조치 -\u003e 수탁사 점검 항목 전환: 어제 정리한 접근통제·암호화·접속기록 관리가 수탁사 점검 체크리스트의 기술 항목으로 그대로 활용됨 실무 적용 아이디어 보안 전문가 관점:\n역할 구조 명확화의 중요성: 실제 컨설팅 프로젝트 시작 전에 클라이언트·컨설팅 팀·점검 대상의 역할을 명확히 정의하지 않으면 책임 범위가 흐릿해짐 처리방침 분석을 점검 출발점으로 활용: 수탁사 현황을 파악할 때 처리방침을 1차 자료로 쓰고, 실제 계약서와 대조하는 2단계 접근이 효율적 기술 연계 구조도 작성: PASS -\u003e NICE -\u003e 토스처럼 데이터 흐름을 시각화하면 법적 위탁 관계 분석이 훨씬 명확해짐 프로젝트 리더 관점:\n키가 없는 상태에서의 회의 관리: 방향이 확정되지 않은 상태에서는 결정 가능한 것과 멘토 피드백이 필요한 것을 분리하여 회의를 진행하는 것이 효율적 미결 사항의 명시적 관리: 오늘처럼 미결 사항을 목록으로 명시해두면 멘토링 후 팀 논의를 빠르게 재개할 수 있음 7. Quick Reference 위수탁·제3자 제공 판단 흐름도 개인정보가 외부로 나가는가?\nYes -\u003e 누구의 이익을 위한 처리인가? 위탁자 이익 -\u003e [위탁] 계약서 필수 수탁사 감독 의무 처리방침 공개 수령자 이익 -\u003e [제3자 제공] 원칙적 동의 필요 제공 후 독립 책임 처리방침 기재 오늘 기준 프로젝트 핵심 요약표 구분 항목 현재 상태 확정 필요 여부 주제 핀테크(토스) 미확정 멘토링 후 확정 구조 2명 수탁사 1개 확정 완료 수탁사 수 6개 유지 검토 중 멘토링 후 확정 제3자 제공 포함 여부 미결 미결 멘토링 후 확정 산출물 컨설팅 보고서 방향 설정 중 WBS 작성 후 구체화 내일 멘토링 질문 체크리스트 확정이 필요한 질문:\n핀테크(토스) 주제 최종 확정 가능한지 수탁사 6개 유지 방향이 적절한지 제3자 제공 분석을 프로젝트 범위에 포함할지 3, 4조 카테고리 조정 방향 방향성을 얻기 위한 질문:\n멘토님이 생각하는 추가 수탁사 카테고리가 있는지 타 팀과의 중복 우려 시 대안 방향 최종 보고서 산출물 기준으로 적정 분석 범위 8. 트러블슈팅 문제 원인 해결 방법 수탁사 선정 방향에 대한 팀 내 의견 충돌 멘토링 확정 전 각자의 판단 기준이 달라 방향이 통일되지 않은 상태 - 멘토링 후 공식 확정 전까지 잠정 방향으로만 진행\n- 의견 충돌은 멘토 질문 목록으로 전환하여 외부 기준으로 해소\n- 팀 내에서 결정할 수 있는 것과 멘토 피드백이 필요한 것을 명확히 분리 제3자 제공 포함 여부 불확실 프로젝트 범위가 확정되지 않아 분석 깊이 설정 불가 - 멘토링에서 “포함 시 보고서 품질 vs 범위 과다” 트레이드오프를 구체적으로 질문\n- 포함/미포함 두 가지 시나리오를 각각 준비해두고 멘토 결정에 따라 신속 전환 PASS의 법적 위치 혼동 기술적 연계 구조와 법적 위탁 관계를 동일시하는 오해 - 데이터 흐름(기술)과 계약 관계(법)를 별도 레이어로 분리하여 분석\n- PASS는 독립 본인확인기관으로 별도 서비스 계약 관계임을 팀 내 공유 완료 회의 방향성 부재로 인한 피로감 핵심 의사결정이 멘토링 전에 내려지지 않아 논의가 반복 - 미결 사항을 명시적으로 목록화하여 “지금 결정할 수 없는 것\"임을 인정\n- 확정 가능한 구조(2인 1수탁사)부터 먼저 확정하고 회의 생산성 확보 Today’s Insight:\n오늘은 개념을 정립하는 날이었다. 위수탁과 제3자 제공의 구분, PASS와 NICE의 법적 위치, 컨설팅 팀의 역할 구조까지 팀이 같은 언어를 쓰기 위한 기반을 쌓았다. 프로젝트 방향이 아직 확정되지 않아 답답함이 있지만, 이 상태에서 억지로 방향을 잡는 것보다 내일 멘토링에서 하향식 질문으로 구체적인 피드백을 받는 것이 훨씬 효율적이다. 키가 없는 배처럼 느껴지는 지금이지만, 질문이 정리되어 있다는 것 자체가 이미 방향을 찾을 준비가 된 상태라는 뜻이다. 내일 멘토링 이후 WBS와 수행계획서를 빠르게 작성하여 프로젝트 속도를 회복하는 것이 다음 우선순위다.\n",
+  "wordCount" : "5232",
+  "inLanguage": "ko",
+  "datePublished": "2026-02-27T00:00:00Z",
+  "dateModified": "2026-02-27T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/daily_logs/week17/20260227_final_project_day07/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://hojjang98.github.io/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/daily_logs/">6개월, 혹은 그 이상의 보안 여정</a></div>
+    <h1 class="post-title entry-hint-parent">
+      2026.02.27 (Day 82) - 위수탁·제3자 제공 개념 정립 &#43; 팀 프로젝트 방향 논의
+    </h1>
+    <div class="post-meta"><span title='2026-02-27 00:00:00 +0000 UTC'>2026년 2월 27일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h2 id="1-핵심-개념-정리">1. 핵심 개념 정리<a hidden class="anchor" aria-hidden="true" href="#1-핵심-개념-정리">#</a></h2>
+<h3 id="개인정보-처리-위수탁-구조">개인정보 처리 위수탁 구조<a hidden class="anchor" aria-hidden="true" href="#개인정보-처리-위수탁-구조">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">#</th>
+          <th style="text-align: left">핵심 개념</th>
+          <th style="text-align: left">설명</th>
+          <th style="text-align: left">실무/보안 관점</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">1</td>
+          <td style="text-align: left">개인정보처리자 (위탁자)</td>
+          <td style="text-align: left">개인정보 처리 목적과 방법을 결정하는 주체. 오늘 프로젝트 맥락에서는 토스</td>
+          <td style="text-align: left">위탁자는 수탁사를 선정·관리·감독할 의무를 법적으로 부담</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">2</td>
+          <td style="text-align: left">수탁자</td>
+          <td style="text-align: left">위탁자의 업무를 대신 처리하는 회사. 위탁자의 이익을 위해 개인정보를 처리</td>
+          <td style="text-align: left">수탁사도 안전조치 의무를 직접 이행해야 하며, 위탁 범위 초과 처리는 법 위반</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">3</td>
+          <td style="text-align: left">위탁 관계의 핵심</td>
+          <td style="text-align: left">&ldquo;누구의 이익을 위한 처리인가&quot;가 위탁 여부를 판단하는 핵심 기준</td>
+          <td style="text-align: left">위탁자 이익 -&gt; 위탁 / 제3자 이익 -&gt; 제3자 제공. 모호할 경우 제3자 제공으로 보수적 판단</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">4</td>
+          <td style="text-align: left">위탁 계약서 의무</td>
+          <td style="text-align: left">위탁 관계가 성립하면 계약서 작성 필수. 목적·기간·항목·재위탁 제한·안전조치·파기 조항 포함</td>
+          <td style="text-align: left">계약서 없는 위탁은 개인정보보호법 위반. 구두 합의는 법적 효력 없음</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">5</td>
+          <td style="text-align: left">관리·감독 의무</td>
+          <td style="text-align: left">위탁자는 수탁사가 개인정보를 적법하게 처리하는지 정기적으로 점검해야 함</td>
+          <td style="text-align: left">수탁사 침해 사고 발생 시 위탁자도 책임. 감독 소홀은 과태료 대상</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="제3자-제공과의-구분">제3자 제공과의 구분<a hidden class="anchor" aria-hidden="true" href="#제3자-제공과의-구분">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">#</th>
+          <th style="text-align: left">핵심 개념</th>
+          <th style="text-align: left">설명</th>
+          <th style="text-align: left">실무/보안 관점</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">6</td>
+          <td style="text-align: left">제3자 제공</td>
+          <td style="text-align: left">제3자의 이익을 위해 개인정보를 제공하는 것. 원칙적으로 정보주체 동의 필요</td>
+          <td style="text-align: left">위탁으로 잘못 처리하면 동의 없는 제3자 제공이 되어 법 위반으로 직결</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">7</td>
+          <td style="text-align: left">위탁 vs 제3자 제공 구분 기준</td>
+          <td style="text-align: left">처리 목적의 이익 귀속 주체로 판단. 위탁자 이익 = 위탁 / 수령자 이익 = 제3자 제공</td>
+          <td style="text-align: left">실무에서 경계가 모호한 경우가 많아 계약 구조와 실제 처리 목적을 함께 검토해야 함</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">8</td>
+          <td style="text-align: left">본인확인기관 (PASS)</td>
+          <td style="text-align: left">이통사가 운영하는 독립 법인. 토스의 수탁사가 아닌 별도 서비스 제공자</td>
+          <td style="text-align: left">PASS는 토스에 인증 서비스를 제공하는 것이므로 위탁이 아닌 독립적 서비스 관계</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">9</td>
+          <td style="text-align: left">CI/DI 전달 구조</td>
+          <td style="text-align: left">사용자가 PASS 앱에서 인증 완료 -&gt; 결과값(CI/DI)이 NICE를 통해 토스에 전달되는 기술적 연계</td>
+          <td style="text-align: left">기술적 연계가 있다고 해서 위탁 관계가 성립하는 것은 아님. 법적 구조를 별도로 확인해야 함</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">10</td>
+          <td style="text-align: left">프로젝트에서의 제3자 제공 포함 여부</td>
+          <td style="text-align: left">멘토링을 통해 확정 예정. 포함 시 분석 범위가 크게 확장됨</td>
+          <td style="text-align: left">제3자 제공까지 포함하면 컨설팅 보고서의 완성도는 높아지나 분석 부담도 증가</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="오늘-프로젝트-역할-구조-정립">오늘 프로젝트 역할 구조 정립<a hidden class="anchor" aria-hidden="true" href="#오늘-프로젝트-역할-구조-정립">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">#</th>
+          <th style="text-align: left">핵심 개념</th>
+          <th style="text-align: left">설명</th>
+          <th style="text-align: left">실무/보안 관점</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">11</td>
+          <td style="text-align: left">컨설팅 팀의 역할</td>
+          <td style="text-align: left">위탁자인 토스를 대신하여 수탁사 점검을 수행하는 외부 컨설팅 팀</td>
+          <td style="text-align: left">실제 컨설팅에서도 위탁자가 직접 수탁사를 점검하기 어려울 때 외부 전문가에게 위탁하는 구조가 일반적</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">12</td>
+          <td style="text-align: left">토스의 위치</td>
+          <td style="text-align: left">개인정보처리자이자 위탁자. 수탁사를 관리·감독할 법적 의무 보유</td>
+          <td style="text-align: left">토스가 수탁사를 제대로 관리하지 않으면 수탁사 사고 시 연대 책임 발생 가능</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">13</td>
+          <td style="text-align: left">NICE평가정보의 위치</td>
+          <td style="text-align: left">토스로부터 업무를 위탁받은 수탁사. 신용조회·본인확인 관련 처리 담당</td>
+          <td style="text-align: left">수탁사는 위탁받은 업무 범위 내에서만 개인정보 처리 가능. 초과 활용은 위반</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">14</td>
+          <td style="text-align: left">수탁사 2인 1조 구조</td>
+          <td style="text-align: left">팀원 2명이 수탁사 1개를 담당하는 방식으로 확정</td>
+          <td style="text-align: left">집중적인 분석이 가능하고, 개인정보 처리방침·계약 구조·기술적 보호조치를 한 팀이 통합 검토 가능</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">15</td>
+          <td style="text-align: left">하향식 질문 전략</td>
+          <td style="text-align: left">어떤 산출물이 필요한지를 먼저 확정한 후, 그에 필요한 정보를 역으로 질문하는 방식</td>
+          <td style="text-align: left">멘토·강사 질문 시 방향 없이 묻는 것보다 산출물 기준으로 질문하면 훨씬 구체적인 답변을 얻을 수 있음</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="2-실습-내용-정리">2. 실습 내용 정리<a hidden class="anchor" aria-hidden="true" href="#2-실습-내용-정리">#</a></h2>
+<blockquote>
+<p>오늘은 ISRM 개인공부 + 개인정보처리방침 분석 + 팀 회의 중심으로 진행.
+실습 섹션은 오늘 수행한 분석 활동으로 대체.</p>
+</blockquote>
+<h3 id="활동-1-개인정보처리방침-분석-토스-및-수탁사-중심">활동 1: 개인정보처리방침 분석 (토스 및 수탁사 중심)<a hidden class="anchor" aria-hidden="true" href="#활동-1-개인정보처리방침-분석-토스-및-수탁사-중심">#</a></h3>
+<p><strong>목표:</strong> 토스의 개인정보처리방침에서 위수탁 구조와 제3자 제공 현황 파악</p>
+<p><strong>분석 포인트:</strong></p>
+<p>확인 항목:</p>
+<ul>
+<li>수탁사 목록이 처리방침에 공개되어 있는지 (법적 의무사항)</li>
+<li>수탁 업무 내용이 구체적으로 기재되어 있는지</li>
+<li>제3자 제공 목록과 제공 목적이 명확히 구분되어 있는지</li>
+<li>PASS(이통사), NICE 등의 위치가 위탁인지 제3자 제공인지 구조 파악</li>
+<li>처리방침 최종 업데이트 날짜가 최신인지 확인</li>
+</ul>
+<p><strong>보안 인사이트:</strong></p>
+<ul>
+<li>처리방침에 수탁사가 공개되어 있더라도 실제 계약서와 일치하는지는 별도 확인이 필요하다</li>
+<li>핀테크 특성상 수탁사 수가 많고 변동이 잦아 처리방침 최신화 여부 자체가 점검 항목이 된다</li>
+<li>기술적 연계(API 연동 등)와 법적 위탁 관계는 반드시 구분해서 분석해야 한다</li>
+</ul>
+<h3 id="활동-2-팀-회의---프로젝트-방향-논의">활동 2: 팀 회의 - 프로젝트 방향 논의<a hidden class="anchor" aria-hidden="true" href="#활동-2-팀-회의---프로젝트-방향-논의">#</a></h3>
+<p><strong>목표:</strong> 멘토링 전 팀 내 공통 이해 형성 및 멘토 질문 목록 작성</p>
+<p><strong>회의 구조:</strong></p>
+<ul>
+<li>
+<p>[의제 1] 위수탁 vs 제3자 제공 개념 공유</p>
+<ul>
+<li>팀원 전체가 동일한 기준으로 구분할 수 있도록 정리</li>
+<li>PASS(본인확인기관)의 위치 논의 -&gt; 수탁사 아님, 독립 서비스 제공자로 확인</li>
+</ul>
+</li>
+<li>
+<p>[의제 2] 수탁사 선정 방향 논의</p>
+<ul>
+<li>현재 6개 수탁사 유지 방향 검토</li>
+<li>2명이 수탁사 1개 담당하는 구조 확정</li>
+<li>문어다리 구조 시 타 팀과 중복 우려 -&gt; 방향 재검토 필요</li>
+</ul>
+</li>
+<li>
+<p>[의제 3] 제3자 제공 포함 여부</p>
+<ul>
+<li>포함 시 분석 범위 확장. 멘토 결정에 따르기로 합의</li>
+<li>3, 4조 파트 카테고리 재조정 필요성 논의</li>
+</ul>
+</li>
+<li>
+<p>[의제 4] 멘토 질문 목록 확정</p>
+<ul>
+<li>하향식 질문 방식으로 구성</li>
+<li>3시까지 질문 목록 정리 완료 목표</li>
+</ul>
+</li>
+</ul>
+<p><strong>논의 결과 및 미결 사항:</strong></p>
+<p>확정된 사항:</p>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 2명 수탁사 1개 담당 구조</li>
+<li><input checked="" disabled="" type="checkbox"> 멘토링 질문 목록 작성 완료</li>
+<li><input checked="" disabled="" type="checkbox"> 하향식 질문 전략 채택</li>
+</ul>
+<p>미결 사항 (멘토링 후 확정 예정):</p>
+<ul>
+<li>핀테크(토스) 주제 최종 확정 여부</li>
+<li>수탁사 6개 유지 또는 변경 여부</li>
+<li>제3자 제공 분석 포함 여부</li>
+<li>3, 4조 카테고리 조정 방향</li>
+</ul>
+<hr>
+<h2 id="3-비교분석-표">3. 비교·분석 표<a hidden class="anchor" aria-hidden="true" href="#3-비교분석-표">#</a></h2>
+<h3 id="위탁-vs-제3자-제공-완전-비교">위탁 vs 제3자 제공 완전 비교<a hidden class="anchor" aria-hidden="true" href="#위탁-vs-제3자-제공-완전-비교">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">항목</th>
+          <th style="text-align: left">개인정보 처리 위탁</th>
+          <th style="text-align: left">제3자 제공</th>
+          <th style="text-align: left">오늘 프로젝트 적용</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>처리 목적</strong></td>
+          <td style="text-align: left">위탁자의 업무를 위해</td>
+          <td style="text-align: left">제3자의 이익을 위해</td>
+          <td style="text-align: left">NICE = 토스 업무를 위해 -&gt; 위탁</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>이익 귀속</strong></td>
+          <td style="text-align: left">위탁자에게 귀속</td>
+          <td style="text-align: left">수령자(제3자)에게 귀속</td>
+          <td style="text-align: left">PASS = 독립 서비스 -&gt; 위탁 아님</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>정보주체 동의</strong></td>
+          <td style="text-align: left">원칙 불필요 (처리방침 공개로 대체)</td>
+          <td style="text-align: left">원칙 필요</td>
+          <td style="text-align: left">위탁 범위 착오 시 동의 없는 제3자 제공 위반</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>계약 의무</strong></td>
+          <td style="text-align: left">위탁 계약서 필수</td>
+          <td style="text-align: left">제공 계약 또는 동의</td>
+          <td style="text-align: left">계약서 존재 여부가 위탁 관계 증명 핵심</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>감독 의무</strong></td>
+          <td style="text-align: left">위탁자가 수탁사 감독</td>
+          <td style="text-align: left">제공 후 독립 처리</td>
+          <td style="text-align: left">토스가 NICE에 대한 감독 의무 부담</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>책임 구조</strong></td>
+          <td style="text-align: left">수탁사 사고 시 위탁자도 책임</td>
+          <td style="text-align: left">제공 후 수령자 독립 책임</td>
+          <td style="text-align: left">컨설팅 보고서에서 책임 구조 명확화 필요</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="오늘-기준-프로젝트-등장인물-정리">오늘 기준 프로젝트 등장인물 정리<a hidden class="anchor" aria-hidden="true" href="#오늘-기준-프로젝트-등장인물-정리">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">주체</th>
+          <th style="text-align: left">역할</th>
+          <th style="text-align: left">법적 지위</th>
+          <th style="text-align: left">컨설팅 관계</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>우리 팀 (Team Libero)</strong></td>
+          <td style="text-align: left">수탁사 점검 수행</td>
+          <td style="text-align: left">외부 컨설팅 팀</td>
+          <td style="text-align: left">토스를 대신해 점검 수행</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>토스</strong></td>
+          <td style="text-align: left">개인정보 처리 주체</td>
+          <td style="text-align: left">개인정보처리자(위탁자)</td>
+          <td style="text-align: left">점검 의뢰인</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>NICE평가정보</strong></td>
+          <td style="text-align: left">신용조회·본인확인 처리</td>
+          <td style="text-align: left">수탁자</td>
+          <td style="text-align: left">점검 대상</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>콜센터 업체 등</strong></td>
+          <td style="text-align: left">고객 응대 업무 처리</td>
+          <td style="text-align: left">수탁자</td>
+          <td style="text-align: left">점검 대상</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>PASS (이통사)</strong></td>
+          <td style="text-align: left">본인확인 서비스 제공</td>
+          <td style="text-align: left">독립 서비스 제공자 (본인확인기관)</td>
+          <td style="text-align: left">위탁 관계 아님. 별도 검토 필요</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="4-심화-분석">4. 심화 분석<a hidden class="anchor" aria-hidden="true" href="#4-심화-분석">#</a></h2>
+<h3 id="토스-본인인증-기술-연계-구조-분석">토스 본인인증 기술 연계 구조 분석<a hidden class="anchor" aria-hidden="true" href="#토스-본인인증-기술-연계-구조-분석">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">구분</th>
+          <th style="text-align: left">주체</th>
+          <th style="text-align: left">역할</th>
+          <th style="text-align: left">법적 관계</th>
+          <th style="text-align: left">분석 포인트</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">1단계</td>
+          <td style="text-align: left">사용자</td>
+          <td style="text-align: left">PASS 앱에서 인증 수행</td>
+          <td style="text-align: left">정보주체</td>
+          <td style="text-align: left">동의 주체</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">2단계</td>
+          <td style="text-align: left">PASS (이통사)</td>
+          <td style="text-align: left">인증 결과 생성 및 CI/DI 발급</td>
+          <td style="text-align: left">독립 본인확인기관</td>
+          <td style="text-align: left">토스의 수탁사 아님</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">3단계</td>
+          <td style="text-align: left">NICE평가정보</td>
+          <td style="text-align: left">CI/DI 값을 토스에 전달하는 중개 역할</td>
+          <td style="text-align: left">토스의 수탁사</td>
+          <td style="text-align: left">데이터 처리 범위 확인 필요</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">4단계</td>
+          <td style="text-align: left">토스</td>
+          <td style="text-align: left">CI/DI 수신 후 본인 확인 완료 처리</td>
+          <td style="text-align: left">개인정보처리자</td>
+          <td style="text-align: left">수신 데이터 보관·활용 범위 점검</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>핵심 인사이트:</strong></p>
+<p>기술적으로는 PASS -&gt; NICE -&gt; 토스 순으로 데이터가 흐르지만, 법적 위탁 관계는 토스 &lt;-&gt; NICE 사이에만 성립한다. PASS는 독립 법인으로 별도 서비스 계약 관계이며, 이 구조를 혼동하면 컨설팅 보고서에서 위탁 범위를 잘못 설정하게 된다.</p>
+<h3 id="멘토링-질문-구조---하향식-방식-적용">멘토링 질문 구조 - 하향식 방식 적용<a hidden class="anchor" aria-hidden="true" href="#멘토링-질문-구조---하향식-방식-적용">#</a></h3>
+<p>산출물 기준 역방향 질문 구조:</p>
+<ul>
+<li>최종 산출물: 핀테크 기업 개인정보보호 컨설팅 보고서
+<ul>
+<li>필요한 분석: 수탁사별 위수탁 계약 적정성 + 기술적 보호조치 이행 현황
+<ul>
+<li>필요한 정보: 수탁사 범위 확정 + 제3자 제공 포함 여부
+<ul>
+<li>멘토 질문:
+<ul>
+<li>Q1. 최종 보고서에서 수탁사를 몇 개로 압축하는 것이 적절한가?</li>
+<li>Q2. 제3자 제공 분석을 포함하면 보고서 완성도가 높아지는가, 아니면 범위 과다로 오히려 품질이 떨어지는가?</li>
+<li>Q3. 현재 검토 중인 수탁사 카테고리 중 핀테크 관점에서 빠진 영역이 있는가?</li>
+<li>Q4. 항공사 등 타 업종으로 전환하는 것이 더 나은 시나리오가 있는가?</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="5-실무보안-적용">5. 실무/보안 적용<a hidden class="anchor" aria-hidden="true" href="#5-실무보안-적용">#</a></h2>
+<h3 id="보안-전문가-관점---수탁사-점검-시-핵심-확인-항목">보안 전문가 관점 - 수탁사 점검 시 핵심 확인 항목<a hidden class="anchor" aria-hidden="true" href="#보안-전문가-관점---수탁사-점검-시-핵심-확인-항목">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">점검 영역</th>
+          <th style="text-align: left">확인 포인트</th>
+          <th style="text-align: left">근거 법령</th>
+          <th style="text-align: left">대응 방안</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>계약 적정성</strong></td>
+          <td style="text-align: left">- 위탁 계약서 필수 기재사항 포함 여부<br>- 재위탁 제한 조항 존재 여부<br>- 계약 종료 후 파기 조항 포함 여부</td>
+          <td style="text-align: left">개인정보보호법 제26조</td>
+          <td style="text-align: left">- 표준 위탁 계약서 체크리스트 활용<br>- 재위탁 현황 별도 파악</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>처리방침 공개</strong></td>
+          <td style="text-align: left">- 수탁사 명칭·업무 내용 공개 여부<br>- 최신화 여부 확인</td>
+          <td style="text-align: left">개인정보보호법 제26조 4항</td>
+          <td style="text-align: left">- 처리방침 업데이트 주기 확인<br>- 현재 수탁사 목록과 대조</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>기술적 보호조치</strong></td>
+          <td style="text-align: left">- 접근권한 최소화 여부<br>- 암호화 적용 여부<br>- 접속기록 보관 여부</td>
+          <td style="text-align: left">안전성 확보조치 기준</td>
+          <td style="text-align: left">- 수탁사 보안 설문 또는 현장 점검 수행</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>관리·감독 이행</strong></td>
+          <td style="text-align: left">- 정기 점검 실시 증적 존재 여부<br>- 수탁사 담당자 교육 이행 여부</td>
+          <td style="text-align: left">개인정보보호법 제26조</td>
+          <td style="text-align: left">- 점검 결과 문서화·보관</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="프로젝트-진행-체크리스트">프로젝트 진행 체크리스트<a hidden class="anchor" aria-hidden="true" href="#프로젝트-진행-체크리스트">#</a></h3>
+<p>멘토링 전 준비 사항:</p>
+<ol>
+<li>
+<p>개념 정립 완료 여부</p>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 위수탁 vs 제3자 제공 구분 기준 팀 내 공유</li>
+<li><input checked="" disabled="" type="checkbox"> 토스·NICE·PASS 역할 구조 정리</li>
+<li><input checked="" disabled="" type="checkbox"> 컨설팅 팀의 역할 명확화</li>
+</ul>
+</li>
+<li>
+<p>멘토 질문 목록 준비</p>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 하향식 질문 방식으로 구성</li>
+<li><input checked="" disabled="" type="checkbox"> 수탁사 범위 확정 질문 포함</li>
+<li><input checked="" disabled="" type="checkbox"> 제3자 제공 포함 여부 질문 포함</li>
+<li><input checked="" disabled="" type="checkbox"> 산출물 기준 역방향 질문 구성</li>
+</ul>
+</li>
+<li>
+<p>멘토링 후 처리 사항</p>
+<ul>
+<li><input disabled="" type="checkbox"> 핀테크(토스) 주제 최종 확정</li>
+<li><input disabled="" type="checkbox"> 수탁사 목록 최종 확정</li>
+<li><input disabled="" type="checkbox"> 제3자 제공 포함 범위 결정</li>
+<li><input disabled="" type="checkbox"> WBS 작성 시작</li>
+<li><input disabled="" type="checkbox"> 프로젝트 수행계획서 작성 시작</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="6-배운-점-및-인사이트">6. 배운 점 및 인사이트<a hidden class="anchor" aria-hidden="true" href="#6-배운-점-및-인사이트">#</a></h2>
+<h3 id="새로-알게-된-점">새로 알게 된 점<a hidden class="anchor" aria-hidden="true" href="#새로-알게-된-점">#</a></h3>
+<ul>
+<li><strong>PASS의 법적 위치:</strong> PASS(이통사)는 토스의 수탁사가 아닌 독립 본인확인기관으로, 기술적 연계와 법적 위탁 관계는 별개라는 점이 명확해짐</li>
+<li><strong>CI/DI 전달 구조:</strong> 인증 결과가 PASS -&gt; NICE -&gt; 토스로 흐르는 기술적 구조와 위탁 관계가 일치하지 않는다는 것을 구체적 사례로 이해</li>
+<li><strong>하향식 질문의 실효성:</strong> 막연하게 &ldquo;어떻게 해야 하나요?&ldquo;보다 산출물 기준으로 역방향 질문을 구성하면 훨씬 구체적인 피드백을 받을 수 있음</li>
+<li><strong>제3자 제공 포함의 트레이드오프:</strong> 분석 완성도 vs 범위 과다 간의 균형을 멘토 피드백을 통해 결정해야 하는 판단 문제임을 인식</li>
+<li><strong>개인정보처리방침 분석의 실용성:</strong> 처리방침 자체가 수탁사 현황·제3자 제공 구조를 파악하는 1차 자료가 됨을 직접 확인</li>
+</ul>
+<h3 id="이전-학습과의-연결고리">이전 학습과의 연결고리<a hidden class="anchor" aria-hidden="true" href="#이전-학습과의-연결고리">#</a></h3>
+<ul>
+<li><strong>Day 81 위수탁 안내서 학습과 연계:</strong> 어제 정리한 위탁 계약서 필수 기재사항·수탁자 관리감독 의무가 오늘 프로젝트 점검 항목으로 직접 연결됨</li>
+<li><strong>ISMS-P 학습과 연계:</strong> 위탁사 관리 항목이 ISMS-P 인증 심사의 수탁자 관리 영역과 정확히 대응됨을 재확인</li>
+<li><strong>기술적 보호조치 -&gt; 수탁사 점검 항목 전환:</strong> 어제 정리한 접근통제·암호화·접속기록 관리가 수탁사 점검 체크리스트의 기술 항목으로 그대로 활용됨</li>
+</ul>
+<h3 id="실무-적용-아이디어">실무 적용 아이디어<a hidden class="anchor" aria-hidden="true" href="#실무-적용-아이디어">#</a></h3>
+<p><strong>보안 전문가 관점:</strong></p>
+<ul>
+<li><strong>역할 구조 명확화의 중요성:</strong> 실제 컨설팅 프로젝트 시작 전에 클라이언트·컨설팅 팀·점검 대상의 역할을 명확히 정의하지 않으면 책임 범위가 흐릿해짐</li>
+<li><strong>처리방침 분석을 점검 출발점으로 활용:</strong> 수탁사 현황을 파악할 때 처리방침을 1차 자료로 쓰고, 실제 계약서와 대조하는 2단계 접근이 효율적</li>
+<li><strong>기술 연계 구조도 작성:</strong> PASS -&gt; NICE -&gt; 토스처럼 데이터 흐름을 시각화하면 법적 위탁 관계 분석이 훨씬 명확해짐</li>
+</ul>
+<p><strong>프로젝트 리더 관점:</strong></p>
+<ul>
+<li><strong>키가 없는 상태에서의 회의 관리:</strong> 방향이 확정되지 않은 상태에서는 결정 가능한 것과 멘토 피드백이 필요한 것을 분리하여 회의를 진행하는 것이 효율적</li>
+<li><strong>미결 사항의 명시적 관리:</strong> 오늘처럼 미결 사항을 목록으로 명시해두면 멘토링 후 팀 논의를 빠르게 재개할 수 있음</li>
+</ul>
+<hr>
+<h2 id="7-quick-reference">7. Quick Reference<a hidden class="anchor" aria-hidden="true" href="#7-quick-reference">#</a></h2>
+<h3 id="위수탁제3자-제공-판단-흐름도">위수탁·제3자 제공 판단 흐름도<a hidden class="anchor" aria-hidden="true" href="#위수탁제3자-제공-판단-흐름도">#</a></h3>
+<p>개인정보가 외부로 나가는가?</p>
+<ul>
+<li>Yes -&gt; 누구의 이익을 위한 처리인가?
+<ul>
+<li>위탁자 이익 -&gt; <strong>[위탁]</strong>
+<ul>
+<li>계약서 필수</li>
+<li>수탁사 감독 의무</li>
+<li>처리방침 공개</li>
+</ul>
+</li>
+<li>수령자 이익 -&gt; <strong>[제3자 제공]</strong>
+<ul>
+<li>원칙적 동의 필요</li>
+<li>제공 후 독립 책임</li>
+<li>처리방침 기재</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="오늘-기준-프로젝트-핵심-요약표">오늘 기준 프로젝트 핵심 요약표<a hidden class="anchor" aria-hidden="true" href="#오늘-기준-프로젝트-핵심-요약표">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">구분</th>
+          <th style="text-align: left">항목</th>
+          <th style="text-align: left">현재 상태</th>
+          <th style="text-align: left">확정 필요 여부</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">주제</td>
+          <td style="text-align: left">핀테크(토스)</td>
+          <td style="text-align: left">미확정</td>
+          <td style="text-align: left">멘토링 후 확정</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">구조</td>
+          <td style="text-align: left">2명 수탁사 1개</td>
+          <td style="text-align: left">확정</td>
+          <td style="text-align: left">완료</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">수탁사 수</td>
+          <td style="text-align: left">6개 유지</td>
+          <td style="text-align: left">검토 중</td>
+          <td style="text-align: left">멘토링 후 확정</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">제3자 제공</td>
+          <td style="text-align: left">포함 여부 미결</td>
+          <td style="text-align: left">미결</td>
+          <td style="text-align: left">멘토링 후 확정</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">산출물</td>
+          <td style="text-align: left">컨설팅 보고서</td>
+          <td style="text-align: left">방향 설정 중</td>
+          <td style="text-align: left">WBS 작성 후 구체화</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="내일-멘토링-질문-체크리스트">내일 멘토링 질문 체크리스트<a hidden class="anchor" aria-hidden="true" href="#내일-멘토링-질문-체크리스트">#</a></h3>
+<p><strong>확정이 필요한 질문:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> 핀테크(토스) 주제 최종 확정 가능한지</li>
+<li><input disabled="" type="checkbox"> 수탁사 6개 유지 방향이 적절한지</li>
+<li><input disabled="" type="checkbox"> 제3자 제공 분석을 프로젝트 범위에 포함할지</li>
+<li><input disabled="" type="checkbox"> 3, 4조 카테고리 조정 방향</li>
+</ul>
+<p><strong>방향성을 얻기 위한 질문:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> 멘토님이 생각하는 추가 수탁사 카테고리가 있는지</li>
+<li><input disabled="" type="checkbox"> 타 팀과의 중복 우려 시 대안 방향</li>
+<li><input disabled="" type="checkbox"> 최종 보고서 산출물 기준으로 적정 분석 범위</li>
+</ul>
+<hr>
+<h2 id="8-트러블슈팅">8. 트러블슈팅<a hidden class="anchor" aria-hidden="true" href="#8-트러블슈팅">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">문제</th>
+          <th style="text-align: left">원인</th>
+          <th style="text-align: left">해결 방법</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">수탁사 선정 방향에 대한 팀 내 의견 충돌</td>
+          <td style="text-align: left">멘토링 확정 전 각자의 판단 기준이 달라 방향이 통일되지 않은 상태</td>
+          <td style="text-align: left">- 멘토링 후 공식 확정 전까지 잠정 방향으로만 진행<br>- 의견 충돌은 멘토 질문 목록으로 전환하여 외부 기준으로 해소<br>- 팀 내에서 결정할 수 있는 것과 멘토 피드백이 필요한 것을 명확히 분리</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">제3자 제공 포함 여부 불확실</td>
+          <td style="text-align: left">프로젝트 범위가 확정되지 않아 분석 깊이 설정 불가</td>
+          <td style="text-align: left">- 멘토링에서 &ldquo;포함 시 보고서 품질 vs 범위 과다&rdquo; 트레이드오프를 구체적으로 질문<br>- 포함/미포함 두 가지 시나리오를 각각 준비해두고 멘토 결정에 따라 신속 전환</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">PASS의 법적 위치 혼동</td>
+          <td style="text-align: left">기술적 연계 구조와 법적 위탁 관계를 동일시하는 오해</td>
+          <td style="text-align: left">- 데이터 흐름(기술)과 계약 관계(법)를 별도 레이어로 분리하여 분석<br>- PASS는 독립 본인확인기관으로 별도 서비스 계약 관계임을 팀 내 공유 완료</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">회의 방향성 부재로 인한 피로감</td>
+          <td style="text-align: left">핵심 의사결정이 멘토링 전에 내려지지 않아 논의가 반복</td>
+          <td style="text-align: left">- 미결 사항을 명시적으로 목록화하여 &ldquo;지금 결정할 수 없는 것&quot;임을 인정<br>- 확정 가능한 구조(2인 1수탁사)부터 먼저 확정하고 회의 생산성 확보</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<p><strong>Today&rsquo;s Insight:</strong></p>
+<p>오늘은 개념을 정립하는 날이었다. 위수탁과 제3자 제공의 구분, PASS와 NICE의 법적 위치, 컨설팅 팀의 역할 구조까지 팀이 같은 언어를 쓰기 위한 기반을 쌓았다. 프로젝트 방향이 아직 확정되지 않아 답답함이 있지만, 이 상태에서 억지로 방향을 잡는 것보다 내일 멘토링에서 하향식 질문으로 구체적인 피드백을 받는 것이 훨씬 효율적이다. 키가 없는 배처럼 느껴지는 지금이지만, 질문이 정리되어 있다는 것 자체가 이미 방향을 찾을 준비가 된 상태라는 뜻이다. 내일 멘토링 이후 WBS와 수행계획서를 빠르게 작성하여 프로젝트 속도를 회복하는 것이 다음 우선순위다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://hojjang98.github.io/tags/%EC%9C%84%EC%88%98%ED%83%81/">위수탁</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%A0%9C3%EC%9E%90%EC%A0%9C%EA%B3%B5/">제3자제공</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/">개인정보보호법</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%BB%A8%EC%84%A4%ED%8C%85/">컨설팅</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%ED%8C%80%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/">팀프로젝트</a></li>
+      <li><a href="https://hojjang98.github.io/tags/pass/">PASS</a></li>
+      <li><a href="https://hojjang98.github.io/tags/nice/">NICE</a></li>
+      <li><a href="https://hojjang98.github.io/tags/ci/di/">CI/DI</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

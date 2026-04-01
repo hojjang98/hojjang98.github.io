@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>2026.03.10 (Day 89) - 멘토링 피드백 반영 및 다음 주 산출물 준비 방향 확정 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="수탁사점검, 멘토링, 체크리스트, 판정기준, 개인정보보호, 법령체계, 컨설팅, 프로젝트, WBS">
+<meta name="description" content="WBS 1·2 통합 작업 및 날짜 오류 수정, AWS/키오스크 중심의 수탁사 점검 시나리오 디테일 보완, 주간 수행 계획 확정.">
+<meta name="author" content="">
+<link rel="canonical" href="https://hojjang98.github.io/daily_logs/week19/20260310_final_project_14/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.290573799e582c418c4bd84f2bca757d0a77fd1bf9f5c43942030e706df68ec8.css" integrity="sha256-KQVzeZ5YLEGMS9hPK8p1fQp3/Rv59cQ5QgMOcG32jsg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/daily_logs/week19/20260310_final_project_14/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://hojjang98.github.io/daily_logs/week19/20260310_final_project_14/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="2026.03.10 (Day 89) - 멘토링 피드백 반영 및 다음 주 산출물 준비 방향 확정">
+  <meta property="og:description" content="WBS 1·2 통합 작업 및 날짜 오류 수정, AWS/키오스크 중심의 수탁사 점검 시나리오 디테일 보완, 주간 수행 계획 확정.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="daily_logs">
+    <meta property="article:published_time" content="2026-03-10T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-03-10T00:00:00+00:00">
+    <meta property="article:tag" content="수탁사점검">
+    <meta property="article:tag" content="멘토링">
+    <meta property="article:tag" content="체크리스트">
+    <meta property="article:tag" content="판정기준">
+    <meta property="article:tag" content="개인정보보호">
+    <meta property="article:tag" content="법령체계">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2026.03.10 (Day 89) - 멘토링 피드백 반영 및 다음 주 산출물 준비 방향 확정">
+<meta name="twitter:description" content="WBS 1·2 통합 작업 및 날짜 오류 수정, AWS/키오스크 중심의 수탁사 점검 시나리오 디테일 보완, 주간 수행 계획 확정.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "6개월, 혹은 그 이상의 보안 여정",
+      "item": "https://hojjang98.github.io/daily_logs/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "2026.03.10 (Day 89) - 멘토링 피드백 반영 및 다음 주 산출물 준비 방향 확정",
+      "item": "https://hojjang98.github.io/daily_logs/week19/20260310_final_project_14/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "2026.03.10 (Day 89) - 멘토링 피드백 반영 및 다음 주 산출물 준비 방향 확정",
+  "name": "2026.03.10 (Day 89) - 멘토링 피드백 반영 및 다음 주 산출물 준비 방향 확정",
+  "description": "WBS 1·2 통합 작업 및 날짜 오류 수정, AWS/키오스크 중심의 수탁사 점검 시나리오 디테일 보완, 주간 수행 계획 확정.",
+  "keywords": [
+    "수탁사점검", "멘토링", "체크리스트", "판정기준", "개인정보보호", "법령체계", "컨설팅", "프로젝트", "WBS"
+  ],
+  "articleBody": "📄 2026.03.10 (Day 89) - WBS 작성 및 이번 주 수행 계획 확정 1. 핵심 개념 정리 WBS (Work Breakdown Structure) 개념 및 구조 # 핵심 개념 설명 실무/보안 관점 1 WBS (작업분할구조도) 프로젝트 전체 작업을 단계별로 분해하여 작업자·상태·진척율·시작일·종료일·작업기간을 명시하는 프로젝트 관리 문서 컨설팅 프로젝트에서 WBS는 수주 후 첫 번째 공식 산출물. 일정·인력·범위를 한눈에 파악하게 해주는 뼈대 2 WBS 단계 구분 체계 수립 → 현황 조사 → 일정 수립 → 계획 착수 → 계획 실행 → 중간점검 수행 → 최종 산출물 제작 → 최종 발표 순으로 구성 단계별 상태(완료/진행/계획)와 진척율을 함께 관리해야 지연 항목을 즉시 식별 가능 3 WBS 1 vs WBS 2 WBS 1: 하랑항공(갑)과 리베로(을) 간 위수탁 관계 기준의 수행 WBS. WBS 2: 팀 전체 프로젝트 관리 WBS. 멘토님 권고에 따라 두 개를 통합하는 방향으로 정리 두 WBS를 분리 관리하면 중복 항목과 일정 충돌이 발생. 통합 구조가 실무에서도 일반적 4 간트 차트 (Gantt Chart) WBS에 날짜 축을 붙여 각 작업의 시작·종료·기간을 시각화한 표. 행(작업)과 열(날짜)로 구성되며 작업 진행 현황을 색상·기호로 표시 발표 자리에서 심사위원이 일정 관리 능력을 확인하는 핵심 문서. 빈 셀이나 날짜 불일치가 있으면 신뢰도 하락 5 M/M (Man-Month) 작업에 투입된 인력×기간을 나타내는 단위. 예: 1명이 1개월 투입하면 1M/1M. WBS 기반으로 계산하여 수행계획서에 반영 RFP 기술협상 단계에서 인력 투입 계획의 근거가 됨. 실무에서는 M/M을 기반으로 비용 산정도 이루어짐 컨설팅 프로젝트 산출물 체계 # 핵심 개념 설명 실무/보안 관점 6 수행계획서 WBS를 포함하여 프로젝트 목표·범위·일정·인력·방법론·산출물 목록을 담은 문서. 고객사에 제출하는 공식 계획 문서 수행계획서가 명확하지 않으면 이후 범위 분쟁(Scope Creep)의 빌미가 됨 7 증적 자료 (Evidence) 점검 항목의 이행 여부를 입증하는 문서·사진·로그·서명 등의 자료. 모든 항목의 증적을 만들 필요는 없으며, 핵심 항목 위주로 선별 구성 법적 분쟁 발생 시 증적 자료의 존재 여부가 책임 소재를 결정. 내부관리계획서·대표자 날인 등 법적 필수 포인트 우선 8 수탁자별 결과 보고서 각 수탁사에 대한 점검 결과(Y/P/N/NA 판정·개선 권고)를 담은 워드 형식의 개별 보고서. 수탁사마다 별도 작성 점검 결과보고서는 고객사에 제출하는 공식 문서이므로 판정 근거가 명확하게 기술되어야 함 9 이행점검 최초 점검 후 미흡 사항에 대해 수탁사가 개선 조치를 취했는지 확인하는 후속 점검 프로세스. 이행점검 계획서·결과보고서 별도 작성 1회 점검으로 끝나는 것이 아니라 이행 여부 확인까지가 컨설팅의 완전한 사이클 10 시연 동영상 프로젝트 결과물 및 점검 과정을 담은 5분 내외의 영상. 발표 보조 자료이자 독립적인 산출물 기술적 내용을 비전문가에게 전달하는 역량을 보여주는 자료. 흐름이 명확하고 핵심이 집약된 구성이 중요 프로젝트 현황 관리 # 핵심 개념 설명 실무/보안 관점 11 상태 분류 완료(100%) / 진행(진행 중, 진척율 일부) / 계획(0%, 착수 전)으로 구분. 상태와 진척율을 함께 표기하여 현황을 명확히 관리 진척율이 없는 “완료” 항목은 신뢰도 저하. 상태·진척율·날짜가 삼각 검증 가능해야 함 12 작업기간 산정 시작일과 종료일 기준으로 달력 기준 작업일수를 산정. 공휴일·휴일 제외 여부를 일관되게 적용해야 함 작업기간이 1일인 항목이 과도하게 많으면 일정의 신뢰성이 낮아 보임. 실제 소요 시간을 반영한 산정이 중요 13 크로스체킹 팀원 간 서로의 작업 결과물을 교차 검토하는 과정. 체크리스트 판정의 일관성·오류·누락을 발견하는 데 효과적 1인이 작성하면 놓치기 쉬운 기준 불일치를 크로스체킹으로 잡아낼 수 있음. 특히 N/P 경계 판정 항목에서 유효 14 트리플 체킹 체크리스트를 본인 감으로 1차 점검 → 이상 항목 메모장 기록 → 팀 전체 기준으로 2~3차 재검토하는 3단계 검증 방식 AI 생성 현황에서 오류가 발생할 수 있으므로, 법령 기준과의 교차 확인이 트리플 체킹의 핵심 15 수탁자별 증적 자료 리스트 각 수탁사에 해당하는 증적 항목을 목록화한 문서. 어떤 증적을 수집·생성할 것인지 우선순위를 명시 증적 리스트를 먼저 만들어야 불필요한 작업을 줄이고 핵심 자료 확보에 집중 가능 2. 활동 내용 정리 활동 89-1: 팀 회의 - 이번 주 수행 계획 확정 목표: 체크리스트 트리플 체킹 결과 공유 및 이번 주 작업 우선순위 확정\n회의 주요 결정 사항:\n[ 이번 주 작업 우선순위 ]\n1순위 ( 진행 중 또는 즉시 착수 )\n- 수탁자별 시나리오 디테일 보완\r- 금융 : AWS(S3) 항목 추가, 재위탁 시나리오 보완\r- 키오스크 : 클라우드 항목 추가\r- **WBS** 및 수탁사 프로젝트 수행계획서 작성\r- 수탁자별 증적 자료 리스트 작성\r2순위 ( 병행 진행 )\n- 필수 증적 자료 생성\r보류 항목 ( 일정 여유 시 )\n- 크로스체킹 ( 완료 처리 )\r- 각 수탁사별 워드 점검 보고서 완성 ( 완료 처리 )\r- 개별 보고서\r- 시연 동영상 5분 구성\rWBS 관련 결정 사항:\n[ WBS 통합 방향 ]\n- **WBS 1** ( 하랑항공 \u0026 리베로 ) : 위수탁 관계 기반의 실제 수행 일정\r- **WBS 2** ( 팀 전체 ) : 프로젝트 5조 관리 일정\r- 두 개를 하나로 통합하는 방향으로 확정\r- 멘토링 1 ~ 5차를 WBS에 전부 녹일 필요 없음\r- 핵심 단계 위주로 구성\r활동 89-2: WBS 엑셀 작성 목표: 프로젝트 전체 일정을 단계별로 정리한 WBS 간트 차트 작성\nWBS 구조 요약:\n[ 단계 구분 및 주요 산출물 ]\n[ 체계 수립 ]\n- 팀 구성 및 역할 분담\r- 일일보고서 및 회의록 작성\r- Y / P / N / NA 기준 정의 / WBS 통합 확정\r[ 현황 조사 / 일정 수립 ]\n- ISMS-P 기반 항목 및 AWS 항목 추가\r- 업종별 비율 확정\r- WBS 작성 및 수정\r[ 계획 착수 ]\n- 제안요청서 양식 수립\r- 계약서 양식 수립\r- 현황관리 양식 수립\r- 점검 계획서 양식 수립\r- 수탁자 선정\r- 진단결과보고서 양식 작성\r[ 계획 실행 ]\n- 체크리스트 작성 및 취합\r- 계약서 · 협약서 수정\r- 현황조사표 작성\r- 교육계획서 작성\r- 수행계획서 작성\r- 인터뷰 항목 정리\r- 수탁자 개별 결과보고서 작성\r[ 중간점검 수행 ]\n- 리허설 \u003e 자료 수정 \u003e 중간점검 실시\r[ 계획 실행 ( 후반 ) ]\n- 3차 멘토링 피드백 반영\r- 체크리스트 최종 수정\r- 종합 결과보고서 작성\r- 이행점검 보고서 작성\r- 증적 자료 마련\r- 4차 멘토링 피드백 반영\r[ 최종 산출물 제작 ]\n- 5차 멘토링 피드백 반영\r- 시연 동영상 제작\r- 최종 발표 PPT 제작\r- 최종 보고서 작성\r[ 최종 발표 ]\n- 산출물 최종 제출\r- 최종 리허설\r- 수료식 발표 및 Q \u0026 A\r작성 시 주요 고려 사항:\n[ 확인 항목 ]\n- 작업자 필드 : 전원 / 개인별 담당자 구분 명시\r- 상태 필드 : 완료 / 진행 / 계획 3단계로 통일\r- 진척율 : 완료 ( 100% ) / 진행 ( 10 ~ 50% ) / 계획 ( 0% ) 기준 적용\r- 날짜 형식 : YYYY - MM - DD 통일, **#VALUE!** 오류 항목 수정 필요\r- 간트 차트 : 2월 2주 ~ 4월 3주 기간 커버, 날짜 축 M / W / D 3단계 표기\r3. 비교·분석 표 WBS 상태별 항목 현황 (작성 기준일: 2026.03.10) 상태 주요 항목 비고 완료 팀 구성, RFP 양식, 계약서 양식, 체크리스트 작성, 중간점검, 3·4차 멘토링, 종합결과보고서 등 대부분 항목 일부 날짜 오류(#VALUE!) 수정 필요 진행 일일보고서 작성, 핵심 증적 자료 생성, 최종 발표 PPT, 최종 보고서 진척율 10~50% 수준 계획 5차 멘토링, 시연 동영상 제작, 이행점검 시나리오, 최종 산출물 제출, 최종 리허설, 수료식 4월 이후 일정 집중 이번 주 작업 항목 비교 항목 당초 계획 실제 진행 상태 변경 크로스체킹 진행 예정 완료 처리 완료로 전환 워드 점검 보고서 이번 주 완성 예정 완료 처리 완료로 전환 금융 AWS/재위탁 시나리오 이번 주 착수 진행 중 유지 키오스크 클라우드 항목 이번 주 착수 진행 중 유지 WBS 작성 이번 주 착수 작성 완료 완료 증적 자료 리스트 이번 주 착수 착수 진행 4. 심화 분석 WBS 작성 원칙 및 실무 적용 기준 [ WBS 품질 기준 ]\n1. 작업 단위 세분화\n- 단일 작업이 5일을 초과하면 하위 작업으로 분해\r- \"양식 수립 \u003e 내용 작성 \u003e 수정\" 등 단계를 명확히 구분\r2. 날짜 일관성\n- 종료일이 시작일보다 빠른 오류 ( **#VALUE!** ) 전수 확인 필요\r- 작업기간 = 종료일 - 시작일 + 1 ( 달력 기준 )\r3. 담당자 명시\n- \"전원\"과 개인 담당 항목을 명확히 구분\r- 개인 담당 항목은 책임자 이름 직접 기재\r4. 진척율 현실성\n- 착수했으면 최소 10% 이상 반영\r- \"완료\" 표기 항목은 반드시 100%\r- 진척율 0% 인 항목은 \"계획\" 상태 유지\r5. 간트 차트 시각성\n- 날짜 축 : M ( 월 ) / W ( 주 ) / D ( 일 ) 3단계 구성\r- 완료 · 진행 · 계획을 색상으로 시각적 구분\r- 중요 마일스톤 ( 중간점검, 최종발표 ) 별도 강조\r프로젝트 전체 일정 구조 [ 리베로 프로젝트 타임라인 ]\n- 2026.02.11 ~ 12 : 팀 구성 및 역할 분담\r- 2026.02.23 ~ : 일일보고서 · 회의록 작성 시작\r- 2026.02.28 ~ 03.01 : 1차 멘토링\r- 2026.03.03 ~ 06 : 체크리스트 작성 및 양식 수립\r- 2026.03.07 ~ 08 : 2차 멘토링 ( 수행계획서 피드백 )\r- 2026.03.10 : **WBS** 작성 완료 ( 현재 )\r- 2026.03.14 ~ 15 : 3차 멘토링 ( 체크리스트 · 협약서 피드백 )\r- 2026.03.24 ~ 04.01 : 수행계획서 · 인터뷰 · 결과보고서 작성\r- 2026.03.28 ~ 29 : 4차 멘토링 ( 발표자료 · 전체 산출물 )\r- 2026.04.11 ~ 12 : 5차 멘토링 ( 최종 피드백 )\r- 2026.04.13 : 최종 산출물 제출\r- 2026.04.16 : 최종 리허설\r- 2026.04.17 : 수료식 발표 및 Q \u0026 A\r5. 실무/보안 적용 보안 전문가 관점 - WBS가 컨설팅에서 갖는 의미 관점 핵심 포인트 실무 적용 방안 일정 관리 WBS의 완료·진행·계획 상태가 프로젝트 리스크를 선제적으로 드러냄 지연 항목을 주간 회의에서 즉시 식별하고 우선순위를 재조정 산출물 품질 WBS에 명시된 산출물 항목이 실제 납품 기준이 됨. 빠진 항목은 고객사와의 분쟁 원인 산출물 목록을 WBS와 수행계획서에 동시 반영하여 이중 검증 책임 추적성 담당자가 명시된 WBS는 성과 평가와 책임 소재 파악의 기준 문서 “전원” 항목은 팀 리더가, 개인 담당 항목은 해당 팀원이 진척 보고 고객 커뮤니케이션 고객사에 WBS를 정기적으로 공유하면 신뢰 관계 강화 및 추가 요구 사항 조기 파악 가능 주간 보고 시 간트 차트 기반으로 진척 현황 시각 보고 6. 배운 점 및 인사이트 새로 알게 된 점 WBS는 단순 일정표가 아니다: 직접 WBS를 작성해보니, 단계 구분·작업 분해·담당자 배정·날짜 산정이 서로 맞물려야 한다는 것을 실감했다. 하나라도 어긋나면 #VALUE! 같은 오류가 발생하거나, 작업기간이 현실과 맞지 않는 일정이 만들어진다.\n통합 WBS의 효율성: WBS 1(위수탁 관계)과 WBS 2(팀 전체)를 처음에는 분리했지만, 중복 항목과 일정 충돌을 겪으면서 통합이 맞다는 멘토님 의견의 근거를 직접 이해했다.\n“완료” 처리의 기준: 크로스체킹과 워드 점검 보고서가 완료 처리된 것을 보며, 컨설팅 프로젝트에서 완료 기준을 명확히 정의하지 않으면 팀 간 인식 차이가 생긴다는 점을 확인했다. 기준 없는 완료는 나중에 품질 문제로 돌아온다.\nM/M 산정의 복잡성: WBS 기반으로 M/M을 계산하려면 각 작업의 실제 투입 시간을 역산해야 하는데, 작업기간이 짧은 항목이 많을수록 M/M이 과소 산정될 수 있다는 것을 처음 인식했다.\n이전 학습과의 연결고리 Day 88 RFP 프로세스와 연결: 어제 학습한 RFP → 수주 → 기술협상 → WBS/수행계획서 흐름이 오늘 직접 WBS를 작성하는 활동으로 이어졌다. 개념이 실제 문서 작업으로 연결되는 경험이었다.\n컨설팅 방법론 3단계와 연결: WBS의 단계 구분(체계 수립 → 현황 조사 → 계획 착수 → 실행 → 점검)이 현황 분석 → 평가 → 보호대책 수립의 컨설팅 방법론과 정확히 대응된다.\n실무 적용 아이디어 보안 전문가 관점:\nWBS 템플릿 재사용: 이번 프로젝트에서 작성한 WBS 구조는 향후 다른 수탁사 점검 프로젝트에서도 기본 템플릿으로 재활용 가능하다. 단계 구분과 산출물 목록은 거의 동일하기 때문이다.\n#VALUE! 오류 관리: 날짜 미입력 항목을 방치하면 전체 기간 산정과 간트 차트가 무너진다. 작업 착수 전 날짜를 임시로라도 채워두는 습관이 필요하다.\n증적 리스트 선제 작성: 증적 자료를 먼저 목록화하면 수집 범위를 명확히 하고 불필요한 작업을 줄일 수 있다. 이번 주 증적 리스트 작성이 다음 주 실제 증적 생성의 품질을 결정한다.\n7. Quick Reference WBS 필드 작성 기준 [ WBS 필드 작성 기준 ]\n- 단계 구분 : 체계 수립 / 현황 조사 / 일정 수립 / 계획 착수 / 계획 실행 / 중간점검 수행 / 최종 산출물 제작 / 최종 발표\r- 주요 업무 : 대분류 ( 예 : 체크리스트, 계약서, WBS )\r- 세부 업무 : 소분류 ( 예 : 양식 수립, 항목 추가, 수정 )\r- 작업자 : \"전원\" 또는 담당자 이름 직접 기재\r- 상태 : 완료 / 진행 / 계획\r- 진척율 : 완료 : 100% / 진행 : 10 ~ 50% / 계획 : 0%\r- 시작일 : YYYY - MM - DD\r- 종료일 : YYYY - MM - DD ( 시작일 이후여야 함 )\r- 작업기간 : 종료일 - 시작일 ( 달력 기준 )\r이번 주 핵심 산출물 체크리스트 시나리오 디테일 보완:\n금융 수탁자: AWS(S3) 항목 추가 금융 수탁자: 재위탁 시나리오 보완 키오스크 수탁자: 클라우드 항목 추가 WBS 및 수행계획서:\nWBS 날짜 오류(#VALUE!) 전수 수정 WBS 1+2 통합본 완성 수행계획서 작성 착수 증적 자료:\n수탁자별 증적 자료 리스트 작성 핵심 증적 자료 생성 (법적 필수 포인트 우선) 8. 트러블슈팅 문제 원인 해결 방법 WBS 날짜 필드에서 #VALUE! 오류 다수 발생 날짜 미입력 또는 날짜 형식 불일치로 인해 엑셀 수식 계산 오류 발생 날짜 미입력 항목 전수 조사 후 임시 날짜 입력. YYYY-MM-DD 형식으로 통일 WBS 1과 WBS 2의 항목 중복으로 관리 비효율 발생 초기에 두 개의 WBS를 별도로 설계하여 중복 항목과 일정 충돌 발생 멘토님 권고대로 통합 방향으로 재구성. 핵심 단계 위주로 단일 WBS 유지 “완료” 처리 기준이 팀원별로 달라 진척율 신뢰도 저하 완료 기준의 사전 정의 없이 각자 판단으로 처리 완료 기준 명확화: 산출물 생성 + 팀장 확인 + 최종 수정 반영 3단계 충족 시 완료 처리 Today’s Insight:\n오늘 WBS를 직접 작성하면서, 컨설팅 프로젝트 관리가 단순한 할 일 목록이 아니라 작업·일정·인력·산출물이 유기적으로 연결된 구조임을 체감했다. #VALUE! 오류 하나가 전체 간트 차트를 흐트러뜨리는 것처럼, 실무에서도 WBS의 날짜·담당자·상태 필드가 하나라도 부정확하면 프로젝트 전체의 신뢰도가 무너진다. 또한 WBS 1과 WBS 2를 통합하는 과정에서, 컨설팅의 범위(Scope)를 처음부터 명확히 정의하는 것이 이후 중복 작업과 혼선을 얼마나 줄일 수 있는지를 직접 경험했다. 남은 프로젝트 기간 동안 WBS를 실제 진행 상황에 맞게 지속적으로 업데이트하는 습관이 최종 발표 품질을 결정한다.\n",
+  "wordCount" : "5341",
+  "inLanguage": "ko",
+  "datePublished": "2026-03-10T00:00:00Z",
+  "dateModified": "2026-03-10T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/daily_logs/week19/20260310_final_project_14/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://hojjang98.github.io/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/daily_logs/">6개월, 혹은 그 이상의 보안 여정</a></div>
+    <h1 class="post-title entry-hint-parent">
+      2026.03.10 (Day 89) - 멘토링 피드백 반영 및 다음 주 산출물 준비 방향 확정
+    </h1>
+    <div class="post-meta"><span title='2026-03-10 00:00:00 +0000 UTC'>2026년 3월 10일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="-20260310-day-89---wbs-작성-및-이번-주-수행-계획-확정">📄 2026.03.10 (Day 89) - WBS 작성 및 이번 주 수행 계획 확정<a hidden class="anchor" aria-hidden="true" href="#-20260310-day-89---wbs-작성-및-이번-주-수행-계획-확정">#</a></h1>
+<hr>
+<h2 id="1-핵심-개념-정리">1. 핵심 개념 정리<a hidden class="anchor" aria-hidden="true" href="#1-핵심-개념-정리">#</a></h2>
+<h3 id="wbs-work-breakdown-structure-개념-및-구조">WBS (Work Breakdown Structure) 개념 및 구조<a hidden class="anchor" aria-hidden="true" href="#wbs-work-breakdown-structure-개념-및-구조">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">#</th>
+          <th style="text-align: left">핵심 개념</th>
+          <th style="text-align: left">설명</th>
+          <th style="text-align: left">실무/보안 관점</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">1</td>
+          <td style="text-align: left"><strong>WBS (작업분할구조도)</strong></td>
+          <td style="text-align: left">프로젝트 전체 작업을 단계별로 분해하여 작업자·상태·진척율·시작일·종료일·작업기간을 명시하는 프로젝트 관리 문서</td>
+          <td style="text-align: left">컨설팅 프로젝트에서 WBS는 수주 후 첫 번째 공식 산출물. 일정·인력·범위를 한눈에 파악하게 해주는 뼈대</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">2</td>
+          <td style="text-align: left"><strong>WBS 단계 구분</strong></td>
+          <td style="text-align: left">체계 수립 → 현황 조사 → 일정 수립 → 계획 착수 → 계획 실행 → 중간점검 수행 → 최종 산출물 제작 → 최종 발표 순으로 구성</td>
+          <td style="text-align: left">단계별 상태(완료/진행/계획)와 진척율을 함께 관리해야 지연 항목을 즉시 식별 가능</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">3</td>
+          <td style="text-align: left"><strong>WBS 1 vs WBS 2</strong></td>
+          <td style="text-align: left">WBS 1: 하랑항공(갑)과 리베로(을) 간 위수탁 관계 기준의 수행 WBS. WBS 2: 팀 전체 프로젝트 관리 WBS. 멘토님 권고에 따라 두 개를 통합하는 방향으로 정리</td>
+          <td style="text-align: left">두 WBS를 분리 관리하면 중복 항목과 일정 충돌이 발생. 통합 구조가 실무에서도 일반적</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">4</td>
+          <td style="text-align: left"><strong>간트 차트 (Gantt Chart)</strong></td>
+          <td style="text-align: left">WBS에 날짜 축을 붙여 각 작업의 시작·종료·기간을 시각화한 표. 행(작업)과 열(날짜)로 구성되며 작업 진행 현황을 색상·기호로 표시</td>
+          <td style="text-align: left">발표 자리에서 심사위원이 일정 관리 능력을 확인하는 핵심 문서. 빈 셀이나 날짜 불일치가 있으면 신뢰도 하락</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">5</td>
+          <td style="text-align: left"><strong>M/M (Man-Month)</strong></td>
+          <td style="text-align: left">작업에 투입된 인력×기간을 나타내는 단위. 예: 1명이 1개월 투입하면 1M/1M. WBS 기반으로 계산하여 수행계획서에 반영</td>
+          <td style="text-align: left">RFP 기술협상 단계에서 인력 투입 계획의 근거가 됨. 실무에서는 M/M을 기반으로 비용 산정도 이루어짐</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="컨설팅-프로젝트-산출물-체계">컨설팅 프로젝트 산출물 체계<a hidden class="anchor" aria-hidden="true" href="#컨설팅-프로젝트-산출물-체계">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">#</th>
+          <th style="text-align: left">핵심 개념</th>
+          <th style="text-align: left">설명</th>
+          <th style="text-align: left">실무/보안 관점</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">6</td>
+          <td style="text-align: left"><strong>수행계획서</strong></td>
+          <td style="text-align: left">WBS를 포함하여 프로젝트 목표·범위·일정·인력·방법론·산출물 목록을 담은 문서. 고객사에 제출하는 공식 계획 문서</td>
+          <td style="text-align: left">수행계획서가 명확하지 않으면 이후 범위 분쟁(Scope Creep)의 빌미가 됨</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">7</td>
+          <td style="text-align: left"><strong>증적 자료 (Evidence)</strong></td>
+          <td style="text-align: left">점검 항목의 이행 여부를 입증하는 문서·사진·로그·서명 등의 자료. 모든 항목의 증적을 만들 필요는 없으며, 핵심 항목 위주로 선별 구성</td>
+          <td style="text-align: left">법적 분쟁 발생 시 증적 자료의 존재 여부가 책임 소재를 결정. 내부관리계획서·대표자 날인 등 법적 필수 포인트 우선</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">8</td>
+          <td style="text-align: left"><strong>수탁자별 결과 보고서</strong></td>
+          <td style="text-align: left">각 수탁사에 대한 점검 결과(Y/P/N/NA 판정·개선 권고)를 담은 워드 형식의 개별 보고서. 수탁사마다 별도 작성</td>
+          <td style="text-align: left">점검 결과보고서는 고객사에 제출하는 공식 문서이므로 판정 근거가 명확하게 기술되어야 함</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">9</td>
+          <td style="text-align: left"><strong>이행점검</strong></td>
+          <td style="text-align: left">최초 점검 후 미흡 사항에 대해 수탁사가 개선 조치를 취했는지 확인하는 후속 점검 프로세스. 이행점검 계획서·결과보고서 별도 작성</td>
+          <td style="text-align: left">1회 점검으로 끝나는 것이 아니라 이행 여부 확인까지가 컨설팅의 완전한 사이클</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">10</td>
+          <td style="text-align: left"><strong>시연 동영상</strong></td>
+          <td style="text-align: left">프로젝트 결과물 및 점검 과정을 담은 5분 내외의 영상. 발표 보조 자료이자 독립적인 산출물</td>
+          <td style="text-align: left">기술적 내용을 비전문가에게 전달하는 역량을 보여주는 자료. 흐름이 명확하고 핵심이 집약된 구성이 중요</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="프로젝트-현황-관리">프로젝트 현황 관리<a hidden class="anchor" aria-hidden="true" href="#프로젝트-현황-관리">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">#</th>
+          <th style="text-align: left">핵심 개념</th>
+          <th style="text-align: left">설명</th>
+          <th style="text-align: left">실무/보안 관점</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">11</td>
+          <td style="text-align: left"><strong>상태 분류</strong></td>
+          <td style="text-align: left">완료(100%) / 진행(진행 중, 진척율 일부) / 계획(0%, 착수 전)으로 구분. 상태와 진척율을 함께 표기하여 현황을 명확히 관리</td>
+          <td style="text-align: left">진척율이 없는 &ldquo;완료&rdquo; 항목은 신뢰도 저하. 상태·진척율·날짜가 삼각 검증 가능해야 함</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">12</td>
+          <td style="text-align: left"><strong>작업기간 산정</strong></td>
+          <td style="text-align: left">시작일과 종료일 기준으로 달력 기준 작업일수를 산정. 공휴일·휴일 제외 여부를 일관되게 적용해야 함</td>
+          <td style="text-align: left">작업기간이 1일인 항목이 과도하게 많으면 일정의 신뢰성이 낮아 보임. 실제 소요 시간을 반영한 산정이 중요</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">13</td>
+          <td style="text-align: left"><strong>크로스체킹</strong></td>
+          <td style="text-align: left">팀원 간 서로의 작업 결과물을 교차 검토하는 과정. 체크리스트 판정의 일관성·오류·누락을 발견하는 데 효과적</td>
+          <td style="text-align: left">1인이 작성하면 놓치기 쉬운 기준 불일치를 크로스체킹으로 잡아낼 수 있음. 특히 N/P 경계 판정 항목에서 유효</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">14</td>
+          <td style="text-align: left"><strong>트리플 체킹</strong></td>
+          <td style="text-align: left">체크리스트를 본인 감으로 1차 점검 → 이상 항목 메모장 기록 → 팀 전체 기준으로 2~3차 재검토하는 3단계 검증 방식</td>
+          <td style="text-align: left">AI 생성 현황에서 오류가 발생할 수 있으므로, 법령 기준과의 교차 확인이 트리플 체킹의 핵심</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">15</td>
+          <td style="text-align: left"><strong>수탁자별 증적 자료 리스트</strong></td>
+          <td style="text-align: left">각 수탁사에 해당하는 증적 항목을 목록화한 문서. 어떤 증적을 수집·생성할 것인지 우선순위를 명시</td>
+          <td style="text-align: left">증적 리스트를 먼저 만들어야 불필요한 작업을 줄이고 핵심 자료 확보에 집중 가능</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="2-활동-내용-정리">2. 활동 내용 정리<a hidden class="anchor" aria-hidden="true" href="#2-활동-내용-정리">#</a></h2>
+<h3 id="활동-89-1-팀-회의---이번-주-수행-계획-확정">활동 89-1: 팀 회의 - 이번 주 수행 계획 확정<a hidden class="anchor" aria-hidden="true" href="#활동-89-1-팀-회의---이번-주-수행-계획-확정">#</a></h3>
+<p><strong>목표:</strong> 체크리스트 트리플 체킹 결과 공유 및 이번 주 작업 우선순위 확정</p>
+<p><strong>회의 주요 결정 사항:</strong></p>
+<p><strong>[ 이번 주 작업 우선순위 ]</strong></p>
+<p><strong>1순위</strong>  ( 진행 중 또는 즉시 착수 )</p>
+<pre><code>- 수탁자별 시나리오 디테일 보완
+    - 금융  :  AWS(S3) 항목 추가,  재위탁 시나리오 보완
+    - 키오스크  :  클라우드 항목 추가
+- **WBS** 및 수탁사 프로젝트 수행계획서 작성
+- 수탁자별 증적 자료 리스트 작성
+</code></pre>
+<p><strong>2순위</strong>  ( 병행 진행 )</p>
+<pre><code>- 필수 증적 자료 생성
+</code></pre>
+<p><strong>보류 항목</strong>  ( 일정 여유 시 )</p>
+<pre><code>- 크로스체킹  ( 완료 처리 )
+- 각 수탁사별 워드 점검 보고서 완성  ( 완료 처리 )
+- 개별 보고서
+- 시연 동영상 5분 구성
+</code></pre>
+<p><strong>WBS 관련 결정 사항:</strong></p>
+<p><strong>[ WBS 통합 방향 ]</strong></p>
+<pre><code>- **WBS 1**  ( 하랑항공 &amp; 리베로 )  :  위수탁 관계 기반의 실제 수행 일정
+- **WBS 2**  ( 팀 전체 )  :  프로젝트 5조 관리 일정
+
+- 두 개를 하나로 통합하는 방향으로 확정
+- 멘토링 1 ~ 5차를 WBS에 전부 녹일 필요 없음
+    - 핵심 단계 위주로 구성
+</code></pre>
+<h3 id="활동-89-2-wbs-엑셀-작성">활동 89-2: WBS 엑셀 작성<a hidden class="anchor" aria-hidden="true" href="#활동-89-2-wbs-엑셀-작성">#</a></h3>
+<p><strong>목표:</strong> 프로젝트 전체 일정을 단계별로 정리한 WBS 간트 차트 작성</p>
+<p><strong>WBS 구조 요약:</strong></p>
+<p><strong>[ 단계 구분 및 주요 산출물 ]</strong></p>
+<p><strong>[ 체계 수립 ]</strong></p>
+<pre><code>- 팀 구성 및 역할 분담
+- 일일보고서 및 회의록 작성
+- Y / P / N / NA  기준 정의  /  WBS 통합 확정
+</code></pre>
+<p><strong>[ 현황 조사 / 일정 수립 ]</strong></p>
+<pre><code>- ISMS-P 기반 항목 및 AWS 항목 추가
+- 업종별 비율 확정
+- WBS 작성 및 수정
+</code></pre>
+<p><strong>[ 계획 착수 ]</strong></p>
+<pre><code>- 제안요청서 양식 수립
+- 계약서 양식 수립
+- 현황관리 양식 수립
+- 점검 계획서 양식 수립
+- 수탁자 선정
+- 진단결과보고서 양식 작성
+</code></pre>
+<p><strong>[ 계획 실행 ]</strong></p>
+<pre><code>- 체크리스트 작성 및 취합
+- 계약서 · 협약서 수정
+- 현황조사표 작성
+- 교육계획서 작성
+- 수행계획서 작성
+- 인터뷰 항목 정리
+- 수탁자 개별 결과보고서 작성
+</code></pre>
+<p><strong>[ 중간점검 수행 ]</strong></p>
+<pre><code>- 리허설  &gt;  자료 수정  &gt;  중간점검 실시
+</code></pre>
+<p><strong>[ 계획 실행 ( 후반 ) ]</strong></p>
+<pre><code>- 3차 멘토링 피드백 반영
+- 체크리스트 최종 수정
+- 종합 결과보고서 작성
+- 이행점검 보고서 작성
+- 증적 자료 마련
+- 4차 멘토링 피드백 반영
+</code></pre>
+<p><strong>[ 최종 산출물 제작 ]</strong></p>
+<pre><code>- 5차 멘토링 피드백 반영
+- 시연 동영상 제작
+- 최종 발표 PPT 제작
+- 최종 보고서 작성
+</code></pre>
+<p><strong>[ 최종 발표 ]</strong></p>
+<pre><code>- 산출물 최종 제출
+- 최종 리허설
+- 수료식 발표 및 Q &amp; A
+</code></pre>
+<p><strong>작성 시 주요 고려 사항:</strong></p>
+<p><strong>[ 확인 항목 ]</strong></p>
+<pre><code>- 작업자 필드  :  전원 / 개인별 담당자 구분 명시
+- 상태 필드  :  완료 / 진행 / 계획  3단계로 통일
+- 진척율  :  완료 ( 100% )  /  진행 ( 10 ~ 50% )  /  계획 ( 0% )  기준 적용
+- 날짜 형식  :  YYYY - MM - DD  통일,  **#VALUE!**  오류 항목 수정 필요
+- 간트 차트  :  2월 2주 ~ 4월 3주 기간 커버,  날짜 축  M / W / D  3단계 표기
+</code></pre>
+<hr>
+<h2 id="3-비교분석-표">3. 비교·분석 표<a hidden class="anchor" aria-hidden="true" href="#3-비교분석-표">#</a></h2>
+<h3 id="wbs-상태별-항목-현황-작성-기준일-20260310">WBS 상태별 항목 현황 (작성 기준일: 2026.03.10)<a hidden class="anchor" aria-hidden="true" href="#wbs-상태별-항목-현황-작성-기준일-20260310">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">상태</th>
+          <th style="text-align: left">주요 항목</th>
+          <th style="text-align: left">비고</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>완료</strong></td>
+          <td style="text-align: left">팀 구성, RFP 양식, 계약서 양식, 체크리스트 작성, 중간점검, 3·4차 멘토링, 종합결과보고서 등 대부분 항목</td>
+          <td style="text-align: left">일부 날짜 오류(#VALUE!) 수정 필요</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>진행</strong></td>
+          <td style="text-align: left">일일보고서 작성, 핵심 증적 자료 생성, 최종 발표 PPT, 최종 보고서</td>
+          <td style="text-align: left">진척율 10~50% 수준</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>계획</strong></td>
+          <td style="text-align: left">5차 멘토링, 시연 동영상 제작, 이행점검 시나리오, 최종 산출물 제출, 최종 리허설, 수료식</td>
+          <td style="text-align: left">4월 이후 일정 집중</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="이번-주-작업-항목-비교">이번 주 작업 항목 비교<a hidden class="anchor" aria-hidden="true" href="#이번-주-작업-항목-비교">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">항목</th>
+          <th style="text-align: left">당초 계획</th>
+          <th style="text-align: left">실제 진행</th>
+          <th style="text-align: left">상태 변경</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>크로스체킹</strong></td>
+          <td style="text-align: left">진행 예정</td>
+          <td style="text-align: left">완료 처리</td>
+          <td style="text-align: left">완료로 전환</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>워드 점검 보고서</strong></td>
+          <td style="text-align: left">이번 주 완성 예정</td>
+          <td style="text-align: left">완료 처리</td>
+          <td style="text-align: left">완료로 전환</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>금융 AWS/재위탁 시나리오</strong></td>
+          <td style="text-align: left">이번 주 착수</td>
+          <td style="text-align: left">진행 중</td>
+          <td style="text-align: left">유지</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>키오스크 클라우드 항목</strong></td>
+          <td style="text-align: left">이번 주 착수</td>
+          <td style="text-align: left">진행 중</td>
+          <td style="text-align: left">유지</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>WBS 작성</strong></td>
+          <td style="text-align: left">이번 주 착수</td>
+          <td style="text-align: left">작성 완료</td>
+          <td style="text-align: left">완료</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>증적 자료 리스트</strong></td>
+          <td style="text-align: left">이번 주 착수</td>
+          <td style="text-align: left">착수</td>
+          <td style="text-align: left">진행</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="4-심화-분석">4. 심화 분석<a hidden class="anchor" aria-hidden="true" href="#4-심화-분석">#</a></h2>
+<h3 id="wbs-작성-원칙-및-실무-적용-기준">WBS 작성 원칙 및 실무 적용 기준<a hidden class="anchor" aria-hidden="true" href="#wbs-작성-원칙-및-실무-적용-기준">#</a></h3>
+<p><strong>[ WBS 품질 기준 ]</strong></p>
+<p><strong>1.  작업 단위 세분화</strong></p>
+<pre><code>- 단일 작업이 5일을 초과하면 하위 작업으로 분해
+- &quot;양식 수립  &gt;  내용 작성  &gt;  수정&quot; 등 단계를 명확히 구분
+</code></pre>
+<p><strong>2.  날짜 일관성</strong></p>
+<pre><code>- 종료일이 시작일보다 빠른 오류  ( **#VALUE!** )  전수 확인 필요
+- 작업기간  =  종료일  -  시작일  +  1  ( 달력 기준 )
+</code></pre>
+<p><strong>3.  담당자 명시</strong></p>
+<pre><code>- &quot;전원&quot;과 개인 담당 항목을 명확히 구분
+- 개인 담당 항목은 책임자 이름 직접 기재
+</code></pre>
+<p><strong>4.  진척율 현실성</strong></p>
+<pre><code>- 착수했으면 최소 10% 이상 반영
+- &quot;완료&quot; 표기 항목은 반드시 100%
+- 진척율 0% 인 항목은 &quot;계획&quot; 상태 유지
+</code></pre>
+<p><strong>5.  간트 차트 시각성</strong></p>
+<pre><code>- 날짜 축  :  M ( 월 )  /  W ( 주 )  /  D ( 일 )  3단계 구성
+- 완료 · 진행 · 계획을 색상으로 시각적 구분
+- 중요 마일스톤  ( 중간점검, 최종발표 )  별도 강조
+</code></pre>
+<h3 id="프로젝트-전체-일정-구조">프로젝트 전체 일정 구조<a hidden class="anchor" aria-hidden="true" href="#프로젝트-전체-일정-구조">#</a></h3>
+<p><strong>[ 리베로 프로젝트 타임라인 ]</strong></p>
+<pre><code>- 2026.02.11 ~ 12  :  팀 구성 및 역할 분담
+- 2026.02.23 ~  :  일일보고서 · 회의록 작성 시작
+- 2026.02.28 ~ 03.01  :  1차 멘토링
+- 2026.03.03 ~ 06  :  체크리스트 작성 및 양식 수립
+- 2026.03.07 ~ 08  :  2차 멘토링  ( 수행계획서 피드백 )
+- 2026.03.10  :  **WBS** 작성 완료  ( 현재 )
+- 2026.03.14 ~ 15  :  3차 멘토링  ( 체크리스트 · 협약서 피드백 )
+- 2026.03.24 ~ 04.01  :  수행계획서 · 인터뷰 · 결과보고서 작성
+- 2026.03.28 ~ 29  :  4차 멘토링  ( 발표자료 · 전체 산출물 )
+- 2026.04.11 ~ 12  :  5차 멘토링  ( 최종 피드백 )
+- 2026.04.13  :  최종 산출물 제출
+- 2026.04.16  :  최종 리허설
+- 2026.04.17  :  수료식 발표 및 Q &amp; A
+</code></pre>
+<hr>
+<h2 id="5-실무보안-적용">5. 실무/보안 적용<a hidden class="anchor" aria-hidden="true" href="#5-실무보안-적용">#</a></h2>
+<h3 id="보안-전문가-관점---wbs가-컨설팅에서-갖는-의미">보안 전문가 관점 - WBS가 컨설팅에서 갖는 의미<a hidden class="anchor" aria-hidden="true" href="#보안-전문가-관점---wbs가-컨설팅에서-갖는-의미">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">관점</th>
+          <th style="text-align: left">핵심 포인트</th>
+          <th style="text-align: left">실무 적용 방안</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>일정 관리</strong></td>
+          <td style="text-align: left">WBS의 완료·진행·계획 상태가 프로젝트 리스크를 선제적으로 드러냄</td>
+          <td style="text-align: left">지연 항목을 주간 회의에서 즉시 식별하고 우선순위를 재조정</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>산출물 품질</strong></td>
+          <td style="text-align: left">WBS에 명시된 산출물 항목이 실제 납품 기준이 됨. 빠진 항목은 고객사와의 분쟁 원인</td>
+          <td style="text-align: left">산출물 목록을 WBS와 수행계획서에 동시 반영하여 이중 검증</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>책임 추적성</strong></td>
+          <td style="text-align: left">담당자가 명시된 WBS는 성과 평가와 책임 소재 파악의 기준 문서</td>
+          <td style="text-align: left">&ldquo;전원&rdquo; 항목은 팀 리더가, 개인 담당 항목은 해당 팀원이 진척 보고</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>고객 커뮤니케이션</strong></td>
+          <td style="text-align: left">고객사에 WBS를 정기적으로 공유하면 신뢰 관계 강화 및 추가 요구 사항 조기 파악 가능</td>
+          <td style="text-align: left">주간 보고 시 간트 차트 기반으로 진척 현황 시각 보고</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="6-배운-점-및-인사이트">6. 배운 점 및 인사이트<a hidden class="anchor" aria-hidden="true" href="#6-배운-점-및-인사이트">#</a></h2>
+<h3 id="새로-알게-된-점">새로 알게 된 점<a hidden class="anchor" aria-hidden="true" href="#새로-알게-된-점">#</a></h3>
+<ul>
+<li>
+<p><strong>WBS는 단순 일정표가 아니다:</strong> 직접 WBS를 작성해보니, 단계 구분·작업 분해·담당자 배정·날짜 산정이 서로 맞물려야 한다는 것을 실감했다. 하나라도 어긋나면 #VALUE! 같은 오류가 발생하거나, 작업기간이 현실과 맞지 않는 일정이 만들어진다.</p>
+</li>
+<li>
+<p><strong>통합 WBS의 효율성:</strong> WBS 1(위수탁 관계)과 WBS 2(팀 전체)를 처음에는 분리했지만, 중복 항목과 일정 충돌을 겪으면서 통합이 맞다는 멘토님 의견의 근거를 직접 이해했다.</p>
+</li>
+<li>
+<p><strong>&ldquo;완료&rdquo; 처리의 기준:</strong> 크로스체킹과 워드 점검 보고서가 완료 처리된 것을 보며, 컨설팅 프로젝트에서 완료 기준을 명확히 정의하지 않으면 팀 간 인식 차이가 생긴다는 점을 확인했다. 기준 없는 완료는 나중에 품질 문제로 돌아온다.</p>
+</li>
+<li>
+<p><strong>M/M 산정의 복잡성:</strong> WBS 기반으로 M/M을 계산하려면 각 작업의 실제 투입 시간을 역산해야 하는데, 작업기간이 짧은 항목이 많을수록 M/M이 과소 산정될 수 있다는 것을 처음 인식했다.</p>
+</li>
+</ul>
+<h3 id="이전-학습과의-연결고리">이전 학습과의 연결고리<a hidden class="anchor" aria-hidden="true" href="#이전-학습과의-연결고리">#</a></h3>
+<ul>
+<li>
+<p><strong>Day 88 RFP 프로세스와 연결:</strong> 어제 학습한 RFP → 수주 → 기술협상 → WBS/수행계획서 흐름이 오늘 직접 WBS를 작성하는 활동으로 이어졌다. 개념이 실제 문서 작업으로 연결되는 경험이었다.</p>
+</li>
+<li>
+<p><strong>컨설팅 방법론 3단계와 연결:</strong> WBS의 단계 구분(체계 수립 → 현황 조사 → 계획 착수 → 실행 → 점검)이 현황 분석 → 평가 → 보호대책 수립의 컨설팅 방법론과 정확히 대응된다.</p>
+</li>
+</ul>
+<h3 id="실무-적용-아이디어">실무 적용 아이디어<a hidden class="anchor" aria-hidden="true" href="#실무-적용-아이디어">#</a></h3>
+<p><strong>보안 전문가 관점:</strong></p>
+<ul>
+<li>
+<p><strong>WBS 템플릿 재사용:</strong> 이번 프로젝트에서 작성한 WBS 구조는 향후 다른 수탁사 점검 프로젝트에서도 기본 템플릿으로 재활용 가능하다. 단계 구분과 산출물 목록은 거의 동일하기 때문이다.</p>
+</li>
+<li>
+<p><strong>#VALUE! 오류 관리:</strong> 날짜 미입력 항목을 방치하면 전체 기간 산정과 간트 차트가 무너진다. 작업 착수 전 날짜를 임시로라도 채워두는 습관이 필요하다.</p>
+</li>
+<li>
+<p><strong>증적 리스트 선제 작성:</strong> 증적 자료를 먼저 목록화하면 수집 범위를 명확히 하고 불필요한 작업을 줄일 수 있다. 이번 주 증적 리스트 작성이 다음 주 실제 증적 생성의 품질을 결정한다.</p>
+</li>
+</ul>
+<hr>
+<h2 id="7-quick-reference">7. Quick Reference<a hidden class="anchor" aria-hidden="true" href="#7-quick-reference">#</a></h2>
+<h3 id="wbs-필드-작성-기준">WBS 필드 작성 기준<a hidden class="anchor" aria-hidden="true" href="#wbs-필드-작성-기준">#</a></h3>
+<p><strong>[ WBS 필드 작성 기준 ]</strong></p>
+<pre><code>- 단계 구분  :  체계 수립  /  현황 조사  /  일정 수립  /  계획 착수  /  계획 실행  /  중간점검 수행  /  최종 산출물 제작  /  최종 발표
+- 주요 업무  :  대분류  ( 예 :  체크리스트, 계약서, WBS )
+- 세부 업무  :  소분류  ( 예 :  양식 수립, 항목 추가, 수정 )
+- 작업자  :  &quot;전원&quot; 또는 담당자 이름 직접 기재
+- 상태  :  완료  /  진행  /  계획
+- 진척율  :  완료 : 100%  /  진행 : 10 ~ 50%  /  계획 : 0%
+- 시작일  :  YYYY - MM - DD
+- 종료일  :  YYYY - MM - DD  ( 시작일 이후여야 함 )
+- 작업기간  :  종료일  -  시작일  ( 달력 기준 )
+</code></pre>
+<h3 id="이번-주-핵심-산출물-체크리스트">이번 주 핵심 산출물 체크리스트<a hidden class="anchor" aria-hidden="true" href="#이번-주-핵심-산출물-체크리스트">#</a></h3>
+<p><strong>시나리오 디테일 보완:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> 금융 수탁자: AWS(S3) 항목 추가</li>
+<li><input disabled="" type="checkbox"> 금융 수탁자: 재위탁 시나리오 보완</li>
+<li><input disabled="" type="checkbox"> 키오스크 수탁자: 클라우드 항목 추가</li>
+</ul>
+<p><strong>WBS 및 수행계획서:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> WBS 날짜 오류(#VALUE!) 전수 수정</li>
+<li><input disabled="" type="checkbox"> WBS 1+2 통합본 완성</li>
+<li><input disabled="" type="checkbox"> 수행계획서 작성 착수</li>
+</ul>
+<p><strong>증적 자료:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> 수탁자별 증적 자료 리스트 작성</li>
+<li><input disabled="" type="checkbox"> 핵심 증적 자료 생성 (법적 필수 포인트 우선)</li>
+</ul>
+<hr>
+<h2 id="8-트러블슈팅">8. 트러블슈팅<a hidden class="anchor" aria-hidden="true" href="#8-트러블슈팅">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">문제</th>
+          <th style="text-align: left">원인</th>
+          <th style="text-align: left">해결 방법</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">WBS 날짜 필드에서 #VALUE! 오류 다수 발생</td>
+          <td style="text-align: left">날짜 미입력 또는 날짜 형식 불일치로 인해 엑셀 수식 계산 오류 발생</td>
+          <td style="text-align: left">날짜 미입력 항목 전수 조사 후 임시 날짜 입력. YYYY-MM-DD 형식으로 통일</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">WBS 1과 WBS 2의 항목 중복으로 관리 비효율 발생</td>
+          <td style="text-align: left">초기에 두 개의 WBS를 별도로 설계하여 중복 항목과 일정 충돌 발생</td>
+          <td style="text-align: left">멘토님 권고대로 통합 방향으로 재구성. 핵심 단계 위주로 단일 WBS 유지</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ldquo;완료&rdquo; 처리 기준이 팀원별로 달라 진척율 신뢰도 저하</td>
+          <td style="text-align: left">완료 기준의 사전 정의 없이 각자 판단으로 처리</td>
+          <td style="text-align: left">완료 기준 명확화: 산출물 생성 + 팀장 확인 + 최종 수정 반영 3단계 충족 시 완료 처리</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<p><strong>Today&rsquo;s Insight:</strong></p>
+<p>오늘 WBS를 직접 작성하면서, 컨설팅 프로젝트 관리가 단순한 할 일 목록이 아니라 작업·일정·인력·산출물이 유기적으로 연결된 구조임을 체감했다. #VALUE! 오류 하나가 전체 간트 차트를 흐트러뜨리는 것처럼, 실무에서도 WBS의 날짜·담당자·상태 필드가 하나라도 부정확하면 프로젝트 전체의 신뢰도가 무너진다. 또한 WBS 1과 WBS 2를 통합하는 과정에서, 컨설팅의 범위(Scope)를 처음부터 명확히 정의하는 것이 이후 중복 작업과 혼선을 얼마나 줄일 수 있는지를 직접 경험했다. 남은 프로젝트 기간 동안 WBS를 실제 진행 상황에 맞게 지속적으로 업데이트하는 습관이 최종 발표 품질을 결정한다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://hojjang98.github.io/tags/%EC%88%98%ED%83%81%EC%82%AC%EC%A0%90%EA%B2%80/">수탁사점검</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%A9%98%ED%86%A0%EB%A7%81/">멘토링</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%B2%B4%ED%81%AC%EB%A6%AC%EC%8A%A4%ED%8A%B8/">체크리스트</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%ED%8C%90%EC%A0%95%EA%B8%B0%EC%A4%80/">판정기준</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8/">개인정보보호</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%B2%95%EB%A0%B9%EC%B2%B4%EA%B3%84/">법령체계</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%BB%A8%EC%84%A4%ED%8C%85/">컨설팅</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/">프로젝트</a></li>
+      <li><a href="https://hojjang98.github.io/tags/wbs/">WBS</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>2025.11.19 (Day 18) Project: LangChain/RAG 분석 모델 통합 및 PPT 초안 제작 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="팀프로젝트, RAG, LangChain, 발표준비, SK쉴더스루키즈">
+<meta name="description" content="LangChain/RAG 분석 모델 Streamlit 통합 완료 및 발표 PPT 핵심 시나리오 구성">
+<meta name="author" content="">
+<link rel="canonical" href="https://hojjang98.github.io/daily_logs/week04/20251119_project_rag_integration_and_ppt/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.290573799e582c418c4bd84f2bca757d0a77fd1bf9f5c43942030e706df68ec8.css" integrity="sha256-KQVzeZ5YLEGMS9hPK8p1fQp3/Rv59cQ5QgMOcG32jsg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/daily_logs/week04/20251119_project_rag_integration_and_ppt/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://hojjang98.github.io/daily_logs/week04/20251119_project_rag_integration_and_ppt/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="2025.11.19 (Day 18) Project: LangChain/RAG 분석 모델 통합 및 PPT 초안 제작">
+  <meta property="og:description" content="LangChain/RAG 분석 모델 Streamlit 통합 완료 및 발표 PPT 핵심 시나리오 구성">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="daily_logs">
+    <meta property="article:published_time" content="2025-11-19T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-11-19T00:00:00+00:00">
+    <meta property="article:tag" content="팀프로젝트">
+    <meta property="article:tag" content="RAG">
+    <meta property="article:tag" content="LangChain">
+    <meta property="article:tag" content="발표준비">
+    <meta property="article:tag" content="SK쉴더스루키즈">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2025.11.19 (Day 18) Project: LangChain/RAG 분석 모델 통합 및 PPT 초안 제작">
+<meta name="twitter:description" content="LangChain/RAG 분석 모델 Streamlit 통합 완료 및 발표 PPT 핵심 시나리오 구성">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "6개월, 혹은 그 이상의 보안 여정",
+      "item": "https://hojjang98.github.io/daily_logs/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "2025.11.19 (Day 18) Project: LangChain/RAG 분석 모델 통합 및 PPT 초안 제작",
+      "item": "https://hojjang98.github.io/daily_logs/week04/20251119_project_rag_integration_and_ppt/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "2025.11.19 (Day 18) Project: LangChain/RAG 분석 모델 통합 및 PPT 초안 제작",
+  "name": "2025.11.19 (Day 18) Project: LangChain\/RAG 분석 모델 통합 및 PPT 초안 제작",
+  "description": "LangChain/RAG 분석 모델 Streamlit 통합 완료 및 발표 PPT 핵심 시나리오 구성",
+  "keywords": [
+    "팀프로젝트", "RAG", "LangChain", "발표준비", "SK쉴더스루키즈"
+  ],
+  "articleBody": "📄 2025.11.19 (Day 18) [Project: LangChain/RAG 분석 모델 통합 및 PPT 초안 제작] 1. 핵심 개념 정리 (Concepts \u0026 Theory) # 핵심 개념 간결한 설명 적용 내용 1 RAG 최종 통합 Vector DB 검색 (Retrieval)과 LLM 응답 생성 (Generation) 모듈을 Streamlit 앱에 최종 연결하여 End-to-End 분석 기능 완성. movie_recommendation.py를 통해 사용자 쿼리에 근거 기반 추천 제공. 2 모듈식 RAG 구조 LLM Client, Vector DB I/O, 데이터 로드 기능을 각각 독립적인 Python 파일로 분리하여 유지보수 용이성 및 코드 명확성 확보. llm_utils.py, vector_db.py, data_loader.py 파일 분리. 3 PPT 핵심 내용 정의 구현 완료된 대시보드 기능을 중심으로 프로젝트의 목적, 기술 스택, 시각화 분석 결과 및 RAG 시연 시나리오를 구성. 발표 시간 배분을 고려하여 내용의 깊이와 분량 조정. 2. 실습 코드 \u0026 응용 (Practice \u0026 Code Walkthrough) (A) Vector DB 클라이언트 로드 (vector_db.py) # vector_db.py: 11월 17일에 구축한 ChromaDB 클라이언트를 로드 db_path = Path(\"../vector_db/chroma_db\") chroma_client = chromadb.PersistentClient(path=str(db_path)) collection = chroma_client.get_collection( name=\"movies\", embedding_function=embedding_function # embedding_function은 llm_utils에서 정의 가능 ) ```python ### (B) LLM 유틸리티 함수 (llm_utils.py) ```python # llm_utils.py: LLM 호출 관련 유틸리티 및 RAG Chain 통합 from openai import OpenAI import os def get_openai_client(): # API Key 로드 및 Client 초기화 openai_api_key = os.getenv('OPENAI_API_KEY') return OpenAI(api_key=openai_api_key) # (LangChain Chain 또는 커스텀 RAG 함수가 여기에 통합됨) # analyze_movie_success(title) # recommend_movies(query) ```python ### (C) 추천 검색 흐름 (movie_recommendation.py) ```python # movie_recommendation.py: 추천 검색 결과를 프론트엔드에 출력 if st.button(\"검색 시작\"): # 1. vector_db.py를 통해 Vector DB에서 관련 영화 검색 (Retrieval) results = vector_db.search_similar_movies(query) # 2. llm_utils.py를 통해 LLM이 검색 결과 기반으로 추천 사유 생성 (Generation) llm_explanation = llm_utils.generate_explanation(results, query) st.subheader(\"LLM 추천 분석 결과\") st.markdown(llm_explanation) 3. 요약 및 다음 단계 (Summary \u0026 Next Steps) LangChain의 핵심 원리(Retriever, Generator 분리)를 모듈화된 파이썬 함수로 구현하여 Streamlit 대시보드에 성공적으로 통합했습니다. RAG 기능을 활용한 근거 기반 추천 분석이 가능해졌음을 확인하고, 이를 중심으로 발표 자료(PPT)의 핵심 시나리오 구성을 완료했습니다. 다음 단계: 11월 20일에는 발표 자료의 최종적인 디자인 수정, 분석 내용 보강, 프레젠테이션 연습 등 최종 발표 준비에 집중합니다. 4. 개인 인사이트 (Reflection) 배운 점: RAG 구현 시 LangChain 라이브러리 전체를 가져오지 않고도, ChromaDB와 OpenAI API만으로 핵심적인 검색-생성 구조를 독립적으로 구축할 수 있음을 확인했습니다. 느낀 점: Streamlit에서 llm_utils나 vector_db를 @st.cache_resource로 관리하면, LLM 호출 전에 DB를 매번 초기화할 필요가 없어 성능이 대폭 향상될 것으로 기대됩니다. ",
+  "wordCount" : "939",
+  "inLanguage": "ko",
+  "datePublished": "2025-11-19T00:00:00Z",
+  "dateModified": "2025-11-19T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/daily_logs/week04/20251119_project_rag_integration_and_ppt/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://hojjang98.github.io/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/daily_logs/">6개월, 혹은 그 이상의 보안 여정</a></div>
+    <h1 class="post-title entry-hint-parent">
+      2025.11.19 (Day 18) Project: LangChain/RAG 분석 모델 통합 및 PPT 초안 제작
+    </h1>
+    <div class="post-meta"><span title='2025-11-19 00:00:00 +0000 UTC'>2025년 11월 19일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="-20251119-day-18-project-langchainrag-분석-모델-통합-및-ppt-초안-제작">📄 2025.11.19 (Day 18) [Project: LangChain/RAG 분석 모델 통합 및 PPT 초안 제작]<a hidden class="anchor" aria-hidden="true" href="#-20251119-day-18-project-langchainrag-분석-모델-통합-및-ppt-초안-제작">#</a></h1>
+<h2 id="1-핵심-개념-정리-concepts--theory">1. 핵심 개념 정리 (Concepts &amp; Theory)<a hidden class="anchor" aria-hidden="true" href="#1-핵심-개념-정리-concepts--theory">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">#</th>
+          <th style="text-align: center">핵심 개념</th>
+          <th style="text-align: left">간결한 설명</th>
+          <th style="text-align: left">적용 내용</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>1</strong></td>
+          <td style="text-align: center">RAG 최종 통합</td>
+          <td style="text-align: left">Vector DB 검색 (Retrieval)과 LLM 응답 생성 (Generation) 모듈을 Streamlit 앱에 최종 연결하여 End-to-End 분석 기능 완성.</td>
+          <td style="text-align: left"><code>movie_recommendation.py</code>를 통해 사용자 쿼리에 근거 기반 추천 제공.</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>2</strong></td>
+          <td style="text-align: center">모듈식 RAG 구조</td>
+          <td style="text-align: left">LLM Client, Vector DB I/O, 데이터 로드 기능을 각각 독립적인 Python 파일로 분리하여 유지보수 용이성 및 코드 명확성 확보.</td>
+          <td style="text-align: left"><code>llm_utils.py</code>, <code>vector_db.py</code>, <code>data_loader.py</code> 파일 분리.</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>3</strong></td>
+          <td style="text-align: center">PPT 핵심 내용 정의</td>
+          <td style="text-align: left">구현 완료된 대시보드 기능을 중심으로 프로젝트의 목적, 기술 스택, 시각화 분석 결과 및 RAG 시연 시나리오를 구성.</td>
+          <td style="text-align: left">발표 시간 배분을 고려하여 내용의 깊이와 분량 조정.</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="2-실습-코드--응용-practice--code-walkthrough">2. 실습 코드 &amp; 응용 (Practice &amp; Code Walkthrough)<a hidden class="anchor" aria-hidden="true" href="#2-실습-코드--응용-practice--code-walkthrough">#</a></h2>
+<h3 id="a-vector-db-클라이언트-로드-vector_dbpy">(A) Vector DB 클라이언트 로드 (vector_db.py)<a hidden class="anchor" aria-hidden="true" href="#a-vector-db-클라이언트-로드-vector_dbpy">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># vector_db.py: 11월 17일에 구축한 ChromaDB 클라이언트를 로드</span>
+</span></span><span style="display:flex;"><span>db_path <span style="color:#f92672">=</span> Path(<span style="color:#e6db74">&#34;../vector_db/chroma_db&#34;</span>)
+</span></span><span style="display:flex;"><span>chroma_client <span style="color:#f92672">=</span> chromadb<span style="color:#f92672">.</span>PersistentClient(path<span style="color:#f92672">=</span>str(db_path))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>collection <span style="color:#f92672">=</span> chroma_client<span style="color:#f92672">.</span>get_collection(
+</span></span><span style="display:flex;"><span>    name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;movies&#34;</span>,
+</span></span><span style="display:flex;"><span>    embedding_function<span style="color:#f92672">=</span>embedding_function <span style="color:#75715e"># embedding_function은 llm_utils에서 정의 가능</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">```</span>python
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### (B) LLM 유틸리티 함수 (llm_utils.py)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">```</span>python
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># llm_utils.py: LLM 호출 관련 유틸리티 및 RAG Chain 통합</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> openai <span style="color:#f92672">import</span> OpenAI
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_openai_client</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># API Key 로드 및 Client 초기화</span>
+</span></span><span style="display:flex;"><span>    openai_api_key <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>getenv(<span style="color:#e6db74">&#39;OPENAI_API_KEY&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> OpenAI(api_key<span style="color:#f92672">=</span>openai_api_key)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># (LangChain Chain 또는 커스텀 RAG 함수가 여기에 통합됨)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># analyze_movie_success(title)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># recommend_movies(query)</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">```</span>python
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### (C) 추천 검색 흐름 (movie_recommendation.py)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">```</span>python
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># movie_recommendation.py: 추천 검색 결과를 프론트엔드에 출력</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> st<span style="color:#f92672">.</span>button(<span style="color:#e6db74">&#34;검색 시작&#34;</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 1. vector_db.py를 통해 Vector DB에서 관련 영화 검색 (Retrieval)</span>
+</span></span><span style="display:flex;"><span>    results <span style="color:#f92672">=</span> vector_db<span style="color:#f92672">.</span>search_similar_movies(query)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 2. llm_utils.py를 통해 LLM이 검색 결과 기반으로 추천 사유 생성 (Generation)</span>
+</span></span><span style="display:flex;"><span>    llm_explanation <span style="color:#f92672">=</span> llm_utils<span style="color:#f92672">.</span>generate_explanation(results, query)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    st<span style="color:#f92672">.</span>subheader(<span style="color:#e6db74">&#34;LLM 추천 분석 결과&#34;</span>)
+</span></span><span style="display:flex;"><span>    st<span style="color:#f92672">.</span>markdown(llm_explanation)
+</span></span></code></pre></div><h2 id="3-요약-및-다음-단계-summary--next-steps">3. 요약 및 다음 단계 (Summary &amp; Next Steps)<a hidden class="anchor" aria-hidden="true" href="#3-요약-및-다음-단계-summary--next-steps">#</a></h2>
+<ul>
+<li>LangChain의 핵심 원리(Retriever, Generator 분리)를 <strong>모듈화된 파이썬 함수</strong>로 구현하여 Streamlit 대시보드에 성공적으로 통합했습니다.</li>
+<li>RAG 기능을 활용한 <strong>근거 기반 추천 분석</strong>이 가능해졌음을 확인하고, 이를 중심으로 발표 자료(PPT)의 핵심 시나리오 구성을 완료했습니다.</li>
+<li><strong>다음 단계:</strong> 11월 20일에는 발표 자료의 최종적인 디자인 수정, 분석 내용 보강, 프레젠테이션 연습 등 <strong>최종 발표 준비</strong>에 집중합니다.</li>
+</ul>
+<h2 id="4-개인-인사이트-reflection">4. 개인 인사이트 (Reflection)<a hidden class="anchor" aria-hidden="true" href="#4-개인-인사이트-reflection">#</a></h2>
+<ul>
+<li><strong>배운 점:</strong> RAG 구현 시 LangChain 라이브러리 전체를 가져오지 않고도, <strong>ChromaDB와 OpenAI API</strong>만으로 핵심적인 검색-생성 구조를 독립적으로 구축할 수 있음을 확인했습니다.</li>
+<li><strong>느낀 점:</strong> Streamlit에서 <code>llm_utils</code>나 <code>vector_db</code>를 @st.cache_resource로 관리하면, LLM 호출 전에 DB를 매번 초기화할 필요가 없어 성능이 대폭 향상될 것으로 기대됩니다.</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://hojjang98.github.io/tags/%ED%8C%80%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/">팀프로젝트</a></li>
+      <li><a href="https://hojjang98.github.io/tags/rag/">RAG</a></li>
+      <li><a href="https://hojjang98.github.io/tags/langchain/">LangChain</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%B0%9C%ED%91%9C%EC%A4%80%EB%B9%84/">발표준비</a></li>
+      <li><a href="https://hojjang98.github.io/tags/sk%EC%89%B4%EB%8D%94%EC%8A%A4%EB%A3%A8%ED%82%A4%EC%A6%88/">SK쉴더스루키즈</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

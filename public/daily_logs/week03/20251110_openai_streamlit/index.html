@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>2025.11.10 (Day 11) Streamlit · OpenAI API를 활용한 보안형 챗봇 앱 구현 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="Streamlit, OpenAI, LLM, 보안챗봇, SK쉴더스루키즈">
+<meta name="description" content="Streamlit과 OpenAI API를 연결하여 API Key 보호·입력 검증·보안형 LLM 챗봇 앱 구현">
+<meta name="author" content="">
+<link rel="canonical" href="https://hojjang98.github.io/daily_logs/week03/20251110_openai_streamlit/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.290573799e582c418c4bd84f2bca757d0a77fd1bf9f5c43942030e706df68ec8.css" integrity="sha256-KQVzeZ5YLEGMS9hPK8p1fQp3/Rv59cQ5QgMOcG32jsg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/daily_logs/week03/20251110_openai_streamlit/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://hojjang98.github.io/daily_logs/week03/20251110_openai_streamlit/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="2025.11.10 (Day 11) Streamlit · OpenAI API를 활용한 보안형 챗봇 앱 구현">
+  <meta property="og:description" content="Streamlit과 OpenAI API를 연결하여 API Key 보호·입력 검증·보안형 LLM 챗봇 앱 구현">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="daily_logs">
+    <meta property="article:published_time" content="2025-11-10T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-11-10T00:00:00+00:00">
+    <meta property="article:tag" content="Streamlit">
+    <meta property="article:tag" content="OpenAI">
+    <meta property="article:tag" content="LLM">
+    <meta property="article:tag" content="보안챗봇">
+    <meta property="article:tag" content="SK쉴더스루키즈">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2025.11.10 (Day 11) Streamlit · OpenAI API를 활용한 보안형 챗봇 앱 구현">
+<meta name="twitter:description" content="Streamlit과 OpenAI API를 연결하여 API Key 보호·입력 검증·보안형 LLM 챗봇 앱 구현">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "6개월, 혹은 그 이상의 보안 여정",
+      "item": "https://hojjang98.github.io/daily_logs/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "2025.11.10 (Day 11) Streamlit · OpenAI API를 활용한 보안형 챗봇 앱 구현",
+      "item": "https://hojjang98.github.io/daily_logs/week03/20251110_openai_streamlit/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "2025.11.10 (Day 11) Streamlit · OpenAI API를 활용한 보안형 챗봇 앱 구현",
+  "name": "2025.11.10 (Day 11) Streamlit · OpenAI API를 활용한 보안형 챗봇 앱 구현",
+  "description": "Streamlit과 OpenAI API를 연결하여 API Key 보호·입력 검증·보안형 LLM 챗봇 앱 구현",
+  "keywords": [
+    "Streamlit", "OpenAI", "LLM", "보안챗봇", "SK쉴더스루키즈"
+  ],
+  "articleBody": "2025.11.10 (Day 11) Streamlit · OpenAI Chat App 1. 주요 개념 요약 Streamlit UI 구성: st.sidebar, st.text_area, st.button 등을 활용해 사용자 입력–출력 구조를 설계한다. 빠른 프로토타이핑이 가능해 보안 로그 분석기의 대화 인터페이스로 확장 가능하다. OpenAI API 연결 구조: .env 파일의 API Key를 불러오거나 사용자가 직접 입력하도록 설계하여 OpenAI 클라이언트를 안전하게 초기화한다. ChatCompletion 모델 호출: GPT 모델(gpt-4o-mini)을 사용해 사용자의 입력 텍스트를 처리하고 응답을 반환한다. 모델 호출 로직을 함수화하면 다른 입력(로그, 이벤트, 에러 메시지)에도 재사용 가능하다. 보안 LLM 개념: API Key 보호, 입력 데이터 검증, 프롬프트 인젝션 방어 등 보안 측면에서 LLM 사용의 기초를 이해해야 한다. 2. 실습 코드 및 응용 A. Streamlit 기본 UI 구성 텍스트 입력과 버튼 출력 구조를 구성하여 이후 LLM 기반 보안 로그 분석기의 인터페이스 기반으로 활용한다. import streamlit as st st.set_page_config(page_title='챗 모델을 이용한 응답') st.header('요약 응답') text = st.text_area('글 입력') if st.button('요약해줘'): st.info('요약 결과 표시') B. OpenAI API 연결 및 챗 응답 생성 모델 호출 로직을 함수화하여 보안 로그, 이벤트, 에러 메시지 등 다양한 입력에 재사용할 수 있다. from openai import OpenAI def askChat(query, key): client = OpenAI(api_key=key) response = client.chat.completions.create( model='gpt-4o-mini', messages=[{'role': 'user', 'content': query}] ) return response.choices[0].message.content C. API Key 보안 처리 및 세션 관리 API Key는 사용자가 직접 입력하며 st.session_state에만 임시 저장한다. .env 병행 시 환경 분리와 키 노출 방지 효과를 동시에 확보할 수 있다. from dotenv import load_dotenv import os if 'api_key' not in st.session_state: st.session_state['api_key'] = '' with st.sidebar: key = st.text_input(label='input key', placeholder='api key', type='password') if key: st.session_state['api_key'] = key 3. 보안 관점 분석 SOC / 관제: 실시간 로그나 경보 메시지를 LLM으로 요약하여 운영자 피로도를 감소시키고 탐지 피드백 속도를 향상시킨다. CERT / 사고대응: 공격 단계별 로그를 LLM에 입력하여 사건 개요·원인·조치 요약을 자동 생성하고 브리핑 효율성을 높인다. DevSecOps: 빌드 로그·취약점 스캔 결과를 ChatCompletion으로 자동 요약하여 CI/CD 파이프라인에서 자동 리포팅 시스템을 구축할 수 있다. 취약점 진단 / 펜테스트: 모의해킹 결과 텍스트를 입력해 취약점 유형별 요약 및 리스크 레벨을 자동 분류한다. 데이터 프라이버시: 사용자 입력값 검증 및 마스킹 처리로 민감정보 노출을 최소화하고 모델 입력 안정성을 확보한다. 4. 요약 Streamlit + OpenAI Chat API를 통해 LLM 응용 서비스를 빠르게 프로토타이핑하는 방법을 익혔다. .env 또는 session_state를 이용한 API Key 보호 구조로 보안 환경에서의 안전한 모델 호출을 구현했다. LLM 응답을 단순 대화가 아닌 보안 로그·사고 보고서 자동 요약에 적용할 수 있음을 확인했다. 본 실습은 이후 LangChain, Guardrails, RAG 기반 보안 LLM 파이프라인 학습의 기초가 된다. ",
+  "wordCount" : "1086",
+  "inLanguage": "ko",
+  "datePublished": "2025-11-10T00:00:00Z",
+  "dateModified": "2025-11-10T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/daily_logs/week03/20251110_openai_streamlit/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://hojjang98.github.io/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/daily_logs/">6개월, 혹은 그 이상의 보안 여정</a></div>
+    <h1 class="post-title entry-hint-parent">
+      2025.11.10 (Day 11) Streamlit · OpenAI API를 활용한 보안형 챗봇 앱 구현
+    </h1>
+    <div class="post-meta"><span title='2025-11-10 00:00:00 +0000 UTC'>2025년 11월 10일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="20251110-day-11-streamlit--openai-chat-app">2025.11.10 (Day 11) Streamlit · OpenAI Chat App<a hidden class="anchor" aria-hidden="true" href="#20251110-day-11-streamlit--openai-chat-app">#</a></h1>
+<h2 id="1-주요-개념-요약">1. 주요 개념 요약<a hidden class="anchor" aria-hidden="true" href="#1-주요-개념-요약">#</a></h2>
+<ul>
+<li><strong>Streamlit UI 구성</strong>: <code>st.sidebar</code>, <code>st.text_area</code>, <code>st.button</code> 등을 활용해 사용자 입력–출력 구조를 설계한다. 빠른 프로토타이핑이 가능해 보안 로그 분석기의 대화 인터페이스로 확장 가능하다.</li>
+<li><strong>OpenAI API 연결 구조</strong>: <code>.env</code> 파일의 API Key를 불러오거나 사용자가 직접 입력하도록 설계하여 OpenAI 클라이언트를 안전하게 초기화한다.</li>
+<li><strong>ChatCompletion 모델 호출</strong>: GPT 모델(<code>gpt-4o-mini</code>)을 사용해 사용자의 입력 텍스트를 처리하고 응답을 반환한다. 모델 호출 로직을 함수화하면 다른 입력(로그, 이벤트, 에러 메시지)에도 재사용 가능하다.</li>
+<li><strong>보안 LLM 개념</strong>: API Key 보호, 입력 데이터 검증, 프롬프트 인젝션 방어 등 보안 측면에서 LLM 사용의 기초를 이해해야 한다.</li>
+</ul>
+<hr>
+<h2 id="2-실습-코드-및-응용">2. 실습 코드 및 응용<a hidden class="anchor" aria-hidden="true" href="#2-실습-코드-및-응용">#</a></h2>
+<h3 id="a-streamlit-기본-ui-구성">A. Streamlit 기본 UI 구성<a hidden class="anchor" aria-hidden="true" href="#a-streamlit-기본-ui-구성">#</a></h3>
+<ul>
+<li>텍스트 입력과 버튼 출력 구조를 구성하여 이후 LLM 기반 보안 로그 분석기의 인터페이스 기반으로 활용한다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> streamlit <span style="color:#66d9ef">as</span> st
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>st<span style="color:#f92672">.</span>set_page_config(page_title<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;챗 모델을 이용한 응답&#39;</span>)
+</span></span><span style="display:flex;"><span>st<span style="color:#f92672">.</span>header(<span style="color:#e6db74">&#39;요약 응답&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>text <span style="color:#f92672">=</span> st<span style="color:#f92672">.</span>text_area(<span style="color:#e6db74">&#39;글 입력&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> st<span style="color:#f92672">.</span>button(<span style="color:#e6db74">&#39;요약해줘&#39;</span>):
+</span></span><span style="display:flex;"><span>    st<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#39;요약 결과 표시&#39;</span>)
+</span></span></code></pre></div><h3 id="b-openai-api-연결-및-챗-응답-생성">B. OpenAI API 연결 및 챗 응답 생성<a hidden class="anchor" aria-hidden="true" href="#b-openai-api-연결-및-챗-응답-생성">#</a></h3>
+<ul>
+<li>모델 호출 로직을 함수화하여 보안 로그, 이벤트, 에러 메시지 등 다양한 입력에 재사용할 수 있다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> openai <span style="color:#f92672">import</span> OpenAI
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">askChat</span>(query, key):
+</span></span><span style="display:flex;"><span>    client <span style="color:#f92672">=</span> OpenAI(api_key<span style="color:#f92672">=</span>key)
+</span></span><span style="display:flex;"><span>    response <span style="color:#f92672">=</span> client<span style="color:#f92672">.</span>chat<span style="color:#f92672">.</span>completions<span style="color:#f92672">.</span>create(
+</span></span><span style="display:flex;"><span>        model<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;gpt-4o-mini&#39;</span>,
+</span></span><span style="display:flex;"><span>        messages<span style="color:#f92672">=</span>[{<span style="color:#e6db74">&#39;role&#39;</span>: <span style="color:#e6db74">&#39;user&#39;</span>, <span style="color:#e6db74">&#39;content&#39;</span>: query}]
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> response<span style="color:#f92672">.</span>choices[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>message<span style="color:#f92672">.</span>content
+</span></span></code></pre></div><h3 id="c-api-key-보안-처리-및-세션-관리">C. API Key 보안 처리 및 세션 관리<a hidden class="anchor" aria-hidden="true" href="#c-api-key-보안-처리-및-세션-관리">#</a></h3>
+<ul>
+<li>API Key는 사용자가 직접 입력하며 <code>st.session_state</code>에만 임시 저장한다. <code>.env</code> 병행 시 환경 분리와 키 노출 방지 효과를 동시에 확보할 수 있다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> dotenv <span style="color:#f92672">import</span> load_dotenv
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#39;api_key&#39;</span> <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> st<span style="color:#f92672">.</span>session_state:
+</span></span><span style="display:flex;"><span>    st<span style="color:#f92672">.</span>session_state[<span style="color:#e6db74">&#39;api_key&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">with</span> st<span style="color:#f92672">.</span>sidebar:
+</span></span><span style="display:flex;"><span>    key <span style="color:#f92672">=</span> st<span style="color:#f92672">.</span>text_input(label<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;input key&#39;</span>, placeholder<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;api key&#39;</span>, type<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;password&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> key:
+</span></span><span style="display:flex;"><span>        st<span style="color:#f92672">.</span>session_state[<span style="color:#e6db74">&#39;api_key&#39;</span>] <span style="color:#f92672">=</span> key
+</span></span></code></pre></div><hr>
+<h2 id="3-보안-관점-분석">3. 보안 관점 분석<a hidden class="anchor" aria-hidden="true" href="#3-보안-관점-분석">#</a></h2>
+<ul>
+<li><strong>SOC / 관제</strong>: 실시간 로그나 경보 메시지를 LLM으로 요약하여 운영자 피로도를 감소시키고 탐지 피드백 속도를 향상시킨다.</li>
+<li><strong>CERT / 사고대응</strong>: 공격 단계별 로그를 LLM에 입력하여 사건 개요·원인·조치 요약을 자동 생성하고 브리핑 효율성을 높인다.</li>
+<li><strong>DevSecOps</strong>: 빌드 로그·취약점 스캔 결과를 ChatCompletion으로 자동 요약하여 CI/CD 파이프라인에서 자동 리포팅 시스템을 구축할 수 있다.</li>
+<li><strong>취약점 진단 / 펜테스트</strong>: 모의해킹 결과 텍스트를 입력해 취약점 유형별 요약 및 리스크 레벨을 자동 분류한다.</li>
+<li><strong>데이터 프라이버시</strong>: 사용자 입력값 검증 및 마스킹 처리로 민감정보 노출을 최소화하고 모델 입력 안정성을 확보한다.</li>
+</ul>
+<hr>
+<h2 id="4-요약">4. 요약<a hidden class="anchor" aria-hidden="true" href="#4-요약">#</a></h2>
+<ol>
+<li>Streamlit + OpenAI Chat API를 통해 LLM 응용 서비스를 빠르게 프로토타이핑하는 방법을 익혔다.</li>
+<li><code>.env</code> 또는 <code>session_state</code>를 이용한 API Key 보호 구조로 보안 환경에서의 안전한 모델 호출을 구현했다.</li>
+<li>LLM 응답을 단순 대화가 아닌 보안 로그·사고 보고서 자동 요약에 적용할 수 있음을 확인했다.</li>
+<li>본 실습은 이후 LangChain, Guardrails, RAG 기반 보안 LLM 파이프라인 학습의 기초가 된다.</li>
+</ol>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://hojjang98.github.io/tags/streamlit/">Streamlit</a></li>
+      <li><a href="https://hojjang98.github.io/tags/openai/">OpenAI</a></li>
+      <li><a href="https://hojjang98.github.io/tags/llm/">LLM</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%B3%B4%EC%95%88%EC%B1%97%EB%B4%87/">보안챗봇</a></li>
+      <li><a href="https://hojjang98.github.io/tags/sk%EC%89%B4%EB%8D%94%EC%8A%A4%EB%A3%A8%ED%82%A4%EC%A6%88/">SK쉴더스루키즈</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

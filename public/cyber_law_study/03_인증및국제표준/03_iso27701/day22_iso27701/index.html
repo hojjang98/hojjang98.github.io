@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Day 22: ISO 27701 개인정보 관리 시스템 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="ISO27701, PIMS, 개인정보보호, 국제표준, GDPR, PII컨트롤러, PII프로세서, 개인정보관리체계, 보안인증">
+<meta name="description" content="ISO 27701의 구조와 PIMS 요구사항(Clause 5), Annex A·B의 PII 컨트롤러·프로세서 통제항목, 인증 절차 및 GDPR과의 관계를 학습하고 보안 컨설팅 관점의 활용 방안을 파악합니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://hojjang98.github.io/cyber_law_study/03_%EC%9D%B8%EC%A6%9D%EB%B0%8F%EA%B5%AD%EC%A0%9C%ED%91%9C%EC%A4%80/03_iso27701/day22_iso27701/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.290573799e582c418c4bd84f2bca757d0a77fd1bf9f5c43942030e706df68ec8.css" integrity="sha256-KQVzeZ5YLEGMS9hPK8p1fQp3/Rv59cQ5QgMOcG32jsg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/cyber_law_study/03_%EC%9D%B8%EC%A6%9D%EB%B0%8F%EA%B5%AD%EC%A0%9C%ED%91%9C%EC%A4%80/03_iso27701/day22_iso27701/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://hojjang98.github.io/cyber_law_study/03_%EC%9D%B8%EC%A6%9D%EB%B0%8F%EA%B5%AD%EC%A0%9C%ED%91%9C%EC%A4%80/03_iso27701/day22_iso27701/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="Day 22: ISO 27701 개인정보 관리 시스템">
+  <meta property="og:description" content="ISO 27701의 구조와 PIMS 요구사항(Clause 5), Annex A·B의 PII 컨트롤러·프로세서 통제항목, 인증 절차 및 GDPR과의 관계를 학습하고 보안 컨설팅 관점의 활용 방안을 파악합니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="cyber_law_study">
+    <meta property="article:published_time" content="2026-03-04T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-03-04T00:00:00+00:00">
+    <meta property="article:tag" content="ISO27701">
+    <meta property="article:tag" content="PIMS">
+    <meta property="article:tag" content="개인정보보호">
+    <meta property="article:tag" content="국제표준">
+    <meta property="article:tag" content="GDPR">
+    <meta property="article:tag" content="PII컨트롤러">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Day 22: ISO 27701 개인정보 관리 시스템">
+<meta name="twitter:description" content="ISO 27701의 구조와 PIMS 요구사항(Clause 5), Annex A·B의 PII 컨트롤러·프로세서 통제항목, 인증 절차 및 GDPR과의 관계를 학습하고 보안 컨설팅 관점의 활용 방안을 파악합니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "보안 컨설팅 공부",
+      "item": "https://hojjang98.github.io/cyber_law_study/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  4 ,
+      "name": "Day 22: ISO 27701 개인정보 관리 시스템",
+      "item": "https://hojjang98.github.io/cyber_law_study/03_%EC%9D%B8%EC%A6%9D%EB%B0%8F%EA%B5%AD%EC%A0%9C%ED%91%9C%EC%A4%80/03_iso27701/day22_iso27701/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Day 22: ISO 27701 개인정보 관리 시스템",
+  "name": "Day 22: ISO 27701 개인정보 관리 시스템",
+  "description": "ISO 27701의 구조와 PIMS 요구사항(Clause 5), Annex A·B의 PII 컨트롤러·프로세서 통제항목, 인증 절차 및 GDPR과의 관계를 학습하고 보안 컨설팅 관점의 활용 방안을 파악합니다.",
+  "keywords": [
+    "ISO27701", "PIMS", "개인정보보호", "국제표준", "GDPR", "PII컨트롤러", "PII프로세서", "개인정보관리체계", "보안인증"
+  ],
+  "articleBody": "Day 22: ISO 27701 개인정보 관리 시스템 1. ISO 27701의 개요 1.1 ISO 27701이란? 정식 명칭: ISO/IEC 27701:2019 Security techniques — Extension to ISO/IEC 27001 and ISO/IEC 27002 for privacy information management — Requirements and guidelines\nISO 27701: ISO 27001 및 ISO 27002를 개인정보 보호(Privacy) 로 확장한 국제 표준\n별칭: PIMS (Privacy Information Management System) 표준\n1.2 제정 배경 2019년 8월 6일 발행 GDPR (EU 일반 데이터 보호 규정) 시행 (2018년 5월) 글로벌 개인정보 보호 규제 강화 ISO 27001만으로는 개인정보 보호 요구사항 충족 부족 정보보호 + 개인정보 보호 통합 관리 필요 1.3 ISO 27701의 목적 조직이 개인정보를 안전하게 보호하기 위해:\n개인정보 관리체계(PIMS) 수립·구현·유지·개선 ISO 27001 기반 개인정보 보호 확장 국제적 개인정보 보호 표준 준수 입증 1.4 ISO 27701 vs ISMS-P vs ISO 27001 구분 ISO 27701 ISMS-P ISO 27001 발행 기관 ISO/IEC 한국인터넷진흥원 ISO/IEC 범위 정보보호 + 개인정보보호 정보보호 + 개인정보보호 정보보호만 기반 표준 ISO 27001 확장 독립 표준 독립 표준 적용 범위 전 세계 한국 전 세계 인증 ISO 27001 선행 필수 독립 인증 가능 독립 인증 GDPR 준수 ⭐⭐⭐ ⭐⭐ ⭐ 한국 법 준수 ⭐⭐ ⭐⭐⭐ ⭐ 핵심 차이:\nISO 27701: ISO 27001 확장 (ISO 27001 인증이 선행 조건) ISMS-P: 정보보호+개인정보보호 통합 (단독 인증 가능) 1.5 ISO 27701이 필요한 조직 이미 ISO 27001 인증을 보유한 조직 글로벌 비즈니스 (특히 EU, 미국) GDPR 준수가 필요한 조직 개인정보 처리가 많은 조직 고객 신뢰 확보가 중요한 조직 2. ISO 27701의 구조 2.1 전체 구조 ISO 27701은 ISO 27001/27002에 추가되는 형태:\nISO 27001 (정보보호 관리체계) + ISO 27002 (정보보호 통제 가이드) + ISO 27701 (개인정보 보호 확장) \u003c- 추가 = PIMS (Privacy Information Management System)\n2.2 ISO 27701의 구성 ISO 27701은 크게 3부분으로 구성:\n(1) Clause 1~4: 도입 및 범위 (2) Clause 5: PIMS 요구사항 5.2: ISO 27001에 대한 추가 요구사항 5.3: ISO 27001 Clause 4 (조직 상황) 확장 5.4: ISO 27001 Clause 5 (리더십) 확장 5.5: ISO 27001 Clause 6 (계획) 확장 5.6: ISO 27001 Clause 7 (지원) 확장 5.7: ISO 27001 Clause 8 (운영) 확장 5.8: ISO 27001 Clause 9 (성과 평가) 확장 5.9: ISO 27001 Clause 10 (개선) 확장 (3) Annex A, B: 개인정보 보호 통제 Annex A: PII 컨트롤러 (데이터 관리자) 통제 - 23개 Annex B: PII 프로세서 (데이터 처리자) 통제 - 17개 2.3 PII 컨트롤러 vs PII 프로세서 PII Controller (개인정보 컨트롤러) 개인정보 처리의 목적과 수단을 결정하는 자\n예시:\n온라인 쇼핑몰 (고객 정보 수집·이용) 병원 (환자 정보 관리) 은행 (고객 정보 관리) 역할:\n개인정보 수집·이용 결정 개인정보 보호 책임 PII Processor (개인정보 프로세서) 컨트롤러를 대신하여 개인정보를 처리하는 자\n예시:\n클라우드 서비스 제공자 (AWS, Azure) 콜센터 위탁 업체 결제 대행 업체 (PG사) 역할:\n컨트롤러의 지시에 따라 개인정보 처리 컨트롤러에게 책임 비유:\n컨트롤러 = 회사 (고객 정보 소유) 프로세서 = 외주 업체 (회사를 대신해 고객 정보 처리)\n한국 법률 용어:\n컨트롤러 ≈ 개인정보처리자 프로세서 ≈ 수탁자 3. PIMS 요구사항 (Clause 5) 3.1 5.2 일반 요구사항 5.2.1 PIMS 수립 및 유지 조직은 PIMS를 수립·구현·유지·지속적으로 개선해야 함\n5.2.2 역할 조직 내 역할 정의:\nPII Controller (개인정보 컨트롤러) PII Processor (개인정보 프로세서) 둘 다 해당하는 경우 모두 준수 3.2 5.4 리더십 (Leadership) 5.4.1 정책 개인정보 보호 정책 수립:\n개인정보 처리 원칙 정보주체 권리 보장 법적 요구사항 준수 ISO 27001 정보보호 정책에 통합 가능\n5.4.2 역할, 책임 및 권한 개인정보 보호 책임자 지정:\nDPO (Data Protection Officer) 또는 CPO (Chief Privacy Officer) 개인정보 보호 업무 총괄 3.3 5.5 계획 (Planning) 5.5.1 개인정보 보호 목표 개인정보 보호 목표 수립:\n측정 가능 모니터링 가능 예시:\n개인정보 유출 사고 0건 정보주체 요구 처리율 100% 개인정보 교육 이수율 100% 5.5.2 위험 평가 개인정보 관련 위험 평가:\n개인정보 수집·이용·제공·파기 전 과정 정보주체 권리 침해 가능성 법적 위반 가능성 3.4 5.6 지원 (Support) 5.6.1 역량 및 인식 개인정보 취급자 교육 개인정보 보호 인식 제고 5.6.2 의사소통 정보주체와의 의사소통:\n개인정보 처리방침 공개 동의 획득 권리 행사 절차 안내 3.5 5.7 운영 (Operation) 5.7.1 개인정보 처리 활동 개인정보 처리 활동 기록 유지:\n처리 목적 개인정보 항목 보유 기간 제3자 제공 현황 GDPR Article 30과 유사\n5.7.2 정보주체 권리 정보주체 권리 보장 절차 수립:\n열람 정정·삭제 처리정지 이동권 (데이터 포터빌리티) 3.6 5.8 성과 평가 (Performance Evaluation) 5.8.1 모니터링, 측정, 분석 및 평가 개인정보 보호 성과 측정:\n개인정보 보호 목표 달성도 개인정보 침해 사고 건수 정보주체 불만 건수 5.8.2 내부 심사 PIMS 내부 심사 실시 (연 1회 이상)\n5.8.3 경영 검토 최고경영자의 PIMS 검토 (연 1회 이상)\n3.7 5.9 개선 (Improvement) 5.9.1 부적합 및 시정 조치 개인정보 보호 부적합 발견 시 시정 조치\n5.9.2 지속적 개선 PIMS의 지속적 개선\n4. Annex A: PII 컨트롤러 통제 (23개) 4.1 A.6 조직 (Organization) A.6.1.1 법적 근거 개인정보 처리의 법적 근거 확인:\n동의 계약 이행 법적 의무 정당한 이익 GDPR Article 6과 동일\nA.6.1.2 개인정보 보호 정책 정보주체에게 개인정보 처리방침 공개:\n수집 목적 보유 기간 제3자 제공 정보주체 권리 A.6.1.3 정보주체 권리 정보주체 권리 보장:\n열람권 정정·삭제권 처리정지권 이동권 자동화된 결정 거부권 4.2 A.7 인적 자원 보안 (Human resource security) A.7.2.1 개인정보 보호 인식 및 교육 개인정보 취급자 교육 실시:\n연 1회 이상 개인정보 보호 원칙 법적 의무 4.3 A.8 자산 관리 (Asset management) A.8.2.1 개인정보 분류 개인정보 분류 및 라벨링:\n일반 개인정보 민감 개인정보 고유식별정보 A.8.3.1 개인정보 삭제 보유 기간 경과 시 즉시 삭제:\n복구 불가능한 방법 삭제 기록 유지 4.4 A.9 접근 통제 (Access control) A.9.2.1 개인정보 접근 제한 개인정보 접근 최소화:\n업무상 필요한 자만 접근 최소 권한 부여 4.5 A.10 암호화 (Cryptography) A.10.1.1 암호화 정책 개인정보 암호화 정책 수립:\n저장 시 암호화 전송 시 암호화 4.6 A.11 물리적 및 환경적 보안 (Physical and environmental security) A.11.2.1 물리적 매체 처리 개인정보가 저장된 물리적 매체 안전한 처리:\n폐기 시 완전 삭제 4.7 A.12 운영 보안 (Operations security) A.12.2.1 변경 관리 개인정보 시스템 변경 시 개인정보 보호 영향 평가\nA.12.7.1 로그 관리 개인정보 접근 로그 기록 및 모니터링\n4.8 A.13 통신 보안 (Communications security) A.13.2.1 정보 전송 계약 제3자에게 개인정보 전송 시 계약서 체결:\n보안 조치 명시 책임 명확화 4.9 A.14 시스템 개발 및 유지보수 (System acquisition, development and maintenance) A.14.2.1 개인정보 보호 설계 시스템 개발 시 Privacy by Design 적용:\n설계 단계부터 개인정보 보호 고려 기본 설정을 개인정보 보호 중심으로 4.10 A.15 공급자 관계 (Supplier relationships) A.15.1.1 공급자 선정 개인정보 처리 위탁 시 수탁자 선정 기준:\n보안 수준 확인 계약서 체결 4.11 A.16 정보보안 사고 관리 (Information security incident management) A.16.1.1 개인정보 침해 통지 개인정보 유출 시 정보주체 및 규제기관 통지:\n72시간 이내 (GDPR 기준) 통지 내용: 유출 항목, 시점, 조치 4.12 A.17 사업 연속성 (Business continuity management) A.17.1.1 개인정보 백업 개인정보 정기 백업:\n재해 복구 대비 4.13 A.18 컴플라이언스 (Compliance) A.18.1.1 법적 요구사항 준수 개인정보 관련 법령 준수:\nGDPR (EU) 개인정보보호법 (한국) CCPA (캘리포니아) 5. Annex B: PII 프로세서 통제 (17개) 5.1 B.6 조직 (Organization) B.6.1.1 계약 조건 컨트롤러와의 계약서에 다음 포함:\n처리 목적 처리 기간 보안 조치 하위 위탁 조건 개인정보 반환·삭제 B.6.1.2 지시 준수 컨트롤러의 지시에 따라서만 개인정보 처리:\n목적 외 사용 금지 5.2 B.8 자산 관리 (Asset management) B.8.3.1 개인정보 반환 및 삭제 계약 종료 시:\n개인정보 컨트롤러에 반환 또는 삭제 삭제 증명서 제공 5.3 B.9 접근 통제 (Access control) B.9.2.1 접근 제한 프로세서 직원의 개인정보 접근 제한:\n업무상 필요한 자만 5.4 B.12 운영 보안 (Operations security) B.12.7.1 감사 지원 컨트롤러의 감사 요청 시 협조:\n개인정보 처리 현황 제공 현장 감사 수용 5.5 B.15 공급자 관계 (Supplier relationships) B.15.1.1 하위 위탁 프로세서가 하위 위탁 시:\n컨트롤러 사전 동의 하위 수탁자도 동일한 보안 수준 5.6 B.16 정보보안 사고 관리 (Information security incident management) B.16.1.1 침해 통지 개인정보 유출 시:\n컨트롤러에 즉시 통지 컨트롤러가 정보주체·규제기관 통지 6. ISO 27701 인증 절차 6.1 인증 전제 조건 ISO 27001 인증이 선행 조건\nISO 27001 미인증 -\u003e ISO 27701 인증 불가 ISO 27001 인증 보유 -\u003e ISO 27701 확장 인증 가능 6.2 인증 절차 Phase 1: 사전 준비 (3~6개월) 갭 분석\nISO 27001 대비 ISO 27701 추가 요구사항 파악 PIMS 구축\nClause 5 요구사항 충족 Annex A/B 통제 구현 개인정보 처리 활동 기록 개인정보 보호 정책 수립 문서화\n정책, 절차, 기록 Phase 2: 내부 심사 (1개월) PIMS 내부 심사 부적합 시정 Phase 3: 인증 심사 (1~2개월) 1단계 심사 (문서 심사) 2단계 심사 (현장 심사) ISO 27001 인증 유지 확인 ISO 27701 추가 요구사항 준수 확인 Phase 4: 인증서 발급 ISO 27001 + ISO 27701 통합 인증서 유효 기간: 3년 (ISO 27001과 동일)\n6.3 사후 관리 연간 사후 심사: ISO 27001 + ISO 27701 함께 심사 갱신 심사: 3년 후 재인증 7. 보안 컨설팅 관점의 시사점 7.1 ISO 27701 인증이 필요한 경우 (1) EU 비즈니스 EU 고객·파트너가 있는 경우 GDPR 준수 입증 필요 (2) 글로벌 확장 국제적으로 개인정보 보호 수준 입증 (3) 고객 요구 대기업 고객이 ISO 27701 요구 (4) 경쟁 우위 입찰 시 가점 고객 신뢰 확보 7.2 ISO 27701 vs ISMS-P 선택 상황 권장 이미 ISO 27001 보유 ISO 27701 EU 비즈니스 중심 ISO 27701 한국만 비즈니스 ISMS-P 정보통신망법 의무 대상 ISMS-P 글로벌 + 한국 ISO 27701 + ISMS-P 병행 실무:\n대기업: ISO 27001 + ISO 27701 + ISMS-P 모두 취득 중견기업: ISO 27001 + ISO 27701 또는 ISMS-P 스타트업: ISMS-P (비용 효율적) 7.3 컨설팅 프로세스 Phase 1: 현황 진단 (1개월) ISO 27001 인증 보유 확인 ISO 27701 갭 분석 컨트롤러/프로세서 역할 판단 Phase 2: PIMS 구축 (3~4개월) 개인정보 처리 활동 기록 작성 개인정보 보호 정책·절차 수립 Annex A/B 통제 구현 정보주체 권리 보장 절차 Phase 3: 내부 심사 (1개월) PIMS 내부 심사 부적합 시정 Phase 4: 인증 심사 (1~2개월) 1단계 심사 대응 2단계 심사 대응 총 기간: 6~8개월\n8. 실무 사례 사례 1: 글로벌 SaaS 기업 A기업:\n한국 SaaS 기업 EU 고객 30% 배경:\nEU 고객이 GDPR 준수 요구 ISO 27001 보유 ISO 27701 인증:\n갭 분석 (1개월)\n개인정보 처리 활동 기록 부족 정보주체 권리 절차 미비 PIMS 구축 (4개월)\n개인정보 처리 활동 기록 작성 Privacy Notice 작성 (GDPR 준수) 정보주체 권리 포털 구축 (열람, 삭제 요청) 데이터 이동권 (Data Portability) 기능 개발 인증 (2개월)\nISO 27001 + ISO 27701 통합 인증 결과:\nGDPR 준수 입증 EU 고객 신뢰 확보 매출 20% 증가 사례 2: 클라우드 서비스 제공자 (PII Processor) B클라우드:\nIaaS, PaaS 제공 고객사의 개인정보 처리 역할:\nPII Processor (수탁자) ISO 27701 Annex B 준수:\n계약서 정비\n고객사(컨트롤러)와 DPA (Data Processing Agreement) 체결 처리 목적, 보안 조치, 하위 위탁 조건 명시 하위 위탁 관리\n하위 클라우드 사업자 사용 시 고객사 동의 하위 사업자도 동일 보안 수준 감사 지원\n고객사 감사 요청 시 협조 SOC 2 보고서 제공 데이터 반환·삭제\n계약 종료 시 고객 데이터 반환 또는 삭제 삭제 증명서 발급 결과:\n대기업 고객 확보 신뢰도 향상 사례 3: 전자상거래 기업 C쇼핑몰:\n온라인 쇼핑몰 회원 500만명 역할:\nPII Controller (개인정보처리자) 결제 대행은 PG사 (Processor) ISO 27701 Annex A 준수:\n법적 근거 확인\n회원가입: 동의 주문/배송: 계약 이행 마케팅: 별도 동의 개인정보 처리방침\n명확한 안내 쉬운 언어 정보주체 권리\n마이페이지에서 열람·정정·삭제 데이터 다운로드 (CSV) PG사 관리\nPG사와 위탁계약 PG사 보안 수준 정기 점검 결과:\nISO 27701 인증 고객 신뢰 향상 9. GDPR과 ISO 27701의 관계 9.1 GDPR 주요 요구사항 GDPR (General Data Protection Regulation): EU 일반 데이터 보호 규정 (2018년 5월 시행)\n주요 요구사항 적법성: 법적 근거 (동의, 계약 등) 투명성: 개인정보 처리 투명하게 공개 정보주체 권리: 열람권 정정·삭제권 (“잊힐 권리”) 처리정지권 데이터 이동권 자동화된 결정 거부권 Privacy by Design: 설계 단계부터 개인정보 보호 DPIA (Data Protection Impact Assessment): 고위험 처리 시 영향평가 DPO (Data Protection Officer): 일정 규모 이상 조직은 DPO 지정 침해 통지: 72시간 이내 규제기관·정보주체 통지 국제 이전: EU 외 국가로 이전 시 적정성 결정 또는 SCC 9.2 ISO 27701과 GDPR 매핑 ISO 27701은 GDPR과 높은 일치도:\nGDPR 요구사항 ISO 27701 통제 적법성 (Article 6) A.6.1.1 법적 근거 투명성 (Article 12~14) A.6.1.2 개인정보 보호 정책 정보주체 권리 (Article 15~22) A.6.1.3 정보주체 권리 Privacy by Design (Article 25) A.14.2.1 개인정보 보호 설계 DPIA (Article 35) ISO 27001 Clause 6 위험 평가 침해 통지 (Article 33~34) A.16.1.1 개인정보 침해 통지 프로세서 의무 (Article 28) Annex B 전체 결론: ISO 27701 인증 = GDPR 준수의 강력한 증거\n10. 체크리스트 PIMS 요구사항 개인정보 보호 정책을 수립했는가? 개인정보 보호 책임자를 지정했는가? 개인정보 보호 목표를 수립했는가? 개인정보 처리 활동을 기록하는가? 정보주체 권리 보장 절차가 있는가? PIMS 내부 심사를 연 1회 수행하는가? PII 컨트롤러 (Annex A) 개인정보 처리의 법적 근거가 있는가? 개인정보 처리방침을 공개하는가? 정보주체 권리를 보장하는가? (열람, 정정·삭제, 이동권) 개인정보를 분류·라벨링하는가? 보유 기간 경과 시 즉시 삭제하는가? 개인정보를 암호화하는가? 개인정보 유출 시 통지 절차가 있는가? Privacy by Design을 적용하는가? PII 프로세서 (Annex B) 컨트롤러와 계약서를 체결했는가? 컨트롤러의 지시에 따라서만 처리하는가? 하위 위탁 시 컨트롤러 동의를 받는가? 계약 종료 시 개인정보를 반환·삭제하는가? 컨트롤러 감사 요청 시 협조하는가? 학습 정리 오늘 학습한 핵심 내용:\nISO 27701은 ISO 27001/27002의 개인정보 보호 확장 표준 PIMS (Privacy Information Management System) 구축 ISO 27001 인증이 선행 조건 Clause 5: ISO 27001 요구사항에 개인정보 보호 추가 Annex A: PII 컨트롤러 통제 23개 (개인정보처리자) Annex B: PII 프로세서 통제 17개 (수탁자) GDPR과 높은 일치도 -\u003e GDPR 준수 입증에 유리 글로벌 비즈니스, EU 고객 있는 경우 필수 한국 기업: ISO 27701 (글로벌) vs ISMS-P (국내) 선택 인증 기간: 6~8개월, 유효기간 3년 다음 학습 주제 Day 23: PCI-DSS (Payment Card Industry Data Security Standard) - 카드 정보 보호 표준\n",
+  "wordCount" : "4865",
+  "inLanguage": "ko",
+  "datePublished": "2026-03-04T00:00:00Z",
+  "dateModified": "2026-03-04T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/cyber_law_study/03_%EC%9D%B8%EC%A6%9D%EB%B0%8F%EA%B5%AD%EC%A0%9C%ED%91%9C%EC%A4%80/03_iso27701/day22_iso27701/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://hojjang98.github.io/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/cyber_law_study/">보안 컨설팅 공부</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Day 22: ISO 27701 개인정보 관리 시스템
+    </h1>
+    <div class="post-meta"><span title='2026-03-04 00:00:00 +0000 UTC'>2026년 3월 4일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="day-22-iso-27701-개인정보-관리-시스템">Day 22: ISO 27701 개인정보 관리 시스템<a hidden class="anchor" aria-hidden="true" href="#day-22-iso-27701-개인정보-관리-시스템">#</a></h1>
+<h2 id="1-iso-27701의-개요">1. ISO 27701의 개요<a hidden class="anchor" aria-hidden="true" href="#1-iso-27701의-개요">#</a></h2>
+<h3 id="11-iso-27701이란">1.1 ISO 27701이란?<a hidden class="anchor" aria-hidden="true" href="#11-iso-27701이란">#</a></h3>
+<p><strong>정식 명칭</strong>: ISO/IEC 27701:2019 Security techniques — Extension to ISO/IEC 27001 and ISO/IEC 27002 for privacy information management — Requirements and guidelines</p>
+<p><strong>ISO 27701</strong>: ISO 27001 및 ISO 27002를 <strong>개인정보 보호(Privacy)</strong> 로 확장한 국제 표준</p>
+<p><strong>별칭</strong>: PIMS (Privacy Information Management System) 표준</p>
+<h3 id="12-제정-배경">1.2 제정 배경<a hidden class="anchor" aria-hidden="true" href="#12-제정-배경">#</a></h3>
+<ul>
+<li><strong>2019년 8월 6일 발행</strong></li>
+<li><strong>GDPR</strong> (EU 일반 데이터 보호 규정) 시행 (2018년 5월)</li>
+<li>글로벌 개인정보 보호 규제 강화</li>
+<li>ISO 27001만으로는 개인정보 보호 요구사항 충족 부족</li>
+<li>정보보호 + 개인정보 보호 <strong>통합 관리</strong> 필요</li>
+</ul>
+<h3 id="13-iso-27701의-목적">1.3 ISO 27701의 목적<a hidden class="anchor" aria-hidden="true" href="#13-iso-27701의-목적">#</a></h3>
+<p>조직이 <strong>개인정보를 안전하게 보호</strong>하기 위해:</p>
+<ol>
+<li><strong>개인정보 관리체계(PIMS)</strong> 수립·구현·유지·개선</li>
+<li><strong>ISO 27001 기반</strong> 개인정보 보호 확장</li>
+<li><strong>국제적 개인정보 보호 표준</strong> 준수 입증</li>
+</ol>
+<h3 id="14-iso-27701-vs-isms-p-vs-iso-27001">1.4 ISO 27701 vs ISMS-P vs ISO 27001<a hidden class="anchor" aria-hidden="true" href="#14-iso-27701-vs-isms-p-vs-iso-27001">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>구분</th>
+          <th>ISO 27701</th>
+          <th>ISMS-P</th>
+          <th>ISO 27001</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>발행 기관</td>
+          <td>ISO/IEC</td>
+          <td>한국인터넷진흥원</td>
+          <td>ISO/IEC</td>
+      </tr>
+      <tr>
+          <td>범위</td>
+          <td>정보보호 + 개인정보보호</td>
+          <td>정보보호 + 개인정보보호</td>
+          <td><strong>정보보호만</strong></td>
+      </tr>
+      <tr>
+          <td>기반 표준</td>
+          <td>ISO 27001 확장</td>
+          <td>독립 표준</td>
+          <td>독립 표준</td>
+      </tr>
+      <tr>
+          <td>적용 범위</td>
+          <td>전 세계</td>
+          <td>한국</td>
+          <td>전 세계</td>
+      </tr>
+      <tr>
+          <td>인증</td>
+          <td>ISO 27001 선행 필수</td>
+          <td>독립 인증 가능</td>
+          <td>독립 인증</td>
+      </tr>
+      <tr>
+          <td>GDPR 준수</td>
+          <td>⭐⭐⭐</td>
+          <td>⭐⭐</td>
+          <td>⭐</td>
+      </tr>
+      <tr>
+          <td>한국 법 준수</td>
+          <td>⭐⭐</td>
+          <td>⭐⭐⭐</td>
+          <td>⭐</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>핵심 차이:</strong></p>
+<ul>
+<li><strong>ISO 27701</strong>: ISO 27001 <strong>확장</strong> (ISO 27001 인증이 선행 조건)</li>
+<li><strong>ISMS-P</strong>: 정보보호+개인정보보호 <strong>통합</strong> (단독 인증 가능)</li>
+</ul>
+<h3 id="15-iso-27701이-필요한-조직">1.5 ISO 27701이 필요한 조직<a hidden class="anchor" aria-hidden="true" href="#15-iso-27701이-필요한-조직">#</a></h3>
+<ol>
+<li><strong>이미 ISO 27001 인증</strong>을 보유한 조직</li>
+<li><strong>글로벌 비즈니스</strong> (특히 EU, 미국)</li>
+<li><strong>GDPR 준수</strong>가 필요한 조직</li>
+<li><strong>개인정보 처리</strong>가 많은 조직</li>
+<li><strong>고객 신뢰</strong> 확보가 중요한 조직</li>
+</ol>
+<h2 id="2-iso-27701의-구조">2. ISO 27701의 구조<a hidden class="anchor" aria-hidden="true" href="#2-iso-27701의-구조">#</a></h2>
+<h3 id="21-전체-구조">2.1 전체 구조<a hidden class="anchor" aria-hidden="true" href="#21-전체-구조">#</a></h3>
+<p>ISO 27701은 <strong>ISO 27001/27002에 추가</strong>되는 형태:</p>
+<p>ISO 27001 (정보보호 관리체계)
++
+ISO 27002 (정보보호 통제 가이드)
++
+ISO 27701 (개인정보 보호 확장) &lt;- 추가
+=
+PIMS (Privacy Information Management System)</p>
+<h3 id="22-iso-27701의-구성">2.2 ISO 27701의 구성<a hidden class="anchor" aria-hidden="true" href="#22-iso-27701의-구성">#</a></h3>
+<p>ISO 27701은 크게 <strong>3부분</strong>으로 구성:</p>
+<h4 id="1-clause-14-도입-및-범위">(1) Clause 1~4: 도입 및 범위<a hidden class="anchor" aria-hidden="true" href="#1-clause-14-도입-및-범위">#</a></h4>
+<h4 id="2-clause-5-pims-요구사항">(2) Clause 5: PIMS 요구사항<a hidden class="anchor" aria-hidden="true" href="#2-clause-5-pims-요구사항">#</a></h4>
+<ul>
+<li><strong>5.2</strong>: ISO 27001에 대한 추가 요구사항</li>
+<li><strong>5.3</strong>: ISO 27001 Clause 4 (조직 상황) 확장</li>
+<li><strong>5.4</strong>: ISO 27001 Clause 5 (리더십) 확장</li>
+<li><strong>5.5</strong>: ISO 27001 Clause 6 (계획) 확장</li>
+<li><strong>5.6</strong>: ISO 27001 Clause 7 (지원) 확장</li>
+<li><strong>5.7</strong>: ISO 27001 Clause 8 (운영) 확장</li>
+<li><strong>5.8</strong>: ISO 27001 Clause 9 (성과 평가) 확장</li>
+<li><strong>5.9</strong>: ISO 27001 Clause 10 (개선) 확장</li>
+</ul>
+<h4 id="3-annex-a-b-개인정보-보호-통제">(3) Annex A, B: 개인정보 보호 통제<a hidden class="anchor" aria-hidden="true" href="#3-annex-a-b-개인정보-보호-통제">#</a></h4>
+<ul>
+<li><strong>Annex A</strong>: PII 컨트롤러 (데이터 관리자) 통제 - 23개</li>
+<li><strong>Annex B</strong>: PII 프로세서 (데이터 처리자) 통제 - 17개</li>
+</ul>
+<h3 id="23-pii-컨트롤러-vs-pii-프로세서">2.3 PII 컨트롤러 vs PII 프로세서<a hidden class="anchor" aria-hidden="true" href="#23-pii-컨트롤러-vs-pii-프로세서">#</a></h3>
+<h4 id="pii-controller-개인정보-컨트롤러">PII Controller (개인정보 컨트롤러)<a hidden class="anchor" aria-hidden="true" href="#pii-controller-개인정보-컨트롤러">#</a></h4>
+<p><strong>개인정보 처리의 목적과 수단을 결정</strong>하는 자</p>
+<p><strong>예시:</strong></p>
+<ul>
+<li>온라인 쇼핑몰 (고객 정보 수집·이용)</li>
+<li>병원 (환자 정보 관리)</li>
+<li>은행 (고객 정보 관리)</li>
+</ul>
+<p><strong>역할:</strong></p>
+<ul>
+<li>개인정보 수집·이용 결정</li>
+<li>개인정보 보호 책임</li>
+</ul>
+<h4 id="pii-processor-개인정보-프로세서">PII Processor (개인정보 프로세서)<a hidden class="anchor" aria-hidden="true" href="#pii-processor-개인정보-프로세서">#</a></h4>
+<p>컨트롤러를 <strong>대신하여 개인정보를 처리</strong>하는 자</p>
+<p><strong>예시:</strong></p>
+<ul>
+<li>클라우드 서비스 제공자 (AWS, Azure)</li>
+<li>콜센터 위탁 업체</li>
+<li>결제 대행 업체 (PG사)</li>
+</ul>
+<p><strong>역할:</strong></p>
+<ul>
+<li>컨트롤러의 지시에 따라 개인정보 처리</li>
+<li>컨트롤러에게 책임</li>
+</ul>
+<p><strong>비유:</strong></p>
+<p>컨트롤러 = 회사 (고객 정보 소유)
+프로세서 = 외주 업체 (회사를 대신해 고객 정보 처리)</p>
+<p><strong>한국 법률 용어:</strong></p>
+<ul>
+<li>컨트롤러 ≈ <strong>개인정보처리자</strong></li>
+<li>프로세서 ≈ <strong>수탁자</strong></li>
+</ul>
+<h2 id="3-pims-요구사항-clause-5">3. PIMS 요구사항 (Clause 5)<a hidden class="anchor" aria-hidden="true" href="#3-pims-요구사항-clause-5">#</a></h2>
+<h3 id="31-52-일반-요구사항">3.1 5.2 일반 요구사항<a hidden class="anchor" aria-hidden="true" href="#31-52-일반-요구사항">#</a></h3>
+<h4 id="521-pims-수립-및-유지">5.2.1 PIMS 수립 및 유지<a hidden class="anchor" aria-hidden="true" href="#521-pims-수립-및-유지">#</a></h4>
+<p>조직은 <strong>PIMS를 수립·구현·유지·지속적으로 개선</strong>해야 함</p>
+<h4 id="522-역할">5.2.2 역할<a hidden class="anchor" aria-hidden="true" href="#522-역할">#</a></h4>
+<p>조직 내 역할 정의:</p>
+<ul>
+<li><strong>PII Controller</strong> (개인정보 컨트롤러)</li>
+<li><strong>PII Processor</strong> (개인정보 프로세서)</li>
+<li>둘 다 해당하는 경우 모두 준수</li>
+</ul>
+<h3 id="32-54-리더십-leadership">3.2 5.4 리더십 (Leadership)<a hidden class="anchor" aria-hidden="true" href="#32-54-리더십-leadership">#</a></h3>
+<h4 id="541-정책">5.4.1 정책<a hidden class="anchor" aria-hidden="true" href="#541-정책">#</a></h4>
+<p><strong>개인정보 보호 정책</strong> 수립:</p>
+<ul>
+<li>개인정보 처리 원칙</li>
+<li>정보주체 권리 보장</li>
+<li>법적 요구사항 준수</li>
+</ul>
+<p><strong>ISO 27001 정보보호 정책에 통합 가능</strong></p>
+<h4 id="542-역할-책임-및-권한">5.4.2 역할, 책임 및 권한<a hidden class="anchor" aria-hidden="true" href="#542-역할-책임-및-권한">#</a></h4>
+<p><strong>개인정보 보호 책임자</strong> 지정:</p>
+<ul>
+<li>DPO (Data Protection Officer) 또는 CPO (Chief Privacy Officer)</li>
+<li>개인정보 보호 업무 총괄</li>
+</ul>
+<h3 id="33-55-계획-planning">3.3 5.5 계획 (Planning)<a hidden class="anchor" aria-hidden="true" href="#33-55-계획-planning">#</a></h3>
+<h4 id="551-개인정보-보호-목표">5.5.1 개인정보 보호 목표<a hidden class="anchor" aria-hidden="true" href="#551-개인정보-보호-목표">#</a></h4>
+<p><strong>개인정보 보호 목표</strong> 수립:</p>
+<ul>
+<li>측정 가능</li>
+<li>모니터링 가능</li>
+</ul>
+<p><strong>예시:</strong></p>
+<ul>
+<li>개인정보 유출 사고 0건</li>
+<li>정보주체 요구 처리율 100%</li>
+<li>개인정보 교육 이수율 100%</li>
+</ul>
+<h4 id="552-위험-평가">5.5.2 위험 평가<a hidden class="anchor" aria-hidden="true" href="#552-위험-평가">#</a></h4>
+<p><strong>개인정보 관련 위험 평가</strong>:</p>
+<ul>
+<li>개인정보 수집·이용·제공·파기 전 과정</li>
+<li>정보주체 권리 침해 가능성</li>
+<li>법적 위반 가능성</li>
+</ul>
+<h3 id="34-56-지원-support">3.4 5.6 지원 (Support)<a hidden class="anchor" aria-hidden="true" href="#34-56-지원-support">#</a></h3>
+<h4 id="561-역량-및-인식">5.6.1 역량 및 인식<a hidden class="anchor" aria-hidden="true" href="#561-역량-및-인식">#</a></h4>
+<ul>
+<li>개인정보 취급자 <strong>교육</strong></li>
+<li>개인정보 보호 <strong>인식 제고</strong></li>
+</ul>
+<h4 id="562-의사소통">5.6.2 의사소통<a hidden class="anchor" aria-hidden="true" href="#562-의사소통">#</a></h4>
+<p><strong>정보주체와의 의사소통</strong>:</p>
+<ul>
+<li>개인정보 처리방침 공개</li>
+<li>동의 획득</li>
+<li>권리 행사 절차 안내</li>
+</ul>
+<h3 id="35-57-운영-operation">3.5 5.7 운영 (Operation)<a hidden class="anchor" aria-hidden="true" href="#35-57-운영-operation">#</a></h3>
+<h4 id="571-개인정보-처리-활동">5.7.1 개인정보 처리 활동<a hidden class="anchor" aria-hidden="true" href="#571-개인정보-처리-활동">#</a></h4>
+<p>개인정보 <strong>처리 활동 기록</strong> 유지:</p>
+<ul>
+<li>처리 목적</li>
+<li>개인정보 항목</li>
+<li>보유 기간</li>
+<li>제3자 제공 현황</li>
+</ul>
+<p><strong>GDPR Article 30과 유사</strong></p>
+<h4 id="572-정보주체-권리">5.7.2 정보주체 권리<a hidden class="anchor" aria-hidden="true" href="#572-정보주체-권리">#</a></h4>
+<p>정보주체 권리 보장 절차 수립:</p>
+<ul>
+<li>열람</li>
+<li>정정·삭제</li>
+<li>처리정지</li>
+<li>이동권 (데이터 포터빌리티)</li>
+</ul>
+<h3 id="36-58-성과-평가-performance-evaluation">3.6 5.8 성과 평가 (Performance Evaluation)<a hidden class="anchor" aria-hidden="true" href="#36-58-성과-평가-performance-evaluation">#</a></h3>
+<h4 id="581-모니터링-측정-분석-및-평가">5.8.1 모니터링, 측정, 분석 및 평가<a hidden class="anchor" aria-hidden="true" href="#581-모니터링-측정-분석-및-평가">#</a></h4>
+<p>개인정보 보호 <strong>성과 측정</strong>:</p>
+<ul>
+<li>개인정보 보호 목표 달성도</li>
+<li>개인정보 침해 사고 건수</li>
+<li>정보주체 불만 건수</li>
+</ul>
+<h4 id="582-내부-심사">5.8.2 내부 심사<a hidden class="anchor" aria-hidden="true" href="#582-내부-심사">#</a></h4>
+<p><strong>PIMS 내부 심사</strong> 실시 (연 1회 이상)</p>
+<h4 id="583-경영-검토">5.8.3 경영 검토<a hidden class="anchor" aria-hidden="true" href="#583-경영-검토">#</a></h4>
+<p>최고경영자의 <strong>PIMS 검토</strong> (연 1회 이상)</p>
+<h3 id="37-59-개선-improvement">3.7 5.9 개선 (Improvement)<a hidden class="anchor" aria-hidden="true" href="#37-59-개선-improvement">#</a></h3>
+<h4 id="591-부적합-및-시정-조치">5.9.1 부적합 및 시정 조치<a hidden class="anchor" aria-hidden="true" href="#591-부적합-및-시정-조치">#</a></h4>
+<p>개인정보 보호 <strong>부적합 발견 시</strong> 시정 조치</p>
+<h4 id="592-지속적-개선">5.9.2 지속적 개선<a hidden class="anchor" aria-hidden="true" href="#592-지속적-개선">#</a></h4>
+<p>PIMS의 <strong>지속적 개선</strong></p>
+<h2 id="4-annex-a-pii-컨트롤러-통제-23개">4. Annex A: PII 컨트롤러 통제 (23개)<a hidden class="anchor" aria-hidden="true" href="#4-annex-a-pii-컨트롤러-통제-23개">#</a></h2>
+<h3 id="41-a6-조직-organization">4.1 A.6 조직 (Organization)<a hidden class="anchor" aria-hidden="true" href="#41-a6-조직-organization">#</a></h3>
+<h4 id="a611-법적-근거">A.6.1.1 법적 근거<a hidden class="anchor" aria-hidden="true" href="#a611-법적-근거">#</a></h4>
+<p>개인정보 처리의 <strong>법적 근거</strong> 확인:</p>
+<ul>
+<li>동의</li>
+<li>계약 이행</li>
+<li>법적 의무</li>
+<li>정당한 이익</li>
+</ul>
+<p><strong>GDPR Article 6과 동일</strong></p>
+<h4 id="a612-개인정보-보호-정책">A.6.1.2 개인정보 보호 정책<a hidden class="anchor" aria-hidden="true" href="#a612-개인정보-보호-정책">#</a></h4>
+<p>정보주체에게 <strong>개인정보 처리방침</strong> 공개:</p>
+<ul>
+<li>수집 목적</li>
+<li>보유 기간</li>
+<li>제3자 제공</li>
+<li>정보주체 권리</li>
+</ul>
+<h4 id="a613-정보주체-권리">A.6.1.3 정보주체 권리<a hidden class="anchor" aria-hidden="true" href="#a613-정보주체-권리">#</a></h4>
+<p>정보주체 권리 보장:</p>
+<ul>
+<li>열람권</li>
+<li>정정·삭제권</li>
+<li>처리정지권</li>
+<li>이동권</li>
+<li>자동화된 결정 거부권</li>
+</ul>
+<h3 id="42-a7-인적-자원-보안-human-resource-security">4.2 A.7 인적 자원 보안 (Human resource security)<a hidden class="anchor" aria-hidden="true" href="#42-a7-인적-자원-보안-human-resource-security">#</a></h3>
+<h4 id="a721-개인정보-보호-인식-및-교육">A.7.2.1 개인정보 보호 인식 및 교육<a hidden class="anchor" aria-hidden="true" href="#a721-개인정보-보호-인식-및-교육">#</a></h4>
+<p>개인정보 취급자 <strong>교육</strong> 실시:</p>
+<ul>
+<li>연 1회 이상</li>
+<li>개인정보 보호 원칙</li>
+<li>법적 의무</li>
+</ul>
+<h3 id="43-a8-자산-관리-asset-management">4.3 A.8 자산 관리 (Asset management)<a hidden class="anchor" aria-hidden="true" href="#43-a8-자산-관리-asset-management">#</a></h3>
+<h4 id="a821-개인정보-분류">A.8.2.1 개인정보 분류<a hidden class="anchor" aria-hidden="true" href="#a821-개인정보-분류">#</a></h4>
+<p>개인정보 <strong>분류</strong> 및 <strong>라벨링</strong>:</p>
+<ul>
+<li>일반 개인정보</li>
+<li>민감 개인정보</li>
+<li>고유식별정보</li>
+</ul>
+<h4 id="a831-개인정보-삭제">A.8.3.1 개인정보 삭제<a hidden class="anchor" aria-hidden="true" href="#a831-개인정보-삭제">#</a></h4>
+<p>보유 기간 경과 시 <strong>즉시 삭제</strong>:</p>
+<ul>
+<li>복구 불가능한 방법</li>
+<li>삭제 기록 유지</li>
+</ul>
+<h3 id="44-a9-접근-통제-access-control">4.4 A.9 접근 통제 (Access control)<a hidden class="anchor" aria-hidden="true" href="#44-a9-접근-통제-access-control">#</a></h3>
+<h4 id="a921-개인정보-접근-제한">A.9.2.1 개인정보 접근 제한<a hidden class="anchor" aria-hidden="true" href="#a921-개인정보-접근-제한">#</a></h4>
+<p>개인정보 접근 <strong>최소화</strong>:</p>
+<ul>
+<li>업무상 필요한 자만 접근</li>
+<li>최소 권한 부여</li>
+</ul>
+<h3 id="45-a10-암호화-cryptography">4.5 A.10 암호화 (Cryptography)<a hidden class="anchor" aria-hidden="true" href="#45-a10-암호화-cryptography">#</a></h3>
+<h4 id="a1011-암호화-정책">A.10.1.1 암호화 정책<a hidden class="anchor" aria-hidden="true" href="#a1011-암호화-정책">#</a></h4>
+<p>개인정보 <strong>암호화</strong> 정책 수립:</p>
+<ul>
+<li>저장 시 암호화</li>
+<li>전송 시 암호화</li>
+</ul>
+<h3 id="46-a11-물리적-및-환경적-보안-physical-and-environmental-security">4.6 A.11 물리적 및 환경적 보안 (Physical and environmental security)<a hidden class="anchor" aria-hidden="true" href="#46-a11-물리적-및-환경적-보안-physical-and-environmental-security">#</a></h3>
+<h4 id="a1121-물리적-매체-처리">A.11.2.1 물리적 매체 처리<a hidden class="anchor" aria-hidden="true" href="#a1121-물리적-매체-처리">#</a></h4>
+<p>개인정보가 저장된 물리적 매체 <strong>안전한 처리</strong>:</p>
+<ul>
+<li>폐기 시 완전 삭제</li>
+</ul>
+<h3 id="47-a12-운영-보안-operations-security">4.7 A.12 운영 보안 (Operations security)<a hidden class="anchor" aria-hidden="true" href="#47-a12-운영-보안-operations-security">#</a></h3>
+<h4 id="a1221-변경-관리">A.12.2.1 변경 관리<a hidden class="anchor" aria-hidden="true" href="#a1221-변경-관리">#</a></h4>
+<p>개인정보 시스템 <strong>변경 시</strong> 개인정보 보호 영향 평가</p>
+<h4 id="a1271-로그-관리">A.12.7.1 로그 관리<a hidden class="anchor" aria-hidden="true" href="#a1271-로그-관리">#</a></h4>
+<p>개인정보 접근 <strong>로그 기록</strong> 및 <strong>모니터링</strong></p>
+<h3 id="48-a13-통신-보안-communications-security">4.8 A.13 통신 보안 (Communications security)<a hidden class="anchor" aria-hidden="true" href="#48-a13-통신-보안-communications-security">#</a></h3>
+<h4 id="a1321-정보-전송-계약">A.13.2.1 정보 전송 계약<a hidden class="anchor" aria-hidden="true" href="#a1321-정보-전송-계약">#</a></h4>
+<p>제3자에게 개인정보 <strong>전송 시</strong> 계약서 체결:</p>
+<ul>
+<li>보안 조치 명시</li>
+<li>책임 명확화</li>
+</ul>
+<h3 id="49-a14-시스템-개발-및-유지보수-system-acquisition-development-and-maintenance">4.9 A.14 시스템 개발 및 유지보수 (System acquisition, development and maintenance)<a hidden class="anchor" aria-hidden="true" href="#49-a14-시스템-개발-및-유지보수-system-acquisition-development-and-maintenance">#</a></h3>
+<h4 id="a1421-개인정보-보호-설계">A.14.2.1 개인정보 보호 설계<a hidden class="anchor" aria-hidden="true" href="#a1421-개인정보-보호-설계">#</a></h4>
+<p>시스템 개발 시 <strong>Privacy by Design</strong> 적용:</p>
+<ul>
+<li>설계 단계부터 개인정보 보호 고려</li>
+<li>기본 설정을 개인정보 보호 중심으로</li>
+</ul>
+<h3 id="410-a15-공급자-관계-supplier-relationships">4.10 A.15 공급자 관계 (Supplier relationships)<a hidden class="anchor" aria-hidden="true" href="#410-a15-공급자-관계-supplier-relationships">#</a></h3>
+<h4 id="a1511-공급자-선정">A.15.1.1 공급자 선정<a hidden class="anchor" aria-hidden="true" href="#a1511-공급자-선정">#</a></h4>
+<p>개인정보 처리 <strong>위탁 시</strong> 수탁자 선정 기준:</p>
+<ul>
+<li>보안 수준 확인</li>
+<li>계약서 체결</li>
+</ul>
+<h3 id="411-a16-정보보안-사고-관리-information-security-incident-management">4.11 A.16 정보보안 사고 관리 (Information security incident management)<a hidden class="anchor" aria-hidden="true" href="#411-a16-정보보안-사고-관리-information-security-incident-management">#</a></h3>
+<h4 id="a1611-개인정보-침해-통지">A.16.1.1 개인정보 침해 통지<a hidden class="anchor" aria-hidden="true" href="#a1611-개인정보-침해-통지">#</a></h4>
+<p>개인정보 유출 시 <strong>정보주체 및 규제기관 통지</strong>:</p>
+<ul>
+<li>72시간 이내 (GDPR 기준)</li>
+<li>통지 내용: 유출 항목, 시점, 조치</li>
+</ul>
+<h3 id="412-a17-사업-연속성-business-continuity-management">4.12 A.17 사업 연속성 (Business continuity management)<a hidden class="anchor" aria-hidden="true" href="#412-a17-사업-연속성-business-continuity-management">#</a></h3>
+<h4 id="a1711-개인정보-백업">A.17.1.1 개인정보 백업<a hidden class="anchor" aria-hidden="true" href="#a1711-개인정보-백업">#</a></h4>
+<p>개인정보 <strong>정기 백업</strong>:</p>
+<ul>
+<li>재해 복구 대비</li>
+</ul>
+<h3 id="413-a18-컴플라이언스-compliance">4.13 A.18 컴플라이언스 (Compliance)<a hidden class="anchor" aria-hidden="true" href="#413-a18-컴플라이언스-compliance">#</a></h3>
+<h4 id="a1811-법적-요구사항-준수">A.18.1.1 법적 요구사항 준수<a hidden class="anchor" aria-hidden="true" href="#a1811-법적-요구사항-준수">#</a></h4>
+<p>개인정보 관련 <strong>법령 준수</strong>:</p>
+<ul>
+<li>GDPR (EU)</li>
+<li>개인정보보호법 (한국)</li>
+<li>CCPA (캘리포니아)</li>
+</ul>
+<h2 id="5-annex-b-pii-프로세서-통제-17개">5. Annex B: PII 프로세서 통제 (17개)<a hidden class="anchor" aria-hidden="true" href="#5-annex-b-pii-프로세서-통제-17개">#</a></h2>
+<h3 id="51-b6-조직-organization">5.1 B.6 조직 (Organization)<a hidden class="anchor" aria-hidden="true" href="#51-b6-조직-organization">#</a></h3>
+<h4 id="b611-계약-조건">B.6.1.1 계약 조건<a hidden class="anchor" aria-hidden="true" href="#b611-계약-조건">#</a></h4>
+<p>컨트롤러와의 <strong>계약서</strong>에 다음 포함:</p>
+<ul>
+<li>처리 목적</li>
+<li>처리 기간</li>
+<li>보안 조치</li>
+<li>하위 위탁 조건</li>
+<li>개인정보 반환·삭제</li>
+</ul>
+<h4 id="b612-지시-준수">B.6.1.2 지시 준수<a hidden class="anchor" aria-hidden="true" href="#b612-지시-준수">#</a></h4>
+<p>컨트롤러의 <strong>지시에 따라서만</strong> 개인정보 처리:</p>
+<ul>
+<li>목적 외 사용 금지</li>
+</ul>
+<h3 id="52-b8-자산-관리-asset-management">5.2 B.8 자산 관리 (Asset management)<a hidden class="anchor" aria-hidden="true" href="#52-b8-자산-관리-asset-management">#</a></h3>
+<h4 id="b831-개인정보-반환-및-삭제">B.8.3.1 개인정보 반환 및 삭제<a hidden class="anchor" aria-hidden="true" href="#b831-개인정보-반환-및-삭제">#</a></h4>
+<p>계약 종료 시:</p>
+<ul>
+<li>개인정보 <strong>컨트롤러에 반환</strong> 또는 <strong>삭제</strong></li>
+<li>삭제 증명서 제공</li>
+</ul>
+<h3 id="53-b9-접근-통제-access-control">5.3 B.9 접근 통제 (Access control)<a hidden class="anchor" aria-hidden="true" href="#53-b9-접근-통제-access-control">#</a></h3>
+<h4 id="b921-접근-제한">B.9.2.1 접근 제한<a hidden class="anchor" aria-hidden="true" href="#b921-접근-제한">#</a></h4>
+<p>프로세서 직원의 개인정보 <strong>접근 제한</strong>:</p>
+<ul>
+<li>업무상 필요한 자만</li>
+</ul>
+<h3 id="54-b12-운영-보안-operations-security">5.4 B.12 운영 보안 (Operations security)<a hidden class="anchor" aria-hidden="true" href="#54-b12-운영-보안-operations-security">#</a></h3>
+<h4 id="b1271-감사-지원">B.12.7.1 감사 지원<a hidden class="anchor" aria-hidden="true" href="#b1271-감사-지원">#</a></h4>
+<p>컨트롤러의 <strong>감사 요청 시</strong> 협조:</p>
+<ul>
+<li>개인정보 처리 현황 제공</li>
+<li>현장 감사 수용</li>
+</ul>
+<h3 id="55-b15-공급자-관계-supplier-relationships">5.5 B.15 공급자 관계 (Supplier relationships)<a hidden class="anchor" aria-hidden="true" href="#55-b15-공급자-관계-supplier-relationships">#</a></h3>
+<h4 id="b1511-하위-위탁">B.15.1.1 하위 위탁<a hidden class="anchor" aria-hidden="true" href="#b1511-하위-위탁">#</a></h4>
+<p>프로세서가 <strong>하위 위탁</strong> 시:</p>
+<ul>
+<li>컨트롤러 <strong>사전 동의</strong></li>
+<li>하위 수탁자도 동일한 보안 수준</li>
+</ul>
+<h3 id="56-b16-정보보안-사고-관리-information-security-incident-management">5.6 B.16 정보보안 사고 관리 (Information security incident management)<a hidden class="anchor" aria-hidden="true" href="#56-b16-정보보안-사고-관리-information-security-incident-management">#</a></h3>
+<h4 id="b1611-침해-통지">B.16.1.1 침해 통지<a hidden class="anchor" aria-hidden="true" href="#b1611-침해-통지">#</a></h4>
+<p>개인정보 유출 시:</p>
+<ul>
+<li><strong>컨트롤러에 즉시 통지</strong></li>
+<li>컨트롤러가 정보주체·규제기관 통지</li>
+</ul>
+<h2 id="6-iso-27701-인증-절차">6. ISO 27701 인증 절차<a hidden class="anchor" aria-hidden="true" href="#6-iso-27701-인증-절차">#</a></h2>
+<h3 id="61-인증-전제-조건">6.1 인증 전제 조건<a hidden class="anchor" aria-hidden="true" href="#61-인증-전제-조건">#</a></h3>
+<p><strong>ISO 27001 인증이 선행 조건</strong></p>
+<ul>
+<li>ISO 27001 미인증 -&gt; ISO 27701 인증 불가</li>
+<li>ISO 27001 인증 보유 -&gt; ISO 27701 확장 인증 가능</li>
+</ul>
+<h3 id="62-인증-절차">6.2 인증 절차<a hidden class="anchor" aria-hidden="true" href="#62-인증-절차">#</a></h3>
+<h4 id="phase-1-사전-준비-36개월">Phase 1: 사전 준비 (3~6개월)<a hidden class="anchor" aria-hidden="true" href="#phase-1-사전-준비-36개월">#</a></h4>
+<ol>
+<li>
+<p><strong>갭 분석</strong></p>
+<ul>
+<li>ISO 27001 대비 ISO 27701 추가 요구사항 파악</li>
+</ul>
+</li>
+<li>
+<p><strong>PIMS 구축</strong></p>
+<ul>
+<li>Clause 5 요구사항 충족</li>
+<li>Annex A/B 통제 구현</li>
+<li>개인정보 처리 활동 기록</li>
+<li>개인정보 보호 정책 수립</li>
+</ul>
+</li>
+<li>
+<p><strong>문서화</strong></p>
+<ul>
+<li>정책, 절차, 기록</li>
+</ul>
+</li>
+</ol>
+<h4 id="phase-2-내부-심사-1개월">Phase 2: 내부 심사 (1개월)<a hidden class="anchor" aria-hidden="true" href="#phase-2-내부-심사-1개월">#</a></h4>
+<ul>
+<li>PIMS 내부 심사</li>
+<li>부적합 시정</li>
+</ul>
+<h4 id="phase-3-인증-심사-12개월">Phase 3: 인증 심사 (1~2개월)<a hidden class="anchor" aria-hidden="true" href="#phase-3-인증-심사-12개월">#</a></h4>
+<ol>
+<li><strong>1단계 심사</strong> (문서 심사)</li>
+<li><strong>2단계 심사</strong> (현장 심사)
+<ul>
+<li>ISO 27001 인증 유지 확인</li>
+<li>ISO 27701 추가 요구사항 준수 확인</li>
+</ul>
+</li>
+</ol>
+<h4 id="phase-4-인증서-발급">Phase 4: 인증서 발급<a hidden class="anchor" aria-hidden="true" href="#phase-4-인증서-발급">#</a></h4>
+<ul>
+<li>ISO 27001 + ISO 27701 통합 인증서</li>
+</ul>
+<p><strong>유효 기간:</strong> 3년 (ISO 27001과 동일)</p>
+<h3 id="63-사후-관리">6.3 사후 관리<a hidden class="anchor" aria-hidden="true" href="#63-사후-관리">#</a></h3>
+<ul>
+<li><strong>연간 사후 심사</strong>: ISO 27001 + ISO 27701 함께 심사</li>
+<li><strong>갱신 심사</strong>: 3년 후 재인증</li>
+</ul>
+<h2 id="7-보안-컨설팅-관점의-시사점">7. 보안 컨설팅 관점의 시사점<a hidden class="anchor" aria-hidden="true" href="#7-보안-컨설팅-관점의-시사점">#</a></h2>
+<h3 id="71-iso-27701-인증이-필요한-경우">7.1 ISO 27701 인증이 필요한 경우<a hidden class="anchor" aria-hidden="true" href="#71-iso-27701-인증이-필요한-경우">#</a></h3>
+<h4 id="1-eu-비즈니스">(1) EU 비즈니스<a hidden class="anchor" aria-hidden="true" href="#1-eu-비즈니스">#</a></h4>
+<ul>
+<li>EU 고객·파트너가 있는 경우</li>
+<li><strong>GDPR 준수</strong> 입증 필요</li>
+</ul>
+<h4 id="2-글로벌-확장">(2) 글로벌 확장<a hidden class="anchor" aria-hidden="true" href="#2-글로벌-확장">#</a></h4>
+<ul>
+<li>국제적으로 <strong>개인정보 보호 수준</strong> 입증</li>
+</ul>
+<h4 id="3-고객-요구">(3) 고객 요구<a hidden class="anchor" aria-hidden="true" href="#3-고객-요구">#</a></h4>
+<ul>
+<li>대기업 고객이 ISO 27701 요구</li>
+</ul>
+<h4 id="4-경쟁-우위">(4) 경쟁 우위<a hidden class="anchor" aria-hidden="true" href="#4-경쟁-우위">#</a></h4>
+<ul>
+<li>입찰 시 가점</li>
+<li>고객 신뢰 확보</li>
+</ul>
+<h3 id="72-iso-27701-vs-isms-p-선택">7.2 ISO 27701 vs ISMS-P 선택<a hidden class="anchor" aria-hidden="true" href="#72-iso-27701-vs-isms-p-선택">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>상황</th>
+          <th>권장</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>이미 ISO 27001 보유</td>
+          <td>ISO 27701</td>
+      </tr>
+      <tr>
+          <td>EU 비즈니스 중심</td>
+          <td>ISO 27701</td>
+      </tr>
+      <tr>
+          <td>한국만 비즈니스</td>
+          <td>ISMS-P</td>
+      </tr>
+      <tr>
+          <td>정보통신망법 의무 대상</td>
+          <td>ISMS-P</td>
+      </tr>
+      <tr>
+          <td>글로벌 + 한국</td>
+          <td>ISO 27701 + ISMS-P 병행</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>실무:</strong></p>
+<ul>
+<li>대기업: <strong>ISO 27001 + ISO 27701 + ISMS-P</strong> 모두 취득</li>
+<li>중견기업: ISO 27001 + ISO 27701 또는 ISMS-P</li>
+<li>스타트업: ISMS-P (비용 효율적)</li>
+</ul>
+<h3 id="73-컨설팅-프로세스">7.3 컨설팅 프로세스<a hidden class="anchor" aria-hidden="true" href="#73-컨설팅-프로세스">#</a></h3>
+<h4 id="phase-1-현황-진단-1개월">Phase 1: 현황 진단 (1개월)<a hidden class="anchor" aria-hidden="true" href="#phase-1-현황-진단-1개월">#</a></h4>
+<ul>
+<li>ISO 27001 인증 보유 확인</li>
+<li>ISO 27701 갭 분석</li>
+<li>컨트롤러/프로세서 역할 판단</li>
+</ul>
+<h4 id="phase-2-pims-구축-34개월">Phase 2: PIMS 구축 (3~4개월)<a hidden class="anchor" aria-hidden="true" href="#phase-2-pims-구축-34개월">#</a></h4>
+<ul>
+<li>개인정보 처리 활동 기록 작성</li>
+<li>개인정보 보호 정책·절차 수립</li>
+<li>Annex A/B 통제 구현</li>
+<li>정보주체 권리 보장 절차</li>
+</ul>
+<h4 id="phase-3-내부-심사-1개월">Phase 3: 내부 심사 (1개월)<a hidden class="anchor" aria-hidden="true" href="#phase-3-내부-심사-1개월">#</a></h4>
+<ul>
+<li>PIMS 내부 심사</li>
+<li>부적합 시정</li>
+</ul>
+<h4 id="phase-4-인증-심사-12개월">Phase 4: 인증 심사 (1~2개월)<a hidden class="anchor" aria-hidden="true" href="#phase-4-인증-심사-12개월">#</a></h4>
+<ul>
+<li>1단계 심사 대응</li>
+<li>2단계 심사 대응</li>
+</ul>
+<p><strong>총 기간: 6~8개월</strong></p>
+<h2 id="8-실무-사례">8. 실무 사례<a hidden class="anchor" aria-hidden="true" href="#8-실무-사례">#</a></h2>
+<h3 id="사례-1-글로벌-saas-기업">사례 1: 글로벌 SaaS 기업<a hidden class="anchor" aria-hidden="true" href="#사례-1-글로벌-saas-기업">#</a></h3>
+<p><strong>A기업:</strong></p>
+<ul>
+<li>한국 SaaS 기업</li>
+<li>EU 고객 30%</li>
+</ul>
+<p><strong>배경:</strong></p>
+<ul>
+<li>EU 고객이 GDPR 준수 요구</li>
+<li>ISO 27001 보유</li>
+</ul>
+<p><strong>ISO 27701 인증:</strong></p>
+<ol>
+<li>
+<p>갭 분석 (1개월)</p>
+<ul>
+<li>개인정보 처리 활동 기록 부족</li>
+<li>정보주체 권리 절차 미비</li>
+</ul>
+</li>
+<li>
+<p>PIMS 구축 (4개월)</p>
+<ul>
+<li>개인정보 처리 활동 기록 작성</li>
+<li>Privacy Notice 작성 (GDPR 준수)</li>
+<li>정보주체 권리 포털 구축 (열람, 삭제 요청)</li>
+<li>데이터 이동권 (Data Portability) 기능 개발</li>
+</ul>
+</li>
+<li>
+<p>인증 (2개월)</p>
+<ul>
+<li>ISO 27001 + ISO 27701 통합 인증</li>
+</ul>
+</li>
+</ol>
+<p><strong>결과:</strong></p>
+<ul>
+<li>GDPR 준수 입증</li>
+<li>EU 고객 신뢰 확보</li>
+<li>매출 20% 증가</li>
+</ul>
+<h3 id="사례-2-클라우드-서비스-제공자-pii-processor">사례 2: 클라우드 서비스 제공자 (PII Processor)<a hidden class="anchor" aria-hidden="true" href="#사례-2-클라우드-서비스-제공자-pii-processor">#</a></h3>
+<p><strong>B클라우드:</strong></p>
+<ul>
+<li>IaaS, PaaS 제공</li>
+<li>고객사의 개인정보 처리</li>
+</ul>
+<p><strong>역할:</strong></p>
+<ul>
+<li><strong>PII Processor</strong> (수탁자)</li>
+</ul>
+<p><strong>ISO 27701 Annex B 준수:</strong></p>
+<ol>
+<li>
+<p><strong>계약서 정비</strong></p>
+<ul>
+<li>고객사(컨트롤러)와 DPA (Data Processing Agreement) 체결</li>
+<li>처리 목적, 보안 조치, 하위 위탁 조건 명시</li>
+</ul>
+</li>
+<li>
+<p><strong>하위 위탁 관리</strong></p>
+<ul>
+<li>하위 클라우드 사업자 사용 시 고객사 동의</li>
+<li>하위 사업자도 동일 보안 수준</li>
+</ul>
+</li>
+<li>
+<p><strong>감사 지원</strong></p>
+<ul>
+<li>고객사 감사 요청 시 협조</li>
+<li>SOC 2 보고서 제공</li>
+</ul>
+</li>
+<li>
+<p><strong>데이터 반환·삭제</strong></p>
+<ul>
+<li>계약 종료 시 고객 데이터 반환 또는 삭제</li>
+<li>삭제 증명서 발급</li>
+</ul>
+</li>
+</ol>
+<p><strong>결과:</strong></p>
+<ul>
+<li>대기업 고객 확보</li>
+<li>신뢰도 향상</li>
+</ul>
+<h3 id="사례-3-전자상거래-기업">사례 3: 전자상거래 기업<a hidden class="anchor" aria-hidden="true" href="#사례-3-전자상거래-기업">#</a></h3>
+<p><strong>C쇼핑몰:</strong></p>
+<ul>
+<li>온라인 쇼핑몰</li>
+<li>회원 500만명</li>
+</ul>
+<p><strong>역할:</strong></p>
+<ul>
+<li><strong>PII Controller</strong> (개인정보처리자)</li>
+<li>결제 대행은 PG사 (Processor)</li>
+</ul>
+<p><strong>ISO 27701 Annex A 준수:</strong></p>
+<ol>
+<li>
+<p><strong>법적 근거 확인</strong></p>
+<ul>
+<li>회원가입: 동의</li>
+<li>주문/배송: 계약 이행</li>
+<li>마케팅: 별도 동의</li>
+</ul>
+</li>
+<li>
+<p><strong>개인정보 처리방침</strong></p>
+<ul>
+<li>명확한 안내</li>
+<li>쉬운 언어</li>
+</ul>
+</li>
+<li>
+<p><strong>정보주체 권리</strong></p>
+<ul>
+<li>마이페이지에서 열람·정정·삭제</li>
+<li>데이터 다운로드 (CSV)</li>
+</ul>
+</li>
+<li>
+<p><strong>PG사 관리</strong></p>
+<ul>
+<li>PG사와 위탁계약</li>
+<li>PG사 보안 수준 정기 점검</li>
+</ul>
+</li>
+</ol>
+<p><strong>결과:</strong></p>
+<ul>
+<li>ISO 27701 인증</li>
+<li>고객 신뢰 향상</li>
+</ul>
+<h2 id="9-gdpr과-iso-27701의-관계">9. GDPR과 ISO 27701의 관계<a hidden class="anchor" aria-hidden="true" href="#9-gdpr과-iso-27701의-관계">#</a></h2>
+<h3 id="91-gdpr-주요-요구사항">9.1 GDPR 주요 요구사항<a hidden class="anchor" aria-hidden="true" href="#91-gdpr-주요-요구사항">#</a></h3>
+<p><strong>GDPR (General Data Protection Regulation)</strong>:
+EU 일반 데이터 보호 규정 (2018년 5월 시행)</p>
+<h4 id="주요-요구사항">주요 요구사항<a hidden class="anchor" aria-hidden="true" href="#주요-요구사항">#</a></h4>
+<ol>
+<li><strong>적법성</strong>: 법적 근거 (동의, 계약 등)</li>
+<li><strong>투명성</strong>: 개인정보 처리 투명하게 공개</li>
+<li><strong>정보주체 권리</strong>:
+<ul>
+<li>열람권</li>
+<li>정정·삭제권 (&ldquo;잊힐 권리&rdquo;)</li>
+<li>처리정지권</li>
+<li>데이터 이동권</li>
+<li>자동화된 결정 거부권</li>
+</ul>
+</li>
+<li><strong>Privacy by Design</strong>: 설계 단계부터 개인정보 보호</li>
+<li><strong>DPIA</strong> (Data Protection Impact Assessment): 고위험 처리 시 영향평가</li>
+<li><strong>DPO</strong> (Data Protection Officer): 일정 규모 이상 조직은 DPO 지정</li>
+<li><strong>침해 통지</strong>: 72시간 이내 규제기관·정보주체 통지</li>
+<li><strong>국제 이전</strong>: EU 외 국가로 이전 시 적정성 결정 또는 SCC</li>
+</ol>
+<h3 id="92-iso-27701과-gdpr-매핑">9.2 ISO 27701과 GDPR 매핑<a hidden class="anchor" aria-hidden="true" href="#92-iso-27701과-gdpr-매핑">#</a></h3>
+<p>ISO 27701은 <strong>GDPR과 높은 일치도</strong>:</p>
+<table>
+  <thead>
+      <tr>
+          <th>GDPR 요구사항</th>
+          <th>ISO 27701 통제</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>적법성 (Article 6)</td>
+          <td>A.6.1.1 법적 근거</td>
+      </tr>
+      <tr>
+          <td>투명성 (Article 12~14)</td>
+          <td>A.6.1.2 개인정보 보호 정책</td>
+      </tr>
+      <tr>
+          <td>정보주체 권리 (Article 15~22)</td>
+          <td>A.6.1.3 정보주체 권리</td>
+      </tr>
+      <tr>
+          <td>Privacy by Design (Article 25)</td>
+          <td>A.14.2.1 개인정보 보호 설계</td>
+      </tr>
+      <tr>
+          <td>DPIA (Article 35)</td>
+          <td>ISO 27001 Clause 6 위험 평가</td>
+      </tr>
+      <tr>
+          <td>침해 통지 (Article 33~34)</td>
+          <td>A.16.1.1 개인정보 침해 통지</td>
+      </tr>
+      <tr>
+          <td>프로세서 의무 (Article 28)</td>
+          <td>Annex B 전체</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>결론:</strong>
+ISO 27701 인증 = <strong>GDPR 준수의 강력한 증거</strong></p>
+<h2 id="10-체크리스트">10. 체크리스트<a hidden class="anchor" aria-hidden="true" href="#10-체크리스트">#</a></h2>
+<h3 id="pims-요구사항">PIMS 요구사항<a hidden class="anchor" aria-hidden="true" href="#pims-요구사항">#</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 개인정보 보호 정책을 수립했는가?</li>
+<li><input disabled="" type="checkbox"> 개인정보 보호 책임자를 지정했는가?</li>
+<li><input disabled="" type="checkbox"> 개인정보 보호 목표를 수립했는가?</li>
+<li><input disabled="" type="checkbox"> 개인정보 처리 활동을 기록하는가?</li>
+<li><input disabled="" type="checkbox"> 정보주체 권리 보장 절차가 있는가?</li>
+<li><input disabled="" type="checkbox"> PIMS 내부 심사를 연 1회 수행하는가?</li>
+</ul>
+<h3 id="pii-컨트롤러-annex-a">PII 컨트롤러 (Annex A)<a hidden class="anchor" aria-hidden="true" href="#pii-컨트롤러-annex-a">#</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 개인정보 처리의 법적 근거가 있는가?</li>
+<li><input disabled="" type="checkbox"> 개인정보 처리방침을 공개하는가?</li>
+<li><input disabled="" type="checkbox"> 정보주체 권리를 보장하는가? (열람, 정정·삭제, 이동권)</li>
+<li><input disabled="" type="checkbox"> 개인정보를 분류·라벨링하는가?</li>
+<li><input disabled="" type="checkbox"> 보유 기간 경과 시 즉시 삭제하는가?</li>
+<li><input disabled="" type="checkbox"> 개인정보를 암호화하는가?</li>
+<li><input disabled="" type="checkbox"> 개인정보 유출 시 통지 절차가 있는가?</li>
+<li><input disabled="" type="checkbox"> Privacy by Design을 적용하는가?</li>
+</ul>
+<h3 id="pii-프로세서-annex-b">PII 프로세서 (Annex B)<a hidden class="anchor" aria-hidden="true" href="#pii-프로세서-annex-b">#</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 컨트롤러와 계약서를 체결했는가?</li>
+<li><input disabled="" type="checkbox"> 컨트롤러의 지시에 따라서만 처리하는가?</li>
+<li><input disabled="" type="checkbox"> 하위 위탁 시 컨트롤러 동의를 받는가?</li>
+<li><input disabled="" type="checkbox"> 계약 종료 시 개인정보를 반환·삭제하는가?</li>
+<li><input disabled="" type="checkbox"> 컨트롤러 감사 요청 시 협조하는가?</li>
+</ul>
+<h2 id="학습-정리">학습 정리<a hidden class="anchor" aria-hidden="true" href="#학습-정리">#</a></h2>
+<p>오늘 학습한 핵심 내용:</p>
+<ul>
+<li>ISO 27701은 ISO 27001/27002의 개인정보 보호 확장 표준</li>
+<li>PIMS (Privacy Information Management System) 구축</li>
+<li>ISO 27001 인증이 선행 조건</li>
+<li>Clause 5: ISO 27001 요구사항에 개인정보 보호 추가</li>
+<li>Annex A: PII 컨트롤러 통제 23개 (개인정보처리자)</li>
+<li>Annex B: PII 프로세서 통제 17개 (수탁자)</li>
+<li>GDPR과 높은 일치도 -&gt; GDPR 준수 입증에 유리</li>
+<li>글로벌 비즈니스, EU 고객 있는 경우 필수</li>
+<li>한국 기업: ISO 27701 (글로벌) vs ISMS-P (국내) 선택</li>
+<li>인증 기간: 6~8개월, 유효기간 3년</li>
+</ul>
+<h2 id="다음-학습-주제">다음 학습 주제<a hidden class="anchor" aria-hidden="true" href="#다음-학습-주제">#</a></h2>
+<p>Day 23: PCI-DSS (Payment Card Industry Data Security Standard) - 카드 정보 보호 표준</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://hojjang98.github.io/tags/iso27701/">ISO27701</a></li>
+      <li><a href="https://hojjang98.github.io/tags/pims/">PIMS</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8/">개인정보보호</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EA%B5%AD%EC%A0%9C%ED%91%9C%EC%A4%80/">국제표준</a></li>
+      <li><a href="https://hojjang98.github.io/tags/gdpr/">GDPR</a></li>
+      <li><a href="https://hojjang98.github.io/tags/pii%EC%BB%A8%ED%8A%B8%EB%A1%A4%EB%9F%AC/">PII컨트롤러</a></li>
+      <li><a href="https://hojjang98.github.io/tags/pii%ED%94%84%EB%A1%9C%EC%84%B8%EC%84%9C/">PII프로세서</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EA%B4%80%EB%A6%AC%EC%B2%B4%EA%B3%84/">개인정보관리체계</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%B3%B4%EC%95%88%EC%9D%B8%EC%A6%9D/">보안인증</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

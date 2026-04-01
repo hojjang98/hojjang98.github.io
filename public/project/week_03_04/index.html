@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Mini Project 01 — LLM/RAG 기반 영화 흥행 분석 시스템 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="Python, RAG, LangChain, ChromaDB, Streamlit, Pandas, Plotly, TMDB, OpenAI, 팀프로젝트, SK쉴더스루키즈">
+<meta name="description" content="Week 3 &amp; 4 통합 첫 번째 팀 미니프로젝트 — TMDB 데이터 기반 RAG 추천·흥행 분석·투자 판단 종합 플랫폼 (팀장)">
+<meta name="author" content="">
+<link rel="canonical" href="https://hojjang98.github.io/project/week_03_04/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.290573799e582c418c4bd84f2bca757d0a77fd1bf9f5c43942030e706df68ec8.css" integrity="sha256-KQVzeZ5YLEGMS9hPK8p1fQp3/Rv59cQ5QgMOcG32jsg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/project/week_03_04/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://hojjang98.github.io/project/week_03_04/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="Mini Project 01 — LLM/RAG 기반 영화 흥행 분석 시스템">
+  <meta property="og:description" content="Week 3 &amp; 4 통합 첫 번째 팀 미니프로젝트 — TMDB 데이터 기반 RAG 추천·흥행 분석·투자 판단 종합 플랫폼 (팀장)">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="project">
+    <meta property="article:published_time" content="2025-11-21T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-11-21T00:00:00+00:00">
+    <meta property="article:tag" content="Python">
+    <meta property="article:tag" content="RAG">
+    <meta property="article:tag" content="LangChain">
+    <meta property="article:tag" content="ChromaDB">
+    <meta property="article:tag" content="Streamlit">
+    <meta property="article:tag" content="Pandas">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_19/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_18/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_17/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_16/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_15/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_14/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_13/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mini Project 01 — LLM/RAG 기반 영화 흥행 분석 시스템">
+<meta name="twitter:description" content="Week 3 &amp; 4 통합 첫 번째 팀 미니프로젝트 — TMDB 데이터 기반 RAG 추천·흥행 분석·투자 판단 종합 플랫폼 (팀장)">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "프로젝트",
+      "item": "https://hojjang98.github.io/project/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Mini Project 01 — LLM/RAG 기반 영화 흥행 분석 시스템",
+      "item": "https://hojjang98.github.io/project/week_03_04/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Mini Project 01 — LLM/RAG 기반 영화 흥행 분석 시스템",
+  "name": "Mini Project 01 — LLM\/RAG 기반 영화 흥행 분석 시스템",
+  "description": "Week 3 \u0026amp; 4 통합 첫 번째 팀 미니프로젝트 — TMDB 데이터 기반 RAG 추천·흥행 분석·투자 판단 종합 플랫폼 (팀장)",
+  "keywords": [
+    "Python", "RAG", "LangChain", "ChromaDB", "Streamlit", "Pandas", "Plotly", "TMDB", "OpenAI", "팀프로젝트", "SK쉴더스루키즈"
+  ],
+  "articleBody": "Mini Project 01 — LLM/RAG 기반 영화 흥행 분석 시스템 전체 소스코드는 GitHub에서 확인할 수 있습니다. hojjang98 / skshielders-rookies-28 — projects/week_03 \u0026 week_04\n프로젝트 소개 이 프로젝트는 SK쉴더스 루키즈 28기 첫 번째 팀 미니프로젝트로, Week 3 \u0026 4 (총 2주) 를 통합한 집중 개발 기간에 수행되었다.\n본인은 해당 프로젝트에서 팀장을 맡아 전체 아키텍처 설계, 역할 분담, QA, 발표 구성까지 총괄하였다.\n단순한 기술 구현을 넘어, “왜 이 데이터가 이 결과를 내는가?” 라는 인사이트 중심의 분석을 팀 전체가 발표에서 설명할 수 있도록 이끄는 것이 팀장으로서의 핵심 목표였다.\n팀원 모두가 혼자 앞서가는 100점이 아닌, 함께 도달하는 70~80점을 목표로 운영했다. 결과보다 과정의 이해를 강조하고, 최종 발표에서는 숫자가 아닌 “이유” 를 설명하도록 이끌었다.\n프로젝트 개요 LLM/RAG 기반 영화 흥행 분석 시스템은 TMDB 영화 데이터를 기반으로 흥행 요인을 다각도로 분석하고, RAG(Retrieval-Augmented Generation) 기술을 통해 사용자 질의에 근거 기반 영화 추천 및 AI 분석 리포트를 제공하는 종합 분석 플랫폼이다.\n데이터 소스 — TMDB (The Movie Database) API + 직접 수집한 정제 데이터셋 핵심 기술 — ChromaDB Vector Store, LangChain, OpenAI GPT-4o-mini, Streamlit 분석 범위 — 수천 편의 영화 데이터를 기반으로 ROI / Profit / 평점 / 장르 / 감독 등 다차원 분석 프로젝트 일정 (Week 3 \u0026 4) 날짜 주요 작업 11.15 (Day 1) 데이터 클리닝 계획 수립, TMDB 데이터 인코딩 / 이상치 / 결측치 처리 기준 정의 11.17 (Day 2) TMDB API 연동, Embedding용 텍스트 결합 및 Vector DB 구축 11.18 (Day 3) Streamlit 멀티 페이지 구조 설계, @st.cache 전략 적용, Plotly 시각화 구현 11.19 (Day 4) LangChain / RAG 분석 모델 통합, ProductionRAG 클래스 완성, PPT 초안 제작 11.20 (Day 5) RAG 일관성 검증, 시연 스크립트 확정, 최종 발표 자료 완성 11.21 (Day 6) 최종 프레젠테이션 발표 및 Q \u0026 A 시스템 아키텍처 전체 시스템은 데이터 레이어 -\u003e 분석 레이어 -\u003e 서비스 레이어 의 3단 구조로 설계했다.\n데이터 레이어\nTMDB API 호출 (tmdb_api.py) =\u003e 최신 인기 / 개봉 예정 영화 수집 Movie_Preprocessing.ipynb =\u003e 이상치 제거, 결측치 보정, ROI / Profit 컬럼 생성 Movie_Vector_DB.ipynb =\u003e 정제된 데이터를 텍스트로 변환, OpenAI Embedding 후 ChromaDB 저장 분석 레이어\ndata_loader.py =\u003e @st.cache_data 기반 DataFrame 로드 및 캐싱 vector_db.py =\u003e @st.cache_resource 기반 ChromaDB 클라이언트 로드 및 검색 llm_utils.py =\u003e RAG 추천 체인 + 대화형 추천 + 흥행 요인 분석 (OpenAI 호출) production_rag.py =\u003e ProductionRAG 클래스 — 보수적 ROI 예측 + LLM 종합 리포트 생성 서비스 레이어 (Streamlit 멀티 페이지)\n홈.py =\u003e 대시보드 진입점, 데이터 통계 요약 카드 UI 1_영화 데이터 탐색 대시보드.py =\u003e EDA (장르 / 연도 / 국가 분포) 2_흥행 지표 분석.py =\u003e ROI / Profit 기반 Top 10% 영화 분석 3_감독별 흥행 분석.py =\u003e 감독 랭킹, 흥행 성공률, 장르별 분석 4_영화 제작 분석 시스템.py =\u003e 기획안 입력 -\u003e AI 투자 판단 리포트 출력 주요 기능 RAG 기반 영화 추천 — 자연어 질의 또는 영화 제목 입력 시 Vector DB 검색 후 LLM 이 추천 사유를 자연어로 설명 흥행 지표 분석 — ROI (투자 수익률) 와 Profit (이익) 기준으로 Top 10% 영화의 특징 분석 EDA 대시보드 — 연도별 / 장르별 / 국가별 통계 및 추이를 Plotly 인터랙티브 차트로 시각화 성능 최적화 — @st.cache_data (데이터 로드) 와 @st.cache_resource (Vector DB 클라이언트) 를 분리 적용 모듈 분리 — llm_utils.py / vector_db.py / data_loader.py / production_rag.py 로 책임을 명확히 분리 AI 투자 판단 시스템 — 기획안 (장르 / 예산 / 시놉시스) 입력 시 보수적 ROI 계산 + LLM 종합 리포트 생성 핵심 코드 설명 1. RAG 추천 파이프라인 — 검색과 생성의 결합 RAG 의 핵심은 “Vector DB 에서 가져온 실제 데이터를 LLM 에게 근거로 제공” 하는 것이다. 할루시네이션 없이 우리 데이터셋 안에서만 추천하도록 설계한 이유도 여기에 있다.\n전체 흐름 (get_rag_movie_recommendation):\n1. 사용자 질의 (user_query) 를 ChromaDB 에 벡터 검색\r=\u003e collection.query(query_texts=[user_query], n_results=5)\r2. 검색된 메타데이터 (제목, 장르, 평점, 줄거리 등) 를 문자열로 변환\r=\u003e documents_text 리스트로 조합\r3. LangChain ChatOpenAI (gpt-4o-mini) 에 컨텍스트로 삽입\r=\u003e SystemMessage + HumanMessage 구조\r4. LLM 이 \"왜 이 영화를 추천하는가\" 를 자연어로 설명\r=\u003e response.content 반환\r핵심 RAG 프롬프트 구성 (축약):\ncontext = \"\\n\\n---\\n\\n\".join(documents_text)\rprompt = f\"\"\"\r사용자 요청: \"{user_query}\"\r검색된 영화 정보:\r{context}\r위 영화들을 바탕으로 추천 사유를 작성해주세요:\r1. 사용자 요청과 추천 영화들의 연관성\r2. 각 영화의 주요 특징 (장르, 평점, 분위기 등)\r3. 왜 이 영화들을 추천하는지 구체적인 이유\r\"\"\"\r2. Vector DB 캐싱 — @st.cache_resource 적용 Streamlit 에서 ChromaDB 클라이언트를 매 렌더링마다 새로 생성하면 심각한 성능 저하가 발생한다. @st.cache_resource 데코레이터를 사용해 최초 1회만 로드하고 이후 재사용한다.\n@st.cache_resource\rdef load_vector_db():\ropenai_api_key = os.getenv('OPENAI_API_KEY')\rembedding_function = embedding_functions.OpenAIEmbeddingFunction(\rapi_key=openai_api_key,\rmodel_name=\"text-embedding-ada-002\"\r)\r# 두 경로를 순차 탐색하여 DB 위치 유연하게 처리\rpossible_paths = [\rPath(\"../vector_db/chroma_db\"),\rPath(\"vector_db/chroma_db\"),\r]\rdb_path = next((p for p in possible_paths if p.exists()), None)\rchroma_client = chromadb.PersistentClient(path=str(db_path))\rcollection = chroma_client.get_collection(\rname=\"movies\",\rembedding_function=embedding_function\r)\rreturn collection\r@st.cache_data 와의 역할 구분:\n@st.cache_data =\u003e DataFrame 같은 직렬화 가능한 데이터 객체 캐싱 (data_loader.py) @st.cache_resource =\u003e DB 연결, API 클라이언트 등 공유 자원 캐싱 (vector_db.py) 3. ProductionRAG — 보수적 투자 분석 엔진 이 프로젝트에서 가장 공을 들인 부분이다. 단순히 “평균 ROI 가 몇 배입니다\"가 아니라, 실제 투자 판단에 쓸 수 있는 보수적 수치를 제공하는 것이 목표였다.\n보수적 기준 설계 원칙:\n기대 수익 기준 =\u003e 평균(mean) 이 아닌 하위 40% (quantile 0.40) 최악 시나리오 =\u003e 하위 15% 수익을 별도 제시 BEP (손익분기점) 기준 =\u003e ROI 2.5배 이상 을 수익성 달성으로 판정 투자 판단 체계: ROI 2.5배 이상 =\u003e 투자 추천 ROI 2.0 ~ 2.5배 =\u003e 조건부 추천 ROI 2.0배 미만 =\u003e 재검토 필요 핵심 계산 로직 (_analyze_similar_performance 축약):\n# 예산 범위 ±50% 내 유사 영화만 필터링\rbudget_range = (proposed_budget * 0.5, proposed_budget * 1.5)\rsimilar_subset = [m for m in similar_movies if budget_range[0] \u003c= m['budget'] \u003c= budget_range[1]]\rrev_series = pd.Series([m['revenue'] for m in similar_subset])\r# 보수적 기준: 하위 40% 수익을 베이스로 설정\rconservative_base = rev_series.quantile(0.40)\r# 상업성 페널티 × 예산 효율 페널티 동시 적용\rfinal_adjusted_revenue = conservative_base * commercial_factor * budget_efficiency\rfinal_adjusted_roi = final_adjusted_revenue / proposed_budget\ris_profitable = final_adjusted_roi \u003e= 2.5 # BEP 달성 여부\r4. 상업성 리스크 스코어링 — 시놉시스 분석 시놉시스 내 특정 키워드가 포함될 경우 기대 수익을 자동으로 하향 조정하는 로직이다. 예술 영화 또는 실험적 작품처럼 대중성이 낮은 기획안에 현실적인 경고를 제공한다.\n주의 키워드 예시:\n치명적 독소 =\u003e “실험적”, “흑백”, “다큐멘터리”, “관조적”, “철학적”\n중간 수준 주의 =\u003e “초현실”, “전위”, “미니멀”, “독백”, “무대극”\npenalty_factor = 1.0 for word in caution_keywords: if word in synopsis.lower(): penalty_factor *= 0.8 # 키워드 발견 시마다 기대 수익 20% 삭감 return max(penalty_factor, 0.4) # 최소 40% 보장 (극단적 경우도 기회 부여)\n5. 대화형 RAG — 의도 분류 후 분기 처리 단순 추천 응답이 아닌, 사용자 발화 의도를 먼저 분류 한 뒤 처리하는 2단계 구조로 설계했다.\n1단계 — 의도 분류 (LLM 호출)\r형식: RECOMMEND | 검색키워드 또는 CHAT | 응답내용\r2단계 — 분기 처리\rRECOMMEND =\u003e Vector DB 검색 후 RAG 추천 체인 실행\rCHAT =\u003e 이전 대화 컨텍스트(최근 5개)를 포함하여 일반 대화 응답\r이 구조 덕분에 “액션 영화 추천해줘” 와 “지금 몇 시야?” 를 같은 채팅창에서 자연스럽게 처리할 수 있다.\n프로젝트 파일 구조 movie_project/\r├── app/\r│ ├── 홈.py -- Streamlit 메인 앱 (통계 카드 + 기능 소개)\r│ ├── pages/\r│ │ ├── 1_영화 데이터 탐색 대시보드.py -- EDA 시각화\r│ │ ├── 2_흥행 지표 분석.py -- ROI / Profit 기반 분석\r│ │ ├── 3_감독별 흥행 분석.py -- 감독 랭킹 및 성공률\r│ │ └── 4_영화 제작 분석 시스템.py -- AI 기획안 투자 판단\r│ └── utils/\r│ ├── data_loader.py -- @st.cache_data 기반 데이터 로드\r│ ├── llm_utils.py -- RAG 추천 체인 + 흥행 요인 분석\r│ ├── production_rag.py -- ProductionRAG 클래스 (보수적 ROI)\r│ ├── tmdb_api.py -- TMDB API 호출 유틸리티\r│ └── vector_db.py -- @st.cache_resource ChromaDB 관리\r├── data/ -- 원본 / 정제 데이터 저장소\r├── notebooks/\r│ ├── Movie_Analysis.ipynb -- EDA 및 일반 분석\r│ ├── Movie_Preprocessing.ipynb -- 전처리 상세 기록\r│ └── Movie_Vector_DB.ipynb -- Vector DB 구축 기록\r└── vector_db/ -- (Git 제외) ChromaDB 임베딩 저장소\rSOC 관점 연계 — 데이터 기반 의사결정 파이프라인 이 프로젝트의 구조는 보안관제(SOC) 의 분석 사이클과 구조적으로 동일하다.\n실무 단계 보안 관제 예시 본 프로젝트 대응 수집 (Collection) 로그 / 패킷 수집 TMDB API + CSV 영화 데이터 수집 전처리 (Preprocessing) 로그 정규화, 노이즈 제거 결측치 / 이상치 제거, ROI 컬럼 생성 분석 (Analysis) 이상 행위 탐지, 패턴 분석 흥행 지표 분석, 감독별 성공률 분석 인텔리전스 (Intelligence) 위협 인텔리전스 연계 TMDB API 실시간 트렌드 + RAG 근거 추천 보고 (Reporting) 대시보드 / 경보 발령 Streamlit 대시보드 + AI 투자 판단 리포트 학습 연결 포인트 Pandas \u0026 EDA =\u003e TMDB 데이터 클리닝, 결측치 및 이상치 제거, ROI / Profit 컬럼 생성 Streamlit Caching =\u003e @st.cache_data / @st.cache_resource 를 역할에 따라 분리 적용 RAG System =\u003e ChromaDB Vector Store 로 텍스트 임베딩 검색 구조 구현 LLM Prompting =\u003e 추천 사유 생성 및 흥행 분석을 위한 시스템 프롬프트 설계 Modularity =\u003e utils 폴더 내 기능별 모듈 분리로 유지보수성 확보 Plotly.express =\u003e 장르 분포, ROI 분포, 시계열 추이 동적 시각화 팀장으로서의 회고 이번 프로젝트는 기술보다 팀을 어떻게 이끌 것인가 를 더 많이 고민한 경험이었다.\n역할 분담 원칙 — 각자의 이해 수준에 맞는 파트를 맡기되, 전체 흐름을 모두가 알 수 있도록 공유 QA 과정 — 최종 발표 전날 RAG 응답 일관성을 직접 검증하고, 불안정한 케이스는 프롬프트를 수정 발표 전략 — “이 데이터에서 이런 인사이트를 발견했고, 그 이유는 ~이다” 라는 구조로 전환하도록 팀원들을 코칭 기술 선택 기준 — 화려한 기능보다 설명 가능하고 재현 가능한 구조 를 우선시 100점짜리 혼자 돌아가는 시스템보다, 팀 전체가 이해하고 설명할 수 있는 70점짜리 시스템 이 실제로 더 가치 있다는 것을 체감한 프로젝트였다.\n확장 아이디어 시계열 흥행 예측 — 개봉 전 데이터(예산, 장르, 감독 이력) 로 수익 예측 모델 구축 실시간 트렌드 반영 — TMDB 실시간 API 를 주기적으로 호출하여 Vector DB 자동 업데이트 지도 시각화 — 제작 국가별 흥행 성과를 Folium 지도로 시각화 멀티 에이전트 확장 — 사용자 취향 기반 대화 이력을 누적하여 개인화 추천 품질 향상 보안 인텔리전스 연계 — 영화 산업 사례를 보안 위협 인텔리전스 분석 구조로 전환하는 응용 연구 ",
+  "wordCount" : "3663",
+  "inLanguage": "ko",
+  "datePublished": "2025-11-21T00:00:00Z",
+  "dateModified": "2025-11-21T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/project/week_03_04/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://hojjang98.github.io/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/project/">프로젝트</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Mini Project 01 — LLM/RAG 기반 영화 흥행 분석 시스템
+    </h1>
+    <div class="post-meta"><span title='2025-11-21 00:00:00 +0000 UTC'>2025년 11월 21일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="mini-project-01--llmrag-기반-영화-흥행-분석-시스템">Mini Project 01 — LLM/RAG 기반 영화 흥행 분석 시스템<a hidden class="anchor" aria-hidden="true" href="#mini-project-01--llmrag-기반-영화-흥행-분석-시스템">#</a></h1>
+<blockquote>
+<p>전체 소스코드는 GitHub에서 확인할 수 있습니다.
+<a href="https://github.com/hojjang98/skshielders-rookies-28/tree/main/projects/week_03%20%26%20week_04">hojjang98 / skshielders-rookies-28 — projects/week_03 &amp; week_04</a></p>
+</blockquote>
+<hr>
+<h2 id="프로젝트-소개">프로젝트 소개<a hidden class="anchor" aria-hidden="true" href="#프로젝트-소개">#</a></h2>
+<p>이 프로젝트는 <strong>SK쉴더스 루키즈 28기 첫 번째 팀 미니프로젝트</strong>로,
+Week 3 &amp; 4 (총 2주) 를 통합한 집중 개발 기간에 수행되었다.</p>
+<p>본인은 해당 프로젝트에서 <strong>팀장</strong>을 맡아 전체 아키텍처 설계, 역할 분담, QA, 발표 구성까지 총괄하였다.</p>
+<p>단순한 기술 구현을 넘어, <strong>&ldquo;왜 이 데이터가 이 결과를 내는가?&rdquo;</strong> 라는
+인사이트 중심의 분석을 팀 전체가 발표에서 설명할 수 있도록 이끄는 것이 팀장으로서의 핵심 목표였다.</p>
+<blockquote>
+<p>팀원 모두가 혼자 앞서가는 100점이 아닌, <strong>함께 도달하는 70~80점</strong>을 목표로 운영했다.
+결과보다 과정의 이해를 강조하고, 최종 발표에서는 숫자가 아닌 <strong>&ldquo;이유&rdquo;</strong> 를 설명하도록 이끌었다.</p>
+</blockquote>
+<hr>
+<h2 id="프로젝트-개요">프로젝트 개요<a hidden class="anchor" aria-hidden="true" href="#프로젝트-개요">#</a></h2>
+<p><strong>LLM/RAG 기반 영화 흥행 분석 시스템</strong>은 TMDB 영화 데이터를 기반으로
+흥행 요인을 다각도로 분석하고, <strong>RAG(Retrieval-Augmented Generation)</strong> 기술을 통해
+사용자 질의에 <strong>근거 기반 영화 추천</strong> 및 <strong>AI 분석 리포트</strong>를 제공하는 종합 분석 플랫폼이다.</p>
+<ul>
+<li><strong>데이터 소스</strong> — TMDB (The Movie Database) API + 직접 수집한 정제 데이터셋</li>
+<li><strong>핵심 기술</strong> — ChromaDB Vector Store, LangChain, OpenAI GPT-4o-mini, Streamlit</li>
+<li><strong>분석 범위</strong> — 수천 편의 영화 데이터를 기반으로 ROI / Profit / 평점 / 장르 / 감독 등 다차원 분석</li>
+</ul>
+<hr>
+<h2 id="프로젝트-일정-week-3--4">프로젝트 일정 (Week 3 &amp; 4)<a hidden class="anchor" aria-hidden="true" href="#프로젝트-일정-week-3--4">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>날짜</th>
+          <th>주요 작업</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>11.15 (Day 1)</strong></td>
+          <td>데이터 클리닝 계획 수립, TMDB 데이터 인코딩 / 이상치 / 결측치 처리 기준 정의</td>
+      </tr>
+      <tr>
+          <td><strong>11.17 (Day 2)</strong></td>
+          <td>TMDB API 연동, Embedding용 텍스트 결합 및 Vector DB 구축</td>
+      </tr>
+      <tr>
+          <td><strong>11.18 (Day 3)</strong></td>
+          <td>Streamlit 멀티 페이지 구조 설계, @st.cache 전략 적용, Plotly 시각화 구현</td>
+      </tr>
+      <tr>
+          <td><strong>11.19 (Day 4)</strong></td>
+          <td>LangChain / RAG 분석 모델 통합, ProductionRAG 클래스 완성, PPT 초안 제작</td>
+      </tr>
+      <tr>
+          <td><strong>11.20 (Day 5)</strong></td>
+          <td>RAG 일관성 검증, 시연 스크립트 확정, 최종 발표 자료 완성</td>
+      </tr>
+      <tr>
+          <td><strong>11.21 (Day 6)</strong></td>
+          <td>최종 프레젠테이션 발표 및 Q &amp; A</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="시스템-아키텍처">시스템 아키텍처<a hidden class="anchor" aria-hidden="true" href="#시스템-아키텍처">#</a></h2>
+<p>전체 시스템은 <strong>데이터 레이어 -&gt; 분석 레이어 -&gt; 서비스 레이어</strong> 의 3단 구조로 설계했다.</p>
+<p><strong>데이터 레이어</strong></p>
+<ul>
+<li>TMDB API 호출 (tmdb_api.py) =&gt; 최신 인기 / 개봉 예정 영화 수집</li>
+<li>Movie_Preprocessing.ipynb =&gt; 이상치 제거, 결측치 보정, ROI / Profit 컬럼 생성</li>
+<li>Movie_Vector_DB.ipynb =&gt; 정제된 데이터를 텍스트로 변환, OpenAI Embedding 후 ChromaDB 저장</li>
+</ul>
+<p><strong>분석 레이어</strong></p>
+<ul>
+<li>data_loader.py =&gt; @st.cache_data 기반 DataFrame 로드 및 캐싱</li>
+<li>vector_db.py =&gt; @st.cache_resource 기반 ChromaDB 클라이언트 로드 및 검색</li>
+<li>llm_utils.py =&gt; RAG 추천 체인 + 대화형 추천 + 흥행 요인 분석 (OpenAI 호출)</li>
+<li>production_rag.py =&gt; ProductionRAG 클래스 — 보수적 ROI 예측 + LLM 종합 리포트 생성</li>
+</ul>
+<p><strong>서비스 레이어 (Streamlit 멀티 페이지)</strong></p>
+<ul>
+<li>홈.py =&gt; 대시보드 진입점, 데이터 통계 요약 카드 UI</li>
+<li>1_영화 데이터 탐색 대시보드.py =&gt; EDA (장르 / 연도 / 국가 분포)</li>
+<li>2_흥행 지표 분석.py =&gt; ROI / Profit 기반 Top 10% 영화 분석</li>
+<li>3_감독별 흥행 분석.py =&gt; 감독 랭킹, 흥행 성공률, 장르별 분석</li>
+<li>4_영화 제작 분석 시스템.py =&gt; 기획안 입력 -&gt; AI 투자 판단 리포트 출력</li>
+</ul>
+<hr>
+<h2 id="주요-기능">주요 기능<a hidden class="anchor" aria-hidden="true" href="#주요-기능">#</a></h2>
+<ul>
+<li><strong>RAG 기반 영화 추천</strong> — 자연어 질의 또는 영화 제목 입력 시 Vector DB 검색 후 LLM 이 추천 사유를 자연어로 설명</li>
+<li><strong>흥행 지표 분석</strong> — ROI (투자 수익률) 와 Profit (이익) 기준으로 Top 10% 영화의 특징 분석</li>
+<li><strong>EDA 대시보드</strong> — 연도별 / 장르별 / 국가별 통계 및 추이를 Plotly 인터랙티브 차트로 시각화</li>
+<li><strong>성능 최적화</strong> — @st.cache_data (데이터 로드) 와 @st.cache_resource (Vector DB 클라이언트) 를 분리 적용</li>
+<li><strong>모듈 분리</strong> — llm_utils.py / vector_db.py / data_loader.py / production_rag.py 로 책임을 명확히 분리</li>
+<li><strong>AI 투자 판단 시스템</strong> — 기획안 (장르 / 예산 / 시놉시스) 입력 시 보수적 ROI 계산 + LLM 종합 리포트 생성</li>
+</ul>
+<hr>
+<h2 id="핵심-코드-설명">핵심 코드 설명<a hidden class="anchor" aria-hidden="true" href="#핵심-코드-설명">#</a></h2>
+<h3 id="1-rag-추천-파이프라인--검색과-생성의-결합">1. RAG 추천 파이프라인 — 검색과 생성의 결합<a hidden class="anchor" aria-hidden="true" href="#1-rag-추천-파이프라인--검색과-생성의-결합">#</a></h3>
+<p>RAG 의 핵심은 <strong>&ldquo;Vector DB 에서 가져온 실제 데이터를 LLM 에게 근거로 제공&rdquo;</strong> 하는 것이다.
+할루시네이션 없이 우리 데이터셋 안에서만 추천하도록 설계한 이유도 여기에 있다.</p>
+<p>전체 흐름 (get_rag_movie_recommendation):</p>
+<pre><code>1. 사용자 질의 (user_query) 를 ChromaDB 에 벡터 검색
+   =&gt; collection.query(query_texts=[user_query], n_results=5)
+
+2. 검색된 메타데이터 (제목, 장르, 평점, 줄거리 등) 를 문자열로 변환
+   =&gt; documents_text 리스트로 조합
+
+3. LangChain ChatOpenAI (gpt-4o-mini) 에 컨텍스트로 삽입
+   =&gt; SystemMessage + HumanMessage 구조
+
+4. LLM 이 &quot;왜 이 영화를 추천하는가&quot; 를 자연어로 설명
+   =&gt; response.content 반환
+</code></pre>
+<p>핵심 RAG 프롬프트 구성 (축약):</p>
+<pre><code>context = &quot;\n\n---\n\n&quot;.join(documents_text)
+
+prompt = f&quot;&quot;&quot;
+사용자 요청: &quot;{user_query}&quot;
+
+검색된 영화 정보:
+{context}
+
+위 영화들을 바탕으로 추천 사유를 작성해주세요:
+1. 사용자 요청과 추천 영화들의 연관성
+2. 각 영화의 주요 특징 (장르, 평점, 분위기 등)
+3. 왜 이 영화들을 추천하는지 구체적인 이유
+&quot;&quot;&quot;
+</code></pre>
+<hr>
+<h3 id="2-vector-db-캐싱--stcache_resource-적용">2. Vector DB 캐싱 — @st.cache_resource 적용<a hidden class="anchor" aria-hidden="true" href="#2-vector-db-캐싱--stcache_resource-적용">#</a></h3>
+<p>Streamlit 에서 ChromaDB 클라이언트를 매 렌더링마다 새로 생성하면 심각한 성능 저하가 발생한다.
+<strong>@st.cache_resource</strong> 데코레이터를 사용해 최초 1회만 로드하고 이후 재사용한다.</p>
+<pre><code>@st.cache_resource
+def load_vector_db():
+    openai_api_key = os.getenv('OPENAI_API_KEY')
+
+    embedding_function = embedding_functions.OpenAIEmbeddingFunction(
+        api_key=openai_api_key,
+        model_name=&quot;text-embedding-ada-002&quot;
+    )
+
+    # 두 경로를 순차 탐색하여 DB 위치 유연하게 처리
+    possible_paths = [
+        Path(&quot;../vector_db/chroma_db&quot;),
+        Path(&quot;vector_db/chroma_db&quot;),
+    ]
+    db_path = next((p for p in possible_paths if p.exists()), None)
+
+    chroma_client = chromadb.PersistentClient(path=str(db_path))
+    collection = chroma_client.get_collection(
+        name=&quot;movies&quot;,
+        embedding_function=embedding_function
+    )
+    return collection
+</code></pre>
+<p>@st.cache_data 와의 역할 구분:</p>
+<ul>
+<li><strong>@st.cache_data</strong> =&gt; DataFrame 같은 직렬화 가능한 데이터 객체 캐싱 (data_loader.py)</li>
+<li><strong>@st.cache_resource</strong> =&gt; DB 연결, API 클라이언트 등 공유 자원 캐싱 (vector_db.py)</li>
+</ul>
+<hr>
+<h3 id="3-productionrag--보수적-투자-분석-엔진">3. ProductionRAG — 보수적 투자 분석 엔진<a hidden class="anchor" aria-hidden="true" href="#3-productionrag--보수적-투자-분석-엔진">#</a></h3>
+<p>이 프로젝트에서 가장 공을 들인 부분이다.
+단순히 &ldquo;평균 ROI 가 몇 배입니다&quot;가 아니라, <strong>실제 투자 판단에 쓸 수 있는 보수적 수치</strong>를 제공하는 것이 목표였다.</p>
+<p><strong>보수적 기준 설계 원칙:</strong></p>
+<ul>
+<li>기대 수익 기준 =&gt; 평균(mean) 이 아닌 <strong>하위 40% (quantile 0.40)</strong></li>
+<li>최악 시나리오 =&gt; <strong>하위 15%</strong> 수익을 별도 제시</li>
+<li>BEP (손익분기점) 기준 =&gt; <strong>ROI 2.5배 이상</strong> 을 수익성 달성으로 판정</li>
+<li>투자 판단 체계:
+<ul>
+<li>ROI 2.5배 이상 =&gt; 투자 추천</li>
+<li>ROI 2.0 ~ 2.5배 =&gt; 조건부 추천</li>
+<li>ROI 2.0배 미만 =&gt; 재검토 필요</li>
+</ul>
+</li>
+</ul>
+<p>핵심 계산 로직 (_analyze_similar_performance 축약):</p>
+<pre><code># 예산 범위 ±50% 내 유사 영화만 필터링
+budget_range = (proposed_budget * 0.5, proposed_budget * 1.5)
+similar_subset = [m for m in similar_movies if budget_range[0] &lt;= m['budget'] &lt;= budget_range[1]]
+
+rev_series = pd.Series([m['revenue'] for m in similar_subset])
+
+# 보수적 기준: 하위 40% 수익을 베이스로 설정
+conservative_base = rev_series.quantile(0.40)
+
+# 상업성 페널티 × 예산 효율 페널티 동시 적용
+final_adjusted_revenue = conservative_base * commercial_factor * budget_efficiency
+final_adjusted_roi    = final_adjusted_revenue / proposed_budget
+
+is_profitable = final_adjusted_roi &gt;= 2.5   # BEP 달성 여부
+</code></pre>
+<hr>
+<h3 id="4-상업성-리스크-스코어링--시놉시스-분석">4. 상업성 리스크 스코어링 — 시놉시스 분석<a hidden class="anchor" aria-hidden="true" href="#4-상업성-리스크-스코어링--시놉시스-분석">#</a></h3>
+<p>시놉시스 내 특정 키워드가 포함될 경우 기대 수익을 자동으로 하향 조정하는 로직이다.
+예술 영화 또는 실험적 작품처럼 대중성이 낮은 기획안에 현실적인 경고를 제공한다.</p>
+<p>주의 키워드 예시:</p>
+<ul>
+<li>
+<p>치명적 독소 =&gt; &ldquo;실험적&rdquo;, &ldquo;흑백&rdquo;, &ldquo;다큐멘터리&rdquo;, &ldquo;관조적&rdquo;, &ldquo;철학적&rdquo;</p>
+</li>
+<li>
+<p>중간 수준 주의 =&gt; &ldquo;초현실&rdquo;, &ldquo;전위&rdquo;, &ldquo;미니멀&rdquo;, &ldquo;독백&rdquo;, &ldquo;무대극&rdquo;</p>
+<p>penalty_factor = 1.0
+for word in caution_keywords:
+if word in synopsis.lower():
+penalty_factor *= 0.8     # 키워드 발견 시마다 기대 수익 20% 삭감
+return max(penalty_factor, 0.4)   # 최소 40% 보장 (극단적 경우도 기회 부여)</p>
+</li>
+</ul>
+<hr>
+<h3 id="5-대화형-rag--의도-분류-후-분기-처리">5. 대화형 RAG — 의도 분류 후 분기 처리<a hidden class="anchor" aria-hidden="true" href="#5-대화형-rag--의도-분류-후-분기-처리">#</a></h3>
+<p>단순 추천 응답이 아닌, <strong>사용자 발화 의도를 먼저 분류</strong> 한 뒤 처리하는 2단계 구조로 설계했다.</p>
+<pre><code>1단계 — 의도 분류 (LLM 호출)
+   형식: RECOMMEND | 검색키워드  또는  CHAT | 응답내용
+
+2단계 — 분기 처리
+   RECOMMEND =&gt; Vector DB 검색 후 RAG 추천 체인 실행
+   CHAT      =&gt; 이전 대화 컨텍스트(최근 5개)를 포함하여 일반 대화 응답
+</code></pre>
+<p>이 구조 덕분에 &ldquo;액션 영화 추천해줘&rdquo; 와 &ldquo;지금 몇 시야?&rdquo; 를 같은 채팅창에서 자연스럽게 처리할 수 있다.</p>
+<hr>
+<h2 id="프로젝트-파일-구조">프로젝트 파일 구조<a hidden class="anchor" aria-hidden="true" href="#프로젝트-파일-구조">#</a></h2>
+<pre><code>movie_project/
+├── app/
+│   ├── 홈.py                           -- Streamlit 메인 앱 (통계 카드 + 기능 소개)
+│   ├── pages/
+│   │   ├── 1_영화 데이터 탐색 대시보드.py   -- EDA 시각화
+│   │   ├── 2_흥행 지표 분석.py             -- ROI / Profit 기반 분석
+│   │   ├── 3_감독별 흥행 분석.py            -- 감독 랭킹 및 성공률
+│   │   └── 4_영화 제작 분석 시스템.py       -- AI 기획안 투자 판단
+│   └── utils/
+│       ├── data_loader.py              -- @st.cache_data 기반 데이터 로드
+│       ├── llm_utils.py               -- RAG 추천 체인 + 흥행 요인 분석
+│       ├── production_rag.py          -- ProductionRAG 클래스 (보수적 ROI)
+│       ├── tmdb_api.py                -- TMDB API 호출 유틸리티
+│       └── vector_db.py              -- @st.cache_resource ChromaDB 관리
+├── data/                             -- 원본 / 정제 데이터 저장소
+├── notebooks/
+│   ├── Movie_Analysis.ipynb          -- EDA 및 일반 분석
+│   ├── Movie_Preprocessing.ipynb     -- 전처리 상세 기록
+│   └── Movie_Vector_DB.ipynb         -- Vector DB 구축 기록
+└── vector_db/                        -- (Git 제외) ChromaDB 임베딩 저장소
+</code></pre>
+<hr>
+<h2 id="soc-관점-연계--데이터-기반-의사결정-파이프라인">SOC 관점 연계 — 데이터 기반 의사결정 파이프라인<a hidden class="anchor" aria-hidden="true" href="#soc-관점-연계--데이터-기반-의사결정-파이프라인">#</a></h2>
+<p>이 프로젝트의 구조는 보안관제(SOC) 의 분석 사이클과 구조적으로 동일하다.</p>
+<table>
+  <thead>
+      <tr>
+          <th>실무 단계</th>
+          <th>보안 관제 예시</th>
+          <th>본 프로젝트 대응</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>수집 (Collection)</td>
+          <td>로그 / 패킷 수집</td>
+          <td>TMDB API + CSV 영화 데이터 수집</td>
+      </tr>
+      <tr>
+          <td>전처리 (Preprocessing)</td>
+          <td>로그 정규화, 노이즈 제거</td>
+          <td>결측치 / 이상치 제거, ROI 컬럼 생성</td>
+      </tr>
+      <tr>
+          <td>분석 (Analysis)</td>
+          <td>이상 행위 탐지, 패턴 분석</td>
+          <td>흥행 지표 분석, 감독별 성공률 분석</td>
+      </tr>
+      <tr>
+          <td>인텔리전스 (Intelligence)</td>
+          <td>위협 인텔리전스 연계</td>
+          <td>TMDB API 실시간 트렌드 + RAG 근거 추천</td>
+      </tr>
+      <tr>
+          <td>보고 (Reporting)</td>
+          <td>대시보드 / 경보 발령</td>
+          <td>Streamlit 대시보드 + AI 투자 판단 리포트</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="학습-연결-포인트">학습 연결 포인트<a hidden class="anchor" aria-hidden="true" href="#학습-연결-포인트">#</a></h2>
+<ul>
+<li><strong>Pandas &amp; EDA</strong> =&gt; TMDB 데이터 클리닝, 결측치 및 이상치 제거, ROI / Profit 컬럼 생성</li>
+<li><strong>Streamlit Caching</strong> =&gt; @st.cache_data / @st.cache_resource 를 역할에 따라 분리 적용</li>
+<li><strong>RAG System</strong> =&gt; ChromaDB Vector Store 로 텍스트 임베딩 검색 구조 구현</li>
+<li><strong>LLM Prompting</strong> =&gt; 추천 사유 생성 및 흥행 분석을 위한 시스템 프롬프트 설계</li>
+<li><strong>Modularity</strong> =&gt; utils 폴더 내 기능별 모듈 분리로 유지보수성 확보</li>
+<li><strong>Plotly.express</strong> =&gt; 장르 분포, ROI 분포, 시계열 추이 동적 시각화</li>
+</ul>
+<hr>
+<h2 id="팀장으로서의-회고">팀장으로서의 회고<a hidden class="anchor" aria-hidden="true" href="#팀장으로서의-회고">#</a></h2>
+<p>이번 프로젝트는 기술보다 <strong>팀을 어떻게 이끌 것인가</strong> 를 더 많이 고민한 경험이었다.</p>
+<ul>
+<li><strong>역할 분담 원칙</strong> — 각자의 이해 수준에 맞는 파트를 맡기되, 전체 흐름을 모두가 알 수 있도록 공유</li>
+<li><strong>QA 과정</strong> — 최종 발표 전날 RAG 응답 일관성을 직접 검증하고, 불안정한 케이스는 프롬프트를 수정</li>
+<li><strong>발표 전략</strong> — &ldquo;이 데이터에서 이런 인사이트를 발견했고, 그 이유는 ~이다&rdquo; 라는 구조로 전환하도록 팀원들을 코칭</li>
+<li><strong>기술 선택 기준</strong> — 화려한 기능보다 <strong>설명 가능하고 재현 가능한 구조</strong> 를 우선시</li>
+</ul>
+<blockquote>
+<p>100점짜리 혼자 돌아가는 시스템보다,
+<strong>팀 전체가 이해하고 설명할 수 있는 70점짜리 시스템</strong> 이 실제로 더 가치 있다는 것을 체감한 프로젝트였다.</p>
+</blockquote>
+<hr>
+<h2 id="확장-아이디어">확장 아이디어<a hidden class="anchor" aria-hidden="true" href="#확장-아이디어">#</a></h2>
+<ul>
+<li><strong>시계열 흥행 예측</strong> — 개봉 전 데이터(예산, 장르, 감독 이력) 로 수익 예측 모델 구축</li>
+<li><strong>실시간 트렌드 반영</strong> — TMDB 실시간 API 를 주기적으로 호출하여 Vector DB 자동 업데이트</li>
+<li><strong>지도 시각화</strong> — 제작 국가별 흥행 성과를 Folium 지도로 시각화</li>
+<li><strong>멀티 에이전트 확장</strong> — 사용자 취향 기반 대화 이력을 누적하여 개인화 추천 품질 향상</li>
+<li><strong>보안 인텔리전스 연계</strong> — 영화 산업 사례를 보안 위협 인텔리전스 분석 구조로 전환하는 응용 연구</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://hojjang98.github.io/tags/python/">Python</a></li>
+      <li><a href="https://hojjang98.github.io/tags/rag/">RAG</a></li>
+      <li><a href="https://hojjang98.github.io/tags/langchain/">LangChain</a></li>
+      <li><a href="https://hojjang98.github.io/tags/chromadb/">ChromaDB</a></li>
+      <li><a href="https://hojjang98.github.io/tags/streamlit/">Streamlit</a></li>
+      <li><a href="https://hojjang98.github.io/tags/pandas/">Pandas</a></li>
+      <li><a href="https://hojjang98.github.io/tags/plotly/">Plotly</a></li>
+      <li><a href="https://hojjang98.github.io/tags/tmdb/">TMDB</a></li>
+      <li><a href="https://hojjang98.github.io/tags/openai/">OpenAI</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%ED%8C%80%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/">팀프로젝트</a></li>
+      <li><a href="https://hojjang98.github.io/tags/sk%EC%89%B4%EB%8D%94%EC%8A%A4%EB%A3%A8%ED%82%A4%EC%A6%88/">SK쉴더스루키즈</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

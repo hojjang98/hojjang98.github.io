@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>2026.03.07 (Day 88) - 멘토링 피드백 반영 및 다음 주 산출물 준비 방향 확정 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="수탁사점검, 멘토링, 체크리스트, 판정기준, 개인정보보호, 법령체계, 컨설팅, 프로젝트">
+<meta name="description" content="Y/P/N/NA 판정 기준 확정, 수치 기반 서술 원칙, 증적 선별 전략, AWS 키오스크 단독 적용 확정, 다음 주 산출물 목표 수립.">
+<meta name="author" content="">
+<link rel="canonical" href="https://hojjang98.github.io/daily_logs/week18/20260307_final_project_day13/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.290573799e582c418c4bd84f2bca757d0a77fd1bf9f5c43942030e706df68ec8.css" integrity="sha256-KQVzeZ5YLEGMS9hPK8p1fQp3/Rv59cQ5QgMOcG32jsg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/daily_logs/week18/20260307_final_project_day13/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://hojjang98.github.io/daily_logs/week18/20260307_final_project_day13/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="2026.03.07 (Day 88) - 멘토링 피드백 반영 및 다음 주 산출물 준비 방향 확정">
+  <meta property="og:description" content="Y/P/N/NA 판정 기준 확정, 수치 기반 서술 원칙, 증적 선별 전략, AWS 키오스크 단독 적용 확정, 다음 주 산출물 목표 수립.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="daily_logs">
+    <meta property="article:published_time" content="2026-03-07T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-03-07T00:00:00+00:00">
+    <meta property="article:tag" content="수탁사점검">
+    <meta property="article:tag" content="멘토링">
+    <meta property="article:tag" content="체크리스트">
+    <meta property="article:tag" content="판정기준">
+    <meta property="article:tag" content="개인정보보호">
+    <meta property="article:tag" content="법령체계">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2026.03.07 (Day 88) - 멘토링 피드백 반영 및 다음 주 산출물 준비 방향 확정">
+<meta name="twitter:description" content="Y/P/N/NA 판정 기준 확정, 수치 기반 서술 원칙, 증적 선별 전략, AWS 키오스크 단독 적용 확정, 다음 주 산출물 목표 수립.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "6개월, 혹은 그 이상의 보안 여정",
+      "item": "https://hojjang98.github.io/daily_logs/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "2026.03.07 (Day 88) - 멘토링 피드백 반영 및 다음 주 산출물 준비 방향 확정",
+      "item": "https://hojjang98.github.io/daily_logs/week18/20260307_final_project_day13/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "2026.03.07 (Day 88) - 멘토링 피드백 반영 및 다음 주 산출물 준비 방향 확정",
+  "name": "2026.03.07 (Day 88) - 멘토링 피드백 반영 및 다음 주 산출물 준비 방향 확정",
+  "description": "Y/P/N/NA 판정 기준 확정, 수치 기반 서술 원칙, 증적 선별 전략, AWS 키오스크 단독 적용 확정, 다음 주 산출물 목표 수립.",
+  "keywords": [
+    "수탁사점검", "멘토링", "체크리스트", "판정기준", "개인정보보호", "법령체계", "컨설팅", "프로젝트"
+  ],
+  "articleBody": "1. 핵심 개념 정리 개인정보보호 법령 체계 # 핵심 개념 설명 실무/보안 관점 1 법령 3단계 체계 법(국회 제정) → 시행령(대통령령) → 고시(부처 행정규칙) 순으로 구체화. 개인정보 안전성 확보조치 기준은 고시에 해당 면접 시 “고시에 명시된 기준에 따르면~“으로 답변하면 실무 이해도가 높게 평가됨 2 데이터 3법 (개-망-신) 개인정보 보호법(일반법), 정보통신망법(개보법으로 이관), 신용정보법(금융 특수성 반영). 금융은 전자금융거래법·전자금융감독규정 병행 확인 필요 각 법령의 관할 영역을 구분하여 답변할 수 있어야 함 3 CI / DI CI(연계정보) : 서로 다른 서비스 간 동일인 식별. DI(중복가입확인정보) : 동일 서비스 내 중복 가입 방지용. 주민등록번호 수집 불가로 해시값 변환 사용 개발 용어 CI/CD와 혼동 주의. 면접 단골 질문 4 동의서 3단계 일치성 화면 입력 항목 - 동의문 항목 - 개인정보 처리방침이 모두 일치해야 함. 불일치 시 법 위반 화면에 없는 항목이 동의문에 있거나, 동의문에 없는 항목이 처리방침에 있으면 즉시 지적 대상 5 RFP (Request For Proposal) 고객사가 요구사항을 제시하면 컨설팅 기업이 제안서 작성 후 발표. 수주 결정 후 기술협상 → WBS/수행계획서 작성 순으로 진행 제안서(200p) → 발표자료(30~40p) → 제안요약서(100p) 구조. 기술협상에서 인력·범위 추가 요구(갑질)가 발생하는 지점임 컨설팅 실무 핵심 개념 # 핵심 개념 설명 실무/보안 관점 6 Y / P / N / NA 판정 기준 Y(양호), P(부분양호/부분취약), N(취약), NA(해당없음). NA는 개인정보처리시스템 자체가 없는 경우 등 위협 발생 구멍이 없을 때만 사용. NA는 점수 계산 미포함 NA를 남발하면 신뢰도 저하. “해당없음\"도 컨설턴트의 판단 결과이므로 근거가 필요 7 체크리스트 상세 기재 원칙 “일부”, “대체로” 등 모호한 표현 금지. 숫자·버전·날짜·담당자 수를 명시해야 신뢰도 확보. “3명 중 2명 교육 완료” 등 수치 기반 서술 권장 점검 내역은 점검 방법을 보지 않아도 상황이 파악될 정도로 구체적으로 작성 8 보안 위협(가능성)의 정의 악영향을 미칠 가능성이 있다면 모두 위협. 파쇄기 옆 방치된 문서, 공유기 노출 등도 위협으로 기술 가능. 100%가 아니어도 가능성이 곧 위협 고객 설득 시 “어디서 어떻게 사고날지 모른다\"는 논리로 발생 가능 시나리오를 구체화해야 함 9 증적 자료 전략 모든 항목의 증적을 만들 필요 없음. 굵직하고 만들기 쉬운 증적 위주로 선별. 방치된 출력물 사진, 파쇄함 수거 장면, X-배너·보안 포스터 등이 유효한 증적 내부관리계획 문서, 대표자 날인 등 법적 핵심 포인트만 정확히 챙기면 충분 10 클라우드(AWS) 선택적 적용 6개 수탁사 중 1개 정도에만 적용. 키오스크처럼 실시간 데이터 처리 파트에 접목이 자연스러움. 개인정보가 많은 파트에 무조건 적용하면 질문 공세 가능성 클라우드 항목 추가 시 4.1.1 등 별도 번호 체계로 관리 보안 인증 및 진단 체계 # 핵심 개념 설명 실무/보안 관점 11 ISMS-P / ISO27001 ISMS-P : 개인정보보호 관리체계 인증(PIA 포함). ISO27001 : 국제 정보보호 표준 인증 면접 시 인증 범위와 목적 차이를 구분하여 설명할 수 있어야 함 12 주통 / 금취 주통(주요정보통신기반시설) : 국가 중요 시설 취약점 분석평가, 연 1회 필수. 금취(전자금융기반시설) : 금융권 보안 취약점 분석평가, 연 1회 필수 금융권 준비 시 전자금융거래법 + 전자금융감독규정 병행 확인 필수 13 취약점 진단 분류 관리적 진단 / 시스템 진단(서버·DB·네트워크·웹·WAS·클라우드) / 응용프로그램(모의해킹). 관리를 알면 볼 수 있는 영역이 확장됨 컨설팅 포기 시 SI·관제·인프라 진단 방향도 가능. 관리 베이스가 있으면 시스템 쪽 전환도 유리 14 WBS (작업분할구조도) 프로젝트 전체 작업을 단계별로 분해한 구조도. 리베로 프로젝트 기준으로 2개 필요 : [WBS1] 하랑항공(갑) \u0026 리베로(을) 기준, [WBS2] 팀 전체 프로젝트 기준 멘토님 의견 : WBS 2개를 합치는 방향 권장. 수행계획서와 함께 작성 15 컨설팅 방법론 3단계 현황 분석 → 평가(위협·취약점 식별) → 보호대책(개선 방안) 수립. 수탁사 점검도 동일 흐름 적용 위험·위협·취약점을 구분하는 능력이 컨설팅 실무의 핵심. 문서를 보고 세 가지를 AI에게 질문하는 훈련이 유효 2. 활동 내용 정리 활동 88-1: 멘토링 세션 - 피드백 수렴 및 방향 확정 목표: 체크리스트 작성 기준, 증적 전략, 다음 주 목표 확정\n멘토님 피드백 핵심 요약:\n체크리스트 판정 :\n→ Y / P / N / NA 기준 확정 → NA는 위협 발생 구멍 자체가 없는 경우에만 사용 (신중하게) → NA는 점수 계산에서 제외 점검 내역 상세도 :\n→ 모호한 표현(일부, 대체로) 사용 금지 → 버전, 날짜, 담당자 수, 숫자 등 명확한 수치 기재 → 점검 내역만 봐도 상황 파악 가능한 수준으로 작성 AWS 클라우드 적용 :\n→ 6개 수탁사 중 1개(키오스크) 선택 적용 → 항목 추가 시 4.1.1 등 별도 번호 부여 증적 자료 :\n→ 모든 항목 증적 불필요. 굵직한 핵심 위주 선별 → 인터넷에서 찾은 방치 출력물 사진, 파쇄함 수거 장면, X-배너·보안 포스터 등이 유효 증적으로 활용 가능 CCTV 점검 범위 :\n→ 케이터링 작업 공간 전체가 아닌, 전산실 출입구·사무실 출입구 등 핵심 포인트 위주로만 점검 점검 내역 작성 팁 :\n→ “13개 항목 중 OOO를 포함한 5개 항목 확인, 나머지는 제외\"처럼 있는 그대로 명확하게 서술 → 형식에 쫄지 말 것. 현업도 양식 제각각 활동 88-2: 3/3~3/6 진행 사항 리뷰 및 다음 주 계획 수립 진행 사항 정리:\n3/3 화요일 :\n→ 수탁사 최종 6개 선정 키오스크 : 소규모 IT 기업, 위탁사 시스템과 연계 운영 지상조업 : 위탁사 시스템 연동, 탑승 수속·라운지 운영 포함 3/4 수 ~ 3/6 금 :\n→ 멘토님 제공 체크리스트 참고하여 수탁사별 현황·시나리오·체크리스트 작성 및 점검 완료 → 현황 작성 시 점검기준·법 항목·점검방법을 AI에 제공하여 생성 제미나이 : 환각 발생 多 클로드 : 문서작업 탁월 GPT : 중간 수준 다음 주 목표:\n화요일까지 개인 완료 필수 :\n→ 본인 담당 체크리스트 완성 다음 주 전체 작업 :\n→ 수탁사별 시나리오 디테일 보완 (금융 - AWS/재위탁, 키오스크 - 클라우드) → 크로스체킹 수행 → WBS 양식 검토 및 수행계획서 작성 WBS 1 : 하랑항공(갑) \u0026 리베로(을) 기준 WBS 2 : 팀 전체 프로젝트 기준 (2개 합치는 방향) → 핵심 증적 자료 생성 → 수탁사별 워드 점검 보고서 완성 → (시간 여유 시) 개별 보고서 및 시연 동영상 5분 구성 3. 비교·분석 표 판정 기준 비교 (기존 vs 확정) 항목 기존 (Day 87 기준) 확정 (Day 88 멘토링 후) 변경 이유 양호 - Y 명확한 단일 기호로 통일 부분 충족 P P (부분양호/부분취약) 동일 유지 미충족 N N (취약) 동일 유지 해당없음 NA NA (점수 계산 제외) 개인정보처리시스템 미보유 등 위협 구멍 자체 없는 경우만 적용 보안 직무 분야 비교 분야 주요 업무 필요 역량 관련 법령/인증 컨설팅 수탁사 점검, ISMS-P 심사, 컴플라이언스 진단 법령 해석, 문서 분석, 고객 커뮤니케이션 개보법, 안전성 확보조치 기준, 고시 인프라 진단 서버·DB·네트워크·웹·WAS 취약점 점검 시스템 이해, 점검 도구 활용, 기술적 분석 주통, 금취, 전자금융감독규정 모의해킹 응용프로그램·웹 공격 시뮬레이션, 취약점 도출 공격 기법, 익스플로잇, 보고서 작성 OWASP Top 10, CVE 관제 (SOC) 실시간 보안 이벤트 모니터링·대응 SIEM 운영, 로그 분석, 침해사고 대응 MITRE ATT\u0026CK, 침해사고 대응 절차 4. 심화 분석 위험·위협·취약점 구분 구분 정의 하랑 케이터링 예시 컨설팅 기술 방식 취약점 공격 또는 사고가 발생할 수 있는 시스템·프로세스의 약점 퇴사자 계정 미삭제, 공용 계정 사용, 패치 미적용 “~한 상태로 확인됨” (현재 상태 기술) 위협 취약점을 이용해 악영향을 미칠 수 있는 가능성 퇴사자 계정을 통한 비인가 접근 가능성, 파쇄기 옆 방치 문서의 정보 유출 가능성 “~할 수 있음”, “~의 위험이 존재함” 위험 위협이 실제로 발생했을 때의 영향(손실)의 크기 승객 명단 1만 명 유출 시 법적 제재·배상 책임 발생 “~시 ~의 피해가 예상됨” 컨설팅 프로젝트 산출물 구조 리베로 팀 최종 산출물 구조 :\n위탁사 관리체계\n수탁사 선정 및 선정 이유서 계약서 (보안 항목 포함) 수탁사 관리 항목 정의 체크리스트 (Y/P/N/NA 판정) 수탁사 대상 교육 자료 수탁사 점검 계획서 수탁사 점검 결과\n수탁사별 현황서 증적 자료 (선별된 핵심 항목) 워드 점검 보고서 (수탁사별) 프로젝트 관리\nWBS 1 (하랑항공 \u0026 리베로) WBS 2 (팀 전체) → WBS 1+2 통합 방향 수행계획서 최종 보고서 시연 동영상 (5분) 5. 실무/보안 적용 보안 전문가 관점 - 컨설팅 점검 내역 작성 기준 구분 잘못된 표현 올바른 표현 이유 대상 범위 취급자 일부가 교육을 받음 전체 취급자 15명 중 11명 교육 이수 확인, 4명 미이수 “일부\"는 의미 불분명. 숫자로 명시해야 판정 가능 문서 현황 내부관리계획서가 최신화되어 있음 내부관리계획서 v3.1 (2025.01 기준) 확인, 72시간 보고 기준 미반영 버전·날짜 없으면 최신화 여부 판단 불가 시스템 현황 일부 시스템에 타임아웃 설정됨 ERP 세션 타임아웃 30분 설정 확인, CMS는 미설정 시스템별 구분 없으면 P/N 판정 불가 위협 기술 보안 사고가 날 수 있음 공용 계정 사용으로 인해 행위자 특정 불가, 내부자 비인가 접근 발생 시 책임 추적 불가 막연한 가능성이 아닌 구체적 시나리오로 고객 설득 면접 대비 핵심 답변 포인트 Q. 개인정보 안전조치 기준은 어디에 규정되어 있나요?\n→ 개인정보 보호법 제29조에서 안전조치 의무를 규정하고 있으며, 구체적인 기준은 개인정보보호위원회 고시인 ‘개인정보의 안전성 확보조치 기준’에 명시되어 있습니다. 관리적·기술적·물리적 보호조치로 구분됩니다. Q. CI와 DI의 차이는 무엇인가요?\n→ CI(연계정보)는 서로 다른 서비스 간 동일인 식별에 사용되는 고유값이며, DI(중복가입확인정보)는 동일 서비스 내에서 중복 가입 여부를 확인하는 데 사용됩니다. 주민등록번호를 직접 수집할 수 없기 때문에 해시값으로 변환하여 활용합니다. 6. 배운 점 및 인사이트 새로 알게 된 점 NA 판정의 무게: NA는 “해당없음\"이지만, 이 판정 자체가 컨설턴트의 책임 있는 판단이다. 위협 발생 구멍이 없다는 것을 논리적으로 입증할 수 있어야 하며, NA를 쉽게 던지면 보고서 전체의 신뢰도가 하락한다. 수치 기반 서술의 중요성: “일부\"라는 표현 하나가 고객의 반박 빌미가 된다. 컨설팅 보고서는 수치와 사실로 말해야 하며, 모호함은 곧 약점이다. 위협의 정의 재정립: 가능성이 곧 위협이라는 멘토님의 말이 인상적이었다. 보안은 100% 확실한 위협만 다루는 게 아니라, 발생할 수 있는 가능성을 미리 식별하고 대응하는 게 본질임을 다시 확인했다. RFP에서 수주까지의 프로세스: 제안서 작성 → 발표 → 수주 → 기술협상 → WBS/수행계획서 작성이라는 컨설팅 프로젝트 전체 흐름을 오늘 처음 명확하게 파악했다. 기술협상에서 범위·인력 추가 요구가 발생하는 구조적 이유도 이해됐다. AI 도구별 특성 비교: 클로드는 문서 작업에 탁월, 제미나이는 환각 발생 빈도 높음, GPT는 중간 수준이라는 팀 내 실사용 결과가 흥미로웠다. 도구 특성을 파악하고 용도에 맞게 선택하는 것도 실무 역량이다. 이전 학습과의 연결고리 개보법 위수탁(제26조)과 연계: RFP → 계약서 → 수탁사 점검이라는 흐름이 법 제26조의 관리감독 의무와 정확히 맞닿아 있음을 확인했다. ISMS-P 학습과 연결: 오늘 언급된 인증 제도(ISMS-P, ISO27001, 주통, 금취)가 이전에 학습한 인증 프레임워크와 연결되어 각각의 적용 대상과 목적이 더 명확해졌다. 컨설팅 3단계 방법론 심화: 현황 분석 → 평가 → 보호대책 수립 흐름이 위험·위협·취약점 구분과 연결된다. 현황이 취약점을 드러내고, 취약점이 위협으로 이어지며, 위협이 위험으로 현실화된다는 인과 구조를 오늘 정리했다. 실무 적용 아이디어 보안 전문가 관점:\n체크리스트 기재 기준 문서화: 팀 내 레퍼런스로 “수치·버전·날짜 기재 예시” 문서를 만들어두면 크로스체킹 시 기준 통일이 쉬워진다. 증적 자료 선별 기준: 법적 의무 항목(내부관리계획, 대표자 날인 등) 우선, 그다음 시각적으로 명확한 실사 자료(출입구 CCTV 위치, X-배너 등)로 구성하면 효율적이다. 위협 기술 연습: 문서를 주고 위험·위협·취약점을 구분하는 훈련을 AI를 활용해 반복적으로 수행하는 것이 컨설팅 실무 감각을 키우는 가장 빠른 방법이다. 7. Quick Reference 판정 기준 요약 Y (양호) : 해당 항목 완전 이행, 증적 구비 P (부분양호) : 일부 적용, 증적 부족, 대상 일부에만 적용 N (취약) : 전혀 이행 없음 / 법적 요건 명백 위반 NA (해당없음) : 위협 발생 구멍 자체가 없는 경우. 점수 계산 제외 법령 체계 요약표 구분 명칭 제정 주체 주요 내용 법 개인정보 보호법 국회 기본 원칙·권리·의무 시행령 개인정보 보호법 시행령 대통령 법 위임 구체적 범위 고시 개인정보의 안전성 확보조치 기준 개인정보보호위원회 관리적·기술적·물리적 세부 기준 특별법 신용정보법, 전자금융거래법 국회 금융 분야 특수성 반영 감독규정 전자금융감독규정 금융위원회 금융 보안 실질 가이드라인 다음 주 산출물 체크리스트 화요일 개인 완료 필수:\n담당 수탁사 체크리스트 완성 (Y/P/N/NA 판정 포함) 점검 내역 수치·버전·날짜 기재 완료 다음 주 팀 전체 작업:\n수탁사별 시나리오 디테일 보완 (금융 : AWS/재위탁, 키오스크 : 클라우드) 크로스체킹 수행 WBS 양식 검토 및 작성 (1+2 통합 방향) 수행계획서 작성 핵심 증적 자료 생성 (선별적 구성) 수탁사별 워드 점검 보고서 완성 (시간 여유 시) 개별 보고서 작성 (시간 여유 시) 시연 동영상 5분 구성 8. 트러블슈팅 문제 원인 해결 방법 Day 87 작성 기준(N/P/NA)이 멘토링 후 Y/P/N/NA로 변경됨 멘토님 피드백 반영 전 선작성 Day 87 체크리스트 소급 수정 필요. Y 항목 추가 및 기준 재정립 “일부”, “대체로” 등 모호한 표현이 체크리스트 곳곳에 사용됨 명확한 기재 기준이 팀 내 공유되지 않았음 수치·버전·날짜 기재 예시 레퍼런스 공유 후 전면 재검토 AWS 항목을 키오스크 외 수탁사에도 적용 여부 불분명 초기 설계 시 적용 기준 미확정 키오스크 1개 수탁사에만 적용 확정. 항목 번호 4.1.1 등으로 별도 관리 증적 자료 생성 범위가 너무 넓어 작업 부담이 큰 상황 모든 항목에 증적이 필요하다는 오해 굵직한 핵심 항목 위주로 선별. 법적 필수 포인트 + 시각적 실사 자료 중심으로 재구성 Today’s Insight:\n오늘 멘토링을 통해 컨설팅 보고서가 “정확한 언어\"로 이루어진 설득의 문서임을 다시 한번 실감했다. Y/P/N/NA 판정 기준 확정, 수치 기반 서술 원칙, 증적 자료의 선별적 구성이라는 세 가지 피드백은 모두 하나의 방향을 가리킨다. 모호함은 반박의 빌미가 되고, 명확함은 신뢰의 기반이 된다는 것. 또한 위험·위협·취약점의 인과 구조와 RFP부터 수행계획서까지의 프로젝트 전체 흐름을 오늘 처음으로 하나의 그림으로 연결할 수 있었다. 남은 프로젝트 기간 동안 형식보다 논리의 명확함에 집중하는 것이 핵심이라는 방향을 잡았다.\n",
+  "wordCount" : "5753",
+  "inLanguage": "ko",
+  "datePublished": "2026-03-07T00:00:00Z",
+  "dateModified": "2026-03-07T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/daily_logs/week18/20260307_final_project_day13/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://hojjang98.github.io/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/daily_logs/">6개월, 혹은 그 이상의 보안 여정</a></div>
+    <h1 class="post-title entry-hint-parent">
+      2026.03.07 (Day 88) - 멘토링 피드백 반영 및 다음 주 산출물 준비 방향 확정
+    </h1>
+    <div class="post-meta"><span title='2026-03-07 00:00:00 +0000 UTC'>2026년 3월 7일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h2 id="1-핵심-개념-정리">1. 핵심 개념 정리<a hidden class="anchor" aria-hidden="true" href="#1-핵심-개념-정리">#</a></h2>
+<h3 id="개인정보보호-법령-체계">개인정보보호 법령 체계<a hidden class="anchor" aria-hidden="true" href="#개인정보보호-법령-체계">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">#</th>
+          <th style="text-align: left">핵심 개념</th>
+          <th style="text-align: left">설명</th>
+          <th style="text-align: left">실무/보안 관점</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">1</td>
+          <td style="text-align: left"><strong>법령 3단계 체계</strong></td>
+          <td style="text-align: left">법(국회 제정) → 시행령(대통령령) → 고시(부처 행정규칙) 순으로 구체화. 개인정보 안전성 확보조치 기준은 고시에 해당</td>
+          <td style="text-align: left">면접 시 &ldquo;고시에 명시된 기준에 따르면~&ldquo;으로 답변하면 실무 이해도가 높게 평가됨</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">2</td>
+          <td style="text-align: left"><strong>데이터 3법 (개-망-신)</strong></td>
+          <td style="text-align: left">개인정보 보호법(일반법), 정보통신망법(개보법으로 이관), 신용정보법(금융 특수성 반영). 금융은 전자금융거래법·전자금융감독규정 병행 확인 필요</td>
+          <td style="text-align: left">각 법령의 관할 영역을 구분하여 답변할 수 있어야 함</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">3</td>
+          <td style="text-align: left"><strong>CI / DI</strong></td>
+          <td style="text-align: left">CI(연계정보) : 서로 다른 서비스 간 동일인 식별. DI(중복가입확인정보) : 동일 서비스 내 중복 가입 방지용. 주민등록번호 수집 불가로 해시값 변환 사용</td>
+          <td style="text-align: left">개발 용어 CI/CD와 혼동 주의. 면접 단골 질문</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">4</td>
+          <td style="text-align: left"><strong>동의서 3단계 일치성</strong></td>
+          <td style="text-align: left">화면 입력 항목 - 동의문 항목 - 개인정보 처리방침이 모두 일치해야 함. 불일치 시 법 위반</td>
+          <td style="text-align: left">화면에 없는 항목이 동의문에 있거나, 동의문에 없는 항목이 처리방침에 있으면 즉시 지적 대상</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">5</td>
+          <td style="text-align: left"><strong>RFP (Request For Proposal)</strong></td>
+          <td style="text-align: left">고객사가 요구사항을 제시하면 컨설팅 기업이 제안서 작성 후 발표. 수주 결정 후 기술협상 → WBS/수행계획서 작성 순으로 진행</td>
+          <td style="text-align: left">제안서(200p) → 발표자료(30~40p) → 제안요약서(100p) 구조. 기술협상에서 인력·범위 추가 요구(갑질)가 발생하는 지점임</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="컨설팅-실무-핵심-개념">컨설팅 실무 핵심 개념<a hidden class="anchor" aria-hidden="true" href="#컨설팅-실무-핵심-개념">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">#</th>
+          <th style="text-align: left">핵심 개념</th>
+          <th style="text-align: left">설명</th>
+          <th style="text-align: left">실무/보안 관점</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">6</td>
+          <td style="text-align: left"><strong>Y / P / N / NA 판정 기준</strong></td>
+          <td style="text-align: left">Y(양호), P(부분양호/부분취약), N(취약), NA(해당없음). NA는 개인정보처리시스템 자체가 없는 경우 등 위협 발생 구멍이 없을 때만 사용. NA는 점수 계산 미포함</td>
+          <td style="text-align: left">NA를 남발하면 신뢰도 저하. &ldquo;해당없음&quot;도 컨설턴트의 판단 결과이므로 근거가 필요</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">7</td>
+          <td style="text-align: left"><strong>체크리스트 상세 기재 원칙</strong></td>
+          <td style="text-align: left">&ldquo;일부&rdquo;, &ldquo;대체로&rdquo; 등 모호한 표현 금지. 숫자·버전·날짜·담당자 수를 명시해야 신뢰도 확보. &ldquo;3명 중 2명 교육 완료&rdquo; 등 수치 기반 서술 권장</td>
+          <td style="text-align: left">점검 내역은 점검 방법을 보지 않아도 상황이 파악될 정도로 구체적으로 작성</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">8</td>
+          <td style="text-align: left"><strong>보안 위협(가능성)의 정의</strong></td>
+          <td style="text-align: left">악영향을 미칠 가능성이 있다면 모두 위협. 파쇄기 옆 방치된 문서, 공유기 노출 등도 위협으로 기술 가능. 100%가 아니어도 가능성이 곧 위협</td>
+          <td style="text-align: left">고객 설득 시 &ldquo;어디서 어떻게 사고날지 모른다&quot;는 논리로 발생 가능 시나리오를 구체화해야 함</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">9</td>
+          <td style="text-align: left"><strong>증적 자료 전략</strong></td>
+          <td style="text-align: left">모든 항목의 증적을 만들 필요 없음. 굵직하고 만들기 쉬운 증적 위주로 선별. 방치된 출력물 사진, 파쇄함 수거 장면, X-배너·보안 포스터 등이 유효한 증적</td>
+          <td style="text-align: left">내부관리계획 문서, 대표자 날인 등 법적 핵심 포인트만 정확히 챙기면 충분</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">10</td>
+          <td style="text-align: left"><strong>클라우드(AWS) 선택적 적용</strong></td>
+          <td style="text-align: left">6개 수탁사 중 1개 정도에만 적용. 키오스크처럼 실시간 데이터 처리 파트에 접목이 자연스러움. 개인정보가 많은 파트에 무조건 적용하면 질문 공세 가능성</td>
+          <td style="text-align: left">클라우드 항목 추가 시 4.1.1 등 별도 번호 체계로 관리</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="보안-인증-및-진단-체계">보안 인증 및 진단 체계<a hidden class="anchor" aria-hidden="true" href="#보안-인증-및-진단-체계">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">#</th>
+          <th style="text-align: left">핵심 개념</th>
+          <th style="text-align: left">설명</th>
+          <th style="text-align: left">실무/보안 관점</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">11</td>
+          <td style="text-align: left"><strong>ISMS-P / ISO27001</strong></td>
+          <td style="text-align: left">ISMS-P : 개인정보보호 관리체계 인증(PIA 포함). ISO27001 : 국제 정보보호 표준 인증</td>
+          <td style="text-align: left">면접 시 인증 범위와 목적 차이를 구분하여 설명할 수 있어야 함</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">12</td>
+          <td style="text-align: left"><strong>주통 / 금취</strong></td>
+          <td style="text-align: left">주통(주요정보통신기반시설) : 국가 중요 시설 취약점 분석평가, 연 1회 필수. 금취(전자금융기반시설) : 금융권 보안 취약점 분석평가, 연 1회 필수</td>
+          <td style="text-align: left">금융권 준비 시 전자금융거래법 + 전자금융감독규정 병행 확인 필수</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">13</td>
+          <td style="text-align: left"><strong>취약점 진단 분류</strong></td>
+          <td style="text-align: left">관리적 진단 / 시스템 진단(서버·DB·네트워크·웹·WAS·클라우드) / 응용프로그램(모의해킹). 관리를 알면 볼 수 있는 영역이 확장됨</td>
+          <td style="text-align: left">컨설팅 포기 시 SI·관제·인프라 진단 방향도 가능. 관리 베이스가 있으면 시스템 쪽 전환도 유리</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">14</td>
+          <td style="text-align: left"><strong>WBS (작업분할구조도)</strong></td>
+          <td style="text-align: left">프로젝트 전체 작업을 단계별로 분해한 구조도. 리베로 프로젝트 기준으로 2개 필요 : [WBS1] 하랑항공(갑) &amp; 리베로(을) 기준, [WBS2] 팀 전체 프로젝트 기준</td>
+          <td style="text-align: left">멘토님 의견 : WBS 2개를 합치는 방향 권장. 수행계획서와 함께 작성</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">15</td>
+          <td style="text-align: left"><strong>컨설팅 방법론 3단계</strong></td>
+          <td style="text-align: left">현황 분석 → 평가(위협·취약점 식별) → 보호대책(개선 방안) 수립. 수탁사 점검도 동일 흐름 적용</td>
+          <td style="text-align: left">위험·위협·취약점을 구분하는 능력이 컨설팅 실무의 핵심. 문서를 보고 세 가지를 AI에게 질문하는 훈련이 유효</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="2-활동-내용-정리">2. 활동 내용 정리<a hidden class="anchor" aria-hidden="true" href="#2-활동-내용-정리">#</a></h2>
+<h3 id="활동-88-1-멘토링-세션---피드백-수렴-및-방향-확정">활동 88-1: 멘토링 세션 - 피드백 수렴 및 방향 확정<a hidden class="anchor" aria-hidden="true" href="#활동-88-1-멘토링-세션---피드백-수렴-및-방향-확정">#</a></h3>
+<p><strong>목표:</strong> 체크리스트 작성 기준, 증적 전략, 다음 주 목표 확정</p>
+<p><strong>멘토님 피드백 핵심 요약:</strong></p>
+<p>체크리스트 판정 :</p>
+<ul>
+<li>→ Y / P / N / NA 기준 확정</li>
+<li>→ NA는 위협 발생 구멍 자체가 없는 경우에만 사용 (신중하게)</li>
+<li>→ NA는 점수 계산에서 제외</li>
+</ul>
+<p>점검 내역 상세도 :</p>
+<ul>
+<li>→ 모호한 표현(일부, 대체로) 사용 금지</li>
+<li>→ 버전, 날짜, 담당자 수, 숫자 등 명확한 수치 기재</li>
+<li>→ 점검 내역만 봐도 상황 파악 가능한 수준으로 작성</li>
+</ul>
+<p>AWS 클라우드 적용 :</p>
+<ul>
+<li>→ 6개 수탁사 중 1개(키오스크) 선택 적용</li>
+<li>→ 항목 추가 시 4.1.1 등 별도 번호 부여</li>
+</ul>
+<p>증적 자료 :</p>
+<ul>
+<li>→ 모든 항목 증적 불필요. 굵직한 핵심 위주 선별</li>
+<li>→ 인터넷에서 찾은 방치 출력물 사진, 파쇄함 수거 장면, X-배너·보안 포스터 등이 유효 증적으로 활용 가능</li>
+</ul>
+<p>CCTV 점검 범위 :</p>
+<ul>
+<li>→ 케이터링 작업 공간 전체가 아닌, 전산실 출입구·사무실 출입구 등 핵심 포인트 위주로만 점검</li>
+</ul>
+<p>점검 내역 작성 팁 :</p>
+<ul>
+<li>→ &ldquo;13개 항목 중 OOO를 포함한 5개 항목 확인, 나머지는 제외&quot;처럼 있는 그대로 명확하게 서술</li>
+<li>→ 형식에 쫄지 말 것. 현업도 양식 제각각</li>
+</ul>
+<h3 id="활동-88-2-3336-진행-사항-리뷰-및-다음-주-계획-수립">활동 88-2: 3/3~3/6 진행 사항 리뷰 및 다음 주 계획 수립<a hidden class="anchor" aria-hidden="true" href="#활동-88-2-3336-진행-사항-리뷰-및-다음-주-계획-수립">#</a></h3>
+<p><strong>진행 사항 정리:</strong></p>
+<p>3/3 화요일 :</p>
+<ul>
+<li>→ 수탁사 최종 6개 선정
+<ul>
+<li>키오스크 : 소규모 IT 기업, 위탁사 시스템과 연계 운영</li>
+<li>지상조업 : 위탁사 시스템 연동, 탑승 수속·라운지 운영 포함</li>
+</ul>
+</li>
+</ul>
+<p>3/4 수 ~ 3/6 금 :</p>
+<ul>
+<li>→ 멘토님 제공 체크리스트 참고하여 수탁사별 현황·시나리오·체크리스트 작성 및 점검 완료</li>
+<li>→ 현황 작성 시 점검기준·법 항목·점검방법을 AI에 제공하여 생성
+<ul>
+<li><strong>제미나이</strong> : 환각 발생 多</li>
+<li><strong>클로드</strong> : 문서작업 탁월</li>
+<li><strong>GPT</strong> : 중간 수준</li>
+</ul>
+</li>
+</ul>
+<p><strong>다음 주 목표:</strong></p>
+<p>화요일까지 개인 완료 필수 :</p>
+<ul>
+<li>→ 본인 담당 체크리스트 완성</li>
+</ul>
+<p>다음 주 전체 작업 :</p>
+<ul>
+<li>→ 수탁사별 시나리오 디테일 보완 (금융 - AWS/재위탁, 키오스크 - 클라우드)</li>
+<li>→ 크로스체킹 수행</li>
+<li>→ WBS 양식 검토 및 수행계획서 작성
+<ul>
+<li>WBS 1 : 하랑항공(갑) &amp; 리베로(을) 기준</li>
+<li>WBS 2 : 팀 전체 프로젝트 기준 (2개 합치는 방향)</li>
+</ul>
+</li>
+<li>→ 핵심 증적 자료 생성</li>
+<li>→ 수탁사별 워드 점검 보고서 완성</li>
+<li>→ (시간 여유 시) 개별 보고서 및 시연 동영상 5분 구성</li>
+</ul>
+<hr>
+<h2 id="3-비교분석-표">3. 비교·분석 표<a hidden class="anchor" aria-hidden="true" href="#3-비교분석-표">#</a></h2>
+<h3 id="판정-기준-비교-기존-vs-확정">판정 기준 비교 (기존 vs 확정)<a hidden class="anchor" aria-hidden="true" href="#판정-기준-비교-기존-vs-확정">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">항목</th>
+          <th style="text-align: left">기존 (Day 87 기준)</th>
+          <th style="text-align: left">확정 (Day 88 멘토링 후)</th>
+          <th style="text-align: left">변경 이유</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>양호</strong></td>
+          <td style="text-align: left">-</td>
+          <td style="text-align: left"><strong>Y</strong></td>
+          <td style="text-align: left">명확한 단일 기호로 통일</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>부분 충족</strong></td>
+          <td style="text-align: left">P</td>
+          <td style="text-align: left"><strong>P</strong> (부분양호/부분취약)</td>
+          <td style="text-align: left">동일 유지</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>미충족</strong></td>
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"><strong>N</strong> (취약)</td>
+          <td style="text-align: left">동일 유지</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>해당없음</strong></td>
+          <td style="text-align: left">NA</td>
+          <td style="text-align: left"><strong>NA</strong> (점수 계산 제외)</td>
+          <td style="text-align: left">개인정보처리시스템 미보유 등 위협 구멍 자체 없는 경우만 적용</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="보안-직무-분야-비교">보안 직무 분야 비교<a hidden class="anchor" aria-hidden="true" href="#보안-직무-분야-비교">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">분야</th>
+          <th style="text-align: left">주요 업무</th>
+          <th style="text-align: left">필요 역량</th>
+          <th style="text-align: left">관련 법령/인증</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>컨설팅</strong></td>
+          <td style="text-align: left">수탁사 점검, ISMS-P 심사, 컴플라이언스 진단</td>
+          <td style="text-align: left">법령 해석, 문서 분석, 고객 커뮤니케이션</td>
+          <td style="text-align: left">개보법, 안전성 확보조치 기준, 고시</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>인프라 진단</strong></td>
+          <td style="text-align: left">서버·DB·네트워크·웹·WAS 취약점 점검</td>
+          <td style="text-align: left">시스템 이해, 점검 도구 활용, 기술적 분석</td>
+          <td style="text-align: left">주통, 금취, 전자금융감독규정</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>모의해킹</strong></td>
+          <td style="text-align: left">응용프로그램·웹 공격 시뮬레이션, 취약점 도출</td>
+          <td style="text-align: left">공격 기법, 익스플로잇, 보고서 작성</td>
+          <td style="text-align: left">OWASP Top 10, CVE</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>관제 (SOC)</strong></td>
+          <td style="text-align: left">실시간 보안 이벤트 모니터링·대응</td>
+          <td style="text-align: left">SIEM 운영, 로그 분석, 침해사고 대응</td>
+          <td style="text-align: left">MITRE ATT&amp;CK, 침해사고 대응 절차</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="4-심화-분석">4. 심화 분석<a hidden class="anchor" aria-hidden="true" href="#4-심화-분석">#</a></h2>
+<h3 id="위험위협취약점-구분">위험·위협·취약점 구분<a hidden class="anchor" aria-hidden="true" href="#위험위협취약점-구분">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">구분</th>
+          <th style="text-align: left">정의</th>
+          <th style="text-align: left">하랑 케이터링 예시</th>
+          <th style="text-align: left">컨설팅 기술 방식</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>취약점</strong></td>
+          <td style="text-align: left">공격 또는 사고가 발생할 수 있는 시스템·프로세스의 약점</td>
+          <td style="text-align: left">퇴사자 계정 미삭제, 공용 계정 사용, 패치 미적용</td>
+          <td style="text-align: left">&ldquo;~한 상태로 확인됨&rdquo; (현재 상태 기술)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>위협</strong></td>
+          <td style="text-align: left">취약점을 이용해 악영향을 미칠 수 있는 가능성</td>
+          <td style="text-align: left">퇴사자 계정을 통한 비인가 접근 가능성, 파쇄기 옆 방치 문서의 정보 유출 가능성</td>
+          <td style="text-align: left">&ldquo;~할 수 있음&rdquo;, &ldquo;~의 위험이 존재함&rdquo;</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>위험</strong></td>
+          <td style="text-align: left">위협이 실제로 발생했을 때의 영향(손실)의 크기</td>
+          <td style="text-align: left">승객 명단 1만 명 유출 시 법적 제재·배상 책임 발생</td>
+          <td style="text-align: left">&ldquo;~시 ~의 피해가 예상됨&rdquo;</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="컨설팅-프로젝트-산출물-구조">컨설팅 프로젝트 산출물 구조<a hidden class="anchor" aria-hidden="true" href="#컨설팅-프로젝트-산출물-구조">#</a></h3>
+<p>리베로 팀 최종 산출물 구조 :</p>
+<ul>
+<li>
+<p><strong>위탁사 관리체계</strong></p>
+<ul>
+<li>수탁사 선정 및 선정 이유서</li>
+<li>계약서 (보안 항목 포함)</li>
+<li>수탁사 관리 항목 정의</li>
+<li>체크리스트 (Y/P/N/NA 판정)</li>
+<li>수탁사 대상 교육 자료</li>
+<li>수탁사 점검 계획서</li>
+</ul>
+</li>
+<li>
+<p><strong>수탁사 점검 결과</strong></p>
+<ul>
+<li>수탁사별 현황서</li>
+<li>증적 자료 (선별된 핵심 항목)</li>
+<li>워드 점검 보고서 (수탁사별)</li>
+</ul>
+</li>
+<li>
+<p><strong>프로젝트 관리</strong></p>
+<ul>
+<li>WBS 1 (하랑항공 &amp; 리베로)</li>
+<li>WBS 2 (팀 전체) → WBS 1+2 통합 방향</li>
+<li>수행계획서</li>
+<li>최종 보고서</li>
+<li>시연 동영상 (5분)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="5-실무보안-적용">5. 실무/보안 적용<a hidden class="anchor" aria-hidden="true" href="#5-실무보안-적용">#</a></h2>
+<h3 id="보안-전문가-관점---컨설팅-점검-내역-작성-기준">보안 전문가 관점 - 컨설팅 점검 내역 작성 기준<a hidden class="anchor" aria-hidden="true" href="#보안-전문가-관점---컨설팅-점검-내역-작성-기준">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">구분</th>
+          <th style="text-align: left">잘못된 표현</th>
+          <th style="text-align: left">올바른 표현</th>
+          <th style="text-align: left">이유</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>대상 범위</strong></td>
+          <td style="text-align: left">취급자 일부가 교육을 받음</td>
+          <td style="text-align: left">전체 취급자 15명 중 11명 교육 이수 확인, 4명 미이수</td>
+          <td style="text-align: left">&ldquo;일부&quot;는 의미 불분명. 숫자로 명시해야 판정 가능</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>문서 현황</strong></td>
+          <td style="text-align: left">내부관리계획서가 최신화되어 있음</td>
+          <td style="text-align: left">내부관리계획서 v3.1 (2025.01 기준) 확인, 72시간 보고 기준 미반영</td>
+          <td style="text-align: left">버전·날짜 없으면 최신화 여부 판단 불가</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>시스템 현황</strong></td>
+          <td style="text-align: left">일부 시스템에 타임아웃 설정됨</td>
+          <td style="text-align: left">ERP 세션 타임아웃 30분 설정 확인, CMS는 미설정</td>
+          <td style="text-align: left">시스템별 구분 없으면 P/N 판정 불가</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>위협 기술</strong></td>
+          <td style="text-align: left">보안 사고가 날 수 있음</td>
+          <td style="text-align: left">공용 계정 사용으로 인해 행위자 특정 불가, 내부자 비인가 접근 발생 시 책임 추적 불가</td>
+          <td style="text-align: left">막연한 가능성이 아닌 구체적 시나리오로 고객 설득</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="면접-대비-핵심-답변-포인트">면접 대비 핵심 답변 포인트<a hidden class="anchor" aria-hidden="true" href="#면접-대비-핵심-답변-포인트">#</a></h3>
+<p><strong>Q.</strong> 개인정보 안전조치 기준은 어디에 규정되어 있나요?</p>
+<ul>
+<li>→ 개인정보 보호법 제29조에서 안전조치 의무를 규정하고 있으며, 구체적인 기준은 개인정보보호위원회 고시인 &lsquo;개인정보의 안전성 확보조치 기준&rsquo;에 명시되어 있습니다. 관리적·기술적·물리적 보호조치로 구분됩니다.</li>
+</ul>
+<p><strong>Q.</strong> CI와 DI의 차이는 무엇인가요?</p>
+<ul>
+<li>→ CI(연계정보)는 서로 다른 서비스 간 동일인 식별에 사용되는 고유값이며, DI(중복가입확인정보)는 동일 서비스 내에서 중복 가입 여부를 확인하는 데 사용됩니다. 주민등록번호를 직접 수집할 수 없기 때문에 해시값으로 변환하여 활용합니다.</li>
+</ul>
+<hr>
+<h2 id="6-배운-점-및-인사이트">6. 배운 점 및 인사이트<a hidden class="anchor" aria-hidden="true" href="#6-배운-점-및-인사이트">#</a></h2>
+<h3 id="새로-알게-된-점">새로 알게 된 점<a hidden class="anchor" aria-hidden="true" href="#새로-알게-된-점">#</a></h3>
+<ul>
+<li><strong>NA 판정의 무게:</strong> NA는 &ldquo;해당없음&quot;이지만, 이 판정 자체가 컨설턴트의 책임 있는 판단이다. 위협 발생 구멍이 없다는 것을 논리적으로 입증할 수 있어야 하며, NA를 쉽게 던지면 보고서 전체의 신뢰도가 하락한다.</li>
+<li><strong>수치 기반 서술의 중요성:</strong> &ldquo;일부&quot;라는 표현 하나가 고객의 반박 빌미가 된다. 컨설팅 보고서는 수치와 사실로 말해야 하며, 모호함은 곧 약점이다.</li>
+<li><strong>위협의 정의 재정립:</strong> 가능성이 곧 위협이라는 멘토님의 말이 인상적이었다. 보안은 100% 확실한 위협만 다루는 게 아니라, 발생할 수 있는 가능성을 미리 식별하고 대응하는 게 본질임을 다시 확인했다.</li>
+<li><strong>RFP에서 수주까지의 프로세스:</strong> 제안서 작성 → 발표 → 수주 → 기술협상 → WBS/수행계획서 작성이라는 컨설팅 프로젝트 전체 흐름을 오늘 처음 명확하게 파악했다. 기술협상에서 범위·인력 추가 요구가 발생하는 구조적 이유도 이해됐다.</li>
+<li><strong>AI 도구별 특성 비교:</strong> 클로드는 문서 작업에 탁월, 제미나이는 환각 발생 빈도 높음, GPT는 중간 수준이라는 팀 내 실사용 결과가 흥미로웠다. 도구 특성을 파악하고 용도에 맞게 선택하는 것도 실무 역량이다.</li>
+</ul>
+<h3 id="이전-학습과의-연결고리">이전 학습과의 연결고리<a hidden class="anchor" aria-hidden="true" href="#이전-학습과의-연결고리">#</a></h3>
+<ul>
+<li><strong>개보법 위수탁(제26조)과 연계:</strong> RFP → 계약서 → 수탁사 점검이라는 흐름이 법 제26조의 관리감독 의무와 정확히 맞닿아 있음을 확인했다.</li>
+<li><strong>ISMS-P 학습과 연결:</strong> 오늘 언급된 인증 제도(ISMS-P, ISO27001, 주통, 금취)가 이전에 학습한 인증 프레임워크와 연결되어 각각의 적용 대상과 목적이 더 명확해졌다.</li>
+<li><strong>컨설팅 3단계 방법론 심화:</strong> 현황 분석 → 평가 → 보호대책 수립 흐름이 위험·위협·취약점 구분과 연결된다. 현황이 취약점을 드러내고, 취약점이 위협으로 이어지며, 위협이 위험으로 현실화된다는 인과 구조를 오늘 정리했다.</li>
+</ul>
+<h3 id="실무-적용-아이디어">실무 적용 아이디어<a hidden class="anchor" aria-hidden="true" href="#실무-적용-아이디어">#</a></h3>
+<p><strong>보안 전문가 관점:</strong></p>
+<ul>
+<li><strong>체크리스트 기재 기준 문서화:</strong> 팀 내 레퍼런스로 &ldquo;수치·버전·날짜 기재 예시&rdquo; 문서를 만들어두면 크로스체킹 시 기준 통일이 쉬워진다.</li>
+<li><strong>증적 자료 선별 기준:</strong> 법적 의무 항목(내부관리계획, 대표자 날인 등) 우선, 그다음 시각적으로 명확한 실사 자료(출입구 CCTV 위치, X-배너 등)로 구성하면 효율적이다.</li>
+<li><strong>위협 기술 연습:</strong> 문서를 주고 위험·위협·취약점을 구분하는 훈련을 AI를 활용해 반복적으로 수행하는 것이 컨설팅 실무 감각을 키우는 가장 빠른 방법이다.</li>
+</ul>
+<hr>
+<h2 id="7-quick-reference">7. Quick Reference<a hidden class="anchor" aria-hidden="true" href="#7-quick-reference">#</a></h2>
+<h3 id="판정-기준-요약">판정 기준 요약<a hidden class="anchor" aria-hidden="true" href="#판정-기준-요약">#</a></h3>
+<ul>
+<li><strong>Y (양호)</strong> : 해당 항목 완전 이행, 증적 구비</li>
+<li><strong>P (부분양호)</strong> : 일부 적용, 증적 부족, 대상 일부에만 적용</li>
+<li><strong>N (취약)</strong> : 전혀 이행 없음 / 법적 요건 명백 위반</li>
+<li><strong>NA (해당없음)</strong> : 위협 발생 구멍 자체가 없는 경우. 점수 계산 제외</li>
+</ul>
+<h3 id="법령-체계-요약표">법령 체계 요약표<a hidden class="anchor" aria-hidden="true" href="#법령-체계-요약표">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">구분</th>
+          <th style="text-align: left">명칭</th>
+          <th style="text-align: left">제정 주체</th>
+          <th style="text-align: left">주요 내용</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>법</strong></td>
+          <td style="text-align: left">개인정보 보호법</td>
+          <td style="text-align: left">국회</td>
+          <td style="text-align: left">기본 원칙·권리·의무</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>시행령</strong></td>
+          <td style="text-align: left">개인정보 보호법 시행령</td>
+          <td style="text-align: left">대통령</td>
+          <td style="text-align: left">법 위임 구체적 범위</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>고시</strong></td>
+          <td style="text-align: left">개인정보의 안전성 확보조치 기준</td>
+          <td style="text-align: left">개인정보보호위원회</td>
+          <td style="text-align: left">관리적·기술적·물리적 세부 기준</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>특별법</strong></td>
+          <td style="text-align: left">신용정보법, 전자금융거래법</td>
+          <td style="text-align: left">국회</td>
+          <td style="text-align: left">금융 분야 특수성 반영</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>감독규정</strong></td>
+          <td style="text-align: left">전자금융감독규정</td>
+          <td style="text-align: left">금융위원회</td>
+          <td style="text-align: left">금융 보안 실질 가이드라인</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="다음-주-산출물-체크리스트">다음 주 산출물 체크리스트<a hidden class="anchor" aria-hidden="true" href="#다음-주-산출물-체크리스트">#</a></h3>
+<p><strong>화요일 개인 완료 필수:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> 담당 수탁사 체크리스트 완성 (Y/P/N/NA 판정 포함)</li>
+<li><input disabled="" type="checkbox"> 점검 내역 수치·버전·날짜 기재 완료</li>
+</ul>
+<p><strong>다음 주 팀 전체 작업:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> 수탁사별 시나리오 디테일 보완 (금융 : AWS/재위탁, 키오스크 : 클라우드)</li>
+<li><input disabled="" type="checkbox"> 크로스체킹 수행</li>
+<li><input disabled="" type="checkbox"> WBS 양식 검토 및 작성 (1+2 통합 방향)</li>
+<li><input disabled="" type="checkbox"> 수행계획서 작성</li>
+<li><input disabled="" type="checkbox"> 핵심 증적 자료 생성 (선별적 구성)</li>
+<li><input disabled="" type="checkbox"> 수탁사별 워드 점검 보고서 완성</li>
+<li><input disabled="" type="checkbox"> (시간 여유 시) 개별 보고서 작성</li>
+<li><input disabled="" type="checkbox"> (시간 여유 시) 시연 동영상 5분 구성</li>
+</ul>
+<hr>
+<h2 id="8-트러블슈팅">8. 트러블슈팅<a hidden class="anchor" aria-hidden="true" href="#8-트러블슈팅">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">문제</th>
+          <th style="text-align: left">원인</th>
+          <th style="text-align: left">해결 방법</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Day 87 작성 기준(N/P/NA)이 멘토링 후 Y/P/N/NA로 변경됨</td>
+          <td style="text-align: left">멘토님 피드백 반영 전 선작성</td>
+          <td style="text-align: left">Day 87 체크리스트 소급 수정 필요. Y 항목 추가 및 기준 재정립</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&ldquo;일부&rdquo;, &ldquo;대체로&rdquo; 등 모호한 표현이 체크리스트 곳곳에 사용됨</td>
+          <td style="text-align: left">명확한 기재 기준이 팀 내 공유되지 않았음</td>
+          <td style="text-align: left">수치·버전·날짜 기재 예시 레퍼런스 공유 후 전면 재검토</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">AWS 항목을 키오스크 외 수탁사에도 적용 여부 불분명</td>
+          <td style="text-align: left">초기 설계 시 적용 기준 미확정</td>
+          <td style="text-align: left">키오스크 1개 수탁사에만 적용 확정. 항목 번호 4.1.1 등으로 별도 관리</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">증적 자료 생성 범위가 너무 넓어 작업 부담이 큰 상황</td>
+          <td style="text-align: left">모든 항목에 증적이 필요하다는 오해</td>
+          <td style="text-align: left">굵직한 핵심 항목 위주로 선별. 법적 필수 포인트 + 시각적 실사 자료 중심으로 재구성</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<p><strong>Today&rsquo;s Insight:</strong></p>
+<p>오늘 멘토링을 통해 컨설팅 보고서가 &ldquo;정확한 언어&quot;로 이루어진 설득의 문서임을 다시 한번 실감했다. Y/P/N/NA 판정 기준 확정, 수치 기반 서술 원칙, 증적 자료의 선별적 구성이라는 세 가지 피드백은 모두 하나의 방향을 가리킨다. 모호함은 반박의 빌미가 되고, 명확함은 신뢰의 기반이 된다는 것. 또한 위험·위협·취약점의 인과 구조와 RFP부터 수행계획서까지의 프로젝트 전체 흐름을 오늘 처음으로 하나의 그림으로 연결할 수 있었다. 남은 프로젝트 기간 동안 형식보다 논리의 명확함에 집중하는 것이 핵심이라는 방향을 잡았다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://hojjang98.github.io/tags/%EC%88%98%ED%83%81%EC%82%AC%EC%A0%90%EA%B2%80/">수탁사점검</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%A9%98%ED%86%A0%EB%A7%81/">멘토링</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%B2%B4%ED%81%AC%EB%A6%AC%EC%8A%A4%ED%8A%B8/">체크리스트</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%ED%8C%90%EC%A0%95%EA%B8%B0%EC%A4%80/">판정기준</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8/">개인정보보호</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%B2%95%EB%A0%B9%EC%B2%B4%EA%B3%84/">법령체계</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%BB%A8%EC%84%A4%ED%8C%85/">컨설팅</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/">프로젝트</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

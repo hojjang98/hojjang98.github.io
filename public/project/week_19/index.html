@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Week 19 — 파이널 프로젝트: 산출물 마스터 플랜 확정 (Team LIBERO) | HJ&#39;s Security Note</title>
+<meta name="keywords" content="파이널프로젝트, 개인정보보호, 위수탁관리, 컨설팅, 산출물관리, 하랑항공, TeamLIBERO, SK쉴더스루키즈">
+<meta name="description" content="파이널 프로젝트 4단계 — 하랑항공 수탁사 점검 보안컨설팅 프로젝트의 최종 제출 산출물 목록을 전수 점검하고, 완성/진행 중/미착수/제외 현황을 확정한 Team LIBERO의 마스터 플랜">
+<meta name="author" content="">
+<link rel="canonical" href="https://hojjang98.github.io/project/week_19/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.290573799e582c418c4bd84f2bca757d0a77fd1bf9f5c43942030e706df68ec8.css" integrity="sha256-KQVzeZ5YLEGMS9hPK8p1fQp3/Rv59cQ5QgMOcG32jsg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/project/week_19/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://hojjang98.github.io/project/week_19/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="Week 19 — 파이널 프로젝트: 산출물 마스터 플랜 확정 (Team LIBERO)">
+  <meta property="og:description" content="파이널 프로젝트 4단계 — 하랑항공 수탁사 점검 보안컨설팅 프로젝트의 최종 제출 산출물 목록을 전수 점검하고, 완성/진행 중/미착수/제외 현황을 확정한 Team LIBERO의 마스터 플랜">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="project">
+    <meta property="article:published_time" content="2026-03-16T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-03-16T00:00:00+00:00">
+    <meta property="article:tag" content="파이널프로젝트">
+    <meta property="article:tag" content="개인정보보호">
+    <meta property="article:tag" content="위수탁관리">
+    <meta property="article:tag" content="컨설팅">
+    <meta property="article:tag" content="산출물관리">
+    <meta property="article:tag" content="하랑항공">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_18/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_17/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_16/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_15/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_14/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_13/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Week 19 — 파이널 프로젝트: 산출물 마스터 플랜 확정 (Team LIBERO)">
+<meta name="twitter:description" content="파이널 프로젝트 4단계 — 하랑항공 수탁사 점검 보안컨설팅 프로젝트의 최종 제출 산출물 목록을 전수 점검하고, 완성/진행 중/미착수/제외 현황을 확정한 Team LIBERO의 마스터 플랜">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "프로젝트",
+      "item": "https://hojjang98.github.io/project/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Week 19 — 파이널 프로젝트: 산출물 마스터 플랜 확정 (Team LIBERO)",
+      "item": "https://hojjang98.github.io/project/week_19/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Week 19 — 파이널 프로젝트: 산출물 마스터 플랜 확정 (Team LIBERO)",
+  "name": "Week 19 — 파이널 프로젝트: 산출물 마스터 플랜 확정 (Team LIBERO)",
+  "description": "파이널 프로젝트 4단계 — 하랑항공 수탁사 점검 보안컨설팅 프로젝트의 최종 제출 산출물 목록을 전수 점검하고, 완성/진행 중/미착수/제외 현황을 확정한 Team LIBERO의 마스터 플랜",
+  "keywords": [
+    "파이널프로젝트", "개인정보보호", "위수탁관리", "컨설팅", "산출물관리", "하랑항공", "TeamLIBERO", "SK쉴더스루키즈"
+  ],
+  "articleBody": "Week 19 — 파이널 프로젝트: 산출물 마스터 플랜 확정 (Team LIBERO) 프로젝트 전체 자료는 GitHub에서 확인할 수 있습니다. hojjang98 / skshielders-rookies-28 — projects/week_19\n이번 주 핵심 어디로 가고 있는지 모르면 방향이 흩어지니까.\n오늘은 산출물 목록을 확정했다. 지금까지 만든 것, 아직 못 만든 것, 안 만들어도 되는 것을 전부 꺼내서 정리했다.\n프로젝트 현황 항목 내용 팀명 Team LIBERO (5조) 위탁사 하랑항공 (가상 국내 중대형 항공사) 리베로 담당 수탁사 하랑 케이터링 프로젝트명 개인정보처리 수탁사 점검 보안컨설팅 현재 단계 Fraction 04 — 산출물 전체 현황 점검 및 마스터 플랜 확정 산출물 마스터 플랜 — 전체 현황 산출물을 4개 카테고리로 분류하고, 각 항목의 진행 상태를 확정했다.\nCAT 01 — 5조 공통 팀 전체 프로젝트 수준의 산출물.\n산출물 상태 비고 WBS 수정 중 B/C열 명칭 정비, 순서 재조정, 가중치·진척율·이행점검 행 삭제 수행계획서 수정 중 WBS 날짜·내용과 정합성 맞추기, 팀원 이름 기재, 보고 체계 수정 PPT + 시연영상 미착수 발표용 — 점검 방법론 흐름 포함 (현황분석 =\u003e 사전준비 =\u003e 진단평가 =\u003e 대책구현 =\u003e 이행) 요구사항 정의서 제외 컨설팅 프로젝트에서 잘 쓰지 않음 =\u003e 제외 확정 WBS 수정 방향:\n수정 전: 가중치·진척율·이행점검 항목 포함 (과도한 세분화)\r수정 후: 실제 진행 현황 중심의 간결한 구조로 정비\rCAT 02 — 위탁사 (하랑항공) 위탁사가 수탁사를 관리하기 위한 관리체계 수립 산출물.\n산출물 상태 비고 제안요청서 (RFP) 시나리오상 생략 리베로가 하랑항공에 선제 제안한 구조로 설정 위수탁 계약서 미착수 보안요구사항 필수 포함 (ISMS-P 2.3.2 외부자 계약 시 보안 기준) 수탁사 목록 미착수 수탁사명, 위치, 담당자, 개인정보시스템 유무, 처리자 수, 이동방식 — 한 장 요약본 전체 결과 보고서 미착수 6개 수탁사 결과 종합 =\u003e 위탁사에 제출하는 최종 보고서 RFP 제외 배경: 리베로가 하랑항공의 수탁사 관리체계 공백을 먼저 파악하고 선제 제안한 시나리오 로 설정. 발표 중 RFP 부재에 대한 질문이 나오면 이 논리로 대응한다.\nCAT 03 — 수탁사 (하랑 케이터링 외) 리베로 담당: 하랑 케이터링 / 나머지 5개사는 각 팀원 담당.\n산출물 상태 비고 시나리오 (수탁사 현황) 진행 중 개인정보보호법·안전조치 기준 기반, AI 활용 제작 체크리스트 수정 중 증적명 열 추가, P·Y·N·NA 구분, 미흡 항목 빨간 글씨, 증적자료 별도 시트(항목번호) 첨부 증적자료 진행 중 체크리스트 폴더 또는 엑셀 시트, 파일명 규칙: 항목번호(1.1.1~) 순 점검계획서 미착수 수탁사별 별도 작성 X =\u003e 하나로 통합, 수탁사별 날짜·방문자·담당자 구분 표기 수탁사별 결과 보고서 수정 중 점검 기간 = 실제 점검 기간, 양호 항목 생략 가능, 향후 조치 일정 표 순서 수정 (내용 =\u003e 일정) 개선방안 보고서 미착수 미흡 항목 보호대책·개선방안 — 결과 보고서 내 챕터 또는 별도 문서 수행계획서 (점검용) 수정 중 5조 수행계획서와 별도, 점검 범위·절차·일정 상세 기재 체크리스트 개선 방향:\n기존: 항목별 양호/미흡만 표기\r개선:\r- 증적명 열 추가 (어떤 증거로 판단했는지 명시)\r- P (Partial) · Y (양호) · N (미흡) · NA (해당 없음) 4단계 구분\r- 미흡(N) 항목 빨간 글씨 강조\r- 증적자료는 시트명 = 항목번호로 별도 첨부\rCAT 04 — 리베로 고유 5조 전체가 아닌 리베로 팀이 독자적으로 수행한 산출물.\n산출물 상태 비고 사업제안서 수정 중 Word 형태 / 예산 삭제, 수행일정·투입인력 통합, 이행점검 제외, 8·9장 합쳐 “왜 리베로인가\"로 마무리 사업제안서 목차 수정 방향:\n수정 전: 예산, 수행일정, 투입인력, 이행점검 각각 챕터\r수정 후: 수행일정 + 투입인력 통합\r이행점검 제외 (시간 제약 사유)\r마지막 챕터 = \"왜 리베로인가\" (차별점 강조)\r발표 Q\u0026A 대응 포인트 발표·면접에서 나올 수 있는 질문과 대응 논리를 사전에 정리했다.\n이행점검 부재 Q: 이행점검은 어떻게 하셨나요?\rA: 시간 제약으로 현장 이행점검은 수행하지 못했습니다.\r프로세스는 인지하고 있으며, 실제 프로젝트에서는\r서면점검 형태로 사후 이행 확인을 권고합니다.\rRFP 부재 Q: RFP 없이 어떻게 프로젝트가 시작됐나요?\rA: 리베로가 하랑항공의 수탁사 관리체계 공백을 먼저 파악하고\r선제적으로 제안한 구조입니다.\rRFP는 발주사가 먼저 요청서를 내는 경우이지만,\r이번 시나리오는 컨설팅사 주도 제안 형태입니다.\r요구사항 정의서 부재 Q: 요구사항 정의서는 왜 없나요?\rA: 보안 컨설팅 프로젝트에서는 요구사항 정의서보다\r수행계획서와 체크리스트가 중심 문서입니다.\r해당 시간을 체크리스트 고도화와 증적 수집에 투자했습니다.\r수탁사 현황 (시나리오) 구성 방법 Q: 수탁사 현황은 어떻게 만드셨나요?\rA: 개인정보보호법 및 안전성 확보조치 기준 법령을 기반으로,\r해당 업종(케이터링)에서 실제 발생 가능한 현황을 AI 활용하여 구성했습니다.\r산출물 네이밍 규칙 모든 산출물 파일명은 아래 규칙을 따른다:\n형식: (5조)_사업명_(구분)_문서명_버전\r규칙:\r- 버전은 1.0 이상\r- 아라비아 숫자와 한글 가나다 혼용 금지\r- 구분 예시: 위탁사, 수탁사, 공통\r다음 할 일 이번 주 완료 목표:\r- 체크리스트 수정 (증적명 열 + P·Y·N·NA)\r- 시나리오(수탁사 현황) 초안 완성\r- 수행계획서 (점검용) 수정\r다음 주 넘길 것:\r- 위수탁 계약서\r- 수탁사 목록\r- 점검계획서\r- 개선방안 보고서\r- 전체 결과 보고서 (최종 통합)\r- PPT + 시연영상\r하나씩 부수면 된다. 방향은 여기 있다.\n학습 성과 정리 영역 학습 내용 산출물 관리 컨설팅 프로젝트의 산출물 전수 점검 및 우선순위 설정 컨설팅 관행 RFP·요구사항정의서의 실무 생략 사유와 대응 논리 체크리스트 설계 P·Y·N·NA 4단계 + 증적명 열의 실무 표준 구조 이해 발표 준비 예상 질문과 논리적 대응 방안 사전 준비 문서 네이밍 프로젝트 문서 관리 규칙 수립 및 적용 ",
+  "wordCount" : "2174",
+  "inLanguage": "ko",
+  "datePublished": "2026-03-16T00:00:00Z",
+  "dateModified": "2026-03-16T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/project/week_19/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://hojjang98.github.io/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/project/">프로젝트</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Week 19 — 파이널 프로젝트: 산출물 마스터 플랜 확정 (Team LIBERO)
+    </h1>
+    <div class="post-meta"><span title='2026-03-16 00:00:00 +0000 UTC'>2026년 3월 16일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="week-19--파이널-프로젝트-산출물-마스터-플랜-확정-team-libero">Week 19 — 파이널 프로젝트: 산출물 마스터 플랜 확정 (Team LIBERO)<a hidden class="anchor" aria-hidden="true" href="#week-19--파이널-프로젝트-산출물-마스터-플랜-확정-team-libero">#</a></h1>
+<blockquote>
+<p>프로젝트 전체 자료는 GitHub에서 확인할 수 있습니다.
+<a href="https://github.com/hojjang98/skshielders-rookies-28/tree/main/projects/week_19">hojjang98 / skshielders-rookies-28 — projects/week_19</a></p>
+</blockquote>
+<hr>
+<h2 id="이번-주-핵심">이번 주 핵심<a hidden class="anchor" aria-hidden="true" href="#이번-주-핵심">#</a></h2>
+<blockquote>
+<p>어디로 가고 있는지 모르면 방향이 흩어지니까.</p>
+</blockquote>
+<p>오늘은 산출물 목록을 확정했다.
+지금까지 만든 것, 아직 못 만든 것, 안 만들어도 되는 것을 전부 꺼내서 정리했다.</p>
+<hr>
+<h2 id="프로젝트-현황">프로젝트 현황<a hidden class="anchor" aria-hidden="true" href="#프로젝트-현황">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>항목</th>
+          <th>내용</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>팀명</strong></td>
+          <td>Team LIBERO (5조)</td>
+      </tr>
+      <tr>
+          <td><strong>위탁사</strong></td>
+          <td>하랑항공 (가상 국내 중대형 항공사)</td>
+      </tr>
+      <tr>
+          <td><strong>리베로 담당 수탁사</strong></td>
+          <td>하랑 케이터링</td>
+      </tr>
+      <tr>
+          <td><strong>프로젝트명</strong></td>
+          <td>개인정보처리 수탁사 점검 보안컨설팅</td>
+      </tr>
+      <tr>
+          <td><strong>현재 단계</strong></td>
+          <td>Fraction 04 — 산출물 전체 현황 점검 및 마스터 플랜 확정</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="산출물-마스터-플랜--전체-현황">산출물 마스터 플랜 — 전체 현황<a hidden class="anchor" aria-hidden="true" href="#산출물-마스터-플랜--전체-현황">#</a></h2>
+<p>산출물을 4개 카테고리로 분류하고, 각 항목의 진행 상태를 확정했다.</p>
+<hr>
+<h3 id="cat-01--5조-공통">CAT 01 — 5조 공통<a hidden class="anchor" aria-hidden="true" href="#cat-01--5조-공통">#</a></h3>
+<p>팀 전체 프로젝트 수준의 산출물.</p>
+<table>
+  <thead>
+      <tr>
+          <th>산출물</th>
+          <th>상태</th>
+          <th>비고</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>WBS</td>
+          <td><strong>수정 중</strong></td>
+          <td>B/C열 명칭 정비, 순서 재조정, 가중치·진척율·이행점검 행 삭제</td>
+      </tr>
+      <tr>
+          <td>수행계획서</td>
+          <td><strong>수정 중</strong></td>
+          <td>WBS 날짜·내용과 정합성 맞추기, 팀원 이름 기재, 보고 체계 수정</td>
+      </tr>
+      <tr>
+          <td>PPT + 시연영상</td>
+          <td>미착수</td>
+          <td>발표용 — 점검 방법론 흐름 포함 (현황분석 =&gt; 사전준비 =&gt; 진단평가 =&gt; 대책구현 =&gt; 이행)</td>
+      </tr>
+      <tr>
+          <td>요구사항 정의서</td>
+          <td><del>제외</del></td>
+          <td>컨설팅 프로젝트에서 잘 쓰지 않음 =&gt; 제외 확정</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>WBS 수정 방향</strong>:</p>
+<pre><code>수정 전: 가중치·진척율·이행점검 항목 포함 (과도한 세분화)
+수정 후: 실제 진행 현황 중심의 간결한 구조로 정비
+</code></pre>
+<hr>
+<h3 id="cat-02--위탁사-하랑항공">CAT 02 — 위탁사 (하랑항공)<a hidden class="anchor" aria-hidden="true" href="#cat-02--위탁사-하랑항공">#</a></h3>
+<p>위탁사가 수탁사를 관리하기 위한 관리체계 수립 산출물.</p>
+<table>
+  <thead>
+      <tr>
+          <th>산출물</th>
+          <th>상태</th>
+          <th>비고</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>제안요청서 (RFP)</td>
+          <td><del>시나리오상 생략</del></td>
+          <td>리베로가 하랑항공에 선제 제안한 구조로 설정</td>
+      </tr>
+      <tr>
+          <td>위수탁 계약서</td>
+          <td>미착수</td>
+          <td>보안요구사항 필수 포함 (ISMS-P 2.3.2 외부자 계약 시 보안 기준)</td>
+      </tr>
+      <tr>
+          <td>수탁사 목록</td>
+          <td>미착수</td>
+          <td>수탁사명, 위치, 담당자, 개인정보시스템 유무, 처리자 수, 이동방식 — 한 장 요약본</td>
+      </tr>
+      <tr>
+          <td>전체 결과 보고서</td>
+          <td>미착수</td>
+          <td>6개 수탁사 결과 종합 =&gt; 위탁사에 제출하는 최종 보고서</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>RFP 제외 배경</strong>:
+리베로가 하랑항공의 수탁사 관리체계 공백을 먼저 파악하고 <strong>선제 제안한 시나리오</strong> 로 설정.
+발표 중 RFP 부재에 대한 질문이 나오면 이 논리로 대응한다.</p>
+<hr>
+<h3 id="cat-03--수탁사-하랑-케이터링-외">CAT 03 — 수탁사 (하랑 케이터링 외)<a hidden class="anchor" aria-hidden="true" href="#cat-03--수탁사-하랑-케이터링-외">#</a></h3>
+<p>리베로 담당: <strong>하랑 케이터링</strong> / 나머지 5개사는 각 팀원 담당.</p>
+<table>
+  <thead>
+      <tr>
+          <th>산출물</th>
+          <th>상태</th>
+          <th>비고</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>시나리오 (수탁사 현황)</td>
+          <td><strong>진행 중</strong></td>
+          <td>개인정보보호법·안전조치 기준 기반, AI 활용 제작</td>
+      </tr>
+      <tr>
+          <td>체크리스트</td>
+          <td><strong>수정 중</strong></td>
+          <td>증적명 열 추가, P·Y·N·NA 구분, 미흡 항목 빨간 글씨, 증적자료 별도 시트(항목번호) 첨부</td>
+      </tr>
+      <tr>
+          <td>증적자료</td>
+          <td><strong>진행 중</strong></td>
+          <td>체크리스트 폴더 또는 엑셀 시트, 파일명 규칙: 항목번호(1.1.1~) 순</td>
+      </tr>
+      <tr>
+          <td>점검계획서</td>
+          <td>미착수</td>
+          <td>수탁사별 별도 작성 X =&gt; 하나로 통합, 수탁사별 날짜·방문자·담당자 구분 표기</td>
+      </tr>
+      <tr>
+          <td>수탁사별 결과 보고서</td>
+          <td><strong>수정 중</strong></td>
+          <td>점검 기간 = 실제 점검 기간, 양호 항목 생략 가능, 향후 조치 일정 표 순서 수정 (내용 =&gt; 일정)</td>
+      </tr>
+      <tr>
+          <td>개선방안 보고서</td>
+          <td>미착수</td>
+          <td>미흡 항목 보호대책·개선방안 — 결과 보고서 내 챕터 또는 별도 문서</td>
+      </tr>
+      <tr>
+          <td>수행계획서 (점검용)</td>
+          <td><strong>수정 중</strong></td>
+          <td>5조 수행계획서와 별도, 점검 범위·절차·일정 상세 기재</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>체크리스트 개선 방향</strong>:</p>
+<pre><code>기존: 항목별 양호/미흡만 표기
+개선:
+- 증적명 열 추가 (어떤 증거로 판단했는지 명시)
+- P (Partial) · Y (양호) · N (미흡) · NA (해당 없음) 4단계 구분
+- 미흡(N) 항목 빨간 글씨 강조
+- 증적자료는 시트명 = 항목번호로 별도 첨부
+</code></pre>
+<hr>
+<h3 id="cat-04--리베로-고유">CAT 04 — 리베로 고유<a hidden class="anchor" aria-hidden="true" href="#cat-04--리베로-고유">#</a></h3>
+<p>5조 전체가 아닌 <strong>리베로 팀이 독자적으로 수행한</strong> 산출물.</p>
+<table>
+  <thead>
+      <tr>
+          <th>산출물</th>
+          <th>상태</th>
+          <th>비고</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>사업제안서</td>
+          <td><strong>수정 중</strong></td>
+          <td>Word 형태 / 예산 삭제, 수행일정·투입인력 통합, 이행점검 제외, 8·9장 합쳐 &ldquo;왜 리베로인가&quot;로 마무리</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>사업제안서 목차 수정 방향</strong>:</p>
+<pre><code>수정 전: 예산, 수행일정, 투입인력, 이행점검 각각 챕터
+수정 후: 수행일정 + 투입인력 통합
+        이행점검 제외 (시간 제약 사유)
+        마지막 챕터 = &quot;왜 리베로인가&quot; (차별점 강조)
+</code></pre>
+<hr>
+<h2 id="발표-qa-대응-포인트">발표 Q&amp;A 대응 포인트<a hidden class="anchor" aria-hidden="true" href="#발표-qa-대응-포인트">#</a></h2>
+<p>발표·면접에서 나올 수 있는 질문과 대응 논리를 사전에 정리했다.</p>
+<h3 id="이행점검-부재">이행점검 부재<a hidden class="anchor" aria-hidden="true" href="#이행점검-부재">#</a></h3>
+<pre><code>Q: 이행점검은 어떻게 하셨나요?
+A: 시간 제약으로 현장 이행점검은 수행하지 못했습니다.
+   프로세스는 인지하고 있으며, 실제 프로젝트에서는
+   서면점검 형태로 사후 이행 확인을 권고합니다.
+</code></pre>
+<h3 id="rfp-부재">RFP 부재<a hidden class="anchor" aria-hidden="true" href="#rfp-부재">#</a></h3>
+<pre><code>Q: RFP 없이 어떻게 프로젝트가 시작됐나요?
+A: 리베로가 하랑항공의 수탁사 관리체계 공백을 먼저 파악하고
+   선제적으로 제안한 구조입니다.
+   RFP는 발주사가 먼저 요청서를 내는 경우이지만,
+   이번 시나리오는 컨설팅사 주도 제안 형태입니다.
+</code></pre>
+<h3 id="요구사항-정의서-부재">요구사항 정의서 부재<a hidden class="anchor" aria-hidden="true" href="#요구사항-정의서-부재">#</a></h3>
+<pre><code>Q: 요구사항 정의서는 왜 없나요?
+A: 보안 컨설팅 프로젝트에서는 요구사항 정의서보다
+   수행계획서와 체크리스트가 중심 문서입니다.
+   해당 시간을 체크리스트 고도화와 증적 수집에 투자했습니다.
+</code></pre>
+<h3 id="수탁사-현황-시나리오-구성-방법">수탁사 현황 (시나리오) 구성 방법<a hidden class="anchor" aria-hidden="true" href="#수탁사-현황-시나리오-구성-방법">#</a></h3>
+<pre><code>Q: 수탁사 현황은 어떻게 만드셨나요?
+A: 개인정보보호법 및 안전성 확보조치 기준 법령을 기반으로,
+   해당 업종(케이터링)에서 실제 발생 가능한 현황을 AI 활용하여 구성했습니다.
+</code></pre>
+<hr>
+<h2 id="산출물-네이밍-규칙">산출물 네이밍 규칙<a hidden class="anchor" aria-hidden="true" href="#산출물-네이밍-규칙">#</a></h2>
+<p>모든 산출물 파일명은 아래 규칙을 따른다:</p>
+<pre><code>형식: (5조)_사업명_(구분)_문서명_버전
+
+규칙:
+- 버전은 1.0 이상
+- 아라비아 숫자와 한글 가나다 혼용 금지
+- 구분 예시: 위탁사, 수탁사, 공통
+</code></pre>
+<hr>
+<h2 id="다음-할-일">다음 할 일<a hidden class="anchor" aria-hidden="true" href="#다음-할-일">#</a></h2>
+<pre><code>이번 주 완료 목표:
+- 체크리스트 수정 (증적명 열 + P·Y·N·NA)
+- 시나리오(수탁사 현황) 초안 완성
+- 수행계획서 (점검용) 수정
+
+다음 주 넘길 것:
+- 위수탁 계약서
+- 수탁사 목록
+- 점검계획서
+- 개선방안 보고서
+- 전체 결과 보고서 (최종 통합)
+- PPT + 시연영상
+</code></pre>
+<p>하나씩 부수면 된다.
+방향은 여기 있다.</p>
+<hr>
+<h2 id="학습-성과-정리">학습 성과 정리<a hidden class="anchor" aria-hidden="true" href="#학습-성과-정리">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>영역</th>
+          <th>학습 내용</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>산출물 관리</strong></td>
+          <td>컨설팅 프로젝트의 산출물 전수 점검 및 우선순위 설정</td>
+      </tr>
+      <tr>
+          <td><strong>컨설팅 관행</strong></td>
+          <td>RFP·요구사항정의서의 실무 생략 사유와 대응 논리</td>
+      </tr>
+      <tr>
+          <td><strong>체크리스트 설계</strong></td>
+          <td>P·Y·N·NA 4단계 + 증적명 열의 실무 표준 구조 이해</td>
+      </tr>
+      <tr>
+          <td><strong>발표 준비</strong></td>
+          <td>예상 질문과 논리적 대응 방안 사전 준비</td>
+      </tr>
+      <tr>
+          <td><strong>문서 네이밍</strong></td>
+          <td>프로젝트 문서 관리 규칙 수립 및 적용</td>
+      </tr>
+  </tbody>
+</table>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://hojjang98.github.io/tags/%ED%8C%8C%EC%9D%B4%EB%84%90%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/">파이널프로젝트</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8/">개인정보보호</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%9C%84%EC%88%98%ED%83%81%EA%B4%80%EB%A6%AC/">위수탁관리</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%BB%A8%EC%84%A4%ED%8C%85/">컨설팅</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%82%B0%EC%B6%9C%EB%AC%BC%EA%B4%80%EB%A6%AC/">산출물관리</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%ED%95%98%EB%9E%91%ED%95%AD%EA%B3%B5/">하랑항공</a></li>
+      <li><a href="https://hojjang98.github.io/tags/teamlibero/">TeamLIBERO</a></li>
+      <li><a href="https://hojjang98.github.io/tags/sk%EC%89%B4%EB%8D%94%EC%8A%A4%EB%A3%A8%ED%82%A4%EC%A6%88/">SK쉴더스루키즈</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

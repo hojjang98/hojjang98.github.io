@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>2025.11.05 (Day 8) Numpy &amp; Pandas 기반 로그 정규화 학습 로그 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="Python, Numpy, Pandas, 로그정규화, 이상탐지, 보안활용, SK쉴더스루키즈">
+<meta name="description" content="Numpy와 Pandas를 활용한 보안 로그 정규화 기초 학습. loadtxt, DataFrame 변환, 결측치 처리, 타입 변환을 통한 로그 전처리 파이프라인 구성 방법 정리.">
+<meta name="author" content="">
+<link rel="canonical" href="https://hojjang98.github.io/daily_logs/week02/20251105_numpy_pandas_basics/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.290573799e582c418c4bd84f2bca757d0a77fd1bf9f5c43942030e706df68ec8.css" integrity="sha256-KQVzeZ5YLEGMS9hPK8p1fQp3/Rv59cQ5QgMOcG32jsg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/daily_logs/week02/20251105_numpy_pandas_basics/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://hojjang98.github.io/daily_logs/week02/20251105_numpy_pandas_basics/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="2025.11.05 (Day 8) Numpy & Pandas 기반 로그 정규화 학습 로그">
+  <meta property="og:description" content="Numpy와 Pandas를 활용한 보안 로그 정규화 기초 학습. loadtxt, DataFrame 변환, 결측치 처리, 타입 변환을 통한 로그 전처리 파이프라인 구성 방법 정리.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="daily_logs">
+    <meta property="article:published_time" content="2025-11-05T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-11-05T00:00:00+00:00">
+    <meta property="article:tag" content="Python">
+    <meta property="article:tag" content="Numpy">
+    <meta property="article:tag" content="Pandas">
+    <meta property="article:tag" content="로그정규화">
+    <meta property="article:tag" content="이상탐지">
+    <meta property="article:tag" content="보안활용">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2025.11.05 (Day 8) Numpy &amp; Pandas 기반 로그 정규화 학습 로그">
+<meta name="twitter:description" content="Numpy와 Pandas를 활용한 보안 로그 정규화 기초 학습. loadtxt, DataFrame 변환, 결측치 처리, 타입 변환을 통한 로그 전처리 파이프라인 구성 방법 정리.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "6개월, 혹은 그 이상의 보안 여정",
+      "item": "https://hojjang98.github.io/daily_logs/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "2025.11.05 (Day 8) Numpy \u0026 Pandas 기반 로그 정규화 학습 로그",
+      "item": "https://hojjang98.github.io/daily_logs/week02/20251105_numpy_pandas_basics/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "2025.11.05 (Day 8) Numpy \u0026 Pandas 기반 로그 정규화 학습 로그",
+  "name": "2025.11.05 (Day 8) Numpy \u0026 Pandas 기반 로그 정규화 학습 로그",
+  "description": "Numpy와 Pandas를 활용한 보안 로그 정규화 기초 학습. loadtxt, DataFrame 변환, 결측치 처리, 타입 변환을 통한 로그 전처리 파이프라인 구성 방법 정리.",
+  "keywords": [
+    "Python", "Numpy", "Pandas", "로그정규화", "이상탐지", "보안활용", "SK쉴더스루키즈"
+  ],
+  "articleBody": "2025.11.05 (Day 8) [Numpy \u0026 Pandas 기반 로그 정규화] 1. 핵심 개념 정리(Concepts \u0026 Theory) # 핵심 개념 간결한 설명 적용 예시 1 np.loadtxt() / np.genfromtxt() 텍스트 기반 로그 파일을 배열 형태로 고속 로드하는 함수. CSV나 공백 구분 로그의 초기 샘플링에 유용함. raw = np.loadtxt('log.csv', delimiter=',', dtype=str) 2 pd.DataFrame() 변환 Numpy 배열을 Pandas의 표 형식 데이터로 전환하여, 결측치·타입 변환·정렬·슬라이싱 등 고급 처리를 수행할 수 있음. df = pd.DataFrame(raw[1:], columns=raw[0]) 3 데이터 정규화 (Normalization) 로그 데이터의 형식·타입 불일치를 정규화하여, 이후 분석·탐지 모델의 입력 일관성을 확보 가능함. df['timestamp'] = pd.to_datetime(df['timestamp']) 4 결측치 처리 (fillna, dropna) 로그 전처리의 기본으로, 비어 있는 필드를 N/A로 대체하거나 제거함. df.fillna('N/A', inplace=True) 5 타입 변환(astype) \u0026 슬라이싱 로그의 수치형/시간형 필드를 명확히 변환해 정렬 및 비교 연산을 가능하게 함. df['value'] = df['value'].astype(float) 핵심 인사이트: 오늘 배운 Numpy·Pandas 기법은 로그 데이터의 표준화와 구조화(Structured Logging)를 통해 보안 분석의 신뢰도와 속도를 향상시키는 핵심이다.\n2. 실습 코드 \u0026 응용 (Practice \u0026 Code) import numpy as np import pandas as pd # 로그 데이터 로드 rawData = np.loadtxt('log_sample.csv', delimiter=',', dtype=str) print(rawData[:5, :]) # 빠른 샘플 확인 # DataFrame 변환 df = pd.DataFrame(rawData[1:], columns=rawData[0]) df['timestamp'] = pd.to_datetime(df['timestamp']) # 타입 변환 df.fillna('N/A', inplace=True) # 결측치 보정 # 데이터 슬라이싱 및 요약 print(df.head()) print(df.info()) 핵심 코드 설명: np.loadtxt는 단순 CSV/로그 파일의 고속 로딩에 유용하며, 이후 Pandas로 전환해 타입 일관성과 결측 처리 기능을 추가한다. Numpy는 속도, Pandas는 유연성을 담당하며, 보안 로그 전처리의 2단계 구조를 구성한다. 확장 아이디어: Pandas의 read_csv()로 교체하여 대용량 ETL 파이프라인에 통합하거나, to_sql()로 SIEM 데이터베이스 적재 자동화까지 확장할 수 있다. 함수화하여 def normalize_log(path): 형태의 로그 정규화 모듈로 발전 가능하다. 3. 보안 관점 분석 (Security Insight) 관점1 — SOC / 관제\n적용: 로그 파이프라인 초입에서 형식·시간 정규화를 수행해 탐지 규칙 입력의 일관성 확보 효과: False Positive 감소, 실시간 집계 속도 향상 예시 흐름: 로그 → 정규화(타입·시간) → 세션 집계 → 탐지 관점2 — CERT / 사고대응\n적용: 침해 시점 로그 정렬·결측 보정으로 공격 단계별 타임라인 복원 효과: 사고 재현 정확도 향상, 증거 신뢰성 강화 관점3 — 취약점 진단\n적용: 스캐너 CSV 결과를 Pandas로 통합·정렬하여 중복 취약점 제거 및 심각도별 리포트 자동화 효과: 분석 시간 단축, 보고서 자동화 관점4 — 개발보안 (DevSecOps)\n적용: 빌드 로그를 Pandas로 정규화 → 반복 오류 자동 라벨링 효과: CI/CD 파이프라인 품질 개선 관점5 — 디지털 포렌식\n적용: 로그 덤프를 시계열·필드별로 슬라이싱하여 분석 효율 향상 효과: 증거 탐색 시간 단축, 분석 노이즈 감소 관점6 — 개인정보 보호\n적용: Pandas를 통한 민감정보(IP, ID 등) 일괄 마스킹 처리 효과: 개인정보 보호 및 로그 활용성 유지 4. 요약 및 다음 단계 (Summary \u0026 Next Steps) 오늘 배운 Numpy·Pandas 기법은 로그 데이터 정규화의 필수 기초이다. 정규화와 결측 보정은 탐지 정확도와 포렌식 재현성을 좌우한다. 다음 단계는 Pandas 그룹화 및 시계열 집계(groupby, resample)를 통해 세션 단위 이상행동 탐지 구조를 실습하는 것이다. 개인 인사이트 (Reflection) 배운 점: 로그 정규화가 단순한 데이터 클리닝이 아니라, 보안 분석의 기반 인프라라는 점을 체감했다. 심화 주제: groupby와 pivot_table을 이용한 이벤트 단위 세션 집계의 중요성을 인식했다. 향후 계획: Pandas 기반 정규화 코드를 함수화해 보안 로그 ETL 모듈로 발전시키고, 다음에는 이상치 탐지(Anomaly Detection) 단계로 연결할 예정이다. ",
+  "wordCount" : "1360",
+  "inLanguage": "ko",
+  "datePublished": "2025-11-05T00:00:00Z",
+  "dateModified": "2025-11-05T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/daily_logs/week02/20251105_numpy_pandas_basics/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://hojjang98.github.io/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/daily_logs/">6개월, 혹은 그 이상의 보안 여정</a></div>
+    <h1 class="post-title entry-hint-parent">
+      2025.11.05 (Day 8) Numpy &amp; Pandas 기반 로그 정규화 학습 로그
+    </h1>
+    <div class="post-meta"><span title='2025-11-05 00:00:00 +0000 UTC'>2025년 11월 5일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="20251105-day-8-numpy--pandas-기반-로그-정규화">2025.11.05 (Day 8) [Numpy &amp; Pandas 기반 로그 정규화]<a hidden class="anchor" aria-hidden="true" href="#20251105-day-8-numpy--pandas-기반-로그-정규화">#</a></h1>
+<h2 id="1-핵심-개념-정리concepts--theory">1. 핵심 개념 정리(Concepts &amp; Theory)<a hidden class="anchor" aria-hidden="true" href="#1-핵심-개념-정리concepts--theory">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">#</th>
+          <th style="text-align: center">핵심 개념</th>
+          <th style="text-align: left">간결한 설명</th>
+          <th style="text-align: left">적용 예시</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center"><strong><code>np.loadtxt()</code> / <code>np.genfromtxt()</code></strong></td>
+          <td style="text-align: left">텍스트 기반 로그 파일을 배열 형태로 고속 로드하는 함수. CSV나 공백 구분 로그의 초기 샘플링에 유용함.</td>
+          <td style="text-align: left"><code>raw = np.loadtxt('log.csv', delimiter=',', dtype=str)</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: center">2</td>
+          <td style="text-align: center"><strong><code>pd.DataFrame()</code> 변환</strong></td>
+          <td style="text-align: left">Numpy 배열을 Pandas의 표 형식 데이터로 전환하여, 결측치·타입 변환·정렬·슬라이싱 등 고급 처리를 수행할 수 있음.</td>
+          <td style="text-align: left"><code>df = pd.DataFrame(raw[1:], columns=raw[0])</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: center">3</td>
+          <td style="text-align: center"><strong>데이터 정규화 (Normalization)</strong></td>
+          <td style="text-align: left">로그 데이터의 형식·타입 불일치를 정규화하여, 이후 분석·탐지 모델의 입력 일관성을 확보 가능함.</td>
+          <td style="text-align: left"><code>df['timestamp'] = pd.to_datetime(df['timestamp'])</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: center">4</td>
+          <td style="text-align: center"><strong>결측치 처리 (<code>fillna</code>, <code>dropna</code>)</strong></td>
+          <td style="text-align: left">로그 전처리의 기본으로, 비어 있는 필드를 N/A로 대체하거나 제거함.</td>
+          <td style="text-align: left"><code>df.fillna('N/A', inplace=True)</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: center">5</td>
+          <td style="text-align: center"><strong>타입 변환(<code>astype</code>) &amp; 슬라이싱</strong></td>
+          <td style="text-align: left">로그의 수치형/시간형 필드를 명확히 변환해 정렬 및 비교 연산을 가능하게 함.</td>
+          <td style="text-align: left"><code>df['value'] = df['value'].astype(float)</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>핵심 인사이트:</strong> 오늘 배운 Numpy·Pandas 기법은 로그 데이터의 표준화와 구조화(Structured Logging)를 통해 보안 분석의 신뢰도와 속도를 향상시키는 핵심이다.</p>
+<hr>
+<h2 id="2-실습-코드--응용-practice--code">2. 실습 코드 &amp; 응용 (Practice &amp; Code)<a hidden class="anchor" aria-hidden="true" href="#2-실습-코드--응용-practice--code">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 로그 데이터 로드</span>
+</span></span><span style="display:flex;"><span>rawData <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>loadtxt(<span style="color:#e6db74">&#39;log_sample.csv&#39;</span>, delimiter<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;,&#39;</span>, dtype<span style="color:#f92672">=</span>str)
+</span></span><span style="display:flex;"><span>print(rawData[:<span style="color:#ae81ff">5</span>, :])  <span style="color:#75715e"># 빠른 샘플 확인</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># DataFrame 변환</span>
+</span></span><span style="display:flex;"><span>df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(rawData[<span style="color:#ae81ff">1</span>:], columns<span style="color:#f92672">=</span>rawData[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>df[<span style="color:#e6db74">&#39;timestamp&#39;</span>] <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>to_datetime(df[<span style="color:#e6db74">&#39;timestamp&#39;</span>])  <span style="color:#75715e"># 타입 변환</span>
+</span></span><span style="display:flex;"><span>df<span style="color:#f92672">.</span>fillna(<span style="color:#e6db74">&#39;N/A&#39;</span>, inplace<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)                     <span style="color:#75715e"># 결측치 보정</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 데이터 슬라이싱 및 요약</span>
+</span></span><span style="display:flex;"><span>print(df<span style="color:#f92672">.</span>head())
+</span></span><span style="display:flex;"><span>print(df<span style="color:#f92672">.</span>info())
+</span></span></code></pre></div><ul>
+<li><strong>핵심 코드 설명</strong>: <code>np.loadtxt</code>는 단순 CSV/로그 파일의 고속 로딩에 유용하며, 이후 Pandas로 전환해 타입 일관성과 결측 처리 기능을 추가한다. Numpy는 속도, Pandas는 유연성을 담당하며, 보안 로그 전처리의 2단계 구조를 구성한다.</li>
+<li><strong>확장 아이디어</strong>: Pandas의 <code>read_csv()</code>로 교체하여 대용량 ETL 파이프라인에 통합하거나, <code>to_sql()</code>로 SIEM 데이터베이스 적재 자동화까지 확장할 수 있다. 함수화하여 <code>def normalize_log(path):</code> 형태의 로그 정규화 모듈로 발전 가능하다.</li>
+</ul>
+<hr>
+<h2 id="3-보안-관점-분석-security-insight">3. 보안 관점 분석 (Security Insight)<a hidden class="anchor" aria-hidden="true" href="#3-보안-관점-분석-security-insight">#</a></h2>
+<ul>
+<li>
+<p>관점1 — <strong>SOC / 관제</strong></p>
+<ul>
+<li><strong>적용</strong>: 로그 파이프라인 초입에서 형식·시간 정규화를 수행해 탐지 규칙 입력의 일관성 확보</li>
+<li><strong>효과</strong>: False Positive 감소, 실시간 집계 속도 향상</li>
+<li><strong>예시 흐름</strong>: <code>로그 → 정규화(타입·시간) → 세션 집계 → 탐지</code></li>
+</ul>
+</li>
+<li>
+<p>관점2 — <strong>CERT / 사고대응</strong></p>
+<ul>
+<li><strong>적용</strong>: 침해 시점 로그 정렬·결측 보정으로 공격 단계별 타임라인 복원</li>
+<li><strong>효과</strong>: 사고 재현 정확도 향상, 증거 신뢰성 강화</li>
+</ul>
+</li>
+<li>
+<p>관점3 — <strong>취약점 진단</strong></p>
+<ul>
+<li><strong>적용</strong>: 스캐너 CSV 결과를 Pandas로 통합·정렬하여 중복 취약점 제거 및 심각도별 리포트 자동화</li>
+<li><strong>효과</strong>: 분석 시간 단축, 보고서 자동화</li>
+</ul>
+</li>
+<li>
+<p>관점4 — <strong>개발보안 (DevSecOps)</strong></p>
+<ul>
+<li><strong>적용</strong>: 빌드 로그를 Pandas로 정규화 → 반복 오류 자동 라벨링</li>
+<li><strong>효과</strong>: CI/CD 파이프라인 품질 개선</li>
+</ul>
+</li>
+<li>
+<p>관점5 — <strong>디지털 포렌식</strong></p>
+<ul>
+<li><strong>적용</strong>: 로그 덤프를 시계열·필드별로 슬라이싱하여 분석 효율 향상</li>
+<li><strong>효과</strong>: 증거 탐색 시간 단축, 분석 노이즈 감소</li>
+</ul>
+</li>
+<li>
+<p>관점6 — <strong>개인정보 보호</strong></p>
+<ul>
+<li><strong>적용</strong>: Pandas를 통한 민감정보(IP, ID 등) 일괄 마스킹 처리</li>
+<li><strong>효과</strong>: 개인정보 보호 및 로그 활용성 유지</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="4-요약-및-다음-단계-summary--next-steps">4. 요약 및 다음 단계 (Summary &amp; Next Steps)<a hidden class="anchor" aria-hidden="true" href="#4-요약-및-다음-단계-summary--next-steps">#</a></h2>
+<ol>
+<li>오늘 배운 Numpy·Pandas 기법은 로그 데이터 정규화의 필수 기초이다.</li>
+<li>정규화와 결측 보정은 탐지 정확도와 포렌식 재현성을 좌우한다.</li>
+<li>다음 단계는 Pandas 그룹화 및 시계열 집계(<code>groupby</code>, <code>resample</code>)를 통해 세션 단위 이상행동 탐지 구조를 실습하는 것이다.</li>
+</ol>
+<hr>
+<h2 id="개인-인사이트-reflection">개인 인사이트 (Reflection)<a hidden class="anchor" aria-hidden="true" href="#개인-인사이트-reflection">#</a></h2>
+<ul>
+<li><strong>배운 점</strong>: 로그 정규화가 단순한 데이터 클리닝이 아니라, 보안 분석의 기반 인프라라는 점을 체감했다.</li>
+<li><strong>심화 주제</strong>: <code>groupby</code>와 <code>pivot_table</code>을 이용한 이벤트 단위 세션 집계의 중요성을 인식했다.</li>
+<li><strong>향후 계획</strong>: Pandas 기반 정규화 코드를 함수화해 보안 로그 ETL 모듈로 발전시키고, 다음에는 이상치 탐지(Anomaly Detection) 단계로 연결할 예정이다.</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://hojjang98.github.io/tags/python/">Python</a></li>
+      <li><a href="https://hojjang98.github.io/tags/numpy/">Numpy</a></li>
+      <li><a href="https://hojjang98.github.io/tags/pandas/">Pandas</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%A1%9C%EA%B7%B8%EC%A0%95%EA%B7%9C%ED%99%94/">로그정규화</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%9D%B4%EC%83%81%ED%83%90%EC%A7%80/">이상탐지</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%B3%B4%EC%95%88%ED%99%9C%EC%9A%A9/">보안활용</a></li>
+      <li><a href="https://hojjang98.github.io/tags/sk%EC%89%B4%EB%8D%94%EC%8A%A4%EB%A3%A8%ED%82%A4%EC%A6%88/">SK쉴더스루키즈</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

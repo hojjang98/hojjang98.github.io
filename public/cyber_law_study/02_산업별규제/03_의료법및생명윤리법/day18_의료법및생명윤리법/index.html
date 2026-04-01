@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Day 18: 의료법 및 생명윤리법 (의료정보 보호) | HJ&#39;s Security Note</title>
+<meta name="keywords" content="의료법, 생명윤리법, 의료정보보호, 진료기록, 유전정보, 비밀누설금지, EMR, 인체유래물">
+<meta name="description" content="의료인의 비밀 누설 금지 의무, 진료기록부 작성·보존 규정, 유전정보 및 인체유래물 보호, 의료정보 접근 통제·암호화·로그 관리, 의료정보 유출 사고 대응 절차를 학습합니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://hojjang98.github.io/cyber_law_study/02_%EC%82%B0%EC%97%85%EB%B3%84%EA%B7%9C%EC%A0%9C/03_%EC%9D%98%EB%A3%8C%EB%B2%95%EB%B0%8F%EC%83%9D%EB%AA%85%EC%9C%A4%EB%A6%AC%EB%B2%95/day18_%EC%9D%98%EB%A3%8C%EB%B2%95%EB%B0%8F%EC%83%9D%EB%AA%85%EC%9C%A4%EB%A6%AC%EB%B2%95/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.290573799e582c418c4bd84f2bca757d0a77fd1bf9f5c43942030e706df68ec8.css" integrity="sha256-KQVzeZ5YLEGMS9hPK8p1fQp3/Rv59cQ5QgMOcG32jsg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/cyber_law_study/02_%EC%82%B0%EC%97%85%EB%B3%84%EA%B7%9C%EC%A0%9C/03_%EC%9D%98%EB%A3%8C%EB%B2%95%EB%B0%8F%EC%83%9D%EB%AA%85%EC%9C%A4%EB%A6%AC%EB%B2%95/day18_%EC%9D%98%EB%A3%8C%EB%B2%95%EB%B0%8F%EC%83%9D%EB%AA%85%EC%9C%A4%EB%A6%AC%EB%B2%95/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://hojjang98.github.io/cyber_law_study/02_%EC%82%B0%EC%97%85%EB%B3%84%EA%B7%9C%EC%A0%9C/03_%EC%9D%98%EB%A3%8C%EB%B2%95%EB%B0%8F%EC%83%9D%EB%AA%85%EC%9C%A4%EB%A6%AC%EB%B2%95/day18_%EC%9D%98%EB%A3%8C%EB%B2%95%EB%B0%8F%EC%83%9D%EB%AA%85%EC%9C%A4%EB%A6%AC%EB%B2%95/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="Day 18: 의료법 및 생명윤리법 (의료정보 보호)">
+  <meta property="og:description" content="의료인의 비밀 누설 금지 의무, 진료기록부 작성·보존 규정, 유전정보 및 인체유래물 보호, 의료정보 접근 통제·암호화·로그 관리, 의료정보 유출 사고 대응 절차를 학습합니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="cyber_law_study">
+    <meta property="article:published_time" content="2026-02-23T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-02-23T00:00:00+00:00">
+    <meta property="article:tag" content="의료법">
+    <meta property="article:tag" content="생명윤리법">
+    <meta property="article:tag" content="의료정보보호">
+    <meta property="article:tag" content="진료기록">
+    <meta property="article:tag" content="유전정보">
+    <meta property="article:tag" content="비밀누설금지">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Day 18: 의료법 및 생명윤리법 (의료정보 보호)">
+<meta name="twitter:description" content="의료인의 비밀 누설 금지 의무, 진료기록부 작성·보존 규정, 유전정보 및 인체유래물 보호, 의료정보 접근 통제·암호화·로그 관리, 의료정보 유출 사고 대응 절차를 학습합니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "보안 컨설팅 공부",
+      "item": "https://hojjang98.github.io/cyber_law_study/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  4 ,
+      "name": "Day 18: 의료법 및 생명윤리법 (의료정보 보호)",
+      "item": "https://hojjang98.github.io/cyber_law_study/02_%EC%82%B0%EC%97%85%EB%B3%84%EA%B7%9C%EC%A0%9C/03_%EC%9D%98%EB%A3%8C%EB%B2%95%EB%B0%8F%EC%83%9D%EB%AA%85%EC%9C%A4%EB%A6%AC%EB%B2%95/day18_%EC%9D%98%EB%A3%8C%EB%B2%95%EB%B0%8F%EC%83%9D%EB%AA%85%EC%9C%A4%EB%A6%AC%EB%B2%95/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Day 18: 의료법 및 생명윤리법 (의료정보 보호)",
+  "name": "Day 18: 의료법 및 생명윤리법 (의료정보 보호)",
+  "description": "의료인의 비밀 누설 금지 의무, 진료기록부 작성·보존 규정, 유전정보 및 인체유래물 보호, 의료정보 접근 통제·암호화·로그 관리, 의료정보 유출 사고 대응 절차를 학습합니다.",
+  "keywords": [
+    "의료법", "생명윤리법", "의료정보보호", "진료기록", "유전정보", "비밀누설금지", "EMR", "인체유래물"
+  ],
+  "articleBody": "Day 18: 의료법 및 생명윤리법 (의료정보 보호) 1. 의료 분야 개인정보 보호의 개요 1.1 의료정보의 특성 의료정보 = 초민감정보 의료정보는 가장 민감한 개인정보 중 하나:\n건강 상태 노출 질병·장애 정보 유전 정보 가족력 성생활 관련 정보 유출 시 피해:\n사회적 낙인 (stigma) 취업·보험 가입 차별 사생활 침해 정신적 고통 1.2 적용 법률 의료 분야 개인정보는 여러 법률이 복합적으로 적용:\n법률 적용 범위 개인정보보호법 모든 개인정보 (일반법) 의료법 의료인의 비밀 누설 금지, 진료기록부 작성·보존 생명윤리 및 안전에 관한 법률 유전정보, 인체유래물 건강검진기본법 건강검진 정보 응급의료에 관한 법률 응급환자 정보 적용 우선순위:\n특별법 (의료법, 생명윤리법 등) -\u003e 개인정보보호법 (일반법)\n2. 의료법상 개인정보 보호 2.1 의료인의 비밀 누설 금지 (의료법 제19조) 비밀 누설 금지 의무 의료인이나 의료기관 종사자는 진료·간호·조산 과정에서 알게 된 비밀을 누설하거나 발표하지 못함\n의료인:\n의사 치과의사 한의사 조산사 간호사 종사자:\n간호조무사 의료기사 행정직원 등 비밀의 범위 환자의 질병, 치료 내용 환자의 신체 상태 환자의 사생활 진료 과정에서 알게 된 모든 정보 비밀 누설 금지의 예외 다음의 경우에만 비밀 공개 가능:\n환자의 동의가 있는 경우 법률에 따라 의무를 이행하는 경우 법원의 영장 수사기관의 적법한 요구 전염병 신고 아동학대 신고 공익을 위해 필요한 경우 (매우 제한적) 위반 시 처벌 (의료법 제88조) 3년 이하 징역 또는 3천만원 이하 벌금\n특징:\n형법상 비밀 누설죄보다 무거운 처벌 의료인의 비밀 유지 의무는 퇴직 후에도 지속 2.2 진료기록부 등의 기재·보존 (의료법 제22조, 제23조) 진료기록부 작성 의무 (제22조) 의료인이나 의료기관 개설자는 진료기록부를 작성·보존해야 함\n진료기록부 포함 사항:\n환자의 주소·성명·주민등록번호·연락처 병력 가족력 진단 결과 치료 내용 투약 내용 보존 기간 (제23조, 시행규칙 제15조) 기록 종류 보존 기간 진료기록부 10년 수술기록 10년 검사 소견 기록 5년 방사선 사진·필름 5년 처방전 2년 간호 기록부 5년 전자의무기록 (EMR: Electronic Medical Record):\n전자적 형태로 작성·보존 가능 위·변조 방지 조치 필수 백업 및 접근 통제 진료기록 열람·사본 발급 (제21조) 열람·사본 발급 가능자:\n환자 본인 환자의 법정대리인 환자가 지정한 대리인 (환자 동의서 + 위임장) 환자 사망 시 유족 (배우자, 직계 존속·비속) 필요 서류:\n본인: 신분증 법정대리인: 가족관계증명서 등 지정 대리인: 환자 동의서 + 위임장 + 신분증 유족: 사망진단서 + 가족관계증명서 거부 사유:\n환자 본인의 명시적 거부 타인의 사생활 침해 우려 3. 생명윤리 및 안전에 관한 법률 3.1 생명윤리법의 개요 정식 명칭: 생명윤리 및 안전에 관한 법률 (약칭: 생명윤리법)\n목적: 인간과 인체유래물 등을 연구하거나 배아나 유전자 등을 취급할 때 인간의 존엄과 가치를 침해하거나 인체에 위해를 끼치는 것을 방지하기 위한 법률\n3.2 유전정보의 보호 (법 제46조) 유전정보의 정의 유전정보: 인체유래물을 분석하여 얻은 개인의 유전적 특징에 관한 정보\n예시:\nDNA 염기서열 정보 유전자 검사 결과 유전질환 보인자 여부 약물 반응성 유전정보의 특성 평생 불변: 태어날 때부터 사망까지 변하지 않음 가족 정보: 혈연관계자의 유전정보도 추정 가능 차별 가능성: 유전질환 보인자 등에 대한 차별 유전정보 수집·이용·제공 제한 (제46조) 다음의 경우를 제외하고는 유전정보를 수집·이용·제공·관리하지 못함:\n허용되는 경우:\n유전자 검사 및 치료를 위해 필요한 경우 본인의 명시적 동의를 받은 경우 법률에 특별한 규정이 있는 경우 유전정보 차별 금지 (제46조 제3항) 누구든지 유전정보를 이유로 교육·고용·승진·보험 등에서 차별하지 못함\n위반 시 처벌:\n3년 이하 징역 또는 3천만원 이하 벌금 3.3 인체유래물의 보호 (법 제37조~제45조) 인체유래물의 정의 인체유래물: 인체로부터 수집하거나 채취한 조직·세포·혈액·체액 등 인체 구성물 또는 이들로부터 분리된 혈청·혈장·염색체·DNA·RNA·단백질 등\n예시:\n혈액 조직 샘플 타액 모발 인체유래물 연구 시 동의 (제37조) 인체유래물을 연구 목적으로 채취·이용하려면 제공자의 서면 동의 필요\n동의 시 고지사항:\n인체유래물의 수집·보존·이용 목적 인체유래물의 보존 기간 및 방법 개인정보 보호에 관한 사항 동의 철회에 관한 사항 폐기에 관한 사항 익명화 (제42조) 인체유래물 연구 시 개인 식별 정보를 영구적으로 삭제하거나 개인을 식별할 수 없도록 조치\n익명화 방법:\n이름, 주민등록번호 등 삭제 연결코드 사용 (연결코드와 개인정보는 별도 보관) 4. 의료정보 보호를 위한 기술적·관리적 조치 4.1 기술적 조치 (1) 접근 통제 의료정보시스템 접근 권한 제한 역할 기반 접근 통제 (RBAC) 의사: 진료기록 열람·수정 간호사: 간호기록 열람·수정, 진료기록 열람만 행정직: 예약·수납 정보만 환자 본인 정보만 접근 가능 (담당 환자) (2) 암호화 진료기록 DB 암호화 주민등록번호 암호화 전송 구간 암호화 (병원 내부망, 외부 전송 시) (3) 접속 기록 관리 의료정보 접근 로그 기록 6개월 이상 보관 월 1회 이상 점검 이상 접근 탐지 (비담당 환자 조회 등) (4) 망분리 의료정보망과 일반 업무망 분리 외부 인터넷과 차단 (5) 백업 및 복구 정기적인 백업 재해 대비 DR(Disaster Recovery) 체계 4.2 관리적 조치 (1) 의료정보 보호 책임자 지정 개인정보 보호책임자 (CPO) 의료정보 보호 업무 총괄 (2) 비밀유지 서약 전 직원 비밀유지 서약서 징구 퇴직 후에도 비밀 유지 의무 (3) 교육 연 1회 이상 의료정보 보호 교육 신규 직원 교육 의료법상 비밀 누설 금지 의무 교육 (4) 위탁 관리 의료정보 처리 위탁 시 위탁계약서 체결 수탁자에 대한 관리·감독 예: 의무기록 스캔 업체, 병원 정보시스템 운영 업체 (5) 진료기록 열람 통제 환자 본인 또는 적법한 대리인만 열람 열람 시 신분 확인 철저 열람 기록 보관 4.3 물리적 조치 (1) 의무기록실 출입 통제 의무기록 보관실 출입 제한 출입 기록 관리 CCTV 설치 (2) 서버실 보안 의료정보 서버실 출입 통제 생체인증 등 강력한 인증 (3) 문서 파기 보존 기간 경과 서류 안전하게 파기 파쇄기 사용 5. 의료정보 유출 사고 대응 5.1 유출 통지 의무 의료기관이 의료정보 유출 사고를 인지한 경우:\n환자에게 통지 (개인정보보호법 제34조) 개인정보보호위원회·한국인터넷진흥원에 신고 (1천명 이상, 민감정보 유출 시) 5.2 의료정보 유출 사례 및 대응 사례 1: 병원 직원의 유명인 진료기록 무단 조회 상황: 병원 행정직원이 연예인 A의 진료기록을 호기심에 무단 조회\n적발:\n접속 로그 점검에서 비담당 환자 조회 발견 내부 조사 후 징계 처벌:\n직원: 의료법 위반 (비밀 누설) → 형사 처벌 병원: 관리 감독 소홀 → 과태료 재발 방지:\n담당 환자 외 조회 시 사유 입력 의무화 이상 조회 실시간 알림 정기 교육 강화 사례 2: 병원 해킹으로 환자 정보 유출 상황: B병원 서버가 해킹되어 환자 10만명의 진료기록 유출\n대응:\n해킹 경로 차단 환자에게 SMS·이메일 통지 개인정보보호위원회 신고 경찰 신고 보안 강화 (취약점 패치, 방화벽 강화) 처벌:\n과징금 안전조치 미흡으로 과태료 사례 3: 의료진의 SNS 게시 상황: 의사가 환자의 특이 질환 사례를 SNS에 게시 (환자 동의 없음)\n문제:\n환자 이름은 익명 처리했으나, 질환이 매우 특이하여 환자 특정 가능 처벌:\n의료법 위반 (비밀 누설) → 형사 처벌 의사 면허 정지 교훈:\n익명 처리해도 간접적으로 특정 가능하면 비밀 누설 학술 목적이라도 환자 동의 필수 6. 보안 컨설팅 관점의 시사점 6.1 의료기관 보안 컨설팅 Phase 1: 현황 진단 의료정보 처리 현황 파악 법적 요구사항 점검 보안 취약점 진단 Phase 2: 보안 체계 설계 접근 통제 체계 역할 기반 권한 설계 담당 환자만 조회 가능하도록 암호화 설계 DB 암호화 전송 구간 암호화 망분리 설계 의료정보망과 일반망 분리 Phase 3: 보안 시스템 구축 접근 통제 시스템 암호화 시스템 로그 관리 시스템 DLP (의료정보 유출 방지) Phase 4: 운영 및 관리 접속 기록 정기 점검 보안 교육 침해사고 대응 훈련 6.2 의료정보 vs 일반 개인정보 구분 의료정보 일반 개인정보 민감도 매우 높음 (초민감정보) 상대적으로 낮음 법적 보호 의료법, 생명윤리법 + 개인정보보호법 개인정보보호법 비밀 누설 처벌 3년 이하 징역 (의료법) 5년 이하 징역 (개인정보보호법) 보존 기간 최대 10년 (의료법) 목적 달성 후 파기 접근 통제 매우 엄격 (담당 환자만) 업무 범위 내 보안 수준 최고 수준 높음 6.3 의료 AI와 개인정보 보호 의료 AI 개발 시 개인정보 이슈 학습 데이터: 실제 환자 진료기록 사용 개인정보 보호: 익명화·가명화 필수 대응:\n익명화: 환자 식별 정보 완전 삭제 IRB 승인: 기관생명윤리위원회 승인 환자 동의: 연구 목적 사용 동의 (또는 옵트아웃) 안전한 환경: AI 학습·테스트 환경 격리 7. 실무 사례 사례 1: 대형 병원의 의료정보 보호 체계 A병원 (1,000병상 규모):\n접근 통제:\n의사·간호사·행정직 역할별 권한 차등 담당 환자만 조회 가능 비담당 환자 조회 시 사유 입력 + 승인 암호화:\n진료기록 DB 전체 암호화 (AES-256) 주민등록번호 암호화 병원 내부망-외부망 전송 시 VPN 접속 기록:\n모든 의료정보 접근 로그 기록 월 1회 점검 비담당 환자 조회 자동 알림 망분리:\n의료정보망 (진료, EMR) 일반 업무망 (인터넷, 이메일) 완전 분리 운영 교육:\n전 직원 연 2회 교육 신규 직원 입사 시 교육 비밀유지 서약서 징구 사례 2: 유전자 검사 회사 B유전자검사 회사:\n생명윤리법 준수:\n유전자 검사 전 서면 동의 유전정보 차별 금지 고지 유전정보 제3자 제공 금지 보안 조치:\n유전정보 DB 암호화 접근 권한 최소화 (연구원도 제한적 접근) 익명화 처리 후 연구 활용 보존 및 파기:\n동의한 기간만 보존 기간 경과 또는 동의 철회 시 즉시 파기 사례 3: 원격진료 플랫폼 C원격진료 플랫폼:\n의료정보 전송:\n환자-의사 간 의료정보 전송 종단간 암호화 (End-to-End Encryption) 서버에도 암호화 저장 접근 통제:\n의사는 본인 진료 환자만 조회 플랫폼 운영자도 의료정보 열람 불가 보존:\n진료기록 10년 보존 (의료법 준수) 8. 체크리스트 의료진 및 직원이 비밀 누설 금지 의무를 인지하는가? 비밀유지 서약서를 징구했는가? 진료기록부를 법정 기간 보존하는가? 진료기록 열람 시 본인 확인을 철저히 하는가? 의료정보에 대한 접근 권한을 제한하는가? 담당 환자만 조회 가능하도록 통제하는가? 의료정보를 암호화하는가? 접속 기록을 6개월 이상 보관하고 정기 점검하는가? 의료정보망과 일반망을 분리하는가? 정기적인 보안 교육을 실시하는가? 유전정보를 차별 목적으로 이용하지 않는가? 인체유래물 연구 시 동의를 받는가? 의료정보 유출 시 통지·신고 절차가 있는가? 학습 정리 오늘 학습한 핵심 내용:\n의료정보는 초민감정보로 매우 엄격한 보호 필요 의료법: 의료인 비밀 누설 금지, 진료기록 10년 보존 생명윤리법: 유전정보 차별 금지, 인체유래물 연구 시 동의 비밀 누설 시 3년 이하 징역 (의료법) 접근 통제: 담당 환자만 조회, 역할별 권한 차등 암호화: 진료기록 DB, 주민등록번호, 전송 구간 접속 기록 6개월 보관, 월 1회 점검 망분리: 의료정보망과 일반망 분리 진료기록 열람: 본인·법정대리인·유족만 가능 의료정보 유출 시 환자 통지 + 개인정보보호위원회 신고 다음 학습 주제 Day 19: 전자정부법 및 공공기관 개인정보보호 지침\n",
+  "wordCount" : "4144",
+  "inLanguage": "ko",
+  "datePublished": "2026-02-23T00:00:00Z",
+  "dateModified": "2026-02-23T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/cyber_law_study/02_%EC%82%B0%EC%97%85%EB%B3%84%EA%B7%9C%EC%A0%9C/03_%EC%9D%98%EB%A3%8C%EB%B2%95%EB%B0%8F%EC%83%9D%EB%AA%85%EC%9C%A4%EB%A6%AC%EB%B2%95/day18_%EC%9D%98%EB%A3%8C%EB%B2%95%EB%B0%8F%EC%83%9D%EB%AA%85%EC%9C%A4%EB%A6%AC%EB%B2%95/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://hojjang98.github.io/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/cyber_law_study/">보안 컨설팅 공부</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Day 18: 의료법 및 생명윤리법 (의료정보 보호)
+    </h1>
+    <div class="post-meta"><span title='2026-02-23 00:00:00 +0000 UTC'>2026년 2월 23일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="day-18-의료법-및-생명윤리법-의료정보-보호">Day 18: 의료법 및 생명윤리법 (의료정보 보호)<a hidden class="anchor" aria-hidden="true" href="#day-18-의료법-및-생명윤리법-의료정보-보호">#</a></h1>
+<h2 id="1-의료-분야-개인정보-보호의-개요">1. 의료 분야 개인정보 보호의 개요<a hidden class="anchor" aria-hidden="true" href="#1-의료-분야-개인정보-보호의-개요">#</a></h2>
+<h3 id="11-의료정보의-특성">1.1 의료정보의 특성<a hidden class="anchor" aria-hidden="true" href="#11-의료정보의-특성">#</a></h3>
+<h4 id="의료정보--초민감정보">의료정보 = 초민감정보<a hidden class="anchor" aria-hidden="true" href="#의료정보--초민감정보">#</a></h4>
+<p>의료정보는 <strong>가장 민감한 개인정보</strong> 중 하나:</p>
+<ul>
+<li><strong>건강 상태</strong> 노출</li>
+<li><strong>질병·장애</strong> 정보</li>
+<li><strong>유전 정보</strong></li>
+<li><strong>가족력</strong></li>
+<li><strong>성생활</strong> 관련 정보</li>
+</ul>
+<p><strong>유출 시 피해:</strong></p>
+<ul>
+<li>사회적 낙인 (stigma)</li>
+<li>취업·보험 가입 차별</li>
+<li>사생활 침해</li>
+<li>정신적 고통</li>
+</ul>
+<h3 id="12-적용-법률">1.2 적용 법률<a hidden class="anchor" aria-hidden="true" href="#12-적용-법률">#</a></h3>
+<p>의료 분야 개인정보는 <strong>여러 법률</strong>이 복합적으로 적용:</p>
+<table>
+  <thead>
+      <tr>
+          <th>법률</th>
+          <th>적용 범위</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>개인정보보호법</strong></td>
+          <td>모든 개인정보 (일반법)</td>
+      </tr>
+      <tr>
+          <td><strong>의료법</strong></td>
+          <td>의료인의 비밀 누설 금지, 진료기록부 작성·보존</td>
+      </tr>
+      <tr>
+          <td><strong>생명윤리 및 안전에 관한 법률</strong></td>
+          <td>유전정보, 인체유래물</td>
+      </tr>
+      <tr>
+          <td><strong>건강검진기본법</strong></td>
+          <td>건강검진 정보</td>
+      </tr>
+      <tr>
+          <td><strong>응급의료에 관한 법률</strong></td>
+          <td>응급환자 정보</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>적용 우선순위:</strong></p>
+<p>특별법 (의료법, 생명윤리법 등)  -&gt; 개인정보보호법 (일반법)</p>
+<h2 id="2-의료법상-개인정보-보호">2. 의료법상 개인정보 보호<a hidden class="anchor" aria-hidden="true" href="#2-의료법상-개인정보-보호">#</a></h2>
+<h3 id="21-의료인의-비밀-누설-금지-의료법-제19조">2.1 의료인의 비밀 누설 금지 (의료법 제19조)<a hidden class="anchor" aria-hidden="true" href="#21-의료인의-비밀-누설-금지-의료법-제19조">#</a></h3>
+<h4 id="비밀-누설-금지-의무">비밀 누설 금지 의무<a hidden class="anchor" aria-hidden="true" href="#비밀-누설-금지-의무">#</a></h4>
+<p><strong>의료인이나 의료기관 종사자</strong>는 <strong>진료·간호·조산 과정에서 알게 된 비밀</strong>을 <strong>누설하거나 발표하지 못함</strong></p>
+<p><strong>의료인:</strong></p>
+<ul>
+<li>의사</li>
+<li>치과의사</li>
+<li>한의사</li>
+<li>조산사</li>
+<li>간호사</li>
+</ul>
+<p><strong>종사자:</strong></p>
+<ul>
+<li>간호조무사</li>
+<li>의료기사</li>
+<li>행정직원 등</li>
+</ul>
+<h4 id="비밀의-범위">비밀의 범위<a hidden class="anchor" aria-hidden="true" href="#비밀의-범위">#</a></h4>
+<ul>
+<li>환자의 <strong>질병, 치료 내용</strong></li>
+<li>환자의 <strong>신체 상태</strong></li>
+<li>환자의 <strong>사생활</strong></li>
+<li>진료 과정에서 알게 된 <strong>모든 정보</strong></li>
+</ul>
+<h4 id="비밀-누설-금지의-예외">비밀 누설 금지의 예외<a hidden class="anchor" aria-hidden="true" href="#비밀-누설-금지의-예외">#</a></h4>
+<p>다음의 경우에만 비밀 공개 가능:</p>
+<ol>
+<li><strong>환자의 동의</strong>가 있는 경우</li>
+<li><strong>법률에 따라 의무</strong>를 이행하는 경우
+<ul>
+<li>법원의 영장</li>
+<li>수사기관의 적법한 요구</li>
+<li>전염병 신고</li>
+<li>아동학대 신고</li>
+</ul>
+</li>
+<li><strong>공익을 위해 필요</strong>한 경우 (매우 제한적)</li>
+</ol>
+<h4 id="위반-시-처벌-의료법-제88조">위반 시 처벌 (의료법 제88조)<a hidden class="anchor" aria-hidden="true" href="#위반-시-처벌-의료법-제88조">#</a></h4>
+<p><strong>3년 이하 징역 또는 3천만원 이하 벌금</strong></p>
+<p><strong>특징:</strong></p>
+<ul>
+<li>형법상 비밀 누설죄보다 <strong>무거운 처벌</strong></li>
+<li>의료인의 비밀 유지 의무는 <strong>퇴직 후에도 지속</strong></li>
+</ul>
+<h3 id="22-진료기록부-등의-기재보존-의료법-제22조-제23조">2.2 진료기록부 등의 기재·보존 (의료법 제22조, 제23조)<a hidden class="anchor" aria-hidden="true" href="#22-진료기록부-등의-기재보존-의료법-제22조-제23조">#</a></h3>
+<h4 id="진료기록부-작성-의무-제22조">진료기록부 작성 의무 (제22조)<a hidden class="anchor" aria-hidden="true" href="#진료기록부-작성-의무-제22조">#</a></h4>
+<p>의료인이나 의료기관 개설자는 <strong>진료기록부</strong>를 작성·보존해야 함</p>
+<p><strong>진료기록부 포함 사항:</strong></p>
+<ol>
+<li>환자의 <strong>주소·성명·주민등록번호·연락처</strong></li>
+<li><strong>병력</strong></li>
+<li><strong>가족력</strong></li>
+<li><strong>진단 결과</strong></li>
+<li><strong>치료 내용</strong></li>
+<li><strong>투약 내용</strong></li>
+</ol>
+<h4 id="보존-기간-제23조-시행규칙-제15조">보존 기간 (제23조, 시행규칙 제15조)<a hidden class="anchor" aria-hidden="true" href="#보존-기간-제23조-시행규칙-제15조">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>기록 종류</th>
+          <th>보존 기간</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>진료기록부</td>
+          <td>10년</td>
+      </tr>
+      <tr>
+          <td>수술기록</td>
+          <td>10년</td>
+      </tr>
+      <tr>
+          <td>검사 소견 기록</td>
+          <td>5년</td>
+      </tr>
+      <tr>
+          <td>방사선 사진·필름</td>
+          <td>5년</td>
+      </tr>
+      <tr>
+          <td>처방전</td>
+          <td>2년</td>
+      </tr>
+      <tr>
+          <td>간호 기록부</td>
+          <td>5년</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>전자의무기록 (EMR: Electronic Medical Record):</strong></p>
+<ul>
+<li>전자적 형태로 작성·보존 가능</li>
+<li><strong>위·변조 방지</strong> 조치 필수</li>
+<li><strong>백업</strong> 및 <strong>접근 통제</strong></li>
+</ul>
+<h4 id="진료기록-열람사본-발급-제21조">진료기록 열람·사본 발급 (제21조)<a hidden class="anchor" aria-hidden="true" href="#진료기록-열람사본-발급-제21조">#</a></h4>
+<p><strong>열람·사본 발급 가능자:</strong></p>
+<ol>
+<li><strong>환자 본인</strong></li>
+<li><strong>환자의 법정대리인</strong></li>
+<li><strong>환자가 지정한 대리인</strong> (환자 동의서 + 위임장)</li>
+<li><strong>환자 사망 시 유족</strong> (배우자, 직계 존속·비속)</li>
+</ol>
+<p><strong>필요 서류:</strong></p>
+<ul>
+<li>본인: 신분증</li>
+<li>법정대리인: 가족관계증명서 등</li>
+<li>지정 대리인: 환자 동의서 + 위임장 + 신분증</li>
+<li>유족: 사망진단서 + 가족관계증명서</li>
+</ul>
+<p><strong>거부 사유:</strong></p>
+<ul>
+<li>환자 본인의 <strong>명시적 거부</strong></li>
+<li>타인의 사생활 침해 우려</li>
+</ul>
+<h2 id="3-생명윤리-및-안전에-관한-법률">3. 생명윤리 및 안전에 관한 법률<a hidden class="anchor" aria-hidden="true" href="#3-생명윤리-및-안전에-관한-법률">#</a></h2>
+<h3 id="31-생명윤리법의-개요">3.1 생명윤리법의 개요<a hidden class="anchor" aria-hidden="true" href="#31-생명윤리법의-개요">#</a></h3>
+<p><strong>정식 명칭</strong>: 생명윤리 및 안전에 관한 법률 (약칭: 생명윤리법)</p>
+<p><strong>목적:</strong>
+인간과 인체유래물 등을 연구하거나 배아나 유전자 등을 취급할 때 <strong>인간의 존엄과 가치를 침해하거나 인체에 위해를 끼치는 것을 방지</strong>하기 위한 법률</p>
+<h3 id="32-유전정보의-보호-법-제46조">3.2 유전정보의 보호 (법 제46조)<a hidden class="anchor" aria-hidden="true" href="#32-유전정보의-보호-법-제46조">#</a></h3>
+<h4 id="유전정보의-정의">유전정보의 정의<a hidden class="anchor" aria-hidden="true" href="#유전정보의-정의">#</a></h4>
+<p><strong>유전정보</strong>: 인체유래물을 분석하여 얻은 <strong>개인의 유전적 특징에 관한 정보</strong></p>
+<p><strong>예시:</strong></p>
+<ul>
+<li>DNA 염기서열 정보</li>
+<li>유전자 검사 결과</li>
+<li>유전질환 보인자 여부</li>
+<li>약물 반응성</li>
+</ul>
+<h4 id="유전정보의-특성">유전정보의 특성<a hidden class="anchor" aria-hidden="true" href="#유전정보의-특성">#</a></h4>
+<ol>
+<li><strong>평생 불변</strong>: 태어날 때부터 사망까지 변하지 않음</li>
+<li><strong>가족 정보</strong>: 혈연관계자의 유전정보도 추정 가능</li>
+<li><strong>차별 가능성</strong>: 유전질환 보인자 등에 대한 차별</li>
+</ol>
+<h4 id="유전정보-수집이용제공-제한-제46조">유전정보 수집·이용·제공 제한 (제46조)<a hidden class="anchor" aria-hidden="true" href="#유전정보-수집이용제공-제한-제46조">#</a></h4>
+<p>다음의 경우를 제외하고는 유전정보를 <strong>수집·이용·제공·관리하지 못함</strong>:</p>
+<p><strong>허용되는 경우:</strong></p>
+<ol>
+<li><strong>유전자 검사 및 치료</strong>를 위해 필요한 경우</li>
+<li><strong>본인의 명시적 동의</strong>를 받은 경우</li>
+<li><strong>법률에 특별한 규정</strong>이 있는 경우</li>
+</ol>
+<h4 id="유전정보-차별-금지-제46조-제3항">유전정보 차별 금지 (제46조 제3항)<a hidden class="anchor" aria-hidden="true" href="#유전정보-차별-금지-제46조-제3항">#</a></h4>
+<p>누구든지 유전정보를 이유로 <strong>교육·고용·승진·보험</strong> 등에서 <strong>차별하지 못함</strong></p>
+<p><strong>위반 시 처벌:</strong></p>
+<ul>
+<li>3년 이하 징역 또는 3천만원 이하 벌금</li>
+</ul>
+<h3 id="33-인체유래물의-보호-법-제37조제45조">3.3 인체유래물의 보호 (법 제37조~제45조)<a hidden class="anchor" aria-hidden="true" href="#33-인체유래물의-보호-법-제37조제45조">#</a></h3>
+<h4 id="인체유래물의-정의">인체유래물의 정의<a hidden class="anchor" aria-hidden="true" href="#인체유래물의-정의">#</a></h4>
+<p><strong>인체유래물</strong>: 인체로부터 <strong>수집하거나 채취한 조직·세포·혈액·체액</strong> 등 인체 구성물 또는 이들로부터 분리된 혈청·혈장·염색체·DNA·RNA·단백질 등</p>
+<p><strong>예시:</strong></p>
+<ul>
+<li>혈액</li>
+<li>조직 샘플</li>
+<li>타액</li>
+<li>모발</li>
+</ul>
+<h4 id="인체유래물-연구-시-동의-제37조">인체유래물 연구 시 동의 (제37조)<a hidden class="anchor" aria-hidden="true" href="#인체유래물-연구-시-동의-제37조">#</a></h4>
+<p>인체유래물을 <strong>연구 목적</strong>으로 채취·이용하려면 <strong>제공자의 서면 동의</strong> 필요</p>
+<p><strong>동의 시 고지사항:</strong></p>
+<ol>
+<li>인체유래물의 <strong>수집·보존·이용 목적</strong></li>
+<li>인체유래물의 <strong>보존 기간 및 방법</strong></li>
+<li>개인정보 <strong>보호에 관한 사항</strong></li>
+<li><strong>동의 철회</strong>에 관한 사항</li>
+<li><strong>폐기에 관한 사항</strong></li>
+</ol>
+<h4 id="익명화-제42조">익명화 (제42조)<a hidden class="anchor" aria-hidden="true" href="#익명화-제42조">#</a></h4>
+<p>인체유래물 연구 시 <strong>개인 식별 정보를 영구적으로 삭제</strong>하거나 <strong>개인을 식별할 수 없도록 조치</strong></p>
+<p><strong>익명화 방법:</strong></p>
+<ul>
+<li>이름, 주민등록번호 등 삭제</li>
+<li>연결코드 사용 (연결코드와 개인정보는 별도 보관)</li>
+</ul>
+<h2 id="4-의료정보-보호를-위한-기술적관리적-조치">4. 의료정보 보호를 위한 기술적·관리적 조치<a hidden class="anchor" aria-hidden="true" href="#4-의료정보-보호를-위한-기술적관리적-조치">#</a></h2>
+<h3 id="41-기술적-조치">4.1 기술적 조치<a hidden class="anchor" aria-hidden="true" href="#41-기술적-조치">#</a></h3>
+<h4 id="1-접근-통제">(1) 접근 통제<a hidden class="anchor" aria-hidden="true" href="#1-접근-통제">#</a></h4>
+<ul>
+<li><strong>의료정보시스템 접근 권한</strong> 제한</li>
+<li>역할 기반 접근 통제 (RBAC)
+<ul>
+<li>의사: 진료기록 열람·수정</li>
+<li>간호사: 간호기록 열람·수정, 진료기록 열람만</li>
+<li>행정직: 예약·수납 정보만</li>
+</ul>
+</li>
+<li><strong>환자 본인 정보만</strong> 접근 가능 (담당 환자)</li>
+</ul>
+<h4 id="2-암호화">(2) 암호화<a hidden class="anchor" aria-hidden="true" href="#2-암호화">#</a></h4>
+<ul>
+<li><strong>진료기록 DB 암호화</strong></li>
+<li><strong>주민등록번호 암호화</strong></li>
+<li><strong>전송 구간 암호화</strong> (병원 내부망, 외부 전송 시)</li>
+</ul>
+<h4 id="3-접속-기록-관리">(3) 접속 기록 관리<a hidden class="anchor" aria-hidden="true" href="#3-접속-기록-관리">#</a></h4>
+<ul>
+<li>의료정보 접근 <strong>로그 기록</strong></li>
+<li><strong>6개월 이상 보관</strong></li>
+<li><strong>월 1회 이상 점검</strong></li>
+<li>이상 접근 탐지 (비담당 환자 조회 등)</li>
+</ul>
+<h4 id="4-망분리">(4) 망분리<a hidden class="anchor" aria-hidden="true" href="#4-망분리">#</a></h4>
+<ul>
+<li><strong>의료정보망</strong>과 <strong>일반 업무망</strong> 분리</li>
+<li>외부 인터넷과 차단</li>
+</ul>
+<h4 id="5-백업-및-복구">(5) 백업 및 복구<a hidden class="anchor" aria-hidden="true" href="#5-백업-및-복구">#</a></h4>
+<ul>
+<li>정기적인 <strong>백업</strong></li>
+<li>재해 대비 <strong>DR(Disaster Recovery)</strong> 체계</li>
+</ul>
+<h3 id="42-관리적-조치">4.2 관리적 조치<a hidden class="anchor" aria-hidden="true" href="#42-관리적-조치">#</a></h3>
+<h4 id="1-의료정보-보호-책임자-지정">(1) 의료정보 보호 책임자 지정<a hidden class="anchor" aria-hidden="true" href="#1-의료정보-보호-책임자-지정">#</a></h4>
+<ul>
+<li>개인정보 보호책임자 (CPO)</li>
+<li>의료정보 보호 업무 총괄</li>
+</ul>
+<h4 id="2-비밀유지-서약">(2) 비밀유지 서약<a hidden class="anchor" aria-hidden="true" href="#2-비밀유지-서약">#</a></h4>
+<ul>
+<li>전 직원 <strong>비밀유지 서약서</strong> 징구</li>
+<li>퇴직 후에도 비밀 유지 의무</li>
+</ul>
+<h4 id="3-교육">(3) 교육<a hidden class="anchor" aria-hidden="true" href="#3-교육">#</a></h4>
+<ul>
+<li><strong>연 1회 이상</strong> 의료정보 보호 교육</li>
+<li>신규 직원 교육</li>
+<li>의료법상 비밀 누설 금지 의무 교육</li>
+</ul>
+<h4 id="4-위탁-관리">(4) 위탁 관리<a hidden class="anchor" aria-hidden="true" href="#4-위탁-관리">#</a></h4>
+<ul>
+<li>의료정보 처리 위탁 시 <strong>위탁계약서</strong> 체결</li>
+<li>수탁자에 대한 <strong>관리·감독</strong></li>
+<li>예: 의무기록 스캔 업체, 병원 정보시스템 운영 업체</li>
+</ul>
+<h4 id="5-진료기록-열람-통제">(5) 진료기록 열람 통제<a hidden class="anchor" aria-hidden="true" href="#5-진료기록-열람-통제">#</a></h4>
+<ul>
+<li>환자 본인 또는 적법한 대리인만 열람</li>
+<li>열람 시 <strong>신분 확인</strong> 철저</li>
+<li>열람 기록 보관</li>
+</ul>
+<h3 id="43-물리적-조치">4.3 물리적 조치<a hidden class="anchor" aria-hidden="true" href="#43-물리적-조치">#</a></h3>
+<h4 id="1-의무기록실-출입-통제">(1) 의무기록실 출입 통제<a hidden class="anchor" aria-hidden="true" href="#1-의무기록실-출입-통제">#</a></h4>
+<ul>
+<li>의무기록 보관실 <strong>출입 제한</strong></li>
+<li>출입 기록 관리</li>
+<li>CCTV 설치</li>
+</ul>
+<h4 id="2-서버실-보안">(2) 서버실 보안<a hidden class="anchor" aria-hidden="true" href="#2-서버실-보안">#</a></h4>
+<ul>
+<li>의료정보 서버실 <strong>출입 통제</strong></li>
+<li>생체인증 등 강력한 인증</li>
+</ul>
+<h4 id="3-문서-파기">(3) 문서 파기<a hidden class="anchor" aria-hidden="true" href="#3-문서-파기">#</a></h4>
+<ul>
+<li>보존 기간 경과 서류 <strong>안전하게 파기</strong></li>
+<li>파쇄기 사용</li>
+</ul>
+<h2 id="5-의료정보-유출-사고-대응">5. 의료정보 유출 사고 대응<a hidden class="anchor" aria-hidden="true" href="#5-의료정보-유출-사고-대응">#</a></h2>
+<h3 id="51-유출-통지-의무">5.1 유출 통지 의무<a hidden class="anchor" aria-hidden="true" href="#51-유출-통지-의무">#</a></h3>
+<p>의료기관이 의료정보 유출 사고를 인지한 경우:</p>
+<ol>
+<li><strong>환자에게 통지</strong> (개인정보보호법 제34조)</li>
+<li><strong>개인정보보호위원회·한국인터넷진흥원에 신고</strong> (1천명 이상, 민감정보 유출 시)</li>
+</ol>
+<h3 id="52-의료정보-유출-사례-및-대응">5.2 의료정보 유출 사례 및 대응<a hidden class="anchor" aria-hidden="true" href="#52-의료정보-유출-사례-및-대응">#</a></h3>
+<h4 id="사례-1-병원-직원의-유명인-진료기록-무단-조회">사례 1: 병원 직원의 유명인 진료기록 무단 조회<a hidden class="anchor" aria-hidden="true" href="#사례-1-병원-직원의-유명인-진료기록-무단-조회">#</a></h4>
+<p><strong>상황:</strong>
+병원 행정직원이 연예인 A의 진료기록을 호기심에 무단 조회</p>
+<p><strong>적발:</strong></p>
+<ul>
+<li>접속 로그 점검에서 비담당 환자 조회 발견</li>
+<li>내부 조사 후 징계</li>
+</ul>
+<p><strong>처벌:</strong></p>
+<ul>
+<li>직원: 의료법 위반 (비밀 누설) → 형사 처벌</li>
+<li>병원: 관리 감독 소홀 → 과태료</li>
+</ul>
+<p><strong>재발 방지:</strong></p>
+<ul>
+<li>담당 환자 외 조회 시 <strong>사유 입력</strong> 의무화</li>
+<li>이상 조회 <strong>실시간 알림</strong></li>
+<li>정기 교육 강화</li>
+</ul>
+<h4 id="사례-2-병원-해킹으로-환자-정보-유출">사례 2: 병원 해킹으로 환자 정보 유출<a hidden class="anchor" aria-hidden="true" href="#사례-2-병원-해킹으로-환자-정보-유출">#</a></h4>
+<p><strong>상황:</strong>
+B병원 서버가 해킹되어 환자 10만명의 진료기록 유출</p>
+<p><strong>대응:</strong></p>
+<ol>
+<li>해킹 경로 차단</li>
+<li>환자에게 SMS·이메일 통지</li>
+<li>개인정보보호위원회 신고</li>
+<li>경찰 신고</li>
+<li>보안 강화 (취약점 패치, 방화벽 강화)</li>
+</ol>
+<p><strong>처벌:</strong></p>
+<ul>
+<li>과징금</li>
+<li>안전조치 미흡으로 과태료</li>
+</ul>
+<h4 id="사례-3-의료진의-sns-게시">사례 3: 의료진의 SNS 게시<a hidden class="anchor" aria-hidden="true" href="#사례-3-의료진의-sns-게시">#</a></h4>
+<p><strong>상황:</strong>
+의사가 환자의 특이 질환 사례를 SNS에 게시 (환자 동의 없음)</p>
+<p><strong>문제:</strong></p>
+<ul>
+<li>환자 이름은 익명 처리했으나, <strong>질환이 매우 특이</strong>하여 <strong>환자 특정 가능</strong></li>
+</ul>
+<p><strong>처벌:</strong></p>
+<ul>
+<li>의료법 위반 (비밀 누설) → 형사 처벌</li>
+<li>의사 면허 정지</li>
+</ul>
+<p><strong>교훈:</strong></p>
+<ul>
+<li>익명 처리해도 <strong>간접적으로 특정 가능하면</strong> 비밀 누설</li>
+<li>학술 목적이라도 <strong>환자 동의</strong> 필수</li>
+</ul>
+<h2 id="6-보안-컨설팅-관점의-시사점">6. 보안 컨설팅 관점의 시사점<a hidden class="anchor" aria-hidden="true" href="#6-보안-컨설팅-관점의-시사점">#</a></h2>
+<h3 id="61-의료기관-보안-컨설팅">6.1 의료기관 보안 컨설팅<a hidden class="anchor" aria-hidden="true" href="#61-의료기관-보안-컨설팅">#</a></h3>
+<h4 id="phase-1-현황-진단">Phase 1: 현황 진단<a hidden class="anchor" aria-hidden="true" href="#phase-1-현황-진단">#</a></h4>
+<ol>
+<li>의료정보 처리 현황 파악</li>
+<li>법적 요구사항 점검</li>
+<li>보안 취약점 진단</li>
+</ol>
+<h4 id="phase-2-보안-체계-설계">Phase 2: 보안 체계 설계<a hidden class="anchor" aria-hidden="true" href="#phase-2-보안-체계-설계">#</a></h4>
+<ol>
+<li><strong>접근 통제 체계</strong>
+<ul>
+<li>역할 기반 권한 설계</li>
+<li>담당 환자만 조회 가능하도록</li>
+</ul>
+</li>
+<li><strong>암호화 설계</strong>
+<ul>
+<li>DB 암호화</li>
+<li>전송 구간 암호화</li>
+</ul>
+</li>
+<li><strong>망분리 설계</strong>
+<ul>
+<li>의료정보망과 일반망 분리</li>
+</ul>
+</li>
+</ol>
+<h4 id="phase-3-보안-시스템-구축">Phase 3: 보안 시스템 구축<a hidden class="anchor" aria-hidden="true" href="#phase-3-보안-시스템-구축">#</a></h4>
+<ol>
+<li>접근 통제 시스템</li>
+<li>암호화 시스템</li>
+<li>로그 관리 시스템</li>
+<li>DLP (의료정보 유출 방지)</li>
+</ol>
+<h4 id="phase-4-운영-및-관리">Phase 4: 운영 및 관리<a hidden class="anchor" aria-hidden="true" href="#phase-4-운영-및-관리">#</a></h4>
+<ol>
+<li>접속 기록 정기 점검</li>
+<li>보안 교육</li>
+<li>침해사고 대응 훈련</li>
+</ol>
+<h3 id="62-의료정보-vs-일반-개인정보">6.2 의료정보 vs 일반 개인정보<a hidden class="anchor" aria-hidden="true" href="#62-의료정보-vs-일반-개인정보">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>구분</th>
+          <th>의료정보</th>
+          <th>일반 개인정보</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>민감도</td>
+          <td>매우 높음 (초민감정보)</td>
+          <td>상대적으로 낮음</td>
+      </tr>
+      <tr>
+          <td>법적 보호</td>
+          <td>의료법, 생명윤리법 + 개인정보보호법</td>
+          <td>개인정보보호법</td>
+      </tr>
+      <tr>
+          <td>비밀 누설 처벌</td>
+          <td>3년 이하 징역 (의료법)</td>
+          <td>5년 이하 징역 (개인정보보호법)</td>
+      </tr>
+      <tr>
+          <td>보존 기간</td>
+          <td>최대 10년 (의료법)</td>
+          <td>목적 달성 후 파기</td>
+      </tr>
+      <tr>
+          <td>접근 통제</td>
+          <td>매우 엄격 (담당 환자만)</td>
+          <td>업무 범위 내</td>
+      </tr>
+      <tr>
+          <td>보안 수준</td>
+          <td>최고 수준</td>
+          <td>높음</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="63-의료-ai와-개인정보-보호">6.3 의료 AI와 개인정보 보호<a hidden class="anchor" aria-hidden="true" href="#63-의료-ai와-개인정보-보호">#</a></h3>
+<h4 id="의료-ai-개발-시-개인정보-이슈">의료 AI 개발 시 개인정보 이슈<a hidden class="anchor" aria-hidden="true" href="#의료-ai-개발-시-개인정보-이슈">#</a></h4>
+<ul>
+<li><strong>학습 데이터</strong>: 실제 환자 진료기록 사용</li>
+<li><strong>개인정보 보호</strong>: 익명화·가명화 필수</li>
+</ul>
+<p><strong>대응:</strong></p>
+<ol>
+<li><strong>익명화</strong>: 환자 식별 정보 완전 삭제</li>
+<li><strong>IRB 승인</strong>: 기관생명윤리위원회 승인</li>
+<li><strong>환자 동의</strong>: 연구 목적 사용 동의 (또는 옵트아웃)</li>
+<li><strong>안전한 환경</strong>: AI 학습·테스트 환경 격리</li>
+</ol>
+<h2 id="7-실무-사례">7. 실무 사례<a hidden class="anchor" aria-hidden="true" href="#7-실무-사례">#</a></h2>
+<h3 id="사례-1-대형-병원의-의료정보-보호-체계">사례 1: 대형 병원의 의료정보 보호 체계<a hidden class="anchor" aria-hidden="true" href="#사례-1-대형-병원의-의료정보-보호-체계">#</a></h3>
+<p><strong>A병원 (1,000병상 규모):</strong></p>
+<p><strong>접근 통제:</strong></p>
+<ul>
+<li>의사·간호사·행정직 역할별 권한 차등</li>
+<li>담당 환자만 조회 가능</li>
+<li>비담당 환자 조회 시 사유 입력 + 승인</li>
+</ul>
+<p><strong>암호화:</strong></p>
+<ul>
+<li>진료기록 DB 전체 암호화 (AES-256)</li>
+<li>주민등록번호 암호화</li>
+<li>병원 내부망-외부망 전송 시 VPN</li>
+</ul>
+<p><strong>접속 기록:</strong></p>
+<ul>
+<li>모든 의료정보 접근 로그 기록</li>
+<li>월 1회 점검</li>
+<li>비담당 환자 조회 자동 알림</li>
+</ul>
+<p><strong>망분리:</strong></p>
+<ul>
+<li>의료정보망 (진료, EMR)</li>
+<li>일반 업무망 (인터넷, 이메일)</li>
+<li>완전 분리 운영</li>
+</ul>
+<p><strong>교육:</strong></p>
+<ul>
+<li>전 직원 연 2회 교육</li>
+<li>신규 직원 입사 시 교육</li>
+<li>비밀유지 서약서 징구</li>
+</ul>
+<h3 id="사례-2-유전자-검사-회사">사례 2: 유전자 검사 회사<a hidden class="anchor" aria-hidden="true" href="#사례-2-유전자-검사-회사">#</a></h3>
+<p><strong>B유전자검사 회사:</strong></p>
+<p><strong>생명윤리법 준수:</strong></p>
+<ul>
+<li>유전자 검사 전 <strong>서면 동의</strong></li>
+<li>유전정보 <strong>차별 금지</strong> 고지</li>
+<li>유전정보 <strong>제3자 제공 금지</strong></li>
+</ul>
+<p><strong>보안 조치:</strong></p>
+<ul>
+<li>유전정보 DB 암호화</li>
+<li>접근 권한 최소화 (연구원도 제한적 접근)</li>
+<li>익명화 처리 후 연구 활용</li>
+</ul>
+<p><strong>보존 및 파기:</strong></p>
+<ul>
+<li>동의한 기간만 보존</li>
+<li>기간 경과 또는 동의 철회 시 즉시 파기</li>
+</ul>
+<h3 id="사례-3-원격진료-플랫폼">사례 3: 원격진료 플랫폼<a hidden class="anchor" aria-hidden="true" href="#사례-3-원격진료-플랫폼">#</a></h3>
+<p><strong>C원격진료 플랫폼:</strong></p>
+<p><strong>의료정보 전송:</strong></p>
+<ul>
+<li>환자-의사 간 의료정보 전송</li>
+<li><strong>종단간 암호화</strong> (End-to-End Encryption)</li>
+<li>서버에도 암호화 저장</li>
+</ul>
+<p><strong>접근 통제:</strong></p>
+<ul>
+<li>의사는 본인 진료 환자만 조회</li>
+<li>플랫폼 운영자도 의료정보 열람 불가</li>
+</ul>
+<p><strong>보존:</strong></p>
+<ul>
+<li>진료기록 10년 보존 (의료법 준수)</li>
+</ul>
+<h2 id="8-체크리스트">8. 체크리스트<a hidden class="anchor" aria-hidden="true" href="#8-체크리스트">#</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> 의료진 및 직원이 비밀 누설 금지 의무를 인지하는가?</li>
+<li><input disabled="" type="checkbox"> 비밀유지 서약서를 징구했는가?</li>
+<li><input disabled="" type="checkbox"> 진료기록부를 법정 기간 보존하는가?</li>
+<li><input disabled="" type="checkbox"> 진료기록 열람 시 본인 확인을 철저히 하는가?</li>
+<li><input disabled="" type="checkbox"> 의료정보에 대한 접근 권한을 제한하는가?</li>
+<li><input disabled="" type="checkbox"> 담당 환자만 조회 가능하도록 통제하는가?</li>
+<li><input disabled="" type="checkbox"> 의료정보를 암호화하는가?</li>
+<li><input disabled="" type="checkbox"> 접속 기록을 6개월 이상 보관하고 정기 점검하는가?</li>
+<li><input disabled="" type="checkbox"> 의료정보망과 일반망을 분리하는가?</li>
+<li><input disabled="" type="checkbox"> 정기적인 보안 교육을 실시하는가?</li>
+<li><input disabled="" type="checkbox"> 유전정보를 차별 목적으로 이용하지 않는가?</li>
+<li><input disabled="" type="checkbox"> 인체유래물 연구 시 동의를 받는가?</li>
+<li><input disabled="" type="checkbox"> 의료정보 유출 시 통지·신고 절차가 있는가?</li>
+</ul>
+<h2 id="학습-정리">학습 정리<a hidden class="anchor" aria-hidden="true" href="#학습-정리">#</a></h2>
+<p>오늘 학습한 핵심 내용:</p>
+<ul>
+<li>의료정보는 초민감정보로 매우 엄격한 보호 필요</li>
+<li>의료법: 의료인 비밀 누설 금지, 진료기록 10년 보존</li>
+<li>생명윤리법: 유전정보 차별 금지, 인체유래물 연구 시 동의</li>
+<li>비밀 누설 시 3년 이하 징역 (의료법)</li>
+<li>접근 통제: 담당 환자만 조회, 역할별 권한 차등</li>
+<li>암호화: 진료기록 DB, 주민등록번호, 전송 구간</li>
+<li>접속 기록 6개월 보관, 월 1회 점검</li>
+<li>망분리: 의료정보망과 일반망 분리</li>
+<li>진료기록 열람: 본인·법정대리인·유족만 가능</li>
+<li>의료정보 유출 시 환자 통지 + 개인정보보호위원회 신고</li>
+</ul>
+<h2 id="다음-학습-주제">다음 학습 주제<a hidden class="anchor" aria-hidden="true" href="#다음-학습-주제">#</a></h2>
+<p>Day 19: 전자정부법 및 공공기관 개인정보보호 지침</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://hojjang98.github.io/tags/%EC%9D%98%EB%A3%8C%EB%B2%95/">의료법</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%83%9D%EB%AA%85%EC%9C%A4%EB%A6%AC%EB%B2%95/">생명윤리법</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%9D%98%EB%A3%8C%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8/">의료정보보호</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%A7%84%EB%A3%8C%EA%B8%B0%EB%A1%9D/">진료기록</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%9C%A0%EC%A0%84%EC%A0%95%EB%B3%B4/">유전정보</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%B9%84%EB%B0%80%EB%88%84%EC%84%A4%EA%B8%88%EC%A7%80/">비밀누설금지</a></li>
+      <li><a href="https://hojjang98.github.io/tags/emr/">EMR</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%9D%B8%EC%B2%B4%EC%9C%A0%EB%9E%98%EB%AC%BC/">인체유래물</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

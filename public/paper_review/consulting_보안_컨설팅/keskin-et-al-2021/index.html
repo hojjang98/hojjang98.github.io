@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Cyber Third-Party Risk Management: A Comparison of Non-Intrusive Risk Scoring Reports | HJ&#39;s Security Note</title>
+<meta name="keywords" content="보안컨설팅, C-TPRM, VendorRisk, NonIntrusiveAssessment, RiskScoring, SupplyChainCybersecurity, PaperReview, SKShieldusRookies">
+<meta name="description" content="비침습적 위험 점수화 도구 비교 분석을 통해 C-TPRM 방법론의 한계와 실무 적용 가능성을 탐색한 Keskin et al.(2021) 논문 리뷰">
+<meta name="author" content="">
+<link rel="canonical" href="https://hojjang98.github.io/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/keskin-et-al-2021/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.290573799e582c418c4bd84f2bca757d0a77fd1bf9f5c43942030e706df68ec8.css" integrity="sha256-KQVzeZ5YLEGMS9hPK8p1fQp3/Rv59cQ5QgMOcG32jsg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/keskin-et-al-2021/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://hojjang98.github.io/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/keskin-et-al-2021/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="Cyber Third-Party Risk Management: A Comparison of Non-Intrusive Risk Scoring Reports">
+  <meta property="og:description" content="비침습적 위험 점수화 도구 비교 분석을 통해 C-TPRM 방법론의 한계와 실무 적용 가능성을 탐색한 Keskin et al.(2021) 논문 리뷰">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="paper_review">
+    <meta property="article:published_time" content="2026-03-23T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-03-23T00:00:00+00:00">
+    <meta property="article:tag" content="보안컨설팅">
+    <meta property="article:tag" content="C-TPRM">
+    <meta property="article:tag" content="VendorRisk">
+    <meta property="article:tag" content="NonIntrusiveAssessment">
+    <meta property="article:tag" content="RiskScoring">
+    <meta property="article:tag" content="SupplyChainCybersecurity">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cyber Third-Party Risk Management: A Comparison of Non-Intrusive Risk Scoring Reports">
+<meta name="twitter:description" content="비침습적 위험 점수화 도구 비교 분석을 통해 C-TPRM 방법론의 한계와 실무 적용 가능성을 탐색한 Keskin et al.(2021) 논문 리뷰">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "논문 리뷰",
+      "item": "https://hojjang98.github.io/paper_review/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Cyber Third-Party Risk Management: A Comparison of Non-Intrusive Risk Scoring Reports",
+      "item": "https://hojjang98.github.io/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/keskin-et-al-2021/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Cyber Third-Party Risk Management: A Comparison of Non-Intrusive Risk Scoring Reports",
+  "name": "Cyber Third-Party Risk Management: A Comparison of Non-Intrusive Risk Scoring Reports",
+  "description": "비침습적 위험 점수화 도구 비교 분석을 통해 C-TPRM 방법론의 한계와 실무 적용 가능성을 탐색한 Keskin et al.(2021) 논문 리뷰",
+  "keywords": [
+    "보안컨설팅", "C-TPRM", "VendorRisk", "NonIntrusiveAssessment", "RiskScoring", "SupplyChainCybersecurity", "PaperReview", "SKShieldusRookies"
+  ],
+  "articleBody": "Research Review: Cyber Third-Party Risk Management: A Comparison of Non-Intrusive Risk Scoring Reports Analyzed Date : 2026.03.23 - 2026.03.27 Keywords : C-TPRM, Vendor Risk, Non-Intrusive Assessment, Risk Scoring, Supply Chain Cybersecurity Source : Electronics (MDPI), 2021, Vol.10, No.10, p.1168\nWhy This Paper? 선정 배경 도메인 탐색 결과 :\n8편의 보안 컨설팅 기반 논문(거버넌스, 컴플라이언스, 리스크 분석, 개인 행동, 감사, 공급망, 보안 투자, 보안 문화)을 완료하고, Bada et al.(2014) 인식 캠페인 논문을 진행 중인 상태에서 서드파티/벤더 리스크 관리 영역의 공백을 메우기 위해 선정.\n이 논문을 선택한 이유 :\n- Ghadge et al.(2020)이 공급망 사이버 위험의 전파 모델을 다뤘다면, 이 논문은 실제 벤더를 대상으로 한 위험 점수화 방법론의 비교 분석으로 이어지는 실무 연장선 - 보안 컨설팅 현장에서 고객사의 외부자/벤더 보안 수준을 진단하고 평가 체계를 설계하는 자문 역량과 직결 - 벤더 심사 프레임워크 설계, 외부자 보안 통제 구현 등 체계 수립 역량을 강화하는 실증적 근거 제공 - ISMS-P 2.2(외부자 보안) 및 ISO 27001 A.15(공급자 관계) 통제 항목과 직결되는 현행 규제 연관성 학습 목표 :\n- C-TPRM ( 사이버 서드파티 리스크 관리 )의 개념 구조와 비침습적 평가 방법론의 원리 이해 - 상용 위험 점수화 도구들이 사용하는 공통 지표 체계를 컨설팅 진단 프레임워크에 적용하는 방법 습득 - 점수화 도구 간 불일치 원인 분석을 통해 고객사 벤더 심사 체계 설계 시 표준화 과제를 조언하는 역량 확보 Day 1 - Research Context \u0026 Motivation (내 조직의 보안이 아무리 강해도, 벤더 하나가 무너지면 전부 무너진다)\n1. 연구 배경: 서드파티 의존성과 측정 불가능한 외부 위험 C-TPRM의 중요성\n현대 조직은 공급망 전반에 걸쳐 다수의 외부 파트너, 벤더, 서비스 제공업체와 긴밀하게 연결되어 운영된다. 이 연결성은 운영 효율을 높이는 동시에 조직의 사이버 위험 노출 면적을 구조적으로 확장한다. Ponemon Institute 보고서에 따르면 조직의 56%가 데이터 침해를 경험했으며, 그 중 75%는 서드파티 벤더로 인해 발생한 사이버 사고였다. 또한 하나의 조직에 민감 데이터 접근 권한을 가진 서드파티의 평균 수는 471개에 달하지만, 자신의 공급업체가 해당 데이터를 다른 업체와 공유하는지 파악하고 있는 조직은 전체의 20%에 불과하다. PwC의 조사에서는 2014년 기준 전체 사이버 침해의 23%가 현재 서비스 제공업체 및 계약업체로 인해 발생했으며, 과거 파트너로 인한 침해는 45%에 달했다. 서드파티 사이버 위험은 증가하는 반면, 이에 대응하는 규제와 완화 기법은 아직 초기 단계에 머물러 있다.\n현실의 한계\n기존의 리스크 평가 방법론들(EBIOS, MEHARI, OCTAVE, NIST SP 800-30 등)은 조직 내부의 고유 위험에 초점을 맞추는 경향이 있으며, 벤더와의 연결 또는 의존성에서 발생하는 위험은 충분히 다루지 않는다. 내부 위험을 평가하는 기존 방법론만으로는 외부 파트너로 인한 위험을 포착하는 데 한계가 있다. 기존 C-TPRM 보증 모델과 위험 관리 프레임워크들은 일반적으로 효과성을 검증할 데이터가 부족하다. 더 나아가 현재 시장에 존재하는 여러 비침습적 위험 점수화 서비스들이 각각 다른 방법론과 지표를 사용함에도, 이들의 결과 일관성과 신뢰성에 대한 체계적 비교 분석이 이루어진 적이 없었다.\n연구 문제의식\n이 논문이 답하려는 핵심 질문은 두 가지다. 첫째, 현재 사이버 서드파티 리스크 관리에서 사용되는 방법론은 무엇인가? 둘째, 서로 다른 점수화 도구가 동일 조직에 대해 산출하는 위험 점수는 얼마나 신뢰할 수 있고 일관성이 있는가?\n2. 핵심 개념 개념 정의 컨설팅 맥락에서의 의미 C-TPRM 사이버 서드파티 리스크 관리(Cyber Third-Party Risk Management). 조직이 모든 외부 파트너, 특히 벤더와의 상호작용을 모니터링하고 관리하는 프로세스. 벤더 사이버 위험, 사이버 공급망 위험과 상호 호환되는 개념 고객사 외부자 보안 심사 체계 설계, ISMS-P 2.2 외부자 보안 통제 구현 자문의 이론적 기반 비침습적 평가 대상 조직의 직접적 개입이나 협조 없이 공개적으로 접근 가능한 정보를 수집·분석하여 사이버 위험을 평가하는 방법. 인증서 만료 여부 확인, 봇넷 레지스터에서의 IP 조회, 다크웹 유출 데이터 탐색 등이 포함됨 고객사가 벤더의 협조 없이 선제적으로 벤더 보안 수준을 파악할 수 있는 실용적 접근법으로, 초기 진단 단계에서 즉시 활용 가능 위험 점수화 신용 점수와 유사하게, 조직의 사이버 위험 프로필을 단일 수치 또는 등급으로 표현하는 방법. 엔드포인트 행동, 네트워크 설정 오류, 소프트웨어 패치 상태, 웹 도메인, 기업 정보, 과거 침해 이력 등 다수의 지표를 종합하여 산출 벤더 계약 전 사전 심사, 사이버 보험 언더라이팅, 지속적 모니터링 등 정량적 의사결정 근거로 활용. 고객사에게 어떤 도구를 선택할지 자문할 때 각 도구의 방법론 차이를 설명하는 데 필요 3. 이론적 기반: 비침습적 C-TPRM 방법론 구조 [ 외부 공개 데이터 수집 ]\n\u003e\u003e ↓ [ 평가 지표 6개 카테고리 ]\n- 엔드포인트 행동 - 네트워크 설정 오류 - 소프트웨어 / 서비스 관리 - 웹 도메인 취약점 - 기업 정보 ( Firmographic ) - 과거 침해 이력 \u003e\u003e ↓ [ 위험 점수 산출 ] 도구별 상이한 알고리즘\n- 수치 점수 ( 0 - 100 등 ) - 등급 ( A - F 등 ) \u003e\u003e ↓ [ 벤더 리스크 판단 ]\n- 계약 결정 - 보험 언더라이팅 - 지속 모니터링 핵심 아이디어 :\nC-TPRM의 핵심은 신용 점수 체계와 유사한 방식으로 조직의 사이버 위험을 외부에서 수치화하는 것이다. 비침습적 방법은 대상 조직의 참여 없이도 공개 데이터만으로 보안 수준을 추정할 수 있어 확장성이 높다. 그러나 이 논문은 현재 시장에 존재하는 도구들이 공통 지표를 일부 공유하면서도 방법론, 독점 데이터, 추가 위험 요소 반영 방식의 차이로 인해 동일 조직에 대해 일관된 결과를 산출하지 못함을 실증적으로 보여준다.\n4. 연구의 핵심 기여 학술적 기여 :\n- C-TPRM이라는 신흥 분야를 명확하게 개념화하고, 비침습적 위험 점수화 방법론을 체계적으로 비교 분석한 최초의 탐색적 연구 중 하나 - Target, Home Depot, OPM, RSA Security, SolarWinds 등 5개 실제 사고 사례를 C-TPRM 관점에서 분석하여 서드파티 위험의 실증적 근거 제시 - FICO, BitSight, RiskRecon, ComplyScore 4개 상용 도구를 동일 대상 조직에 적용하여 결과를 비교함으로써 점수 수렴 불일치 문제를 실증적으로 규명 - ANOVA, MANOVA 등 통계 기법을 활용한 후속 일관성 분석 방향을 제시하며 연구 의제 설정 실무 기여 :\n- 비침습적 C-TPRM에서 공통적으로 사용되는 6개 지표 카테고리(엔드포인트 행동, 네트워크 설정 오류, 소프트웨어/서비스, 웹 도메인, 기업 정보, 과거 침해 이력)를 정리하여 실무 평가 기준으로 활용 가능 - 단일 위험 점수화 도구의 결과만으로 보안 수준을 판단하는 것이 불충분함을 근거와 함께 제시, 복수 도구 활용 필요성 제언 - 각 도구별 특성(FICO의 포괄성, BitSight의 독점 벤치마크 데이터셋, RiskRecon의 고도 커스터마이즈, ComplyScore의 컴플라이언스 중심)을 비교하여 도구 선택 기준 제시 5. 컨설팅 관점 인사이트 적용 가능성 :\n고객사 보안 컨설팅 시 외부자/벤더 보안 심사 체계 설계 프로젝트에 직접 활용 가능하다. 특히 이 논문이 정리한 6개 지표 카테고리는 벤더 심사 체크리스트 설계의 기초 구조로 사용할 수 있다. 또한 고객사가 이미 특정 위험 점수화 도구를 사용 중이거나 도입을 검토 중인 경우, 각 도구의 방법론적 차이와 한계를 설명하고 복수 도구 병행 사용 또는 표준화 필요성을 자문하는 근거로 활용할 수 있다.\n기존 학습과의 연결 :\n- Ghadge et al.(2020)이 공급망 사이버 위험의 전파 메커니즘과 거시적 대응 전략을 다뤘다면, 이 논문은 개별 벤더 수준에서 위험을 어떻게 측정하고 수치화할 것인가의 실무적 문제를 다룬다 - Gordon \u0026 Loeb(2002)의 보안 투자 최적화 모델과도 연결되는데, 벤더 위험 점수화는 결국 어떤 벤더에 보안 요구사항을 집중할 것인가를 결정하는 자원 배분 문제이기 때문이다 - Santos-Olmo et al.(2024)의 통합 리스크 분석 방법론과 비교하면, 이 논문은 내부 리스크 분석을 외부(벤더) 영역으로 확장한 사례로 이해할 수 있다 현실적 고려사항 :\n비침습적 평가의 한계로 인해 점수화 도구가 포착하지 못하는 내부 보안 통제 항목이 존재한다. 예를 들어 ComplyScore의 경우 이 논문에서 분석한 점수는 비침습적 스캔에 의한 초기 점수일 뿐이며, 현장 방문과 심층 조사를 포함한 완전한 평가 점수는 별도 계약 후 산출된다. 고객사에 도구 도입을 자문할 때 비침습적 도구의 점수는 참고 지표이지 완전한 보안 인증의 대체물이 아님을 명확히 안내해야 한다. 또한 이 논문에서 실증된 바와 같이 동일 조직에 대해 서로 다른 도구가 다른 결과를 산출한다는 점은, 고객사 경영진에게 단일 점수만 제시하는 보고 방식의 위험성을 설명하는 데 유용한 근거가 된다.\nDay 2 - Research Model, Hypotheses, and Methodology (동일 조직, 다른 점수 - 비침습적 C-TPRM 도구들은 얼마나 일치하는가)\n1. 연구 모델 개요 [ 연구 설계 전체 구조 ]\n[ 탐색적 문헌 검토 ] 기존 C-TPRM 방법론 정리\n- 상용 C-TPRM 도구 9개 조사 ( BitSight, FICO, RiskRecon 등 ) - 공통 지표 6개 카테고리 도출 \u003e\u003e → [ 파일럿 실증 분석 ] 동일 조직 대상 다중 도구 비교\n- TPRA 회원사 중 4개 도구 선정 ( FICO, BitSight, RiskRecon, ComplyScore ) - University at Albany 대상 스캔 수행 \u003e\u003e ↓ [ 결과 정규화 ] 0 - 100 스케일 변환\n\u003e\u003e ↓ [ 정량적 비교 + 정성적 비교 ]\n\u003e\u003e ↓ [ 일관성 및 신뢰성 평가 ]\n설계 철학 :\n저자들은 C-TPRM 분야가 아직 표준화가 미비한 신흥 영역임을 전제하고, 시장에 존재하는 도구들의 현황을 탐색적으로 파악하는 데 초점을 맞췄다. 이론 검증보다는 현실 진단에 가까운 연구로, 신용 점수 체계에서 여러 신용 평가 기관의 점수가 수렴하는 것처럼 C-TPRM 점수도 수렴해야 한다는 전제를 검증하는 구조다.\n2. 연구 가설 (핵심 가정) 이 논문은 가설 검증 연구가 아닌 탐색적 비교 연구이므로, 핵심 가정으로 정리한다.\n가정 내용 근거 A1 신용 점수처럼, 서로 다른 C-TPRM 도구들도 동일 조직에 대해 유사한 위험 수준을 산출해야 한다 신용 평가 기관(Equifax, TransUnion, Experian)은 공통 계산 방법론을 사용하여 수렴된 결과를 제공함 A2 비침습적 방법으로도 조직의 사이버 보안 수준을 의미 있게 평가할 수 있다 공개 데이터(인증서, IP, 다크웹 등)는 보안 수준의 간접 지표로 활용 가능 A3 C-TPRM 도구들이 사용하는 평가 지표 간에는 공통 기반이 존재한다 사이버 위험의 구성 요소(취약점, 위협, 영향)는 도구에 무관하게 유사한 개념 구조를 공유 3. 연구 방법론 A. 데이터 수집 데이터 소스 :\n소스 수집 정보 용도 TPRA(Third-Party Risk Association) 회원사 목록 C-TPRM 서비스 제공 기업 명단 포함 기준에 맞는 도구 후보 식별 FICO, BitSight, RiskRecon, ComplyScore University at Albany에 대한 비침습적 스캔 보고서 정량·정성 비교 분석의 원본 데이터 공개 웹 데이터 (각 도구가 수집) IP 주소, SSL 인증서, 봇넷 레지스터, 다크웹 유출 데이터 등 각 도구의 위험 점수 산출 원천 데이터 수집 절차 :\nTPRA 회원 자격을 갖춘 도구들 중 사이버 보안 평가를 수행하는지 확인 후, 10개 기업에 공식 초청장을 발송했다. 이 중 4개 기업(FICO, BitSight, RiskRecon, ComplyScore)만이 비침습적 스캔 보고서 제공에 동의했으며, 나머지는 사전 비용 납부 또는 기타 조건을 요구하여 제외됐다.\n수집 과정 특이사항 :\n도구 사전 데모 필요 소요 시간 비용 FICO 불필요 즉시 무료 BitSight 필요 (실시간) 3일 면제 RiskRecon 필요 (실시간) 1주 면제 ComplyScore 불필요 2주 무료 (초기 점수만) ComplyScore의 경우, 이 연구에서 획득한 점수는 비침습적 스캔에 의한 초기 점수이며, 완전한 평가는 유료 계약 후 현장 조사를 포함한 심층 방법론으로 진행된다.\nB. 핵심 분석 기법 비침습적 위험 점수화 비교 방법론\n목적 : 서로 다른 척도를 사용하는 4개 도구의 결과를 동일 기준으로 비교하기 위한 정규화 및 비교 분석\n방법 :\n- 각 도구로부터 University at Albany 대상 스캔 보고서 수집 - 전체 점수를 0 - 100 범위로 정규화 - FICO ( 850점 만점 ) \u003e\u003e 정규화 - BitSight ( 900점 만점 ) \u003e\u003e 정규화 - RiskRecon ( 10점 만점 ) \u003e\u003e 정규화 - ComplyScore ( 100점 만점 ) \u003e\u003e 변환 불필요 - 정량적 비교 : 정규화된 종합 점수 비교 - 정성적 비교 : 각 보고서의 카테고리별 평가 결과 수동 비교 - 삼각검증 ( Triangulation ) : 2명의 연구자가 독립적으로 분석 후 결과 대조 삼각검증 적용 이유 :\n연구의 신뢰성을 높이기 위해 두 연구자가 분석을 독립적으로 수행하고 결과를 비교하는 방식을 채택했다. 이는 단일 연구자의 주관적 해석 가능성을 줄이기 위한 설계상의 선택이다.\nC. 평가 지표 체계 (6개 공통 카테고리) 이 논문은 시장에 존재하는 C-TPRM 도구들이 공통적으로 사용하는 지표를 6개 카테고리로 정리했다.\n카테고리 평가 내용 주요 스캔 대상 엔드포인트 행동 액세스 권한, 자산 관리, 감사 로깅 등 엔드디바이스의 보안 상태 브라우저, OS, 안티바이러스, RBL(Real-time Blackhole Lists) 네트워크 설정 오류 네트워킹 장치의 설정 오류 및 보안 모범 사례 준수 여부 포트 상태, PostgreSQL DB, SSL 인증서, 방화우/라우터 설정 소프트웨어 및 서비스 패치 관리, 프로토콜 적정성, 설정 상태 HSTS preloading, CMS, X-XMS, 국가취약점데이터베이스(NVD) 대조 웹 도메인 웹 도메인 및 콘텐츠 관리 시스템의 취약점 FTP, HTTP, IP 주소, DNS 데이터, 이메일 서버 포트 기업 정보 ( Firmographic ) 재무, 규모 등 조직 정보 및 소셜 엔지니어링 노출 유출 기업 이메일, 공식 웹사이트, 정보 유출 여부 과거 침해 이력 보고된 과거 침해 사고 및 당시 대응 이력 타이포스쿼팅 도메인, 시스템 로그, 패치 버전 이력 D. 평가 방법 정량적 평가 :\n- 4개 도구의 정규화 점수를 직접 수치 비교 - 향후 연구 방향으로 ANOVA(종합 점수 일관성 분석), MANOVA(카테고리별 점수 반영 일관성 분석), 사후 검정 ( post hoc tests ) 적용 제안 정성적 평가 :\n- 각 보고서의 카테고리별 서술적 평가 결과를 수동으로 비교 - 도구별 강조 항목, 해석 방식, 권고사항의 차이를 분석 비교 대상 :\n신용 점수 체계(Equifax, TransUnion, Experian)를 C-TPRM 벤치마크로 삼았다. 신용 점수 기관들은 공통 계산 방법론을 사용하므로 개인의 신용 점수가 기관 간에 대체로 수렴하는데, C-TPRM 도구들도 이와 유사한 수렴성을 보여야 한다는 것이 비교의 전제다.\n4. 컨설팅 관점 인사이트 방법론의 실무 적용성 :\n장점 :\n- 6개 지표 카테고리는 고객사 벤더 심사 체크리스트 설계의 직접적 기초로 활용 가능 - 비침습적 방법이므로 벤더의 협조 없이 선제적 위험 파악 가능, 계약 전 사전 심사에 유용 - 정규화 비교 방법론은 고객사가 여러 도구를 동시에 사용할 때 결과 해석 기준으로 적용 가능 한계 :\n- 단일 조직 ( University at Albany )을 대상으로 한 파일럿 연구로, 일반화에 한계가 있음 - ComplyScore의 경우 비침습적 초기 점수만 포함되어 도구 간 비교의 동등성이 완전하지 않음 - 4개 도구만 포함되었으며, 나머지 6개 도구는 비용 또는 조건 문제로 제외됨 기존 보안 솔루션과의 차별점 :\n접근 방법 방식 강점 약점 전통적 침투 테스트 직접 개입, 허가 필요 심층적, 실제 취약점 확인 비용·시간 소요, 벤더 협조 필수 설문/체크리스트 벤더 자기신고 방식 내부 통제 정보 획득 가능 주관적, 허위 보고 가능성 비침습적 위험 점수화 공개 데이터 자동 수집·분석 확장성 높음, 즉시 실행 가능, 벤더 협조 불필요 내부 통제 파악 불가, 도구 간 결과 불일치 Day 3 - Empirical Results and Analysis (같은 조직, 네 개의 다른 판단 - 점수는 수렴하지 않았다)\n1. 평가 환경 실험 설정 :\n- 대상 : University at Albany, State University of New York ( 미국 소재 고등교육기관 ) - 평가 도구 : FICO, BitSight, RiskRecon, ComplyScore - 방법 : 각 도구의 비침습적 스캔 보고서 수집 후 정규화 비교 - 삼각검증 : 2명의 연구자가 독립적으로 분석 후 결과 대조 실험 전략 :\n동일 조직에 대해 4개 도구를 동시에 적용하여 결과를 비교하는 파일럿 연구 구조다. 정량적으로는 전체 점수를 0 - 100으로 정규화하여 수치 비교하고, 정성적으로는 카테고리별 서술 평가를 수동으로 대조했다.\n2. 주요 발견 전체 결과 요약 :\n도구 만점 획득 점수 해석 정규화 점수 FICO 850 482 가장 높은 침해 위험군 57% BitSight 900 540 - 570 (범위) 교육 부문 하위 30% 60 - 63% RiskRecon 10 6.8 교육 부문 하위 20% 68% ComplyScore 100 80 B 등급 80% 핵심 관찰 :\n4개 도구 모두 동일 조직을 평가했음에도 정규화 점수가 57%에서 80%까지 23%p의 편차를 보였다. FICO, BitSight, RiskRecon 세 도구는 해당 조직을 고위험 또는 교육 부문 하위권으로 판단한 반면, ComplyScore만 B 등급(80점)으로 상대적으로 높은 점수를 부여했다. ComplyScore의 높은 점수는 해당 도구의 평가 중심이 기술적 취약점이 아닌 컴플라이언스 관리 수준에 있기 때문으로 저자들은 설명한다.\n3. 도구별 세부 분석 A. FICO 보고서 관찰 :\nFICO는 4개 도구 중 가장 낮은 정규화 점수(57%)를 산출했다. 낮은 점수의 주요 원인은 네트워크 프리픽스의 서비스 및 설정 위험 수준이 열악하다는 판단이었다. 구체적으로 TCP, UDP, ICMP 프로브에 응답하는 기기 또는 서비스의 수가 과도하게 많았다. 또한 웹 리소스의 콘텐츠가 현행 개인정보 표준 및 규정과 맞지 않거나 최신화되지 않은 상태로 평가됐다.\n해석 :\nFICO의 모델은 다양한 사이버 보안 데이터 신호를 종합하는 머신러닝 기반으로 설계되어 있어, 과거 침해 이력 등 다수의 교차 측정값을 반영한다. 이로 인해 단일 지표보다 복합적인 위험 신호에 민감하게 반응하는 구조다.\n실무 시사점 :\nFICO 점수가 낮게 나왔다고 해서 해당 조직이 즉각적인 침해 위험에 처해 있다는 의미는 아니다. 다만 외부에서 관찰 가능한 위험 신호가 많다는 것을 의미하며, 이는 공격자의 정찰 단계에서 해당 조직이 상대적으로 쉬운 표적으로 인식될 가능성을 시사한다.\nB. BitSight 보고서 관찰 :\nBitSight는 정규화 점수 60 - 63% 범위를 산출하며 교육 부문 하위 30%로 분류했다. FICO와 유사하게 엔드포인트 행동, 즉 액세스 디바이스 테스트에서 지속적으로 낮은 점수를 기록했다. 스팸 전파 및 봇넷 감염 가능성이 높은 것으로 보고됐고, 일부 기기는 잠재적으로 침해된 상태로 판단됐다. 웹 리소스도 낮은 성과에 기여했는데, 웹 헤더 미흡, 보안되지 않은 열린 포트, 만료된 SSL 인증서가 주요 원인이었다.\n해석 :\n흥미롭게도 BitSight는 SSL 설정 점수를 교육 업계 기준으로는 상대적으로 높게 평가했다. 이는 동일 항목이라도 업계 벤치마크 기준에 따라 해석이 달라질 수 있음을 보여준다. BitSight의 강점인 독점 데이터셋(120개 이상의 상업·라이선스 데이터 소스)이 결과에 반영되어 있다.\n실무 시사점 :\n업계 평균 대비 상대적 위치로 점수를 제시하는 방식은 고객사 경영진에게 설명하기 용이하다. 다만 업계 벤치마크 자체의 수준이 낮을 경우, 상대적으로 높은 점수가 절대적 보안 수준을 보장하지 않는다는 점을 함께 안내해야 한다.\nC. RiskRecon 보고서 관찰 :\nRiskRecon은 정규화 점수 68%로 교육 부문 하위 20%로 분류했다. 810개의 사전 정의된 테스트 중 40개 문제가 발견됐다. 웹 애플리케이션 점수가 10점 만점에 2.2점으로 가장 낮았으며, HTTPS 보안 헤더 및 콘텐츠 관리 인증 문제가 주요 원인이었다. 즉각적인 중단 및 재평가가 권고됐다.\n반면 BitSight와 상반되는 결과도 나타났다. 웹 암호화 점수는 10점 만점에 8.6점으로 업계 평균(8.2)을 상회했다. 데이터 유출 사고(과거 침해 이력)와 위협 인텔리전스(현재 침해 가능성)에서는 각각 10점 만점을 기록했다.\n해석 :\nRiskRecon의 결과는 동일 조직 내에서도 보안 수준이 영역별로 매우 불균등하게 분포할 수 있음을 보여준다. 웹 암호화는 업계 평균 이상이면서 웹 애플리케이션 인증은 최하위를 기록하는 이 패턴은, 조직이 특정 기술적 통제에는 투자하면서 다른 영역은 방치하는 전형적인 불균형 보안 투자 패턴을 반영한다.\n실무 시사점 :\n종합 점수만이 아닌 카테고리별 세부 점수가 제공될 때 컨설팅 가치가 더 높아진다. 어떤 영역에 우선적으로 개선 자원을 투입해야 하는지 구체적인 우선순위 자문이 가능하기 때문이다.\nD. ComplyScore 보고서 관찰 :\nComplyScore는 4개 도구 중 가장 높은 80점(B 등급)을 부여했다. 신뢰성 점수는 100점 만점으로, 최근 12개월 내 감염 사례가 없음을 의미했다. 다만 5년 전 스팸 제로데이가 탐지된 이력이 기록됐다. 낮은 점수에 기여한 항목은 패치가 적용되지 않은 웹 서버 및 운영 체제 가능성이었다.\n중요한 제약이 있다. 이 보고서는 비침습적 스캔에 의한 초기 점수이며, ComplyScore의 완전한 평가는 현행 표준, 법률, 보안 정책 대비 관리 및 컴플라이언스 수준을 중심으로 설문과 전화/이메일 대화를 포함한 심층 방법론으로 수행된다.\n해석 :\nComplyScore가 상대적으로 높은 점수를 부여한 이유는 평가의 중심축 자체가 다르기 때문이다. 기술적 취약점 탐지보다 관리 체계와 컴플라이언스 준수 여부를 중심으로 평가하므로, 기술적 설정 오류가 있더라도 관리 문서와 정책이 갖춰져 있으면 높은 점수가 나올 수 있다.\n실무 시사점 :\n컴플라이언스 중심 도구와 기술적 취약점 중심 도구는 서로 다른 질문에 답한다. 고객사에게 어떤 도구를 선택할지 자문할 때, 그 고객사가 현재 무엇을 알고 싶은지 ( 기술적 노출 수준 vs. 규정 준수 수준 )에 따라 적합한 도구가 달라진다.\n4. 도구 간 비교 분석 A. 일관된 발견 3개 도구(FICO, BitSight, RiskRecon)는 공통적으로 웹 리소스 관련 취약점을 주요 문제로 지목했다. 웹 헤더, SSL/TLS 설정, 콘텐츠 관리 인증 등 웹 도메인 카테고리에서의 문제는 도구에 무관하게 반복적으로 탐지됐다. 이는 해당 조직의 웹 인프라 보안이 실질적으로 취약한 상태임을 여러 독립적 방법론이 동시에 확인했다는 점에서 신뢰도 높은 발견이다.\nB. 불일치 발견 웹 암호화 항목에서 BitSight와 RiskRecon은 상반된 판단을 내렸다. BitSight는 낮은 성과의 원인 중 하나로 SSL 관련 항목을 지목한 반면, RiskRecon은 웹 암호화를 8.6/10으로 업계 평균 이상으로 평가했다. 이 불일치는 두 도구가 동일한 개념 범주(암호화)를 서로 다른 세부 지표로 측정하고 있음을 보여준다.\nC. 불일치의 원인 - 평가 방법론의 차이 : 각 도구가 동일 카테고리를 다른 세부 지표와 가중치로 측정한다 - 독점 데이터셋의 포함 여부 : BitSight처럼 독점 상업 데이터를 활용하는 도구는 공개 데이터만 사용하는 도구와 다른 결과를 낼 수 있다 - 공통 기준선 이상의 추가 위험 요소 반영 방식이 도구마다 다르다 5. 오탐/오류 분석 유형 사례 원인 시사점 도구 간 상반된 판단 BitSight(SSL 낮음) vs. RiskRecon(웹 암호화 8.6/10) 동일 개념을 다른 세부 지표로 측정 단일 도구 결과를 절대적 판단 기준으로 삼을 수 없음 평가 범위 불일치 ComplyScore의 점수가 다른 도구 대비 현저히 높음 평가 중심축 자체가 다름(기술 취약점 vs. 컴플라이언스 관리) 도구 선택 전 평가 목적 명확화 필요 데이터 접근 범위 차이 BitSight(120개 이상 독점 소스) vs. 공개 데이터 의존 도구 수집 데이터 소스의 범위와 품질 차이 독점 데이터 포함 도구가 더 풍부한 신호를 반영하지만 재현 불가 6. 컨설팅 관점 인사이트 성공 사례 :\n3개 도구가 공통적으로 지목한 웹 리소스 취약점은 신뢰도 높은 개선 우선순위로 활용 가능하다. 복수 도구에서 동일하게 나타난 문제는 해당 취약점이 실재할 가능성이 높으며, 고객사에게 즉각적인 조치를 권고하는 근거로 사용할 수 있다.\n한계 사례 :\nComplyScore 결과만 보면 해당 조직의 보안 수준이 양호한 것으로 오인할 수 있다. 단일 도구의 점수만으로 고객사의 벤더 보안 수준을 판단하는 것은 불충분하며, 특히 평가 중심축이 다른 도구들의 결과를 혼용할 경우 판단 오류가 발생할 수 있다.\n고객 환경 적용 시 고려사항 :\n- 복수 도구를 병행 사용하되, 도구별 평가 중심축 ( 기술 취약점 vs. 컴플라이언스 )을 이해하고 목적에 맞는 도구를 선택 - 점수가 수렴하는 항목은 실재 위험으로 우선 처리 - 점수가 발산하는 항목은 추가 조사가 필요한 신호로 해석 7. 개인 인사이트 [ 인사이트 1 : 수렴하지 않는 점수의 의미 ]\n신용 점수는 기관 간에 수렴하지만, C-TPRM 점수는 수렴하지 않는다. 이 사실이 단순한 기술적 문제처럼 보이지만, 실제로는 고객사가 벤더 보안을 판단하는 기반 자체가 불안정하다는 것을 의미한다. 57%와 80%는 동일 조직에 대한 판단인데, 어느 점수를 믿어야 하는가? 이 질문에 답하는 것 자체가 컨설팅 가치가 된다.\n[ 인사이트 2 : 도구는 목적이 있다 ]\nComplyScore가 높은 점수를 준 것은 잘못된 것이 아니다. 그 도구는 컴플라이언스 관리 수준을 보는 도구이고, 그 목적에는 충실했다. 문제는 목적이 다른 도구의 결과를 같은 맥락에서 비교하려 할 때 발생한다. 고객사에 도구를 추천할 때 기능이 아닌 목적을 먼저 물어야 한다는 교훈이다.\n[ 인사이트 3 : 파일럿 연구의 한계 ]\n단 하나의 조직(University at Albany)을 대상으로 한 결과다. 이 결과가 다른 조직, 다른 산업에서도 동일하게 나타날지는 알 수 없다. 저자들 스스로도 더 많은 조직을 대상으로 한 통계적 검증이 필요하다고 인정한다. 컨설팅 현장에서 이 논문을 인용할 때 연구의 규모적 한계를 함께 언급하는 것이 필요하다.\nReferences [1] Keskin, O.F., Caramancion, K.M., Tatar, I., Raza, O., \u0026 Tatar, U. (2021). Cyber Third-Party Risk Management: A Comparison of Non-Intrusive Risk Scoring Reports. Electronics, 10(10), 1168.\n[2] Ghadge, A., Weiß, M., Caldwell, N.D., \u0026 Wilding, R. (2020). Managing cyber risk in supply chains: A review and research agenda. Supply Chain Management: An International Journal, 25(2), 223-240.\n[3] Gordon, L.A., \u0026 Loeb, M.P. (2002). The economics of information security investment. ACM Transactions on Information and System Security, 5(4), 438-457.\n[4] Santos-Olmo, A., et al. (2024). Integrated risk analysis framework.\nDay 4 - Research Limitations and Scholarly Impact (파일럿 연구의 솔직한 한계, 그리고 C-TPRM이 나아간 방향)\n1. 연구의 한계점 A. 단일 조직 대상의 파일럿 수준 문제 :\n이 연구는 University at Albany 단 하나의 조직을 대상으로 수행된 파일럿 연구다. 저자들 스스로 Section 8(결론)에서 더 많은 조직을 대상으로 한 대규모 데이터셋이 필요하다고 명시하고 있다. 단일 조직의 결과만으로는 도구 간 불일치 패턴이 교육 기관에만 나타나는 현상인지, 금융·제조·의료 등 다른 산업에서도 동일하게 나타나는지 알 수 없다.\n영향 :\n연구 결과의 일반화 가능성이 제한된다. 동일 조직(University at Albany)이 연구자들의 소속 기관이라는 점도 연구 대상 선정의 편의성에 의존했음을 시사한다.\n보완 방향 :\n저자들이 직접 제안한 바와 같이 다수의 조직을 대상으로 ANOVA(종합 점수 일관성)와 MANOVA(카테고리별 점수 일관성)를 적용한 통계적 검증이 필요하다. 이를 위해서는 먼저 다양한 형식의 보고서 데이터를 정량적으로 코딩하고 정규화하는 작업이 선행되어야 한다.\nB. 포함된 도구의 대표성 부족 문제 :\n시장에 존재하는 10개 이상의 C-TPRM 도구 중 4개만이 연구에 포함됐다. 나머지 6개 도구는 사전 비용 납부 또는 기타 조건을 요구하여 제외됐다. 포함된 4개 도구(FICO, BitSight, RiskRecon, ComplyScore)가 전체 시장을 대표하는지 검증할 방법이 없다.\n영향 :\n포함되지 않은 도구들 중에 더 정확하거나 일관된 결과를 내는 도구가 존재할 수 있다. 또한 비용을 지불해야만 포함 가능한 도구들의 경우, 자원이 충분한 대형 조직에서 실제로 사용되는 도구일 가능성이 높아 연구 결과가 실제 시장 사용 패턴을 반영하지 못할 수 있다.\n보완 방향 :\nTPRA 회원사 전체를 대상으로 한 포괄적 조사, 또는 실제 시장 점유율 기반의 표본 선정 방식이 필요하다. 비용 장벽이 있는 도구는 연구 예산을 확보하여 포함하거나, 비용 장벽 자체를 연구의 관찰 대상으로 삼는 방향도 가능하다.\nC. ComplyScore 비교 동등성 문제 문제 :\nComplyScore의 경우 이 연구에서 획득한 점수는 비침습적 스캔에 의한 초기 점수이며, 해당 도구의 완전한 평가는 현장 방문과 심층 조사를 포함한다. 반면 나머지 3개 도구(FICO, BitSight, RiskRecon)는 비침습적 스캔만으로 최종 점수를 산출한다. 즉 4개 도구가 동일한 평가 완성도로 비교된 것이 아니다.\n영향 :\nComplyScore의 높은 점수(80점)가 해당 도구의 방법론적 차이 때문인지, 아니면 초기 점수라는 불완전한 평가 단계의 결과인지 구분하기 어렵다.\n보완 방향 :\n각 도구의 동일한 평가 완성도 단계에서 결과를 수집하거나, 비침습적 점수와 완전한 평가 점수를 구분하여 분석하는 설계가 필요하다.\n2. 후속 연구 동향 A. 인용 수와 영향력 학술적 임팩트 :\n- 발표 : 2021년 5월 - Semantic Scholar 기준 인용 수 : 3건 ( 2026년 3월 기준 ) - Electronics(MDPI) 게재, 오픈액세스 평가 :\n인용 수 자체는 높지 않다. 이는 C-TPRM이라는 분야 자체가 학술적으로 아직 초기 단계이며, 이 논문이 탐색적 파일럿 연구로 설계된 한계와도 연결된다. 다만 NSF(미국 국립과학재단) Grant No. 1948261의 지원을 받아 수행된 연구라는 점, 그리고 교신저자 Unal Tatar가 이후에도 사이버 위험 정량화 연구를 지속하고 있다는 점에서 연구 그룹의 지속성은 확인된다.\nB. 연구 트렌드의 변화 [ 이 논문 이전, - 2020 ]\n- C-TPRM 개념 미정립 - 공급망 위험을 물리적/운영적 관점에서 주로 다룸 - 개별 벤더의 사이버 위험 점수화는 실무 중심, 학술 연구 부재 \u003e\u003e ↓ [ 이 논문, 2021 ]\n- 비침습적 C-TPRM 방법론을 학술적으로 개념화 - 상용 도구 비교 분석 프레임워크 제시 - 점수 불일치 문제를 학술적 의제로 제기 \u003e\u003e ↓ [ 이후, 2022 - 현재 ]\n- NIST SP 800-161 Rev.1 발표 ( 2022년 5월 )로 표준화 가속 - C-SCRM을 엔터프라이즈 리스크 관리에 통합하는 다층 접근법 제도화 - NIST CSF 2.0 ( 2024년 )에서 공급망 위험 관리를 Govern 기능으로 독립 - 비침습적 위험 점수화 도구 시장 확대 및 고도화 이 논문의 위치 :\n실무에서는 이미 활발히 사용되고 있던 비침습적 위험 점수화를 학술적으로 처음 체계화한 위치에 있다. 표준화의 필요성을 제기한 시점이 NIST SP 800-161 Rev.1 발표(2022년) 직전이라는 점에서 타이밍의 적절성이 있다.\nC. 주요 후속 동향 표준화 방향 - NIST SP 800-161 Rev.1 (2022)\n이 논문이 제기한 표준화 부재 문제에 대응하는 가장 중요한 후속 움직임이다. 2022년 5월 발표된 NIST SP 800-161 Revision 1은 조직의 모든 계층에서 사이버 공급망 위험을 식별·평가·완화하기 위한 지침을 제공하며, C-SCRM을 엔터프라이즈 위험 관리 활동에 통합하는 다층 접근법을 제도화했다. 2021년 미국 행정명령(EO 14028)의 소프트웨어 공급망 보안 강화 요구에 대응하여 소프트웨어 공급망 무결성 지침을 담은 Appendix F가 추가됐다. 연방 기관 중심으로 시작됐지만, 현재는 제조, 금융, 의료, 방산 등 다양한 산업에서 광범위하게 채택되고 있다.\n거버넌스 통합 방향 - NIST CSF 2.0 (2024)\nNIST Cybersecurity Framework 2.0은 공급망 위험 관리(GV.SC) 통제를 새로운 Govern 기능 아래에 독립적으로 배치했다. 이는 공급망 사이버 위험이 더 이상 기술적 문제가 아닌 거버넌스 수준의 의제임을 공식화한 것이다.\n3. 실무 영향 A. 비침습적 위험 점수화 시장의 성장 이 논문 이전 :\nBitSight(2011년 설립) 등 일부 선발 주자가 존재했으나, 시장이 분산되고 표준이 없었다.\n이 논문 이후 :\nC-TPRM 도구 시장은 빠르게 성장했다. 이 논문에서 다룬 RiskRecon은 Mastercard에 인수됐고, SecurityScorecard와 BitSight는 기업 공개 또는 대형 투자 유치를 진행했다. 사이버 보험 언더라이팅에서 비침습적 위험 점수가 표준적 참조 지표로 자리 잡았다.\n핵심 변화 :\n이 논문이 지적한 도구 간 불일치 문제는 여전히 완전히 해소되지 않았다. 업계는 표준화보다는 각 도구의 차별화 전략으로 대응하고 있으며, 복수 도구 병행 사용 또는 통합 플랫폼 방식이 실무적 해법으로 부상했다.\nB. 규제 및 감독 기관의 반응 금융 부문에서는 G7 Fundamental Elements for Third Party Cyber Risk Management(2018, 2022 개정)가 서드파티 사이버 위험 관리의 국제 기준으로 작동하고 있다. 한국의 경우 ISMS-P 2.2(외부자 보안) 통제 항목이 이 영역을 다루고 있으며, 금융보안원의 금융권 IT·보안 컨설팅 가이드라인도 외부자 위험 관리를 필수 항목으로 포함하고 있다.\n4. 컨설팅 관점 인사이트 한계를 이해한 컨설팅 전략 :\n이 논문의 한계를 알고 있을 때 고객사에게 더 정직하고 유용한 자문이 가능하다. 비침습적 위험 점수화 도구를 도입하려는 고객사에게는 단일 도구의 결과를 절대적 기준으로 삼지 말 것, 도구 간 결과가 다를 수 있음을 사전에 안내할 것, 그리고 점수화 도구는 벤더 심사의 출발점이지 종착점이 아님을 강조해야 한다.\n적용 가능 시나리오 :\n- 벤더 수가 수십 개 이상이고 전수 침투 테스트나 현장 감사가 불가능한 중대형 고객사에서 1차 스크리닝 도구로 비침습적 위험 점수화 도구 도입을 검토할 때 - ISMS-P 인증을 앞두고 외부자 보안 통제 체계를 구축해야 하는 고객사에서 벤더 분류 및 우선순위 설정 기준을 마련할 때 적용 불가 시나리오 :\n단일 도구의 점수만으로 특정 벤더와의 계약 종료 또는 갱신 여부를 결정하려는 고객사. 이 경우 이 논문에서 실증된 도구 간 불일치 문제를 근거로, 복수 도구 활용 또는 추가 검증 절차(설문, 현장 점검 등) 병행을 강하게 권고해야 한다.\n5. 개인 인사이트 [ 인사이트 1 : 파일럿 연구의 가치 ]\n인용 수 3건이라는 숫자만 보면 영향력이 작아 보일 수 있다. 그러나 이 논문이 다룬 C-TPRM 점수 불일치 문제는 지금도 산업계에서 해결되지 않은 실제 문제다. 학술 인용보다 실무 현장에서 더 많이 체감되는 유형의 연구라는 생각이 든다. 컨설팅 현장에서 이런 논문이 갖는 가치는 인용 수가 아니라 설명력에 있다.\n[ 인사이트 2 : 표준화의 어려움 ]\n신용 점수는 왜 수렴하는가? 법적 규제가 있기 때문이다. C-TPRM 점수가 수렴하지 않는 이유는 규제가 없기 때문이다. NIST SP 800-161 Rev.1이 2022년에 나왔지만, 이것은 지침이지 강제 규범이 아니다. 표준화가 진전되려면 결국 규제 기관의 요구사항으로 전환되어야 한다는 것을 이 논문의 한계를 보면서 다시 확인했다.\n[ 인사이트 3 : 연구자와 피험자가 같은 조직 ]\n자기 학교를 평가 대상으로 삼은 것이 편의적 선택이기도 하지만, 동시에 연구자들이 결과를 가장 잘 해석할 수 있는 위치에 있다는 장점도 있다. 단 이런 설계는 결과 발표에 있어 이해충돌 가능성을 내포하고 있다. 컨설팅 보고서를 작성할 때도 평가 대상과 평가자의 관계가 결과 해석에 미치는 영향을 늘 의식해야 한다는 교훈이다.\nDay 5 - Consulting Perspective and Key Takeaways (측정하지 않으면 관리할 수 없다 — 단, 무엇을 측정하는지는 알아야 한다)\n1. 5일간 학습 여정 종합 A. 무엇을 배웠나 Day 1 : 연구 배경과 C-TPRM 개념\n[ Day 1 요약 ]\n- 서드파티로 인한 침해가 전체의 75% \u003e\u003e ↓ - 기존 리스크 방법론은 내부 위험 중심, 외부 벤더 위험 미포착 \u003e\u003e ↓ - C-TPRM은 신용 점수처럼 벤더의 위험을 외부에서 수치화하는 신흥 분야 Day 2 : 연구 방법론 — 탐색적 비교 설계\n[ Day 2 요약 ]\n- TPRA 회원사 10개 초청 → 4개만 참여 ( FICO, BitSight, RiskRecon, ComplyScore ) \u003e\u003e ↓ - 동일 조직 ( University at Albany ) 대상 비침습적 스캔 수행 \u003e\u003e ↓ - 6개 공통 지표 카테고리 도출, 정규화 비교 방법론 설계 Day 3 : 실증 결과 — 점수는 수렴하지 않았다\n[ Day 3 요약 ]\n- 정규화 점수 57% - 80%, 23%p 편차 발생 \u003e\u003e ↓ - 웹 리소스 취약점은 3개 도구 공통 발견, 웹 암호화는 도구 간 상반된 판단 \u003e\u003e ↓ - 불일치 원인 : 방법론 차이, 독점 데이터, 추가 위험 요소 반영 방식 Day 4 : 한계와 영향\n[ Day 4 요약 ]\n- 단일 조직 파일럿, 도구 4개, ComplyScore 평가 완성도 불일치 \u003e\u003e ↓ - 인용 3건이지만 NIST SP 800-161 Rev.1 ( 2022 ), CSF 2.0 ( 2024 )으로 후속 표준화 진전 \u003e\u003e ↓ - 학술 인용보다 실무 설명력이 높은 유형의 연구 Day 5 ( 지금 ) : 컨설팅 관점 통합\n5일간 쌓은 이해를 보안 컨설팅 역량으로 어떻게 전환할 것인가?\n2. 논문에서 배운 핵심 원리 정리 A. 기술적 메커니즘의 본질적 이해 원리 1 : 비침습적 평가는 외부 노출면을 본다\n비침습적 C-TPRM 도구들은 대상 조직의 내부를 보지 않는다. SSL 인증서, 열린 포트, 봇넷 등록 여부, 다크웹 유출 데이터처럼 외부에서 관찰 가능한 신호만을 수집한다. 이 방법이 작동하는 이유는 외부 노출면의 상태가 내부 보안 관리 수준의 간접 지표가 되기 때문이다. 만료된 인증서, 패치되지 않은 서버, 봇넷에 등록된 IP는 내부 보안 거버넌스가 약한 조직에서 더 자주 나타난다.\n왜 한계가 있는가 :\n내부 통제(접근 권한 관리, 보안 정책 문서, 임직원 보안 교육 수준)는 외부에서 관찰되지 않는다. 따라서 비침습적 점수가 높은 조직이라도 내부 거버넌스가 취약할 수 있고, 그 반대도 성립한다.\n원리 2 : 점수는 도구의 세계관을 반영한다\nFICO는 머신러닝 기반 교차 측정값을 중시하고, BitSight는 독점 데이터셋의 광범위한 커버리지를 강점으로 삼으며, RiskRecon은 810개 사전 정의 테스트 기반의 고도 커스터마이즈를 제공하고, ComplyScore는 컴플라이언스 관리 수준을 중심으로 평가한다. 동일한 조직에 대해 서로 다른 점수가 나오는 이유는 각 도구가 서로 다른 질문에 답하고 있기 때문이다.\n원리 3 : 수렴하는 발견이 진짜 위험이다\n복수 도구에서 공통적으로 지목된 취약점(이 논문에서는 웹 리소스 관련 문제)은 단일 도구의 판단보다 신뢰도가 높다. 컨설팅 현장에서 복수 도구를 병행할 때, 점수의 절대값보다 도구 간 공통 발견을 우선순위 기준으로 삼는 것이 적절하다.\nB. 일반화 가능한 원칙 - 평가 도구를 선택하기 전에 무엇을 알고 싶은지를 먼저 결정해야 한다 — 기술적 노출 수준인가, 컴플라이언스 준수 수준인가 - 단일 점수에 의존하는 의사결정은 측정 도구의 세계관에 의존하는 것과 같다 - 표준화가 없는 영역에서는 복수 관점의 삼각검증이 신뢰도를 높이는 실용적 대안이다 3. 기업 환경에서의 적용 가능성 분석 A. 해결하는 비즈니스 문제 보안 측면 :\n벤더의 협조 없이 선제적으로 벤더 보안 수준을 파악하는 문제. 계약 전 사전 심사, 기존 벤더의 지속 모니터링, 사고 발생 시 원인 추적.\n비즈니스 측면 :\nTarget, Home Depot, SolarWinds 사례에서 보듯, 서드파티 침해는 직접 비용(소송 합의금, 카드 재발급 비용)뿐 아니라 브랜드 신뢰도 손실이라는 간접 비용을 수반한다. 벤더 위험 점수화는 이 위험을 사전에 정량적으로 파악하는 수단이다.\n규제 측면 :\nISMS-P 2.2(외부자 보안), ISO 27001 A.15(공급자 관계), NIST SP 800-161(사이버 공급망 위험 관리) 요구사항 이행 근거로 활용 가능하다.\nB. 적합한 기업 프로필 산업 : 금융, 제조, 의료, IT 서비스 등 외부 벤더 의존도가 높은 산업 전반\n기업 규모 : 벤더 수가 수십 개 이상이어서 전수 침투 테스트나 현장 감사가 현실적으로 불가능한 중대형 기업\n보안 성숙도 : 기본 내부 보안 통제는 갖춰져 있으나 외부자/벤더 위험 관리 체계가 미비한 단계 ( 성숙도 레벨 2 - 3 )\n기술 스택 : 다수의 SaaS, 클라우드 서비스, 외주 개발사와 연결된 IT 환경\nC. 도입 시 고려사항 비용 :\n- 주요 비침습적 위험 점수화 도구들은 구독 방식으로 운영되며, 모니터링 대상 벤더 수에 따라 비용이 결정됨 - 복수 도구 병행 시 비용 증가, 통합 플랫폼 방식과의 비교 검토 필요 인력 :\n- 도구 결과 해석 및 벤더 대응 커뮤니케이션을 담당할 담당자 지정 필요 - 점수 해석 교육이 필요하며, 점수만 보고 판단하는 오용 방지 필수 시간 :\n- 비침습적 스캔 자체는 즉시 - 수 주 내 결과 산출 가능 ( 도구별 상이 ) - 벤더 심사 체계를 기존 계약·조달 프로세스에 통합하는 데 별도 시간 소요 4. 컨설팅 시나리오별 활용 방안 A. 보안 진단/점검 벤더 보안 수준 진단 시, 비침습적 위험 점수화 도구의 결과를 1차 스크리닝 기준으로 활용할 수 있다.\n점검 항목 예시 :\n- 고객사가 현재 사용 중인 비침습적 평가 도구가 있는가, 있다면 어떤 도구인가 - 단일 도구 사용 시 해당 도구의 평가 중심축 ( 기술 취약점 vs. 컴플라이언스 )을 인지하고 있는가 - 점수화 결과를 기반으로 고위험 벤더에 대한 추가 심사 ( 설문, 현장 점검 ) 절차가 마련되어 있는가 - ISMS-P 2.2 외부자 보안 통제 이행 증빙으로 활용 가능한 형태로 결과가 문서화되고 있는가 B. 보안 체계 수립 벤더 심사 프레임워크를 처음 설계하는 고객사에게는 이 논문의 6개 지표 카테고리를 체크리스트의 기초 구조로 제안할 수 있다.\n적용 예시 :\n- 엔드포인트 행동, 네트워크 설정 오류, 소프트웨어/서비스, 웹 도메인, 기업 정보, 과거 침해 이력 6개 영역을 벤더 심사 기준으로 설정 - 비침습적 스캔 ( 1차 ) → 고위험 벤더 대상 설문/자기신고 ( 2차 ) → 최고위험 벤더 대상 현장 점검 ( 3차 )의 3단계 심사 체계 설계 - 벤더 중요도 ( 취급 데이터 민감도, 시스템 접근 권한 수준 )에 따른 차등 심사 기준 설정 C. 기술 자문 질문 1 : 우리 회사는 이미 SecurityScorecard를 쓰고 있는데, 그거면 충분하지 않나요?\n단일 도구로 충분한지는 목적에 따라 다르다. SecurityScorecard는 기술적 노출면 평가에 강하지만, 이 논문에서 실증된 바와 같이 도구마다 측정하는 내용이 다르다. 예를 들어 벤더의 컴플라이언스 관리 수준이나 내부 보안 정책 준수 여부는 비침습적 도구로는 파악이 어렵다. 최소한 고위험 벤더에 대해서는 설문 기반 자기신고 또는 현장 점검을 병행하는 것을 권장한다.\n질문 2 : 벤더가 점수가 낮다고 나왔는데 계약을 끊어야 하나요?\n점수 하나만으로 계약 종료를 결정하는 것은 적절하지 않다. 이 논문에서 보듯 도구마다 다른 점수를 산출하며, 낮은 점수가 반드시 즉각적인 침해 위험을 의미하지 않는다. 대신 해당 벤더에게 개선 계획을 요구하고, 일정 기간 내 재평가 결과를 계약 갱신 조건으로 설정하는 방식을 권장한다.\n질문 3 : 중소 벤더들은 이런 점수 평가에 협조하지 않으려 하는데요?\n비침습적 방법의 핵심 장점이 바로 벤더의 협조가 필요 없다는 점이다. 공개 데이터만으로 1차 평가가 가능하므로, 벤더 협조 없이도 스크리닝이 가능하다. 단, 평가 결과를 벤더와 공유하고 개선을 요구하는 단계에서는 협조가 필요하다. 계약서에 보안 수준 유지 의무와 평가 협조 조항을 사전에 포함하는 것이 장기적으로 유효하다.\n5. 프레임워크/규제/표준과의 연계 A. ISMS-P / ISO 27001 관점 통제 항목 논문의 기여 적용 방법 ISMS-P 2.2.1 외부자 보안 요구사항 정의 C-TPRM 6개 지표 카테고리가 외부자에게 요구해야 할 보안 항목의 기술적 기준 제공 벤더 계약 시 6개 카테고리 기반 보안 요구사항 명세서 작성 ISMS-P 2.2.2 외부자 계약 시 보안 비침습적 점수화 도구를 계약 전 사전 심사 절차로 제도화 일정 점수 이하 벤더에 대한 계약 보류 또는 추가 조건 부과 기준 수립 ISMS-P 2.2.3 외부자 보안 이행 관리 지속적 모니터링 기능을 활용한 정기 재평가 체계 구축 분기 또는 반기 단위 재스캔, 점수 변동 임계값 설정 ISO 27001 A.15.1 공급자 관계 정보보안 공급자 위험 평가의 기술적 방법론 제공 공급자 심사 절차에 비침습적 평가 도구 결과를 포함 B. NIST SP 800-161 Rev.1 연계 이 논문이 제기한 표준화 필요성에 직접 대응하는 프레임워크다. 2022년 발표된 NIST SP 800-161 Rev.1은 사이버 공급망 위험 관리를 조직의 모든 계층(전략/전술/운영)에 통합하는 다층 접근법을 제시한다. 이 논문의 6개 지표 카테고리는 NIST SP 800-161의 공급업체 위험 평가 항목과 상당 부분 일치하며, 비침습적 도구를 NIST 기반 C-SCRM 체계에 통합하는 실무적 방법으로 활용할 수 있다.\nC. 보안 성숙도 모델 관점 단계 Before ( C-TPRM 부재 ) After ( C-TPRM 도입 ) Level 1 벤더 보안 수준을 전혀 파악하지 못함 비침습적 스캔으로 전체 벤더 1차 스크리닝 가능 Level 2 주요 벤더에게만 임의적으로 보안 설문 발송 위험 점수 기반으로 고위험 벤더를 식별하여 차등 심사 체계 적용 Level 3 계약 시 1회 평가 후 재평가 없음 지속적 모니터링으로 점수 변동 시 자동 알림, 정기 재평가 제도화 6. 컨설턴트로서 얻은 인사이트 A. 고객 조언 역량 이 논문을 읽기 전 :\n벤더 보안 심사를 설문지 방식으로만 알고 있었고, 비침습적 위험 점수화 도구의 존재와 방법론적 차이를 설명할 수 없었다.\n이 논문을 읽은 후 :\n비침습적 C-TPRM 도구들이 사용하는 공통 지표 구조를 설명할 수 있고, 도구 간 결과 불일치의 원인을 이해하며, 고객사 상황에 맞는 도구 선택과 병행 사용 전략을 자문할 수 있게 됐다.\n구체적 예시 :\n고객 : 우리 회사가 SolarWinds 같은 공급망 침해를 당하지 않으려면 어떻게 해야 하나요?\n나 : SolarWinds 사례는 신뢰받는 소프트웨어 업데이트 인프라 자체가 공격 경로가 된 사례입니다. 이런 위험을 완전히 차단하기는 어렵지만, 벤더의 보안 수준을 사전에 파악하고 고위험 벤더에 대한 접근 권한을 최소화하는 방식으로 피해 범위를 줄일 수 있습니다. 구체적으로는 비침습적 위험 점수화 도구를 활용해 벤더 전체를 1차 스크리닝하고, 점수가 낮거나 시스템 접근 권한이 높은 벤더에 대해서는 네트워크 분리, 접근 권한 최소화, 정기 재평가 절차를 강화하는 방향을 권장합니다.\nB. 아직 답할 수 없는 질문 - 한국 기업 환경에서 실제로 사용되는 C-TPRM 도구의 현황 — 글로벌 도구들이 한국 기업의 IT 인프라를 얼마나 정확하게 평가할 수 있는지 - 비침습적 점수와 실제 침해 발생률 사이의 통계적 상관관계 — 낮은 점수가 실제로 침해 가능성을 얼마나 예측하는가 7. 5일간 리뷰 종합 Day 주제 핵심 학습 컨설팅 활용 Day 1 C-TPRM 개념과 배경 서드파티 위험은 조직 내부 통제만으로 관리 불가능하며, 비침습적 평가라는 새로운 방법론이 등장했다 고객사에 C-TPRM 개념과 필요성을 설명하는 근거 Day 2 연구 방법론 6개 공통 지표 카테고리가 도출됐으며, 도구마다 평가 완성도가 다를 수 있다 벤더 심사 체크리스트 설계의 기초 구조 Day 3 실증 결과 동일 조직에 대해 4개 도구가 57% - 80%의 상이한 점수를 산출했으며, 원인은 방법론·데이터·평가 중심축의 차이다 단일 도구 의존 경고, 복수 도구 병행 또는 공통 발견 중심 판단 권고 Day 4 한계와 후속 동향 파일럿 수준의 한계가 있지만, NIST SP 800-161 Rev.1 등 후속 표준화가 이 논문의 문제 제기에 응답했다 표준화 동향을 근거로 한 벤더 심사 체계 고도화 자문 Day 5 컨설팅 관점 통합 비침습적 C-TPRM은 도구가 아닌 체계로 접근해야 하며, 도구 선택보다 목적 정의와 다층 심사 설계가 먼저다 ISMS-P 2.2, NIST SP 800-161 연계 벤더 보안 심사 체계 설계 자문 8. 최종 개인 인사이트 A. 이 논문이 나의 컨설팅 역량에 기여한 점 핵심 배움 1 : 도구의 한계를 아는 것이 전문성이다\n비침습적 위험 점수화 도구를 소개할 때 그 도구가 무엇을 보는지뿐 아니라 무엇을 보지 못하는지를 함께 설명할 수 있게 됐다. 이 논문은 점수가 수렴하지 않는다는 불편한 사실을 실증적으로 보여줬고, 그 불편한 사실이 고객사에게 더 솔직하고 유용한 조언의 근거가 된다.\n핵심 배움 2 : 측정 대상이 곧 관리 대상이다\n6개 지표 카테고리(엔드포인트 행동, 네트워크 설정 오류, 소프트웨어/서비스, 웹 도메인, 기업 정보, 과거 침해 이력)는 단순한 평가 기준이 아니라 고객사가 벤더에게 요구해야 할 보안 관리의 영역 목록이기도 하다. 측정하지 않는 영역은 관리되지 않는다.\n핵심 배움 3 : Target에서 SolarWinds까지 — 패턴은 반복된다\n이 논문이 분석한 5개 사고 사례는 2011년 RSA부터 2020년 SolarWinds까지 약 10년에 걸쳐 있다. 공통점은 신뢰받는 서드파티를 경유한 침해라는 점이다. 이 패턴은 앞으로도 반복될 것이고, C-TPRM은 선택이 아닌 필수가 될 것이라는 확신을 갖게 됐다.\nB. 9편의 논문을 읽고 나니 논문 핵심 아이디어 강점 약점 적용 시나리오 Gashgari et al. ( 2017 ) IT 거버넌스 구조 경영진 책임 체계화 실무 적용 구체성 부족 거버넌스 체계 진단 Foorthuis \u0026 Bos ( 2011 ) 컴플라이언스 전술 준수 행동 유형화 기술적 통제 미포함 컴플라이언스 이행 자문 Santos-Olmo et al. ( 2024 ) 통합 리스크 분석 방법론 정교함 도입 복잡도 높음 리스크 관리 체계 수립 Bulgurcu et al. ( 2010 ) 개인 컴플라이언스 행동 심리적 동기 분석 조직 수준 적용 한계 보안 인식 제고 프로그램 Slapničar et al. ( 2022 ) 감사 효과성 실증 데이터 기반 감사 역량 요구 내부 감사 체계 강화 Ghadge et al. ( 2020 ) 공급망 사이버 위험 전파 거시적 위험 구조 벤더 개별 평가 방법 없음 공급망 위험 전략 수립 Gordon \u0026 Loeb ( 2002 ) 보안 투자 경제학 정량적 투자 판단 현실 적용의 단순화 보안 예산 자문 Da Veiga \u0026 Eloff ( 2010 ) 보안 문화 조직 전반의 보안 내재화 측정·변화 장기 소요 보안 문화 진단 Bada et al. ( 2014 ) 인식 캠페인 실패 행동 변화 이론 기반 조직 수준 구조 미포함 인식 제고 캠페인 설계 Keskin et al. ( 2021 ) C-TPRM 비침습적 평가 실무 도구 비교 분석 파일럿 수준, 일반화 한계 벤더 심사 체계 설계 통합적 이해 :\n10편의 논문이 결국 같은 질문에 다른 각도에서 답하고 있다는 생각이 든다. 조직이 사이버 위험을 어떻게 이해하고(리스크 분석), 누가 책임지며(거버넌스), 어떻게 제도화하고(컴플라이언스), 사람들이 왜 따르거나 따르지 않는지(행동), 외부에서 들어오는 위험을 어떻게 파악하는지(공급망, C-TPRM), 이 모든 것이 경제적으로 타당한지(보안 투자)를 이어 붙이면 하나의 컨설팅 방법론이 된다.\nC. 다음 학습 방향 우선순위 1 : 사고 대응 ( IR ) 프로세스\n- Cichonski et al. ( 2012 ), NIST SP 800-61 Rev.2 - 학습 목표 : C-TPRM에서 식별된 고위험 벤더로 인한 침해 발생 시 대응 체계 자문 역량 확보 우선순위 2 : 경영진 대상 리스크 커뮤니케이션\n- 보안 위험을 비즈니스 언어로 번역하는 역량 강화 - 학습 목표 : 이사회 또는 C레벨 대상 보안 보고 체계 설계 자문 우선순위 3 : 한국 금융/제조 산업 외부자 보안 규제 심화\n- 금융보안원 외부자 보안 관리 가이드라인, 금융권 IT 아웃소싱 규제 - 학습 목표 : 금융권 고객사의 서드파티 보안 의무 이행 체계 자문 장기 목표 :\n- 6개월 후 : 9편 ( + 진행 중 Bada ) 논문 기반 통합 컨설팅 방법론 초안 작성 - 1년 후 : 특정 산업 ( 금융 또는 제조 )에 특화된 보안 컨설팅 역량 확보 및 실제 프로젝트 적용 9. 최종 결론 A. Keskin et al. ( 2021 )의 의의 학술적 의의 :\nC-TPRM이라는 신흥 분야를 학술적으로 처음 체계화하고, 비침습적 위험 점수화 도구들의 방법론적 불일치를 실증적으로 규명한 탐색적 연구. 표준화의 필요성을 학술 의제로 제기한 시점이 NIST SP 800-161 Rev.1 발표(2022년) 직전이라는 점에서 의미가 있다.\n실무적 의의 :\nTarget, Home Depot, OPM, RSA, SolarWinds 5개 사례를 C-TPRM 관점에서 분석하여 서드파티 위험의 실재성을 설득력 있게 제시했다. 6개 공통 지표 카테고리는 벤더 심사 체계를 처음 설계하는 실무자에게 직접 활용 가능한 구조를 제공한다.\n나에게 주는 의의 :\n비침습적 C-TPRM이라는 영역을 처음으로 학술 문헌 수준에서 이해했다. 도구의 존재를 아는 것에서 도구의 원리와 한계를 설명할 수 있는 수준으로 올라섰다.\nB. 보안 컨설턴트로서의 다짐 [ Phase 1 ( 완료 ) : 논문 이해 ]\n- 거버넌스, 컴플라이언스, 리스크 분석, 개인 행동, 감사, - 공급망, 보안 투자, 보안 문화, 인식 캠페인, C-TPRM [ Phase 2 ( 진행 중 ) : 연결 ]\n- 10편 논문 간 연결고리 파악 및 통합 컨설팅 방법론 초안 [ Phase 3 ( 다음 ) : 적용 ]\n- 실제 컨설팅 시나리오에 논문 기반 프레임워크 적용 [ Phase 4 ( 목표 ) : 전문성 ]\n- 특정 산업 특화 보안 컨설팅 역량 확보 References [1] Keskin, O.F., Caramancion, K.M., Tatar, I., Raza, O., \u0026 Tatar, U. (2021). Cyber Third-Party Risk Management: A Comparison of Non-Intrusive Risk Scoring Reports. Electronics, 10(10), 1168. https://doi.org/10.3390/electronics10101168\n[2] Gashgari, G., Walters, R., \u0026 Wills, G. (2017). A Proposed Best-Practice Framework for Information Security Governance. Proceedings of the 2nd International Conference on Internet of Things, Big Data and Security (IoTBDS).\n[3] Foorthuis, R., \u0026 Bos, R. (2011). Enterprise Architecture Compliance: Taxonomy of Disciplines, Enforcement Mechanisms, and Fulfillment Motives. AISC.\n[4] Santos-Olmo, A., et al. (2024). Integrated Risk Analysis Framework for Security Consulting. (논문 정보 확인 필요)\n[5] Bulgurcu, B., Cavusoglu, H., \u0026 Benbasat, I. (2010). Information Security Policy Compliance: An Empirical Study of Rationality-Based Beliefs and Information Security Awareness. MIS Quarterly, 34(3), 523-548.\n[6] Slapničar, S., Vuko, T., Čular, M., \u0026 Drašček, M. (2022). Effectiveness of cybersecurity audit. International Journal of Accounting Information Systems, 44, 100548.\n[7] Ghadge, A., Weiß, M., Caldwell, N.D., \u0026 Wilding, R. (2020). Managing cyber risk in supply chains: A review and research agenda. Supply Chain Management: An International Journal, 25(2), 223-240.\n[8] Gordon, L.A., \u0026 Loeb, M.P. (2002). The economics of information security investment. ACM Transactions on Information and System Security, 5(4), 438-457.\n[9] Da Veiga, A., \u0026 Eloff, J.H.P. (2010). A framework and assessment instrument for information security culture. Computers \u0026 Security, 29(2), 196-207.\n[10] Bada, M., Sasse, A., \u0026 Nurse, J.R.C. (2014). Cyber Security Awareness Campaigns: Why do they fail to change behaviour? arXiv preprint, arXiv:1901.02672.\n[11] NIST. (2022). Cybersecurity Supply Chain Risk Management Practices for Systems and Organizations (NIST SP 800-161 Rev.1). National Institute of Standards and Technology. https://csrc.nist.gov/pubs/sp/800/161/r1/final\nTags 보안컨설팅 / SecurityConsulting / C-TPRM / VendorRisk / SupplyChainSecurity / RiskScoring / NonIntrusiveAssessment / PaperReview / SKShieldusRookies\n",
+  "wordCount" : "18776",
+  "inLanguage": "ko",
+  "datePublished": "2026-03-23T00:00:00Z",
+  "dateModified": "2026-03-23T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/keskin-et-al-2021/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://hojjang98.github.io/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/paper_review/">논문 리뷰</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Cyber Third-Party Risk Management: A Comparison of Non-Intrusive Risk Scoring Reports
+    </h1>
+    <div class="post-meta"><span title='2026-03-23 00:00:00 +0000 UTC'>2026년 3월 23일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="research-review-cyber-third-party-risk-management-a-comparison-of-non-intrusive-risk-scoring-reports">Research Review: Cyber Third-Party Risk Management: A Comparison of Non-Intrusive Risk Scoring Reports<a hidden class="anchor" aria-hidden="true" href="#research-review-cyber-third-party-risk-management-a-comparison-of-non-intrusive-risk-scoring-reports">#</a></h1>
+<blockquote>
+<p>Analyzed Date :  2026.03.23 - 2026.03.27
+Keywords :  C-TPRM, Vendor Risk, Non-Intrusive Assessment, Risk Scoring, Supply Chain Cybersecurity
+Source :  Electronics (MDPI), 2021, Vol.10, No.10, p.1168</p>
+</blockquote>
+<hr>
+<h2 id="why-this-paper">Why This Paper?<a hidden class="anchor" aria-hidden="true" href="#why-this-paper">#</a></h2>
+<h3 id="선정-배경">선정 배경<a hidden class="anchor" aria-hidden="true" href="#선정-배경">#</a></h3>
+<p>도메인 탐색 결과 :</p>
+<p>8편의 보안 컨설팅 기반 논문(거버넌스, 컴플라이언스, 리스크 분석, 개인 행동, 감사, 공급망, 보안 투자, 보안 문화)을 완료하고, Bada et al.(2014) 인식 캠페인 논문을 진행 중인 상태에서 서드파티/벤더 리스크 관리 영역의 공백을 메우기 위해 선정.</p>
+<p>이 논문을 선택한 이유 :</p>
+<pre><code>- Ghadge et al.(2020)이 공급망 사이버 위험의 전파 모델을 다뤘다면, 이 논문은 실제 벤더를 대상으로 한 위험 점수화 방법론의 비교 분석으로 이어지는 실무 연장선
+- 보안 컨설팅 현장에서 고객사의 외부자/벤더 보안 수준을 진단하고 평가 체계를 설계하는 자문 역량과 직결
+- 벤더 심사 프레임워크 설계, 외부자 보안 통제 구현 등 체계 수립 역량을 강화하는 실증적 근거 제공
+- ISMS-P 2.2(외부자 보안) 및 ISO 27001 A.15(공급자 관계) 통제 항목과 직결되는 현행 규제 연관성
+</code></pre>
+<p>학습 목표 :</p>
+<pre><code>- C-TPRM  ( 사이버 서드파티 리스크 관리 )의 개념 구조와 비침습적 평가 방법론의 원리 이해
+- 상용 위험 점수화 도구들이 사용하는 공통 지표 체계를 컨설팅 진단 프레임워크에 적용하는 방법 습득
+- 점수화 도구 간 불일치 원인 분석을 통해 고객사 벤더 심사 체계 설계 시 표준화 과제를 조언하는 역량 확보
+</code></pre>
+<hr>
+<h2 id="day-1---research-context--motivation">Day 1 - Research Context &amp; Motivation<a hidden class="anchor" aria-hidden="true" href="#day-1---research-context--motivation">#</a></h2>
+<p><em>(내 조직의 보안이 아무리 강해도, 벤더 하나가 무너지면 전부 무너진다)</em></p>
+<h3 id="1-연구-배경-서드파티-의존성과-측정-불가능한-외부-위험">1. 연구 배경: 서드파티 의존성과 측정 불가능한 외부 위험<a hidden class="anchor" aria-hidden="true" href="#1-연구-배경-서드파티-의존성과-측정-불가능한-외부-위험">#</a></h3>
+<p>C-TPRM의 중요성</p>
+<p>현대 조직은 공급망 전반에 걸쳐 다수의 외부 파트너, 벤더, 서비스 제공업체와 긴밀하게 연결되어 운영된다. 이 연결성은 운영 효율을 높이는 동시에 조직의 사이버 위험 노출 면적을 구조적으로 확장한다. Ponemon Institute 보고서에 따르면 조직의 56%가 데이터 침해를 경험했으며, 그 중 75%는 서드파티 벤더로 인해 발생한 사이버 사고였다. 또한 하나의 조직에 민감 데이터 접근 권한을 가진 서드파티의 평균 수는 471개에 달하지만, 자신의 공급업체가 해당 데이터를 다른 업체와 공유하는지 파악하고 있는 조직은 전체의 20%에 불과하다. PwC의 조사에서는 2014년 기준 전체 사이버 침해의 23%가 현재 서비스 제공업체 및 계약업체로 인해 발생했으며, 과거 파트너로 인한 침해는 45%에 달했다. 서드파티 사이버 위험은 증가하는 반면, 이에 대응하는 규제와 완화 기법은 아직 초기 단계에 머물러 있다.</p>
+<p>현실의 한계</p>
+<p>기존의 리스크 평가 방법론들(EBIOS, MEHARI, OCTAVE, NIST SP 800-30 등)은 조직 내부의 고유 위험에 초점을 맞추는 경향이 있으며, 벤더와의 연결 또는 의존성에서 발생하는 위험은 충분히 다루지 않는다. 내부 위험을 평가하는 기존 방법론만으로는 외부 파트너로 인한 위험을 포착하는 데 한계가 있다. 기존 C-TPRM 보증 모델과 위험 관리 프레임워크들은 일반적으로 효과성을 검증할 데이터가 부족하다. 더 나아가 현재 시장에 존재하는 여러 비침습적 위험 점수화 서비스들이 각각 다른 방법론과 지표를 사용함에도, 이들의 결과 일관성과 신뢰성에 대한 체계적 비교 분석이 이루어진 적이 없었다.</p>
+<p>연구 문제의식</p>
+<p>이 논문이 답하려는 핵심 질문은 두 가지다. 첫째, 현재 사이버 서드파티 리스크 관리에서 사용되는 방법론은 무엇인가? 둘째, 서로 다른 점수화 도구가 동일 조직에 대해 산출하는 위험 점수는 얼마나 신뢰할 수 있고 일관성이 있는가?</p>
+<hr>
+<h3 id="2-핵심-개념">2. 핵심 개념<a hidden class="anchor" aria-hidden="true" href="#2-핵심-개념">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>개념</th>
+          <th>정의</th>
+          <th>컨설팅 맥락에서의 의미</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>C-TPRM</td>
+          <td>사이버 서드파티 리스크 관리(Cyber Third-Party Risk Management). 조직이 모든 외부 파트너, 특히 벤더와의 상호작용을 모니터링하고 관리하는 프로세스. 벤더 사이버 위험, 사이버 공급망 위험과 상호 호환되는 개념</td>
+          <td>고객사 외부자 보안 심사 체계 설계, ISMS-P 2.2 외부자 보안 통제 구현 자문의 이론적 기반</td>
+      </tr>
+      <tr>
+          <td>비침습적 평가</td>
+          <td>대상 조직의 직접적 개입이나 협조 없이 공개적으로 접근 가능한 정보를 수집·분석하여 사이버 위험을 평가하는 방법. 인증서 만료 여부 확인, 봇넷 레지스터에서의 IP 조회, 다크웹 유출 데이터 탐색 등이 포함됨</td>
+          <td>고객사가 벤더의 협조 없이 선제적으로 벤더 보안 수준을 파악할 수 있는 실용적 접근법으로, 초기 진단 단계에서 즉시 활용 가능</td>
+      </tr>
+      <tr>
+          <td>위험 점수화</td>
+          <td>신용 점수와 유사하게, 조직의 사이버 위험 프로필을 단일 수치 또는 등급으로 표현하는 방법. 엔드포인트 행동, 네트워크 설정 오류, 소프트웨어 패치 상태, 웹 도메인, 기업 정보, 과거 침해 이력 등 다수의 지표를 종합하여 산출</td>
+          <td>벤더 계약 전 사전 심사, 사이버 보험 언더라이팅, 지속적 모니터링 등 정량적 의사결정 근거로 활용. 고객사에게 어떤 도구를 선택할지 자문할 때 각 도구의 방법론 차이를 설명하는 데 필요</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="3-이론적-기반-비침습적-c-tprm-방법론-구조">3. 이론적 기반: 비침습적 C-TPRM 방법론 구조<a hidden class="anchor" aria-hidden="true" href="#3-이론적-기반-비침습적-c-tprm-방법론-구조">#</a></h3>
+<p>[ 외부 공개 데이터 수집 ]</p>
+<pre><code>&gt;&gt; ↓
+</code></pre>
+<p>[ 평가 지표 6개 카테고리 ]</p>
+<pre><code>- 엔드포인트 행동
+- 네트워크 설정 오류
+- 소프트웨어 / 서비스 관리
+- 웹 도메인 취약점
+- 기업 정보  ( Firmographic )
+- 과거 침해 이력
+
+&gt;&gt; ↓
+</code></pre>
+<p>[ 위험 점수 산출 ]  도구별 상이한 알고리즘</p>
+<pre><code>- 수치 점수  ( 0 - 100 등 )
+- 등급  ( A - F 등 )
+
+&gt;&gt; ↓
+</code></pre>
+<p>[ 벤더 리스크 판단 ]</p>
+<pre><code>- 계약 결정
+- 보험 언더라이팅
+- 지속 모니터링
+</code></pre>
+<p>핵심 아이디어 :</p>
+<p>C-TPRM의 핵심은 신용 점수 체계와 유사한 방식으로 조직의 사이버 위험을 외부에서 수치화하는 것이다. 비침습적 방법은 대상 조직의 참여 없이도 공개 데이터만으로 보안 수준을 추정할 수 있어 확장성이 높다. 그러나 이 논문은 현재 시장에 존재하는 도구들이 공통 지표를 일부 공유하면서도 방법론, 독점 데이터, 추가 위험 요소 반영 방식의 차이로 인해 동일 조직에 대해 일관된 결과를 산출하지 못함을 실증적으로 보여준다.</p>
+<hr>
+<h3 id="4-연구의-핵심-기여">4. 연구의 핵심 기여<a hidden class="anchor" aria-hidden="true" href="#4-연구의-핵심-기여">#</a></h3>
+<p>학술적 기여 :</p>
+<pre><code>- C-TPRM이라는 신흥 분야를 명확하게 개념화하고, 비침습적 위험 점수화 방법론을 체계적으로 비교 분석한 최초의 탐색적 연구 중 하나
+- Target, Home Depot, OPM, RSA Security, SolarWinds 등 5개 실제 사고 사례를 C-TPRM 관점에서 분석하여 서드파티 위험의 실증적 근거 제시
+- FICO, BitSight, RiskRecon, ComplyScore 4개 상용 도구를 동일 대상 조직에 적용하여 결과를 비교함으로써 점수 수렴 불일치 문제를 실증적으로 규명
+- ANOVA, MANOVA 등 통계 기법을 활용한 후속 일관성 분석 방향을 제시하며 연구 의제 설정
+</code></pre>
+<p>실무 기여 :</p>
+<pre><code>- 비침습적 C-TPRM에서 공통적으로 사용되는 6개 지표 카테고리(엔드포인트 행동, 네트워크 설정 오류, 소프트웨어/서비스, 웹 도메인, 기업 정보, 과거 침해 이력)를 정리하여 실무 평가 기준으로 활용 가능
+- 단일 위험 점수화 도구의 결과만으로 보안 수준을 판단하는 것이 불충분함을 근거와 함께 제시, 복수 도구 활용 필요성 제언
+- 각 도구별 특성(FICO의 포괄성, BitSight의 독점 벤치마크 데이터셋, RiskRecon의 고도 커스터마이즈, ComplyScore의 컴플라이언스 중심)을 비교하여 도구 선택 기준 제시
+</code></pre>
+<hr>
+<h3 id="5-컨설팅-관점-인사이트">5. 컨설팅 관점 인사이트<a hidden class="anchor" aria-hidden="true" href="#5-컨설팅-관점-인사이트">#</a></h3>
+<p>적용 가능성 :</p>
+<p>고객사 보안 컨설팅 시 외부자/벤더 보안 심사 체계 설계 프로젝트에 직접 활용 가능하다. 특히 이 논문이 정리한 6개 지표 카테고리는 벤더 심사 체크리스트 설계의 기초 구조로 사용할 수 있다. 또한 고객사가 이미 특정 위험 점수화 도구를 사용 중이거나 도입을 검토 중인 경우, 각 도구의 방법론적 차이와 한계를 설명하고 복수 도구 병행 사용 또는 표준화 필요성을 자문하는 근거로 활용할 수 있다.</p>
+<p>기존 학습과의 연결 :</p>
+<pre><code>- Ghadge et al.(2020)이 공급망 사이버 위험의 전파 메커니즘과 거시적 대응 전략을 다뤘다면, 이 논문은 개별 벤더 수준에서 위험을 어떻게 측정하고 수치화할 것인가의 실무적 문제를 다룬다
+- Gordon &amp; Loeb(2002)의 보안 투자 최적화 모델과도 연결되는데, 벤더 위험 점수화는 결국 어떤 벤더에 보안 요구사항을 집중할 것인가를 결정하는 자원 배분 문제이기 때문이다
+- Santos-Olmo et al.(2024)의 통합 리스크 분석 방법론과 비교하면, 이 논문은 내부 리스크 분석을 외부(벤더) 영역으로 확장한 사례로 이해할 수 있다
+</code></pre>
+<p>현실적 고려사항 :</p>
+<p>비침습적 평가의 한계로 인해 점수화 도구가 포착하지 못하는 내부 보안 통제 항목이 존재한다. 예를 들어 ComplyScore의 경우 이 논문에서 분석한 점수는 비침습적 스캔에 의한 초기 점수일 뿐이며, 현장 방문과 심층 조사를 포함한 완전한 평가 점수는 별도 계약 후 산출된다. 고객사에 도구 도입을 자문할 때 비침습적 도구의 점수는 참고 지표이지 완전한 보안 인증의 대체물이 아님을 명확히 안내해야 한다. 또한 이 논문에서 실증된 바와 같이 동일 조직에 대해 서로 다른 도구가 다른 결과를 산출한다는 점은, 고객사 경영진에게 단일 점수만 제시하는 보고 방식의 위험성을 설명하는 데 유용한 근거가 된다.</p>
+<hr>
+<h2 id="day-2---research-model-hypotheses-and-methodology">Day 2 - Research Model, Hypotheses, and Methodology<a hidden class="anchor" aria-hidden="true" href="#day-2---research-model-hypotheses-and-methodology">#</a></h2>
+<p><em>(동일 조직, 다른 점수 - 비침습적 C-TPRM 도구들은 얼마나 일치하는가)</em></p>
+<h3 id="1-연구-모델-개요">1. 연구 모델 개요<a hidden class="anchor" aria-hidden="true" href="#1-연구-모델-개요">#</a></h3>
+<p>[ 연구 설계 전체 구조 ]</p>
+<p>[ 탐색적 문헌 검토 ]  기존 C-TPRM 방법론 정리</p>
+<pre><code>- 상용 C-TPRM 도구 9개 조사  ( BitSight, FICO, RiskRecon 등 )
+- 공통 지표 6개 카테고리 도출
+
+&gt;&gt; →
+</code></pre>
+<p>[ 파일럿 실증 분석 ]  동일 조직 대상 다중 도구 비교</p>
+<pre><code>- TPRA 회원사 중 4개 도구 선정  ( FICO, BitSight, RiskRecon, ComplyScore )
+- University at Albany 대상 스캔 수행
+
+&gt;&gt; ↓
+</code></pre>
+<p>[ 결과 정규화 ]  0 - 100 스케일 변환</p>
+<pre><code>&gt;&gt; ↓
+</code></pre>
+<p>[ 정량적 비교  +  정성적 비교 ]</p>
+<pre><code>&gt;&gt; ↓
+</code></pre>
+<p>[ 일관성 및 신뢰성 평가 ]</p>
+<p>설계 철학 :</p>
+<p>저자들은 C-TPRM 분야가 아직 표준화가 미비한 신흥 영역임을 전제하고, 시장에 존재하는 도구들의 현황을 탐색적으로 파악하는 데 초점을 맞췄다. 이론 검증보다는 현실 진단에 가까운 연구로, 신용 점수 체계에서 여러 신용 평가 기관의 점수가 수렴하는 것처럼 C-TPRM 점수도 수렴해야 한다는 전제를 검증하는 구조다.</p>
+<hr>
+<h3 id="2-연구-가설-핵심-가정">2. 연구 가설 (핵심 가정)<a hidden class="anchor" aria-hidden="true" href="#2-연구-가설-핵심-가정">#</a></h3>
+<p>이 논문은 가설 검증 연구가 아닌 탐색적 비교 연구이므로, 핵심 가정으로 정리한다.</p>
+<table>
+  <thead>
+      <tr>
+          <th>가정</th>
+          <th>내용</th>
+          <th>근거</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>A1</td>
+          <td>신용 점수처럼, 서로 다른 C-TPRM 도구들도 동일 조직에 대해 유사한 위험 수준을 산출해야 한다</td>
+          <td>신용 평가 기관(Equifax, TransUnion, Experian)은 공통 계산 방법론을 사용하여 수렴된 결과를 제공함</td>
+      </tr>
+      <tr>
+          <td>A2</td>
+          <td>비침습적 방법으로도 조직의 사이버 보안 수준을 의미 있게 평가할 수 있다</td>
+          <td>공개 데이터(인증서, IP, 다크웹 등)는 보안 수준의 간접 지표로 활용 가능</td>
+      </tr>
+      <tr>
+          <td>A3</td>
+          <td>C-TPRM 도구들이 사용하는 평가 지표 간에는 공통 기반이 존재한다</td>
+          <td>사이버 위험의 구성 요소(취약점, 위협, 영향)는 도구에 무관하게 유사한 개념 구조를 공유</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="3-연구-방법론">3. 연구 방법론<a hidden class="anchor" aria-hidden="true" href="#3-연구-방법론">#</a></h3>
+<h4 id="a-데이터-수집">A. 데이터 수집<a hidden class="anchor" aria-hidden="true" href="#a-데이터-수집">#</a></h4>
+<p>데이터 소스 :</p>
+<table>
+  <thead>
+      <tr>
+          <th>소스</th>
+          <th>수집 정보</th>
+          <th>용도</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>TPRA(Third-Party Risk Association) 회원사 목록</td>
+          <td>C-TPRM 서비스 제공 기업 명단</td>
+          <td>포함 기준에 맞는 도구 후보 식별</td>
+      </tr>
+      <tr>
+          <td>FICO, BitSight, RiskRecon, ComplyScore</td>
+          <td>University at Albany에 대한 비침습적 스캔 보고서</td>
+          <td>정량·정성 비교 분석의 원본 데이터</td>
+      </tr>
+      <tr>
+          <td>공개 웹 데이터 (각 도구가 수집)</td>
+          <td>IP 주소, SSL 인증서, 봇넷 레지스터, 다크웹 유출 데이터 등</td>
+          <td>각 도구의 위험 점수 산출 원천</td>
+      </tr>
+  </tbody>
+</table>
+<p>데이터 수집 절차 :</p>
+<p>TPRA 회원 자격을 갖춘 도구들 중 사이버 보안 평가를 수행하는지 확인 후, 10개 기업에 공식 초청장을 발송했다. 이 중 4개 기업(FICO, BitSight, RiskRecon, ComplyScore)만이 비침습적 스캔 보고서 제공에 동의했으며, 나머지는 사전 비용 납부 또는 기타 조건을 요구하여 제외됐다.</p>
+<p>수집 과정 특이사항 :</p>
+<table>
+  <thead>
+      <tr>
+          <th>도구</th>
+          <th>사전 데모 필요</th>
+          <th>소요 시간</th>
+          <th>비용</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>FICO</td>
+          <td>불필요</td>
+          <td>즉시</td>
+          <td>무료</td>
+      </tr>
+      <tr>
+          <td>BitSight</td>
+          <td>필요 (실시간)</td>
+          <td>3일</td>
+          <td>면제</td>
+      </tr>
+      <tr>
+          <td>RiskRecon</td>
+          <td>필요 (실시간)</td>
+          <td>1주</td>
+          <td>면제</td>
+      </tr>
+      <tr>
+          <td>ComplyScore</td>
+          <td>불필요</td>
+          <td>2주</td>
+          <td>무료 (초기 점수만)</td>
+      </tr>
+  </tbody>
+</table>
+<p>ComplyScore의 경우, 이 연구에서 획득한 점수는 비침습적 스캔에 의한 초기 점수이며, 완전한 평가는 유료 계약 후 현장 조사를 포함한 심층 방법론으로 진행된다.</p>
+<h4 id="b-핵심-분석-기법">B. 핵심 분석 기법<a hidden class="anchor" aria-hidden="true" href="#b-핵심-분석-기법">#</a></h4>
+<p>비침습적 위험 점수화 비교 방법론</p>
+<p>목적 :  서로 다른 척도를 사용하는 4개 도구의 결과를 동일 기준으로 비교하기 위한 정규화 및 비교 분석</p>
+<p>방법 :</p>
+<pre><code>- 각 도구로부터 University at Albany 대상 스캔 보고서 수집
+- 전체 점수를 0 - 100 범위로 정규화
+    - FICO  ( 850점 만점 )  &gt;&gt;  정규화
+    - BitSight  ( 900점 만점 )  &gt;&gt;  정규화
+    - RiskRecon  ( 10점 만점 )  &gt;&gt;  정규화
+    - ComplyScore  ( 100점 만점 )  &gt;&gt;  변환 불필요
+- 정량적 비교  :  정규화된 종합 점수 비교
+- 정성적 비교  :  각 보고서의 카테고리별 평가 결과 수동 비교
+- 삼각검증  ( Triangulation )  :  2명의 연구자가 독립적으로 분석 후 결과 대조
+</code></pre>
+<p>삼각검증 적용 이유 :</p>
+<p>연구의 신뢰성을 높이기 위해 두 연구자가 분석을 독립적으로 수행하고 결과를 비교하는 방식을 채택했다. 이는 단일 연구자의 주관적 해석 가능성을 줄이기 위한 설계상의 선택이다.</p>
+<h4 id="c-평가-지표-체계-6개-공통-카테고리">C. 평가 지표 체계 (6개 공통 카테고리)<a hidden class="anchor" aria-hidden="true" href="#c-평가-지표-체계-6개-공통-카테고리">#</a></h4>
+<p>이 논문은 시장에 존재하는 C-TPRM 도구들이 공통적으로 사용하는 지표를 6개 카테고리로 정리했다.</p>
+<table>
+  <thead>
+      <tr>
+          <th>카테고리</th>
+          <th>평가 내용</th>
+          <th>주요 스캔 대상</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>엔드포인트 행동</td>
+          <td>액세스 권한, 자산 관리, 감사 로깅 등 엔드디바이스의 보안 상태</td>
+          <td>브라우저, OS, 안티바이러스, RBL(Real-time Blackhole Lists)</td>
+      </tr>
+      <tr>
+          <td>네트워크 설정 오류</td>
+          <td>네트워킹 장치의 설정 오류 및 보안 모범 사례 준수 여부</td>
+          <td>포트 상태, PostgreSQL DB, SSL 인증서, 방화우/라우터 설정</td>
+      </tr>
+      <tr>
+          <td>소프트웨어 및 서비스</td>
+          <td>패치 관리, 프로토콜 적정성, 설정 상태</td>
+          <td>HSTS preloading, CMS, X-XMS, 국가취약점데이터베이스(NVD) 대조</td>
+      </tr>
+      <tr>
+          <td>웹 도메인</td>
+          <td>웹 도메인 및 콘텐츠 관리 시스템의 취약점</td>
+          <td>FTP, HTTP, IP 주소, DNS 데이터, 이메일 서버 포트</td>
+      </tr>
+      <tr>
+          <td>기업 정보  ( Firmographic )</td>
+          <td>재무, 규모 등 조직 정보 및 소셜 엔지니어링 노출</td>
+          <td>유출 기업 이메일, 공식 웹사이트, 정보 유출 여부</td>
+      </tr>
+      <tr>
+          <td>과거 침해 이력</td>
+          <td>보고된 과거 침해 사고 및 당시 대응 이력</td>
+          <td>타이포스쿼팅 도메인, 시스템 로그, 패치 버전 이력</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="d-평가-방법">D. 평가 방법<a hidden class="anchor" aria-hidden="true" href="#d-평가-방법">#</a></h4>
+<p>정량적 평가 :</p>
+<pre><code>- 4개 도구의 정규화 점수를 직접 수치 비교
+- 향후 연구 방향으로 ANOVA(종합 점수 일관성 분석), MANOVA(카테고리별 점수 반영 일관성 분석), 사후 검정  ( post hoc tests ) 적용 제안
+</code></pre>
+<p>정성적 평가 :</p>
+<pre><code>- 각 보고서의 카테고리별 서술적 평가 결과를 수동으로 비교
+- 도구별 강조 항목, 해석 방식, 권고사항의 차이를 분석
+</code></pre>
+<p>비교 대상 :</p>
+<p>신용 점수 체계(Equifax, TransUnion, Experian)를 C-TPRM 벤치마크로 삼았다. 신용 점수 기관들은 공통 계산 방법론을 사용하므로 개인의 신용 점수가 기관 간에 대체로 수렴하는데, C-TPRM 도구들도 이와 유사한 수렴성을 보여야 한다는 것이 비교의 전제다.</p>
+<hr>
+<h3 id="4-컨설팅-관점-인사이트">4. 컨설팅 관점 인사이트<a hidden class="anchor" aria-hidden="true" href="#4-컨설팅-관점-인사이트">#</a></h3>
+<p>방법론의 실무 적용성 :</p>
+<p>장점 :</p>
+<pre><code>- 6개 지표 카테고리는 고객사 벤더 심사 체크리스트 설계의 직접적 기초로 활용 가능
+- 비침습적 방법이므로 벤더의 협조 없이 선제적 위험 파악 가능, 계약 전 사전 심사에 유용
+- 정규화 비교 방법론은 고객사가 여러 도구를 동시에 사용할 때 결과 해석 기준으로 적용 가능
+</code></pre>
+<p>한계 :</p>
+<pre><code>- 단일 조직  ( University at Albany )을 대상으로 한 파일럿 연구로, 일반화에 한계가 있음
+- ComplyScore의 경우 비침습적 초기 점수만 포함되어 도구 간 비교의 동등성이 완전하지 않음
+- 4개 도구만 포함되었으며, 나머지 6개 도구는 비용 또는 조건 문제로 제외됨
+</code></pre>
+<p>기존 보안 솔루션과의 차별점 :</p>
+<table>
+  <thead>
+      <tr>
+          <th>접근 방법</th>
+          <th>방식</th>
+          <th>강점</th>
+          <th>약점</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>전통적 침투 테스트</td>
+          <td>직접 개입, 허가 필요</td>
+          <td>심층적, 실제 취약점 확인</td>
+          <td>비용·시간 소요, 벤더 협조 필수</td>
+      </tr>
+      <tr>
+          <td>설문/체크리스트</td>
+          <td>벤더 자기신고 방식</td>
+          <td>내부 통제 정보 획득 가능</td>
+          <td>주관적, 허위 보고 가능성</td>
+      </tr>
+      <tr>
+          <td>비침습적 위험 점수화</td>
+          <td>공개 데이터 자동 수집·분석</td>
+          <td>확장성 높음, 즉시 실행 가능, 벤더 협조 불필요</td>
+          <td>내부 통제 파악 불가, 도구 간 결과 불일치</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="day-3---empirical-results-and-analysis">Day 3 - Empirical Results and Analysis<a hidden class="anchor" aria-hidden="true" href="#day-3---empirical-results-and-analysis">#</a></h2>
+<p><em>(같은 조직, 네 개의 다른 판단 - 점수는 수렴하지 않았다)</em></p>
+<h3 id="1-평가-환경">1. 평가 환경<a hidden class="anchor" aria-hidden="true" href="#1-평가-환경">#</a></h3>
+<p>실험 설정 :</p>
+<pre><code>- 대상 :  University at Albany, State University of New York  ( 미국 소재 고등교육기관 )
+- 평가 도구 :  FICO, BitSight, RiskRecon, ComplyScore
+- 방법 :  각 도구의 비침습적 스캔 보고서 수집 후 정규화 비교
+- 삼각검증 :  2명의 연구자가 독립적으로 분석 후 결과 대조
+</code></pre>
+<p>실험 전략 :</p>
+<p>동일 조직에 대해 4개 도구를 동시에 적용하여 결과를 비교하는 파일럿 연구 구조다. 정량적으로는 전체 점수를 0 - 100으로 정규화하여 수치 비교하고, 정성적으로는 카테고리별 서술 평가를 수동으로 대조했다.</p>
+<hr>
+<h3 id="2-주요-발견">2. 주요 발견<a hidden class="anchor" aria-hidden="true" href="#2-주요-발견">#</a></h3>
+<p>전체 결과 요약 :</p>
+<table>
+  <thead>
+      <tr>
+          <th>도구</th>
+          <th>만점</th>
+          <th>획득 점수</th>
+          <th>해석</th>
+          <th>정규화 점수</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>FICO</td>
+          <td>850</td>
+          <td>482</td>
+          <td>가장 높은 침해 위험군</td>
+          <td>57%</td>
+      </tr>
+      <tr>
+          <td>BitSight</td>
+          <td>900</td>
+          <td>540 - 570 (범위)</td>
+          <td>교육 부문 하위 30%</td>
+          <td>60 - 63%</td>
+      </tr>
+      <tr>
+          <td>RiskRecon</td>
+          <td>10</td>
+          <td>6.8</td>
+          <td>교육 부문 하위 20%</td>
+          <td>68%</td>
+      </tr>
+      <tr>
+          <td>ComplyScore</td>
+          <td>100</td>
+          <td>80</td>
+          <td>B 등급</td>
+          <td>80%</td>
+      </tr>
+  </tbody>
+</table>
+<p>핵심 관찰 :</p>
+<p>4개 도구 모두 동일 조직을 평가했음에도 정규화 점수가 57%에서 80%까지 23%p의 편차를 보였다. FICO, BitSight, RiskRecon 세 도구는 해당 조직을 고위험 또는 교육 부문 하위권으로 판단한 반면, ComplyScore만 B 등급(80점)으로 상대적으로 높은 점수를 부여했다. ComplyScore의 높은 점수는 해당 도구의 평가 중심이 기술적 취약점이 아닌 컴플라이언스 관리 수준에 있기 때문으로 저자들은 설명한다.</p>
+<hr>
+<h3 id="3-도구별-세부-분석">3. 도구별 세부 분석<a hidden class="anchor" aria-hidden="true" href="#3-도구별-세부-분석">#</a></h3>
+<h4 id="a-fico-보고서">A. FICO 보고서<a hidden class="anchor" aria-hidden="true" href="#a-fico-보고서">#</a></h4>
+<p>관찰 :</p>
+<p>FICO는 4개 도구 중 가장 낮은 정규화 점수(57%)를 산출했다. 낮은 점수의 주요 원인은 네트워크 프리픽스의 서비스 및 설정 위험 수준이 열악하다는 판단이었다. 구체적으로 TCP, UDP, ICMP 프로브에 응답하는 기기 또는 서비스의 수가 과도하게 많았다. 또한 웹 리소스의 콘텐츠가 현행 개인정보 표준 및 규정과 맞지 않거나 최신화되지 않은 상태로 평가됐다.</p>
+<p>해석 :</p>
+<p>FICO의 모델은 다양한 사이버 보안 데이터 신호를 종합하는 머신러닝 기반으로 설계되어 있어, 과거 침해 이력 등 다수의 교차 측정값을 반영한다. 이로 인해 단일 지표보다 복합적인 위험 신호에 민감하게 반응하는 구조다.</p>
+<p>실무 시사점 :</p>
+<p>FICO 점수가 낮게 나왔다고 해서 해당 조직이 즉각적인 침해 위험에 처해 있다는 의미는 아니다. 다만 외부에서 관찰 가능한 위험 신호가 많다는 것을 의미하며, 이는 공격자의 정찰 단계에서 해당 조직이 상대적으로 쉬운 표적으로 인식될 가능성을 시사한다.</p>
+<h4 id="b-bitsight-보고서">B. BitSight 보고서<a hidden class="anchor" aria-hidden="true" href="#b-bitsight-보고서">#</a></h4>
+<p>관찰 :</p>
+<p>BitSight는 정규화 점수 60 - 63% 범위를 산출하며 교육 부문 하위 30%로 분류했다. FICO와 유사하게 엔드포인트 행동, 즉 액세스 디바이스 테스트에서 지속적으로 낮은 점수를 기록했다. 스팸 전파 및 봇넷 감염 가능성이 높은 것으로 보고됐고, 일부 기기는 잠재적으로 침해된 상태로 판단됐다. 웹 리소스도 낮은 성과에 기여했는데, 웹 헤더 미흡, 보안되지 않은 열린 포트, 만료된 SSL 인증서가 주요 원인이었다.</p>
+<p>해석 :</p>
+<p>흥미롭게도 BitSight는 SSL 설정 점수를 교육 업계 기준으로는 상대적으로 높게 평가했다. 이는 동일 항목이라도 업계 벤치마크 기준에 따라 해석이 달라질 수 있음을 보여준다. BitSight의 강점인 독점 데이터셋(120개 이상의 상업·라이선스 데이터 소스)이 결과에 반영되어 있다.</p>
+<p>실무 시사점 :</p>
+<p>업계 평균 대비 상대적 위치로 점수를 제시하는 방식은 고객사 경영진에게 설명하기 용이하다. 다만 업계 벤치마크 자체의 수준이 낮을 경우, 상대적으로 높은 점수가 절대적 보안 수준을 보장하지 않는다는 점을 함께 안내해야 한다.</p>
+<h4 id="c-riskrecon-보고서">C. RiskRecon 보고서<a hidden class="anchor" aria-hidden="true" href="#c-riskrecon-보고서">#</a></h4>
+<p>관찰 :</p>
+<p>RiskRecon은 정규화 점수 68%로 교육 부문 하위 20%로 분류했다. 810개의 사전 정의된 테스트 중 40개 문제가 발견됐다. 웹 애플리케이션 점수가 10점 만점에 2.2점으로 가장 낮았으며, HTTPS 보안 헤더 및 콘텐츠 관리 인증 문제가 주요 원인이었다. 즉각적인 중단 및 재평가가 권고됐다.</p>
+<p>반면 BitSight와 상반되는 결과도 나타났다. 웹 암호화 점수는 10점 만점에 8.6점으로 업계 평균(8.2)을 상회했다. 데이터 유출 사고(과거 침해 이력)와 위협 인텔리전스(현재 침해 가능성)에서는 각각 10점 만점을 기록했다.</p>
+<p>해석 :</p>
+<p>RiskRecon의 결과는 동일 조직 내에서도 보안 수준이 영역별로 매우 불균등하게 분포할 수 있음을 보여준다. 웹 암호화는 업계 평균 이상이면서 웹 애플리케이션 인증은 최하위를 기록하는 이 패턴은, 조직이 특정 기술적 통제에는 투자하면서 다른 영역은 방치하는 전형적인 불균형 보안 투자 패턴을 반영한다.</p>
+<p>실무 시사점 :</p>
+<p>종합 점수만이 아닌 카테고리별 세부 점수가 제공될 때 컨설팅 가치가 더 높아진다. 어떤 영역에 우선적으로 개선 자원을 투입해야 하는지 구체적인 우선순위 자문이 가능하기 때문이다.</p>
+<h4 id="d-complyscore-보고서">D. ComplyScore 보고서<a hidden class="anchor" aria-hidden="true" href="#d-complyscore-보고서">#</a></h4>
+<p>관찰 :</p>
+<p>ComplyScore는 4개 도구 중 가장 높은 80점(B 등급)을 부여했다. 신뢰성 점수는 100점 만점으로, 최근 12개월 내 감염 사례가 없음을 의미했다. 다만 5년 전 스팸 제로데이가 탐지된 이력이 기록됐다. 낮은 점수에 기여한 항목은 패치가 적용되지 않은 웹 서버 및 운영 체제 가능성이었다.</p>
+<p>중요한 제약이 있다. 이 보고서는 비침습적 스캔에 의한 초기 점수이며, ComplyScore의 완전한 평가는 현행 표준, 법률, 보안 정책 대비 관리 및 컴플라이언스 수준을 중심으로 설문과 전화/이메일 대화를 포함한 심층 방법론으로 수행된다.</p>
+<p>해석 :</p>
+<p>ComplyScore가 상대적으로 높은 점수를 부여한 이유는 평가의 중심축 자체가 다르기 때문이다. 기술적 취약점 탐지보다 관리 체계와 컴플라이언스 준수 여부를 중심으로 평가하므로, 기술적 설정 오류가 있더라도 관리 문서와 정책이 갖춰져 있으면 높은 점수가 나올 수 있다.</p>
+<p>실무 시사점 :</p>
+<p>컴플라이언스 중심 도구와 기술적 취약점 중심 도구는 서로 다른 질문에 답한다. 고객사에게 어떤 도구를 선택할지 자문할 때, 그 고객사가 현재 무엇을 알고 싶은지  ( 기술적 노출 수준 vs. 규정 준수 수준 )에 따라 적합한 도구가 달라진다.</p>
+<hr>
+<h3 id="4-도구-간-비교-분석">4. 도구 간 비교 분석<a hidden class="anchor" aria-hidden="true" href="#4-도구-간-비교-분석">#</a></h3>
+<h4 id="a-일관된-발견">A. 일관된 발견<a hidden class="anchor" aria-hidden="true" href="#a-일관된-발견">#</a></h4>
+<p>3개 도구(FICO, BitSight, RiskRecon)는 공통적으로 웹 리소스 관련 취약점을 주요 문제로 지목했다. 웹 헤더, SSL/TLS 설정, 콘텐츠 관리 인증 등 웹 도메인 카테고리에서의 문제는 도구에 무관하게 반복적으로 탐지됐다. 이는 해당 조직의 웹 인프라 보안이 실질적으로 취약한 상태임을 여러 독립적 방법론이 동시에 확인했다는 점에서 신뢰도 높은 발견이다.</p>
+<h4 id="b-불일치-발견">B. 불일치 발견<a hidden class="anchor" aria-hidden="true" href="#b-불일치-발견">#</a></h4>
+<p>웹 암호화 항목에서 BitSight와 RiskRecon은 상반된 판단을 내렸다. BitSight는 낮은 성과의 원인 중 하나로 SSL 관련 항목을 지목한 반면, RiskRecon은 웹 암호화를 8.6/10으로 업계 평균 이상으로 평가했다. 이 불일치는 두 도구가 동일한 개념 범주(암호화)를 서로 다른 세부 지표로 측정하고 있음을 보여준다.</p>
+<h4 id="c-불일치의-원인">C. 불일치의 원인<a hidden class="anchor" aria-hidden="true" href="#c-불일치의-원인">#</a></h4>
+<pre><code>- 평가 방법론의 차이 :  각 도구가 동일 카테고리를 다른 세부 지표와 가중치로 측정한다
+- 독점 데이터셋의 포함 여부 :  BitSight처럼 독점 상업 데이터를 활용하는 도구는 공개 데이터만 사용하는 도구와 다른 결과를 낼 수 있다
+- 공통 기준선 이상의 추가 위험 요소 반영 방식이 도구마다 다르다
+</code></pre>
+<hr>
+<h3 id="5-오탐오류-분석">5. 오탐/오류 분석<a hidden class="anchor" aria-hidden="true" href="#5-오탐오류-분석">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>유형</th>
+          <th>사례</th>
+          <th>원인</th>
+          <th>시사점</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>도구 간 상반된 판단</td>
+          <td>BitSight(SSL 낮음) vs. RiskRecon(웹 암호화 8.6/10)</td>
+          <td>동일 개념을 다른 세부 지표로 측정</td>
+          <td>단일 도구 결과를 절대적 판단 기준으로 삼을 수 없음</td>
+      </tr>
+      <tr>
+          <td>평가 범위 불일치</td>
+          <td>ComplyScore의 점수가 다른 도구 대비 현저히 높음</td>
+          <td>평가 중심축 자체가 다름(기술 취약점 vs. 컴플라이언스 관리)</td>
+          <td>도구 선택 전 평가 목적 명확화 필요</td>
+      </tr>
+      <tr>
+          <td>데이터 접근 범위 차이</td>
+          <td>BitSight(120개 이상 독점 소스) vs. 공개 데이터 의존 도구</td>
+          <td>수집 데이터 소스의 범위와 품질 차이</td>
+          <td>독점 데이터 포함 도구가 더 풍부한 신호를 반영하지만 재현 불가</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="6-컨설팅-관점-인사이트">6. 컨설팅 관점 인사이트<a hidden class="anchor" aria-hidden="true" href="#6-컨설팅-관점-인사이트">#</a></h3>
+<p>성공 사례 :</p>
+<p>3개 도구가 공통적으로 지목한 웹 리소스 취약점은 신뢰도 높은 개선 우선순위로 활용 가능하다. 복수 도구에서 동일하게 나타난 문제는 해당 취약점이 실재할 가능성이 높으며, 고객사에게 즉각적인 조치를 권고하는 근거로 사용할 수 있다.</p>
+<p>한계 사례 :</p>
+<p>ComplyScore 결과만 보면 해당 조직의 보안 수준이 양호한 것으로 오인할 수 있다. 단일 도구의 점수만으로 고객사의 벤더 보안 수준을 판단하는 것은 불충분하며, 특히 평가 중심축이 다른 도구들의 결과를 혼용할 경우 판단 오류가 발생할 수 있다.</p>
+<p>고객 환경 적용 시 고려사항 :</p>
+<pre><code>- 복수 도구를 병행 사용하되, 도구별 평가 중심축  ( 기술 취약점 vs. 컴플라이언스 )을 이해하고 목적에 맞는 도구를 선택
+- 점수가 수렴하는 항목은 실재 위험으로 우선 처리
+- 점수가 발산하는 항목은 추가 조사가 필요한 신호로 해석
+</code></pre>
+<hr>
+<h3 id="7-개인-인사이트">7. 개인 인사이트<a hidden class="anchor" aria-hidden="true" href="#7-개인-인사이트">#</a></h3>
+<p>[ 인사이트 1 : 수렴하지 않는 점수의 의미 ]</p>
+<p>신용 점수는 기관 간에 수렴하지만, C-TPRM 점수는 수렴하지 않는다. 이 사실이 단순한 기술적 문제처럼 보이지만, 실제로는 고객사가 벤더 보안을 판단하는 기반 자체가 불안정하다는 것을 의미한다. 57%와 80%는 동일 조직에 대한 판단인데, 어느 점수를 믿어야 하는가? 이 질문에 답하는 것 자체가 컨설팅 가치가 된다.</p>
+<p>[ 인사이트 2 : 도구는 목적이 있다 ]</p>
+<p>ComplyScore가 높은 점수를 준 것은 잘못된 것이 아니다. 그 도구는 컴플라이언스 관리 수준을 보는 도구이고, 그 목적에는 충실했다. 문제는 목적이 다른 도구의 결과를 같은 맥락에서 비교하려 할 때 발생한다. 고객사에 도구를 추천할 때 기능이 아닌 목적을 먼저 물어야 한다는 교훈이다.</p>
+<p>[ 인사이트 3 : 파일럿 연구의 한계 ]</p>
+<p>단 하나의 조직(University at Albany)을 대상으로 한 결과다. 이 결과가 다른 조직, 다른 산업에서도 동일하게 나타날지는 알 수 없다. 저자들 스스로도 더 많은 조직을 대상으로 한 통계적 검증이 필요하다고 인정한다. 컨설팅 현장에서 이 논문을 인용할 때 연구의 규모적 한계를 함께 언급하는 것이 필요하다.</p>
+<hr>
+<h2 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h2>
+<p>[1] Keskin, O.F., Caramancion, K.M., Tatar, I., Raza, O., &amp; Tatar, U. (2021). Cyber Third-Party Risk Management: A Comparison of Non-Intrusive Risk Scoring Reports. Electronics, 10(10), 1168.</p>
+<p>[2] Ghadge, A., Weiß, M., Caldwell, N.D., &amp; Wilding, R. (2020). Managing cyber risk in supply chains: A review and research agenda. Supply Chain Management: An International Journal, 25(2), 223-240.</p>
+<p>[3] Gordon, L.A., &amp; Loeb, M.P. (2002). The economics of information security investment. ACM Transactions on Information and System Security, 5(4), 438-457.</p>
+<p>[4] Santos-Olmo, A., et al. (2024). Integrated risk analysis framework.</p>
+<hr>
+<h2 id="day-4---research-limitations-and-scholarly-impact">Day 4 - Research Limitations and Scholarly Impact<a hidden class="anchor" aria-hidden="true" href="#day-4---research-limitations-and-scholarly-impact">#</a></h2>
+<p><em>(파일럿 연구의 솔직한 한계, 그리고 C-TPRM이 나아간 방향)</em></p>
+<h3 id="1-연구의-한계점">1. 연구의 한계점<a hidden class="anchor" aria-hidden="true" href="#1-연구의-한계점">#</a></h3>
+<h4 id="a-단일-조직-대상의-파일럿-수준">A. 단일 조직 대상의 파일럿 수준<a hidden class="anchor" aria-hidden="true" href="#a-단일-조직-대상의-파일럿-수준">#</a></h4>
+<p>문제 :</p>
+<p>이 연구는 University at Albany 단 하나의 조직을 대상으로 수행된 파일럿 연구다. 저자들 스스로 Section 8(결론)에서 더 많은 조직을 대상으로 한 대규모 데이터셋이 필요하다고 명시하고 있다. 단일 조직의 결과만으로는 도구 간 불일치 패턴이 교육 기관에만 나타나는 현상인지, 금융·제조·의료 등 다른 산업에서도 동일하게 나타나는지 알 수 없다.</p>
+<p>영향 :</p>
+<p>연구 결과의 일반화 가능성이 제한된다. 동일 조직(University at Albany)이 연구자들의 소속 기관이라는 점도 연구 대상 선정의 편의성에 의존했음을 시사한다.</p>
+<p>보완 방향 :</p>
+<p>저자들이 직접 제안한 바와 같이 다수의 조직을 대상으로 ANOVA(종합 점수 일관성)와 MANOVA(카테고리별 점수 일관성)를 적용한 통계적 검증이 필요하다. 이를 위해서는 먼저 다양한 형식의 보고서 데이터를 정량적으로 코딩하고 정규화하는 작업이 선행되어야 한다.</p>
+<h4 id="b-포함된-도구의-대표성-부족">B. 포함된 도구의 대표성 부족<a hidden class="anchor" aria-hidden="true" href="#b-포함된-도구의-대표성-부족">#</a></h4>
+<p>문제 :</p>
+<p>시장에 존재하는 10개 이상의 C-TPRM 도구 중 4개만이 연구에 포함됐다. 나머지 6개 도구는 사전 비용 납부 또는 기타 조건을 요구하여 제외됐다. 포함된 4개 도구(FICO, BitSight, RiskRecon, ComplyScore)가 전체 시장을 대표하는지 검증할 방법이 없다.</p>
+<p>영향 :</p>
+<p>포함되지 않은 도구들 중에 더 정확하거나 일관된 결과를 내는 도구가 존재할 수 있다. 또한 비용을 지불해야만 포함 가능한 도구들의 경우, 자원이 충분한 대형 조직에서 실제로 사용되는 도구일 가능성이 높아 연구 결과가 실제 시장 사용 패턴을 반영하지 못할 수 있다.</p>
+<p>보완 방향 :</p>
+<p>TPRA 회원사 전체를 대상으로 한 포괄적 조사, 또는 실제 시장 점유율 기반의 표본 선정 방식이 필요하다. 비용 장벽이 있는 도구는 연구 예산을 확보하여 포함하거나, 비용 장벽 자체를 연구의 관찰 대상으로 삼는 방향도 가능하다.</p>
+<h4 id="c-complyscore-비교-동등성-문제">C. ComplyScore 비교 동등성 문제<a hidden class="anchor" aria-hidden="true" href="#c-complyscore-비교-동등성-문제">#</a></h4>
+<p>문제 :</p>
+<p>ComplyScore의 경우 이 연구에서 획득한 점수는 비침습적 스캔에 의한 초기 점수이며, 해당 도구의 완전한 평가는 현장 방문과 심층 조사를 포함한다. 반면 나머지 3개 도구(FICO, BitSight, RiskRecon)는 비침습적 스캔만으로 최종 점수를 산출한다. 즉 4개 도구가 동일한 평가 완성도로 비교된 것이 아니다.</p>
+<p>영향 :</p>
+<p>ComplyScore의 높은 점수(80점)가 해당 도구의 방법론적 차이 때문인지, 아니면 초기 점수라는 불완전한 평가 단계의 결과인지 구분하기 어렵다.</p>
+<p>보완 방향 :</p>
+<p>각 도구의 동일한 평가 완성도 단계에서 결과를 수집하거나, 비침습적 점수와 완전한 평가 점수를 구분하여 분석하는 설계가 필요하다.</p>
+<hr>
+<h3 id="2-후속-연구-동향">2. 후속 연구 동향<a hidden class="anchor" aria-hidden="true" href="#2-후속-연구-동향">#</a></h3>
+<h4 id="a-인용-수와-영향력">A. 인용 수와 영향력<a hidden class="anchor" aria-hidden="true" href="#a-인용-수와-영향력">#</a></h4>
+<p>학술적 임팩트 :</p>
+<pre><code>- 발표 :  2021년 5월
+- Semantic Scholar 기준 인용 수 :  3건  ( 2026년 3월 기준 )
+- Electronics(MDPI) 게재, 오픈액세스
+</code></pre>
+<p>평가 :</p>
+<p>인용 수 자체는 높지 않다. 이는 C-TPRM이라는 분야 자체가 학술적으로 아직 초기 단계이며, 이 논문이 탐색적 파일럿 연구로 설계된 한계와도 연결된다. 다만 NSF(미국 국립과학재단) Grant No. 1948261의 지원을 받아 수행된 연구라는 점, 그리고 교신저자 Unal Tatar가 이후에도 사이버 위험 정량화 연구를 지속하고 있다는 점에서 연구 그룹의 지속성은 확인된다.</p>
+<h4 id="b-연구-트렌드의-변화">B. 연구 트렌드의 변화<a hidden class="anchor" aria-hidden="true" href="#b-연구-트렌드의-변화">#</a></h4>
+<p>[ 이 논문 이전,  - 2020 ]</p>
+<pre><code>- C-TPRM 개념 미정립
+- 공급망 위험을 물리적/운영적 관점에서 주로 다룸
+- 개별 벤더의 사이버 위험 점수화는 실무 중심, 학술 연구 부재
+
+&gt;&gt; ↓
+</code></pre>
+<p>[ 이 논문,  2021 ]</p>
+<pre><code>- 비침습적 C-TPRM 방법론을 학술적으로 개념화
+- 상용 도구 비교 분석 프레임워크 제시
+- 점수 불일치 문제를 학술적 의제로 제기
+
+&gt;&gt; ↓
+</code></pre>
+<p>[ 이후,  2022 - 현재 ]</p>
+<pre><code>- NIST SP 800-161 Rev.1 발표  ( 2022년 5월 )로 표준화 가속
+- C-SCRM을 엔터프라이즈 리스크 관리에 통합하는 다층 접근법 제도화
+- NIST CSF 2.0  ( 2024년 )에서 공급망 위험 관리를 Govern 기능으로 독립
+- 비침습적 위험 점수화 도구 시장 확대 및 고도화
+</code></pre>
+<p>이 논문의 위치 :</p>
+<p>실무에서는 이미 활발히 사용되고 있던 비침습적 위험 점수화를 학술적으로 처음 체계화한 위치에 있다. 표준화의 필요성을 제기한 시점이 NIST SP 800-161 Rev.1 발표(2022년) 직전이라는 점에서 타이밍의 적절성이 있다.</p>
+<h4 id="c-주요-후속-동향">C. 주요 후속 동향<a hidden class="anchor" aria-hidden="true" href="#c-주요-후속-동향">#</a></h4>
+<p>표준화 방향 - NIST SP 800-161 Rev.1 (2022)</p>
+<p>이 논문이 제기한 표준화 부재 문제에 대응하는 가장 중요한 후속 움직임이다. 2022년 5월 발표된 NIST SP 800-161 Revision 1은 조직의 모든 계층에서 사이버 공급망 위험을 식별·평가·완화하기 위한 지침을 제공하며, C-SCRM을 엔터프라이즈 위험 관리 활동에 통합하는 다층 접근법을 제도화했다. 2021년 미국 행정명령(EO 14028)의 소프트웨어 공급망 보안 강화 요구에 대응하여 소프트웨어 공급망 무결성 지침을 담은 Appendix F가 추가됐다. 연방 기관 중심으로 시작됐지만, 현재는 제조, 금융, 의료, 방산 등 다양한 산업에서 광범위하게 채택되고 있다.</p>
+<p>거버넌스 통합 방향 - NIST CSF 2.0 (2024)</p>
+<p>NIST Cybersecurity Framework 2.0은 공급망 위험 관리(GV.SC) 통제를 새로운 Govern 기능 아래에 독립적으로 배치했다. 이는 공급망 사이버 위험이 더 이상 기술적 문제가 아닌 거버넌스 수준의 의제임을 공식화한 것이다.</p>
+<hr>
+<h3 id="3-실무-영향">3. 실무 영향<a hidden class="anchor" aria-hidden="true" href="#3-실무-영향">#</a></h3>
+<h4 id="a-비침습적-위험-점수화-시장의-성장">A. 비침습적 위험 점수화 시장의 성장<a hidden class="anchor" aria-hidden="true" href="#a-비침습적-위험-점수화-시장의-성장">#</a></h4>
+<p>이 논문 이전 :</p>
+<p>BitSight(2011년 설립) 등 일부 선발 주자가 존재했으나, 시장이 분산되고 표준이 없었다.</p>
+<p>이 논문 이후 :</p>
+<p>C-TPRM 도구 시장은 빠르게 성장했다. 이 논문에서 다룬 RiskRecon은 Mastercard에 인수됐고, SecurityScorecard와 BitSight는 기업 공개 또는 대형 투자 유치를 진행했다. 사이버 보험 언더라이팅에서 비침습적 위험 점수가 표준적 참조 지표로 자리 잡았다.</p>
+<p>핵심 변화 :</p>
+<p>이 논문이 지적한 도구 간 불일치 문제는 여전히 완전히 해소되지 않았다. 업계는 표준화보다는 각 도구의 차별화 전략으로 대응하고 있으며, 복수 도구 병행 사용 또는 통합 플랫폼 방식이 실무적 해법으로 부상했다.</p>
+<h4 id="b-규제-및-감독-기관의-반응">B. 규제 및 감독 기관의 반응<a hidden class="anchor" aria-hidden="true" href="#b-규제-및-감독-기관의-반응">#</a></h4>
+<p>금융 부문에서는 G7 Fundamental Elements for Third Party Cyber Risk Management(2018, 2022 개정)가 서드파티 사이버 위험 관리의 국제 기준으로 작동하고 있다. 한국의 경우 ISMS-P 2.2(외부자 보안) 통제 항목이 이 영역을 다루고 있으며, 금융보안원의 금융권 IT·보안 컨설팅 가이드라인도 외부자 위험 관리를 필수 항목으로 포함하고 있다.</p>
+<hr>
+<h3 id="4-컨설팅-관점-인사이트-1">4. 컨설팅 관점 인사이트<a hidden class="anchor" aria-hidden="true" href="#4-컨설팅-관점-인사이트-1">#</a></h3>
+<p>한계를 이해한 컨설팅 전략 :</p>
+<p>이 논문의 한계를 알고 있을 때 고객사에게 더 정직하고 유용한 자문이 가능하다. 비침습적 위험 점수화 도구를 도입하려는 고객사에게는 단일 도구의 결과를 절대적 기준으로 삼지 말 것, 도구 간 결과가 다를 수 있음을 사전에 안내할 것, 그리고 점수화 도구는 벤더 심사의 출발점이지 종착점이 아님을 강조해야 한다.</p>
+<p>적용 가능 시나리오 :</p>
+<pre><code>- 벤더 수가 수십 개 이상이고 전수 침투 테스트나 현장 감사가 불가능한 중대형 고객사에서 1차 스크리닝 도구로 비침습적 위험 점수화 도구 도입을 검토할 때
+- ISMS-P 인증을 앞두고 외부자 보안 통제 체계를 구축해야 하는 고객사에서 벤더 분류 및 우선순위 설정 기준을 마련할 때
+</code></pre>
+<p>적용 불가 시나리오 :</p>
+<p>단일 도구의 점수만으로 특정 벤더와의 계약 종료 또는 갱신 여부를 결정하려는 고객사. 이 경우 이 논문에서 실증된 도구 간 불일치 문제를 근거로, 복수 도구 활용 또는 추가 검증 절차(설문, 현장 점검 등) 병행을 강하게 권고해야 한다.</p>
+<hr>
+<h3 id="5-개인-인사이트">5. 개인 인사이트<a hidden class="anchor" aria-hidden="true" href="#5-개인-인사이트">#</a></h3>
+<p>[ 인사이트 1 : 파일럿 연구의 가치 ]</p>
+<p>인용 수 3건이라는 숫자만 보면 영향력이 작아 보일 수 있다. 그러나 이 논문이 다룬 C-TPRM 점수 불일치 문제는 지금도 산업계에서 해결되지 않은 실제 문제다. 학술 인용보다 실무 현장에서 더 많이 체감되는 유형의 연구라는 생각이 든다. 컨설팅 현장에서 이런 논문이 갖는 가치는 인용 수가 아니라 설명력에 있다.</p>
+<p>[ 인사이트 2 : 표준화의 어려움 ]</p>
+<p>신용 점수는 왜 수렴하는가? 법적 규제가 있기 때문이다. C-TPRM 점수가 수렴하지 않는 이유는 규제가 없기 때문이다. NIST SP 800-161 Rev.1이 2022년에 나왔지만, 이것은 지침이지 강제 규범이 아니다. 표준화가 진전되려면 결국 규제 기관의 요구사항으로 전환되어야 한다는 것을 이 논문의 한계를 보면서 다시 확인했다.</p>
+<p>[ 인사이트 3 : 연구자와 피험자가 같은 조직 ]</p>
+<p>자기 학교를 평가 대상으로 삼은 것이 편의적 선택이기도 하지만, 동시에 연구자들이 결과를 가장 잘 해석할 수 있는 위치에 있다는 장점도 있다. 단 이런 설계는 결과 발표에 있어 이해충돌 가능성을 내포하고 있다. 컨설팅 보고서를 작성할 때도 평가 대상과 평가자의 관계가 결과 해석에 미치는 영향을 늘 의식해야 한다는 교훈이다.</p>
+<hr>
+<h2 id="day-5---consulting-perspective-and-key-takeaways">Day 5 - Consulting Perspective and Key Takeaways<a hidden class="anchor" aria-hidden="true" href="#day-5---consulting-perspective-and-key-takeaways">#</a></h2>
+<p><em>(측정하지 않으면 관리할 수 없다 — 단, 무엇을 측정하는지는 알아야 한다)</em></p>
+<h3 id="1-5일간-학습-여정-종합">1. 5일간 학습 여정 종합<a hidden class="anchor" aria-hidden="true" href="#1-5일간-학습-여정-종합">#</a></h3>
+<h4 id="a-무엇을-배웠나">A. 무엇을 배웠나<a hidden class="anchor" aria-hidden="true" href="#a-무엇을-배웠나">#</a></h4>
+<p>Day 1 : 연구 배경과 C-TPRM 개념</p>
+<p>[ Day 1 요약 ]</p>
+<pre><code>- 서드파티로 인한 침해가 전체의 75%
+
+&gt;&gt; ↓
+
+- 기존 리스크 방법론은 내부 위험 중심, 외부 벤더 위험 미포착
+
+&gt;&gt; ↓
+
+- C-TPRM은 신용 점수처럼 벤더의 위험을 외부에서 수치화하는 신흥 분야
+</code></pre>
+<p>Day 2 : 연구 방법론 — 탐색적 비교 설계</p>
+<p>[ Day 2 요약 ]</p>
+<pre><code>- TPRA 회원사 10개 초청  →  4개만 참여  ( FICO, BitSight, RiskRecon, ComplyScore )
+
+&gt;&gt; ↓
+
+- 동일 조직  ( University at Albany )  대상 비침습적 스캔 수행
+
+&gt;&gt; ↓
+
+- 6개 공통 지표 카테고리 도출, 정규화 비교 방법론 설계
+</code></pre>
+<p>Day 3 : 실증 결과 — 점수는 수렴하지 않았다</p>
+<p>[ Day 3 요약 ]</p>
+<pre><code>- 정규화 점수 57% - 80%, 23%p 편차 발생
+
+&gt;&gt; ↓
+
+- 웹 리소스 취약점은 3개 도구 공통 발견, 웹 암호화는 도구 간 상반된 판단
+
+&gt;&gt; ↓
+
+- 불일치 원인 : 방법론 차이, 독점 데이터, 추가 위험 요소 반영 방식
+</code></pre>
+<p>Day 4 : 한계와 영향</p>
+<p>[ Day 4 요약 ]</p>
+<pre><code>- 단일 조직 파일럿, 도구 4개, ComplyScore 평가 완성도 불일치
+
+&gt;&gt; ↓
+
+- 인용 3건이지만 NIST SP 800-161 Rev.1  ( 2022 ), CSF 2.0  ( 2024 )으로 후속 표준화 진전
+
+&gt;&gt; ↓
+
+- 학술 인용보다 실무 설명력이 높은 유형의 연구
+</code></pre>
+<p>Day 5  ( 지금 ) : 컨설팅 관점 통합</p>
+<p>5일간 쌓은 이해를 보안 컨설팅 역량으로 어떻게 전환할 것인가?</p>
+<hr>
+<h3 id="2-논문에서-배운-핵심-원리-정리">2. 논문에서 배운 핵심 원리 정리<a hidden class="anchor" aria-hidden="true" href="#2-논문에서-배운-핵심-원리-정리">#</a></h3>
+<h4 id="a-기술적-메커니즘의-본질적-이해">A. 기술적 메커니즘의 본질적 이해<a hidden class="anchor" aria-hidden="true" href="#a-기술적-메커니즘의-본질적-이해">#</a></h4>
+<p>원리 1 : 비침습적 평가는 외부 노출면을 본다</p>
+<p>비침습적 C-TPRM 도구들은 대상 조직의 내부를 보지 않는다. SSL 인증서, 열린 포트, 봇넷 등록 여부, 다크웹 유출 데이터처럼 외부에서 관찰 가능한 신호만을 수집한다. 이 방법이 작동하는 이유는 외부 노출면의 상태가 내부 보안 관리 수준의 간접 지표가 되기 때문이다. 만료된 인증서, 패치되지 않은 서버, 봇넷에 등록된 IP는 내부 보안 거버넌스가 약한 조직에서 더 자주 나타난다.</p>
+<p>왜 한계가 있는가 :</p>
+<p>내부 통제(접근 권한 관리, 보안 정책 문서, 임직원 보안 교육 수준)는 외부에서 관찰되지 않는다. 따라서 비침습적 점수가 높은 조직이라도 내부 거버넌스가 취약할 수 있고, 그 반대도 성립한다.</p>
+<p>원리 2 : 점수는 도구의 세계관을 반영한다</p>
+<p>FICO는 머신러닝 기반 교차 측정값을 중시하고, BitSight는 독점 데이터셋의 광범위한 커버리지를 강점으로 삼으며, RiskRecon은 810개 사전 정의 테스트 기반의 고도 커스터마이즈를 제공하고, ComplyScore는 컴플라이언스 관리 수준을 중심으로 평가한다. 동일한 조직에 대해 서로 다른 점수가 나오는 이유는 각 도구가 서로 다른 질문에 답하고 있기 때문이다.</p>
+<p>원리 3 : 수렴하는 발견이 진짜 위험이다</p>
+<p>복수 도구에서 공통적으로 지목된 취약점(이 논문에서는 웹 리소스 관련 문제)은 단일 도구의 판단보다 신뢰도가 높다. 컨설팅 현장에서 복수 도구를 병행할 때, 점수의 절대값보다 도구 간 공통 발견을 우선순위 기준으로 삼는 것이 적절하다.</p>
+<h4 id="b-일반화-가능한-원칙">B. 일반화 가능한 원칙<a hidden class="anchor" aria-hidden="true" href="#b-일반화-가능한-원칙">#</a></h4>
+<pre><code>- 평가 도구를 선택하기 전에 무엇을 알고 싶은지를 먼저 결정해야 한다 — 기술적 노출 수준인가, 컴플라이언스 준수 수준인가
+- 단일 점수에 의존하는 의사결정은 측정 도구의 세계관에 의존하는 것과 같다
+- 표준화가 없는 영역에서는 복수 관점의 삼각검증이 신뢰도를 높이는 실용적 대안이다
+</code></pre>
+<hr>
+<h3 id="3-기업-환경에서의-적용-가능성-분석">3. 기업 환경에서의 적용 가능성 분석<a hidden class="anchor" aria-hidden="true" href="#3-기업-환경에서의-적용-가능성-분석">#</a></h3>
+<h4 id="a-해결하는-비즈니스-문제">A. 해결하는 비즈니스 문제<a hidden class="anchor" aria-hidden="true" href="#a-해결하는-비즈니스-문제">#</a></h4>
+<p>보안 측면 :</p>
+<p>벤더의 협조 없이 선제적으로 벤더 보안 수준을 파악하는 문제. 계약 전 사전 심사, 기존 벤더의 지속 모니터링, 사고 발생 시 원인 추적.</p>
+<p>비즈니스 측면 :</p>
+<p>Target, Home Depot, SolarWinds 사례에서 보듯, 서드파티 침해는 직접 비용(소송 합의금, 카드 재발급 비용)뿐 아니라 브랜드 신뢰도 손실이라는 간접 비용을 수반한다. 벤더 위험 점수화는 이 위험을 사전에 정량적으로 파악하는 수단이다.</p>
+<p>규제 측면 :</p>
+<p>ISMS-P 2.2(외부자 보안), ISO 27001 A.15(공급자 관계), NIST SP 800-161(사이버 공급망 위험 관리) 요구사항 이행 근거로 활용 가능하다.</p>
+<h4 id="b-적합한-기업-프로필">B. 적합한 기업 프로필<a hidden class="anchor" aria-hidden="true" href="#b-적합한-기업-프로필">#</a></h4>
+<p>산업 : 금융, 제조, 의료, IT 서비스 등 외부 벤더 의존도가 높은 산업 전반</p>
+<p>기업 규모 : 벤더 수가 수십 개 이상이어서 전수 침투 테스트나 현장 감사가 현실적으로 불가능한 중대형 기업</p>
+<p>보안 성숙도 : 기본 내부 보안 통제는 갖춰져 있으나 외부자/벤더 위험 관리 체계가 미비한 단계  ( 성숙도 레벨 2 - 3 )</p>
+<p>기술 스택 : 다수의 SaaS, 클라우드 서비스, 외주 개발사와 연결된 IT 환경</p>
+<h4 id="c-도입-시-고려사항">C. 도입 시 고려사항<a hidden class="anchor" aria-hidden="true" href="#c-도입-시-고려사항">#</a></h4>
+<p>비용 :</p>
+<pre><code>- 주요 비침습적 위험 점수화 도구들은 구독 방식으로 운영되며, 모니터링 대상 벤더 수에 따라 비용이 결정됨
+- 복수 도구 병행 시 비용 증가, 통합 플랫폼 방식과의 비교 검토 필요
+</code></pre>
+<p>인력 :</p>
+<pre><code>- 도구 결과 해석 및 벤더 대응 커뮤니케이션을 담당할 담당자 지정 필요
+- 점수 해석 교육이 필요하며, 점수만 보고 판단하는 오용 방지 필수
+</code></pre>
+<p>시간 :</p>
+<pre><code>- 비침습적 스캔 자체는 즉시 - 수 주 내 결과 산출 가능  ( 도구별 상이 )
+- 벤더 심사 체계를 기존 계약·조달 프로세스에 통합하는 데 별도 시간 소요
+</code></pre>
+<hr>
+<h3 id="4-컨설팅-시나리오별-활용-방안">4. 컨설팅 시나리오별 활용 방안<a hidden class="anchor" aria-hidden="true" href="#4-컨설팅-시나리오별-활용-방안">#</a></h3>
+<h4 id="a-보안-진단점검">A. 보안 진단/점검<a hidden class="anchor" aria-hidden="true" href="#a-보안-진단점검">#</a></h4>
+<p>벤더 보안 수준 진단 시, 비침습적 위험 점수화 도구의 결과를 1차 스크리닝 기준으로 활용할 수 있다.</p>
+<p>점검 항목 예시 :</p>
+<pre><code>- 고객사가 현재 사용 중인 비침습적 평가 도구가 있는가, 있다면 어떤 도구인가
+- 단일 도구 사용 시 해당 도구의 평가 중심축  ( 기술 취약점 vs. 컴플라이언스 )을 인지하고 있는가
+- 점수화 결과를 기반으로 고위험 벤더에 대한 추가 심사  ( 설문, 현장 점검 )  절차가 마련되어 있는가
+- ISMS-P 2.2 외부자 보안 통제 이행 증빙으로 활용 가능한 형태로 결과가 문서화되고 있는가
+</code></pre>
+<h4 id="b-보안-체계-수립">B. 보안 체계 수립<a hidden class="anchor" aria-hidden="true" href="#b-보안-체계-수립">#</a></h4>
+<p>벤더 심사 프레임워크를 처음 설계하는 고객사에게는 이 논문의 6개 지표 카테고리를 체크리스트의 기초 구조로 제안할 수 있다.</p>
+<p>적용 예시 :</p>
+<pre><code>- 엔드포인트 행동, 네트워크 설정 오류, 소프트웨어/서비스, 웹 도메인, 기업 정보, 과거 침해 이력 6개 영역을 벤더 심사 기준으로 설정
+- 비침습적 스캔  ( 1차 )  →  고위험 벤더 대상 설문/자기신고  ( 2차 )  →  최고위험 벤더 대상 현장 점검  ( 3차 )의 3단계 심사 체계 설계
+- 벤더 중요도  ( 취급 데이터 민감도, 시스템 접근 권한 수준 )에 따른 차등 심사 기준 설정
+</code></pre>
+<h4 id="c-기술-자문">C. 기술 자문<a hidden class="anchor" aria-hidden="true" href="#c-기술-자문">#</a></h4>
+<p>질문 1 : 우리 회사는 이미 SecurityScorecard를 쓰고 있는데, 그거면 충분하지 않나요?</p>
+<p>단일 도구로 충분한지는 목적에 따라 다르다. SecurityScorecard는 기술적 노출면 평가에 강하지만, 이 논문에서 실증된 바와 같이 도구마다 측정하는 내용이 다르다. 예를 들어 벤더의 컴플라이언스 관리 수준이나 내부 보안 정책 준수 여부는 비침습적 도구로는 파악이 어렵다. 최소한 고위험 벤더에 대해서는 설문 기반 자기신고 또는 현장 점검을 병행하는 것을 권장한다.</p>
+<p>질문 2 : 벤더가 점수가 낮다고 나왔는데 계약을 끊어야 하나요?</p>
+<p>점수 하나만으로 계약 종료를 결정하는 것은 적절하지 않다. 이 논문에서 보듯 도구마다 다른 점수를 산출하며, 낮은 점수가 반드시 즉각적인 침해 위험을 의미하지 않는다. 대신 해당 벤더에게 개선 계획을 요구하고, 일정 기간 내 재평가 결과를 계약 갱신 조건으로 설정하는 방식을 권장한다.</p>
+<p>질문 3 : 중소 벤더들은 이런 점수 평가에 협조하지 않으려 하는데요?</p>
+<p>비침습적 방법의 핵심 장점이 바로 벤더의 협조가 필요 없다는 점이다. 공개 데이터만으로 1차 평가가 가능하므로, 벤더 협조 없이도 스크리닝이 가능하다. 단, 평가 결과를 벤더와 공유하고 개선을 요구하는 단계에서는 협조가 필요하다. 계약서에 보안 수준 유지 의무와 평가 협조 조항을 사전에 포함하는 것이 장기적으로 유효하다.</p>
+<hr>
+<h3 id="5-프레임워크규제표준과의-연계">5. 프레임워크/규제/표준과의 연계<a hidden class="anchor" aria-hidden="true" href="#5-프레임워크규제표준과의-연계">#</a></h3>
+<h4 id="a-isms-p--iso-27001-관점">A. ISMS-P / ISO 27001 관점<a hidden class="anchor" aria-hidden="true" href="#a-isms-p--iso-27001-관점">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>통제 항목</th>
+          <th>논문의 기여</th>
+          <th>적용 방법</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>ISMS-P 2.2.1 외부자 보안 요구사항 정의</td>
+          <td>C-TPRM 6개 지표 카테고리가 외부자에게 요구해야 할 보안 항목의 기술적 기준 제공</td>
+          <td>벤더 계약 시 6개 카테고리 기반 보안 요구사항 명세서 작성</td>
+      </tr>
+      <tr>
+          <td>ISMS-P 2.2.2 외부자 계약 시 보안</td>
+          <td>비침습적 점수화 도구를 계약 전 사전 심사 절차로 제도화</td>
+          <td>일정 점수 이하 벤더에 대한 계약 보류 또는 추가 조건 부과 기준 수립</td>
+      </tr>
+      <tr>
+          <td>ISMS-P 2.2.3 외부자 보안 이행 관리</td>
+          <td>지속적 모니터링 기능을 활용한 정기 재평가 체계 구축</td>
+          <td>분기 또는 반기 단위 재스캔, 점수 변동 임계값 설정</td>
+      </tr>
+      <tr>
+          <td>ISO 27001 A.15.1 공급자 관계 정보보안</td>
+          <td>공급자 위험 평가의 기술적 방법론 제공</td>
+          <td>공급자 심사 절차에 비침습적 평가 도구 결과를 포함</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="b-nist-sp-800-161-rev1-연계">B. NIST SP 800-161 Rev.1 연계<a hidden class="anchor" aria-hidden="true" href="#b-nist-sp-800-161-rev1-연계">#</a></h4>
+<p>이 논문이 제기한 표준화 필요성에 직접 대응하는 프레임워크다. 2022년 발표된 NIST SP 800-161 Rev.1은 사이버 공급망 위험 관리를 조직의 모든 계층(전략/전술/운영)에 통합하는 다층 접근법을 제시한다. 이 논문의 6개 지표 카테고리는 NIST SP 800-161의 공급업체 위험 평가 항목과 상당 부분 일치하며, 비침습적 도구를 NIST 기반 C-SCRM 체계에 통합하는 실무적 방법으로 활용할 수 있다.</p>
+<h4 id="c-보안-성숙도-모델-관점">C. 보안 성숙도 모델 관점<a hidden class="anchor" aria-hidden="true" href="#c-보안-성숙도-모델-관점">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>단계</th>
+          <th>Before  ( C-TPRM 부재 )</th>
+          <th>After  ( C-TPRM 도입 )</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Level 1</td>
+          <td>벤더 보안 수준을 전혀 파악하지 못함</td>
+          <td>비침습적 스캔으로 전체 벤더 1차 스크리닝 가능</td>
+      </tr>
+      <tr>
+          <td>Level 2</td>
+          <td>주요 벤더에게만 임의적으로 보안 설문 발송</td>
+          <td>위험 점수 기반으로 고위험 벤더를 식별하여 차등 심사 체계 적용</td>
+      </tr>
+      <tr>
+          <td>Level 3</td>
+          <td>계약 시 1회 평가 후 재평가 없음</td>
+          <td>지속적 모니터링으로 점수 변동 시 자동 알림, 정기 재평가 제도화</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="6-컨설턴트로서-얻은-인사이트">6. 컨설턴트로서 얻은 인사이트<a hidden class="anchor" aria-hidden="true" href="#6-컨설턴트로서-얻은-인사이트">#</a></h3>
+<h4 id="a-고객-조언-역량">A. 고객 조언 역량<a hidden class="anchor" aria-hidden="true" href="#a-고객-조언-역량">#</a></h4>
+<p>이 논문을 읽기 전 :</p>
+<p>벤더 보안 심사를 설문지 방식으로만 알고 있었고, 비침습적 위험 점수화 도구의 존재와 방법론적 차이를 설명할 수 없었다.</p>
+<p>이 논문을 읽은 후 :</p>
+<p>비침습적 C-TPRM 도구들이 사용하는 공통 지표 구조를 설명할 수 있고, 도구 간 결과 불일치의 원인을 이해하며, 고객사 상황에 맞는 도구 선택과 병행 사용 전략을 자문할 수 있게 됐다.</p>
+<p>구체적 예시 :</p>
+<p>고객 : 우리 회사가 SolarWinds 같은 공급망 침해를 당하지 않으려면 어떻게 해야 하나요?</p>
+<p>나 : SolarWinds 사례는 신뢰받는 소프트웨어 업데이트 인프라 자체가 공격 경로가 된 사례입니다. 이런 위험을 완전히 차단하기는 어렵지만, 벤더의 보안 수준을 사전에 파악하고 고위험 벤더에 대한 접근 권한을 최소화하는 방식으로 피해 범위를 줄일 수 있습니다. 구체적으로는 비침습적 위험 점수화 도구를 활용해 벤더 전체를 1차 스크리닝하고, 점수가 낮거나 시스템 접근 권한이 높은 벤더에 대해서는 네트워크 분리, 접근 권한 최소화, 정기 재평가 절차를 강화하는 방향을 권장합니다.</p>
+<h4 id="b-아직-답할-수-없는-질문">B. 아직 답할 수 없는 질문<a hidden class="anchor" aria-hidden="true" href="#b-아직-답할-수-없는-질문">#</a></h4>
+<pre><code>- 한국 기업 환경에서 실제로 사용되는 C-TPRM 도구의 현황 — 글로벌 도구들이 한국 기업의 IT 인프라를 얼마나 정확하게 평가할 수 있는지
+- 비침습적 점수와 실제 침해 발생률 사이의 통계적 상관관계 — 낮은 점수가 실제로 침해 가능성을 얼마나 예측하는가
+</code></pre>
+<hr>
+<h3 id="7-5일간-리뷰-종합">7. 5일간 리뷰 종합<a hidden class="anchor" aria-hidden="true" href="#7-5일간-리뷰-종합">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>Day</th>
+          <th>주제</th>
+          <th>핵심 학습</th>
+          <th>컨설팅 활용</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Day 1</td>
+          <td>C-TPRM 개념과 배경</td>
+          <td>서드파티 위험은 조직 내부 통제만으로 관리 불가능하며, 비침습적 평가라는 새로운 방법론이 등장했다</td>
+          <td>고객사에 C-TPRM 개념과 필요성을 설명하는 근거</td>
+      </tr>
+      <tr>
+          <td>Day 2</td>
+          <td>연구 방법론</td>
+          <td>6개 공통 지표 카테고리가 도출됐으며, 도구마다 평가 완성도가 다를 수 있다</td>
+          <td>벤더 심사 체크리스트 설계의 기초 구조</td>
+      </tr>
+      <tr>
+          <td>Day 3</td>
+          <td>실증 결과</td>
+          <td>동일 조직에 대해 4개 도구가 57% - 80%의 상이한 점수를 산출했으며, 원인은 방법론·데이터·평가 중심축의 차이다</td>
+          <td>단일 도구 의존 경고, 복수 도구 병행 또는 공통 발견 중심 판단 권고</td>
+      </tr>
+      <tr>
+          <td>Day 4</td>
+          <td>한계와 후속 동향</td>
+          <td>파일럿 수준의 한계가 있지만, NIST SP 800-161 Rev.1 등 후속 표준화가 이 논문의 문제 제기에 응답했다</td>
+          <td>표준화 동향을 근거로 한 벤더 심사 체계 고도화 자문</td>
+      </tr>
+      <tr>
+          <td>Day 5</td>
+          <td>컨설팅 관점 통합</td>
+          <td>비침습적 C-TPRM은 도구가 아닌 체계로 접근해야 하며, 도구 선택보다 목적 정의와 다층 심사 설계가 먼저다</td>
+          <td>ISMS-P 2.2, NIST SP 800-161 연계 벤더 보안 심사 체계 설계 자문</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="8-최종-개인-인사이트">8. 최종 개인 인사이트<a hidden class="anchor" aria-hidden="true" href="#8-최종-개인-인사이트">#</a></h3>
+<h4 id="a-이-논문이-나의-컨설팅-역량에-기여한-점">A. 이 논문이 나의 컨설팅 역량에 기여한 점<a hidden class="anchor" aria-hidden="true" href="#a-이-논문이-나의-컨설팅-역량에-기여한-점">#</a></h4>
+<p>핵심 배움 1 : 도구의 한계를 아는 것이 전문성이다</p>
+<p>비침습적 위험 점수화 도구를 소개할 때 그 도구가 무엇을 보는지뿐 아니라 무엇을 보지 못하는지를 함께 설명할 수 있게 됐다. 이 논문은 점수가 수렴하지 않는다는 불편한 사실을 실증적으로 보여줬고, 그 불편한 사실이 고객사에게 더 솔직하고 유용한 조언의 근거가 된다.</p>
+<p>핵심 배움 2 : 측정 대상이 곧 관리 대상이다</p>
+<p>6개 지표 카테고리(엔드포인트 행동, 네트워크 설정 오류, 소프트웨어/서비스, 웹 도메인, 기업 정보, 과거 침해 이력)는 단순한 평가 기준이 아니라 고객사가 벤더에게 요구해야 할 보안 관리의 영역 목록이기도 하다. 측정하지 않는 영역은 관리되지 않는다.</p>
+<p>핵심 배움 3 : Target에서 SolarWinds까지 — 패턴은 반복된다</p>
+<p>이 논문이 분석한 5개 사고 사례는 2011년 RSA부터 2020년 SolarWinds까지 약 10년에 걸쳐 있다. 공통점은 신뢰받는 서드파티를 경유한 침해라는 점이다. 이 패턴은 앞으로도 반복될 것이고, C-TPRM은 선택이 아닌 필수가 될 것이라는 확신을 갖게 됐다.</p>
+<h4 id="b-9편의-논문을-읽고-나니">B. 9편의 논문을 읽고 나니<a hidden class="anchor" aria-hidden="true" href="#b-9편의-논문을-읽고-나니">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>논문</th>
+          <th>핵심 아이디어</th>
+          <th>강점</th>
+          <th>약점</th>
+          <th>적용 시나리오</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Gashgari et al.  ( 2017 )</td>
+          <td>IT 거버넌스 구조</td>
+          <td>경영진 책임 체계화</td>
+          <td>실무 적용 구체성 부족</td>
+          <td>거버넌스 체계 진단</td>
+      </tr>
+      <tr>
+          <td>Foorthuis &amp; Bos  ( 2011 )</td>
+          <td>컴플라이언스 전술</td>
+          <td>준수 행동 유형화</td>
+          <td>기술적 통제 미포함</td>
+          <td>컴플라이언스 이행 자문</td>
+      </tr>
+      <tr>
+          <td>Santos-Olmo et al.  ( 2024 )</td>
+          <td>통합 리스크 분석</td>
+          <td>방법론 정교함</td>
+          <td>도입 복잡도 높음</td>
+          <td>리스크 관리 체계 수립</td>
+      </tr>
+      <tr>
+          <td>Bulgurcu et al.  ( 2010 )</td>
+          <td>개인 컴플라이언스 행동</td>
+          <td>심리적 동기 분석</td>
+          <td>조직 수준 적용 한계</td>
+          <td>보안 인식 제고 프로그램</td>
+      </tr>
+      <tr>
+          <td>Slapničar et al.  ( 2022 )</td>
+          <td>감사 효과성</td>
+          <td>실증 데이터 기반</td>
+          <td>감사 역량 요구</td>
+          <td>내부 감사 체계 강화</td>
+      </tr>
+      <tr>
+          <td>Ghadge et al.  ( 2020 )</td>
+          <td>공급망 사이버 위험 전파</td>
+          <td>거시적 위험 구조</td>
+          <td>벤더 개별 평가 방법 없음</td>
+          <td>공급망 위험 전략 수립</td>
+      </tr>
+      <tr>
+          <td>Gordon &amp; Loeb  ( 2002 )</td>
+          <td>보안 투자 경제학</td>
+          <td>정량적 투자 판단</td>
+          <td>현실 적용의 단순화</td>
+          <td>보안 예산 자문</td>
+      </tr>
+      <tr>
+          <td>Da Veiga &amp; Eloff  ( 2010 )</td>
+          <td>보안 문화</td>
+          <td>조직 전반의 보안 내재화</td>
+          <td>측정·변화 장기 소요</td>
+          <td>보안 문화 진단</td>
+      </tr>
+      <tr>
+          <td>Bada et al.  ( 2014 )</td>
+          <td>인식 캠페인 실패</td>
+          <td>행동 변화 이론 기반</td>
+          <td>조직 수준 구조 미포함</td>
+          <td>인식 제고 캠페인 설계</td>
+      </tr>
+      <tr>
+          <td>Keskin et al.  ( 2021 )</td>
+          <td>C-TPRM 비침습적 평가</td>
+          <td>실무 도구 비교 분석</td>
+          <td>파일럿 수준, 일반화 한계</td>
+          <td>벤더 심사 체계 설계</td>
+      </tr>
+  </tbody>
+</table>
+<p>통합적 이해 :</p>
+<p>10편의 논문이 결국 같은 질문에 다른 각도에서 답하고 있다는 생각이 든다. 조직이 사이버 위험을 어떻게 이해하고(리스크 분석), 누가 책임지며(거버넌스), 어떻게 제도화하고(컴플라이언스), 사람들이 왜 따르거나 따르지 않는지(행동), 외부에서 들어오는 위험을 어떻게 파악하는지(공급망, C-TPRM), 이 모든 것이 경제적으로 타당한지(보안 투자)를 이어 붙이면 하나의 컨설팅 방법론이 된다.</p>
+<h4 id="c-다음-학습-방향">C. 다음 학습 방향<a hidden class="anchor" aria-hidden="true" href="#c-다음-학습-방향">#</a></h4>
+<p>우선순위 1 : 사고 대응  ( IR )  프로세스</p>
+<pre><code>- Cichonski et al.  ( 2012 ), NIST SP 800-61 Rev.2
+- 학습 목표 : C-TPRM에서 식별된 고위험 벤더로 인한 침해 발생 시 대응 체계 자문 역량 확보
+</code></pre>
+<p>우선순위 2 : 경영진 대상 리스크 커뮤니케이션</p>
+<pre><code>- 보안 위험을 비즈니스 언어로 번역하는 역량 강화
+- 학습 목표 : 이사회 또는 C레벨 대상 보안 보고 체계 설계 자문
+</code></pre>
+<p>우선순위 3 : 한국 금융/제조 산업 외부자 보안 규제 심화</p>
+<pre><code>- 금융보안원 외부자 보안 관리 가이드라인, 금융권 IT 아웃소싱 규제
+- 학습 목표 : 금융권 고객사의 서드파티 보안 의무 이행 체계 자문
+</code></pre>
+<p>장기 목표 :</p>
+<pre><code>- 6개월 후 : 9편  ( + 진행 중 Bada )  논문 기반 통합 컨설팅 방법론 초안 작성
+- 1년 후 : 특정 산업  ( 금융 또는 제조 )에 특화된 보안 컨설팅 역량 확보 및 실제 프로젝트 적용
+</code></pre>
+<hr>
+<h3 id="9-최종-결론">9. 최종 결론<a hidden class="anchor" aria-hidden="true" href="#9-최종-결론">#</a></h3>
+<h4 id="a-keskin-et-al---2021-의-의의">A. Keskin et al.  ( 2021 )의 의의<a hidden class="anchor" aria-hidden="true" href="#a-keskin-et-al---2021-의-의의">#</a></h4>
+<p>학술적 의의 :</p>
+<p>C-TPRM이라는 신흥 분야를 학술적으로 처음 체계화하고, 비침습적 위험 점수화 도구들의 방법론적 불일치를 실증적으로 규명한 탐색적 연구. 표준화의 필요성을 학술 의제로 제기한 시점이 NIST SP 800-161 Rev.1 발표(2022년) 직전이라는 점에서 의미가 있다.</p>
+<p>실무적 의의 :</p>
+<p>Target, Home Depot, OPM, RSA, SolarWinds 5개 사례를 C-TPRM 관점에서 분석하여 서드파티 위험의 실재성을 설득력 있게 제시했다. 6개 공통 지표 카테고리는 벤더 심사 체계를 처음 설계하는 실무자에게 직접 활용 가능한 구조를 제공한다.</p>
+<p>나에게 주는 의의 :</p>
+<p>비침습적 C-TPRM이라는 영역을 처음으로 학술 문헌 수준에서 이해했다. 도구의 존재를 아는 것에서 도구의 원리와 한계를 설명할 수 있는 수준으로 올라섰다.</p>
+<h4 id="b-보안-컨설턴트로서의-다짐">B. 보안 컨설턴트로서의 다짐<a hidden class="anchor" aria-hidden="true" href="#b-보안-컨설턴트로서의-다짐">#</a></h4>
+<p>[ Phase 1  ( 완료 ) : 논문 이해 ]</p>
+<pre><code>- 거버넌스, 컴플라이언스, 리스크 분석, 개인 행동, 감사,
+- 공급망, 보안 투자, 보안 문화, 인식 캠페인, C-TPRM
+</code></pre>
+<p>[ Phase 2  ( 진행 중 ) : 연결 ]</p>
+<pre><code>- 10편 논문 간 연결고리 파악 및 통합 컨설팅 방법론 초안
+</code></pre>
+<p>[ Phase 3  ( 다음 ) : 적용 ]</p>
+<pre><code>- 실제 컨설팅 시나리오에 논문 기반 프레임워크 적용
+</code></pre>
+<p>[ Phase 4  ( 목표 ) : 전문성 ]</p>
+<pre><code>- 특정 산업 특화 보안 컨설팅 역량 확보
+</code></pre>
+<hr>
+<h2 id="references-1">References<a hidden class="anchor" aria-hidden="true" href="#references-1">#</a></h2>
+<p>[1] Keskin, O.F., Caramancion, K.M., Tatar, I., Raza, O., &amp; Tatar, U. (2021). Cyber Third-Party Risk Management: A Comparison of Non-Intrusive Risk Scoring Reports. Electronics, 10(10), 1168. <a href="https://doi.org/10.3390/electronics10101168">https://doi.org/10.3390/electronics10101168</a></p>
+<p>[2] Gashgari, G., Walters, R., &amp; Wills, G. (2017). A Proposed Best-Practice Framework for Information Security Governance. Proceedings of the 2nd International Conference on Internet of Things, Big Data and Security (IoTBDS).</p>
+<p>[3] Foorthuis, R., &amp; Bos, R. (2011). Enterprise Architecture Compliance: Taxonomy of Disciplines, Enforcement Mechanisms, and Fulfillment Motives. AISC.</p>
+<p>[4] Santos-Olmo, A., et al. (2024). Integrated Risk Analysis Framework for Security Consulting. (논문 정보 확인 필요)</p>
+<p>[5] Bulgurcu, B., Cavusoglu, H., &amp; Benbasat, I. (2010). Information Security Policy Compliance: An Empirical Study of Rationality-Based Beliefs and Information Security Awareness. MIS Quarterly, 34(3), 523-548.</p>
+<p>[6] Slapničar, S., Vuko, T., Čular, M., &amp; Drašček, M. (2022). Effectiveness of cybersecurity audit. International Journal of Accounting Information Systems, 44, 100548.</p>
+<p>[7] Ghadge, A., Weiß, M., Caldwell, N.D., &amp; Wilding, R. (2020). Managing cyber risk in supply chains: A review and research agenda. Supply Chain Management: An International Journal, 25(2), 223-240.</p>
+<p>[8] Gordon, L.A., &amp; Loeb, M.P. (2002). The economics of information security investment. ACM Transactions on Information and System Security, 5(4), 438-457.</p>
+<p>[9] Da Veiga, A., &amp; Eloff, J.H.P. (2010). A framework and assessment instrument for information security culture. Computers &amp; Security, 29(2), 196-207.</p>
+<p>[10] Bada, M., Sasse, A., &amp; Nurse, J.R.C. (2014). Cyber Security Awareness Campaigns: Why do they fail to change behaviour? arXiv preprint, arXiv:1901.02672.</p>
+<p>[11] NIST. (2022). Cybersecurity Supply Chain Risk Management Practices for Systems and Organizations (NIST SP 800-161 Rev.1). National Institute of Standards and Technology. <a href="https://csrc.nist.gov/pubs/sp/800/161/r1/final">https://csrc.nist.gov/pubs/sp/800/161/r1/final</a></p>
+<hr>
+<h2 id="tags">Tags<a hidden class="anchor" aria-hidden="true" href="#tags">#</a></h2>
+<p>보안컨설팅  /  SecurityConsulting  /  C-TPRM  /  VendorRisk  /  SupplyChainSecurity  /  RiskScoring  /  NonIntrusiveAssessment  /  PaperReview  /  SKShieldusRookies</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://hojjang98.github.io/tags/%EB%B3%B4%EC%95%88%EC%BB%A8%EC%84%A4%ED%8C%85/">보안컨설팅</a></li>
+      <li><a href="https://hojjang98.github.io/tags/c-tprm/">C-TPRM</a></li>
+      <li><a href="https://hojjang98.github.io/tags/vendorrisk/">VendorRisk</a></li>
+      <li><a href="https://hojjang98.github.io/tags/nonintrusiveassessment/">NonIntrusiveAssessment</a></li>
+      <li><a href="https://hojjang98.github.io/tags/riskscoring/">RiskScoring</a></li>
+      <li><a href="https://hojjang98.github.io/tags/supplychaincybersecurity/">SupplyChainCybersecurity</a></li>
+      <li><a href="https://hojjang98.github.io/tags/paperreview/">PaperReview</a></li>
+      <li><a href="https://hojjang98.github.io/tags/skshieldusrookies/">SKShieldusRookies</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

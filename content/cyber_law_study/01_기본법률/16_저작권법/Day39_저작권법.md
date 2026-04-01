@@ -1,6 +1,6 @@
 ---
 title: "Day 39: 저작권법 (디지털 관점)"
-date: 2026-03-23
+date: 2026-03-26
 categories: ["cyber-law-study"]
 tags: ["저작권법", "소프트웨어", "불법복제", "오픈소스", "GPL", "SAM", "소스코드"]
 draft: false

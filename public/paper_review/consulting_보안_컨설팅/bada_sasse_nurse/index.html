@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Cyber Security Awareness Campaigns: Why do they fail to change behaviour? | HJ&#39;s Security Note</title>
+<meta name="keywords" content="보안컨설팅, SecurityAwareness, BehaviourChange, PersuasionTechniques, PMT, RegulatoryFocusTheory, SecurityFatigue, PaperReview, SKShieldusRookies">
+<meta name="description" content="인식 캠페인이 행동 변화로 이어지지 못하는 심리학적 원인을 분석한 Bada, Sasse &amp; Nurse(2019) 논문 리뷰 — PMT, 조절초점이론, 문화적 적합성을 중심으로">
+<meta name="author" content="">
+<link rel="canonical" href="https://hojjang98.github.io/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/bada_sasse_nurse/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.290573799e582c418c4bd84f2bca757d0a77fd1bf9f5c43942030e706df68ec8.css" integrity="sha256-KQVzeZ5YLEGMS9hPK8p1fQp3/Rv59cQ5QgMOcG32jsg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/bada_sasse_nurse/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://hojjang98.github.io/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/bada_sasse_nurse/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="Cyber Security Awareness Campaigns: Why do they fail to change behaviour?">
+  <meta property="og:description" content="인식 캠페인이 행동 변화로 이어지지 못하는 심리학적 원인을 분석한 Bada, Sasse &amp; Nurse(2019) 논문 리뷰 — PMT, 조절초점이론, 문화적 적합성을 중심으로">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="paper_review">
+    <meta property="article:published_time" content="2026-03-17T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-03-17T00:00:00+00:00">
+    <meta property="article:tag" content="보안컨설팅">
+    <meta property="article:tag" content="SecurityAwareness">
+    <meta property="article:tag" content="BehaviourChange">
+    <meta property="article:tag" content="PersuasionTechniques">
+    <meta property="article:tag" content="PMT">
+    <meta property="article:tag" content="RegulatoryFocusTheory">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cyber Security Awareness Campaigns: Why do they fail to change behaviour?">
+<meta name="twitter:description" content="인식 캠페인이 행동 변화로 이어지지 못하는 심리학적 원인을 분석한 Bada, Sasse &amp; Nurse(2019) 논문 리뷰 — PMT, 조절초점이론, 문화적 적합성을 중심으로">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "논문 리뷰",
+      "item": "https://hojjang98.github.io/paper_review/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Cyber Security Awareness Campaigns: Why do they fail to change behaviour?",
+      "item": "https://hojjang98.github.io/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/bada_sasse_nurse/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Cyber Security Awareness Campaigns: Why do they fail to change behaviour?",
+  "name": "Cyber Security Awareness Campaigns: Why do they fail to change behaviour?",
+  "description": "인식 캠페인이 행동 변화로 이어지지 못하는 심리학적 원인을 분석한 Bada, Sasse \u0026amp; Nurse(2019) 논문 리뷰 — PMT, 조절초점이론, 문화적 적합성을 중심으로",
+  "keywords": [
+    "보안컨설팅", "SecurityAwareness", "BehaviourChange", "PersuasionTechniques", "PMT", "RegulatoryFocusTheory", "SecurityFatigue", "PaperReview", "SKShieldusRookies"
+  ],
+  "articleBody": "Research Review: Cyber Security Awareness Campaigns: Why do they fail to change behaviour? Analyzed Date: 2026.03.17 - 2026.03.21 Keywords: Security Awareness, Behaviour Change, Persuasion, Risk Perception, Security Culture Source: arXiv preprint (Global Cyber Security Capacity Centre, University of Oxford), 2014/2019\nWhy This Paper? 선정 배경 도메인 탐색 결과: 8편의 보안 컨설팅 논문 리뷰를 통해 컴플라이언스 전술, 리스크 분석, 개인 행동, 거버넌스, 감사, 공급망, 투자 경제학, 보안 문화를 순차적으로 학습했다. Da Veiga \u0026 Eloff (2010)에서 보안 문화 형성을 다룬 데 이어, 이제 그 문화가 실제로 작동하지 않는 이유, 즉 인식 캠페인이 행동 변화로 이어지지 못하는 메커니즘을 분석하는 단계로 진입한다.\n이 논문을 선택한 이유: - Da Veiga \u0026 Eloff의 보안 문화 프레임워크가 조직 수준의 구조를 다뤘다면, 이 논문은 개인 수준의 행동 변화 실패 원인을 심리학적으로 분석함으로써 문화 수립의 실질적 한계를 보완한다 - 보안 컨설팅 실무에서 고객사가 인식 제고 프로그램(SETA: Security Education, Training and Awareness)을 도입해도 행동 변화가 일어나지 않는다는 문제를 직접 다룬다 - 경영진 대상 리스크 커뮤니케이션 및 임직원 보안 인식 제고 자문 역량을 강화하는 데 직결된다 - ISMS-P 인증 컨설팅에서 요구되는 보안 교육훈련 체계 수립 및 효과성 평가 항목과 연관된다\n학습 목표: - 인식 캠페인이 행동 변화로 이어지지 못하는 심리학적 원인 구조를 이해한다 - 보호동기이론(PMT), 조절초점이론 등 행동 변화 이론을 컨설팅 권고안 설계에 활용할 수 있는 수준으로 습득한다 - 고객사의 보안 교육 프로그램 진단 및 개선 방향 제시 역량을 구체화한다\nDay 1 – Research Context \u0026 Motivation (인식은 충분한데 행동은 왜 바뀌지 않는가)\n1. 연구 배경: 인식-행동 간 격차 문제 보안 인식 캠페인의 중요성\n정부와 기업은 ICT 보안을 위해 기술적 통제와 보안 정책을 병행 운용한다. 그러나 정책이 명시하는 올바른 행동을 개인이 실제로 따르지 않는 현상이 반복된다. 이 논문은 그 핵심 원인으로 두 가지를 지목한다. 첫째, 개인이 리스크 자체를 인지하지 못하거나 인지하더라도 심각하게 받아들이지 않는다. 둘째, 올바른 행동이 무엇인지 알더라도 실제로 어떻게 해야 하는지를 이해하지 못한다.\n보안 인식 캠페인의 1차적 목적은 안전한 행동의 채택을 유도하는 것이다. 그러나 단순히 해야 할 것과 하지 말아야 할 것을 알려주는 것만으로는 효과적인 영향력 행사가 불가능하다. 논문은 효과적인 영향력 행사를 위한 세 가지 조건을 제시한다. 정보가 자신에게 관련이 있다는 수용, 어떻게 대응해야 하는지에 대한 이해, 그리고 다양한 경쟁적 요구 속에서도 행동하려는 의지가 모두 충족되어야 한다.\n현실의 한계\n논문은 현재 보안 인식 캠페인의 근본적 실패를 세 가지 층위에서 진단한다.\n첫째, 지식-행동 불일치 문제다. 사람들은 인식 관련 질문에 올바른 답을 알고 있으면서도 실제 생활에서는 그에 따라 행동하지 않는다. 인식 수준의 제고가 행동 변화를 자동으로 보장하지 않는다는 점이 반복적으로 확인된다.\n둘째, 보안 피로(security fatigue) 문제다. 지나치게 많은 경고와 복잡한 지시에 노출된 개인은 결국 모든 보호 노력을 포기하고 위험 자체를 부정하는 방향으로 반응한다. 위협적이거나 공포를 유발하는 보안 메시지는 스트레스 수준을 높여 오히려 역효과를 낸다.\n셋째, 설계 실패 문제다. 사용자가 최적의 행동을 취하지 못하는 핵심 이유 중 하나는 보안 시스템과 정책 자체가 사용하기 어렵게 설계되어 있다는 점이다. 이는 1999년에도 확인되었고 오늘날에도 동일하게 지적된다.\n연구 문제의식\n심리학적 행동 변화 이론을 적용하여 보안 인식 캠페인의 실패 요인을 체계적으로 분석하고, 캠페인의 성공과 실패를 결정하는 핵심 요소를 어떻게 도출할 것인가?\n2. 핵심 개념 개념 정의 컨설팅 맥락에서의 의미 보안 피로(Security Fatigue) 과도한 보안 요구사항과 반복적 경고로 인해 개인이 보안 절차와 프로세스에 지쳐 보호 노력을 포기하는 심리적 상태 고객사 임직원의 보안 교육 참여도 저하, 정책 무시 현상의 원인 진단 시 핵심 지표로 활용 가능 보호동기이론(Protection Motivation Theory, PMT) 위협 평가(위협의 심각성, 발생 가능성)와 대처 평가(자기효능감, 대응 효과성)가 결합되어 보호 동기를 형성한다는 이론. Rogers(1975)가 제안 고객사의 보안 인식 교육 설계 시 단순 위협 강조를 넘어 실행 가능한 대응 행동을 함께 제시해야 하는 근거로 활용 조절초점이론(Regulatory Focus Theory) 개인의 행동이 촉진 초점(이상적 자아 달성, 이득 추구)과 예방 초점(의무 이행, 손실 회피) 중 어느 쪽에 의해 동기화되는지에 따라 메시지 효과가 달라진다는 이론. Higgins(1998)가 제안 조직 문화 및 국가 문화 특성에 맞게 보안 메시지 프레이밍 전략을 차별화해야 한다는 자문 근거 제공 지각된 통제감(Perceived Control) 개인이 특정 상황에서 자신이 실제로 보유한 통제력과 무관하게 스스로 통제할 수 있다고 느끼는 정도 보안 교육에서 임직원에게 단순 금지 지시 대신 스스로 실행 가능한 행동 지침을 제공해야 참여율과 준수율이 높아진다는 설계 원칙의 근거 문화적 적합성(Cultural Congruency) 메시지가 수신자의 문화적 테마, 인지적·정서적·동기적 특성과 일치할 때 설득력이 높아진다는 원리 다국적 기업 또는 다문화 조직의 보안 인식 프로그램 설계 시 개인주의/집단주의 문화 차이를 반영한 맞춤형 메시지 전략 필요성의 근거 3. 이론적 기반: 행동 변화의 다층적 결정 구조 [ 행동 변화의 전제 조건 ] 논문 Section 2, 3\n- 정보 제공 \u003e\u003e ↓ - 관련성 수용 : 정보가 나와 관련 있다는 인식 \u003e\u003e ↓ - 대응 방법 이해 : 어떻게 해야 하는지 앎 \u003e\u003e ↓ - 행동 의지 : 하려는 동기 \u003e\u003e ↓ - 실제 행동 변화 [ 행동 변화에 영향을 미치는 세 가지 요인 ] Section 3\n[ 개인적 요인 ] - 지식, 기술, 경험 - 개인 동기 ( 내재적 / 외재적 ) - 지각된 통제감 - 조절 초점 ( 촉진 / 예방 ) - 보안 피로\n[ 사회·환경적 요인 ] - 사회적 규범 - 환경적 단서 - 주변의 영향 - 조직 문화\n[ 문화적 요인 ] - 개인주의 vs. 집단주의 - 권력 거리 - 불확실성 회피 - 문화적 메시지 적합성\n핵심 아이디어:\n행동 변화는 단순한 정보 전달로 달성되지 않는다. 지식은 행동 변화의 필요조건이지 충분조건이 아니다. 개인의 심리적 요인(동기, 자기효능감, 피로도), 사회·환경적 요인(규범, 집단 압력), 문화적 요인(메시지 프레이밍 적합성)이 복합적으로 작용하여 실제 행동을 결정한다. 따라서 효과적인 캠페인은 이 세 가지 층위 모두를 설계 단계에서 고려해야 한다.\n4. 연구의 핵심 기여 학술적 기여: - 보안 인식 캠페인 실패를 설명하는 데 심리학 이론(PMT, 조절초점이론, 확장병렬처리모델 등)을 체계적으로 적용한 통합 검토 프레임워크를 제시했다 - 행동 변화의 결정 요인을 개인적, 사회·환경적, 문화적 세 층위로 분류하는 분석 구조를 제공했다 - 영국과 아프리카 사례 비교를 통해 문화적 맥락이 캠페인 설계에 미치는 실질적 차이를 예시했다\n실무 기여: - 보안 인식 캠페인의 성공 요소와 실패 요인을 5가지 실행 지침으로 정리하여 캠페인 설계자에게 직접 적용 가능한 체크리스트를 제공했다 - 공포 소구(fear appeal)가 특정 조건에서 역효과를 낼 수 있다는 근거를 제시하여 실무에서 광범위하게 사용되는 캠페인 전략의 재검토 필요성을 제기했다 - 단순 지식 측정이 아닌 실제 행동 변화를 기준으로 캠페인 효과를 측정해야 한다는 방향을 제시했다\n5. 컨설팅 관점 인사이트 적용 가능성:\n고객사의 보안 인식 제고 프로그램을 진단하거나 신규 설계할 때, 이 논문의 분석 틀은 진단 항목의 이론적 근거로 직접 활용할 수 있다. 특히 기존 프로그램이 지식 전달에 집중되어 있고 행동 변화 효과는 측정되지 않는 패턴이 국내 고객사에서도 반복적으로 나타난다. 임직원이 교육 이수 기록은 남기면서 실제 행동은 바뀌지 않는 현상, 즉 컴플라이언스와 행동 변화의 분리 문제는 이 논문이 제기하는 핵심 문제와 정확히 일치한다.\n기존 학습과의 연결: - Bulgurcu et al. (2010) : 개인의 IS 정책 준수 의도를 합리적 행동 이론 기반으로 분석했다. 이 논문은 그 의도조차 형성되지 않는 심리적 선행 조건을 다룬다는 점에서 한 단계 앞선 문제를 다룬다 - Da Veiga \u0026 Eloff (2010) : 조직 수준의 보안 문화 수립 프레임워크를 제시했다. 이 논문은 그 문화가 개인 행동으로 전환되지 않는 이유를 설명하는 보완적 관점을 제공한다 - Foorthuis \u0026 Bos (2011) : 컴플라이언스 전술의 효과성을 분석했다. 이 논문은 전술 수준이 아닌 개인 심리 수준에서 왜 전술이 효과를 내지 못하는지를 설명한다\n현실적 고려사항:\n이 논문은 arXiv preprint로 동료심사를 거친 저널 논문이 아니다. 문헌 검토 기반의 개념적 논문으로, 자체 실증 데이터를 생성하지 않았다. 컨설팅 현장에서 이 논문의 주장을 인용할 때는 근거의 성격을 정확히 이해해야 한다. 즉, 이 논문이 제시하는 것은 기존 심리학 이론들의 종합적 해석이지, 새로운 실증 결과가 아니다. 고객사에 권고안을 제시할 때는 이 논문이 인용하는 원론적 이론(PMT, 조절초점이론 등)을 함께 제시하는 방식이 더 설득력 있다.\nDay 2 – Research Model, Hypotheses, and Methodology (심리학 이론의 렌즈로 보안 인식 실패를 해부하다)\n1. 연구 모델 개요 이 논문은 실증 데이터를 수집하는 연구가 아니라 문헌 검토(literature review) 기반의 개념적 논문이다. 따라서 전통적인 연구 모델이나 가설 검증 구조는 존재하지 않는다. 대신 저자들은 심리학, 행동경제학, 문화 이론의 기존 연구를 체계적으로 검토하여 보안 인식 캠페인 실패의 원인 구조를 설명하는 분석 틀을 구성한다.\n[ 논문의 분석 흐름 ]\n[ 현상 진단 ] - 보안 인식 캠페인이 행동 변화로 이어지지 않는다 » →\n[ 원인 분석 ] 개인적 / 사회환경적 / 문화적 - 행동 변화 결정 요인 분석 » ↓ - 심리학 이론 적용 - 보호동기이론 ( PMT ) - 조절초점이론 - 확장병렬처리모델 ( EPPM ) - MINDSPACE 프레임워크 » →\n[ 처방 도출 ] - 성공 / 실패 요인 추출 - 실존 캠페인 사례 검토\n설계 철학:\n저자들은 보안 문제를 기술적 문제가 아닌 심리학적 문제로 재정의한다. 기존 연구가 캠페인의 내용(무엇을 전달할 것인가)에 집중한 반면, 이 논문은 전달 방식과 수신자의 심리적 반응 메커니즘(어떻게 받아들이는가)으로 분석의 초점을 이동한다.\n2. 핵심 분석 가정 이 논문은 가설 검증 연구가 아니므로, 논문 전체를 관통하는 핵심 가정(assumptions)으로 정리한다.\n가정 내용 근거 A1 지식 전달만으로는 행동 변화가 일어나지 않는다 ISF(2014), Kirlappos et al.(2014) 등 기존 연구의 반복적 확인 A2 행동 변화는 개인적, 사회적, 문화적 요인이 복합적으로 작용한 결과다 Dolan et al.(2010) MINDSPACE 프레임워크 A3 공포 소구(fear appeal)는 조건에 따라 역효과를 낸다 PMT, EPPM, Drive Model 등 다수 심리학 이론 A4 문화적 맥락이 메시지 수용 방식을 결정한다 Hofstede(2010), Triandis(1989), Kreuter \u0026 McClure(2004) A5 보안 시스템과 정책의 설계 실패가 사용자 비준수의 핵심 원인 중 하나다 Nurse et al.(2011), Whitten \u0026 Tygar(1999) 3. 분석 방법론 A. 문헌 검토 범위 이 논문은 다음 세 분야의 기존 문헌을 체계적으로 검토한다.\n분야 주요 이론/출처 활용 목적 심리학 및 행동과학 PMT, 조절초점이론, EPPM, 자기효능감 이론 개인 수준의 행동 변화 메커니즘 설명 행동경제학 및 공공정책 MINDSPACE 프레임워크(Dolan et al., 2010) 행동에 영향을 미치는 9가지 환경적 요인 구조화 문화심리학 Hofstede의 문화 차원 이론, Triandis의 집단주의 이론 국가·조직 문화가 메시지 수용에 미치는 영향 분석 데이터 수집 방식: 자체 설문, 실험, 인터뷰 없음. 기존 학술 문헌 및 실존 캠페인 사례(영국, 아프리카)의 공개 자료를 분석 대상으로 활용.\nB. 핵심 이론 분석 틀 보호동기이론(Protection Motivation Theory, PMT)\n목적: 공포 소구가 행동 변화로 이어지는 조건을 설명\n[ 위협 평가 ] - 위협의 심각성 - 위협의 발생 가능성 » →\n[ 대처 평가 ] - 대응 행동의 효과성 ( 반응 효능감 ) - 자신이 실행할 수 있다는 믿음 ( 자기효능감 ) » ↓\n[ 보호 동기 형성 ] » ↓\n[ 보호 행동 채택 ]\n핵심 함의: 위협만 강조하고 실행 가능한 대응 행동을 제시하지 않으면 보호 동기가 형성되지 않는다. 자기효능감이 낮은 수신자는 위협 메시지에 공포 통제(fear control) 반응, 즉 위협 자체를 부정하는 방식으로 대응한다.\n확장병렬처리모델(Extended Parallel Process Model, EPPM)\n목적: 공포 소구의 역효과 발생 조건 설명\n[ 공포 소구 메시지 수신 ] » ↓\n[ 위협 인식 수준 평가 ] » ↓\n[ 높음 ] - 대처 효능감 평가 » ↓ - 높음 : 위험 통제 → 보호 행동 - 낮음 : 공포 통제 → 부정, 방어적 회피\n[ 낮음 ] - 메시지 무시 ( 위협 부정 )\n핵심 함의: 위협 인식이 높더라도 대처 효능감이 낮으면 보호 행동 대신 위협 부정 반응이 나타난다. 이것이 공포 소구가 역효과를 내는 메커니즘이다.\nMINDSPACE 프레임워크(Dolan et al., 2010)\n목적: 행동에 영향을 미치는 9가지 환경적·심리적 요인 구조화\n요인 내용 보안 캠페인 적용 Messenger 누가 메시지를 전달하는가가 수용도를 결정 경영진 vs. IT 담당자의 메시지 전달 효과 차이 Incentives 손실 회피 편향이 이득 추구보다 강하게 작동 보안 미준수의 결과를 손실 프레임으로 제시 Norms 타인의 행동이 강력한 영향력을 발휘 동료 집단의 보안 행동을 사회적 규범으로 제시 Defaults 기본 설정 옵션을 따르는 경향 보안 설정을 기본값으로 설정하는 시스템 설계 Salience 자신과 관련 있다고 느끼는 정보에 주의 집중 직무별, 역할별 맞춤형 보안 메시지 설계 Priming 무의식적 단서가 행동에 영향 보안 관련 시각적 환경 구성 Affect 감정적 연상이 행동을 강하게 형성 긍정적 감정 연결(보안 = 보호, 안심)로 메시지 설계 Commitments 공개적 약속과 상호성이 행동을 유도 보안 서약, 팀 단위 보안 목표 공개 설정 Ego 자아 이미지와 일관된 행동을 취하려는 경향 보안 전문가 이미지와 연결된 인식 캠페인 조절초점이론(Regulatory Focus Theory, Higgins 1998)\n목적: 개인의 동기 유형에 따른 메시지 프레이밍 효과 차이 설명\n[ 촉진 초점 ( Promotion Focus ) ] - 이상적 자아 달성 추구 - 이득 추구 - 서구 개인주의 문화에서 강함 » ↓ - 보안 혜택 중심 메시지 : 보안을 유지하면 얻는 것\n[ 예방 초점 ( Prevention Focus ) ] - 의무와 책임 이행 - 손실 회피 - 동아시아 집단주의 문화에서 강함 » ↓ - 보안 미준수 결과 중심 메시지 : 보안을 지키지 않으면 잃는 것\nC. 사례 분석 방법 영국(GetSafeOnline, Cyber Streetwise)과 아프리카(ISC Africa, Parents’ Corner) 캠페인을 선정하여 Hofstede의 문화 차원 이론(개인주의-집단주의 축)을 기준으로 메시지 전략의 차이를 비교 분석한다. 사례 선정 기준은 두 지역이 문화적 특성과 보안 투자 규모 측면에서 뚜렷한 대조를 이룬다는 점이다.\n4. 컨설팅 관점 인사이트 방법론의 실무 적용성:\n장점: - 이론 기반 분석 틀은 고객사의 현행 보안 교육 프로그램을 진단하는 체크리스트 형태로 즉시 변환 가능하다 - PMT와 EPPM은 공포 소구 중심의 보안 메시지가 왜 효과를 내지 못하는지를 경영진에게 설명하는 논리적 근거로 활용할 수 있다 - MINDSPACE의 9가지 요인은 보안 인식 프로그램 설계 시 점검해야 할 항목 목록으로 활용 가능하다\n한계: - 자체 실증 데이터가 없어 인과관계의 강도를 정량적으로 제시하기 어렵다 - 영국과 아프리카 사례는 국내 기업 환경에 직접 적용하기에 문화적 거리가 있다. 한국 조직 특성(위계 구조, 집단주의 성향)에 맞는 별도 분석이 필요하다\n기존 보안 접근법과의 차별점:\n접근 방식 초점 강점 약점 기존 컴플라이언스 중심 접근 규정 준수 여부 측정 측정 용이, 감사 대응 명확 행동 변화 여부와 무관한 형식적 이수로 귀결 이 논문의 심리학적 접근 행동 변화의 심리적 선행 조건 실질적 행동 변화 설계 가능 효과 측정이 어렵고 장기 투자 필요 References [1] Bada, M., Sasse, A. M., \u0026 Nurse, J. R. C. (2014/2019). Cyber Security Awareness Campaigns: Why do they fail to change behaviour? arXiv preprint arXiv:1901.02672. Global Cyber Security Capacity Centre, University of Oxford.\n[2] Rogers, R. W. (1975). A protection motivation theory of fear appeals and attitude change. Journal of Psychology, 91, 93–114.\n[3] Higgins, E. T. (1998). Promotion and prevention: Regulatory focus as a motivational principle. Advances in Experimental Social Psychology, 30, 1–46.\n[4] Da Veiga, A., \u0026 Eloff, J. H. P. (2010). A framework and assessment instrument for information security culture. Computers \u0026 Security, 29(2), 196–207.\n[5] Bulgurcu, B., Cavusoglu, H., \u0026 Benbasat, I. (2010). Information security policy compliance: An empirical study of rationality-based beliefs and information security awareness. MIS Quarterly, 34(3), 523–548.\n[6] Dolan, P., Hallsworth, M., Halpern, D., King, D., \u0026 Vlaev, I. (2010). MINDSPACE: Influencing behaviour through public policy. Institute for Government, Cabinet Office.\n[7] Witte, K. (1994). Fear control and danger control: A test of the Extended Parallel Process Model (EPPM). Communication Monographs, 61, 113–134.\n[8] Hofstede, G., Hofstede, J. G., \u0026 Minkov, M. (2010). Cultures and Organizations: Software of the Mind (3rd ed.). McGraw-Hill.\nDay 3 – Empirical Results and Hypothesis Testing (이론이 실제 캠페인과 만났을 때 무엇이 드러나는가)\n1. 분석 환경 이 논문은 실험이나 설문 기반의 실증 연구가 아니다. Day 3에서 다루는 내용은 저자들이 기존 심리학 이론을 실존 캠페인 사례에 적용하여 도출한 분석 결과다. 수치 기반의 가설 검증 대신, 이론-사례 정합성 분석을 통해 캠페인 성공/실패 요인을 추출한다.\n분석 대상: - 영국 : GetSafeOnline 캠페인, Cyber Streetwise 캠페인 - 아프리카 : ISC Africa 캠페인, Parents’ Corner 캠페인\n분석 기준: - Hofstede의 개인주의-집단주의 문화 차원 - PMT 및 EPPM 기반 공포 소구 효과성 조건 - 조절초점이론 기반 메시지 프레이밍 적합성\n2. 주요 발견 A. 지식-행동 불일치의 구조적 확인 논문이 도출하는 가장 핵심적인 발견은 인식 수준 향상이 행동 변화를 보장하지 않는다는 점이다. 이는 단순한 주장이 아니라 기존 연구의 반복적 확인 결과다.\n발견 내용 의미 지식-행동 불일치 사람들은 인식 관련 질문에 올바른 답을 알면서도 실생활에서 그에 따라 행동하지 않는다 교육 이수 기록과 실제 보안 행동은 별개의 지표다 컴플라이언스-행동 분리 컴플라이언스 인식 프로그램이 원하는 행동을 만들어내지 않는다 규정 준수 형식을 갖추더라도 위험은 줄지 않을 수 있다 효과 측정 부재 대부분의 캠페인이 피싱 메일 클릭 수, 비인가 페이지 접속 수 등의 지표를 대규모로 측정하기 어렵다 캠페인 효과를 정량화하는 명확한 지표 설계가 선행되어야 한다 B. 공포 소구의 역효과 확인 논문은 보안 캠페인에서 가장 광범위하게 사용되는 전략인 공포 소구가 특정 조건에서 역효과를 낸다는 점을 EPPM을 통해 설명한다.\n[ 공포 소구 역효과 발생 경로 ]\n- 위협 메시지 수신 ( 해커 이미지, 위험 경고 ) \u003e\u003e ↓ - 위협 인식 높아짐 \u003e\u003e ↓ - 대처 효능감 낮음 ( 나는 어차피 막을 수 없다 ) \u003e\u003e ↓ [ 공포 통제 반응 ] - 위협 부정 ( 나는 해당 없다 ) - 방어적 회피 ( 생각하지 않으려 함 ) - 메시지 무시 또는 반발\n실제 캠페인에서 확인된 패턴: 해커 이미지와 결합된 공포 메시지가 수신자에게 공포보다 우스꽝스럽게 느껴지거나, 자신과 무관한 이야기로 처리되는 현상이 반복 보고되었다.\nC. 영국-아프리카 캠페인 비교 결과 비교 항목 영국 캠페인 아프리카 캠페인 문화 성향 개인주의 집단주의 메시지 초점 개인의 책임과 행동 (Get safe online) 관계와 집단 보호 (Working together / Friends must protect friends) 조절 초점 촉진 초점 ( 이득, 혜택 강조 ) 예방 초점 ( 의무, 손실 회피 강조 ) 문화 적합성 서구 개인주의 문화와 정합 아프리카 집단주의 문화와 정합 캠페인 수 다수, 분산적 소수, 통합적 핵심 관찰: 두 지역 모두 자국 문화적 특성을 캠페인 메시지에 반영하고 있었다. 다만 아프리카의 경우 캠페인 수가 적은 것이 자원 부족을 의미하는지, 아니면 더 집중된 전략을 의미하는지는 논문이 결론 내리지 않는다.\n공통적 한계: 두 지역 캠페인 모두 전문가가 단방향으로 정보를 제공하는 방식에 머물렀으며, 사용자가 도움을 요청할 수 있는 채널(헬프라인 등)을 제공하지 않았다.\n3. 캠페인 성공/실패 요인 분석 논문 Section 5에서 저자들이 도출한 실패 요인 6가지와 성공 조건 5가지를 이론과 연결하여 정리한다.\nA. 캠페인 실패 요인 실패 요인 내용 연결 이론 보안 인식의 본질 오해 인식 캠페인을 단순 정보 전달로 인식 NIST SP 800-16: 인식은 주의 집중이지 훈련이 아님 컴플라이언스와 행동 혼동 컴플라이언스 프로그램이 원하는 행동을 자동으로 만든다는 착각 지식-행동 불일치 연구 콘텐츠 부적합 흥미롭지 않고, 현재성 없고, 너무 일반적인 교육 자료 MINDSPACE: Salience(관련성) 부재 인식을 독립 분야로 취급하지 않음 보안 인식 설계를 별도 전문성이 필요한 영역으로 보지 않음 — 효과 평가 부재 캠페인 이후 행동 변화를 측정하는 체계가 없음 — 단일 주제 반복 훈련 특정 위협 하나에만 집중하여 전체 보안 훈련 효과 미달 — B. 캠페인 성공 조건 성공 조건 내용 컨설팅 적용 전문적 준비와 조직화 보안 인식은 즉흥적으로 설계할 수 없으며 전문적 기획이 필요하다 SETA 프로그램 설계 단계에서 전문 기획 인력 또는 외부 자문 필요 공포 소구 자제 공포 유발은 효과적 전술이 아니며, 리스크를 감당할 여력이 없는 사람에게는 특히 역효과 경영진 보고 시 위협 강조보다 실행 가능한 대응 중심으로 프레이밍 실행 가능한 교육 설계 정보 제공을 넘어 목표 지향적, 실행 가능하고, 피드백을 포함해야 한다 교육 후 실습, 피드백 루프, 행동 변화 측정 체계 포함 지속적 피드백과 지원 행동 변화 의지가 생긴 후에도 변화 과정을 지속하는 지원이 필요하다 1회성 교육이 아닌 반복 접촉, 코칭 구조 설계 문화적 맥락 반영 대상 집단의 문화적 특성에 맞는 메시지 설계가 필요하다 조직 문화 진단 선행, 메시지 프레이밍 전략 차별화 4. 상세 분석 A. 보안-기능성-사용성 트라이앵글과 보안 피로의 관계 논문은 보안 피로를 단순한 심리적 현상으로 보지 않고 시스템 설계 실패의 결과로 해석한다. 보안-기능성-사용성 트라이앵글에서 보안 쪽으로 지나치게 치우친 설계는 사용자가 감당하기 어려운 요구사항을 만들어내고, 이것이 보안 피로로 이어진다.\n관찰: 1999년 Whitten \u0026 Tygar의 연구에서 지적된 보안 인터페이스 설계 실패 문제가 이 논문이 작성된 시점까지 반복적으로 확인된다.\n해석: 보안 행동 비준수 문제의 상당 부분은 개인의 의지 부족이 아니라 시스템과 정책 설계 실패에서 비롯된다. 책임을 사용자에게 전가하는 캠페인 전략은 구조적 문제를 가린다.\n실무 시사점: 고객사의 보안 정책 준수율이 낮을 때, 첫 번째 진단 항목은 **정책의 실행 가능성(usability)**이어야 한다. 정책 자체가 현업 업무와 충돌하거나 지나치게 복잡하면 교육을 아무리 강화해도 준수율은 오르지 않는다.\nB. 메시지 발신자(Messenger) 효과 MINDSPACE 프레임워크에서 Messenger 요인은 동일한 내용이라도 누가 전달하느냐에 따라 수용도가 달라진다는 점을 지적한다. 논문은 대부분의 공식 캠페인 사이트가 보안 전문가나 서비스 제공자 관점에서 단방향으로 정보를 제공하며, 이것이 사용자의 수용을 제한한다고 분석한다.\n관찰: 보안 전문가가 제시하는 메시지(강한 패스워드를 사용하라)는 사용자에게 책임 전가로 받아들여지는 경향이 있다.\n해석: 메시지의 신뢰성과 수용도는 발신자의 권위보다 발신자와 수신자 간의 관계, 맥락, 신뢰 수준에 의해 결정된다.\n실무 시사점: 보안 인식 프로그램에서 경영진 또는 현업 리더가 직접 메시지를 전달하는 구조가 IT 보안 부서 단독 전달 구조보다 행동 변화 효과가 높을 수 있다. MINDSPACE의 Messenger 요인은 보안 문화 수립 자문 시 경영진 참여의 필요성을 설명하는 근거로 활용 가능하다.\n5. 측정 문제 분석 논문은 효과 측정의 어려움을 캠페인 실패의 구조적 원인 중 하나로 지적한다.\n측정 문제 내용 시사점 지식 측정과 행동 측정의 혼동 질문에 올바른 답을 하는 것이 실제 행동 변화를 의미하지 않는다 교육 이수율, 시험 점수 대신 행동 지표(피싱 시뮬레이션 클릭률 등) 측정 필요 대규모 측정의 기술적 한계 피싱 메일 클릭 수, 비인가 접속 수 등을 조직 전체 규모로 측정하기 어렵다 측정 가능한 행동 지표를 캠페인 설계 초기에 정의해야 한다 리스크 감소와 인식 수준의 인과 불명확 인식이 높아졌을 때 리스크가 실제로 감소했는지 인과를 입증하기 어렵다 캠페인 효과를 단기 지표가 아닌 장기 행동 추세로 평가해야 한다 6. 컨설팅 관점 인사이트 성공 사례:\n문화적 적합성을 갖춘 캠페인이 효과적인 조건을 갖추는 사례로, 아프리카 캠페인은 집단주의 문화 특성을 메시지에 반영하여 수신자의 동기 구조(의무, 관계 보호)와 일치하는 프레이밍을 사용했다. 이는 조절초점이론의 예방 초점과 정합한다.\n한계 사례:\n영국과 아프리카 캠페인 모두 단방향 정보 제공 구조에서 벗어나지 못했다. 사용자가 질문하거나 도움을 요청할 수 있는 채널이 없다는 점은 행동 변화 지원 체계의 부재를 의미한다. 숙련도가 낮은 사용자에게는 이 구조적 한계가 특히 크게 작용한다.\n고객 환경 적용 시 고려사항:\n국내 기업 환경은 Hofstede 분류 기준으로 집단주의 성향이 강하고 권력 거리가 높다. 이는 두 가지 함의를 가진다. 첫째, 보안 메시지는 개인 이익보다 팀, 조직, 고객 보호를 강조하는 예방 초점 프레이밍이 더 효과적일 수 있다. 둘째, 경영진의 가시적 참여와 지지(Messenger 효과)가 임직원의 보안 행동에 미치는 영향이 서구 환경보다 크게 작용할 수 있다.\n7. 개인 인사이트 인식과 행동의 간극이 이렇게 구조적인 문제였다는 점\n단순히 교육을 많이 하면 보안이 좋아진다는 직관적 믿음이 왜 현실에서 반복적으로 실망으로 끝나는지, 이 논문은 심리학적 메커니즘으로 설명한다. 특히 EPPM이 설명하는 공포 통제 반응, 즉 위협을 부정하는 방식으로 대응하는 패턴은 실무에서 왜 위협 강조형 교육이 효과가 없는지를 설명하는 정확한 언어를 제공한다.\n측정 문제가 모든 것의 출발점이라는 깨달음\n캠페인 효과를 측정하지 않으면 무엇이 작동하고 무엇이 작동하지 않는지 알 수 없다. 그런데 대부분의 조직은 교육 이수율이라는 인풋 지표만 측정하고 행동 변화라는 아웃컴 지표를 측정하지 않는다. 컨설팅 진단 단계에서 고객사에 이 질문을 던지는 것 자체가 중요한 개입이 될 수 있다.\n문화 맥락 반영이 선택이 아닌 설계 조건이라는 점\n한국 기업 환경에서 서구형 보안 인식 캠페인 콘텐츠를 그대로 도입할 때 발생하는 효과 저하의 원인 중 하나가 바로 문화적 부적합성일 수 있다. 이 논문은 그 문제를 이론적으로 설명하는 틀을 제공한다.\nDay 4 – Research Limitations and Scholarly Impact (개념적 선구자가 남긴 것과 남기지 못한 것)\n1. 연구의 한계점 A. 실증 데이터 부재 문제: 이 논문은 자체적인 실험, 설문, 인터뷰 데이터를 생성하지 않는다. 전체 논증이 기존 심리학 문헌의 검토와 두 지역 캠페인 사례의 정성적 비교에 의존한다.\n영향: 제시된 실패 요인과 성공 조건이 얼마나 강력하게, 어떤 조건에서 작동하는지를 정량적으로 뒷받침하지 못한다. 결론이 규범적(normative) 수준에 머물며 인과적 설명력이 제한된다.\n보완 방향: 후속 연구들이 이 논문이 제시한 프레임워크를 실증 연구의 출발점으로 활용하는 방식으로 한계를 보완했다. PMT, EPPM 기반 실험 연구, 피싱 시뮬레이션 기반 행동 측정 연구 등이 이 논문이 개념적으로 제기한 문제를 실증적으로 검증하는 흐름으로 이어졌다.\nB. 사례 범위의 편향 문제: 영국과 아프리카 두 지역만을 비교 대상으로 삼았다. 저자들 스스로 논문 말미에 향후 북미와 아시아 캠페인으로 분석을 확장할 계획을 밝혔다.\n영향: 동아시아, 특히 한국·일본·중국 등 집단주의와 높은 권력 거리가 결합된 문화권에서 캠페인 설계 시 어떤 차이가 나타나는지를 이 논문만으로는 알 수 없다. 국내 기업 환경에 적용할 때 별도의 문화 맥락 분석이 필요하다.\n보완 방향: 이후 연구들이 아시아권, 중동권 등 다양한 문화권으로 보안 인식 캠페인 분석을 확장했다. 그러나 한국 기업 특화 보안 인식 연구는 여전히 상대적으로 부족한 상태다.\nC. 효과 측정 지표의 미개발 문제: 논문은 행동 변화를 측정해야 한다는 필요성을 강조하지만, 구체적으로 어떤 지표로 무엇을 어떻게 측정해야 하는지에 대한 방법론을 제시하지 않는다.\n영향: 실무 담당자 입장에서 이 논문을 읽고 나서도 실제 측정 체계를 어떻게 설계할지에 대한 답을 얻기 어렵다. 문제 진단은 명확하지만 처방의 구체성이 부족하다.\n보완 방향: 이후 피싱 시뮬레이션 클릭률, 보안 사고 보고율, 반복 훈련 후 행동 변화 추세 등 측정 가능한 아웃컴 지표를 개발하는 연구들이 이 공백을 채웠다.\nD. 조직 수준 분석의 부재 문제: 논문의 분석 단위가 주로 개인 심리 수준에 집중되어 있다. 조직 구조, 경영진 태도, 보안 예산 배분 등 조직 수준 변수가 캠페인 효과에 미치는 영향은 다루지 않는다.\n영향: 동일한 캠페인이라도 경영진의 지원 수준, 조직 문화의 성숙도, 인사 정책과의 연계 여부에 따라 효과가 크게 달라진다는 점을 설명하지 못한다.\n보완 방향: 이후 보안 문화 연구, 경영진 참여 효과 연구, 조직 수준 보안 성숙도 연구 등이 이 공백을 다루었다.\n2. 후속 연구 동향 A. 인용 수와 영향력 학술적 임팩트: - 최초 발표 : 2014년 ( Oxford 기술보고서 ) - arXiv 등재 : 2019년 - 현재 인용 수 : Semantic Scholar 기준 354회, 고영향력 인용 31회 - preprint임에도 불구하고 보안 인식 분야 참고 문헌으로 광범위하게 인용됨\n비교: 동료심사 저널 논문이 아닌 기술보고서 / preprint임을 감안하면, 354회 인용은 이 논문이 제기한 문제의식이 해당 분야에서 얼마나 공감을 얻었는지를 보여준다. 형식보다 내용의 적실성이 인용을 이끈 사례다.\nB. 연구 트렌드의 변화 [ 이 논문 이전, -2014 ] 정보 제공 중심 - 보안 인식 = 올바른 행동에 대한 정보 전달 - 측정 = 교육 이수율, 지식 테스트 점수 - 방법 = 강의, 포스터, 이메일 공지 » ↓\n[ 이 논문 시기, 2014-2018 ] 심리학적 접근 대두 - 보안 인식 = 행동 변화의 심리적 선행 조건 이해 - PMT, EPPM, 조절초점이론 등 적용 - 공포 소구의 역효과 비판 확산 » ↓\n[ 이후, 2018-현재 ] 행동 개입 중심으로 전환 - 게임화 ( gamification ), 피싱 시뮬레이션, 넛지 ( nudge ) 기법 도입 - 행동 변화 아웃컴 지표 개발 ( 클릭률, 보고율 등 ) - Security Behaviour Curve 등 단계별 행동 형성 모델 등장 - AI 기반 개인화 훈련 연구 확대\nC. 주요 후속 연구 흐름 행동 개입 기법의 실증 연구\n연구 방향 핵심 내용 게임화 기반 보안 훈련 포인트, 리더보드, 시나리오 기반 게임을 통한 참여도 및 행동 변화 효과 측정 (2015년 이후 급증) 피싱 시뮬레이션 실제 피싱 메일 발송 후 클릭 여부를 측정하는 행동 기반 훈련. 지식 테스트가 아닌 실제 행동을 지표로 사용 넛지 이론 적용 기본값 설정 변경, 사회적 규범 제시 등 선택 설계(choice architecture) 기법을 보안 인터페이스에 적용 Sasse의 후속 연구 (2022, ESORICS)\n이 논문의 공저자인 Sasse가 2022년 발표한 후속 연구는 이 논문의 핵심 문제의식을 직접 계승한다. 보안 인식 교육이 수십억 달러 규모의 산업이 되었음에도 조직들이 의미 있는 효과 평가를 실시하지 않고 있다는 점을 재확인하며, Security Behaviour Curve 개념을 통해 인식에서 습관적 행동까지의 단계별 지원 구조를 제안했다. 조직이 단순히 임직원의 동기 부여에 그치지 않고 보안 행동을 실행 가능하고 반복 가능하게 만드는 환경을 조성해야 한다는 처방은 이 논문의 논지를 조직 설계 수준으로 확장한 것이다.\n3. 실무 영향 A. 보안 인식 교육 산업에 미친 영향 이 논문 이전: 보안 인식 교육은 주로 연간 1회 집체 교육, 이메일 공지, 포스터 부착 방식으로 운영되었다. 효과 측정은 이수율 기록에 그쳤다.\n이 논문 이후: 이 논문이 제기한 문제의식은 보안 인식 교육 설계 방식의 전환 논의를 촉진했다. 특히 두 가지 방향에서 실무 변화가 나타났다. 첫째, 피싱 시뮬레이션 플랫폼(KnowBe4, Proofpoint 등)이 지식 테스트 대신 실제 행동을 측정하는 도구로 주류화되었다. 둘째, 단일 주제 반복보다 역할별, 상황별 맞춤형 교육 콘텐츠 설계가 강조되기 시작했다.\nB. 규제 및 표준에의 영향 NIST SP 800-50, ISO 27001 통제 항목(A.7.2.2 정보보안 인식, 교육 및 훈련), ISMS-P 인증 기준 모두 보안 인식 교육의 효과성 평가를 요구하지만 구체적 측정 방법은 지정하지 않는다. 이 논문이 제기한 효과 측정의 어려움과 지식-행동 불일치 문제는 규제 요건을 충족하는 방식이 실제 행동 변화와 동떨어질 수 있다는 실무적 긴장을 설명하는 이론적 근거로 기능한다.\n4. 컨설팅 관점 인사이트 한계를 이해한 컨설팅 전략:\n이 논문의 한계 중 가장 중요한 것은 측정 지표 미개발이다. 고객사에 보안 인식 프로그램 개선을 권고할 때, 이 논문의 프레임워크를 진단 근거로 사용하되 실제 측정 방법은 피싱 시뮬레이션, 보안 사고 보고율 추적, 반복 훈련 후 행동 추세 분석 등 후속 연구에서 발전된 방법론을 함께 제시해야 한다.\n적용 가능 시나리오: - ISMS-P 인증 준비 과정에서 보안 교육 훈련 체계(관리적 통제)를 점검할 때, 현행 프로그램이 이수율 측정에만 집중하고 행동 변화 효과를 측정하지 않는다는 문제를 진단하는 근거로 활용 가능 - 경영진에게 보안 교육 예산 증액을 설득할 때, 단순 정보 전달 방식의 한계를 심리학적으로 설명하고 행동 개입 기반 접근으로의 전환을 제안하는 논거로 활용 가능 - 디지털 전환 과정에서 새로운 시스템 도입 시 보안 행동 설계를 시스템 설계 단계부터 포함해야 한다는 보안-기능성-사용성 균형 원칙의 근거로 활용 가능\n적용 불가 시나리오: - 특정 보안 인식 캠페인의 효과를 수치로 입증해야 하는 상황. 이 논문은 측정 방법을 제시하지 않으므로 후속 연구의 실증 방법론이 필요하다 - 한국 기업 특화 문화 맥락 분석. 이 논문의 사례가 영국과 아프리카에 한정되므로 동아시아 맥락에서의 적용은 추가 문헌이 필요하다\n5. 개인 인사이트 preprint의 영향력이 이 정도일 수 있다는 점\n동료심사를 거친 저널 논문이 아님에도 354회 인용은 이 논문이 제기한 문제가 해당 분야에서 해결되지 않은 핵심 질문이었음을 보여준다. 형식적 권위보다 문제의 적실성이 학술적 영향력을 결정한다는 사례다. 컨설팅 현장에서도 마찬가지다. 완벽한 증거보다 정확한 문제 정의가 먼저다.\n10년이 지나도 같은 문제가 반복된다는 점\nSasse의 2022년 후속 연구가 여전히 동일한 문제를 반복 확인하고 있다는 사실, 즉 조직들이 의미 있는 효과 평가를 하지 않는다는 점은 이 문제가 기술적 해결이 아닌 조직 문화와 관행의 문제임을 시사한다. 컨설팅에서 이 문제를 다룰 때 단기 솔루션보다 장기 문화 변화 관점이 필요하다.\n다음 궁금증 (Day 5 Preview): 이 논문에서 배운 심리학적 행동 변화 프레임워크를 실제 보안 컨설팅 시나리오에 어떻게 적용할 것인지, 그리고 8편의 기존 논문 프레임워크와 어떻게 통합할 것인지를 Day 5에서 정리한다.\nReferences [1] Bada, M., Sasse, A. M., \u0026 Nurse, J. R. C. (2014/2019). Cyber Security Awareness Campaigns: Why do they fail to change behaviour? arXiv preprint arXiv:1901.02672. Global Cyber Security Capacity Centre, University of Oxford.\n[2] Rogers, R. W. (1975). A protection motivation theory of fear appeals and attitude change. Journal of Psychology, 91, 93–114.\n[3] Higgins, E. T. (1998). Promotion and prevention: Regulatory focus as a motivational principle. Advances in Experimental Social Psychology, 30, 1–46.\n[4] Da Veiga, A., \u0026 Eloff, J. H. P. (2010). A framework and assessment instrument for information security culture. Computers \u0026 Security, 29(2), 196–207.\n[5] Bulgurcu, B., Cavusoglu, H., \u0026 Benbasat, I. (2010). Information security policy compliance: An empirical study of rationality-based beliefs and information security awareness. MIS Quarterly, 34(3), 523–548.\n[6] Dolan, P., Hallsworth, M., Halpern, D., King, D., \u0026 Vlaev, I. (2010). MINDSPACE: Influencing behaviour through public policy. Institute for Government, Cabinet Office.\n[7] Witte, K. (1994). Fear control and danger control: A test of the Extended Parallel Process Model (EPPM). Communication Monographs, 61, 113–134.\n[8] Hofstede, G., Hofstede, J. G., \u0026 Minkov, M. (2010). Cultures and Organizations: Software of the Mind (3rd ed.). McGraw-Hill.\n[9] Whitten, A., \u0026 Tygar, J. D. (1999). Why Johnny can’t encrypt: A usability evaluation of PGP 5.0. Proceedings of the 8th USENIX Security Symposium.\n[10] Sasse, M. A., Hielscher, J., Friedauer, J., \u0026 Buckmann, A. (2023). Rebooting IT Security Awareness: How Organisations Can Encourage and Sustain Secure Behaviours. In Computer Security. ESORICS 2022 International Workshops. Lecture Notes in Computer Science, vol 13785. Springer.\n[11] Mersinas, K., \u0026 Bada, M. (2024). Behavior Change Approaches for Cyber Security and the Need for Ethics. In Proceedings of the International Conference on Cybersecurity, Situational Awareness and Social Media. CYBER SCIENCE 2023. Springer.\nDay 5 – Consulting Perspective and Key Takeaways (인식과 행동의 간극을 컨설팅 개입점으로 전환하기)\n1. 5일간 학습 여정 종합 A. 무엇을 배웠나 Day 1: 연구 배경과 문제의식\n[ Day 1 요약 ] - 보안 인식 캠페인이 행동 변화로 이어지지 않는 현상이 반복된다 » ↓ - 지식 전달만으로는 행동 변화가 일어나지 않는다는 문제 제기 » ↓ - 인식 ( awareness )과 행동 ( behaviour )은 별개의 과정이며, 그 사이에는 동기, 능력, 문화적 맥락이 개입한다\nDay 2: 이론적 분석 틀\n[ Day 2 요약 ] - PMT, EPPM, 조절초점이론, MINDSPACE를 분석 도구로 활용 » ↓ - 행동 변화의 결정 요인을 개인적 / 사회환경적 / 문화적 세 층위로 구조화 » ↓ - 보안 교육 설계는 심리학적 행동 변화 원리를 반영해야 한다\nDay 3: 이론의 사례 적용과 성패 요인 도출\n[ Day 3 요약 ] - 영국 - 아프리카 캠페인 비교를 통해 문화적 적합성의 실질적 차이 확인 » ↓ - 공포 소구 역효과, 측정 체계 부재, 단방향 전달 구조의 한계 확인 » ↓ - 성공 조건 5가지 : 전문적 설계, 공포 자제, 실행 가능한 교육, 지속 피드백, 문화 맥락 반영\nDay 4: 한계와 학술적 영향\n[ Day 4 요약 ] - 실증 데이터 없음, 사례 범위 협소, 측정 지표 미개발, 조직 수준 분석 부재 » ↓ - 354회 인용, Sasse 본인의 2022년 후속 연구로 문제의식 계승 » ↓ - 10년이 지나도 같은 문제가 반복되는 것은 기술이 아닌 조직 관행의 문제임을 시사한다\nDay 5 (지금): 컨설팅 관점 통합\n지금까지 배운 심리학적 행동 변화 프레임워크를 보안 컨설팅 진단, 체계 수립, 경영진 자문 시나리오에 어떻게 구체적으로 적용할 것인가?\n2. 논문에서 배운 핵심 원리 정리 A. 핵심 원리 원리 1: 지식은 행동의 필요조건이지 충분조건이 아니다\n보안 교육이 지식을 전달하는 데 성공해도 행동 변화로 이어지지 않는 이유는, 행동 변화를 위해서는 지식 외에도 동기(하려는 의지), 능력(실행 가능한 방법), 지속적 지원(변화 과정 유지)이 모두 갖춰져야 하기 때문이다.\n왜 작동하는가: 심리학적 행동 변화 이론들(PMT, 계획된 행동 이론 등)이 일관되게 확인한 원리다. 지식은 행동 의도에 영향을 미치지만, 의도에서 실제 행동으로의 전환에는 추가 조건이 필요하다.\n왜 한계가 있는가: 이 원리는 개인 수준의 변수를 설명하지만, 조직 구조, 업무 부하, 시스템 설계 등 환경적 변수가 행동을 억제할 때는 개인 심리 개입만으로 효과가 제한된다.\n원리 2: 공포는 효능감이 낮을 때 역효과를 낸다\nEPPM이 설명하는 공포 통제 반응이 핵심이다. 위협 인식이 높더라도 대처 효능감(내가 이 위협을 막을 수 있다는 믿음)이 낮으면 보호 행동 대신 위협 부정, 방어적 회피, 메시지 무시로 이어진다.\n왜 작동하는가: 공포 소구는 위협 인식을 높이는 데는 효과적이지만, 효능감을 함께 높이지 않으면 행동 변화 동기로 전환되지 않는다.\n왜 한계가 있는가: 효능감을 높이기 위해 제시해야 하는 실행 가능한 대응 행동이 현실에서 너무 복잡하거나 시간이 많이 걸릴 경우, 이 전략도 한계에 부딪힌다.\n원리 3: 메시지는 수신자의 문화적 맥락과 일치할 때 효과적이다\n조절초점이론과 Hofstede의 문화 차원 이론이 결합되어 설명하는 원리다. 개인주의 문화권에서는 촉진 초점(이득, 혜택 강조) 메시지가, 집단주의 문화권에서는 예방 초점(의무, 손실 회피 강조) 메시지가 더 효과적이다.\nB. 일반화 가능한 원칙 - 정책 준수율이 낮을 때 가장 먼저 확인할 것은 정책의 실행 가능성 ( usability )이다. 사람의 의지 부족이 아닌 설계 실패일 수 있다 - 어떤 개입이든 효과 측정 지표를 사전에 정의하지 않으면 성공 여부를 알 수 없다. 측정 설계는 개입 설계와 동시에 이루어져야 한다 - 임직원에게 책임을 전가하는 방식의 보안 교육은 장기적으로 보안 피로를 누적시켜 오히려 역효과를 낸다 3. 기업 환경에서의 적용 가능성 분석 A. 해결하는 비즈니스 문제 보안 측면: 내부자 부주의로 인한 보안 사고(피싱 클릭, 잘못된 첨부파일 전송, 비밀번호 공유 등) 감소. 기술적 통제만으로 방어할 수 없는 사람 요인(human factor) 기반 위협에 대응.\n비즈니스 측면: 보안 교육 투자 대비 효과 개선. 형식적 이수 기록만 남는 교육 예산 낭비 방지.\n규제 측면: ISMS-P 인증 기준 중 인적 보안(교육훈련 체계, 효과성 평가)에 해당하는 항목 대응. ISO 27001 A.7.2.2(정보보안 인식, 교육 및 훈련) 통제 이행의 실질적 근거 확보.\nB. 적합한 기업 프로필 산업: 금융(전자금융감독규정의 보안 교육 의무), 의료(개인정보 처리 인력 대상 교육), 제조(내부자 위협 및 산업 스파이 대응), 공공기관(정보보안 교육 의무) 등 교육 의무가 법적으로 부과된 산업에서 우선적으로 적용 가능하다.\n보안 성숙도: 이미 보안 교육을 실시하고 있으나 효과가 없다고 느끼는 중간 성숙도 조직에서 가장 큰 가치를 발휘한다. 교육 자체가 없는 초기 단계 조직에는 먼저 기본 체계 수립이 선행되어야 한다.\nC. 도입 시 고려사항 비용: - 기존 교육 콘텐츠 재설계 비용 ( 콘텐츠 개발 또는 외부 구매 ) - 피싱 시뮬레이션 플랫폼 도입 시 연간 라이선스 비용 - 문화 진단 및 프로그램 효과 평가를 위한 측정 체계 구축 비용\n시간: - 프로그램 재설계 및 파일럿 운영 : 3-6개월 - 행동 변화 효과가 측정 가능한 수준으로 나타나기까지 : 6-12개월 이상의 반복 운영 필요\n4. 컨설팅 시나리오별 활용 방안 A. 보안 진단/점검 점검 항목 예시: - 교육 효과를 교육 이수율 외의 지표 ( 피싱 클릭률, 보안 사고 보고율 등 행동 지표 )로 측정하고 있는가 - 교육 콘텐츠가 직무별, 역할별로 맞춤화되어 있는가, 아니면 전 임직원에게 동일한 일반 콘텐츠를 제공하는가 - 공포 소구 ( 해킹 피해 사례, 위협 통계 ) 중심으로 구성되어 있으며, 실행 가능한 대응 행동이 함께 제시되고 있는가 - 교육 후 행동 유지를 위한 반복 접촉, 피드백, 후속 지원 체계가 있는가 - 경영진이 보안 인식 캠페인에 가시적으로 참여하고 있는가\nB. 보안 체계 수립 적용 예시: - 신규 임직원 온보딩 프로세스 : 지식 전달 ( 1주차 ) » 행동 연습 ( 2-4주차 ) » 피드백 및 내재화 ( 2-3개월 ) 구조로 운영 - 보안 정책 개정 시 정책의 실행 가능성 검토를 의무화하여, 현업 업무 흐름과 충돌하는 정책이 보안 피로를 야기하지 않도록 설계 단계에서 조정\nC. 기술 자문 질문 1: 매년 보안 교육을 실시하는데 왜 피싱 사고가 줄지 않는가?\n현재의 교육이 지식 전달에는 성공하더라도 행동 변화가 보장되지 않는다. 교육이 행동 변화로 이어지려면 지식 외에도 실행 가능한 행동 지침 제시, 지속적 피드백, 반복 훈련이 함께 제공되어야 한다. 피싱 클릭률을 측정하고 있지 않다면 그것부터 시작해야 한다.\n질문 2: 임직원들이 보안 교육을 귀찮아한다. 어떻게 해야 하는가?\n보안 피로(security fatigue) 현상이다. 교육의 양을 줄이고 직무와 직접 관련된 내용으로 집중시켜야 한다. 사람을 바꾸려는 시도보다 행동하기 쉬운 환경을 만드는 것이 장기적으로 더 효과적이다.\n질문 3: 경영진에게 보안 교육 예산 증액을 설득해야 한다. 어떤 논거를 써야 하는가?\n현재 교육 방식의 비효율을 먼저 수치로 보여주는 것이 효과적이다. 연간 교육 이수율은 100%에 가깝지만 피싱 클릭률이나 보안 사고 건수가 개선되지 않는다면, 현재 예산이 형식적 이수 기록에만 쓰이고 있다는 근거가 된다. 손실 프레임으로 제시하면 설득력이 높아진다. 사람들은 이득보다 손실에 더 민감하게 반응한다는 심리학적 원리가 여기서도 적용된다.\n5. 프레임워크/규제/표준과의 연계 A. ISMS-P / ISO 27001 관점 통제 항목 논문의 기여 적용 방법 ISMS-P 2.2.4 보안 교육 및 훈련 교육 이수율만으로는 효과를 입증할 수 없다는 이론적 근거 제공 행동 지표(피싱 클릭률, 보안 사고 보고율) 기반 효과성 평가 체계를 인증 요건 충족 방식으로 제안 ISMS-P 2.2.5 인적 보안 임직원의 보안 행동 형성이 정책 공지만으로는 달성되지 않는다는 근거 온보딩, 직무 변경, 위협 환경 변화 시점에 반복 접촉하는 행동 형성 프로그램 설계 ISO 27001 A.7.2.2 정보보안 인식 교육 및 훈련 인식(awareness)과 행동(behaviour)의 차이를 명확히 하여 통제 목표 재정의 교육 목표를 인식 제고에서 행동 변화로 상향 설정하고 그에 맞는 평가 지표 설계 ISO 27001 A.7.2.1 경영진의 책임 Messenger 효과 이론: 경영진 참여가 메시지 수용도에 미치는 영향 보안 인식 캠페인에 경영진의 가시적 지지와 참여를 의무화하는 거버넌스 구조 설계 B. 보안 성숙도 모델 단계 Before After Level 1 (초기) 보안 교육 없음 또는 비정기 실시, 이수 기록 없음 기본 보안 인식 교육 체계 수립, 이수율 측정 시작 Level 2 (관리) 교육 이수율만 측정, 행동 변화 미확인, 단일 콘텐츠 전 직원 동일 적용 행동 지표(피싱 클릭률 등) 도입, 직무별 콘텐츠 차별화, 반복 훈련 구조 도입 Level 3 (최적화) 교육-행동-측정 체계가 연결되지 않음, 경영진 참여 없음 행동 변화 추세 기반 지속 개선, 경영진 참여 구조화, 조직 문화와 보안 교육 통합 6. 컨설턴트로서 얻은 인사이트 A. 고객 조언 역량 이 논문을 읽기 전: 고객사가 보안 교육을 실시하고 있다고 하면 그것으로 충분하다고 생각하거나, 교육 횟수나 이수율을 개선하라는 수준의 조언에 머물렀을 것이다.\n이 논문을 읽은 후: 교육의 형식이 아니라 설계 원리를 진단할 수 있게 되었다. 이수율이 높아도 행동이 바뀌지 않는 이유를 심리학적 메커니즘으로 설명하고, 어떤 설계 요소가 빠져 있는지를 구체적으로 지적할 수 있다.\n구체적 예시:\n고객: 임직원 보안 교육을 매년 실시하고 있는데 ISMS-P 심사에서 효과성 입증이 어렵다는 지적을 받았습니다.\n나: 지금 측정하고 계신 것이 이수율이라면, 그것은 교육을 받았다는 인풋 지표입니다. 심사에서 요구하는 효과성은 교육이 행동 변화에 기여했다는 아웃컴 지표입니다. 두 가지를 구분해야 합니다. 가장 빠르게 도입할 수 있는 아웃컴 지표는 피싱 시뮬레이션 클릭률입니다. 교육 전후 클릭률 변화를 비교하면 행동 변화 근거가 됩니다. 여기서 시작하고, 이후 직무별 맞춤 콘텐츠와 반복 훈련 구조를 단계적으로 추가하는 방향으로 가면 됩니다.\nB. 보안 인식 솔루션 평가 기준 기준 설명 평가 방법 행동 측정 가능성 교육 이수율이 아닌 실제 행동 변화를 측정할 수 있는가 피싱 시뮬레이션, 보고율 추적 등 행동 지표 지원 여부 확인 콘텐츠 맞춤화 직무별, 역할별, 위협 프로파일별 콘텐츠 차별화가 가능한가 콘텐츠 라이브러리 범위 및 맞춤화 기능 확인 반복 훈련 구조 1회성 교육이 아닌 반복 접촉 및 피드백 루프를 지원하는가 캠페인 일정 관리, 반복 발송, 결과 피드백 기능 확인 경영진 보고 행동 변화 추세를 경영진에게 보고할 수 있는 형태로 제공하는가 대시보드 및 보고서 형태 확인 7. 5일간 리뷰 종합 표 Day 주제 핵심 학습 컨설팅 활용 Day 1 연구 배경과 문제의식 인식과 행동은 별개이며, 지식 전달만으로 행동 변화가 일어나지 않는다 고객사 교육 체계 진단 시 인식-행동 간극을 첫 번째 확인 항목으로 설정 Day 2 이론적 분석 틀 PMT·EPPM·조절초점이론·MINDSPACE가 행동 변화 설계의 핵심 도구 보안 교육 설계 자문 시 이론 기반 설계 원칙 제시 근거로 활용 Day 3 사례 분석과 성패 요인 공포 소구 역효과, 문화 적합성, 측정 체계 부재가 실패의 핵심 원인 진단 체크리스트 5개 항목(성공 조건)으로 현행 프로그램 점검 Day 4 한계와 학술적 영향 실증 부재이나 354회 인용, 10년 후에도 동일 문제 반복 확인 이 논문의 한계를 인식하고 후속 실증 연구(피싱 시뮬레이션 등)와 함께 활용 Day 5 컨설팅 관점 통합 진단-설계-측정-개선 순환 구조로 보안 인식 프로그램 자문 가능 ISMS-P 심사 대응, 경영진 설득, 솔루션 평가 기준 제시 등 실무 적용 8. 최종 개인 인사이트 A. 이 논문이 나의 컨설팅 역량에 기여한 점 핵심 배움 1: 형식과 실질을 구분하는 진단 언어를 얻었다\n보안 교육 이수율은 형식 지표다. 행동 변화는 실질 지표다. 이 두 가지를 구분하는 언어를 갖게 되면서, 고객사가 교육을 잘 하고 있다고 생각하지만 실제로는 형식만 충족하고 있는 상태를 진단하고 설명할 수 있게 되었다.\n핵심 배움 2: 사람 문제가 아니라 설계 문제라는 시각\n임직원이 보안 정책을 따르지 않을 때 흔히 나오는 반응은 교육이 부족하다거나 의식이 낮다는 것이다. 이 논문은 그 전에 먼저 정책과 시스템이 사람이 따르기 쉽게 설계되어 있는지를 확인하라고 한다.\n핵심 배움 3: 심리학 이론이 컨설팅 논거가 된다\nPMT, EPPM, 조절초점이론을 이해하면 왜 공포 강조형 교육이 역효과를 내는지, 왜 문화 맞춤형 메시지가 필요한지를 경영진에게 설명할 수 있다. 이론을 알면 경험이 없어도 논거를 만들 수 있다는 것을 이 논문에서 확인했다.\nB. 9편의 논문을 읽고 나니 논문 핵심 아이디어 강점 약점 적용 시나리오 Gashgari et al. (2017) 보안 거버넌스 구조 설계 조직 수준 거버넌스 프레임워크 개인 행동 수준 설명 부족 CISO 역할 정의, 거버넌스 체계 수립 자문 Foorthuis \u0026 Bos (2011) 컴플라이언스 전술 유형화 전술별 효과 조건 명확화 규제 맥락 의존도 높음 컴플라이언스 프로그램 설계 및 전술 선택 Santos-Olmo et al. (2024) 통합 리스크 분석 방법론 정량적 리스크 평가 체계 도입 복잡성 높음 리스크 평가 체계 수립 자문 Bulgurcu et al. (2010) 합리적 행동 이론 기반 정책 준수 개인 준수 의도의 결정 요인 실증 실제 행동과 의도의 간극 미설명 보안 정책 설계 및 준수 동기 분석 Slapničar et al. (2022) 감사 효과성 결정 요인 감사 설계-효과 연결 실증 내부 감사 맥락 한정 내부 감사 체계 설계 및 효과성 평가 Ghadge et al. (2020) 공급망 사이버 리스크 관리 공급망 전체 관점 공급망 가시성 확보 어려움 공급망 보안 리스크 진단 자문 Gordon \u0026 Loeb (2002) 보안 투자 최적화 모델 경제적 논거로 투자 정당화 모델 가정이 현실과 괴리 보안 투자 우선순위 결정 및 경영진 설득 Da Veiga \u0026 Eloff (2010) 보안 문화 프레임워크 조직 문화 수준의 보안 성숙도 측정 복잡성, 장기 소요 보안 문화 진단 및 개선 로드맵 수립 Bada et al. (2014) 인식-행동 간극의 심리학적 원인 교육 설계 실패 원인 명확화 실증 부재, 측정 방법 미제시 보안 교육 체계 진단 및 행동 개입 설계 통합적 이해: 9편을 통해 보안 컨설팅의 핵심 영역이 거버넌스(구조) » 리스크(분석) » 컴플라이언스(전술) » 투자(경제) » 문화(조직) » 행동(개인)으로 연결된 층위 구조임이 명확해졌다. Bada et al.은 이 구조의 가장 개인적인 층위, 즉 모든 보안 통제의 최종 실행자인 사람의 행동 메커니즘을 다룬다. 아무리 좋은 거버넌스, 리스크 분석, 투자 전략이 있어도 개인의 행동이 변화하지 않으면 그 모든 것이 형식에 머문다는 점에서, 이 논문은 앞선 8편 전체의 실행 층위를 담당한다.\nC. 다음 학습 방향 우선순위 1: 보안 행동 측정 방법론 - Verizon DBIR 또는 피싱 시뮬레이션 효과성 관련 실증 연구 - 학습 목표 : 행동 변화 지표를 어떻게 설계하고 측정할지 실무 수준으로 습득\n우선순위 2: 디지털 전환과 보안 거버넌스 연계 - 디지털 전환 맥락에서 보안 거버넌스가 어떻게 변화해야 하는지를 다룬 연구 - 학습 목표 : 클라우드, AI 도입 환경에서 보안 인식 및 행동 관리 전략 자문 역량 확보\n우선순위 3: 한국 기업 보안 문화 특화 연구 - 국내 또는 동아시아 맥락의 보안 행동 및 문화 연구 - 학습 목표 : 국내 고객사 맥락에 최적화된 진단 및 자문 언어 개발\n9. 최종 결론 A. Cyber Security Awareness Campaigns의 의의 학술적 의의: 보안 인식 문제를 기술적 문제가 아닌 심리학적 문제로 재정의하고, 행동 변화 이론을 보안 교육 설계에 체계적으로 적용한 초기 통합 검토 논문이다. preprint임에도 354회 인용은 이 논문이 제기한 문제의식이 해당 분야에서 얼마나 공감을 얻었는지를 보여준다.\n실무적 의의: 보안 인식 교육 산업이 수십억 달러 규모로 성장하는 과정에서 지식 전달 방식의 한계를 명확히 지적하고, 피싱 시뮬레이션, 게임화, 넛지 기법 등 행동 개입 중심 접근으로의 전환을 촉진하는 이론적 근거를 제공했다.\n나에게 주는 의의: 보안 교육 체계를 진단하고 개선 방향을 제시하는 자문 역량의 이론적 기반을 확보했다. 특히 형식 지표와 실질 지표를 구분하는 언어, 설계 실패를 개인 의지 문제로 귀결하지 않는 시각, 심리학 이론을 경영진 설득 논거로 전환하는 능력이 이 논문에서 비롯되었다.\nB. 보안 컨설턴트로서의 다짐 [ Phase 1 ( 완료 ) : 논문 이해 ] - 거버넌스, 컴플라이언스, 리스크, 개인 행동, 감사, 공급망, 투자, 보안 문화, 보안 인식 및 행동 변화 9편 완료\n[ Phase 2 ( 진행 중 ) : 연결 ] - 9편의 논문이 거버넌스 - 리스크 - 컴플라이언스 - 투자 - 문화 - 행동의 층위 구조로 연결됨을 확인 - 각 논문의 분석 단위 ( 조직 / 팀 / 개인 )와 시간 지평 ( 단기 / 장기 )의 차이 파악\n[ Phase 3 ( 다음 ) : 적용 ] - 통합 컨설팅 제안서 구조 설계 - 실제 고객사 시나리오에 각 논문 프레임워크 매핑 연습\n[ Phase 4 ( 목표 ) : 전문성 ] - 고객사 상황에 맞는 논문 기반 진단 - 권고 체계를 독립적으로 운용\nReferences [1] Bada, M., Sasse, A. M., \u0026 Nurse, J. R. C. (2014/2019). Cyber Security Awareness Campaigns: Why do they fail to change behaviour? arXiv preprint arXiv:1901.02672. Global Cyber Security Capacity Centre, University of Oxford.\n[2] Rogers, R. W. (1975). A protection motivation theory of fear appeals and attitude change. Journal of Psychology, 91, 93–114.\n[3] Higgins, E. T. (1998). Promotion and prevention: Regulatory focus as a motivational principle. Advances in Experimental Social Psychology, 30, 1–46.\n[4] Da Veiga, A., \u0026 Eloff, J. H. P. (2010). A framework and assessment instrument for information security culture. Computers \u0026 Security, 29(2), 196–207.\n[5] Bulgurcu, B., Cavusoglu, H., \u0026 Benbasat, I. (2010). Information security policy compliance: An empirical study of rationality-based beliefs and information security awareness. MIS Quarterly, 34(3), 523–548.\n[6] Dolan, P., Hallsworth, M., Halpern, D., King, D., \u0026 Vlaev, I. (2010). MINDSPACE: Influencing behaviour through public policy. Institute for Government, Cabinet Office.\n[7] Witte, K. (1994). Fear control and danger control: A test of the Extended Parallel Process Model (EPPM). Communication Monographs, 61, 113–134.\n[8] Hofstede, G., Hofstede, J. G., \u0026 Minkov, M. (2010). Cultures and Organizations: Software of the Mind (3rd ed.). McGraw-Hill.\n[9] Whitten, A., \u0026 Tygar, J. D. (1999). Why Johnny can’t encrypt: A usability evaluation of PGP 5.0. Proceedings of the 8th USENIX Security Symposium.\n[10] Sasse, M. A., Hielscher, J., Friedauer, J., \u0026 Buckmann, A. (2023). Rebooting IT Security Awareness: How Organisations Can Encourage and Sustain Secure Behaviours. In Computer Security. ESORICS 2022 International Workshops. Lecture Notes in Computer Science, vol 13785. Springer.\n[11] Mersinas, K., \u0026 Bada, M. (2024). Behavior Change Approaches for Cyber Security and the Need for Ethics. In Proceedings of the International Conference on Cybersecurity, Situational Awareness and Social Media. CYBER SCIENCE 2023. Springer.\nTags 보안컨설팅 / SecurityConsulting / SecurityAwareness / BehaviourChange / PersuasionTechniques / PMT / EPPM / MINDSPACE / RegulatoryFocusTheory / SecurityFatigue / CulturalCongruency / UsabilitySecurity / SecurityBehaviourCurve / PhishingSimulation / ConsultingPerspective / PaperReview / SKShieldusRookies\n",
+  "wordCount" : "19219",
+  "inLanguage": "ko",
+  "datePublished": "2026-03-17T00:00:00Z",
+  "dateModified": "2026-03-17T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/bada_sasse_nurse/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://hojjang98.github.io/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/paper_review/">논문 리뷰</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Cyber Security Awareness Campaigns: Why do they fail to change behaviour?
+    </h1>
+    <div class="post-meta"><span title='2026-03-17 00:00:00 +0000 UTC'>2026년 3월 17일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="research-review-cyber-security-awareness-campaigns-why-do-they-fail-to-change-behaviour">Research Review: Cyber Security Awareness Campaigns: Why do they fail to change behaviour?<a hidden class="anchor" aria-hidden="true" href="#research-review-cyber-security-awareness-campaigns-why-do-they-fail-to-change-behaviour">#</a></h1>
+<blockquote>
+<p><strong>Analyzed Date:</strong>  2026.03.17 - 2026.03.21
+<strong>Keywords:</strong>  Security Awareness, Behaviour Change, Persuasion, Risk Perception, Security Culture
+<strong>Source:</strong>  arXiv preprint (Global Cyber Security Capacity Centre, University of Oxford), 2014/2019</p>
+</blockquote>
+<hr>
+<h2 id="why-this-paper">Why This Paper?<a hidden class="anchor" aria-hidden="true" href="#why-this-paper">#</a></h2>
+<h3 id="선정-배경">선정 배경<a hidden class="anchor" aria-hidden="true" href="#선정-배경">#</a></h3>
+<p><strong>도메인 탐색 결과:</strong>
+8편의 보안 컨설팅 논문 리뷰를 통해 컴플라이언스 전술, 리스크 분석, 개인 행동, 거버넌스, 감사, 공급망, 투자 경제학, 보안 문화를 순차적으로 학습했다. Da Veiga &amp; Eloff (2010)에서 보안 문화 형성을 다룬 데 이어, 이제 그 문화가 실제로 작동하지 않는 이유, 즉 인식 캠페인이 행동 변화로 이어지지 못하는 메커니즘을 분석하는 단계로 진입한다.</p>
+<p><strong>이 논문을 선택한 이유:</strong>
+- Da Veiga &amp; Eloff의 보안 문화 프레임워크가 조직 수준의 구조를 다뤘다면, 이 논문은 개인 수준의 행동 변화 실패 원인을 심리학적으로 분석함으로써 문화 수립의 실질적 한계를 보완한다
+- 보안 컨설팅 실무에서 고객사가 인식 제고 프로그램(SETA: Security Education, Training and Awareness)을 도입해도 행동 변화가 일어나지 않는다는 문제를 직접 다룬다
+- 경영진 대상 리스크 커뮤니케이션 및 임직원 보안 인식 제고 자문 역량을 강화하는 데 직결된다
+- ISMS-P 인증 컨설팅에서 요구되는 보안 교육훈련 체계 수립 및 효과성 평가 항목과 연관된다</p>
+<p><strong>학습 목표:</strong>
+- 인식 캠페인이 행동 변화로 이어지지 못하는 심리학적 원인 구조를 이해한다
+- 보호동기이론(PMT), 조절초점이론 등 행동 변화 이론을 컨설팅 권고안 설계에 활용할 수 있는 수준으로 습득한다
+- 고객사의 보안 교육 프로그램 진단 및 개선 방향 제시 역량을 구체화한다</p>
+<hr>
+<h2 id="day-1--research-context--motivation">Day 1 – Research Context &amp; Motivation<a hidden class="anchor" aria-hidden="true" href="#day-1--research-context--motivation">#</a></h2>
+<p><em>(인식은 충분한데 행동은 왜 바뀌지 않는가)</em></p>
+<h3 id="1-연구-배경-인식-행동-간-격차-문제">1. 연구 배경: 인식-행동 간 격차 문제<a hidden class="anchor" aria-hidden="true" href="#1-연구-배경-인식-행동-간-격차-문제">#</a></h3>
+<p><strong>보안 인식 캠페인의 중요성</strong></p>
+<p>정부와 기업은 ICT 보안을 위해 기술적 통제와 보안 정책을 병행 운용한다. 그러나 정책이 명시하는 올바른 행동을 개인이 실제로 따르지 않는 현상이 반복된다. 이 논문은 그 핵심 원인으로 두 가지를 지목한다. 첫째, 개인이 리스크 자체를 인지하지 못하거나 인지하더라도 심각하게 받아들이지 않는다. 둘째, 올바른 행동이 무엇인지 알더라도 실제로 어떻게 해야 하는지를 이해하지 못한다.</p>
+<p>보안 인식 캠페인의 1차적 목적은 안전한 행동의 채택을 유도하는 것이다. 그러나 단순히 해야 할 것과 하지 말아야 할 것을 알려주는 것만으로는 효과적인 영향력 행사가 불가능하다. 논문은 효과적인 영향력 행사를 위한 세 가지 조건을 제시한다. 정보가 자신에게 관련이 있다는 수용, 어떻게 대응해야 하는지에 대한 이해, 그리고 다양한 경쟁적 요구 속에서도 행동하려는 의지가 모두 충족되어야 한다.</p>
+<p><strong>현실의 한계</strong></p>
+<p>논문은 현재 보안 인식 캠페인의 근본적 실패를 세 가지 층위에서 진단한다.</p>
+<p>첫째, <strong>지식-행동 불일치</strong> 문제다. 사람들은 인식 관련 질문에 올바른 답을 알고 있으면서도 실제 생활에서는 그에 따라 행동하지 않는다. 인식 수준의 제고가 행동 변화를 자동으로 보장하지 않는다는 점이 반복적으로 확인된다.</p>
+<p>둘째, <strong>보안 피로(security fatigue)</strong> 문제다. 지나치게 많은 경고와 복잡한 지시에 노출된 개인은 결국 모든 보호 노력을 포기하고 위험 자체를 부정하는 방향으로 반응한다. 위협적이거나 공포를 유발하는 보안 메시지는 스트레스 수준을 높여 오히려 역효과를 낸다.</p>
+<p>셋째, <strong>설계 실패</strong> 문제다. 사용자가 최적의 행동을 취하지 못하는 핵심 이유 중 하나는 보안 시스템과 정책 자체가 사용하기 어렵게 설계되어 있다는 점이다. 이는 1999년에도 확인되었고 오늘날에도 동일하게 지적된다.</p>
+<p><strong>연구 문제의식</strong></p>
+<p>심리학적 행동 변화 이론을 적용하여 보안 인식 캠페인의 실패 요인을 체계적으로 분석하고, 캠페인의 성공과 실패를 결정하는 핵심 요소를 어떻게 도출할 것인가?</p>
+<hr>
+<h3 id="2-핵심-개념">2. 핵심 개념<a hidden class="anchor" aria-hidden="true" href="#2-핵심-개념">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>개념</th>
+          <th>정의</th>
+          <th>컨설팅 맥락에서의 의미</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>보안 피로(Security Fatigue)</strong></td>
+          <td>과도한 보안 요구사항과 반복적 경고로 인해 개인이 보안 절차와 프로세스에 지쳐 보호 노력을 포기하는 심리적 상태</td>
+          <td>고객사 임직원의 보안 교육 참여도 저하, 정책 무시 현상의 원인 진단 시 핵심 지표로 활용 가능</td>
+      </tr>
+      <tr>
+          <td><strong>보호동기이론(Protection Motivation Theory, PMT)</strong></td>
+          <td>위협 평가(위협의 심각성, 발생 가능성)와 대처 평가(자기효능감, 대응 효과성)가 결합되어 보호 동기를 형성한다는 이론. Rogers(1975)가 제안</td>
+          <td>고객사의 보안 인식 교육 설계 시 단순 위협 강조를 넘어 실행 가능한 대응 행동을 함께 제시해야 하는 근거로 활용</td>
+      </tr>
+      <tr>
+          <td><strong>조절초점이론(Regulatory Focus Theory)</strong></td>
+          <td>개인의 행동이 촉진 초점(이상적 자아 달성, 이득 추구)과 예방 초점(의무 이행, 손실 회피) 중 어느 쪽에 의해 동기화되는지에 따라 메시지 효과가 달라진다는 이론. Higgins(1998)가 제안</td>
+          <td>조직 문화 및 국가 문화 특성에 맞게 보안 메시지 프레이밍 전략을 차별화해야 한다는 자문 근거 제공</td>
+      </tr>
+      <tr>
+          <td><strong>지각된 통제감(Perceived Control)</strong></td>
+          <td>개인이 특정 상황에서 자신이 실제로 보유한 통제력과 무관하게 스스로 통제할 수 있다고 느끼는 정도</td>
+          <td>보안 교육에서 임직원에게 단순 금지 지시 대신 스스로 실행 가능한 행동 지침을 제공해야 참여율과 준수율이 높아진다는 설계 원칙의 근거</td>
+      </tr>
+      <tr>
+          <td><strong>문화적 적합성(Cultural Congruency)</strong></td>
+          <td>메시지가 수신자의 문화적 테마, 인지적·정서적·동기적 특성과 일치할 때 설득력이 높아진다는 원리</td>
+          <td>다국적 기업 또는 다문화 조직의 보안 인식 프로그램 설계 시 개인주의/집단주의 문화 차이를 반영한 맞춤형 메시지 전략 필요성의 근거</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="3-이론적-기반-행동-변화의-다층적-결정-구조">3. 이론적 기반: 행동 변화의 다층적 결정 구조<a hidden class="anchor" aria-hidden="true" href="#3-이론적-기반-행동-변화의-다층적-결정-구조">#</a></h3>
+<p><strong>[ 행동 변화의 전제 조건 ]</strong>  논문 Section 2, 3</p>
+<pre><code>- 정보 제공
+&gt;&gt; ↓
+- 관련성 수용  :  정보가 나와 관련 있다는 인식
+&gt;&gt; ↓
+- 대응 방법 이해  :  어떻게 해야 하는지 앎
+&gt;&gt; ↓
+- 행동 의지  :  하려는 동기
+&gt;&gt; ↓
+- 실제 행동 변화
+</code></pre>
+<p><strong>[ 행동 변화에 영향을 미치는 세 가지 요인 ]</strong>  Section 3</p>
+<p><strong>[ 개인적 요인 ]</strong>
+- 지식, 기술, 경험
+- 개인 동기  ( 내재적 / 외재적 )
+- 지각된 통제감
+- 조절 초점  ( 촉진 / 예방 )
+- 보안 피로</p>
+<p><strong>[ 사회·환경적 요인 ]</strong>
+- 사회적 규범
+- 환경적 단서
+- 주변의 영향
+- 조직 문화</p>
+<p><strong>[ 문화적 요인 ]</strong>
+- 개인주의  vs.  집단주의
+- 권력 거리
+- 불확실성 회피
+- 문화적 메시지 적합성</p>
+<p><strong>핵심 아이디어:</strong></p>
+<p>행동 변화는 단순한 정보 전달로 달성되지 않는다. <strong>지식은 행동 변화의 필요조건이지 충분조건이 아니다.</strong> 개인의 심리적 요인(동기, 자기효능감, 피로도), 사회·환경적 요인(규범, 집단 압력), 문화적 요인(메시지 프레이밍 적합성)이 복합적으로 작용하여 실제 행동을 결정한다. 따라서 효과적인 캠페인은 이 세 가지 층위 모두를 설계 단계에서 고려해야 한다.</p>
+<hr>
+<h3 id="4-연구의-핵심-기여">4. 연구의 핵심 기여<a hidden class="anchor" aria-hidden="true" href="#4-연구의-핵심-기여">#</a></h3>
+<p><strong>학술적 기여:</strong>
+- 보안 인식 캠페인 실패를 설명하는 데 심리학 이론(PMT, 조절초점이론, 확장병렬처리모델 등)을 체계적으로 적용한 통합 검토 프레임워크를 제시했다
+- 행동 변화의 결정 요인을 개인적, 사회·환경적, 문화적 세 층위로 분류하는 분석 구조를 제공했다
+- 영국과 아프리카 사례 비교를 통해 문화적 맥락이 캠페인 설계에 미치는 실질적 차이를 예시했다</p>
+<p><strong>실무 기여:</strong>
+- 보안 인식 캠페인의 성공 요소와 실패 요인을 5가지 실행 지침으로 정리하여 캠페인 설계자에게 직접 적용 가능한 체크리스트를 제공했다
+- 공포 소구(fear appeal)가 특정 조건에서 역효과를 낼 수 있다는 근거를 제시하여 실무에서 광범위하게 사용되는 캠페인 전략의 재검토 필요성을 제기했다
+- 단순 지식 측정이 아닌 실제 행동 변화를 기준으로 캠페인 효과를 측정해야 한다는 방향을 제시했다</p>
+<hr>
+<h3 id="5-컨설팅-관점-인사이트">5. 컨설팅 관점 인사이트<a hidden class="anchor" aria-hidden="true" href="#5-컨설팅-관점-인사이트">#</a></h3>
+<p><strong>적용 가능성:</strong></p>
+<p>고객사의 보안 인식 제고 프로그램을 진단하거나 신규 설계할 때, 이 논문의 분석 틀은 진단 항목의 이론적 근거로 직접 활용할 수 있다. 특히 기존 프로그램이 지식 전달에 집중되어 있고 행동 변화 효과는 측정되지 않는 패턴이 국내 고객사에서도 반복적으로 나타난다. 임직원이 교육 이수 기록은 남기면서 실제 행동은 바뀌지 않는 현상, 즉 <strong>컴플라이언스와 행동 변화의 분리</strong> 문제는 이 논문이 제기하는 핵심 문제와 정확히 일치한다.</p>
+<p><strong>기존 학습과의 연결:</strong>
+- Bulgurcu et al. (2010)  :  개인의 IS 정책 준수 의도를 합리적 행동 이론 기반으로 분석했다. 이 논문은 그 의도조차 형성되지 않는 심리적 선행 조건을 다룬다는 점에서 한 단계 앞선 문제를 다룬다
+- Da Veiga &amp; Eloff (2010)  :  조직 수준의 보안 문화 수립 프레임워크를 제시했다. 이 논문은 그 문화가 개인 행동으로 전환되지 않는 이유를 설명하는 보완적 관점을 제공한다
+- Foorthuis &amp; Bos (2011)  :  컴플라이언스 전술의 효과성을 분석했다. 이 논문은 전술 수준이 아닌 개인 심리 수준에서 왜 전술이 효과를 내지 못하는지를 설명한다</p>
+<p><strong>현실적 고려사항:</strong></p>
+<p>이 논문은 arXiv preprint로 동료심사를 거친 저널 논문이 아니다. 문헌 검토 기반의 개념적 논문으로, 자체 실증 데이터를 생성하지 않았다. 컨설팅 현장에서 이 논문의 주장을 인용할 때는 근거의 성격을 정확히 이해해야 한다. 즉, 이 논문이 제시하는 것은 기존 심리학 이론들의 종합적 해석이지, 새로운 실증 결과가 아니다. 고객사에 권고안을 제시할 때는 이 논문이 인용하는 원론적 이론(PMT, 조절초점이론 등)을 함께 제시하는 방식이 더 설득력 있다.</p>
+<hr>
+<h2 id="day-2--research-model-hypotheses-and-methodology">Day 2 – Research Model, Hypotheses, and Methodology<a hidden class="anchor" aria-hidden="true" href="#day-2--research-model-hypotheses-and-methodology">#</a></h2>
+<p><em>(심리학 이론의 렌즈로 보안 인식 실패를 해부하다)</em></p>
+<h3 id="1-연구-모델-개요">1. 연구 모델 개요<a hidden class="anchor" aria-hidden="true" href="#1-연구-모델-개요">#</a></h3>
+<p>이 논문은 실증 데이터를 수집하는 연구가 아니라 문헌 검토(literature review) 기반의 개념적 논문이다. 따라서 전통적인 연구 모델이나 가설 검증 구조는 존재하지 않는다. 대신 저자들은 심리학, 행동경제학, 문화 이론의 기존 연구를 체계적으로 검토하여 보안 인식 캠페인 실패의 원인 구조를 설명하는 분석 틀을 구성한다.</p>
+<p><strong>[ 논문의 분석 흐름 ]</strong></p>
+<p><strong>[ 현상 진단 ]</strong>
+- 보안 인식 캠페인이 행동 변화로 이어지지 않는다
+&raquo; →</p>
+<p><strong>[ 원인 분석 ]</strong>  개인적  /  사회환경적  /  문화적
+- 행동 변화 결정 요인 분석
+&raquo; ↓
+- 심리학 이론 적용
+- 보호동기이론  ( PMT )
+- 조절초점이론
+- 확장병렬처리모델  ( EPPM )
+- MINDSPACE 프레임워크
+&raquo; →</p>
+<p><strong>[ 처방 도출 ]</strong>
+- 성공 / 실패 요인 추출
+- 실존 캠페인 사례 검토</p>
+<p><strong>설계 철학:</strong></p>
+<p>저자들은 보안 문제를 기술적 문제가 아닌 심리학적 문제로 재정의한다. 기존 연구가 캠페인의 내용(무엇을 전달할 것인가)에 집중한 반면, 이 논문은 전달 방식과 수신자의 심리적 반응 메커니즘(어떻게 받아들이는가)으로 분석의 초점을 이동한다.</p>
+<hr>
+<h3 id="2-핵심-분석-가정">2. 핵심 분석 가정<a hidden class="anchor" aria-hidden="true" href="#2-핵심-분석-가정">#</a></h3>
+<p>이 논문은 가설 검증 연구가 아니므로, 논문 전체를 관통하는 핵심 가정(assumptions)으로 정리한다.</p>
+<table>
+  <thead>
+      <tr>
+          <th>가정</th>
+          <th>내용</th>
+          <th>근거</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>A1</strong></td>
+          <td>지식 전달만으로는 행동 변화가 일어나지 않는다</td>
+          <td>ISF(2014), Kirlappos et al.(2014) 등 기존 연구의 반복적 확인</td>
+      </tr>
+      <tr>
+          <td><strong>A2</strong></td>
+          <td>행동 변화는 개인적, 사회적, 문화적 요인이 복합적으로 작용한 결과다</td>
+          <td>Dolan et al.(2010) MINDSPACE 프레임워크</td>
+      </tr>
+      <tr>
+          <td><strong>A3</strong></td>
+          <td>공포 소구(fear appeal)는 조건에 따라 역효과를 낸다</td>
+          <td>PMT, EPPM, Drive Model 등 다수 심리학 이론</td>
+      </tr>
+      <tr>
+          <td><strong>A4</strong></td>
+          <td>문화적 맥락이 메시지 수용 방식을 결정한다</td>
+          <td>Hofstede(2010), Triandis(1989), Kreuter &amp; McClure(2004)</td>
+      </tr>
+      <tr>
+          <td><strong>A5</strong></td>
+          <td>보안 시스템과 정책의 설계 실패가 사용자 비준수의 핵심 원인 중 하나다</td>
+          <td>Nurse et al.(2011), Whitten &amp; Tygar(1999)</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="3-분석-방법론">3. 분석 방법론<a hidden class="anchor" aria-hidden="true" href="#3-분석-방법론">#</a></h3>
+<h4 id="a-문헌-검토-범위">A. 문헌 검토 범위<a hidden class="anchor" aria-hidden="true" href="#a-문헌-검토-범위">#</a></h4>
+<p>이 논문은 다음 세 분야의 기존 문헌을 체계적으로 검토한다.</p>
+<table>
+  <thead>
+      <tr>
+          <th>분야</th>
+          <th>주요 이론/출처</th>
+          <th>활용 목적</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>심리학 및 행동과학</td>
+          <td>PMT, 조절초점이론, EPPM, 자기효능감 이론</td>
+          <td>개인 수준의 행동 변화 메커니즘 설명</td>
+      </tr>
+      <tr>
+          <td>행동경제학 및 공공정책</td>
+          <td>MINDSPACE 프레임워크(Dolan et al., 2010)</td>
+          <td>행동에 영향을 미치는 9가지 환경적 요인 구조화</td>
+      </tr>
+      <tr>
+          <td>문화심리학</td>
+          <td>Hofstede의 문화 차원 이론, Triandis의 집단주의 이론</td>
+          <td>국가·조직 문화가 메시지 수용에 미치는 영향 분석</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>데이터 수집 방식:</strong>
+자체 설문, 실험, 인터뷰 없음. 기존 학술 문헌 및 실존 캠페인 사례(영국, 아프리카)의 공개 자료를 분석 대상으로 활용.</p>
+<h4 id="b-핵심-이론-분석-틀">B. 핵심 이론 분석 틀<a hidden class="anchor" aria-hidden="true" href="#b-핵심-이론-분석-틀">#</a></h4>
+<p><strong>보호동기이론(Protection Motivation Theory, PMT)</strong></p>
+<p>목적: 공포 소구가 행동 변화로 이어지는 조건을 설명</p>
+<p><strong>[ 위협 평가 ]</strong>
+- 위협의 심각성
+- 위협의 발생 가능성
+&raquo; →</p>
+<p><strong>[ 대처 평가 ]</strong>
+- 대응 행동의 효과성  ( 반응 효능감 )
+- 자신이 실행할 수 있다는 믿음  ( 자기효능감 )
+&raquo; ↓</p>
+<p><strong>[ 보호 동기 형성 ]</strong>
+&raquo; ↓</p>
+<p><strong>[ 보호 행동 채택 ]</strong></p>
+<p>핵심 함의: 위협만 강조하고 실행 가능한 대응 행동을 제시하지 않으면 보호 동기가 형성되지 않는다. <strong>자기효능감이 낮은</strong> 수신자는 위협 메시지에 <strong>공포 통제(fear control) 반응</strong>, 즉 위협 자체를 부정하는 방식으로 대응한다.</p>
+<p><strong>확장병렬처리모델(Extended Parallel Process Model, EPPM)</strong></p>
+<p>목적: 공포 소구의 역효과 발생 조건 설명</p>
+<p><strong>[ 공포 소구 메시지 수신 ]</strong>
+&raquo; ↓</p>
+<p><strong>[ 위협 인식 수준 평가 ]</strong>
+&raquo; ↓</p>
+<p><strong>[ 높음 ]</strong>
+- 대처 효능감 평가
+&raquo; ↓
+- 높음  :  위험 통제  →  보호 행동
+- 낮음  :  공포 통제  →  부정, 방어적 회피</p>
+<p><strong>[ 낮음 ]</strong>
+- 메시지 무시  ( 위협 부정 )</p>
+<p>핵심 함의: 위협 인식이 높더라도 <strong>대처 효능감이 낮으면</strong> 보호 행동 대신 위협 부정 반응이 나타난다. 이것이 공포 소구가 역효과를 내는 메커니즘이다.</p>
+<p><strong>MINDSPACE 프레임워크(Dolan et al., 2010)</strong></p>
+<p>목적: 행동에 영향을 미치는 9가지 환경적·심리적 요인 구조화</p>
+<table>
+  <thead>
+      <tr>
+          <th>요인</th>
+          <th>내용</th>
+          <th>보안 캠페인 적용</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Messenger</td>
+          <td>누가 메시지를 전달하는가가 수용도를 결정</td>
+          <td>경영진 vs. IT 담당자의 메시지 전달 효과 차이</td>
+      </tr>
+      <tr>
+          <td>Incentives</td>
+          <td>손실 회피 편향이 이득 추구보다 강하게 작동</td>
+          <td>보안 미준수의 결과를 손실 프레임으로 제시</td>
+      </tr>
+      <tr>
+          <td>Norms</td>
+          <td>타인의 행동이 강력한 영향력을 발휘</td>
+          <td>동료 집단의 보안 행동을 사회적 규범으로 제시</td>
+      </tr>
+      <tr>
+          <td>Defaults</td>
+          <td>기본 설정 옵션을 따르는 경향</td>
+          <td>보안 설정을 기본값으로 설정하는 시스템 설계</td>
+      </tr>
+      <tr>
+          <td>Salience</td>
+          <td>자신과 관련 있다고 느끼는 정보에 주의 집중</td>
+          <td>직무별, 역할별 맞춤형 보안 메시지 설계</td>
+      </tr>
+      <tr>
+          <td>Priming</td>
+          <td>무의식적 단서가 행동에 영향</td>
+          <td>보안 관련 시각적 환경 구성</td>
+      </tr>
+      <tr>
+          <td>Affect</td>
+          <td>감정적 연상이 행동을 강하게 형성</td>
+          <td>긍정적 감정 연결(보안 = 보호, 안심)로 메시지 설계</td>
+      </tr>
+      <tr>
+          <td>Commitments</td>
+          <td>공개적 약속과 상호성이 행동을 유도</td>
+          <td>보안 서약, 팀 단위 보안 목표 공개 설정</td>
+      </tr>
+      <tr>
+          <td>Ego</td>
+          <td>자아 이미지와 일관된 행동을 취하려는 경향</td>
+          <td>보안 전문가 이미지와 연결된 인식 캠페인</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>조절초점이론(Regulatory Focus Theory, Higgins 1998)</strong></p>
+<p>목적: 개인의 동기 유형에 따른 메시지 프레이밍 효과 차이 설명</p>
+<p><strong>[ 촉진 초점  ( Promotion Focus ) ]</strong>
+- 이상적 자아 달성 추구
+- 이득 추구
+- 서구 개인주의 문화에서 강함
+&raquo; ↓
+- 보안 혜택 중심 메시지  :  보안을 유지하면 얻는 것</p>
+<p><strong>[ 예방 초점  ( Prevention Focus ) ]</strong>
+- 의무와 책임 이행
+- 손실 회피
+- 동아시아 집단주의 문화에서 강함
+&raquo; ↓
+- 보안 미준수 결과 중심 메시지  :  보안을 지키지 않으면 잃는 것</p>
+<h4 id="c-사례-분석-방법">C. 사례 분석 방법<a hidden class="anchor" aria-hidden="true" href="#c-사례-분석-방법">#</a></h4>
+<p>영국(GetSafeOnline, Cyber Streetwise)과 아프리카(ISC Africa, Parents&rsquo; Corner) 캠페인을 선정하여 Hofstede의 문화 차원 이론(개인주의-집단주의 축)을 기준으로 메시지 전략의 차이를 비교 분석한다. 사례 선정 기준은 두 지역이 문화적 특성과 보안 투자 규모 측면에서 뚜렷한 대조를 이룬다는 점이다.</p>
+<hr>
+<h3 id="4-컨설팅-관점-인사이트">4. 컨설팅 관점 인사이트<a hidden class="anchor" aria-hidden="true" href="#4-컨설팅-관점-인사이트">#</a></h3>
+<p><strong>방법론의 실무 적용성:</strong></p>
+<p>장점:
+- 이론 기반 분석 틀은 고객사의 현행 보안 교육 프로그램을 진단하는 체크리스트 형태로 즉시 변환 가능하다
+- PMT와 EPPM은 공포 소구 중심의 보안 메시지가 왜 효과를 내지 못하는지를 경영진에게 설명하는 논리적 근거로 활용할 수 있다
+- MINDSPACE의 9가지 요인은 보안 인식 프로그램 설계 시 점검해야 할 항목 목록으로 활용 가능하다</p>
+<p>한계:
+- 자체 실증 데이터가 없어 인과관계의 강도를 정량적으로 제시하기 어렵다
+- 영국과 아프리카 사례는 국내 기업 환경에 직접 적용하기에 문화적 거리가 있다. 한국 조직 특성(위계 구조, 집단주의 성향)에 맞는 별도 분석이 필요하다</p>
+<p><strong>기존 보안 접근법과의 차별점:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>접근 방식</th>
+          <th>초점</th>
+          <th>강점</th>
+          <th>약점</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>기존 컴플라이언스 중심 접근</td>
+          <td>규정 준수 여부 측정</td>
+          <td>측정 용이, 감사 대응 명확</td>
+          <td>행동 변화 여부와 무관한 형식적 이수로 귀결</td>
+      </tr>
+      <tr>
+          <td>이 논문의 심리학적 접근</td>
+          <td>행동 변화의 심리적 선행 조건</td>
+          <td>실질적 행동 변화 설계 가능</td>
+          <td>효과 측정이 어렵고 장기 투자 필요</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h2>
+<p>[1] Bada, M., Sasse, A. M., &amp; Nurse, J. R. C. (2014/2019). Cyber Security Awareness Campaigns: Why do they fail to change behaviour? arXiv preprint arXiv:1901.02672. Global Cyber Security Capacity Centre, University of Oxford.</p>
+<p>[2] Rogers, R. W. (1975). A protection motivation theory of fear appeals and attitude change. <em>Journal of Psychology</em>, 91, 93–114.</p>
+<p>[3] Higgins, E. T. (1998). Promotion and prevention: Regulatory focus as a motivational principle. <em>Advances in Experimental Social Psychology</em>, 30, 1–46.</p>
+<p>[4] Da Veiga, A., &amp; Eloff, J. H. P. (2010). A framework and assessment instrument for information security culture. <em>Computers &amp; Security</em>, 29(2), 196–207.</p>
+<p>[5] Bulgurcu, B., Cavusoglu, H., &amp; Benbasat, I. (2010). Information security policy compliance: An empirical study of rationality-based beliefs and information security awareness. <em>MIS Quarterly</em>, 34(3), 523–548.</p>
+<p>[6] Dolan, P., Hallsworth, M., Halpern, D., King, D., &amp; Vlaev, I. (2010). MINDSPACE: Influencing behaviour through public policy. Institute for Government, Cabinet Office.</p>
+<p>[7] Witte, K. (1994). Fear control and danger control: A test of the Extended Parallel Process Model (EPPM). <em>Communication Monographs</em>, 61, 113–134.</p>
+<p>[8] Hofstede, G., Hofstede, J. G., &amp; Minkov, M. (2010). <em>Cultures and Organizations: Software of the Mind</em> (3rd ed.). McGraw-Hill.</p>
+<hr>
+<h2 id="day-3--empirical-results-and-hypothesis-testing">Day 3 – Empirical Results and Hypothesis Testing<a hidden class="anchor" aria-hidden="true" href="#day-3--empirical-results-and-hypothesis-testing">#</a></h2>
+<p><em>(이론이 실제 캠페인과 만났을 때 무엇이 드러나는가)</em></p>
+<h3 id="1-분석-환경">1. 분석 환경<a hidden class="anchor" aria-hidden="true" href="#1-분석-환경">#</a></h3>
+<p>이 논문은 실험이나 설문 기반의 실증 연구가 아니다. Day 3에서 다루는 내용은 저자들이 기존 심리학 이론을 실존 캠페인 사례에 적용하여 도출한 분석 결과다. 수치 기반의 가설 검증 대신, 이론-사례 정합성 분석을 통해 캠페인 성공/실패 요인을 추출한다.</p>
+<p><strong>분석 대상:</strong>
+- 영국  :  GetSafeOnline 캠페인, Cyber Streetwise 캠페인
+- 아프리카  :  ISC Africa 캠페인, Parents&rsquo; Corner 캠페인</p>
+<p><strong>분석 기준:</strong>
+- Hofstede의 개인주의-집단주의 문화 차원
+- PMT 및 EPPM 기반 공포 소구 효과성 조건
+- 조절초점이론 기반 메시지 프레이밍 적합성</p>
+<hr>
+<h3 id="2-주요-발견">2. 주요 발견<a hidden class="anchor" aria-hidden="true" href="#2-주요-발견">#</a></h3>
+<h4 id="a-지식-행동-불일치의-구조적-확인">A. 지식-행동 불일치의 구조적 확인<a hidden class="anchor" aria-hidden="true" href="#a-지식-행동-불일치의-구조적-확인">#</a></h4>
+<p>논문이 도출하는 가장 핵심적인 발견은 인식 수준 향상이 행동 변화를 보장하지 않는다는 점이다. 이는 단순한 주장이 아니라 기존 연구의 반복적 확인 결과다.</p>
+<table>
+  <thead>
+      <tr>
+          <th>발견</th>
+          <th>내용</th>
+          <th>의미</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>지식-행동 불일치</strong></td>
+          <td>사람들은 인식 관련 질문에 올바른 답을 알면서도 실생활에서 그에 따라 행동하지 않는다</td>
+          <td>교육 이수 기록과 실제 보안 행동은 별개의 지표다</td>
+      </tr>
+      <tr>
+          <td><strong>컴플라이언스-행동 분리</strong></td>
+          <td>컴플라이언스 인식 프로그램이 원하는 행동을 만들어내지 않는다</td>
+          <td>규정 준수 형식을 갖추더라도 위험은 줄지 않을 수 있다</td>
+      </tr>
+      <tr>
+          <td><strong>효과 측정 부재</strong></td>
+          <td>대부분의 캠페인이 피싱 메일 클릭 수, 비인가 페이지 접속 수 등의 지표를 대규모로 측정하기 어렵다</td>
+          <td>캠페인 효과를 정량화하는 명확한 지표 설계가 선행되어야 한다</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="b-공포-소구의-역효과-확인">B. 공포 소구의 역효과 확인<a hidden class="anchor" aria-hidden="true" href="#b-공포-소구의-역효과-확인">#</a></h4>
+<p>논문은 보안 캠페인에서 가장 광범위하게 사용되는 전략인 공포 소구가 특정 조건에서 역효과를 낸다는 점을 EPPM을 통해 설명한다.</p>
+<p><strong>[ 공포 소구 역효과 발생 경로 ]</strong></p>
+<pre><code>- 위협 메시지 수신  ( 해커 이미지, 위험 경고 )
+&gt;&gt; ↓
+- 위협 인식 높아짐
+&gt;&gt; ↓
+- 대처 효능감 낮음  ( 나는 어차피 막을 수 없다 )
+&gt;&gt; ↓
+</code></pre>
+<p><strong>[ 공포 통제 반응 ]</strong>
+- 위협 부정  ( 나는 해당 없다 )
+- 방어적 회피  ( 생각하지 않으려 함 )
+- 메시지 무시 또는 반발</p>
+<p>실제 캠페인에서 확인된 패턴: 해커 이미지와 결합된 공포 메시지가 수신자에게 공포보다 우스꽝스럽게 느껴지거나, 자신과 무관한 이야기로 처리되는 현상이 반복 보고되었다.</p>
+<h4 id="c-영국-아프리카-캠페인-비교-결과">C. 영국-아프리카 캠페인 비교 결과<a hidden class="anchor" aria-hidden="true" href="#c-영국-아프리카-캠페인-비교-결과">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>비교 항목</th>
+          <th>영국 캠페인</th>
+          <th>아프리카 캠페인</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>문화 성향</td>
+          <td>개인주의</td>
+          <td>집단주의</td>
+      </tr>
+      <tr>
+          <td>메시지 초점</td>
+          <td>개인의 책임과 행동 (Get safe online)</td>
+          <td>관계와 집단 보호 (Working together / Friends must protect friends)</td>
+      </tr>
+      <tr>
+          <td>조절 초점</td>
+          <td>촉진 초점  ( 이득, 혜택 강조 )</td>
+          <td>예방 초점  ( 의무, 손실 회피 강조 )</td>
+      </tr>
+      <tr>
+          <td>문화 적합성</td>
+          <td>서구 개인주의 문화와 정합</td>
+          <td>아프리카 집단주의 문화와 정합</td>
+      </tr>
+      <tr>
+          <td>캠페인 수</td>
+          <td>다수, 분산적</td>
+          <td>소수, 통합적</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>핵심 관찰:</strong> 두 지역 모두 자국 문화적 특성을 캠페인 메시지에 반영하고 있었다. 다만 아프리카의 경우 캠페인 수가 적은 것이 자원 부족을 의미하는지, 아니면 더 집중된 전략을 의미하는지는 논문이 결론 내리지 않는다.</p>
+<p><strong>공통적 한계:</strong> 두 지역 캠페인 모두 전문가가 단방향으로 정보를 제공하는 방식에 머물렀으며, 사용자가 도움을 요청할 수 있는 채널(헬프라인 등)을 제공하지 않았다.</p>
+<hr>
+<h3 id="3-캠페인-성공실패-요인-분석">3. 캠페인 성공/실패 요인 분석<a hidden class="anchor" aria-hidden="true" href="#3-캠페인-성공실패-요인-분석">#</a></h3>
+<p>논문 Section 5에서 저자들이 도출한 실패 요인 6가지와 성공 조건 5가지를 이론과 연결하여 정리한다.</p>
+<h4 id="a-캠페인-실패-요인">A. 캠페인 실패 요인<a hidden class="anchor" aria-hidden="true" href="#a-캠페인-실패-요인">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>실패 요인</th>
+          <th>내용</th>
+          <th>연결 이론</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>보안 인식의 본질 오해</strong></td>
+          <td>인식 캠페인을 단순 정보 전달로 인식</td>
+          <td>NIST SP 800-16: 인식은 주의 집중이지 훈련이 아님</td>
+      </tr>
+      <tr>
+          <td><strong>컴플라이언스와 행동 혼동</strong></td>
+          <td>컴플라이언스 프로그램이 원하는 행동을 자동으로 만든다는 착각</td>
+          <td>지식-행동 불일치 연구</td>
+      </tr>
+      <tr>
+          <td><strong>콘텐츠 부적합</strong></td>
+          <td>흥미롭지 않고, 현재성 없고, 너무 일반적인 교육 자료</td>
+          <td>MINDSPACE: Salience(관련성) 부재</td>
+      </tr>
+      <tr>
+          <td><strong>인식을 독립 분야로 취급하지 않음</strong></td>
+          <td>보안 인식 설계를 별도 전문성이 필요한 영역으로 보지 않음</td>
+          <td>—</td>
+      </tr>
+      <tr>
+          <td><strong>효과 평가 부재</strong></td>
+          <td>캠페인 이후 행동 변화를 측정하는 체계가 없음</td>
+          <td>—</td>
+      </tr>
+      <tr>
+          <td><strong>단일 주제 반복 훈련</strong></td>
+          <td>특정 위협 하나에만 집중하여 전체 보안 훈련 효과 미달</td>
+          <td>—</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="b-캠페인-성공-조건">B. 캠페인 성공 조건<a hidden class="anchor" aria-hidden="true" href="#b-캠페인-성공-조건">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>성공 조건</th>
+          <th>내용</th>
+          <th>컨설팅 적용</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>전문적 준비와 조직화</strong></td>
+          <td>보안 인식은 즉흥적으로 설계할 수 없으며 전문적 기획이 필요하다</td>
+          <td>SETA 프로그램 설계 단계에서 전문 기획 인력 또는 외부 자문 필요</td>
+      </tr>
+      <tr>
+          <td><strong>공포 소구 자제</strong></td>
+          <td>공포 유발은 효과적 전술이 아니며, 리스크를 감당할 여력이 없는 사람에게는 특히 역효과</td>
+          <td>경영진 보고 시 위협 강조보다 실행 가능한 대응 중심으로 프레이밍</td>
+      </tr>
+      <tr>
+          <td><strong>실행 가능한 교육 설계</strong></td>
+          <td>정보 제공을 넘어 목표 지향적, 실행 가능하고, 피드백을 포함해야 한다</td>
+          <td>교육 후 실습, 피드백 루프, 행동 변화 측정 체계 포함</td>
+      </tr>
+      <tr>
+          <td><strong>지속적 피드백과 지원</strong></td>
+          <td>행동 변화 의지가 생긴 후에도 변화 과정을 지속하는 지원이 필요하다</td>
+          <td>1회성 교육이 아닌 반복 접촉, 코칭 구조 설계</td>
+      </tr>
+      <tr>
+          <td><strong>문화적 맥락 반영</strong></td>
+          <td>대상 집단의 문화적 특성에 맞는 메시지 설계가 필요하다</td>
+          <td>조직 문화 진단 선행, 메시지 프레이밍 전략 차별화</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="4-상세-분석">4. 상세 분석<a hidden class="anchor" aria-hidden="true" href="#4-상세-분석">#</a></h3>
+<h4 id="a-보안-기능성-사용성-트라이앵글과-보안-피로의-관계">A. 보안-기능성-사용성 트라이앵글과 보안 피로의 관계<a hidden class="anchor" aria-hidden="true" href="#a-보안-기능성-사용성-트라이앵글과-보안-피로의-관계">#</a></h4>
+<p>논문은 <strong>보안 피로</strong>를 단순한 심리적 현상으로 보지 않고 시스템 설계 실패의 결과로 해석한다. 보안-기능성-사용성 트라이앵글에서 보안 쪽으로 지나치게 치우친 설계는 사용자가 감당하기 어려운 요구사항을 만들어내고, 이것이 보안 피로로 이어진다.</p>
+<p><strong>관찰:</strong> 1999년 Whitten &amp; Tygar의 연구에서 지적된 보안 인터페이스 설계 실패 문제가 이 논문이 작성된 시점까지 반복적으로 확인된다.</p>
+<p><strong>해석:</strong> 보안 행동 비준수 문제의 상당 부분은 개인의 의지 부족이 아니라 시스템과 정책 설계 실패에서 비롯된다. 책임을 사용자에게 전가하는 캠페인 전략은 구조적 문제를 가린다.</p>
+<p><strong>실무 시사점:</strong> 고객사의 보안 정책 준수율이 낮을 때, 첫 번째 진단 항목은 **정책의 실행 가능성(usability)**이어야 한다. 정책 자체가 현업 업무와 충돌하거나 지나치게 복잡하면 교육을 아무리 강화해도 준수율은 오르지 않는다.</p>
+<h4 id="b-메시지-발신자messenger-효과">B. 메시지 발신자(Messenger) 효과<a hidden class="anchor" aria-hidden="true" href="#b-메시지-발신자messenger-효과">#</a></h4>
+<p>MINDSPACE 프레임워크에서 Messenger 요인은 동일한 내용이라도 누가 전달하느냐에 따라 수용도가 달라진다는 점을 지적한다. 논문은 대부분의 공식 캠페인 사이트가 보안 전문가나 서비스 제공자 관점에서 단방향으로 정보를 제공하며, 이것이 사용자의 수용을 제한한다고 분석한다.</p>
+<p><strong>관찰:</strong> 보안 전문가가 제시하는 메시지(강한 패스워드를 사용하라)는 사용자에게 책임 전가로 받아들여지는 경향이 있다.</p>
+<p><strong>해석:</strong> 메시지의 신뢰성과 수용도는 발신자의 권위보다 발신자와 수신자 간의 관계, 맥락, 신뢰 수준에 의해 결정된다.</p>
+<p><strong>실무 시사점:</strong> 보안 인식 프로그램에서 경영진 또는 현업 리더가 직접 메시지를 전달하는 구조가 IT 보안 부서 단독 전달 구조보다 행동 변화 효과가 높을 수 있다. MINDSPACE의 Messenger 요인은 보안 문화 수립 자문 시 경영진 참여의 필요성을 설명하는 근거로 활용 가능하다.</p>
+<hr>
+<h3 id="5-측정-문제-분석">5. 측정 문제 분석<a hidden class="anchor" aria-hidden="true" href="#5-측정-문제-분석">#</a></h3>
+<p>논문은 효과 측정의 어려움을 캠페인 실패의 구조적 원인 중 하나로 지적한다.</p>
+<table>
+  <thead>
+      <tr>
+          <th>측정 문제</th>
+          <th>내용</th>
+          <th>시사점</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>지식 측정과 행동 측정의 혼동</strong></td>
+          <td>질문에 올바른 답을 하는 것이 실제 행동 변화를 의미하지 않는다</td>
+          <td>교육 이수율, 시험 점수 대신 행동 지표(피싱 시뮬레이션 클릭률 등) 측정 필요</td>
+      </tr>
+      <tr>
+          <td><strong>대규모 측정의 기술적 한계</strong></td>
+          <td>피싱 메일 클릭 수, 비인가 접속 수 등을 조직 전체 규모로 측정하기 어렵다</td>
+          <td>측정 가능한 행동 지표를 캠페인 설계 초기에 정의해야 한다</td>
+      </tr>
+      <tr>
+          <td><strong>리스크 감소와 인식 수준의 인과 불명확</strong></td>
+          <td>인식이 높아졌을 때 리스크가 실제로 감소했는지 인과를 입증하기 어렵다</td>
+          <td>캠페인 효과를 단기 지표가 아닌 장기 행동 추세로 평가해야 한다</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="6-컨설팅-관점-인사이트">6. 컨설팅 관점 인사이트<a hidden class="anchor" aria-hidden="true" href="#6-컨설팅-관점-인사이트">#</a></h3>
+<p><strong>성공 사례:</strong></p>
+<p>문화적 적합성을 갖춘 캠페인이 효과적인 조건을 갖추는 사례로, 아프리카 캠페인은 집단주의 문화 특성을 메시지에 반영하여 수신자의 동기 구조(의무, 관계 보호)와 일치하는 프레이밍을 사용했다. 이는 조절초점이론의 예방 초점과 정합한다.</p>
+<p><strong>한계 사례:</strong></p>
+<p>영국과 아프리카 캠페인 모두 단방향 정보 제공 구조에서 벗어나지 못했다. 사용자가 질문하거나 도움을 요청할 수 있는 채널이 없다는 점은 행동 변화 지원 체계의 부재를 의미한다. 숙련도가 낮은 사용자에게는 이 구조적 한계가 특히 크게 작용한다.</p>
+<p><strong>고객 환경 적용 시 고려사항:</strong></p>
+<p>국내 기업 환경은 Hofstede 분류 기준으로 집단주의 성향이 강하고 권력 거리가 높다. 이는 두 가지 함의를 가진다. 첫째, 보안 메시지는 개인 이익보다 팀, 조직, 고객 보호를 강조하는 <strong>예방 초점 프레이밍</strong>이 더 효과적일 수 있다. 둘째, 경영진의 가시적 참여와 지지(Messenger 효과)가 임직원의 보안 행동에 미치는 영향이 서구 환경보다 크게 작용할 수 있다.</p>
+<hr>
+<h3 id="7-개인-인사이트">7. 개인 인사이트<a hidden class="anchor" aria-hidden="true" href="#7-개인-인사이트">#</a></h3>
+<p><strong>인식과 행동의 간극이 이렇게 구조적인 문제였다는 점</strong></p>
+<p>단순히 교육을 많이 하면 보안이 좋아진다는 직관적 믿음이 왜 현실에서 반복적으로 실망으로 끝나는지, 이 논문은 심리학적 메커니즘으로 설명한다. 특히 EPPM이 설명하는 <strong>공포 통제 반응</strong>, 즉 위협을 부정하는 방식으로 대응하는 패턴은 실무에서 왜 위협 강조형 교육이 효과가 없는지를 설명하는 정확한 언어를 제공한다.</p>
+<p><strong>측정 문제가 모든 것의 출발점이라는 깨달음</strong></p>
+<p>캠페인 효과를 측정하지 않으면 무엇이 작동하고 무엇이 작동하지 않는지 알 수 없다. 그런데 대부분의 조직은 교육 이수율이라는 인풋 지표만 측정하고 행동 변화라는 아웃컴 지표를 측정하지 않는다. 컨설팅 진단 단계에서 고객사에 이 질문을 던지는 것 자체가 중요한 개입이 될 수 있다.</p>
+<p><strong>문화 맥락 반영이 선택이 아닌 설계 조건이라는 점</strong></p>
+<p>한국 기업 환경에서 서구형 보안 인식 캠페인 콘텐츠를 그대로 도입할 때 발생하는 효과 저하의 원인 중 하나가 바로 문화적 부적합성일 수 있다. 이 논문은 그 문제를 이론적으로 설명하는 틀을 제공한다.</p>
+<hr>
+<h2 id="day-4--research-limitations-and-scholarly-impact">Day 4 – Research Limitations and Scholarly Impact<a hidden class="anchor" aria-hidden="true" href="#day-4--research-limitations-and-scholarly-impact">#</a></h2>
+<p><em>(개념적 선구자가 남긴 것과 남기지 못한 것)</em></p>
+<h3 id="1-연구의-한계점">1. 연구의 한계점<a hidden class="anchor" aria-hidden="true" href="#1-연구의-한계점">#</a></h3>
+<h4 id="a-실증-데이터-부재">A. 실증 데이터 부재<a hidden class="anchor" aria-hidden="true" href="#a-실증-데이터-부재">#</a></h4>
+<p><strong>문제:</strong>
+이 논문은 자체적인 실험, 설문, 인터뷰 데이터를 생성하지 않는다. 전체 논증이 기존 심리학 문헌의 검토와 두 지역 캠페인 사례의 정성적 비교에 의존한다.</p>
+<p><strong>영향:</strong>
+제시된 실패 요인과 성공 조건이 얼마나 강력하게, 어떤 조건에서 작동하는지를 정량적으로 뒷받침하지 못한다. 결론이 규범적(normative) 수준에 머물며 인과적 설명력이 제한된다.</p>
+<p><strong>보완 방향:</strong>
+후속 연구들이 이 논문이 제시한 프레임워크를 실증 연구의 출발점으로 활용하는 방식으로 한계를 보완했다. PMT, EPPM 기반 실험 연구, 피싱 시뮬레이션 기반 행동 측정 연구 등이 이 논문이 개념적으로 제기한 문제를 실증적으로 검증하는 흐름으로 이어졌다.</p>
+<h4 id="b-사례-범위의-편향">B. 사례 범위의 편향<a hidden class="anchor" aria-hidden="true" href="#b-사례-범위의-편향">#</a></h4>
+<p><strong>문제:</strong>
+영국과 아프리카 두 지역만을 비교 대상으로 삼았다. 저자들 스스로 논문 말미에 향후 북미와 아시아 캠페인으로 분석을 확장할 계획을 밝혔다.</p>
+<p><strong>영향:</strong>
+동아시아, 특히 한국·일본·중국 등 집단주의와 높은 권력 거리가 결합된 문화권에서 캠페인 설계 시 어떤 차이가 나타나는지를 이 논문만으로는 알 수 없다. 국내 기업 환경에 적용할 때 별도의 문화 맥락 분석이 필요하다.</p>
+<p><strong>보완 방향:</strong>
+이후 연구들이 아시아권, 중동권 등 다양한 문화권으로 보안 인식 캠페인 분석을 확장했다. 그러나 한국 기업 특화 보안 인식 연구는 여전히 상대적으로 부족한 상태다.</p>
+<h4 id="c-효과-측정-지표의-미개발">C. 효과 측정 지표의 미개발<a hidden class="anchor" aria-hidden="true" href="#c-효과-측정-지표의-미개발">#</a></h4>
+<p><strong>문제:</strong>
+논문은 행동 변화를 측정해야 한다는 필요성을 강조하지만, 구체적으로 어떤 지표로 무엇을 어떻게 측정해야 하는지에 대한 방법론을 제시하지 않는다.</p>
+<p><strong>영향:</strong>
+실무 담당자 입장에서 이 논문을 읽고 나서도 실제 측정 체계를 어떻게 설계할지에 대한 답을 얻기 어렵다. 문제 진단은 명확하지만 처방의 구체성이 부족하다.</p>
+<p><strong>보완 방향:</strong>
+이후 피싱 시뮬레이션 클릭률, 보안 사고 보고율, 반복 훈련 후 행동 변화 추세 등 측정 가능한 아웃컴 지표를 개발하는 연구들이 이 공백을 채웠다.</p>
+<h4 id="d-조직-수준-분석의-부재">D. 조직 수준 분석의 부재<a hidden class="anchor" aria-hidden="true" href="#d-조직-수준-분석의-부재">#</a></h4>
+<p><strong>문제:</strong>
+논문의 분석 단위가 주로 개인 심리 수준에 집중되어 있다. 조직 구조, 경영진 태도, 보안 예산 배분 등 조직 수준 변수가 캠페인 효과에 미치는 영향은 다루지 않는다.</p>
+<p><strong>영향:</strong>
+동일한 캠페인이라도 경영진의 지원 수준, 조직 문화의 성숙도, 인사 정책과의 연계 여부에 따라 효과가 크게 달라진다는 점을 설명하지 못한다.</p>
+<p><strong>보완 방향:</strong>
+이후 보안 문화 연구, 경영진 참여 효과 연구, 조직 수준 보안 성숙도 연구 등이 이 공백을 다루었다.</p>
+<hr>
+<h3 id="2-후속-연구-동향">2. 후속 연구 동향<a hidden class="anchor" aria-hidden="true" href="#2-후속-연구-동향">#</a></h3>
+<h4 id="a-인용-수와-영향력">A. 인용 수와 영향력<a hidden class="anchor" aria-hidden="true" href="#a-인용-수와-영향력">#</a></h4>
+<p><strong>학술적 임팩트:</strong>
+- 최초 발표  :  2014년  ( Oxford 기술보고서 )
+- arXiv 등재  :  2019년
+- 현재 인용 수  :  Semantic Scholar 기준 354회, 고영향력 인용 31회
+- preprint임에도 불구하고 보안 인식 분야 참고 문헌으로 광범위하게 인용됨</p>
+<p><strong>비교:</strong>
+동료심사 저널 논문이 아닌 기술보고서 / preprint임을 감안하면, 354회 인용은 이 논문이 제기한 문제의식이 해당 분야에서 얼마나 공감을 얻었는지를 보여준다. 형식보다 내용의 적실성이 인용을 이끈 사례다.</p>
+<h4 id="b-연구-트렌드의-변화">B. 연구 트렌드의 변화<a hidden class="anchor" aria-hidden="true" href="#b-연구-트렌드의-변화">#</a></h4>
+<p><strong>[ 이 논문 이전,  -2014 ]</strong>  정보 제공 중심
+- 보안 인식  =  올바른 행동에 대한 정보 전달
+- 측정  =  교육 이수율, 지식 테스트 점수
+- 방법  =  강의, 포스터, 이메일 공지
+&raquo; ↓</p>
+<p><strong>[ 이 논문 시기,  2014-2018 ]</strong>  심리학적 접근 대두
+- 보안 인식  =  행동 변화의 심리적 선행 조건 이해
+- PMT, EPPM, 조절초점이론 등 적용
+- 공포 소구의 역효과 비판 확산
+&raquo; ↓</p>
+<p><strong>[ 이후,  2018-현재 ]</strong>  행동 개입 중심으로 전환
+- 게임화  ( gamification ), 피싱 시뮬레이션, 넛지  ( nudge ) 기법 도입
+- 행동 변화 아웃컴 지표 개발  ( 클릭률, 보고율 등 )
+- Security Behaviour Curve 등 단계별 행동 형성 모델 등장
+- AI 기반 개인화 훈련 연구 확대</p>
+<h4 id="c-주요-후속-연구-흐름">C. 주요 후속 연구 흐름<a hidden class="anchor" aria-hidden="true" href="#c-주요-후속-연구-흐름">#</a></h4>
+<p><strong>행동 개입 기법의 실증 연구</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>연구 방향</th>
+          <th>핵심 내용</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>게임화 기반 보안 훈련</td>
+          <td>포인트, 리더보드, 시나리오 기반 게임을 통한 참여도 및 행동 변화 효과 측정 (2015년 이후 급증)</td>
+      </tr>
+      <tr>
+          <td>피싱 시뮬레이션</td>
+          <td>실제 피싱 메일 발송 후 클릭 여부를 측정하는 행동 기반 훈련. 지식 테스트가 아닌 실제 행동을 지표로 사용</td>
+      </tr>
+      <tr>
+          <td>넛지 이론 적용</td>
+          <td>기본값 설정 변경, 사회적 규범 제시 등 선택 설계(choice architecture) 기법을 보안 인터페이스에 적용</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Sasse의 후속 연구 (2022, ESORICS)</strong></p>
+<p>이 논문의 공저자인 Sasse가 2022년 발표한 후속 연구는 이 논문의 핵심 문제의식을 직접 계승한다. 보안 인식 교육이 수십억 달러 규모의 산업이 되었음에도 조직들이 의미 있는 효과 평가를 실시하지 않고 있다는 점을 재확인하며, <strong>Security Behaviour Curve</strong> 개념을 통해 인식에서 습관적 행동까지의 단계별 지원 구조를 제안했다. 조직이 단순히 임직원의 동기 부여에 그치지 않고 보안 행동을 실행 가능하고 반복 가능하게 만드는 환경을 조성해야 한다는 처방은 이 논문의 논지를 조직 설계 수준으로 확장한 것이다.</p>
+<hr>
+<h3 id="3-실무-영향">3. 실무 영향<a hidden class="anchor" aria-hidden="true" href="#3-실무-영향">#</a></h3>
+<h4 id="a-보안-인식-교육-산업에-미친-영향">A. 보안 인식 교육 산업에 미친 영향<a hidden class="anchor" aria-hidden="true" href="#a-보안-인식-교육-산업에-미친-영향">#</a></h4>
+<p><strong>이 논문 이전:</strong>
+보안 인식 교육은 주로 연간 1회 집체 교육, 이메일 공지, 포스터 부착 방식으로 운영되었다. 효과 측정은 이수율 기록에 그쳤다.</p>
+<p><strong>이 논문 이후:</strong>
+이 논문이 제기한 문제의식은 보안 인식 교육 설계 방식의 전환 논의를 촉진했다. 특히 두 가지 방향에서 실무 변화가 나타났다. 첫째, 피싱 시뮬레이션 플랫폼(KnowBe4, Proofpoint 등)이 지식 테스트 대신 실제 행동을 측정하는 도구로 주류화되었다. 둘째, 단일 주제 반복보다 역할별, 상황별 맞춤형 교육 콘텐츠 설계가 강조되기 시작했다.</p>
+<h4 id="b-규제-및-표준에의-영향">B. 규제 및 표준에의 영향<a hidden class="anchor" aria-hidden="true" href="#b-규제-및-표준에의-영향">#</a></h4>
+<p>NIST SP 800-50, ISO 27001 통제 항목(A.7.2.2 정보보안 인식, 교육 및 훈련), ISMS-P 인증 기준 모두 보안 인식 교육의 효과성 평가를 요구하지만 구체적 측정 방법은 지정하지 않는다. 이 논문이 제기한 효과 측정의 어려움과 <strong>지식-행동 불일치</strong> 문제는 규제 요건을 충족하는 방식이 실제 행동 변화와 동떨어질 수 있다는 실무적 긴장을 설명하는 이론적 근거로 기능한다.</p>
+<hr>
+<h3 id="4-컨설팅-관점-인사이트-1">4. 컨설팅 관점 인사이트<a hidden class="anchor" aria-hidden="true" href="#4-컨설팅-관점-인사이트-1">#</a></h3>
+<p><strong>한계를 이해한 컨설팅 전략:</strong></p>
+<p>이 논문의 한계 중 가장 중요한 것은 측정 지표 미개발이다. 고객사에 보안 인식 프로그램 개선을 권고할 때, 이 논문의 프레임워크를 진단 근거로 사용하되 실제 측정 방법은 피싱 시뮬레이션, 보안 사고 보고율 추적, 반복 훈련 후 행동 추세 분석 등 후속 연구에서 발전된 방법론을 함께 제시해야 한다.</p>
+<p><strong>적용 가능 시나리오:</strong>
+- ISMS-P 인증 준비 과정에서 보안 교육 훈련 체계(관리적 통제)를 점검할 때, 현행 프로그램이 이수율 측정에만 집중하고 행동 변화 효과를 측정하지 않는다는 문제를 진단하는 근거로 활용 가능
+- 경영진에게 보안 교육 예산 증액을 설득할 때, 단순 정보 전달 방식의 한계를 심리학적으로 설명하고 행동 개입 기반 접근으로의 전환을 제안하는 논거로 활용 가능
+- 디지털 전환 과정에서 새로운 시스템 도입 시 보안 행동 설계를 시스템 설계 단계부터 포함해야 한다는 보안-기능성-사용성 균형 원칙의 근거로 활용 가능</p>
+<p><strong>적용 불가 시나리오:</strong>
+- 특정 보안 인식 캠페인의 효과를 수치로 입증해야 하는 상황. 이 논문은 측정 방법을 제시하지 않으므로 후속 연구의 실증 방법론이 필요하다
+- 한국 기업 특화 문화 맥락 분석. 이 논문의 사례가 영국과 아프리카에 한정되므로 동아시아 맥락에서의 적용은 추가 문헌이 필요하다</p>
+<hr>
+<h3 id="5-개인-인사이트">5. 개인 인사이트<a hidden class="anchor" aria-hidden="true" href="#5-개인-인사이트">#</a></h3>
+<p><strong>preprint의 영향력이 이 정도일 수 있다는 점</strong></p>
+<p>동료심사를 거친 저널 논문이 아님에도 354회 인용은 이 논문이 제기한 문제가 해당 분야에서 해결되지 않은 핵심 질문이었음을 보여준다. 형식적 권위보다 문제의 적실성이 학술적 영향력을 결정한다는 사례다. 컨설팅 현장에서도 마찬가지다. 완벽한 증거보다 정확한 문제 정의가 먼저다.</p>
+<p><strong>10년이 지나도 같은 문제가 반복된다는 점</strong></p>
+<p>Sasse의 2022년 후속 연구가 여전히 동일한 문제를 반복 확인하고 있다는 사실, 즉 조직들이 의미 있는 효과 평가를 하지 않는다는 점은 이 문제가 기술적 해결이 아닌 조직 문화와 관행의 문제임을 시사한다. 컨설팅에서 이 문제를 다룰 때 단기 솔루션보다 장기 문화 변화 관점이 필요하다.</p>
+<p><strong>다음 궁금증 (Day 5 Preview):</strong>
+이 논문에서 배운 심리학적 행동 변화 프레임워크를 실제 보안 컨설팅 시나리오에 어떻게 적용할 것인지, 그리고 8편의 기존 논문 프레임워크와 어떻게 통합할 것인지를 Day 5에서 정리한다.</p>
+<hr>
+<h2 id="references-1">References<a hidden class="anchor" aria-hidden="true" href="#references-1">#</a></h2>
+<p>[1] Bada, M., Sasse, A. M., &amp; Nurse, J. R. C. (2014/2019). Cyber Security Awareness Campaigns: Why do they fail to change behaviour? arXiv preprint arXiv:1901.02672. Global Cyber Security Capacity Centre, University of Oxford.</p>
+<p>[2] Rogers, R. W. (1975). A protection motivation theory of fear appeals and attitude change. <em>Journal of Psychology</em>, 91, 93–114.</p>
+<p>[3] Higgins, E. T. (1998). Promotion and prevention: Regulatory focus as a motivational principle. <em>Advances in Experimental Social Psychology</em>, 30, 1–46.</p>
+<p>[4] Da Veiga, A., &amp; Eloff, J. H. P. (2010). A framework and assessment instrument for information security culture. <em>Computers &amp; Security</em>, 29(2), 196–207.</p>
+<p>[5] Bulgurcu, B., Cavusoglu, H., &amp; Benbasat, I. (2010). Information security policy compliance: An empirical study of rationality-based beliefs and information security awareness. <em>MIS Quarterly</em>, 34(3), 523–548.</p>
+<p>[6] Dolan, P., Hallsworth, M., Halpern, D., King, D., &amp; Vlaev, I. (2010). MINDSPACE: Influencing behaviour through public policy. Institute for Government, Cabinet Office.</p>
+<p>[7] Witte, K. (1994). Fear control and danger control: A test of the Extended Parallel Process Model (EPPM). <em>Communication Monographs</em>, 61, 113–134.</p>
+<p>[8] Hofstede, G., Hofstede, J. G., &amp; Minkov, M. (2010). <em>Cultures and Organizations: Software of the Mind</em> (3rd ed.). McGraw-Hill.</p>
+<p>[9] Whitten, A., &amp; Tygar, J. D. (1999). Why Johnny can&rsquo;t encrypt: A usability evaluation of PGP 5.0. <em>Proceedings of the 8th USENIX Security Symposium</em>.</p>
+<p>[10] Sasse, M. A., Hielscher, J., Friedauer, J., &amp; Buckmann, A. (2023). Rebooting IT Security Awareness: How Organisations Can Encourage and Sustain Secure Behaviours. In <em>Computer Security. ESORICS 2022 International Workshops</em>. Lecture Notes in Computer Science, vol 13785. Springer.</p>
+<p>[11] Mersinas, K., &amp; Bada, M. (2024). Behavior Change Approaches for Cyber Security and the Need for Ethics. In <em>Proceedings of the International Conference on Cybersecurity, Situational Awareness and Social Media. CYBER SCIENCE 2023</em>. Springer.</p>
+<hr>
+<h2 id="day-5--consulting-perspective-and-key-takeaways">Day 5 – Consulting Perspective and Key Takeaways<a hidden class="anchor" aria-hidden="true" href="#day-5--consulting-perspective-and-key-takeaways">#</a></h2>
+<p><em>(인식과 행동의 간극을 컨설팅 개입점으로 전환하기)</em></p>
+<h3 id="1-5일간-학습-여정-종합">1. 5일간 학습 여정 종합<a hidden class="anchor" aria-hidden="true" href="#1-5일간-학습-여정-종합">#</a></h3>
+<h4 id="a-무엇을-배웠나">A. 무엇을 배웠나<a hidden class="anchor" aria-hidden="true" href="#a-무엇을-배웠나">#</a></h4>
+<p><strong>Day 1: 연구 배경과 문제의식</strong></p>
+<p><strong>[ Day 1 요약 ]</strong>
+- 보안 인식 캠페인이 행동 변화로 이어지지 않는 현상이 반복된다
+&raquo; ↓
+- 지식 전달만으로는 행동 변화가 일어나지 않는다는 문제 제기
+&raquo; ↓
+- 인식  ( awareness )과 행동  ( behaviour )은 별개의 과정이며, 그 사이에는 동기, 능력, 문화적 맥락이 개입한다</p>
+<p><strong>Day 2: 이론적 분석 틀</strong></p>
+<p><strong>[ Day 2 요약 ]</strong>
+- PMT, EPPM, 조절초점이론, MINDSPACE를 분석 도구로 활용
+&raquo; ↓
+- 행동 변화의 결정 요인을 개인적  /  사회환경적  /  문화적 세 층위로 구조화
+&raquo; ↓
+- 보안 교육 설계는 심리학적 행동 변화 원리를 반영해야 한다</p>
+<p><strong>Day 3: 이론의 사례 적용과 성패 요인 도출</strong></p>
+<p><strong>[ Day 3 요약 ]</strong>
+- 영국 - 아프리카 캠페인 비교를 통해 문화적 적합성의 실질적 차이 확인
+&raquo; ↓
+- 공포 소구 역효과, 측정 체계 부재, 단방향 전달 구조의 한계 확인
+&raquo; ↓
+- 성공 조건 5가지  :  전문적 설계, 공포 자제, 실행 가능한 교육, 지속 피드백, 문화 맥락 반영</p>
+<p><strong>Day 4: 한계와 학술적 영향</strong></p>
+<p><strong>[ Day 4 요약 ]</strong>
+- 실증 데이터 없음, 사례 범위 협소, 측정 지표 미개발, 조직 수준 분석 부재
+&raquo; ↓
+- 354회 인용, Sasse 본인의 2022년 후속 연구로 문제의식 계승
+&raquo; ↓
+- 10년이 지나도 같은 문제가 반복되는 것은 기술이 아닌 조직 관행의 문제임을 시사한다</p>
+<p><strong>Day 5 (지금): 컨설팅 관점 통합</strong></p>
+<p>지금까지 배운 심리학적 행동 변화 프레임워크를 보안 컨설팅 진단, 체계 수립, 경영진 자문 시나리오에 어떻게 구체적으로 적용할 것인가?</p>
+<hr>
+<h3 id="2-논문에서-배운-핵심-원리-정리">2. 논문에서 배운 핵심 원리 정리<a hidden class="anchor" aria-hidden="true" href="#2-논문에서-배운-핵심-원리-정리">#</a></h3>
+<h4 id="a-핵심-원리">A. 핵심 원리<a hidden class="anchor" aria-hidden="true" href="#a-핵심-원리">#</a></h4>
+<p><strong>원리 1: 지식은 행동의 필요조건이지 충분조건이 아니다</strong></p>
+<p>보안 교육이 지식을 전달하는 데 성공해도 행동 변화로 이어지지 않는 이유는, 행동 변화를 위해서는 지식 외에도 동기(하려는 의지), 능력(실행 가능한 방법), 지속적 지원(변화 과정 유지)이 모두 갖춰져야 하기 때문이다.</p>
+<p>왜 작동하는가: 심리학적 행동 변화 이론들(PMT, 계획된 행동 이론 등)이 일관되게 확인한 원리다. 지식은 행동 의도에 영향을 미치지만, 의도에서 실제 행동으로의 전환에는 추가 조건이 필요하다.</p>
+<p>왜 한계가 있는가: 이 원리는 개인 수준의 변수를 설명하지만, 조직 구조, 업무 부하, 시스템 설계 등 환경적 변수가 행동을 억제할 때는 개인 심리 개입만으로 효과가 제한된다.</p>
+<p><strong>원리 2: 공포는 효능감이 낮을 때 역효과를 낸다</strong></p>
+<p>EPPM이 설명하는 <strong>공포 통제 반응</strong>이 핵심이다. 위협 인식이 높더라도 대처 효능감(내가 이 위협을 막을 수 있다는 믿음)이 낮으면 보호 행동 대신 위협 부정, 방어적 회피, 메시지 무시로 이어진다.</p>
+<p>왜 작동하는가: 공포 소구는 위협 인식을 높이는 데는 효과적이지만, 효능감을 함께 높이지 않으면 행동 변화 동기로 전환되지 않는다.</p>
+<p>왜 한계가 있는가: 효능감을 높이기 위해 제시해야 하는 실행 가능한 대응 행동이 현실에서 너무 복잡하거나 시간이 많이 걸릴 경우, 이 전략도 한계에 부딪힌다.</p>
+<p><strong>원리 3: 메시지는 수신자의 문화적 맥락과 일치할 때 효과적이다</strong></p>
+<p>조절초점이론과 Hofstede의 문화 차원 이론이 결합되어 설명하는 원리다. 개인주의 문화권에서는 촉진 초점(이득, 혜택 강조) 메시지가, 집단주의 문화권에서는 예방 초점(의무, 손실 회피 강조) 메시지가 더 효과적이다.</p>
+<h4 id="b-일반화-가능한-원칙">B. 일반화 가능한 원칙<a hidden class="anchor" aria-hidden="true" href="#b-일반화-가능한-원칙">#</a></h4>
+<pre><code>- 정책 준수율이 낮을 때 가장 먼저 확인할 것은 정책의 실행 가능성  ( usability )이다. 사람의 의지 부족이 아닌 설계 실패일 수 있다
+- 어떤 개입이든 효과 측정 지표를 사전에 정의하지 않으면 성공 여부를 알 수 없다. 측정 설계는 개입 설계와 동시에 이루어져야 한다
+- 임직원에게 책임을 전가하는 방식의 보안 교육은 장기적으로 보안 피로를 누적시켜 오히려 역효과를 낸다
+</code></pre>
+<hr>
+<h3 id="3-기업-환경에서의-적용-가능성-분석">3. 기업 환경에서의 적용 가능성 분석<a hidden class="anchor" aria-hidden="true" href="#3-기업-환경에서의-적용-가능성-분석">#</a></h3>
+<h4 id="a-해결하는-비즈니스-문제">A. 해결하는 비즈니스 문제<a hidden class="anchor" aria-hidden="true" href="#a-해결하는-비즈니스-문제">#</a></h4>
+<p>보안 측면: 내부자 부주의로 인한 보안 사고(피싱 클릭, 잘못된 첨부파일 전송, 비밀번호 공유 등) 감소. 기술적 통제만으로 방어할 수 없는 사람 요인(human factor) 기반 위협에 대응.</p>
+<p>비즈니스 측면: 보안 교육 투자 대비 효과 개선. 형식적 이수 기록만 남는 교육 예산 낭비 방지.</p>
+<p>규제 측면: ISMS-P 인증 기준 중 인적 보안(교육훈련 체계, 효과성 평가)에 해당하는 항목 대응. ISO 27001 A.7.2.2(정보보안 인식, 교육 및 훈련) 통제 이행의 실질적 근거 확보.</p>
+<h4 id="b-적합한-기업-프로필">B. 적합한 기업 프로필<a hidden class="anchor" aria-hidden="true" href="#b-적합한-기업-프로필">#</a></h4>
+<p>산업: 금융(전자금융감독규정의 보안 교육 의무), 의료(개인정보 처리 인력 대상 교육), 제조(내부자 위협 및 산업 스파이 대응), 공공기관(정보보안 교육 의무) 등 교육 의무가 법적으로 부과된 산업에서 우선적으로 적용 가능하다.</p>
+<p>보안 성숙도: 이미 보안 교육을 실시하고 있으나 효과가 없다고 느끼는 중간 성숙도 조직에서 가장 큰 가치를 발휘한다. 교육 자체가 없는 초기 단계 조직에는 먼저 기본 체계 수립이 선행되어야 한다.</p>
+<h4 id="c-도입-시-고려사항">C. 도입 시 고려사항<a hidden class="anchor" aria-hidden="true" href="#c-도입-시-고려사항">#</a></h4>
+<p>비용:
+- 기존 교육 콘텐츠 재설계 비용  ( 콘텐츠 개발 또는 외부 구매 )
+- 피싱 시뮬레이션 플랫폼 도입 시 연간 라이선스 비용
+- 문화 진단 및 프로그램 효과 평가를 위한 측정 체계 구축 비용</p>
+<p>시간:
+- 프로그램 재설계 및 파일럿 운영  :  3-6개월
+- 행동 변화 효과가 측정 가능한 수준으로 나타나기까지  :  6-12개월 이상의 반복 운영 필요</p>
+<hr>
+<h3 id="4-컨설팅-시나리오별-활용-방안">4. 컨설팅 시나리오별 활용 방안<a hidden class="anchor" aria-hidden="true" href="#4-컨설팅-시나리오별-활용-방안">#</a></h3>
+<h4 id="a-보안-진단점검">A. 보안 진단/점검<a hidden class="anchor" aria-hidden="true" href="#a-보안-진단점검">#</a></h4>
+<p>점검 항목 예시:
+- 교육 효과를 교육 이수율 외의 지표  ( 피싱 클릭률, 보안 사고 보고율 등 행동 지표 )로 측정하고 있는가
+- 교육 콘텐츠가 직무별, 역할별로 맞춤화되어 있는가, 아니면 전 임직원에게 동일한 일반 콘텐츠를 제공하는가
+- 공포 소구  ( 해킹 피해 사례, 위협 통계 ) 중심으로 구성되어 있으며, 실행 가능한 대응 행동이 함께 제시되고 있는가
+- 교육 후 행동 유지를 위한 반복 접촉, 피드백, 후속 지원 체계가 있는가
+- 경영진이 보안 인식 캠페인에 가시적으로 참여하고 있는가</p>
+<h4 id="b-보안-체계-수립">B. 보안 체계 수립<a hidden class="anchor" aria-hidden="true" href="#b-보안-체계-수립">#</a></h4>
+<p>적용 예시:
+- 신규 임직원 온보딩 프로세스  :  지식 전달  ( 1주차 )  &raquo;  행동 연습  ( 2-4주차 )  &raquo;  피드백 및 내재화  ( 2-3개월 ) 구조로 운영
+- 보안 정책 개정 시 정책의 실행 가능성 검토를 의무화하여, 현업 업무 흐름과 충돌하는 정책이 보안 피로를 야기하지 않도록 설계 단계에서 조정</p>
+<h4 id="c-기술-자문">C. 기술 자문<a hidden class="anchor" aria-hidden="true" href="#c-기술-자문">#</a></h4>
+<p><strong>질문 1: 매년 보안 교육을 실시하는데 왜 피싱 사고가 줄지 않는가?</strong></p>
+<p>현재의 교육이 지식 전달에는 성공하더라도 행동 변화가 보장되지 않는다. 교육이 행동 변화로 이어지려면 지식 외에도 실행 가능한 행동 지침 제시, 지속적 피드백, 반복 훈련이 함께 제공되어야 한다. 피싱 클릭률을 측정하고 있지 않다면 그것부터 시작해야 한다.</p>
+<p><strong>질문 2: 임직원들이 보안 교육을 귀찮아한다. 어떻게 해야 하는가?</strong></p>
+<p>보안 피로(security fatigue) 현상이다. 교육의 양을 줄이고 직무와 직접 관련된 내용으로 집중시켜야 한다. 사람을 바꾸려는 시도보다 행동하기 쉬운 환경을 만드는 것이 장기적으로 더 효과적이다.</p>
+<p><strong>질문 3: 경영진에게 보안 교육 예산 증액을 설득해야 한다. 어떤 논거를 써야 하는가?</strong></p>
+<p>현재 교육 방식의 비효율을 먼저 수치로 보여주는 것이 효과적이다. 연간 교육 이수율은 100%에 가깝지만 피싱 클릭률이나 보안 사고 건수가 개선되지 않는다면, 현재 예산이 형식적 이수 기록에만 쓰이고 있다는 근거가 된다. 손실 프레임으로 제시하면 설득력이 높아진다. 사람들은 이득보다 손실에 더 민감하게 반응한다는 심리학적 원리가 여기서도 적용된다.</p>
+<hr>
+<h3 id="5-프레임워크규제표준과의-연계">5. 프레임워크/규제/표준과의 연계<a hidden class="anchor" aria-hidden="true" href="#5-프레임워크규제표준과의-연계">#</a></h3>
+<h4 id="a-isms-p--iso-27001-관점">A. ISMS-P / ISO 27001 관점<a hidden class="anchor" aria-hidden="true" href="#a-isms-p--iso-27001-관점">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>통제 항목</th>
+          <th>논문의 기여</th>
+          <th>적용 방법</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>ISMS-P 2.2.4 보안 교육 및 훈련</td>
+          <td>교육 이수율만으로는 효과를 입증할 수 없다는 이론적 근거 제공</td>
+          <td>행동 지표(피싱 클릭률, 보안 사고 보고율) 기반 효과성 평가 체계를 인증 요건 충족 방식으로 제안</td>
+      </tr>
+      <tr>
+          <td>ISMS-P 2.2.5 인적 보안</td>
+          <td>임직원의 보안 행동 형성이 정책 공지만으로는 달성되지 않는다는 근거</td>
+          <td>온보딩, 직무 변경, 위협 환경 변화 시점에 반복 접촉하는 행동 형성 프로그램 설계</td>
+      </tr>
+      <tr>
+          <td>ISO 27001 A.7.2.2 정보보안 인식 교육 및 훈련</td>
+          <td>인식(awareness)과 행동(behaviour)의 차이를 명확히 하여 통제 목표 재정의</td>
+          <td>교육 목표를 인식 제고에서 행동 변화로 상향 설정하고 그에 맞는 평가 지표 설계</td>
+      </tr>
+      <tr>
+          <td>ISO 27001 A.7.2.1 경영진의 책임</td>
+          <td>Messenger 효과 이론: 경영진 참여가 메시지 수용도에 미치는 영향</td>
+          <td>보안 인식 캠페인에 경영진의 가시적 지지와 참여를 의무화하는 거버넌스 구조 설계</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="b-보안-성숙도-모델">B. 보안 성숙도 모델<a hidden class="anchor" aria-hidden="true" href="#b-보안-성숙도-모델">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>단계</th>
+          <th>Before</th>
+          <th>After</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Level 1 (초기)</td>
+          <td>보안 교육 없음 또는 비정기 실시, 이수 기록 없음</td>
+          <td>기본 보안 인식 교육 체계 수립, 이수율 측정 시작</td>
+      </tr>
+      <tr>
+          <td>Level 2 (관리)</td>
+          <td>교육 이수율만 측정, 행동 변화 미확인, 단일 콘텐츠 전 직원 동일 적용</td>
+          <td>행동 지표(피싱 클릭률 등) 도입, 직무별 콘텐츠 차별화, 반복 훈련 구조 도입</td>
+      </tr>
+      <tr>
+          <td>Level 3 (최적화)</td>
+          <td>교육-행동-측정 체계가 연결되지 않음, 경영진 참여 없음</td>
+          <td>행동 변화 추세 기반 지속 개선, 경영진 참여 구조화, 조직 문화와 보안 교육 통합</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="6-컨설턴트로서-얻은-인사이트">6. 컨설턴트로서 얻은 인사이트<a hidden class="anchor" aria-hidden="true" href="#6-컨설턴트로서-얻은-인사이트">#</a></h3>
+<h4 id="a-고객-조언-역량">A. 고객 조언 역량<a hidden class="anchor" aria-hidden="true" href="#a-고객-조언-역량">#</a></h4>
+<p>이 논문을 읽기 전: 고객사가 보안 교육을 실시하고 있다고 하면 그것으로 충분하다고 생각하거나, 교육 횟수나 이수율을 개선하라는 수준의 조언에 머물렀을 것이다.</p>
+<p>이 논문을 읽은 후: 교육의 형식이 아니라 설계 원리를 진단할 수 있게 되었다. 이수율이 높아도 행동이 바뀌지 않는 이유를 심리학적 메커니즘으로 설명하고, 어떤 설계 요소가 빠져 있는지를 구체적으로 지적할 수 있다.</p>
+<p><strong>구체적 예시:</strong></p>
+<p>고객: 임직원 보안 교육을 매년 실시하고 있는데 ISMS-P 심사에서 효과성 입증이 어렵다는 지적을 받았습니다.</p>
+<p>나: 지금 측정하고 계신 것이 이수율이라면, 그것은 교육을 받았다는 인풋 지표입니다. 심사에서 요구하는 효과성은 교육이 행동 변화에 기여했다는 아웃컴 지표입니다. 두 가지를 구분해야 합니다. 가장 빠르게 도입할 수 있는 아웃컴 지표는 피싱 시뮬레이션 클릭률입니다. 교육 전후 클릭률 변화를 비교하면 행동 변화 근거가 됩니다. 여기서 시작하고, 이후 직무별 맞춤 콘텐츠와 반복 훈련 구조를 단계적으로 추가하는 방향으로 가면 됩니다.</p>
+<h4 id="b-보안-인식-솔루션-평가-기준">B. 보안 인식 솔루션 평가 기준<a hidden class="anchor" aria-hidden="true" href="#b-보안-인식-솔루션-평가-기준">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>기준</th>
+          <th>설명</th>
+          <th>평가 방법</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>행동 측정 가능성</td>
+          <td>교육 이수율이 아닌 실제 행동 변화를 측정할 수 있는가</td>
+          <td>피싱 시뮬레이션, 보고율 추적 등 행동 지표 지원 여부 확인</td>
+      </tr>
+      <tr>
+          <td>콘텐츠 맞춤화</td>
+          <td>직무별, 역할별, 위협 프로파일별 콘텐츠 차별화가 가능한가</td>
+          <td>콘텐츠 라이브러리 범위 및 맞춤화 기능 확인</td>
+      </tr>
+      <tr>
+          <td>반복 훈련 구조</td>
+          <td>1회성 교육이 아닌 반복 접촉 및 피드백 루프를 지원하는가</td>
+          <td>캠페인 일정 관리, 반복 발송, 결과 피드백 기능 확인</td>
+      </tr>
+      <tr>
+          <td>경영진 보고</td>
+          <td>행동 변화 추세를 경영진에게 보고할 수 있는 형태로 제공하는가</td>
+          <td>대시보드 및 보고서 형태 확인</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="7-5일간-리뷰-종합-표">7. 5일간 리뷰 종합 표<a hidden class="anchor" aria-hidden="true" href="#7-5일간-리뷰-종합-표">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>Day</th>
+          <th>주제</th>
+          <th>핵심 학습</th>
+          <th>컨설팅 활용</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Day 1</td>
+          <td>연구 배경과 문제의식</td>
+          <td>인식과 행동은 별개이며, 지식 전달만으로 행동 변화가 일어나지 않는다</td>
+          <td>고객사 교육 체계 진단 시 인식-행동 간극을 첫 번째 확인 항목으로 설정</td>
+      </tr>
+      <tr>
+          <td>Day 2</td>
+          <td>이론적 분석 틀</td>
+          <td>PMT·EPPM·조절초점이론·MINDSPACE가 행동 변화 설계의 핵심 도구</td>
+          <td>보안 교육 설계 자문 시 이론 기반 설계 원칙 제시 근거로 활용</td>
+      </tr>
+      <tr>
+          <td>Day 3</td>
+          <td>사례 분석과 성패 요인</td>
+          <td>공포 소구 역효과, 문화 적합성, 측정 체계 부재가 실패의 핵심 원인</td>
+          <td>진단 체크리스트 5개 항목(성공 조건)으로 현행 프로그램 점검</td>
+      </tr>
+      <tr>
+          <td>Day 4</td>
+          <td>한계와 학술적 영향</td>
+          <td>실증 부재이나 354회 인용, 10년 후에도 동일 문제 반복 확인</td>
+          <td>이 논문의 한계를 인식하고 후속 실증 연구(피싱 시뮬레이션 등)와 함께 활용</td>
+      </tr>
+      <tr>
+          <td>Day 5</td>
+          <td>컨설팅 관점 통합</td>
+          <td>진단-설계-측정-개선 순환 구조로 보안 인식 프로그램 자문 가능</td>
+          <td>ISMS-P 심사 대응, 경영진 설득, 솔루션 평가 기준 제시 등 실무 적용</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="8-최종-개인-인사이트">8. 최종 개인 인사이트<a hidden class="anchor" aria-hidden="true" href="#8-최종-개인-인사이트">#</a></h3>
+<h4 id="a-이-논문이-나의-컨설팅-역량에-기여한-점">A. 이 논문이 나의 컨설팅 역량에 기여한 점<a hidden class="anchor" aria-hidden="true" href="#a-이-논문이-나의-컨설팅-역량에-기여한-점">#</a></h4>
+<p><strong>핵심 배움 1: 형식과 실질을 구분하는 진단 언어를 얻었다</strong></p>
+<p>보안 교육 이수율은 형식 지표다. 행동 변화는 실질 지표다. 이 두 가지를 구분하는 언어를 갖게 되면서, 고객사가 교육을 잘 하고 있다고 생각하지만 실제로는 형식만 충족하고 있는 상태를 진단하고 설명할 수 있게 되었다.</p>
+<p><strong>핵심 배움 2: 사람 문제가 아니라 설계 문제라는 시각</strong></p>
+<p>임직원이 보안 정책을 따르지 않을 때 흔히 나오는 반응은 교육이 부족하다거나 의식이 낮다는 것이다. 이 논문은 그 전에 먼저 정책과 시스템이 사람이 따르기 쉽게 설계되어 있는지를 확인하라고 한다.</p>
+<p><strong>핵심 배움 3: 심리학 이론이 컨설팅 논거가 된다</strong></p>
+<p>PMT, EPPM, 조절초점이론을 이해하면 왜 공포 강조형 교육이 역효과를 내는지, 왜 문화 맞춤형 메시지가 필요한지를 경영진에게 설명할 수 있다. 이론을 알면 경험이 없어도 논거를 만들 수 있다는 것을 이 논문에서 확인했다.</p>
+<h4 id="b-9편의-논문을-읽고-나니">B. 9편의 논문을 읽고 나니<a hidden class="anchor" aria-hidden="true" href="#b-9편의-논문을-읽고-나니">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>논문</th>
+          <th>핵심 아이디어</th>
+          <th>강점</th>
+          <th>약점</th>
+          <th>적용 시나리오</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Gashgari et al. (2017)</td>
+          <td>보안 거버넌스 구조 설계</td>
+          <td>조직 수준 거버넌스 프레임워크</td>
+          <td>개인 행동 수준 설명 부족</td>
+          <td>CISO 역할 정의, 거버넌스 체계 수립 자문</td>
+      </tr>
+      <tr>
+          <td>Foorthuis &amp; Bos (2011)</td>
+          <td>컴플라이언스 전술 유형화</td>
+          <td>전술별 효과 조건 명확화</td>
+          <td>규제 맥락 의존도 높음</td>
+          <td>컴플라이언스 프로그램 설계 및 전술 선택</td>
+      </tr>
+      <tr>
+          <td>Santos-Olmo et al. (2024)</td>
+          <td>통합 리스크 분석 방법론</td>
+          <td>정량적 리스크 평가 체계</td>
+          <td>도입 복잡성 높음</td>
+          <td>리스크 평가 체계 수립 자문</td>
+      </tr>
+      <tr>
+          <td>Bulgurcu et al. (2010)</td>
+          <td>합리적 행동 이론 기반 정책 준수</td>
+          <td>개인 준수 의도의 결정 요인 실증</td>
+          <td>실제 행동과 의도의 간극 미설명</td>
+          <td>보안 정책 설계 및 준수 동기 분석</td>
+      </tr>
+      <tr>
+          <td>Slapničar et al. (2022)</td>
+          <td>감사 효과성 결정 요인</td>
+          <td>감사 설계-효과 연결 실증</td>
+          <td>내부 감사 맥락 한정</td>
+          <td>내부 감사 체계 설계 및 효과성 평가</td>
+      </tr>
+      <tr>
+          <td>Ghadge et al. (2020)</td>
+          <td>공급망 사이버 리스크 관리</td>
+          <td>공급망 전체 관점</td>
+          <td>공급망 가시성 확보 어려움</td>
+          <td>공급망 보안 리스크 진단 자문</td>
+      </tr>
+      <tr>
+          <td>Gordon &amp; Loeb (2002)</td>
+          <td>보안 투자 최적화 모델</td>
+          <td>경제적 논거로 투자 정당화</td>
+          <td>모델 가정이 현실과 괴리</td>
+          <td>보안 투자 우선순위 결정 및 경영진 설득</td>
+      </tr>
+      <tr>
+          <td>Da Veiga &amp; Eloff (2010)</td>
+          <td>보안 문화 프레임워크</td>
+          <td>조직 문화 수준의 보안 성숙도</td>
+          <td>측정 복잡성, 장기 소요</td>
+          <td>보안 문화 진단 및 개선 로드맵 수립</td>
+      </tr>
+      <tr>
+          <td>Bada et al. (2014)</td>
+          <td>인식-행동 간극의 심리학적 원인</td>
+          <td>교육 설계 실패 원인 명확화</td>
+          <td>실증 부재, 측정 방법 미제시</td>
+          <td>보안 교육 체계 진단 및 행동 개입 설계</td>
+      </tr>
+  </tbody>
+</table>
+<p>통합적 이해: 9편을 통해 보안 컨설팅의 핵심 영역이 거버넌스(구조)  &raquo;  리스크(분석)  &raquo;  컴플라이언스(전술)  &raquo;  투자(경제)  &raquo;  문화(조직)  &raquo;  행동(개인)으로 연결된 층위 구조임이 명확해졌다. Bada et al.은 이 구조의 가장 개인적인 층위, 즉 모든 보안 통제의 최종 실행자인 사람의 행동 메커니즘을 다룬다. 아무리 좋은 거버넌스, 리스크 분석, 투자 전략이 있어도 개인의 행동이 변화하지 않으면 그 모든 것이 형식에 머문다는 점에서, 이 논문은 앞선 8편 전체의 실행 층위를 담당한다.</p>
+<h4 id="c-다음-학습-방향">C. 다음 학습 방향<a hidden class="anchor" aria-hidden="true" href="#c-다음-학습-방향">#</a></h4>
+<p>우선순위 1: 보안 행동 측정 방법론
+- Verizon DBIR 또는 피싱 시뮬레이션 효과성 관련 실증 연구
+- 학습 목표  :  행동 변화 지표를 어떻게 설계하고 측정할지 실무 수준으로 습득</p>
+<p>우선순위 2: 디지털 전환과 보안 거버넌스 연계
+- 디지털 전환 맥락에서 보안 거버넌스가 어떻게 변화해야 하는지를 다룬 연구
+- 학습 목표  :  클라우드, AI 도입 환경에서 보안 인식 및 행동 관리 전략 자문 역량 확보</p>
+<p>우선순위 3: 한국 기업 보안 문화 특화 연구
+- 국내 또는 동아시아 맥락의 보안 행동 및 문화 연구
+- 학습 목표  :  국내 고객사 맥락에 최적화된 진단 및 자문 언어 개발</p>
+<hr>
+<h3 id="9-최종-결론">9. 최종 결론<a hidden class="anchor" aria-hidden="true" href="#9-최종-결론">#</a></h3>
+<h4 id="a-cyber-security-awareness-campaigns의-의의">A. Cyber Security Awareness Campaigns의 의의<a hidden class="anchor" aria-hidden="true" href="#a-cyber-security-awareness-campaigns의-의의">#</a></h4>
+<p>학술적 의의: 보안 인식 문제를 기술적 문제가 아닌 심리학적 문제로 재정의하고, 행동 변화 이론을 보안 교육 설계에 체계적으로 적용한 초기 통합 검토 논문이다. preprint임에도 354회 인용은 이 논문이 제기한 문제의식이 해당 분야에서 얼마나 공감을 얻었는지를 보여준다.</p>
+<p>실무적 의의: 보안 인식 교육 산업이 수십억 달러 규모로 성장하는 과정에서 지식 전달 방식의 한계를 명확히 지적하고, 피싱 시뮬레이션, 게임화, 넛지 기법 등 행동 개입 중심 접근으로의 전환을 촉진하는 이론적 근거를 제공했다.</p>
+<p>나에게 주는 의의: 보안 교육 체계를 진단하고 개선 방향을 제시하는 자문 역량의 이론적 기반을 확보했다. 특히 <strong>형식 지표와 실질 지표를 구분하는 언어</strong>, 설계 실패를 개인 의지 문제로 귀결하지 않는 시각, 심리학 이론을 경영진 설득 논거로 전환하는 능력이 이 논문에서 비롯되었다.</p>
+<h4 id="b-보안-컨설턴트로서의-다짐">B. 보안 컨설턴트로서의 다짐<a hidden class="anchor" aria-hidden="true" href="#b-보안-컨설턴트로서의-다짐">#</a></h4>
+<p><strong>[ Phase 1  ( 완료 )  :  논문 이해 ]</strong>
+- 거버넌스, 컴플라이언스, 리스크, 개인 행동, 감사, 공급망, 투자, 보안 문화, 보안 인식 및 행동 변화 9편 완료</p>
+<p><strong>[ Phase 2  ( 진행 중 )  :  연결 ]</strong>
+- 9편의 논문이 거버넌스  -  리스크  -  컴플라이언스  -  투자  -  문화  -  행동의 층위 구조로 연결됨을 확인
+- 각 논문의 분석 단위  ( 조직 / 팀 / 개인 )와 시간 지평  ( 단기 / 장기 )의 차이 파악</p>
+<p><strong>[ Phase 3  ( 다음 )  :  적용 ]</strong>
+- 통합 컨설팅 제안서 구조 설계
+- 실제 고객사 시나리오에 각 논문 프레임워크 매핑 연습</p>
+<p><strong>[ Phase 4  ( 목표 )  :  전문성 ]</strong>
+- 고객사 상황에 맞는 논문 기반 진단  -  권고 체계를 독립적으로 운용</p>
+<hr>
+<h2 id="references-2">References<a hidden class="anchor" aria-hidden="true" href="#references-2">#</a></h2>
+<p>[1] Bada, M., Sasse, A. M., &amp; Nurse, J. R. C. (2014/2019). Cyber Security Awareness Campaigns: Why do they fail to change behaviour? arXiv preprint arXiv:1901.02672. Global Cyber Security Capacity Centre, University of Oxford.</p>
+<p>[2] Rogers, R. W. (1975). A protection motivation theory of fear appeals and attitude change. <em>Journal of Psychology</em>, 91, 93–114.</p>
+<p>[3] Higgins, E. T. (1998). Promotion and prevention: Regulatory focus as a motivational principle. <em>Advances in Experimental Social Psychology</em>, 30, 1–46.</p>
+<p>[4] Da Veiga, A., &amp; Eloff, J. H. P. (2010). A framework and assessment instrument for information security culture. <em>Computers &amp; Security</em>, 29(2), 196–207.</p>
+<p>[5] Bulgurcu, B., Cavusoglu, H., &amp; Benbasat, I. (2010). Information security policy compliance: An empirical study of rationality-based beliefs and information security awareness. <em>MIS Quarterly</em>, 34(3), 523–548.</p>
+<p>[6] Dolan, P., Hallsworth, M., Halpern, D., King, D., &amp; Vlaev, I. (2010). MINDSPACE: Influencing behaviour through public policy. Institute for Government, Cabinet Office.</p>
+<p>[7] Witte, K. (1994). Fear control and danger control: A test of the Extended Parallel Process Model (EPPM). <em>Communication Monographs</em>, 61, 113–134.</p>
+<p>[8] Hofstede, G., Hofstede, J. G., &amp; Minkov, M. (2010). <em>Cultures and Organizations: Software of the Mind</em> (3rd ed.). McGraw-Hill.</p>
+<p>[9] Whitten, A., &amp; Tygar, J. D. (1999). Why Johnny can&rsquo;t encrypt: A usability evaluation of PGP 5.0. <em>Proceedings of the 8th USENIX Security Symposium</em>.</p>
+<p>[10] Sasse, M. A., Hielscher, J., Friedauer, J., &amp; Buckmann, A. (2023). Rebooting IT Security Awareness: How Organisations Can Encourage and Sustain Secure Behaviours. In <em>Computer Security. ESORICS 2022 International Workshops</em>. Lecture Notes in Computer Science, vol 13785. Springer.</p>
+<p>[11] Mersinas, K., &amp; Bada, M. (2024). Behavior Change Approaches for Cyber Security and the Need for Ethics. In <em>Proceedings of the International Conference on Cybersecurity, Situational Awareness and Social Media. CYBER SCIENCE 2023</em>. Springer.</p>
+<hr>
+<h2 id="tags">Tags<a hidden class="anchor" aria-hidden="true" href="#tags">#</a></h2>
+<p>보안컨설팅  /  SecurityConsulting  /  SecurityAwareness  /  BehaviourChange  /  PersuasionTechniques  /  PMT  /  EPPM  /  MINDSPACE  /  RegulatoryFocusTheory  /  SecurityFatigue  /  CulturalCongruency  /  UsabilitySecurity  /  SecurityBehaviourCurve  /  PhishingSimulation  /  ConsultingPerspective  /  PaperReview  /  SKShieldusRookies</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://hojjang98.github.io/tags/%EB%B3%B4%EC%95%88%EC%BB%A8%EC%84%A4%ED%8C%85/">보안컨설팅</a></li>
+      <li><a href="https://hojjang98.github.io/tags/securityawareness/">SecurityAwareness</a></li>
+      <li><a href="https://hojjang98.github.io/tags/behaviourchange/">BehaviourChange</a></li>
+      <li><a href="https://hojjang98.github.io/tags/persuasiontechniques/">PersuasionTechniques</a></li>
+      <li><a href="https://hojjang98.github.io/tags/pmt/">PMT</a></li>
+      <li><a href="https://hojjang98.github.io/tags/regulatoryfocustheory/">RegulatoryFocusTheory</a></li>
+      <li><a href="https://hojjang98.github.io/tags/securityfatigue/">SecurityFatigue</a></li>
+      <li><a href="https://hojjang98.github.io/tags/paperreview/">PaperReview</a></li>
+      <li><a href="https://hojjang98.github.io/tags/skshieldusrookies/">SKShieldusRookies</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

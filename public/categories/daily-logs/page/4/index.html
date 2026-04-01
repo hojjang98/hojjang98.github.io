@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Daily-Logs | HJ&#39;s Security Note</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="canonical" href="https://hojjang98.github.io/categories/daily-logs/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.290573799e582c418c4bd84f2bca757d0a77fd1bf9f5c43942030e706df68ec8.css" integrity="sha256-KQVzeZ5YLEGMS9hPK8p1fQp3/Rv59cQ5QgMOcG32jsg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://hojjang98.github.io/categories/daily-logs/index.xml" title="rss">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/categories/daily-logs/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://hojjang98.github.io/categories/daily-logs/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="Daily-Logs">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Daily-Logs">
+<meta name="twitter:description" content="">
+
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://hojjang98.github.io/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
+                    <span class="active">일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/categories/">Categories</a></div>
+  <h1>
+    Daily-Logs
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">2026.02.09 (Day 73) - 파일 업로드, 인증/인가, 파라미터 변조 취약점
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>JSP WebShell 업로드 및 직접 접근 경로 탐색, .jspx 확장자 우회, 비밀글 프로세스 검증 누락, 권한 레벨 미검증, 음수 배팅 공격(Negative Injection), Integer Overflow, 파라미터 변조(author/price 조작) 취약점 정리</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-09 00:00:00 +0000 UTC'>2026년 2월 9일</span></footer>
+  <a class="entry-link" aria-label="post link to 2026.02.09 (Day 73) - 파일 업로드, 인증/인가, 파라미터 변조 취약점" href="https://hojjang98.github.io/daily_logs/week16/20260209_pentest_day10/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">2026.02.05 (Day 71) - SSRF (Server-Side Request Forgery) 취약점
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>SSRF 공격 유형(Basic·Blind·URL Shortener·프로토콜 변조)과 IP 인코딩 우회(10진수·16진수·IPv6), Flask 리다이렉트 서버 구축을 통한 내부 DB 파일 탈취, DNS 리바인딩 공격과 안전한 SSRF 방어 코드 구현 분석</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-05 00:00:00 +0000 UTC'>2026년 2월 5일</span></footer>
+  <a class="entry-link" aria-label="post link to 2026.02.05 (Day 71) - SSRF (Server-Side Request Forgery) 취약점" href="https://hojjang98.github.io/daily_logs/week15/20260205_pentest_day8/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">2026.02.04 (Day 70) - CSRF와 SSRF 취약점 심화
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>CSRF GET·POST 방식 공격과 iframe을 이용한 CSRF Token 우회 기법, SSRF로 내부 DB 설정 파일 접근, 은행 이체 프로세스의 다층 방어 구조와 CSRF·SSRF 방어 전략 비교 정리</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-04 00:00:00 +0000 UTC'>2026년 2월 4일</span></footer>
+  <a class="entry-link" aria-label="post link to 2026.02.04 (Day 70) - CSRF와 SSRF 취약점 심화" href="https://hojjang98.github.io/daily_logs/week15/20260204_pentest_day7/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">2026.02.03 (Day 69) - XSS 공격과 대응 전략
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>XSS 피해 유형(쿠키 탈취·피싱·키로거·코인 채굴)과 Reflected/Stored XSS 차이, JS 컨텍스트 탈출 및 fetch를 이용한 쿠키 탈취 실습, Blacklist 필터 우회 기법과 비밀번호 변경 공격 체인 분석</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-03 00:00:00 +0000 UTC'>2026년 2월 3일</span></footer>
+  <a class="entry-link" aria-label="post link to 2026.02.03 (Day 69) - XSS 공격과 대응 전략" href="https://hojjang98.github.io/daily_logs/week15/20260203_pentest_day6/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">2026.02.02 (Day 68) - SQL Injection 대응과 Session 보안
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Prepared Statement의 한계와 WHERE절 외 동적 요소(테이블명·컬럼명·ORDER BY)의 취약점, CASE WHEN 구문과 Zero Division을 이용한 Blind SQLi, OOB 공격, Session Hijacking·Fixation·Replay 방어 기법 정리</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-02 00:00:00 +0000 UTC'>2026년 2월 2일</span></footer>
+  <a class="entry-link" aria-label="post link to 2026.02.02 (Day 68) - SQL Injection 대응과 Session 보안" href="https://hojjang98.github.io/daily_logs/week15/20260202_pentest_day5/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">2026.01.30 (Day 67) - Python을 활용한 Blind SQL Injection 자동화 공격
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Python requests 모듈로 Boolean-based Blind SQL Injection 완전 자동화, 이진탐색 알고리즘으로 공격 효율 127배 향상(127회 -&gt; 7회), 함수화된 이진탐색으로 Oracle DB 사용자명 완전 탈취, POST 요청 자동화 Brute Force 로그인 공격, CSRF 토큰 재사용·계정 잠금 부재 취약점 확인</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-01-30 00:00:00 +0000 UTC'>2026년 1월 30일</span></footer>
+  <a class="entry-link" aria-label="post link to 2026.01.30 (Day 67) - Python을 활용한 Blind SQL Injection 자동화 공격" href="https://hojjang98.github.io/daily_logs/week14/20260130_pentest_day4/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">2026.01.29 (Day 66) - Error-based SQL Injection
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Oracle CTXSYS.DRITHSX.SN 함수로 DRG-11701 에러 메시지에 서브쿼리 결과 노출, ROWNUM으로 순차 추출·LISTAGG로 일괄 추출, MySQL extractvalue/updatexml 함수와 concat(0x3a, …) 패턴, LIMIT 순차 추출, 에러 메시지 노출 차단이 핵심 방어 전략</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-01-29 00:00:00 +0000 UTC'>2026년 1월 29일</span></footer>
+  <a class="entry-link" aria-label="post link to 2026.01.29 (Day 66) - Error-based SQL Injection" href="https://hojjang98.github.io/daily_logs/week14/20260129_pentest_day3/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">2026.01.28 (Day 65) - SQL Injection 공격 기법
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>주석 처리·OR 조건으로 Oracle 인증 우회, Union-based SQLi로 Oracle(user_tables)/MySQL(information_schema)/SQLite(sqlite_master) 순차 데이터 탈취, Boolean-based Blind SQLi에서 length()·substr()·ascii() 이진탐색으로 DB 사용자명 추출, DBMS별 메타데이터·주석·자료형 차이 비교</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-01-28 00:00:00 +0000 UTC'>2026년 1월 28일</span></footer>
+  <a class="entry-link" aria-label="post link to 2026.01.28 (Day 65) - SQL Injection 공격 기법" href="https://hojjang98.github.io/daily_logs/week14/20260128_pentest_day2/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">2026.01.27 (Day 64) - 웹 보안 기초 및 SQL Injection 입문
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>웹 애플리케이션 3계층 구조(웹 서버·WAS·DB), HTTP Stateless 특성과 Session/Cookie 상태 관리, URL/Base64/HTML 인코딩, SOP·CORS 브라우저 보안 정책, Oracle 사용자 생성(richman), SQL SELECT 기초, SQL Injection 인증 우회 원리(OR 조건·주석 처리)</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-01-27 00:00:00 +0000 UTC'>2026년 1월 27일</span></footer>
+  <a class="entry-link" aria-label="post link to 2026.01.27 (Day 64) - 웹 보안 기초 및 SQL Injection 입문" href="https://hojjang98.github.io/daily_logs/week14/20260127_pentest_day1/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">2026.01.26 (Day 63) - Wazuh Agent 등록 및 모니터링 실습
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Windows/Linux Wazuh Agent 설치 및 서버 등록(1514·1515 포트), Agentless SSH 키 인증 방식, Sysmon 연동으로 Windows 상세 활동 로그(프로세스 생성·네트워크 연결) 수집, Agent vs Agentless 운영 환경별 비교, Wazuh 룰 레벨 0~15 체계 및 SOC 대응 기준</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-01-26 00:00:00 +0000 UTC'>2026년 1월 26일</span></footer>
+  <a class="entry-link" aria-label="post link to 2026.01.26 (Day 63) - Wazuh Agent 등록 및 모니터링 실습" href="https://hojjang98.github.io/daily_logs/week14/20260126_soc_last_day/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="prev" href="https://hojjang98.github.io/categories/daily-logs/page/3/">
+      «&nbsp;이전 페이지&nbsp;
+    </a>
+    <a class="next" href="https://hojjang98.github.io/categories/daily-logs/page/5/">다음 페이지&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

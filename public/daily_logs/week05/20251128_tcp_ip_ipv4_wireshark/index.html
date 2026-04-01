@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>2025.11.28 (Day 25) - TCP/IP 네트워크 보안: IPv4 프로토콜 &amp; Wireshark 패킷 분석 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="TCP/IP, IPv4, Wireshark, 네트워크보안, 패킷분석">
+<meta name="description" content="OSI 7계층 vs TCP/IP 모델, IPv4 헤더 구조 분석, Wireshark 캡처/디스플레이 필터 실습, 비정상 패킷 탐지">
+<meta name="author" content="">
+<link rel="canonical" href="https://hojjang98.github.io/daily_logs/week05/20251128_tcp_ip_ipv4_wireshark/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.290573799e582c418c4bd84f2bca757d0a77fd1bf9f5c43942030e706df68ec8.css" integrity="sha256-KQVzeZ5YLEGMS9hPK8p1fQp3/Rv59cQ5QgMOcG32jsg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/daily_logs/week05/20251128_tcp_ip_ipv4_wireshark/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://hojjang98.github.io/daily_logs/week05/20251128_tcp_ip_ipv4_wireshark/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="2025.11.28 (Day 25) - TCP/IP 네트워크 보안: IPv4 프로토콜 & Wireshark 패킷 분석">
+  <meta property="og:description" content="OSI 7계층 vs TCP/IP 모델, IPv4 헤더 구조 분석, Wireshark 캡처/디스플레이 필터 실습, 비정상 패킷 탐지">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="daily_logs">
+    <meta property="article:published_time" content="2025-11-28T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-11-28T00:00:00+00:00">
+    <meta property="article:tag" content="TCP/IP">
+    <meta property="article:tag" content="IPv4">
+    <meta property="article:tag" content="Wireshark">
+    <meta property="article:tag" content="네트워크보안">
+    <meta property="article:tag" content="패킷분석">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2025.11.28 (Day 25) - TCP/IP 네트워크 보안: IPv4 프로토콜 &amp; Wireshark 패킷 분석">
+<meta name="twitter:description" content="OSI 7계층 vs TCP/IP 모델, IPv4 헤더 구조 분석, Wireshark 캡처/디스플레이 필터 실습, 비정상 패킷 탐지">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "6개월, 혹은 그 이상의 보안 여정",
+      "item": "https://hojjang98.github.io/daily_logs/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "2025.11.28 (Day 25) - TCP/IP 네트워크 보안: IPv4 프로토콜 \u0026 Wireshark 패킷 분석",
+      "item": "https://hojjang98.github.io/daily_logs/week05/20251128_tcp_ip_ipv4_wireshark/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "2025.11.28 (Day 25) - TCP/IP 네트워크 보안: IPv4 프로토콜 \u0026 Wireshark 패킷 분석",
+  "name": "2025.11.28 (Day 25) - TCP\/IP 네트워크 보안: IPv4 프로토콜 \u0026 Wireshark 패킷 분석",
+  "description": "OSI 7계층 vs TCP/IP 모델, IPv4 헤더 구조 분석, Wireshark 캡처/디스플레이 필터 실습, 비정상 패킷 탐지",
+  "keywords": [
+    "TCP/IP", "IPv4", "Wireshark", "네트워크보안", "패킷분석"
+  ],
+  "articleBody": "📄 2025.11.28 (Day 25) - TCP/IP 네트워크 보안: IPv4 프로토콜 \u0026 Wireshark 패킷 분석 1. 핵심 개념 정리 # 핵심 개념 간결한 설명 실무/보안 관점에서의 중요성 1 OSI 7계층 vs TCP/IP 모델 OSI는 7계층(물리, 데이터링크, 네트워크, 전송, 세션, 표현, 응용)으로 이론적 모델이며, TCP/IP는 4계층(네트워크 접근, 인터넷, 전송, 응용)으로 실제 인터넷 프로토콜 스택입니다. 각 계층은 **캡슐화(Encapsulation)**를 통해 상위 계층 데이터를 하위 계층 헤더로 감쌉니다. 공격 벡터 분석의 기초입니다. 계층별로 서로 다른 공격이 존재합니다: L2(ARP Spoofing), L3(IP Spoofing), L4(SYN Flooding, Port Scanning), L7(SQL Injection, XSS). 계층별 이해는 방어 전략 수립의 출발점입니다. 2 IPv4 주소 체계 32비트 주소(8비트씩 4개 옥텟)로 구성되며, 네트워크부와 호스트부로 나뉩니다. 클래스(A, B, C, D, E)와 서브넷 마스크를 통해 네트워크를 구분합니다. 사설 IP(10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16)는 NAT를 통해 공인 IP로 변환됩니다. 네트워크 세분화와 접근 제어의 기반입니다. 서브넷을 통해 네트워크를 논리적으로 분리하여 측면 이동(Lateral Movement) 공격을 차단하고, 방화벽 정책을 효과적으로 적용할 수 있습니다. 3 IPv4 헤더 구조 Version(4bit), Header Length(4bit), TOS(8bit), Total Length(16bit), Identification(16bit), Flags(3bit), Fragment Offset(13bit), TTL(8bit), Protocol(8bit), Header Checksum(16bit), Source IP(32bit), Destination IP(32bit), Options(가변) 필드로 구성됩니다. 패킷 분석과 위협 탐지의 핵심입니다. TTL 값으로 라우팅 루프나 패킷 변조 탐지, Flags/Fragment Offset으로 Fragmentation 공격 탐지, Protocol 필드로 터널링 우회 탐지가 가능합니다. 4 Wireshark 패킷 분석 Wireshark는 네트워크 패킷을 실시간으로 캡처하고 분석하는 도구입니다. 캡처 필터(BPF 문법)로 원하는 패킷만 수집하고, 디스플레이 필터로 캡처된 패킷에서 특정 조건을 검색합니다. 각 계층별 헤더를 시각적으로 확인할 수 있습니다. 포렌식 분석과 이상 트래픽 탐지의 필수 도구입니다. 공격 패킷의 특성(비정상 플래그 조합, 악성 페이로드, C\u0026C 통신 패턴)을 식별하고, 베이스라인 트래픽과 비교하여 이상 징후를 발견합니다. 2. 실습 내용 (A) IPv4 주소 계산 실습 예제 1 : 192.168.10.130/25 네트워크 분석\nIP 주소 : 192.168.10.130 서브넷 마스크 : 255.255.255.128 (/25) 이진수 변환:\nIP : 11000000.10101000.00001010.10000010 Mask : 11111111.11111111.11111111.10000000 계산 결과:\n네트워크 주소 : 192.168.10.128 (호스트부를 0으로) 브로드캐스트 : 192.168.10.255 (호스트부를 1로) 사용 가능 호스트 : 192.168.10.129 ~ 192.168.10.254 (126개) 예제 2 : CIDR 표기법 정리\nCIDR 서브넷 마스크 주소 수 호스트 수 /24 255.255.255.0 256 254 /25 255.255.255.128 128 126 /26 255.255.255.192 64 62 /27 255.255.255.224 32 30 /28 255.255.255.240 16 14 /30 255.255.255.252 4 2 (P2P 링크용) (B) Wireshark 캡처 필터 (BPF 문법) 호스트/네트워크 기반 필터:\nhost 192.168.1.100 : 특정 호스트의 모든 트래픽 net 192.168.1.0/24 : 특정 네트워크의 모든 트래픽 src host 192.168.1.100 : 출발지 IP 필터 dst host 192.168.1.200 : 목적지 IP 필터 포트 기반 필터:\nport 80 : 특정 포트의 트래픽 port 443 : HTTPS 트래픽 portrange 1000-2000 : 포트 범위 프로토콜 필터:\ntcp : TCP 트래픽만 udp : UDP 트래픽만 조합 예시:\ntcp and src host 192.168.1.100 and dst port 80 : 192.168.1.100에서 80포트로 가는 TCP 트래픽 (C) Wireshark 디스플레이 필터 IP 주소 필터:\nip.addr == 192.168.1.100 : 출발지 또는 목적지 ip.src == 192.168.1.100 : 출발지만 ip.dst == 192.168.1.200 : 목적지만 프로토콜 필터:\ntcp, udp, icmp, arp, http, dns, ssh TCP 플래그 필터:\ntcp.flags.syn == 1 : SYN 플래그 tcp.flags.ack == 1 : ACK 플래그 tcp.flags.reset == 1 : RST 플래그 tcp.flags.syn == 1 and tcp.flags.ack == 0 : SYN 패킷 (3-way handshake 시작) 포트 필터:\ntcp.port == 80 tcp.dstport == 443 tcp.srcport == 22 HTTP 필터:\nhttp.request : HTTP 요청만 http.response : HTTP 응답만 http.request.method == “POST” : POST 요청 http.request.uri contains “login” : URI에 login 포함 DNS 필터:\ndns.qry.name contains “google” : DNS 쿼리에 google 포함 패킷 크기 필터:\nframe.len \u003e 1000 : 1000바이트 초과 ip.len \u003c 100 : IP 패킷 길이 100바이트 미만 조합 예시:\ntcp.flags.syn == 1 and ip.src == 192.168.1.100 and tcp.dstport == 22 : 특정 IP에서 SSH로 연결 시도하는 SYN 패킷 http.request.method == “POST” and http.request.uri contains “admin” : admin 경로로 가는 POST 요청 (D) 리눅스 네트워크 명령어 네트워크 인터페이스 및 라우팅 확인:\nip addr show / ifconfig : 네트워크 인터페이스 확인 ip route show / route -n : 라우팅 테이블 확인 ip neigh show / arp -a : ARP 테이블 확인 연결 상태 확인:\nnetstat -tunap : 모든 TCP/UDP 연결 ss -tunap : 최신 명령어 (동일 기능) netstat -tunlp | grep :80 : 특정 포트 리스닝 확인 연결성 테스트:\nping 192.168.1.1 : ICMP 테스트 ping -c 4 google.com : 4개 패킷만 전송 traceroute google.com : 경로 추적 mtr google.com : 실시간 경로 추적 DNS 조회:\ndig google.com nslookup google.com host google.com 패킷 캡처 (tcpdump):\ntcpdump -i eth0 : eth0 인터페이스 모니터링 tcpdump -i eth0 port 80 : 80번 포트만 tcpdump -i eth0 -w capture.pcap : 파일로 저장 tcpdump -r capture.pcap : 캡처 파일 읽기 tcpdump -i eth0 ’tcp[tcpflags] \u0026 (tcp-syn) != 0’ : SYN 패킷만 (E) 실습 결과 및 분석 IPv4 헤더 분석 (Wireshark에서 확인한 주요 내용):\n버전 : 4 (IPv4) 헤더 길이 : 20 bytes (5 * 4) Total Length : 60 Identification : 0x1a2b Flags : 0x4000 (Don’t Fragment 설정됨) Fragment Offset : 0 Time to Live : 64 Protocol : TCP (6) 출발지 : 192.168.1.100 목적지 : 192.168.1.200 주요 필드 분석:\nTTL (Time to Live) : 64 -\u003e 일반적으로 Linux/Unix는 64, Windows는 128로 설정. 패킷이 라우터를 거칠 때마다 1씩 감소하며, 0이 되면 폐기됩니다. 비정상적으로 낮은 TTL 값은 루프나 변조를 의심할 수 있습니다. Flags - Don’t Fragment : 설정 시 패킷이 MTU보다 크면 ICMP “Fragmentation Needed” 메시지를 받습니다. Path MTU Discovery에 사용됩니다. Protocol : 6 = TCP, 17 = UDP, 1 = ICMP. 상위 계층 프로토콜을 식별합니다. Identification : 패킷 단편화 시 동일한 원본 패킷을 식별하는 데 사용됩니다. Wireshark로 3-Way Handshake 분석:\n패킷 1 (SYN) : 클라이언트 -\u003e 서버 연결 요청\nFlags : SYN / Seq : 0 / Ack : 0 패킷 2 (SYN-ACK) : 서버 -\u003e 클라이언트 연결 수락\nFlags : SYN, ACK / Seq : 0 / Ack : 1 패킷 3 (ACK) : 클라이언트 -\u003e 서버 연결 확립\nFlags : ACK / Seq : 1 / Ack : 1 -\u003e 정상적인 TCP 연결 수립 과정\n비정상 패킷 탐지 예시:\nSYN Flood 공격 탐지:\n대량의 SYN 패킷이 다양한 출발지 IP에서 발생 SYN-ACK에 대한 ACK 응답이 없음 Wireshark 필터 : tcp.flags.syn == 1 and tcp.flags.ack == 0 IP Spoofing 탐지:\nTTL 값이 비정상적으로 낮거나 일관성 없음 내부 네트워크 IP가 외부에서 유입 출발지 IP가 브로드캐스트/멀티캐스트 주소 Port Scanning 탐지:\n짧은 시간에 동일 출발지에서 다양한 포트로 연결 시도 대량의 RST 패킷 (포트가 닫혀있음) Wireshark 필터 : tcp.flags.reset == 1 3. 실무/보안 관점 분석 분야 적용 시나리오 SOC / 관제 실시간 트래픽 모니터링 : IDS/IPS에서 Wireshark와 유사한 패킷 분석 엔진(Suricata, Snort)을 사용하여 비정상 패턴을 탐지합니다. 베이스라인 트래픽을 설정하고, 통계적 이상(급증하는 SYN 패킷, 비정상 TTL, 알려지지 않은 프로토콜)을 자동 알림합니다. Snort 룰 예시: alert tcp any any -\u003e $HOME_NET any (flags:S; threshold: type both, track by_src, count 100, seconds 10; msg:“Possible SYN Flood”;) Wireshark를 통해 알림의 실제 패킷을 확인하여 오탐(False Positive) 여부를 판단합니다. CERT / 사고 대응 포렌식 패킷 분석 : 침해 사고 시 네트워크 탭(SPAN/Mirror Port)이나 방화벽에서 수집한 PCAP 파일을 Wireshark로 분석합니다. 공격 타임라인 재구성 : (1) 초기 침투 패킷 식별 -\u003e (2) C\u0026C 통신 추적 (특정 IP/도메인으로의 주기적 통신) -\u003e (3) 데이터 유출 탐지 (대용량 파일 전송). tcp.stream eq 123 으로 특정 TCP 세션의 모든 패킷을 추적하여 공격자의 명령어와 데이터 유출 내용을 복원. dns.qry.name 으로 DGA(Domain Generation Algorithm) 기반 멀웨어 탐지. 네트워크 운영 성능 최적화 및 문제 해결 : Wireshark로 패킷 손실, 재전송, 레이턴시 문제를 진단합니다. tcp.analysis.retransmission 필터로 재전송 패킷을 찾아 네트워크 품질 문제를 식별하고, tcp.analysis.zero_window 로 수신 버퍼 고갈 상태를 확인합니다. 서브넷 설계 : 부서별/보안 등급별로 서브넷을 분리하여 VLAN과 결합, 방화벽 규칙으로 Micro-Segmentation 구현. 4. 개인 인사이트 및 다음 단계 배운 점/느낀 점:\n네트워크는 보안의 기초 중 기초입니다. 모든 통신은 네트워크를 통해 이루어지므로, IP 헤더와 TCP/UDP 헤더를 읽을 수 있는 능력은 공격과 방어 모두의 필수 역량입니다. Wireshark의 강력함 : 교재에서 배운 이론적 개념(OSI 7계층, IPv4 헤더)을 실제 패킷으로 직접 확인하니 훨씬 명확하게 이해되었습니다. 특히 3-Way Handshake를 패킷 단위로 보면서 TCP의 연결 지향적 특성을 체감했습니다. 서브넷의 중요성 : 단순히 IP 주소를 나누는 것이 아니라, 보안 경계를 만드는 것임을 깨달았습니다. 잘못된 서브넷 설계는 공격자에게 전체 네트워크를 노출시킬 수 있습니다. 패킷 분석의 예술 : Wireshark 필터를 잘 활용하면 수만 개의 패킷 속에서 핵심 정보만 추출할 수 있습니다. 필터 문법을 익히는 것이 효율적인 분석의 핵심입니다. 심화 방향:\nTCP/UDP 심화 : TCP의 흐름 제어, 혼잡 제어, UDP의 특성과 활용 사례 학습 고급 Wireshark 기법 : Follow TCP Stream, Statistics 메뉴 활용, Lua 스크립트를 통한 커스텀 분석, PCAP 파일 자동 분석 스크립트 작성 공격 시나리오 재현 : 실습 환경에서 SYN Flood, ARP Spoofing, DNS Spoofing 등의 공격을 직접 재현하고 Wireshark로 패킷을 분석하여 탐지 시그니처 개발 IDS/IPS 룰 작성 : Suricata나 Snort 룰을 작성하여 특정 공격 패턴을 자동 탐지하는 시스템 구축 IPv6 학습 : IPv4 고갈과 IPv6 전환에 대비하여 IPv6 주소 체계, 헤더 구조, 보안 고려사항 학습 5. 빠른 참고 (Quick Reference) IPv4 주소 클래스 클래스 범위 서브넷 특이사항 A 0.0.0.0 ~ 127.255.255.255 /8 네트워크 126개, 호스트 16,777,214개 B 128.0.0.0 ~ 191.255.255.255 /16 네트워크 16,384개, 호스트 65,534개 C 192.0.0.0 ~ 223.255.255.255 /24 네트워크 2,097,152개, 호스트 254개 D 224.0.0.0 ~ 239.255.255.255 - 멀티캐스트 E 240.0.0.0 ~ 255.255.255.255 - 실험용/예약 사설 IP (RFC 1918):\n10.0.0.0 ~ 10.255.255.255 (10.0.0.0/8) 172.16.0.0 ~ 172.31.255.255 (172.16.0.0/12) 192.168.0.0 ~ 192.168.255.255 (192.168.0.0/16) 특수 주소:\n127.0.0.0/8 : 루프백 (localhost) 0.0.0.0/8 : 현재 네트워크 255.255.255.255 : 제한된 브로드캐스트 169.254.0.0/16 : Link-local (APIPA) IPv4 헤더 필드 요약 필드 크기 설명 Version 4bit IP 버전 (4) IHL 4bit 헤더 길이 (5 = 20바이트, 옵션 없음) DSCP 6bit 서비스 품질 (QoS) ECN 2bit 명시적 혼잡 알림 Total Length 16bit 전체 패킷 크기 (헤더 + 데이터) Identification 16bit 단편화 시 원본 패킷 식별 Flags 3bit Reserved, DF (Don’t Fragment), MF (More Fragments) Fragment Offset 13bit 단편화된 데이터의 오프셋 TTL 8bit 패킷 생존 시간 (라우터마다 -1) Protocol 8bit 상위 프로토콜 (1=ICMP, 6=TCP, 17=UDP) Header Checksum 16bit 헤더 무결성 검증 Source IP 32bit 출발지 주소 Destination IP 32bit 목적지 주소 Options 가변 추가 옵션 (선택 사항) 주요 프로토콜 번호 번호 프로토콜 1 ICMP (Internet Control Message Protocol) 2 IGMP (Internet Group Management Protocol) 6 TCP (Transmission Control Protocol) 17 UDP (User Datagram Protocol) 41 IPv6 (IPv6 encapsulation) 47 GRE (Generic Routing Encapsulation) 50 ESP (Encap Security Payload - IPsec) 51 AH (Authentication Header - IPsec) 89 OSPF (Open Shortest Path First) Wireshark 단축키 단축키 기능 Ctrl + K 캡처 시작 Ctrl + E 캡처 중지 Ctrl + F 패킷 찾기 Ctrl + G 특정 패킷 번호로 이동 Ctrl + N 다음 패킷 Ctrl + B 이전 패킷 Ctrl + -\u003e 다음 대화 (conversation) Ctrl + \u003c- 이전 대화 Ctrl + Alt + Shift + T TCP Stream 따라가기 tcpdump 주요 옵션 옵션 설명 -i 캡처할 인터페이스 지정 -c 지정된 개수만큼만 캡처 -w PCAP 파일로 저장 -r PCAP 파일 읽기 -n DNS 이름 해석 안 함 (빠름) -v / -vv / -vvv 상세 출력 (레벨 증가) -A ASCII로 패킷 내용 출력 -X 16진수 + ASCII로 출력 -s 캡처할 패킷 크기 (0 = 전체) tcpdump 사용 예시:\ntcpdump -i eth0 -w capture.pcap ’tcp port 80’ : HTTP 트래픽 저장 tcpdump -i any -c 100 -n ‘src host 192.168.1.100’ : 특정 IP 100개 캡처 tcpdump -i eth0 -A ’tcp port 80 and (tcp[13] \u0026 2 != 0)’ : SYN 플래그 패킷 ",
+  "wordCount" : "3894",
+  "inLanguage": "ko",
+  "datePublished": "2025-11-28T00:00:00Z",
+  "dateModified": "2025-11-28T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/daily_logs/week05/20251128_tcp_ip_ipv4_wireshark/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://hojjang98.github.io/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/daily_logs/">6개월, 혹은 그 이상의 보안 여정</a></div>
+    <h1 class="post-title entry-hint-parent">
+      2025.11.28 (Day 25) - TCP/IP 네트워크 보안: IPv4 프로토콜 &amp; Wireshark 패킷 분석
+    </h1>
+    <div class="post-meta"><span title='2025-11-28 00:00:00 +0000 UTC'>2025년 11월 28일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="-20251128-day-25---tcpip-네트워크-보안-ipv4-프로토콜--wireshark-패킷-분석">📄 2025.11.28 (Day 25) - TCP/IP 네트워크 보안: IPv4 프로토콜 &amp; Wireshark 패킷 분석<a hidden class="anchor" aria-hidden="true" href="#-20251128-day-25---tcpip-네트워크-보안-ipv4-프로토콜--wireshark-패킷-분석">#</a></h1>
+<hr>
+<h2 id="1-핵심-개념-정리">1. 핵심 개념 정리<a hidden class="anchor" aria-hidden="true" href="#1-핵심-개념-정리">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">#</th>
+          <th style="text-align: left">핵심 개념</th>
+          <th style="text-align: left">간결한 설명</th>
+          <th style="text-align: left">실무/보안 관점에서의 중요성</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>1</strong></td>
+          <td style="text-align: left"><strong>OSI 7계층 vs TCP/IP 모델</strong></td>
+          <td style="text-align: left">OSI는 7계층(물리, 데이터링크, 네트워크, 전송, 세션, 표현, 응용)으로 이론적 모델이며, TCP/IP는 4계층(네트워크 접근, 인터넷, 전송, 응용)으로 실제 인터넷 프로토콜 스택입니다. 각 계층은 **캡슐화(Encapsulation)**를 통해 상위 계층 데이터를 하위 계층 헤더로 감쌉니다.</td>
+          <td style="text-align: left"><strong>공격 벡터 분석</strong>의 기초입니다. 계층별로 서로 다른 공격이 존재합니다: L2(ARP Spoofing), L3(IP Spoofing), L4(SYN Flooding, Port Scanning), L7(SQL Injection, XSS). 계층별 이해는 방어 전략 수립의 출발점입니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>2</strong></td>
+          <td style="text-align: left"><strong>IPv4 주소 체계</strong></td>
+          <td style="text-align: left">32비트 주소(8비트씩 4개 옥텟)로 구성되며, 네트워크부와 호스트부로 나뉩니다. <strong>클래스</strong>(A, B, C, D, E)와 <strong>서브넷 마스크</strong>를 통해 네트워크를 구분합니다. <strong>사설 IP</strong>(10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16)는 NAT를 통해 공인 IP로 변환됩니다.</td>
+          <td style="text-align: left"><strong>네트워크 세분화</strong>와 <strong>접근 제어</strong>의 기반입니다. 서브넷을 통해 네트워크를 논리적으로 분리하여 <strong>측면 이동(Lateral Movement)</strong> 공격을 차단하고, 방화벽 정책을 효과적으로 적용할 수 있습니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>3</strong></td>
+          <td style="text-align: left"><strong>IPv4 헤더 구조</strong></td>
+          <td style="text-align: left"><strong>Version(4bit)</strong>, <strong>Header Length(4bit)</strong>, <strong>TOS(8bit)</strong>, <strong>Total Length(16bit)</strong>, <strong>Identification(16bit)</strong>, <strong>Flags(3bit)</strong>, <strong>Fragment Offset(13bit)</strong>, <strong>TTL(8bit)</strong>, <strong>Protocol(8bit)</strong>, <strong>Header Checksum(16bit)</strong>, <strong>Source IP(32bit)</strong>, <strong>Destination IP(32bit)</strong>, <strong>Options(가변)</strong> 필드로 구성됩니다.</td>
+          <td style="text-align: left"><strong>패킷 분석</strong>과 <strong>위협 탐지</strong>의 핵심입니다. TTL 값으로 <strong>라우팅 루프</strong>나 <strong>패킷 변조</strong> 탐지, Flags/Fragment Offset으로 <strong>Fragmentation 공격</strong> 탐지, Protocol 필드로 <strong>터널링 우회</strong> 탐지가 가능합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>4</strong></td>
+          <td style="text-align: left"><strong>Wireshark 패킷 분석</strong></td>
+          <td style="text-align: left">Wireshark는 네트워크 패킷을 실시간으로 캡처하고 분석하는 도구입니다. <strong>캡처 필터</strong>(BPF 문법)로 원하는 패킷만 수집하고, <strong>디스플레이 필터</strong>로 캡처된 패킷에서 특정 조건을 검색합니다. 각 계층별 헤더를 시각적으로 확인할 수 있습니다.</td>
+          <td style="text-align: left"><strong>포렌식 분석</strong>과 <strong>이상 트래픽 탐지</strong>의 필수 도구입니다. 공격 패킷의 특성(비정상 플래그 조합, 악성 페이로드, C&amp;C 통신 패턴)을 식별하고, <strong>베이스라인 트래픽</strong>과 비교하여 이상 징후를 발견합니다.</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="2-실습-내용">2. 실습 내용<a hidden class="anchor" aria-hidden="true" href="#2-실습-내용">#</a></h2>
+<h3 id="a-ipv4-주소-계산-실습">(A) IPv4 주소 계산 실습<a hidden class="anchor" aria-hidden="true" href="#a-ipv4-주소-계산-실습">#</a></h3>
+<p><strong>예제 1 : 192.168.10.130/25 네트워크 분석</strong></p>
+<ul>
+<li>IP 주소 : 192.168.10.130</li>
+<li>서브넷 마스크 : 255.255.255.128 (/25)</li>
+</ul>
+<p>이진수 변환:</p>
+<ul>
+<li>IP : 11000000.10101000.00001010.10000010</li>
+<li>Mask : 11111111.11111111.11111111.10000000</li>
+</ul>
+<p>계산 결과:</p>
+<ul>
+<li>네트워크 주소 : 192.168.10.128 (호스트부를 0으로)</li>
+<li>브로드캐스트 : 192.168.10.255 (호스트부를 1로)</li>
+<li>사용 가능 호스트 : 192.168.10.129 ~ 192.168.10.254 (126개)</li>
+</ul>
+<p><strong>예제 2 : CIDR 표기법 정리</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">CIDR</th>
+          <th style="text-align: left">서브넷 마스크</th>
+          <th style="text-align: center">주소 수</th>
+          <th style="text-align: center">호스트 수</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">/24</td>
+          <td style="text-align: left">255.255.255.0</td>
+          <td style="text-align: center">256</td>
+          <td style="text-align: center">254</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">/25</td>
+          <td style="text-align: left">255.255.255.128</td>
+          <td style="text-align: center">128</td>
+          <td style="text-align: center">126</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">/26</td>
+          <td style="text-align: left">255.255.255.192</td>
+          <td style="text-align: center">64</td>
+          <td style="text-align: center">62</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">/27</td>
+          <td style="text-align: left">255.255.255.224</td>
+          <td style="text-align: center">32</td>
+          <td style="text-align: center">30</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">/28</td>
+          <td style="text-align: left">255.255.255.240</td>
+          <td style="text-align: center">16</td>
+          <td style="text-align: center">14</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">/30</td>
+          <td style="text-align: left">255.255.255.252</td>
+          <td style="text-align: center">4</td>
+          <td style="text-align: center">2 (P2P 링크용)</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="b-wireshark-캡처-필터-bpf-문법">(B) Wireshark 캡처 필터 (BPF 문법)<a hidden class="anchor" aria-hidden="true" href="#b-wireshark-캡처-필터-bpf-문법">#</a></h3>
+<p><strong>호스트/네트워크 기반 필터:</strong></p>
+<ul>
+<li><strong>host 192.168.1.100</strong> : 특정 호스트의 모든 트래픽</li>
+<li><strong>net 192.168.1.0/24</strong> : 특정 네트워크의 모든 트래픽</li>
+<li><strong>src host 192.168.1.100</strong> : 출발지 IP 필터</li>
+<li><strong>dst host 192.168.1.200</strong> : 목적지 IP 필터</li>
+</ul>
+<p><strong>포트 기반 필터:</strong></p>
+<ul>
+<li><strong>port 80</strong> : 특정 포트의 트래픽</li>
+<li><strong>port 443</strong> : HTTPS 트래픽</li>
+<li><strong>portrange 1000-2000</strong> : 포트 범위</li>
+</ul>
+<p><strong>프로토콜 필터:</strong></p>
+<ul>
+<li><strong>tcp</strong> : TCP 트래픽만</li>
+<li><strong>udp</strong> : UDP 트래픽만</li>
+</ul>
+<p><strong>조합 예시:</strong></p>
+<ul>
+<li><strong>tcp and src host 192.168.1.100 and dst port 80</strong> : 192.168.1.100에서 80포트로 가는 TCP 트래픽</li>
+</ul>
+<hr>
+<h3 id="c-wireshark-디스플레이-필터">(C) Wireshark 디스플레이 필터<a hidden class="anchor" aria-hidden="true" href="#c-wireshark-디스플레이-필터">#</a></h3>
+<p><strong>IP 주소 필터:</strong></p>
+<ul>
+<li><strong>ip.addr == 192.168.1.100</strong> : 출발지 또는 목적지</li>
+<li><strong>ip.src == 192.168.1.100</strong> : 출발지만</li>
+<li><strong>ip.dst == 192.168.1.200</strong> : 목적지만</li>
+</ul>
+<p><strong>프로토콜 필터:</strong></p>
+<ul>
+<li><strong>tcp</strong>, <strong>udp</strong>, <strong>icmp</strong>, <strong>arp</strong>, <strong>http</strong>, <strong>dns</strong>, <strong>ssh</strong></li>
+</ul>
+<p><strong>TCP 플래그 필터:</strong></p>
+<ul>
+<li><strong>tcp.flags.syn == 1</strong> : SYN 플래그</li>
+<li><strong>tcp.flags.ack == 1</strong> : ACK 플래그</li>
+<li><strong>tcp.flags.reset == 1</strong> : RST 플래그</li>
+<li><strong>tcp.flags.syn == 1 and tcp.flags.ack == 0</strong> : SYN 패킷 (3-way handshake 시작)</li>
+</ul>
+<p><strong>포트 필터:</strong></p>
+<ul>
+<li><strong>tcp.port == 80</strong></li>
+<li><strong>tcp.dstport == 443</strong></li>
+<li><strong>tcp.srcport == 22</strong></li>
+</ul>
+<p><strong>HTTP 필터:</strong></p>
+<ul>
+<li><strong>http.request</strong> : HTTP 요청만</li>
+<li><strong>http.response</strong> : HTTP 응답만</li>
+<li><strong>http.request.method == &ldquo;POST&rdquo;</strong> : POST 요청</li>
+<li><strong>http.request.uri contains &ldquo;login&rdquo;</strong> : URI에 login 포함</li>
+</ul>
+<p><strong>DNS 필터:</strong></p>
+<ul>
+<li><strong>dns.qry.name contains &ldquo;google&rdquo;</strong> : DNS 쿼리에 google 포함</li>
+</ul>
+<p><strong>패킷 크기 필터:</strong></p>
+<ul>
+<li><strong>frame.len &gt; 1000</strong> : 1000바이트 초과</li>
+<li><strong>ip.len &lt; 100</strong> : IP 패킷 길이 100바이트 미만</li>
+</ul>
+<p><strong>조합 예시:</strong></p>
+<ul>
+<li><strong>tcp.flags.syn == 1 and ip.src == 192.168.1.100 and tcp.dstport == 22</strong> : 특정 IP에서 SSH로 연결 시도하는 SYN 패킷</li>
+<li><strong>http.request.method == &ldquo;POST&rdquo; and http.request.uri contains &ldquo;admin&rdquo;</strong> : admin 경로로 가는 POST 요청</li>
+</ul>
+<hr>
+<h3 id="d-리눅스-네트워크-명령어">(D) 리눅스 네트워크 명령어<a hidden class="anchor" aria-hidden="true" href="#d-리눅스-네트워크-명령어">#</a></h3>
+<p><strong>네트워크 인터페이스 및 라우팅 확인:</strong></p>
+<ul>
+<li><strong>ip addr show</strong> / <strong>ifconfig</strong> : 네트워크 인터페이스 확인</li>
+<li><strong>ip route show</strong> / <strong>route -n</strong> : 라우팅 테이블 확인</li>
+<li><strong>ip neigh show</strong> / <strong>arp -a</strong> : ARP 테이블 확인</li>
+</ul>
+<p><strong>연결 상태 확인:</strong></p>
+<ul>
+<li><strong>netstat -tunap</strong> : 모든 TCP/UDP 연결</li>
+<li><strong>ss -tunap</strong> : 최신 명령어 (동일 기능)</li>
+<li><strong>netstat -tunlp | grep :80</strong> : 특정 포트 리스닝 확인</li>
+</ul>
+<p><strong>연결성 테스트:</strong></p>
+<ul>
+<li><strong>ping 192.168.1.1</strong> : ICMP 테스트</li>
+<li><strong>ping -c 4 google.com</strong> : 4개 패킷만 전송</li>
+<li><strong>traceroute google.com</strong> : 경로 추적</li>
+<li><strong>mtr google.com</strong> : 실시간 경로 추적</li>
+</ul>
+<p><strong>DNS 조회:</strong></p>
+<ul>
+<li><strong>dig google.com</strong></li>
+<li><strong>nslookup google.com</strong></li>
+<li><strong>host google.com</strong></li>
+</ul>
+<p><strong>패킷 캡처 (tcpdump):</strong></p>
+<ul>
+<li><strong>tcpdump -i eth0</strong> : eth0 인터페이스 모니터링</li>
+<li><strong>tcpdump -i eth0 port 80</strong> : 80번 포트만</li>
+<li><strong>tcpdump -i eth0 -w capture.pcap</strong> : 파일로 저장</li>
+<li><strong>tcpdump -r capture.pcap</strong> : 캡처 파일 읽기</li>
+<li><strong>tcpdump -i eth0 &rsquo;tcp[tcpflags] &amp; (tcp-syn) != 0&rsquo;</strong> : SYN 패킷만</li>
+</ul>
+<hr>
+<h3 id="e-실습-결과-및-분석">(E) 실습 결과 및 분석<a hidden class="anchor" aria-hidden="true" href="#e-실습-결과-및-분석">#</a></h3>
+<p><strong>IPv4 헤더 분석 (Wireshark에서 확인한 주요 내용):</strong></p>
+<ul>
+<li><strong>버전</strong> : 4 (IPv4)</li>
+<li><strong>헤더 길이</strong> : 20 bytes (5 * 4)</li>
+<li><strong>Total Length</strong> : 60</li>
+<li><strong>Identification</strong> : 0x1a2b</li>
+<li><strong>Flags</strong> : 0x4000 (Don&rsquo;t Fragment 설정됨)</li>
+<li><strong>Fragment Offset</strong> : 0</li>
+<li><strong>Time to Live</strong> : 64</li>
+<li><strong>Protocol</strong> : TCP (6)</li>
+<li><strong>출발지</strong> : 192.168.1.100</li>
+<li><strong>목적지</strong> : 192.168.1.200</li>
+</ul>
+<p><strong>주요 필드 분석:</strong></p>
+<ul>
+<li><strong>TTL (Time to Live)</strong> : 64 -&gt; 일반적으로 Linux/Unix는 64, Windows는 128로 설정. 패킷이 라우터를 거칠 때마다 1씩 감소하며, 0이 되면 폐기됩니다. 비정상적으로 낮은 TTL 값은 루프나 변조를 의심할 수 있습니다.</li>
+<li><strong>Flags - Don&rsquo;t Fragment</strong> : 설정 시 패킷이 MTU보다 크면 ICMP &ldquo;Fragmentation Needed&rdquo; 메시지를 받습니다. <strong>Path MTU Discovery</strong>에 사용됩니다.</li>
+<li><strong>Protocol</strong> : 6 = TCP, 17 = UDP, 1 = ICMP. 상위 계층 프로토콜을 식별합니다.</li>
+<li><strong>Identification</strong> : 패킷 단편화 시 동일한 원본 패킷을 식별하는 데 사용됩니다.</li>
+</ul>
+<p><strong>Wireshark로 3-Way Handshake 분석:</strong></p>
+<p>패킷 1 (SYN) : 클라이언트 -&gt; 서버 연결 요청</p>
+<ul>
+<li>Flags : SYN / Seq : 0 / Ack : 0</li>
+</ul>
+<p>패킷 2 (SYN-ACK) : 서버 -&gt; 클라이언트 연결 수락</p>
+<ul>
+<li>Flags : SYN, ACK / Seq : 0 / Ack : 1</li>
+</ul>
+<p>패킷 3 (ACK) : 클라이언트 -&gt; 서버 연결 확립</p>
+<ul>
+<li>Flags : ACK / Seq : 1 / Ack : 1</li>
+</ul>
+<p>-&gt; 정상적인 TCP 연결 수립 과정</p>
+<p><strong>비정상 패킷 탐지 예시:</strong></p>
+<p>SYN Flood 공격 탐지:</p>
+<ul>
+<li>대량의 SYN 패킷이 다양한 출발지 IP에서 발생</li>
+<li>SYN-ACK에 대한 ACK 응답이 없음</li>
+<li>Wireshark 필터 : <strong>tcp.flags.syn == 1 and tcp.flags.ack == 0</strong></li>
+</ul>
+<p>IP Spoofing 탐지:</p>
+<ul>
+<li>TTL 값이 비정상적으로 낮거나 일관성 없음</li>
+<li>내부 네트워크 IP가 외부에서 유입</li>
+<li>출발지 IP가 브로드캐스트/멀티캐스트 주소</li>
+</ul>
+<p>Port Scanning 탐지:</p>
+<ul>
+<li>짧은 시간에 동일 출발지에서 다양한 포트로 연결 시도</li>
+<li>대량의 RST 패킷 (포트가 닫혀있음)</li>
+<li>Wireshark 필터 : <strong>tcp.flags.reset == 1</strong></li>
+</ul>
+<hr>
+<h2 id="3-실무보안-관점-분석">3. 실무/보안 관점 분석<a hidden class="anchor" aria-hidden="true" href="#3-실무보안-관점-분석">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">분야</th>
+          <th style="text-align: left">적용 시나리오</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>SOC / 관제</strong></td>
+          <td style="text-align: left"><strong>실시간 트래픽 모니터링</strong> : IDS/IPS에서 Wireshark와 유사한 패킷 분석 엔진(Suricata, Snort)을 사용하여 비정상 패턴을 탐지합니다. <strong>베이스라인 트래픽</strong>을 설정하고, 통계적 이상(급증하는 SYN 패킷, 비정상 TTL, 알려지지 않은 프로토콜)을 자동 알림합니다. Snort 룰 예시: <strong>alert tcp any any -&gt; $HOME_NET any (flags:S; threshold: type both, track by_src, count 100, seconds 10; msg:&ldquo;Possible SYN Flood&rdquo;;)</strong> Wireshark를 통해 알림의 실제 패킷을 확인하여 <strong>오탐(False Positive)</strong> 여부를 판단합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>CERT / 사고 대응</strong></td>
+          <td style="text-align: left"><strong>포렌식 패킷 분석</strong> : 침해 사고 시 네트워크 탭(SPAN/Mirror Port)이나 방화벽에서 수집한 PCAP 파일을 Wireshark로 분석합니다. <strong>공격 타임라인 재구성</strong> : (1) 초기 침투 패킷 식별 -&gt; (2) C&amp;C 통신 추적 (특정 IP/도메인으로의 주기적 통신) -&gt; (3) 데이터 유출 탐지 (대용량 파일 전송). <strong>tcp.stream eq 123</strong> 으로 특정 TCP 세션의 모든 패킷을 추적하여 공격자의 명령어와 데이터 유출 내용을 복원. <strong>dns.qry.name</strong> 으로 DGA(Domain Generation Algorithm) 기반 멀웨어 탐지.</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>네트워크 운영</strong></td>
+          <td style="text-align: left"><strong>성능 최적화 및 문제 해결</strong> : Wireshark로 <strong>패킷 손실</strong>, <strong>재전송</strong>, <strong>레이턴시</strong> 문제를 진단합니다. <strong>tcp.analysis.retransmission</strong> 필터로 재전송 패킷을 찾아 네트워크 품질 문제를 식별하고, <strong>tcp.analysis.zero_window</strong> 로 수신 버퍼 고갈 상태를 확인합니다. <strong>서브넷 설계</strong> : 부서별/보안 등급별로 서브넷을 분리하여 VLAN과 결합, 방화벽 규칙으로 <strong>Micro-Segmentation</strong> 구현.</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="4-개인-인사이트-및-다음-단계">4. 개인 인사이트 및 다음 단계<a hidden class="anchor" aria-hidden="true" href="#4-개인-인사이트-및-다음-단계">#</a></h2>
+<ul>
+<li>
+<p><strong>배운 점/느낀 점:</strong></p>
+<ul>
+<li><strong>네트워크는 보안의 기초 중 기초</strong>입니다. 모든 통신은 네트워크를 통해 이루어지므로, IP 헤더와 TCP/UDP 헤더를 읽을 수 있는 능력은 <strong>공격과 방어 모두의 필수 역량</strong>입니다.</li>
+<li><strong>Wireshark의 강력함</strong> : 교재에서 배운 이론적 개념(OSI 7계층, IPv4 헤더)을 실제 패킷으로 직접 확인하니 훨씬 명확하게 이해되었습니다. 특히 3-Way Handshake를 패킷 단위로 보면서 TCP의 연결 지향적 특성을 체감했습니다.</li>
+<li><strong>서브넷의 중요성</strong> : 단순히 IP 주소를 나누는 것이 아니라, <strong>보안 경계</strong>를 만드는 것임을 깨달았습니다. 잘못된 서브넷 설계는 공격자에게 전체 네트워크를 노출시킬 수 있습니다.</li>
+<li><strong>패킷 분석의 예술</strong> : Wireshark 필터를 잘 활용하면 수만 개의 패킷 속에서 핵심 정보만 추출할 수 있습니다. 필터 문법을 익히는 것이 효율적인 분석의 핵심입니다.</li>
+</ul>
+</li>
+<li>
+<p><strong>심화 방향:</strong></p>
+<ul>
+<li><strong>TCP/UDP 심화</strong> : TCP의 흐름 제어, 혼잡 제어, UDP의 특성과 활용 사례 학습</li>
+<li><strong>고급 Wireshark 기법</strong> : Follow TCP Stream, Statistics 메뉴 활용, Lua 스크립트를 통한 커스텀 분석, PCAP 파일 자동 분석 스크립트 작성</li>
+<li><strong>공격 시나리오 재현</strong> : 실습 환경에서 SYN Flood, ARP Spoofing, DNS Spoofing 등의 공격을 직접 재현하고 Wireshark로 패킷을 분석하여 탐지 시그니처 개발</li>
+<li><strong>IDS/IPS 룰 작성</strong> : Suricata나 Snort 룰을 작성하여 특정 공격 패턴을 자동 탐지하는 시스템 구축</li>
+<li><strong>IPv6 학습</strong> : IPv4 고갈과 IPv6 전환에 대비하여 IPv6 주소 체계, 헤더 구조, 보안 고려사항 학습</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="5-빠른-참고-quick-reference">5. 빠른 참고 (Quick Reference)<a hidden class="anchor" aria-hidden="true" href="#5-빠른-참고-quick-reference">#</a></h2>
+<h3 id="ipv4-주소-클래스">IPv4 주소 클래스<a hidden class="anchor" aria-hidden="true" href="#ipv4-주소-클래스">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">클래스</th>
+          <th style="text-align: left">범위</th>
+          <th style="text-align: center">서브넷</th>
+          <th style="text-align: left">특이사항</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>A</strong></td>
+          <td style="text-align: left">0.0.0.0 ~ 127.255.255.255</td>
+          <td style="text-align: center">/8</td>
+          <td style="text-align: left">네트워크 126개, 호스트 16,777,214개</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>B</strong></td>
+          <td style="text-align: left">128.0.0.0 ~ 191.255.255.255</td>
+          <td style="text-align: center">/16</td>
+          <td style="text-align: left">네트워크 16,384개, 호스트 65,534개</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>C</strong></td>
+          <td style="text-align: left">192.0.0.0 ~ 223.255.255.255</td>
+          <td style="text-align: center">/24</td>
+          <td style="text-align: left">네트워크 2,097,152개, 호스트 254개</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>D</strong></td>
+          <td style="text-align: left">224.0.0.0 ~ 239.255.255.255</td>
+          <td style="text-align: center">-</td>
+          <td style="text-align: left">멀티캐스트</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>E</strong></td>
+          <td style="text-align: left">240.0.0.0 ~ 255.255.255.255</td>
+          <td style="text-align: center">-</td>
+          <td style="text-align: left">실험용/예약</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>사설 IP (RFC 1918):</strong></p>
+<ul>
+<li>10.0.0.0 ~ 10.255.255.255 (10.0.0.0/8)</li>
+<li>172.16.0.0 ~ 172.31.255.255 (172.16.0.0/12)</li>
+<li>192.168.0.0 ~ 192.168.255.255 (192.168.0.0/16)</li>
+</ul>
+<p><strong>특수 주소:</strong></p>
+<ul>
+<li>127.0.0.0/8 : 루프백 (localhost)</li>
+<li>0.0.0.0/8 : 현재 네트워크</li>
+<li>255.255.255.255 : 제한된 브로드캐스트</li>
+<li>169.254.0.0/16 : Link-local (APIPA)</li>
+</ul>
+<h3 id="ipv4-헤더-필드-요약">IPv4 헤더 필드 요약<a hidden class="anchor" aria-hidden="true" href="#ipv4-헤더-필드-요약">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">필드</th>
+          <th style="text-align: center">크기</th>
+          <th style="text-align: left">설명</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Version</strong></td>
+          <td style="text-align: center">4bit</td>
+          <td style="text-align: left">IP 버전 (4)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>IHL</strong></td>
+          <td style="text-align: center">4bit</td>
+          <td style="text-align: left">헤더 길이 (5 = 20바이트, 옵션 없음)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>DSCP</strong></td>
+          <td style="text-align: center">6bit</td>
+          <td style="text-align: left">서비스 품질 (QoS)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>ECN</strong></td>
+          <td style="text-align: center">2bit</td>
+          <td style="text-align: left">명시적 혼잡 알림</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Total Length</strong></td>
+          <td style="text-align: center">16bit</td>
+          <td style="text-align: left">전체 패킷 크기 (헤더 + 데이터)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Identification</strong></td>
+          <td style="text-align: center">16bit</td>
+          <td style="text-align: left">단편화 시 원본 패킷 식별</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Flags</strong></td>
+          <td style="text-align: center">3bit</td>
+          <td style="text-align: left">Reserved, DF (Don&rsquo;t Fragment), MF (More Fragments)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Fragment Offset</strong></td>
+          <td style="text-align: center">13bit</td>
+          <td style="text-align: left">단편화된 데이터의 오프셋</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>TTL</strong></td>
+          <td style="text-align: center">8bit</td>
+          <td style="text-align: left">패킷 생존 시간 (라우터마다 -1)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Protocol</strong></td>
+          <td style="text-align: center">8bit</td>
+          <td style="text-align: left">상위 프로토콜 (1=ICMP, 6=TCP, 17=UDP)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Header Checksum</strong></td>
+          <td style="text-align: center">16bit</td>
+          <td style="text-align: left">헤더 무결성 검증</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Source IP</strong></td>
+          <td style="text-align: center">32bit</td>
+          <td style="text-align: left">출발지 주소</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Destination IP</strong></td>
+          <td style="text-align: center">32bit</td>
+          <td style="text-align: left">목적지 주소</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Options</strong></td>
+          <td style="text-align: center">가변</td>
+          <td style="text-align: left">추가 옵션 (선택 사항)</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="주요-프로토콜-번호">주요 프로토콜 번호<a hidden class="anchor" aria-hidden="true" href="#주요-프로토콜-번호">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">번호</th>
+          <th style="text-align: left">프로토콜</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">1</td>
+          <td style="text-align: left">ICMP (Internet Control Message Protocol)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">2</td>
+          <td style="text-align: left">IGMP (Internet Group Management Protocol)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">6</td>
+          <td style="text-align: left">TCP (Transmission Control Protocol)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">17</td>
+          <td style="text-align: left">UDP (User Datagram Protocol)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">41</td>
+          <td style="text-align: left">IPv6 (IPv6 encapsulation)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">47</td>
+          <td style="text-align: left">GRE (Generic Routing Encapsulation)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">50</td>
+          <td style="text-align: left">ESP (Encap Security Payload - IPsec)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">51</td>
+          <td style="text-align: left">AH (Authentication Header - IPsec)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">89</td>
+          <td style="text-align: left">OSPF (Open Shortest Path First)</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="wireshark-단축키">Wireshark 단축키<a hidden class="anchor" aria-hidden="true" href="#wireshark-단축키">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">단축키</th>
+          <th style="text-align: left">기능</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>Ctrl + K</strong></td>
+          <td style="text-align: left">캡처 시작</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>Ctrl + E</strong></td>
+          <td style="text-align: left">캡처 중지</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>Ctrl + F</strong></td>
+          <td style="text-align: left">패킷 찾기</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>Ctrl + G</strong></td>
+          <td style="text-align: left">특정 패킷 번호로 이동</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>Ctrl + N</strong></td>
+          <td style="text-align: left">다음 패킷</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>Ctrl + B</strong></td>
+          <td style="text-align: left">이전 패킷</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>Ctrl + -&gt;</strong></td>
+          <td style="text-align: left">다음 대화 (conversation)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>Ctrl + &lt;-</strong></td>
+          <td style="text-align: left">이전 대화</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>Ctrl + Alt + Shift + T</strong></td>
+          <td style="text-align: left">TCP Stream 따라가기</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="tcpdump-주요-옵션">tcpdump 주요 옵션<a hidden class="anchor" aria-hidden="true" href="#tcpdump-주요-옵션">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">옵션</th>
+          <th style="text-align: left">설명</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>-i &lt;interface&gt;</strong></td>
+          <td style="text-align: left">캡처할 인터페이스 지정</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>-c &lt;count&gt;</strong></td>
+          <td style="text-align: left">지정된 개수만큼만 캡처</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>-w &lt;file&gt;</strong></td>
+          <td style="text-align: left">PCAP 파일로 저장</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>-r &lt;file&gt;</strong></td>
+          <td style="text-align: left">PCAP 파일 읽기</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>-n</strong></td>
+          <td style="text-align: left">DNS 이름 해석 안 함 (빠름)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>-v / -vv / -vvv</strong></td>
+          <td style="text-align: left">상세 출력 (레벨 증가)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>-A</strong></td>
+          <td style="text-align: left">ASCII로 패킷 내용 출력</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>-X</strong></td>
+          <td style="text-align: left">16진수 + ASCII로 출력</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>-s &lt;snaplen&gt;</strong></td>
+          <td style="text-align: left">캡처할 패킷 크기 (0 = 전체)</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>tcpdump 사용 예시:</strong></p>
+<ul>
+<li><strong>tcpdump -i eth0 -w capture.pcap &rsquo;tcp port 80&rsquo;</strong> : HTTP 트래픽 저장</li>
+<li><strong>tcpdump -i any -c 100 -n &lsquo;src host 192.168.1.100&rsquo;</strong> : 특정 IP 100개 캡처</li>
+<li><strong>tcpdump -i eth0 -A &rsquo;tcp port 80 and (tcp[13] &amp; 2 != 0)&rsquo;</strong> : SYN 플래그 패킷</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://hojjang98.github.io/tags/tcp/ip/">TCP/IP</a></li>
+      <li><a href="https://hojjang98.github.io/tags/ipv4/">IPv4</a></li>
+      <li><a href="https://hojjang98.github.io/tags/wireshark/">Wireshark</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC%EB%B3%B4%EC%95%88/">네트워크보안</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%ED%8C%A8%ED%82%B7%EB%B6%84%EC%84%9D/">패킷분석</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

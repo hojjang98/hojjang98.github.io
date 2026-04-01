@@ -1,6 +1,6 @@
 ---
 title: "Day 40: 종합 정리"
-date: 2026-03-13
+date: 2026-03-27
 categories: ["cyber-law-study"]
 tags: ["종합정리", "사이버법률", "개인정보보호", "ISMS-P", "침해사고대응", "암호화기준"]
 draft: false

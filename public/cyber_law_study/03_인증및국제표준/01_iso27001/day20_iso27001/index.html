@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Day 20: ISO 27001 정보보호 관리체계 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="ISO27001, ISMS, 정보보호관리체계, 국제표준, PDCA, 위험관리, 보안인증, AnnexA">
+<meta name="description" content="ISO 27001의 구조와 요구사항(Clause 4~10), Annex A 93개 통제항목, 인증 절차 및 2022년 개정 주요 변화를 학습하고 보안 컨설팅 관점의 활용 방안을 파악합니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://hojjang98.github.io/cyber_law_study/03_%EC%9D%B8%EC%A6%9D%EB%B0%8F%EA%B5%AD%EC%A0%9C%ED%91%9C%EC%A4%80/01_iso27001/day20_iso27001/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.290573799e582c418c4bd84f2bca757d0a77fd1bf9f5c43942030e706df68ec8.css" integrity="sha256-KQVzeZ5YLEGMS9hPK8p1fQp3/Rv59cQ5QgMOcG32jsg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/cyber_law_study/03_%EC%9D%B8%EC%A6%9D%EB%B0%8F%EA%B5%AD%EC%A0%9C%ED%91%9C%EC%A4%80/01_iso27001/day20_iso27001/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://hojjang98.github.io/cyber_law_study/03_%EC%9D%B8%EC%A6%9D%EB%B0%8F%EA%B5%AD%EC%A0%9C%ED%91%9C%EC%A4%80/01_iso27001/day20_iso27001/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="Day 20: ISO 27001 정보보호 관리체계">
+  <meta property="og:description" content="ISO 27001의 구조와 요구사항(Clause 4~10), Annex A 93개 통제항목, 인증 절차 및 2022년 개정 주요 변화를 학습하고 보안 컨설팅 관점의 활용 방안을 파악합니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="cyber_law_study">
+    <meta property="article:published_time" content="2026-02-27T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-02-27T00:00:00+00:00">
+    <meta property="article:tag" content="ISO27001">
+    <meta property="article:tag" content="ISMS">
+    <meta property="article:tag" content="정보보호관리체계">
+    <meta property="article:tag" content="국제표준">
+    <meta property="article:tag" content="PDCA">
+    <meta property="article:tag" content="위험관리">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Day 20: ISO 27001 정보보호 관리체계">
+<meta name="twitter:description" content="ISO 27001의 구조와 요구사항(Clause 4~10), Annex A 93개 통제항목, 인증 절차 및 2022년 개정 주요 변화를 학습하고 보안 컨설팅 관점의 활용 방안을 파악합니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "보안 컨설팅 공부",
+      "item": "https://hojjang98.github.io/cyber_law_study/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  4 ,
+      "name": "Day 20: ISO 27001 정보보호 관리체계",
+      "item": "https://hojjang98.github.io/cyber_law_study/03_%EC%9D%B8%EC%A6%9D%EB%B0%8F%EA%B5%AD%EC%A0%9C%ED%91%9C%EC%A4%80/01_iso27001/day20_iso27001/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Day 20: ISO 27001 정보보호 관리체계",
+  "name": "Day 20: ISO 27001 정보보호 관리체계",
+  "description": "ISO 27001의 구조와 요구사항(Clause 4~10), Annex A 93개 통제항목, 인증 절차 및 2022년 개정 주요 변화를 학습하고 보안 컨설팅 관점의 활용 방안을 파악합니다.",
+  "keywords": [
+    "ISO27001", "ISMS", "정보보호관리체계", "국제표준", "PDCA", "위험관리", "보안인증", "AnnexA"
+  ],
+  "articleBody": "Day 20: ISO 27001 정보보호 관리체계 1. ISO 27001의 개요 1.1 ISO 27001이란? 정식 명칭: ISO/IEC 27001:2022 Information security, cybersecurity and privacy protection — Information security management systems — Requirements\nISO 27001: 조직의 **정보보호 관리체계(ISMS: Information Security Management System)**에 대한 국제 표준\n발행 기관:\nISO (International Organization for Standardization, 국제표준화기구) IEC (International Electrotechnical Commission, 국제전기기술위원회) 1.2 제정 배경 및 연혁 1995년: BS 7799 Part 1 발행 (영국 표준) 1998년: BS 7799 Part 2 발행 (ISMS 인증 기준) 2005년: ISO/IEC 27001:2005 발행 (국제 표준화) 2013년: ISO/IEC 27001:2013 개정 2022년: ISO/IEC 27001:2022 최신 개정 1.3 ISO 27001의 목적 조직이 정보자산을 보호하기 위해:\n정보보호 위험을 식별·평가·관리 정보보호 관리체계 수립·구현·운영·유지·개선 국제적으로 인정받는 정보보호 수준 확보 1.4 ISO 27001 vs ISMS-P 구분 ISO 27001 ISMS-P 발행 기관 ISO/IEC (국제 표준) 한국인터넷진흥원 (국내 인증) 적용 범위 전 세계 한국 인증 기준 93개 통제항목 (Annex A) 102개 통제항목 개인정보보호 별도 (ISO 27701) 통합 (정보보호+개인정보보호) 법적 의무 없음 (자발적) 일부 기업 의무 (정보통신망법) 인증 효력 국제적으로 인정 한국 내 인증 유효기간 3년 3년 특징:\nISMS-P는 한국형 표준 (정보보호+개인정보보호 통합) ISO 27001은 국제 표준 (전 세계 인정) 글로벌 기업은 ISO 27001 선호 한국 기업은 ISMS-P + ISO 27001 병행 인증도 많음 2. ISO 27001의 구조 2.1 구성 ISO 27001:2022는 크게 2부분으로 구성:\n(1) 본문 (Clause 1~10) 정보보호 관리체계의 요구사항\nClause 1 : Scope (적용 범위) Clause 2 : Normative references (인용 표준) Clause 3 : Terms and definitions (용어 정의) Clause 4 : Context of the organization (조직 상황) Clause 5 : Leadership (리더십) Clause 6 : Planning (계획) Clause 7 : Support (지원) Clause 8 : Operation (운영) Clause 9 : Performance evaluation (성과 평가) Clause 10 : Improvement (개선) (2) Annex A (부속서) 정보보호 통제항목 (93개)\nA.5 : Organizational controls (조직적 통제) - 37개 A.6 : People controls (인적 통제) - 8개 A.7 : Physical controls (물리적 통제) - 14개 A.8 : Technological controls (기술적 통제) - 34개 2022년 개정 변화:\n기존 14개 영역 114개 통제 → 4개 영역 93개 통제로 재구성 클라우드, 원격근무 등 최신 보안 이슈 반영 2.2 PDCA 사이클 ISO 27001은 PDCA (Plan-Do-Check-Act) 사이클 기반:\nPlan (계획)\n조직 상황 이해 리더십 및 정책 위험 평가 및 관리 목표 수립 Do (실행)\n보안 통제 구현 자원 배분 역량 및 인식 제고 운영 Check (점검)\n모니터링 및 측정 내부 심사 경영 검토 Act (개선)\n부적합 시정 지속적 개선 위 4단계를 반복하며 Plan 으로 순환\n3. ISO 27001 요구사항 (Clause 4~10) 3.1 Clause 4: 조직 상황 (Context of the Organization) 4.1 조직과 조직 상황의 이해 조직의 내·외부 이슈 파악:\n외부 이슈: 법률, 규제, 시장, 경쟁 내부 이슈: 조직 구조, 문화, 전략 4.2 이해관계자의 니즈와 기대 이해 이해관계자 식별 및 요구사항 파악:\n고객 주주 임직원 규제기관 협력업체 4.3 정보보호 관리체계 범위 결정 ISMS 적용 범위 명확히 정의:\n조직 범위 (부서, 지점) 물리적 범위 (건물, 위치) 시스템 범위 (IT 시스템, 서비스) 예시: “본사 및 서울 데이터센터의 고객 관리 시스템 및 관련 인프라”\n4.4 정보보호 관리체계 ISMS 수립·구현·유지·지속적 개선\n3.2 Clause 5: 리더십 (Leadership) 5.1 리더십과 의지 표명 최고경영자의 ISMS에 대한 리더십:\nISMS 정책 승인 목표 수립 지시 자원 배분 중요성 전달 5.2 정책 정보보호 정책 수립:\n조직 목적과 부합 정보보호 목표 포함 법적 요구사항 준수 지속적 개선 의지 문서화 및 전파 필수\n5.3 조직의 역할, 책임 및 권한 ISMS 관련 역할 및 책임 배분:\nCISO (정보보호 최고책임자) 정보보호 담당 부서 각 부서별 책임 3.3 Clause 6: 계획 (Planning) 6.1 위험 및 기회를 다루는 조치 6.1.1 일반 사항 위험 및 기회 식별\n6.1.2 정보보호 위험 평가 정보보호 위험 평가 프로세스 수립 및 수행:\n[1단계] 정보자산 식별 [2단계] 위협 식별 [3단계] 취약점 식별 [4단계] 위험도 산정 [5단계] 위험 평가 위험도 = 위협 × 취약점 × 자산 가치\n6.1.3 정보보호 위험 관리 위험에 대한 대응 방안 결정:\n위험 수용: 위험을 그대로 받아들임 위험 감소: 보안 통제 구현하여 위험 감소 위험 회피: 위험을 발생시키는 활동 중단 위험 전가: 보험 등으로 위험 전가 6.2 정보보호 목표 및 달성 계획 정보보호 목표 수립:\n측정 가능 모니터링 가능 정기 검토 예시:\n침해사고 발생 건수 연간 0건 보안 취약점 조치율 95% 이상 보안 교육 이수율 100% 6.3 변경 계획 ISMS 변경 시 계획적으로 수행\n3.4 Clause 7: 지원 (Support) 7.1 자원 ISMS 운영에 필요한 자원 제공:\n인력 예산 인프라 기술 7.2 역량 인력의 역량 보장:\n교육 훈련 경험 7.3 인식 임직원의 인식 제고:\n정보보호 정책 인지 ISMS 기여도 인식 부적합 결과 인지 7.4 의사소통 내·외부 의사소통 관리:\n무엇을, 언제, 누구에게, 어떻게 7.5 문서화된 정보 ISMS 관련 문서 작성·관리:\n정책, 절차, 기록 문서 관리 (작성, 검토, 승인, 개정, 보관) 3.5 Clause 8: 운영 (Operation) 8.1 운영 계획 및 관리 계획된 프로세스 구현 및 관리\n8.2 정보보호 위험 평가 정기적인 위험 평가 수행\n8.3 정보보호 위험 관리 위험 관리 계획 이행\n3.6 Clause 9: 성과 평가 (Performance Evaluation) 9.1 모니터링, 측정, 분석 및 평가 ISMS 성과 모니터링 및 측정:\n정보보호 목표 달성도 보안 통제 효과성 KPI (핵심성과지표) 관리 9.2 내부 심사 내부 심사 정기 실시 (연 1회 이상):\nISMS 요구사항 준수 여부 효과적 운영 여부 9.3 경영 검토 최고경영자의 정기 검토 (연 1회 이상):\nISMS 적합성, 타당성, 효과성 검토 개선 기회 식별 3.7 Clause 10: 개선 (Improvement) 10.1 부적합 및 시정 조치 부적합 발견 시 시정 조치:\n원인 분석 재발 방지 조치 10.2 지속적 개선 ISMS의 지속적 개선\n4. Annex A 통제항목 (93개) 4.1 A.5 조직적 통제 (Organizational Controls) - 37개 주요 통제항목 A.5.1 정보보호 정책 A.5.2 정보보호 역할 및 책임 A.5.7 위협 인텔리전스 A.5.10 정보 및 기타 관련 자산의 허용 가능한 사용 A.5.23 클라우드 서비스 사용 시 정보보호 A.5.30 사업 연속성을 위한 ICT 준비성 4.2 A.6 인적 통제 (People Controls) - 8개 주요 통제항목 A.6.1 선별 심사 (채용 시 신원 확인) A.6.2 고용 계약서 (비밀유지 조항) A.6.3 정보보호 인식, 교육 및 훈련 A.6.4 징계 프로세스 A.6.5 고용 종료 또는 변경 후 책임 A.6.8 정보보호 이벤트 보고 4.3 A.7 물리적 통제 (Physical Controls) - 14개 주요 통제항목 A.7.1 물리적 보안 경계 (건물 출입 통제) A.7.2 물리적 출입 통제 A.7.4 물리적 보안 모니터링 (CCTV) A.7.7 클리어 데스크 및 클리어 스크린 A.7.8 장비 배치 및 보호 A.7.10 저장 매체 (USB, 하드디스크 등) A.7.14 장비의 안전한 폐기 또는 재사용 4.4 A.8 기술적 통제 (Technological Controls) - 34개 주요 통제항목 A.8.1 사용자 엔드포인트 기기 (PC, 노트북 보안) A.8.2 특권적 접근 권한 (관리자 권한 관리) A.8.3 정보 접근 제한 A.8.5 안전한 인증 A.8.8 보안 로그 관리 A.8.9 구성 관리 A.8.10 정보 삭제 A.8.11 데이터 마스킹 A.8.16 모니터링 활동 A.8.23 웹 필터링 A.8.24 암호화 사용 5. ISO 27001 인증 절차 5.1 인증 준비 Phase 1: 갭 분석 (Gap Analysis) 현재 상태 vs ISO 27001 요구사항 비교:\n부족한 부분 파악 개선 과제 도출 Phase 2: ISMS 구축 조직 상황 분석 범위 결정 정보보호 정책 수립 위험 평가 위험 관리 계획 수립 보안 통제 선정 및 구현 (Annex A) 문서화 (정책, 절차, 기록) Phase 3: ISMS 운영 보안 통제 운영 교육 실시 모니터링 및 측정 내부 심사 경영 검토 5.2 인증 심사 1단계 심사 (Stage 1 Audit) 문서 심사:\nISMS 문서 검토 준비 상태 확인 결과:\n적합 → 2단계 심사 진행 부적합 → 보완 후 재심사 2단계 심사 (Stage 2 Audit) 현장 심사 (3~5일):\n인터뷰 문서 검토 시스템 점검 현장 확인 부적합 발견 시:\n경미한 부적합 (Minor): 30일 이내 시정 중대한 부적합 (Major): 90일 이내 시정 인증서 발급 심사 통과 시 ISO 27001 인증서 발급\n유효 기간: 3년\n5.3 사후 관리 연간 사후 심사 (Surveillance Audit) 매년 간소화된 심사 실시:\nISMS 유지 여부 확인 변경 사항 검토 갱신 심사 (Recertification Audit) 3년 후 재인증 심사:\n2단계 심사와 동일한 수준 6. 보안 컨설팅 관점의 시사점 6.1 ISO 27001 인증 컨설팅 인증이 필요한 경우 글로벌 비즈니스: 해외 고객·파트너 요구 입찰 가점: 공공·민간 입찰 시 가점 고객 신뢰: 정보보호 수준 입증 내부 관리: 체계적인 정보보호 관리 컨설팅 프로세스 Phase 1: 현황 진단 (1개월)\n갭 분석 로드맵 수립 Phase 2: ISMS 구축 (3~4개월)\n범위 설정 정책·절차 수립 위험 평가 보안 통제 구현 문서화 Phase 3: 운영 (2~3개월)\n내부 심사 경영 검토 부적합 시정 Phase 4: 인증 심사 (1~2개월)\n1단계 심사 대응 2단계 심사 대응 부적합 시정 총 기간: 약 6~10개월\n6.2 ISO 27001 vs ISMS-P 선택 기준 기준 ISO 27001 ISMS-P 병행 인증 글로벌 비즈니스 ⭐⭐⭐ ⭐ ⭐⭐⭐ 국내 법적 의무 ⭐ ⭐⭐⭐ ⭐⭐⭐ 개인정보보호 ⭐⭐ (별도 ISO 27701) ⭐⭐⭐ (통합) ⭐⭐⭐ 비용 ⭐⭐ ⭐⭐ ⭐ (높음) 국제 인지도 ⭐⭐⭐ ⭐ ⭐⭐⭐ 권장:\n글로벌 기업: ISO 27001 우선 국내 중심 기업: ISMS-P 우선 대기업: 병행 인증 6.3 ISO 27001 인증의 효과 비즈니스 효과 고객 신뢰 확보 입찰 경쟁력 강화 글로벌 시장 진출 파트너십 강화 내부 효과 정보보호 수준 향상 체계적 관리 임직원 인식 제고 리스크 관리 강화 7. 실무 사례 사례 1: 글로벌 SaaS 기업 A기업: 한국 SaaS 기업, 유럽·미국 진출\nISO 27001 인증 동기:\n유럽 고객이 ISO 27001 요구 GDPR 준수 입증 필요 인증 과정:\n갭 분석 (1개월) ISMS 구축 (4개월) 범위: 클라우드 서비스 인프라 위험 평가 AWS 클라우드 보안 강화 내부 심사 (1개월) 인증 심사 (1개월) 결과:\nISO 27001 인증 취득 유럽 고객 10개사 계약 성사 사례 2: 국내 중견 제조업 B기업: 자동차 부품 제조, 대기업 납품\nISO 27001 인증 동기:\n대기업 협력사 평가에서 정보보호 인증 요구 내부 정보보호 수준 향상 인증 과정:\nISMS-P 먼저 취득 ISO 27001 추가 인증 ISMS-P와 중복 부분 많아 3개월 만에 인증 결과:\n대기업 협력사 평가 A등급 정보보호 체계 확립 사례 3: 스타트업 C스타트업: AI 기반 HR 솔루션\nISO 27001 인증 동기:\n대기업 고객 입찰 참여 투자 유치 시 신뢰도 향상 인증 과정:\n외부 컨설팅 활용 (6개월) 최소 범위로 시작 (본사 + 클라우드) 비용 효율적으로 진행 결과:\nISO 27001 인증 대기업 고객 2개사 확보 시리즈 B 투자 유치 성공 8. ISO 27001 2022년 개정 주요 변화 8.1 통제항목 재구성 2013년 → 2022년\n14개 영역 114개 통제 → 4개 영역 93개 통제 주제별 → 속성별 분류 (조직적, 인적, 물리적, 기술적) 8.2 신규 통제항목 (11개) A.5.7 위협 인텔리전스 A.5.23 클라우드 서비스 사용 시 정보보호 A.5.30 사업 연속성을 위한 ICT 준비성 A.7.4 물리적 보안 모니터링 A.8.9 구성 관리 A.8.10 정보 삭제 A.8.11 데이터 마스킹 A.8.12 데이터 유출 방지 A.8.16 모니터링 활동 A.8.23 웹 필터링 A.8.28 안전한 코딩 특징:\n클라우드 보안 강화 원격근무 고려 데이터 보호 강화 8.3 기존 인증 기업 대응 전환 기간: 2025년 10월까지\n대응 방안:\n신규 통제항목 검토 갭 분석 부족한 통제 구현 문서 업데이트 전환 심사 9. 체크리스트 인증 준비 갭 분석을 수행했는가? ISMS 범위를 명확히 정의했는가? 정보보호 정책을 수립했는가? 최고경영자의 리더십이 있는가? 위험 관리 정보자산을 식별했는가? 위험 평가를 수행했는가? 위험 관리 계획을 수립했는가? 보안 통제를 선정·구현했는가? 운영 내부 심사를 연 1회 이상 수행하는가? 경영 검토를 연 1회 이상 수행하는가? 부적합 발견 시 시정 조치를 하는가? 정보보호 목표를 달성하고 있는가? 문서화 정책, 절차 문서가 있는가? 위험 평가 기록이 있는가? 내부 심사 기록이 있는가? 경영 검토 기록이 있는가? 학습 정리 오늘 학습한 핵심 내용:\nISO 27001은 정보보호 관리체계 국제 표준 PDCA 사이클 기반 (Plan-Do-Check-Act) Clause 4~10: ISMS 요구사항 (조직 상황, 리더십, 계획, 지원, 운영, 성과 평가, 개선) Annex A: 93개 통제항목 (조직적 37, 인적 8, 물리적 14, 기술적 34) 위험 평가·관리가 핵심 인증 유효기간 3년, 매년 사후 심사 2022년 개정: 클라우드, 원격근무 등 최신 이슈 반영 글로벌 기업은 ISO 27001 선호, 국내 기업은 ISMS-P 또는 병행 인증 인증 효과: 고객 신뢰, 입찰 경쟁력, 글로벌 진출 다음 학습 주제 Day 21: ISO 27002 정보보호 통제 가이드라인\n",
+  "wordCount" : "4233",
+  "inLanguage": "ko",
+  "datePublished": "2026-02-27T00:00:00Z",
+  "dateModified": "2026-02-27T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/cyber_law_study/03_%EC%9D%B8%EC%A6%9D%EB%B0%8F%EA%B5%AD%EC%A0%9C%ED%91%9C%EC%A4%80/01_iso27001/day20_iso27001/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://hojjang98.github.io/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/cyber_law_study/">보안 컨설팅 공부</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Day 20: ISO 27001 정보보호 관리체계
+    </h1>
+    <div class="post-meta"><span title='2026-02-27 00:00:00 +0000 UTC'>2026년 2월 27일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="day-20-iso-27001-정보보호-관리체계">Day 20: ISO 27001 정보보호 관리체계<a hidden class="anchor" aria-hidden="true" href="#day-20-iso-27001-정보보호-관리체계">#</a></h1>
+<h2 id="1-iso-27001의-개요">1. ISO 27001의 개요<a hidden class="anchor" aria-hidden="true" href="#1-iso-27001의-개요">#</a></h2>
+<h3 id="11-iso-27001이란">1.1 ISO 27001이란?<a hidden class="anchor" aria-hidden="true" href="#11-iso-27001이란">#</a></h3>
+<p><strong>정식 명칭</strong>: ISO/IEC 27001:2022 Information security, cybersecurity and privacy protection — Information security management systems — Requirements</p>
+<p><strong>ISO 27001</strong>: 조직의 **정보보호 관리체계(ISMS: Information Security Management System)**에 대한 <strong>국제 표준</strong></p>
+<p><strong>발행 기관</strong>:</p>
+<ul>
+<li><strong>ISO</strong> (International Organization for Standardization, 국제표준화기구)</li>
+<li><strong>IEC</strong> (International Electrotechnical Commission, 국제전기기술위원회)</li>
+</ul>
+<h3 id="12-제정-배경-및-연혁">1.2 제정 배경 및 연혁<a hidden class="anchor" aria-hidden="true" href="#12-제정-배경-및-연혁">#</a></h3>
+<ul>
+<li><strong>1995년</strong>: BS 7799 Part 1 발행 (영국 표준)</li>
+<li><strong>1998년</strong>: BS 7799 Part 2 발행 (ISMS 인증 기준)</li>
+<li><strong>2005년</strong>: ISO/IEC 27001:2005 발행 (국제 표준화)</li>
+<li><strong>2013년</strong>: ISO/IEC 27001:2013 개정</li>
+<li><strong>2022년</strong>: ISO/IEC 27001:2022 최신 개정</li>
+</ul>
+<h3 id="13-iso-27001의-목적">1.3 ISO 27001의 목적<a hidden class="anchor" aria-hidden="true" href="#13-iso-27001의-목적">#</a></h3>
+<p>조직이 <strong>정보자산을 보호</strong>하기 위해:</p>
+<ol>
+<li><strong>정보보호 위험</strong>을 식별·평가·관리</li>
+<li><strong>정보보호 관리체계</strong> 수립·구현·운영·유지·개선</li>
+<li><strong>국제적으로 인정</strong>받는 정보보호 수준 확보</li>
+</ol>
+<h3 id="14-iso-27001-vs-isms-p">1.4 ISO 27001 vs ISMS-P<a hidden class="anchor" aria-hidden="true" href="#14-iso-27001-vs-isms-p">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>구분</th>
+          <th>ISO 27001</th>
+          <th>ISMS-P</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>발행 기관</td>
+          <td>ISO/IEC (국제 표준)</td>
+          <td>한국인터넷진흥원 (국내 인증)</td>
+      </tr>
+      <tr>
+          <td>적용 범위</td>
+          <td>전 세계</td>
+          <td>한국</td>
+      </tr>
+      <tr>
+          <td>인증 기준</td>
+          <td>93개 통제항목 (Annex A)</td>
+          <td>102개 통제항목</td>
+      </tr>
+      <tr>
+          <td>개인정보보호</td>
+          <td>별도 (ISO 27701)</td>
+          <td><strong>통합</strong> (정보보호+개인정보보호)</td>
+      </tr>
+      <tr>
+          <td>법적 의무</td>
+          <td>없음 (자발적)</td>
+          <td>일부 기업 의무 (정보통신망법)</td>
+      </tr>
+      <tr>
+          <td>인증 효력</td>
+          <td><strong>국제적으로 인정</strong></td>
+          <td>한국 내</td>
+      </tr>
+      <tr>
+          <td>인증 유효기간</td>
+          <td>3년</td>
+          <td>3년</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>특징:</strong></p>
+<ul>
+<li><strong>ISMS-P</strong>는 한국형 표준 (정보보호+개인정보보호 통합)</li>
+<li><strong>ISO 27001</strong>은 국제 표준 (전 세계 인정)</li>
+<li>글로벌 기업은 <strong>ISO 27001</strong> 선호</li>
+<li>한국 기업은 <strong>ISMS-P + ISO 27001</strong> 병행 인증도 많음</li>
+</ul>
+<h2 id="2-iso-27001의-구조">2. ISO 27001의 구조<a hidden class="anchor" aria-hidden="true" href="#2-iso-27001의-구조">#</a></h2>
+<h3 id="21-구성">2.1 구성<a hidden class="anchor" aria-hidden="true" href="#21-구성">#</a></h3>
+<p>ISO 27001:2022는 크게 <strong>2부분</strong>으로 구성:</p>
+<h4 id="1-본문-clause-110">(1) 본문 (Clause 1~10)<a hidden class="anchor" aria-hidden="true" href="#1-본문-clause-110">#</a></h4>
+<p>정보보호 관리체계의 <strong>요구사항</strong></p>
+<ul>
+<li><strong>Clause 1</strong> : Scope (적용 범위)</li>
+<li><strong>Clause 2</strong> : Normative references (인용 표준)</li>
+<li><strong>Clause 3</strong> : Terms and definitions (용어 정의)</li>
+<li><strong>Clause 4</strong> : Context of the organization (조직 상황)</li>
+<li><strong>Clause 5</strong> : Leadership (리더십)</li>
+<li><strong>Clause 6</strong> : Planning (계획)</li>
+<li><strong>Clause 7</strong> : Support (지원)</li>
+<li><strong>Clause 8</strong> : Operation (운영)</li>
+<li><strong>Clause 9</strong> : Performance evaluation (성과 평가)</li>
+<li><strong>Clause 10</strong> : Improvement (개선)</li>
+</ul>
+<h4 id="2-annex-a-부속서">(2) Annex A (부속서)<a hidden class="anchor" aria-hidden="true" href="#2-annex-a-부속서">#</a></h4>
+<p>정보보호 <strong>통제항목</strong> (93개)</p>
+<ul>
+<li><strong>A.5</strong> : Organizational controls (조직적 통제) - 37개</li>
+<li><strong>A.6</strong> : People controls (인적 통제) - 8개</li>
+<li><strong>A.7</strong> : Physical controls (물리적 통제) - 14개</li>
+<li><strong>A.8</strong> : Technological controls (기술적 통제) - 34개</li>
+</ul>
+<p><strong>2022년 개정 변화:</strong></p>
+<ul>
+<li>기존 14개 영역 114개 통제 → <strong>4개 영역 93개 통제</strong>로 재구성</li>
+<li>클라우드, 원격근무 등 <strong>최신 보안 이슈</strong> 반영</li>
+</ul>
+<h3 id="22-pdca-사이클">2.2 PDCA 사이클<a hidden class="anchor" aria-hidden="true" href="#22-pdca-사이클">#</a></h3>
+<p>ISO 27001은 <strong>PDCA (Plan-Do-Check-Act)</strong> 사이클 기반:</p>
+<ul>
+<li>
+<p><strong>Plan (계획)</strong></p>
+<ul>
+<li>조직 상황 이해</li>
+<li>리더십 및 정책</li>
+<li>위험 평가 및 관리</li>
+<li>목표 수립</li>
+</ul>
+</li>
+<li>
+<p><strong>Do (실행)</strong></p>
+<ul>
+<li>보안 통제 구현</li>
+<li>자원 배분</li>
+<li>역량 및 인식 제고</li>
+<li>운영</li>
+</ul>
+</li>
+<li>
+<p><strong>Check (점검)</strong></p>
+<ul>
+<li>모니터링 및 측정</li>
+<li>내부 심사</li>
+<li>경영 검토</li>
+</ul>
+</li>
+<li>
+<p><strong>Act (개선)</strong></p>
+<ul>
+<li>부적합 시정</li>
+<li>지속적 개선</li>
+</ul>
+</li>
+</ul>
+<p>위 4단계를 반복하며 <strong>Plan 으로 순환</strong></p>
+<h2 id="3-iso-27001-요구사항-clause-410">3. ISO 27001 요구사항 (Clause 4~10)<a hidden class="anchor" aria-hidden="true" href="#3-iso-27001-요구사항-clause-410">#</a></h2>
+<h3 id="31-clause-4-조직-상황-context-of-the-organization">3.1 Clause 4: 조직 상황 (Context of the Organization)<a hidden class="anchor" aria-hidden="true" href="#31-clause-4-조직-상황-context-of-the-organization">#</a></h3>
+<h4 id="41-조직과-조직-상황의-이해">4.1 조직과 조직 상황의 이해<a hidden class="anchor" aria-hidden="true" href="#41-조직과-조직-상황의-이해">#</a></h4>
+<p>조직의 <strong>내·외부 이슈</strong> 파악:</p>
+<ul>
+<li><strong>외부 이슈</strong>: 법률, 규제, 시장, 경쟁</li>
+<li><strong>내부 이슈</strong>: 조직 구조, 문화, 전략</li>
+</ul>
+<h4 id="42-이해관계자의-니즈와-기대-이해">4.2 이해관계자의 니즈와 기대 이해<a hidden class="anchor" aria-hidden="true" href="#42-이해관계자의-니즈와-기대-이해">#</a></h4>
+<p><strong>이해관계자</strong> 식별 및 요구사항 파악:</p>
+<ul>
+<li>고객</li>
+<li>주주</li>
+<li>임직원</li>
+<li>규제기관</li>
+<li>협력업체</li>
+</ul>
+<h4 id="43-정보보호-관리체계-범위-결정">4.3 정보보호 관리체계 범위 결정<a hidden class="anchor" aria-hidden="true" href="#43-정보보호-관리체계-범위-결정">#</a></h4>
+<p>ISMS 적용 <strong>범위</strong> 명확히 정의:</p>
+<ul>
+<li>조직 범위 (부서, 지점)</li>
+<li>물리적 범위 (건물, 위치)</li>
+<li>시스템 범위 (IT 시스템, 서비스)</li>
+</ul>
+<p><strong>예시:</strong>
+&ldquo;본사 및 서울 데이터센터의 고객 관리 시스템 및 관련 인프라&rdquo;</p>
+<h4 id="44-정보보호-관리체계">4.4 정보보호 관리체계<a hidden class="anchor" aria-hidden="true" href="#44-정보보호-관리체계">#</a></h4>
+<p>ISMS 수립·구현·유지·지속적 개선</p>
+<h3 id="32-clause-5-리더십-leadership">3.2 Clause 5: 리더십 (Leadership)<a hidden class="anchor" aria-hidden="true" href="#32-clause-5-리더십-leadership">#</a></h3>
+<h4 id="51-리더십과-의지-표명">5.1 리더십과 의지 표명<a hidden class="anchor" aria-hidden="true" href="#51-리더십과-의지-표명">#</a></h4>
+<p><strong>최고경영자</strong>의 ISMS에 대한 리더십:</p>
+<ul>
+<li>ISMS 정책 승인</li>
+<li>목표 수립 지시</li>
+<li>자원 배분</li>
+<li>중요성 전달</li>
+</ul>
+<h4 id="52-정책">5.2 정책<a hidden class="anchor" aria-hidden="true" href="#52-정책">#</a></h4>
+<p><strong>정보보호 정책</strong> 수립:</p>
+<ul>
+<li>조직 목적과 부합</li>
+<li>정보보호 목표 포함</li>
+<li>법적 요구사항 준수</li>
+<li>지속적 개선 의지</li>
+</ul>
+<p><strong>문서화</strong> 및 <strong>전파</strong> 필수</p>
+<h4 id="53-조직의-역할-책임-및-권한">5.3 조직의 역할, 책임 및 권한<a hidden class="anchor" aria-hidden="true" href="#53-조직의-역할-책임-및-권한">#</a></h4>
+<p>ISMS 관련 <strong>역할 및 책임</strong> 배분:</p>
+<ul>
+<li>CISO (정보보호 최고책임자)</li>
+<li>정보보호 담당 부서</li>
+<li>각 부서별 책임</li>
+</ul>
+<h3 id="33-clause-6-계획-planning">3.3 Clause 6: 계획 (Planning)<a hidden class="anchor" aria-hidden="true" href="#33-clause-6-계획-planning">#</a></h3>
+<h4 id="61-위험-및-기회를-다루는-조치">6.1 위험 및 기회를 다루는 조치<a hidden class="anchor" aria-hidden="true" href="#61-위험-및-기회를-다루는-조치">#</a></h4>
+<p><strong>6.1.1 일반 사항</strong>
+위험 및 기회 식별</p>
+<p><strong>6.1.2 정보보호 위험 평가</strong>
+정보보호 <strong>위험 평가</strong> 프로세스 수립 및 수행:</p>
+<ol>
+<li><strong>[1단계]</strong> 정보자산 식별</li>
+<li><strong>[2단계]</strong> 위협 식별</li>
+<li><strong>[3단계]</strong> 취약점 식별</li>
+<li><strong>[4단계]</strong> 위험도 산정</li>
+<li><strong>[5단계]</strong> 위험 평가</li>
+</ol>
+<p><strong>위험도 = 위협 × 취약점 × 자산 가치</strong></p>
+<p><strong>6.1.3 정보보호 위험 관리</strong>
+위험에 대한 <strong>대응 방안</strong> 결정:</p>
+<ol>
+<li><strong>위험 수용</strong>: 위험을 그대로 받아들임</li>
+<li><strong>위험 감소</strong>: 보안 통제 구현하여 위험 감소</li>
+<li><strong>위험 회피</strong>: 위험을 발생시키는 활동 중단</li>
+<li><strong>위험 전가</strong>: 보험 등으로 위험 전가</li>
+</ol>
+<h4 id="62-정보보호-목표-및-달성-계획">6.2 정보보호 목표 및 달성 계획<a hidden class="anchor" aria-hidden="true" href="#62-정보보호-목표-및-달성-계획">#</a></h4>
+<p><strong>정보보호 목표</strong> 수립:</p>
+<ul>
+<li>측정 가능</li>
+<li>모니터링 가능</li>
+<li>정기 검토</li>
+</ul>
+<p><strong>예시:</strong></p>
+<ul>
+<li>침해사고 발생 건수 연간 0건</li>
+<li>보안 취약점 조치율 95% 이상</li>
+<li>보안 교육 이수율 100%</li>
+</ul>
+<h4 id="63-변경-계획">6.3 변경 계획<a hidden class="anchor" aria-hidden="true" href="#63-변경-계획">#</a></h4>
+<p>ISMS 변경 시 계획적으로 수행</p>
+<h3 id="34-clause-7-지원-support">3.4 Clause 7: 지원 (Support)<a hidden class="anchor" aria-hidden="true" href="#34-clause-7-지원-support">#</a></h3>
+<h4 id="71-자원">7.1 자원<a hidden class="anchor" aria-hidden="true" href="#71-자원">#</a></h4>
+<p>ISMS 운영에 필요한 <strong>자원</strong> 제공:</p>
+<ul>
+<li>인력</li>
+<li>예산</li>
+<li>인프라</li>
+<li>기술</li>
+</ul>
+<h4 id="72-역량">7.2 역량<a hidden class="anchor" aria-hidden="true" href="#72-역량">#</a></h4>
+<p>인력의 <strong>역량</strong> 보장:</p>
+<ul>
+<li>교육</li>
+<li>훈련</li>
+<li>경험</li>
+</ul>
+<h4 id="73-인식">7.3 인식<a hidden class="anchor" aria-hidden="true" href="#73-인식">#</a></h4>
+<p>임직원의 <strong>인식</strong> 제고:</p>
+<ul>
+<li>정보보호 정책 인지</li>
+<li>ISMS 기여도 인식</li>
+<li>부적합 결과 인지</li>
+</ul>
+<h4 id="74-의사소통">7.4 의사소통<a hidden class="anchor" aria-hidden="true" href="#74-의사소통">#</a></h4>
+<p>내·외부 <strong>의사소통</strong> 관리:</p>
+<ul>
+<li>무엇을, 언제, 누구에게, 어떻게</li>
+</ul>
+<h4 id="75-문서화된-정보">7.5 문서화된 정보<a hidden class="anchor" aria-hidden="true" href="#75-문서화된-정보">#</a></h4>
+<p>ISMS 관련 <strong>문서</strong> 작성·관리:</p>
+<ul>
+<li>정책, 절차, 기록</li>
+<li>문서 관리 (작성, 검토, 승인, 개정, 보관)</li>
+</ul>
+<h3 id="35-clause-8-운영-operation">3.5 Clause 8: 운영 (Operation)<a hidden class="anchor" aria-hidden="true" href="#35-clause-8-운영-operation">#</a></h3>
+<h4 id="81-운영-계획-및-관리">8.1 운영 계획 및 관리<a hidden class="anchor" aria-hidden="true" href="#81-운영-계획-및-관리">#</a></h4>
+<p>계획된 프로세스 <strong>구현 및 관리</strong></p>
+<h4 id="82-정보보호-위험-평가">8.2 정보보호 위험 평가<a hidden class="anchor" aria-hidden="true" href="#82-정보보호-위험-평가">#</a></h4>
+<p>정기적인 위험 평가 <strong>수행</strong></p>
+<h4 id="83-정보보호-위험-관리">8.3 정보보호 위험 관리<a hidden class="anchor" aria-hidden="true" href="#83-정보보호-위험-관리">#</a></h4>
+<p>위험 관리 계획 <strong>이행</strong></p>
+<h3 id="36-clause-9-성과-평가-performance-evaluation">3.6 Clause 9: 성과 평가 (Performance Evaluation)<a hidden class="anchor" aria-hidden="true" href="#36-clause-9-성과-평가-performance-evaluation">#</a></h3>
+<h4 id="91-모니터링-측정-분석-및-평가">9.1 모니터링, 측정, 분석 및 평가<a hidden class="anchor" aria-hidden="true" href="#91-모니터링-측정-분석-및-평가">#</a></h4>
+<p>ISMS 성과 <strong>모니터링 및 측정</strong>:</p>
+<ul>
+<li>정보보호 목표 달성도</li>
+<li>보안 통제 효과성</li>
+<li>KPI (핵심성과지표) 관리</li>
+</ul>
+<h4 id="92-내부-심사">9.2 내부 심사<a hidden class="anchor" aria-hidden="true" href="#92-내부-심사">#</a></h4>
+<p><strong>내부 심사</strong> 정기 실시 (연 1회 이상):</p>
+<ul>
+<li>ISMS 요구사항 준수 여부</li>
+<li>효과적 운영 여부</li>
+</ul>
+<h4 id="93-경영-검토">9.3 경영 검토<a hidden class="anchor" aria-hidden="true" href="#93-경영-검토">#</a></h4>
+<p>최고경영자의 <strong>정기 검토</strong> (연 1회 이상):</p>
+<ul>
+<li>ISMS 적합성, 타당성, 효과성 검토</li>
+<li>개선 기회 식별</li>
+</ul>
+<h3 id="37-clause-10-개선-improvement">3.7 Clause 10: 개선 (Improvement)<a hidden class="anchor" aria-hidden="true" href="#37-clause-10-개선-improvement">#</a></h3>
+<h4 id="101-부적합-및-시정-조치">10.1 부적합 및 시정 조치<a hidden class="anchor" aria-hidden="true" href="#101-부적합-및-시정-조치">#</a></h4>
+<p><strong>부적합 발견 시</strong> 시정 조치:</p>
+<ul>
+<li>원인 분석</li>
+<li>재발 방지 조치</li>
+</ul>
+<h4 id="102-지속적-개선">10.2 지속적 개선<a hidden class="anchor" aria-hidden="true" href="#102-지속적-개선">#</a></h4>
+<p>ISMS의 <strong>지속적 개선</strong></p>
+<h2 id="4-annex-a-통제항목-93개">4. Annex A 통제항목 (93개)<a hidden class="anchor" aria-hidden="true" href="#4-annex-a-통제항목-93개">#</a></h2>
+<h3 id="41-a5-조직적-통제-organizational-controls---37개">4.1 A.5 조직적 통제 (Organizational Controls) - 37개<a hidden class="anchor" aria-hidden="true" href="#41-a5-조직적-통제-organizational-controls---37개">#</a></h3>
+<h4 id="주요-통제항목">주요 통제항목<a hidden class="anchor" aria-hidden="true" href="#주요-통제항목">#</a></h4>
+<ul>
+<li><strong>A.5.1</strong> 정보보호 정책</li>
+<li><strong>A.5.2</strong> 정보보호 역할 및 책임</li>
+<li><strong>A.5.7</strong> 위협 인텔리전스</li>
+<li><strong>A.5.10</strong> 정보 및 기타 관련 자산의 허용 가능한 사용</li>
+<li><strong>A.5.23</strong> 클라우드 서비스 사용 시 정보보호</li>
+<li><strong>A.5.30</strong> 사업 연속성을 위한 ICT 준비성</li>
+</ul>
+<h3 id="42-a6-인적-통제-people-controls---8개">4.2 A.6 인적 통제 (People Controls) - 8개<a hidden class="anchor" aria-hidden="true" href="#42-a6-인적-통제-people-controls---8개">#</a></h3>
+<h4 id="주요-통제항목-1">주요 통제항목<a hidden class="anchor" aria-hidden="true" href="#주요-통제항목-1">#</a></h4>
+<ul>
+<li><strong>A.6.1</strong> 선별 심사 (채용 시 신원 확인)</li>
+<li><strong>A.6.2</strong> 고용 계약서 (비밀유지 조항)</li>
+<li><strong>A.6.3</strong> 정보보호 인식, 교육 및 훈련</li>
+<li><strong>A.6.4</strong> 징계 프로세스</li>
+<li><strong>A.6.5</strong> 고용 종료 또는 변경 후 책임</li>
+<li><strong>A.6.8</strong> 정보보호 이벤트 보고</li>
+</ul>
+<h3 id="43-a7-물리적-통제-physical-controls---14개">4.3 A.7 물리적 통제 (Physical Controls) - 14개<a hidden class="anchor" aria-hidden="true" href="#43-a7-물리적-통제-physical-controls---14개">#</a></h3>
+<h4 id="주요-통제항목-2">주요 통제항목<a hidden class="anchor" aria-hidden="true" href="#주요-통제항목-2">#</a></h4>
+<ul>
+<li><strong>A.7.1</strong> 물리적 보안 경계 (건물 출입 통제)</li>
+<li><strong>A.7.2</strong> 물리적 출입 통제</li>
+<li><strong>A.7.4</strong> 물리적 보안 모니터링 (CCTV)</li>
+<li><strong>A.7.7</strong> 클리어 데스크 및 클리어 스크린</li>
+<li><strong>A.7.8</strong> 장비 배치 및 보호</li>
+<li><strong>A.7.10</strong> 저장 매체 (USB, 하드디스크 등)</li>
+<li><strong>A.7.14</strong> 장비의 안전한 폐기 또는 재사용</li>
+</ul>
+<h3 id="44-a8-기술적-통제-technological-controls---34개">4.4 A.8 기술적 통제 (Technological Controls) - 34개<a hidden class="anchor" aria-hidden="true" href="#44-a8-기술적-통제-technological-controls---34개">#</a></h3>
+<h4 id="주요-통제항목-3">주요 통제항목<a hidden class="anchor" aria-hidden="true" href="#주요-통제항목-3">#</a></h4>
+<ul>
+<li><strong>A.8.1</strong> 사용자 엔드포인트 기기 (PC, 노트북 보안)</li>
+<li><strong>A.8.2</strong> 특권적 접근 권한 (관리자 권한 관리)</li>
+<li><strong>A.8.3</strong> 정보 접근 제한</li>
+<li><strong>A.8.5</strong> 안전한 인증</li>
+<li><strong>A.8.8</strong> 보안 로그 관리</li>
+<li><strong>A.8.9</strong> 구성 관리</li>
+<li><strong>A.8.10</strong> 정보 삭제</li>
+<li><strong>A.8.11</strong> 데이터 마스킹</li>
+<li><strong>A.8.16</strong> 모니터링 활동</li>
+<li><strong>A.8.23</strong> 웹 필터링</li>
+<li><strong>A.8.24</strong> 암호화 사용</li>
+</ul>
+<h2 id="5-iso-27001-인증-절차">5. ISO 27001 인증 절차<a hidden class="anchor" aria-hidden="true" href="#5-iso-27001-인증-절차">#</a></h2>
+<h3 id="51-인증-준비">5.1 인증 준비<a hidden class="anchor" aria-hidden="true" href="#51-인증-준비">#</a></h3>
+<h4 id="phase-1-갭-분석-gap-analysis">Phase 1: 갭 분석 (Gap Analysis)<a hidden class="anchor" aria-hidden="true" href="#phase-1-갭-분석-gap-analysis">#</a></h4>
+<p>현재 상태 vs ISO 27001 요구사항 비교:</p>
+<ul>
+<li>부족한 부분 파악</li>
+<li>개선 과제 도출</li>
+</ul>
+<h4 id="phase-2-isms-구축">Phase 2: ISMS 구축<a hidden class="anchor" aria-hidden="true" href="#phase-2-isms-구축">#</a></h4>
+<ol>
+<li><strong>조직 상황 분석</strong></li>
+<li><strong>범위 결정</strong></li>
+<li><strong>정보보호 정책 수립</strong></li>
+<li><strong>위험 평가</strong></li>
+<li><strong>위험 관리 계획 수립</strong></li>
+<li><strong>보안 통제 선정 및 구현</strong> (Annex A)</li>
+<li><strong>문서화</strong> (정책, 절차, 기록)</li>
+</ol>
+<h4 id="phase-3-isms-운영">Phase 3: ISMS 운영<a hidden class="anchor" aria-hidden="true" href="#phase-3-isms-운영">#</a></h4>
+<ol>
+<li><strong>보안 통제 운영</strong></li>
+<li><strong>교육 실시</strong></li>
+<li><strong>모니터링 및 측정</strong></li>
+<li><strong>내부 심사</strong></li>
+<li><strong>경영 검토</strong></li>
+</ol>
+<h3 id="52-인증-심사">5.2 인증 심사<a hidden class="anchor" aria-hidden="true" href="#52-인증-심사">#</a></h3>
+<h4 id="1단계-심사-stage-1-audit">1단계 심사 (Stage 1 Audit)<a hidden class="anchor" aria-hidden="true" href="#1단계-심사-stage-1-audit">#</a></h4>
+<p><strong>문서 심사</strong>:</p>
+<ul>
+<li>ISMS 문서 검토</li>
+<li>준비 상태 확인</li>
+</ul>
+<p><strong>결과:</strong></p>
+<ul>
+<li>적합 → 2단계 심사 진행</li>
+<li>부적합 → 보완 후 재심사</li>
+</ul>
+<h4 id="2단계-심사-stage-2-audit">2단계 심사 (Stage 2 Audit)<a hidden class="anchor" aria-hidden="true" href="#2단계-심사-stage-2-audit">#</a></h4>
+<p><strong>현장 심사</strong> (3~5일):</p>
+<ul>
+<li>인터뷰</li>
+<li>문서 검토</li>
+<li>시스템 점검</li>
+<li>현장 확인</li>
+</ul>
+<p><strong>부적합 발견 시:</strong></p>
+<ul>
+<li>경미한 부적합 (Minor): 30일 이내 시정</li>
+<li>중대한 부적합 (Major): 90일 이내 시정</li>
+</ul>
+<h4 id="인증서-발급">인증서 발급<a hidden class="anchor" aria-hidden="true" href="#인증서-발급">#</a></h4>
+<p>심사 통과 시 <strong>ISO 27001 인증서</strong> 발급</p>
+<p><strong>유효 기간:</strong> 3년</p>
+<h3 id="53-사후-관리">5.3 사후 관리<a hidden class="anchor" aria-hidden="true" href="#53-사후-관리">#</a></h3>
+<h4 id="연간-사후-심사-surveillance-audit">연간 사후 심사 (Surveillance Audit)<a hidden class="anchor" aria-hidden="true" href="#연간-사후-심사-surveillance-audit">#</a></h4>
+<p>매년 <strong>간소화된 심사</strong> 실시:</p>
+<ul>
+<li>ISMS 유지 여부 확인</li>
+<li>변경 사항 검토</li>
+</ul>
+<h4 id="갱신-심사-recertification-audit">갱신 심사 (Recertification Audit)<a hidden class="anchor" aria-hidden="true" href="#갱신-심사-recertification-audit">#</a></h4>
+<p>3년 후 <strong>재인증 심사</strong>:</p>
+<ul>
+<li>2단계 심사와 동일한 수준</li>
+</ul>
+<h2 id="6-보안-컨설팅-관점의-시사점">6. 보안 컨설팅 관점의 시사점<a hidden class="anchor" aria-hidden="true" href="#6-보안-컨설팅-관점의-시사점">#</a></h2>
+<h3 id="61-iso-27001-인증-컨설팅">6.1 ISO 27001 인증 컨설팅<a hidden class="anchor" aria-hidden="true" href="#61-iso-27001-인증-컨설팅">#</a></h3>
+<h4 id="인증이-필요한-경우">인증이 필요한 경우<a hidden class="anchor" aria-hidden="true" href="#인증이-필요한-경우">#</a></h4>
+<ol>
+<li><strong>글로벌 비즈니스</strong>: 해외 고객·파트너 요구</li>
+<li><strong>입찰 가점</strong>: 공공·민간 입찰 시 가점</li>
+<li><strong>고객 신뢰</strong>: 정보보호 수준 입증</li>
+<li><strong>내부 관리</strong>: 체계적인 정보보호 관리</li>
+</ol>
+<h4 id="컨설팅-프로세스">컨설팅 프로세스<a hidden class="anchor" aria-hidden="true" href="#컨설팅-프로세스">#</a></h4>
+<p><strong>Phase 1: 현황 진단 (1개월)</strong></p>
+<ul>
+<li>갭 분석</li>
+<li>로드맵 수립</li>
+</ul>
+<p><strong>Phase 2: ISMS 구축 (3~4개월)</strong></p>
+<ul>
+<li>범위 설정</li>
+<li>정책·절차 수립</li>
+<li>위험 평가</li>
+<li>보안 통제 구현</li>
+<li>문서화</li>
+</ul>
+<p><strong>Phase 3: 운영 (2~3개월)</strong></p>
+<ul>
+<li>내부 심사</li>
+<li>경영 검토</li>
+<li>부적합 시정</li>
+</ul>
+<p><strong>Phase 4: 인증 심사 (1~2개월)</strong></p>
+<ul>
+<li>1단계 심사 대응</li>
+<li>2단계 심사 대응</li>
+<li>부적합 시정</li>
+</ul>
+<p><strong>총 기간: 약 6~10개월</strong></p>
+<h3 id="62-iso-27001-vs-isms-p-선택-기준">6.2 ISO 27001 vs ISMS-P 선택 기준<a hidden class="anchor" aria-hidden="true" href="#62-iso-27001-vs-isms-p-선택-기준">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>기준</th>
+          <th>ISO 27001</th>
+          <th>ISMS-P</th>
+          <th>병행 인증</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>글로벌 비즈니스</td>
+          <td>⭐⭐⭐</td>
+          <td>⭐</td>
+          <td>⭐⭐⭐</td>
+      </tr>
+      <tr>
+          <td>국내 법적 의무</td>
+          <td>⭐</td>
+          <td>⭐⭐⭐</td>
+          <td>⭐⭐⭐</td>
+      </tr>
+      <tr>
+          <td>개인정보보호</td>
+          <td>⭐⭐ (별도 ISO 27701)</td>
+          <td>⭐⭐⭐ (통합)</td>
+          <td>⭐⭐⭐</td>
+      </tr>
+      <tr>
+          <td>비용</td>
+          <td>⭐⭐</td>
+          <td>⭐⭐</td>
+          <td>⭐ (높음)</td>
+      </tr>
+      <tr>
+          <td>국제 인지도</td>
+          <td>⭐⭐⭐</td>
+          <td>⭐</td>
+          <td>⭐⭐⭐</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>권장:</strong></p>
+<ul>
+<li><strong>글로벌 기업</strong>: ISO 27001 우선</li>
+<li><strong>국내 중심 기업</strong>: ISMS-P 우선</li>
+<li><strong>대기업</strong>: 병행 인증</li>
+</ul>
+<h3 id="63-iso-27001-인증의-효과">6.3 ISO 27001 인증의 효과<a hidden class="anchor" aria-hidden="true" href="#63-iso-27001-인증의-효과">#</a></h3>
+<h4 id="비즈니스-효과">비즈니스 효과<a hidden class="anchor" aria-hidden="true" href="#비즈니스-효과">#</a></h4>
+<ol>
+<li><strong>고객 신뢰</strong> 확보</li>
+<li><strong>입찰 경쟁력</strong> 강화</li>
+<li><strong>글로벌 시장</strong> 진출</li>
+<li><strong>파트너십</strong> 강화</li>
+</ol>
+<h4 id="내부-효과">내부 효과<a hidden class="anchor" aria-hidden="true" href="#내부-효과">#</a></h4>
+<ol>
+<li><strong>정보보호 수준</strong> 향상</li>
+<li><strong>체계적 관리</strong></li>
+<li><strong>임직원 인식</strong> 제고</li>
+<li><strong>리스크 관리</strong> 강화</li>
+</ol>
+<h2 id="7-실무-사례">7. 실무 사례<a hidden class="anchor" aria-hidden="true" href="#7-실무-사례">#</a></h2>
+<h3 id="사례-1-글로벌-saas-기업">사례 1: 글로벌 SaaS 기업<a hidden class="anchor" aria-hidden="true" href="#사례-1-글로벌-saas-기업">#</a></h3>
+<p><strong>A기업:</strong>
+한국 SaaS 기업, 유럽·미국 진출</p>
+<p><strong>ISO 27001 인증 동기:</strong></p>
+<ul>
+<li>유럽 고객이 ISO 27001 요구</li>
+<li>GDPR 준수 입증 필요</li>
+</ul>
+<p><strong>인증 과정:</strong></p>
+<ol>
+<li>갭 분석 (1개월)</li>
+<li>ISMS 구축 (4개월)
+<ul>
+<li>범위: 클라우드 서비스 인프라</li>
+<li>위험 평가</li>
+<li>AWS 클라우드 보안 강화</li>
+</ul>
+</li>
+<li>내부 심사 (1개월)</li>
+<li>인증 심사 (1개월)</li>
+</ol>
+<p><strong>결과:</strong></p>
+<ul>
+<li>ISO 27001 인증 취득</li>
+<li>유럽 고객 10개사 계약 성사</li>
+</ul>
+<h3 id="사례-2-국내-중견-제조업">사례 2: 국내 중견 제조업<a hidden class="anchor" aria-hidden="true" href="#사례-2-국내-중견-제조업">#</a></h3>
+<p><strong>B기업:</strong>
+자동차 부품 제조, 대기업 납품</p>
+<p><strong>ISO 27001 인증 동기:</strong></p>
+<ul>
+<li>대기업 협력사 평가에서 정보보호 인증 요구</li>
+<li>내부 정보보호 수준 향상</li>
+</ul>
+<p><strong>인증 과정:</strong></p>
+<ol>
+<li>ISMS-P 먼저 취득</li>
+<li>ISO 27001 추가 인증
+<ul>
+<li>ISMS-P와 중복 부분 많아 3개월 만에 인증</li>
+</ul>
+</li>
+</ol>
+<p><strong>결과:</strong></p>
+<ul>
+<li>대기업 협력사 평가 A등급</li>
+<li>정보보호 체계 확립</li>
+</ul>
+<h3 id="사례-3-스타트업">사례 3: 스타트업<a hidden class="anchor" aria-hidden="true" href="#사례-3-스타트업">#</a></h3>
+<p><strong>C스타트업:</strong>
+AI 기반 HR 솔루션</p>
+<p><strong>ISO 27001 인증 동기:</strong></p>
+<ul>
+<li>대기업 고객 입찰 참여</li>
+<li>투자 유치 시 신뢰도 향상</li>
+</ul>
+<p><strong>인증 과정:</strong></p>
+<ol>
+<li>외부 컨설팅 활용 (6개월)</li>
+<li>최소 범위로 시작 (본사 + 클라우드)</li>
+<li>비용 효율적으로 진행</li>
+</ol>
+<p><strong>결과:</strong></p>
+<ul>
+<li>ISO 27001 인증</li>
+<li>대기업 고객 2개사 확보</li>
+<li>시리즈 B 투자 유치 성공</li>
+</ul>
+<h2 id="8-iso-27001-2022년-개정-주요-변화">8. ISO 27001 2022년 개정 주요 변화<a hidden class="anchor" aria-hidden="true" href="#8-iso-27001-2022년-개정-주요-변화">#</a></h2>
+<h3 id="81-통제항목-재구성">8.1 통제항목 재구성<a hidden class="anchor" aria-hidden="true" href="#81-통제항목-재구성">#</a></h3>
+<p><strong>2013년 → 2022년</strong></p>
+<ul>
+<li>14개 영역 114개 통제 → <strong>4개 영역 93개 통제</strong></li>
+<li>주제별 → <strong>속성별 분류</strong> (조직적, 인적, 물리적, 기술적)</li>
+</ul>
+<h3 id="82-신규-통제항목-11개">8.2 신규 통제항목 (11개)<a hidden class="anchor" aria-hidden="true" href="#82-신규-통제항목-11개">#</a></h3>
+<ol>
+<li><strong>A.5.7</strong> 위협 인텔리전스</li>
+<li><strong>A.5.23</strong> 클라우드 서비스 사용 시 정보보호</li>
+<li><strong>A.5.30</strong> 사업 연속성을 위한 ICT 준비성</li>
+<li><strong>A.7.4</strong> 물리적 보안 모니터링</li>
+<li><strong>A.8.9</strong> 구성 관리</li>
+<li><strong>A.8.10</strong> 정보 삭제</li>
+<li><strong>A.8.11</strong> 데이터 마스킹</li>
+<li><strong>A.8.12</strong> 데이터 유출 방지</li>
+<li><strong>A.8.16</strong> 모니터링 활동</li>
+<li><strong>A.8.23</strong> 웹 필터링</li>
+<li><strong>A.8.28</strong> 안전한 코딩</li>
+</ol>
+<p><strong>특징:</strong></p>
+<ul>
+<li><strong>클라우드</strong> 보안 강화</li>
+<li><strong>원격근무</strong> 고려</li>
+<li><strong>데이터 보호</strong> 강화</li>
+</ul>
+<h3 id="83-기존-인증-기업-대응">8.3 기존 인증 기업 대응<a hidden class="anchor" aria-hidden="true" href="#83-기존-인증-기업-대응">#</a></h3>
+<p><strong>전환 기간:</strong> 2025년 10월까지</p>
+<p><strong>대응 방안:</strong></p>
+<ol>
+<li>신규 통제항목 검토</li>
+<li>갭 분석</li>
+<li>부족한 통제 구현</li>
+<li>문서 업데이트</li>
+<li>전환 심사</li>
+</ol>
+<h2 id="9-체크리스트">9. 체크리스트<a hidden class="anchor" aria-hidden="true" href="#9-체크리스트">#</a></h2>
+<h3 id="인증-준비">인증 준비<a hidden class="anchor" aria-hidden="true" href="#인증-준비">#</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 갭 분석을 수행했는가?</li>
+<li><input disabled="" type="checkbox"> ISMS 범위를 명확히 정의했는가?</li>
+<li><input disabled="" type="checkbox"> 정보보호 정책을 수립했는가?</li>
+<li><input disabled="" type="checkbox"> 최고경영자의 리더십이 있는가?</li>
+</ul>
+<h3 id="위험-관리">위험 관리<a hidden class="anchor" aria-hidden="true" href="#위험-관리">#</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 정보자산을 식별했는가?</li>
+<li><input disabled="" type="checkbox"> 위험 평가를 수행했는가?</li>
+<li><input disabled="" type="checkbox"> 위험 관리 계획을 수립했는가?</li>
+<li><input disabled="" type="checkbox"> 보안 통제를 선정·구현했는가?</li>
+</ul>
+<h3 id="운영">운영<a hidden class="anchor" aria-hidden="true" href="#운영">#</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 내부 심사를 연 1회 이상 수행하는가?</li>
+<li><input disabled="" type="checkbox"> 경영 검토를 연 1회 이상 수행하는가?</li>
+<li><input disabled="" type="checkbox"> 부적합 발견 시 시정 조치를 하는가?</li>
+<li><input disabled="" type="checkbox"> 정보보호 목표를 달성하고 있는가?</li>
+</ul>
+<h3 id="문서화">문서화<a hidden class="anchor" aria-hidden="true" href="#문서화">#</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 정책, 절차 문서가 있는가?</li>
+<li><input disabled="" type="checkbox"> 위험 평가 기록이 있는가?</li>
+<li><input disabled="" type="checkbox"> 내부 심사 기록이 있는가?</li>
+<li><input disabled="" type="checkbox"> 경영 검토 기록이 있는가?</li>
+</ul>
+<h2 id="학습-정리">학습 정리<a hidden class="anchor" aria-hidden="true" href="#학습-정리">#</a></h2>
+<p>오늘 학습한 핵심 내용:</p>
+<ul>
+<li>ISO 27001은 정보보호 관리체계 국제 표준</li>
+<li>PDCA 사이클 기반 (Plan-Do-Check-Act)</li>
+<li>Clause 4~10: ISMS 요구사항 (조직 상황, 리더십, 계획, 지원, 운영, 성과 평가, 개선)</li>
+<li>Annex A: 93개 통제항목 (조직적 37, 인적 8, 물리적 14, 기술적 34)</li>
+<li>위험 평가·관리가 핵심</li>
+<li>인증 유효기간 3년, 매년 사후 심사</li>
+<li>2022년 개정: 클라우드, 원격근무 등 최신 이슈 반영</li>
+<li>글로벌 기업은 ISO 27001 선호, 국내 기업은 ISMS-P 또는 병행 인증</li>
+<li>인증 효과: 고객 신뢰, 입찰 경쟁력, 글로벌 진출</li>
+</ul>
+<h2 id="다음-학습-주제">다음 학습 주제<a hidden class="anchor" aria-hidden="true" href="#다음-학습-주제">#</a></h2>
+<p>Day 21: ISO 27002 정보보호 통제 가이드라인</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://hojjang98.github.io/tags/iso27001/">ISO27001</a></li>
+      <li><a href="https://hojjang98.github.io/tags/isms/">ISMS</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EA%B4%80%EB%A6%AC%EC%B2%B4%EA%B3%84/">정보보호관리체계</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EA%B5%AD%EC%A0%9C%ED%91%9C%EC%A4%80/">국제표준</a></li>
+      <li><a href="https://hojjang98.github.io/tags/pdca/">PDCA</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%9C%84%ED%97%98%EA%B4%80%EB%A6%AC/">위험관리</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%B3%B4%EC%95%88%EC%9D%B8%EC%A6%9D/">보안인증</a></li>
+      <li><a href="https://hojjang98.github.io/tags/annexa/">AnnexA</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

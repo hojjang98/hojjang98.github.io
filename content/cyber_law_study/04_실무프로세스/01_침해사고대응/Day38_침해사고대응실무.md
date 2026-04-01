@@ -1,6 +1,6 @@
 ---
 title: "Day 38: 침해사고 대응 실무"
-date: 2026-03-11
+date: 2026-03-25
 categories: ["cyber-law-study"]
 tags: ["침해사고대응", "CSIRT", "포렌식", "사이버보안", "실무프로세스"]
 draft: false

@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="ko" dir="auto" data-theme="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>Beehive: Large-Scale Log Analysis for Detecting Suspicious Activity in Enterprise Networks 구조 분석 | HJ&#39;s Security Note</title>
 <meta name="keywords" content="Beehive, Log-Analysis, Enterprise-Security, Anomaly-Detection, Clustering, ACSAC, Actionable-Intelligence, Dirty-Logs, Behavioral-Detection">
 <meta name="description" content="엔터프라이즈 환경의 방대한 로그에서 사용자 행동 기반의 특징을 추출하고 클러스터링을 통해 시그니처 없는 신종 공격과 내부 보안 위협을 탐지하는 대규모 로그 분석 프레임워크 연구">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/paper_review/soc_%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C/large_scale_enterprise_log_analysis/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.a29c24210eb31d9ce56f669c66a35c9c51b17376b7764e336a49af7dec914cf0.css" integrity="sha256-opwkIQ6zHZzlb2acZqNcnFGxc3a3dk4zakmvfeyRTPA=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="canonical" href="https://hojjang98.github.io/paper_review/soc_%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C/large_scale_enterprise_log_analysis/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.290573799e582c418c4bd84f2bca757d0a77fd1bf9f5c43942030e706df68ec8.css" integrity="sha256-KQVzeZ5YLEGMS9hPK8p1fQp3/Rv59cQ5QgMOcG32jsg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="ko" href="http://localhost:1313/paper_review/soc_%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C/large_scale_enterprise_log_analysis/">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/paper_review/soc_%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C/large_scale_enterprise_log_analysis/">
 <noscript>
     <style>
         #theme-toggle,
@@ -70,13 +70,84 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
+</script><meta property="og:url" content="https://hojjang98.github.io/paper_review/soc_%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C/large_scale_enterprise_log_analysis/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="Beehive: Large-Scale Log Analysis for Detecting Suspicious Activity in Enterprise Networks 구조 분석">
+  <meta property="og:description" content="엔터프라이즈 환경의 방대한 로그에서 사용자 행동 기반의 특징을 추출하고 클러스터링을 통해 시그니처 없는 신종 공격과 내부 보안 위협을 탐지하는 대규모 로그 분석 프레임워크 연구">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="paper_review">
+    <meta property="article:published_time" content="2025-12-30T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-12-30T00:00:00+00:00">
+    <meta property="article:tag" content="Beehive">
+    <meta property="article:tag" content="Log-Analysis">
+    <meta property="article:tag" content="Enterprise-Security">
+    <meta property="article:tag" content="Anomaly-Detection">
+    <meta property="article:tag" content="Clustering">
+    <meta property="article:tag" content="ACSAC">
+      <meta property="og:see_also" content="https://hojjang98.github.io/paper_review/soc_%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C/outside_closed_world/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/paper_review/soc_%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C/soc_dns_tunneling_paxson/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/paper_review/soc_%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C/unicorn_systemlevel_provenance_apt/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Beehive: Large-Scale Log Analysis for Detecting Suspicious Activity in Enterprise Networks 구조 분석">
+<meta name="twitter:description" content="엔터프라이즈 환경의 방대한 로그에서 사용자 행동 기반의 특징을 추출하고 클러스터링을 통해 시그니처 없는 신종 공격과 내부 보안 위협을 탐지하는 대규모 로그 분석 프레임워크 연구">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "논문 리뷰",
+      "item": "https://hojjang98.github.io/paper_review/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Beehive: Large-Scale Log Analysis for Detecting Suspicious Activity in Enterprise Networks 구조 분석",
+      "item": "https://hojjang98.github.io/paper_review/soc_%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C/large_scale_enterprise_log_analysis/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Beehive: Large-Scale Log Analysis for Detecting Suspicious Activity in Enterprise Networks 구조 분석",
+  "name": "Beehive: Large-Scale Log Analysis for Detecting Suspicious Activity in Enterprise Networks 구조 분석",
+  "description": "엔터프라이즈 환경의 방대한 로그에서 사용자 행동 기반의 특징을 추출하고 클러스터링을 통해 시그니처 없는 신종 공격과 내부 보안 위협을 탐지하는 대규모 로그 분석 프레임워크 연구",
+  "keywords": [
+    "Beehive", "Log-Analysis", "Enterprise-Security", "Anomaly-Detection", "Clustering", "ACSAC", "Actionable-Intelligence", "Dirty-Logs", "Behavioral-Detection"
+  ],
+  "articleBody": "Research Review: Beehive: Large-Scale Log Analysis for Detecting Suspicious Activity in Enterprise Networks Analyzed Date: 2025.12.30 - 2026.01.02 Keywords: SOC, Log Analysis, Enterprise Security, Anomaly Detection, Clustering\nSource: ACSAC ‘13, 2013, pp.199-208 Link\nWhy This Paper? 선정 배경 도메인 탐색 결과:\n8주간 보안 컨설팅, OT/ICS, 클라우드 등 8개 도메인 논문을 읽은 결과, SOC(Security Operations Center) 가 나의 강점과 흥미에 가장 부합함을 확인. 이제부터는 SOC 전문성 심화를 위한 체계적 학습 단계.\n이 논문을 선택한 이유:\n단일 시스템에서 네트워크 전체로 시야 확장: Lou et al. (2010)과 DeepLog은 단일 시스템의 로그 분석에 집중했다면, Beehive는 대규모 엔터프라이즈 네트워크 환경에서의 로그 분석을 다룸 실무 SOC 환경과 직결: 실제 EMC의 대규모 환경(일일 14억 건의 로그, 1TB/day)에서 검증된 시스템 이질적 로그 소스 통합 분석: Web proxy, DHCP, VPN, 도메인 컨트롤러, 안티바이러스 등 다양한 소스를 통합하는 실무 문제 해결 행위 기반 탐지: 시그니처 기반이 아닌 비정상 행위 패턴 탐지로 미지의 위협(APT, 제로데이) 식별 가능 학습 목표:\n대규모 이질적 로그 데이터의 정규화 및 전처리 기법 습득 엔터프라이즈 특화 피처 설계 방법론 이해 비지도 학습(클러스터링) 기반 이상탐지 접근법과 SOC 실무 적용 전략 파악 Day 1 – Research Context \u0026 Motivation (대규모 더러운 로그에서 실제 위협 찾아내기)\n1. 연구 배경: 엔터프라이즈 네트워크의 보안 가시성 문제 엔터프라이즈 환경의 복잡성 증가\n전통적 경계 방어 무너짐: BYOD, 계약자, 지리적 분산 기존 안티바이러스 무력화: 일반 멀웨어 + APT 공격 고도화 다양한 보안 제품 난립: 벤더별로 상이한 로그 포맷, 불완전하고 모순된 데이터 로그 데이터의 잠재력과 한계\n잠재력: 공격 발생 시 최초로 참고하는 데이터 소스 (인증 로그로 계정 탈취 감지, 웹 프록시 로그로 Drive-by Download 추적) 한계: 로그가 “dirty\"함 - 포맷 비일관성, 누락/모순, 대용량(TB/day), 타임존 불일치 현재 로그 분석의 문제점\n수동 분석 중심: 보안 전문가가 수작업으로 의심 활동 조사 시그니처 의존: 알려진 위협만 탐지, 신규/변종 위협 놓침 확장성 부족: 대규모 데이터 처리 불가 연구 문제의식 엔터프라이즈의 더러운 로그 데이터에서 자동으로 지식을 추출하고, 시그니처가 아닌 행위 기반으로 의심스러운 호스트 활동을 탐지할 수 있는가?\n2. 핵심 개념 개념 정의 SOC 맥락에서의 의미 Dirty Logs 포맷 불일치, 누락, 모순, 대용량의 로그 데이터 실무 SOC가 직면하는 현실적 데이터 품질 문제 Behavioral Detection 시그니처가 아닌 호스트 행위 패턴 기반 탐지 미지의 위협(APT, 제로데이) 식별 가능 Security Incidents 정책 위반 또는 공격 가능성이 있는 의심 활동 SOC 분석가가 추가 조사할 대상 Dedicated Hosts 단일 사용자가 주로 사용하는 호스트 행위 프로파일링의 기준선 설정 가능 Enterprise-Specific Features 엔터프라이즈 환경의 제약(정책, 일반 직원 행위)을 활용한 피처 일반 인터넷과 달리 예측 가능한 행위 패턴 활용 3. 이론적 기반: Beehive 시스템 3계층 구조 [Layer 1: Data Normalization]\n타임스탬프 정규화 (UTC 통일) IP-to-Host 매핑 (DHCP 바인딩) 정적 IP 자동 탐지\n↓\n[Layer 2: Feature Generation] Destination-based (4개) Host-based (1개) Policy-based (6개) Traffic-based (4개)\n→ 총 15개 피처/호스트/일\n↓\n[Layer 3: Detection via Clustering] PCA로 차원 축소 변형 K-means 클러스터링 Outlier 식별 → Incident 보고 ### 4. 연구의 핵심 기여 **학술적 기여** - 대규모 실제 엔터프라이즈 로그 데이터의 \"Big Data\" 보안 분석 최초 연구 - 이질적 로그 통합을 위한 체계적 전처리 방법론 제시 - 엔터프라이즈 특화 행위 피처 설계 프레임워크 **SOC 실무 기여** - 일일 1.4억 건(1TB) 로그 → 8천만 건으로 74% 감축하면서도 탐지 정확도 유지 - 2주간 평가에서 784건 인시던트 탐지, 이 중 25.25%가 멀웨어 또는 추가 조사 필요 - 기존 보안 도구가 놓친 위협 식별: 784건 중 단 8건만 기존 도구가 탐지 ### 5. SOC 관점 인사이트 **실무 적용 가능성** - SIEM 데이터를 활용한 자동화된 이상탐지 파이프라인 구축 가능 - 시그니처 업데이트 없이도 신규 위협 탐지 (DGA 기반 멀웨어 등) - 정책 위반(스트리밍, 파일 공유, 성인 콘텐츠 등) 자동 식별로 컴플라이언스 강화 **기존 학습과의 연결** - Lou et al. (2010): 단일 시스템 불변성 → Beehive: 네트워크 전체 행위 패턴 - DeepLog: 딥러닝 블랙박스 → Beehive: 설명 가능한 피처 기반 클러스터링 - 두 접근법 모두 필요: DeepLog는 정확도, Beehive는 대규모 확장성 + 설명력 **현실적 고려사항** - Ground Truth 부재 문제: 실제 엔터프라이즈는 이미 방어 중이므로 알려진 위협 흔적이 적음 → 수동 레이블링 불가피 - 오탐 관리: 784건 중 35.33%가 비악성 자동화 프로세스 → 추가 필터링 필요 --- ## Day 2 – Research Model, Hypotheses, and Methodology *(Beehive의 설계: 더러운 데이터를 깨끗한 인텔리전스로)* ### 1. 연구 모델 개요 Beehive는 가설 검증 방식이 아닌 **엔지니어링 시스템 설계 연구**로, 대규모 로그 분석 문제를 해결하기 위한 3계층 파이프라인을 제안한다. [입력: Raw Logs from Multiple Sources]\n↓\n[Layer 1: Data Normalization \u0026 Preprocessing]\nTimestamp Normalization IP-to-Host Mapping (Dynamic + Static) Dedicated Host Identification\n↓\n[Layer 2: Feature Extraction] 15 enterprise-specific features per host/day\n↓\n[Layer 3: Unsupervised Detection] PCA (dimensionality reduction) Modified K-means clustering Outlier identification\n↓\n[출력: Security Incidents for SOC Investigation] **설계 철학** - 시그니처 불필요: 알려지지 않은 위협도 행위 패턴으로 탐지 - 확장성 우선: 일일 TB급 데이터 처리 가능한 효율적 알고리즘 - 실무 중심: SOC 분석가가 즉시 조사 가능한 actionable intelligence 제공 ### 2. 연구 가설 이 논문은 전통적인 가설 검증 연구가 아니므로 명시적 가설이 없으나, **암묵적 가정(Assumptions)**을 다음과 같이 정리할 수 있다: | 가정 | 내용 | 근거 | |------|------|------| | **A1: Enterprise Behavior Constraint** | 엔터프라이즈 환경의 호스트 행위는 정책과 직원 업무 패턴으로 인해 일반 인터넷보다 훨씬 제약적이다 | 대부분 직원이 유사한 직무 수행 → 정상 행위 클러스터 형성 가능 | | **A2: Outliers Indicate Threats** | 정상 행위에서 크게 벗어난 outlier는 멀웨어 감염 또는 정책 위반일 가능성이 높다 | 비지도 학습으로 사전 레이블 없이도 의심 활동 식별 가능 | | **A3: Log Correlation Feasibility** | 타임스탬프 정규화와 IP-Host 매핑을 통해 이질적 로그를 호스트 단위로 통합 가능하다 | SIEM 수신 시각과 DHCP 로그를 활용한 시간적 상관관계 분석 | | **A4: Feature Sufficiency** | 15개 피처(destination/host/policy/traffic-based)가 호스트의 보안 관련 행위를 충분히 표현한다 | EMC 내부 멀웨어 사례 및 정책 위반 패턴 관찰 기반 설계 | ### 3. 연구 방법론 #### A. 데이터 수집 (Data Collection) **로그 소스** | 로그 타입 | 수집 정보 | 용도 | |-----------|----------|------| | **Web Proxy** | 모든 외부 연결 (IP, 도메인, URL, HTTP 헤더, User-Agent, 평판 점수) | 외부 통신 행위 분석의 핵심 | | **DHCP** | IP 할당/해제 이력 | IP-to-Host 매핑 | | **VPN** | 원격 접속 로그 | 비정상 위치 접근 탐지 | | **Windows Domain Controllers** | 인증 시도 로그 | Dedicated Host 식별, 계정 탈취 의심 | | **Antivirus** | 멀웨어 스캔 결과 | 기존 도구와 비교 검증 | **데이터 규모 (EMC 기준)** - 일일 평균 14억 건의 로그 메시지 - 일일 약 1TB의 로그 데이터 - 웹 프록시 로그: 일일 3억 건 (600GB) **로그의 특성 및 문제점** - 비표준 타임스탬프: 장비별로 로컬 시간, UTC 등 혼재 - 식별자 불일치: IP 주소, 호스트명, 사용자명 혼용 - 데이터 누락/순서 뒤바뀜: 네트워크 지연, 버퍼링 - 웹 프록시 경고 페이지: 알려지지 않은 사이트 접속 시 사용자가 정책 동의해야 접근 가능 (Challenged → Consented) #### B. 데이터 정규화 (Data Normalization) **B1. 타임스탬프 정규화** 문제: 글로벌 엔터프라이즈에서 장비들이 다른 타임존 사용 해결책:\nSIEM이 로그 수신 시각 t_siem 기록 (UTC) 각 장비별로 Δ_i = t_siem,i - t_device,i 계산 (30분 단위로 반올림) 다수를 차지하는 Δ_correction 값 식별 정규화: t_normalized,i = t_device,i + Δ_correction 효과: 모든 로그를 UTC 기준으로 통일하여 시간적 상관관계 분석 가능 **B2. IP-to-Host 매핑 (DHCP 기반)** 문제: DHCP로 동적 IP 할당 → 같은 IP가 시간에 따라 다른 호스트에 할당됨 해결책: DHCP 서버 로그 분석 바인딩 DB 구축: {IP, hostname, MAC, start_time, end_time} 로그의 (IP, timestamp) → hostname 매핑 매일 업데이트하여 최신 바인딩 유지 **B3. 정적 IP 자동 탐지** 문제: 정적 IP 목록이 없거나 오래됨 Bootstrap 알고리즘: A = 모든 로그에서 발견된 IP 집합 D = DHCP/VPN 로그의 동적 IP 집합 S = A - D (잠재적 정적 IP) S의 각 IP에 대해 역방향 DNS 조회 → hostname 저장 정제 알고리즘 (매일 실행): 새로운 로그로 A, D 업데이트 S = A - D 재계산 S의 각 IP 역방향 DNS 조회 이전 hostname과 비교: 변경됨 → S에서 제거 (동적 IP였음) 동일함 → S에 유지 (정적 IP 확률 높음) **B4. Dedicated Host 식별** 목적: 단일 사용자가 주로 사용하는 호스트만 분석 (공용 호스트 제외) 방법: Windows 도메인 컨트롤러의 인증 로그 3개월간 수집 각 호스트별로 사용자별 인증 빈도 계산 단일 사용자 인증이 95% 이상 → Dedicated Host로 분류 결과: EMC에서 78,000대 이상의 Dedicated Host 식별 #### C. 피처 추출 (Feature Extraction) **피처 설계 원칙** - EMC 내부의 알려진 멀웨어 행위 및 정책 위반 패턴 관찰 기반 - 엔터프라이즈 환경 특성 활용: 엄격한 방화벽, 업무 중심 활동, 동질적 소프트웨어 구성 - 호스트별 일일 15개 피처 벡터 생성 **15개 피처 상세** **C1. Destination-Based Features (4개)** 핵심 아이디어: 새롭거나 드문 외부 목적지 접속은 의심스러움 (C\u0026C 서버, 손상된 사이트) | 피처 | 설명 | 계산 방법 | |------|------|-----------| | **F1: New Destinations** | 처음 접속하는 외부 목적지 수 | 1개월 히스토리에 없는 도메인 수 | | **F2: New Dests w/o Whitelisted Referer** | Whitelisted Referer 없이 접속한 새 목적지 수 | F1 중 HTTP Referer가 화이트리스트에 없는 경우 | | **F3: Unpopular Raw IP Dests** | Unpopular한 IP 주소 목적지 수 | 화이트리스트 외 IP 주소 접속 수 | | **F4: Fraction of Unpopular Raw IP** | 전체 unpopular 목적지 중 IP 주소 비율 | F3 / (total unpopular destinations) | 화이트리스트 구축: - 1주일 학습 기간 동안 100대 이상 호스트가 접속한 도메인/서브넷 - 결과: 일일 3억 건 로그 → 8천만 건으로 74% 감축 도메인 \"Folding\": - 2nd-level 도메인으로 통합 (random subdomain 필터링) - favicon 요청 무시 - Raw IP는 해석하지 않고 항상 \"new\"로 간주 - 최적화 후: 일일 처리 시간 15시간 → 5시간, 히스토리 크기 4.3M → 2.7M (4개월) **C2. Host-Based Feature (1개)** | 피처 | 설명 | 계산 방법 | |------|------|-----------| | **F5: New User-Agent Strings** | 새로운 User-Agent 문자열 수 | 호스트별 UA 히스토리(1개월)에서 Edit Distance로 비교 | 근거: 엔터프라이즈는 소프트웨어 구성이 동질적 → 새 UA는 무단 소프트웨어 설치 의심 **C3. Policy-Based Features (6개)** 웹 프록시 정책 단계: 1. **Blocked**: 낮은 평판 또는 금지 카테고리 → 자동 차단 2. **Challenged**: 미분류 사이트 → 경고 페이지 표시 3. **Consented**: 사용자가 정책 동의 클릭 후 접속 | 피처 | 설명 | |------|------| | **F6: Blocked Domains** | 차단된 도메인 수 | | **F7: Blocked Connections** | 차단된 연결 수 | | **F8: Challenged Domains** | 경고 받은 도메인 수 | | **F9: Challenged Connections** | 경고 받은 연결 수 | | **F10: Consented Domains** | 동의 후 접속한 도메인 수 | | **F11: Consented Connections** | 동의 후 접속한 연결 수 | **C4. Traffic-Based Features (4개)** 정의: - **Spike**: 1분 동안 비정상적으로 높은 트래픽 발생 - **Burst**: 연속된 spike 구간 임계값 설정 (1주일 전체 Dedicated Host 분석): Connection Spike 임계값: 101 connections/min (90% 백분위수)\nDomain Spike 임계값: 17 domains/min (90% 백분위수)\nBurst 내부 Spike 임계값 (완화): 26 connections/min, 6 domains/min (75% 백분위수)\n| 피처 | 설명 | |------|------| | **F12: Connection Spikes** | Connection spike 발생 횟수 | | **F13: Domain Spikes** | Domain spike 발생 횟수 | | **F14: Connection Bursts** | 가장 긴 connection burst 지속 시간 | | **F15: Domain Bursts** | 가장 긴 domain burst 지속 시간 | #### D. 탐지 알고리즘 (Detection via Clustering) **D1. PCA (Principal Component Analysis)** 목적: 피처 간 의존성 제거 및 차원 축소 - 예: Domain spike 발생 시 connection spike도 발생 (상관관계) 방법: 각 호스트를 15차원 벡터 v = (v[1], …, v[15])로 표현 PCA로 주성분 추출 데이터 분산의 95% 이상 보존하는 상위 m개 주성분 선택 원본 벡터를 m차원으로 투영 **D2. Modified K-means Clustering** 기존 K-means 문제: 클러스터 수 k를 사전 지정 필요 Beehive의 변형 알고리즘: 무작위로 벡터 하나를 첫 클러스터 허브로 선택\n모든 벡터를 이 클러스터에 할당\n자신의 허브에서 가장 먼 벡터를 새 허브로 선택\n모든 벡터를 가장 가까운 허브에 재할당\n반복 종료 조건:\n모든 벡터가 자신의 허브로부터의 거리 \u003c (평균 허브 간 거리)/2\n거리 측정: L1 distance (Manhattan distance)\nL1Dist(v1, v2) = Σ|v1[i] - v2[i]|\n결과: - 1회 반복 후: 대다수 호스트 → 하나의 큰 정상 클러스터 - 나머지: 소수의 outlier 클러스터 (의심 활동) **Extreme Outlier 처리**: IF 클러스터가 2개만 생성됨 (하나는 단일 노드, 나머지는 전부):\n가장 큰 클러스터에 PCA + 클러스터링 재적용\n최소 50개 outlier 호스트 식별될 때까지 반복\n**인시던트 생성**: - 클러스터는 outlier 정도에 따라 자연스럽게 순서화됨 (가장 먼 노드부터 식별) - 상위 outlier 호스트들을 인시던트로 보고 - SOC 분석가에게 전달 ### 4. SOC 관점 인사이트 **방법론의 실무 적용성** 장점: 1. **확장성**: 일일 TB급 데이터를 5시간 내 처리 (타임스탬프 정규화 + 화이트리스팅 최적화) 2. **설명 가능성**: 15개 명확한 피처 → SOC 분석가가 왜 의심스러운지 즉시 이해 가능 (vs. DeepLog 블랙박스) 3. **레이블 불필요**: 비지도 학습으로 사전 학습 데이터 없이도 적용 가능 4. **엔터프라이즈 특화**: 일반 인터넷 환경에서는 작동 안 함 → 기업 정책/행위 제약 활용 한계: 1. **Ground Truth 부재**: 실제 평가는 수동 검증 의존 (다음 Day 3에서 다룰 예정) 2. **초기 학습 기간**: 히스토리 구축에 1개월, 화이트리스트에 1주일 필요 3. **정적 환경 가정**: 조직 구조/정책 급변 시 재학습 필요 **기존 SOC 툴과의 차별점** | 도구 | 탐지 방식 | 강점 | 약점 | |------|-----------|------|------| | **SIEM (기존)** | 시그니처 + 룰 기반 | 알려진 위협 정확히 탐지 | 신규/변종 놓침 | | **Antivirus** | 시그니처 기반 | 알려진 멀웨어 차단 | 제로데이 무력 | | **Beehive** | 행위 기반 클러스터링 | 미지의 위협 탐지, 정책 위반 식별 | 오탐 가능성 (수동 검증 필요) | **SOC Workflow 통합 전략** [Tier 1: Automated Detection]\nSIEM Alerts + AV Alerts + Beehive Daily Incidents\n↓\n[Tier 2: Triage \u0026 Investigation]\nBeehive 클러스터 컨텍스트 확인 (평균 피처, 호스트 수) 원본 로그 조회 (UA, HTTP status, referer, 타이밍) 외부 평판 체크 (McAfee SiteAdvisor, URLVoid, DomainTools)\n↓\n[Tier 3: Incident Response] 악성 확인 → 격리/치료 정책 위반 → HR 통보 의심 활동 → 상위 SOC로 에스컬레이션 **다음 학습 방향 (Day 3 Preview)** - Beehive가 실제 EMC 환경에서 2주간 생성한 784건의 인시던트 분석 결과 - 멀웨어, 정책 위반, 오탐 분류 비율 - 기존 보안 도구와의 비교 검증 # Research Review: Beehive: Large-Scale Log Analysis for Detecting Suspicious Activity in Enterprise Networks \u003e **Analyzed Date:** 2025.12.31 \u003e **Keywords:** SOC, Log Analysis, Enterprise Security, Anomaly Detection, Clustering \u003e **Source:** ACSAC '13, 2013, pp.199-208 [Link](https://doi.org/10.1145/2523649.2523670) --- ## Day 3 – Empirical Results and Hypothesis Testing *(실전 검증: 784건의 인시던트가 말하는 것)* ### 1. 평가 환경 (Experimental Setup) #### A. EMC 테스트베드 **시스템 규모:** - 기간: 2013년 4월 22일 ~ 5월 5일 (2주) - 데이터: 6TB 이상의 로그 데이터 - 일일 평균: 14억 건의 로그 메시지 (약 1TB) **분석 대상:** - 웹 프록시 로그: 일일 3억 건 (600GB) - DHCP, VPN, 도메인 컨트롤러, 안티바이러스 로그 - Dedicated Hosts: 78,000대 이상 **활성 호스트 수:** - 평일: 27,000~35,000대 - 주말: 9,000~10,100대 **실험 전략:** 능동적 공격 주입이 아닌 **실제 운영 환경의 자연스러운 위협 탐지**에 집중. 이게 핵심이다. 실험실에서 만든 가짜 공격이 아니라, 진짜 회사에서 돌아가는 시스템의 진짜 로그를 분석한다. --- ### 2. 주요 발견 (Key Findings) #### A. 전체 인시던트 통계 **생성된 인시던트:** - 총 784건 (2주간) - 평균 56건/일 - 표준편차 6.88 → 일별 변동이 크지 않음 **기존 도구와의 비교:** - 784건 중 단 8건만 기존 보안 도구가 탐지 (1.02%) - **776건(98.98%)은 Beehive만 발견!** 이게 정말 놀라운 부분이다. 최신 안티바이러스, SIEM, 방화벽 다 돌아가는 환경에서도 Beehive가 거의 모든 새로운 이상을 찾아냈다. #### B. 클러스터링 패턴의 특성 **Modified K-means 결과:** - 1회 반복 후: 대다수 호스트 → 하나의 큰 정상 클러스터 - 나머지: 소수의 outlier 클러스터 (의심 활동) **흥미로운 관찰:** 클러스터가 자연스럽게 **행위 유형별로 분리**된다. 예를 들어: - Cluster 3: 차단된 사이트 과다 접근 - Cluster 6: DGA 멀웨어 (4대 모두!) - Cluster 8: DGA 멀웨어 (다른 변종) 같은 문제를 가진 호스트들이 알아서 모인다는 게 신기하다. --- ### 3. 인시던트 분류 결과 논문에서는 784건을 수동으로 일일이 조사했다. EMC의 SOC 팀과 협업해서 2단계 검증 프로세스를 거쳤다고 한다. #### A. 1차 분류: 연구팀 수동 레이블링 | 카테고리 | 건수 | 비율 | 의미 | |----------|------|------|------| | **Malware** | 117 | 14.92% | 확인된 멀웨어 감염 | | **Suspicious** | 81 | 10.33% | 원인 불명, 추가 조사 필요 | | **Policy Violation** | 309 | 39.41% | 회사 정책 위반 | | **Other (비악성)** | 277 | 35.33% | 오탐 또는 비악성 자동화 | **첫 느낌:** - 실제 위협(Malware + Suspicious): 25.25% → 4건 중 1건은 진짜 문제! - 정책 위반: 거의 40% → 컴플라이언스 관리 도구로도 쓸 수 있겠다 - 오탐: 35% → 이건 좀 많은데, 어떻게 줄일까? #### B. 정책 위반 상세 분류 **가장 많이 탐지된 정책 위반:** | 위반 유형 | 건수 | 비율 | 설명 | |-----------|------|------|------| | **Blocked sites** | 133 | 16.96% | 차단된 사이트 반복 접근 시도 | | **Streaming** | 86 | 10.96% | 대용량 비디오 스트리밍 (YouTube, Netflix 등) | | **Instant Messaging** | 56 | 7.14% | 비승인 메신저 (Skype, WhatsApp 등) | | **Gaming** | 13 | 1.65% | 온라인 게임 | | **Remote access** | 8 | 1.02% | TeamViewer 같은 원격 접속 도구 | | **Pornography** | 6 | 0.76% | 성인 콘텐츠 | | **Proxy** | 4 | 0.51% | 프록시로 방화벽 우회 시도 | | **File sharing** | 2 | 0.25% | P2P 파일 공유 | | **Tunneling** | 1 | 0.12% | VPN 터널링 서비스 | **실무 시사점:** 정책 위반 중 스트리밍이 가장 많다는 게 재미있다. 직원들이 회사에서 유튜브 보는 걸 자동으로 잡아낸다. HR 팀이 좋아할 듯. #### C. 비악성 오탐 분류 35.33%가 오탐이라고 했는데, 자세히 보면: | 오탐 유형 | 건수 | 비율 | 원인 | |-----------|------|------|------| | **Automated processes** | 157 | 20.02% | 자동화 스크립트 (뉴스 크롤러, 금융 데이터 수집 등) | | **Browsing (정상)** | 63 | 8.03% | 매우 활발한 정상 브라우징 | | **Uncategorized sites** | 57 | 7.27% | 평판 정보 없는 신규 사이트 | **핵심 인사이트:** 대부분 오탐이 \"자동화 프로세스\"다. 예를 들어: - 금융 팀이 돌리는 시장 데이터 수집 스크립트 - DevOps 팀의 모니터링 도구 - 뉴스 사이트 크롤러 이런 건 **화이트리스트에 등록**하면 해결된다. 오탐률 35% → 15% 정도로 줄일 수 있을 것 같다. --- ### 4. 멀웨어 탐지 성과 분석 #### A. DGA 기반 멀웨어의 완벽한 포착 **4월 24일 사례: Cluster 6** 논문에서 가장 인상적인 부분이다. Cluster 6을 보면: **호스트 4대의 피처 벡터:** Host 1: F1=247, F2=247, F8=156, F9=163\nHost 2: F1=200, F2=200, F8=142, F9=170\nHost 3: F1=239, F2=239, F8=153, F9=177\nHost 4: F1=214, F2=214, F8=142, F9=147\n**해석:** - F1 (New Destinations): 200~247개 → 하루에 200개 넘는 새 도메인 접속 - F2 (New Dests w/o Referer): F1과 거의 동일 → HTTP Referer 없이 직접 접속 - F8, F9 (Challenged Domains/Connections): 100개 이상 → 경고 페이지 받음 **판정:** 전형적인 **DGA (Domain Generation Algorithm) 멀웨어**! 봇넷이 C\u0026C 서버를 찾기 위해 무작위로 생성한 수백 개 도메인에 접속 시도. 대부분은 존재하지 않아서 실패하지만, 몇 개는 실제 C\u0026C 서버로 연결된다. **기존 도구 결과:** - 안티바이러스: 탐지 못함 (제로데이 변종으로 추정) - 방화벽: 일부 C\u0026C 도메인 차단했지만 감염 자체는 모름 - SIEM: 너무 많은 로그라 못 봄 **Beehive 결과:** - Cluster 6의 4대 호스트 **전부** 감염으로 확인 - 같은 날 Cluster 1, 8에서도 DGA 멀웨어 발견 - 총 10개 이상의 감염 호스트 식별 **왜 Beehive가 잡았을까?** Destination-based features (F1, F2)가 핵심이다: - 정상 호스트: 하루에 새 도메인 10~20개 접속 - DGA 감염 호스트: 하루에 200개 이상 이 차이가 너무 명확해서 클러스터링에서 자동으로 분리된다. #### B. 기타 멀웨어 탐지 DGA 외에도: - **Adware/Spyware**: 35건 (Suspicious 중) - **기타 멀웨어**: 9건 (Suspicious 중) 총 117건의 확인된 멀웨어 중 대부분이 **기존 AV가 못 잡은 것들**이다. --- ### 5. 클러스터 상세 분석: 4월 24일 사례 논문 Figure 4를 보면 4월 24일에 생성된 15개 outlier 클러스터의 normalized feature vector가 나온다. #### 클러스터별 특징 **Cluster 3: 정책 위반 - 차단 사이트 과다 접근** 피처 벡터 예시 (2개 호스트): Host A: F6=4, F7=47,833, F12=386, F13=96\nHost B: F6=11, F7=25,479, F12=309, F13=6\n**해석:** - F7 (Blocked Connections): 25,000~48,000건! → 하루 종일 차단된 사이트 접속 시도 - F12 (Connection Spikes): 300개 이상 → 1분에 100개 이상 연결하는 순간이 300번 - F13 (Domain Spikes): 6~96개 **판정:** 자동화 스크립트가 차단된 사이트 목록을 무차별 시도하는 것으로 추정. 악의적이라기보다는 설정 오류일 가능성. **Cluster 6: DGA 멀웨어 (이미 위에서 설명)** **Cluster 8: 또 다른 DGA 멀웨어** Cluster 6과 유사하지만 약간 다른 패턴: - New Destinations가 100~150개 (Cluster 6보다 적음) - 다른 DGA 알고리즘 또는 다른 봇넷으로 추정 **인사이트:** 같은 유형의 위협이라도 미묘한 차이로 여러 클러스터로 나뉜다. 이게 오히려 좋다. 서로 다른 멀웨어 변종을 구분할 수 있으니까. --- ### 6. SOC 2차 검증 결과 81건의 \"Suspicious\" 인시던트를 EMC SOC 팀에 보냈다. 이들은 원인을 파악할 수 없어서 SOC에 도움을 요청한 케이스다. **SOC 팀의 판정:** | SOC 판정 | 건수 | 비율 | 설명 | |----------|------|------|------| | **Adware/Spyware** | 35 | 43.21% | 애드웨어/스파이웨어 확인 | | **Further investigation** | 26 | 32.09% | 여전히 의심스러움, 심층 조사 필요 | | **Other malware** | 9 | 11.11% | 기타 악성코드 | | **Policy Violation** | 4 | 4.93% | 재분류 (Gaming, IM, Streaming) | | **Uncategorized sites** | 7 | 8.64% | 비악성 미분류 사이트 | **핵심 통계:** - 실제 위협: 54.32% (Adware + Other malware) - 미지의 위협: 32.09% (아직도 확실하지 않음) - 재분류: 4.93% **\"Further investigation\" 26건이 흥미롭다.** SOC 팀도 원인을 확실히 못 찾았다는 뜻이다. 이것들은: - 미지의 제로데이 위협일 수도 있고 - 아주 교묘한 APT일 수도 있고 - 아니면 정말 특이한 정상 행위일 수도 있다 어쨌든 **추가 포렌식 조사가 필요한 진짜 suspicious 케이스**다. --- ### 7. 설명 가능성의 실전 가치 #### A. \"왜 의심스러운가?\"를 즉시 알 수 있다 **Beehive의 출력:** Incident: Host XYZ\nCluster: 6\nCluster size: 4 hosts\nDistinctive features:\nF1 (New Destinations): 247 (cluster avg: 225, normal: 15) F2 (New Dests w/o Referer): 247 (cluster avg: 225, normal: 10) F8 (Challenged Domains): 156 (cluster avg: 148, normal: 2) **분석가가 얻는 정보:** 1. 이 호스트는 하루에 247개의 새 도메인 접속 (정상은 15개) 2. 그 중 247개 모두 HTTP Referer 없음 (직접 접속) 3. 156개 도메인에서 회사 경고 페이지 받음 **즉시 판단:** \"DGA 멀웨어 가능성 높음. 봇넷이 C\u0026C 서버 찾는 중.\" **조치 시간:** - 기존 방식: 로그 뒤져서 패턴 찾기 → 2~4시간 - Beehive: 피처 값 보고 즉시 판단 → 5~10분 **MTTR (Mean Time To Respond) 대폭 감소!** #### B. PCA 방법과의 비교 논문에서 PCA 기반 이상탐지와 비교했다. **PCA 출력:** Incident: Host XYZ\nAnomaly score: 3.7σ\nPrincipal component 3 value exceeds threshold\n**분석가의 반응:** \"...뭐가 문제인데? Principal component 3이 뭘 의미하는데?\" **추가 작업 필요:** 다시 원본 로그를 뒤져서 무엇이 비정상인지 수동으로 찾아야 함. **차이점:** - Beehive: 즉시 대응 가능한 actionable intelligence - PCA: 추가 분석 필수 이게 \"설명 가능성\"의 실전 가치다. --- ### 8. 오탐(False Positive) 심층 분석 35.33%가 오탐이라는 건 솔직히 좀 많다. 하지만 논문에서 **오탐의 유형**을 분석한 부분이 중요하다. #### A. 오탐 유형별 분석 **1. 자동화 프로세스 (20.02%)** 예시: - 금융팀의 실시간 주가 데이터 크롤러 - 뉴스 사이트 RSS 수집기 - 모니터링 도구의 health check **특징:** - 동일 사이트에 수만 건 연결 (F12: Connection Spikes 높음) - 하지만 접속하는 사이트는 정상 (뉴스, 금융) **해결책:** 해당 호스트/사용자를 화이트리스트에 등록하면 끝. **2. 과도한 정상 브라우징 (8.03%)** 예시: - 마케팅 팀원이 경쟁사 조사하느라 하루 종일 웹서핑 - Consented Connections가 수천 건 **특징:** - 사용자가 회사 정책 경고 페이지에서 \"동의\" 클릭 - 실제로는 정상 업무 **해결책:** Consented Connections 임계값을 높이거나, 특정 직무(마케팅, 리서치)는 예외 처리. **3. 미분류 사이트 (7.27%)** 예시: - 새로 생긴 클라우드 서비스 - 스타트업 홈페이지 - 개인 블로그 **특징:** - 평판 정보 없음 (McAfee SiteAdvisor에 없음) - 하지만 실제로는 무해 **해결책:** 시간이 지나면 평판 DB가 업데이트됨. 또는 수동으로 화이트리스트 추가. #### B. 오탐 관리 전략 **핵심 아이디어: 오탐의 \"유형 수\"가 중요** 논문에서 강조하는 부분: - 오탐 **개수** 908건 (많아 보임) - 하지만 오탐 **유형**: 단 3가지! 1. 자동화 프로세스 2. 과도한 브라우징 3. 미분류 사이트 **실무 적용:** Week 1: 분석가가 오탐 3가지 유형 식별\nWeek 2: 각 유형별 억제 규칙 작성\nWeek 3~: 동일 유형 오탐 자동 필터링\n**결과:** - 오탐률 35% → 5~10%로 감소 예상 - 분석가 부담 대폭 감소 이게 PCA보다 나은 점이다. PCA는 오탐 원인을 알 수 없어서 억제 규칙을 못 만든다. --- ### 9. SOC 관점 실무 인사이트 #### A. 탐지 측면 **성공 사례:** 1. **DGA 멀웨어 완벽 탐지** - 기존 AV 미탐지 - Destination-based features (F1, F2)가 핵심 - 클러스터링으로 집단 감염까지 식별 2. **정책 위반 자동 식별** - 39.41%가 정책 위반 - HR 팀과 연계 가능 - 컴플라이언스 자동화 3. **제로데이 대응** - 시그니처 없이도 비정상 행위로 탐지 - 117건 멀웨어 중 대부분이 신규/변종 **개선 필요:** 1. **오탐률 관리** - 35% → 화이트리스트로 15% 이하로 줄여야 2. **Bitcoin mining 같은 자동화** - 악의적인가? 단순 리소스 낭비인가? - 정책 결정 필요 #### B. 대응 측면 **우선순위화 전략:** 논문 결과를 바탕으로 SOC 워크플로우 설계: [Critical - 즉시 대응]\nMalware (14.92%) + Suspicious (10.33%) = 25.25%\n→ 일일 약 14건\n→ Tier 2 분석가가 즉시 처리\n[High - 당일 처리]\n보안 위협 정책 위반 (Proxy, Tunneling, Remote access) = 1.65%\n→ 일일 약 1건\n→ 당일 내 처리\n[Medium - 주간 배치]\n일반 정책 위반 (Streaming, IM) = 37.76%\n→ 일일 약 21건\n→ 주간 리뷰로 모아서 처리\n[Low - 월간 리뷰]\n자동화 프로세스 = 35.33%\n→ 트렌드 분석용\n**티켓 자동 생성 템플릿:** 제목: [Beehive] DGA 멀웨어 의심 - Host XYZ\n심각도: CRITICAL\n탐지 시각: 2013-04-24 09:32:15\n클러스터 정보:\nCluster 6 (4 hosts total) 모두 동일 행위 패턴 특징:\nNew Destinations: 247 (정상: 15) New Dests w/o Referer: 247 (정상: 10) Challenged Domains: 156 (정상: 2) 판정: DGA 기반 봇넷 의심\n권장 조치:\n호스트 네트워크 격리 메모리 덤프 수집 안티바이러스 전체 스캔 C\u0026C 통신 흔적 확인 **즉시 대응 가능한 구체적 정보!** #### C. 분석 측면 **클러스터 기반 분석의 장점:** 1. **집단 감염 식별** - Cluster 6의 4대 호스트 모두 같은 멀웨어 - 전파 경로 추적 가능 - 추가 피해 차단 2. **행위 유형 자동 분류** - 클러스터마다 명확한 행위 패턴 - Cluster 3: 차단 사이트 - Cluster 6: DGA - Cluster 8: 또 다른 DGA 3. **정상 baseline 자동 학습** - 대다수 호스트가 큰 정상 클러스터 형성 - 새 호스트가 어디에 속하는지 보면 정상/비정상 즉시 판단 **Ground Truth 부재 해결 전략:** 1. SOC 협업 2단계 검증 2. 외부 평판 서비스 (McAfee SiteAdvisor, URLVoid) 3. 시간에 따른 검증 (suspicious → 시간 지나면 명확해짐) --- ### 10. 개인 인사이트 (Personal Insight) **Day 3를 읽고 느낀 점:** **1. 98.98% 미탐의 의미** 784건 중 776건을 기존 도구가 못 잡았다는 게 충격적이다. EMC는 보안에 투자를 많이 하는 회사다. 최신 안티바이러스, SIEM, 방화벽 다 있다. 그런데도 Beehive가 거의 모든 위협을 추가로 발견했다. → **기존 도구는 \"알려진 위협\"만 잡는다는 증거** Beehive 같은 행위 기반 탐지가 필수인 이유가 명확해졌다. **2. 설명 가능성의 실전 가치** \"New Destinations 247개\" vs. \"Principal Component 3 값 3.7σ\" 전자는 SOC 분석가가 즉시 이해하고 대응할 수 있다. 후자는 다시 로그를 뒤져야 한다. DeepLog을 먼저 공부했는데, 이제 두 접근법의 장단점이 명확하다: - DeepLog: 복잡한 패턴, 높은 정확도 - Beehive: 명확한 워크플로우, 즉시 설명 가능 → **실무에서는 둘을 섞어 쓰는 게 답** **3. 오탐 35%를 어떻게 볼 것인가** 처음엔 \"35%면 너무 많은 거 아냐?\"라고 생각했다. 하지만 논문 분석을 보니: - 오탐 유형이 단 3가지 - 화이트리스트로 대부분 해결 가능 - 시간이 지나면 15% 이하로 감소 예상 → **초기 오탐률보다 \"오탐 유형 수\"가 중요하다는 철학** PCA는 오탐 원인을 모르니 계속 발생. Beehive는 원인을 알아서 억제 가능. **4. DGA 탐지의 완벽함** Cluster 6의 4대 호스트가 모두 DGA 멀웨어라는 걸 한 번에 식별. 기존 도구: - AV: 제로데이라 못 잡음 - 방화벽: C\u0026C 도메인 몇 개 차단했지만 감염은 모름 - SIEM: 로그 양이 너무 많아서 못 봄 Beehive: - F1 (New Destinations) 하나로 즉시 식별 - 클러스터링으로 4대 집단 감염까지 한 번에 → **엔터프라이즈 특화 피처 설계의 힘** 일반 인터넷에서는 New Destinations 많아도 이상하지 않다. 하지만 엔터프라이즈는 업무 사이트만 가니까, 200개 새 도메인은 확실히 이상하다. **5. 클러스터 해석의 직관성** Figure 4를 보면 15개 클러스터의 normalized feature vector가 있다. 각 클러스터마다 튀는 피처가 다르다: - Cluster 3: F7 (Blocked Connections) 튀김 - Cluster 6: F1, F2 (New Destinations) 튀김 - Cluster 12: F10, F11 (Consented) 튀김 → **클러스터 = 행위 유형** 이게 PCA보다 훨씬 해석하기 쉽다. 어떤 피처가 outlier인지 보면 무슨 문제인지 바로 안다. **다음 궁금증 (Day 4 Preview):** - 오탐 35%를 실제로 어떻게 줄일 것인가? - 시간 해상도 문제 (일 단위 배치)는 극복 가능한가? - 이 연구가 학계와 산업계에 미친 영향은? - DeepLog 같은 후속 연구가 어떻게 발전했나? --- **Day 3 종료** 내일은 연구의 한계와 후속 영향을 분석해보자! # Research Review: Beehive: Large-Scale Log Analysis for Detecting Suspicious Activity in Enterprise Networks \u003e **Analyzed Date:** 2026.01.02 \u003e **Keywords:** SOC, Log Analysis, Enterprise Security, Anomaly Detection, Clustering \u003e **Source:** ACSAC '13, 2013, pp.199-208 [Link](https://doi.org/10.1145/2523649.2523670) --- ## Day 4 – Research Limitations and Scholarly Impact *(한계를 넘어: 학계와 산업계의 반응)* ### 1. 연구의 한계점 논문을 읽다 보면 항상 \"이 방법이 만능은 아니겠지?\"라는 생각이 든다. Beehive도 마찬가지다. 논문에서 명시한 한계와 실험에서 드러난 한계를 정리해보자. #### A. 평가 방법론의 근본적 어려움 **Ground Truth가 없다는 문제** 실험실 환경이라면: - 악성 트래픽 주입 → 정답 알고 있음 - Precision, Recall 정확히 계산 가능 - 논문 쓰기 편함 실제 엔터프라이즈 환경: - 이미 보안 도구들이 돌아가는 중 - 알려진 위협은 이미 차단됨 - 남아있는 건 \"미지의 위협\" 또는 \"정상\" - → **정답을 모른다!** **Beehive의 접근:** 784건 인시던트 생성\n↓\n1차 검증: 연구팀이 수동 레이블링\n↓\n2차 검증: EMC SOC 팀 협업\n↓\n그래도 불확실: 26건 “Further investigation”\n이 과정이 몇 주 걸렸을 것 같다. 엄청난 노력이다. **한계:** - False Positive Rate를 정확히 측정 불가 - 놓친 위협(False Negative)이 얼마나 되는지 알 수 없음 - SOC 분석가 시간이 엄청나게 든다 **실무 영향:** 신규 조직에 도입할 때마다 이 과정을 반복해야 한다. 초기 1~2개월은 수동 검증 기간으로 봐야 함. #### B. 시간 해상도의 딜레마 **일 단위 배치 분석의 한계** Beehive는 하루 단위로 피처를 계산한다: 오늘(4월 24일) 로그 수집\n↓\n밤새 배치 처리\n↓\n내일 아침(4월 25일) 인시던트 리포트\n**문제 시나리오:** 4월 24일 오전 9시: APT 초기 침투\n4월 24일 오후 2시: 횡적 이동 (Lateral Movement)\n4월 24일 오후 5시: 데이터 탈취 시작\n4월 25일 오전 9시: Beehive가 탐지\n→ 24시간 늦음!\n**APT의 특성:** - Dwell Time (침투 후 발견까지 시간): 평균 200일 (2013년 기준) - 빠른 공격: 수 시간 내 데이터 탈취 **Beehive의 한계:** 일 단위 배치라서 빠른 공격에는 대응 못 함. **논문의 변명:** \"우리는 historical analysis를 목표로 했다. 실시간은 아니다.\" **솔직한 생각:** 변명이긴 하지만... 2013년 당시 기술로는 일일 1TB 로그를 실시간 처리하는 게 쉽지 않았을 거다. 지금이야 Spark Streaming 같은 게 있지만. #### C. 초기 학습 기간의 부담 **Beehive 가동까지 필요한 시간:** | 단계 | 소요 시간 | 작업 내용 | |------|-----------|-----------| | **히스토리 구축** | 1개월 | New Destinations 판정 위한 도메인 히스토리 | | **화이트리스트 구축** | 1주일 | 100대 이상 호스트 접속한 도메인 식별 | | **User-Agent 히스토리** | 1개월 | 호스트별 UA 문자열 학습 | | **Dedicated Host 식별** | 3개월 | 95% 단일 사용자 판정 (실제로는 병렬 가능) | **실질적 대기 시간:** 최소 **5주** (화이트리스트 1주 + 히스토리 4주) **문제:** - 신규 조직 도입 시 즉시 탐지 불가 - 5주 동안은 \"학습 모드\" - 경영진에게 설득하기 어려움: \"5주 기다려주세요\" **현실적 대안:** Week 1: 화이트리스트 구축\nWeek 2-4: 히스토리 구축하면서 동시에 탐지 시작 (정확도 낮음)\nWeek 5: 본격 가동\n처음 4주는 오탐률이 높을 것 같다. 하지만 아무것도 안 하는 것보단 낫다. #### D. 엔터프라이즈 환경 의존성 **Beehive가 가정하는 환경:** 1. **정책 제약 환경** - 방화벽, 웹 프록시로 통제 - 직원들이 특정 사이트만 접속 2. **동질적 호스트 구성** - 대부분 비슷한 소프트웨어 사용 - 표준화된 업무 환경 3. **Dedicated Hosts** - 1인 1PC 원칙 - 공용 PC 많으면 적용 어려움 **적용 어려운 환경:** **대학 네트워크:** - 학생들이 온갖 사이트 접속 (연구, 공부, 게임, ...) - 정책 제약 거의 없음 - New Destinations 기준이 무의미 **공공 WiFi:** - 사용자가 계속 바뀜 - Dedicated Host 개념 없음 - 행위 프로파일 불가능 **스타트업:** - 개발자들이 자유롭게 소프트웨어 설치 - 정책이 느슨함 - \"정상\" 행위의 범위가 너무 넓음 **실무 시사점:** Beehive는 **전통적 대기업**에 최적화되어 있다. 스타트업이나 대학에 적용하려면 피처 재설계 필요. #### E. 피처 엔지니어링의 딜레마 **15개 피처는 수작업으로 설계했다** 논문 저자들이: 1. EMC 내부 멀웨어 사례 관찰 2. 보안 전문가와 논의 3. 여러 피처 실험 4. 최종 15개 선정 **장점:** - 각 피처의 의미가 명확 - SOC 분석가가 이해 가능 - 설명 가능성 확보 **단점:** - 시간과 비용이 많이 듦 - 도메인 전문가 필요 - 다른 조직에 적용 시 재설계 필요 - 새로운 공격 기법 출현 시 피처 추가 필요 **DeepLog과의 대비:** - DeepLog: LSTM이 자동으로 피처 학습 (블랙박스) - Beehive: 수동 피처 설계 (화이트박스) **Trade-off:** 설명 가능성 vs. 자동화 둘 다 필요한데... 어떻게 해결할까? → Day 5에서 다룰 하이브리드 접근! #### F. 오탐률 35%의 의미 Day 3에서 \"오탐 유형이 3가지뿐이라 관리 가능\"하다고 했는데, 그래도 35%는 부담이다. **SOC 입장에서 계산해보면:** 일일 56건 인시던트\n↓\n35% 오탐 = 20건/일\n↓\n주 5일 = 100건/주\n**분석가 부담:** - Tier 2 분석가가 주당 100건의 오탐 처리 - 1건당 10분이라도 → 주당 16시간 **알림 피로도 (Alert Fatigue):** 오탐이 계속되면: - 분석가가 알림을 신뢰 안 함 - \"또 오탐이겠지\" 하고 넘김 - 진짜 위협도 놓침 **해결 방안:** 화이트리스트 지속 관리로 오탐률 20% 이하로 낮춰야 함. 그래도 여전히 일일 11건... #### G. 단일 조직 평가의 일반화 문제 **논문의 평가:** - EMC 하나의 조직에서만 검증 - 2주간 데이터 **궁금증:** - 다른 산업군(금융, 제조, 의료)에서도 효과적인가? - 다른 규모(소기업, 대기업)에서는? - 다른 나라(문화권)에서는? **특히 금융권이 궁금하다:** - 거래 시스템은 24/7 운영 - 비정상 시간대 접속이 정상일 수 있음 (야간 배치) - 피처 재설계 필요할 듯 **의료:** - HIPAA 컴플라이언스 - PHI (Protected Health Information) 접근 패턴 - 환자 데이터 유출 탐지에 특화 필요 **논문의 한계:** 일반화 검증 부족. 하지만 EMC는 큰 조직이라 어느 정도 대표성은 있다고 봐야 할 듯. --- ### 2. 후속 연구 동향 #### A. 인용 수와 영향력 **학술적 임팩트:** - 발표: 2013년 12월 (ACSAC) - 현재 인용 수: **215회** (2025년 12월 기준) - 평균: 연간 약 18회 인용 **비교:** - DeepLog (2017): 800회 이상 - Lou et al. (2010): 900회 이상 Beehive가 상대적으로 적은 이유: - 엔터프라이즈 특화 → 학계에서 재현 어려움 - 실제 데이터 필요 → 연구자들이 접근 어려움 - 방법론이 복잡 (3계층 파이프라인) **하지만 실무 영향은 크다:** UEBA 시장 형성에 기여 (아래에서 설명) #### B. 연구 트렌드의 변화 **2013년 이전: 시그니처 중심** IDS/IPS + Antivirus\n→ 알려진 위협만 탐지\n**2013-2017: 통계/ML 기법 도입** PCA, SVM, Clustering (Beehive 포함)\n→ 행위 기반 탐지 시작\n**2017-2021: 딥러닝 혁명** DeepLog (2017): LSTM\nLogAnomaly (2019): Attention\nLogBERT (2021): Transformer\n→ 자동 피처 학습\n**2022-현재: Pre-trained Models + Graph** PLELog: BERT 기반 로그 파싱\nNeural Log Analysis: GNN으로 호스트 관계 모델링\n→ 더 복잡한 패턴 학습\n**Beehive의 위치:** 통계/ML 시대의 마지막 대표작. 이후 딥러닝이 대세가 됨. #### C. 주요 후속 연구 **Beehive의 한계를 극복하려는 연구들:** **1. 실시간 처리** | 연구 | 연도 | 핵심 기여 | |------|------|-----------| | **LogAnomaly** | 2019 | Attention 기반 시퀀스 모델, 분 단위 처리 | | **Stream-Based Anomaly Detection** | 2020 | Kafka + Spark Streaming으로 실시간 탐지 | **개선점:** - Beehive의 일 단위 → 분/초 단위 - Dwell Time 대폭 감소 **2. 자동 피처 학습** | 연구 | 연도 | 핵심 아이디어 | |------|------|---------------| | **DeepLog** | 2017 | LSTM으로 자동 피처 학습 | | **Log2Vec** | 2019 | Word2Vec 스타일 로그 임베딩 | | **LogBERT** | 2021 | BERT로 self-supervised learning | **개선점:** - 수동 피처 설계 불필요 - 새로운 공격에 자동 적응 **Trade-off:** 설명 가능성 희생 (블랙박스) **3. 더티 데이터 처리 강화** | 연구 | 연도 | 기여 | |------|------|------| | **Robust Log-based Anomaly Detection** | 2020 | Beehive의 정규화 기법 확장, 더 복잡한 노이즈 처리 | | **PLELog** | 2021 | Pre-trained LM으로 파싱 정확도 95% → 98% | **개선점:** Beehive의 로그 파서 한계 극복 **4. 호스트 간 관계 모델링** | 연구 | 연도 | 기여 | |------|------|------| | **UNICORN** | 2020 | 다변량 시계열, 호스트 간 상관관계 | | **Neural Log Analysis** | 2022 | GNN으로 호스트 관계를 그래프로 모델링 | **개선점:** - Beehive는 호스트를 독립적으로 분석 - 후속 연구는 호스트 간 관계 고려 (횡적 이동 탐지에 유리) **5. 하이브리드 접근** 재미있는 건, **최근 연구들이 다시 Beehive 스타일로 회귀**하고 있다는 점이다. 2013: Beehive (해석 가능 피처)\n↓\n2017-2021: 딥러닝 블랙박스\n↓\n2022-현재: 하이브리드 (피처 + 딥러닝)\n**예시: LogAnomaly (2019)** - Beehive의 피처를 딥러닝 입력으로 사용 - Attention으로 \"어떤 피처가 중요한지\" 자동 학습 - 설명 가능성 + 딥러닝 성능 둘 다 확보 **교훈:** \"설명 가능성\"이라는 Beehive의 철학이 여전히 유효하다. --- ### 3. 실무 영향 (Industry Impact) #### A. UEBA 시장의 탄생 **UEBA = User and Entity Behavior Analytics** **Beehive 이전 (2010년대 초):** - 보안 제품: SIEM, IDS/IPS, Antivirus - 모두 시그니처 기반 **Beehive 이후 (2015년~):** - Gartner가 UEBA를 주요 보안 기술로 지정 (2015) - 전문 UEBA 벤더 출현: - Exabeam - Securonix - Splunk UBA - Varonis **UEBA의 핵심 개념:** \"사용자와 엔티티(호스트, 서버)의 **정상 행위**를 학습하고, **이상 행위**를 탐지\" → **Beehive와 정확히 같은 철학!** **Gartner 정의 (2015):** UEBA solutions use machine learning and statistical models\nto create behavioral baselines and detect anomalies.\nBeehive 논문의 핵심 아이디어를 그대로 설명하고 있다. **실무 영향:** Beehive가 UEBA 시장 형성에 학술적 근거를 제공했다고 볼 수 있다. #### B. SOC 운영 패러다임 변화 **Before Beehive (2010년대 초):** [경계 방어]\n방화벽, IPS\n↓\n[시그니처 탐지]\nIDS, Antivirus\n↓\n[수동 조사]\n보안 전문가가 로그 뒤짐\n**패러다임:** - \"알려진 위협\" 차단 - \"외부 침입\" 막기 - 사후 대응 **After Beehive (2010년대 중후반~):** [다층 방어]\n경계 + 내부 모니터링\n↓\n[행위 분석]\nUEBA (Beehive 스타일)\n↓\n[위협 헌팅]\n사전에 위협 찾아내기\n**패러다임:** - \"미지의 위협\" 탐지 (APT, 제로데이) - \"내부 행위\" 모니터링 - 사전 + 사후 대응 **핵심 차이:** \"침입당하지 않기\"에서 \"침입 후 빠르게 찾아내기\"로 전환 #### C. 주요 벤더의 채택 **RSA (EMC 자회사):** - Beehive 저자 중 일부가 RSA 소속 - RSA NetWitness에 Beehive 개념 통합 - 특히 \"엔터프라이즈 특화 피처\" 설계 철학 채택 **Splunk:** - Splunk UBA 출시 (2015) - 행위 기반 이상탐지 기능 - 클러스터링 방식 유사 **IBM QRadar:** - User Behavior Analytics 모듈 - 로그 정규화 기법 참고 **Exabeam:** - UEBA 전문 벤더 - \"Timeline\" 기능: 호스트별 행위 시각화 - Beehive의 피처 벡터 개념과 유사 **공통점:** 모두 \"정상 행위 학습 → 이상 탐지\" 프레임워크 사용 #### D. 오픈소스 도구 영향 **LogPai 프로젝트 (화웨이):** - 중국 화웨이가 Beehive 기반 오픈소스 프로젝트 시작 - GitHub: https://github.com/logpai/logparser - 로그 파싱, 불변성 마이닝 도구 제공 - Star 1,000+ **도구 목록:** - Drain: 로그 파싱 - Spell: 로그 템플릿 추출 - LogCluster: 클러스터링 기반 이상탐지 Beehive의 개념을 오픈소스로 구현한 최초 프로젝트. --- ### 4. SOC 관점 인사이트 #### A. 한계를 인식한 실무 적용 전략 **전략 1: 하이브리드 탐지 체계** Beehive의 한계(일 단위 배치)를 인정하고, 계층화된 방어 체계 구축: [실시간 레이어]\nSIEM Rules + IDS/IPS + AV\n↓ (즉시 알림)\n[일일 배치 레이어]\nBeehive-style Behavioral Analytics\n↓ (익일 아침 리포트)\n[주간 레이어]\nThreat Hunting (수동)\n**역할 분담:** - 실시간: 알려진 위협 + 긴급 이상 - 배치: 놓친 위협 발굴 (Beehive의 98.98%) - 주간: 장기 트렌드 분석 **실무 예시:** Case 1: 알려진 멀웨어\n→ 실시간 레이어에서 즉시 차단 (Beehive 출동 안 함)\nCase 2: DGA 봇넷 (제로데이)\n→ 실시간 레이어 통과 → Beehive가 익일 탐지\nCase 3: 느린 APT\n→ 주간 헌팅으로 장기 패턴 분석\nBeehive는 **\"놓친 위협 발굴\"** 역할에 집중! **전략 2: 오탐 학습 루프** 35% 오탐을 어떻게 줄일 것인가? **4주 오탐 정제 프로그램:** Week 1:\nBeehive 인시던트 전수 조사 오탐 패턴 식별 및 분류 Week 2:\n패턴별 억제 규칙 작성 예: “DevOps 팀 호스트는 자동화 프로세스 예외 처리” Week 3:\n화이트리스트 정제 추가 오탐 패턴 발견 Week 4:\n최종 룰셋 확정 오탐률 재측정 (목표: 20% 이하) **지속적 개선:** 월 1회: 신규 오탐 패턴 검토\n분기 1회: 화이트리스트 대청소\n연 1회: 피처 재검증\n**목표:** - 초기 35% → 1개월 후 20% → 3개월 후 10% 이하 **전략 3: 시간 해상도 점진적 개선** 일 단위가 한계라면, 조금씩 줄여보자: **Phase 1: 일 단위 (현재)** 처리 시간: 5시간/일\nDwell Time: 평균 12시간\n**Phase 2: 4시간 단위 (6개월 후)** 하루를 6개 윈도우로 분할\n처리 시간: 30시간/일 (6배 증가)\nDwell Time: 평균 4시간\nTrade-off:\n계산 비용 6배 하지만 클라우드 컴퓨팅으로 해결 가능 **Phase 3: 실시간 스트림 (12개월 후)** Kafka + Spark Streaming\nDwell Time: 분 단위\n하지만 설명 가능성 일부 희생 (딥러닝 도입 필요)\n**점진적 접근의 장점:** - 한 번에 바꾸지 않음 - 각 단계에서 효과 검증 - 실패해도 롤백 가능 **전략 4: 조직별 피처 커스터마이징** EMC의 15개 피처를 다른 조직에 그대로 쓰면 안 된다. **산업별 추가 피처 예시:** **금융권:** - F16: 비정상 거래 시간대 접속 (야간 배치 제외) - F17: 고객 민감 정보 접근 패턴 이상 - F18: 외부 송금 시스템 접근 급증 **제조:** - F16: OT 네트워크 연결 시도 (IT-OT 경계) - F17: 생산 데이터 외부 전송 - F18: PLC 설정 변경 로그 **의료:** - F16: PHI 접근 패턴 이상 (HIPAA) - F17: 환자 기록 대량 조회 - F18: 의료 기기 로그 이상 **중요:** 피처 설계에 **도메인 전문가 참여** 필수! **전략 5: 딥러닝과의 앙상블** Beehive의 장점(설명 가능성) + DeepLog의 장점(정확도) 결합 **아키텍처:** [로그 스트림]\n↓\n[병렬 처리]\n↓ ↓\n[Beehive] [DeepLog]\n15개 피처 - LSTM 클러스터링 - 시퀀스 분석\n↓ ↓\n[앙상블 결정] 둘 다 알림 → Critical (즉시 대응) Beehive만 → High (설명 가능, 우선 처리) DeepLog만 → Medium (추가 조사) 둘 다 정상 → Pass **장점:** 1. Beehive가 놓친 것을 DeepLog이 잡음 2. DeepLog 결과를 Beehive 피처로 해석 3. 최고의 탐지율 + 설명 가능성 **실무 예시:** Case: DeepLog이 이상 탐지했지만 원인 불명\nBeehive 피처 확인:\nF1 (New Destinations): 5개 (정상) F5 (New User-Agent): 3개 (약간 높음) F12 (Connection Spikes): 150개 (매우 높음) 분석가 판단:\n“Connection Spikes가 원인이구나.\n특정 시간대에 트래픽 폭증.\nDDoS 공격 또는 데이터 exfiltration 의심.”\nDeepLog 단독으로는 알 수 없었던 것을 Beehive 피처로 설명! #### B. 도입 로드맵 **Short-term (1-3개월): 파일럿** Month 1: 준비\n대상 시스템 선정 (명확한 워크플로우 1개) SIEM 로그 수집 확인 화이트리스트 구축 (1주) 히스토리 구축 시작 (4주) Month 2: 파일럿 가동\nBeehive 탐지 시작 매일 인시던트 수동 검증 오탐 패턴 식별 Month 3: 정제\n화이트리스트 정제 오탐률 20% 이하로 감소 효과 측정 (MTTD, MTTR) **Mid-term (3-6개월): 확장** Month 4-5: 추가 시스템\n3-5개 핵심 시스템에 확장 조직 특화 피처 3개 추가 SOAR 연동 (자동 티켓팅) Month 6: 안정화\n월간 리포트 생성 경영진 보고 (ROI 계산) SOC 프로세스 공식화 **Long-term (6-12개월): 최적화** Month 7-9: 고도화\n시간 해상도 4시간으로 개선 DeepLog 하이브리드 테스트 외부 위협 인텔리전스 통합 Month 10-12: 전사 확산\n다른 사업부/지역으로 확대 Best Practice 문서화 지속적 개선 프로세스 수립 --- ### 5. 개인 인사이트 (Personal Insight) **Day 4를 읽고 느낀 점:** **1. 솔직한 한계 인정의 가치** 논문이 자신의 한계를 명확히 인정한다: - \"Ground Truth 없어서 정확한 평가 어렵다\" - \"일 단위 배치라 실시간 대응 못한다\" - \"오탐률 35%는 높다\" 이런 솔직함이 오히려 **신뢰를 높인다**. 실무자 입장에서는: - 언제 쓰고 언제 안 쓸지 판단 가능 - 도입 시 예상되는 문제 미리 대비 - \"만능 도구\"가 아니라는 걸 알고 시작 학계에서는 이런 솔직함이 드물다. 대부분 \"우리가 최고!\"만 외치는데... **2. 시간 해상도의 근본적 딜레마** 일 단위 vs. 실시간 일 단위:\n장점: 대용량 처리 가능, 안정적, 설명 가능 단점: 빠른 공격 대응 못함 실시간:\n장점: 즉시 대응, Dwell Time 최소화 단점: 계산 비용 높음, 안정성 낮음, 설명력 떨어짐 **정답은 없다. Trade-off다.** 실무에서는 **계층화된 방어**가 답인 것 같다: - 실시간 레이어 (IDS/IPS) - 배치 레이어 (Beehive) - 주간 레이어 (Threat Hunting) 각자 역할이 다르다. **3. UEBA 시장 형성의 의미** Beehive (2013) → Gartner UEBA 정의 (2015) → UEBA 벤더 탄생 (2015~) 논문 하나가 **산업 전체를 바꿨다**. 이게 학술 연구의 진짜 가치다: - 단순히 논문 쓰는 게 아니라 - 실무 문제를 해결하고 - 새로운 시장을 만든다 Beehive 저자들이 자랑스러울 만하다. **4. 설명 가능성의 재발견** 2013: Beehive (해석 가능) 2017-2021: 딥러닝 블랙박스 유행 2022-현재: 다시 설명 가능성으로 회귀 **왜 다시 돌아왔을까?** 실무에서는 **\"왜\"를 알아야** 하기 때문이다: - SOC 분석가가 이해해야 대응 가능 - 경영진에게 설명해야 예산 확보 - 법적 책임 (GDPR 등) 때문에 설명 필수 딥러닝은 정확도는 높지만, \"왜\"를 설명 못한다. → **하이브리드 접근이 미래** Beehive의 피처 + DeepLog의 학습 능력 = 최선 **5. 2013년 논문이 2024년에도 유효한 이유** **변하지 않은 것:** - 엔터프라이즈 환경의 특성 (정책 제약, 동질성) - 로그가 \"dirty\"하다는 현실 - 설명 가능성의 중요성 - 오탐 관리의 어려움 **변한 것:** - 로그 규모 (1TB/day → 10TB/day) - 처리 기술 (Hadoop → Spark) - 딥러닝 도구 등장 **핵심:** **근본 문제와 철학은 변하지 않는다.** Beehive의 개념은 10년이 지나도 여전히 유효하다. **6. 다음 읽을 논문 방향** Beehive의 한계를 보완하는 방향으로: **우선순위 1: 실시간 처리** - \"Stream-Based Anomaly Detection in Enterprise Logs\" - Kafka + Spark Streaming 아키텍처 - Beehive를 실시간으로 만들 수 있나? **우선순위 2: 딥러닝 통합** - LogAnomaly (2019) - Beehive 피처 + Attention 메커니즘 - 하이브리드의 실제 구현 사례 **우선순위 3: UEBA 제품 분석** - Exabeam, Splunk UBA 백서 - Beehive 개념이 어떻게 상용화되었나? - 실무 도입 사례 연구 **다음 궁금증 (Day 5 Preview):** - 지금까지 배운 걸 어떻게 SOC 실무에 적용할까? - MITRE ATT\u0026CK, NIST CSF와 어떻게 연계? - 면접에서 어떻게 설명할까? - 최종 실행 체크리스트는? --- **Day 4 종료** 내일은 최종 결론과 SOC 실무 적용 전략을 종합해보자! # Research Review: Beehive: Large-Scale Log Analysis for Detecting Suspicious Activity in Enterprise Networks \u003e **Analyzed Date:** 2026.01.03 \u003e **Keywords:** SOC, Log Analysis, Enterprise Security, Anomaly Detection, Clustering \u003e **Source:** ACSAC '13, 2013, pp.199-208 [Link](https://doi.org/10.1145/2523649.2523670) --- ## Day 5 – Conclusions and Practical Implications *(SOC 실무 적용: Beehive에서 배운 것들)* ### 1. 5일간 학습 여정 종합 #### A. 무엇을 배웠나 **Day 1: 문제의 본질** 엔터프라이즈 로그는 “dirty\"하다\n↓\n시그니처 기반은 신규 위협 못 잡는다\n↓\nPCA 같은 블랙박스는 “왜\"를 설명 못한다\n↓\n→ 행위 기반 + 설명 가능한 탐지가 필요!\n**핵심 깨달음:** SOC는 단순히 \"이상하다\"를 넘어 **\"왜 이상한지, 어떻게 대응할지\"** 를 알아야 한다. **Day 2: 해법의 설계** 3계층 파이프라인:\nLayer 1: 더러운 로그 → 깨끗한 데이터 (정규화)\nLayer 2: 15개 엔터프라이즈 특화 피처 추출\nLayer 3: PCA + 변형 K-means → Outlier 식별\n**핵심 깨달음:** Big Data 처리는 알고리즘만의 문제가 아니다. **데이터 정제가 핵심**이다. **Day 3: 실전의 검증** 784건 인시던트\n→ 25.25% 실제 위협 (DGA 멀웨어 포함)\n→ 39.41% 정책 위반\n→ 35.33% 오탐 (하지만 유형은 3가지뿐)\n기존 도구 탐지: 단 8건 (1.02%)\nBeehive 고유 탐지: 776건 (98.98%)\n**핵심 깨달음:** 최신 보안 도구들도 놓치는 게 이렇게 많다. 행위 기반 탐지는 **선택이 아니라 필수**다. **Day 4: 한계의 인식** 한계:\nGround Truth 부재 (수동 검증 필수) 일 단위 배치 (실시간 못함) 초기 학습 5주 필요 오탐률 35% 영향:\nUEBA 시장 형성 후속 연구 촉발 (DeepLog 등) 215회 인용 **핵심 깨달음:** 완벽한 도구는 없다. **Trade-off를 이해하고 보완 전략**을 세워야 한다. **Day 5 (지금): 실무 통합** 지금까지 배운 것을 어떻게 **실제 SOC에 적용**할 것인가? --- ### 1. 이론적 기여 정리 #### A. 학술적 의의 **1. Big Data Security Analytics의 개척** 이전 연구: - 실험실 데이터 (깨끗함) - 소규모 (수 GB) - 단일 로그 소스 Beehive: - 실제 운영 데이터 (더러움) - 대규모 (일일 1TB, 총 6TB) - 다중 로그 소스 통합 **의미:** \"실무에서 쓸 수 있는\" 보안 분석 연구의 첫 사례. **2. Enterprise-Specific Feature Design** 핵심 통찰: 일반 인터넷 ≠ 엔터프라이즈\n일반 인터넷:\n행위 범위 무한대 예측 불가능 정책 제약 없음 엔터프라이즈:\n행위 범위 제한적 업무 패턴 예측 가능 정책 제약 강함 → 이 차이를 피처 설계에 활용!\n**예시:** - 일반: New Destinations 100개 → 정상일 수 있음 - 기업: New Destinations 100개 → 확실히 이상함 이 아이디어가 후속 연구와 UEBA 제품의 기반이 됨. **3. Explainable Behavioral Detection** 정확도 ↑ DeepLog │ ●\n│\nBeehive │ ●\n│\nPCA │ ●\n│\n└─────────→ 설명 가능성\nBeehive의 위치:\nPCA보다 정확도 높음 DeepLog보다 설명 가능성 높음 실무에 적합한 균형점 4. Dirty Data 전처리 방법론\n체계적 접근:\n타임스탬프 정규화 (SIEM 수신 시각 활용) IP-Host 매핑 (DHCP 로그 기반) 정적 IP 자동 탐지 (역방향 DNS) Dedicated Host 식별 (95% 단일 사용자) 의미: “데이터가 더럽다\"고 포기하지 말고, 체계적으로 정제하라.\nB. 로그 분석 패러다임의 전환 Before (규칙 기반): 전문가가 수동으로 규칙 작성\n→ 시간/비용 많이 듦\n→ 시스템 변경 시마다 재작성\nBefore (블랙박스 ML): PCA, SVM으로 이상 탐지\n→ “뭔가 이상함\"만 알려줌\n→ “왜\"를 모름\n→ 수동 분석 다시 필요\nAfter (Beehive): 자동 학습 + 해석 가능\n→ 전문가 없이도 적용 가능\n→ “왜 이상한지” 명확\n→ 즉시 대응 가능\n영향:\n이후 모든 UEBA 제품이 이 철학 채택 “설명 가능한 AI\"의 중요성 부각 SOC 분석가 교육에 “행위 분석” 추가 3. SOC 실무 적용 전략 지금부터가 핵심이다. 이 논문을 읽은 이유는 실제로 쓰기 위해서다.\nA. 탐지 역량 강화 1. DGA 멀웨어 자동 탐지 Beehive의 성과:\nCluster 6에서 4대 모두 DGA 감염 식별 기존 AV 미탐지 Destination-based features (F1, F2)가 핵심 SOC 적용 전략:\n탐지 룰:\n# Pseudo-code IF (new_destinations \u003e 150 AND new_destinations_no_referer \u003e 120 AND unpopular_raw_ip_fraction \u003e 0.4): ALERT(\"DGA Malware Suspected\", severity=CRITICAL) # 클러스터 체크 IF (cluster_size \u003e 1): ALERT(\"Multiple hosts infected - botnet suspected\") 임계값 조정:\nEMC 기준: New Destinations 200개 이상 우리 조직: 데이터 수집 후 90% 백분위수로 설정 처음엔 보수적으로 (오탐 줄이기) 자동 대응:\n1. 네트워크 격리 (자동)\r2. 메모리 덤프 수집 (자동)\r3. C\u0026C 도메인 추출 및 차단 (자동)\r4. 보고서 생성 및 티켓 생성 (자동)\r5. Tier 2 분석가에게 알림 (자동) 기대 효과:\nMTTD: 24시간 이내 MTTR: 1시간 이내 기존 AV 미탐 위협 100% 포착 목표 2. 내부자 위협 징후 포착 피처 조합:\nF5 (New User-Agent): 비인가 소프트웨어 설치 F3, F4 (Unpopular Raw IP): 수상한 외부 연결 F14, F15 (Bursts): 대량 데이터 전송 탐지 시나리오:\n시나리오 1: 데이터 유출 준비\n징후:\r- New User-Agent 3개 (파일 전송 도구 설치)\r- Unpopular Raw IP 20개 (클라우드 스토리지)\r- Connection Bursts 30분 지속\r판정: 데이터 exfiltration 준비 단계\r조치: 즉시 조사, 필요 시 계정 정지 시나리오 2: 권한 탈취 후 정찰\n징후:\r- 평소와 다른 New Destinations 50개\r- 업무 시간 외 접속 (VPN 로그 연계)\r- Challenged Domains 다수 (정책 위반)\r판정: 계정 탈취 의심\r조치: 비밀번호 리셋, MFA 강제 실무 팁: 역할별 정상 행위 프로파일 구축:\n개발자: New User-Agent 많을 수 있음 (정상) 마케팅: New Destinations 많을 수 있음 (정상) 재무: 업무 시간 외 접속 거의 없음 (이상 시 주의) 3. APT 초기 단계 탐지 APT의 특성:\n느리고 조용하게 침투 여러 단계 거침 기존 도구로 잡기 어려움 Beehive 활용:\nReconnaissance 단계:\nDomain Spikes (F13): 내부 네트워크 스캔 New Destinations without Referer (F2): 외부와 직접 통신 Initial Access 단계:\nNew User-Agent (F5): 악성코드 설치 Unpopular Raw IP (F3, F4): C\u0026C 연결 시도 Lateral Movement 단계:\n여러 호스트가 동일 클러스터에 등장 시간차를 두고 감염 확산 탐지 전략:\n[일일 모니터링]\r단일 호스트 이상 → 즉시 조사\r[주간 트렌드]\r비슷한 패턴의 호스트 증가 추세 → APT 의심\r[월간 분석]\r장기 패턴 변화 → 숨은 감염 발굴 B. 대응 역량 강화 1. 자동 우선순위화 Beehive 인시던트 분류:\n우선순위 조건 처리 시간 담당 P1 - Critical Malware/Suspicious 즉시 (1시간) Tier 2 Senior P2 - High 보안 정책 위반 당일 (4시간) Tier 2 P3 - Medium 일반 정책 위반 주간 Tier 1 P4 - Low 자동화 프로세스 월간 자동 처리 자동 분류 로직:\ndef prioritize_incident(incident): cluster_features = incident.features # P1: DGA 패턴 if (cluster_features['F1'] \u003e 150 and cluster_features['F2'] \u003e 120): return \"P1-CRITICAL-DGA\" # P1: 내부자 위협 패턴 if (cluster_features['F5'] \u003e 3 and cluster_features['F14'] \u003e 20): return \"P1-CRITICAL-INSIDER\" # P2: 보안 위협 정책 위반 if (cluster_features['F6'] + cluster_features['F7'] \u003e 100): return \"P2-HIGH-POLICY\" # P3: 일반 정책 위반 if (cluster_features['F10'] + cluster_features['F11'] \u003e 500): return \"P3-MEDIUM-POLICY\" # P4: 자동화 프로세스 if (cluster_features['F12'] \u003e 300 and is_known_automation(incident.host)): return \"P4-LOW-AUTOMATION\" return \"P3-MEDIUM-UNKNOWN\" 기대 효과:\n분석가가 우선순위 고민 안 함 중요한 것부터 자동 정렬 리소스 효율적 배분 2. 플레이북 자동 매핑 클러스터 유형별 대응 절차:\n유형 1: DGA 봇넷\n[자동 실행]\r1. 호스트 네트워크 격리\r2. 메모리 덤프 수집\r3. C\u0026C 도메인 목록 추출\r4. 방화벽에 차단 룰 추가\r[수동 실행]\r5. 포렌식 분석\r6. 감염 경로 추적\r7. 패치 적용\r8. 복구 후 모니터링 유형 2: 정책 위반 (스트리밍)\n[자동 실행]\r1. HR 팀에 통보\r2. 사용자에게 경고 이메일\r[수동 실행]\r3. 반복 위반 시 상급자 통보\r4. 필요 시 대역폭 제한 유형 3: 의심스러운 내부 활동\n[자동 실행]\r1. 해당 계정 활동 로그 전체 수집\r2. 최근 7일 타임라인 생성\r3. 접속한 민감 데이터 목록 확인\r[수동 실행]\r4. 계정 소유자 인터뷰\r5. 필요 시 비밀번호 리셋\r6. 추가 감사\r**구현 방법:** SOAR 플랫폼 연동 - Phantom, Demisto, Splunk SOAR 등 - Beehive 인시던트 → API 호출 → 플레이북 자동 실행 #### 3. 티켓 자동 생성 고도화 **기존 SIEM 티켓:** 제목: Anomaly Detected\r설명: Host 192.168.1.100 shows anomalous behavior\r심각도: ? Beehive 강화 티켓:\n제목: [P1-CRITICAL] DGA Malware Suspected - Host DESKTOP-A1B2C3\r심각도: CRITICAL\r담당자: SOC-Tier2-Senior (자동 배정)\r탐지 정보:\r- 탐지 시각: 2026-01-03 09:15:32\r- Cluster: 6 (총 4대 호스트)\r- User: john.doe@company.com\r- 부서: Engineering\r행위 특성:\r- New Destinations: 247 (정상 범위: 10-20)\r- New Dests w/o Referer: 247 (정상: 5-10)\r- Challenged Domains: 156 (정상: 0-2)\r판정 근거:\r하루에 247개의 새로운 도메인 접속, 모두 HTTP Referer 없이 직접 접속.\r전형적인 DGA 봇넷 행위.\rC\u0026C 서버 탐색 중으로 추정.\r권장 조치:\r1. [자동 완료] 호스트 네트워크 격리\r2. [대기] 메모리 덤프 수집 - 분석가 승인 필요\r3. [대기] 안티바이러스 전체 스캔\r4. [수동] 포렌식 분석 및 감염 경로 추적\r관련 호스트 (동일 클러스터):\r- DESKTOP-D4E5F6 (jane.smith@company.com)\r- LAPTOP-G7H8I9 (bob.jones@company.com)\r- DESKTOP-J0K1L2 (alice.wilson@company.com)\r권장: 4대 모두 동시 대응 필요 (집단 감염 의심)\r**분석가 반응:** \"와, 이거면 바로 대응할 수 있겠는데?\" --- ### C. 분석 역량 강화 #### 1. Threat Hunting 가설 생성 **Beehive 클러스터 → 헌팅 가설** **예시 1: Cluster 6 발견 후** 가설:\r\"Cluster 6과 비슷한 패턴을 가졌지만 임계값보다 약간 낮아서 놓친 호스트가 있을 것이다.\"\r헌팅 쿼리:\rnew_destinations \u003e 100 AND\rnew_destinations \u003c 150 AND\runpopular_raw_ip_fraction \u003e 0.3\r결과:\r5대 추가 발견!\r→ 초기 감염 단계로 추정\r→ 조기 차단 성공 예시 2: 주간 트렌드 분석\n관찰:\r이번 주 \"Challenged Domains\" 피처가 전반적으로 20% 증가\r가설:\r\"새로운 피싱 캠페인이 진행 중일 수 있다.\r직원들이 수상한 링크를 클릭하고 있다.\"\r헌팅 쿼리:\rchallenged_domains \u003e 평균 + 2σ\r결과:\r20대 호스트에서 동일 도메인 접속 발견\r→ 스피어 피싱 이메일 확인\r→ 해당 이메일 전사 차단\r**Proactive vs. Reactive:** - Reactive: Beehive 알림 → 대응 - Proactive: Beehive 패턴 → 헌팅 → 추가 위협 발굴 #### 2. 장기 트렌드 분석 **월간 클러스터 변화 추적:** 1월: Cluster 6 (DGA) 4대\r2월: Cluster 6 유형 8대 (증가!)\r3월: Cluster 6 유형 2대 (감소)\r분석:\r- 2월에 DGA 봇넷 확산 있었음\r- 3월에 치료 효과 확인\r- 계속 모니터링 필요 피처별 트렌드:\n# 월별 평균 계산 monthly_trends = { 'Jan': {'F1': 15, 'F5': 1.2, 'F12': 80}, 'Feb': {'F1': 18, 'F5': 1.5, 'F12': 95}, 'Mar': {'F1': 22, 'F5': 2.1, 'F12': 110} } # 이상 감지 IF (Mar['F1'] \u003e Jan['F1'] * 1.3): ALERT(\"New Destinations 증가 추세 - 새로운 위협 유형 출현 가능성\") **조직 벤치마크:** | 부서 | 평균 New Dests | 평균 Policy Violations | |------|----------------|------------------------| | Engineering | 25 | 5 | | Marketing | 35 | 15 (높음 - 정상) | | Finance | 8 | 2 | | HR | 12 | 3 | 마케팅은 경쟁사 조사 때문에 New Destinations 많음 → 정상 재무가 갑자기 35개 → 즉시 조사! #### 3. ROI 측정 및 경영진 보고 **Beehive 도입 효과 계산:** **탐지 성과:** 기간: 2주 생성 인시던트: 784건 실제 위협: 198건 (25.25%) 기존 도구 탐지: 8건 Beehive 고유 탐지: 190건 → Beehive가 없었다면 190건 놓쳤을 것 비용 산정:\nDGA 봇넷 1건 피해 예상액: $50,000\r(데이터 유출, 랜섬웨어 등)\rBeehive가 막은 봇넷: 10건\r예방한 피해액: $500,000\rBeehive 운영 비용: $50,000 (6개월)\rROI: 10배 시간 절감:\n수동 조사 시간 (기존):\r- 평균 4시간/건\r- 190건 = 760시간\rBeehive 자동 분석:\r- 평균 30분/건\r- 190건 = 95시간\r절감: 665시간 (약 16주) 보고서 예시:\n제목: Beehive 도입 6개월 성과\r핵심 지표:\r- 신규 위협 탐지: 190건\r- 예방 피해액: $500,000\r- 시간 절감: 665시간\r- ROI: 10배\r주요 성과:\r1. DGA 봇넷 10건 조기 차단\r2. 내부자 위협 5건 사전 포착\r3. 정책 위반 자동화 (HR 부담 50% 감소)\r향후 계획:\r1. 실시간 처리 기능 추가 (Q2)\r2. DeepLog 하이브리드 (Q3)\r3. 전사 확대 (Q4) 경영진이 좋아할 숫자들!\n4. 프레임워크/표준 연계 A. MITRE ATT\u0026CK 매핑 Beehive 피처 → ATT\u0026CK Tactics/Techniques:\nBeehive Feature ATT\u0026CK Mapping 탐지 방법 F1, F2 (New Destinations) TA0011: Command and Control\nT1071: Application Layer Protocol\nT1568: Dynamic Resolution (DGA) 200+ new domains → DGA 의심 F3, F4 (Unpopular Raw IP) TA0001: Initial Access\nT1190: Exploit Public-Facing Application\nTA0010: Exfiltration\nT1041: Exfiltration Over C2 Channel IP 직접 접속 → C\u0026C 또는 유출 F5 (New User-Agent) TA0002: Execution\nT1204: User Execution\nTA0003: Persistence\nT1543: Create or Modify System Process 비인가 소프트웨어 설치 F6-F11 (Policy-based) TA0005: Defense Evasion\nT1090: Proxy\nT1572: Protocol Tunneling 차단 사이트 반복 시도 F12-F15 (Traffic Spikes) TA0009: Collection\nT1005: Data from Local System\nTA0010: Exfiltration 대량 데이터 이동 실무 활용:\n시나리오: DGA 봇넷 탐지 후\nBeehive 탐지:\rF1=247, F2=247\rATT\u0026CK 매핑:\r→ TA0011 (Command and Control)\r→ T1568.002 (Domain Generation Algorithms)\r대응 플레이북:\r1. MITRE 권장 탐지 방법 확인\r2. MITRE 권장 완화 조치 적용\r3. 관련 다른 Techniques 모니터링 강화 Kill Chain 추적:\nInitial Access (F1, F2 이상 없음)\r↓\rExecution (F5: 새 UA 발견!)\r↓\rPersistence (장기 모니터링)\r↓\rCommand \u0026 Control (F1, F2: DGA 발견!)\r↓\r[여기서 차단!] Beehive로 Kill Chain의 어느 단계에서 잡았는지 파악 가능.\nB. NIST Cybersecurity Framework 연계 NIST 기능 Beehive 활용 구체적 적용 Identify Dedicated Host 식별 (78,000대)\n정상 행위 baseline 학습 자산 인벤토리 자동 구축\n역할별 프로파일 Protect Policy-based features (F6-F11)\n정책 위반 자동 탐지 접근 제어 검증\n교육 자동 트리거 Detect 전체 Beehive 시스템\n행위 기반 이상탐지 15개 피처 모니터링\n클러스터링 기반 탐지 Respond 자동 우선순위화\n플레이북 매핑 인시던트 자동 분류\nSOAR 연동 Recover 클러스터 분석으로 감염 범위 파악 집단 감염 추적\n복구 우선순위 결정 NIST CSF 성숙도 향상:\nBefore Beehive:\rDetect: Level 2 (부분적 탐지)\rRespond: Level 1 (수동 대응)\rAfter Beehive:\rDetect: Level 3 (포괄적 탐지)\rRespond: Level 3 (자동화된 대응)\r목표 (6개월 후):\rDetect: Level 4 (적응적 탐지)\rRespond: Level 4 (지능형 대응) C. Cyber Kill Chain 연계 Kill Chain 단계 Beehive 탐지 대응 전략 Reconnaissance F12, F13 (Spikes)\n내부 네트워크 스캔 패턴 차단 + 위협 인텔리전스 업데이트 Weaponization 탐지 어려움 (외부 활동) - Delivery F1, F2 (New Destinations)\n피싱 사이트 접속 사용자 교육 + URL 차단 Exploitation F5 (New User-Agent)\n악성코드 실행 호스트 격리 + 포렌식 Installation F5 (New User-Agent)\n지속성 확보 치료 + 시스템 재설치 Command \u0026 Control F1, F2 (DGA)\nC\u0026C 통신 C\u0026C 차단 + 봇넷 제거 Actions on Objectives F14, F15 (Bursts)\n데이터 유출 긴급 차단 + 피해 평가 조기 차단의 가치:\nReconnaissance 단계 차단: 피해 0%\rDelivery 단계 차단: 피해 10%\rExploitation 단계 차단: 피해 30%\rC\u0026C 단계 차단: 피해 50%\rActions 단계 차단: 피해 80%\rBeehive는 주로 Exploitation ~ C\u0026C 단계에서 탐지\r→ 피해를 30-50% 수준으로 억제 가능 6. 5일간 리뷰 종합 Day 주제 핵심 학습 실무 적용 Day 1 문제 정의 Dirty logs, 설명 가능성의 필요성 현실적 데이터 품질 이해 Day 2 방법론 3계층 파이프라인, 15개 피처 체계적 전처리 + 피처 설계 Day 3 실증 결과 98.98% 고유 탐지, DGA 완벽 포착 기존 도구와 보완 관계 Day 4 한계/영향 시간 해상도, UEBA 시장 형성 한계 극복 전략, 하이브리드 Day 5 실무 통합 SOC 3대 역량, 프레임워크 연계 52주 로드맵, 체크리스트 7. 최종 개인 인사이트 A. 이 논문이 나의 SOC 역량에 기여한 점 1. “실무 가능성\"이라는 기준의 확립\n논문을 읽으며 항상 물었다:\n“이거 실제로 쓸 수 있나?” “우리 조직에 적용하면?” “오탐은 어떻게 관리하지?” Beehive는 이런 질문에 정직하게 답한다:\nGround Truth 없어서 어렵다 (솔직) 초기 5주 기다려야 한다 (현실적) 오탐 35%지만 관리 가능하다 (해결책 제시) → “학술 논문 읽기” != “논문 이해하기” → “논문 이해하기” == “실무 적용 가능성 판단하기”\n2. Big Data는 알고리즘만의 문제가 아니다\n처음에는 “클러스터링 알고리즘\"에만 관심 있었다.\n하지만 논문의 진짜 가치는:\n타임스탬프 정규화 (30분 단위 보정) IP-Host 매핑 (DHCP 로그 활용) 화이트리스트 구축 (74% 감축) → “데이터 정제\"가 “알고리즘\"만큼 중요하다 → 실무에서는 오히려 전자가 더 힘들다\n3. 설명 가능성 = 신뢰성 = 실용성\nDeepLog: \"이상 확률 95%입니다\"\r분석가: \"왜?\"\rDeepLog: \"...\"\rBeehive: \"New Destinations 247개, 정상은 15개\"\r분석가: \"아, DGA네. 격리!\" SOC는 “빠른 의사결정” 이 생명이다. 블랙박스는 아무리 정확해도 쓸 수 없다.\n→ 설명 가능성 = 선택이 아니라 필수\n4. 완벽한 도구는 없다, Trade-off를 관리하라\nBeehive의 한계:\n일 단위 배치 초기 학습 기간 오탐 35% 하지만 보완 전략이 있다:\n계층화된 방어 (실시간 + 배치) 점진적 도입 (파일럿 → 확장) 오탐 학습 루프 → “완벽한 도구\"를 찾지 말고 → “적절한 도구 + 보완 전략\"을 만들어라\n5. 논문 하나가 산업을 바꿀 수 있다\nBeehive (2013) → UEBA 시장 (2015~) → 수십 개 벤더\n한 편의 논문이:\n새로운 개념 제시 (행위 기반 + 설명 가능) 실무 검증 (98.98% 고유 탐지) 산업 표준화 (UEBA) → 좋은 연구 = 학술적 기여 + 실무 영향\n나도 언젠가 이런 영향력 있는 일을 하고 싶다.\nB. Lou et al. \u0026 DeepLog와의 비교 종합 3편의 논문을 읽고 나니:\n논문 핵심 아이디어 강점 약점 적용 시나리오 Lou et al. (2010) 불변성 마이닝 설명 가능, 워크플로우 명확 파라미터 필요, 선형만 ETL, 배치 시스템 DeepLog (2017) LSTM 시퀀스 학습 자동 학습, 높은 정확도 블랙박스, 대량 데이터 필요 복잡한 시스템 Beehive (2013) 엔터프라이즈 행위 분석 대규모 처리, 실무 검증 일 단위, 오탐 높음 대기업 네트워크 3개 모두 배웠으니, 이제 하이브리드 시스템을 설계할 수 있다!\n다음 논문에서 또 만나요!\n5일간 리뷰 완료\n",
+  "wordCount" : "23665",
+  "inLanguage": "ko",
+  "datePublished": "2025-12-30T00:00:00Z",
+  "dateModified": "2025-12-30T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/paper_review/soc_%EB%B3%B4%EC%95%88%EA%B4%80%EC%A0%9C/large_scale_enterprise_log_analysis/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
 </script>
 </head>
 <body id="top">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -102,37 +173,37 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/about" title="소개">
+                <a href="https://hojjang98.github.io/about" title="소개">
                     <span>소개</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
                     <span>일일 로그</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/" title="프로젝트">
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
                     <span>프로젝트</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/cyber-law-study/" title="Cyber-Law-Study">
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
                     <span>보안법 공부</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
                     <span>보안 시사 분석</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
                     <span>태그</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/paper-review/" title="Paper-Review">
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
                     <span>논문 리뷰</span>
                 </a>
             </li>
@@ -143,7 +214,7 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/">홈</a>&nbsp;»&nbsp;<a href="http://localhost:1313/paper_review/">논문 리뷰</a></div>
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/paper_review/">논문 리뷰</a></div>
     <h1 class="post-title entry-hint-parent">
       Beehive: Large-Scale Log Analysis for Detecting Suspicious Activity in Enterprise Networks 구조 분석
     </h1>
@@ -236,1987 +307,1813 @@
   </tbody>
 </table>
 <h3 id="3-이론적-기반-beehive-시스템-3계층-구조">3. 이론적 기반: Beehive 시스템 3계층 구조<a hidden class="anchor" aria-hidden="true" href="#3-이론적-기반-beehive-시스템-3계층-구조">#</a></h3>
-<pre tabindex="0"><code>[Layer 1: Data Normalization]
-- 타임스탬프 정규화 (UTC 통일)
-- IP-to-Host 매핑 (DHCP 바인딩)
-- 정적 IP 자동 탐지
-         ↓
-[Layer 2: Feature Generation]
-- Destination-based (4개)
-- Host-based (1개)
-- Policy-based (6개)
-- Traffic-based (4개)
-→ 총 15개 피처/호스트/일
-         ↓
-[Layer 3: Detection via Clustering]
-- PCA로 차원 축소
-- 변형 K-means 클러스터링
-- Outlier 식별 → Incident 보고
-</code></pre><h3 id="4-연구의-핵심-기여">4. 연구의 핵심 기여<a hidden class="anchor" aria-hidden="true" href="#4-연구의-핵심-기여">#</a></h3>
-<p><strong>학술적 기여</strong></p>
-<ul>
-<li>대규모 실제 엔터프라이즈 로그 데이터의 &ldquo;Big Data&rdquo; 보안 분석 최초 연구</li>
-<li>이질적 로그 통합을 위한 체계적 전처리 방법론 제시</li>
-<li>엔터프라이즈 특화 행위 피처 설계 프레임워크</li>
-</ul>
-<p><strong>SOC 실무 기여</strong></p>
-<ul>
-<li>일일 1.4억 건(1TB) 로그 → 8천만 건으로 74% 감축하면서도 탐지 정확도 유지</li>
-<li>2주간 평가에서 784건 인시던트 탐지, 이 중 25.25%가 멀웨어 또는 추가 조사 필요</li>
-<li>기존 보안 도구가 놓친 위협 식별: 784건 중 단 8건만 기존 도구가 탐지</li>
-</ul>
-<h3 id="5-soc-관점-인사이트">5. SOC 관점 인사이트<a hidden class="anchor" aria-hidden="true" href="#5-soc-관점-인사이트">#</a></h3>
-<p><strong>실무 적용 가능성</strong></p>
-<ul>
-<li>SIEM 데이터를 활용한 자동화된 이상탐지 파이프라인 구축 가능</li>
-<li>시그니처 업데이트 없이도 신규 위협 탐지 (DGA 기반 멀웨어 등)</li>
-<li>정책 위반(스트리밍, 파일 공유, 성인 콘텐츠 등) 자동 식별로 컴플라이언스 강화</li>
-</ul>
-<p><strong>기존 학습과의 연결</strong></p>
-<ul>
-<li>Lou et al. (2010): 단일 시스템 불변성 → Beehive: 네트워크 전체 행위 패턴</li>
-<li>DeepLog: 딥러닝 블랙박스 → Beehive: 설명 가능한 피처 기반 클러스터링</li>
-<li>두 접근법 모두 필요: DeepLog는 정확도, Beehive는 대규모 확장성 + 설명력</li>
-</ul>
-<p><strong>현실적 고려사항</strong></p>
-<ul>
-<li>Ground Truth 부재 문제: 실제 엔터프라이즈는 이미 방어 중이므로 알려진 위협 흔적이 적음 → 수동 레이블링 불가피</li>
-<li>오탐 관리: 784건 중 35.33%가 비악성 자동화 프로세스 → 추가 필터링 필요</li>
-</ul>
-<hr>
-<h2 id="day-2--research-model-hypotheses-and-methodology">Day 2 – Research Model, Hypotheses, and Methodology<a hidden class="anchor" aria-hidden="true" href="#day-2--research-model-hypotheses-and-methodology">#</a></h2>
-<p><em>(Beehive의 설계: 더러운 데이터를 깨끗한 인텔리전스로)</em></p>
-<h3 id="1-연구-모델-개요">1. 연구 모델 개요<a hidden class="anchor" aria-hidden="true" href="#1-연구-모델-개요">#</a></h3>
-<p>Beehive는 가설 검증 방식이 아닌 <strong>엔지니어링 시스템 설계 연구</strong>로, 대규모 로그 분석 문제를 해결하기 위한 3계층 파이프라인을 제안한다.</p>
-<pre tabindex="0"><code>[입력: Raw Logs from Multiple Sources]
-        ↓
-[Layer 1: Data Normalization &amp; Preprocessing]
-  - Timestamp Normalization
-  - IP-to-Host Mapping (Dynamic + Static)
-  - Dedicated Host Identification
-        ↓
-[Layer 2: Feature Extraction]
-  - 15 enterprise-specific features per host/day
-        ↓
-[Layer 3: Unsupervised Detection]
-  - PCA (dimensionality reduction)
-  - Modified K-means clustering
-  - Outlier identification
-        ↓
-[출력: Security Incidents for SOC Investigation]
-</code></pre><p><strong>설계 철학</strong></p>
-<ul>
-<li>시그니처 불필요: 알려지지 않은 위협도 행위 패턴으로 탐지</li>
-<li>확장성 우선: 일일 TB급 데이터 처리 가능한 효율적 알고리즘</li>
-<li>실무 중심: SOC 분석가가 즉시 조사 가능한 actionable intelligence 제공</li>
-</ul>
-<h3 id="2-연구-가설">2. 연구 가설<a hidden class="anchor" aria-hidden="true" href="#2-연구-가설">#</a></h3>
-<p>이 논문은 전통적인 가설 검증 연구가 아니므로 명시적 가설이 없으나, **암묵적 가정(Assumptions)**을 다음과 같이 정리할 수 있다:</p>
-<table>
-  <thead>
-      <tr>
-          <th>가정</th>
-          <th>내용</th>
-          <th>근거</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>A1: Enterprise Behavior Constraint</strong></td>
-          <td>엔터프라이즈 환경의 호스트 행위는 정책과 직원 업무 패턴으로 인해 일반 인터넷보다 훨씬 제약적이다</td>
-          <td>대부분 직원이 유사한 직무 수행 → 정상 행위 클러스터 형성 가능</td>
-      </tr>
-      <tr>
-          <td><strong>A2: Outliers Indicate Threats</strong></td>
-          <td>정상 행위에서 크게 벗어난 outlier는 멀웨어 감염 또는 정책 위반일 가능성이 높다</td>
-          <td>비지도 학습으로 사전 레이블 없이도 의심 활동 식별 가능</td>
-      </tr>
-      <tr>
-          <td><strong>A3: Log Correlation Feasibility</strong></td>
-          <td>타임스탬프 정규화와 IP-Host 매핑을 통해 이질적 로그를 호스트 단위로 통합 가능하다</td>
-          <td>SIEM 수신 시각과 DHCP 로그를 활용한 시간적 상관관계 분석</td>
-      </tr>
-      <tr>
-          <td><strong>A4: Feature Sufficiency</strong></td>
-          <td>15개 피처(destination/host/policy/traffic-based)가 호스트의 보안 관련 행위를 충분히 표현한다</td>
-          <td>EMC 내부 멀웨어 사례 및 정책 위반 패턴 관찰 기반 설계</td>
-      </tr>
-  </tbody>
-</table>
-<h3 id="3-연구-방법론">3. 연구 방법론<a hidden class="anchor" aria-hidden="true" href="#3-연구-방법론">#</a></h3>
-<h4 id="a-데이터-수집-data-collection">A. 데이터 수집 (Data Collection)<a hidden class="anchor" aria-hidden="true" href="#a-데이터-수집-data-collection">#</a></h4>
-<p><strong>로그 소스</strong></p>
-<table>
-  <thead>
-      <tr>
-          <th>로그 타입</th>
-          <th>수집 정보</th>
-          <th>용도</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>Web Proxy</strong></td>
-          <td>모든 외부 연결 (IP, 도메인, URL, HTTP 헤더, User-Agent, 평판 점수)</td>
-          <td>외부 통신 행위 분석의 핵심</td>
-      </tr>
-      <tr>
-          <td><strong>DHCP</strong></td>
-          <td>IP 할당/해제 이력</td>
-          <td>IP-to-Host 매핑</td>
-      </tr>
-      <tr>
-          <td><strong>VPN</strong></td>
-          <td>원격 접속 로그</td>
-          <td>비정상 위치 접근 탐지</td>
-      </tr>
-      <tr>
-          <td><strong>Windows Domain Controllers</strong></td>
-          <td>인증 시도 로그</td>
-          <td>Dedicated Host 식별, 계정 탈취 의심</td>
-      </tr>
-      <tr>
-          <td><strong>Antivirus</strong></td>
-          <td>멀웨어 스캔 결과</td>
-          <td>기존 도구와 비교 검증</td>
-      </tr>
-  </tbody>
-</table>
-<p><strong>데이터 규모 (EMC 기준)</strong></p>
-<ul>
-<li>일일 평균 14억 건의 로그 메시지</li>
-<li>일일 약 1TB의 로그 데이터</li>
-<li>웹 프록시 로그: 일일 3억 건 (600GB)</li>
-</ul>
-<p><strong>로그의 특성 및 문제점</strong></p>
-<ul>
-<li>비표준 타임스탬프: 장비별로 로컬 시간, UTC 등 혼재</li>
-<li>식별자 불일치: IP 주소, 호스트명, 사용자명 혼용</li>
-<li>데이터 누락/순서 뒤바뀜: 네트워크 지연, 버퍼링</li>
-<li>웹 프록시 경고 페이지: 알려지지 않은 사이트 접속 시 사용자가 정책 동의해야 접근 가능 (Challenged → Consented)</li>
-</ul>
-<h4 id="b-데이터-정규화-data-normalization">B. 데이터 정규화 (Data Normalization)<a hidden class="anchor" aria-hidden="true" href="#b-데이터-정규화-data-normalization">#</a></h4>
-<p><strong>B1. 타임스탬프 정규화</strong></p>
-<p>문제: 글로벌 엔터프라이즈에서 장비들이 다른 타임존 사용</p>
-<pre tabindex="0"><code>해결책:
-1. SIEM이 로그 수신 시각 t_siem 기록 (UTC)
-2. 각 장비별로 Δ_i = t_siem,i - t_device,i 계산 (30분 단위로 반올림)
-3. 다수를 차지하는 Δ_correction 값 식별
-4. 정규화: t_normalized,i = t_device,i + Δ_correction
-</code></pre><p>효과: 모든 로그를 UTC 기준으로 통일하여 시간적 상관관계 분석 가능</p>
-<p><strong>B2. IP-to-Host 매핑 (DHCP 기반)</strong></p>
-<p>문제: DHCP로 동적 IP 할당 → 같은 IP가 시간에 따라 다른 호스트에 할당됨</p>
-<p>해결책:</p>
-<pre tabindex="0"><code>1. DHCP 서버 로그 분석
-2. 바인딩 DB 구축: {IP, hostname, MAC, start_time, end_time}
-3. 로그의 (IP, timestamp) → hostname 매핑
-4. 매일 업데이트하여 최신 바인딩 유지
-</code></pre><p><strong>B3. 정적 IP 자동 탐지</strong></p>
-<p>문제: 정적 IP 목록이 없거나 오래됨</p>
-<p>Bootstrap 알고리즘:</p>
-<pre tabindex="0"><code>1. A = 모든 로그에서 발견된 IP 집합
-2. D = DHCP/VPN 로그의 동적 IP 집합
-3. S = A - D (잠재적 정적 IP)
-4. S의 각 IP에 대해 역방향 DNS 조회 → hostname 저장
-</code></pre><p>정제 알고리즘 (매일 실행):</p>
-<pre tabindex="0"><code>1. 새로운 로그로 A, D 업데이트
-2. S = A - D 재계산
-3. S의 각 IP 역방향 DNS 조회
-4. 이전 hostname과 비교:
-   - 변경됨 → S에서 제거 (동적 IP였음)
-   - 동일함 → S에 유지 (정적 IP 확률 높음)
-</code></pre><p><strong>B4. Dedicated Host 식별</strong></p>
-<p>목적: 단일 사용자가 주로 사용하는 호스트만 분석 (공용 호스트 제외)</p>
-<p>방법:</p>
-<pre tabindex="0"><code>1. Windows 도메인 컨트롤러의 인증 로그 3개월간 수집
-2. 각 호스트별로 사용자별 인증 빈도 계산
-3. 단일 사용자 인증이 95% 이상 → Dedicated Host로 분류
-</code></pre><p>결과: EMC에서 78,000대 이상의 Dedicated Host 식별</p>
-<h4 id="c-피처-추출-feature-extraction">C. 피처 추출 (Feature Extraction)<a hidden class="anchor" aria-hidden="true" href="#c-피처-추출-feature-extraction">#</a></h4>
-<p><strong>피처 설계 원칙</strong></p>
-<ul>
-<li>EMC 내부의 알려진 멀웨어 행위 및 정책 위반 패턴 관찰 기반</li>
-<li>엔터프라이즈 환경 특성 활용: 엄격한 방화벽, 업무 중심 활동, 동질적 소프트웨어 구성</li>
-<li>호스트별 일일 15개 피처 벡터 생성</li>
-</ul>
-<p><strong>15개 피처 상세</strong></p>
-<p><strong>C1. Destination-Based Features (4개)</strong></p>
-<p>핵심 아이디어: 새롭거나 드문 외부 목적지 접속은 의심스러움 (C&amp;C 서버, 손상된 사이트)</p>
-<table>
-  <thead>
-      <tr>
-          <th>피처</th>
-          <th>설명</th>
-          <th>계산 방법</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>F1: New Destinations</strong></td>
-          <td>처음 접속하는 외부 목적지 수</td>
-          <td>1개월 히스토리에 없는 도메인 수</td>
-      </tr>
-      <tr>
-          <td><strong>F2: New Dests w/o Whitelisted Referer</strong></td>
-          <td>Whitelisted Referer 없이 접속한 새 목적지 수</td>
-          <td>F1 중 HTTP Referer가 화이트리스트에 없는 경우</td>
-      </tr>
-      <tr>
-          <td><strong>F3: Unpopular Raw IP Dests</strong></td>
-          <td>Unpopular한 IP 주소 목적지 수</td>
-          <td>화이트리스트 외 IP 주소 접속 수</td>
-      </tr>
-      <tr>
-          <td><strong>F4: Fraction of Unpopular Raw IP</strong></td>
-          <td>전체 unpopular 목적지 중 IP 주소 비율</td>
-          <td>F3 / (total unpopular destinations)</td>
-      </tr>
-  </tbody>
-</table>
-<p>화이트리스트 구축:</p>
-<ul>
-<li>1주일 학습 기간 동안 100대 이상 호스트가 접속한 도메인/서브넷</li>
-<li>결과: 일일 3억 건 로그 → 8천만 건으로 74% 감축</li>
-</ul>
-<p>도메인 &ldquo;Folding&rdquo;:</p>
-<ul>
-<li>2nd-level 도메인으로 통합 (random subdomain 필터링)</li>
-<li>favicon 요청 무시</li>
-<li>Raw IP는 해석하지 않고 항상 &ldquo;new&quot;로 간주</li>
-<li>최적화 후: 일일 처리 시간 15시간 → 5시간, 히스토리 크기 4.3M → 2.7M (4개월)</li>
-</ul>
-<p><strong>C2. Host-Based Feature (1개)</strong></p>
-<table>
-  <thead>
-      <tr>
-          <th>피처</th>
-          <th>설명</th>
-          <th>계산 방법</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>F5: New User-Agent Strings</strong></td>
-          <td>새로운 User-Agent 문자열 수</td>
-          <td>호스트별 UA 히스토리(1개월)에서 Edit Distance로 비교</td>
-      </tr>
-  </tbody>
-</table>
-<p>근거: 엔터프라이즈는 소프트웨어 구성이 동질적 → 새 UA는 무단 소프트웨어 설치 의심</p>
-<p><strong>C3. Policy-Based Features (6개)</strong></p>
-<p>웹 프록시 정책 단계:</p>
-<ol>
-<li><strong>Blocked</strong>: 낮은 평판 또는 금지 카테고리 → 자동 차단</li>
-<li><strong>Challenged</strong>: 미분류 사이트 → 경고 페이지 표시</li>
-<li><strong>Consented</strong>: 사용자가 정책 동의 클릭 후 접속</li>
-</ol>
-<table>
-  <thead>
-      <tr>
-          <th>피처</th>
-          <th>설명</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>F6: Blocked Domains</strong></td>
-          <td>차단된 도메인 수</td>
-      </tr>
-      <tr>
-          <td><strong>F7: Blocked Connections</strong></td>
-          <td>차단된 연결 수</td>
-      </tr>
-      <tr>
-          <td><strong>F8: Challenged Domains</strong></td>
-          <td>경고 받은 도메인 수</td>
-      </tr>
-      <tr>
-          <td><strong>F9: Challenged Connections</strong></td>
-          <td>경고 받은 연결 수</td>
-      </tr>
-      <tr>
-          <td><strong>F10: Consented Domains</strong></td>
-          <td>동의 후 접속한 도메인 수</td>
-      </tr>
-      <tr>
-          <td><strong>F11: Consented Connections</strong></td>
-          <td>동의 후 접속한 연결 수</td>
-      </tr>
-  </tbody>
-</table>
-<p><strong>C4. Traffic-Based Features (4개)</strong></p>
-<p>정의:</p>
-<ul>
-<li><strong>Spike</strong>: 1분 동안 비정상적으로 높은 트래픽 발생</li>
-<li><strong>Burst</strong>: 연속된 spike 구간</li>
-</ul>
-<p>임계값 설정 (1주일 전체 Dedicated Host 분석):</p>
-<pre tabindex="0"><code>Connection Spike 임계값: 101 connections/min (90% 백분위수)
-Domain Spike 임계값: 17 domains/min (90% 백분위수)
-Burst 내부 Spike 임계값 (완화): 26 connections/min, 6 domains/min (75% 백분위수)
-</code></pre><table>
-  <thead>
-      <tr>
-          <th>피처</th>
-          <th>설명</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>F12: Connection Spikes</strong></td>
-          <td>Connection spike 발생 횟수</td>
-      </tr>
-      <tr>
-          <td><strong>F13: Domain Spikes</strong></td>
-          <td>Domain spike 발생 횟수</td>
-      </tr>
-      <tr>
-          <td><strong>F14: Connection Bursts</strong></td>
-          <td>가장 긴 connection burst 지속 시간</td>
-      </tr>
-      <tr>
-          <td><strong>F15: Domain Bursts</strong></td>
-          <td>가장 긴 domain burst 지속 시간</td>
-      </tr>
-  </tbody>
-</table>
-<h4 id="d-탐지-알고리즘-detection-via-clustering">D. 탐지 알고리즘 (Detection via Clustering)<a hidden class="anchor" aria-hidden="true" href="#d-탐지-알고리즘-detection-via-clustering">#</a></h4>
-<p><strong>D1. PCA (Principal Component Analysis)</strong></p>
-<p>목적: 피처 간 의존성 제거 및 차원 축소</p>
-<ul>
-<li>예: Domain spike 발생 시 connection spike도 발생 (상관관계)</li>
-</ul>
-<p>방법:</p>
-<pre tabindex="0"><code>1. 각 호스트를 15차원 벡터 v = (v[1], ..., v[15])로 표현
-2. PCA로 주성분 추출
-3. 데이터 분산의 95% 이상 보존하는 상위 m개 주성분 선택
-4. 원본 벡터를 m차원으로 투영
-</code></pre><p><strong>D2. Modified K-means Clustering</strong></p>
-<p>기존 K-means 문제: 클러스터 수 k를 사전 지정 필요</p>
-<p>Beehive의 변형 알고리즘:</p>
-<pre tabindex="0"><code>1. 무작위로 벡터 하나를 첫 클러스터 허브로 선택
-   모든 벡터를 이 클러스터에 할당
-
-2. 자신의 허브에서 가장 먼 벡터를 새 허브로 선택
-   모든 벡터를 가장 가까운 허브에 재할당
-
-3. 반복 종료 조건:
-   모든 벡터가 자신의 허브로부터의 거리 &lt; (평균 허브 간 거리)/2
-
-4. 거리 측정: L1 distance (Manhattan distance)
-   L1Dist(v1, v2) = Σ|v1[i] - v2[i]|
-</code></pre><p>결과:</p>
-<ul>
-<li>1회 반복 후: 대다수 호스트 → 하나의 큰 정상 클러스터</li>
-<li>나머지: 소수의 outlier 클러스터 (의심 활동)</li>
-</ul>
-<p><strong>Extreme Outlier 처리</strong>:</p>
-<pre tabindex="0"><code>IF 클러스터가 2개만 생성됨 (하나는 단일 노드, 나머지는 전부):
-  가장 큰 클러스터에 PCA + 클러스터링 재적용
-  최소 50개 outlier 호스트 식별될 때까지 반복
-</code></pre><p><strong>인시던트 생성</strong>:</p>
-<ul>
-<li>클러스터는 outlier 정도에 따라 자연스럽게 순서화됨 (가장 먼 노드부터 식별)</li>
-<li>상위 outlier 호스트들을 인시던트로 보고</li>
-<li>SOC 분석가에게 전달</li>
-</ul>
-<h3 id="4-soc-관점-인사이트">4. SOC 관점 인사이트<a hidden class="anchor" aria-hidden="true" href="#4-soc-관점-인사이트">#</a></h3>
-<p><strong>방법론의 실무 적용성</strong></p>
-<p>장점:</p>
-<ol>
-<li><strong>확장성</strong>: 일일 TB급 데이터를 5시간 내 처리 (타임스탬프 정규화 + 화이트리스팅 최적화)</li>
-<li><strong>설명 가능성</strong>: 15개 명확한 피처 → SOC 분석가가 왜 의심스러운지 즉시 이해 가능 (vs. DeepLog 블랙박스)</li>
-<li><strong>레이블 불필요</strong>: 비지도 학습으로 사전 학습 데이터 없이도 적용 가능</li>
-<li><strong>엔터프라이즈 특화</strong>: 일반 인터넷 환경에서는 작동 안 함 → 기업 정책/행위 제약 활용</li>
-</ol>
-<p>한계:</p>
-<ol>
-<li><strong>Ground Truth 부재</strong>: 실제 평가는 수동 검증 의존 (다음 Day 3에서 다룰 예정)</li>
-<li><strong>초기 학습 기간</strong>: 히스토리 구축에 1개월, 화이트리스트에 1주일 필요</li>
-<li><strong>정적 환경 가정</strong>: 조직 구조/정책 급변 시 재학습 필요</li>
-</ol>
-<p><strong>기존 SOC 툴과의 차별점</strong></p>
-<table>
-  <thead>
-      <tr>
-          <th>도구</th>
-          <th>탐지 방식</th>
-          <th>강점</th>
-          <th>약점</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>SIEM (기존)</strong></td>
-          <td>시그니처 + 룰 기반</td>
-          <td>알려진 위협 정확히 탐지</td>
-          <td>신규/변종 놓침</td>
-      </tr>
-      <tr>
-          <td><strong>Antivirus</strong></td>
-          <td>시그니처 기반</td>
-          <td>알려진 멀웨어 차단</td>
-          <td>제로데이 무력</td>
-      </tr>
-      <tr>
-          <td><strong>Beehive</strong></td>
-          <td>행위 기반 클러스터링</td>
-          <td>미지의 위협 탐지, 정책 위반 식별</td>
-          <td>오탐 가능성 (수동 검증 필요)</td>
-      </tr>
-  </tbody>
-</table>
-<p><strong>SOC Workflow 통합 전략</strong></p>
-<pre tabindex="0"><code>[Tier 1: Automated Detection]
-SIEM Alerts + AV Alerts + Beehive Daily Incidents
-            ↓
-[Tier 2: Triage &amp; Investigation]
-- Beehive 클러스터 컨텍스트 확인 (평균 피처, 호스트 수)
-- 원본 로그 조회 (UA, HTTP status, referer, 타이밍)
-- 외부 평판 체크 (McAfee SiteAdvisor, URLVoid, DomainTools)
-            ↓
-[Tier 3: Incident Response]
-- 악성 확인 → 격리/치료
-- 정책 위반 → HR 통보
-- 의심 활동 → 상위 SOC로 에스컬레이션
-</code></pre><p><strong>다음 학습 방향 (Day 3 Preview)</strong></p>
-<ul>
-<li>Beehive가 실제 EMC 환경에서 2주간 생성한 784건의 인시던트 분석 결과</li>
-<li>멀웨어, 정책 위반, 오탐 분류 비율</li>
-<li>기존 보안 도구와의 비교 검증</li>
-</ul>
-<h1 id="research-review-beehive-large-scale-log-analysis-for-detecting-suspicious-activity-in-enterprise-networks-1">Research Review: Beehive: Large-Scale Log Analysis for Detecting Suspicious Activity in Enterprise Networks<a hidden class="anchor" aria-hidden="true" href="#research-review-beehive-large-scale-log-analysis-for-detecting-suspicious-activity-in-enterprise-networks-1">#</a></h1>
-<blockquote>
-<p><strong>Analyzed Date:</strong> 2025.12.31<br>
-<strong>Keywords:</strong> SOC, Log Analysis, Enterprise Security, Anomaly Detection, Clustering<br>
-<strong>Source:</strong> ACSAC &lsquo;13, 2013, pp.199-208 <a href="https://doi.org/10.1145/2523649.2523670">Link</a></p>
-</blockquote>
-<hr>
-<h2 id="day-3--empirical-results-and-hypothesis-testing">Day 3 – Empirical Results and Hypothesis Testing<a hidden class="anchor" aria-hidden="true" href="#day-3--empirical-results-and-hypothesis-testing">#</a></h2>
-<p><em>(실전 검증: 784건의 인시던트가 말하는 것)</em></p>
-<h3 id="1-평가-환경-experimental-setup">1. 평가 환경 (Experimental Setup)<a hidden class="anchor" aria-hidden="true" href="#1-평가-환경-experimental-setup">#</a></h3>
-<h4 id="a-emc-테스트베드">A. EMC 테스트베드<a hidden class="anchor" aria-hidden="true" href="#a-emc-테스트베드">#</a></h4>
-<p><strong>시스템 규모:</strong></p>
-<ul>
-<li>기간: 2013년 4월 22일 ~ 5월 5일 (2주)</li>
-<li>데이터: 6TB 이상의 로그 데이터</li>
-<li>일일 평균: 14억 건의 로그 메시지 (약 1TB)</li>
-</ul>
-<p><strong>분석 대상:</strong></p>
-<ul>
-<li>웹 프록시 로그: 일일 3억 건 (600GB)</li>
-<li>DHCP, VPN, 도메인 컨트롤러, 안티바이러스 로그</li>
-<li>Dedicated Hosts: 78,000대 이상</li>
-</ul>
-<p><strong>활성 호스트 수:</strong></p>
-<ul>
-<li>평일: 27,000~35,000대</li>
-<li>주말: 9,000~10,100대</li>
-</ul>
-<p><strong>실험 전략:</strong>
-능동적 공격 주입이 아닌 <strong>실제 운영 환경의 자연스러운 위협 탐지</strong>에 집중. 이게 핵심이다. 실험실에서 만든 가짜 공격이 아니라, 진짜 회사에서 돌아가는 시스템의 진짜 로그를 분석한다.</p>
-<hr>
-<h3 id="2-주요-발견-key-findings">2. 주요 발견 (Key Findings)<a hidden class="anchor" aria-hidden="true" href="#2-주요-발견-key-findings">#</a></h3>
-<h4 id="a-전체-인시던트-통계">A. 전체 인시던트 통계<a hidden class="anchor" aria-hidden="true" href="#a-전체-인시던트-통계">#</a></h4>
-<p><strong>생성된 인시던트:</strong></p>
-<ul>
-<li>총 784건 (2주간)</li>
-<li>평균 56건/일</li>
-<li>표준편차 6.88 → 일별 변동이 크지 않음</li>
-</ul>
-<p><strong>기존 도구와의 비교:</strong></p>
-<ul>
-<li>784건 중 단 8건만 기존 보안 도구가 탐지 (1.02%)</li>
-<li><strong>776건(98.98%)은 Beehive만 발견!</strong></li>
-</ul>
-<p>이게 정말 놀라운 부분이다. 최신 안티바이러스, SIEM, 방화벽 다 돌아가는 환경에서도 Beehive가 거의 모든 새로운 이상을 찾아냈다.</p>
-<h4 id="b-클러스터링-패턴의-특성">B. 클러스터링 패턴의 특성<a hidden class="anchor" aria-hidden="true" href="#b-클러스터링-패턴의-특성">#</a></h4>
-<p><strong>Modified K-means 결과:</strong></p>
-<ul>
-<li>1회 반복 후: 대다수 호스트 → 하나의 큰 정상 클러스터</li>
-<li>나머지: 소수의 outlier 클러스터 (의심 활동)</li>
-</ul>
-<p><strong>흥미로운 관찰:</strong>
-클러스터가 자연스럽게 <strong>행위 유형별로 분리</strong>된다. 예를 들어:</p>
-<ul>
-<li>Cluster 3: 차단된 사이트 과다 접근</li>
-<li>Cluster 6: DGA 멀웨어 (4대 모두!)</li>
-<li>Cluster 8: DGA 멀웨어 (다른 변종)</li>
-</ul>
-<p>같은 문제를 가진 호스트들이 알아서 모인다는 게 신기하다.</p>
-<hr>
-<h3 id="3-인시던트-분류-결과">3. 인시던트 분류 결과<a hidden class="anchor" aria-hidden="true" href="#3-인시던트-분류-결과">#</a></h3>
-<p>논문에서는 784건을 수동으로 일일이 조사했다. EMC의 SOC 팀과 협업해서 2단계 검증 프로세스를 거쳤다고 한다.</p>
-<h4 id="a-1차-분류-연구팀-수동-레이블링">A. 1차 분류: 연구팀 수동 레이블링<a hidden class="anchor" aria-hidden="true" href="#a-1차-분류-연구팀-수동-레이블링">#</a></h4>
-<table>
-  <thead>
-      <tr>
-          <th>카테고리</th>
-          <th>건수</th>
-          <th>비율</th>
-          <th>의미</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>Malware</strong></td>
-          <td>117</td>
-          <td>14.92%</td>
-          <td>확인된 멀웨어 감염</td>
-      </tr>
-      <tr>
-          <td><strong>Suspicious</strong></td>
-          <td>81</td>
-          <td>10.33%</td>
-          <td>원인 불명, 추가 조사 필요</td>
-      </tr>
-      <tr>
-          <td><strong>Policy Violation</strong></td>
-          <td>309</td>
-          <td>39.41%</td>
-          <td>회사 정책 위반</td>
-      </tr>
-      <tr>
-          <td><strong>Other (비악성)</strong></td>
-          <td>277</td>
-          <td>35.33%</td>
-          <td>오탐 또는 비악성 자동화</td>
-      </tr>
-  </tbody>
-</table>
-<p><strong>첫 느낌:</strong></p>
-<ul>
-<li>실제 위협(Malware + Suspicious): 25.25% → 4건 중 1건은 진짜 문제!</li>
-<li>정책 위반: 거의 40% → 컴플라이언스 관리 도구로도 쓸 수 있겠다</li>
-<li>오탐: 35% → 이건 좀 많은데, 어떻게 줄일까?</li>
-</ul>
-<h4 id="b-정책-위반-상세-분류">B. 정책 위반 상세 분류<a hidden class="anchor" aria-hidden="true" href="#b-정책-위반-상세-분류">#</a></h4>
-<p><strong>가장 많이 탐지된 정책 위반:</strong></p>
-<table>
-  <thead>
-      <tr>
-          <th>위반 유형</th>
-          <th>건수</th>
-          <th>비율</th>
-          <th>설명</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>Blocked sites</strong></td>
-          <td>133</td>
-          <td>16.96%</td>
-          <td>차단된 사이트 반복 접근 시도</td>
-      </tr>
-      <tr>
-          <td><strong>Streaming</strong></td>
-          <td>86</td>
-          <td>10.96%</td>
-          <td>대용량 비디오 스트리밍 (YouTube, Netflix 등)</td>
-      </tr>
-      <tr>
-          <td><strong>Instant Messaging</strong></td>
-          <td>56</td>
-          <td>7.14%</td>
-          <td>비승인 메신저 (Skype, WhatsApp 등)</td>
-      </tr>
-      <tr>
-          <td><strong>Gaming</strong></td>
-          <td>13</td>
-          <td>1.65%</td>
-          <td>온라인 게임</td>
-      </tr>
-      <tr>
-          <td><strong>Remote access</strong></td>
-          <td>8</td>
-          <td>1.02%</td>
-          <td>TeamViewer 같은 원격 접속 도구</td>
-      </tr>
-      <tr>
-          <td><strong>Pornography</strong></td>
-          <td>6</td>
-          <td>0.76%</td>
-          <td>성인 콘텐츠</td>
-      </tr>
-      <tr>
-          <td><strong>Proxy</strong></td>
-          <td>4</td>
-          <td>0.51%</td>
-          <td>프록시로 방화벽 우회 시도</td>
-      </tr>
-      <tr>
-          <td><strong>File sharing</strong></td>
-          <td>2</td>
-          <td>0.25%</td>
-          <td>P2P 파일 공유</td>
-      </tr>
-      <tr>
-          <td><strong>Tunneling</strong></td>
-          <td>1</td>
-          <td>0.12%</td>
-          <td>VPN 터널링 서비스</td>
-      </tr>
-  </tbody>
-</table>
-<p><strong>실무 시사점:</strong>
-정책 위반 중 스트리밍이 가장 많다는 게 재미있다. 직원들이 회사에서 유튜브 보는 걸 자동으로 잡아낸다. HR 팀이 좋아할 듯.</p>
-<h4 id="c-비악성-오탐-분류">C. 비악성 오탐 분류<a hidden class="anchor" aria-hidden="true" href="#c-비악성-오탐-분류">#</a></h4>
-<p>35.33%가 오탐이라고 했는데, 자세히 보면:</p>
-<table>
-  <thead>
-      <tr>
-          <th>오탐 유형</th>
-          <th>건수</th>
-          <th>비율</th>
-          <th>원인</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>Automated processes</strong></td>
-          <td>157</td>
-          <td>20.02%</td>
-          <td>자동화 스크립트 (뉴스 크롤러, 금융 데이터 수집 등)</td>
-      </tr>
-      <tr>
-          <td><strong>Browsing (정상)</strong></td>
-          <td>63</td>
-          <td>8.03%</td>
-          <td>매우 활발한 정상 브라우징</td>
-      </tr>
-      <tr>
-          <td><strong>Uncategorized sites</strong></td>
-          <td>57</td>
-          <td>7.27%</td>
-          <td>평판 정보 없는 신규 사이트</td>
-      </tr>
-  </tbody>
-</table>
-<p><strong>핵심 인사이트:</strong>
-대부분 오탐이 &ldquo;자동화 프로세스&quot;다. 예를 들어:</p>
-<ul>
-<li>금융 팀이 돌리는 시장 데이터 수집 스크립트</li>
-<li>DevOps 팀의 모니터링 도구</li>
-<li>뉴스 사이트 크롤러</li>
-</ul>
-<p>이런 건 <strong>화이트리스트에 등록</strong>하면 해결된다. 오탐률 35% → 15% 정도로 줄일 수 있을 것 같다.</p>
-<hr>
-<h3 id="4-멀웨어-탐지-성과-분석">4. 멀웨어 탐지 성과 분석<a hidden class="anchor" aria-hidden="true" href="#4-멀웨어-탐지-성과-분석">#</a></h3>
-<h4 id="a-dga-기반-멀웨어의-완벽한-포착">A. DGA 기반 멀웨어의 완벽한 포착<a hidden class="anchor" aria-hidden="true" href="#a-dga-기반-멀웨어의-완벽한-포착">#</a></h4>
-<p><strong>4월 24일 사례: Cluster 6</strong></p>
-<p>논문에서 가장 인상적인 부분이다. Cluster 6을 보면:</p>
-<p><strong>호스트 4대의 피처 벡터:</strong></p>
-<pre tabindex="0"><code>Host 1: F1=247, F2=247, F8=156, F9=163
-Host 2: F1=200, F2=200, F8=142, F9=170
-Host 3: F1=239, F2=239, F8=153, F9=177
-Host 4: F1=214, F2=214, F8=142, F9=147
-</code></pre><p><strong>해석:</strong></p>
-<ul>
-<li>F1 (New Destinations): 200~247개 → 하루에 200개 넘는 새 도메인 접속</li>
-<li>F2 (New Dests w/o Referer): F1과 거의 동일 → HTTP Referer 없이 직접 접속</li>
-<li>F8, F9 (Challenged Domains/Connections): 100개 이상 → 경고 페이지 받음</li>
-</ul>
-<p><strong>판정:</strong>
-전형적인 <strong>DGA (Domain Generation Algorithm) 멀웨어</strong>!</p>
-<p>봇넷이 C&amp;C 서버를 찾기 위해 무작위로 생성한 수백 개 도메인에 접속 시도. 대부분은 존재하지 않아서 실패하지만, 몇 개는 실제 C&amp;C 서버로 연결된다.</p>
-<p><strong>기존 도구 결과:</strong></p>
-<ul>
-<li>안티바이러스: 탐지 못함 (제로데이 변종으로 추정)</li>
-<li>방화벽: 일부 C&amp;C 도메인 차단했지만 감염 자체는 모름</li>
-<li>SIEM: 너무 많은 로그라 못 봄</li>
-</ul>
-<p><strong>Beehive 결과:</strong></p>
-<ul>
-<li>Cluster 6의 4대 호스트 <strong>전부</strong> 감염으로 확인</li>
-<li>같은 날 Cluster 1, 8에서도 DGA 멀웨어 발견</li>
-<li>총 10개 이상의 감염 호스트 식별</li>
-</ul>
-<p><strong>왜 Beehive가 잡았을까?</strong></p>
-<p>Destination-based features (F1, F2)가 핵심이다:</p>
-<ul>
-<li>정상 호스트: 하루에 새 도메인 10~20개 접속</li>
-<li>DGA 감염 호스트: 하루에 200개 이상</li>
-</ul>
-<p>이 차이가 너무 명확해서 클러스터링에서 자동으로 분리된다.</p>
-<h4 id="b-기타-멀웨어-탐지">B. 기타 멀웨어 탐지<a hidden class="anchor" aria-hidden="true" href="#b-기타-멀웨어-탐지">#</a></h4>
-<p>DGA 외에도:</p>
-<ul>
-<li><strong>Adware/Spyware</strong>: 35건 (Suspicious 중)</li>
-<li><strong>기타 멀웨어</strong>: 9건 (Suspicious 중)</li>
-</ul>
-<p>총 117건의 확인된 멀웨어 중 대부분이 <strong>기존 AV가 못 잡은 것들</strong>이다.</p>
-<hr>
-<h3 id="5-클러스터-상세-분석-4월-24일-사례">5. 클러스터 상세 분석: 4월 24일 사례<a hidden class="anchor" aria-hidden="true" href="#5-클러스터-상세-분석-4월-24일-사례">#</a></h3>
-<p>논문 Figure 4를 보면 4월 24일에 생성된 15개 outlier 클러스터의 normalized feature vector가 나온다.</p>
-<h4 id="클러스터별-특징">클러스터별 특징<a hidden class="anchor" aria-hidden="true" href="#클러스터별-특징">#</a></h4>
-<p><strong>Cluster 3: 정책 위반 - 차단 사이트 과다 접근</strong></p>
-<p>피처 벡터 예시 (2개 호스트):</p>
-<pre tabindex="0"><code>Host A: F6=4, F7=47,833, F12=386, F13=96
-Host B: F6=11, F7=25,479, F12=309, F13=6
-</code></pre><p><strong>해석:</strong></p>
-<ul>
-<li>F7 (Blocked Connections): 25,000~48,000건! → 하루 종일 차단된 사이트 접속 시도</li>
-<li>F12 (Connection Spikes): 300개 이상 → 1분에 100개 이상 연결하는 순간이 300번</li>
-<li>F13 (Domain Spikes): 6~96개</li>
-</ul>
-<p><strong>판정:</strong>
-자동화 스크립트가 차단된 사이트 목록을 무차별 시도하는 것으로 추정. 악의적이라기보다는 설정 오류일 가능성.</p>
-<p><strong>Cluster 6: DGA 멀웨어 (이미 위에서 설명)</strong></p>
-<p><strong>Cluster 8: 또 다른 DGA 멀웨어</strong></p>
-<p>Cluster 6과 유사하지만 약간 다른 패턴:</p>
-<ul>
-<li>New Destinations가 100~150개 (Cluster 6보다 적음)</li>
-<li>다른 DGA 알고리즘 또는 다른 봇넷으로 추정</li>
-</ul>
-<p><strong>인사이트:</strong>
-같은 유형의 위협이라도 미묘한 차이로 여러 클러스터로 나뉜다. 이게 오히려 좋다. 서로 다른 멀웨어 변종을 구분할 수 있으니까.</p>
-<hr>
-<h3 id="6-soc-2차-검증-결과">6. SOC 2차 검증 결과<a hidden class="anchor" aria-hidden="true" href="#6-soc-2차-검증-결과">#</a></h3>
-<p>81건의 &ldquo;Suspicious&rdquo; 인시던트를 EMC SOC 팀에 보냈다. 이들은 원인을 파악할 수 없어서 SOC에 도움을 요청한 케이스다.</p>
-<p><strong>SOC 팀의 판정:</strong></p>
-<table>
-  <thead>
-      <tr>
-          <th>SOC 판정</th>
-          <th>건수</th>
-          <th>비율</th>
-          <th>설명</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>Adware/Spyware</strong></td>
-          <td>35</td>
-          <td>43.21%</td>
-          <td>애드웨어/스파이웨어 확인</td>
-      </tr>
-      <tr>
-          <td><strong>Further investigation</strong></td>
-          <td>26</td>
-          <td>32.09%</td>
-          <td>여전히 의심스러움, 심층 조사 필요</td>
-      </tr>
-      <tr>
-          <td><strong>Other malware</strong></td>
-          <td>9</td>
-          <td>11.11%</td>
-          <td>기타 악성코드</td>
-      </tr>
-      <tr>
-          <td><strong>Policy Violation</strong></td>
-          <td>4</td>
-          <td>4.93%</td>
-          <td>재분류 (Gaming, IM, Streaming)</td>
-      </tr>
-      <tr>
-          <td><strong>Uncategorized sites</strong></td>
-          <td>7</td>
-          <td>8.64%</td>
-          <td>비악성 미분류 사이트</td>
-      </tr>
-  </tbody>
-</table>
-<p><strong>핵심 통계:</strong></p>
-<ul>
-<li>실제 위협: 54.32% (Adware + Other malware)</li>
-<li>미지의 위협: 32.09% (아직도 확실하지 않음)</li>
-<li>재분류: 4.93%</li>
-</ul>
-<p><strong>&ldquo;Further investigation&rdquo; 26건이 흥미롭다.</strong></p>
-<p>SOC 팀도 원인을 확실히 못 찾았다는 뜻이다. 이것들은:</p>
-<ul>
-<li>미지의 제로데이 위협일 수도 있고</li>
-<li>아주 교묘한 APT일 수도 있고</li>
-<li>아니면 정말 특이한 정상 행위일 수도 있다</li>
-</ul>
-<p>어쨌든 <strong>추가 포렌식 조사가 필요한 진짜 suspicious 케이스</strong>다.</p>
-<hr>
-<h3 id="7-설명-가능성의-실전-가치">7. 설명 가능성의 실전 가치<a hidden class="anchor" aria-hidden="true" href="#7-설명-가능성의-실전-가치">#</a></h3>
-<h4 id="a-왜-의심스러운가를-즉시-알-수-있다">A. &ldquo;왜 의심스러운가?&ldquo;를 즉시 알 수 있다<a hidden class="anchor" aria-hidden="true" href="#a-왜-의심스러운가를-즉시-알-수-있다">#</a></h4>
-<p><strong>Beehive의 출력:</strong></p>
-<pre tabindex="0"><code>Incident: Host XYZ
-Cluster: 6
-Cluster size: 4 hosts
-Distinctive features:
-  - F1 (New Destinations): 247 (cluster avg: 225, normal: 15)
-  - F2 (New Dests w/o Referer): 247 (cluster avg: 225, normal: 10)
-  - F8 (Challenged Domains): 156 (cluster avg: 148, normal: 2)
-</code></pre><p><strong>분석가가 얻는 정보:</strong></p>
-<ol>
-<li>이 호스트는 하루에 247개의 새 도메인 접속 (정상은 15개)</li>
-<li>그 중 247개 모두 HTTP Referer 없음 (직접 접속)</li>
-<li>156개 도메인에서 회사 경고 페이지 받음</li>
-</ol>
-<p><strong>즉시 판단:</strong>
-&ldquo;DGA 멀웨어 가능성 높음. 봇넷이 C&amp;C 서버 찾는 중.&rdquo;</p>
-<p><strong>조치 시간:</strong></p>
-<ul>
-<li>기존 방식: 로그 뒤져서 패턴 찾기 → 2~4시간</li>
-<li>Beehive: 피처 값 보고 즉시 판단 → 5~10분</li>
-</ul>
-<p><strong>MTTR (Mean Time To Respond) 대폭 감소!</strong></p>
-<h4 id="b-pca-방법과의-비교">B. PCA 방법과의 비교<a hidden class="anchor" aria-hidden="true" href="#b-pca-방법과의-비교">#</a></h4>
-<p>논문에서 PCA 기반 이상탐지와 비교했다.</p>
-<p><strong>PCA 출력:</strong></p>
-<pre tabindex="0"><code>Incident: Host XYZ
-Anomaly score: 3.7σ
-Principal component 3 value exceeds threshold
-</code></pre><p><strong>분석가의 반응:</strong>
-&ldquo;&hellip;뭐가 문제인데? Principal component 3이 뭘 의미하는데?&rdquo;</p>
-<p><strong>추가 작업 필요:</strong>
-다시 원본 로그를 뒤져서 무엇이 비정상인지 수동으로 찾아야 함.</p>
-<p><strong>차이점:</strong></p>
-<ul>
-<li>Beehive: 즉시 대응 가능한 actionable intelligence</li>
-<li>PCA: 추가 분석 필수</li>
-</ul>
-<p>이게 &ldquo;설명 가능성&quot;의 실전 가치다.</p>
-<hr>
-<h3 id="8-오탐false-positive-심층-분석">8. 오탐(False Positive) 심층 분석<a hidden class="anchor" aria-hidden="true" href="#8-오탐false-positive-심층-분석">#</a></h3>
-<p>35.33%가 오탐이라는 건 솔직히 좀 많다. 하지만 논문에서 <strong>오탐의 유형</strong>을 분석한 부분이 중요하다.</p>
-<h4 id="a-오탐-유형별-분석">A. 오탐 유형별 분석<a hidden class="anchor" aria-hidden="true" href="#a-오탐-유형별-분석">#</a></h4>
-<p><strong>1. 자동화 프로세스 (20.02%)</strong></p>
-<p>예시:</p>
-<ul>
-<li>금융팀의 실시간 주가 데이터 크롤러</li>
-<li>뉴스 사이트 RSS 수집기</li>
-<li>모니터링 도구의 health check</li>
-</ul>
-<p><strong>특징:</strong></p>
-<ul>
-<li>동일 사이트에 수만 건 연결 (F12: Connection Spikes 높음)</li>
-<li>하지만 접속하는 사이트는 정상 (뉴스, 금융)</li>
-</ul>
-<p><strong>해결책:</strong>
-해당 호스트/사용자를 화이트리스트에 등록하면 끝.</p>
-<p><strong>2. 과도한 정상 브라우징 (8.03%)</strong></p>
-<p>예시:</p>
-<ul>
-<li>마케팅 팀원이 경쟁사 조사하느라 하루 종일 웹서핑</li>
-<li>Consented Connections가 수천 건</li>
-</ul>
-<p><strong>특징:</strong></p>
-<ul>
-<li>사용자가 회사 정책 경고 페이지에서 &ldquo;동의&rdquo; 클릭</li>
-<li>실제로는 정상 업무</li>
-</ul>
-<p><strong>해결책:</strong>
-Consented Connections 임계값을 높이거나, 특정 직무(마케팅, 리서치)는 예외 처리.</p>
-<p><strong>3. 미분류 사이트 (7.27%)</strong></p>
-<p>예시:</p>
-<ul>
-<li>새로 생긴 클라우드 서비스</li>
-<li>스타트업 홈페이지</li>
-<li>개인 블로그</li>
-</ul>
-<p><strong>특징:</strong></p>
-<ul>
-<li>평판 정보 없음 (McAfee SiteAdvisor에 없음)</li>
-<li>하지만 실제로는 무해</li>
-</ul>
-<p><strong>해결책:</strong>
-시간이 지나면 평판 DB가 업데이트됨. 또는 수동으로 화이트리스트 추가.</p>
-<h4 id="b-오탐-관리-전략">B. 오탐 관리 전략<a hidden class="anchor" aria-hidden="true" href="#b-오탐-관리-전략">#</a></h4>
-<p><strong>핵심 아이디어: 오탐의 &ldquo;유형 수&quot;가 중요</strong></p>
-<p>논문에서 강조하는 부분:</p>
-<ul>
-<li>오탐 <strong>개수</strong> 908건 (많아 보임)</li>
-<li>하지만 오탐 <strong>유형</strong>: 단 3가지!
-<ol>
-<li>자동화 프로세스</li>
-<li>과도한 브라우징</li>
-<li>미분류 사이트</li>
-</ol>
-</li>
-</ul>
-<p><strong>실무 적용:</strong></p>
-<pre tabindex="0"><code>Week 1: 분석가가 오탐 3가지 유형 식별
-Week 2: 각 유형별 억제 규칙 작성
-Week 3~: 동일 유형 오탐 자동 필터링
-</code></pre><p><strong>결과:</strong></p>
-<ul>
-<li>오탐률 35% → 5~10%로 감소 예상</li>
-<li>분석가 부담 대폭 감소</li>
-</ul>
-<p>이게 PCA보다 나은 점이다. PCA는 오탐 원인을 알 수 없어서 억제 규칙을 못 만든다.</p>
-<hr>
-<h3 id="9-soc-관점-실무-인사이트">9. SOC 관점 실무 인사이트<a hidden class="anchor" aria-hidden="true" href="#9-soc-관점-실무-인사이트">#</a></h3>
-<h4 id="a-탐지-측면">A. 탐지 측면<a hidden class="anchor" aria-hidden="true" href="#a-탐지-측면">#</a></h4>
-<p><strong>성공 사례:</strong></p>
-<ol>
-<li>
-<p><strong>DGA 멀웨어 완벽 탐지</strong></p>
-<ul>
-<li>기존 AV 미탐지</li>
-<li>Destination-based features (F1, F2)가 핵심</li>
-<li>클러스터링으로 집단 감염까지 식별</li>
-</ul>
-</li>
-<li>
-<p><strong>정책 위반 자동 식별</strong></p>
-<ul>
-<li>39.41%가 정책 위반</li>
-<li>HR 팀과 연계 가능</li>
-<li>컴플라이언스 자동화</li>
-</ul>
-</li>
-<li>
-<p><strong>제로데이 대응</strong></p>
-<ul>
-<li>시그니처 없이도 비정상 행위로 탐지</li>
-<li>117건 멀웨어 중 대부분이 신규/변종</li>
-</ul>
-</li>
-</ol>
-<p><strong>개선 필요:</strong></p>
-<ol>
-<li>
-<p><strong>오탐률 관리</strong></p>
-<ul>
-<li>35% → 화이트리스트로 15% 이하로 줄여야</li>
-</ul>
-</li>
-<li>
-<p><strong>Bitcoin mining 같은 자동화</strong></p>
-<ul>
-<li>악의적인가? 단순 리소스 낭비인가?</li>
-<li>정책 결정 필요</li>
-</ul>
-</li>
-</ol>
-<h4 id="b-대응-측면">B. 대응 측면<a hidden class="anchor" aria-hidden="true" href="#b-대응-측면">#</a></h4>
-<p><strong>우선순위화 전략:</strong></p>
-<p>논문 결과를 바탕으로 SOC 워크플로우 설계:</p>
-<pre tabindex="0"><code>[Critical - 즉시 대응]
-Malware (14.92%) + Suspicious (10.33%) = 25.25%
-→ 일일 약 14건
-→ Tier 2 분석가가 즉시 처리
-
-[High - 당일 처리]
-보안 위협 정책 위반 (Proxy, Tunneling, Remote access) = 1.65%
-→ 일일 약 1건
-→ 당일 내 처리
-
-[Medium - 주간 배치]
-일반 정책 위반 (Streaming, IM) = 37.76%
-→ 일일 약 21건
-→ 주간 리뷰로 모아서 처리
-
-[Low - 월간 리뷰]
-자동화 프로세스 = 35.33%
-→ 트렌드 분석용
-</code></pre><p><strong>티켓 자동 생성 템플릿:</strong></p>
-<pre tabindex="0"><code>제목: [Beehive] DGA 멀웨어 의심 - Host XYZ
-심각도: CRITICAL
-탐지 시각: 2013-04-24 09:32:15
-
-클러스터 정보:
-- Cluster 6 (4 hosts total)
-- 모두 동일 행위 패턴
-
-특징:
-- New Destinations: 247 (정상: 15)
-- New Dests w/o Referer: 247 (정상: 10)
-- Challenged Domains: 156 (정상: 2)
-
-판정: DGA 기반 봇넷 의심
-
-권장 조치:
-1. 호스트 네트워크 격리
-2. 메모리 덤프 수집
-3. 안티바이러스 전체 스캔
-4. C&amp;C 통신 흔적 확인
-</code></pre><p><strong>즉시 대응 가능한 구체적 정보!</strong></p>
-<h4 id="c-분석-측면">C. 분석 측면<a hidden class="anchor" aria-hidden="true" href="#c-분석-측면">#</a></h4>
-<p><strong>클러스터 기반 분석의 장점:</strong></p>
-<ol>
-<li>
-<p><strong>집단 감염 식별</strong></p>
-<ul>
-<li>Cluster 6의 4대 호스트 모두 같은 멀웨어</li>
-<li>전파 경로 추적 가능</li>
-<li>추가 피해 차단</li>
-</ul>
-</li>
-<li>
-<p><strong>행위 유형 자동 분류</strong></p>
-<ul>
-<li>클러스터마다 명확한 행위 패턴</li>
-<li>Cluster 3: 차단 사이트</li>
-<li>Cluster 6: DGA</li>
-<li>Cluster 8: 또 다른 DGA</li>
-</ul>
-</li>
-<li>
-<p><strong>정상 baseline 자동 학습</strong></p>
-<ul>
-<li>대다수 호스트가 큰 정상 클러스터 형성</li>
-<li>새 호스트가 어디에 속하는지 보면 정상/비정상 즉시 판단</li>
-</ul>
-</li>
-</ol>
-<p><strong>Ground Truth 부재 해결 전략:</strong></p>
-<ol>
-<li>SOC 협업 2단계 검증</li>
-<li>외부 평판 서비스 (McAfee SiteAdvisor, URLVoid)</li>
-<li>시간에 따른 검증 (suspicious → 시간 지나면 명확해짐)</li>
-</ol>
-<hr>
-<h3 id="10-개인-인사이트-personal-insight">10. 개인 인사이트 (Personal Insight)<a hidden class="anchor" aria-hidden="true" href="#10-개인-인사이트-personal-insight">#</a></h3>
-<p><strong>Day 3를 읽고 느낀 점:</strong></p>
-<p><strong>1. 98.98% 미탐의 의미</strong></p>
-<p>784건 중 776건을 기존 도구가 못 잡았다는 게 충격적이다.</p>
-<p>EMC는 보안에 투자를 많이 하는 회사다. 최신 안티바이러스, SIEM, 방화벽 다 있다. 그런데도 Beehive가 거의 모든 위협을 추가로 발견했다.</p>
-<p>→ <strong>기존 도구는 &ldquo;알려진 위협&quot;만 잡는다는 증거</strong></p>
-<p>Beehive 같은 행위 기반 탐지가 필수인 이유가 명확해졌다.</p>
-<p><strong>2. 설명 가능성의 실전 가치</strong></p>
-<p>&ldquo;New Destinations 247개&rdquo; vs. &ldquo;Principal Component 3 값 3.7σ&rdquo;</p>
-<p>전자는 SOC 분석가가 즉시 이해하고 대응할 수 있다. 후자는 다시 로그를 뒤져야 한다.</p>
-<p>DeepLog을 먼저 공부했는데, 이제 두 접근법의 장단점이 명확하다:</p>
-<ul>
-<li>DeepLog: 복잡한 패턴, 높은 정확도</li>
-<li>Beehive: 명확한 워크플로우, 즉시 설명 가능</li>
-</ul>
-<p>→ <strong>실무에서는 둘을 섞어 쓰는 게 답</strong></p>
-<p><strong>3. 오탐 35%를 어떻게 볼 것인가</strong></p>
-<p>처음엔 &ldquo;35%면 너무 많은 거 아냐?&ldquo;라고 생각했다.</p>
-<p>하지만 논문 분석을 보니:</p>
-<ul>
-<li>오탐 유형이 단 3가지</li>
-<li>화이트리스트로 대부분 해결 가능</li>
-<li>시간이 지나면 15% 이하로 감소 예상</li>
-</ul>
-<p>→ <strong>초기 오탐률보다 &ldquo;오탐 유형 수&quot;가 중요하다는 철학</strong></p>
-<p>PCA는 오탐 원인을 모르니 계속 발생. Beehive는 원인을 알아서 억제 가능.</p>
-<p><strong>4. DGA 탐지의 완벽함</strong></p>
-<p>Cluster 6의 4대 호스트가 모두 DGA 멀웨어라는 걸 한 번에 식별.</p>
-<p>기존 도구:</p>
-<ul>
-<li>AV: 제로데이라 못 잡음</li>
-<li>방화벽: C&amp;C 도메인 몇 개 차단했지만 감염은 모름</li>
-<li>SIEM: 로그 양이 너무 많아서 못 봄</li>
-</ul>
-<p>Beehive:</p>
-<ul>
-<li>F1 (New Destinations) 하나로 즉시 식별</li>
-<li>클러스터링으로 4대 집단 감염까지 한 번에</li>
-</ul>
-<p>→ <strong>엔터프라이즈 특화 피처 설계의 힘</strong></p>
-<p>일반 인터넷에서는 New Destinations 많아도 이상하지 않다. 하지만 엔터프라이즈는 업무 사이트만 가니까, 200개 새 도메인은 확실히 이상하다.</p>
-<p><strong>5. 클러스터 해석의 직관성</strong></p>
-<p>Figure 4를 보면 15개 클러스터의 normalized feature vector가 있다.</p>
-<p>각 클러스터마다 튀는 피처가 다르다:</p>
-<ul>
-<li>Cluster 3: F7 (Blocked Connections) 튀김</li>
-<li>Cluster 6: F1, F2 (New Destinations) 튀김</li>
-<li>Cluster 12: F10, F11 (Consented) 튀김</li>
-</ul>
-<p>→ <strong>클러스터 = 행위 유형</strong></p>
-<p>이게 PCA보다 훨씬 해석하기 쉽다. 어떤 피처가 outlier인지 보면 무슨 문제인지 바로 안다.</p>
-<p><strong>다음 궁금증 (Day 4 Preview):</strong></p>
-<ul>
-<li>오탐 35%를 실제로 어떻게 줄일 것인가?</li>
-<li>시간 해상도 문제 (일 단위 배치)는 극복 가능한가?</li>
-<li>이 연구가 학계와 산업계에 미친 영향은?</li>
-<li>DeepLog 같은 후속 연구가 어떻게 발전했나?</li>
-</ul>
-<hr>
-<p><strong>Day 3 종료</strong><br>
-내일은 연구의 한계와 후속 영향을 분석해보자!</p>
-<h1 id="research-review-beehive-large-scale-log-analysis-for-detecting-suspicious-activity-in-enterprise-networks-2">Research Review: Beehive: Large-Scale Log Analysis for Detecting Suspicious Activity in Enterprise Networks<a hidden class="anchor" aria-hidden="true" href="#research-review-beehive-large-scale-log-analysis-for-detecting-suspicious-activity-in-enterprise-networks-2">#</a></h1>
-<blockquote>
-<p><strong>Analyzed Date:</strong> 2026.01.02<br>
-<strong>Keywords:</strong> SOC, Log Analysis, Enterprise Security, Anomaly Detection, Clustering<br>
-<strong>Source:</strong> ACSAC &lsquo;13, 2013, pp.199-208 <a href="https://doi.org/10.1145/2523649.2523670">Link</a></p>
-</blockquote>
-<hr>
-<h2 id="day-4--research-limitations-and-scholarly-impact">Day 4 – Research Limitations and Scholarly Impact<a hidden class="anchor" aria-hidden="true" href="#day-4--research-limitations-and-scholarly-impact">#</a></h2>
-<p><em>(한계를 넘어: 학계와 산업계의 반응)</em></p>
-<h3 id="1-연구의-한계점">1. 연구의 한계점<a hidden class="anchor" aria-hidden="true" href="#1-연구의-한계점">#</a></h3>
-<p>논문을 읽다 보면 항상 &ldquo;이 방법이 만능은 아니겠지?&ldquo;라는 생각이 든다. Beehive도 마찬가지다. 논문에서 명시한 한계와 실험에서 드러난 한계를 정리해보자.</p>
-<h4 id="a-평가-방법론의-근본적-어려움">A. 평가 방법론의 근본적 어려움<a hidden class="anchor" aria-hidden="true" href="#a-평가-방법론의-근본적-어려움">#</a></h4>
-<p><strong>Ground Truth가 없다는 문제</strong></p>
-<p>실험실 환경이라면:</p>
-<ul>
-<li>악성 트래픽 주입 → 정답 알고 있음</li>
-<li>Precision, Recall 정확히 계산 가능</li>
-<li>논문 쓰기 편함</li>
-</ul>
-<p>실제 엔터프라이즈 환경:</p>
-<ul>
-<li>이미 보안 도구들이 돌아가는 중</li>
-<li>알려진 위협은 이미 차단됨</li>
-<li>남아있는 건 &ldquo;미지의 위협&rdquo; 또는 &ldquo;정상&rdquo;</li>
-<li>→ <strong>정답을 모른다!</strong></li>
-</ul>
-<p><strong>Beehive의 접근:</strong></p>
-<pre tabindex="0"><code>784건 인시던트 생성
-    ↓
-1차 검증: 연구팀이 수동 레이블링
-    ↓
-2차 검증: EMC SOC 팀 협업
-    ↓
-그래도 불확실: 26건 &#34;Further investigation&#34;
-</code></pre><p>이 과정이 몇 주 걸렸을 것 같다. 엄청난 노력이다.</p>
-<p><strong>한계:</strong></p>
-<ul>
-<li>False Positive Rate를 정확히 측정 불가</li>
-<li>놓친 위협(False Negative)이 얼마나 되는지 알 수 없음</li>
-<li>SOC 분석가 시간이 엄청나게 든다</li>
-</ul>
-<p><strong>실무 영향:</strong>
-신규 조직에 도입할 때마다 이 과정을 반복해야 한다. 초기 1~2개월은 수동 검증 기간으로 봐야 함.</p>
-<h4 id="b-시간-해상도의-딜레마">B. 시간 해상도의 딜레마<a hidden class="anchor" aria-hidden="true" href="#b-시간-해상도의-딜레마">#</a></h4>
-<p><strong>일 단위 배치 분석의 한계</strong></p>
-<p>Beehive는 하루 단위로 피처를 계산한다:</p>
-<pre tabindex="0"><code>오늘(4월 24일) 로그 수집
-    ↓
-밤새 배치 처리
-    ↓
-내일 아침(4월 25일) 인시던트 리포트
-</code></pre><p><strong>문제 시나리오:</strong></p>
-<pre tabindex="0"><code>4월 24일 오전 9시: APT 초기 침투
-4월 24일 오후 2시: 횡적 이동 (Lateral Movement)
-4월 24일 오후 5시: 데이터 탈취 시작
-4월 25일 오전 9시: Beehive가 탐지
-
-→ 24시간 늦음!
-</code></pre><p><strong>APT의 특성:</strong></p>
-<ul>
-<li>Dwell Time (침투 후 발견까지 시간): 평균 200일 (2013년 기준)</li>
-<li>빠른 공격: 수 시간 내 데이터 탈취</li>
-</ul>
-<p><strong>Beehive의 한계:</strong>
-일 단위 배치라서 빠른 공격에는 대응 못 함.</p>
-<p><strong>논문의 변명:</strong>
-&ldquo;우리는 historical analysis를 목표로 했다. 실시간은 아니다.&rdquo;</p>
-<p><strong>솔직한 생각:</strong>
-변명이긴 하지만&hellip; 2013년 당시 기술로는 일일 1TB 로그를 실시간 처리하는 게 쉽지 않았을 거다. 지금이야 Spark Streaming 같은 게 있지만.</p>
-<h4 id="c-초기-학습-기간의-부담">C. 초기 학습 기간의 부담<a hidden class="anchor" aria-hidden="true" href="#c-초기-학습-기간의-부담">#</a></h4>
-<p><strong>Beehive 가동까지 필요한 시간:</strong></p>
-<table>
-  <thead>
-      <tr>
-          <th>단계</th>
-          <th>소요 시간</th>
-          <th>작업 내용</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>히스토리 구축</strong></td>
-          <td>1개월</td>
-          <td>New Destinations 판정 위한 도메인 히스토리</td>
-      </tr>
-      <tr>
-          <td><strong>화이트리스트 구축</strong></td>
-          <td>1주일</td>
-          <td>100대 이상 호스트 접속한 도메인 식별</td>
-      </tr>
-      <tr>
-          <td><strong>User-Agent 히스토리</strong></td>
-          <td>1개월</td>
-          <td>호스트별 UA 문자열 학습</td>
-      </tr>
-      <tr>
-          <td><strong>Dedicated Host 식별</strong></td>
-          <td>3개월</td>
-          <td>95% 단일 사용자 판정 (실제로는 병렬 가능)</td>
-      </tr>
-  </tbody>
-</table>
-<p><strong>실질적 대기 시간:</strong>
-최소 <strong>5주</strong> (화이트리스트 1주 + 히스토리 4주)</p>
-<p><strong>문제:</strong></p>
-<ul>
-<li>신규 조직 도입 시 즉시 탐지 불가</li>
-<li>5주 동안은 &ldquo;학습 모드&rdquo;</li>
-<li>경영진에게 설득하기 어려움: &ldquo;5주 기다려주세요&rdquo;</li>
-</ul>
-<p><strong>현실적 대안:</strong></p>
-<pre tabindex="0"><code>Week 1: 화이트리스트 구축
-Week 2-4: 히스토리 구축하면서 동시에 탐지 시작 (정확도 낮음)
-Week 5: 본격 가동
-</code></pre><p>처음 4주는 오탐률이 높을 것 같다. 하지만 아무것도 안 하는 것보단 낫다.</p>
-<h4 id="d-엔터프라이즈-환경-의존성">D. 엔터프라이즈 환경 의존성<a hidden class="anchor" aria-hidden="true" href="#d-엔터프라이즈-환경-의존성">#</a></h4>
-<p><strong>Beehive가 가정하는 환경:</strong></p>
-<ol>
-<li>
-<p><strong>정책 제약 환경</strong></p>
-<ul>
-<li>방화벽, 웹 프록시로 통제</li>
-<li>직원들이 특정 사이트만 접속</li>
-</ul>
-</li>
-<li>
-<p><strong>동질적 호스트 구성</strong></p>
-<ul>
-<li>대부분 비슷한 소프트웨어 사용</li>
-<li>표준화된 업무 환경</li>
-</ul>
-</li>
-<li>
-<p><strong>Dedicated Hosts</strong></p>
-<ul>
-<li>1인 1PC 원칙</li>
-<li>공용 PC 많으면 적용 어려움</li>
-</ul>
-</li>
-</ol>
-<p><strong>적용 어려운 환경:</strong></p>
-<p><strong>대학 네트워크:</strong></p>
-<ul>
-<li>학생들이 온갖 사이트 접속 (연구, 공부, 게임, &hellip;)</li>
-<li>정책 제약 거의 없음</li>
-<li>New Destinations 기준이 무의미</li>
-</ul>
-<p><strong>공공 WiFi:</strong></p>
-<ul>
-<li>사용자가 계속 바뀜</li>
-<li>Dedicated Host 개념 없음</li>
-<li>행위 프로파일 불가능</li>
-</ul>
-<p><strong>스타트업:</strong></p>
-<ul>
-<li>개발자들이 자유롭게 소프트웨어 설치</li>
-<li>정책이 느슨함</li>
-<li>&ldquo;정상&rdquo; 행위의 범위가 너무 넓음</li>
-</ul>
-<p><strong>실무 시사점:</strong>
-Beehive는 <strong>전통적 대기업</strong>에 최적화되어 있다. 스타트업이나 대학에 적용하려면 피처 재설계 필요.</p>
-<h4 id="e-피처-엔지니어링의-딜레마">E. 피처 엔지니어링의 딜레마<a hidden class="anchor" aria-hidden="true" href="#e-피처-엔지니어링의-딜레마">#</a></h4>
-<p><strong>15개 피처는 수작업으로 설계했다</strong></p>
-<p>논문 저자들이:</p>
-<ol>
-<li>EMC 내부 멀웨어 사례 관찰</li>
-<li>보안 전문가와 논의</li>
-<li>여러 피처 실험</li>
-<li>최종 15개 선정</li>
-</ol>
-<p><strong>장점:</strong></p>
-<ul>
-<li>각 피처의 의미가 명확</li>
-<li>SOC 분석가가 이해 가능</li>
-<li>설명 가능성 확보</li>
-</ul>
-<p><strong>단점:</strong></p>
-<ul>
-<li>시간과 비용이 많이 듦</li>
-<li>도메인 전문가 필요</li>
-<li>다른 조직에 적용 시 재설계 필요</li>
-<li>새로운 공격 기법 출현 시 피처 추가 필요</li>
-</ul>
-<p><strong>DeepLog과의 대비:</strong></p>
-<ul>
-<li>DeepLog: LSTM이 자동으로 피처 학습 (블랙박스)</li>
-<li>Beehive: 수동 피처 설계 (화이트박스)</li>
-</ul>
-<p><strong>Trade-off:</strong>
-설명 가능성 vs. 자동화</p>
-<p>둘 다 필요한데&hellip; 어떻게 해결할까? → Day 5에서 다룰 하이브리드 접근!</p>
-<h4 id="f-오탐률-35의-의미">F. 오탐률 35%의 의미<a hidden class="anchor" aria-hidden="true" href="#f-오탐률-35의-의미">#</a></h4>
-<p>Day 3에서 &ldquo;오탐 유형이 3가지뿐이라 관리 가능&quot;하다고 했는데, 그래도 35%는 부담이다.</p>
-<p><strong>SOC 입장에서 계산해보면:</strong></p>
-<pre tabindex="0"><code>일일 56건 인시던트
-    ↓
-35% 오탐 = 20건/일
-    ↓
-주 5일 = 100건/주
-</code></pre><p><strong>분석가 부담:</strong></p>
-<ul>
-<li>Tier 2 분석가가 주당 100건의 오탐 처리</li>
-<li>1건당 10분이라도 → 주당 16시간</li>
-</ul>
-<p><strong>알림 피로도 (Alert Fatigue):</strong>
-오탐이 계속되면:</p>
-<ul>
-<li>분석가가 알림을 신뢰 안 함</li>
-<li>&ldquo;또 오탐이겠지&rdquo; 하고 넘김</li>
-<li>진짜 위협도 놓침</li>
-</ul>
-<p><strong>해결 방안:</strong>
-화이트리스트 지속 관리로 오탐률 20% 이하로 낮춰야 함. 그래도 여전히 일일 11건&hellip;</p>
-<h4 id="g-단일-조직-평가의-일반화-문제">G. 단일 조직 평가의 일반화 문제<a hidden class="anchor" aria-hidden="true" href="#g-단일-조직-평가의-일반화-문제">#</a></h4>
-<p><strong>논문의 평가:</strong></p>
-<ul>
-<li>EMC 하나의 조직에서만 검증</li>
-<li>2주간 데이터</li>
-</ul>
-<p><strong>궁금증:</strong></p>
-<ul>
-<li>다른 산업군(금융, 제조, 의료)에서도 효과적인가?</li>
-<li>다른 규모(소기업, 대기업)에서는?</li>
-<li>다른 나라(문화권)에서는?</li>
-</ul>
-<p><strong>특히 금융권이 궁금하다:</strong></p>
-<ul>
-<li>거래 시스템은 24/7 운영</li>
-<li>비정상 시간대 접속이 정상일 수 있음 (야간 배치)</li>
-<li>피처 재설계 필요할 듯</li>
-</ul>
-<p><strong>의료:</strong></p>
-<ul>
-<li>HIPAA 컴플라이언스</li>
-<li>PHI (Protected Health Information) 접근 패턴</li>
-<li>환자 데이터 유출 탐지에 특화 필요</li>
-</ul>
-<p><strong>논문의 한계:</strong>
-일반화 검증 부족. 하지만 EMC는 큰 조직이라 어느 정도 대표성은 있다고 봐야 할 듯.</p>
-<hr>
-<h3 id="2-후속-연구-동향">2. 후속 연구 동향<a hidden class="anchor" aria-hidden="true" href="#2-후속-연구-동향">#</a></h3>
-<h4 id="a-인용-수와-영향력">A. 인용 수와 영향력<a hidden class="anchor" aria-hidden="true" href="#a-인용-수와-영향력">#</a></h4>
-<p><strong>학술적 임팩트:</strong></p>
-<ul>
-<li>발표: 2013년 12월 (ACSAC)</li>
-<li>현재 인용 수: <strong>215회</strong> (2025년 12월 기준)</li>
-<li>평균: 연간 약 18회 인용</li>
-</ul>
-<p><strong>비교:</strong></p>
-<ul>
-<li>DeepLog (2017): 800회 이상</li>
-<li>Lou et al. (2010): 900회 이상</li>
-</ul>
-<p>Beehive가 상대적으로 적은 이유:</p>
-<ul>
-<li>엔터프라이즈 특화 → 학계에서 재현 어려움</li>
-<li>실제 데이터 필요 → 연구자들이 접근 어려움</li>
-<li>방법론이 복잡 (3계층 파이프라인)</li>
-</ul>
-<p><strong>하지만 실무 영향은 크다:</strong>
-UEBA 시장 형성에 기여 (아래에서 설명)</p>
-<h4 id="b-연구-트렌드의-변화">B. 연구 트렌드의 변화<a hidden class="anchor" aria-hidden="true" href="#b-연구-트렌드의-변화">#</a></h4>
-<p><strong>2013년 이전: 시그니처 중심</strong></p>
-<pre tabindex="0"><code>IDS/IPS + Antivirus
-→ 알려진 위협만 탐지
-</code></pre><p><strong>2013-2017: 통계/ML 기법 도입</strong></p>
-<pre tabindex="0"><code>PCA, SVM, Clustering (Beehive 포함)
-→ 행위 기반 탐지 시작
-</code></pre><p><strong>2017-2021: 딥러닝 혁명</strong></p>
-<pre tabindex="0"><code>DeepLog (2017): LSTM
-LogAnomaly (2019): Attention
-LogBERT (2021): Transformer
-→ 자동 피처 학습
-</code></pre><p><strong>2022-현재: Pre-trained Models + Graph</strong></p>
-<pre tabindex="0"><code>PLELog: BERT 기반 로그 파싱
-Neural Log Analysis: GNN으로 호스트 관계 모델링
-→ 더 복잡한 패턴 학습
-</code></pre><p><strong>Beehive의 위치:</strong>
-통계/ML 시대의 마지막 대표작. 이후 딥러닝이 대세가 됨.</p>
-<h4 id="c-주요-후속-연구">C. 주요 후속 연구<a hidden class="anchor" aria-hidden="true" href="#c-주요-후속-연구">#</a></h4>
-<p><strong>Beehive의 한계를 극복하려는 연구들:</strong></p>
-<p><strong>1. 실시간 처리</strong></p>
-<table>
-  <thead>
-      <tr>
-          <th>연구</th>
-          <th>연도</th>
-          <th>핵심 기여</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>LogAnomaly</strong></td>
-          <td>2019</td>
-          <td>Attention 기반 시퀀스 모델, 분 단위 처리</td>
-      </tr>
-      <tr>
-          <td><strong>Stream-Based Anomaly Detection</strong></td>
-          <td>2020</td>
-          <td>Kafka + Spark Streaming으로 실시간 탐지</td>
-      </tr>
-  </tbody>
-</table>
-<p><strong>개선점:</strong></p>
-<ul>
-<li>Beehive의 일 단위 → 분/초 단위</li>
-<li>Dwell Time 대폭 감소</li>
-</ul>
-<p><strong>2. 자동 피처 학습</strong></p>
-<table>
-  <thead>
-      <tr>
-          <th>연구</th>
-          <th>연도</th>
-          <th>핵심 아이디어</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>DeepLog</strong></td>
-          <td>2017</td>
-          <td>LSTM으로 자동 피처 학습</td>
-      </tr>
-      <tr>
-          <td><strong>Log2Vec</strong></td>
-          <td>2019</td>
-          <td>Word2Vec 스타일 로그 임베딩</td>
-      </tr>
-      <tr>
-          <td><strong>LogBERT</strong></td>
-          <td>2021</td>
-          <td>BERT로 self-supervised learning</td>
-      </tr>
-  </tbody>
-</table>
-<p><strong>개선점:</strong></p>
-<ul>
-<li>수동 피처 설계 불필요</li>
-<li>새로운 공격에 자동 적응</li>
-</ul>
-<p><strong>Trade-off:</strong>
-설명 가능성 희생 (블랙박스)</p>
-<p><strong>3. 더티 데이터 처리 강화</strong></p>
-<table>
-  <thead>
-      <tr>
-          <th>연구</th>
-          <th>연도</th>
-          <th>기여</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>Robust Log-based Anomaly Detection</strong></td>
-          <td>2020</td>
-          <td>Beehive의 정규화 기법 확장, 더 복잡한 노이즈 처리</td>
-      </tr>
-      <tr>
-          <td><strong>PLELog</strong></td>
-          <td>2021</td>
-          <td>Pre-trained LM으로 파싱 정확도 95% → 98%</td>
-      </tr>
-  </tbody>
-</table>
-<p><strong>개선점:</strong>
-Beehive의 로그 파서 한계 극복</p>
-<p><strong>4. 호스트 간 관계 모델링</strong></p>
-<table>
-  <thead>
-      <tr>
-          <th>연구</th>
-          <th>연도</th>
-          <th>기여</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>UNICORN</strong></td>
-          <td>2020</td>
-          <td>다변량 시계열, 호스트 간 상관관계</td>
-      </tr>
-      <tr>
-          <td><strong>Neural Log Analysis</strong></td>
-          <td>2022</td>
-          <td>GNN으로 호스트 관계를 그래프로 모델링</td>
-      </tr>
-  </tbody>
-</table>
-<p><strong>개선점:</strong></p>
-<ul>
-<li>Beehive는 호스트를 독립적으로 분석</li>
-<li>후속 연구는 호스트 간 관계 고려 (횡적 이동 탐지에 유리)</li>
-</ul>
-<p><strong>5. 하이브리드 접근</strong></p>
-<p>재미있는 건, <strong>최근 연구들이 다시 Beehive 스타일로 회귀</strong>하고 있다는 점이다.</p>
-<pre tabindex="0"><code>2013: Beehive (해석 가능 피처)
-    ↓
-2017-2021: 딥러닝 블랙박스
-    ↓
-2022-현재: 하이브리드 (피처 + 딥러닝)
-</code></pre><p><strong>예시: LogAnomaly (2019)</strong></p>
-<ul>
-<li>Beehive의 피처를 딥러닝 입력으로 사용</li>
-<li>Attention으로 &ldquo;어떤 피처가 중요한지&rdquo; 자동 학습</li>
-<li>설명 가능성 + 딥러닝 성능 둘 다 확보</li>
-</ul>
-<p><strong>교훈:</strong>
-&ldquo;설명 가능성&quot;이라는 Beehive의 철학이 여전히 유효하다.</p>
-<hr>
-<h3 id="3-실무-영향-industry-impact">3. 실무 영향 (Industry Impact)<a hidden class="anchor" aria-hidden="true" href="#3-실무-영향-industry-impact">#</a></h3>
-<h4 id="a-ueba-시장의-탄생">A. UEBA 시장의 탄생<a hidden class="anchor" aria-hidden="true" href="#a-ueba-시장의-탄생">#</a></h4>
-<p><strong>UEBA = User and Entity Behavior Analytics</strong></p>
-<p><strong>Beehive 이전 (2010년대 초):</strong></p>
-<ul>
-<li>보안 제품: SIEM, IDS/IPS, Antivirus</li>
-<li>모두 시그니처 기반</li>
-</ul>
-<p><strong>Beehive 이후 (2015년~):</strong></p>
-<ul>
-<li>Gartner가 UEBA를 주요 보안 기술로 지정 (2015)</li>
-<li>전문 UEBA 벤더 출현:
-<ul>
-<li>Exabeam</li>
-<li>Securonix</li>
-<li>Splunk UBA</li>
-<li>Varonis</li>
-</ul>
-</li>
-</ul>
-<p><strong>UEBA의 핵심 개념:</strong>
-&ldquo;사용자와 엔티티(호스트, 서버)의 <strong>정상 행위</strong>를 학습하고, <strong>이상 행위</strong>를 탐지&rdquo;</p>
-<p>→ <strong>Beehive와 정확히 같은 철학!</strong></p>
-<p><strong>Gartner 정의 (2015):</strong></p>
-<pre tabindex="0"><code>UEBA solutions use machine learning and statistical models
-to create behavioral baselines and detect anomalies.
-</code></pre><p>Beehive 논문의 핵심 아이디어를 그대로 설명하고 있다.</p>
-<p><strong>실무 영향:</strong>
-Beehive가 UEBA 시장 형성에 학술적 근거를 제공했다고 볼 수 있다.</p>
-<h4 id="b-soc-운영-패러다임-변화">B. SOC 운영 패러다임 변화<a hidden class="anchor" aria-hidden="true" href="#b-soc-운영-패러다임-변화">#</a></h4>
-<p><strong>Before Beehive (2010년대 초):</strong></p>
-<pre tabindex="0"><code>[경계 방어]
-방화벽, IPS
-    ↓
-[시그니처 탐지]
-IDS, Antivirus
-    ↓
-[수동 조사]
-보안 전문가가 로그 뒤짐
-</code></pre><p><strong>패러다임:</strong></p>
-<ul>
-<li>&ldquo;알려진 위협&rdquo; 차단</li>
-<li>&ldquo;외부 침입&rdquo; 막기</li>
-<li>사후 대응</li>
-</ul>
-<p><strong>After Beehive (2010년대 중후반~):</strong></p>
-<pre tabindex="0"><code>[다층 방어]
-경계 + 내부 모니터링
-    ↓
-[행위 분석]
-UEBA (Beehive 스타일)
-    ↓
-[위협 헌팅]
-사전에 위협 찾아내기
-</code></pre><p><strong>패러다임:</strong></p>
-<ul>
-<li>&ldquo;미지의 위협&rdquo; 탐지 (APT, 제로데이)</li>
-<li>&ldquo;내부 행위&rdquo; 모니터링</li>
-<li>사전 + 사후 대응</li>
-</ul>
-<p><strong>핵심 차이:</strong>
-&ldquo;침입당하지 않기&quot;에서 &ldquo;침입 후 빠르게 찾아내기&quot;로 전환</p>
-<h4 id="c-주요-벤더의-채택">C. 주요 벤더의 채택<a hidden class="anchor" aria-hidden="true" href="#c-주요-벤더의-채택">#</a></h4>
-<p><strong>RSA (EMC 자회사):</strong></p>
-<ul>
-<li>Beehive 저자 중 일부가 RSA 소속</li>
-<li>RSA NetWitness에 Beehive 개념 통합</li>
-<li>특히 &ldquo;엔터프라이즈 특화 피처&rdquo; 설계 철학 채택</li>
-</ul>
-<p><strong>Splunk:</strong></p>
-<ul>
-<li>Splunk UBA 출시 (2015)</li>
-<li>행위 기반 이상탐지 기능</li>
-<li>클러스터링 방식 유사</li>
-</ul>
-<p><strong>IBM QRadar:</strong></p>
-<ul>
-<li>User Behavior Analytics 모듈</li>
-<li>로그 정규화 기법 참고</li>
-</ul>
-<p><strong>Exabeam:</strong></p>
-<ul>
-<li>UEBA 전문 벤더</li>
-<li>&ldquo;Timeline&rdquo; 기능: 호스트별 행위 시각화</li>
-<li>Beehive의 피처 벡터 개념과 유사</li>
-</ul>
-<p><strong>공통점:</strong>
-모두 &ldquo;정상 행위 학습 → 이상 탐지&rdquo; 프레임워크 사용</p>
-<h4 id="d-오픈소스-도구-영향">D. 오픈소스 도구 영향<a hidden class="anchor" aria-hidden="true" href="#d-오픈소스-도구-영향">#</a></h4>
-<p><strong>LogPai 프로젝트 (화웨이):</strong></p>
-<ul>
-<li>중국 화웨이가 Beehive 기반 오픈소스 프로젝트 시작</li>
-<li>GitHub: <a href="https://github.com/logpai/logparser">https://github.com/logpai/logparser</a></li>
-<li>로그 파싱, 불변성 마이닝 도구 제공</li>
-<li>Star 1,000+</li>
-</ul>
-<p><strong>도구 목록:</strong></p>
-<ul>
-<li>Drain: 로그 파싱</li>
-<li>Spell: 로그 템플릿 추출</li>
-<li>LogCluster: 클러스터링 기반 이상탐지</li>
-</ul>
-<p>Beehive의 개념을 오픈소스로 구현한 최초 프로젝트.</p>
-<hr>
-<h3 id="4-soc-관점-인사이트-1">4. SOC 관점 인사이트<a hidden class="anchor" aria-hidden="true" href="#4-soc-관점-인사이트-1">#</a></h3>
-<h4 id="a-한계를-인식한-실무-적용-전략">A. 한계를 인식한 실무 적용 전략<a hidden class="anchor" aria-hidden="true" href="#a-한계를-인식한-실무-적용-전략">#</a></h4>
-<p><strong>전략 1: 하이브리드 탐지 체계</strong></p>
-<p>Beehive의 한계(일 단위 배치)를 인정하고, 계층화된 방어 체계 구축:</p>
-<pre tabindex="0"><code>[실시간 레이어]
-SIEM Rules + IDS/IPS + AV
-    ↓ (즉시 알림)
-[일일 배치 레이어]
-Beehive-style Behavioral Analytics
-    ↓ (익일 아침 리포트)
-[주간 레이어]
-Threat Hunting (수동)
-</code></pre><p><strong>역할 분담:</strong></p>
-<ul>
-<li>실시간: 알려진 위협 + 긴급 이상</li>
-<li>배치: 놓친 위협 발굴 (Beehive의 98.98%)</li>
-<li>주간: 장기 트렌드 분석</li>
-</ul>
-<p><strong>실무 예시:</strong></p>
-<pre tabindex="0"><code>Case 1: 알려진 멀웨어
-→ 실시간 레이어에서 즉시 차단 (Beehive 출동 안 함)
-
-Case 2: DGA 봇넷 (제로데이)
-→ 실시간 레이어 통과 → Beehive가 익일 탐지
-
-Case 3: 느린 APT
-→ 주간 헌팅으로 장기 패턴 분석
-</code></pre><p>Beehive는 <strong>&ldquo;놓친 위협 발굴&rdquo;</strong> 역할에 집중!</p>
-<p><strong>전략 2: 오탐 학습 루프</strong></p>
-<p>35% 오탐을 어떻게 줄일 것인가?</p>
-<p><strong>4주 오탐 정제 프로그램:</strong></p>
-<pre tabindex="0"><code>Week 1: 
-  - Beehive 인시던트 전수 조사
-  - 오탐 패턴 식별 및 분류
+<p>[Layer 1: Data Normalization]</p>
+<ul>
+<li>타임스탬프 정규화 (UTC 통일)</li>
+<li>IP-to-Host 매핑 (DHCP 바인딩)</li>
+<li>정적 IP 자동 탐지<br>
+↓<br>
+[Layer 2: Feature Generation]</li>
+<li>Destination-based (4개)</li>
+<li>Host-based (1개)</li>
+<li>Policy-based (6개)</li>
+<li>Traffic-based (4개)<br>
+→ 총 15개 피처/호스트/일<br>
+↓<br>
+[Layer 3: Detection via Clustering]</li>
+<li>PCA로 차원 축소</li>
+<li>변형 K-means 클러스터링</li>
+<li>Outlier 식별 → Incident 보고</li>
+</ul>
+<pre tabindex="0"><code>  
+### 4. 연구의 핵심 기여  
   
-Week 2:
-  - 패턴별 억제 규칙 작성
-  - 예: &#34;DevOps 팀 호스트는 자동화 프로세스 예외 처리&#34;
+**학술적 기여**  
+- 대규모 실제 엔터프라이즈 로그 데이터의 &#34;Big Data&#34; 보안 분석 최초 연구  
+- 이질적 로그 통합을 위한 체계적 전처리 방법론 제시  
+- 엔터프라이즈 특화 행위 피처 설계 프레임워크  
   
-Week 3:
-  - 화이트리스트 정제
-  - 추가 오탐 패턴 발견
+**SOC 실무 기여**  
+- 일일 1.4억 건(1TB) 로그 → 8천만 건으로 74% 감축하면서도 탐지 정확도 유지  
+- 2주간 평가에서 784건 인시던트 탐지, 이 중 25.25%가 멀웨어 또는 추가 조사 필요  
+- 기존 보안 도구가 놓친 위협 식별: 784건 중 단 8건만 기존 도구가 탐지  
   
-Week 4:
-  - 최종 룰셋 확정
-  - 오탐률 재측정 (목표: 20% 이하)
-</code></pre><p><strong>지속적 개선:</strong></p>
-<pre tabindex="0"><code>월 1회: 신규 오탐 패턴 검토
-분기 1회: 화이트리스트 대청소
-연 1회: 피처 재검증
-</code></pre><p><strong>목표:</strong></p>
+### 5. SOC 관점 인사이트  
+  
+**실무 적용 가능성**  
+- SIEM 데이터를 활용한 자동화된 이상탐지 파이프라인 구축 가능  
+- 시그니처 업데이트 없이도 신규 위협 탐지 (DGA 기반 멀웨어 등)  
+- 정책 위반(스트리밍, 파일 공유, 성인 콘텐츠 등) 자동 식별로 컴플라이언스 강화  
+  
+**기존 학습과의 연결**  
+- Lou et al. (2010): 단일 시스템 불변성 → Beehive: 네트워크 전체 행위 패턴  
+- DeepLog: 딥러닝 블랙박스 → Beehive: 설명 가능한 피처 기반 클러스터링  
+- 두 접근법 모두 필요: DeepLog는 정확도, Beehive는 대규모 확장성 + 설명력  
+  
+**현실적 고려사항**  
+- Ground Truth 부재 문제: 실제 엔터프라이즈는 이미 방어 중이므로 알려진 위협 흔적이 적음 → 수동 레이블링 불가피  
+- 오탐 관리: 784건 중 35.33%가 비악성 자동화 프로세스 → 추가 필터링 필요  
+  
+---  
+  
+## Day 2 – Research Model, Hypotheses, and Methodology  
+*(Beehive의 설계: 더러운 데이터를 깨끗한 인텔리전스로)*  
+  
+### 1. 연구 모델 개요  
+  
+Beehive는 가설 검증 방식이 아닌 **엔지니어링 시스템 설계 연구**로, 대규모 로그 분석 문제를 해결하기 위한 3계층 파이프라인을 제안한다.  
+  
+</code></pre><p>[입력: Raw Logs from Multiple Sources]<br>
+↓<br>
+[Layer 1: Data Normalization &amp; Preprocessing]</p>
 <ul>
-<li>초기 35% → 1개월 후 20% → 3개월 후 10% 이하</li>
+<li>Timestamp Normalization</li>
+<li>IP-to-Host Mapping (Dynamic + Static)</li>
+<li>Dedicated Host Identification<br>
+↓<br>
+[Layer 2: Feature Extraction]</li>
+<li>15 enterprise-specific features per host/day<br>
+↓<br>
+[Layer 3: Unsupervised Detection]</li>
+<li>PCA (dimensionality reduction)</li>
+<li>Modified K-means clustering</li>
+<li>Outlier identification<br>
+↓<br>
+[출력: Security Incidents for SOC Investigation]</li>
 </ul>
-<p><strong>전략 3: 시간 해상도 점진적 개선</strong></p>
-<p>일 단위가 한계라면, 조금씩 줄여보자:</p>
-<p><strong>Phase 1: 일 단위 (현재)</strong></p>
-<pre tabindex="0"><code>처리 시간: 5시간/일
-Dwell Time: 평균 12시간
-</code></pre><p><strong>Phase 2: 4시간 단위 (6개월 후)</strong></p>
-<pre tabindex="0"><code>하루를 6개 윈도우로 분할
-처리 시간: 30시간/일 (6배 증가)
-Dwell Time: 평균 4시간
-
-Trade-off:
-- 계산 비용 6배
-- 하지만 클라우드 컴퓨팅으로 해결 가능
-</code></pre><p><strong>Phase 3: 실시간 스트림 (12개월 후)</strong></p>
-<pre tabindex="0"><code>Kafka + Spark Streaming
-Dwell Time: 분 단위
-하지만 설명 가능성 일부 희생 (딥러닝 도입 필요)
-</code></pre><p><strong>점진적 접근의 장점:</strong></p>
-<ul>
-<li>한 번에 바꾸지 않음</li>
-<li>각 단계에서 효과 검증</li>
-<li>실패해도 롤백 가능</li>
-</ul>
-<p><strong>전략 4: 조직별 피처 커스터마이징</strong></p>
-<p>EMC의 15개 피처를 다른 조직에 그대로 쓰면 안 된다.</p>
-<p><strong>산업별 추가 피처 예시:</strong></p>
-<p><strong>금융권:</strong></p>
-<ul>
-<li>F16: 비정상 거래 시간대 접속 (야간 배치 제외)</li>
-<li>F17: 고객 민감 정보 접근 패턴 이상</li>
-<li>F18: 외부 송금 시스템 접근 급증</li>
-</ul>
-<p><strong>제조:</strong></p>
-<ul>
-<li>F16: OT 네트워크 연결 시도 (IT-OT 경계)</li>
-<li>F17: 생산 데이터 외부 전송</li>
-<li>F18: PLC 설정 변경 로그</li>
-</ul>
-<p><strong>의료:</strong></p>
-<ul>
-<li>F16: PHI 접근 패턴 이상 (HIPAA)</li>
-<li>F17: 환자 기록 대량 조회</li>
-<li>F18: 의료 기기 로그 이상</li>
-</ul>
-<p><strong>중요:</strong>
-피처 설계에 <strong>도메인 전문가 참여</strong> 필수!</p>
-<p><strong>전략 5: 딥러닝과의 앙상블</strong></p>
-<p>Beehive의 장점(설명 가능성) + DeepLog의 장점(정확도) 결합</p>
-<p><strong>아키텍처:</strong></p>
-<pre tabindex="0"><code>[로그 스트림]
-    ↓
-[병렬 처리]
-    ↓                    ↓
-[Beehive]           [DeepLog]
-- 15개 피처           - LSTM
-- 클러스터링          - 시퀀스 분석
-    ↓                    ↓
-[앙상블 결정]
-- 둘 다 알림 → Critical (즉시 대응)
-- Beehive만 → High (설명 가능, 우선 처리)
-- DeepLog만 → Medium (추가 조사)
-- 둘 다 정상 → Pass
-</code></pre><p><strong>장점:</strong></p>
+<pre tabindex="0"><code>  
+**설계 철학**  
+- 시그니처 불필요: 알려지지 않은 위협도 행위 패턴으로 탐지  
+- 확장성 우선: 일일 TB급 데이터 처리 가능한 효율적 알고리즘  
+- 실무 중심: SOC 분석가가 즉시 조사 가능한 actionable intelligence 제공  
+  
+### 2. 연구 가설  
+  
+이 논문은 전통적인 가설 검증 연구가 아니므로 명시적 가설이 없으나, **암묵적 가정(Assumptions)**을 다음과 같이 정리할 수 있다:  
+  
+| 가정 | 내용 | 근거 |  
+|------|------|------|  
+| **A1: Enterprise Behavior Constraint** | 엔터프라이즈 환경의 호스트 행위는 정책과 직원 업무 패턴으로 인해 일반 인터넷보다 훨씬 제약적이다 | 대부분 직원이 유사한 직무 수행 → 정상 행위 클러스터 형성 가능 |  
+| **A2: Outliers Indicate Threats** | 정상 행위에서 크게 벗어난 outlier는 멀웨어 감염 또는 정책 위반일 가능성이 높다 | 비지도 학습으로 사전 레이블 없이도 의심 활동 식별 가능 |  
+| **A3: Log Correlation Feasibility** | 타임스탬프 정규화와 IP-Host 매핑을 통해 이질적 로그를 호스트 단위로 통합 가능하다 | SIEM 수신 시각과 DHCP 로그를 활용한 시간적 상관관계 분석 |  
+| **A4: Feature Sufficiency** | 15개 피처(destination/host/policy/traffic-based)가 호스트의 보안 관련 행위를 충분히 표현한다 | EMC 내부 멀웨어 사례 및 정책 위반 패턴 관찰 기반 설계 |  
+  
+### 3. 연구 방법론  
+  
+#### A. 데이터 수집 (Data Collection)  
+  
+**로그 소스**  
+| 로그 타입 | 수집 정보 | 용도 |  
+|-----------|----------|------|  
+| **Web Proxy** | 모든 외부 연결 (IP, 도메인, URL, HTTP 헤더, User-Agent, 평판 점수) | 외부 통신 행위 분석의 핵심 |  
+| **DHCP** | IP 할당/해제 이력 | IP-to-Host 매핑 |  
+| **VPN** | 원격 접속 로그 | 비정상 위치 접근 탐지 |  
+| **Windows Domain Controllers** | 인증 시도 로그 | Dedicated Host 식별, 계정 탈취 의심 |  
+| **Antivirus** | 멀웨어 스캔 결과 | 기존 도구와 비교 검증 |  
+  
+**데이터 규모 (EMC 기준)**  
+- 일일 평균 14억 건의 로그 메시지  
+- 일일 약 1TB의 로그 데이터  
+- 웹 프록시 로그: 일일 3억 건 (600GB)  
+  
+**로그의 특성 및 문제점**  
+- 비표준 타임스탬프: 장비별로 로컬 시간, UTC 등 혼재  
+- 식별자 불일치: IP 주소, 호스트명, 사용자명 혼용  
+- 데이터 누락/순서 뒤바뀜: 네트워크 지연, 버퍼링  
+- 웹 프록시 경고 페이지: 알려지지 않은 사이트 접속 시 사용자가 정책 동의해야 접근 가능 (Challenged → Consented)  
+  
+#### B. 데이터 정규화 (Data Normalization)  
+  
+**B1. 타임스탬프 정규화**  
+  
+문제: 글로벌 엔터프라이즈에서 장비들이 다른 타임존 사용  
+</code></pre><p>해결책:</p>
 <ol>
-<li>Beehive가 놓친 것을 DeepLog이 잡음</li>
-<li>DeepLog 결과를 Beehive 피처로 해석</li>
-<li>최고의 탐지율 + 설명 가능성</li>
+<li>SIEM이 로그 수신 시각 t_siem 기록 (UTC)</li>
+<li>각 장비별로 Δ_i = t_siem,i - t_device,i 계산 (30분 단위로 반올림)</li>
+<li>다수를 차지하는 Δ_correction 값 식별</li>
+<li>정규화: t_normalized,i = t_device,i + Δ_correction</li>
 </ol>
-<p><strong>실무 예시:</strong></p>
-<pre tabindex="0"><code>Case: DeepLog이 이상 탐지했지만 원인 불명
-
-Beehive 피처 확인:
-- F1 (New Destinations): 5개 (정상)
-- F5 (New User-Agent): 3개 (약간 높음)
-- F12 (Connection Spikes): 150개 (매우 높음)
-
-분석가 판단:
-&#34;Connection Spikes가 원인이구나. 
-특정 시간대에 트래픽 폭증. 
-DDoS 공격 또는 데이터 exfiltration 의심.&#34;
-</code></pre><p>DeepLog 단독으로는 알 수 없었던 것을 Beehive 피처로 설명!</p>
-<h4 id="b-도입-로드맵">B. 도입 로드맵<a hidden class="anchor" aria-hidden="true" href="#b-도입-로드맵">#</a></h4>
-<p><strong>Short-term (1-3개월): 파일럿</strong></p>
-<pre tabindex="0"><code>Month 1: 준비
-- 대상 시스템 선정 (명확한 워크플로우 1개)
-- SIEM 로그 수집 확인
-- 화이트리스트 구축 (1주)
-- 히스토리 구축 시작 (4주)
-
-Month 2: 파일럿 가동
-- Beehive 탐지 시작
-- 매일 인시던트 수동 검증
-- 오탐 패턴 식별
-
-Month 3: 정제
-- 화이트리스트 정제
-- 오탐률 20% 이하로 감소
-- 효과 측정 (MTTD, MTTR)
-</code></pre><p><strong>Mid-term (3-6개월): 확장</strong></p>
-<pre tabindex="0"><code>Month 4-5: 추가 시스템
-- 3-5개 핵심 시스템에 확장
-- 조직 특화 피처 3개 추가
-- SOAR 연동 (자동 티켓팅)
-
-Month 6: 안정화
-- 월간 리포트 생성
-- 경영진 보고 (ROI 계산)
-- SOC 프로세스 공식화
-</code></pre><p><strong>Long-term (6-12개월): 최적화</strong></p>
-<pre tabindex="0"><code>Month 7-9: 고도화
-- 시간 해상도 4시간으로 개선
-- DeepLog 하이브리드 테스트
-- 외부 위협 인텔리전스 통합
-
-Month 10-12: 전사 확산
-- 다른 사업부/지역으로 확대
-- Best Practice 문서화
-- 지속적 개선 프로세스 수립
-</code></pre><hr>
-<h3 id="5-개인-인사이트-personal-insight">5. 개인 인사이트 (Personal Insight)<a hidden class="anchor" aria-hidden="true" href="#5-개인-인사이트-personal-insight">#</a></h3>
-<p><strong>Day 4를 읽고 느낀 점:</strong></p>
-<p><strong>1. 솔직한 한계 인정의 가치</strong></p>
-<p>논문이 자신의 한계를 명확히 인정한다:</p>
+<pre tabindex="0"><code>효과: 모든 로그를 UTC 기준으로 통일하여 시간적 상관관계 분석 가능  
+  
+**B2. IP-to-Host 매핑 (DHCP 기반)**  
+  
+문제: DHCP로 동적 IP 할당 → 같은 IP가 시간에 따라 다른 호스트에 할당됨  
+  
+해결책:  
+</code></pre><ol>
+<li>DHCP 서버 로그 분석</li>
+<li>바인딩 DB 구축: {IP, hostname, MAC, start_time, end_time}</li>
+<li>로그의 (IP, timestamp) → hostname 매핑</li>
+<li>매일 업데이트하여 최신 바인딩 유지</li>
+</ol>
+<pre tabindex="0"><code>  
+**B3. 정적 IP 자동 탐지**  
+  
+문제: 정적 IP 목록이 없거나 오래됨  
+  
+Bootstrap 알고리즘:  
+</code></pre><ol>
+<li>A = 모든 로그에서 발견된 IP 집합</li>
+<li>D = DHCP/VPN 로그의 동적 IP 집합</li>
+<li>S = A - D (잠재적 정적 IP)</li>
+<li>S의 각 IP에 대해 역방향 DNS 조회 → hostname 저장</li>
+</ol>
+<pre tabindex="0"><code>  
+정제 알고리즘 (매일 실행):  
+</code></pre><ol>
+<li>새로운 로그로 A, D 업데이트</li>
+<li>S = A - D 재계산</li>
+<li>S의 각 IP 역방향 DNS 조회</li>
+<li>이전 hostname과 비교:
 <ul>
-<li>&ldquo;Ground Truth 없어서 정확한 평가 어렵다&rdquo;</li>
-<li>&ldquo;일 단위 배치라 실시간 대응 못한다&rdquo;</li>
-<li>&ldquo;오탐률 35%는 높다&rdquo;</li>
+<li>변경됨 → S에서 제거 (동적 IP였음)</li>
+<li>동일함 → S에 유지 (정적 IP 확률 높음)</li>
 </ul>
-<p>이런 솔직함이 오히려 <strong>신뢰를 높인다</strong>.</p>
-<p>실무자 입장에서는:</p>
+</li>
+</ol>
+<pre tabindex="0"><code>  
+**B4. Dedicated Host 식별**  
+  
+목적: 단일 사용자가 주로 사용하는 호스트만 분석 (공용 호스트 제외)  
+  
+방법:  
+</code></pre><ol>
+<li>Windows 도메인 컨트롤러의 인증 로그 3개월간 수집</li>
+<li>각 호스트별로 사용자별 인증 빈도 계산</li>
+<li>단일 사용자 인증이 95% 이상 → Dedicated Host로 분류</li>
+</ol>
+<pre tabindex="0"><code>  
+결과: EMC에서 78,000대 이상의 Dedicated Host 식별  
+  
+#### C. 피처 추출 (Feature Extraction)  
+  
+**피처 설계 원칙**  
+- EMC 내부의 알려진 멀웨어 행위 및 정책 위반 패턴 관찰 기반  
+- 엔터프라이즈 환경 특성 활용: 엄격한 방화벽, 업무 중심 활동, 동질적 소프트웨어 구성  
+- 호스트별 일일 15개 피처 벡터 생성  
+  
+**15개 피처 상세**  
+  
+**C1. Destination-Based Features (4개)**  
+  
+핵심 아이디어: 새롭거나 드문 외부 목적지 접속은 의심스러움 (C&amp;C 서버, 손상된 사이트)  
+  
+| 피처 | 설명 | 계산 방법 |  
+|------|------|-----------|  
+| **F1: New Destinations** | 처음 접속하는 외부 목적지 수 | 1개월 히스토리에 없는 도메인 수 |  
+| **F2: New Dests w/o Whitelisted Referer** | Whitelisted Referer 없이 접속한 새 목적지 수 | F1 중 HTTP Referer가 화이트리스트에 없는 경우 |  
+| **F3: Unpopular Raw IP Dests** | Unpopular한 IP 주소 목적지 수 | 화이트리스트 외 IP 주소 접속 수 |  
+| **F4: Fraction of Unpopular Raw IP** | 전체 unpopular 목적지 중 IP 주소 비율 | F3 / (total unpopular destinations) |  
+  
+화이트리스트 구축:  
+- 1주일 학습 기간 동안 100대 이상 호스트가 접속한 도메인/서브넷  
+- 결과: 일일 3억 건 로그 → 8천만 건으로 74% 감축  
+  
+도메인 &#34;Folding&#34;:  
+- 2nd-level 도메인으로 통합 (random subdomain 필터링)  
+- favicon 요청 무시  
+- Raw IP는 해석하지 않고 항상 &#34;new&#34;로 간주  
+- 최적화 후: 일일 처리 시간 15시간 → 5시간, 히스토리 크기 4.3M → 2.7M (4개월)  
+  
+**C2. Host-Based Feature (1개)**  
+  
+| 피처 | 설명 | 계산 방법 |  
+|------|------|-----------|  
+| **F5: New User-Agent Strings** | 새로운 User-Agent 문자열 수 | 호스트별 UA 히스토리(1개월)에서 Edit Distance로 비교 |  
+  
+근거: 엔터프라이즈는 소프트웨어 구성이 동질적 → 새 UA는 무단 소프트웨어 설치 의심  
+  
+**C3. Policy-Based Features (6개)**  
+  
+웹 프록시 정책 단계:  
+1. **Blocked**: 낮은 평판 또는 금지 카테고리 → 자동 차단  
+2. **Challenged**: 미분류 사이트 → 경고 페이지 표시  
+3. **Consented**: 사용자가 정책 동의 클릭 후 접속  
+  
+| 피처 | 설명 |  
+|------|------|  
+| **F6: Blocked Domains** | 차단된 도메인 수 |  
+| **F7: Blocked Connections** | 차단된 연결 수 |  
+| **F8: Challenged Domains** | 경고 받은 도메인 수 |  
+| **F9: Challenged Connections** | 경고 받은 연결 수 |  
+| **F10: Consented Domains** | 동의 후 접속한 도메인 수 |  
+| **F11: Consented Connections** | 동의 후 접속한 연결 수 |  
+  
+**C4. Traffic-Based Features (4개)**  
+  
+정의:  
+- **Spike**: 1분 동안 비정상적으로 높은 트래픽 발생  
+- **Burst**: 연속된 spike 구간  
+  
+임계값 설정 (1주일 전체 Dedicated Host 분석):  
+</code></pre><p>Connection Spike 임계값: 101 connections/min (90% 백분위수)<br>
+Domain Spike 임계값: 17 domains/min (90% 백분위수)<br>
+Burst 내부 Spike 임계값 (완화): 26 connections/min, 6 domains/min (75% 백분위수)</p>
+<pre tabindex="0"><code>  
+| 피처 | 설명 |  
+|------|------|  
+| **F12: Connection Spikes** | Connection spike 발생 횟수 |  
+| **F13: Domain Spikes** | Domain spike 발생 횟수 |  
+| **F14: Connection Bursts** | 가장 긴 connection burst 지속 시간 |  
+| **F15: Domain Bursts** | 가장 긴 domain burst 지속 시간 |  
+  
+#### D. 탐지 알고리즘 (Detection via Clustering)  
+  
+**D1. PCA (Principal Component Analysis)**  
+  
+목적: 피처 간 의존성 제거 및 차원 축소  
+- 예: Domain spike 발생 시 connection spike도 발생 (상관관계)  
+  
+방법:  
+</code></pre><ol>
+<li>각 호스트를 15차원 벡터 v = (v[1], &hellip;, v[15])로 표현</li>
+<li>PCA로 주성분 추출</li>
+<li>데이터 분산의 95% 이상 보존하는 상위 m개 주성분 선택</li>
+<li>원본 벡터를 m차원으로 투영</li>
+</ol>
+<pre tabindex="0"><code>  
+**D2. Modified K-means Clustering**  
+  
+기존 K-means 문제: 클러스터 수 k를 사전 지정 필요  
+  
+Beehive의 변형 알고리즘:  
+</code></pre><ol>
+<li>
+<p>무작위로 벡터 하나를 첫 클러스터 허브로 선택<br>
+모든 벡터를 이 클러스터에 할당</p>
+</li>
+<li>
+<p>자신의 허브에서 가장 먼 벡터를 새 허브로 선택<br>
+모든 벡터를 가장 가까운 허브에 재할당</p>
+</li>
+<li>
+<p>반복 종료 조건:<br>
+모든 벡터가 자신의 허브로부터의 거리 &lt; (평균 허브 간 거리)/2</p>
+</li>
+<li>
+<p>거리 측정: L1 distance (Manhattan distance)<br>
+L1Dist(v1, v2) = Σ|v1[i] - v2[i]|</p>
+</li>
+</ol>
+<pre tabindex="0"><code>  
+결과:  
+- 1회 반복 후: 대다수 호스트 → 하나의 큰 정상 클러스터  
+- 나머지: 소수의 outlier 클러스터 (의심 활동)  
+  
+**Extreme Outlier 처리**:  
+</code></pre><p>IF 클러스터가 2개만 생성됨 (하나는 단일 노드, 나머지는 전부):<br>
+가장 큰 클러스터에 PCA + 클러스터링 재적용<br>
+최소 50개 outlier 호스트 식별될 때까지 반복</p>
+<pre tabindex="0"><code>  
+**인시던트 생성**:  
+- 클러스터는 outlier 정도에 따라 자연스럽게 순서화됨 (가장 먼 노드부터 식별)  
+- 상위 outlier 호스트들을 인시던트로 보고  
+- SOC 분석가에게 전달  
+  
+### 4. SOC 관점 인사이트  
+  
+**방법론의 실무 적용성**  
+  
+장점:  
+1. **확장성**: 일일 TB급 데이터를 5시간 내 처리 (타임스탬프 정규화 + 화이트리스팅 최적화)  
+2. **설명 가능성**: 15개 명확한 피처 → SOC 분석가가 왜 의심스러운지 즉시 이해 가능 (vs. DeepLog 블랙박스)  
+3. **레이블 불필요**: 비지도 학습으로 사전 학습 데이터 없이도 적용 가능  
+4. **엔터프라이즈 특화**: 일반 인터넷 환경에서는 작동 안 함 → 기업 정책/행위 제약 활용  
+  
+한계:  
+1. **Ground Truth 부재**: 실제 평가는 수동 검증 의존 (다음 Day 3에서 다룰 예정)  
+2. **초기 학습 기간**: 히스토리 구축에 1개월, 화이트리스트에 1주일 필요  
+3. **정적 환경 가정**: 조직 구조/정책 급변 시 재학습 필요  
+  
+**기존 SOC 툴과의 차별점**  
+  
+| 도구 | 탐지 방식 | 강점 | 약점 |  
+|------|-----------|------|------|  
+| **SIEM (기존)** | 시그니처 + 룰 기반 | 알려진 위협 정확히 탐지 | 신규/변종 놓침 |  
+| **Antivirus** | 시그니처 기반 | 알려진 멀웨어 차단 | 제로데이 무력 |  
+| **Beehive** | 행위 기반 클러스터링 | 미지의 위협 탐지, 정책 위반 식별 | 오탐 가능성 (수동 검증 필요) |  
+  
+**SOC Workflow 통합 전략**  
+</code></pre><p>[Tier 1: Automated Detection]<br>
+SIEM Alerts + AV Alerts + Beehive Daily Incidents<br>
+↓<br>
+[Tier 2: Triage &amp; Investigation]</p>
 <ul>
-<li>언제 쓰고 언제 안 쓸지 판단 가능</li>
-<li>도입 시 예상되는 문제 미리 대비</li>
-<li>&ldquo;만능 도구&quot;가 아니라는 걸 알고 시작</li>
+<li>Beehive 클러스터 컨텍스트 확인 (평균 피처, 호스트 수)</li>
+<li>원본 로그 조회 (UA, HTTP status, referer, 타이밍)</li>
+<li>외부 평판 체크 (McAfee SiteAdvisor, URLVoid, DomainTools)<br>
+↓<br>
+[Tier 3: Incident Response]</li>
+<li>악성 확인 → 격리/치료</li>
+<li>정책 위반 → HR 통보</li>
+<li>의심 활동 → 상위 SOC로 에스컬레이션</li>
 </ul>
-<p>학계에서는 이런 솔직함이 드물다. 대부분 &ldquo;우리가 최고!&ldquo;만 외치는데&hellip;</p>
-<p><strong>2. 시간 해상도의 근본적 딜레마</strong></p>
-<p>일 단위 vs. 실시간</p>
-<pre tabindex="0"><code>일 단위:
-- 장점: 대용량 처리 가능, 안정적, 설명 가능
-- 단점: 빠른 공격 대응 못함
-
-실시간:
-- 장점: 즉시 대응, Dwell Time 최소화
-- 단점: 계산 비용 높음, 안정성 낮음, 설명력 떨어짐
-</code></pre><p><strong>정답은 없다. Trade-off다.</strong></p>
-<p>실무에서는 <strong>계층화된 방어</strong>가 답인 것 같다:</p>
+<pre tabindex="0"><code>  
+**다음 학습 방향 (Day 3 Preview)**  
+- Beehive가 실제 EMC 환경에서 2주간 생성한 784건의 인시던트 분석 결과  
+- 멀웨어, 정책 위반, 오탐 분류 비율  
+- 기존 보안 도구와의 비교 검증  
+  
+# Research Review: Beehive: Large-Scale Log Analysis for Detecting Suspicious Activity in Enterprise Networks  
+  
+&gt; **Analyzed Date:** 2025.12.31  
+&gt; **Keywords:** SOC, Log Analysis, Enterprise Security, Anomaly Detection, Clustering  
+&gt; **Source:** ACSAC &#39;13, 2013, pp.199-208 [Link](https://doi.org/10.1145/2523649.2523670)  
+  
+---  
+  
+## Day 3 – Empirical Results and Hypothesis Testing  
+*(실전 검증: 784건의 인시던트가 말하는 것)*  
+  
+### 1. 평가 환경 (Experimental Setup)  
+  
+#### A. EMC 테스트베드  
+  
+**시스템 규모:**  
+- 기간: 2013년 4월 22일 ~ 5월 5일 (2주)  
+- 데이터: 6TB 이상의 로그 데이터  
+- 일일 평균: 14억 건의 로그 메시지 (약 1TB)  
+  
+**분석 대상:**  
+- 웹 프록시 로그: 일일 3억 건 (600GB)  
+- DHCP, VPN, 도메인 컨트롤러, 안티바이러스 로그  
+- Dedicated Hosts: 78,000대 이상  
+  
+**활성 호스트 수:**  
+- 평일: 27,000~35,000대  
+- 주말: 9,000~10,100대  
+  
+**실험 전략:**  
+능동적 공격 주입이 아닌 **실제 운영 환경의 자연스러운 위협 탐지**에 집중. 이게 핵심이다. 실험실에서 만든 가짜 공격이 아니라, 진짜 회사에서 돌아가는 시스템의 진짜 로그를 분석한다.  
+  
+---  
+  
+### 2. 주요 발견 (Key Findings)  
+  
+#### A. 전체 인시던트 통계  
+  
+**생성된 인시던트:**  
+- 총 784건 (2주간)  
+- 평균 56건/일  
+- 표준편차 6.88 → 일별 변동이 크지 않음  
+  
+**기존 도구와의 비교:**  
+- 784건 중 단 8건만 기존 보안 도구가 탐지 (1.02%)  
+- **776건(98.98%)은 Beehive만 발견!**  
+  
+이게 정말 놀라운 부분이다. 최신 안티바이러스, SIEM, 방화벽 다 돌아가는 환경에서도 Beehive가 거의 모든 새로운 이상을 찾아냈다.  
+  
+#### B. 클러스터링 패턴의 특성  
+  
+**Modified K-means 결과:**  
+- 1회 반복 후: 대다수 호스트 → 하나의 큰 정상 클러스터  
+- 나머지: 소수의 outlier 클러스터 (의심 활동)  
+  
+**흥미로운 관찰:**  
+클러스터가 자연스럽게 **행위 유형별로 분리**된다. 예를 들어:  
+- Cluster 3: 차단된 사이트 과다 접근  
+- Cluster 6: DGA 멀웨어 (4대 모두!)  
+- Cluster 8: DGA 멀웨어 (다른 변종)  
+  
+같은 문제를 가진 호스트들이 알아서 모인다는 게 신기하다.  
+  
+---  
+  
+### 3. 인시던트 분류 결과  
+  
+논문에서는 784건을 수동으로 일일이 조사했다. EMC의 SOC 팀과 협업해서 2단계 검증 프로세스를 거쳤다고 한다.  
+  
+#### A. 1차 분류: 연구팀 수동 레이블링  
+  
+| 카테고리 | 건수 | 비율 | 의미 |  
+|----------|------|------|------|  
+| **Malware** | 117 | 14.92% | 확인된 멀웨어 감염 |  
+| **Suspicious** | 81 | 10.33% | 원인 불명, 추가 조사 필요 |  
+| **Policy Violation** | 309 | 39.41% | 회사 정책 위반 |  
+| **Other (비악성)** | 277 | 35.33% | 오탐 또는 비악성 자동화 |  
+  
+**첫 느낌:**  
+- 실제 위협(Malware + Suspicious): 25.25% → 4건 중 1건은 진짜 문제!  
+- 정책 위반: 거의 40% → 컴플라이언스 관리 도구로도 쓸 수 있겠다  
+- 오탐: 35% → 이건 좀 많은데, 어떻게 줄일까?  
+  
+#### B. 정책 위반 상세 분류  
+  
+**가장 많이 탐지된 정책 위반:**  
+  
+| 위반 유형 | 건수 | 비율 | 설명 |  
+|-----------|------|------|------|  
+| **Blocked sites** | 133 | 16.96% | 차단된 사이트 반복 접근 시도 |  
+| **Streaming** | 86 | 10.96% | 대용량 비디오 스트리밍 (YouTube, Netflix 등) |  
+| **Instant Messaging** | 56 | 7.14% | 비승인 메신저 (Skype, WhatsApp 등) |  
+| **Gaming** | 13 | 1.65% | 온라인 게임 |  
+| **Remote access** | 8 | 1.02% | TeamViewer 같은 원격 접속 도구 |  
+| **Pornography** | 6 | 0.76% | 성인 콘텐츠 |  
+| **Proxy** | 4 | 0.51% | 프록시로 방화벽 우회 시도 |  
+| **File sharing** | 2 | 0.25% | P2P 파일 공유 |  
+| **Tunneling** | 1 | 0.12% | VPN 터널링 서비스 |  
+  
+**실무 시사점:**  
+정책 위반 중 스트리밍이 가장 많다는 게 재미있다. 직원들이 회사에서 유튜브 보는 걸 자동으로 잡아낸다. HR 팀이 좋아할 듯.  
+  
+#### C. 비악성 오탐 분류  
+  
+35.33%가 오탐이라고 했는데, 자세히 보면:  
+  
+| 오탐 유형 | 건수 | 비율 | 원인 |  
+|-----------|------|------|------|  
+| **Automated processes** | 157 | 20.02% | 자동화 스크립트 (뉴스 크롤러, 금융 데이터 수집 등) |  
+| **Browsing (정상)** | 63 | 8.03% | 매우 활발한 정상 브라우징 |  
+| **Uncategorized sites** | 57 | 7.27% | 평판 정보 없는 신규 사이트 |  
+  
+**핵심 인사이트:**  
+대부분 오탐이 &#34;자동화 프로세스&#34;다. 예를 들어:  
+- 금융 팀이 돌리는 시장 데이터 수집 스크립트  
+- DevOps 팀의 모니터링 도구  
+- 뉴스 사이트 크롤러  
+  
+이런 건 **화이트리스트에 등록**하면 해결된다. 오탐률 35% → 15% 정도로 줄일 수 있을 것 같다.  
+  
+---  
+  
+### 4. 멀웨어 탐지 성과 분석  
+  
+#### A. DGA 기반 멀웨어의 완벽한 포착  
+  
+**4월 24일 사례: Cluster 6**  
+  
+논문에서 가장 인상적인 부분이다. Cluster 6을 보면:  
+  
+**호스트 4대의 피처 벡터:**  
+</code></pre><p>Host 1: F1=247, F2=247, F8=156, F9=163<br>
+Host 2: F1=200, F2=200, F8=142, F9=170<br>
+Host 3: F1=239, F2=239, F8=153, F9=177<br>
+Host 4: F1=214, F2=214, F8=142, F9=147</p>
+<pre tabindex="0"><code>  
+**해석:**  
+- F1 (New Destinations): 200~247개 → 하루에 200개 넘는 새 도메인 접속  
+- F2 (New Dests w/o Referer): F1과 거의 동일 → HTTP Referer 없이 직접 접속  
+- F8, F9 (Challenged Domains/Connections): 100개 이상 → 경고 페이지 받음  
+  
+**판정:**  
+전형적인 **DGA (Domain Generation Algorithm) 멀웨어**!  
+  
+봇넷이 C&amp;C 서버를 찾기 위해 무작위로 생성한 수백 개 도메인에 접속 시도. 대부분은 존재하지 않아서 실패하지만, 몇 개는 실제 C&amp;C 서버로 연결된다.  
+  
+**기존 도구 결과:**  
+- 안티바이러스: 탐지 못함 (제로데이 변종으로 추정)  
+- 방화벽: 일부 C&amp;C 도메인 차단했지만 감염 자체는 모름  
+- SIEM: 너무 많은 로그라 못 봄  
+  
+**Beehive 결과:**  
+- Cluster 6의 4대 호스트 **전부** 감염으로 확인  
+- 같은 날 Cluster 1, 8에서도 DGA 멀웨어 발견  
+- 총 10개 이상의 감염 호스트 식별  
+  
+**왜 Beehive가 잡았을까?**  
+  
+Destination-based features (F1, F2)가 핵심이다:  
+- 정상 호스트: 하루에 새 도메인 10~20개 접속  
+- DGA 감염 호스트: 하루에 200개 이상  
+  
+이 차이가 너무 명확해서 클러스터링에서 자동으로 분리된다.  
+  
+#### B. 기타 멀웨어 탐지  
+  
+DGA 외에도:  
+- **Adware/Spyware**: 35건 (Suspicious 중)  
+- **기타 멀웨어**: 9건 (Suspicious 중)  
+  
+총 117건의 확인된 멀웨어 중 대부분이 **기존 AV가 못 잡은 것들**이다.  
+  
+---  
+  
+### 5. 클러스터 상세 분석: 4월 24일 사례  
+  
+논문 Figure 4를 보면 4월 24일에 생성된 15개 outlier 클러스터의 normalized feature vector가 나온다.  
+  
+#### 클러스터별 특징  
+  
+**Cluster 3: 정책 위반 - 차단 사이트 과다 접근**  
+  
+피처 벡터 예시 (2개 호스트):  
+</code></pre><p>Host A: F6=4, F7=47,833, F12=386, F13=96<br>
+Host B: F6=11, F7=25,479, F12=309, F13=6</p>
+<pre tabindex="0"><code>  
+**해석:**  
+- F7 (Blocked Connections): 25,000~48,000건! → 하루 종일 차단된 사이트 접속 시도  
+- F12 (Connection Spikes): 300개 이상 → 1분에 100개 이상 연결하는 순간이 300번  
+- F13 (Domain Spikes): 6~96개  
+  
+**판정:**  
+자동화 스크립트가 차단된 사이트 목록을 무차별 시도하는 것으로 추정. 악의적이라기보다는 설정 오류일 가능성.  
+  
+**Cluster 6: DGA 멀웨어 (이미 위에서 설명)**  
+  
+**Cluster 8: 또 다른 DGA 멀웨어**  
+  
+Cluster 6과 유사하지만 약간 다른 패턴:  
+- New Destinations가 100~150개 (Cluster 6보다 적음)  
+- 다른 DGA 알고리즘 또는 다른 봇넷으로 추정  
+  
+**인사이트:**  
+같은 유형의 위협이라도 미묘한 차이로 여러 클러스터로 나뉜다. 이게 오히려 좋다. 서로 다른 멀웨어 변종을 구분할 수 있으니까.  
+  
+---  
+  
+### 6. SOC 2차 검증 결과  
+  
+81건의 &#34;Suspicious&#34; 인시던트를 EMC SOC 팀에 보냈다. 이들은 원인을 파악할 수 없어서 SOC에 도움을 요청한 케이스다.  
+  
+**SOC 팀의 판정:**  
+  
+| SOC 판정 | 건수 | 비율 | 설명 |  
+|----------|------|------|------|  
+| **Adware/Spyware** | 35 | 43.21% | 애드웨어/스파이웨어 확인 |  
+| **Further investigation** | 26 | 32.09% | 여전히 의심스러움, 심층 조사 필요 |  
+| **Other malware** | 9 | 11.11% | 기타 악성코드 |  
+| **Policy Violation** | 4 | 4.93% | 재분류 (Gaming, IM, Streaming) |  
+| **Uncategorized sites** | 7 | 8.64% | 비악성 미분류 사이트 |  
+  
+**핵심 통계:**  
+- 실제 위협: 54.32% (Adware + Other malware)  
+- 미지의 위협: 32.09% (아직도 확실하지 않음)  
+- 재분류: 4.93%  
+  
+**&#34;Further investigation&#34; 26건이 흥미롭다.**  
+  
+SOC 팀도 원인을 확실히 못 찾았다는 뜻이다. 이것들은:  
+- 미지의 제로데이 위협일 수도 있고  
+- 아주 교묘한 APT일 수도 있고  
+- 아니면 정말 특이한 정상 행위일 수도 있다  
+  
+어쨌든 **추가 포렌식 조사가 필요한 진짜 suspicious 케이스**다.  
+  
+---  
+  
+### 7. 설명 가능성의 실전 가치  
+  
+#### A. &#34;왜 의심스러운가?&#34;를 즉시 알 수 있다  
+  
+**Beehive의 출력:**  
+</code></pre><p>Incident: Host XYZ<br>
+Cluster: 6<br>
+Cluster size: 4 hosts<br>
+Distinctive features:</p>
 <ul>
-<li>실시간 레이어 (IDS/IPS)</li>
-<li>배치 레이어 (Beehive)</li>
-<li>주간 레이어 (Threat Hunting)</li>
+<li>F1 (New Destinations): 247 (cluster avg: 225, normal: 15)</li>
+<li>F2 (New Dests w/o Referer): 247 (cluster avg: 225, normal: 10)</li>
+<li>F8 (Challenged Domains): 156 (cluster avg: 148, normal: 2)</li>
 </ul>
-<p>각자 역할이 다르다.</p>
-<p><strong>3. UEBA 시장 형성의 의미</strong></p>
-<p>Beehive (2013) → Gartner UEBA 정의 (2015) → UEBA 벤더 탄생 (2015~)</p>
-<p>논문 하나가 <strong>산업 전체를 바꿨다</strong>.</p>
-<p>이게 학술 연구의 진짜 가치다:</p>
+<pre tabindex="0"><code>  
+**분석가가 얻는 정보:**  
+1. 이 호스트는 하루에 247개의 새 도메인 접속 (정상은 15개)  
+2. 그 중 247개 모두 HTTP Referer 없음 (직접 접속)  
+3. 156개 도메인에서 회사 경고 페이지 받음  
+  
+**즉시 판단:**  
+&#34;DGA 멀웨어 가능성 높음. 봇넷이 C&amp;C 서버 찾는 중.&#34;  
+  
+**조치 시간:**  
+- 기존 방식: 로그 뒤져서 패턴 찾기 → 2~4시간  
+- Beehive: 피처 값 보고 즉시 판단 → 5~10분  
+  
+**MTTR (Mean Time To Respond) 대폭 감소!**  
+  
+#### B. PCA 방법과의 비교  
+  
+논문에서 PCA 기반 이상탐지와 비교했다.  
+  
+**PCA 출력:**  
+</code></pre><p>Incident: Host XYZ<br>
+Anomaly score: 3.7σ<br>
+Principal component 3 value exceeds threshold</p>
+<pre tabindex="0"><code>  
+**분석가의 반응:**  
+&#34;...뭐가 문제인데? Principal component 3이 뭘 의미하는데?&#34;  
+  
+**추가 작업 필요:**  
+다시 원본 로그를 뒤져서 무엇이 비정상인지 수동으로 찾아야 함.  
+  
+**차이점:**  
+- Beehive: 즉시 대응 가능한 actionable intelligence  
+- PCA: 추가 분석 필수  
+  
+이게 &#34;설명 가능성&#34;의 실전 가치다.  
+  
+---  
+  
+### 8. 오탐(False Positive) 심층 분석  
+  
+35.33%가 오탐이라는 건 솔직히 좀 많다. 하지만 논문에서 **오탐의 유형**을 분석한 부분이 중요하다.  
+  
+#### A. 오탐 유형별 분석  
+  
+**1. 자동화 프로세스 (20.02%)**  
+  
+예시:  
+- 금융팀의 실시간 주가 데이터 크롤러  
+- 뉴스 사이트 RSS 수집기  
+- 모니터링 도구의 health check  
+  
+**특징:**  
+- 동일 사이트에 수만 건 연결 (F12: Connection Spikes 높음)  
+- 하지만 접속하는 사이트는 정상 (뉴스, 금융)  
+  
+**해결책:**  
+해당 호스트/사용자를 화이트리스트에 등록하면 끝.  
+  
+**2. 과도한 정상 브라우징 (8.03%)**  
+  
+예시:  
+- 마케팅 팀원이 경쟁사 조사하느라 하루 종일 웹서핑  
+- Consented Connections가 수천 건  
+  
+**특징:**  
+- 사용자가 회사 정책 경고 페이지에서 &#34;동의&#34; 클릭  
+- 실제로는 정상 업무  
+  
+**해결책:**  
+Consented Connections 임계값을 높이거나, 특정 직무(마케팅, 리서치)는 예외 처리.  
+  
+**3. 미분류 사이트 (7.27%)**  
+  
+예시:  
+- 새로 생긴 클라우드 서비스  
+- 스타트업 홈페이지  
+- 개인 블로그  
+  
+**특징:**  
+- 평판 정보 없음 (McAfee SiteAdvisor에 없음)  
+- 하지만 실제로는 무해  
+  
+**해결책:**  
+시간이 지나면 평판 DB가 업데이트됨. 또는 수동으로 화이트리스트 추가.  
+  
+#### B. 오탐 관리 전략  
+  
+**핵심 아이디어: 오탐의 &#34;유형 수&#34;가 중요**  
+  
+논문에서 강조하는 부분:  
+- 오탐 **개수** 908건 (많아 보임)  
+- 하지만 오탐 **유형**: 단 3가지!  
+  1. 자동화 프로세스  
+  2. 과도한 브라우징  
+  3. 미분류 사이트  
+  
+**실무 적용:**  
+</code></pre><p>Week 1: 분석가가 오탐 3가지 유형 식별<br>
+Week 2: 각 유형별 억제 규칙 작성<br>
+Week 3~: 동일 유형 오탐 자동 필터링</p>
+<pre tabindex="0"><code>  
+**결과:**  
+- 오탐률 35% → 5~10%로 감소 예상  
+- 분석가 부담 대폭 감소  
+  
+이게 PCA보다 나은 점이다. PCA는 오탐 원인을 알 수 없어서 억제 규칙을 못 만든다.  
+  
+---  
+  
+### 9. SOC 관점 실무 인사이트  
+  
+#### A. 탐지 측면  
+  
+**성공 사례:**  
+  
+1. **DGA 멀웨어 완벽 탐지**  
+   - 기존 AV 미탐지  
+   - Destination-based features (F1, F2)가 핵심  
+   - 클러스터링으로 집단 감염까지 식별  
+  
+2. **정책 위반 자동 식별**  
+   - 39.41%가 정책 위반  
+   - HR 팀과 연계 가능  
+   - 컴플라이언스 자동화  
+  
+3. **제로데이 대응**  
+   - 시그니처 없이도 비정상 행위로 탐지  
+   - 117건 멀웨어 중 대부분이 신규/변종  
+  
+**개선 필요:**  
+  
+1. **오탐률 관리**  
+   - 35% → 화이트리스트로 15% 이하로 줄여야  
+  
+2. **Bitcoin mining 같은 자동화**  
+   - 악의적인가? 단순 리소스 낭비인가?  
+   - 정책 결정 필요  
+  
+#### B. 대응 측면  
+  
+**우선순위화 전략:**  
+  
+논문 결과를 바탕으로 SOC 워크플로우 설계:  
+  
+</code></pre><p>[Critical - 즉시 대응]<br>
+Malware (14.92%) + Suspicious (10.33%) = 25.25%<br>
+→ 일일 약 14건<br>
+→ Tier 2 분석가가 즉시 처리</p>
+<p>[High - 당일 처리]<br>
+보안 위협 정책 위반 (Proxy, Tunneling, Remote access) = 1.65%<br>
+→ 일일 약 1건<br>
+→ 당일 내 처리</p>
+<p>[Medium - 주간 배치]<br>
+일반 정책 위반 (Streaming, IM) = 37.76%<br>
+→ 일일 약 21건<br>
+→ 주간 리뷰로 모아서 처리</p>
+<p>[Low - 월간 리뷰]<br>
+자동화 프로세스 = 35.33%<br>
+→ 트렌드 분석용</p>
+<pre tabindex="0"><code>  
+**티켓 자동 생성 템플릿:**  
+  
+</code></pre><p>제목: [Beehive] DGA 멀웨어 의심 - Host XYZ<br>
+심각도: CRITICAL<br>
+탐지 시각: 2013-04-24 09:32:15</p>
+<p>클러스터 정보:</p>
 <ul>
-<li>단순히 논문 쓰는 게 아니라</li>
-<li>실무 문제를 해결하고</li>
-<li>새로운 시장을 만든다</li>
+<li>Cluster 6 (4 hosts total)</li>
+<li>모두 동일 행위 패턴</li>
 </ul>
-<p>Beehive 저자들이 자랑스러울 만하다.</p>
-<p><strong>4. 설명 가능성의 재발견</strong></p>
-<p>2013: Beehive (해석 가능)
-2017-2021: 딥러닝 블랙박스 유행
-2022-현재: 다시 설명 가능성으로 회귀</p>
-<p><strong>왜 다시 돌아왔을까?</strong></p>
-<p>실무에서는 <strong>&ldquo;왜&quot;를 알아야</strong> 하기 때문이다:</p>
+<p>특징:</p>
 <ul>
-<li>SOC 분석가가 이해해야 대응 가능</li>
-<li>경영진에게 설명해야 예산 확보</li>
-<li>법적 책임 (GDPR 등) 때문에 설명 필수</li>
+<li>New Destinations: 247 (정상: 15)</li>
+<li>New Dests w/o Referer: 247 (정상: 10)</li>
+<li>Challenged Domains: 156 (정상: 2)</li>
 </ul>
-<p>딥러닝은 정확도는 높지만, &ldquo;왜&quot;를 설명 못한다.</p>
-<p>→ <strong>하이브리드 접근이 미래</strong></p>
-<p>Beehive의 피처 + DeepLog의 학습 능력 = 최선</p>
-<p><strong>5. 2013년 논문이 2024년에도 유효한 이유</strong></p>
-<p><strong>변하지 않은 것:</strong></p>
+<p>판정: DGA 기반 봇넷 의심</p>
+<p>권장 조치:</p>
+<ol>
+<li>호스트 네트워크 격리</li>
+<li>메모리 덤프 수집</li>
+<li>안티바이러스 전체 스캔</li>
+<li>C&amp;C 통신 흔적 확인</li>
+</ol>
+<pre tabindex="0"><code>  
+**즉시 대응 가능한 구체적 정보!**  
+  
+#### C. 분석 측면  
+  
+**클러스터 기반 분석의 장점:**  
+  
+1. **집단 감염 식별**  
+   - Cluster 6의 4대 호스트 모두 같은 멀웨어  
+   - 전파 경로 추적 가능  
+   - 추가 피해 차단  
+  
+2. **행위 유형 자동 분류**  
+   - 클러스터마다 명확한 행위 패턴  
+   - Cluster 3: 차단 사이트  
+   - Cluster 6: DGA  
+   - Cluster 8: 또 다른 DGA  
+  
+3. **정상 baseline 자동 학습**  
+   - 대다수 호스트가 큰 정상 클러스터 형성  
+   - 새 호스트가 어디에 속하는지 보면 정상/비정상 즉시 판단  
+  
+**Ground Truth 부재 해결 전략:**  
+  
+1. SOC 협업 2단계 검증  
+2. 외부 평판 서비스 (McAfee SiteAdvisor, URLVoid)  
+3. 시간에 따른 검증 (suspicious → 시간 지나면 명확해짐)  
+  
+---  
+  
+### 10. 개인 인사이트 (Personal Insight)  
+  
+**Day 3를 읽고 느낀 점:**  
+  
+**1. 98.98% 미탐의 의미**  
+  
+784건 중 776건을 기존 도구가 못 잡았다는 게 충격적이다.  
+  
+EMC는 보안에 투자를 많이 하는 회사다. 최신 안티바이러스, SIEM, 방화벽 다 있다. 그런데도 Beehive가 거의 모든 위협을 추가로 발견했다.  
+  
+→ **기존 도구는 &#34;알려진 위협&#34;만 잡는다는 증거**  
+  
+Beehive 같은 행위 기반 탐지가 필수인 이유가 명확해졌다.  
+  
+**2. 설명 가능성의 실전 가치**  
+  
+&#34;New Destinations 247개&#34; vs. &#34;Principal Component 3 값 3.7σ&#34;  
+  
+전자는 SOC 분석가가 즉시 이해하고 대응할 수 있다. 후자는 다시 로그를 뒤져야 한다.  
+  
+DeepLog을 먼저 공부했는데, 이제 두 접근법의 장단점이 명확하다:  
+- DeepLog: 복잡한 패턴, 높은 정확도  
+- Beehive: 명확한 워크플로우, 즉시 설명 가능  
+  
+→ **실무에서는 둘을 섞어 쓰는 게 답**  
+  
+**3. 오탐 35%를 어떻게 볼 것인가**  
+  
+처음엔 &#34;35%면 너무 많은 거 아냐?&#34;라고 생각했다.  
+  
+하지만 논문 분석을 보니:  
+- 오탐 유형이 단 3가지  
+- 화이트리스트로 대부분 해결 가능  
+- 시간이 지나면 15% 이하로 감소 예상  
+  
+→ **초기 오탐률보다 &#34;오탐 유형 수&#34;가 중요하다는 철학**  
+  
+PCA는 오탐 원인을 모르니 계속 발생. Beehive는 원인을 알아서 억제 가능.  
+  
+**4. DGA 탐지의 완벽함**  
+  
+Cluster 6의 4대 호스트가 모두 DGA 멀웨어라는 걸 한 번에 식별.  
+  
+기존 도구:  
+- AV: 제로데이라 못 잡음  
+- 방화벽: C&amp;C 도메인 몇 개 차단했지만 감염은 모름  
+- SIEM: 로그 양이 너무 많아서 못 봄  
+  
+Beehive:  
+- F1 (New Destinations) 하나로 즉시 식별  
+- 클러스터링으로 4대 집단 감염까지 한 번에  
+  
+→ **엔터프라이즈 특화 피처 설계의 힘**  
+  
+일반 인터넷에서는 New Destinations 많아도 이상하지 않다. 하지만 엔터프라이즈는 업무 사이트만 가니까, 200개 새 도메인은 확실히 이상하다.  
+  
+**5. 클러스터 해석의 직관성**  
+  
+Figure 4를 보면 15개 클러스터의 normalized feature vector가 있다.  
+  
+각 클러스터마다 튀는 피처가 다르다:  
+- Cluster 3: F7 (Blocked Connections) 튀김  
+- Cluster 6: F1, F2 (New Destinations) 튀김  
+- Cluster 12: F10, F11 (Consented) 튀김  
+  
+→ **클러스터 = 행위 유형**  
+  
+이게 PCA보다 훨씬 해석하기 쉽다. 어떤 피처가 outlier인지 보면 무슨 문제인지 바로 안다.  
+  
+**다음 궁금증 (Day 4 Preview):**  
+- 오탐 35%를 실제로 어떻게 줄일 것인가?  
+- 시간 해상도 문제 (일 단위 배치)는 극복 가능한가?  
+- 이 연구가 학계와 산업계에 미친 영향은?  
+- DeepLog 같은 후속 연구가 어떻게 발전했나?  
+  
+---  
+  
+**Day 3 종료**  
+내일은 연구의 한계와 후속 영향을 분석해보자!  
+  
+# Research Review: Beehive: Large-Scale Log Analysis for Detecting Suspicious Activity in Enterprise Networks  
+  
+&gt; **Analyzed Date:** 2026.01.02  
+&gt; **Keywords:** SOC, Log Analysis, Enterprise Security, Anomaly Detection, Clustering  
+&gt; **Source:** ACSAC &#39;13, 2013, pp.199-208 [Link](https://doi.org/10.1145/2523649.2523670)  
+  
+---  
+  
+## Day 4 – Research Limitations and Scholarly Impact  
+*(한계를 넘어: 학계와 산업계의 반응)*  
+  
+### 1. 연구의 한계점  
+  
+논문을 읽다 보면 항상 &#34;이 방법이 만능은 아니겠지?&#34;라는 생각이 든다. Beehive도 마찬가지다. 논문에서 명시한 한계와 실험에서 드러난 한계를 정리해보자.  
+  
+#### A. 평가 방법론의 근본적 어려움  
+  
+**Ground Truth가 없다는 문제**  
+  
+실험실 환경이라면:  
+- 악성 트래픽 주입 → 정답 알고 있음  
+- Precision, Recall 정확히 계산 가능  
+- 논문 쓰기 편함  
+  
+실제 엔터프라이즈 환경:  
+- 이미 보안 도구들이 돌아가는 중  
+- 알려진 위협은 이미 차단됨  
+- 남아있는 건 &#34;미지의 위협&#34; 또는 &#34;정상&#34;  
+- → **정답을 모른다!**  
+  
+**Beehive의 접근:**  
+</code></pre><p>784건 인시던트 생성<br>
+↓<br>
+1차 검증: 연구팀이 수동 레이블링<br>
+↓<br>
+2차 검증: EMC SOC 팀 협업<br>
+↓<br>
+그래도 불확실: 26건 &ldquo;Further investigation&rdquo;</p>
+<pre tabindex="0"><code>  
+이 과정이 몇 주 걸렸을 것 같다. 엄청난 노력이다.  
+  
+**한계:**  
+- False Positive Rate를 정확히 측정 불가  
+- 놓친 위협(False Negative)이 얼마나 되는지 알 수 없음  
+- SOC 분석가 시간이 엄청나게 든다  
+  
+**실무 영향:**  
+신규 조직에 도입할 때마다 이 과정을 반복해야 한다. 초기 1~2개월은 수동 검증 기간으로 봐야 함.  
+  
+#### B. 시간 해상도의 딜레마  
+  
+**일 단위 배치 분석의 한계**  
+  
+Beehive는 하루 단위로 피처를 계산한다:  
+</code></pre><p>오늘(4월 24일) 로그 수집<br>
+↓<br>
+밤새 배치 처리<br>
+↓<br>
+내일 아침(4월 25일) 인시던트 리포트</p>
+<pre tabindex="0"><code>  
+**문제 시나리오:**  
+</code></pre><p>4월 24일 오전 9시: APT 초기 침투<br>
+4월 24일 오후 2시: 횡적 이동 (Lateral Movement)<br>
+4월 24일 오후 5시: 데이터 탈취 시작<br>
+4월 25일 오전 9시: Beehive가 탐지</p>
+<p>→ 24시간 늦음!</p>
+<pre tabindex="0"><code>  
+**APT의 특성:**  
+- Dwell Time (침투 후 발견까지 시간): 평균 200일 (2013년 기준)  
+- 빠른 공격: 수 시간 내 데이터 탈취  
+  
+**Beehive의 한계:**  
+일 단위 배치라서 빠른 공격에는 대응 못 함.  
+  
+**논문의 변명:**  
+&#34;우리는 historical analysis를 목표로 했다. 실시간은 아니다.&#34;  
+  
+**솔직한 생각:**  
+변명이긴 하지만... 2013년 당시 기술로는 일일 1TB 로그를 실시간 처리하는 게 쉽지 않았을 거다. 지금이야 Spark Streaming 같은 게 있지만.  
+  
+#### C. 초기 학습 기간의 부담  
+  
+**Beehive 가동까지 필요한 시간:**  
+  
+| 단계 | 소요 시간 | 작업 내용 |  
+|------|-----------|-----------|  
+| **히스토리 구축** | 1개월 | New Destinations 판정 위한 도메인 히스토리 |  
+| **화이트리스트 구축** | 1주일 | 100대 이상 호스트 접속한 도메인 식별 |  
+| **User-Agent 히스토리** | 1개월 | 호스트별 UA 문자열 학습 |  
+| **Dedicated Host 식별** | 3개월 | 95% 단일 사용자 판정 (실제로는 병렬 가능) |  
+  
+**실질적 대기 시간:**  
+최소 **5주** (화이트리스트 1주 + 히스토리 4주)  
+  
+**문제:**  
+- 신규 조직 도입 시 즉시 탐지 불가  
+- 5주 동안은 &#34;학습 모드&#34;  
+- 경영진에게 설득하기 어려움: &#34;5주 기다려주세요&#34;  
+  
+**현실적 대안:**  
+</code></pre><p>Week 1: 화이트리스트 구축<br>
+Week 2-4: 히스토리 구축하면서 동시에 탐지 시작 (정확도 낮음)<br>
+Week 5: 본격 가동</p>
+<pre tabindex="0"><code>  
+처음 4주는 오탐률이 높을 것 같다. 하지만 아무것도 안 하는 것보단 낫다.  
+  
+#### D. 엔터프라이즈 환경 의존성  
+  
+**Beehive가 가정하는 환경:**  
+  
+1. **정책 제약 환경**  
+   - 방화벽, 웹 프록시로 통제  
+   - 직원들이 특정 사이트만 접속  
+  
+2. **동질적 호스트 구성**  
+   - 대부분 비슷한 소프트웨어 사용  
+   - 표준화된 업무 환경  
+  
+3. **Dedicated Hosts**  
+   - 1인 1PC 원칙  
+   - 공용 PC 많으면 적용 어려움  
+  
+**적용 어려운 환경:**  
+  
+**대학 네트워크:**  
+- 학생들이 온갖 사이트 접속 (연구, 공부, 게임, ...)  
+- 정책 제약 거의 없음  
+- New Destinations 기준이 무의미  
+  
+**공공 WiFi:**  
+- 사용자가 계속 바뀜  
+- Dedicated Host 개념 없음  
+- 행위 프로파일 불가능  
+  
+**스타트업:**  
+- 개발자들이 자유롭게 소프트웨어 설치  
+- 정책이 느슨함  
+- &#34;정상&#34; 행위의 범위가 너무 넓음  
+  
+**실무 시사점:**  
+Beehive는 **전통적 대기업**에 최적화되어 있다. 스타트업이나 대학에 적용하려면 피처 재설계 필요.  
+  
+#### E. 피처 엔지니어링의 딜레마  
+  
+**15개 피처는 수작업으로 설계했다**  
+  
+논문 저자들이:  
+1. EMC 내부 멀웨어 사례 관찰  
+2. 보안 전문가와 논의  
+3. 여러 피처 실험  
+4. 최종 15개 선정  
+  
+**장점:**  
+- 각 피처의 의미가 명확  
+- SOC 분석가가 이해 가능  
+- 설명 가능성 확보  
+  
+**단점:**  
+- 시간과 비용이 많이 듦  
+- 도메인 전문가 필요  
+- 다른 조직에 적용 시 재설계 필요  
+- 새로운 공격 기법 출현 시 피처 추가 필요  
+  
+**DeepLog과의 대비:**  
+- DeepLog: LSTM이 자동으로 피처 학습 (블랙박스)  
+- Beehive: 수동 피처 설계 (화이트박스)  
+  
+**Trade-off:**  
+설명 가능성 vs. 자동화  
+  
+둘 다 필요한데... 어떻게 해결할까? → Day 5에서 다룰 하이브리드 접근!  
+  
+#### F. 오탐률 35%의 의미  
+  
+Day 3에서 &#34;오탐 유형이 3가지뿐이라 관리 가능&#34;하다고 했는데, 그래도 35%는 부담이다.  
+  
+**SOC 입장에서 계산해보면:**  
+  
+</code></pre><p>일일 56건 인시던트<br>
+↓<br>
+35% 오탐 = 20건/일<br>
+↓<br>
+주 5일 = 100건/주</p>
+<pre tabindex="0"><code>  
+**분석가 부담:**  
+- Tier 2 분석가가 주당 100건의 오탐 처리  
+- 1건당 10분이라도 → 주당 16시간  
+  
+**알림 피로도 (Alert Fatigue):**  
+오탐이 계속되면:  
+- 분석가가 알림을 신뢰 안 함  
+- &#34;또 오탐이겠지&#34; 하고 넘김  
+- 진짜 위협도 놓침  
+  
+**해결 방안:**  
+화이트리스트 지속 관리로 오탐률 20% 이하로 낮춰야 함. 그래도 여전히 일일 11건...  
+  
+#### G. 단일 조직 평가의 일반화 문제  
+  
+**논문의 평가:**  
+- EMC 하나의 조직에서만 검증  
+- 2주간 데이터  
+  
+**궁금증:**  
+- 다른 산업군(금융, 제조, 의료)에서도 효과적인가?  
+- 다른 규모(소기업, 대기업)에서는?  
+- 다른 나라(문화권)에서는?  
+  
+**특히 금융권이 궁금하다:**  
+- 거래 시스템은 24/7 운영  
+- 비정상 시간대 접속이 정상일 수 있음 (야간 배치)  
+- 피처 재설계 필요할 듯  
+  
+**의료:**  
+- HIPAA 컴플라이언스  
+- PHI (Protected Health Information) 접근 패턴  
+- 환자 데이터 유출 탐지에 특화 필요  
+  
+**논문의 한계:**  
+일반화 검증 부족. 하지만 EMC는 큰 조직이라 어느 정도 대표성은 있다고 봐야 할 듯.  
+  
+---  
+  
+### 2. 후속 연구 동향  
+  
+#### A. 인용 수와 영향력  
+  
+**학술적 임팩트:**  
+- 발표: 2013년 12월 (ACSAC)  
+- 현재 인용 수: **215회** (2025년 12월 기준)  
+- 평균: 연간 약 18회 인용  
+  
+**비교:**  
+- DeepLog (2017): 800회 이상  
+- Lou et al. (2010): 900회 이상  
+  
+Beehive가 상대적으로 적은 이유:  
+- 엔터프라이즈 특화 → 학계에서 재현 어려움  
+- 실제 데이터 필요 → 연구자들이 접근 어려움  
+- 방법론이 복잡 (3계층 파이프라인)  
+  
+**하지만 실무 영향은 크다:**  
+UEBA 시장 형성에 기여 (아래에서 설명)  
+  
+#### B. 연구 트렌드의 변화  
+  
+**2013년 이전: 시그니처 중심**  
+</code></pre><p>IDS/IPS + Antivirus<br>
+→ 알려진 위협만 탐지</p>
+<pre tabindex="0"><code>  
+**2013-2017: 통계/ML 기법 도입**  
+</code></pre><p>PCA, SVM, Clustering (Beehive 포함)<br>
+→ 행위 기반 탐지 시작</p>
+<pre tabindex="0"><code>  
+**2017-2021: 딥러닝 혁명**  
+</code></pre><p>DeepLog (2017): LSTM<br>
+LogAnomaly (2019): Attention<br>
+LogBERT (2021): Transformer<br>
+→ 자동 피처 학습</p>
+<pre tabindex="0"><code>  
+**2022-현재: Pre-trained Models + Graph**  
+</code></pre><p>PLELog: BERT 기반 로그 파싱<br>
+Neural Log Analysis: GNN으로 호스트 관계 모델링<br>
+→ 더 복잡한 패턴 학습</p>
+<pre tabindex="0"><code>  
+**Beehive의 위치:**  
+통계/ML 시대의 마지막 대표작. 이후 딥러닝이 대세가 됨.  
+  
+#### C. 주요 후속 연구  
+  
+**Beehive의 한계를 극복하려는 연구들:**  
+  
+**1. 실시간 처리**  
+  
+| 연구 | 연도 | 핵심 기여 |  
+|------|------|-----------|  
+| **LogAnomaly** | 2019 | Attention 기반 시퀀스 모델, 분 단위 처리 |  
+| **Stream-Based Anomaly Detection** | 2020 | Kafka + Spark Streaming으로 실시간 탐지 |  
+  
+**개선점:**  
+- Beehive의 일 단위 → 분/초 단위  
+- Dwell Time 대폭 감소  
+  
+**2. 자동 피처 학습**  
+  
+| 연구 | 연도 | 핵심 아이디어 |  
+|------|------|---------------|  
+| **DeepLog** | 2017 | LSTM으로 자동 피처 학습 |  
+| **Log2Vec** | 2019 | Word2Vec 스타일 로그 임베딩 |  
+| **LogBERT** | 2021 | BERT로 self-supervised learning |  
+  
+**개선점:**  
+- 수동 피처 설계 불필요  
+- 새로운 공격에 자동 적응  
+  
+**Trade-off:**  
+설명 가능성 희생 (블랙박스)  
+  
+**3. 더티 데이터 처리 강화**  
+  
+| 연구 | 연도 | 기여 |  
+|------|------|------|  
+| **Robust Log-based Anomaly Detection** | 2020 | Beehive의 정규화 기법 확장, 더 복잡한 노이즈 처리 |  
+| **PLELog** | 2021 | Pre-trained LM으로 파싱 정확도 95% → 98% |  
+  
+**개선점:**  
+Beehive의 로그 파서 한계 극복  
+  
+**4. 호스트 간 관계 모델링**  
+  
+| 연구 | 연도 | 기여 |  
+|------|------|------|  
+| **UNICORN** | 2020 | 다변량 시계열, 호스트 간 상관관계 |  
+| **Neural Log Analysis** | 2022 | GNN으로 호스트 관계를 그래프로 모델링 |  
+  
+**개선점:**  
+- Beehive는 호스트를 독립적으로 분석  
+- 후속 연구는 호스트 간 관계 고려 (횡적 이동 탐지에 유리)  
+  
+**5. 하이브리드 접근**  
+  
+재미있는 건, **최근 연구들이 다시 Beehive 스타일로 회귀**하고 있다는 점이다.  
+  
+</code></pre><p>2013: Beehive (해석 가능 피처)<br>
+↓<br>
+2017-2021: 딥러닝 블랙박스<br>
+↓<br>
+2022-현재: 하이브리드 (피처 + 딥러닝)</p>
+<pre tabindex="0"><code>  
+**예시: LogAnomaly (2019)**  
+- Beehive의 피처를 딥러닝 입력으로 사용  
+- Attention으로 &#34;어떤 피처가 중요한지&#34; 자동 학습  
+- 설명 가능성 + 딥러닝 성능 둘 다 확보  
+  
+**교훈:**  
+&#34;설명 가능성&#34;이라는 Beehive의 철학이 여전히 유효하다.  
+  
+---  
+  
+### 3. 실무 영향 (Industry Impact)  
+  
+#### A. UEBA 시장의 탄생  
+  
+**UEBA = User and Entity Behavior Analytics**  
+  
+**Beehive 이전 (2010년대 초):**  
+- 보안 제품: SIEM, IDS/IPS, Antivirus  
+- 모두 시그니처 기반  
+  
+**Beehive 이후 (2015년~):**  
+- Gartner가 UEBA를 주요 보안 기술로 지정 (2015)  
+- 전문 UEBA 벤더 출현:  
+  - Exabeam  
+  - Securonix  
+  - Splunk UBA  
+  - Varonis  
+  
+**UEBA의 핵심 개념:**  
+&#34;사용자와 엔티티(호스트, 서버)의 **정상 행위**를 학습하고, **이상 행위**를 탐지&#34;  
+  
+→ **Beehive와 정확히 같은 철학!**  
+  
+**Gartner 정의 (2015):**  
+</code></pre><p>UEBA solutions use machine learning and statistical models<br>
+to create behavioral baselines and detect anomalies.</p>
+<pre tabindex="0"><code>  
+Beehive 논문의 핵심 아이디어를 그대로 설명하고 있다.  
+  
+**실무 영향:**  
+Beehive가 UEBA 시장 형성에 학술적 근거를 제공했다고 볼 수 있다.  
+  
+#### B. SOC 운영 패러다임 변화  
+  
+**Before Beehive (2010년대 초):**  
+</code></pre><p>[경계 방어]<br>
+방화벽, IPS<br>
+↓<br>
+[시그니처 탐지]<br>
+IDS, Antivirus<br>
+↓<br>
+[수동 조사]<br>
+보안 전문가가 로그 뒤짐</p>
+<pre tabindex="0"><code>  
+**패러다임:**  
+- &#34;알려진 위협&#34; 차단  
+- &#34;외부 침입&#34; 막기  
+- 사후 대응  
+  
+**After Beehive (2010년대 중후반~):**  
+</code></pre><p>[다층 방어]<br>
+경계 + 내부 모니터링<br>
+↓<br>
+[행위 분석]<br>
+UEBA (Beehive 스타일)<br>
+↓<br>
+[위협 헌팅]<br>
+사전에 위협 찾아내기</p>
+<pre tabindex="0"><code>  
+**패러다임:**  
+- &#34;미지의 위협&#34; 탐지 (APT, 제로데이)  
+- &#34;내부 행위&#34; 모니터링  
+- 사전 + 사후 대응  
+  
+**핵심 차이:**  
+&#34;침입당하지 않기&#34;에서 &#34;침입 후 빠르게 찾아내기&#34;로 전환  
+  
+#### C. 주요 벤더의 채택  
+  
+**RSA (EMC 자회사):**  
+- Beehive 저자 중 일부가 RSA 소속  
+- RSA NetWitness에 Beehive 개념 통합  
+- 특히 &#34;엔터프라이즈 특화 피처&#34; 설계 철학 채택  
+  
+**Splunk:**  
+- Splunk UBA 출시 (2015)  
+- 행위 기반 이상탐지 기능  
+- 클러스터링 방식 유사  
+  
+**IBM QRadar:**  
+- User Behavior Analytics 모듈  
+- 로그 정규화 기법 참고  
+  
+**Exabeam:**  
+- UEBA 전문 벤더  
+- &#34;Timeline&#34; 기능: 호스트별 행위 시각화  
+- Beehive의 피처 벡터 개념과 유사  
+  
+**공통점:**  
+모두 &#34;정상 행위 학습 → 이상 탐지&#34; 프레임워크 사용  
+  
+#### D. 오픈소스 도구 영향  
+  
+**LogPai 프로젝트 (화웨이):**  
+- 중국 화웨이가 Beehive 기반 오픈소스 프로젝트 시작  
+- GitHub: https://github.com/logpai/logparser  
+- 로그 파싱, 불변성 마이닝 도구 제공  
+- Star 1,000+  
+  
+**도구 목록:**  
+- Drain: 로그 파싱  
+- Spell: 로그 템플릿 추출  
+- LogCluster: 클러스터링 기반 이상탐지  
+  
+Beehive의 개념을 오픈소스로 구현한 최초 프로젝트.  
+  
+---  
+  
+### 4. SOC 관점 인사이트  
+  
+#### A. 한계를 인식한 실무 적용 전략  
+  
+**전략 1: 하이브리드 탐지 체계**  
+  
+Beehive의 한계(일 단위 배치)를 인정하고, 계층화된 방어 체계 구축:  
+  
+</code></pre><p>[실시간 레이어]<br>
+SIEM Rules + IDS/IPS + AV<br>
+↓ (즉시 알림)<br>
+[일일 배치 레이어]<br>
+Beehive-style Behavioral Analytics<br>
+↓ (익일 아침 리포트)<br>
+[주간 레이어]<br>
+Threat Hunting (수동)</p>
+<pre tabindex="0"><code>  
+**역할 분담:**  
+- 실시간: 알려진 위협 + 긴급 이상  
+- 배치: 놓친 위협 발굴 (Beehive의 98.98%)  
+- 주간: 장기 트렌드 분석  
+  
+**실무 예시:**  
+</code></pre><p>Case 1: 알려진 멀웨어<br>
+→ 실시간 레이어에서 즉시 차단 (Beehive 출동 안 함)</p>
+<p>Case 2: DGA 봇넷 (제로데이)<br>
+→ 실시간 레이어 통과 → Beehive가 익일 탐지</p>
+<p>Case 3: 느린 APT<br>
+→ 주간 헌팅으로 장기 패턴 분석</p>
+<pre tabindex="0"><code>  
+Beehive는 **&#34;놓친 위협 발굴&#34;** 역할에 집중!  
+  
+**전략 2: 오탐 학습 루프**  
+  
+35% 오탐을 어떻게 줄일 것인가?  
+  
+**4주 오탐 정제 프로그램:**  
+  
+</code></pre><p>Week 1:</p>
 <ul>
-<li>엔터프라이즈 환경의 특성 (정책 제약, 동질성)</li>
-<li>로그가 &ldquo;dirty&quot;하다는 현실</li>
-<li>설명 가능성의 중요성</li>
-<li>오탐 관리의 어려움</li>
+<li>Beehive 인시던트 전수 조사</li>
+<li>오탐 패턴 식별 및 분류</li>
 </ul>
-<p><strong>변한 것:</strong></p>
+<p>Week 2:</p>
 <ul>
-<li>로그 규모 (1TB/day → 10TB/day)</li>
-<li>처리 기술 (Hadoop → Spark)</li>
-<li>딥러닝 도구 등장</li>
+<li>패턴별 억제 규칙 작성</li>
+<li>예: &ldquo;DevOps 팀 호스트는 자동화 프로세스 예외 처리&rdquo;</li>
 </ul>
-<p><strong>핵심:</strong>
-<strong>근본 문제와 철학은 변하지 않는다.</strong></p>
-<p>Beehive의 개념은 10년이 지나도 여전히 유효하다.</p>
-<p><strong>6. 다음 읽을 논문 방향</strong></p>
-<p>Beehive의 한계를 보완하는 방향으로:</p>
-<p><strong>우선순위 1: 실시간 처리</strong></p>
+<p>Week 3:</p>
 <ul>
-<li>&ldquo;Stream-Based Anomaly Detection in Enterprise Logs&rdquo;</li>
-<li>Kafka + Spark Streaming 아키텍처</li>
-<li>Beehive를 실시간으로 만들 수 있나?</li>
+<li>화이트리스트 정제</li>
+<li>추가 오탐 패턴 발견</li>
 </ul>
-<p><strong>우선순위 2: 딥러닝 통합</strong></p>
+<p>Week 4:</p>
 <ul>
-<li>LogAnomaly (2019)</li>
-<li>Beehive 피처 + Attention 메커니즘</li>
-<li>하이브리드의 실제 구현 사례</li>
+<li>최종 룰셋 확정</li>
+<li>오탐률 재측정 (목표: 20% 이하)</li>
 </ul>
-<p><strong>우선순위 3: UEBA 제품 분석</strong></p>
+<pre tabindex="0"><code>  
+**지속적 개선:**  
+</code></pre><p>월 1회: 신규 오탐 패턴 검토<br>
+분기 1회: 화이트리스트 대청소<br>
+연 1회: 피처 재검증</p>
+<pre tabindex="0"><code>  
+**목표:**  
+- 초기 35% → 1개월 후 20% → 3개월 후 10% 이하  
+  
+**전략 3: 시간 해상도 점진적 개선**  
+  
+일 단위가 한계라면, 조금씩 줄여보자:  
+  
+**Phase 1: 일 단위 (현재)**  
+</code></pre><p>처리 시간: 5시간/일<br>
+Dwell Time: 평균 12시간</p>
+<pre tabindex="0"><code>  
+**Phase 2: 4시간 단위 (6개월 후)**  
+</code></pre><p>하루를 6개 윈도우로 분할<br>
+처리 시간: 30시간/일 (6배 증가)<br>
+Dwell Time: 평균 4시간</p>
+<p>Trade-off:</p>
 <ul>
-<li>Exabeam, Splunk UBA 백서</li>
-<li>Beehive 개념이 어떻게 상용화되었나?</li>
-<li>실무 도입 사례 연구</li>
+<li>계산 비용 6배</li>
+<li>하지만 클라우드 컴퓨팅으로 해결 가능</li>
 </ul>
-<p><strong>다음 궁금증 (Day 5 Preview):</strong></p>
+<pre tabindex="0"><code>  
+**Phase 3: 실시간 스트림 (12개월 후)**  
+</code></pre><p>Kafka + Spark Streaming<br>
+Dwell Time: 분 단위<br>
+하지만 설명 가능성 일부 희생 (딥러닝 도입 필요)</p>
+<pre tabindex="0"><code>  
+**점진적 접근의 장점:**  
+- 한 번에 바꾸지 않음  
+- 각 단계에서 효과 검증  
+- 실패해도 롤백 가능  
+  
+**전략 4: 조직별 피처 커스터마이징**  
+  
+EMC의 15개 피처를 다른 조직에 그대로 쓰면 안 된다.  
+  
+**산업별 추가 피처 예시:**  
+  
+**금융권:**  
+- F16: 비정상 거래 시간대 접속 (야간 배치 제외)  
+- F17: 고객 민감 정보 접근 패턴 이상  
+- F18: 외부 송금 시스템 접근 급증  
+  
+**제조:**  
+- F16: OT 네트워크 연결 시도 (IT-OT 경계)  
+- F17: 생산 데이터 외부 전송  
+- F18: PLC 설정 변경 로그  
+  
+**의료:**  
+- F16: PHI 접근 패턴 이상 (HIPAA)  
+- F17: 환자 기록 대량 조회  
+- F18: 의료 기기 로그 이상  
+  
+**중요:**  
+피처 설계에 **도메인 전문가 참여** 필수!  
+  
+**전략 5: 딥러닝과의 앙상블**  
+  
+Beehive의 장점(설명 가능성) + DeepLog의 장점(정확도) 결합  
+  
+**아키텍처:**  
+</code></pre><p>[로그 스트림]<br>
+↓<br>
+[병렬 처리]<br>
+↓                    ↓<br>
+[Beehive]           [DeepLog]</p>
 <ul>
-<li>지금까지 배운 걸 어떻게 SOC 실무에 적용할까?</li>
-<li>MITRE ATT&amp;CK, NIST CSF와 어떻게 연계?</li>
-<li>면접에서 어떻게 설명할까?</li>
-<li>최종 실행 체크리스트는?</li>
+<li>15개 피처           - LSTM</li>
+<li>클러스터링          - 시퀀스 분석<br>
+↓                    ↓<br>
+[앙상블 결정]</li>
+<li>둘 다 알림 → Critical (즉시 대응)</li>
+<li>Beehive만 → High (설명 가능, 우선 처리)</li>
+<li>DeepLog만 → Medium (추가 조사)</li>
+<li>둘 다 정상 → Pass</li>
 </ul>
-<hr>
-<p><strong>Day 4 종료</strong><br>
-내일은 최종 결론과 SOC 실무 적용 전략을 종합해보자!</p>
-<h1 id="research-review-beehive-large-scale-log-analysis-for-detecting-suspicious-activity-in-enterprise-networks-3">Research Review: Beehive: Large-Scale Log Analysis for Detecting Suspicious Activity in Enterprise Networks<a hidden class="anchor" aria-hidden="true" href="#research-review-beehive-large-scale-log-analysis-for-detecting-suspicious-activity-in-enterprise-networks-3">#</a></h1>
-<blockquote>
-<p><strong>Analyzed Date:</strong> 2026.01.03<br>
-<strong>Keywords:</strong> SOC, Log Analysis, Enterprise Security, Anomaly Detection, Clustering<br>
-<strong>Source:</strong> ACSAC &lsquo;13, 2013, pp.199-208 <a href="https://doi.org/10.1145/2523649.2523670">Link</a></p>
-</blockquote>
-<hr>
-<h2 id="day-5--conclusions-and-practical-implications">Day 5 – Conclusions and Practical Implications<a hidden class="anchor" aria-hidden="true" href="#day-5--conclusions-and-practical-implications">#</a></h2>
-<p><em>(SOC 실무 적용: Beehive에서 배운 것들)</em></p>
-<h3 id="1-5일간-학습-여정-종합">1. 5일간 학습 여정 종합<a hidden class="anchor" aria-hidden="true" href="#1-5일간-학습-여정-종합">#</a></h3>
-<h4 id="a-무엇을-배웠나">A. 무엇을 배웠나<a hidden class="anchor" aria-hidden="true" href="#a-무엇을-배웠나">#</a></h4>
-<p><strong>Day 1: 문제의 본질</strong></p>
-<pre tabindex="0"><code>엔터프라이즈 로그는 &#34;dirty&#34;하다
-    ↓
-시그니처 기반은 신규 위협 못 잡는다
-    ↓
-PCA 같은 블랙박스는 &#34;왜&#34;를 설명 못한다
-    ↓
-→ 행위 기반 + 설명 가능한 탐지가 필요!
-</code></pre><p><strong>핵심 깨달음:</strong>
-SOC는 단순히 &ldquo;이상하다&quot;를 넘어 <strong>&ldquo;왜 이상한지, 어떻게 대응할지&rdquo;</strong> 를 알아야 한다.</p>
-<p><strong>Day 2: 해법의 설계</strong></p>
-<pre tabindex="0"><code>3계층 파이프라인:
-Layer 1: 더러운 로그 → 깨끗한 데이터 (정규화)
-Layer 2: 15개 엔터프라이즈 특화 피처 추출
-Layer 3: PCA + 변형 K-means → Outlier 식별
-</code></pre><p><strong>핵심 깨달음:</strong>
-Big Data 처리는 알고리즘만의 문제가 아니다. <strong>데이터 정제가 핵심</strong>이다.</p>
-<p><strong>Day 3: 실전의 검증</strong></p>
-<pre tabindex="0"><code>784건 인시던트
-→ 25.25% 실제 위협 (DGA 멀웨어 포함)
-→ 39.41% 정책 위반
-→ 35.33% 오탐 (하지만 유형은 3가지뿐)
-
-기존 도구 탐지: 단 8건 (1.02%)
-Beehive 고유 탐지: 776건 (98.98%)
-</code></pre><p><strong>핵심 깨달음:</strong>
-최신 보안 도구들도 놓치는 게 이렇게 많다. 행위 기반 탐지는 <strong>선택이 아니라 필수</strong>다.</p>
-<p><strong>Day 4: 한계의 인식</strong></p>
-<pre tabindex="0"><code>한계:
-- Ground Truth 부재 (수동 검증 필수)
-- 일 단위 배치 (실시간 못함)
-- 초기 학습 5주 필요
-- 오탐률 35%
-
-영향:
-- UEBA 시장 형성
-- 후속 연구 촉발 (DeepLog 등)
-- 215회 인용
-</code></pre><p><strong>핵심 깨달음:</strong>
-완벽한 도구는 없다. <strong>Trade-off를 이해하고 보완 전략</strong>을 세워야 한다.</p>
-<p><strong>Day 5 (지금): 실무 통합</strong></p>
-<p>지금까지 배운 것을 어떻게 <strong>실제 SOC에 적용</strong>할 것인가?</p>
-<hr>
-<h3 id="1-이론적-기여-정리">1. 이론적 기여 정리<a hidden class="anchor" aria-hidden="true" href="#1-이론적-기여-정리">#</a></h3>
-<h4 id="a-학술적-의의">A. 학술적 의의<a hidden class="anchor" aria-hidden="true" href="#a-학술적-의의">#</a></h4>
-<p><strong>1. Big Data Security Analytics의 개척</strong></p>
-<p>이전 연구:</p>
+<pre tabindex="0"><code>  
+**장점:**  
+1. Beehive가 놓친 것을 DeepLog이 잡음  
+2. DeepLog 결과를 Beehive 피처로 해석  
+3. 최고의 탐지율 + 설명 가능성  
+  
+**실무 예시:**  
+</code></pre><p>Case: DeepLog이 이상 탐지했지만 원인 불명</p>
+<p>Beehive 피처 확인:</p>
 <ul>
-<li>실험실 데이터 (깨끗함)</li>
-<li>소규모 (수 GB)</li>
-<li>단일 로그 소스</li>
+<li>F1 (New Destinations): 5개 (정상)</li>
+<li>F5 (New User-Agent): 3개 (약간 높음)</li>
+<li>F12 (Connection Spikes): 150개 (매우 높음)</li>
 </ul>
-<p>Beehive:</p>
+<p>분석가 판단:<br>
+&ldquo;Connection Spikes가 원인이구나.<br>
+특정 시간대에 트래픽 폭증.<br>
+DDoS 공격 또는 데이터 exfiltration 의심.&rdquo;</p>
+<pre tabindex="0"><code>  
+DeepLog 단독으로는 알 수 없었던 것을 Beehive 피처로 설명!  
+  
+#### B. 도입 로드맵  
+  
+**Short-term (1-3개월): 파일럿**  
+  
+</code></pre><p>Month 1: 준비</p>
 <ul>
-<li>실제 운영 데이터 (더러움)</li>
-<li>대규모 (일일 1TB, 총 6TB)</li>
-<li>다중 로그 소스 통합</li>
+<li>대상 시스템 선정 (명확한 워크플로우 1개)</li>
+<li>SIEM 로그 수집 확인</li>
+<li>화이트리스트 구축 (1주)</li>
+<li>히스토리 구축 시작 (4주)</li>
 </ul>
-<p><strong>의미:</strong>
-&ldquo;실무에서 쓸 수 있는&rdquo; 보안 분석 연구의 첫 사례.</p>
-<p><strong>2. Enterprise-Specific Feature Design</strong></p>
-<p>핵심 통찰:</p>
-<pre tabindex="0"><code>일반 인터넷 ≠ 엔터프라이즈
-
-일반 인터넷:
-- 행위 범위 무한대
-- 예측 불가능
-- 정책 제약 없음
-
-엔터프라이즈:
-- 행위 범위 제한적
-- 업무 패턴 예측 가능
-- 정책 제약 강함
-
-→ 이 차이를 피처 설계에 활용!
-</code></pre><p><strong>예시:</strong></p>
+<p>Month 2: 파일럿 가동</p>
 <ul>
-<li>일반: New Destinations 100개 → 정상일 수 있음</li>
-<li>기업: New Destinations 100개 → 확실히 이상함</li>
+<li>Beehive 탐지 시작</li>
+<li>매일 인시던트 수동 검증</li>
+<li>오탐 패턴 식별</li>
 </ul>
-<p>이 아이디어가 후속 연구와 UEBA 제품의 기반이 됨.</p>
-<p><strong>3. Explainable Behavioral Detection</strong></p>
-<pre tabindex="0"><code>      정확도
-        ↑
-DeepLog │    ●
-        │
-Beehive │  ●
-        │
-PCA     │ ●
-        │
-        └─────────→ 설명 가능성
-</code></pre><p>Beehive의 위치:</p>
+<p>Month 3: 정제</p>
+<ul>
+<li>화이트리스트 정제</li>
+<li>오탐률 20% 이하로 감소</li>
+<li>효과 측정 (MTTD, MTTR)</li>
+</ul>
+<pre tabindex="0"><code>  
+**Mid-term (3-6개월): 확장**  
+  
+</code></pre><p>Month 4-5: 추가 시스템</p>
+<ul>
+<li>3-5개 핵심 시스템에 확장</li>
+<li>조직 특화 피처 3개 추가</li>
+<li>SOAR 연동 (자동 티켓팅)</li>
+</ul>
+<p>Month 6: 안정화</p>
+<ul>
+<li>월간 리포트 생성</li>
+<li>경영진 보고 (ROI 계산)</li>
+<li>SOC 프로세스 공식화</li>
+</ul>
+<pre tabindex="0"><code>  
+**Long-term (6-12개월): 최적화**  
+  
+</code></pre><p>Month 7-9: 고도화</p>
+<ul>
+<li>시간 해상도 4시간으로 개선</li>
+<li>DeepLog 하이브리드 테스트</li>
+<li>외부 위협 인텔리전스 통합</li>
+</ul>
+<p>Month 10-12: 전사 확산</p>
+<ul>
+<li>다른 사업부/지역으로 확대</li>
+<li>Best Practice 문서화</li>
+<li>지속적 개선 프로세스 수립</li>
+</ul>
+<pre tabindex="0"><code>  
+---  
+  
+### 5. 개인 인사이트 (Personal Insight)  
+  
+**Day 4를 읽고 느낀 점:**  
+  
+**1. 솔직한 한계 인정의 가치**  
+  
+논문이 자신의 한계를 명확히 인정한다:  
+- &#34;Ground Truth 없어서 정확한 평가 어렵다&#34;  
+- &#34;일 단위 배치라 실시간 대응 못한다&#34;  
+- &#34;오탐률 35%는 높다&#34;  
+  
+이런 솔직함이 오히려 **신뢰를 높인다**.  
+  
+실무자 입장에서는:  
+- 언제 쓰고 언제 안 쓸지 판단 가능  
+- 도입 시 예상되는 문제 미리 대비  
+- &#34;만능 도구&#34;가 아니라는 걸 알고 시작  
+  
+학계에서는 이런 솔직함이 드물다. 대부분 &#34;우리가 최고!&#34;만 외치는데...  
+  
+**2. 시간 해상도의 근본적 딜레마**  
+  
+일 단위 vs. 실시간  
+  
+</code></pre><p>일 단위:</p>
+<ul>
+<li>장점: 대용량 처리 가능, 안정적, 설명 가능</li>
+<li>단점: 빠른 공격 대응 못함</li>
+</ul>
+<p>실시간:</p>
+<ul>
+<li>장점: 즉시 대응, Dwell Time 최소화</li>
+<li>단점: 계산 비용 높음, 안정성 낮음, 설명력 떨어짐</li>
+</ul>
+<pre tabindex="0"><code>  
+**정답은 없다. Trade-off다.**  
+  
+실무에서는 **계층화된 방어**가 답인 것 같다:  
+- 실시간 레이어 (IDS/IPS)  
+- 배치 레이어 (Beehive)  
+- 주간 레이어 (Threat Hunting)  
+  
+각자 역할이 다르다.  
+  
+**3. UEBA 시장 형성의 의미**  
+  
+Beehive (2013) → Gartner UEBA 정의 (2015) → UEBA 벤더 탄생 (2015~)  
+  
+논문 하나가 **산업 전체를 바꿨다**.  
+  
+이게 학술 연구의 진짜 가치다:  
+- 단순히 논문 쓰는 게 아니라  
+- 실무 문제를 해결하고  
+- 새로운 시장을 만든다  
+  
+Beehive 저자들이 자랑스러울 만하다.  
+  
+**4. 설명 가능성의 재발견**  
+  
+2013: Beehive (해석 가능)  
+2017-2021: 딥러닝 블랙박스 유행  
+2022-현재: 다시 설명 가능성으로 회귀  
+  
+**왜 다시 돌아왔을까?**  
+  
+실무에서는 **&#34;왜&#34;를 알아야** 하기 때문이다:  
+- SOC 분석가가 이해해야 대응 가능  
+- 경영진에게 설명해야 예산 확보  
+- 법적 책임 (GDPR 등) 때문에 설명 필수  
+  
+딥러닝은 정확도는 높지만, &#34;왜&#34;를 설명 못한다.  
+  
+→ **하이브리드 접근이 미래**  
+  
+Beehive의 피처 + DeepLog의 학습 능력 = 최선  
+  
+**5. 2013년 논문이 2024년에도 유효한 이유**  
+  
+**변하지 않은 것:**  
+- 엔터프라이즈 환경의 특성 (정책 제약, 동질성)  
+- 로그가 &#34;dirty&#34;하다는 현실  
+- 설명 가능성의 중요성  
+- 오탐 관리의 어려움  
+  
+**변한 것:**  
+- 로그 규모 (1TB/day → 10TB/day)  
+- 처리 기술 (Hadoop → Spark)  
+- 딥러닝 도구 등장  
+  
+**핵심:**  
+**근본 문제와 철학은 변하지 않는다.**  
+  
+Beehive의 개념은 10년이 지나도 여전히 유효하다.  
+  
+**6. 다음 읽을 논문 방향**  
+  
+Beehive의 한계를 보완하는 방향으로:  
+  
+**우선순위 1: 실시간 처리**  
+- &#34;Stream-Based Anomaly Detection in Enterprise Logs&#34;  
+- Kafka + Spark Streaming 아키텍처  
+- Beehive를 실시간으로 만들 수 있나?  
+  
+**우선순위 2: 딥러닝 통합**  
+- LogAnomaly (2019)  
+- Beehive 피처 + Attention 메커니즘  
+- 하이브리드의 실제 구현 사례  
+  
+**우선순위 3: UEBA 제품 분석**  
+- Exabeam, Splunk UBA 백서  
+- Beehive 개념이 어떻게 상용화되었나?  
+- 실무 도입 사례 연구  
+  
+**다음 궁금증 (Day 5 Preview):**  
+- 지금까지 배운 걸 어떻게 SOC 실무에 적용할까?  
+- MITRE ATT&amp;CK, NIST CSF와 어떻게 연계?  
+- 면접에서 어떻게 설명할까?  
+- 최종 실행 체크리스트는?  
+  
+---  
+  
+**Day 4 종료**  
+내일은 최종 결론과 SOC 실무 적용 전략을 종합해보자!  
+  
+# Research Review: Beehive: Large-Scale Log Analysis for Detecting Suspicious Activity in Enterprise Networks  
+  
+&gt; **Analyzed Date:** 2026.01.03  
+&gt; **Keywords:** SOC, Log Analysis, Enterprise Security, Anomaly Detection, Clustering  
+&gt; **Source:** ACSAC &#39;13, 2013, pp.199-208 [Link](https://doi.org/10.1145/2523649.2523670)  
+  
+---  
+  
+## Day 5 – Conclusions and Practical Implications  
+*(SOC 실무 적용: Beehive에서 배운 것들)*  
+  
+### 1. 5일간 학습 여정 종합  
+  
+#### A. 무엇을 배웠나  
+  
+**Day 1: 문제의 본질**  
+</code></pre><p>엔터프라이즈 로그는 &ldquo;dirty&quot;하다<br>
+↓<br>
+시그니처 기반은 신규 위협 못 잡는다<br>
+↓<br>
+PCA 같은 블랙박스는 &ldquo;왜&quot;를 설명 못한다<br>
+↓<br>
+→ 행위 기반 + 설명 가능한 탐지가 필요!</p>
+<pre tabindex="0"><code>  
+**핵심 깨달음:**  
+SOC는 단순히 &#34;이상하다&#34;를 넘어 **&#34;왜 이상한지, 어떻게 대응할지&#34;** 를 알아야 한다.  
+  
+**Day 2: 해법의 설계**  
+</code></pre><p>3계층 파이프라인:<br>
+Layer 1: 더러운 로그 → 깨끗한 데이터 (정규화)<br>
+Layer 2: 15개 엔터프라이즈 특화 피처 추출<br>
+Layer 3: PCA + 변형 K-means → Outlier 식별</p>
+<pre tabindex="0"><code>  
+**핵심 깨달음:**  
+Big Data 처리는 알고리즘만의 문제가 아니다. **데이터 정제가 핵심**이다.  
+  
+**Day 3: 실전의 검증**  
+</code></pre><p>784건 인시던트<br>
+→ 25.25% 실제 위협 (DGA 멀웨어 포함)<br>
+→ 39.41% 정책 위반<br>
+→ 35.33% 오탐 (하지만 유형은 3가지뿐)</p>
+<p>기존 도구 탐지: 단 8건 (1.02%)<br>
+Beehive 고유 탐지: 776건 (98.98%)</p>
+<pre tabindex="0"><code>  
+**핵심 깨달음:**  
+최신 보안 도구들도 놓치는 게 이렇게 많다. 행위 기반 탐지는 **선택이 아니라 필수**다.  
+  
+**Day 4: 한계의 인식**  
+</code></pre><p>한계:</p>
+<ul>
+<li>Ground Truth 부재 (수동 검증 필수)</li>
+<li>일 단위 배치 (실시간 못함)</li>
+<li>초기 학습 5주 필요</li>
+<li>오탐률 35%</li>
+</ul>
+<p>영향:</p>
+<ul>
+<li>UEBA 시장 형성</li>
+<li>후속 연구 촉발 (DeepLog 등)</li>
+<li>215회 인용</li>
+</ul>
+<pre tabindex="0"><code>  
+**핵심 깨달음:**  
+완벽한 도구는 없다. **Trade-off를 이해하고 보완 전략**을 세워야 한다.  
+  
+**Day 5 (지금): 실무 통합**  
+  
+지금까지 배운 것을 어떻게 **실제 SOC에 적용**할 것인가?  
+  
+---  
+  
+### 1. 이론적 기여 정리  
+  
+#### A. 학술적 의의  
+  
+**1. Big Data Security Analytics의 개척**  
+  
+이전 연구:  
+- 실험실 데이터 (깨끗함)  
+- 소규모 (수 GB)  
+- 단일 로그 소스  
+  
+Beehive:  
+- 실제 운영 데이터 (더러움)  
+- 대규모 (일일 1TB, 총 6TB)  
+- 다중 로그 소스 통합  
+  
+**의미:**  
+&#34;실무에서 쓸 수 있는&#34; 보안 분석 연구의 첫 사례.  
+  
+**2. Enterprise-Specific Feature Design**  
+  
+핵심 통찰:  
+</code></pre><p>일반 인터넷 ≠ 엔터프라이즈</p>
+<p>일반 인터넷:</p>
+<ul>
+<li>행위 범위 무한대</li>
+<li>예측 불가능</li>
+<li>정책 제약 없음</li>
+</ul>
+<p>엔터프라이즈:</p>
+<ul>
+<li>행위 범위 제한적</li>
+<li>업무 패턴 예측 가능</li>
+<li>정책 제약 강함</li>
+</ul>
+<p>→ 이 차이를 피처 설계에 활용!</p>
+<pre tabindex="0"><code>  
+**예시:**  
+- 일반: New Destinations 100개 → 정상일 수 있음  
+- 기업: New Destinations 100개 → 확실히 이상함  
+  
+이 아이디어가 후속 연구와 UEBA 제품의 기반이 됨.  
+  
+**3. Explainable Behavioral Detection**  
+  
+</code></pre><pre><code>  정확도  
+    ↑  
+</code></pre>
+<p>DeepLog │    ●<br>
+│<br>
+Beehive │  ●<br>
+│<br>
+PCA     │ ●<br>
+│<br>
+└─────────→ 설명 가능성</p>
+<p>Beehive의 위치:</p>
 <ul>
 <li>PCA보다 정확도 높음</li>
 <li>DeepLog보다 설명 가능성 높음</li>
@@ -2233,21 +2130,21 @@ PCA     │ ●
 <p><strong>의미:</strong>
 &ldquo;데이터가 더럽다&quot;고 포기하지 말고, <strong>체계적으로 정제</strong>하라.</p>
 <h4 id="b-로그-분석-패러다임의-전환">B. 로그 분석 패러다임의 전환<a hidden class="anchor" aria-hidden="true" href="#b-로그-분석-패러다임의-전환">#</a></h4>
-<p><strong>Before (규칙 기반):</strong></p>
-<pre tabindex="0"><code>전문가가 수동으로 규칙 작성
-→ 시간/비용 많이 듦
-→ 시스템 변경 시마다 재작성
-</code></pre><p><strong>Before (블랙박스 ML):</strong></p>
-<pre tabindex="0"><code>PCA, SVM으로 이상 탐지
-→ &#34;뭔가 이상함&#34;만 알려줌
-→ &#34;왜&#34;를 모름
-→ 수동 분석 다시 필요
-</code></pre><p><strong>After (Beehive):</strong></p>
-<pre tabindex="0"><code>자동 학습 + 해석 가능
-→ 전문가 없이도 적용 가능
-→ &#34;왜 이상한지&#34; 명확
-→ 즉시 대응 가능
-</code></pre><p><strong>영향:</strong></p>
+<p><strong>Before (규칙 기반):</strong>
+전문가가 수동으로 규칙 작성<br>
+→ 시간/비용 많이 듦<br>
+→ 시스템 변경 시마다 재작성</p>
+<p><strong>Before (블랙박스 ML):</strong>
+PCA, SVM으로 이상 탐지<br>
+→ &ldquo;뭔가 이상함&quot;만 알려줌<br>
+→ &ldquo;왜&quot;를 모름<br>
+→ 수동 분석 다시 필요</p>
+<p><strong>After (Beehive):</strong>
+자동 학습 + 해석 가능<br>
+→ 전문가 없이도 적용 가능<br>
+→ &ldquo;왜 이상한지&rdquo; 명확<br>
+→ 즉시 대응 가능</p>
+<p><strong>영향:</strong></p>
 <ul>
 <li>이후 모든 UEBA 제품이 이 철학 채택</li>
 <li>&ldquo;설명 가능한 AI&quot;의 중요성 부각</li>
@@ -2463,15 +2360,14 @@ PCA     │ ●
 4. 계정 소유자 인터뷰
 5. 필요 시 비밀번호 리셋
 6. 추가 감사
-</code></pre><p><strong>구현 방법:</strong>
-SOAR 플랫폼 연동</p>
-<ul>
-<li>Phantom, Demisto, Splunk SOAR 등</li>
-<li>Beehive 인시던트 → API 호출 → 플레이북 자동 실행</li>
-</ul>
-<h4 id="3-티켓-자동-생성-고도화">3. 티켓 자동 생성 고도화<a hidden class="anchor" aria-hidden="true" href="#3-티켓-자동-생성-고도화">#</a></h4>
-<p><strong>기존 SIEM 티켓:</strong></p>
-<pre tabindex="0"><code>제목: Anomaly Detected
+**구현 방법:**  
+SOAR 플랫폼 연동  
+- Phantom, Demisto, Splunk SOAR 등  
+- Beehive 인시던트 → API 호출 → 플레이북 자동 실행  
+#### 3. 티켓 자동 생성 고도화  
+**기존 SIEM 티켓:**  
+
+제목: Anomaly Detected
 설명: Host 192.168.1.100 shows anomalous behavior
 심각도: ?
 </code></pre><p><strong>Beehive 강화 티켓:</strong></p>
@@ -2507,14 +2403,15 @@ C&amp;C 서버 탐색 중으로 추정.
 - DESKTOP-J0K1L2 (alice.wilson@company.com)
 
 권장: 4대 모두 동시 대응 필요 (집단 감염 의심)
-</code></pre><p><strong>분석가 반응:</strong>
-&ldquo;와, 이거면 바로 대응할 수 있겠는데?&rdquo;</p>
-<hr>
-<h3 id="c-분석-역량-강화">C. 분석 역량 강화<a hidden class="anchor" aria-hidden="true" href="#c-분석-역량-강화">#</a></h3>
-<h4 id="1-threat-hunting-가설-생성">1. Threat Hunting 가설 생성<a hidden class="anchor" aria-hidden="true" href="#1-threat-hunting-가설-생성">#</a></h4>
-<p><strong>Beehive 클러스터 → 헌팅 가설</strong></p>
-<p><strong>예시 1: Cluster 6 발견 후</strong></p>
-<pre tabindex="0"><code>가설:
+**분석가 반응:**  
+&#34;와, 이거면 바로 대응할 수 있겠는데?&#34;  
+---  
+### C. 분석 역량 강화  
+#### 1. Threat Hunting 가설 생성  
+**Beehive 클러스터 → 헌팅 가설**  
+**예시 1: Cluster 6 발견 후**  
+
+가설:
 &#34;Cluster 6과 비슷한 패턴을 가졌지만 
 임계값보다 약간 낮아서 놓친 호스트가 있을 것이다.&#34;
 
@@ -2543,14 +2440,13 @@ challenged_domains &gt; 평균 + 2σ
 20대 호스트에서 동일 도메인 접속 발견
 → 스피어 피싱 이메일 확인
 → 해당 이메일 전사 차단
-</code></pre><p><strong>Proactive vs. Reactive:</strong></p>
-<ul>
-<li>Reactive: Beehive 알림 → 대응</li>
-<li>Proactive: Beehive 패턴 → 헌팅 → 추가 위협 발굴</li>
-</ul>
-<h4 id="2-장기-트렌드-분석">2. 장기 트렌드 분석<a hidden class="anchor" aria-hidden="true" href="#2-장기-트렌드-분석">#</a></h4>
-<p><strong>월간 클러스터 변화 추적:</strong></p>
-<pre tabindex="0"><code>1월: Cluster 6 (DGA) 4대
+**Proactive vs. Reactive:**  
+- Reactive: Beehive 알림 → 대응  
+- Proactive: Beehive 패턴 → 헌팅 → 추가 위협 발굴  
+#### 2. 장기 트렌드 분석  
+**월간 클러스터 변화 추적:**  
+
+1월: Cluster 6 (DGA) 4대
 2월: Cluster 6 유형 8대 (증가!)
 3월: Cluster 6 유형 2대 (감소)
 
@@ -2569,52 +2465,28 @@ challenged_domains &gt; 평균 + 2σ
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 이상 감지</span>
 </span></span><span style="display:flex;"><span>IF (Mar[<span style="color:#e6db74">&#39;F1&#39;</span>] <span style="color:#f92672">&gt;</span> Jan[<span style="color:#e6db74">&#39;F1&#39;</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">1.3</span>):
 </span></span><span style="display:flex;"><span>    ALERT(<span style="color:#e6db74">&#34;New Destinations 증가 추세 - 새로운 위협 유형 출현 가능성&#34;</span>)
-</span></span></code></pre></div><p><strong>조직 벤치마크:</strong></p>
-<table>
-  <thead>
-      <tr>
-          <th>부서</th>
-          <th>평균 New Dests</th>
-          <th>평균 Policy Violations</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Engineering</td>
-          <td>25</td>
-          <td>5</td>
-      </tr>
-      <tr>
-          <td>Marketing</td>
-          <td>35</td>
-          <td>15 (높음 - 정상)</td>
-      </tr>
-      <tr>
-          <td>Finance</td>
-          <td>8</td>
-          <td>2</td>
-      </tr>
-      <tr>
-          <td>HR</td>
-          <td>12</td>
-          <td>3</td>
-      </tr>
-  </tbody>
-</table>
-<p>마케팅은 경쟁사 조사 때문에 New Destinations 많음 → 정상
-재무가 갑자기 35개 → 즉시 조사!</p>
-<h4 id="3-roi-측정-및-경영진-보고">3. ROI 측정 및 경영진 보고<a hidden class="anchor" aria-hidden="true" href="#3-roi-측정-및-경영진-보고">#</a></h4>
-<p><strong>Beehive 도입 효과 계산:</strong></p>
-<p><strong>탐지 성과:</strong></p>
-<pre tabindex="0"><code>기간: 2주
-생성 인시던트: 784건
-실제 위협: 198건 (25.25%)
-
-기존 도구 탐지: 8건
-Beehive 고유 탐지: 190건
-
-→ Beehive가 없었다면 190건 놓쳤을 것
-</code></pre><p><strong>비용 산정:</strong></p>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">**</span>조직 벤치마크:<span style="color:#f92672">**</span>  
+</span></span><span style="display:flex;"><span><span style="color:#f92672">|</span> 부서 <span style="color:#f92672">|</span> 평균 New Dests <span style="color:#f92672">|</span> 평균 Policy Violations <span style="color:#f92672">|</span>  
+</span></span><span style="display:flex;"><span><span style="color:#f92672">|------|----------------|------------------------|</span>  
+</span></span><span style="display:flex;"><span><span style="color:#f92672">|</span> Engineering <span style="color:#f92672">|</span> <span style="color:#ae81ff">25</span> <span style="color:#f92672">|</span> <span style="color:#ae81ff">5</span> <span style="color:#f92672">|</span>  
+</span></span><span style="display:flex;"><span><span style="color:#f92672">|</span> Marketing <span style="color:#f92672">|</span> <span style="color:#ae81ff">35</span> <span style="color:#f92672">|</span> <span style="color:#ae81ff">15</span> (높음 <span style="color:#f92672">-</span> 정상) <span style="color:#f92672">|</span>  
+</span></span><span style="display:flex;"><span><span style="color:#f92672">|</span> Finance <span style="color:#f92672">|</span> <span style="color:#ae81ff">8</span> <span style="color:#f92672">|</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">|</span>  
+</span></span><span style="display:flex;"><span><span style="color:#f92672">|</span> HR <span style="color:#f92672">|</span> <span style="color:#ae81ff">12</span> <span style="color:#f92672">|</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">|</span>  
+</span></span><span style="display:flex;"><span>마케팅은 경쟁사 조사 때문에 New Destinations 많음 <span style="color:#960050;background-color:#1e0010">→</span> 정상  
+</span></span><span style="display:flex;"><span>재무가 갑자기 <span style="color:#ae81ff">35</span>개 <span style="color:#960050;background-color:#1e0010">→</span> 즉시 조사<span style="color:#960050;background-color:#1e0010">!</span>  
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#### 3. ROI 측정 및 경영진 보고  </span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">**</span>Beehive 도입 효과 계산:<span style="color:#f92672">**</span>  
+</span></span><span style="display:flex;"><span><span style="color:#f92672">**</span>탐지 성과:<span style="color:#f92672">**</span>  
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>기간: <span style="color:#ae81ff">2</span>주
+</span></span><span style="display:flex;"><span>생성 인시던트: <span style="color:#ae81ff">784</span>건
+</span></span><span style="display:flex;"><span>실제 위협: <span style="color:#ae81ff">198</span>건 (<span style="color:#ae81ff">25.25</span><span style="color:#f92672">%</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>기존 도구 탐지: <span style="color:#ae81ff">8</span>건
+</span></span><span style="display:flex;"><span>Beehive 고유 탐지: <span style="color:#ae81ff">190</span>건
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">→</span> Beehive가 없었다면 <span style="color:#ae81ff">190</span>건 놓쳤을 것
+</span></span></code></pre></div><p><strong>비용 산정:</strong></p>
 <pre tabindex="0"><code>DGA 봇넷 1건 피해 예상액: $50,000
 (데이터 유출, 랜섬웨어 등)
 
@@ -2973,22 +2845,22 @@ Beehive: &#34;New Destinations 247개, 정상은 15개&#34;
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/beehive/">Beehive</a></li>
-      <li><a href="http://localhost:1313/tags/log-analysis/">Log-Analysis</a></li>
-      <li><a href="http://localhost:1313/tags/enterprise-security/">Enterprise-Security</a></li>
-      <li><a href="http://localhost:1313/tags/anomaly-detection/">Anomaly-Detection</a></li>
-      <li><a href="http://localhost:1313/tags/clustering/">Clustering</a></li>
-      <li><a href="http://localhost:1313/tags/acsac/">ACSAC</a></li>
-      <li><a href="http://localhost:1313/tags/actionable-intelligence/">Actionable-Intelligence</a></li>
-      <li><a href="http://localhost:1313/tags/dirty-logs/">Dirty-Logs</a></li>
-      <li><a href="http://localhost:1313/tags/behavioral-detection/">Behavioral-Detection</a></li>
+      <li><a href="https://hojjang98.github.io/tags/beehive/">Beehive</a></li>
+      <li><a href="https://hojjang98.github.io/tags/log-analysis/">Log-Analysis</a></li>
+      <li><a href="https://hojjang98.github.io/tags/enterprise-security/">Enterprise-Security</a></li>
+      <li><a href="https://hojjang98.github.io/tags/anomaly-detection/">Anomaly-Detection</a></li>
+      <li><a href="https://hojjang98.github.io/tags/clustering/">Clustering</a></li>
+      <li><a href="https://hojjang98.github.io/tags/acsac/">ACSAC</a></li>
+      <li><a href="https://hojjang98.github.io/tags/actionable-intelligence/">Actionable-Intelligence</a></li>
+      <li><a href="https://hojjang98.github.io/tags/dirty-logs/">Dirty-Logs</a></li>
+      <li><a href="https://hojjang98.github.io/tags/behavioral-detection/">Behavioral-Detection</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
 
     <span>
         Powered by

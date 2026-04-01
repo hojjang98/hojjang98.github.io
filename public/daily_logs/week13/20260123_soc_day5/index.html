@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>2026.01.23 (Day 62) - Splunk Forwarder 구성 및 Wazuh HIDS 환경 구축 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="Splunk, Wazuh, HIDS, Forwarder, SIEM, Agentless, 침입탐지, Sysmon">
+<meta name="description" content="Ubuntu Splunk Forwarder 설치(auth.log-&gt;waf, nginx-&gt;web, ufw-&gt;main 인덱스 분리), Windows Forwarder 설치 및 프록시 우회 설정(inetcpl.cpl 로컬주소 예외), Kali SSH 무차별 대입 시뮬레이션 후 Splunk SPL로 탐지, Wazuh Manager/Agent/Agentless(SSH periodic_diff로 /etc/passwd·/etc/shadow 10초 자동 점검) 환경 구축">
+<meta name="author" content="">
+<link rel="canonical" href="https://hojjang98.github.io/daily_logs/week13/20260123_soc_day5/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.290573799e582c418c4bd84f2bca757d0a77fd1bf9f5c43942030e706df68ec8.css" integrity="sha256-KQVzeZ5YLEGMS9hPK8p1fQp3/Rv59cQ5QgMOcG32jsg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/daily_logs/week13/20260123_soc_day5/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://hojjang98.github.io/daily_logs/week13/20260123_soc_day5/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="2026.01.23 (Day 62) - Splunk Forwarder 구성 및 Wazuh HIDS 환경 구축">
+  <meta property="og:description" content="Ubuntu Splunk Forwarder 설치(auth.log-&gt;waf, nginx-&gt;web, ufw-&gt;main 인덱스 분리), Windows Forwarder 설치 및 프록시 우회 설정(inetcpl.cpl 로컬주소 예외), Kali SSH 무차별 대입 시뮬레이션 후 Splunk SPL로 탐지, Wazuh Manager/Agent/Agentless(SSH periodic_diff로 /etc/passwd·/etc/shadow 10초 자동 점검) 환경 구축">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="daily_logs">
+    <meta property="article:published_time" content="2026-01-23T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-01-23T00:00:00+00:00">
+    <meta property="article:tag" content="Splunk">
+    <meta property="article:tag" content="Wazuh">
+    <meta property="article:tag" content="HIDS">
+    <meta property="article:tag" content="Forwarder">
+    <meta property="article:tag" content="SIEM">
+    <meta property="article:tag" content="Agentless">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2026.01.23 (Day 62) - Splunk Forwarder 구성 및 Wazuh HIDS 환경 구축">
+<meta name="twitter:description" content="Ubuntu Splunk Forwarder 설치(auth.log-&gt;waf, nginx-&gt;web, ufw-&gt;main 인덱스 분리), Windows Forwarder 설치 및 프록시 우회 설정(inetcpl.cpl 로컬주소 예외), Kali SSH 무차별 대입 시뮬레이션 후 Splunk SPL로 탐지, Wazuh Manager/Agent/Agentless(SSH periodic_diff로 /etc/passwd·/etc/shadow 10초 자동 점검) 환경 구축">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "6개월, 혹은 그 이상의 보안 여정",
+      "item": "https://hojjang98.github.io/daily_logs/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "2026.01.23 (Day 62) - Splunk Forwarder 구성 및 Wazuh HIDS 환경 구축",
+      "item": "https://hojjang98.github.io/daily_logs/week13/20260123_soc_day5/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "2026.01.23 (Day 62) - Splunk Forwarder 구성 및 Wazuh HIDS 환경 구축",
+  "name": "2026.01.23 (Day 62) - Splunk Forwarder 구성 및 Wazuh HIDS 환경 구축",
+  "description": "Ubuntu Splunk Forwarder 설치(auth.log-\u0026gt;waf, nginx-\u0026gt;web, ufw-\u0026gt;main 인덱스 분리), Windows Forwarder 설치 및 프록시 우회 설정(inetcpl.cpl 로컬주소 예외), Kali SSH 무차별 대입 시뮬레이션 후 Splunk SPL로 탐지, Wazuh Manager/Agent/Agentless(SSH periodic_diff로 /etc/passwd·/etc/shadow 10초 자동 점검) 환경 구축",
+  "keywords": [
+    "Splunk", "Wazuh", "HIDS", "Forwarder", "SIEM", "Agentless", "침입탐지", "Sysmon"
+  ],
+  "articleBody": "📄 2026.01.23 (Day 62) - Splunk Forwarder 구성 및 Wazuh HIDS 환경 구축 1. 핵심 개념 정리 Splunk 분산 아키텍처 # 핵심 개념 설명 실무/보안 관점 1 Universal Forwarder 경량화된 로그 수집 및 전송 에이전트 각 시스템에 설치하여 중앙 집중식 로그 수집 구조 구축 2 Indexer 수집된 데이터를 인덱싱하고 검색 가능하게 저장 대용량 로그 데이터의 빠른 검색과 분석 지원 3 9997 포트 Forwarder -\u003e Indexer 간 데이터 전송 전용 포트 방화벽 정책에서 해당 포트 허용 필수 4 inputs.conf Forwarder에서 수집할 로그 파일 및 인덱스 정의 로그 유형별 분리 저장으로 검색 효율성 향상 5 인덱스 분리 전략 waf(인증 로그), web(웹 로그), main(시스템) 분리 목적별 접근 제어 및 검색 성능 최적화 Wazuh HIDS 구성 요소 # 핵심 개념 설명 실무/보안 관점 6 Wazuh Manager OSSEC 기반 중앙 관리 서버 모든 에이전트 데이터를 수집하고 룰 엔진 구동 7 Agent 방식 대상 시스템에 에이전트 설치 후 실시간 모니터링 세밀한 호스트 레벨 보안 이벤트 탐지 가능 8 Agentless 방식 SSH로 원격 명령 실행 후 결과 비교 에이전트 설치 불가 환경에서도 모니터링 가능 9 Sysmon 연동 Windows 상세 활동 로그를 Wazuh로 통합 프로세스 생성, 네트워크 연결 등 고급 위협 탐지 10 local_rules.xml 커스텀 탐지 룰 정의 파일 조직 특화 보안 정책 및 위협 시나리오 구현 통합 모니터링 환경 # 핵심 개념 설명 실무/보안 관점 11 멀티 플랫폼 수집 Linux(auth.log, nginx), Windows(Event Log) 이기종 환경 통합 가시성 확보 12 프록시 우회 설정 로컬 주소에 프록시 미사용 설정 내부망 Splunk 접속 시 프록시 간섭 방지 13 호스트명 고유성 각 시스템별 고유 hostname 설정 필수 Wazuh에서 에이전트 식별 및 충돌 방지 14 IP 고정 설정 netplan으로 고정 IP 할당 안정적인 로그 수집 및 에이전트 통신 보장 15 통합 보안 체계 Splunk(로그 분석) + Wazuh(실시간 탐지) 사후 분석과 실시간 대응의 시너지 효과 2. 실습 내용 정리 실습 60-1: Ubuntu Forwarder 설치 및 로그 전송 설정 목표: Ubuntu 시스템의 주요 보안 로그를 Splunk 서버로 전송\n실습 환경:\nSplunk Server: 192.168.2.x (Indexer/Search Head) Ubuntu Forwarder: 192.168.2.y 수집 대상: /var/log/auth.log, /var/log/nginx/access.log, /var/log/ufw.log 실습 단계:\nSplunk Universal Forwarder 설치: dpkg -i splunkforwarder-8.2.0-e053ef3c985f-linux-2.6-amd64.deb SWID 태그 복사: swidtag 파일 /opt/splunkforwarder/etc/ 경로로 복사 부팅 시 자동 시작: /opt/splunkforwarder/bin/splunk enable boot-start Splunk 서버로 데이터 전송 설정: /opt/splunkforwarder/bin/splunk add forward-server 192.168.2.x:9997 inputs.conf 수정: nano /opt/splunkforwarder/etc/system/local/inputs.conf inputs.conf 설정 내용:\n[default]\nhost = 192.168.2.x [monitor:///var/log/auth.log]\ndisabled = false index = waf sourcetype = access_combined [monitor:///var/log/nginx/access.log]\ndisabled = false index = web sourcetype = access_combined [monitor:///var/log/ufw.log]\ndisabled = false index = main sourcetype = access_combined Forwarder 재시작: /opt/splunkforwarder/bin/splunk restart 확인 항목:\nauth.log -\u003e waf 인덱스 (인증 관련 보안 이벤트) nginx/access.log -\u003e web 인덱스 (웹 접근 로그) ufw.log -\u003e main 인덱스 (방화벽 로그) 각 로그 파일의 라인 수 확인으로 수집 여부 검증 보안 인사이트:\n인덱스 분리를 통해 로그 유형별 접근 제어 및 검색 효율성 향상 auth.log 실시간 모니터링으로 SSH 무차별 대입 공격 조기 탐지 nginx access.log로 웹 공격 패턴 분석 및 이상 트래픽 식별 실습 60-2: Splunk 서버 리스닝 포트 활성화 목표: Splunk 서버에서 Forwarder 데이터 수신 준비\n실습 단계:\nSplunk 서버에서 9997 포트 리스닝 활성화: /opt/splunk/bin/splunk enable listen 9997 관리자 인증 (Splunk username: admin) 리스닝 상태 확인: netstat -tuln | grep 9997 데이터 흐름:\nUbuntu Forwarder에서 로그 파일 모니터링 시작 변경 사항 발생 시 즉시 데이터 수집 9997 포트를 통해 Splunk 서버로 전송 방화벽 설정:\nSplunk 서버: 9997/tcp 인바운드 허용 Forwarder: 9997/tcp 아웃바운드 허용 내부망에서만 통신하도록 소스 IP 제한 권장 실습 60-3: 로그 수집 검증 및 공격 시뮬레이션 목표: Forwarder 정상 수집 확인 및 Kali Linux에서 공격 시뮬레이션\n실습 단계:\n로그 파일 라인 수 확인 (수집 전): wc -l /var/log/ufw.log / nginx/access.log / auth.log 방화벽 활성화 및 SSH 포트 허용: ufw enable \u0026\u0026 ufw allow 22/tcp \u0026\u0026 reboot SSH 서버 설치 (없는 경우): apt install -y openssh-server Kali Linux에서 SSH 접속 실패 시도 (무차별 대입 시뮬레이션): for i in {1..15}; do ssh fakeuser@192.168.2.y; done 로그 파일 라인 수 재확인 (수집 후): wc -l /var/log/auth.log (“Failed password” 로그 증가 확인) Splunk 검색 쿼리 (SSH 인증 실패 로그):\nindex=waf sourcetype=“access_combined” “Failed password” | rex “from (?\\d+.\\d+.\\d+.\\d+)” | stats count as fail_cnt by src_ip | sort - fail_cnt | head 20 발견 가능한 공격 패턴:\nSSH 무차별 대입 공격: 동일 IP에서 다수 인증 실패 포트 스캔: 짧은 시간 내 다수 포트 접근 시도 웹 공격: SQL Injection, XSS, Directory Traversal 시도 탐지 기준 및 대응 방안:\n5분 내 동일 IP에서 10회 이상 인증 실패 -\u003e 무차별 대입 공격 404 에러 다발 발생 -\u003e 디렉터리 스캔 의심 임계치 초과 IP 자동 차단 (fail2ban 연동) 실시간 알람 발송 (이메일, Slack) 위협 인텔리전스 DB 조회 실습 60-4: Windows Forwarder 설치 및 프록시 설정 목표: Windows 10 시스템의 이벤트 로그를 Splunk로 전송하고 프록시 문제 해결\n실습 환경:\nWindows 10: DESKTOP-IRB3M7S Splunk Server: 192.168.2.x 수집 대상: Application, System, Security 이벤트 로그 실습 단계:\nSplunk Universal Forwarder 설치 (Windows용): 관리자 권한으로 설치 실행\ninputs.conf 수정 경로: C:\\Program Files\\SplunkUniversalForwarder\\etc\\system\\local\\inputs.conf\n[default]\nhost = DESKTOP-IRB3M7S [WinEventLog://Application]\ndisabled = 0 / index = main [WinEventLog://System]\ndisabled = 0 / index = main [WinEventLog://Security]\ndisabled = 0 / index = main / current_only = 0 / checkpointInterval = 5 Forwarder 재시작: “C:\\Program Files\\SplunkUniversalForwarder\\bin\\splunk.exe” restart\n프록시 설정 해제 (중요!):\ninetcpl.cpl 실행 -\u003e 연결 탭 -\u003e LAN 설정 “로컬 주소에 대해 프록시 서버 사용 안 함” 체크 Splunk Web UI 접속 테스트: http://192.168.2.x:8000\n프록시 설정 문제 원인 및 해결:\n문제 상황:\n기본 프록시 설정 시 로컬 IP(192.168.x.x)도 프록시 경유 시도 내부망 Splunk 서버 접속 불가 발생 해결 방법:\n“로컬 주소에 프록시 사용 안 함” 옵션 활성화 내부 IP 대역(192.168.0.0/16)은 직접 연결 외부 인터넷만 프록시 경유 Splunk 검색으로 Windows 호스트 확인:\nindex=* host=“DESKTOP-IRB3M7S” | stats count by source sourcetype index=* host=“DESKTOP-IRB3M7S” source=“WinEventLog:Security” | head 20 index=* host=“DESKTOP-IRB3M7S” source=“WinEventLog:Security” | stats count by EventCode | sort - count 보안 인사이트:\nWindows 이벤트 로그는 호스트 기반 침입 탐지의 핵심 데이터 EventCode 4625(로그온 실패), 4624(로그온 성공) 조합 분석으로 계정 탈취 탐지 current_only = 0 설정으로 과거 로그까지 수집하여 이력 분석 가능 실습 60-5: Wazuh 환경 구축 목표: Wazuh HIDS 서버 및 에이전트 설치로 호스트 기반 보안 모니터링 체계 구축\n실습 환경:\nWazuh Server: 192.168.2.10 (Ubuntu 20.04) Wazuh Agent1: 192.168.2.11 (Ubuntu 20.04, Agent 방식) Wazuh Agent2: 192.168.2.12 (Ubuntu 20.04, Agentless 방식) Wazuh Agent3: 192.168.2.13 (Windows 10, Agent 방식) 실습 단계:\n모든 시스템 호스트명 변경 (중복 방지 필수!):\nhostnamectl set-hostname wazuh-server (192.168.2.10) hostnamectl set-hostname wazuh-agent1 (192.168.2.11) hostnamectl set-hostname wazuh-agent2 (192.168.2.12) IP 고정 설정 (netplan): nano /etc/netplan/00-installer-config.yaml\nnetwork: version: 2 / renderer: networkd ethernets: ens32: dhcp4: no addresses: [192.168.2.10/24] (각 시스템별로 IP 변경) gateway4: 192.168.2.2 nameservers: addresses: [8.8.8.8, 8.8.4.4]\nnetplan 적용: netplan apply \u0026\u0026 reboot\nWazuh 서버 설치 (wazuh-server에서):\ncurl -so ~/unattended-installation.sh https://packages.wazuh.com/resources/4.2/open-distro/unattended-installation/unattended-installation.sh bash ~/unattended-installation.sh -i Wazuh 서비스 상태 확인:\nsystemctl status kibana / elasticsearch / filebeat / wazuh-manager Wazuh Agent 설치 (agent1에서):\nsystemctl daemon-reload systemctl enable wazuh-agent \u0026\u0026 systemctl start wazuh-agent \u0026\u0026 systemctl status wazuh-agent Agentless 방식 설정 (agent2 대상):\nWazuh 서버에서 실행:\ncd /var/ossec/agentless Agentless 호스트 등록: ./register_host.sh add wazuh@192.168.2.12 123456 등록된 호스트 확인: ./register_host.sh list ossec.conf에 모니터링 설정 추가: nano /var/ossec/etc/ossec.conf 설정 내용:\ntype: ssh_generic_diff / frequency: 10 / host: wazuh@192.168.2.12 / state: periodic_diff arguments: tail -n 1 /etc/passwd (10초마다 마지막 줄 비교) arguments: tail -n 1 /etc/shadow (10초마다 마지막 줄 비교) Wazuh Manager 재시작: systemctl restart wazuh-manager Agentless 동작 방식:\nWazuh 서버가 SSH로 agent2에 접속 지정된 명령어(tail -n 1 /etc/passwd) 실행 이전 실행 결과와 비교(diff) 변경 사항 발견 시 알람 발생 보안 인사이트:\nAgent 방식: 실시간 파일 무결성 검증, 프로세스 모니터링 Agentless 방식: 레거시 시스템, 에이전트 설치 불가 환경 커버 /etc/passwd, /etc/shadow 변경 탐지로 계정 추가/변조 즉시 포착 3. Splunk vs Wazuh 비교 솔루션 특성 비교 항목 Splunk Wazuh 사용 시기/적용 방안 핵심 기능 로그 수집, 인덱싱, 빠른 검색 호스트 침입 탐지, 파일 무결성 점검 Splunk는 로그 분석, Wazuh는 실시간 위협 탐지 아키텍처 Forwarder -\u003e Indexer -\u003e Search Head Manager \u003c- Agent/Agentless Splunk는 분산, Wazuh는 중앙 집중 분석 방식 SPL 쿼리 기반 사후 분석 룰 기반 실시간 이벤트 탐지 Splunk는 포렌식, Wazuh는 실시간 대응 라이선스 상용 (무료 500MB/일 제한) 오픈소스 (무료) 비용 고려 시 Wazuh 우선 검토 실전 활용 시나리오 시나리오 Splunk 활용 Wazuh 활용 통합 효과 SSH 무차별 대입 공격 auth.log에서 Failed password 패턴 검색 실시간 5716 룰로 즉시 탐지 Splunk로 공격 추이 분석 + Wazuh로 즉각 차단 웹 공격 탐지 nginx 로그에서 SQL Injection 패턴 검색 웹쉘 업로드 시 파일 무결성 알람 Splunk로 공격 유형 분류 + Wazuh로 피해 확산 방지 계정 탈취 분석 로그온 성공/실패 타임라인 재구성 /etc/passwd 변경 즉시 탐지 Splunk로 침투 경로 추적 + Wazuh로 권한 상승 차단 컴플라이언스 점검 접근 로그 장기 보관 및 감사 PCI-DSS, ISMS-P 룰셋 자동 점검 규제 준수 증빙 자동화 4. 심화 분석 프록시 우회 설정 상세 분석 구분 문제 상황 원인 분석 해결 방법 실무 적용 증상 Splunk Web UI 접속 불가 로컬 IP도 프록시 경유 시도 inetcpl.cpl -\u003e 프록시 예외 설정 기업 환경에서 내부 서비스 접속 시 필수 설정 검증 브라우저 개발자 도구 확인 프록시 서버로 요청 전송 확인 “로컬 주소에 프록시 사용 안 함” 체크 네트워크 트러블슈팅 기본 절차 확장 Forwarder 데이터 미전송 9997 포트도 프록시 경유 시도 방화벽 룰에서 직접 연결 허용 모든 내부 IP 대역에 대해 프록시 예외 적용 inputs.conf 설정 전략 인덱스 분리 전략:\n[monitor:///var/log/auth.log] -\u003e index = waf (인증/접근 제어 관련) [monitor:///var/log/nginx/access.log] -\u003e index = web (웹 애플리케이션 로그) [monitor:///var/log/ufw.log] -\u003e index = main (시스템/방화벽 로그) 실무 적용 포인트:\n인덱스별 접근 권한 분리 (RBAC) 검색 성능 향상 (필요한 인덱스만 조회) 데이터 보존 정책 차등 적용 (규제 준수) 5. 실무/보안 적용 보안 전문가 관점 - 탐지/대응 포인트 단계/유형 탐지 포인트 로그 예시 대응 방안 초기 침투 다수 인증 실패, 알려지지 않은 IP, 비정상 접속 시간 Failed password for admin from 203.x.x.x 해당 IP 즉시 차단, 계정 잠금 정책 적용, 위협 인텔리전스 조회 정찰 활동 404 에러 다발, 디렉터리 스캔, SQL Injection 시도 GET /../../../etc/passwd 404 WAF 정책 업데이트, 공격 IP 블랙리스트 등록, 취약점 긴급 패치 권한 상승 /etc/passwd 변경, sudo 사용 급증, 계정 추가 useradd hacker 변경사항 즉시 롤백, 침해 계정 격리, 포렌식 이미지 확보 Splunk 핵심 검색 쿼리 SSH 무차별 대입 공격 탐지:\nindex=waf sourcetype=“access_combined” “Failed password” | rex “from (?\\d+.\\d+.\\d+.\\d+)” | stats count as fail_cnt by src_ip | sort - fail_cnt | head 20 웹 공격 패턴 탐지:\nindex=web sourcetype=“access_combined” (“union select” OR “select * from” OR “etc/passwd” OR “script”) | stats count by clientip, uri | sort - count 404 에러 다발 (디렉터리 스캔 의심):\nindex=web sourcetype=“access_combined” status=404 | stats count as notfound_cnt by uri | sort - notfound_cnt | head 20 클라이언트 IP별 요청 수:\nindex=web sourcetype=“access_combined” | stats count as hits by clientip | sort - hits | head 20 Wazuh 룰셋 예시 (local_rules.xml) SSH 인증 실패 탐지 (기본 룰 5716 확장):\nrule id=“100001” level=“5”: if_sid=5716, srcip=1.1.1.1 -\u003e SSH authentication failed from IP 1.1.1.1 Agentless로 /etc/passwd 변경 탐지:\nrule id=“100002” level=“12”: if_sid=550, match=/etc/passwd -\u003e User account file modified 6. 배운 점 및 인사이트 새로 알게 된 점 Forwarder 아키텍처의 효율성: Universal Forwarder를 통해 각 시스템에서 발생하는 로그를 중앙 Indexer로 집중시키는 분산 구조가 대규모 환경에서 얼마나 효과적인지 체감했다. 특히 경량 에이전트 방식이라 시스템 부하가 거의 없다는 점이 인상적이었다.\n프록시 설정의 함정: 기업 환경에서 흔히 설정된 프록시가 내부망 서비스 접속까지 방해할 수 있다는 점을 처음 알았다. “로컬 주소에 프록시 사용 안 함” 설정의 중요성을 실감했고, 보안 솔루션 구축 시 반드시 확인해야 할 체크리스트 항목이다.\n인덱스 분리 전략: 로그 유형별로 인덱스를 분리(waf, web, main)하면 검색 성능뿐만 아니라 접근 제어, 데이터 보존 정책까지 세밀하게 관리할 수 있다는 점을 배웠다.\nWazuh Agentless의 실용성: 에이전트 설치가 불가능한 레거시 시스템이나 임베디드 장비에서도 SSH를 통한 원격 명령 실행으로 보안 모니터링을 구현할 수 있다는 점이 매우 실용적이었다. /etc/passwd, /etc/shadow 같은 중요 파일의 변경을 10초마다 자동 점검하는 방식이 효과적이다.\n호스트명 고유성의 중요성: Wazuh에서 각 에이전트를 식별하는 기준이 호스트명이기 때문에, 중복 시 에이전트 충돌이 발생한다. 시스템 구축 초기에 네이밍 컨벤션을 확립하는 것이 중요하다.\n이전 학습과의 연결고리 Splunk 기초와 연계: 이전에 배운 SPL 쿼리 문법(stats, sort, rex)을 실제 보안 로그 분석에 적용했다. 특히 정규표현식으로 IP 주소를 추출하는 rex 명령어가 실무에서 얼마나 유용한지 체감했다.\n웹 해킹 실습 확장: 이전에 학습한 SQL Injection, XSS 공격 기법을 직접 시뮬레이션하고, nginx access.log에서 해당 패턴을 Splunk로 탐지하는 전 과정을 경험했다.\n네트워크 보안 -\u003e SIEM 전환: 이전에 학습한 방화벽(ufw), 네트워크 스캔(nmap) 개념이 Splunk로 수집되어 통합 분석되는 과정을 보면서, 개별 보안 도구들이 SIEM으로 통합되는 흐름을 이해하게 되었다.\n실무 적용 아이디어 보안 전문가 관점:\n계층적 모니터링 체계: Splunk로 모든 로그를 수집/검색하고, Wazuh로 크리티컬 호스트(DB 서버, 도메인 컨트롤러)의 실시간 무결성을 점검하는 이중 방어 체계 구축. DMZ의 웹 서버는 Splunk로 트래픽 분석, 내부 서버는 Wazuh로 파일 무결성 점검하는 역할 분담이 효과적이다.\n자동화된 위협 대응: Splunk에서 탐지된 공격자 IP를 자동으로 방화벽 차단 목록에 추가하거나, Wazuh의 Active Response 기능과 연계하여 침해 계정을 즉시 잠금 처리하는 SOAR 파이프라인 구축이 가능하다.\n컴플라이언스 자동화: Wazuh의 PCI-DSS, ISMS-P 관련 기본 룰셋을 활용하면 정기 감사 시 필요한 증빙 자료를 수작업 없이 자동 생성할 수 있어 업무 효율이 크게 개선될 것이다.\n침해사고 대응 관점:\n타임라인 재구성: Splunk의 transaction 명령어로 공격자의 전체 활동 흐름(초기 접근 -\u003e 정찰 -\u003e 권한 상승 -\u003e 데이터 유출)을 시간 순서대로 재구성하여 침해 경로를 명확히 파악할 수 있다.\n포렌식 증거 확보: Wazuh의 Syscheck 기능으로 변경된 파일의 해시값과 변경 시점을 자동 기록하므로, 법적 대응 시 신뢰성 있는 디지털 증거로 활용 가능하다.\n7. Quick Reference Splunk Forwarder 명령어 모음 설치 및 초기 설정:\ndpkg -i splunkforwarder-*.deb /opt/splunkforwarder/bin/splunk enable boot-start 서버 연결:\n/opt/splunkforwarder/bin/splunk add forward-server [서버IP]:9997 서비스 관리:\n/opt/splunkforwarder/bin/splunk start / restart / status 설정 확인:\n/opt/splunkforwarder/bin/splunk list forward-server /opt/splunkforwarder/bin/splunk list monitor Wazuh 관리 명령어 서비스 상태 확인:\nsystemctl status wazuh-manager / kibana / elasticsearch / filebeat Agent 관리:\nsystemctl start wazuh-agent / enable wazuh-agent / status wazuh-agent Agentless 호스트 관리:\ncd /var/ossec/agentless ./register_host.sh add [user@IP] [password] ./register_host.sh list 핵심 Splunk 검색 쿼리 구분 쿼리 핵심 키워드 주요 내용 적용 방법 IP별 집계 index=web stats count by clientip sort -count stats, sort 패턴 탐지 index=web (“union select” OR “script”) OR, AND 공격 키워드 검색 SQL Injection, XSS 시도 탐지 IP 추출 rex “from (?\\d+.\\d+.\\d+.\\d+)” rex 정규식으로 IP 추출 404 분석 index=web status=404 stats count by uri stats 404 에러 URI 집계 프록시 설정 체크리스트 Windows 프록시 우회:\ninetcpl.cpl 실행 연결 탭 -\u003e LAN 설정 클릭 “로컬 주소에 대해 프록시 서버 사용 안 함” 체크 브라우저 재시작 후 192.168.x.x 접속 테스트 Linux 프록시 우회:\nexport no_proxy=“localhost,127.0.0.1,192.168.0.0/16” .bashrc에 영구 저장 후 source ~/.bashrc 로 적용 Wazuh 초기 설정 체크리스트:\n모든 시스템 호스트명 고유하게 설정 IP 고정 설정 (netplan) SSH 키 기반 인증 설정 (Agentless용) 방화벽에서 Wazuh 포트 허용 (1514, 1515) 8. 트러블슈팅 문제 원인 해결 방법 Splunk Web UI 접속 불가 프록시 설정으로 로컬 주소도 프록시 경유 inetcpl.cpl -\u003e “로컬 주소에 프록시 사용 안 함” 체크, 브라우저 캐시 삭제 후 재접속, 직접 IP:포트로 접속 시도 Forwarder 데이터 미수신 9997 포트 방화벽 차단 또는 리스닝 미활성화 ufw allow 9997/tcp, Splunk 서버에서 splunk enable listen 9997 실행, netstat -tuln Wazuh Agent 연결 실패 호스트명 중복 또는 서버 IP 오타 hostnamectl 로 각 시스템 호스트명 고유성 확인, /var/ossec/etc/ossec.conf에서 서버 IP 검증, systemctl restart wazuh-agent 후 재연결 Agentless SSH 접속 실패 SSH 키 인증 미설정 또는 비밀번호 오류 ssh-keygen 후 ssh-copy-id wazuh@대상IP, register_host.sh에서 올바른 비밀번호 입력, 대상 시스템에서 SSH 서비스 실행 확인 Windows 이벤트 로그 미수집 SplunkForwarder 서비스 권한 부족 SplunkForwarder 서비스가 SYSTEM 계정으로 실행 중인지 확인, current_only = 0 설정으로 과거 로그도 수집, 이벤트 뷰어에서 해당 로그 접근 가능 여부 확인 Today’s Insight:\nSplunk와 Wazuh를 통합 운영하면서 단일 SIEM의 한계를 넘어선 입체적 보안 모니터링의 가능성을 확인했다. Splunk는 방대한 로그를 빠르게 검색하고 공격 패턴을 분석하는 데 탁월하지만, 호스트 레벨의 미세한 변화를 실시간으로 포착하는 데는 Wazuh의 파일 무결성 점검이 더 효과적이었다. 특히 프록시 설정 같은 사소해 보이는 환경 요소가 실제로는 모니터링 체계의 가용성을 좌우할 수 있다는 점을 배웠다. 앞으로는 공격 시나리오별로 어느 도구가 더 적합한지 판단하는 감각을 키우고, 자동화된 위협 대응 파이프라인 구축으로 나아가야겠다. 로그 수집부터 탐지, 대응까지 전 과정을 직접 구축해본 경험은 SOC 분석가로서의 실무 감각을 키우는 데 큰 도움이 될 것이다.\n",
+  "wordCount" : "5839",
+  "inLanguage": "ko",
+  "datePublished": "2026-01-23T00:00:00Z",
+  "dateModified": "2026-01-23T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/daily_logs/week13/20260123_soc_day5/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://hojjang98.github.io/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/daily_logs/">6개월, 혹은 그 이상의 보안 여정</a></div>
+    <h1 class="post-title entry-hint-parent">
+      2026.01.23 (Day 62) - Splunk Forwarder 구성 및 Wazuh HIDS 환경 구축
+    </h1>
+    <div class="post-meta"><span title='2026-01-23 00:00:00 +0000 UTC'>2026년 1월 23일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="-20260123-day-62---splunk-forwarder-구성-및-wazuh-hids-환경-구축">📄 2026.01.23 (Day 62) - Splunk Forwarder 구성 및 Wazuh HIDS 환경 구축<a hidden class="anchor" aria-hidden="true" href="#-20260123-day-62---splunk-forwarder-구성-및-wazuh-hids-환경-구축">#</a></h1>
+<hr>
+<h2 id="1-핵심-개념-정리">1. 핵심 개념 정리<a hidden class="anchor" aria-hidden="true" href="#1-핵심-개념-정리">#</a></h2>
+<h3 id="splunk-분산-아키텍처">Splunk 분산 아키텍처<a hidden class="anchor" aria-hidden="true" href="#splunk-분산-아키텍처">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">#</th>
+          <th style="text-align: left">핵심 개념</th>
+          <th style="text-align: left">설명</th>
+          <th style="text-align: left">실무/보안 관점</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">1</td>
+          <td style="text-align: left">Universal Forwarder</td>
+          <td style="text-align: left">경량화된 로그 수집 및 전송 에이전트</td>
+          <td style="text-align: left">각 시스템에 설치하여 중앙 집중식 로그 수집 구조 구축</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">2</td>
+          <td style="text-align: left">Indexer</td>
+          <td style="text-align: left">수집된 데이터를 인덱싱하고 검색 가능하게 저장</td>
+          <td style="text-align: left">대용량 로그 데이터의 빠른 검색과 분석 지원</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">3</td>
+          <td style="text-align: left">9997 포트</td>
+          <td style="text-align: left">Forwarder -&gt; Indexer 간 데이터 전송 전용 포트</td>
+          <td style="text-align: left">방화벽 정책에서 해당 포트 허용 필수</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">4</td>
+          <td style="text-align: left">inputs.conf</td>
+          <td style="text-align: left">Forwarder에서 수집할 로그 파일 및 인덱스 정의</td>
+          <td style="text-align: left">로그 유형별 분리 저장으로 검색 효율성 향상</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">5</td>
+          <td style="text-align: left">인덱스 분리 전략</td>
+          <td style="text-align: left">waf(인증 로그), web(웹 로그), main(시스템) 분리</td>
+          <td style="text-align: left">목적별 접근 제어 및 검색 성능 최적화</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="wazuh-hids-구성-요소">Wazuh HIDS 구성 요소<a hidden class="anchor" aria-hidden="true" href="#wazuh-hids-구성-요소">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">#</th>
+          <th style="text-align: left">핵심 개념</th>
+          <th style="text-align: left">설명</th>
+          <th style="text-align: left">실무/보안 관점</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">6</td>
+          <td style="text-align: left">Wazuh Manager</td>
+          <td style="text-align: left">OSSEC 기반 중앙 관리 서버</td>
+          <td style="text-align: left">모든 에이전트 데이터를 수집하고 룰 엔진 구동</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">7</td>
+          <td style="text-align: left">Agent 방식</td>
+          <td style="text-align: left">대상 시스템에 에이전트 설치 후 실시간 모니터링</td>
+          <td style="text-align: left">세밀한 호스트 레벨 보안 이벤트 탐지 가능</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">8</td>
+          <td style="text-align: left">Agentless 방식</td>
+          <td style="text-align: left">SSH로 원격 명령 실행 후 결과 비교</td>
+          <td style="text-align: left">에이전트 설치 불가 환경에서도 모니터링 가능</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">9</td>
+          <td style="text-align: left">Sysmon 연동</td>
+          <td style="text-align: left">Windows 상세 활동 로그를 Wazuh로 통합</td>
+          <td style="text-align: left">프로세스 생성, 네트워크 연결 등 고급 위협 탐지</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">10</td>
+          <td style="text-align: left">local_rules.xml</td>
+          <td style="text-align: left">커스텀 탐지 룰 정의 파일</td>
+          <td style="text-align: left">조직 특화 보안 정책 및 위협 시나리오 구현</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="통합-모니터링-환경">통합 모니터링 환경<a hidden class="anchor" aria-hidden="true" href="#통합-모니터링-환경">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">#</th>
+          <th style="text-align: left">핵심 개념</th>
+          <th style="text-align: left">설명</th>
+          <th style="text-align: left">실무/보안 관점</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">11</td>
+          <td style="text-align: left">멀티 플랫폼 수집</td>
+          <td style="text-align: left">Linux(auth.log, nginx), Windows(Event Log)</td>
+          <td style="text-align: left">이기종 환경 통합 가시성 확보</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">12</td>
+          <td style="text-align: left">프록시 우회 설정</td>
+          <td style="text-align: left">로컬 주소에 프록시 미사용 설정</td>
+          <td style="text-align: left">내부망 Splunk 접속 시 프록시 간섭 방지</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">13</td>
+          <td style="text-align: left">호스트명 고유성</td>
+          <td style="text-align: left">각 시스템별 고유 hostname 설정 필수</td>
+          <td style="text-align: left">Wazuh에서 에이전트 식별 및 충돌 방지</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">14</td>
+          <td style="text-align: left">IP 고정 설정</td>
+          <td style="text-align: left">netplan으로 고정 IP 할당</td>
+          <td style="text-align: left">안정적인 로그 수집 및 에이전트 통신 보장</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">15</td>
+          <td style="text-align: left">통합 보안 체계</td>
+          <td style="text-align: left">Splunk(로그 분석) + Wazuh(실시간 탐지)</td>
+          <td style="text-align: left">사후 분석과 실시간 대응의 시너지 효과</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="2-실습-내용-정리">2. 실습 내용 정리<a hidden class="anchor" aria-hidden="true" href="#2-실습-내용-정리">#</a></h2>
+<h3 id="실습-60-1-ubuntu-forwarder-설치-및-로그-전송-설정">실습 60-1: Ubuntu Forwarder 설치 및 로그 전송 설정<a hidden class="anchor" aria-hidden="true" href="#실습-60-1-ubuntu-forwarder-설치-및-로그-전송-설정">#</a></h3>
+<p><strong>목표:</strong> Ubuntu 시스템의 주요 보안 로그를 Splunk 서버로 전송</p>
+<p><strong>실습 환경:</strong></p>
+<ul>
+<li>Splunk Server: 192.168.2.x (Indexer/Search Head)</li>
+<li>Ubuntu Forwarder: 192.168.2.y</li>
+<li>수집 대상: /var/log/auth.log, /var/log/nginx/access.log, /var/log/ufw.log</li>
+</ul>
+<p><strong>실습 단계:</strong></p>
+<ol>
+<li>Splunk Universal Forwarder 설치: dpkg -i splunkforwarder-8.2.0-e053ef3c985f-linux-2.6-amd64.deb</li>
+<li>SWID 태그 복사: swidtag 파일 /opt/splunkforwarder/etc/ 경로로 복사</li>
+<li>부팅 시 자동 시작: /opt/splunkforwarder/bin/splunk enable boot-start</li>
+<li>Splunk 서버로 데이터 전송 설정: /opt/splunkforwarder/bin/splunk add forward-server 192.168.2.x:9997</li>
+<li>inputs.conf 수정: nano /opt/splunkforwarder/etc/system/local/inputs.conf</li>
+</ol>
+<p><strong>inputs.conf 설정 내용:</strong></p>
+<p>[default]</p>
+<ul>
+<li>host = 192.168.2.x</li>
+</ul>
+<p>[monitor:///var/log/auth.log]</p>
+<ul>
+<li>disabled = false</li>
+<li>index = waf</li>
+<li>sourcetype = access_combined</li>
+</ul>
+<p>[monitor:///var/log/nginx/access.log]</p>
+<ul>
+<li>disabled = false</li>
+<li>index = web</li>
+<li>sourcetype = access_combined</li>
+</ul>
+<p>[monitor:///var/log/ufw.log]</p>
+<ul>
+<li>disabled = false</li>
+<li>index = main</li>
+<li>sourcetype = access_combined</li>
+</ul>
+<ol start="6">
+<li>Forwarder 재시작: /opt/splunkforwarder/bin/splunk restart</li>
+</ol>
+<p><strong>확인 항목:</strong></p>
+<ul>
+<li>auth.log -&gt; waf 인덱스 (인증 관련 보안 이벤트)</li>
+<li>nginx/access.log -&gt; web 인덱스 (웹 접근 로그)</li>
+<li>ufw.log -&gt; main 인덱스 (방화벽 로그)</li>
+<li>각 로그 파일의 라인 수 확인으로 수집 여부 검증</li>
+</ul>
+<p><strong>보안 인사이트:</strong></p>
+<ul>
+<li>인덱스 분리를 통해 로그 유형별 접근 제어 및 검색 효율성 향상</li>
+<li>auth.log 실시간 모니터링으로 SSH 무차별 대입 공격 조기 탐지</li>
+<li>nginx access.log로 웹 공격 패턴 분석 및 이상 트래픽 식별</li>
+</ul>
+<h3 id="실습-60-2-splunk-서버-리스닝-포트-활성화">실습 60-2: Splunk 서버 리스닝 포트 활성화<a hidden class="anchor" aria-hidden="true" href="#실습-60-2-splunk-서버-리스닝-포트-활성화">#</a></h3>
+<p><strong>목표:</strong> Splunk 서버에서 Forwarder 데이터 수신 준비</p>
+<p><strong>실습 단계:</strong></p>
+<ol>
+<li>Splunk 서버에서 9997 포트 리스닝 활성화: /opt/splunk/bin/splunk enable listen 9997</li>
+<li>관리자 인증 (Splunk username: admin)</li>
+<li>리스닝 상태 확인: netstat -tuln | grep 9997</li>
+</ol>
+<p><strong>데이터 흐름:</strong></p>
+<ol>
+<li>Ubuntu Forwarder에서 로그 파일 모니터링 시작</li>
+<li>변경 사항 발생 시 즉시 데이터 수집</li>
+<li>9997 포트를 통해 Splunk 서버로 전송</li>
+</ol>
+<p><strong>방화벽 설정:</strong></p>
+<ul>
+<li>Splunk 서버: 9997/tcp 인바운드 허용</li>
+<li>Forwarder: 9997/tcp 아웃바운드 허용</li>
+<li>내부망에서만 통신하도록 소스 IP 제한 권장</li>
+</ul>
+<h3 id="실습-60-3-로그-수집-검증-및-공격-시뮬레이션">실습 60-3: 로그 수집 검증 및 공격 시뮬레이션<a hidden class="anchor" aria-hidden="true" href="#실습-60-3-로그-수집-검증-및-공격-시뮬레이션">#</a></h3>
+<p><strong>목표:</strong> Forwarder 정상 수집 확인 및 Kali Linux에서 공격 시뮬레이션</p>
+<p><strong>실습 단계:</strong></p>
+<ol>
+<li>로그 파일 라인 수 확인 (수집 전): wc -l /var/log/ufw.log / nginx/access.log / auth.log</li>
+<li>방화벽 활성화 및 SSH 포트 허용: ufw enable &amp;&amp; ufw allow 22/tcp &amp;&amp; reboot</li>
+<li>SSH 서버 설치 (없는 경우): apt install -y openssh-server</li>
+<li>Kali Linux에서 SSH 접속 실패 시도 (무차별 대입 시뮬레이션):
+<ul>
+<li>for i in {1..15}; do ssh <a href="mailto:fakeuser@192.168.2.y">fakeuser@192.168.2.y</a>; done</li>
+</ul>
+</li>
+<li>로그 파일 라인 수 재확인 (수집 후): wc -l /var/log/auth.log (&ldquo;Failed password&rdquo; 로그 증가 확인)</li>
+</ol>
+<p><strong>Splunk 검색 쿼리 (SSH 인증 실패 로그):</strong></p>
+<ul>
+<li>index=waf sourcetype=&ldquo;access_combined&rdquo; &ldquo;Failed password&rdquo; | rex &ldquo;from (?&lt;src_ip&gt;\d+.\d+.\d+.\d+)&rdquo; | stats count as fail_cnt by src_ip | sort - fail_cnt | head 20</li>
+</ul>
+<p><strong>발견 가능한 공격 패턴:</strong></p>
+<ul>
+<li>SSH 무차별 대입 공격: 동일 IP에서 다수 인증 실패</li>
+<li>포트 스캔: 짧은 시간 내 다수 포트 접근 시도</li>
+<li>웹 공격: SQL Injection, XSS, Directory Traversal 시도</li>
+</ul>
+<p><strong>탐지 기준 및 대응 방안:</strong></p>
+<ul>
+<li>5분 내 동일 IP에서 10회 이상 인증 실패 -&gt; 무차별 대입 공격</li>
+<li>404 에러 다발 발생 -&gt; 디렉터리 스캔 의심</li>
+<li>임계치 초과 IP 자동 차단 (fail2ban 연동)</li>
+<li>실시간 알람 발송 (이메일, Slack)</li>
+<li>위협 인텔리전스 DB 조회</li>
+</ul>
+<h3 id="실습-60-4-windows-forwarder-설치-및-프록시-설정">실습 60-4: Windows Forwarder 설치 및 프록시 설정<a hidden class="anchor" aria-hidden="true" href="#실습-60-4-windows-forwarder-설치-및-프록시-설정">#</a></h3>
+<p><strong>목표:</strong> Windows 10 시스템의 이벤트 로그를 Splunk로 전송하고 프록시 문제 해결</p>
+<p><strong>실습 환경:</strong></p>
+<ul>
+<li>Windows 10: DESKTOP-IRB3M7S</li>
+<li>Splunk Server: 192.168.2.x</li>
+<li>수집 대상: Application, System, Security 이벤트 로그</li>
+</ul>
+<p><strong>실습 단계:</strong></p>
+<ol>
+<li>
+<p>Splunk Universal Forwarder 설치 (Windows용): 관리자 권한으로 설치 실행</p>
+</li>
+<li>
+<p>inputs.conf 수정 경로: C:\Program Files\SplunkUniversalForwarder\etc\system\local\inputs.conf</p>
+<p>[default]</p>
+<ul>
+<li>host = DESKTOP-IRB3M7S</li>
+</ul>
+<p>[WinEventLog://Application]</p>
+<ul>
+<li>disabled = 0 / index = main</li>
+</ul>
+<p>[WinEventLog://System]</p>
+<ul>
+<li>disabled = 0 / index = main</li>
+</ul>
+<p>[WinEventLog://Security]</p>
+<ul>
+<li>disabled = 0 / index = main / current_only = 0 / checkpointInterval = 5</li>
+</ul>
+</li>
+<li>
+<p>Forwarder 재시작: &ldquo;C:\Program Files\SplunkUniversalForwarder\bin\splunk.exe&rdquo; restart</p>
+</li>
+<li>
+<p>프록시 설정 해제 (중요!):</p>
+<ul>
+<li>inetcpl.cpl 실행 -&gt; 연결 탭 -&gt; LAN 설정</li>
+<li>&ldquo;로컬 주소에 대해 프록시 서버 사용 안 함&rdquo; 체크</li>
+</ul>
+</li>
+<li>
+<p>Splunk Web UI 접속 테스트: <a href="http://192.168.2.x:8000">http://192.168.2.x:8000</a></p>
+</li>
+</ol>
+<p><strong>프록시 설정 문제 원인 및 해결:</strong></p>
+<p>문제 상황:</p>
+<ul>
+<li>기본 프록시 설정 시 로컬 IP(192.168.x.x)도 프록시 경유 시도</li>
+<li>내부망 Splunk 서버 접속 불가 발생</li>
+</ul>
+<p>해결 방법:</p>
+<ul>
+<li>&ldquo;로컬 주소에 프록시 사용 안 함&rdquo; 옵션 활성화</li>
+<li>내부 IP 대역(192.168.0.0/16)은 직접 연결</li>
+<li>외부 인터넷만 프록시 경유</li>
+</ul>
+<p><strong>Splunk 검색으로 Windows 호스트 확인:</strong></p>
+<ul>
+<li>index=* host=&ldquo;DESKTOP-IRB3M7S&rdquo; | stats count by source sourcetype</li>
+<li>index=* host=&ldquo;DESKTOP-IRB3M7S&rdquo; source=&ldquo;WinEventLog:Security&rdquo; | head 20</li>
+<li>index=* host=&ldquo;DESKTOP-IRB3M7S&rdquo; source=&ldquo;WinEventLog:Security&rdquo; | stats count by EventCode | sort - count</li>
+</ul>
+<p><strong>보안 인사이트:</strong></p>
+<ul>
+<li>Windows 이벤트 로그는 호스트 기반 침입 탐지의 핵심 데이터</li>
+<li>EventCode 4625(로그온 실패), 4624(로그온 성공) 조합 분석으로 계정 탈취 탐지</li>
+<li>current_only = 0 설정으로 과거 로그까지 수집하여 이력 분석 가능</li>
+</ul>
+<h3 id="실습-60-5-wazuh-환경-구축">실습 60-5: Wazuh 환경 구축<a hidden class="anchor" aria-hidden="true" href="#실습-60-5-wazuh-환경-구축">#</a></h3>
+<p><strong>목표:</strong> Wazuh HIDS 서버 및 에이전트 설치로 호스트 기반 보안 모니터링 체계 구축</p>
+<p><strong>실습 환경:</strong></p>
+<ul>
+<li>Wazuh Server: 192.168.2.10 (Ubuntu 20.04)</li>
+<li>Wazuh Agent1: 192.168.2.11 (Ubuntu 20.04, Agent 방식)</li>
+<li>Wazuh Agent2: 192.168.2.12 (Ubuntu 20.04, Agentless 방식)</li>
+<li>Wazuh Agent3: 192.168.2.13 (Windows 10, Agent 방식)</li>
+</ul>
+<p><strong>실습 단계:</strong></p>
+<ol>
+<li>
+<p>모든 시스템 호스트명 변경 (중복 방지 필수!):</p>
+<ul>
+<li>hostnamectl set-hostname wazuh-server (192.168.2.10)</li>
+<li>hostnamectl set-hostname wazuh-agent1 (192.168.2.11)</li>
+<li>hostnamectl set-hostname wazuh-agent2 (192.168.2.12)</li>
+</ul>
+</li>
+<li>
+<p>IP 고정 설정 (netplan): nano /etc/netplan/00-installer-config.yaml</p>
+<p>network:
+version: 2 / renderer: networkd
+ethernets:
+ens32:
+dhcp4: no
+addresses: [192.168.2.10/24] (각 시스템별로 IP 변경)
+gateway4: 192.168.2.2
+nameservers: addresses: [8.8.8.8, 8.8.4.4]</p>
+</li>
+<li>
+<p>netplan 적용: netplan apply &amp;&amp; reboot</p>
+</li>
+<li>
+<p>Wazuh 서버 설치 (wazuh-server에서):</p>
+<ul>
+<li>curl -so ~/unattended-installation.sh <a href="https://packages.wazuh.com/resources/4.2/open-distro/unattended-installation/unattended-installation.sh">https://packages.wazuh.com/resources/4.2/open-distro/unattended-installation/unattended-installation.sh</a></li>
+<li>bash ~/unattended-installation.sh -i</li>
+</ul>
+</li>
+<li>
+<p>Wazuh 서비스 상태 확인:</p>
+<ul>
+<li>systemctl status kibana / elasticsearch / filebeat / wazuh-manager</li>
+</ul>
+</li>
+<li>
+<p>Wazuh Agent 설치 (agent1에서):</p>
+<ul>
+<li>systemctl daemon-reload</li>
+<li>systemctl enable wazuh-agent &amp;&amp; systemctl start wazuh-agent &amp;&amp; systemctl status wazuh-agent</li>
+</ul>
+</li>
+</ol>
+<p><strong>Agentless 방식 설정 (agent2 대상):</strong></p>
+<p>Wazuh 서버에서 실행:</p>
+<ol>
+<li>cd /var/ossec/agentless</li>
+<li>Agentless 호스트 등록: ./register_host.sh add <a href="mailto:wazuh@192.168.2.12">wazuh@192.168.2.12</a> 123456</li>
+<li>등록된 호스트 확인: ./register_host.sh list</li>
+<li>ossec.conf에 모니터링 설정 추가: nano /var/ossec/etc/ossec.conf</li>
+</ol>
+<p>설정 내용:</p>
+<ul>
+<li>type: ssh_generic_diff / frequency: 10 / host: <a href="mailto:wazuh@192.168.2.12">wazuh@192.168.2.12</a> / state: periodic_diff</li>
+<li>arguments: tail -n 1 /etc/passwd (10초마다 마지막 줄 비교)</li>
+<li>arguments: tail -n 1 /etc/shadow (10초마다 마지막 줄 비교)</li>
+</ul>
+<ol start="5">
+<li>Wazuh Manager 재시작: systemctl restart wazuh-manager</li>
+</ol>
+<p><strong>Agentless 동작 방식:</strong></p>
+<ol>
+<li>Wazuh 서버가 SSH로 agent2에 접속</li>
+<li>지정된 명령어(tail -n 1 /etc/passwd) 실행</li>
+<li>이전 실행 결과와 비교(diff)</li>
+<li>변경 사항 발견 시 알람 발생</li>
+</ol>
+<p><strong>보안 인사이트:</strong></p>
+<ul>
+<li>Agent 방식: 실시간 파일 무결성 검증, 프로세스 모니터링</li>
+<li>Agentless 방식: 레거시 시스템, 에이전트 설치 불가 환경 커버</li>
+<li>/etc/passwd, /etc/shadow 변경 탐지로 계정 추가/변조 즉시 포착</li>
+</ul>
+<hr>
+<h2 id="3-splunk-vs-wazuh-비교">3. Splunk vs Wazuh 비교<a hidden class="anchor" aria-hidden="true" href="#3-splunk-vs-wazuh-비교">#</a></h2>
+<h3 id="솔루션-특성-비교">솔루션 특성 비교<a hidden class="anchor" aria-hidden="true" href="#솔루션-특성-비교">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">항목</th>
+          <th style="text-align: left">Splunk</th>
+          <th style="text-align: left">Wazuh</th>
+          <th style="text-align: left">사용 시기/적용 방안</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>핵심 기능</strong></td>
+          <td style="text-align: left">로그 수집, 인덱싱, 빠른 검색</td>
+          <td style="text-align: left">호스트 침입 탐지, 파일 무결성 점검</td>
+          <td style="text-align: left">Splunk는 로그 분석, Wazuh는 실시간 위협 탐지</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>아키텍처</strong></td>
+          <td style="text-align: left">Forwarder -&gt; Indexer -&gt; Search Head</td>
+          <td style="text-align: left">Manager &lt;- Agent/Agentless</td>
+          <td style="text-align: left">Splunk는 분산, Wazuh는 중앙 집중</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>분석 방식</strong></td>
+          <td style="text-align: left">SPL 쿼리 기반 사후 분석</td>
+          <td style="text-align: left">룰 기반 실시간 이벤트 탐지</td>
+          <td style="text-align: left">Splunk는 포렌식, Wazuh는 실시간 대응</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>라이선스</strong></td>
+          <td style="text-align: left">상용 (무료 500MB/일 제한)</td>
+          <td style="text-align: left">오픈소스 (무료)</td>
+          <td style="text-align: left">비용 고려 시 Wazuh 우선 검토</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="실전-활용-시나리오">실전 활용 시나리오<a hidden class="anchor" aria-hidden="true" href="#실전-활용-시나리오">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">시나리오</th>
+          <th style="text-align: left">Splunk 활용</th>
+          <th style="text-align: left">Wazuh 활용</th>
+          <th style="text-align: left">통합 효과</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>SSH 무차별 대입 공격</strong></td>
+          <td style="text-align: left">auth.log에서 Failed password 패턴 검색</td>
+          <td style="text-align: left">실시간 5716 룰로 즉시 탐지</td>
+          <td style="text-align: left">Splunk로 공격 추이 분석 + Wazuh로 즉각 차단</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>웹 공격 탐지</strong></td>
+          <td style="text-align: left">nginx 로그에서 SQL Injection 패턴 검색</td>
+          <td style="text-align: left">웹쉘 업로드 시 파일 무결성 알람</td>
+          <td style="text-align: left">Splunk로 공격 유형 분류 + Wazuh로 피해 확산 방지</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>계정 탈취 분석</strong></td>
+          <td style="text-align: left">로그온 성공/실패 타임라인 재구성</td>
+          <td style="text-align: left">/etc/passwd 변경 즉시 탐지</td>
+          <td style="text-align: left">Splunk로 침투 경로 추적 + Wazuh로 권한 상승 차단</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>컴플라이언스 점검</strong></td>
+          <td style="text-align: left">접근 로그 장기 보관 및 감사</td>
+          <td style="text-align: left">PCI-DSS, ISMS-P 룰셋 자동 점검</td>
+          <td style="text-align: left">규제 준수 증빙 자동화</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="4-심화-분석">4. 심화 분석<a hidden class="anchor" aria-hidden="true" href="#4-심화-분석">#</a></h2>
+<h3 id="프록시-우회-설정-상세-분석">프록시 우회 설정 상세 분석<a hidden class="anchor" aria-hidden="true" href="#프록시-우회-설정-상세-분석">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">구분</th>
+          <th style="text-align: left">문제 상황</th>
+          <th style="text-align: left">원인 분석</th>
+          <th style="text-align: left">해결 방법</th>
+          <th style="text-align: left">실무 적용</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>증상</strong></td>
+          <td style="text-align: left">Splunk Web UI 접속 불가</td>
+          <td style="text-align: left">로컬 IP도 프록시 경유 시도</td>
+          <td style="text-align: left">inetcpl.cpl -&gt; 프록시 예외 설정</td>
+          <td style="text-align: left">기업 환경에서 내부 서비스 접속 시 필수 설정</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>검증</strong></td>
+          <td style="text-align: left">브라우저 개발자 도구 확인</td>
+          <td style="text-align: left">프록시 서버로 요청 전송 확인</td>
+          <td style="text-align: left">&ldquo;로컬 주소에 프록시 사용 안 함&rdquo; 체크</td>
+          <td style="text-align: left">네트워크 트러블슈팅 기본 절차</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>확장</strong></td>
+          <td style="text-align: left">Forwarder 데이터 미전송</td>
+          <td style="text-align: left">9997 포트도 프록시 경유 시도</td>
+          <td style="text-align: left">방화벽 룰에서 직접 연결 허용</td>
+          <td style="text-align: left">모든 내부 IP 대역에 대해 프록시 예외 적용</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="inputsconf-설정-전략">inputs.conf 설정 전략<a hidden class="anchor" aria-hidden="true" href="#inputsconf-설정-전략">#</a></h3>
+<p>인덱스 분리 전략:</p>
+<ul>
+<li>[monitor:///var/log/auth.log] -&gt; index = waf (인증/접근 제어 관련)</li>
+<li>[monitor:///var/log/nginx/access.log] -&gt; index = web (웹 애플리케이션 로그)</li>
+<li>[monitor:///var/log/ufw.log] -&gt; index = main (시스템/방화벽 로그)</li>
+</ul>
+<p>실무 적용 포인트:</p>
+<ol>
+<li>인덱스별 접근 권한 분리 (RBAC)</li>
+<li>검색 성능 향상 (필요한 인덱스만 조회)</li>
+<li>데이터 보존 정책 차등 적용 (규제 준수)</li>
+</ol>
+<hr>
+<h2 id="5-실무보안-적용">5. 실무/보안 적용<a hidden class="anchor" aria-hidden="true" href="#5-실무보안-적용">#</a></h2>
+<h3 id="보안-전문가-관점---탐지대응-포인트">보안 전문가 관점 - 탐지/대응 포인트<a hidden class="anchor" aria-hidden="true" href="#보안-전문가-관점---탐지대응-포인트">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">단계/유형</th>
+          <th style="text-align: left">탐지 포인트</th>
+          <th style="text-align: left">로그 예시</th>
+          <th style="text-align: left">대응 방안</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>초기 침투</strong></td>
+          <td style="text-align: left">다수 인증 실패, 알려지지 않은 IP, 비정상 접속 시간</td>
+          <td style="text-align: left">Failed password for admin from 203.x.x.x</td>
+          <td style="text-align: left">해당 IP 즉시 차단, 계정 잠금 정책 적용, 위협 인텔리전스 조회</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>정찰 활동</strong></td>
+          <td style="text-align: left">404 에러 다발, 디렉터리 스캔, SQL Injection 시도</td>
+          <td style="text-align: left">GET /../../../etc/passwd 404</td>
+          <td style="text-align: left">WAF 정책 업데이트, 공격 IP 블랙리스트 등록, 취약점 긴급 패치</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>권한 상승</strong></td>
+          <td style="text-align: left">/etc/passwd 변경, sudo 사용 급증, 계정 추가</td>
+          <td style="text-align: left">useradd hacker</td>
+          <td style="text-align: left">변경사항 즉시 롤백, 침해 계정 격리, 포렌식 이미지 확보</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="splunk-핵심-검색-쿼리">Splunk 핵심 검색 쿼리<a hidden class="anchor" aria-hidden="true" href="#splunk-핵심-검색-쿼리">#</a></h3>
+<p>SSH 무차별 대입 공격 탐지:</p>
+<ul>
+<li>index=waf sourcetype=&ldquo;access_combined&rdquo; &ldquo;Failed password&rdquo; | rex &ldquo;from (?&lt;src_ip&gt;\d+.\d+.\d+.\d+)&rdquo; | stats count as fail_cnt by src_ip | sort - fail_cnt | head 20</li>
+</ul>
+<p>웹 공격 패턴 탐지:</p>
+<ul>
+<li>index=web sourcetype=&ldquo;access_combined&rdquo; (&ldquo;union select&rdquo; OR &ldquo;select * from&rdquo; OR &ldquo;etc/passwd&rdquo; OR &ldquo;script&rdquo;) | stats count by clientip, uri | sort - count</li>
+</ul>
+<p>404 에러 다발 (디렉터리 스캔 의심):</p>
+<ul>
+<li>index=web sourcetype=&ldquo;access_combined&rdquo; status=404 | stats count as notfound_cnt by uri | sort - notfound_cnt | head 20</li>
+</ul>
+<p>클라이언트 IP별 요청 수:</p>
+<ul>
+<li>index=web sourcetype=&ldquo;access_combined&rdquo; | stats count as hits by clientip | sort - hits | head 20</li>
+</ul>
+<h3 id="wazuh-룰셋-예시-local_rulesxml">Wazuh 룰셋 예시 (local_rules.xml)<a hidden class="anchor" aria-hidden="true" href="#wazuh-룰셋-예시-local_rulesxml">#</a></h3>
+<p>SSH 인증 실패 탐지 (기본 룰 5716 확장):</p>
+<ul>
+<li>rule id=&ldquo;100001&rdquo; level=&ldquo;5&rdquo;: if_sid=5716, srcip=1.1.1.1 -&gt; SSH authentication failed from IP 1.1.1.1</li>
+</ul>
+<p>Agentless로 /etc/passwd 변경 탐지:</p>
+<ul>
+<li>rule id=&ldquo;100002&rdquo; level=&ldquo;12&rdquo;: if_sid=550, match=/etc/passwd -&gt; User account file modified</li>
+</ul>
+<hr>
+<h2 id="6-배운-점-및-인사이트">6. 배운 점 및 인사이트<a hidden class="anchor" aria-hidden="true" href="#6-배운-점-및-인사이트">#</a></h2>
+<h3 id="새로-알게-된-점">새로 알게 된 점<a hidden class="anchor" aria-hidden="true" href="#새로-알게-된-점">#</a></h3>
+<ul>
+<li>
+<p><strong>Forwarder 아키텍처의 효율성:</strong> Universal Forwarder를 통해 각 시스템에서 발생하는 로그를 중앙 Indexer로 집중시키는 분산 구조가 대규모 환경에서 얼마나 효과적인지 체감했다. 특히 경량 에이전트 방식이라 시스템 부하가 거의 없다는 점이 인상적이었다.</p>
+</li>
+<li>
+<p><strong>프록시 설정의 함정:</strong> 기업 환경에서 흔히 설정된 프록시가 내부망 서비스 접속까지 방해할 수 있다는 점을 처음 알았다. &ldquo;로컬 주소에 프록시 사용 안 함&rdquo; 설정의 중요성을 실감했고, 보안 솔루션 구축 시 반드시 확인해야 할 체크리스트 항목이다.</p>
+</li>
+<li>
+<p><strong>인덱스 분리 전략:</strong> 로그 유형별로 인덱스를 분리(waf, web, main)하면 검색 성능뿐만 아니라 접근 제어, 데이터 보존 정책까지 세밀하게 관리할 수 있다는 점을 배웠다.</p>
+</li>
+<li>
+<p><strong>Wazuh Agentless의 실용성:</strong> 에이전트 설치가 불가능한 레거시 시스템이나 임베디드 장비에서도 SSH를 통한 원격 명령 실행으로 보안 모니터링을 구현할 수 있다는 점이 매우 실용적이었다. /etc/passwd, /etc/shadow 같은 중요 파일의 변경을 10초마다 자동 점검하는 방식이 효과적이다.</p>
+</li>
+<li>
+<p><strong>호스트명 고유성의 중요성:</strong> Wazuh에서 각 에이전트를 식별하는 기준이 호스트명이기 때문에, 중복 시 에이전트 충돌이 발생한다. 시스템 구축 초기에 네이밍 컨벤션을 확립하는 것이 중요하다.</p>
+</li>
+</ul>
+<h3 id="이전-학습과의-연결고리">이전 학습과의 연결고리<a hidden class="anchor" aria-hidden="true" href="#이전-학습과의-연결고리">#</a></h3>
+<ul>
+<li>
+<p><strong>Splunk 기초와 연계:</strong> 이전에 배운 SPL 쿼리 문법(stats, sort, rex)을 실제 보안 로그 분석에 적용했다. 특히 정규표현식으로 IP 주소를 추출하는 rex 명령어가 실무에서 얼마나 유용한지 체감했다.</p>
+</li>
+<li>
+<p><strong>웹 해킹 실습 확장:</strong> 이전에 학습한 SQL Injection, XSS 공격 기법을 직접 시뮬레이션하고, nginx access.log에서 해당 패턴을 Splunk로 탐지하는 전 과정을 경험했다.</p>
+</li>
+<li>
+<p><strong>네트워크 보안 -&gt; SIEM 전환:</strong> 이전에 학습한 방화벽(ufw), 네트워크 스캔(nmap) 개념이 Splunk로 수집되어 통합 분석되는 과정을 보면서, 개별 보안 도구들이 SIEM으로 통합되는 흐름을 이해하게 되었다.</p>
+</li>
+</ul>
+<h3 id="실무-적용-아이디어">실무 적용 아이디어<a hidden class="anchor" aria-hidden="true" href="#실무-적용-아이디어">#</a></h3>
+<p><strong>보안 전문가 관점:</strong></p>
+<ul>
+<li>
+<p><strong>계층적 모니터링 체계:</strong> Splunk로 모든 로그를 수집/검색하고, Wazuh로 크리티컬 호스트(DB 서버, 도메인 컨트롤러)의 실시간 무결성을 점검하는 이중 방어 체계 구축. DMZ의 웹 서버는 Splunk로 트래픽 분석, 내부 서버는 Wazuh로 파일 무결성 점검하는 역할 분담이 효과적이다.</p>
+</li>
+<li>
+<p><strong>자동화된 위협 대응:</strong> Splunk에서 탐지된 공격자 IP를 자동으로 방화벽 차단 목록에 추가하거나, Wazuh의 Active Response 기능과 연계하여 침해 계정을 즉시 잠금 처리하는 SOAR 파이프라인 구축이 가능하다.</p>
+</li>
+<li>
+<p><strong>컴플라이언스 자동화:</strong> Wazuh의 PCI-DSS, ISMS-P 관련 기본 룰셋을 활용하면 정기 감사 시 필요한 증빙 자료를 수작업 없이 자동 생성할 수 있어 업무 효율이 크게 개선될 것이다.</p>
+</li>
+</ul>
+<p><strong>침해사고 대응 관점:</strong></p>
+<ul>
+<li>
+<p><strong>타임라인 재구성:</strong> Splunk의 transaction 명령어로 공격자의 전체 활동 흐름(초기 접근 -&gt; 정찰 -&gt; 권한 상승 -&gt; 데이터 유출)을 시간 순서대로 재구성하여 침해 경로를 명확히 파악할 수 있다.</p>
+</li>
+<li>
+<p><strong>포렌식 증거 확보:</strong> Wazuh의 Syscheck 기능으로 변경된 파일의 해시값과 변경 시점을 자동 기록하므로, 법적 대응 시 신뢰성 있는 디지털 증거로 활용 가능하다.</p>
+</li>
+</ul>
+<hr>
+<h2 id="7-quick-reference">7. Quick Reference<a hidden class="anchor" aria-hidden="true" href="#7-quick-reference">#</a></h2>
+<h3 id="splunk-forwarder-명령어-모음">Splunk Forwarder 명령어 모음<a hidden class="anchor" aria-hidden="true" href="#splunk-forwarder-명령어-모음">#</a></h3>
+<p>설치 및 초기 설정:</p>
+<ul>
+<li>dpkg -i splunkforwarder-*.deb</li>
+<li>/opt/splunkforwarder/bin/splunk enable boot-start</li>
+</ul>
+<p>서버 연결:</p>
+<ul>
+<li>/opt/splunkforwarder/bin/splunk add forward-server [서버IP]:9997</li>
+</ul>
+<p>서비스 관리:</p>
+<ul>
+<li>/opt/splunkforwarder/bin/splunk start / restart / status</li>
+</ul>
+<p>설정 확인:</p>
+<ul>
+<li>/opt/splunkforwarder/bin/splunk list forward-server</li>
+<li>/opt/splunkforwarder/bin/splunk list monitor</li>
+</ul>
+<h3 id="wazuh-관리-명령어">Wazuh 관리 명령어<a hidden class="anchor" aria-hidden="true" href="#wazuh-관리-명령어">#</a></h3>
+<p>서비스 상태 확인:</p>
+<ul>
+<li>systemctl status wazuh-manager / kibana / elasticsearch / filebeat</li>
+</ul>
+<p>Agent 관리:</p>
+<ul>
+<li>systemctl start wazuh-agent / enable wazuh-agent / status wazuh-agent</li>
+</ul>
+<p>Agentless 호스트 관리:</p>
+<ul>
+<li>cd /var/ossec/agentless</li>
+<li>./register_host.sh add [user@IP] [password]</li>
+<li>./register_host.sh list</li>
+</ul>
+<h3 id="핵심-splunk-검색-쿼리">핵심 Splunk 검색 쿼리<a hidden class="anchor" aria-hidden="true" href="#핵심-splunk-검색-쿼리">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">구분</th>
+          <th style="text-align: left">쿼리</th>
+          <th style="text-align: left">핵심 키워드</th>
+          <th style="text-align: left">주요 내용</th>
+          <th style="text-align: left">적용 방법</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>IP별 집계</strong></td>
+          <td style="text-align: left">index=web</td>
+          <td style="text-align: left">stats count by clientip</td>
+          <td style="text-align: left">sort -count</td>
+          <td style="text-align: left">stats, sort</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>패턴 탐지</strong></td>
+          <td style="text-align: left">index=web (&ldquo;union select&rdquo; OR &ldquo;script&rdquo;)</td>
+          <td style="text-align: left">OR, AND</td>
+          <td style="text-align: left">공격 키워드 검색</td>
+          <td style="text-align: left">SQL Injection, XSS 시도 탐지</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>IP 추출</strong></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">rex &ldquo;from (?&lt;src_ip&gt;\d+.\d+.\d+.\d+)&rdquo;</td>
+          <td style="text-align: left">rex</td>
+          <td style="text-align: left">정규식으로 IP 추출</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>404 분석</strong></td>
+          <td style="text-align: left">index=web status=404</td>
+          <td style="text-align: left">stats count by uri</td>
+          <td style="text-align: left">stats</td>
+          <td style="text-align: left">404 에러 URI 집계</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="프록시-설정-체크리스트">프록시 설정 체크리스트<a hidden class="anchor" aria-hidden="true" href="#프록시-설정-체크리스트">#</a></h3>
+<p>Windows 프록시 우회:</p>
+<ul>
+<li>inetcpl.cpl 실행</li>
+<li>연결 탭 -&gt; LAN 설정 클릭</li>
+<li>&ldquo;로컬 주소에 대해 프록시 서버 사용 안 함&rdquo; 체크</li>
+<li>브라우저 재시작 후 192.168.x.x 접속 테스트</li>
+</ul>
+<p>Linux 프록시 우회:</p>
+<ul>
+<li>export no_proxy=&ldquo;localhost,127.0.0.1,192.168.0.0/16&rdquo;</li>
+<li>.bashrc에 영구 저장 후 source ~/.bashrc 로 적용</li>
+</ul>
+<p>Wazuh 초기 설정 체크리스트:</p>
+<ul>
+<li>모든 시스템 호스트명 고유하게 설정</li>
+<li>IP 고정 설정 (netplan)</li>
+<li>SSH 키 기반 인증 설정 (Agentless용)</li>
+<li>방화벽에서 Wazuh 포트 허용 (1514, 1515)</li>
+</ul>
+<hr>
+<h2 id="8-트러블슈팅">8. 트러블슈팅<a hidden class="anchor" aria-hidden="true" href="#8-트러블슈팅">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">문제</th>
+          <th style="text-align: left">원인</th>
+          <th style="text-align: left">해결 방법</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Splunk Web UI 접속 불가</strong></td>
+          <td style="text-align: left">프록시 설정으로 로컬 주소도 프록시 경유</td>
+          <td style="text-align: left">inetcpl.cpl -&gt; &ldquo;로컬 주소에 프록시 사용 안 함&rdquo; 체크, 브라우저 캐시 삭제 후 재접속, 직접 IP:포트로 접속 시도</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Forwarder 데이터 미수신</strong></td>
+          <td style="text-align: left">9997 포트 방화벽 차단 또는 리스닝 미활성화</td>
+          <td style="text-align: left">ufw allow 9997/tcp, Splunk 서버에서 splunk enable listen 9997 실행, netstat -tuln</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Wazuh Agent 연결 실패</strong></td>
+          <td style="text-align: left">호스트명 중복 또는 서버 IP 오타</td>
+          <td style="text-align: left">hostnamectl 로 각 시스템 호스트명 고유성 확인, /var/ossec/etc/ossec.conf에서 서버 IP 검증, systemctl restart wazuh-agent 후 재연결</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Agentless SSH 접속 실패</strong></td>
+          <td style="text-align: left">SSH 키 인증 미설정 또는 비밀번호 오류</td>
+          <td style="text-align: left">ssh-keygen 후 ssh-copy-id wazuh@대상IP, register_host.sh에서 올바른 비밀번호 입력, 대상 시스템에서 SSH 서비스 실행 확인</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Windows 이벤트 로그 미수집</strong></td>
+          <td style="text-align: left">SplunkForwarder 서비스 권한 부족</td>
+          <td style="text-align: left">SplunkForwarder 서비스가 SYSTEM 계정으로 실행 중인지 확인, current_only = 0 설정으로 과거 로그도 수집, 이벤트 뷰어에서 해당 로그 접근 가능 여부 확인</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<p><strong>Today&rsquo;s Insight:</strong></p>
+<p>Splunk와 Wazuh를 통합 운영하면서 단일 SIEM의 한계를 넘어선 입체적 보안 모니터링의 가능성을 확인했다. Splunk는 방대한 로그를 빠르게 검색하고 공격 패턴을 분석하는 데 탁월하지만, 호스트 레벨의 미세한 변화를 실시간으로 포착하는 데는 Wazuh의 파일 무결성 점검이 더 효과적이었다. 특히 프록시 설정 같은 사소해 보이는 환경 요소가 실제로는 모니터링 체계의 가용성을 좌우할 수 있다는 점을 배웠다. 앞으로는 공격 시나리오별로 어느 도구가 더 적합한지 판단하는 감각을 키우고, 자동화된 위협 대응 파이프라인 구축으로 나아가야겠다. 로그 수집부터 탐지, 대응까지 전 과정을 직접 구축해본 경험은 SOC 분석가로서의 실무 감각을 키우는 데 큰 도움이 될 것이다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://hojjang98.github.io/tags/splunk/">Splunk</a></li>
+      <li><a href="https://hojjang98.github.io/tags/wazuh/">Wazuh</a></li>
+      <li><a href="https://hojjang98.github.io/tags/hids/">HIDS</a></li>
+      <li><a href="https://hojjang98.github.io/tags/forwarder/">Forwarder</a></li>
+      <li><a href="https://hojjang98.github.io/tags/siem/">SIEM</a></li>
+      <li><a href="https://hojjang98.github.io/tags/agentless/">Agentless</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%B9%A8%EC%9E%85%ED%83%90%EC%A7%80/">침입탐지</a></li>
+      <li><a href="https://hojjang98.github.io/tags/sysmon/">Sysmon</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

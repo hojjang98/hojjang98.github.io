@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>2025.12.17 (Day 37) - VMware 3-Tier Architecture 구성 실습 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="VMware, 3-Tier, Nginx, Tomcat, MariaDB, Linux, systemctl, 리버스프록시, 보안">
+<meta name="description" content="VMware Workstation으로 Web(Nginx)/WAS(Tomcat)/DB(MariaDB) 3계층 아키텍처 구성, 리버스 프록시 설정, 계층별 보안 강화 실습">
+<meta name="author" content="">
+<link rel="canonical" href="https://hojjang98.github.io/daily_logs/week08/20251217_vmware_3tier_architecture/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.290573799e582c418c4bd84f2bca757d0a77fd1bf9f5c43942030e706df68ec8.css" integrity="sha256-KQVzeZ5YLEGMS9hPK8p1fQp3/Rv59cQ5QgMOcG32jsg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/daily_logs/week08/20251217_vmware_3tier_architecture/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://hojjang98.github.io/daily_logs/week08/20251217_vmware_3tier_architecture/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="2025.12.17 (Day 37) - VMware 3-Tier Architecture 구성 실습">
+  <meta property="og:description" content="VMware Workstation으로 Web(Nginx)/WAS(Tomcat)/DB(MariaDB) 3계층 아키텍처 구성, 리버스 프록시 설정, 계층별 보안 강화 실습">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="daily_logs">
+    <meta property="article:published_time" content="2025-12-17T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-12-17T00:00:00+00:00">
+    <meta property="article:tag" content="VMware">
+    <meta property="article:tag" content="3-Tier">
+    <meta property="article:tag" content="Nginx">
+    <meta property="article:tag" content="Tomcat">
+    <meta property="article:tag" content="MariaDB">
+    <meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2025.12.17 (Day 37) - VMware 3-Tier Architecture 구성 실습">
+<meta name="twitter:description" content="VMware Workstation으로 Web(Nginx)/WAS(Tomcat)/DB(MariaDB) 3계층 아키텍처 구성, 리버스 프록시 설정, 계층별 보안 강화 실습">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "6개월, 혹은 그 이상의 보안 여정",
+      "item": "https://hojjang98.github.io/daily_logs/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "2025.12.17 (Day 37) - VMware 3-Tier Architecture 구성 실습",
+      "item": "https://hojjang98.github.io/daily_logs/week08/20251217_vmware_3tier_architecture/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "2025.12.17 (Day 37) - VMware 3-Tier Architecture 구성 실습",
+  "name": "2025.12.17 (Day 37) - VMware 3-Tier Architecture 구성 실습",
+  "description": "VMware Workstation으로 Web(Nginx)/WAS(Tomcat)/DB(MariaDB) 3계층 아키텍처 구성, 리버스 프록시 설정, 계층별 보안 강화 실습",
+  "keywords": [
+    "VMware", "3-Tier", "Nginx", "Tomcat", "MariaDB", "Linux", "systemctl", "리버스프록시", "보안"
+  ],
+  "articleBody": "📄 2025.12.17 (Day 37) - VMware 3-Tier Architecture 구성 실습 1. 핵심 개념 정리 # 핵심 개념 설명 실무/보안 관점 1 3-Tier Architecture 애플리케이션을 Presentation Tier(웹 서버), Application Tier(비즈니스 로직), Data Tier(데이터베이스)로 분리한 아키텍처. 각 계층이 독립적으로 동작하며 서로 다른 서버에 배치 보안 계층화(Defense in Depth)의 기본. DMZ에 웹 서버 배치로 직접 공격 표면 제한, DB는 가장 안쪽에 격리. 한 계층 침투 시에도 다른 계층 보호 2 VMware Workstation 물리적 컴퓨터 위에서 여러 가상 머신(VM)을 실행하는 하이퍼바이저 소프트웨어. Type 2 하이퍼바이저로 호스트 OS 위에서 동작 안전한 실습 환경 구축 가능. 스냅샷으로 실수 시 즉시 복구. VM 간 네트워크 격리로 호스트 시스템 보호. 멀웨어 분석, 취약점 테스트 시 샌드박스 역할 3 Nginx (웹 서버) 고성능 HTTP 웹 서버, 리버스 프록시, 로드 밸런서. 비동기 이벤트 기반 아키텍처로 낮은 메모리로 많은 동시 연결 처리 리버스 프록시로 백엔드 서버 IP 숨김. Rate limiting으로 DDoS 완화. SSL/TLS 설정으로 암호화 통신. 보안 헤더(X-Frame-Options, CSP) 추가 4 Apache Tomcat (WAS) Java 기반 웹 애플리케이션 서버(WAS). Servlet과 JSP를 실행하여 동적 웹 콘텐츠 생성. 기본 포트 8080에서 실행 Manager 앱 기본 계정 변경 필수. AJP 커넥터 비활성화(Ghostcat 취약점). 불필요한 예제 애플리케이션 삭제 5 MariaDB (데이터베이스) MySQL 기반 오픈소스 관계형 데이터베이스. 기본 포트 3306에서 실행, /etc/mysql/ 디렉토리에 설정 파일 위치 Root 계정 원격 접속 차단(localhost만 허용). 애플리케이션별 전용 계정 생성, 최소 권한 부여. bind-address를 내부 IP로 제한 6 systemctl (시스템 관리) Systemd 기반 리눅스에서 서비스를 관리하는 명령어. 시작/중지/재시작, 자동 실행 설정, 상태 확인 기능 enable로 부팅 시 자동 시작 보장. status로 실시간 서비스 상태 확인. 불필요한 서비스 disable로 공격 표면 축소 7 리버스 프록시 (Reverse Proxy) 클라이언트 요청을 받아 백엔드 서버로 전달하는 중계 서버. Nginx가 80포트로 요청 수신 후 Tomcat 8080포트로 프록시 백엔드 서버 IP/포트 숨김으로 직접 공격 차단. SSL/TLS는 Nginx에서만 처리(백엔드 부담 감소). Rate limiting, IP 필터링 중앙 적용 8 방화벽 포트 구성 네트워크 트래픽을 포트 번호로 제어하는 보안 설정. HTTP(80), HTTPS(443), SSH(22), MySQL(3306), Tomcat(8080) 등 웹 서버: 80/443만 외부 개방. WAS: 8080은 웹 서버에서만 접근. DB: 3306은 WAS에서만 접근. SSH: 22는 관리자 IP만 허용 9 원격 접속 (SSH) Secure Shell 프로토콜로 원격 서버를 안전하게 관리. 공개키 인증 또는 비밀번호 인증 지원. 기본 포트 22 Root 직접 로그인 금지(PermitRootLogin no). 기본 포트 22 변경으로 자동화 공격 회피. Fail2ban으로 brute force 차단 10 런레벨 / Target 리눅스 시스템의 부팅 모드 정의. multi-user.target(CLI 모드, 런레벨 3), graphical.target(GUI 모드, 런레벨 5) GUI 불필요 시 multi-user.target으로 메모리/CPU 절약. 공격 표면 축소(GUI 관련 서비스 미실행) 2. 아키텍처 구성도 3-Tier 아키텍처 네트워크 구성:\n사용자/클라이언트 HTTP/HTTPS (Port 80/443) VM1: Web Server (Nginx) - IP: 192.168.186.128, Port 80 Reverse Proxy (Port 8080) VM2: WAS Server (Tomcat) - IP: 192.168.186.129, Port 8080 JDBC Connection (Port 3306) VM3: DB Server (MariaDB) - IP: 192.168.186.130, Port 3306 보안 규칙:\n외부 -\u003e Web: 80, 443 허용 Web -\u003e WAS: 8080 허용 WAS -\u003e DB: 3306 허용 관리자 -\u003e All: SSH 22 허용 (특정 IP만) 기타 모든 포트: 차단 3. 실습 내용 (A) VMware 환경 준비 및 초기 설정 VMware Workstation 설치 및 Ubuntu VM 생성 (3대):\nVMware -\u003e “Create a New Virtual Machine” -\u003e Typical 선택 ISO 이미지: Ubuntu 24.04 LTS Desktop ISO Computer name: webserver / wasserver / dbserver Disk size: 20GB, Memory: 4GB, Processors: 2 cores Network Adapter: NAT 또는 Bridged Ubuntu 초기 설정 (3대 모두):\nsudo su - root 권한 전환 apt-get update - 패키지 목록 갱신 apt-get install -y net-tools openssh-server vim curl wget - 필수 패키지 설치 apt-get upgrade -y - 시스템 업그레이드 ifconfig 또는 ip addr show - IP 주소 확인 webserver: 192.168.186.128 wasserver: 192.168.186.129 dbserver: 192.168.186.130 GUI -\u003e CLI 모드 전환 (리소스 절약):\nsudo systemctl set-default multi-user.target - CLI 모드로 기본 설정 변경 reboot - 재부팅 후 CLI 화면으로 로그인 SSH 접속:\nssh student@192.168.186.128 - 이후 작업은 SSH로 진행 (B) Tier 1: Web Server (Nginx) 구성 Nginx 설치 및 설정 (VM1: 192.168.186.128):\n설치:\napt-get install nginx -y 설치 확인:\nnetstat -antp | grep nginx 또는 ss -tlnp | grep nginx - 80포트 리스닝 확인 nginx -v - 버전 확인 자동 실행 설정:\nsystemctl enable nginx - 부팅 시 자동 시작 systemctl start nginx - 서비스 시작 systemctl status nginx - “active (running)” 확인 nginx -t - 설정 파일 문법 검사 기본 웹 페이지 수정:\nrm -f /var/www/html/index.nginx-debian.html - 기본 페이지 삭제 vi /var/www/html/index.html - 새 페이지 작성 접속 테스트:\ncurl http://192.168.186.128 - curl로 테스트 tail -f /var/log/nginx/access.log - 접근 로그 확인 tail -f /var/log/nginx/error.log - 에러 로그 확인 Nginx 주요 파일 구조:\n/etc/nginx/nginx.conf - 메인 설정 파일 /etc/nginx/sites-available/default - 기본 사이트 설정 /etc/nginx/sites-enabled/default - 활성화된 설정 (심볼릭 링크) /var/www/html/ - 웹 문서 루트 디렉토리 /var/log/nginx/access.log - 접근 로그 /var/log/nginx/error.log - 에러 로그 (C) Tier 2: WAS Server (Tomcat) 구성 Tomcat 설치 및 설정 (VM2: 192.168.186.129):\nJava JDK 설치 (Tomcat 실행 필수):\napt-get install -y openjdk-17-jdk java -version - 설치 확인 Tomcat 다운로드 및 설치:\ncd /tmp -\u003e wget [Tomcat 10.x 다운로드 URL] tar -xzf apache-tomcat-10.1.28.tar.gz mv apache-tomcat-10.1.28 /opt/tomcat useradd -r -m -U -d /opt/tomcat -s /bin/false tomcat - 전용 계정 생성 chown -R tomcat:tomcat /opt/tomcat/ - 소유권 변경 Systemd 서비스 등록 (/etc/systemd/system/tomcat.service):\nUnit: After=network.target Service: Type=forking, User=tomcat, Group=tomcat Environment: JAVA_HOME, CATALINA_HOME=/opt/tomcat ExecStart=/opt/tomcat/bin/startup.sh Restart=always Tomcat 서비스 시작:\nsystemctl daemon-reload - Systemd 데몬 리로드 systemctl start tomcat - 시작 systemctl enable tomcat - 자동 시작 설정 netstat -antp | grep 8080 - 포트 8080 리스닝 확인 JSP 테스트 페이지 생성:\nvi /opt/tomcat/webapps/ROOT/index.jsp - JSP 테스트 페이지 작성 chown -R tomcat:tomcat /opt/tomcat/webapps/ systemctl restart tomcat 브라우저: http://192.168.186.129:8080 접속 확인 로그 확인:\ntail -f /opt/tomcat/logs/catalina.out - 주 로그 tail -f /opt/tomcat/logs/localhost_access_log.*.txt - 접근 로그 (D) Nginx -\u003e Tomcat 리버스 프록시 설정 Nginx 리버스 프록시 설정 (VM1):\n설정 파일 백업:\ncd /etc/nginx/sites-available/ -\u003e cp default default.bak /etc/nginx/sites-available/default 주요 설정:\nlisten 80 default_server access_log /var/log/nginx/proxy_access.log location / 블록: proxy_pass http://192.168.186.129:8080 - Tomcat으로 프록시 proxy_set_header Host $host proxy_set_header X-Real-IP $remote_addr proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for proxy_connect_timeout 60s 설정 적용:\nnginx -t - 문법 검사 systemctl restart nginx 프록시 동작 확인:\n브라우저: http://192.168.186.128 -\u003e Tomcat JSP 페이지가 표시됨 curl -I http://192.168.186.128 - 응답 헤더 확인 리버스 프록시 동작 흐름:\n클라이언트 (192.168.186.1) -\u003e ① HTTP 요청: http://192.168.186.128/ -\u003e Nginx (192.168.186.128:80) -\u003e ② 프록시: http://192.168.186.129:8080/ -\u003e Tomcat (192.168.186.129:8080) -\u003e ③ JSP 실행, HTML 생성 -\u003e ④ HTTP 응답 반환 -\u003e 클라이언트\n(E) Tier 3: Database Server (MariaDB) 구성 MariaDB 설치 및 설정 (VM3: 192.168.186.130):\n설치:\napt-get install -y mariadb-server systemctl enable mariadb -\u003e systemctl start mariadb netstat -antp | grep LISTEN | grep 3306 - 포트 확인 보안 설정 (mysql_secure_installation):\nRoot 비밀번호 설정 익명 사용자 제거 (Remove anonymous users: Y) Root 원격 로그인 비허용 (Disallow root login remotely: Y) 테스트 DB 삭제 (Remove test database: Y) 원격 접속 허용 (bind-address 변경):\nvi /etc/mysql/mariadb.conf.d/50-server.cnf bind-address = 127.0.0.1 -\u003e bind-address = 0.0.0.0 으로 변경 systemctl restart mariadb 원격 접속용 사용자 생성 (MariaDB 프롬프트):\nmysql -u root -p -\u003e 접속 CREATE USER ‘mydb’@’%’ IDENTIFIED BY ‘abcd1234’ GRANT ALL PRIVILEGES ON . TO ‘mydb’@’%’ WITH GRANT OPTION FLUSH PRIVILEGES SELECT user, host FROM mysql.user WHERE user=‘mydb’ - 확인 방화벽 설정:\nufw allow from 192.168.186.129 to any port 3306 - WAS에서만 허용 테스트 DB 및 테이블 생성:\nCREATE DATABASE testdb USE testdb CREATE TABLE users (id INT AUTO_INCREMENT PRIMARY KEY, username VARCHAR(50), email VARCHAR(100), created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP) INSERT INTO users (username, email) VALUES (‘admin’, ‘admin@example.com’), (‘user1’, ‘user1@example.com’) SELECT * FROM users - 데이터 확인 WAS에서 DB 연결 테스트 (VM2):\napt-get install -y mariadb-client-core mysql -u mydb -p -h 192.168.186.130 - DB 서버 접속 wget [JDBC Connector JAR] -\u003e /opt/tomcat/lib/ 에 배치 dbtest.jsp 생성 후 http://192.168.186.128/dbtest.jsp 로 전체 연동 확인 3-Tier 전체 연동 흐름:\n클라이언트 -\u003e http://192.168.186.128/dbtest.jsp -\u003e Nginx (Tier 1, 리버스 프록시) -\u003e Tomcat (Tier 2, JSP 실행) -\u003e MariaDB (Tier 3, SELECT * FROM users) -\u003e 결과 반환 -\u003e HTML 생성 -\u003e 클라이언트에 응답\n4. 실무/보안 관점 분석 분야 적용 시나리오 3-Tier 보안 아키텍처 계층별 격리: Web(DMZ) -\u003e WAS(내부망) -\u003e DB(최내부) 배치로 공격자가 한 계층 침투 시에도 다른 계층 보호. 최소 권한 원칙: 각 계층은 필요한 포트/서비스만 실행. 리버스 프록시: Nginx가 Tomcat 앞단에서 SSL 종료, Rate Limiting, IP 필터링 수행 Nginx 보안 강화 server_tokens off로 버전 정보 숨김. limit_req_zone으로 Rate Limiting. allow/deny로 IP 화이트리스트. X-Frame-Options, X-Content-Type-Options, CSP 보안 헤더 추가. Access log로 모든 요청 기록 Tomcat 보안 강화 Manager 앱 기본 계정 삭제, 강력한 비밀번호, 특정 IP만 접근 허용. 불필요한 예제 앱(examples, docs, host-manager) 삭제. AJP 포트 주석 처리(Ghostcat 취약점 방지). 상세 에러 메시지 숨김 MariaDB 보안 강화 Root 원격 접속 차단(localhost만). 애플리케이션별 전용 계정: GRANT SELECT, INSERT ON testdb.* TO ‘appuser’@‘192.168.186.129’. bind-address를 WAS IP로 제한. Slow Query Log로 SQL Injection 의심 쿼리 탐지 네트워크 보안 ufw allow from 192.168.186.128 to any port 8080 (WAS). ufw allow from 192.168.186.129 to any port 3306 (DB). SSH 키 인증 사용, PermitRootLogin no. Fail2ban으로 brute force 차단 로그 관리 및 모니터링 ELK Stack(Elasticsearch, Logstash, Kibana)으로 실시간 로그 분석. 실패한 로그인 10회, SQL Injection 시도 탐지 시 알림. 로그 최소 1년 보관 5. 배운 점 및 심화 방향 배운 점: 3-Tier 아키텍처를 VMware로 직접 구현하니 각 계층의 역할과 상호작용이 명확해졌다. 리버스 프록시를 통해 백엔드 서버 보호, SSL 종료, 로드 밸런싱 등 다양한 기능을 한 곳에서 처리할 수 있다는 점이 인상 깊었다. bind-address를 0.0.0.0으로 변경하는 순간 외부에서 DB 접근 가능해지는 위험성을 체감했다. MariaDB JDBC URL이 jdbc:mysql://로 동일하게 사용 가능하다는 점도 알게 됐다. 심화 방향: HTTPS 적용(Let’s Encrypt), Nginx upstream 블록으로 로드 밸런싱 구성, Docker 컨테이너화 후 Docker Compose로 자동 구성, Nginx에 ModSecurity WAF 연동(OWASP CRS 룰셋), Prometheus + Grafana 모니터링, ELK Stack 로그 중앙화, Ansible Playbook으로 3-Tier 환경 자동 구성. 6. Quick Reference 주요 명령어 모음 시스템 관리:\nsudo su - root 권한 전환 apt-get update \u0026\u0026 apt-get upgrade -y - 패키지 업데이트 uname -a - 커널 정보 free -h - 메모리 사용량 df -h - 디스크 사용량 네트워크:\nifconfig / ip addr show - IP 주소 확인 ping 192.168.186.129 - 연결 테스트 netstat -antp | grep LISTEN - 포트 리스닝 확인 ss -tlnp - 소켓 상태 확인 ufw status - 방화벽 상태 확인 서비스 관리:\nsystemctl start|stop|restart nginx - 서비스 제어 systemctl status nginx - 상태 확인 systemctl enable|disable nginx - 자동 시작 설정 journalctl -u nginx -f - 실시간 로그 로그 확인:\ntail -f /var/log/nginx/access.log - Nginx 접근 로그 tail -f /opt/tomcat/logs/catalina.out - Tomcat 주 로그 tail -f /var/log/mysql/error.log - MariaDB 에러 로그 tail -f /var/log/auth.log - SSH 로그인 이력 포트 및 프로토콜 참조표 서비스 포트 프로토콜 용도 HTTP 80 TCP 웹 서버 (암호화 없음) HTTPS 443 TCP 웹 서버 (SSL/TLS 암호화) SSH 22 TCP 원격 접속 Tomcat 8080 TCP WAS (HTTP Alternative) Tomcat AJP 8009 TCP Nginx 연동 (비활성화 권장) MySQL/MariaDB 3306 TCP 데이터베이스 Redis 6379 TCP 인메모리 DB/캐시 보안 체크리스트 Nginx:\nserver_tokens off (버전 정보 숨김) SSL/TLS 설정 (HTTPS 적용) Rate Limiting 설정 보안 헤더 추가 (X-Frame-Options, CSP 등) 불필요한 HTTP 메서드 차단 (TRACE, OPTIONS 등) Tomcat:\nManager 앱 기본 계정 변경 또는 삭제 불필요한 예제 앱 삭제 (examples, docs, host-manager) AJP 커넥터 비활성화 (Ghostcat 취약점) 에러 페이지 커스터마이징 (상세 정보 숨김) MariaDB:\nRoot 원격 접속 차단 (localhost만 허용) 애플리케이션별 전용 계정 생성 최소 권한 부여 (필요한 DB/테이블만) bind-address를 특정 IP로 제한 강력한 비밀번호 정책 적용 ",
+  "wordCount" : "3725",
+  "inLanguage": "ko",
+  "datePublished": "2025-12-17T00:00:00Z",
+  "dateModified": "2025-12-17T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/daily_logs/week08/20251217_vmware_3tier_architecture/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://hojjang98.github.io/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/daily_logs/">6개월, 혹은 그 이상의 보안 여정</a></div>
+    <h1 class="post-title entry-hint-parent">
+      2025.12.17 (Day 37) - VMware 3-Tier Architecture 구성 실습
+    </h1>
+    <div class="post-meta"><span title='2025-12-17 00:00:00 +0000 UTC'>2025년 12월 17일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="-20251217-day-37---vmware-3-tier-architecture-구성-실습">📄 2025.12.17 (Day 37) - VMware 3-Tier Architecture 구성 실습<a hidden class="anchor" aria-hidden="true" href="#-20251217-day-37---vmware-3-tier-architecture-구성-실습">#</a></h1>
+<hr>
+<h2 id="1-핵심-개념-정리">1. 핵심 개념 정리<a hidden class="anchor" aria-hidden="true" href="#1-핵심-개념-정리">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">#</th>
+          <th style="text-align: left">핵심 개념</th>
+          <th style="text-align: left">설명</th>
+          <th style="text-align: left">실무/보안 관점</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>1</strong></td>
+          <td style="text-align: left"><strong>3-Tier Architecture</strong></td>
+          <td style="text-align: left">애플리케이션을 Presentation Tier(웹 서버), Application Tier(비즈니스 로직), Data Tier(데이터베이스)로 분리한 아키텍처. 각 계층이 독립적으로 동작하며 서로 다른 서버에 배치</td>
+          <td style="text-align: left"><strong>보안 계층화(Defense in Depth)의 기본</strong>. DMZ에 웹 서버 배치로 직접 공격 표면 제한, DB는 가장 안쪽에 격리. 한 계층 침투 시에도 다른 계층 보호</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>2</strong></td>
+          <td style="text-align: left"><strong>VMware Workstation</strong></td>
+          <td style="text-align: left">물리적 컴퓨터 위에서 여러 가상 머신(VM)을 실행하는 하이퍼바이저 소프트웨어. Type 2 하이퍼바이저로 호스트 OS 위에서 동작</td>
+          <td style="text-align: left">안전한 실습 환경 구축 가능. 스냅샷으로 실수 시 즉시 복구. VM 간 네트워크 격리로 호스트 시스템 보호. 멀웨어 분석, 취약점 테스트 시 샌드박스 역할</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>3</strong></td>
+          <td style="text-align: left"><strong>Nginx (웹 서버)</strong></td>
+          <td style="text-align: left">고성능 HTTP 웹 서버, 리버스 프록시, 로드 밸런서. 비동기 이벤트 기반 아키텍처로 낮은 메모리로 많은 동시 연결 처리</td>
+          <td style="text-align: left">리버스 프록시로 백엔드 서버 IP 숨김. Rate limiting으로 DDoS 완화. SSL/TLS 설정으로 암호화 통신. 보안 헤더(X-Frame-Options, CSP) 추가</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>4</strong></td>
+          <td style="text-align: left"><strong>Apache Tomcat (WAS)</strong></td>
+          <td style="text-align: left">Java 기반 웹 애플리케이션 서버(WAS). Servlet과 JSP를 실행하여 동적 웹 콘텐츠 생성. 기본 포트 8080에서 실행</td>
+          <td style="text-align: left">Manager 앱 기본 계정 변경 필수. AJP 커넥터 비활성화(Ghostcat 취약점). 불필요한 예제 애플리케이션 삭제</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>5</strong></td>
+          <td style="text-align: left"><strong>MariaDB (데이터베이스)</strong></td>
+          <td style="text-align: left">MySQL 기반 오픈소스 관계형 데이터베이스. 기본 포트 3306에서 실행, /etc/mysql/ 디렉토리에 설정 파일 위치</td>
+          <td style="text-align: left">Root 계정 원격 접속 차단(localhost만 허용). 애플리케이션별 전용 계정 생성, 최소 권한 부여. bind-address를 내부 IP로 제한</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>6</strong></td>
+          <td style="text-align: left"><strong>systemctl (시스템 관리)</strong></td>
+          <td style="text-align: left">Systemd 기반 리눅스에서 서비스를 관리하는 명령어. 시작/중지/재시작, 자동 실행 설정, 상태 확인 기능</td>
+          <td style="text-align: left">enable로 부팅 시 자동 시작 보장. status로 실시간 서비스 상태 확인. 불필요한 서비스 disable로 공격 표면 축소</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>7</strong></td>
+          <td style="text-align: left"><strong>리버스 프록시 (Reverse Proxy)</strong></td>
+          <td style="text-align: left">클라이언트 요청을 받아 백엔드 서버로 전달하는 중계 서버. Nginx가 80포트로 요청 수신 후 Tomcat 8080포트로 프록시</td>
+          <td style="text-align: left">백엔드 서버 IP/포트 숨김으로 직접 공격 차단. SSL/TLS는 Nginx에서만 처리(백엔드 부담 감소). Rate limiting, IP 필터링 중앙 적용</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>8</strong></td>
+          <td style="text-align: left"><strong>방화벽 포트 구성</strong></td>
+          <td style="text-align: left">네트워크 트래픽을 포트 번호로 제어하는 보안 설정. HTTP(80), HTTPS(443), SSH(22), MySQL(3306), Tomcat(8080) 등</td>
+          <td style="text-align: left">웹 서버: 80/443만 외부 개방. WAS: 8080은 웹 서버에서만 접근. DB: 3306은 WAS에서만 접근. SSH: 22는 관리자 IP만 허용</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>9</strong></td>
+          <td style="text-align: left"><strong>원격 접속 (SSH)</strong></td>
+          <td style="text-align: left">Secure Shell 프로토콜로 원격 서버를 안전하게 관리. 공개키 인증 또는 비밀번호 인증 지원. 기본 포트 22</td>
+          <td style="text-align: left">Root 직접 로그인 금지(PermitRootLogin no). 기본 포트 22 변경으로 자동화 공격 회피. Fail2ban으로 brute force 차단</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>10</strong></td>
+          <td style="text-align: left"><strong>런레벨 / Target</strong></td>
+          <td style="text-align: left">리눅스 시스템의 부팅 모드 정의. multi-user.target(CLI 모드, 런레벨 3), graphical.target(GUI 모드, 런레벨 5)</td>
+          <td style="text-align: left">GUI 불필요 시 multi-user.target으로 메모리/CPU 절약. 공격 표면 축소(GUI 관련 서비스 미실행)</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="2-아키텍처-구성도">2. 아키텍처 구성도<a hidden class="anchor" aria-hidden="true" href="#2-아키텍처-구성도">#</a></h2>
+<p>3-Tier 아키텍처 네트워크 구성:</p>
+<ul>
+<li>사용자/클라이언트
+<ul>
+<li>HTTP/HTTPS (Port 80/443)</li>
+<li><strong>VM1: Web Server (Nginx)</strong> - IP: 192.168.186.128, Port 80
+<ul>
+<li>Reverse Proxy (Port 8080)</li>
+<li><strong>VM2: WAS Server (Tomcat)</strong> - IP: 192.168.186.129, Port 8080
+<ul>
+<li>JDBC Connection (Port 3306)</li>
+<li><strong>VM3: DB Server (MariaDB)</strong> - IP: 192.168.186.130, Port 3306</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>보안 규칙:</p>
+<ul>
+<li>외부 -&gt; Web: 80, 443 허용</li>
+<li>Web -&gt; WAS: 8080 허용</li>
+<li>WAS -&gt; DB: 3306 허용</li>
+<li>관리자 -&gt; All: SSH 22 허용 (특정 IP만)</li>
+<li>기타 모든 포트: 차단</li>
+</ul>
+<hr>
+<h2 id="3-실습-내용">3. 실습 내용<a hidden class="anchor" aria-hidden="true" href="#3-실습-내용">#</a></h2>
+<h3 id="a-vmware-환경-준비-및-초기-설정">(A) VMware 환경 준비 및 초기 설정<a hidden class="anchor" aria-hidden="true" href="#a-vmware-환경-준비-및-초기-설정">#</a></h3>
+<p><strong>VMware Workstation 설치 및 Ubuntu VM 생성 (3대):</strong></p>
+<ul>
+<li>VMware -&gt; &ldquo;Create a New Virtual Machine&rdquo; -&gt; Typical 선택</li>
+<li>ISO 이미지: Ubuntu 24.04 LTS Desktop ISO</li>
+<li>Computer name: webserver / wasserver / dbserver</li>
+<li>Disk size: 20GB, Memory: 4GB, Processors: 2 cores</li>
+<li>Network Adapter: NAT 또는 Bridged</li>
+</ul>
+<p><strong>Ubuntu 초기 설정 (3대 모두):</strong></p>
+<ul>
+<li><strong>sudo su</strong> - root 권한 전환</li>
+<li><strong>apt-get update</strong> - 패키지 목록 갱신</li>
+<li><strong>apt-get install -y net-tools openssh-server vim curl wget</strong> - 필수 패키지 설치</li>
+<li><strong>apt-get upgrade -y</strong> - 시스템 업그레이드</li>
+<li><strong>ifconfig</strong> 또는 <strong>ip addr show</strong> - IP 주소 확인
+<ul>
+<li>webserver: 192.168.186.128</li>
+<li>wasserver: 192.168.186.129</li>
+<li>dbserver: 192.168.186.130</li>
+</ul>
+</li>
+</ul>
+<p><strong>GUI -&gt; CLI 모드 전환 (리소스 절약):</strong></p>
+<ul>
+<li><strong>sudo systemctl set-default multi-user.target</strong> - CLI 모드로 기본 설정 변경</li>
+<li><strong>reboot</strong> - 재부팅 후 CLI 화면으로 로그인</li>
+</ul>
+<p><strong>SSH 접속:</strong></p>
+<ul>
+<li><strong>ssh <a href="mailto:student@192.168.186.128">student@192.168.186.128</a></strong> - 이후 작업은 SSH로 진행</li>
+</ul>
+<hr>
+<h3 id="b-tier-1-web-server-nginx-구성">(B) Tier 1: Web Server (Nginx) 구성<a hidden class="anchor" aria-hidden="true" href="#b-tier-1-web-server-nginx-구성">#</a></h3>
+<p><strong>Nginx 설치 및 설정 (VM1: 192.168.186.128):</strong></p>
+<ol>
+<li>
+<p>설치:</p>
+<ul>
+<li><strong>apt-get install nginx -y</strong></li>
+</ul>
+</li>
+<li>
+<p>설치 확인:</p>
+<ul>
+<li><strong>netstat -antp | grep nginx</strong> 또는 <strong>ss -tlnp | grep nginx</strong> - 80포트 리스닝 확인</li>
+<li><strong>nginx -v</strong> - 버전 확인</li>
+</ul>
+</li>
+<li>
+<p>자동 실행 설정:</p>
+<ul>
+<li><strong>systemctl enable nginx</strong> - 부팅 시 자동 시작</li>
+<li><strong>systemctl start nginx</strong> - 서비스 시작</li>
+<li><strong>systemctl status nginx</strong> - &ldquo;active (running)&rdquo; 확인</li>
+<li><strong>nginx -t</strong> - 설정 파일 문법 검사</li>
+</ul>
+</li>
+<li>
+<p>기본 웹 페이지 수정:</p>
+<ul>
+<li><strong>rm -f /var/www/html/index.nginx-debian.html</strong> - 기본 페이지 삭제</li>
+<li><strong>vi /var/www/html/index.html</strong> - 새 페이지 작성</li>
+</ul>
+</li>
+<li>
+<p>접속 테스트:</p>
+<ul>
+<li><strong>curl http://192.168.186.128</strong> - curl로 테스트</li>
+<li><strong>tail -f /var/log/nginx/access.log</strong> - 접근 로그 확인</li>
+<li><strong>tail -f /var/log/nginx/error.log</strong> - 에러 로그 확인</li>
+</ul>
+</li>
+</ol>
+<p><strong>Nginx 주요 파일 구조:</strong></p>
+<ul>
+<li>/etc/nginx/nginx.conf - 메인 설정 파일</li>
+<li>/etc/nginx/sites-available/default - 기본 사이트 설정</li>
+<li>/etc/nginx/sites-enabled/default - 활성화된 설정 (심볼릭 링크)</li>
+<li>/var/www/html/ - 웹 문서 루트 디렉토리</li>
+<li>/var/log/nginx/access.log - 접근 로그</li>
+<li>/var/log/nginx/error.log - 에러 로그</li>
+</ul>
+<hr>
+<h3 id="c-tier-2-was-server-tomcat-구성">(C) Tier 2: WAS Server (Tomcat) 구성<a hidden class="anchor" aria-hidden="true" href="#c-tier-2-was-server-tomcat-구성">#</a></h3>
+<p><strong>Tomcat 설치 및 설정 (VM2: 192.168.186.129):</strong></p>
+<ol>
+<li>
+<p>Java JDK 설치 (Tomcat 실행 필수):</p>
+<ul>
+<li><strong>apt-get install -y openjdk-17-jdk</strong></li>
+<li><strong>java -version</strong> - 설치 확인</li>
+</ul>
+</li>
+<li>
+<p>Tomcat 다운로드 및 설치:</p>
+<ul>
+<li><strong>cd /tmp</strong> -&gt; <strong>wget</strong> [Tomcat 10.x 다운로드 URL]</li>
+<li><strong>tar -xzf apache-tomcat-10.1.28.tar.gz</strong></li>
+<li><strong>mv apache-tomcat-10.1.28 /opt/tomcat</strong></li>
+<li><strong>useradd -r -m -U -d /opt/tomcat -s /bin/false tomcat</strong> - 전용 계정 생성</li>
+<li><strong>chown -R tomcat:tomcat /opt/tomcat/</strong> - 소유권 변경</li>
+</ul>
+</li>
+<li>
+<p>Systemd 서비스 등록 (/etc/systemd/system/tomcat.service):</p>
+<ul>
+<li>Unit: After=network.target</li>
+<li>Service: Type=forking, User=tomcat, Group=tomcat</li>
+<li>Environment: JAVA_HOME, CATALINA_HOME=/opt/tomcat</li>
+<li>ExecStart=/opt/tomcat/bin/startup.sh</li>
+<li>Restart=always</li>
+</ul>
+</li>
+<li>
+<p>Tomcat 서비스 시작:</p>
+<ul>
+<li><strong>systemctl daemon-reload</strong> - Systemd 데몬 리로드</li>
+<li><strong>systemctl start tomcat</strong> - 시작</li>
+<li><strong>systemctl enable tomcat</strong> - 자동 시작 설정</li>
+<li><strong>netstat -antp | grep 8080</strong> - 포트 8080 리스닝 확인</li>
+</ul>
+</li>
+<li>
+<p>JSP 테스트 페이지 생성:</p>
+<ul>
+<li><strong>vi /opt/tomcat/webapps/ROOT/index.jsp</strong> - JSP 테스트 페이지 작성</li>
+<li><strong>chown -R tomcat:tomcat /opt/tomcat/webapps/</strong></li>
+<li><strong>systemctl restart tomcat</strong></li>
+<li>브라우저: http://192.168.186.129:8080 접속 확인</li>
+</ul>
+</li>
+<li>
+<p>로그 확인:</p>
+<ul>
+<li><strong>tail -f /opt/tomcat/logs/catalina.out</strong> - 주 로그</li>
+<li><strong>tail -f /opt/tomcat/logs/localhost_access_log.*.txt</strong> - 접근 로그</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="d-nginx---tomcat-리버스-프록시-설정">(D) Nginx -&gt; Tomcat 리버스 프록시 설정<a hidden class="anchor" aria-hidden="true" href="#d-nginx---tomcat-리버스-프록시-설정">#</a></h3>
+<p><strong>Nginx 리버스 프록시 설정 (VM1):</strong></p>
+<ol>
+<li>
+<p>설정 파일 백업:</p>
+<ul>
+<li><strong>cd /etc/nginx/sites-available/</strong> -&gt; <strong>cp default default.bak</strong></li>
+</ul>
+</li>
+<li>
+<p>/etc/nginx/sites-available/default 주요 설정:</p>
+<ul>
+<li>listen 80 default_server</li>
+<li>access_log /var/log/nginx/proxy_access.log</li>
+<li>location / 블록:
+<ul>
+<li><strong>proxy_pass http://192.168.186.129:8080</strong> - Tomcat으로 프록시</li>
+<li>proxy_set_header Host $host</li>
+<li>proxy_set_header X-Real-IP $remote_addr</li>
+<li>proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for</li>
+<li>proxy_connect_timeout 60s</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>설정 적용:</p>
+<ul>
+<li><strong>nginx -t</strong> - 문법 검사</li>
+<li><strong>systemctl restart nginx</strong></li>
+</ul>
+</li>
+<li>
+<p>프록시 동작 확인:</p>
+<ul>
+<li>브라우저: http://192.168.186.128 -&gt; Tomcat JSP 페이지가 표시됨</li>
+<li><strong>curl -I http://192.168.186.128</strong> - 응답 헤더 확인</li>
+</ul>
+</li>
+</ol>
+<p><strong>리버스 프록시 동작 흐름:</strong></p>
+<p>클라이언트 (192.168.186.1)
+-&gt; ① HTTP 요청: http://192.168.186.128/
+-&gt; Nginx (192.168.186.128:80)
+-&gt; ② 프록시: http://192.168.186.129:8080/
+-&gt; Tomcat (192.168.186.129:8080)
+-&gt; ③ JSP 실행, HTML 생성
+-&gt; ④ HTTP 응답 반환
+-&gt; 클라이언트</p>
+<hr>
+<h3 id="e-tier-3-database-server-mariadb-구성">(E) Tier 3: Database Server (MariaDB) 구성<a hidden class="anchor" aria-hidden="true" href="#e-tier-3-database-server-mariadb-구성">#</a></h3>
+<p><strong>MariaDB 설치 및 설정 (VM3: 192.168.186.130):</strong></p>
+<ol>
+<li>
+<p>설치:</p>
+<ul>
+<li><strong>apt-get install -y mariadb-server</strong></li>
+<li><strong>systemctl enable mariadb</strong> -&gt; <strong>systemctl start mariadb</strong></li>
+<li><strong>netstat -antp | grep LISTEN | grep 3306</strong> - 포트 확인</li>
+</ul>
+</li>
+<li>
+<p>보안 설정 (mysql_secure_installation):</p>
+<ul>
+<li>Root 비밀번호 설정</li>
+<li>익명 사용자 제거 (Remove anonymous users: Y)</li>
+<li>Root 원격 로그인 비허용 (Disallow root login remotely: Y)</li>
+<li>테스트 DB 삭제 (Remove test database: Y)</li>
+</ul>
+</li>
+<li>
+<p>원격 접속 허용 (bind-address 변경):</p>
+<ul>
+<li><strong>vi /etc/mysql/mariadb.conf.d/50-server.cnf</strong></li>
+<li>bind-address = 127.0.0.1 -&gt; <strong>bind-address = 0.0.0.0</strong> 으로 변경</li>
+<li><strong>systemctl restart mariadb</strong></li>
+</ul>
+</li>
+<li>
+<p>원격 접속용 사용자 생성 (MariaDB 프롬프트):</p>
+<ul>
+<li><strong>mysql -u root -p</strong> -&gt; 접속</li>
+<li>CREATE USER &lsquo;mydb&rsquo;@&rsquo;%&rsquo; IDENTIFIED BY &lsquo;abcd1234&rsquo;</li>
+<li>GRANT ALL PRIVILEGES ON <em>.</em> TO &lsquo;mydb&rsquo;@&rsquo;%&rsquo; WITH GRANT OPTION</li>
+<li>FLUSH PRIVILEGES</li>
+<li>SELECT user, host FROM mysql.user WHERE user=&lsquo;mydb&rsquo; - 확인</li>
+</ul>
+</li>
+<li>
+<p>방화벽 설정:</p>
+<ul>
+<li><strong>ufw allow from 192.168.186.129 to any port 3306</strong> - WAS에서만 허용</li>
+</ul>
+</li>
+<li>
+<p>테스트 DB 및 테이블 생성:</p>
+<ul>
+<li>CREATE DATABASE testdb</li>
+<li>USE testdb</li>
+<li>CREATE TABLE users (id INT AUTO_INCREMENT PRIMARY KEY, username VARCHAR(50), email VARCHAR(100), created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)</li>
+<li>INSERT INTO users (username, email) VALUES (&lsquo;admin&rsquo;, &lsquo;<a href="mailto:admin@example.com">admin@example.com</a>&rsquo;), (&lsquo;user1&rsquo;, &lsquo;<a href="mailto:user1@example.com">user1@example.com</a>&rsquo;)</li>
+<li>SELECT * FROM users - 데이터 확인</li>
+</ul>
+</li>
+</ol>
+<p><strong>WAS에서 DB 연결 테스트 (VM2):</strong></p>
+<ul>
+<li><strong>apt-get install -y mariadb-client-core</strong></li>
+<li><strong>mysql -u mydb -p -h 192.168.186.130</strong> - DB 서버 접속</li>
+<li><strong>wget</strong> [JDBC Connector JAR] -&gt; <strong>/opt/tomcat/lib/</strong> 에 배치</li>
+<li>dbtest.jsp 생성 후 http://192.168.186.128/dbtest.jsp 로 전체 연동 확인</li>
+</ul>
+<p><strong>3-Tier 전체 연동 흐름:</strong></p>
+<p>클라이언트 -&gt; http://192.168.186.128/dbtest.jsp
+-&gt; Nginx (Tier 1, 리버스 프록시)
+-&gt; Tomcat (Tier 2, JSP 실행)
+-&gt; MariaDB (Tier 3, SELECT * FROM users)
+-&gt; 결과 반환 -&gt; HTML 생성 -&gt; 클라이언트에 응답</p>
+<hr>
+<h2 id="4-실무보안-관점-분석">4. 실무/보안 관점 분석<a hidden class="anchor" aria-hidden="true" href="#4-실무보안-관점-분석">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">분야</th>
+          <th style="text-align: left">적용 시나리오</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>3-Tier 보안 아키텍처</strong></td>
+          <td style="text-align: left">계층별 격리: Web(DMZ) -&gt; WAS(내부망) -&gt; DB(최내부) 배치로 공격자가 한 계층 침투 시에도 다른 계층 보호. 최소 권한 원칙: 각 계층은 필요한 포트/서비스만 실행. 리버스 프록시: Nginx가 Tomcat 앞단에서 SSL 종료, Rate Limiting, IP 필터링 수행</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>Nginx 보안 강화</strong></td>
+          <td style="text-align: left">server_tokens off로 버전 정보 숨김. limit_req_zone으로 Rate Limiting. allow/deny로 IP 화이트리스트. X-Frame-Options, X-Content-Type-Options, CSP 보안 헤더 추가. Access log로 모든 요청 기록</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>Tomcat 보안 강화</strong></td>
+          <td style="text-align: left">Manager 앱 기본 계정 삭제, 강력한 비밀번호, 특정 IP만 접근 허용. 불필요한 예제 앱(examples, docs, host-manager) 삭제. AJP 포트 주석 처리(Ghostcat 취약점 방지). 상세 에러 메시지 숨김</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>MariaDB 보안 강화</strong></td>
+          <td style="text-align: left">Root 원격 접속 차단(localhost만). 애플리케이션별 전용 계정: GRANT SELECT, INSERT ON testdb.* TO &lsquo;appuser&rsquo;@&lsquo;192.168.186.129&rsquo;. bind-address를 WAS IP로 제한. Slow Query Log로 SQL Injection 의심 쿼리 탐지</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>네트워크 보안</strong></td>
+          <td style="text-align: left">ufw allow from 192.168.186.128 to any port 8080 (WAS). ufw allow from 192.168.186.129 to any port 3306 (DB). SSH 키 인증 사용, PermitRootLogin no. Fail2ban으로 brute force 차단</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>로그 관리 및 모니터링</strong></td>
+          <td style="text-align: left">ELK Stack(Elasticsearch, Logstash, Kibana)으로 실시간 로그 분석. 실패한 로그인 10회, SQL Injection 시도 탐지 시 알림. 로그 최소 1년 보관</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="5-배운-점-및-심화-방향">5. 배운 점 및 심화 방향<a hidden class="anchor" aria-hidden="true" href="#5-배운-점-및-심화-방향">#</a></h2>
+<ul>
+<li><strong>배운 점</strong>: 3-Tier 아키텍처를 VMware로 직접 구현하니 각 계층의 역할과 상호작용이 명확해졌다. 리버스 프록시를 통해 백엔드 서버 보호, SSL 종료, 로드 밸런싱 등 다양한 기능을 한 곳에서 처리할 수 있다는 점이 인상 깊었다. bind-address를 0.0.0.0으로 변경하는 순간 외부에서 DB 접근 가능해지는 위험성을 체감했다. MariaDB JDBC URL이 jdbc:mysql://로 동일하게 사용 가능하다는 점도 알게 됐다.</li>
+<li><strong>심화 방향</strong>: HTTPS 적용(Let&rsquo;s Encrypt), Nginx upstream 블록으로 로드 밸런싱 구성, Docker 컨테이너화 후 Docker Compose로 자동 구성, Nginx에 ModSecurity WAF 연동(OWASP CRS 룰셋), Prometheus + Grafana 모니터링, ELK Stack 로그 중앙화, Ansible Playbook으로 3-Tier 환경 자동 구성.</li>
+</ul>
+<hr>
+<h2 id="6-quick-reference">6. Quick Reference<a hidden class="anchor" aria-hidden="true" href="#6-quick-reference">#</a></h2>
+<h3 id="주요-명령어-모음">주요 명령어 모음<a hidden class="anchor" aria-hidden="true" href="#주요-명령어-모음">#</a></h3>
+<p><strong>시스템 관리:</strong></p>
+<ul>
+<li><strong>sudo su</strong> - root 권한 전환</li>
+<li><strong>apt-get update &amp;&amp; apt-get upgrade -y</strong> - 패키지 업데이트</li>
+<li><strong>uname -a</strong> - 커널 정보</li>
+<li><strong>free -h</strong> - 메모리 사용량</li>
+<li><strong>df -h</strong> - 디스크 사용량</li>
+</ul>
+<p><strong>네트워크:</strong></p>
+<ul>
+<li><strong>ifconfig</strong> / <strong>ip addr show</strong> - IP 주소 확인</li>
+<li><strong>ping 192.168.186.129</strong> - 연결 테스트</li>
+<li><strong>netstat -antp | grep LISTEN</strong> - 포트 리스닝 확인</li>
+<li><strong>ss -tlnp</strong> - 소켓 상태 확인</li>
+<li><strong>ufw status</strong> - 방화벽 상태 확인</li>
+</ul>
+<p><strong>서비스 관리:</strong></p>
+<ul>
+<li><strong>systemctl start|stop|restart nginx</strong> - 서비스 제어</li>
+<li><strong>systemctl status nginx</strong> - 상태 확인</li>
+<li><strong>systemctl enable|disable nginx</strong> - 자동 시작 설정</li>
+<li><strong>journalctl -u nginx -f</strong> - 실시간 로그</li>
+</ul>
+<p><strong>로그 확인:</strong></p>
+<ul>
+<li><strong>tail -f /var/log/nginx/access.log</strong> - Nginx 접근 로그</li>
+<li><strong>tail -f /opt/tomcat/logs/catalina.out</strong> - Tomcat 주 로그</li>
+<li><strong>tail -f /var/log/mysql/error.log</strong> - MariaDB 에러 로그</li>
+<li><strong>tail -f /var/log/auth.log</strong> - SSH 로그인 이력</li>
+</ul>
+<h3 id="포트-및-프로토콜-참조표">포트 및 프로토콜 참조표<a hidden class="anchor" aria-hidden="true" href="#포트-및-프로토콜-참조표">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">서비스</th>
+          <th style="text-align: center">포트</th>
+          <th style="text-align: center">프로토콜</th>
+          <th style="text-align: left">용도</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">HTTP</td>
+          <td style="text-align: center">80</td>
+          <td style="text-align: center">TCP</td>
+          <td style="text-align: left">웹 서버 (암호화 없음)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">HTTPS</td>
+          <td style="text-align: center">443</td>
+          <td style="text-align: center">TCP</td>
+          <td style="text-align: left">웹 서버 (SSL/TLS 암호화)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">SSH</td>
+          <td style="text-align: center">22</td>
+          <td style="text-align: center">TCP</td>
+          <td style="text-align: left">원격 접속</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Tomcat</td>
+          <td style="text-align: center">8080</td>
+          <td style="text-align: center">TCP</td>
+          <td style="text-align: left">WAS (HTTP Alternative)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Tomcat AJP</td>
+          <td style="text-align: center">8009</td>
+          <td style="text-align: center">TCP</td>
+          <td style="text-align: left">Nginx 연동 (비활성화 권장)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">MySQL/MariaDB</td>
+          <td style="text-align: center">3306</td>
+          <td style="text-align: center">TCP</td>
+          <td style="text-align: left">데이터베이스</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Redis</td>
+          <td style="text-align: center">6379</td>
+          <td style="text-align: center">TCP</td>
+          <td style="text-align: left">인메모리 DB/캐시</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="보안-체크리스트">보안 체크리스트<a hidden class="anchor" aria-hidden="true" href="#보안-체크리스트">#</a></h3>
+<p><strong>Nginx:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> server_tokens off (버전 정보 숨김)</li>
+<li><input disabled="" type="checkbox"> SSL/TLS 설정 (HTTPS 적용)</li>
+<li><input disabled="" type="checkbox"> Rate Limiting 설정</li>
+<li><input disabled="" type="checkbox"> 보안 헤더 추가 (X-Frame-Options, CSP 등)</li>
+<li><input disabled="" type="checkbox"> 불필요한 HTTP 메서드 차단 (TRACE, OPTIONS 등)</li>
+</ul>
+<p><strong>Tomcat:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Manager 앱 기본 계정 변경 또는 삭제</li>
+<li><input disabled="" type="checkbox"> 불필요한 예제 앱 삭제 (examples, docs, host-manager)</li>
+<li><input disabled="" type="checkbox"> AJP 커넥터 비활성화 (Ghostcat 취약점)</li>
+<li><input disabled="" type="checkbox"> 에러 페이지 커스터마이징 (상세 정보 숨김)</li>
+</ul>
+<p><strong>MariaDB:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Root 원격 접속 차단 (localhost만 허용)</li>
+<li><input disabled="" type="checkbox"> 애플리케이션별 전용 계정 생성</li>
+<li><input disabled="" type="checkbox"> 최소 권한 부여 (필요한 DB/테이블만)</li>
+<li><input disabled="" type="checkbox"> bind-address를 특정 IP로 제한</li>
+<li><input disabled="" type="checkbox"> 강력한 비밀번호 정책 적용</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://hojjang98.github.io/tags/vmware/">VMware</a></li>
+      <li><a href="https://hojjang98.github.io/tags/3-tier/">3-Tier</a></li>
+      <li><a href="https://hojjang98.github.io/tags/nginx/">Nginx</a></li>
+      <li><a href="https://hojjang98.github.io/tags/tomcat/">Tomcat</a></li>
+      <li><a href="https://hojjang98.github.io/tags/mariadb/">MariaDB</a></li>
+      <li><a href="https://hojjang98.github.io/tags/linux/">Linux</a></li>
+      <li><a href="https://hojjang98.github.io/tags/systemctl/">Systemctl</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%A6%AC%EB%B2%84%EC%8A%A4%ED%94%84%EB%A1%9D%EC%8B%9C/">리버스프록시</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%B3%B4%EC%95%88/">보안</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

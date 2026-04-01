@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Week 06 — TCP/IP 네트워크 프로토콜 분석 및 실무 적용 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="Network, TCP/IP, OSI, 프로토콜, 네트워크보안, Wireshark, SK쉴더스루키즈">
+<meta name="description" content="TCP/IP 계층 모델부터 주요 프로토콜 동작 원리, 네트워크 보안 기초까지 실무 관점으로 정리한 기술 보고서">
+<meta name="author" content="">
+<link rel="canonical" href="https://hojjang98.github.io/project/week_06/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.290573799e582c418c4bd84f2bca757d0a77fd1bf9f5c43942030e706df68ec8.css" integrity="sha256-KQVzeZ5YLEGMS9hPK8p1fQp3/Rv59cQ5QgMOcG32jsg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/project/week_06/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://hojjang98.github.io/project/week_06/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="Week 06 — TCP/IP 네트워크 프로토콜 분석 및 실무 적용">
+  <meta property="og:description" content="TCP/IP 계층 모델부터 주요 프로토콜 동작 원리, 네트워크 보안 기초까지 실무 관점으로 정리한 기술 보고서">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="project">
+    <meta property="article:published_time" content="2025-12-05T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-12-05T00:00:00+00:00">
+    <meta property="article:tag" content="Network">
+    <meta property="article:tag" content="TCP/IP">
+    <meta property="article:tag" content="OSI">
+    <meta property="article:tag" content="프로토콜">
+    <meta property="article:tag" content="네트워크보안">
+    <meta property="article:tag" content="Wireshark">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_19/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_18/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_17/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_16/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_15/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_14/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_13/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Week 06 — TCP/IP 네트워크 프로토콜 분석 및 실무 적용">
+<meta name="twitter:description" content="TCP/IP 계층 모델부터 주요 프로토콜 동작 원리, 네트워크 보안 기초까지 실무 관점으로 정리한 기술 보고서">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "프로젝트",
+      "item": "https://hojjang98.github.io/project/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Week 06 — TCP/IP 네트워크 프로토콜 분석 및 실무 적용",
+      "item": "https://hojjang98.github.io/project/week_06/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Week 06 — TCP/IP 네트워크 프로토콜 분석 및 실무 적용",
+  "name": "Week 06 — TCP\/IP 네트워크 프로토콜 분석 및 실무 적용",
+  "description": "TCP/IP 계층 모델부터 주요 프로토콜 동작 원리, 네트워크 보안 기초까지 실무 관점으로 정리한 기술 보고서",
+  "keywords": [
+    "Network", "TCP/IP", "OSI", "프로토콜", "네트워크보안", "Wireshark", "SK쉴더스루키즈"
+  ],
+  "articleBody": "Week 06 — TCP/IP 네트워크 프로토콜 분석 및 실무 적용 상세 기술 보고서 (PDF) 는 GitHub에서 확인할 수 있습니다. hojjang98 / skshielders-rookies-28 — projects/week_06\n개요 Week 6 는 TCP/IP 네트워크의 동작 원리와 보안 기초를 학습한 주간이다. 이번 주의 산출물도 Week 5 와 마찬가지로 기술 보고서 형태로 정리하였다.\n“서버가 아무리 안정적으로 구축되어 있어도, 네트워크 통신이 원활하지 않으면 서비스를 제공할 수 없다.”\n네트워크 계층의 문제는 전체 시스템의 가용성에 직접 영향을 미친다. 보안 전문가가 패킷을 읽지 못하면 공격 흔적을 남겨도 알아채지 못한다. Wireshark 로 실제 패킷을 분석하며 추상적인 개념을 구체화하는 과정이 이번 주의 핵심이었다.\n1. 네트워크 계층 모델 OSI 7계층 vs TCP/IP 4계층 OSI 7계층 (이론 참조 모델) TCP/IP 4계층 (실제 인터넷 표준)\r────────────────────────── ──────────────────────────────\r7. 응용 계층 (Application) ─┐\r6. 표현 계층 (Presentation) ─┤ =\u003e 4. 응용 계층 (Application)\r5. 세션 계층 (Session) ─┘ HTTP, HTTPS, DNS, FTP, SSH\r4. 전송 계층 (Transport) ──── =\u003e 3. 전송 계층 (Transport)\rTCP, UDP\r3. 네트워크 계층 (Network) ──── =\u003e 2. 인터넷 계층 (Internet)\rIP, ICMP, ARP\r2. 데이터링크 계층 ─┐\r1. 물리 계층 (Physical) ─┘ =\u003e 1. 네트워크 접근 계층 (Network Access)\rEthernet, Wi-Fi\rOSI 7계층 은 이론적 참조 모델로, 프로토콜 설계와 장애 분석의 사고 틀을 제공한다. TCP/IP 4계층 은 실제 인터넷에서 동작하는 프로토콜 스택으로, 실무에서 더 자주 사용한다.\n계층화의 핵심 가치 모듈화 — 각 계층은 독립적으로 동작하여 한 계층의 변경이 다른 계층에 영향을 주지 않는다 표준화 — 제조사가 달라도 같은 계층끼리 통신 가능 장애 격리 — 문제 발생 시 어느 계층에서 발생했는지 범위를 좁혀 진단 가능 2. 주요 프로토콜 동작 원리 ARP — IP 주소를 MAC 주소로 변환 같은 네트워크(LAN) 내에서 통신하려면 IP 주소만으로는 부족하다. 실제 프레임 전송에는 MAC 주소가 필요하기 때문에, ARP 가 이 변환을 담당한다.\n1. 송신 측: \"192.168.1.10 의 MAC 주소를 알려주세요!\" (브로드캐스트)\r=\u003e ARP Request: 네트워크 전체에 뿌림 (FF:FF:FF:FF:FF:FF)\r2. 수신 측 (192.168.1.10): \"제 MAC 주소는 AA:BB:CC:DD:EE:FF 입니다.\" (유니캐스트)\r=\u003e ARP Reply: 요청자에게만 응답\r3. 송신 측: MAC 주소를 ARP 캐시에 저장 후 통신 시작\r=\u003e arp -a 명령으로 현재 캐시 확인 가능\r보안 위협 — ARP 스푸핑 (ARP Spoofing): ARP 는 인증 없이 누구나 Reply 를 보낼 수 있다. 공격자가 가짜 ARP Reply 를 전송하면 피해자의 ARP 캐시가 오염되어 중간자 공격(Man-in-the-Middle) 이 가능해진다.\n정상: 피해자 =\u003e 게이트웨이 =\u003e 인터넷\rARP 스푸핑: 피해자 =\u003e 공격자 =\u003e 게이트웨이 =\u003e 인터넷 (모든 트래픽 도청 가능)\rICMP — 네트워크 상태 진단 프로토콜 IP 프로토콜의 보조 역할을 하며, 데이터 전송이 아닌 네트워크 상태 진단 및 오류 보고가 목적이다.\n주요 ICMP 메시지:\n타입 이름 용도 8 / 0 Echo Request / Reply ping 명령의 기반 3 Destination Unreachable 목적지 도달 불가 (포트 차단 포함) 11 Time Exceeded TTL 초과 (traceroute 의 기반) 5 Redirect 더 나은 경로 안내 보안 관점:\nICMP Flood (Ping Flood) — 대량의 Echo Request 로 서버 자원 고갈 (DDoS) ICMP Redirect 악용 — 가짜 Redirect 메시지로 트래픽 경로 조작 방화벽에서 ICMP 를 완전히 차단하면 오히려 장애 진단이 어려워짐 (적절한 허용 정책 필요) TCP 3-Way Handshake — 신뢰성 있는 연결 수립 TCP 는 데이터를 보내기 전에 반드시 3단계 핸드셰이크로 양방향 연결을 먼저 확립한다.\n클라이언트 서버\r│ │\r│ ── SYN (seq=x) ──────────────\u003e │ \"연결 요청합니다\"\r│ │\r│ \u003c── SYN-ACK (seq=y, ack=x+1) ── │ \"확인했습니다, 저도 연결 요청합니다\"\r│ │\r│ ── ACK (ack=y+1) ─────────────\u003e │ \"확인했습니다, 연결 확립!\"\r│ │\r│ ═══════ 데이터 전송 시작 ══════ │\r연결 종료는 4-Way Handshake (FIN -\u003e ACK -\u003e FIN -\u003e ACK) 로 이루어진다.\n보안 위협 — SYN Flood 공격: 대량의 SYN 패킷을 보내되 ACK 를 보내지 않으면, 서버는 수많은 반개방 연결(Half-Open Connection) 을 유지하다 자원이 고갈된다.\n대응 방법:\r- SYN Cookie 활성화: 완전한 연결 전까지 서버 자원 미할당\r- Rate Limiting: IP당 SYN 패킷 수 제한\r- 방화벽 임계치 설정\rHTTPS \u0026 TLS — 안전한 통신의 기반 HTTPS 는 HTTP 에 TLS(Transport Layer Security) 보안 계층을 추가한 것이다.\nTLS 가 제공하는 3가지 보안 속성:\n기밀성 (Confidentiality) — 대칭키 암호화로 데이터 내용을 보호 무결성 (Integrity) — MAC(Message Authentication Code) 로 데이터 변조 탐지 인증 (Authentication) — 서버 인증서(X.509) 로 신뢰할 수 있는 서버임을 확인 TLS Handshake 흐름 (TLS 1.3 기준):\n1. Client Hello =\u003e 지원하는 암호화 방식 목록 전송\r2. Server Hello =\u003e 선택된 암호화 방식 + 인증서 전송\r3. 인증서 검증 =\u003e 클라이언트가 CA(인증기관) 서명 확인\r4. 키 교환 =\u003e ECDHE 로 세션키 협의\r5. 데이터 전송 =\u003e 협의된 대칭키로 암호화 통신 시작\rDNS — 도메인을 IP 로 변환 브라우저에서 www.google.com 입력 시:\r1. 로컬 DNS 캐시 확인 (이미 알고 있으면 바로 사용)\r2. Recursive Resolver (ISP 제공) 에 질의\r3. Root DNS =\u003e .com TLD DNS =\u003e Google 권한 DNS 순으로 위임 질의\r4. 최종 IP 주소 반환 =\u003e 브라우저가 해당 IP 로 HTTP 연결\r보안 위협 — DNS 스푸핑 / DNS 캐시 포이즈닝: 가짜 DNS 응답을 캐시에 주입하면 피해자가 정상 도메인을 입력해도 가짜 사이트로 유도된다. 대응: DNSSEC (DNS 응답에 디지털 서명 추가)\n3. 네트워크 보안 기초 방화벽 (Firewall) 미리 정의된 보안 정책(ACL) 에 따라 트래픽을 허용하거나 차단한다.\n방화벽 종류별 특성:\r- 패킷 필터링 : IP / 포트 기반 단순 차단. 빠르지만 응용 계층 탐지 불가\r- 상태 기반 (Stateful): 연결 상태(SYN/ACK/FIN)를 추적하여 비정상 패킷 차단\r- 응용 계층(WAF): HTTP 요청 내용(SQL Injection, XSS 등) 까지 검사\rIDS vs IPS — 탐지와 차단의 차이 구분 IDS (Intrusion Detection System) IPS (Intrusion Prevention System) 역할 침입 탐지 후 경고 침입 탐지 + 실시간 차단 성격 수동적 (Passive) — 트래픽 복사본 분석 능동적 (Inline) — 트래픽 경로에 삽입 오탐 영향 경고만 발생, 서비스 영향 없음 오탐 시 정상 트래픽도 차단 위험 배치 위치 네트워크 미러 포트 / TAP 인라인 (방화벽과 서버 사이) 보안관제(SOC) 에서는 IDS 와 IPS 를 상호 보완적으로 함께 운영하는 것이 일반적이다.\n포트 스캔과 방어 포트 스캔은 열린 포트를 탐지하여 서비스 정보를 수집하는 기법이다. 공격 전 정찰(Reconnaissance) 단계에서 필수적으로 사용된다.\n주요 스캔 기법:\r- TCP SYN Scan (Half-Open) : 3-Way Handshake 를 완성하지 않아 로그 최소화\r- TCP Connect Scan : 완전한 연결 후 끊음. 탐지되기 쉬움\r- UDP Scan : 응답 없음 = 열림, ICMP Unreachable = 닫힘\r- Null / FIN / Xmas Scan : 비정상 플래그 조합으로 방화벽 우회 시도\r방어 전략:\n불필요한 서비스 전부 중지 (필요한 포트만 열기) Nmap 탐지 시 차단 또는 경보 발령 (IDS 규칙 설정) 포트 넘버 변경으로 자동화 스캔 일부 우회 (SSH 22 -\u003e 비표준 포트) 4. 실무 진단 도구 Wireshark — 패킷 분석의 표준 Wireshark 를 통해 배운 것:\n실제 TCP 핸드셰이크 패킷에서 SYN / SYN-ACK / ACK 플래그 확인 HTTP 요청 / 응답의 평문 노출 확인 (=\u003e HTTPS 의 필요성 체감) ARP 브로드캐스트 패턴과 스푸핑 패킷 구별 방법 리눅스 네트워크 진단 명령어 # 연결 상태 및 포트 확인\rss -tulnp -- 현재 열린 포트와 연결 상태 (netstat 대체)\rnetstat -an -- 모든 연결 목록\r# 경로 추적\rtraceroute 8.8.8.8 -- 패킷 경로 상 모든 라우터 홉 표시 (ICMP TTL 활용)\rping -c 4 host -- 연결성 및 RTT (왕복 시간) 확인\r# 패킷 캡처\rtcpdump -i eth0 port 80 -- eth0 인터페이스에서 80번 포트 트래픽 캡처\rtcpdump -w capture.pcap -- pcap 파일로 저장 후 Wireshark 분석\r# 네트워크 설정 확인\rip addr -- IP 주소 및 인터페이스 정보\rip route -- 라우팅 테이블\rnmap -sV target_ip -- 대상 서버 열린 포트 및 서비스 버전 스캔\r5. 계층별 장애 진단 접근법 실무에서 네트워크 문제가 발생하면 하위 계층부터 상위 계층 순으로 접근한다.\n[1계층] 물리/링크 계층 점검\r-\u003e 케이블 연결 확인, NIC 상태 확인 (ip link show)\r[2계층] 네트워크 계층 점검\r-\u003e ping 으로 로컬 / 원격 IP 도달 가능 여부 확인\r-\u003e 라우팅 테이블 확인 (ip route)\r[3계층] 전송 계층 점검\r-\u003e 목적지 포트 열려 있는지 확인 (nmap, telnet, nc)\r-\u003e 방화벽 정책 확인\r[4계층] 응용 계층 점검\r-\u003e 서비스 프로세스 실행 여부 (systemctl status)\r-\u003e 로그 확인 (/var/log/nginx/error.log 등)\r-\u003e DNS 해석 확인 (dig, nslookup)\r6. 보안관제 연계 — 네트워크 이상 징후 탐지 이상 징후 원인 가능성 대응 대량 ARP Reply ARP 스푸핑 공격 ARP 스푸핑 탐지 도구 (arpwatch) 운영 다수 포트 스캔 시도 공격 전 정찰 IDS 경보 + IP 차단 정책 대량 SYN 패킷 SYN Flood (DDoS) SYN Cookie 활성화, Rate Limiting DNS 쿼리 급증 DNS 터널링 / C2 통신 DNS 로그 분석, 비정상 도메인 탐지 ICMP 대용량 트래픽 Ping Flood / 스머프 공격 ICMP Rate Limiting 학습 성과 정리 영역 학습 내용 계층 모델 OSI 7계층 vs TCP/IP 4계층 비교, 계층화의 목적과 가치 프로토콜 이해 ARP / ICMP / TCP / DNS / HTTPS 의 동작 원리 보안 기초 방화벽 / IDS / IPS 차이, ARP 스푸핑 / SYN Flood / DNS 포이즈닝 실무 역량 Wireshark 패킷 분석, 리눅스 네트워크 진단 명령어 활용 장애 진단 계층별 Top-down / Bottom-up 접근법 체득 향후 학습 방향 SSL/TLS 심화 — 인증서 체인, HSTS, Certificate Pinning BGP / OSPF — 인터넷 라우팅 프로토콜과 BGP Hijacking 위협 네트워크 포렌식 — pcap 파일 분석으로 침해 사고 재현 및 증거 수집 Zero Trust Network — 경계 보안 모델을 넘어선 현대적 네트워크 보안 아키텍처 SDN (Software Defined Networking) — 클라우드 인프라에서의 네트워크 가상화 ",
+  "wordCount" : "3283",
+  "inLanguage": "ko",
+  "datePublished": "2025-12-05T00:00:00Z",
+  "dateModified": "2025-12-05T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/project/week_06/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://hojjang98.github.io/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/project/">프로젝트</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Week 06 — TCP/IP 네트워크 프로토콜 분석 및 실무 적용
+    </h1>
+    <div class="post-meta"><span title='2025-12-05 00:00:00 +0000 UTC'>2025년 12월 5일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="week-06--tcpip-네트워크-프로토콜-분석-및-실무-적용">Week 06 — TCP/IP 네트워크 프로토콜 분석 및 실무 적용<a hidden class="anchor" aria-hidden="true" href="#week-06--tcpip-네트워크-프로토콜-분석-및-실무-적용">#</a></h1>
+<blockquote>
+<p>상세 기술 보고서 (PDF) 는 GitHub에서 확인할 수 있습니다.
+<a href="https://github.com/hojjang98/skshielders-rookies-28/tree/main/projects/week_06">hojjang98 / skshielders-rookies-28 — projects/week_06</a></p>
+</blockquote>
+<hr>
+<h2 id="개요">개요<a hidden class="anchor" aria-hidden="true" href="#개요">#</a></h2>
+<p>Week 6 는 <strong>TCP/IP 네트워크의 동작 원리와 보안 기초</strong>를 학습한 주간이다.
+이번 주의 산출물도 Week 5 와 마찬가지로 <strong>기술 보고서</strong> 형태로 정리하였다.</p>
+<blockquote>
+<p>&ldquo;서버가 아무리 안정적으로 구축되어 있어도, 네트워크 통신이 원활하지 않으면 서비스를 제공할 수 없다.&rdquo;</p>
+</blockquote>
+<p>네트워크 계층의 문제는 전체 시스템의 <strong>가용성</strong>에 직접 영향을 미친다.
+보안 전문가가 패킷을 읽지 못하면 공격 흔적을 남겨도 알아채지 못한다.
+Wireshark 로 실제 패킷을 분석하며 추상적인 개념을 구체화하는 과정이 이번 주의 핵심이었다.</p>
+<hr>
+<h2 id="1-네트워크-계층-모델">1. 네트워크 계층 모델<a hidden class="anchor" aria-hidden="true" href="#1-네트워크-계층-모델">#</a></h2>
+<h3 id="osi-7계층-vs-tcpip-4계층">OSI 7계층 vs TCP/IP 4계층<a hidden class="anchor" aria-hidden="true" href="#osi-7계층-vs-tcpip-4계층">#</a></h3>
+<pre><code>OSI 7계층 (이론 참조 모델)         TCP/IP 4계층 (실제 인터넷 표준)
+──────────────────────────         ──────────────────────────────
+7. 응용 계층 (Application)  ─┐
+6. 표현 계층 (Presentation) ─┤ =&gt; 4. 응용 계층 (Application)
+5. 세션 계층 (Session)      ─┘         HTTP, HTTPS, DNS, FTP, SSH
+
+4. 전송 계층 (Transport)    ──── =&gt; 3. 전송 계층 (Transport)
+                                          TCP, UDP
+3. 네트워크 계층 (Network)  ──── =&gt; 2. 인터넷 계층 (Internet)
+                                          IP, ICMP, ARP
+2. 데이터링크 계층           ─┐
+1. 물리 계층 (Physical)     ─┘ =&gt; 1. 네트워크 접근 계층 (Network Access)
+                                          Ethernet, Wi-Fi
+</code></pre>
+<p><strong>OSI 7계층</strong> 은 이론적 참조 모델로, 프로토콜 설계와 장애 분석의 사고 틀을 제공한다.
+<strong>TCP/IP 4계층</strong> 은 실제 인터넷에서 동작하는 프로토콜 스택으로, 실무에서 더 자주 사용한다.</p>
+<h3 id="계층화의-핵심-가치">계층화의 핵심 가치<a hidden class="anchor" aria-hidden="true" href="#계층화의-핵심-가치">#</a></h3>
+<ul>
+<li><strong>모듈화</strong> — 각 계층은 독립적으로 동작하여 한 계층의 변경이 다른 계층에 영향을 주지 않는다</li>
+<li><strong>표준화</strong> — 제조사가 달라도 같은 계층끼리 통신 가능</li>
+<li><strong>장애 격리</strong> — 문제 발생 시 어느 계층에서 발생했는지 범위를 좁혀 진단 가능</li>
+</ul>
+<hr>
+<h2 id="2-주요-프로토콜-동작-원리">2. 주요 프로토콜 동작 원리<a hidden class="anchor" aria-hidden="true" href="#2-주요-프로토콜-동작-원리">#</a></h2>
+<h3 id="arp--ip-주소를-mac-주소로-변환">ARP — IP 주소를 MAC 주소로 변환<a hidden class="anchor" aria-hidden="true" href="#arp--ip-주소를-mac-주소로-변환">#</a></h3>
+<p>같은 네트워크(LAN) 내에서 통신하려면 IP 주소만으로는 부족하다.
+실제 프레임 전송에는 <strong>MAC 주소</strong>가 필요하기 때문에, ARP 가 이 변환을 담당한다.</p>
+<pre><code>1. 송신 측: &quot;192.168.1.10 의 MAC 주소를 알려주세요!&quot; (브로드캐스트)
+   =&gt; ARP Request: 네트워크 전체에 뿌림 (FF:FF:FF:FF:FF:FF)
+
+2. 수신 측 (192.168.1.10): &quot;제 MAC 주소는 AA:BB:CC:DD:EE:FF 입니다.&quot; (유니캐스트)
+   =&gt; ARP Reply: 요청자에게만 응답
+
+3. 송신 측: MAC 주소를 ARP 캐시에 저장 후 통신 시작
+   =&gt; arp -a 명령으로 현재 캐시 확인 가능
+</code></pre>
+<p>보안 위협 — <strong>ARP 스푸핑 (ARP Spoofing)</strong>:
+ARP 는 인증 없이 누구나 Reply 를 보낼 수 있다.
+공격자가 가짜 ARP Reply 를 전송하면 피해자의 ARP 캐시가 오염되어
+<strong>중간자 공격(Man-in-the-Middle)</strong> 이 가능해진다.</p>
+<pre><code>정상:  피해자 =&gt; 게이트웨이 =&gt; 인터넷
+ARP 스푸핑: 피해자 =&gt; 공격자 =&gt; 게이트웨이 =&gt; 인터넷  (모든 트래픽 도청 가능)
+</code></pre>
+<hr>
+<h3 id="icmp--네트워크-상태-진단-프로토콜">ICMP — 네트워크 상태 진단 프로토콜<a hidden class="anchor" aria-hidden="true" href="#icmp--네트워크-상태-진단-프로토콜">#</a></h3>
+<p>IP 프로토콜의 보조 역할을 하며, 데이터 전송이 아닌 <strong>네트워크 상태 진단 및 오류 보고</strong>가 목적이다.</p>
+<p>주요 ICMP 메시지:</p>
+<table>
+  <thead>
+      <tr>
+          <th>타입</th>
+          <th>이름</th>
+          <th>용도</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>8 / 0</td>
+          <td>Echo Request / Reply</td>
+          <td>ping 명령의 기반</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td>Destination Unreachable</td>
+          <td>목적지 도달 불가 (포트 차단 포함)</td>
+      </tr>
+      <tr>
+          <td>11</td>
+          <td>Time Exceeded</td>
+          <td>TTL 초과 (traceroute 의 기반)</td>
+      </tr>
+      <tr>
+          <td>5</td>
+          <td>Redirect</td>
+          <td>더 나은 경로 안내</td>
+      </tr>
+  </tbody>
+</table>
+<p>보안 관점:</p>
+<ul>
+<li><strong>ICMP Flood (Ping Flood)</strong> — 대량의 Echo Request 로 서버 자원 고갈 (DDoS)</li>
+<li><strong>ICMP Redirect 악용</strong> — 가짜 Redirect 메시지로 트래픽 경로 조작</li>
+<li>방화벽에서 <strong>ICMP 를 완전히 차단하면</strong> 오히려 장애 진단이 어려워짐 (적절한 허용 정책 필요)</li>
+</ul>
+<hr>
+<h3 id="tcp-3-way-handshake--신뢰성-있는-연결-수립">TCP 3-Way Handshake — 신뢰성 있는 연결 수립<a hidden class="anchor" aria-hidden="true" href="#tcp-3-way-handshake--신뢰성-있는-연결-수립">#</a></h3>
+<p>TCP 는 데이터를 보내기 전에 반드시 3단계 핸드셰이크로 <strong>양방향 연결을 먼저 확립</strong>한다.</p>
+<pre><code>클라이언트                            서버
+     │                                   │
+     │  ── SYN (seq=x) ──────────────&gt;  │  &quot;연결 요청합니다&quot;
+     │                                   │
+     │  &lt;── SYN-ACK (seq=y, ack=x+1) ── │  &quot;확인했습니다, 저도 연결 요청합니다&quot;
+     │                                   │
+     │  ── ACK (ack=y+1) ─────────────&gt;  │  &quot;확인했습니다, 연결 확립!&quot;
+     │                                   │
+     │  ═══════ 데이터 전송 시작 ══════ │
+</code></pre>
+<p>연결 종료는 <strong>4-Way Handshake</strong> (FIN -&gt; ACK -&gt; FIN -&gt; ACK) 로 이루어진다.</p>
+<p>보안 위협 — <strong>SYN Flood 공격</strong>:
+대량의 SYN 패킷을 보내되 ACK 를 보내지 않으면,
+서버는 수많은 <strong>반개방 연결(Half-Open Connection)</strong> 을 유지하다 자원이 고갈된다.</p>
+<pre><code>대응 방법:
+- SYN Cookie 활성화: 완전한 연결 전까지 서버 자원 미할당
+- Rate Limiting: IP당 SYN 패킷 수 제한
+- 방화벽 임계치 설정
+</code></pre>
+<hr>
+<h3 id="https--tls--안전한-통신의-기반">HTTPS &amp; TLS — 안전한 통신의 기반<a hidden class="anchor" aria-hidden="true" href="#https--tls--안전한-통신의-기반">#</a></h3>
+<p>HTTPS 는 HTTP 에 <strong>TLS(Transport Layer Security)</strong> 보안 계층을 추가한 것이다.</p>
+<p>TLS 가 제공하는 3가지 보안 속성:</p>
+<ul>
+<li><strong>기밀성 (Confidentiality)</strong> — 대칭키 암호화로 데이터 내용을 보호</li>
+<li><strong>무결성 (Integrity)</strong> — MAC(Message Authentication Code) 로 데이터 변조 탐지</li>
+<li><strong>인증 (Authentication)</strong> — 서버 인증서(X.509) 로 신뢰할 수 있는 서버임을 확인</li>
+</ul>
+<p>TLS Handshake 흐름 (TLS 1.3 기준):</p>
+<pre><code>1. Client Hello  =&gt; 지원하는 암호화 방식 목록 전송
+2. Server Hello  =&gt; 선택된 암호화 방식 + 인증서 전송
+3. 인증서 검증   =&gt; 클라이언트가 CA(인증기관) 서명 확인
+4. 키 교환       =&gt; ECDHE 로 세션키 협의
+5. 데이터 전송   =&gt; 협의된 대칭키로 암호화 통신 시작
+</code></pre>
+<hr>
+<h3 id="dns--도메인을-ip-로-변환">DNS — 도메인을 IP 로 변환<a hidden class="anchor" aria-hidden="true" href="#dns--도메인을-ip-로-변환">#</a></h3>
+<pre><code>브라우저에서 www.google.com 입력 시:
+
+1. 로컬 DNS 캐시 확인 (이미 알고 있으면 바로 사용)
+2. Recursive Resolver (ISP 제공) 에 질의
+3. Root DNS =&gt; .com TLD DNS =&gt; Google 권한 DNS 순으로 위임 질의
+4. 최종 IP 주소 반환 =&gt; 브라우저가 해당 IP 로 HTTP 연결
+</code></pre>
+<p>보안 위협 — <strong>DNS 스푸핑 / DNS 캐시 포이즈닝</strong>:
+가짜 DNS 응답을 캐시에 주입하면 피해자가 정상 도메인을 입력해도 <strong>가짜 사이트로 유도</strong>된다.
+대응: <strong>DNSSEC</strong> (DNS 응답에 디지털 서명 추가)</p>
+<hr>
+<h2 id="3-네트워크-보안-기초">3. 네트워크 보안 기초<a hidden class="anchor" aria-hidden="true" href="#3-네트워크-보안-기초">#</a></h2>
+<h3 id="방화벽-firewall">방화벽 (Firewall)<a hidden class="anchor" aria-hidden="true" href="#방화벽-firewall">#</a></h3>
+<p>미리 정의된 <strong>보안 정책(ACL)</strong> 에 따라 트래픽을 허용하거나 차단한다.</p>
+<pre><code>방화벽 종류별 특성:
+- 패킷 필터링    : IP / 포트 기반 단순 차단. 빠르지만 응용 계층 탐지 불가
+- 상태 기반 (Stateful): 연결 상태(SYN/ACK/FIN)를 추적하여 비정상 패킷 차단
+- 응용 계층(WAF): HTTP 요청 내용(SQL Injection, XSS 등) 까지 검사
+</code></pre>
+<h3 id="ids-vs-ips--탐지와-차단의-차이">IDS vs IPS — 탐지와 차단의 차이<a hidden class="anchor" aria-hidden="true" href="#ids-vs-ips--탐지와-차단의-차이">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>구분</th>
+          <th>IDS (Intrusion Detection System)</th>
+          <th>IPS (Intrusion Prevention System)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>역할</td>
+          <td>침입 <strong>탐지</strong> 후 경고</td>
+          <td>침입 <strong>탐지 + 실시간 차단</strong></td>
+      </tr>
+      <tr>
+          <td>성격</td>
+          <td><strong>수동적 (Passive)</strong> — 트래픽 복사본 분석</td>
+          <td><strong>능동적 (Inline)</strong> — 트래픽 경로에 삽입</td>
+      </tr>
+      <tr>
+          <td>오탐 영향</td>
+          <td>경고만 발생, 서비스 영향 없음</td>
+          <td><strong>오탐 시 정상 트래픽도 차단</strong> 위험</td>
+      </tr>
+      <tr>
+          <td>배치 위치</td>
+          <td>네트워크 미러 포트 / TAP</td>
+          <td>인라인 (방화벽과 서버 사이)</td>
+      </tr>
+  </tbody>
+</table>
+<p>보안관제(SOC) 에서는 IDS 와 IPS 를 <strong>상호 보완적으로 함께 운영</strong>하는 것이 일반적이다.</p>
+<h3 id="포트-스캔과-방어">포트 스캔과 방어<a hidden class="anchor" aria-hidden="true" href="#포트-스캔과-방어">#</a></h3>
+<p>포트 스캔은 열린 포트를 탐지하여 서비스 정보를 수집하는 기법이다.
+공격 전 정찰(Reconnaissance) 단계에서 필수적으로 사용된다.</p>
+<pre><code>주요 스캔 기법:
+- TCP SYN Scan (Half-Open)  : 3-Way Handshake 를 완성하지 않아 로그 최소화
+- TCP Connect Scan          : 완전한 연결 후 끊음. 탐지되기 쉬움
+- UDP Scan                  : 응답 없음 = 열림, ICMP Unreachable = 닫힘
+- Null / FIN / Xmas Scan    : 비정상 플래그 조합으로 방화벽 우회 시도
+</code></pre>
+<p>방어 전략:</p>
+<ul>
+<li>불필요한 서비스 전부 중지 (필요한 포트만 열기)</li>
+<li>Nmap 탐지 시 차단 또는 경보 발령 (IDS 규칙 설정)</li>
+<li>포트 넘버 변경으로 자동화 스캔 일부 우회 (SSH 22 -&gt; 비표준 포트)</li>
+</ul>
+<hr>
+<h2 id="4-실무-진단-도구">4. 실무 진단 도구<a hidden class="anchor" aria-hidden="true" href="#4-실무-진단-도구">#</a></h2>
+<h3 id="wireshark--패킷-분석의-표준">Wireshark — 패킷 분석의 표준<a hidden class="anchor" aria-hidden="true" href="#wireshark--패킷-분석의-표준">#</a></h3>
+<p>Wireshark 를 통해 배운 것:</p>
+<ul>
+<li>실제 TCP 핸드셰이크 패킷에서 SYN / SYN-ACK / ACK 플래그 확인</li>
+<li>HTTP 요청 / 응답의 평문 노출 확인 (=&gt; HTTPS 의 필요성 체감)</li>
+<li>ARP 브로드캐스트 패턴과 스푸핑 패킷 구별 방법</li>
+</ul>
+<h3 id="리눅스-네트워크-진단-명령어">리눅스 네트워크 진단 명령어<a hidden class="anchor" aria-hidden="true" href="#리눅스-네트워크-진단-명령어">#</a></h3>
+<pre><code># 연결 상태 및 포트 확인
+ss -tulnp           -- 현재 열린 포트와 연결 상태 (netstat 대체)
+netstat -an         -- 모든 연결 목록
+
+# 경로 추적
+traceroute 8.8.8.8  -- 패킷 경로 상 모든 라우터 홉 표시 (ICMP TTL 활용)
+ping -c 4 host      -- 연결성 및 RTT (왕복 시간) 확인
+
+# 패킷 캡처
+tcpdump -i eth0 port 80   -- eth0 인터페이스에서 80번 포트 트래픽 캡처
+tcpdump -w capture.pcap   -- pcap 파일로 저장 후 Wireshark 분석
+
+# 네트워크 설정 확인
+ip addr                   -- IP 주소 및 인터페이스 정보
+ip route                  -- 라우팅 테이블
+nmap -sV target_ip        -- 대상 서버 열린 포트 및 서비스 버전 스캔
+</code></pre>
+<hr>
+<h2 id="5-계층별-장애-진단-접근법">5. 계층별 장애 진단 접근법<a hidden class="anchor" aria-hidden="true" href="#5-계층별-장애-진단-접근법">#</a></h2>
+<p>실무에서 네트워크 문제가 발생하면 <strong>하위 계층부터 상위 계층 순으로</strong> 접근한다.</p>
+<pre><code>[1계층] 물리/링크 계층 점검
+   -&gt; 케이블 연결 확인, NIC 상태 확인 (ip link show)
+
+[2계층] 네트워크 계층 점검
+   -&gt; ping 으로 로컬 / 원격 IP 도달 가능 여부 확인
+   -&gt; 라우팅 테이블 확인 (ip route)
+
+[3계층] 전송 계층 점검
+   -&gt; 목적지 포트 열려 있는지 확인 (nmap, telnet, nc)
+   -&gt; 방화벽 정책 확인
+
+[4계층] 응용 계층 점검
+   -&gt; 서비스 프로세스 실행 여부 (systemctl status)
+   -&gt; 로그 확인 (/var/log/nginx/error.log 등)
+   -&gt; DNS 해석 확인 (dig, nslookup)
+</code></pre>
+<hr>
+<h2 id="6-보안관제-연계--네트워크-이상-징후-탐지">6. 보안관제 연계 — 네트워크 이상 징후 탐지<a hidden class="anchor" aria-hidden="true" href="#6-보안관제-연계--네트워크-이상-징후-탐지">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>이상 징후</th>
+          <th>원인 가능성</th>
+          <th>대응</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>대량 ARP Reply</td>
+          <td>ARP 스푸핑 공격</td>
+          <td>ARP 스푸핑 탐지 도구 (arpwatch) 운영</td>
+      </tr>
+      <tr>
+          <td>다수 포트 스캔 시도</td>
+          <td>공격 전 정찰</td>
+          <td>IDS 경보 + IP 차단 정책</td>
+      </tr>
+      <tr>
+          <td>대량 SYN 패킷</td>
+          <td>SYN Flood (DDoS)</td>
+          <td>SYN Cookie 활성화, Rate Limiting</td>
+      </tr>
+      <tr>
+          <td>DNS 쿼리 급증</td>
+          <td>DNS 터널링 / C2 통신</td>
+          <td>DNS 로그 분석, 비정상 도메인 탐지</td>
+      </tr>
+      <tr>
+          <td>ICMP 대용량 트래픽</td>
+          <td>Ping Flood / 스머프 공격</td>
+          <td>ICMP Rate Limiting</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="학습-성과-정리">학습 성과 정리<a hidden class="anchor" aria-hidden="true" href="#학습-성과-정리">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>영역</th>
+          <th>학습 내용</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>계층 모델</strong></td>
+          <td>OSI 7계층 vs TCP/IP 4계층 비교, 계층화의 목적과 가치</td>
+      </tr>
+      <tr>
+          <td><strong>프로토콜 이해</strong></td>
+          <td>ARP / ICMP / TCP / DNS / HTTPS 의 동작 원리</td>
+      </tr>
+      <tr>
+          <td><strong>보안 기초</strong></td>
+          <td>방화벽 / IDS / IPS 차이, ARP 스푸핑 / SYN Flood / DNS 포이즈닝</td>
+      </tr>
+      <tr>
+          <td><strong>실무 역량</strong></td>
+          <td>Wireshark 패킷 분석, 리눅스 네트워크 진단 명령어 활용</td>
+      </tr>
+      <tr>
+          <td><strong>장애 진단</strong></td>
+          <td>계층별 Top-down / Bottom-up 접근법 체득</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="향후-학습-방향">향후 학습 방향<a hidden class="anchor" aria-hidden="true" href="#향후-학습-방향">#</a></h2>
+<ul>
+<li><strong>SSL/TLS 심화</strong> — 인증서 체인, HSTS, Certificate Pinning</li>
+<li><strong>BGP / OSPF</strong> — 인터넷 라우팅 프로토콜과 BGP Hijacking 위협</li>
+<li><strong>네트워크 포렌식</strong> — pcap 파일 분석으로 침해 사고 재현 및 증거 수집</li>
+<li><strong>Zero Trust Network</strong> — 경계 보안 모델을 넘어선 현대적 네트워크 보안 아키텍처</li>
+<li><strong>SDN (Software Defined Networking)</strong> — 클라우드 인프라에서의 네트워크 가상화</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://hojjang98.github.io/tags/network/">Network</a></li>
+      <li><a href="https://hojjang98.github.io/tags/tcp/ip/">TCP/IP</a></li>
+      <li><a href="https://hojjang98.github.io/tags/osi/">OSI</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C/">프로토콜</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC%EB%B3%B4%EC%95%88/">네트워크보안</a></li>
+      <li><a href="https://hojjang98.github.io/tags/wireshark/">Wireshark</a></li>
+      <li><a href="https://hojjang98.github.io/tags/sk%EC%89%B4%EB%8D%94%EC%8A%A4%EB%A3%A8%ED%82%A4%EC%A6%88/">SK쉴더스루키즈</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

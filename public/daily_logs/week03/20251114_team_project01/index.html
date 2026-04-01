@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>2025.11.14 (Day 15) 팀 프로젝트 킥오프 · 영화 흥행 요인 분석 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="팀프로젝트, TMDB, 영화분석, 데이터분석, SK쉴더스루키즈">
+<meta name="description" content="팀 프로젝트 킥오프 - 영화 흥행 요인 분석 프로젝트 기획서·기술 정의서 작성 및 기술 스택 확정">
+<meta name="author" content="">
+<link rel="canonical" href="https://hojjang98.github.io/daily_logs/week03/20251114_team_project01/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.290573799e582c418c4bd84f2bca757d0a77fd1bf9f5c43942030e706df68ec8.css" integrity="sha256-KQVzeZ5YLEGMS9hPK8p1fQp3/Rv59cQ5QgMOcG32jsg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/daily_logs/week03/20251114_team_project01/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://hojjang98.github.io/daily_logs/week03/20251114_team_project01/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="2025.11.14 (Day 15) 팀 프로젝트 킥오프 · 영화 흥행 요인 분석">
+  <meta property="og:description" content="팀 프로젝트 킥오프 - 영화 흥행 요인 분석 프로젝트 기획서·기술 정의서 작성 및 기술 스택 확정">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="daily_logs">
+    <meta property="article:published_time" content="2025-11-14T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-11-14T00:00:00+00:00">
+    <meta property="article:tag" content="팀프로젝트">
+    <meta property="article:tag" content="TMDB">
+    <meta property="article:tag" content="영화분석">
+    <meta property="article:tag" content="데이터분석">
+    <meta property="article:tag" content="SK쉴더스루키즈">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2025.11.14 (Day 15) 팀 프로젝트 킥오프 · 영화 흥행 요인 분석">
+<meta name="twitter:description" content="팀 프로젝트 킥오프 - 영화 흥행 요인 분석 프로젝트 기획서·기술 정의서 작성 및 기술 스택 확정">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "6개월, 혹은 그 이상의 보안 여정",
+      "item": "https://hojjang98.github.io/daily_logs/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "2025.11.14 (Day 15) 팀 프로젝트 킥오프 · 영화 흥행 요인 분석",
+      "item": "https://hojjang98.github.io/daily_logs/week03/20251114_team_project01/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "2025.11.14 (Day 15) 팀 프로젝트 킥오프 · 영화 흥행 요인 분석",
+  "name": "2025.11.14 (Day 15) 팀 프로젝트 킥오프 · 영화 흥행 요인 분석",
+  "description": "팀 프로젝트 킥오프 - 영화 흥행 요인 분석 프로젝트 기획서·기술 정의서 작성 및 기술 스택 확정",
+  "keywords": [
+    "팀프로젝트", "TMDB", "영화분석", "데이터분석", "SK쉴더스루키즈"
+  ],
+  "articleBody": "2025.11.14 (Day 15) 팀 프로젝트 킥오프 · 영화 흥행 요인 분석 1. 주요 개념 요약 아이디어 선정 프로세스: 문제 정의 → 후보 검토 → 최종 결정의 단계를 거쳐 영화 흥행 요인 분석 주제를 선정했다. 데이터 확보와 문제 정의가 프로젝트 성패를 좌우한다. 프로젝트 기획서 작성: 목적·필요성·기대효과·일정 등을 문서화하여 프로젝트 구조 및 일정을 확정했다. 이는 IR(사고대응) 문서화 프로세스와 동일한 사고방식을 요구한다. 기술 정의서 작성: 사용할 데이터·기술 스택·분석 기법을 명세화하여 Python·Pandas·TMDB 데이터를 기반으로 한 분석 방향을 확정했다. 2. 실습 코드 및 응용 오늘은 팀 프로젝트 문서 작업 중심이었으며 코드 실습은 진행하지 않았다.\n3. 보안 관점 분석 SOC / 관제: 데이터 정제 흐름이 로그 전처리와 동일한 구조이며, 원천 데이터 품질이 전체 분석 품질을 결정한다. CERT / 사고대응: 기획서·기술서 문서화는 IR 문서화 프로세스와 유사하며, 체계적인 문서 관리가 사고 대응의 기반이 된다. DevSecOps: 역할 분배·일정 수립이 Sprint 기반 CI/CD 관리와 동일한 사고방식으로, 팀 기반 보안 프로젝트 운영의 핵심이다. 데이터 프라이버시: Streamlit 시각화 시 데이터 공개 범위 조절이 필요하며, 분석 결과 공유 시 민감 정보 마스킹을 고려해야 한다. 4. 요약 프로젝트의 시작은 코드보다 문제 정의와 기획 문서가 우선임을 확인했다. 영화 흥행 요인 분석 프로젝트를 확정하고 분석 방향·필요 데이터·기술 스택을 정리했다. 다음 단계는 TMDB 데이터 기반 EDA로 초기 인사이트 확보 및 분석 구조를 확정하는 것이다. ",
+  "wordCount" : "591",
+  "inLanguage": "ko",
+  "datePublished": "2025-11-14T00:00:00Z",
+  "dateModified": "2025-11-14T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/daily_logs/week03/20251114_team_project01/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://hojjang98.github.io/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/daily_logs/">6개월, 혹은 그 이상의 보안 여정</a></div>
+    <h1 class="post-title entry-hint-parent">
+      2025.11.14 (Day 15) 팀 프로젝트 킥오프 · 영화 흥행 요인 분석
+    </h1>
+    <div class="post-meta"><span title='2025-11-14 00:00:00 +0000 UTC'>2025년 11월 14일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="20251114-day-15-팀-프로젝트-킥오프--영화-흥행-요인-분석">2025.11.14 (Day 15) 팀 프로젝트 킥오프 · 영화 흥행 요인 분석<a hidden class="anchor" aria-hidden="true" href="#20251114-day-15-팀-프로젝트-킥오프--영화-흥행-요인-분석">#</a></h1>
+<h2 id="1-주요-개념-요약">1. 주요 개념 요약<a hidden class="anchor" aria-hidden="true" href="#1-주요-개념-요약">#</a></h2>
+<ul>
+<li><strong>아이디어 선정 프로세스</strong>: 문제 정의 → 후보 검토 → 최종 결정의 단계를 거쳐 영화 흥행 요인 분석 주제를 선정했다. 데이터 확보와 문제 정의가 프로젝트 성패를 좌우한다.</li>
+<li><strong>프로젝트 기획서 작성</strong>: 목적·필요성·기대효과·일정 등을 문서화하여 프로젝트 구조 및 일정을 확정했다. 이는 IR(사고대응) 문서화 프로세스와 동일한 사고방식을 요구한다.</li>
+<li><strong>기술 정의서 작성</strong>: 사용할 데이터·기술 스택·분석 기법을 명세화하여 Python·Pandas·TMDB 데이터를 기반으로 한 분석 방향을 확정했다.</li>
+</ul>
+<hr>
+<h2 id="2-실습-코드-및-응용">2. 실습 코드 및 응용<a hidden class="anchor" aria-hidden="true" href="#2-실습-코드-및-응용">#</a></h2>
+<blockquote>
+<p>오늘은 팀 프로젝트 문서 작업 중심이었으며 코드 실습은 진행하지 않았다.</p>
+</blockquote>
+<hr>
+<h2 id="3-보안-관점-분석">3. 보안 관점 분석<a hidden class="anchor" aria-hidden="true" href="#3-보안-관점-분석">#</a></h2>
+<ul>
+<li><strong>SOC / 관제</strong>: 데이터 정제 흐름이 로그 전처리와 동일한 구조이며, 원천 데이터 품질이 전체 분석 품질을 결정한다.</li>
+<li><strong>CERT / 사고대응</strong>: 기획서·기술서 문서화는 IR 문서화 프로세스와 유사하며, 체계적인 문서 관리가 사고 대응의 기반이 된다.</li>
+<li><strong>DevSecOps</strong>: 역할 분배·일정 수립이 Sprint 기반 CI/CD 관리와 동일한 사고방식으로, 팀 기반 보안 프로젝트 운영의 핵심이다.</li>
+<li><strong>데이터 프라이버시</strong>: Streamlit 시각화 시 데이터 공개 범위 조절이 필요하며, 분석 결과 공유 시 민감 정보 마스킹을 고려해야 한다.</li>
+</ul>
+<hr>
+<h2 id="4-요약">4. 요약<a hidden class="anchor" aria-hidden="true" href="#4-요약">#</a></h2>
+<ol>
+<li>프로젝트의 시작은 코드보다 문제 정의와 기획 문서가 우선임을 확인했다.</li>
+<li>영화 흥행 요인 분석 프로젝트를 확정하고 분석 방향·필요 데이터·기술 스택을 정리했다.</li>
+<li>다음 단계는 TMDB 데이터 기반 EDA로 초기 인사이트 확보 및 분석 구조를 확정하는 것이다.</li>
+</ol>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://hojjang98.github.io/tags/%ED%8C%80%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/">팀프로젝트</a></li>
+      <li><a href="https://hojjang98.github.io/tags/tmdb/">TMDB</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%98%81%ED%99%94%EB%B6%84%EC%84%9D/">영화분석</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D/">데이터분석</a></li>
+      <li><a href="https://hojjang98.github.io/tags/sk%EC%89%B4%EB%8D%94%EC%8A%A4%EB%A3%A8%ED%82%A4%EC%A6%88/">SK쉴더스루키즈</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

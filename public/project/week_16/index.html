@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Week 16 — 파이널 프로젝트 준비: 개인정보 위·수탁 관리체계 컨설팅 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="파이널프로젝트, 개인정보보호, 위수탁관리, 컨설팅, ISMSP, 개인정보보호법, SK쉴더스루키즈">
+<meta name="description" content="SK쉴더스 루키즈 28기 파이널 프로젝트 1단계 — 개인정보 위·수탁 관리체계 컨설팅의 프로젝트 구조 이해, 위탁자/수탁사 후보 선정, AI 기업 관련 보안 사고 사례 분석">
+<meta name="author" content="">
+<link rel="canonical" href="https://hojjang98.github.io/project/week_16/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.290573799e582c418c4bd84f2bca757d0a77fd1bf9f5c43942030e706df68ec8.css" integrity="sha256-KQVzeZ5YLEGMS9hPK8p1fQp3/Rv59cQ5QgMOcG32jsg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/project/week_16/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://hojjang98.github.io/project/week_16/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="Week 16 — 파이널 프로젝트 준비: 개인정보 위·수탁 관리체계 컨설팅">
+  <meta property="og:description" content="SK쉴더스 루키즈 28기 파이널 프로젝트 1단계 — 개인정보 위·수탁 관리체계 컨설팅의 프로젝트 구조 이해, 위탁자/수탁사 후보 선정, AI 기업 관련 보안 사고 사례 분석">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="project">
+    <meta property="article:published_time" content="2026-02-16T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-02-16T00:00:00+00:00">
+    <meta property="article:tag" content="파이널프로젝트">
+    <meta property="article:tag" content="개인정보보호">
+    <meta property="article:tag" content="위수탁관리">
+    <meta property="article:tag" content="컨설팅">
+    <meta property="article:tag" content="ISMSP">
+    <meta property="article:tag" content="개인정보보호법">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_19/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_18/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_17/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_15/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_14/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_13/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Week 16 — 파이널 프로젝트 준비: 개인정보 위·수탁 관리체계 컨설팅">
+<meta name="twitter:description" content="SK쉴더스 루키즈 28기 파이널 프로젝트 1단계 — 개인정보 위·수탁 관리체계 컨설팅의 프로젝트 구조 이해, 위탁자/수탁사 후보 선정, AI 기업 관련 보안 사고 사례 분석">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "프로젝트",
+      "item": "https://hojjang98.github.io/project/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Week 16 — 파이널 프로젝트 준비: 개인정보 위·수탁 관리체계 컨설팅",
+      "item": "https://hojjang98.github.io/project/week_16/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Week 16 — 파이널 프로젝트 준비: 개인정보 위·수탁 관리체계 컨설팅",
+  "name": "Week 16 — 파이널 프로젝트 준비: 개인정보 위·수탁 관리체계 컨설팅",
+  "description": "SK쉴더스 루키즈 28기 파이널 프로젝트 1단계 — 개인정보 위·수탁 관리체계 컨설팅의 프로젝트 구조 이해, 위탁자/수탁사 후보 선정, AI 기업 관련 보안 사고 사례 분석",
+  "keywords": [
+    "파이널프로젝트", "개인정보보호", "위수탁관리", "컨설팅", "ISMSP", "개인정보보호법", "SK쉴더스루키즈"
+  ],
+  "articleBody": "Week 16 — 파이널 프로젝트 준비: 개인정보 위·수탁 관리체계 컨설팅 프로젝트 전체 자료는 GitHub에서 확인할 수 있습니다. hojjang98 / skshielders-rookies-28 — projects/week_16\n파이널 프로젝트 개요 SK쉴더스 루키즈 28기 과정의 마지막 프로젝트다. 그동안 개인 솔로로 진행했던 기술 실습에서 팀 단위 실무 수준 컨설팅 으로 무게중심이 이동한다.\n항목 내용 프로젝트 주제 개인정보 위·수탁 관리체계 컨설팅 핵심 역할 위탁사 관점에서 수탁사를 관리/감독하는 일련의 절차 수행 산출물 수탁사별 진단 보고서 + 최종 통합 보고서 참고 모델 전기수: S카드 (위탁자) + 18개 업체 (수탁사, 7개 업종) 멘토링 5차 계획:\n1차 : 프로젝트 방향 설정 + 수행계획서(WBS) 작성\r2차 : 보안요구사항 수립 + 진단 체크리스트 개발\r(근거: 개인정보보호법, 안전성 확보조치 기준, ISMS-P)\r3차 : 현황관리 + 보안수준 진단 실습 (인터뷰, 증적 검토)\r4차 : 수탁사별 진단결과 보고서 작성\r5차 : 최종 보고서 완성 + 발표 준비\r핵심 개념 — 위탁 vs 제3자 제공 개인정보 컨설팅에서 가장 먼저 명확히 해야 할 개념이다.\n위탁 (처리위탁):\r- 위탁자의 업무를 처리하기 위해 수탁자에게 개인정보 처리를 맡기는 것\r- 예: 쇼핑몰 → 배송업체 (쇼핑몰의 배송 업무를 대신)\r- 규율: 개인정보보호법 제26조\r제3자 제공:\r- 제3자가 자신의 목적으로 개인정보를 이용하도록 제공하는 것\r- 예: 마일리지 제휴사 연동 (제휴사가 자사 서비스에 활용)\r- 규율: 개인정보보호법 제17조\r핵심 구분 기준: 개인정보 처리의 주체가 누구인가?\r- 위탁자 목적 + 수탁자 대행 =\u003e 위탁\r- 수탁사 자체 목적 사용 =\u003e 제3자 제공\r위탁자 후보 검토 팀 내 브레인스토밍에서 나온 후보 카테고리:\n이커머스 : 마켓컬리, 쿠팡, 알리/테무\r금융 : 카드사, 토스, 카카오뱅크/페이\rAI 기업 : 뤼튼, 이루다, 업스테이지\r의료 : 삼성헬스, 의료기기 업체\r항공 : 아시아나항공, 트립닷컴\r기타 : NICE (공공), 에어비앤비, 교육기관\rAI 기업 시나리오 사전 조사 팀원 개인 과제로 수행한 AI 기업 위탁사 설정 시나리오 분석.\n가상 위탁자 설정 기업명 : AI 대화형 서비스 기업 W사 (가상)\r서비스 : 기업용 AI 챗봇, 개인 비서 AI\r처리 정보 : 사용자 대화 내역, 개인정보, 기업 내부 데이터\r가상 수탁사 20개 (업종별):\n인프라/클라우드 (5개) : AWS/GCP/Azure, CDN, IDC, 모니터링, 백업\r데이터 처리 (5개) : 라벨링, 크롤링, 전처리, 품질검수, 번역/다국어\r개발/기술 (3개) : AI 모델 학습 인프라, API 게이트웨이, SOC\r운영/지원 (4개) : CS, 결제대행(PG/VAN), SMS/이메일, 챗봇 QA\r마케팅/기타 (3개) : 디지털 마케팅, 법률 자문, 물리보안\rAI 기업 관련 보안 사고 사례 분석 AI 산업에서 반복되는 개인정보 침해 패턴을 파악하기 위해 주요 사례를 분석했다.\n사례 1 — 이루다 개인정보 유출 (2021, 스캐터랩) 사고 내용: 카카오톡 대화 데이터 1억 건을 무단 수집하여 AI 학습에 사용. 학습 데이터에 성명, 연락처, 성적 취향 등 민감정보가 포함되어 챗봇 대화 중 노출.\n처벌: 과징금 1억 3,400만 원, 검찰 기소\n컨설팅 시사점:\nAI 학습 데이터 수집 시 비식별화 처리 필수 목적 외 이용 금지 원칙 준수 (개인정보보호법 제18조) 사용자 동의 절차 의 명시적 관리 필요 사례 2 — ChatGPT 데이터 유출 (2023, OpenAI) 사고 내용: Redis 라이브러리 버그로 일부 사용자의 대화 제목, 결제 정보가 다른 사용자에게 노출.\n조치: 서비스 일시 중단 후 보안 패치\n컨설팅 시사점:\n오픈소스 라이브러리의 정기적인 취약점 패치 관리 필요 클라우드 인프라의 데이터 격리 설계 검증 수탁사(클라우드 인프라 제공사)의 보안 사고 통보 절차 계약화 사례 3 — 삼성전자 ChatGPT 기밀 유출 (2023) 사고 내용: 임직원이 반도체 설비 정보, 소스코드를 ChatGPT 에 입력하여 외부 AI 학습 데이터로 저장될 가능성 발생.\n조치: 사내 생성AI 사용 전면 금지, 자체 AI 개발 추진\n컨설팅 시사점:\n외부 AI 서비스 이용 정책 수립 필요 기업 내부 정보를 외부 AI 에 입력하는 것에 대한 접근통제 정책 구현 위탁 계약 시 데이터 주권 조항 (AI 학습 활용 금지 등) 명시 사례 4 — Clearview AI 안면인식 데이터 수집 (2020~) 사고 내용: SNS 에서 30억 장 이상의 얼굴 사진을 동의 없이 수집하여 안면인식 DB 구축.\n처벌: 유럽 각국 과징금, 서비스 중단 명령\n컨설팅 시사점:\nAI 학습용 데이터 수집 시 정보주체 동의 및 법적 근거 필수 생체정보 처리는 별도 동의 필요 (개인정보보호법 제23조) GDPR 등 국외 데이터 규정 준수 체계 구축 사례 5 — Amazon Alexa 음성 데이터 외주 인력 청취 (2019) 사고 내용: 외주 직원들이 Alexa 음성 녹음 파일을 수동 검토하면서 의료·금융 정보 등 민감 대화 내용 접근.\n조치: 사용자 동의 옵션 추가, 외주 인력 관리 강화\n컨설팅 시사점:\n음성 데이터 처리 외주 시 수탁사 접근통제 계약 필수 수탁사 직원의 개인정보 접근 범위 명확화 이 사례가 수탁사 관리/감독 체계의 중요성 을 극명하게 보여줌 AI 기업 위·수탁 관계의 주요 리스크 사례 분석을 통해 도출한 AI 업종 특유의 위·수탁 리스크:\n1. AI 학습 데이터 처리 단계의 개인정보 유출\r=\u003e 비식별화 미흡, 동의 절차 부재\r2. 클라우드 인프라 취약점\r=\u003e 설정 오류, 오픈소스 라이브러리 취약점, 접근통제 미흡\r3. 데이터 라벨링·전처리 외주업체 통제 부재\r=\u003e 수탁사 직원이 실제 개인정보에 접근하는 구조\r4. 데이터 주권 및 국외 이전 관리\r=\u003e 해외 클라우드 사용 시 국외 이전 절차 준수 여부\r=\u003e 개인정보보호법 제28조의8 고지·동의 의무\r5. 재위탁 통제\r=\u003e 수탁사가 제3의 업체에 무승인으로 재위탁하는 사례 다수\r=\u003e 개인정보보호법 제26조 제6항 위반\r학습 성과 정리 영역 학습 내용 위·수탁 개념 위탁 vs 제3자 제공의 법적 구분 기준 이해 관련 법령 개인정보보호법 제17조, 제18조, 제21조, 제23조, 제26조, 제28조의8 진단 근거 ISMS-P 인증기준, 안전성 확보조치 기준 구조 파악 사례 분석 AI 기업 5개 사건을 통해 반복되는 침해 패턴 도출 팀 협업 위탁자/수탁사 선정을 위한 팀 브레인스토밍 진행 다음 주 예고 — Week 17: 수탁사 현황 시나리오 수립 항공사 시나리오(가칭)를 위탁자로 선정한 뒤, 9개 업종의 수탁사별 개인정보 처리 현황 + 컴플라이언스 이슈 를 구체화한다.\n",
+  "wordCount" : "2272",
+  "inLanguage": "ko",
+  "datePublished": "2026-02-16T00:00:00Z",
+  "dateModified": "2026-02-16T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/project/week_16/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://hojjang98.github.io/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/project/">프로젝트</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Week 16 — 파이널 프로젝트 준비: 개인정보 위·수탁 관리체계 컨설팅
+    </h1>
+    <div class="post-meta"><span title='2026-02-16 00:00:00 +0000 UTC'>2026년 2월 16일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="week-16--파이널-프로젝트-준비-개인정보-위수탁-관리체계-컨설팅">Week 16 — 파이널 프로젝트 준비: 개인정보 위·수탁 관리체계 컨설팅<a hidden class="anchor" aria-hidden="true" href="#week-16--파이널-프로젝트-준비-개인정보-위수탁-관리체계-컨설팅">#</a></h1>
+<blockquote>
+<p>프로젝트 전체 자료는 GitHub에서 확인할 수 있습니다.
+<a href="https://github.com/hojjang98/skshielders-rookies-28/tree/main/projects/week_16">hojjang98 / skshielders-rookies-28 — projects/week_16</a></p>
+</blockquote>
+<hr>
+<h2 id="파이널-프로젝트-개요">파이널 프로젝트 개요<a hidden class="anchor" aria-hidden="true" href="#파이널-프로젝트-개요">#</a></h2>
+<p>SK쉴더스 루키즈 28기 과정의 마지막 프로젝트다.
+그동안 개인 솔로로 진행했던 기술 실습에서 <strong>팀 단위 실무 수준 컨설팅</strong> 으로 무게중심이 이동한다.</p>
+<table>
+  <thead>
+      <tr>
+          <th>항목</th>
+          <th>내용</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>프로젝트 주제</strong></td>
+          <td>개인정보 위·수탁 관리체계 컨설팅</td>
+      </tr>
+      <tr>
+          <td><strong>핵심 역할</strong></td>
+          <td>위탁사 관점에서 수탁사를 관리/감독하는 일련의 절차 수행</td>
+      </tr>
+      <tr>
+          <td><strong>산출물</strong></td>
+          <td>수탁사별 진단 보고서 + 최종 통합 보고서</td>
+      </tr>
+      <tr>
+          <td><strong>참고 모델</strong></td>
+          <td>전기수: S카드 (위탁자) + 18개 업체 (수탁사, 7개 업종)</td>
+      </tr>
+  </tbody>
+</table>
+<p>멘토링 5차 계획:</p>
+<pre><code>1차 : 프로젝트 방향 설정 + 수행계획서(WBS) 작성
+2차 : 보안요구사항 수립 + 진단 체크리스트 개발
+     (근거: 개인정보보호법, 안전성 확보조치 기준, ISMS-P)
+3차 : 현황관리 + 보안수준 진단 실습 (인터뷰, 증적 검토)
+4차 : 수탁사별 진단결과 보고서 작성
+5차 : 최종 보고서 완성 + 발표 준비
+</code></pre>
+<hr>
+<h2 id="핵심-개념--위탁-vs-제3자-제공">핵심 개념 — 위탁 vs 제3자 제공<a hidden class="anchor" aria-hidden="true" href="#핵심-개념--위탁-vs-제3자-제공">#</a></h2>
+<p>개인정보 컨설팅에서 가장 먼저 명확히 해야 할 개념이다.</p>
+<pre><code>위탁 (처리위탁):
+- 위탁자의 업무를 처리하기 위해 수탁자에게 개인정보 처리를 맡기는 것
+- 예: 쇼핑몰 → 배송업체 (쇼핑몰의 배송 업무를 대신)
+- 규율: 개인정보보호법 제26조
+
+제3자 제공:
+- 제3자가 자신의 목적으로 개인정보를 이용하도록 제공하는 것
+- 예: 마일리지 제휴사 연동 (제휴사가 자사 서비스에 활용)
+- 규율: 개인정보보호법 제17조
+
+핵심 구분 기준: 개인정보 처리의 주체가 누구인가?
+- 위탁자 목적 + 수탁자 대행 =&gt; 위탁
+- 수탁사 자체 목적 사용      =&gt; 제3자 제공
+</code></pre>
+<hr>
+<h2 id="위탁자-후보-검토">위탁자 후보 검토<a hidden class="anchor" aria-hidden="true" href="#위탁자-후보-검토">#</a></h2>
+<p>팀 내 브레인스토밍에서 나온 후보 카테고리:</p>
+<pre><code>이커머스  : 마켓컬리, 쿠팡, 알리/테무
+금융      : 카드사, 토스, 카카오뱅크/페이
+AI 기업   : 뤼튼, 이루다, 업스테이지
+의료      : 삼성헬스, 의료기기 업체
+항공      : 아시아나항공, 트립닷컴
+기타      : NICE (공공), 에어비앤비, 교육기관
+</code></pre>
+<hr>
+<h2 id="ai-기업-시나리오-사전-조사">AI 기업 시나리오 사전 조사<a hidden class="anchor" aria-hidden="true" href="#ai-기업-시나리오-사전-조사">#</a></h2>
+<p>팀원 개인 과제로 수행한 <strong>AI 기업 위탁사 설정 시나리오</strong> 분석.</p>
+<h3 id="가상-위탁자-설정">가상 위탁자 설정<a hidden class="anchor" aria-hidden="true" href="#가상-위탁자-설정">#</a></h3>
+<pre><code>기업명    : AI 대화형 서비스 기업 W사 (가상)
+서비스    : 기업용 AI 챗봇, 개인 비서 AI
+처리 정보 : 사용자 대화 내역, 개인정보, 기업 내부 데이터
+</code></pre>
+<p>가상 수탁사 20개 (업종별):</p>
+<pre><code>인프라/클라우드 (5개) : AWS/GCP/Azure, CDN, IDC, 모니터링, 백업
+데이터 처리 (5개)     : 라벨링, 크롤링, 전처리, 품질검수, 번역/다국어
+개발/기술 (3개)       : AI 모델 학습 인프라, API 게이트웨이, SOC
+운영/지원 (4개)       : CS, 결제대행(PG/VAN), SMS/이메일, 챗봇 QA
+마케팅/기타 (3개)     : 디지털 마케팅, 법률 자문, 물리보안
+</code></pre>
+<hr>
+<h2 id="ai-기업-관련-보안-사고-사례-분석">AI 기업 관련 보안 사고 사례 분석<a hidden class="anchor" aria-hidden="true" href="#ai-기업-관련-보안-사고-사례-분석">#</a></h2>
+<p>AI 산업에서 반복되는 개인정보 침해 패턴을 파악하기 위해 주요 사례를 분석했다.</p>
+<hr>
+<h3 id="사례-1--이루다-개인정보-유출-2021-스캐터랩">사례 1 — 이루다 개인정보 유출 (2021, 스캐터랩)<a hidden class="anchor" aria-hidden="true" href="#사례-1--이루다-개인정보-유출-2021-스캐터랩">#</a></h3>
+<p><strong>사고 내용</strong>:
+카카오톡 대화 데이터 1억 건을 무단 수집하여 AI 학습에 사용.
+학습 데이터에 성명, 연락처, 성적 취향 등 민감정보가 포함되어 챗봇 대화 중 노출.</p>
+<p><strong>처벌</strong>: 과징금 1억 3,400만 원, 검찰 기소</p>
+<p><strong>컨설팅 시사점</strong>:</p>
+<ul>
+<li>AI 학습 데이터 수집 시 <strong>비식별화 처리</strong> 필수</li>
+<li><strong>목적 외 이용 금지</strong> 원칙 준수 (개인정보보호법 제18조)</li>
+<li>사용자 <strong>동의 절차</strong> 의 명시적 관리 필요</li>
+</ul>
+<hr>
+<h3 id="사례-2--chatgpt-데이터-유출-2023-openai">사례 2 — ChatGPT 데이터 유출 (2023, OpenAI)<a hidden class="anchor" aria-hidden="true" href="#사례-2--chatgpt-데이터-유출-2023-openai">#</a></h3>
+<p><strong>사고 내용</strong>:
+Redis 라이브러리 버그로 일부 사용자의 대화 제목, 결제 정보가 다른 사용자에게 노출.</p>
+<p><strong>조치</strong>: 서비스 일시 중단 후 보안 패치</p>
+<p><strong>컨설팅 시사점</strong>:</p>
+<ul>
+<li>오픈소스 라이브러리의 정기적인 <strong>취약점 패치 관리</strong> 필요</li>
+<li>클라우드 인프라의 <strong>데이터 격리 설계</strong> 검증</li>
+<li>수탁사(클라우드 인프라 제공사)의 <strong>보안 사고 통보 절차</strong> 계약화</li>
+</ul>
+<hr>
+<h3 id="사례-3--삼성전자-chatgpt-기밀-유출-2023">사례 3 — 삼성전자 ChatGPT 기밀 유출 (2023)<a hidden class="anchor" aria-hidden="true" href="#사례-3--삼성전자-chatgpt-기밀-유출-2023">#</a></h3>
+<p><strong>사고 내용</strong>:
+임직원이 반도체 설비 정보, 소스코드를 ChatGPT 에 입력하여 외부 AI 학습 데이터로 저장될 가능성 발생.</p>
+<p><strong>조치</strong>: 사내 생성AI 사용 전면 금지, 자체 AI 개발 추진</p>
+<p><strong>컨설팅 시사점</strong>:</p>
+<ul>
+<li><strong>외부 AI 서비스 이용 정책</strong> 수립 필요</li>
+<li>기업 내부 정보를 외부 AI 에 입력하는 것에 대한 <strong>접근통제 정책</strong> 구현</li>
+<li>위탁 계약 시 <strong>데이터 주권 조항</strong> (AI 학습 활용 금지 등) 명시</li>
+</ul>
+<hr>
+<h3 id="사례-4--clearview-ai-안면인식-데이터-수집-2020">사례 4 — Clearview AI 안면인식 데이터 수집 (2020~)<a hidden class="anchor" aria-hidden="true" href="#사례-4--clearview-ai-안면인식-데이터-수집-2020">#</a></h3>
+<p><strong>사고 내용</strong>:
+SNS 에서 30억 장 이상의 얼굴 사진을 동의 없이 수집하여 안면인식 DB 구축.</p>
+<p><strong>처벌</strong>: 유럽 각국 과징금, 서비스 중단 명령</p>
+<p><strong>컨설팅 시사점</strong>:</p>
+<ul>
+<li>AI 학습용 데이터 수집 시 <strong>정보주체 동의 및 법적 근거</strong> 필수</li>
+<li><strong>생체정보</strong> 처리는 별도 동의 필요 (개인정보보호법 제23조)</li>
+<li><strong>GDPR</strong> 등 국외 데이터 규정 준수 체계 구축</li>
+</ul>
+<hr>
+<h3 id="사례-5--amazon-alexa-음성-데이터-외주-인력-청취-2019">사례 5 — Amazon Alexa 음성 데이터 외주 인력 청취 (2019)<a hidden class="anchor" aria-hidden="true" href="#사례-5--amazon-alexa-음성-데이터-외주-인력-청취-2019">#</a></h3>
+<p><strong>사고 내용</strong>:
+외주 직원들이 Alexa 음성 녹음 파일을 수동 검토하면서 의료·금융 정보 등 민감 대화 내용 접근.</p>
+<p><strong>조치</strong>: 사용자 동의 옵션 추가, 외주 인력 관리 강화</p>
+<p><strong>컨설팅 시사점</strong>:</p>
+<ul>
+<li><strong>음성 데이터 처리 외주</strong> 시 수탁사 접근통제 계약 필수</li>
+<li>수탁사 직원의 <strong>개인정보 접근 범위</strong> 명확화</li>
+<li>이 사례가 <strong>수탁사 관리/감독 체계의 중요성</strong> 을 극명하게 보여줌</li>
+</ul>
+<hr>
+<h2 id="ai-기업-위수탁-관계의-주요-리스크">AI 기업 위·수탁 관계의 주요 리스크<a hidden class="anchor" aria-hidden="true" href="#ai-기업-위수탁-관계의-주요-리스크">#</a></h2>
+<p>사례 분석을 통해 도출한 AI 업종 특유의 위·수탁 리스크:</p>
+<pre><code>1. AI 학습 데이터 처리 단계의 개인정보 유출
+   =&gt; 비식별화 미흡, 동의 절차 부재
+
+2. 클라우드 인프라 취약점
+   =&gt; 설정 오류, 오픈소스 라이브러리 취약점, 접근통제 미흡
+
+3. 데이터 라벨링·전처리 외주업체 통제 부재
+   =&gt; 수탁사 직원이 실제 개인정보에 접근하는 구조
+
+4. 데이터 주권 및 국외 이전 관리
+   =&gt; 해외 클라우드 사용 시 국외 이전 절차 준수 여부
+   =&gt; 개인정보보호법 제28조의8 고지·동의 의무
+
+5. 재위탁 통제
+   =&gt; 수탁사가 제3의 업체에 무승인으로 재위탁하는 사례 다수
+   =&gt; 개인정보보호법 제26조 제6항 위반
+</code></pre>
+<hr>
+<h2 id="학습-성과-정리">학습 성과 정리<a hidden class="anchor" aria-hidden="true" href="#학습-성과-정리">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>영역</th>
+          <th>학습 내용</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>위·수탁 개념</strong></td>
+          <td>위탁 vs 제3자 제공의 법적 구분 기준 이해</td>
+      </tr>
+      <tr>
+          <td><strong>관련 법령</strong></td>
+          <td>개인정보보호법 제17조, 제18조, 제21조, 제23조, 제26조, 제28조의8</td>
+      </tr>
+      <tr>
+          <td><strong>진단 근거</strong></td>
+          <td>ISMS-P 인증기준, 안전성 확보조치 기준 구조 파악</td>
+      </tr>
+      <tr>
+          <td><strong>사례 분석</strong></td>
+          <td>AI 기업 5개 사건을 통해 반복되는 침해 패턴 도출</td>
+      </tr>
+      <tr>
+          <td><strong>팀 협업</strong></td>
+          <td>위탁자/수탁사 선정을 위한 팀 브레인스토밍 진행</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="다음-주-예고--week-17-수탁사-현황-시나리오-수립">다음 주 예고 — Week 17: 수탁사 현황 시나리오 수립<a hidden class="anchor" aria-hidden="true" href="#다음-주-예고--week-17-수탁사-현황-시나리오-수립">#</a></h2>
+<p>항공사 시나리오(가칭)를 위탁자로 선정한 뒤,
+9개 업종의 수탁사별 <strong>개인정보 처리 현황 + 컴플라이언스 이슈</strong> 를 구체화한다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://hojjang98.github.io/tags/%ED%8C%8C%EC%9D%B4%EB%84%90%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/">파이널프로젝트</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8/">개인정보보호</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%9C%84%EC%88%98%ED%83%81%EA%B4%80%EB%A6%AC/">위수탁관리</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%BB%A8%EC%84%A4%ED%8C%85/">컨설팅</a></li>
+      <li><a href="https://hojjang98.github.io/tags/ismsp/">ISMSP</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/">개인정보보호법</a></li>
+      <li><a href="https://hojjang98.github.io/tags/sk%EC%89%B4%EB%8D%94%EC%8A%A4%EB%A3%A8%ED%82%A4%EC%A6%88/">SK쉴더스루키즈</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

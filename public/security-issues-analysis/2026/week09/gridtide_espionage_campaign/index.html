@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>UNC2814 GRIDTIDE Espionage Campaign - Chinese APT Abusing Google Sheets as C2 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="APT, SaaSC2, Google시트악용, 통신사침해, LotL, 중국연계위협, 첩보캠페인">
+<meta name="description" content="중국 국가 연계 APT 그룹 UNC2814가 Google Sheets API를 C2 채널로 악용한 GRIDTIDE 백도어를 이용해 42개국 53개 통신사 및 정부기관을 9년간 침해한 광범위한 사이버 첩보 캠페인 분석">
+<meta name="author" content="">
+<link rel="canonical" href="https://hojjang98.github.io/security-issues-analysis/2026/week09/gridtide_espionage_campaign/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.290573799e582c418c4bd84f2bca757d0a77fd1bf9f5c43942030e706df68ec8.css" integrity="sha256-KQVzeZ5YLEGMS9hPK8p1fQp3/Rv59cQ5QgMOcG32jsg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/security-issues-analysis/2026/week09/gridtide_espionage_campaign/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://hojjang98.github.io/security-issues-analysis/2026/week09/gridtide_espionage_campaign/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="UNC2814 GRIDTIDE Espionage Campaign - Chinese APT Abusing Google Sheets as C2">
+  <meta property="og:description" content="중국 국가 연계 APT 그룹 UNC2814가 Google Sheets API를 C2 채널로 악용한 GRIDTIDE 백도어를 이용해 42개국 53개 통신사 및 정부기관을 9년간 침해한 광범위한 사이버 첩보 캠페인 분석">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="security-issues-analysis">
+    <meta property="article:published_time" content="2026-03-03T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-03-03T00:00:00+00:00">
+    <meta property="article:tag" content="APT">
+    <meta property="article:tag" content="SaaSC2">
+    <meta property="article:tag" content="Google시트악용">
+    <meta property="article:tag" content="통신사침해">
+    <meta property="article:tag" content="LotL">
+    <meta property="article:tag" content="중국연계위협">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="UNC2814 GRIDTIDE Espionage Campaign - Chinese APT Abusing Google Sheets as C2">
+<meta name="twitter:description" content="중국 국가 연계 APT 그룹 UNC2814가 Google Sheets API를 C2 채널로 악용한 GRIDTIDE 백도어를 이용해 42개국 53개 통신사 및 정부기관을 9년간 침해한 광범위한 사이버 첩보 캠페인 분석">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "보안 시사 분석",
+      "item": "https://hojjang98.github.io/security-issues-analysis/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "2026",
+      "item": "https://hojjang98.github.io/security-issues-analysis/2026/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Week 09",
+      "item": "https://hojjang98.github.io/security-issues-analysis/2026/week09/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  4 ,
+      "name": "UNC2814 GRIDTIDE Espionage Campaign - Chinese APT Abusing Google Sheets as C2",
+      "item": "https://hojjang98.github.io/security-issues-analysis/2026/week09/gridtide_espionage_campaign/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "UNC2814 GRIDTIDE Espionage Campaign - Chinese APT Abusing Google Sheets as C2",
+  "name": "UNC2814 GRIDTIDE Espionage Campaign - Chinese APT Abusing Google Sheets as C2",
+  "description": "중국 국가 연계 APT 그룹 UNC2814가 Google Sheets API를 C2 채널로 악용한 GRIDTIDE 백도어를 이용해 42개국 53개 통신사 및 정부기관을 9년간 침해한 광범위한 사이버 첩보 캠페인 분석",
+  "keywords": [
+    "APT", "SaaSC2", "Google시트악용", "통신사침해", "LotL", "중국연계위협", "첩보캠페인"
+  ],
+  "articleBody": "UNC2814 GRIDTIDE 사이버 첩보 캠페인 — Google Sheets를 C2로 악용한 중국 연계 APT 사건 개요 2026년 2월 18일, Google Threat Intelligence Group(GTIG)과 Mandiant가 협력하여 중국 국가 연계 APT 그룹 UNC2814의 광범위한 사이버 첩보 캠페인을 차단했다. 이 그룹은 최소 2017년부터 활동하며 42개국 53개 통신사 및 정부기관을 침해했으며, 약 20개국 추가 감염이 의심된다. 핵심은 GRIDTIDE라는 신규 C 기반 백도어가 Google Sheets API를 명령제어(C2) 채널로 악용하여 악성 트래픽을 합법적인 클라우드 API 호출로 위장했다는 점이다.\n기술적 세부사항 위협 행위자 프로파일 UNC2814는 중국 국가 연계 APT로, Salt Typhoon 등 공개된 다른 중국 APT 그룹과는 피해 조직 / 전술 / 기술 및 절차(TTP) 모두 구별되는 별개의 그룹이다. 2017년부터 최소 9년에 걸쳐 아프리카 / 아시아 / 유럽 / 아메리카 대륙 전반의 통신사와 정부기관을 집중 표적으로 삼아왔다. VPN 설정 메타데이터 분석 결과, 특정 인프라는 2018년 7월부터 지속 활용된 것으로 확인됐다.\nGRIDTIDE 백도어 기술 분석 GRIDTIDE는 C 언어 기반 백도어로 임의 셸 명령 실행, 파일 업로드 및 다운로드 기능을 지원한다.\nC2 채널: Google Sheets API 악용\nGRIDTIDE는 Google Sheets를 단순 문서가 아닌 통신 채널로 취급한다. 구체적인 동작 방식은 다음과 같다.\n셀 A1에서 명령을 폴링하고 실행 결과를 해당 셀에 덮어씀 V1 셀에 호스트 정찰 정보(호스트명 / 사용자 / 네트워크 환경)를 저장하여 유출 특정 셀 범위를 파일 업로드 / 다운로드에 활용 16바이트 암호화 키를 별도 파일에 저장하고 AES-128 CBC 모드로 Google Drive 설정 복호화 Base64 인코딩 시 표준 문자(+, /) 대신 대체 문자(-, _) 사용 이 방식은 기업이 일상적으로 사용하는 Google API 트래픽과 구분이 사실상 불가능하다.\n실행 및 영속성 메커니즘\n악성 바이너리명 xapt 로 시스템 도구로 위장 nohup ./xapt 명령으로 초기 실행하여 세션 종료 후에도 지속 동작 /etc/systemd/system/xapt.service 로 systemd 서비스 등록하여 영속성 확보 /usr/sbin/xapt 경로에서 새 인스턴스 생성 공격 체인 초기 접근 : 인터넷 노출 웹 서버 및 엣지 디바이스(방화벽, VPN 장비 등) 취약점 악용 측면 이동 : 서비스 계정을 활용해 SSH로 내부 이동 정찰 및 권한 상승 : LotL(Living-off-the-Land) 바이너리(운영체제 내장 도구)만 사용하여 탐지 회피 영속성 확보 : GRIDTIDE 백도어 설치 및 systemd 서비스 등록 암호화 터널 : SoftEther VPN Bridge로 암호화된 아웃바운드 채널 구축 데이터 접근 : PII 보유 엔드포인트(성명 / 생년월일 / 전화번호 / 유권자 ID / 국가 ID)에 백도어 설치 Google의 차단 조치 (2026년 2월 18일) UNC2814가 제어하는 모든 Cloud Project 종료 현재 및 과거 도메인 싱크홀 처리 공격자 계정 비활성화 및 Google Sheets API 접근 권한 취소 2023년 이후 UNC2814 인프라 연관 IOC 세트 공개 피해 조직 직접 통보 및 사고 대응 지원 근본 원인 분석 기술적 원인 9년간 탐지되지 않은 핵심 이유는 세 가지다. 첫째, Google Sheets API를 C2 채널로 활용함으로써 합법적 클라우드 트래픽과 완전히 혼재했다. 기존 네트워크 기반 탐지 도구는 이 패턴을 인식하지 못한다. 둘째, LotL 기법으로 새로운 악성 도구 투입 없이 운영체제 내장 도구만으로 활동하여 엔드포인트 기반 탐지를 회피했다. 셋째, 엣지 디바이스와 네트워크 장비는 일반적으로 EDR(엔드포인트 탐지 및 대응) 솔루션이 설치되지 않는 보안 사각지대다.\n관리적 원인 통신사와 정부기관은 대규모 레거시 인프라를 운영하며 엣지 장비의 보안 가시성이 낮은 경향이 있다. 합법적 클라우드 서비스를 통한 C2 트래픽에 대한 모니터링 정책과 탐지 룰셋이 구축되어 있지 않았다.\n인적 원인 이번 침해에서 인적 요인(소셜 엔지니어링, 피싱 등)에 대한 직접적 증거는 공개된 바 없다. 초기 접근은 엣지 장비 취약점 악용으로 확인됐다.\n공격 목적 분석 GTIG는 GRIDTIDE가 설치된 엔드포인트에서 성명 / 생년월일 / 전화번호 / 유권자 ID / 국가 ID 등 PII가 발견됐다고 확인했다. 이는 특정 개인의 추적 및 모니터링을 목적으로 한 국가 첩보 활동 패턴과 일치한다. 통신사 대상 과거 중국 APT 공격 맥락에서는 통화 기록(CDR) / 비암호화 SMS 메시지 / 적법한 감청 시스템(lawful intercept) 접근이 최종 목표였을 가능성이 높다. GTIG는 이번 캠페인에서 실제 데이터 유출을 직접 관찰하지는 못했다고 명시했다.\n예방 및 대응 방안 탐지 지표 (IOC) 비브라우저 프로세스의 Google Sheets API 호출 (batchClear, batchUpdate, valueRenderOption=FORMULA 쿼리) /etc/systemd/system/xapt.service 서비스 존재 여부 /var/tmp/xapt 또는 /usr/sbin/xapt 바이너리 SoftEther VPN Bridge 리눅스 서버 실행 여부 비표준 Base64 인코딩 (-, _ 대체 문자 사용) 기술적 대응 방안 클라우드 API 행위 분석이 핵심이다. 어떤 프로세스가 Google Sheets API를 호출하는지, 호출 빈도와 패턴이 정상 범주인지를 모니터링해야 한다. GTIG가 공개한 YARA 룰과 IOC를 적용하여 탐지 체계를 보강하고, 엣지 디바이스 및 네트워크 장비에 대한 보안 가시성 확보가 필요하다. LotL 기법 탐지를 위한 행위 기반 탐지 체계 강화도 병행해야 한다.\n컨설팅 관점 고객사 커뮤니케이션 전략 기술팀 대상\nSaaS C2(서비스형 명령제어)는 현대 APT의 핵심 회피 기법으로 자리잡았다. Google Sheets 외에도 OneDrive / Notion / Slack 등 어떤 클라우드 플랫폼이든 동일한 방식으로 악용될 수 있다. 따라서 도메인 / IP 차단 중심의 탐지 전략은 이 공격 유형에 무력하다. 프로세스 단위의 클라우드 API 호출 감사가 필요하다.\n경영진 대상\nUNC2814의 캠페인은 9년이 소요된 장기 프로젝트다. 이는 국가 지원 위협 행위자의 인내심과 자원 규모를 보여준다. 표적이 주로 통신사와 정부기관이지만, 이 섹터의 공급망(장비 벤더 / SI 업체 등)도 간접 노출 위험이 있다.\n예상 질문 및 답변 Q: 구글이 이미 차단했다면 더 이상 위험하지 않은 것 아닌가?\nA: Google은 GRIDTIDE 캠페인에 사용된 현재 인프라를 차단했지만, 동일한 기법을 다른 클라우드 플랫폼(OneDrive / Notion 등)에 적용하는 데는 몇 주면 충분하다. Google 스스로도 UNC2814가 새로운 도구와 클라우드 리소스로 인프라를 재구축하려 할 것으로 예상한다고 밝혔다.\nQ: 우리 회사는 통신사나 정부기관이 아닌데 관련이 있나?\nA: 직접 표적 가능성은 낮지만, SaaS C2 기법 자체는 모든 조직에 대한 위협이다. 동일한 기법을 사용하는 다른 APT 그룹의 공격 사례가 증가하고 있으며, 엣지 디바이스 보안과 클라우드 API 모니터링은 범용적으로 필요한 통제 수단이다.\n학습 내용 및 시사점 이 사건의 핵심 학습은 SaaS 플랫폼을 C2 채널로 활용하는 기법이 현대 APT의 표준 회피 수단으로 자리잡았다는 점이다. 기존 경계 보안(방화벽 / 도메인 차단)으로는 이 공격 유형을 탐지하는 것이 구조적으로 불가능하다. 엣지 디바이스를 초기 침투 거점으로 삼고, LotL로 탐지를 회피하며, 합법적 클라우드 트래픽에 숨어 장기 잠복하는 이 패턴은 앞으로 더욱 확산될 것으로 예상된다. 탐지의 무게중심이 시그니처 / 경계 기반에서 행위 분석 / 클라우드 API 감사로 이동해야 하는 시점이다.\n",
+  "wordCount" : "2563",
+  "inLanguage": "ko",
+  "datePublished": "2026-03-03T00:00:00Z",
+  "dateModified": "2026-03-03T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/security-issues-analysis/2026/week09/gridtide_espionage_campaign/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://hojjang98.github.io/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/security-issues-analysis/">보안 시사 분석</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/security-issues-analysis/2026/">2026</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/security-issues-analysis/2026/week09/">Week 09</a></div>
+    <h1 class="post-title entry-hint-parent">
+      UNC2814 GRIDTIDE Espionage Campaign - Chinese APT Abusing Google Sheets as C2
+    </h1>
+    <div class="post-meta"><span title='2026-03-03 00:00:00 +0000 UTC'>2026년 3월 3일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="unc2814-gridtide-사이버-첩보-캠페인--google-sheets를-c2로-악용한-중국-연계-apt">UNC2814 GRIDTIDE 사이버 첩보 캠페인 — Google Sheets를 C2로 악용한 중국 연계 APT<a hidden class="anchor" aria-hidden="true" href="#unc2814-gridtide-사이버-첩보-캠페인--google-sheets를-c2로-악용한-중국-연계-apt">#</a></h1>
+<h2 id="사건-개요">사건 개요<a hidden class="anchor" aria-hidden="true" href="#사건-개요">#</a></h2>
+<p>2026년 2월 18일, Google Threat Intelligence Group(GTIG)과 Mandiant가 협력하여 중국 국가 연계 APT 그룹 <strong>UNC2814</strong>의 광범위한 사이버 첩보 캠페인을 차단했다. 이 그룹은 최소 2017년부터 활동하며 42개국 53개 통신사 및 정부기관을 침해했으며, 약 20개국 추가 감염이 의심된다. 핵심은 <strong>GRIDTIDE</strong>라는 신규 C 기반 백도어가 Google Sheets API를 명령제어(C2) 채널로 악용하여 악성 트래픽을 합법적인 클라우드 API 호출로 위장했다는 점이다.</p>
+<h2 id="기술적-세부사항">기술적 세부사항<a hidden class="anchor" aria-hidden="true" href="#기술적-세부사항">#</a></h2>
+<h3 id="위협-행위자-프로파일">위협 행위자 프로파일<a hidden class="anchor" aria-hidden="true" href="#위협-행위자-프로파일">#</a></h3>
+<p>UNC2814는 중국 국가 연계 APT로, Salt Typhoon 등 공개된 다른 중국 APT 그룹과는 피해 조직 / 전술 / 기술 및 절차(TTP) 모두 구별되는 별개의 그룹이다. 2017년부터 최소 9년에 걸쳐 아프리카 / 아시아 / 유럽 / 아메리카 대륙 전반의 통신사와 정부기관을 집중 표적으로 삼아왔다. VPN 설정 메타데이터 분석 결과, 특정 인프라는 2018년 7월부터 지속 활용된 것으로 확인됐다.</p>
+<h3 id="gridtide-백도어-기술-분석">GRIDTIDE 백도어 기술 분석<a hidden class="anchor" aria-hidden="true" href="#gridtide-백도어-기술-분석">#</a></h3>
+<p>GRIDTIDE는 C 언어 기반 백도어로 임의 셸 명령 실행, 파일 업로드 및 다운로드 기능을 지원한다.</p>
+<p><strong>C2 채널: Google Sheets API 악용</strong></p>
+<p>GRIDTIDE는 Google Sheets를 단순 문서가 아닌 통신 채널로 취급한다. 구체적인 동작 방식은 다음과 같다.</p>
+<ul>
+<li>셀 A1에서 명령을 폴링하고 실행 결과를 해당 셀에 덮어씀</li>
+<li>V1 셀에 호스트 정찰 정보(호스트명 / 사용자 / 네트워크 환경)를 저장하여 유출</li>
+<li>특정 셀 범위를 파일 업로드 / 다운로드에 활용</li>
+<li>16바이트 암호화 키를 별도 파일에 저장하고 <strong>AES-128 CBC 모드</strong>로 Google Drive 설정 복호화</li>
+<li>Base64 인코딩 시 표준 문자(+, /) 대신 대체 문자(-, _) 사용</li>
+</ul>
+<p>이 방식은 기업이 일상적으로 사용하는 Google API 트래픽과 구분이 사실상 불가능하다.</p>
+<p><strong>실행 및 영속성 메커니즘</strong></p>
+<ul>
+<li>악성 바이너리명 <strong>xapt</strong> 로 시스템 도구로 위장</li>
+<li>nohup ./xapt 명령으로 초기 실행하여 세션 종료 후에도 지속 동작</li>
+<li>/etc/systemd/system/xapt.service 로 <strong>systemd</strong> 서비스 등록하여 영속성 확보</li>
+<li>/usr/sbin/xapt 경로에서 새 인스턴스 생성</li>
+</ul>
+<h3 id="공격-체인">공격 체인<a hidden class="anchor" aria-hidden="true" href="#공격-체인">#</a></h3>
+<ol>
+<li><strong>초기 접근</strong> : 인터넷 노출 웹 서버 및 엣지 디바이스(방화벽, VPN 장비 등) 취약점 악용</li>
+<li><strong>측면 이동</strong> : 서비스 계정을 활용해 SSH로 내부 이동</li>
+<li><strong>정찰 및 권한 상승</strong> : <strong>LotL</strong>(Living-off-the-Land) 바이너리(운영체제 내장 도구)만 사용하여 탐지 회피</li>
+<li><strong>영속성 확보</strong> : GRIDTIDE 백도어 설치 및 systemd 서비스 등록</li>
+<li><strong>암호화 터널</strong> : SoftEther VPN Bridge로 암호화된 아웃바운드 채널 구축</li>
+<li><strong>데이터 접근</strong> : PII 보유 엔드포인트(성명 / 생년월일 / 전화번호 / 유권자 ID / 국가 ID)에 백도어 설치</li>
+</ol>
+<h3 id="google의-차단-조치-2026년-2월-18일">Google의 차단 조치 (2026년 2월 18일)<a hidden class="anchor" aria-hidden="true" href="#google의-차단-조치-2026년-2월-18일">#</a></h3>
+<ul>
+<li>UNC2814가 제어하는 모든 Cloud Project 종료</li>
+<li>현재 및 과거 도메인 싱크홀 처리</li>
+<li>공격자 계정 비활성화 및 Google Sheets API 접근 권한 취소</li>
+<li>2023년 이후 UNC2814 인프라 연관 IOC 세트 공개</li>
+<li>피해 조직 직접 통보 및 사고 대응 지원</li>
+</ul>
+<h2 id="근본-원인-분석">근본 원인 분석<a hidden class="anchor" aria-hidden="true" href="#근본-원인-분석">#</a></h2>
+<h3 id="기술적-원인">기술적 원인<a hidden class="anchor" aria-hidden="true" href="#기술적-원인">#</a></h3>
+<p>9년간 탐지되지 않은 핵심 이유는 세 가지다. 첫째, <strong>Google Sheets API를 C2 채널로 활용</strong>함으로써 합법적 클라우드 트래픽과 완전히 혼재했다. 기존 네트워크 기반 탐지 도구는 이 패턴을 인식하지 못한다. 둘째, <strong>LotL 기법</strong>으로 새로운 악성 도구 투입 없이 운영체제 내장 도구만으로 활동하여 엔드포인트 기반 탐지를 회피했다. 셋째, 엣지 디바이스와 네트워크 장비는 일반적으로 EDR(엔드포인트 탐지 및 대응) 솔루션이 설치되지 않는 <strong>보안 사각지대</strong>다.</p>
+<h3 id="관리적-원인">관리적 원인<a hidden class="anchor" aria-hidden="true" href="#관리적-원인">#</a></h3>
+<p>통신사와 정부기관은 대규모 레거시 인프라를 운영하며 엣지 장비의 보안 가시성이 낮은 경향이 있다. 합법적 클라우드 서비스를 통한 C2 트래픽에 대한 모니터링 정책과 탐지 룰셋이 구축되어 있지 않았다.</p>
+<h3 id="인적-원인">인적 원인<a hidden class="anchor" aria-hidden="true" href="#인적-원인">#</a></h3>
+<p>이번 침해에서 인적 요인(소셜 엔지니어링, 피싱 등)에 대한 직접적 증거는 공개된 바 없다. 초기 접근은 엣지 장비 취약점 악용으로 확인됐다.</p>
+<h2 id="공격-목적-분석">공격 목적 분석<a hidden class="anchor" aria-hidden="true" href="#공격-목적-분석">#</a></h2>
+<p>GTIG는 GRIDTIDE가 설치된 엔드포인트에서 성명 / 생년월일 / 전화번호 / 유권자 ID / 국가 ID 등 PII가 발견됐다고 확인했다. 이는 특정 개인의 추적 및 모니터링을 목적으로 한 <strong>국가 첩보 활동</strong> 패턴과 일치한다. 통신사 대상 과거 중국 APT 공격 맥락에서는 통화 기록(CDR) / 비암호화 SMS 메시지 / 적법한 감청 시스템(lawful intercept) 접근이 최종 목표였을 가능성이 높다. GTIG는 이번 캠페인에서 실제 데이터 유출을 직접 관찰하지는 못했다고 명시했다.</p>
+<h2 id="예방-및-대응-방안">예방 및 대응 방안<a hidden class="anchor" aria-hidden="true" href="#예방-및-대응-방안">#</a></h2>
+<h3 id="탐지-지표-ioc">탐지 지표 (IOC)<a hidden class="anchor" aria-hidden="true" href="#탐지-지표-ioc">#</a></h3>
+<ul>
+<li>비브라우저 프로세스의 Google Sheets API 호출 (<strong>batchClear</strong>, <strong>batchUpdate</strong>, <strong>valueRenderOption=FORMULA</strong> 쿼리)</li>
+<li>/etc/systemd/system/xapt.service 서비스 존재 여부</li>
+<li>/var/tmp/xapt 또는 /usr/sbin/xapt 바이너리</li>
+<li><strong>SoftEther VPN Bridge</strong> 리눅스 서버 실행 여부</li>
+<li>비표준 Base64 인코딩 (-, _ 대체 문자 사용)</li>
+</ul>
+<h3 id="기술적-대응-방안">기술적 대응 방안<a hidden class="anchor" aria-hidden="true" href="#기술적-대응-방안">#</a></h3>
+<p><strong>클라우드 API 행위 분석</strong>이 핵심이다. 어떤 프로세스가 Google Sheets API를 호출하는지, 호출 빈도와 패턴이 정상 범주인지를 모니터링해야 한다. GTIG가 공개한 <strong>YARA 룰</strong>과 IOC를 적용하여 탐지 체계를 보강하고, 엣지 디바이스 및 네트워크 장비에 대한 보안 가시성 확보가 필요하다. LotL 기법 탐지를 위한 <strong>행위 기반 탐지 체계</strong> 강화도 병행해야 한다.</p>
+<h2 id="컨설팅-관점">컨설팅 관점<a hidden class="anchor" aria-hidden="true" href="#컨설팅-관점">#</a></h2>
+<h3 id="고객사-커뮤니케이션-전략">고객사 커뮤니케이션 전략<a hidden class="anchor" aria-hidden="true" href="#고객사-커뮤니케이션-전략">#</a></h3>
+<p><strong>기술팀 대상</strong></p>
+<p><strong>SaaS C2</strong>(서비스형 명령제어)는 현대 APT의 핵심 회피 기법으로 자리잡았다. Google Sheets 외에도 OneDrive / Notion / Slack 등 어떤 클라우드 플랫폼이든 동일한 방식으로 악용될 수 있다. 따라서 도메인 / IP 차단 중심의 탐지 전략은 이 공격 유형에 무력하다. <strong>프로세스 단위의 클라우드 API 호출 감사</strong>가 필요하다.</p>
+<p><strong>경영진 대상</strong></p>
+<p>UNC2814의 캠페인은 9년이 소요된 장기 프로젝트다. 이는 국가 지원 위협 행위자의 인내심과 자원 규모를 보여준다. 표적이 주로 통신사와 정부기관이지만, 이 섹터의 공급망(장비 벤더 / SI 업체 등)도 간접 노출 위험이 있다.</p>
+<h3 id="예상-질문-및-답변">예상 질문 및 답변<a hidden class="anchor" aria-hidden="true" href="#예상-질문-및-답변">#</a></h3>
+<p>Q: 구글이 이미 차단했다면 더 이상 위험하지 않은 것 아닌가?</p>
+<p>A: Google은 GRIDTIDE 캠페인에 사용된 현재 인프라를 차단했지만, 동일한 기법을 다른 클라우드 플랫폼(OneDrive / Notion 등)에 적용하는 데는 몇 주면 충분하다. Google 스스로도 UNC2814가 새로운 도구와 클라우드 리소스로 인프라를 재구축하려 할 것으로 예상한다고 밝혔다.</p>
+<p>Q: 우리 회사는 통신사나 정부기관이 아닌데 관련이 있나?</p>
+<p>A: 직접 표적 가능성은 낮지만, <strong>SaaS C2 기법</strong> 자체는 모든 조직에 대한 위협이다. 동일한 기법을 사용하는 다른 APT 그룹의 공격 사례가 증가하고 있으며, 엣지 디바이스 보안과 클라우드 API 모니터링은 범용적으로 필요한 통제 수단이다.</p>
+<h2 id="학습-내용-및-시사점">학습 내용 및 시사점<a hidden class="anchor" aria-hidden="true" href="#학습-내용-및-시사점">#</a></h2>
+<p>이 사건의 핵심 학습은 <strong>SaaS 플랫폼을 C2 채널로 활용하는 기법이 현대 APT의 표준 회피 수단으로 자리잡았다</strong>는 점이다. 기존 경계 보안(방화벽 / 도메인 차단)으로는 이 공격 유형을 탐지하는 것이 구조적으로 불가능하다. 엣지 디바이스를 초기 침투 거점으로 삼고, LotL로 탐지를 회피하며, 합법적 클라우드 트래픽에 숨어 장기 잠복하는 이 패턴은 앞으로 더욱 확산될 것으로 예상된다. 탐지의 무게중심이 시그니처 / 경계 기반에서 <strong>행위 분석 / 클라우드 API 감사</strong>로 이동해야 하는 시점이다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://hojjang98.github.io/tags/apt/">APT</a></li>
+      <li><a href="https://hojjang98.github.io/tags/saasc2/">SaaSC2</a></li>
+      <li><a href="https://hojjang98.github.io/tags/google%EC%8B%9C%ED%8A%B8%EC%95%85%EC%9A%A9/">Google시트악용</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%ED%86%B5%EC%8B%A0%EC%82%AC%EC%B9%A8%ED%95%B4/">통신사침해</a></li>
+      <li><a href="https://hojjang98.github.io/tags/lotl/">LotL</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%A4%91%EA%B5%AD%EC%97%B0%EA%B3%84%EC%9C%84%ED%98%91/">중국연계위협</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%B2%A9%EB%B3%B4%EC%BA%A0%ED%8E%98%EC%9D%B8/">첩보캠페인</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

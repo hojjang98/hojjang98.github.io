@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>2025.12.10 (Day 33) - AWS 보안 서비스: Shield, WAF, GuardDuty, Config | HJ&#39;s Security Note</title>
+<meta name="keywords" content="AWS, 보안, WAF, Shield, GuardDuty, Config, CloudTrail, VPC-Flow-Logs, Security-Hub">
+<meta name="description" content="AWS 공동 책임 모델, CloudTrail/VPC Flow Logs 로그 수집 실습, WAF IP Set 및 WebACL 구성, Shield/GuardDuty/Config/Security Hub 보안 서비스 계층 구성">
+<meta name="author" content="">
+<link rel="canonical" href="https://hojjang98.github.io/daily_logs/week07/20251210_aws_security--log/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.290573799e582c418c4bd84f2bca757d0a77fd1bf9f5c43942030e706df68ec8.css" integrity="sha256-KQVzeZ5YLEGMS9hPK8p1fQp3/Rv59cQ5QgMOcG32jsg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/daily_logs/week07/20251210_aws_security--log/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://hojjang98.github.io/daily_logs/week07/20251210_aws_security--log/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="2025.12.10 (Day 33) - AWS 보안 서비스: Shield, WAF, GuardDuty, Config">
+  <meta property="og:description" content="AWS 공동 책임 모델, CloudTrail/VPC Flow Logs 로그 수집 실습, WAF IP Set 및 WebACL 구성, Shield/GuardDuty/Config/Security Hub 보안 서비스 계층 구성">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="daily_logs">
+    <meta property="article:published_time" content="2025-12-10T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-12-10T00:00:00+00:00">
+    <meta property="article:tag" content="AWS">
+    <meta property="article:tag" content="보안">
+    <meta property="article:tag" content="WAF">
+    <meta property="article:tag" content="Shield">
+    <meta property="article:tag" content="GuardDuty">
+    <meta property="article:tag" content="Config">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2025.12.10 (Day 33) - AWS 보안 서비스: Shield, WAF, GuardDuty, Config">
+<meta name="twitter:description" content="AWS 공동 책임 모델, CloudTrail/VPC Flow Logs 로그 수집 실습, WAF IP Set 및 WebACL 구성, Shield/GuardDuty/Config/Security Hub 보안 서비스 계층 구성">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "6개월, 혹은 그 이상의 보안 여정",
+      "item": "https://hojjang98.github.io/daily_logs/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "2025.12.10 (Day 33) - AWS 보안 서비스: Shield, WAF, GuardDuty, Config",
+      "item": "https://hojjang98.github.io/daily_logs/week07/20251210_aws_security--log/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "2025.12.10 (Day 33) - AWS 보안 서비스: Shield, WAF, GuardDuty, Config",
+  "name": "2025.12.10 (Day 33) - AWS 보안 서비스: Shield, WAF, GuardDuty, Config",
+  "description": "AWS 공동 책임 모델, CloudTrail/VPC Flow Logs 로그 수집 실습, WAF IP Set 및 WebACL 구성, Shield/GuardDuty/Config/Security Hub 보안 서비스 계층 구성",
+  "keywords": [
+    "AWS", "보안", "WAF", "Shield", "GuardDuty", "Config", "CloudTrail", "VPC-Flow-Logs", "Security-Hub"
+  ],
+  "articleBody": "📄 2025.12.10 (Day 33) - AWS 보안 서비스: Shield, WAF, GuardDuty, Config 1. 핵심 개념 정리 # 핵심 개념 설명 실무/보안 관점 1 AWS 공동 책임 모델 AWS는 클라우드 자체의 보안(물리적 인프라, 하이퍼바이저 등)을 담당하고, 고객은 클라우드 내부의 보안(데이터, IAM, OS 패치 등)을 담당하는 보안 책임 분담 모델 서비스별로 책임 범위가 다름. EC2는 OS 패치까지 고객 책임, Lambda는 코드만 고객 책임. 책임 범위를 명확히 이해해야 보안 사각지대 방지 2 AWS CloudTrail AWS 계정의 모든 API 호출을 기록하는 감사 로깅 서비스. 누가, 언제, 어떤 작업을 수행했는지 추적 가능. 기본 90일 보관, S3로 장기 보관 가능 SOC 운영의 핵심 데이터 소스. 보안 사고 조사, 규정 준수 감사에 필수. 모든 리전에서 Trail 활성화하고 S3에 중앙 집중 저장 권장 3 VPC Flow Logs VPC 내 네트워크 인터페이스(ENI)를 오가는 IP 트래픽 정보를 캡처하는 로그. 소스/목적지 IP, 포트, 프로토콜, 허용/거부 여부 기록 네트워크 이상 탐지, 보안 그룹 규칙 검증에 활용. CloudWatch Logs나 S3에 저장. 침해 사고 시 네트워크 포렌식의 핵심 자료 4 AWS WAF 웹 애플리케이션 방화벽. SQL Injection, XSS 등 웹 공격으로부터 ALB, CloudFront, API Gateway 보호. 사용자 정의 규칙 및 AWS 관리형 규칙 제공 OWASP Top 10 공격 방어에 필수. IP 기반 차단/허용(Black/White List), Rate Limiting, Geo Blocking 가능. CloudWatch로 공격 패턴 모니터링 5 AWS Shield DDoS 공격으로부터 AWS 리소스를 보호하는 서비스. Standard는 무료로 기본 제공, Advanced는 유료로 고급 보호 및 24/7 DDoS 대응팀 지원 Shield Standard는 모든 AWS 고객에게 자동 적용(L3/L4 공격 방어). Advanced는 대규모 서비스, 금융권에서 사용. WAF와 함께 사용 권장 6 AWS GuardDuty 머신러닝 기반 위협 탐지 서비스. CloudTrail, VPC Flow Logs, DNS 로그를 분석하여 악성 활동, 무단 접근, 암호화폐 채굴 등 탐지 에이전트 설치 없이 클릭 한 번으로 활성화. 탐지된 위협을 심각도(Low/Medium/High)로 분류. EventBridge로 자동 대응 구성 가능 7 AWS Config AWS 리소스 구성 변경을 지속적으로 기록하고 평가하는 서비스. 규정 준수 규칙(Config Rules)으로 구성 상태 자동 점검 S3 퍼블릭 접근 여부, 암호화 활성화 여부 등 보안 기준 준수 자동 검사. 비준수 리소스 자동 알림 또는 자동 수정(Remediation) 가능 8 AWS Security Hub 여러 AWS 보안 서비스(GuardDuty, Inspector, Config 등)의 결과를 중앙에서 집계하고 우선순위화. CIS, PCI DSS 등 보안 표준 기반 점검 SOC 대시보드로 활용. 멀티 계정 환경에서 보안 현황 통합 관리. 자동화된 보안 점검 및 규정 준수 보고서 생성 2. 실습 내용 실습 19: AWS 로그 수집 (VPC Flow Logs + CloudTrail) VPC Flow Logs 설정:\nCloudWatch Log Group 생성:\naws logs create-log-group –log-group-name oooo-myvpc-flowlogs Flow Logs용 IAM Role 생성:\nTrust Policy 신뢰 주체: vpc-flow-logs.amazonaws.com CloudWatchLogsFullAccess 정책 연결 필요 VPC Flow Logs 활성화:\naws ec2 create-flow-logs 주요 파라미터: –resource-type VPC –resource-ids vpc-0abcdef1234567890 –traffic-type ALL –log-destination-type cloud-watch-logs –log-group-name oooo-myvpc-flowlogs –deliver-logs-permission-arn arn:aws:iam::123456789012:role/oooo-CloudWatchLogs-Role Flow Logs 조회 (특정 ENI 또는 IP로 필터링):\naws logs filter-log-events –log-group-name oooo-myvpc-flowlogs –filter-pattern “eni-0abcdef” VPC Flow Log 레코드 형식:\n필드 순서: version -\u003e account-id -\u003e interface-id -\u003e srcaddr -\u003e dstaddr -\u003e srcport -\u003e dstport -\u003e protocol -\u003e packets -\u003e bytes -\u003e start -\u003e end -\u003e action -\u003e log-status CloudTrail 조회 및 설정:\n최근 API 이벤트 조회:\naws cloudtrail lookup-events 주요 파라미터: –lookup-attributes AttributeKey=EventName,AttributeValue=PutBucketPolicy –max-results 10 S3로 Trail 로그 장기 보관 설정:\naws cloudtrail create-trail 주요 파라미터: –name oooo-security-trail –s3-bucket-name oooo-cloudtrail-logs –is-multi-region-trail (모든 리전 로그 수집) –enable-log-file-validation (로그 무결성 검증) 실습 20: WAF를 이용한 웹서비스 보호 IP Set 생성 및 WebACL 구성:\nIP Set 생성 (Black List):\naws wafv2 create-ip-set 주요 파라미터: –name oooo-BlackList –scope REGIONAL –ip-address-version IPV4 –addresses “203.0.113.0/32” “198.51.100.0/24” IP Set 생성 (White List):\naws wafv2 create-ip-set 주요 파라미터: –name oooo-WhiteList –scope REGIONAL –ip-address-version IPV4 –addresses “내PC공인IP/32” WebACL 생성:\naws wafv2 create-web-acl 주요 파라미터: –name oooo-waf-webACL –scope REGIONAL –default-action Allow 규칙 구성: Name BlockBlackListIPs, Priority 1, Action Block Statement: IPSetReferenceStatement (BlackList ARN 참조) VisibilityConfig: SampledRequestsEnabled, CloudWatchMetricsEnabled 활성화 WebACL을 ALB에 연결:\naws wafv2 associate-web-acl 주요 파라미터: –web-acl-arn: 생성한 WebACL ARN –resource-arn: 연결할 ALB ARN WAF 규칙 우선순위:\n숫자가 낮을수록 먼저 평가 White List를 Black List보다 높은 우선순위로 설정하면 허용 목록 우선 적용 실습 21: CloudWatch 경보 만들기 SNS Topic 및 CloudWatch Alarm 설정:\nSNS Topic 생성:\naws sns create-topic –name oooo-SecurityNotices 이메일 구독 추가:\naws sns subscribe 주요 파라미터: –topic-arn arn:aws:sns:ap-northeast-2:123456789012:oooo-SecurityNotices –protocol email –notification-endpoint your-email@example.com CloudWatch Alarm 생성 (CPU 사용률 기반):\naws cloudwatch put-metric-alarm 주요 파라미터: –alarm-name oooo-bastion-cpu-util –metric-name CPUUtilization –namespace AWS/EC2 –statistic Average –period 300 (5분 간격) –threshold 60 –comparison-operator GreaterThanThreshold –dimensions Name=InstanceId,Value=i-0instanceid –evaluation-periods 1 –alarm-actions: SNS Topic ARN CPU 부하 테스트 (EC2 내부에서):\nsudo yum -y install stress → stress 패키지 설치 sudo stress –timeout 600 –cpu 1 → 600초 동안 CPU 부하 발생 3. AWS 보안 서비스 비교 탐지 및 모니터링 서비스 서비스 주요 기능 데이터 소스 사용 사례 CloudTrail API 호출 감사 로깅 AWS API 호출 누가 S3 버킷 삭제했는지 추적 VPC Flow Logs 네트워크 트래픽 로깅 ENI 트래픽 비정상 아웃바운드 트래픽 탐지 GuardDuty 위협 탐지(ML 기반) CloudTrail, Flow Logs, DNS 암호화폐 채굴, 무단 API 호출 탐지 CloudWatch 메트릭 모니터링, 알람 AWS 리소스 메트릭 CPU 급증 시 알림 발송 Security Hub 보안 결과 통합 대시보드 GuardDuty, Config, Inspector 전체 보안 현황 한눈에 파악 방어 서비스 서비스 방어 대상 계층 비용 Shield Standard L3/L4 DDoS 네트워크/전송 무료 (기본 제공) Shield Advanced L3/L4/L7 DDoS 전 계층 월 $3,000 + 데이터 전송 WAF 웹 공격 (SQLi, XSS) 애플리케이션(L7) 규칙당 과금 Network Firewall VPC 트래픽 필터링 네트워크(L3/L4) 시간당 + 데이터 처리량 Firewall Manager 다중 계정 방화벽 정책 관리 관리 계층 WAF/Shield 정책당 과금 규정 준수 서비스 서비스 주요 기능 점검 대상 Config 리소스 구성 변경 추적, 규칙 기반 평가 S3 암호화, 보안 그룹 설정 등 Config Rules 리소스가 규정 준수하는지 자동 점검 CIS Benchmark, 사용자 정의 규칙 Audit Manager 감사 증거 자동 수집 SOC 2, PCI DSS, GDPR Artifact AWS 규정 준수 보고서 다운로드 ISO, SOC, PCI 인증서 4. 실무/보안 관점 분석 분야 시나리오 로그 수집 전략 CloudTrail은 모든 리전에서 활성화하고 S3에 중앙 집중 저장. VPC Flow Logs는 주요 VPC에 활성화. 로그 보관 기간은 규정 준수 요건에 따라 설정(최소 1년 권장) 위협 탐지 구성 GuardDuty를 모든 리전에서 활성화. 탐지된 위협은 EventBridge로 Lambda 트리거하여 자동 대응(예: 보안 그룹 차단). Security Hub로 결과 통합 웹 보안 구성 ALB 앞에 WAF 배치. AWS 관리형 규칙(AWSManagedRulesCommonRuleSet) 적용. Rate Limiting으로 DDoS 완화. CloudFront 사용 시 Shield Advanced 고려 규정 준수 자동화 Config Rules로 보안 기준 자동 점검. 비준수 리소스는 SNS로 알림 또는 SSM Automation으로 자동 수정. Security Hub에서 CIS Benchmark 점수 모니터링 사고 대응 프로세스 GuardDuty 알림 수신 → CloudTrail에서 관련 API 조회 → VPC Flow Logs에서 네트워크 활동 확인 → 영향 받은 리소스 격리 → 포렌식 분석 5. 배운 점 및 심화 방향 배운 점: AWS 보안은 단일 서비스가 아닌 여러 서비스의 조합으로 구성됨. 로깅(CloudTrail, Flow Logs), 탐지(GuardDuty), 방어(WAF, Shield), 규정 준수(Config)를 계층적으로 적용해야 함. GuardDuty는 에이전트 설치 없이 기존 로그를 분석하여 위협을 탐지하므로 도입 장벽이 낮음. SOC 운영 시 1차 위협 탐지 도구로 활용 가능. WAF의 IP Set을 활용한 Black/White List 관리는 간단하지만 효과적. 규칙 우선순위 설정이 중요하며, White List를 먼저 평가하도록 구성해야 함. VPC Flow Logs는 네트워크 포렌식의 핵심. 침해 사고 시 어떤 IP와 통신했는지, 어떤 포트가 사용됐는지 추적 가능. 심화 방향: GuardDuty 자동 대응(EventBridge + Lambda로 High Severity 탐지 시 자동 보안 그룹 차단 파이프라인 구축), WAF 로그 분석(WAF 로그를 S3에 저장하고 Athena로 쿼리하여 공격 패턴 분석), Config 자동 수정(비준수 S3 버킷 발견 시 자동으로 퍼블릭 접근 차단 Remediation 구성), SIEM 연동(CloudTrail/GuardDuty 로그를 OpenSearch로 전송하여 통합 보안 모니터링). 6. Quick Reference CloudTrail 주요 모니터링 이벤트 이벤트 의미 위험도 ConsoleLogin 콘솔 로그인 (특히 Root 계정) 높음 CreateUser / CreateAccessKey IAM 사용자/키 생성 높음 StopLogging CloudTrail 로깅 중지 높음 AuthorizeSecurityGroupIngress 보안 그룹 인바운드 규칙 추가 중간 PutBucketPolicy S3 버킷 정책 변경 높음 DeleteTrail CloudTrail 삭제 높음 GuardDuty 주요 탐지 유형 Finding Type 설명 심각도 UnauthorizedAccess:IAMUser/ConsoleLoginSuccess.B 비정상 위치에서 콘솔 로그인 Medium Recon:EC2/PortProbeUnprotectedPort EC2 포트 스캔 탐지 Low CryptoCurrency:EC2/BitcoinTool.B 암호화폐 채굴 활동 탐지 High Trojan:EC2/DNSDataExfiltration DNS를 통한 데이터 유출 High UnauthorizedAccess:EC2/SSHBruteForce SSH 무차별 대입 공격 Low/Medium WAF 관리형 규칙 그룹 규칙 그룹 방어 대상 AWSManagedRulesCommonRuleSet OWASP Top 10 일반 공격 AWSManagedRulesSQLiRuleSet SQL Injection AWSManagedRulesKnownBadInputsRuleSet 알려진 악성 입력 패턴 AWSManagedRulesAmazonIpReputationList AWS 위협 인텔리전스 기반 IP 차단 AWSManagedRulesBotControlRuleSet 봇 트래픽 제어 Config 주요 관리형 규칙 규칙 점검 내용 s3-bucket-public-read-prohibited S3 퍼블릭 읽기 접근 금지 s3-bucket-ssl-requests-only S3 HTTPS 전용 접근 encrypted-volumes EBS 볼륨 암호화 여부 iam-root-access-key-check Root 계정 액세스 키 존재 여부 vpc-flow-logs-enabled VPC Flow Logs 활성화 여부 cloudtrail-enabled CloudTrail 활성화 여부 보안 서비스 활성화 우선순위 순위 서비스 이유 1 CloudTrail 모든 보안 조사의 기본 데이터 2 GuardDuty 원클릭 활성화, 즉시 위협 탐지 시작 3 Config 리소스 구성 변경 추적 및 규정 준수 4 Security Hub 보안 결과 통합 및 대시보드 5 WAF 웹 애플리케이션 보호 (ALB 사용 시) ",
+  "wordCount" : "3188",
+  "inLanguage": "ko",
+  "datePublished": "2025-12-10T00:00:00Z",
+  "dateModified": "2025-12-10T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/daily_logs/week07/20251210_aws_security--log/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://hojjang98.github.io/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/daily_logs/">6개월, 혹은 그 이상의 보안 여정</a></div>
+    <h1 class="post-title entry-hint-parent">
+      2025.12.10 (Day 33) - AWS 보안 서비스: Shield, WAF, GuardDuty, Config
+    </h1>
+    <div class="post-meta"><span title='2025-12-10 00:00:00 +0000 UTC'>2025년 12월 10일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="-20251210-day-33---aws-보안-서비스-shield-waf-guardduty-config">📄 2025.12.10 (Day 33) - AWS 보안 서비스: Shield, WAF, GuardDuty, Config<a hidden class="anchor" aria-hidden="true" href="#-20251210-day-33---aws-보안-서비스-shield-waf-guardduty-config">#</a></h1>
+<hr>
+<h2 id="1-핵심-개념-정리">1. 핵심 개념 정리<a hidden class="anchor" aria-hidden="true" href="#1-핵심-개념-정리">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">#</th>
+          <th style="text-align: left">핵심 개념</th>
+          <th style="text-align: left">설명</th>
+          <th style="text-align: left">실무/보안 관점</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>1</strong></td>
+          <td style="text-align: left"><strong>AWS 공동 책임 모델</strong></td>
+          <td style="text-align: left">AWS는 클라우드 자체의 보안(물리적 인프라, 하이퍼바이저 등)을 담당하고, 고객은 클라우드 내부의 보안(데이터, IAM, OS 패치 등)을 담당하는 보안 책임 분담 모델</td>
+          <td style="text-align: left">서비스별로 책임 범위가 다름. EC2는 OS 패치까지 고객 책임, Lambda는 코드만 고객 책임. 책임 범위를 명확히 이해해야 보안 사각지대 방지</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>2</strong></td>
+          <td style="text-align: left"><strong>AWS CloudTrail</strong></td>
+          <td style="text-align: left">AWS 계정의 모든 API 호출을 기록하는 감사 로깅 서비스. 누가, 언제, 어떤 작업을 수행했는지 추적 가능. 기본 90일 보관, S3로 장기 보관 가능</td>
+          <td style="text-align: left">SOC 운영의 핵심 데이터 소스. 보안 사고 조사, 규정 준수 감사에 필수. 모든 리전에서 Trail 활성화하고 S3에 중앙 집중 저장 권장</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>3</strong></td>
+          <td style="text-align: left"><strong>VPC Flow Logs</strong></td>
+          <td style="text-align: left">VPC 내 네트워크 인터페이스(ENI)를 오가는 IP 트래픽 정보를 캡처하는 로그. 소스/목적지 IP, 포트, 프로토콜, 허용/거부 여부 기록</td>
+          <td style="text-align: left">네트워크 이상 탐지, 보안 그룹 규칙 검증에 활용. CloudWatch Logs나 S3에 저장. 침해 사고 시 네트워크 포렌식의 핵심 자료</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>4</strong></td>
+          <td style="text-align: left"><strong>AWS WAF</strong></td>
+          <td style="text-align: left">웹 애플리케이션 방화벽. SQL Injection, XSS 등 웹 공격으로부터 ALB, CloudFront, API Gateway 보호. 사용자 정의 규칙 및 AWS 관리형 규칙 제공</td>
+          <td style="text-align: left">OWASP Top 10 공격 방어에 필수. IP 기반 차단/허용(Black/White List), Rate Limiting, Geo Blocking 가능. CloudWatch로 공격 패턴 모니터링</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>5</strong></td>
+          <td style="text-align: left"><strong>AWS Shield</strong></td>
+          <td style="text-align: left">DDoS 공격으로부터 AWS 리소스를 보호하는 서비스. Standard는 무료로 기본 제공, Advanced는 유료로 고급 보호 및 24/7 DDoS 대응팀 지원</td>
+          <td style="text-align: left">Shield Standard는 모든 AWS 고객에게 자동 적용(L3/L4 공격 방어). Advanced는 대규모 서비스, 금융권에서 사용. WAF와 함께 사용 권장</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>6</strong></td>
+          <td style="text-align: left"><strong>AWS GuardDuty</strong></td>
+          <td style="text-align: left">머신러닝 기반 위협 탐지 서비스. CloudTrail, VPC Flow Logs, DNS 로그를 분석하여 악성 활동, 무단 접근, 암호화폐 채굴 등 탐지</td>
+          <td style="text-align: left">에이전트 설치 없이 클릭 한 번으로 활성화. 탐지된 위협을 심각도(Low/Medium/High)로 분류. EventBridge로 자동 대응 구성 가능</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>7</strong></td>
+          <td style="text-align: left"><strong>AWS Config</strong></td>
+          <td style="text-align: left">AWS 리소스 구성 변경을 지속적으로 기록하고 평가하는 서비스. 규정 준수 규칙(Config Rules)으로 구성 상태 자동 점검</td>
+          <td style="text-align: left">S3 퍼블릭 접근 여부, 암호화 활성화 여부 등 보안 기준 준수 자동 검사. 비준수 리소스 자동 알림 또는 자동 수정(Remediation) 가능</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>8</strong></td>
+          <td style="text-align: left"><strong>AWS Security Hub</strong></td>
+          <td style="text-align: left">여러 AWS 보안 서비스(GuardDuty, Inspector, Config 등)의 결과를 중앙에서 집계하고 우선순위화. CIS, PCI DSS 등 보안 표준 기반 점검</td>
+          <td style="text-align: left">SOC 대시보드로 활용. 멀티 계정 환경에서 보안 현황 통합 관리. 자동화된 보안 점검 및 규정 준수 보고서 생성</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="2-실습-내용">2. 실습 내용<a hidden class="anchor" aria-hidden="true" href="#2-실습-내용">#</a></h2>
+<h3 id="실습-19-aws-로그-수집-vpc-flow-logs--cloudtrail">실습 19: AWS 로그 수집 (VPC Flow Logs + CloudTrail)<a hidden class="anchor" aria-hidden="true" href="#실습-19-aws-로그-수집-vpc-flow-logs--cloudtrail">#</a></h3>
+<p><strong>VPC Flow Logs 설정:</strong></p>
+<ol>
+<li>
+<p>CloudWatch Log Group 생성:</p>
+<ul>
+<li><strong>aws logs create-log-group &ndash;log-group-name oooo-myvpc-flowlogs</strong></li>
+</ul>
+</li>
+<li>
+<p>Flow Logs용 IAM Role 생성:</p>
+<ul>
+<li>Trust Policy 신뢰 주체: <strong>vpc-flow-logs.amazonaws.com</strong></li>
+<li><strong>CloudWatchLogsFullAccess</strong> 정책 연결 필요</li>
+</ul>
+</li>
+<li>
+<p>VPC Flow Logs 활성화:</p>
+<ul>
+<li><strong>aws ec2 create-flow-logs</strong> 주요 파라미터:
+<ul>
+<li>&ndash;resource-type VPC</li>
+<li>&ndash;resource-ids vpc-0abcdef1234567890</li>
+<li>&ndash;traffic-type ALL</li>
+<li>&ndash;log-destination-type cloud-watch-logs</li>
+<li>&ndash;log-group-name oooo-myvpc-flowlogs</li>
+<li>&ndash;deliver-logs-permission-arn arn:aws:iam::123456789012:role/oooo-CloudWatchLogs-Role</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Flow Logs 조회 (특정 ENI 또는 IP로 필터링):</p>
+<ul>
+<li><strong>aws logs filter-log-events &ndash;log-group-name oooo-myvpc-flowlogs &ndash;filter-pattern &ldquo;eni-0abcdef&rdquo;</strong></li>
+</ul>
+</li>
+</ol>
+<p><strong>VPC Flow Log 레코드 형식:</strong></p>
+<ul>
+<li>필드 순서: version -&gt; account-id -&gt; interface-id -&gt; srcaddr -&gt; dstaddr -&gt; srcport -&gt; dstport -&gt; protocol -&gt; packets -&gt; bytes -&gt; start -&gt; end -&gt; action -&gt; log-status</li>
+</ul>
+<hr>
+<p><strong>CloudTrail 조회 및 설정:</strong></p>
+<ol>
+<li>
+<p>최근 API 이벤트 조회:</p>
+<ul>
+<li><strong>aws cloudtrail lookup-events</strong> 주요 파라미터:
+<ul>
+<li>&ndash;lookup-attributes AttributeKey=EventName,AttributeValue=PutBucketPolicy</li>
+<li>&ndash;max-results 10</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>S3로 Trail 로그 장기 보관 설정:</p>
+<ul>
+<li><strong>aws cloudtrail create-trail</strong> 주요 파라미터:
+<ul>
+<li>&ndash;name oooo-security-trail</li>
+<li>&ndash;s3-bucket-name oooo-cloudtrail-logs</li>
+<li>&ndash;is-multi-region-trail (모든 리전 로그 수집)</li>
+<li>&ndash;enable-log-file-validation (로그 무결성 검증)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="실습-20-waf를-이용한-웹서비스-보호">실습 20: WAF를 이용한 웹서비스 보호<a hidden class="anchor" aria-hidden="true" href="#실습-20-waf를-이용한-웹서비스-보호">#</a></h3>
+<p><strong>IP Set 생성 및 WebACL 구성:</strong></p>
+<ol>
+<li>
+<p>IP Set 생성 (Black List):</p>
+<ul>
+<li><strong>aws wafv2 create-ip-set</strong> 주요 파라미터:
+<ul>
+<li>&ndash;name oooo-BlackList</li>
+<li>&ndash;scope REGIONAL</li>
+<li>&ndash;ip-address-version IPV4</li>
+<li>&ndash;addresses &ldquo;203.0.113.0/32&rdquo; &ldquo;198.51.100.0/24&rdquo;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>IP Set 생성 (White List):</p>
+<ul>
+<li><strong>aws wafv2 create-ip-set</strong> 주요 파라미터:
+<ul>
+<li>&ndash;name oooo-WhiteList</li>
+<li>&ndash;scope REGIONAL</li>
+<li>&ndash;ip-address-version IPV4</li>
+<li>&ndash;addresses &ldquo;내PC공인IP/32&rdquo;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>WebACL 생성:</p>
+<ul>
+<li><strong>aws wafv2 create-web-acl</strong> 주요 파라미터:
+<ul>
+<li>&ndash;name oooo-waf-webACL</li>
+<li>&ndash;scope REGIONAL</li>
+<li>&ndash;default-action Allow</li>
+<li>규칙 구성: Name BlockBlackListIPs, Priority 1, Action Block</li>
+<li>Statement: IPSetReferenceStatement (BlackList ARN 참조)</li>
+<li>VisibilityConfig: SampledRequestsEnabled, CloudWatchMetricsEnabled 활성화</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>WebACL을 ALB에 연결:</p>
+<ul>
+<li><strong>aws wafv2 associate-web-acl</strong> 주요 파라미터:
+<ul>
+<li>&ndash;web-acl-arn: 생성한 WebACL ARN</li>
+<li>&ndash;resource-arn: 연결할 ALB ARN</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p><strong>WAF 규칙 우선순위:</strong></p>
+<ul>
+<li>숫자가 낮을수록 먼저 평가</li>
+<li>White List를 Black List보다 높은 우선순위로 설정하면 허용 목록 우선 적용</li>
+</ul>
+<hr>
+<h3 id="실습-21-cloudwatch-경보-만들기">실습 21: CloudWatch 경보 만들기<a hidden class="anchor" aria-hidden="true" href="#실습-21-cloudwatch-경보-만들기">#</a></h3>
+<p><strong>SNS Topic 및 CloudWatch Alarm 설정:</strong></p>
+<ol>
+<li>
+<p>SNS Topic 생성:</p>
+<ul>
+<li><strong>aws sns create-topic &ndash;name oooo-SecurityNotices</strong></li>
+</ul>
+</li>
+<li>
+<p>이메일 구독 추가:</p>
+<ul>
+<li><strong>aws sns subscribe</strong> 주요 파라미터:
+<ul>
+<li>&ndash;topic-arn arn:aws:sns:ap-northeast-2:123456789012:oooo-SecurityNotices</li>
+<li>&ndash;protocol email</li>
+<li>&ndash;notification-endpoint <a href="mailto:your-email@example.com">your-email@example.com</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>CloudWatch Alarm 생성 (CPU 사용률 기반):</p>
+<ul>
+<li><strong>aws cloudwatch put-metric-alarm</strong> 주요 파라미터:
+<ul>
+<li>&ndash;alarm-name oooo-bastion-cpu-util</li>
+<li>&ndash;metric-name CPUUtilization</li>
+<li>&ndash;namespace AWS/EC2</li>
+<li>&ndash;statistic Average</li>
+<li>&ndash;period 300 (5분 간격)</li>
+<li>&ndash;threshold 60</li>
+<li>&ndash;comparison-operator GreaterThanThreshold</li>
+<li>&ndash;dimensions Name=InstanceId,Value=i-0instanceid</li>
+<li>&ndash;evaluation-periods 1</li>
+<li>&ndash;alarm-actions: SNS Topic ARN</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>CPU 부하 테스트 (EC2 내부에서):</p>
+<ul>
+<li><strong>sudo yum -y install stress</strong> → stress 패키지 설치</li>
+<li><strong>sudo stress &ndash;timeout 600 &ndash;cpu 1</strong> → 600초 동안 CPU 부하 발생</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="3-aws-보안-서비스-비교">3. AWS 보안 서비스 비교<a hidden class="anchor" aria-hidden="true" href="#3-aws-보안-서비스-비교">#</a></h2>
+<h3 id="탐지-및-모니터링-서비스">탐지 및 모니터링 서비스<a hidden class="anchor" aria-hidden="true" href="#탐지-및-모니터링-서비스">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">서비스</th>
+          <th style="text-align: left">주요 기능</th>
+          <th style="text-align: left">데이터 소스</th>
+          <th style="text-align: left">사용 사례</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">CloudTrail</td>
+          <td style="text-align: left">API 호출 감사 로깅</td>
+          <td style="text-align: left">AWS API 호출</td>
+          <td style="text-align: left">누가 S3 버킷 삭제했는지 추적</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">VPC Flow Logs</td>
+          <td style="text-align: left">네트워크 트래픽 로깅</td>
+          <td style="text-align: left">ENI 트래픽</td>
+          <td style="text-align: left">비정상 아웃바운드 트래픽 탐지</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">GuardDuty</td>
+          <td style="text-align: left">위협 탐지(ML 기반)</td>
+          <td style="text-align: left">CloudTrail, Flow Logs, DNS</td>
+          <td style="text-align: left">암호화폐 채굴, 무단 API 호출 탐지</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">CloudWatch</td>
+          <td style="text-align: left">메트릭 모니터링, 알람</td>
+          <td style="text-align: left">AWS 리소스 메트릭</td>
+          <td style="text-align: left">CPU 급증 시 알림 발송</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Security Hub</td>
+          <td style="text-align: left">보안 결과 통합 대시보드</td>
+          <td style="text-align: left">GuardDuty, Config, Inspector</td>
+          <td style="text-align: left">전체 보안 현황 한눈에 파악</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="방어-서비스">방어 서비스<a hidden class="anchor" aria-hidden="true" href="#방어-서비스">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">서비스</th>
+          <th style="text-align: left">방어 대상</th>
+          <th style="text-align: left">계층</th>
+          <th style="text-align: left">비용</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">Shield Standard</td>
+          <td style="text-align: left">L3/L4 DDoS</td>
+          <td style="text-align: left">네트워크/전송</td>
+          <td style="text-align: left">무료 (기본 제공)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Shield Advanced</td>
+          <td style="text-align: left">L3/L4/L7 DDoS</td>
+          <td style="text-align: left">전 계층</td>
+          <td style="text-align: left">월 $3,000 + 데이터 전송</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">WAF</td>
+          <td style="text-align: left">웹 공격 (SQLi, XSS)</td>
+          <td style="text-align: left">애플리케이션(L7)</td>
+          <td style="text-align: left">규칙당 과금</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Network Firewall</td>
+          <td style="text-align: left">VPC 트래픽 필터링</td>
+          <td style="text-align: left">네트워크(L3/L4)</td>
+          <td style="text-align: left">시간당 + 데이터 처리량</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Firewall Manager</td>
+          <td style="text-align: left">다중 계정 방화벽 정책 관리</td>
+          <td style="text-align: left">관리 계층</td>
+          <td style="text-align: left">WAF/Shield 정책당 과금</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="규정-준수-서비스">규정 준수 서비스<a hidden class="anchor" aria-hidden="true" href="#규정-준수-서비스">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">서비스</th>
+          <th style="text-align: left">주요 기능</th>
+          <th style="text-align: left">점검 대상</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">Config</td>
+          <td style="text-align: left">리소스 구성 변경 추적, 규칙 기반 평가</td>
+          <td style="text-align: left">S3 암호화, 보안 그룹 설정 등</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Config Rules</td>
+          <td style="text-align: left">리소스가 규정 준수하는지 자동 점검</td>
+          <td style="text-align: left">CIS Benchmark, 사용자 정의 규칙</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Audit Manager</td>
+          <td style="text-align: left">감사 증거 자동 수집</td>
+          <td style="text-align: left">SOC 2, PCI DSS, GDPR</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Artifact</td>
+          <td style="text-align: left">AWS 규정 준수 보고서 다운로드</td>
+          <td style="text-align: left">ISO, SOC, PCI 인증서</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="4-실무보안-관점-분석">4. 실무/보안 관점 분석<a hidden class="anchor" aria-hidden="true" href="#4-실무보안-관점-분석">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">분야</th>
+          <th style="text-align: left">시나리오</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>로그 수집 전략</strong></td>
+          <td style="text-align: left">CloudTrail은 모든 리전에서 활성화하고 S3에 중앙 집중 저장. VPC Flow Logs는 주요 VPC에 활성화. 로그 보관 기간은 규정 준수 요건에 따라 설정(최소 1년 권장)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>위협 탐지 구성</strong></td>
+          <td style="text-align: left">GuardDuty를 모든 리전에서 활성화. 탐지된 위협은 EventBridge로 Lambda 트리거하여 자동 대응(예: 보안 그룹 차단). Security Hub로 결과 통합</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>웹 보안 구성</strong></td>
+          <td style="text-align: left">ALB 앞에 WAF 배치. AWS 관리형 규칙(AWSManagedRulesCommonRuleSet) 적용. Rate Limiting으로 DDoS 완화. CloudFront 사용 시 Shield Advanced 고려</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>규정 준수 자동화</strong></td>
+          <td style="text-align: left">Config Rules로 보안 기준 자동 점검. 비준수 리소스는 SNS로 알림 또는 SSM Automation으로 자동 수정. Security Hub에서 CIS Benchmark 점수 모니터링</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>사고 대응 프로세스</strong></td>
+          <td style="text-align: left">GuardDuty 알림 수신 → CloudTrail에서 관련 API 조회 → VPC Flow Logs에서 네트워크 활동 확인 → 영향 받은 리소스 격리 → 포렌식 분석</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="5-배운-점-및-심화-방향">5. 배운 점 및 심화 방향<a hidden class="anchor" aria-hidden="true" href="#5-배운-점-및-심화-방향">#</a></h2>
+<ul>
+<li><strong>배운 점</strong>: AWS 보안은 단일 서비스가 아닌 여러 서비스의 조합으로 구성됨. 로깅(CloudTrail, Flow Logs), 탐지(GuardDuty), 방어(WAF, Shield), 규정 준수(Config)를 계층적으로 적용해야 함. GuardDuty는 에이전트 설치 없이 기존 로그를 분석하여 위협을 탐지하므로 도입 장벽이 낮음. SOC 운영 시 1차 위협 탐지 도구로 활용 가능. WAF의 IP Set을 활용한 Black/White List 관리는 간단하지만 효과적. 규칙 우선순위 설정이 중요하며, White List를 먼저 평가하도록 구성해야 함. VPC Flow Logs는 네트워크 포렌식의 핵심. 침해 사고 시 어떤 IP와 통신했는지, 어떤 포트가 사용됐는지 추적 가능.</li>
+<li><strong>심화 방향</strong>: GuardDuty 자동 대응(EventBridge + Lambda로 High Severity 탐지 시 자동 보안 그룹 차단 파이프라인 구축), WAF 로그 분석(WAF 로그를 S3에 저장하고 Athena로 쿼리하여 공격 패턴 분석), Config 자동 수정(비준수 S3 버킷 발견 시 자동으로 퍼블릭 접근 차단 Remediation 구성), SIEM 연동(CloudTrail/GuardDuty 로그를 OpenSearch로 전송하여 통합 보안 모니터링).</li>
+</ul>
+<hr>
+<h2 id="6-quick-reference">6. Quick Reference<a hidden class="anchor" aria-hidden="true" href="#6-quick-reference">#</a></h2>
+<h3 id="cloudtrail-주요-모니터링-이벤트">CloudTrail 주요 모니터링 이벤트<a hidden class="anchor" aria-hidden="true" href="#cloudtrail-주요-모니터링-이벤트">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">이벤트</th>
+          <th style="text-align: left">의미</th>
+          <th style="text-align: center">위험도</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">ConsoleLogin</td>
+          <td style="text-align: left">콘솔 로그인 (특히 Root 계정)</td>
+          <td style="text-align: center">높음</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">CreateUser / CreateAccessKey</td>
+          <td style="text-align: left">IAM 사용자/키 생성</td>
+          <td style="text-align: center">높음</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">StopLogging</td>
+          <td style="text-align: left">CloudTrail 로깅 중지</td>
+          <td style="text-align: center">높음</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">AuthorizeSecurityGroupIngress</td>
+          <td style="text-align: left">보안 그룹 인바운드 규칙 추가</td>
+          <td style="text-align: center">중간</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">PutBucketPolicy</td>
+          <td style="text-align: left">S3 버킷 정책 변경</td>
+          <td style="text-align: center">높음</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">DeleteTrail</td>
+          <td style="text-align: left">CloudTrail 삭제</td>
+          <td style="text-align: center">높음</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="guardduty-주요-탐지-유형">GuardDuty 주요 탐지 유형<a hidden class="anchor" aria-hidden="true" href="#guardduty-주요-탐지-유형">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">Finding Type</th>
+          <th style="text-align: left">설명</th>
+          <th style="text-align: center">심각도</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">UnauthorizedAccess:IAMUser/ConsoleLoginSuccess.B</td>
+          <td style="text-align: left">비정상 위치에서 콘솔 로그인</td>
+          <td style="text-align: center">Medium</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Recon:EC2/PortProbeUnprotectedPort</td>
+          <td style="text-align: left">EC2 포트 스캔 탐지</td>
+          <td style="text-align: center">Low</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">CryptoCurrency:EC2/BitcoinTool.B</td>
+          <td style="text-align: left">암호화폐 채굴 활동 탐지</td>
+          <td style="text-align: center">High</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Trojan:EC2/DNSDataExfiltration</td>
+          <td style="text-align: left">DNS를 통한 데이터 유출</td>
+          <td style="text-align: center">High</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">UnauthorizedAccess:EC2/SSHBruteForce</td>
+          <td style="text-align: left">SSH 무차별 대입 공격</td>
+          <td style="text-align: center">Low/Medium</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="waf-관리형-규칙-그룹">WAF 관리형 규칙 그룹<a hidden class="anchor" aria-hidden="true" href="#waf-관리형-규칙-그룹">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">규칙 그룹</th>
+          <th style="text-align: left">방어 대상</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">AWSManagedRulesCommonRuleSet</td>
+          <td style="text-align: left">OWASP Top 10 일반 공격</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">AWSManagedRulesSQLiRuleSet</td>
+          <td style="text-align: left">SQL Injection</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">AWSManagedRulesKnownBadInputsRuleSet</td>
+          <td style="text-align: left">알려진 악성 입력 패턴</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">AWSManagedRulesAmazonIpReputationList</td>
+          <td style="text-align: left">AWS 위협 인텔리전스 기반 IP 차단</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">AWSManagedRulesBotControlRuleSet</td>
+          <td style="text-align: left">봇 트래픽 제어</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="config-주요-관리형-규칙">Config 주요 관리형 규칙<a hidden class="anchor" aria-hidden="true" href="#config-주요-관리형-규칙">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">규칙</th>
+          <th style="text-align: left">점검 내용</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">s3-bucket-public-read-prohibited</td>
+          <td style="text-align: left">S3 퍼블릭 읽기 접근 금지</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">s3-bucket-ssl-requests-only</td>
+          <td style="text-align: left">S3 HTTPS 전용 접근</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">encrypted-volumes</td>
+          <td style="text-align: left">EBS 볼륨 암호화 여부</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">iam-root-access-key-check</td>
+          <td style="text-align: left">Root 계정 액세스 키 존재 여부</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">vpc-flow-logs-enabled</td>
+          <td style="text-align: left">VPC Flow Logs 활성화 여부</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">cloudtrail-enabled</td>
+          <td style="text-align: left">CloudTrail 활성화 여부</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="보안-서비스-활성화-우선순위">보안 서비스 활성화 우선순위<a hidden class="anchor" aria-hidden="true" href="#보안-서비스-활성화-우선순위">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">순위</th>
+          <th style="text-align: left">서비스</th>
+          <th style="text-align: left">이유</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">1</td>
+          <td style="text-align: left">CloudTrail</td>
+          <td style="text-align: left">모든 보안 조사의 기본 데이터</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">2</td>
+          <td style="text-align: left">GuardDuty</td>
+          <td style="text-align: left">원클릭 활성화, 즉시 위협 탐지 시작</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">3</td>
+          <td style="text-align: left">Config</td>
+          <td style="text-align: left">리소스 구성 변경 추적 및 규정 준수</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">4</td>
+          <td style="text-align: left">Security Hub</td>
+          <td style="text-align: left">보안 결과 통합 및 대시보드</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">5</td>
+          <td style="text-align: left">WAF</td>
+          <td style="text-align: left">웹 애플리케이션 보호 (ALB 사용 시)</td>
+      </tr>
+  </tbody>
+</table>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://hojjang98.github.io/tags/aws/">AWS</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%B3%B4%EC%95%88/">보안</a></li>
+      <li><a href="https://hojjang98.github.io/tags/waf/">WAF</a></li>
+      <li><a href="https://hojjang98.github.io/tags/shield/">Shield</a></li>
+      <li><a href="https://hojjang98.github.io/tags/guardduty/">GuardDuty</a></li>
+      <li><a href="https://hojjang98.github.io/tags/config/">Config</a></li>
+      <li><a href="https://hojjang98.github.io/tags/cloudtrail/">CloudTrail</a></li>
+      <li><a href="https://hojjang98.github.io/tags/vpc-flow-logs/">VPC-Flow-Logs</a></li>
+      <li><a href="https://hojjang98.github.io/tags/security-hub/">Security-Hub</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

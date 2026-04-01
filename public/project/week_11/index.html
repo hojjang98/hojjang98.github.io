@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Week 11 — ISO 27001 보안 컨설팅 보고서 (DNA Lab) | HJ&#39;s Security Note</title>
+<meta name="keywords" content="ISO27001, 보안컨설팅, 취약점분석, GapAnalysis, CVSS, 로드맵, SK쉴더스루키즈">
+<meta name="description" content="Week 10 DNA Lab 스캐너로 발견한 102개 취약점을 ISO 27001:2022 통제항목과 매핑하여 Gap Analysis 및 6개월 개선 로드맵을 도출한 보안 컨설팅 보고서">
+<meta name="author" content="">
+<link rel="canonical" href="https://hojjang98.github.io/project/week_11/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.290573799e582c418c4bd84f2bca757d0a77fd1bf9f5c43942030e706df68ec8.css" integrity="sha256-KQVzeZ5YLEGMS9hPK8p1fQp3/Rv59cQ5QgMOcG32jsg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/project/week_11/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://hojjang98.github.io/project/week_11/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="Week 11 — ISO 27001 보안 컨설팅 보고서 (DNA Lab)">
+  <meta property="og:description" content="Week 10 DNA Lab 스캐너로 발견한 102개 취약점을 ISO 27001:2022 통제항목과 매핑하여 Gap Analysis 및 6개월 개선 로드맵을 도출한 보안 컨설팅 보고서">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="project">
+    <meta property="article:published_time" content="2026-01-11T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-01-11T00:00:00+00:00">
+    <meta property="article:tag" content="ISO27001">
+    <meta property="article:tag" content="보안컨설팅">
+    <meta property="article:tag" content="취약점분석">
+    <meta property="article:tag" content="GapAnalysis">
+    <meta property="article:tag" content="CVSS">
+    <meta property="article:tag" content="로드맵">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_19/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_18/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_17/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_16/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_15/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_14/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_13/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Week 11 — ISO 27001 보안 컨설팅 보고서 (DNA Lab)">
+<meta name="twitter:description" content="Week 10 DNA Lab 스캐너로 발견한 102개 취약점을 ISO 27001:2022 통제항목과 매핑하여 Gap Analysis 및 6개월 개선 로드맵을 도출한 보안 컨설팅 보고서">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "프로젝트",
+      "item": "https://hojjang98.github.io/project/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Week 11 — ISO 27001 보안 컨설팅 보고서 (DNA Lab)",
+      "item": "https://hojjang98.github.io/project/week_11/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Week 11 — ISO 27001 보안 컨설팅 보고서 (DNA Lab)",
+  "name": "Week 11 — ISO 27001 보안 컨설팅 보고서 (DNA Lab)",
+  "description": "Week 10 DNA Lab 스캐너로 발견한 102개 취약점을 ISO 27001:2022 통제항목과 매핑하여 Gap Analysis 및 6개월 개선 로드맵을 도출한 보안 컨설팅 보고서",
+  "keywords": [
+    "ISO27001", "보안컨설팅", "취약점분석", "GapAnalysis", "CVSS", "로드맵", "SK쉴더스루키즈"
+  ],
+  "articleBody": "Week 11 — ISO 27001 보안 컨설팅 보고서 (DNA Lab) 전체 보고서 및 데이터 파일은 GitHub에서 확인할 수 있습니다. hojjang98 / skshielders-rookies-28 — projects/week_11\n프로젝트 개요 항목 내용 클라이언트 DNA Lab (유전자 검사 헬스케어 스타트업) 컨설팅사 SK Shields 보안 컨설팅팀 평가 기간 2026-01-04 ~ 2026-01-11 목표 ISO 27001 인증 취득을 위한 취약점 분석 및 개선 로드맵 제시 이 프로젝트는 Week 10 DNA Lab Security Scanner 로 수집한 스캔 결과를 ISO 27001:2022 통제항목 과 직접 매핑하여 실무 수준의 보안 컨설팅 보고서를 작성한 작업이다.\n배경 시나리오 DNA Lab 은 고객의 민감한 유전 정보와 의료 데이터를 다루는 헬스케어 스타트업이다. 최근 Series B 투자 유치 에 성공하고, 대형 병원·보험사와 B2B 계약을 추진 중이다.\n문제는 계약 조건으로 ISO 27001 인증 을 요구받았다는 것이다. 내부 보안팀의 자체 스캔 결과 심각한 취약점이 다수 발견되어, 6개월 내 인증 취득을 목표로 외부 컨설팅을 의뢰하였다.\n보안 개선은 단순한 비용이 아닌, 기업 가치를 높이고 B2B 계약을 성사시키는 투자다.\n주요 발견사항 — 취약점 통계 총 취약점 27개 / 총 발견사항 102개 / 평균 CVSS 7.10\n심각도별 분포:\r┌──────────┬──────┬─────────────────────────────────────────────────┐\r│ 심각도 │ 수 │ 대표 취약점 │\r├──────────┼──────┼─────────────────────────────────────────────────┤\r│ CRITICAL │ 4 │ SQL Injection (CVSS 9.8), OS Command Injection │\r│ │ │ 쿠키 변조 (CVSS 9.1), 파일 전송 취약점 │\r├──────────┼──────┼─────────────────────────────────────────────────┤\r│ HIGH │ 12 │ XSS, CSRF, IDOR, SSRF │\r│ │ │ OS 보안 설정 미흡, 불필요한 서비스 활성화 │\r├──────────┼──────┼─────────────────────────────────────────────────┤\r│ MEDIUM │ 10 │ 로깅 미흡, 보안 정책 부재, 파일 권한 문제 │\r├──────────┼──────┼─────────────────────────────────────────────────┤\r│ LOW │ 1 │ 에러 핸들링 미흡 │\r└──────────┴──────┴─────────────────────────────────────────────────┘\rCritical + High 합산 비율 =\u003e 59.3%\nCritical 취약점 4종 상세 WEB-002 SQL Injection (CVSS 9.8)\n발견 지점 28개 — MyBatis XML 전체에서 ${} 파라미터 바인딩 사용 영향: 고객 유전자 정보 및 개인정보 전체 유출 가능, GDPR / 개인정보보호법 위반 소지 예상 피해액: 수십억 원 (데이터 유출 시 과징금 + 손해배상 포함) WEB-003 OS Command Injection (CVSS 9.8)\nJava Runtime.getRuntime().exec() 에 사용자 입력 직접 전달 영향: 서버 OS 명령 실행 가능 =\u003e 시스템 전체 제어권 탈취 WEB-009 쿠키 기반 권한 관리 취약점 (CVSS 9.1)\n쿠키 값 변조로 관리자 권한 상승 가능 발견 지점 3개 WEB-010 파일 업로드 취약점 (CVSS 9.8)\n확장자 / MIME 타입 검증 없음 =\u003e 웹쉘 업로드 가능 발견 지점 2개 =\u003e 내부망 침투 경로 제공, 랜섬웨어 감염 위험 ISO 27001:2022 Gap Analysis 14개 통제항목을 평가한 결과, 단 하나도 완전 준수 상태가 아니었다.\n준수 상태 분포:\rCompliant : 0개 (0%)\rPartially Compliant: 10개 (71%)\rNon-Compliant : 2개 (14%)\rCritical Gap : 2개 (14%)\rCritical Gap 통제항목 A.8.3 — 정보 접근 제한 (9개 취약점 연결)\nIDOR, 권한 상승, 세션 관리 취약점이 집중적으로 연결됨 현재 상태: 접근 제어 로직이 일관되게 적용되지 않음 A.8.16 — 모니터링 활동 (7개 취약점 연결)\n보안 이벤트 로깅 체계 자체가 부재 현재 상태: 비정상 접근 탐지 불가, 침해 후 추적 불가 Non-Compliant 통제항목 A.8.8 — 기술적 취약점 관리 (4개 취약점)\n취약점 식별 및 패치 프로세스 미수립 A.5.17 — 인증 정보 관리 (4개 취약점)\n비밀번호 정책 미흡, 계정 잠금 미설정 핵심 취약점 개선 예시 Before / After — SQL Injection (WEB-002) 기존 코드 — MyBatis XML ${} 사용 (문자열 직접 삽입):\nSELECT * FROM users\rWHERE username = '${username}'\rAND password = '${password}'\r=\u003e 공격자 입력: admin' OR '1'='1 --\r=\u003e 실행 쿼리: WHERE username='admin' OR '1'='1' --' AND password='...'\r=\u003e 비밀번호 검증 완전 우회\r개선 코드 — #{} 로 전환 (Prepared Statement 자동 적용):\nSELECT * FROM users\rWHERE username = #{username}\rAND password = #{password}\r=\u003e 동일 입력: admin' OR '1'='1 --\r=\u003e 문자열 전체가 하나의 파라미터 값으로 바인딩\r=\u003e SQL 구문으로 해석 불가 =\u003e 공격 차단\rBefore / After — OS Command Injection (WEB-003) 기존 코드 — 사용자 입력을 OS 명령에 직접 연결:\n@PostMapping(\"/ping\")\rpublic String ping(@RequestParam String host) {\rString command = \"ping \" + host; // 명령 삽입 가능\rRuntime.getRuntime().exec(command);\rreturn \"success\";\r}\r=\u003e 공격자 입력: 8.8.8.8; rm -rf /var/www/html\r=\u003e 실행: ping 8.8.8.8; rm -rf /var/www/html (서버 파일 삭제)\r개선 코드 — 화이트리스트 검증 + ProcessBuilder 인수 분리:\n@PostMapping(\"/ping\")\rpublic String ping(@RequestParam String host) {\r// 숫자와 점(.)만 허용하는 화이트리스트 검증\rif (!host.matches(\"^[0-9.]+$\")) {\rthrow new IllegalArgumentException(\"Invalid host\");\r}\r// 인수를 배열로 분리 =\u003e 명령 삽입 원천 차단\rProcessBuilder pb = new ProcessBuilder(\"ping\", \"-c\", \"4\", host);\rpb.start();\rreturn \"success\";\r}\r6개월 개선 로드맵 Phase 1 — Quick Win (즉시, 1주 이내) 4개 Critical 취약점 긴급 패치:\nSQL Injection 28개 지점 전체 제거 (MyBatis ${} =\u003e #{} 전환) OS Command Injection 차단 (Runtime.exec() 제거, ProcessBuilder + 화이트리스트) 쿠키 기반 권한 관리 전면 재구축 (JWT 또는 서버 세션 기반으로 전환) 파일 업로드 보안 강화 (화이트리스트 확장자 + Magic Bytes 검증) Phase 2 — Short-term (1 ~ 2개월) 12개 High 취약점 해결:\n접근 제어 강화 (IDOR 방어, 모든 리소스에 소유자 검증 추가) 세션 관리 개선 (세션 고정 공격 방어, 로그아웃 시 서버 세션 삭제) OS 보안 설정 강화 (비밀번호 복잡도 정책, 계정 잠금 임계치 설정) 불필요한 서비스 비활성화 (NFS,익명 FTP, r 계열 서비스 등) Phase 2 완료 시점 (약 3개월) =\u003e ISO 27001 인증 신청 가능\nPhase 3 — Mid-term (2 ~ 4개월) 10개 Medium 취약점 해결:\n로깅 및 모니터링 체계 구축 (SIEM 연동, 보안 이벤트 실시간 감지) 보안 정책 수립 및 배포 (취약점 관리 절차, 사고 대응 플레이북) 파일 권한 전수 정비 (서버 전체 SUID/SGID 점검) Phase 4 — Long-term (4 ~ 6개월) 지속적 개선 체계 수립:\n전직원 보안 인식 교육 프로그램 운영 정기 취약점 진단 체계 확립 (분기 1회 이상) 에러 핸들링 표준화 (내부 오류 정보 외부 노출 제거) 예상 비용 및 인력 투입 인력 계획 보안 엔지니어 : 2명 (전담)\r백엔드 개발자 : 3명 (파트타임)\r인프라 엔지니어: 1명 (파트타임)\r외부 컨설턴트 : 1명 (주간 리뷰)\r단계별 예상 비용 단계 기간 비용 Phase 1 — 긴급 패치 1주 약 3,000만 원 Phase 2 — High 해결 1~2개월 약 5,000만 원 Phase 3~4 — 중장기 2~6개월 약 4,000만 원 합계 6개월 약 1억 2,000만 원 산출물 구성 파일 형식 대상 독자 executive_summary.txt 텍스트 경영진 — 비즈니스 리스크 + 비용 + 일정 중심 technical_report.txt 텍스트 기술팀 — Before/After 코드 + 구체적 수정 방안 all_vulnerabilities.csv CSV 분석용 — 27개 취약점 전체 원본 데이터 gap_analysis.csv CSV 감사용 — ISO 27001 통제항목별 준수성 평가 remediation_roadmap.csv CSV PM용 — 단계별 개선 작업 계획 vulnerability_analysis.png PNG 시각화 — 심각도 분포, CVSS 히스토그램, 취약점 유형 비율 데이터 분석 프로세스 1. 취약점 데이터 구조화\rWeek 10 스캔 결과 =\u003e CSV / DataFrame 변환\r2. CVSS 스코어링 및 심각도 분류\r각 취약점에 CVSS v3.1 기준 점수 산정\r3. ISO 27001:2022 통제항목 매핑\r취약점 =\u003e 관련 통제항목(A.5.x, A.8.x) 연결\r4. Gap Analysis\r현재 상태 vs ISO 27001 요구사항 비교\r=\u003e Compliant / Partially Compliant / Non-Compliant / Critical Gap 분류\r5. 우선순위 기반 로드맵 생성\rCVSS 점수 + 비즈니스 영향도 조합으로 처리 순서 결정\r6. 시각화 및 이중 보고서 작성\r경영진용 Executive Summary + 기술팀용 Technical Report\r학습 성과 정리 영역 학습 내용 컨설팅 프로세스 진단 결과 =\u003e ISO 표준 매핑 =\u003e Gap Analysis =\u003e 로드맵 도출 전체 흐름 ISO 27001 통제항목(A.5.x, A.8.x) 구조 및 실제 취약점과의 연결 관계 리스크 커뮤니케이션 기술적 취약점을 비즈니스 언어(예상 피해액, 계약 리스크)로 전환 보고서 이중화 경영진용(Executive Summary)과 기술팀용(Technical Report) 분리 작성 데이터 기반 분석 Pandas + Matplotlib 으로 취약점 분포 시각화 ",
+  "wordCount" : "2814",
+  "inLanguage": "ko",
+  "datePublished": "2026-01-11T00:00:00Z",
+  "dateModified": "2026-01-11T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/project/week_11/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://hojjang98.github.io/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/project/">프로젝트</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Week 11 — ISO 27001 보안 컨설팅 보고서 (DNA Lab)
+    </h1>
+    <div class="post-meta"><span title='2026-01-11 00:00:00 +0000 UTC'>2026년 1월 11일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="week-11--iso-27001-보안-컨설팅-보고서-dna-lab">Week 11 — ISO 27001 보안 컨설팅 보고서 (DNA Lab)<a hidden class="anchor" aria-hidden="true" href="#week-11--iso-27001-보안-컨설팅-보고서-dna-lab">#</a></h1>
+<blockquote>
+<p>전체 보고서 및 데이터 파일은 GitHub에서 확인할 수 있습니다.
+<a href="https://github.com/hojjang98/skshielders-rookies-28/tree/main/projects/week_11">hojjang98 / skshielders-rookies-28 — projects/week_11</a></p>
+</blockquote>
+<hr>
+<h2 id="프로젝트-개요">프로젝트 개요<a hidden class="anchor" aria-hidden="true" href="#프로젝트-개요">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>항목</th>
+          <th>내용</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>클라이언트</strong></td>
+          <td>DNA Lab (유전자 검사 헬스케어 스타트업)</td>
+      </tr>
+      <tr>
+          <td><strong>컨설팅사</strong></td>
+          <td>SK Shields 보안 컨설팅팀</td>
+      </tr>
+      <tr>
+          <td><strong>평가 기간</strong></td>
+          <td>2026-01-04 ~ 2026-01-11</td>
+      </tr>
+      <tr>
+          <td><strong>목표</strong></td>
+          <td>ISO 27001 인증 취득을 위한 취약점 분석 및 개선 로드맵 제시</td>
+      </tr>
+  </tbody>
+</table>
+<p>이 프로젝트는 <strong>Week 10 DNA Lab Security Scanner</strong> 로 수집한 스캔 결과를
+<strong>ISO 27001:2022 통제항목</strong> 과 직접 매핑하여 실무 수준의 보안 컨설팅 보고서를 작성한 작업이다.</p>
+<hr>
+<h2 id="배경-시나리오">배경 시나리오<a hidden class="anchor" aria-hidden="true" href="#배경-시나리오">#</a></h2>
+<p>DNA Lab 은 고객의 민감한 유전 정보와 의료 데이터를 다루는 헬스케어 스타트업이다.
+최근 <strong>Series B 투자 유치</strong> 에 성공하고, 대형 병원·보험사와 B2B 계약을 추진 중이다.</p>
+<p>문제는 계약 조건으로 <strong>ISO 27001 인증</strong> 을 요구받았다는 것이다.
+내부 보안팀의 자체 스캔 결과 심각한 취약점이 다수 발견되어,
+6개월 내 인증 취득을 목표로 외부 컨설팅을 의뢰하였다.</p>
+<blockquote>
+<p>보안 개선은 단순한 비용이 아닌,
+<strong>기업 가치를 높이고 B2B 계약을 성사시키는 투자다.</strong></p>
+</blockquote>
+<hr>
+<h2 id="주요-발견사항--취약점-통계">주요 발견사항 — 취약점 통계<a hidden class="anchor" aria-hidden="true" href="#주요-발견사항--취약점-통계">#</a></h2>
+<p><strong>총 취약점 27개 / 총 발견사항 102개 / 평균 CVSS 7.10</strong></p>
+<pre><code>심각도별 분포:
+┌──────────┬──────┬─────────────────────────────────────────────────┐
+│ 심각도   │  수  │ 대표 취약점                                      │
+├──────────┼──────┼─────────────────────────────────────────────────┤
+│ CRITICAL │  4   │ SQL Injection (CVSS 9.8), OS Command Injection  │
+│          │      │ 쿠키 변조 (CVSS 9.1), 파일 전송 취약점          │
+├──────────┼──────┼─────────────────────────────────────────────────┤
+│ HIGH     │  12  │ XSS, CSRF, IDOR, SSRF                           │
+│          │      │ OS 보안 설정 미흡, 불필요한 서비스 활성화        │
+├──────────┼──────┼─────────────────────────────────────────────────┤
+│ MEDIUM   │  10  │ 로깅 미흡, 보안 정책 부재, 파일 권한 문제       │
+├──────────┼──────┼─────────────────────────────────────────────────┤
+│ LOW      │  1   │ 에러 핸들링 미흡                                 │
+└──────────┴──────┴─────────────────────────────────────────────────┘
+</code></pre>
+<p>Critical + High 합산 비율 =&gt; <strong>59.3%</strong></p>
+<h3 id="critical-취약점-4종-상세">Critical 취약점 4종 상세<a hidden class="anchor" aria-hidden="true" href="#critical-취약점-4종-상세">#</a></h3>
+<p><strong>WEB-002 SQL Injection (CVSS 9.8)</strong></p>
+<ul>
+<li>발견 지점 28개 — MyBatis XML 전체에서 <code>${}</code> 파라미터 바인딩 사용</li>
+<li>영향: 고객 유전자 정보 및 개인정보 전체 유출 가능, GDPR / 개인정보보호법 위반 소지</li>
+<li>예상 피해액: 수십억 원 (데이터 유출 시 과징금 + 손해배상 포함)</li>
+</ul>
+<p><strong>WEB-003 OS Command Injection (CVSS 9.8)</strong></p>
+<ul>
+<li>Java <code>Runtime.getRuntime().exec()</code> 에 사용자 입력 직접 전달</li>
+<li>영향: 서버 OS 명령 실행 가능 =&gt; 시스템 전체 제어권 탈취</li>
+</ul>
+<p><strong>WEB-009 쿠키 기반 권한 관리 취약점 (CVSS 9.1)</strong></p>
+<ul>
+<li>쿠키 값 변조로 관리자 권한 상승 가능</li>
+<li>발견 지점 3개</li>
+</ul>
+<p><strong>WEB-010 파일 업로드 취약점 (CVSS 9.8)</strong></p>
+<ul>
+<li>확장자 / MIME 타입 검증 없음 =&gt; 웹쉘 업로드 가능</li>
+<li>발견 지점 2개 =&gt; 내부망 침투 경로 제공, 랜섬웨어 감염 위험</li>
+</ul>
+<hr>
+<h2 id="iso-270012022-gap-analysis">ISO 27001:2022 Gap Analysis<a hidden class="anchor" aria-hidden="true" href="#iso-270012022-gap-analysis">#</a></h2>
+<p>14개 통제항목을 평가한 결과, <strong>단 하나도 완전 준수 상태가 아니었다.</strong></p>
+<pre><code>준수 상태 분포:
+Compliant         :   0개  (0%)
+Partially Compliant: 10개  (71%)
+Non-Compliant     :   2개  (14%)
+Critical Gap      :   2개  (14%)
+</code></pre>
+<h3 id="critical-gap-통제항목">Critical Gap 통제항목<a hidden class="anchor" aria-hidden="true" href="#critical-gap-통제항목">#</a></h3>
+<p><strong>A.8.3 — 정보 접근 제한 (9개 취약점 연결)</strong></p>
+<ul>
+<li>IDOR, 권한 상승, 세션 관리 취약점이 집중적으로 연결됨</li>
+<li>현재 상태: 접근 제어 로직이 일관되게 적용되지 않음</li>
+</ul>
+<p><strong>A.8.16 — 모니터링 활동 (7개 취약점 연결)</strong></p>
+<ul>
+<li>보안 이벤트 로깅 체계 자체가 부재</li>
+<li>현재 상태: 비정상 접근 탐지 불가, 침해 후 추적 불가</li>
+</ul>
+<h3 id="non-compliant-통제항목">Non-Compliant 통제항목<a hidden class="anchor" aria-hidden="true" href="#non-compliant-통제항목">#</a></h3>
+<p><strong>A.8.8 — 기술적 취약점 관리 (4개 취약점)</strong></p>
+<ul>
+<li>취약점 식별 및 패치 프로세스 미수립</li>
+</ul>
+<p><strong>A.5.17 — 인증 정보 관리 (4개 취약점)</strong></p>
+<ul>
+<li>비밀번호 정책 미흡, 계정 잠금 미설정</li>
+</ul>
+<hr>
+<h2 id="핵심-취약점-개선-예시">핵심 취약점 개선 예시<a hidden class="anchor" aria-hidden="true" href="#핵심-취약점-개선-예시">#</a></h2>
+<h3 id="before--after--sql-injection-web-002">Before / After — SQL Injection (WEB-002)<a hidden class="anchor" aria-hidden="true" href="#before--after--sql-injection-web-002">#</a></h3>
+<p>기존 코드 — MyBatis XML <code>${}</code> 사용 (문자열 직접 삽입):</p>
+<pre><code>SELECT * FROM users
+WHERE username = '${username}'
+AND password = '${password}'
+
+=&gt; 공격자 입력: admin' OR '1'='1 --
+=&gt; 실행 쿼리: WHERE username='admin' OR '1'='1' --' AND password='...'
+=&gt; 비밀번호 검증 완전 우회
+</code></pre>
+<p>개선 코드 — <code>#{}</code> 로 전환 (Prepared Statement 자동 적용):</p>
+<pre><code>SELECT * FROM users
+WHERE username = #{username}
+AND password = #{password}
+
+=&gt; 동일 입력: admin' OR '1'='1 --
+=&gt; 문자열 전체가 하나의 파라미터 값으로 바인딩
+=&gt; SQL 구문으로 해석 불가 =&gt; 공격 차단
+</code></pre>
+<h3 id="before--after--os-command-injection-web-003">Before / After — OS Command Injection (WEB-003)<a hidden class="anchor" aria-hidden="true" href="#before--after--os-command-injection-web-003">#</a></h3>
+<p>기존 코드 — 사용자 입력을 OS 명령에 직접 연결:</p>
+<pre><code>@PostMapping(&quot;/ping&quot;)
+public String ping(@RequestParam String host) {
+    String command = &quot;ping &quot; + host;   // 명령 삽입 가능
+    Runtime.getRuntime().exec(command);
+    return &quot;success&quot;;
+}
+
+=&gt; 공격자 입력: 8.8.8.8; rm -rf /var/www/html
+=&gt; 실행: ping 8.8.8.8; rm -rf /var/www/html  (서버 파일 삭제)
+</code></pre>
+<p>개선 코드 — 화이트리스트 검증 + ProcessBuilder 인수 분리:</p>
+<pre><code>@PostMapping(&quot;/ping&quot;)
+public String ping(@RequestParam String host) {
+    // 숫자와 점(.)만 허용하는 화이트리스트 검증
+    if (!host.matches(&quot;^[0-9.]+$&quot;)) {
+        throw new IllegalArgumentException(&quot;Invalid host&quot;);
+    }
+    // 인수를 배열로 분리 =&gt; 명령 삽입 원천 차단
+    ProcessBuilder pb = new ProcessBuilder(&quot;ping&quot;, &quot;-c&quot;, &quot;4&quot;, host);
+    pb.start();
+    return &quot;success&quot;;
+}
+</code></pre>
+<hr>
+<h2 id="6개월-개선-로드맵">6개월 개선 로드맵<a hidden class="anchor" aria-hidden="true" href="#6개월-개선-로드맵">#</a></h2>
+<h3 id="phase-1--quick-win-즉시-1주-이내">Phase 1 — Quick Win (즉시, 1주 이내)<a hidden class="anchor" aria-hidden="true" href="#phase-1--quick-win-즉시-1주-이내">#</a></h3>
+<p>4개 Critical 취약점 긴급 패치:</p>
+<ul>
+<li>SQL Injection 28개 지점 전체 제거 (MyBatis <code>${}</code> =&gt; <code>#{}</code> 전환)</li>
+<li>OS Command Injection 차단 (Runtime.exec() 제거, ProcessBuilder + 화이트리스트)</li>
+<li>쿠키 기반 권한 관리 전면 재구축 (JWT 또는 서버 세션 기반으로 전환)</li>
+<li>파일 업로드 보안 강화 (화이트리스트 확장자 + Magic Bytes 검증)</li>
+</ul>
+<h3 id="phase-2--short-term-1--2개월">Phase 2 — Short-term (1 ~ 2개월)<a hidden class="anchor" aria-hidden="true" href="#phase-2--short-term-1--2개월">#</a></h3>
+<p>12개 High 취약점 해결:</p>
+<ul>
+<li>접근 제어 강화 (IDOR 방어, 모든 리소스에 소유자 검증 추가)</li>
+<li>세션 관리 개선 (세션 고정 공격 방어, 로그아웃 시 서버 세션 삭제)</li>
+<li>OS 보안 설정 강화 (비밀번호 복잡도 정책, 계정 잠금 임계치 설정)</li>
+<li>불필요한 서비스 비활성화 (NFS,익명 FTP, r 계열 서비스 등)</li>
+</ul>
+<p><strong>Phase 2 완료 시점 (약 3개월) =&gt; ISO 27001 인증 신청 가능</strong></p>
+<h3 id="phase-3--mid-term-2--4개월">Phase 3 — Mid-term (2 ~ 4개월)<a hidden class="anchor" aria-hidden="true" href="#phase-3--mid-term-2--4개월">#</a></h3>
+<p>10개 Medium 취약점 해결:</p>
+<ul>
+<li>로깅 및 모니터링 체계 구축 (SIEM 연동, 보안 이벤트 실시간 감지)</li>
+<li>보안 정책 수립 및 배포 (취약점 관리 절차, 사고 대응 플레이북)</li>
+<li>파일 권한 전수 정비 (서버 전체 SUID/SGID 점검)</li>
+</ul>
+<h3 id="phase-4--long-term-4--6개월">Phase 4 — Long-term (4 ~ 6개월)<a hidden class="anchor" aria-hidden="true" href="#phase-4--long-term-4--6개월">#</a></h3>
+<p>지속적 개선 체계 수립:</p>
+<ul>
+<li>전직원 보안 인식 교육 프로그램 운영</li>
+<li>정기 취약점 진단 체계 확립 (분기 1회 이상)</li>
+<li>에러 핸들링 표준화 (내부 오류 정보 외부 노출 제거)</li>
+</ul>
+<hr>
+<h2 id="예상-비용-및-인력">예상 비용 및 인력<a hidden class="anchor" aria-hidden="true" href="#예상-비용-및-인력">#</a></h2>
+<h3 id="투입-인력-계획">투입 인력 계획<a hidden class="anchor" aria-hidden="true" href="#투입-인력-계획">#</a></h3>
+<pre><code>보안 엔지니어  :  2명 (전담)
+백엔드 개발자  :  3명 (파트타임)
+인프라 엔지니어:  1명 (파트타임)
+외부 컨설턴트  :  1명 (주간 리뷰)
+</code></pre>
+<h3 id="단계별-예상-비용">단계별 예상 비용<a hidden class="anchor" aria-hidden="true" href="#단계별-예상-비용">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>단계</th>
+          <th>기간</th>
+          <th>비용</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Phase 1 — 긴급 패치</td>
+          <td>1주</td>
+          <td>약 3,000만 원</td>
+      </tr>
+      <tr>
+          <td>Phase 2 — High 해결</td>
+          <td>1~2개월</td>
+          <td>약 5,000만 원</td>
+      </tr>
+      <tr>
+          <td>Phase 3~4 — 중장기</td>
+          <td>2~6개월</td>
+          <td>약 4,000만 원</td>
+      </tr>
+      <tr>
+          <td><strong>합계</strong></td>
+          <td><strong>6개월</strong></td>
+          <td><strong>약 1억 2,000만 원</strong></td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="산출물-구성">산출물 구성<a hidden class="anchor" aria-hidden="true" href="#산출물-구성">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>파일</th>
+          <th>형식</th>
+          <th>대상 독자</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>executive_summary.txt</td>
+          <td>텍스트</td>
+          <td>경영진 — 비즈니스 리스크 + 비용 + 일정 중심</td>
+      </tr>
+      <tr>
+          <td>technical_report.txt</td>
+          <td>텍스트</td>
+          <td>기술팀 — Before/After 코드 + 구체적 수정 방안</td>
+      </tr>
+      <tr>
+          <td>all_vulnerabilities.csv</td>
+          <td>CSV</td>
+          <td>분석용 — 27개 취약점 전체 원본 데이터</td>
+      </tr>
+      <tr>
+          <td>gap_analysis.csv</td>
+          <td>CSV</td>
+          <td>감사용 — ISO 27001 통제항목별 준수성 평가</td>
+      </tr>
+      <tr>
+          <td>remediation_roadmap.csv</td>
+          <td>CSV</td>
+          <td>PM용 — 단계별 개선 작업 계획</td>
+      </tr>
+      <tr>
+          <td>vulnerability_analysis.png</td>
+          <td>PNG</td>
+          <td>시각화 — 심각도 분포, CVSS 히스토그램, 취약점 유형 비율</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="데이터-분석-프로세스">데이터 분석 프로세스<a hidden class="anchor" aria-hidden="true" href="#데이터-분석-프로세스">#</a></h2>
+<pre><code>1. 취약점 데이터 구조화
+   Week 10 스캔 결과 =&gt; CSV / DataFrame 변환
+
+2. CVSS 스코어링 및 심각도 분류
+   각 취약점에 CVSS v3.1 기준 점수 산정
+
+3. ISO 27001:2022 통제항목 매핑
+   취약점 =&gt; 관련 통제항목(A.5.x, A.8.x) 연결
+
+4. Gap Analysis
+   현재 상태 vs ISO 27001 요구사항 비교
+   =&gt; Compliant / Partially Compliant / Non-Compliant / Critical Gap 분류
+
+5. 우선순위 기반 로드맵 생성
+   CVSS 점수 + 비즈니스 영향도 조합으로 처리 순서 결정
+
+6. 시각화 및 이중 보고서 작성
+   경영진용 Executive Summary + 기술팀용 Technical Report
+</code></pre>
+<hr>
+<h2 id="학습-성과-정리">학습 성과 정리<a hidden class="anchor" aria-hidden="true" href="#학습-성과-정리">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>영역</th>
+          <th>학습 내용</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>컨설팅 프로세스</strong></td>
+          <td>진단 결과 =&gt; ISO 표준 매핑 =&gt; Gap Analysis =&gt; 로드맵 도출 전체 흐름</td>
+      </tr>
+      <tr>
+          <td><strong>ISO 27001</strong></td>
+          <td>통제항목(A.5.x, A.8.x) 구조 및 실제 취약점과의 연결 관계</td>
+      </tr>
+      <tr>
+          <td><strong>리스크 커뮤니케이션</strong></td>
+          <td>기술적 취약점을 비즈니스 언어(예상 피해액, 계약 리스크)로 전환</td>
+      </tr>
+      <tr>
+          <td><strong>보고서 이중화</strong></td>
+          <td>경영진용(Executive Summary)과 기술팀용(Technical Report) 분리 작성</td>
+      </tr>
+      <tr>
+          <td><strong>데이터 기반 분석</strong></td>
+          <td>Pandas + Matplotlib 으로 취약점 분포 시각화</td>
+      </tr>
+  </tbody>
+</table>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://hojjang98.github.io/tags/iso27001/">ISO27001</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%B3%B4%EC%95%88%EC%BB%A8%EC%84%A4%ED%8C%85/">보안컨설팅</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%B7%A8%EC%95%BD%EC%A0%90%EB%B6%84%EC%84%9D/">취약점분석</a></li>
+      <li><a href="https://hojjang98.github.io/tags/gapanalysis/">GapAnalysis</a></li>
+      <li><a href="https://hojjang98.github.io/tags/cvss/">CVSS</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%A1%9C%EB%93%9C%EB%A7%B5/">로드맵</a></li>
+      <li><a href="https://hojjang98.github.io/tags/sk%EC%89%B4%EB%8D%94%EC%8A%A4%EB%A3%A8%ED%82%A4%EC%A6%88/">SK쉴더스루키즈</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

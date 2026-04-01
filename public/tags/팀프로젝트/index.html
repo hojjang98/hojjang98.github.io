@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>팀프로젝트 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="canonical" href="https://hojjang98.github.io/tags/%ED%8C%80%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.290573799e582c418c4bd84f2bca757d0a77fd1bf9f5c43942030e706df68ec8.css" integrity="sha256-KQVzeZ5YLEGMS9hPK8p1fQp3/Rv59cQ5QgMOcG32jsg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://hojjang98.github.io/tags/%ED%8C%80%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/index.xml" title="rss">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/tags/%ED%8C%80%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://hojjang98.github.io/tags/%ED%8C%80%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="팀프로젝트">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="팀프로젝트">
+<meta name="twitter:description" content="">
+
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://hojjang98.github.io/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/tags/">Tags</a></div>
+  <h1>
+    팀프로젝트
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">2026.02.27 (Day 82) - 위수탁·제3자 제공 개념 정립 &#43; 팀 프로젝트 방향 논의
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>개인정보 처리 위수탁과 제3자 제공 구분 기준, 토스·NICE·PASS 법적 구조 분석, 팀 프로젝트 역할 및 멘토링 질문 준비.</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-27 00:00:00 +0000 UTC'>2026년 2월 27일</span></footer>
+  <a class="entry-link" aria-label="post link to 2026.02.27 (Day 82) - 위수탁·제3자 제공 개념 정립 &#43; 팀 프로젝트 방향 논의" href="https://hojjang98.github.io/daily_logs/week17/20260227_final_project_day07/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Mini Project 02 — DNA Lab Security Scanner
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>23andMe 데이터 유출 사건을 배경으로, 유전 정보를 다루는 DNA Lab 웹앱을 대상으로 웹 15종 &#43; OS 50종 총 65개 스캐너를 구현한 두 번째 팀 미니프로젝트 (리드 보안 엔지니어)</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-01-16 00:00:00 +0000 UTC'>2026년 1월 16일</span></footer>
+  <a class="entry-link" aria-label="post link to Mini Project 02 — DNA Lab Security Scanner" href="https://hojjang98.github.io/project/week_10/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">2026.01.06 (Day 49) - 최종 발표 및 프로젝트 완료
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>DNA Lab 최종 발표 완료, 강사님 ‘3조 정말 잘했습니다’ 칭찬 4가지, Q&amp;A 3개 답변, 웹 93.8%/OS 28.0% 탐지율 성과, 팀장 발표 소회 및 리더십 성장 경험, 이후 SOC 분석가 방향 설정</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-01-06 00:00:00 +0000 UTC'>2026년 1월 6일</span></footer>
+  <a class="entry-link" aria-label="post link to 2026.01.06 (Day 49) - 최종 발표 및 프로젝트 완료" href="https://hojjang98.github.io/daily_logs/week11/20260106_project_05/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">2026.01.05 (Day 48) - 발표 자료 완성 및 최종 점검
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>DNA Lab 최종 발표 PPT 16슬라이드 완성, 발표 스크립트 작성 및 3차 리허설(22분 조정), 웹 93.8%(15/16)/OS 28.0%(14/50)/전체 43.9%(29/66) 진단 결과 데이터 정리, 4가지 프로젝트 한계점 및 예상 Q&amp;A 20개 준비</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-01-05 00:00:00 +0000 UTC'>2026년 1월 5일</span></footer>
+  <a class="entry-link" aria-label="post link to 2026.01.05 (Day 48) - 발표 자료 완성 및 최종 점검" href="https://hojjang98.github.io/daily_logs/week11/20260105_project_04/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">2025.12.31 (Day 46) - 오프라인 미팅과 DNA Lab 역할 분담
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>팀 오프라인 대면 회의에서 DNA Lab 페르소나 구체화 및 역할 분담 확정(호짱=Python 스캐너, 백엔드/프론트엔드/문서화), 사용자 여정별 취약점 매핑, 23andMe 사건 기반 시나리오 설계, GitHub 협업 규칙 및 일일 체크인 프로토콜 수립</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-12-31 00:00:00 +0000 UTC'>2025년 12월 31일</span></footer>
+  <a class="entry-link" aria-label="post link to 2025.12.31 (Day 46) - 오프라인 미팅과 DNA Lab 역할 분담" href="https://hojjang98.github.io/daily_logs/week10/20251231_project_02/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">2025.11.21 (Day 20) 팀 프로젝트: 최종 프레젠테이션 및 발표
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>팀 프로젝트 최종 프레젠테이션 성공적 마무리 및 Q/A 대응 회고</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-11-21 00:00:00 +0000 UTC'>2025년 11월 21일</span></footer>
+  <a class="entry-link" aria-label="post link to 2025.11.21 (Day 20) 팀 프로젝트: 최종 프레젠테이션 및 발표" href="https://hojjang98.github.io/daily_logs/week04/20251121_project_final_presentation/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Mini Project 01 — LLM/RAG 기반 영화 흥행 분석 시스템
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Week 3 &amp; 4 통합 첫 번째 팀 미니프로젝트 — TMDB 데이터 기반 RAG 추천·흥행 분석·투자 판단 종합 플랫폼 (팀장)</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-11-21 00:00:00 +0000 UTC'>2025년 11월 21일</span></footer>
+  <a class="entry-link" aria-label="post link to Mini Project 01 — LLM/RAG 기반 영화 흥행 분석 시스템" href="https://hojjang98.github.io/project/week_03_04/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">2025.11.20 (Day 19) Project: 분석 결과 수정 및 최종 발표 자료 완성
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>최종 QA 및 에러 핸들링 점검, 발표 스크립트 및 시연 동선 확정</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-11-20 00:00:00 +0000 UTC'>2025년 11월 20일</span></footer>
+  <a class="entry-link" aria-label="post link to 2025.11.20 (Day 19) Project: 분석 결과 수정 및 최종 발표 자료 완성" href="https://hojjang98.github.io/daily_logs/week04/20251120_project_final_review_completion/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">2025.11.19 (Day 18) Project: LangChain/RAG 분석 모델 통합 및 PPT 초안 제작
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>LangChain/RAG 분석 모델 Streamlit 통합 완료 및 발표 PPT 핵심 시나리오 구성</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-11-19 00:00:00 +0000 UTC'>2025년 11월 19일</span></footer>
+  <a class="entry-link" aria-label="post link to 2025.11.19 (Day 18) Project: LangChain/RAG 분석 모델 통합 및 PPT 초안 제작" href="https://hojjang98.github.io/daily_logs/week04/20251119_project_rag_integration_and_ppt/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">2025.11.18 (Day 17) Project: Streamlit 시각화 대시보드 구현 완료
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Streamlit 멀티페이지 대시보드 구현 및 RAG 기반 영화 추천 UI 완성</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-11-18 00:00:00 +0000 UTC'>2025년 11월 18일</span></footer>
+  <a class="entry-link" aria-label="post link to 2025.11.18 (Day 17) Project: Streamlit 시각화 대시보드 구현 완료" href="https://hojjang98.github.io/daily_logs/week04/20251118_project_visualization_complete/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="next" href="https://hojjang98.github.io/tags/%ED%8C%80%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/page/2/">다음 페이지&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>2026.01.06 (Day 49) - 최종 발표 및 프로젝트 완료 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="팀프로젝트, 발표후기, DNA-Lab, 강사피드백, 프로젝트완료, SOC, 스토리텔링, Rookies-DNA">
+<meta name="description" content="DNA Lab 최종 발표 완료, 강사님 &lsquo;3조 정말 잘했습니다&rsquo; 칭찬 4가지, Q&amp;A 3개 답변, 웹 93.8%/OS 28.0% 탐지율 성과, 팀장 발표 소회 및 리더십 성장 경험, 이후 SOC 분석가 방향 설정">
+<meta name="author" content="">
+<link rel="canonical" href="https://hojjang98.github.io/daily_logs/week11/20260106_project_05/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.290573799e582c418c4bd84f2bca757d0a77fd1bf9f5c43942030e706df68ec8.css" integrity="sha256-KQVzeZ5YLEGMS9hPK8p1fQp3/Rv59cQ5QgMOcG32jsg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/daily_logs/week11/20260106_project_05/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://hojjang98.github.io/daily_logs/week11/20260106_project_05/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="2026.01.06 (Day 49) - 최종 발표 및 프로젝트 완료">
+  <meta property="og:description" content="DNA Lab 최종 발표 완료, 강사님 ‘3조 정말 잘했습니다’ 칭찬 4가지, Q&amp;A 3개 답변, 웹 93.8%/OS 28.0% 탐지율 성과, 팀장 발표 소회 및 리더십 성장 경험, 이후 SOC 분석가 방향 설정">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="daily_logs">
+    <meta property="article:published_time" content="2026-01-06T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-01-06T00:00:00+00:00">
+    <meta property="article:tag" content="팀프로젝트">
+    <meta property="article:tag" content="발표후기">
+    <meta property="article:tag" content="DNA-Lab">
+    <meta property="article:tag" content="강사피드백">
+    <meta property="article:tag" content="프로젝트완료">
+    <meta property="article:tag" content="SOC">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2026.01.06 (Day 49) - 최종 발표 및 프로젝트 완료">
+<meta name="twitter:description" content="DNA Lab 최종 발표 완료, 강사님 &lsquo;3조 정말 잘했습니다&rsquo; 칭찬 4가지, Q&amp;A 3개 답변, 웹 93.8%/OS 28.0% 탐지율 성과, 팀장 발표 소회 및 리더십 성장 경험, 이후 SOC 분석가 방향 설정">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "6개월, 혹은 그 이상의 보안 여정",
+      "item": "https://hojjang98.github.io/daily_logs/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "2026.01.06 (Day 49) - 최종 발표 및 프로젝트 완료",
+      "item": "https://hojjang98.github.io/daily_logs/week11/20260106_project_05/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "2026.01.06 (Day 49) - 최종 발표 및 프로젝트 완료",
+  "name": "2026.01.06 (Day 49) - 최종 발표 및 프로젝트 완료",
+  "description": "DNA Lab 최종 발표 완료, 강사님 \u0026lsquo;3조 정말 잘했습니다\u0026rsquo; 칭찬 4가지, Q\u0026amp;A 3개 답변, 웹 93.8%/OS 28.0% 탐지율 성과, 팀장 발표 소회 및 리더십 성장 경험, 이후 SOC 분석가 방향 설정",
+  "keywords": [
+    "팀프로젝트", "발표후기", "DNA-Lab", "강사피드백", "프로젝트완료", "SOC", "스토리텔링", "Rookies-DNA"
+  ],
+  "articleBody": "📄 2026.01.06 (Day 49) - 최종 발표 및 프로젝트 완료 1. 발표 경험 발표 전 심리 상태 긴장감 (발표 30분 전):\n심박수 급상승 손 떨림 시작 입 마름 목소리 떨릴까 걱정 대처 방법:\n심호흡 3회 반복 물 한 모금 팀원들과 가벼운 농담 “2주간 열심히 준비했다” 자기 암시 걱정거리 및 대비:\n“PPT가 안 열리면?” -\u003e USB 백업 3개 준비 “데모가 실패하면?” -\u003e 녹화 영상 준비 “질문에 답을 못하면?” -\u003e 20개 예상 질문 암기 “시간이 초과되면?” -\u003e 리허설로 22분 맞춰둠 발표 진행 과정 오프닝 (2분):\n실제 멘트: “안녕하십니까, 3조 Helix 팀장 최호준입니다. 저희는 유전자 검사 서비스의 보안 취약점을 자동으로 진단하는 DNA Lab 프로젝트를 진행했습니다.”\n느낌:\n첫 마디가 가장 떨렸음 청중 눈 마주치니 조금 안정됨 목소리 떨림 있었지만 진행 가능 23andMe 사건 소개 (3분):\n핵심 멘트: “2023년 10월, 23andMe에서 690만 명의 유전정보가 유출되었습니다. 비밀번호는 변경할 수 있지만, 유전정보는 평생 바꿀 수 없습니다. 3천만 달러의 합의금이 지급되었고, 이 사건은 유전자 정보 보안의 중요성을 극명하게 보여줍니다.”\n반응:\n청중 집중도 상승 “690만 명” 숫자에 반응 고개 끄덕이는 분들 보임 Rookies DNA 소개 (3분):\n핵심 멘트: “저희는 실제 운영 환경과 유사한 테스트베드를 구축했습니다. 의도적으로 SQL Injection, XSS, 파일 업로드 취약점을 삽입하여 실제 보안 위협을 재현했습니다.”\n실제 구축한 사이트 스크린샷 공개 “실제로 동작하는 서비스\"임을 강조 자동화 진단 시스템 (4분):\n4단계 프로세스 설명:\n웹 크롤링: 사이트 구조 분석 취약점 스크립트 실행: 자동화된 공격 시나리오 결과 분석: 탐지된 취약점 분석 보고서 생성: 상세 리포트 제공 데모 영상: 스캐너 실행 화면(11번 슬라이드), OS 진단 50개 항목 실행 장면, 실시간으로 진행되는 모습\n진단 결과 발표 (5분):\n통계 강조: “전체 66개 항목 중 29개 취약점을 발견했습니다. 웹 취약점은 93.8%의 높은 탐지율을 보였고, OS 취약점은 28.0%의 탐지율을 보였습니다.”\n상세 결과:\nSQL Injection 90점 불충분한 접근제어 85점 XSS 70점 세션 관리 55점 이 부분에서 가장 자신감 있게 발표\n프로젝트 한계점 (2분):\n솔직한 인정: “4가지 개선 필요 영역이 있습니다. 인프라 의존성, 진단 범위 제한, OS 재현 일관성, 접근 제어 단순성입니다. 하지만 이는 향후 개선 방향이며, 교육 과정 내에서는 최선을 다했습니다.”\n느낌:\n한계점을 솔직히 말하니 오히려 신뢰감 상승 강사님도 고개 끄덕이심 클로징 (1분):\n마무리 멘트: “저희 프로젝트는 유전자 검사 서비스의 보안 취약점을 사전에 발견하고 대응할 수 있는 자동화 시스템입니다. 경청해 주셔서 감사합니다.”\n느낌:\n마지막 인사할 때 떨림 거의 사라짐 팀원들 박수 소리에 안도감 2. Q\u0026A 세션 받은 질문들 Q1: 웹 93.8%와 OS 28.0% 차이 이유는?\n답변: “웹 취약점은 16개 항목으로 집중도가 높고, 애플리케이션 코드를 직접 분석할 수 있어 정확도가 높습니다. 반면 OS 취약점은 50개로 범위가 넓고, 시스템 설정 환경에 따라 변동이 크며, 특정 OS 버전에만 존재하는 취약점도 있어 탐지율이 상대적으로 낮습니다.”\n평가:\n미리 준비한 답변이라 자신 있게 대답 강사님 만족스러운 표정 Q2: 실제 서비스에 바로 적용 가능한가?\n답변: “교육 목적으로 개발했지만, 몇 가지 보완하면 가능합니다. 오탐률을 10% 이하로 낮추고, OAuth, JWT 등 진단 범위를 확대하며, CI/CD 파이프라인에 통합하면 실무에서도 활용 가능할 것입니다.”\n평가:\n현실적인 답변 향후 개선 방향 제시 Q3: 다른 팀과 차별화된 점은?\n답변: “23andMe 실제 사건과 연계하여 현실성을 높였고, 웹뿐 아니라 OS 취약점까지 함께 진단하며, Whitebox와 Blackbox를 혼합하여 정확도를 높였습니다. 무엇보다 15개 웹 스캐너를 Python으로 직접 구현했다는 점이 기술적으로 의미가 있습니다.”\n평가:\n차별점을 명확히 제시 기술적 깊이 강조 3. 타 조 발표 관찰 비교 분석 우리 팀 강점:\n23andMe 실제 사건 연계 (스토리텔링 우수) 웹 + OS 통합 진단 (범위 넓음) 자동화 스캐너 직접 구현 (기술력) 93.8% 높은 탐지율 (성과 명확) 솔직한 한계점 인정 (신뢰감) 개선 가능 영역:\n시각화 (1조 대비 부족) 발표 매끄러움 (떨림 있었음) 실시간 데모 (녹화 영상 사용) 4. 강사님 피드백 받은 평가 전체 평가:\n강사님 말씀: “3조 정말 잘했습니다. 23andMe 사건과 연계한 것이 매우 좋았고, 웹과 OS를 함께 진단한 것도 의미 있습니다. 특히 15개 스캐너를 직접 만든 것이 인상적입니다.”\n느낌:\n2주간 고생한 보람 팀원들과 눈 마주치며 웃음 뿌듯함 구체적 칭찬 4가지:\n“스토리텔링이 좋았다” -\u003e 23andMe 690만 명 사건으로 시작, 문제 -\u003e 해결 -\u003e 성과 흐름 “기술적 깊이가 있다” -\u003e Whitebox + Blackbox 혼합, 2차 검증 로직, 93.8% 탐지율 “솔직한 한계점 인정” -\u003e 4가지 개선 영역 제시, 향후 발전 방향 명확 “발표도 잘했다” -\u003e 떨렸지만 내용 전달 명확, 자료 구성 체계적, 시간 관리 정확 개선 조언 기술적 조언:\n오탐률 개선: 현재 20% -\u003e 목표 10% 이하, 머신러닝 기반 분류 고려, 휴리스틱 룰 추가 진단 범위 확대: OAuth 2.0 취약점, JWT 토큰 검증, API 보안 진단 리포팅 고도화: 경영진용 요약 리포트, 개발자용 상세 리포트, 자동 티켓 발행 연동 발표 조언:\n데모는 라이브로: 녹화보다 실시간이 임팩트 있음, 실패해도 괜찮음(교육 과정), 백업은 항상 준비 시각화 강화: 대시보드 추가, 실시간 차트, 비포/애프터 비교 5. 프로젝트 최종 성과 정량적 성과 개발 산출물:\n웹 애플리케이션:\n5개 주요 기능 (로그인, 신청, 조회, 게시판, 관리자) 15개 취약점 삽입 Spring Boot + Thymeleaf + MariaDB Python 스캐너:\n15개 웹 취약점 스캐너 50개 OS 취약점 체크 크롤러 + 동적 스캐너 HTML/TXT/PDF 리포트 생성 문서:\n발표 PPT 16슬라이드 발표 스크립트 5페이지 기술 문서 20페이지 README 및 가이드 진단 성과:\n전체 탐지율: 43.9% (29/66) 웹 취약점: 93.8% (15/16) OS 취약점: 28.0% (14/50) 탐지 시간: 웹 스캔 약 5분, OS 스캔 약 8분, 전체 13분 이내 정성적 성과 기술 역량:\n웹 해킹 기본기 습득: OWASP Top 10 이해, SQL Injection/XSS 실습, 공격과 방어 양쪽 경험 자동화 스크립트 개발: Python requests/BeautifulSoup, 정규표현식/XML 파싱, 크롤러 BFS 알고리즘 인프라 구축: AWS EC2 설정, Docker 컨테이너화, 네트워크 보안 설정 협업 역량:\n팀 프로젝트 리드 경험: 팀장으로서 일정 관리, 역할 분담 및 조율, 갈등 해결 오프라인 협업 경험: 대면 회의 효율성, 실시간 문제 해결, 집단 지성 활용 발표 및 커뮤니케이션: 기술 내용 쉽게 전달, 스토리텔링, Q\u0026A 대응 6. 개인적 소회 떨렸지만 해냈다 발표 전 불안감:\n“다른 조가 너무 잘한 것 같은데…” “우리가 준비한 게 충분할까?” “발표 중에 말 더듬으면 어쩌지?” 대처: 팀원들과 격려, “최선을 다했다” 상기, 심호흡으로 진정\n발표 중 순간들:\n첫 마디가 가장 떨림 “690만 명” 말할 때 청중 반응 확인 진단 결과 발표할 때 자신감 상승 마지막 인사할 때 안도감 느낌:\n시작이 반이다 (첫 마디만 하면 괜찮음) 청중 반응 보니 집중하고 있음 준비한 만큼 나온다 발표 후 감정:\n안도감 (끝났다!) 뿌듯함 (잘했다는 칭찬) 감사함 (팀원들 덕분) 성취감 (2주간 결실) 깨달음:\n떨려도 준비하면 해낼 수 있다 완벽하지 않아도 괜찮다 팀워크가 가장 중요하다 팀장으로서의 성장 리더십 경험:\n배운 것:\n팀원 강점 파악 및 역할 배분 진행 상황 모니터링 어려운 부분 함께 해결 팀 사기 유지 어려웠던 점:\n모두의 의견 조율 일정 맞추기 위한 압박 발표까지 책임져야 하는 부담 보람:\n팀원들 “팀장 덕분\"이라는 말 강사님 “리더십 좋다” 칭찬 결과물 함께 완성한 기쁨 7. 배운 점 및 인사이트 기술적 학습 웹 보안:\n공격 기법과 방어 대책의 양면 이해 Whitebox와 Blackbox의 장단점 자동화의 가치와 한계 개발 역량:\nPython 스크립팅 능력 향상 크롤링과 HTTP 통신 이해 코드 품질과 유지보수성 중요성 비기술적 학습 협업:\n오프라인 협업의 효율성 (온라인 대비 8배) 역할 분담의 중요성 소통과 피드백 문화 발표:\n스토리텔링으로 집중도 향상 떨림은 자연스러운 것 준비가 자신감을 만든다 리더십:\n팀원 신뢰와 존중 책임감과 부담감의 균형 함께 성장하는 기쁨 8. Quick Reference 발표 주요 숫자 23andMe 사건:\n690만 명 유출 3천만 달러 합의금 발표:\n16슬라이드 22분 발표 시간 3개 질문 받음 진단 결과:\n전체: 43.9% 웹: 93.8% OS: 28.0% 받은 칭찬 “스토리텔링이 좋았다” “기술적 깊이가 있다” “솔직한 한계점 인정” “발표도 잘했다” “팀 협업이 좋았다” Today’s Insight:\n떨렸지만 해냈다. 발표 시작 전 손이 떨리고 목소리가 나올까 걱정했지만, 첫 마디를 내뱉는 순간 2주간 준비한 내용이 자연스럽게 흘러나왔다. “690만 명의 유전정보가 유출되었습니다\"라고 말했을 때 청중의 반응을 보며 우리 프로젝트가 의미 있다는 확신이 들었다. 다른 조의 발표를 보며 “우리보다 잘한 것 같은데\"라는 불안감도 있었지만, 강사님께서 “3조 정말 잘했습니다\"라고 말씀하셨을 때 2주간의 고생이 보상받는 느낌이었다. 특히 “발표도 잘했다\"는 말에 떨렸던 나 자신이 자랑스러웠다. 팀원들과 함께 완성한 DNA Lab, 93.8%의 웹 취약점 탐지율, 15개 스캐너 자동화, 그리고 23andMe 사건과의 연계. 이 모든 것이 하나의 스토리가 되어 청중에게 전달되었다. 팀장으로서, 발표자로서, 그리고 한 명의 보안 입문자로서 큰 성장을 경험한 하루였다. 이제 SOC 분석가를 향한 다음 단계를 준비할 시간이다.\n",
+  "wordCount" : "3921",
+  "inLanguage": "ko",
+  "datePublished": "2026-01-06T00:00:00Z",
+  "dateModified": "2026-01-06T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/daily_logs/week11/20260106_project_05/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://hojjang98.github.io/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/daily_logs/">6개월, 혹은 그 이상의 보안 여정</a></div>
+    <h1 class="post-title entry-hint-parent">
+      2026.01.06 (Day 49) - 최종 발표 및 프로젝트 완료
+    </h1>
+    <div class="post-meta"><span title='2026-01-06 00:00:00 +0000 UTC'>2026년 1월 6일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="-20260106-day-49---최종-발표-및-프로젝트-완료">📄 2026.01.06 (Day 49) - 최종 발표 및 프로젝트 완료<a hidden class="anchor" aria-hidden="true" href="#-20260106-day-49---최종-발표-및-프로젝트-완료">#</a></h1>
+<hr>
+<h2 id="1-발표-경험">1. 발표 경험<a hidden class="anchor" aria-hidden="true" href="#1-발표-경험">#</a></h2>
+<h3 id="발표-전-심리-상태">발표 전 심리 상태<a hidden class="anchor" aria-hidden="true" href="#발표-전-심리-상태">#</a></h3>
+<p><strong>긴장감 (발표 30분 전):</strong></p>
+<ul>
+<li>심박수 급상승</li>
+<li>손 떨림 시작</li>
+<li>입 마름</li>
+<li>목소리 떨릴까 걱정</li>
+</ul>
+<p><strong>대처 방법:</strong></p>
+<ul>
+<li>심호흡 3회 반복</li>
+<li>물 한 모금</li>
+<li>팀원들과 가벼운 농담</li>
+<li>&ldquo;2주간 열심히 준비했다&rdquo; 자기 암시</li>
+</ul>
+<p><strong>걱정거리 및 대비:</strong></p>
+<ul>
+<li>&ldquo;PPT가 안 열리면?&rdquo; -&gt; USB 백업 3개 준비</li>
+<li>&ldquo;데모가 실패하면?&rdquo; -&gt; 녹화 영상 준비</li>
+<li>&ldquo;질문에 답을 못하면?&rdquo; -&gt; 20개 예상 질문 암기</li>
+<li>&ldquo;시간이 초과되면?&rdquo; -&gt; 리허설로 22분 맞춰둠</li>
+</ul>
+<hr>
+<h3 id="발표-진행-과정">발표 진행 과정<a hidden class="anchor" aria-hidden="true" href="#발표-진행-과정">#</a></h3>
+<p><strong>오프닝 (2분):</strong></p>
+<p>실제 멘트: &ldquo;안녕하십니까, 3조 Helix 팀장 최호준입니다. 저희는 유전자 검사 서비스의 보안 취약점을 자동으로 진단하는 DNA Lab 프로젝트를 진행했습니다.&rdquo;</p>
+<p>느낌:</p>
+<ul>
+<li>첫 마디가 가장 떨렸음</li>
+<li>청중 눈 마주치니 조금 안정됨</li>
+<li>목소리 떨림 있었지만 진행 가능</li>
+</ul>
+<p><strong>23andMe 사건 소개 (3분):</strong></p>
+<p>핵심 멘트: &ldquo;2023년 10월, 23andMe에서 690만 명의 유전정보가 유출되었습니다. 비밀번호는 변경할 수 있지만, 유전정보는 평생 바꿀 수 없습니다. 3천만 달러의 합의금이 지급되었고, 이 사건은 유전자 정보 보안의 중요성을 극명하게 보여줍니다.&rdquo;</p>
+<p>반응:</p>
+<ul>
+<li>청중 집중도 상승</li>
+<li>&ldquo;690만 명&rdquo; 숫자에 반응</li>
+<li>고개 끄덕이는 분들 보임</li>
+</ul>
+<p><strong>Rookies DNA 소개 (3분):</strong></p>
+<p>핵심 멘트: &ldquo;저희는 실제 운영 환경과 유사한 테스트베드를 구축했습니다. 의도적으로 SQL Injection, XSS, 파일 업로드 취약점을 삽입하여 실제 보안 위협을 재현했습니다.&rdquo;</p>
+<ul>
+<li>실제 구축한 사이트 스크린샷 공개</li>
+<li>&ldquo;실제로 동작하는 서비스&quot;임을 강조</li>
+</ul>
+<p><strong>자동화 진단 시스템 (4분):</strong></p>
+<p>4단계 프로세스 설명:</p>
+<ol>
+<li>웹 크롤링: 사이트 구조 분석</li>
+<li>취약점 스크립트 실행: 자동화된 공격 시나리오</li>
+<li>결과 분석: 탐지된 취약점 분석</li>
+<li>보고서 생성: 상세 리포트 제공</li>
+</ol>
+<p>데모 영상: 스캐너 실행 화면(11번 슬라이드), OS 진단 50개 항목 실행 장면, 실시간으로 진행되는 모습</p>
+<p><strong>진단 결과 발표 (5분):</strong></p>
+<p>통계 강조: &ldquo;전체 66개 항목 중 29개 취약점을 발견했습니다. 웹 취약점은 93.8%의 높은 탐지율을 보였고, OS 취약점은 28.0%의 탐지율을 보였습니다.&rdquo;</p>
+<p>상세 결과:</p>
+<ul>
+<li>SQL Injection 90점</li>
+<li>불충분한 접근제어 85점</li>
+<li>XSS 70점</li>
+<li>세션 관리 55점</li>
+</ul>
+<p>이 부분에서 가장 자신감 있게 발표</p>
+<p><strong>프로젝트 한계점 (2분):</strong></p>
+<p>솔직한 인정: &ldquo;4가지 개선 필요 영역이 있습니다. 인프라 의존성, 진단 범위 제한, OS 재현 일관성, 접근 제어 단순성입니다. 하지만 이는 향후 개선 방향이며, 교육 과정 내에서는 최선을 다했습니다.&rdquo;</p>
+<p>느낌:</p>
+<ul>
+<li>한계점을 솔직히 말하니 오히려 신뢰감 상승</li>
+<li>강사님도 고개 끄덕이심</li>
+</ul>
+<p><strong>클로징 (1분):</strong></p>
+<p>마무리 멘트: &ldquo;저희 프로젝트는 유전자 검사 서비스의 보안 취약점을 사전에 발견하고 대응할 수 있는 자동화 시스템입니다. 경청해 주셔서 감사합니다.&rdquo;</p>
+<p>느낌:</p>
+<ul>
+<li>마지막 인사할 때 떨림 거의 사라짐</li>
+<li>팀원들 박수 소리에 안도감</li>
+</ul>
+<hr>
+<h2 id="2-qa-세션">2. Q&amp;A 세션<a hidden class="anchor" aria-hidden="true" href="#2-qa-세션">#</a></h2>
+<h3 id="받은-질문들">받은 질문들<a hidden class="anchor" aria-hidden="true" href="#받은-질문들">#</a></h3>
+<p><strong>Q1: 웹 93.8%와 OS 28.0% 차이 이유는?</strong></p>
+<p>답변: &ldquo;웹 취약점은 16개 항목으로 집중도가 높고, 애플리케이션 코드를 직접 분석할 수 있어 정확도가 높습니다. 반면 OS 취약점은 50개로 범위가 넓고, 시스템 설정 환경에 따라 변동이 크며, 특정 OS 버전에만 존재하는 취약점도 있어 탐지율이 상대적으로 낮습니다.&rdquo;</p>
+<p>평가:</p>
+<ul>
+<li>미리 준비한 답변이라 자신 있게 대답</li>
+<li>강사님 만족스러운 표정</li>
+</ul>
+<p><strong>Q2: 실제 서비스에 바로 적용 가능한가?</strong></p>
+<p>답변: &ldquo;교육 목적으로 개발했지만, 몇 가지 보완하면 가능합니다. 오탐률을 10% 이하로 낮추고, OAuth, JWT 등 진단 범위를 확대하며, CI/CD 파이프라인에 통합하면 실무에서도 활용 가능할 것입니다.&rdquo;</p>
+<p>평가:</p>
+<ul>
+<li>현실적인 답변</li>
+<li>향후 개선 방향 제시</li>
+</ul>
+<p><strong>Q3: 다른 팀과 차별화된 점은?</strong></p>
+<p>답변: &ldquo;23andMe 실제 사건과 연계하여 현실성을 높였고, 웹뿐 아니라 OS 취약점까지 함께 진단하며, Whitebox와 Blackbox를 혼합하여 정확도를 높였습니다. 무엇보다 15개 웹 스캐너를 Python으로 직접 구현했다는 점이 기술적으로 의미가 있습니다.&rdquo;</p>
+<p>평가:</p>
+<ul>
+<li>차별점을 명확히 제시</li>
+<li>기술적 깊이 강조</li>
+</ul>
+<hr>
+<h2 id="3-타-조-발표-관찰">3. 타 조 발표 관찰<a hidden class="anchor" aria-hidden="true" href="#3-타-조-발표-관찰">#</a></h2>
+<h3 id="비교-분석">비교 분석<a hidden class="anchor" aria-hidden="true" href="#비교-분석">#</a></h3>
+<p><strong>우리 팀 강점:</strong></p>
+<ul>
+<li>23andMe 실제 사건 연계 (스토리텔링 우수)</li>
+<li>웹 + OS 통합 진단 (범위 넓음)</li>
+<li>자동화 스캐너 직접 구현 (기술력)</li>
+<li>93.8% 높은 탐지율 (성과 명확)</li>
+<li>솔직한 한계점 인정 (신뢰감)</li>
+</ul>
+<p><strong>개선 가능 영역:</strong></p>
+<ul>
+<li>시각화 (1조 대비 부족)</li>
+<li>발표 매끄러움 (떨림 있었음)</li>
+<li>실시간 데모 (녹화 영상 사용)</li>
+</ul>
+<hr>
+<h2 id="4-강사님-피드백">4. 강사님 피드백<a hidden class="anchor" aria-hidden="true" href="#4-강사님-피드백">#</a></h2>
+<h3 id="받은-평가">받은 평가<a hidden class="anchor" aria-hidden="true" href="#받은-평가">#</a></h3>
+<p><strong>전체 평가:</strong></p>
+<p>강사님 말씀: &ldquo;3조 정말 잘했습니다. 23andMe 사건과 연계한 것이 매우 좋았고, 웹과 OS를 함께 진단한 것도 의미 있습니다. 특히 15개 스캐너를 직접 만든 것이 인상적입니다.&rdquo;</p>
+<p>느낌:</p>
+<ul>
+<li>2주간 고생한 보람</li>
+<li>팀원들과 눈 마주치며 웃음</li>
+<li>뿌듯함</li>
+</ul>
+<p><strong>구체적 칭찬 4가지:</strong></p>
+<ol>
+<li>&ldquo;스토리텔링이 좋았다&rdquo; -&gt; 23andMe 690만 명 사건으로 시작, 문제 -&gt; 해결 -&gt; 성과 흐름</li>
+<li>&ldquo;기술적 깊이가 있다&rdquo; -&gt; Whitebox + Blackbox 혼합, 2차 검증 로직, 93.8% 탐지율</li>
+<li>&ldquo;솔직한 한계점 인정&rdquo; -&gt; 4가지 개선 영역 제시, 향후 발전 방향 명확</li>
+<li>&ldquo;발표도 잘했다&rdquo; -&gt; 떨렸지만 내용 전달 명확, 자료 구성 체계적, 시간 관리 정확</li>
+</ol>
+<h3 id="개선-조언">개선 조언<a hidden class="anchor" aria-hidden="true" href="#개선-조언">#</a></h3>
+<p><strong>기술적 조언:</strong></p>
+<ul>
+<li>오탐률 개선: 현재 20% -&gt; 목표 10% 이하, 머신러닝 기반 분류 고려, 휴리스틱 룰 추가</li>
+<li>진단 범위 확대: OAuth 2.0 취약점, JWT 토큰 검증, API 보안 진단</li>
+<li>리포팅 고도화: 경영진용 요약 리포트, 개발자용 상세 리포트, 자동 티켓 발행 연동</li>
+</ul>
+<p><strong>발표 조언:</strong></p>
+<ul>
+<li>데모는 라이브로: 녹화보다 실시간이 임팩트 있음, 실패해도 괜찮음(교육 과정), 백업은 항상 준비</li>
+<li>시각화 강화: 대시보드 추가, 실시간 차트, 비포/애프터 비교</li>
+</ul>
+<hr>
+<h2 id="5-프로젝트-최종-성과">5. 프로젝트 최종 성과<a hidden class="anchor" aria-hidden="true" href="#5-프로젝트-최종-성과">#</a></h2>
+<h3 id="정량적-성과">정량적 성과<a hidden class="anchor" aria-hidden="true" href="#정량적-성과">#</a></h3>
+<p><strong>개발 산출물:</strong></p>
+<p>웹 애플리케이션:</p>
+<ul>
+<li>5개 주요 기능 (로그인, 신청, 조회, 게시판, 관리자)</li>
+<li>15개 취약점 삽입</li>
+<li>Spring Boot + Thymeleaf + MariaDB</li>
+</ul>
+<p>Python 스캐너:</p>
+<ul>
+<li>15개 웹 취약점 스캐너</li>
+<li>50개 OS 취약점 체크</li>
+<li>크롤러 + 동적 스캐너</li>
+<li>HTML/TXT/PDF 리포트 생성</li>
+</ul>
+<p>문서:</p>
+<ul>
+<li>발표 PPT 16슬라이드</li>
+<li>발표 스크립트 5페이지</li>
+<li>기술 문서 20페이지</li>
+<li>README 및 가이드</li>
+</ul>
+<p><strong>진단 성과:</strong></p>
+<ul>
+<li>전체 탐지율: 43.9% (29/66)
+<ul>
+<li>웹 취약점: 93.8% (15/16)</li>
+<li>OS 취약점: 28.0% (14/50)</li>
+</ul>
+</li>
+<li>탐지 시간: 웹 스캔 약 5분, OS 스캔 약 8분, 전체 13분 이내</li>
+</ul>
+<h3 id="정성적-성과">정성적 성과<a hidden class="anchor" aria-hidden="true" href="#정성적-성과">#</a></h3>
+<p><strong>기술 역량:</strong></p>
+<ul>
+<li>웹 해킹 기본기 습득: OWASP Top 10 이해, SQL Injection/XSS 실습, 공격과 방어 양쪽 경험</li>
+<li>자동화 스크립트 개발: Python requests/BeautifulSoup, 정규표현식/XML 파싱, 크롤러 BFS 알고리즘</li>
+<li>인프라 구축: AWS EC2 설정, Docker 컨테이너화, 네트워크 보안 설정</li>
+</ul>
+<p><strong>협업 역량:</strong></p>
+<ul>
+<li>팀 프로젝트 리드 경험: 팀장으로서 일정 관리, 역할 분담 및 조율, 갈등 해결</li>
+<li>오프라인 협업 경험: 대면 회의 효율성, 실시간 문제 해결, 집단 지성 활용</li>
+<li>발표 및 커뮤니케이션: 기술 내용 쉽게 전달, 스토리텔링, Q&amp;A 대응</li>
+</ul>
+<hr>
+<h2 id="6-개인적-소회">6. 개인적 소회<a hidden class="anchor" aria-hidden="true" href="#6-개인적-소회">#</a></h2>
+<h3 id="떨렸지만-해냈다">떨렸지만 해냈다<a hidden class="anchor" aria-hidden="true" href="#떨렸지만-해냈다">#</a></h3>
+<p><strong>발표 전 불안감:</strong></p>
+<ul>
+<li>&ldquo;다른 조가 너무 잘한 것 같은데&hellip;&rdquo;</li>
+<li>&ldquo;우리가 준비한 게 충분할까?&rdquo;</li>
+<li>&ldquo;발표 중에 말 더듬으면 어쩌지?&rdquo;</li>
+</ul>
+<p><strong>대처:</strong> 팀원들과 격려, &ldquo;최선을 다했다&rdquo; 상기, 심호흡으로 진정</p>
+<p><strong>발표 중 순간들:</strong></p>
+<ul>
+<li>첫 마디가 가장 떨림</li>
+<li>&ldquo;690만 명&rdquo; 말할 때 청중 반응 확인</li>
+<li>진단 결과 발표할 때 자신감 상승</li>
+<li>마지막 인사할 때 안도감</li>
+</ul>
+<p>느낌:</p>
+<ul>
+<li>시작이 반이다 (첫 마디만 하면 괜찮음)</li>
+<li>청중 반응 보니 집중하고 있음</li>
+<li>준비한 만큼 나온다</li>
+</ul>
+<p><strong>발표 후 감정:</strong></p>
+<ul>
+<li>안도감 (끝났다!)</li>
+<li>뿌듯함 (잘했다는 칭찬)</li>
+<li>감사함 (팀원들 덕분)</li>
+<li>성취감 (2주간 결실)</li>
+</ul>
+<p>깨달음:</p>
+<ul>
+<li>떨려도 준비하면 해낼 수 있다</li>
+<li>완벽하지 않아도 괜찮다</li>
+<li>팀워크가 가장 중요하다</li>
+</ul>
+<h3 id="팀장으로서의-성장">팀장으로서의 성장<a hidden class="anchor" aria-hidden="true" href="#팀장으로서의-성장">#</a></h3>
+<p><strong>리더십 경험:</strong></p>
+<p>배운 것:</p>
+<ul>
+<li>팀원 강점 파악 및 역할 배분</li>
+<li>진행 상황 모니터링</li>
+<li>어려운 부분 함께 해결</li>
+<li>팀 사기 유지</li>
+</ul>
+<p>어려웠던 점:</p>
+<ul>
+<li>모두의 의견 조율</li>
+<li>일정 맞추기 위한 압박</li>
+<li>발표까지 책임져야 하는 부담</li>
+</ul>
+<p>보람:</p>
+<ul>
+<li>팀원들 &ldquo;팀장 덕분&quot;이라는 말</li>
+<li>강사님 &ldquo;리더십 좋다&rdquo; 칭찬</li>
+<li>결과물 함께 완성한 기쁨</li>
+</ul>
+<hr>
+<h2 id="7-배운-점-및-인사이트">7. 배운 점 및 인사이트<a hidden class="anchor" aria-hidden="true" href="#7-배운-점-및-인사이트">#</a></h2>
+<h3 id="기술적-학습">기술적 학습<a hidden class="anchor" aria-hidden="true" href="#기술적-학습">#</a></h3>
+<p><strong>웹 보안:</strong></p>
+<ul>
+<li>공격 기법과 방어 대책의 양면 이해</li>
+<li>Whitebox와 Blackbox의 장단점</li>
+<li>자동화의 가치와 한계</li>
+</ul>
+<p><strong>개발 역량:</strong></p>
+<ul>
+<li>Python 스크립팅 능력 향상</li>
+<li>크롤링과 HTTP 통신 이해</li>
+<li>코드 품질과 유지보수성 중요성</li>
+</ul>
+<h3 id="비기술적-학습">비기술적 학습<a hidden class="anchor" aria-hidden="true" href="#비기술적-학습">#</a></h3>
+<p><strong>협업:</strong></p>
+<ul>
+<li>오프라인 협업의 효율성 (온라인 대비 8배)</li>
+<li>역할 분담의 중요성</li>
+<li>소통과 피드백 문화</li>
+</ul>
+<p><strong>발표:</strong></p>
+<ul>
+<li>스토리텔링으로 집중도 향상</li>
+<li>떨림은 자연스러운 것</li>
+<li>준비가 자신감을 만든다</li>
+</ul>
+<p><strong>리더십:</strong></p>
+<ul>
+<li>팀원 신뢰와 존중</li>
+<li>책임감과 부담감의 균형</li>
+<li>함께 성장하는 기쁨</li>
+</ul>
+<hr>
+<h2 id="8-quick-reference">8. Quick Reference<a hidden class="anchor" aria-hidden="true" href="#8-quick-reference">#</a></h2>
+<h3 id="발표-주요-숫자">발표 주요 숫자<a hidden class="anchor" aria-hidden="true" href="#발표-주요-숫자">#</a></h3>
+<p>23andMe 사건:</p>
+<ul>
+<li>690만 명 유출</li>
+<li>3천만 달러 합의금</li>
+</ul>
+<p>발표:</p>
+<ul>
+<li>16슬라이드</li>
+<li>22분 발표 시간</li>
+<li>3개 질문 받음</li>
+</ul>
+<p>진단 결과:</p>
+<ul>
+<li>전체: 43.9%</li>
+<li>웹: 93.8%</li>
+<li>OS: 28.0%</li>
+</ul>
+<h3 id="받은-칭찬">받은 칭찬<a hidden class="anchor" aria-hidden="true" href="#받은-칭찬">#</a></h3>
+<ul>
+<li>&ldquo;스토리텔링이 좋았다&rdquo;</li>
+<li>&ldquo;기술적 깊이가 있다&rdquo;</li>
+<li>&ldquo;솔직한 한계점 인정&rdquo;</li>
+<li>&ldquo;발표도 잘했다&rdquo;</li>
+<li>&ldquo;팀 협업이 좋았다&rdquo;</li>
+</ul>
+<hr>
+<p><strong>Today&rsquo;s Insight:</strong></p>
+<p>떨렸지만 해냈다. 발표 시작 전 손이 떨리고 목소리가 나올까 걱정했지만, 첫 마디를 내뱉는 순간 2주간 준비한 내용이 자연스럽게 흘러나왔다. &ldquo;690만 명의 유전정보가 유출되었습니다&quot;라고 말했을 때 청중의 반응을 보며 우리 프로젝트가 의미 있다는 확신이 들었다. 다른 조의 발표를 보며 &ldquo;우리보다 잘한 것 같은데&quot;라는 불안감도 있었지만, 강사님께서 &ldquo;3조 정말 잘했습니다&quot;라고 말씀하셨을 때 2주간의 고생이 보상받는 느낌이었다. 특히 &ldquo;발표도 잘했다&quot;는 말에 떨렸던 나 자신이 자랑스러웠다. 팀원들과 함께 완성한 DNA Lab, 93.8%의 웹 취약점 탐지율, 15개 스캐너 자동화, 그리고 23andMe 사건과의 연계. 이 모든 것이 하나의 스토리가 되어 청중에게 전달되었다. 팀장으로서, 발표자로서, 그리고 한 명의 보안 입문자로서 큰 성장을 경험한 하루였다. 이제 SOC 분석가를 향한 다음 단계를 준비할 시간이다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://hojjang98.github.io/tags/%ED%8C%80%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/">팀프로젝트</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%B0%9C%ED%91%9C%ED%9B%84%EA%B8%B0/">발표후기</a></li>
+      <li><a href="https://hojjang98.github.io/tags/dna-lab/">DNA-Lab</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EA%B0%95%EC%82%AC%ED%94%BC%EB%93%9C%EB%B0%B1/">강사피드백</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%99%84%EB%A3%8C/">프로젝트완료</a></li>
+      <li><a href="https://hojjang98.github.io/tags/soc/">SOC</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%8A%A4%ED%86%A0%EB%A6%AC%ED%85%94%EB%A7%81/">스토리텔링</a></li>
+      <li><a href="https://hojjang98.github.io/tags/rookies-dna/">Rookies-DNA</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

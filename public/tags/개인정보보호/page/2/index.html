@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>개인정보보호 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="canonical" href="https://hojjang98.github.io/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.290573799e582c418c4bd84f2bca757d0a77fd1bf9f5c43942030e706df68ec8.css" integrity="sha256-KQVzeZ5YLEGMS9hPK8p1fQp3/Rv59cQ5QgMOcG32jsg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://hojjang98.github.io/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8/index.xml" title="rss">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://hojjang98.github.io/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="개인정보보호">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="개인정보보호">
+<meta name="twitter:description" content="">
+
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://hojjang98.github.io/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/tags/">Tags</a></div>
+  <h1>
+    개인정보보호
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">2026.03.07 (Day 88) - 멘토링 피드백 반영 및 다음 주 산출물 준비 방향 확정
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Y/P/N/NA 판정 기준 확정, 수치 기반 서술 원칙, 증적 선별 전략, AWS 키오스크 단독 적용 확정, 다음 주 산출물 목표 수립.</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-07 00:00:00 +0000 UTC'>2026년 3월 7일</span></footer>
+  <a class="entry-link" aria-label="post link to 2026.03.07 (Day 88) - 멘토링 피드백 반영 및 다음 주 산출물 준비 방향 확정" href="https://hojjang98.github.io/daily_logs/week18/20260307_final_project_day13/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">2026.03.06 (Day 87) - 하랑 케이터링 수탁사 점검 항목 정리 및 결과물 형식 통일
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>하랑 케이터링 전 구간 점검 항목 작성, N/P/NA 판정 기준 확정, 결과물 형식 통일 (다온컨택 형식 기준), 멘토 Q&amp;A 정리.</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-06 00:00:00 +0000 UTC'>2026년 3월 6일</span></footer>
+  <a class="entry-link" aria-label="post link to 2026.03.06 (Day 87) - 하랑 케이터링 수탁사 점검 항목 정리 및 결과물 형식 통일" href="https://hojjang98.github.io/daily_logs/week18/20260306_final_project_day12/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Day 24: GDPR (EU 일반 데이터 보호 규정)
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>EU 일반 데이터 보호 규정(GDPR)의 7대 원칙, 6가지 법적 근거, 정보주체 권리, 컨트롤러·프로세서 의무 및 한국 기업의 GDPR 대응 전략을 학습합니다.</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-06 00:00:00 +0000 UTC'>2026년 3월 6일</span></footer>
+  <a class="entry-link" aria-label="post link to Day 24: GDPR (EU 일반 데이터 보호 규정)" href="https://hojjang98.github.io/cyber_law_study/03_%EC%9D%B8%EC%A6%9D%EB%B0%8F%EA%B5%AD%EC%A0%9C%ED%91%9C%EC%A4%80/05_gdpr/day24_gdpr/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">2026.03.05 (Day 86) - 수탁사 등급 비율 재설정 · 시나리오 고도화 · WBS 확정
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>수탁사별 맞춤형 판정 등급 비율 재설정, 양호 시나리오 법적 정합성 강화, 산출물 Word 단일화, WBS 일정 확정.</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-05 00:00:00 +0000 UTC'>2026년 3월 5일</span></footer>
+  <a class="entry-link" aria-label="post link to 2026.03.05 (Day 86) - 수탁사 등급 비율 재설정 · 시나리오 고도화 · WBS 확정" href="https://hojjang98.github.io/daily_logs/week18/20260305_final_project_day11/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">2026.03.04 (Day 85) - 수탁사 시나리오 고도화 및 체크리스트 전체 매핑 (Full Version)
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>멘토 피드백 반영, 3단계 평가 등급 도입, 하랑 케이터링 50대 보안 시나리오 및 체크리스트 I열 상세 매핑 완료.</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-04 00:00:00 +0000 UTC'>2026년 3월 4일</span></footer>
+  <a class="entry-link" aria-label="post link to 2026.03.04 (Day 85) - 수탁사 시나리오 고도화 및 체크리스트 전체 매핑 (Full Version)" href="https://hojjang98.github.io/daily_logs/week18/20260304_final_project_day10/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Day 22: ISO 27701 개인정보 관리 시스템
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>ISO 27701의 구조와 PIMS 요구사항(Clause 5), Annex A·B의 PII 컨트롤러·프로세서 통제항목, 인증 절차 및 GDPR과의 관계를 학습하고 보안 컨설팅 관점의 활용 방안을 파악합니다.</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-04 00:00:00 +0000 UTC'>2026년 3월 4일</span></footer>
+  <a class="entry-link" aria-label="post link to Day 22: ISO 27701 개인정보 관리 시스템" href="https://hojjang98.github.io/cyber_law_study/03_%EC%9D%B8%EC%A6%9D%EB%B0%8F%EA%B5%AD%EC%A0%9C%ED%91%9C%EC%A4%80/03_iso27701/day22_iso27701/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">2026.03.03 (Day 84) - 수탁사 시나리오 구성 · 체크리스트 작업 착수
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>수탁사 최종 선정(하랑 케이터링·온다 로지스), 케이터링·물류 시나리오 설계, 클라우드 보안 점검 항목 추가, 체크리스트 취약/양호/최적 분포 구성.</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-03 00:00:00 +0000 UTC'>2026년 3월 3일</span></footer>
+  <a class="entry-link" aria-label="post link to 2026.03.03 (Day 84) - 수탁사 시나리오 구성 · 체크리스트 작업 착수" href="https://hojjang98.github.io/daily_logs/week18/20260303_final_project_day09/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Week 17 — 파이널 프로젝트: 수탁사 현황 시나리오 수립 (항공사 위탁 관리체계)
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>파이널 프로젝트 2단계 — 국내 항공사를 위탁자로 설정하고 9개 업종 수탁사별 개인정보 처리 현황과 핵심 컴플라이언스 이슈를 구체화한 시나리오 스케치</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-23 00:00:00 +0000 UTC'>2026년 2월 23일</span></footer>
+  <a class="entry-link" aria-label="post link to Week 17 — 파이널 프로젝트: 수탁사 현황 시나리오 수립 (항공사 위탁 관리체계)" href="https://hojjang98.github.io/project/week_17/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Week 16 — 파이널 프로젝트 준비: 개인정보 위·수탁 관리체계 컨설팅
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>SK쉴더스 루키즈 28기 파이널 프로젝트 1단계 — 개인정보 위·수탁 관리체계 컨설팅의 프로젝트 구조 이해, 위탁자/수탁사 후보 선정, AI 기업 관련 보안 사고 사례 분석</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-16 00:00:00 +0000 UTC'>2026년 2월 16일</span></footer>
+  <a class="entry-link" aria-label="post link to Week 16 — 파이널 프로젝트 준비: 개인정보 위·수탁 관리체계 컨설팅" href="https://hojjang98.github.io/project/week_16/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">2026.02.13 (Day 77) - 프로젝트 주제 브레인스토밍 및 팀 회의
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>파이널 프로젝트 팀 회의 — 위·수탁 관계가 있는 업종 9개 카테고리 분류(이커머스/금융/클라우드/의료/공공결제/항공/자동차/교육/숙박), 카테고리별 보안 이슈 분석, 설 연휴 숙제 설정</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-13 00:00:00 +0000 UTC'>2026년 2월 13일</span></footer>
+  <a class="entry-link" aria-label="post link to 2026.02.13 (Day 77) - 프로젝트 주제 브레인스토밍 및 팀 회의" href="https://hojjang98.github.io/daily_logs/week16/20260213_final_project_day02/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="prev" href="https://hojjang98.github.io/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8/">
+      «&nbsp;이전 페이지&nbsp;
+    </a>
+    <a class="next" href="https://hojjang98.github.io/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8/page/3/">다음 페이지&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="ko" dir="auto" data-theme="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>2025.10.29 (Day 3) 파이썬 제어문·문자열·날짜 처리 및 보안 자동화 기초 | HJ&#39;s Security Note</title>
 <meta name="keywords" content="Python, 제어문, 날짜처리, 로그파싱, SK쉴더스루키즈">
 <meta name="description" content="파이썬 제어문, 문자열, 날짜 처리 학습 및 보안 자동화 기초 실습">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/daily_logs/week01/20251029_python_control_string_date/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.a29c24210eb31d9ce56f669c66a35c9c51b17376b7764e336a49af7dec914cf0.css" integrity="sha256-opwkIQ6zHZzlb2acZqNcnFGxc3a3dk4zakmvfeyRTPA=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="canonical" href="https://hojjang98.github.io/daily_logs/week01/20251029_python_control_string_date/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.290573799e582c418c4bd84f2bca757d0a77fd1bf9f5c43942030e706df68ec8.css" integrity="sha256-KQVzeZ5YLEGMS9hPK8p1fQp3/Rv59cQ5QgMOcG32jsg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="ko" href="http://localhost:1313/daily_logs/week01/20251029_python_control_string_date/">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/daily_logs/week01/20251029_python_control_string_date/">
 <noscript>
     <style>
         #theme-toggle,
@@ -70,13 +70,80 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
+</script><meta property="og:url" content="https://hojjang98.github.io/daily_logs/week01/20251029_python_control_string_date/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="2025.10.29 (Day 3) 파이썬 제어문·문자열·날짜 처리 및 보안 자동화 기초">
+  <meta property="og:description" content="파이썬 제어문, 문자열, 날짜 처리 학습 및 보안 자동화 기초 실습">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="daily_logs">
+    <meta property="article:published_time" content="2025-10-29T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-10-29T00:00:00+00:00">
+    <meta property="article:tag" content="Python">
+    <meta property="article:tag" content="제어문">
+    <meta property="article:tag" content="날짜처리">
+    <meta property="article:tag" content="로그파싱">
+    <meta property="article:tag" content="SK쉴더스루키즈">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2025.10.29 (Day 3) 파이썬 제어문·문자열·날짜 처리 및 보안 자동화 기초">
+<meta name="twitter:description" content="파이썬 제어문, 문자열, 날짜 처리 학습 및 보안 자동화 기초 실습">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "6개월, 혹은 그 이상의 보안 여정",
+      "item": "https://hojjang98.github.io/daily_logs/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "2025.10.29 (Day 3) 파이썬 제어문·문자열·날짜 처리 및 보안 자동화 기초",
+      "item": "https://hojjang98.github.io/daily_logs/week01/20251029_python_control_string_date/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "2025.10.29 (Day 3) 파이썬 제어문·문자열·날짜 처리 및 보안 자동화 기초",
+  "name": "2025.10.29 (Day 3) 파이썬 제어문·문자열·날짜 처리 및 보안 자동화 기초",
+  "description": "파이썬 제어문, 문자열, 날짜 처리 학습 및 보안 자동화 기초 실습",
+  "keywords": [
+    "Python", "제어문", "날짜처리", "로그파싱", "SK쉴더스루키즈"
+  ],
+  "articleBody": "2025.10.29 (Day 3) 제어문·문자열·날짜 처리 활용 1. 주요 개념 요약 조건문(if): 프로그램의 흐름을 분기시키는 기본 구조로, 입력값의 상태에 따라 특정 동작을 수행하도록 제어한다. 반복문(for, while): 동일한 코드 블록을 다회 실행하며, 입력 검증, 계산 누적, 데이터 순회 등 자동화 작업에 필수적이다. 문자열 처리: split()이나 슬라이싱은 비정형 텍스트 데이터를 구조화하는 핵심 기법으로, 로그 파싱 시 특정 필드를 추출하는 데 사용된다. 삼항연산자: 단순한 조건 분기를 한 줄로 표현하여 코드의 가독성을 높이는 기법이다. 날짜 데이터 처리: datetime과 timedelta는 날짜형 데이터를 수치적으로 관리하게 해주며, 기간 계산 및 시간차 분석의 기반이 된다. 2. 실습 코드 및 응용 A. 입력값 조건 분기 데이터 검증 단계에서 입력값이 허용 범위를 벗어날 경우 차단 또는 경고 로직으로 전환하는 분기점으로 활용한다. num = int(input(\"숫자를 입력하세요: \")) if num \u003e 0: print(\"양수\") elif num \u003c 0: print(\"음수\") else: print(\"0\") B. 문자열 구조 분리 로그 데이터에서 IP 주소, 타임스탬프, 사용자 ID 등 특정 구간을 파싱할 때 필수적으로 적용된다. phone = \"010-1234-5678\" prefix = phone.split('-')[0] # 구분자를 기준으로 선두 번호 추출 C. 날짜 및 기간 연산 timedelta를 활용하여 로그 수집이나 배치 작업의 실행 주기를 계산하며, 보안 시스템의 기간별 탐지 데이터 조회에 사용된다. from datetime import date, timedelta start = date(2025, 10, 1) end = date(2025, 10, 5) for i in range((end - start).days + 1): print(start + timedelta(days=i)) # 시작일부터 종료일까지 일자 생성 3. 보안 관점 분석 입력 검증과 1차 방어: 조건문은 외부 입력값의 유효성을 검사하는 핵심 방어선이다. 비정상 입력을 조기에 차단함으로써 주입 공격(Injection) 등의 위협을 완화한다. 자동 탐지 루프 설계: 반복문은 로그 스트림을 주기적으로 순회하며 패턴을 탐색하거나, 계정별 로그인 시도 횟수를 누적 분석하는 탐지 엔진의 기본 구조가 된다. 데이터 정형화의 정밀도: split과 슬라이싱을 통한 데이터 정제는 탐지 규칙의 정확도를 결정짓는 요소이다. 불필요한 포맷 불일치를 제거하여 데이터 정합성을 확보한다. 스케줄 관리와 탐지 누락 방지: 배치 탐지 작업 시 윤년이나 시간대 계산 오차는 탐지 누락으로 이어질 수 있으므로, 검증된 날짜 처리 모듈 사용이 필수적이다. 정책 코드화의 가독성: 삼항연산자는 임계 조건(Threshold) 설정을 명확하게 정의하여 정책 관리의 유지보수성을 높인다. 4. 요약 제어문, 문자열, 날짜 처리 문법은 입력 검증부터 스케줄 관리까지 이어지는 데이터 흐름 제어의 근간이다. 정밀한 문자열 파싱과 날짜 연산 능력이 뒷받침되어야 보안 로그 분석의 자동화가 가능하다. 전체적인 로직 구조에 대한 이해는 향후 고도화된 보안 자동화 시스템 설계의 기반이 된다. ",
+  "wordCount" : "1072",
+  "inLanguage": "ko",
+  "datePublished": "2025-10-29T00:00:00Z",
+  "dateModified": "2025-10-29T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/daily_logs/week01/20251029_python_control_string_date/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
 </script>
 </head>
 <body id="top">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -102,37 +169,37 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/about" title="소개">
+                <a href="https://hojjang98.github.io/about" title="소개">
                     <span>소개</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
                     <span>일일 로그</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/" title="프로젝트">
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
                     <span>프로젝트</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/cyber-law-study/" title="Cyber-Law-Study">
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
                     <span>보안법 공부</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
                     <span>보안 시사 분석</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
                     <span>태그</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/paper-review/" title="Paper-Review">
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
                     <span>논문 리뷰</span>
                 </a>
             </li>
@@ -143,7 +210,7 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/">홈</a>&nbsp;»&nbsp;<a href="http://localhost:1313/daily_logs/">6개월, 혹은 그 이상의 보안 여정</a></div>
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/daily_logs/">6개월, 혹은 그 이상의 보안 여정</a></div>
     <h1 class="post-title entry-hint-parent">
       2025.10.29 (Day 3) 파이썬 제어문·문자열·날짜 처리 및 보안 자동화 기초
     </h1>
@@ -210,18 +277,18 @@
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/python/">Python</a></li>
-      <li><a href="http://localhost:1313/tags/%EC%A0%9C%EC%96%B4%EB%AC%B8/">제어문</a></li>
-      <li><a href="http://localhost:1313/tags/%EB%82%A0%EC%A7%9C%EC%B2%98%EB%A6%AC/">날짜처리</a></li>
-      <li><a href="http://localhost:1313/tags/%EB%A1%9C%EA%B7%B8%ED%8C%8C%EC%8B%B1/">로그파싱</a></li>
-      <li><a href="http://localhost:1313/tags/sk%EC%89%B4%EB%8D%94%EC%8A%A4%EB%A3%A8%ED%82%A4%EC%A6%88/">SK쉴더스루키즈</a></li>
+      <li><a href="https://hojjang98.github.io/tags/python/">Python</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%A0%9C%EC%96%B4%EB%AC%B8/">제어문</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%82%A0%EC%A7%9C%EC%B2%98%EB%A6%AC/">날짜처리</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%A1%9C%EA%B7%B8%ED%8C%8C%EC%8B%B1/">로그파싱</a></li>
+      <li><a href="https://hojjang98.github.io/tags/sk%EC%89%B4%EB%8D%94%EC%8A%A4%EB%A3%A8%ED%82%A4%EC%A6%88/">SK쉴더스루키즈</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
 
     <span>
         Powered by

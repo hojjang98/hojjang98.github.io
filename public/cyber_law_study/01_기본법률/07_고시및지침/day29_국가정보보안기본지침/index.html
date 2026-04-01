@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Day 29: 국가정보보안 기본지침 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="국가정보보안기본지침, 공공기관보안, 망분리, 보안등급, CISO, 국정원">
+<meta name="description" content="국가정보원장 훈령인 국가정보보안 기본지침의 전체 구조를 학습합니다. 보안등급 분류, 망분리 의무, 검증 암호 알고리즘 등 공공기관 정보보호 핵심 기준을 정리합니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/07_%EA%B3%A0%EC%8B%9C%EB%B0%8F%EC%A7%80%EC%B9%A8/day29_%EA%B5%AD%EA%B0%80%EC%A0%95%EB%B3%B4%EB%B3%B4%EC%95%88%EA%B8%B0%EB%B3%B8%EC%A7%80%EC%B9%A8/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.290573799e582c418c4bd84f2bca757d0a77fd1bf9f5c43942030e706df68ec8.css" integrity="sha256-KQVzeZ5YLEGMS9hPK8p1fQp3/Rv59cQ5QgMOcG32jsg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/07_%EA%B3%A0%EC%8B%9C%EB%B0%8F%EC%A7%80%EC%B9%A8/day29_%EA%B5%AD%EA%B0%80%EC%A0%95%EB%B3%B4%EB%B3%B4%EC%95%88%EA%B8%B0%EB%B3%B8%EC%A7%80%EC%B9%A8/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/07_%EA%B3%A0%EC%8B%9C%EB%B0%8F%EC%A7%80%EC%B9%A8/day29_%EA%B5%AD%EA%B0%80%EC%A0%95%EB%B3%B4%EB%B3%B4%EC%95%88%EA%B8%B0%EB%B3%B8%EC%A7%80%EC%B9%A8/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="Day 29: 국가정보보안 기본지침">
+  <meta property="og:description" content="국가정보원장 훈령인 국가정보보안 기본지침의 전체 구조를 학습합니다. 보안등급 분류, 망분리 의무, 검증 암호 알고리즘 등 공공기관 정보보호 핵심 기준을 정리합니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="cyber_law_study">
+    <meta property="article:published_time" content="2026-03-13T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-03-13T00:00:00+00:00">
+    <meta property="article:tag" content="국가정보보안기본지침">
+    <meta property="article:tag" content="공공기관보안">
+    <meta property="article:tag" content="망분리">
+    <meta property="article:tag" content="보안등급">
+    <meta property="article:tag" content="CISO">
+    <meta property="article:tag" content="국정원">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Day 29: 국가정보보안 기본지침">
+<meta name="twitter:description" content="국가정보원장 훈령인 국가정보보안 기본지침의 전체 구조를 학습합니다. 보안등급 분류, 망분리 의무, 검증 암호 알고리즘 등 공공기관 정보보호 핵심 기준을 정리합니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "보안 컨설팅 공부",
+      "item": "https://hojjang98.github.io/cyber_law_study/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  4 ,
+      "name": "Day 29: 국가정보보안 기본지침",
+      "item": "https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/07_%EA%B3%A0%EC%8B%9C%EB%B0%8F%EC%A7%80%EC%B9%A8/day29_%EA%B5%AD%EA%B0%80%EC%A0%95%EB%B3%B4%EB%B3%B4%EC%95%88%EA%B8%B0%EB%B3%B8%EC%A7%80%EC%B9%A8/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Day 29: 국가정보보안 기본지침",
+  "name": "Day 29: 국가정보보안 기본지침",
+  "description": "국가정보원장 훈령인 국가정보보안 기본지침의 전체 구조를 학습합니다. 보안등급 분류, 망분리 의무, 검증 암호 알고리즘 등 공공기관 정보보호 핵심 기준을 정리합니다.",
+  "keywords": [
+    "국가정보보안기본지침", "공공기관보안", "망분리", "보안등급", "CISO", "국정원"
+  ],
+  "articleBody": "Day 29: 국가정보보안 기본지침 1. 국가정보보안 기본지침의 개요 1.1 국가정보보안 기본지침이란? 정식 명칭 : 국가정보보안 기본지침\n성격 : 국가정보원장 훈령\n제정 : 2021년 1월 5일 (전면 개정)\n이전 명칭 :\n- 국가사이버안전관리규정 (2015년)\r- 국가정보보안관리규정 (그 이전)\r1.2 법적 근거 국가정보화 기본법 제3조 (국가의 책무)\n“국가는 정보통신망의 안전성·신뢰성 확보를 위한 시책을 마련하여야 한다”\n전자정부법 제48조 (행정기관등의 정보보호 대책 마련)\n“행정기관등의 장은 소관 정보시스템 및 이를 통하여 처리·보유하고 있는 정보의 안전성·신뢰성 확보를 위하여 필요한 보안대책을 수립·시행하여야 한다”\n1.3 목적 - 1. 국가 정보 자산 보호\r- 2. 국가 안보 및 공공 안전 확보\r- 3. 공공기관 정보보호 체계 표준화\r- 4. 사이버 위협 대응 능력 강화\r1.4 적용 대상 공공기관 - 중앙행정기관 (부처)\r- 지방자치단체\r- 공공기관 (공기업, 준정부기관)\r- 국·공립 대학\r- 지방공사·공단\r국가기밀 취급 민간기업 - 방산업체\r- 국가 연구개발 수행 기업\r특징 : 민간기업은 원칙적으로 적용 대상 아님 (국가기밀 취급 시 해당 부분만 적용)\n1.5 2021년 전면 개정 배경 사이버 위협 환경 변화 - 북한 등 국가 배후 해킹 증가\r- 랜섬웨어 등 신종 위협\r- 공급망 공격\r재택근무 확산 - COVID-19로 원격근무 증가\r- 기존 망분리 중심 정책의 한계\r클라우드 전환 - 공공기관 클라우드 도입 확대\r- 클라우드 보안 기준 필요\r제로 트러스트 - 새로운 보안 패러다임 도입\r2. 전체 구조 2.1 7개 장 [제1장 총칙]\n- 목적, 정의, 적용범위\r[제2장 국가정보보안 관리체계]\n- 국가사이버안전센터\r- 정보보호책임관\r- 보안관리위원회\r[제3장 국가정보보안 대책]\n- 보안등급 분류\r- 보안구역 설정\r- 인원 보안\r- 문서 보안\r- 시설 보안\r- 정보시스템 보안\r- 암호 이용\r[제4장 사이버 위협 대응]\n- 침해사고 예방 및 대응\r- 보안관제\r- 정보 공유\r[제5장 평가 및 점검]\n- 자체평가\r- 외부평가\r[제6장 교육 및 훈련]\n[제7장 보칙]\n3. 제2장: 국가정보보안 관리체계 3.1 국가사이버안전센터 설치 : 국가정보원 내 국가사이버안전센터 설치\n역할 :\n- 1. 국가 사이버 안전 정책 총괄\r- 2. 사이버 위협 대응\r- 3. 공공기관 보안 지원\r- 4. 정보 공유 및 경보\r권한 :\n- 공공기관 보안 점검\r- 보안 취약점 통보\r- 침해사고 조사 지원\r3.2 정보보호책임관 (CISO) 지정 의무 중앙행정기관, 지방자치단체, 공공기관 : 정보보호책임관 지정 의무\n자격 [중앙행정기관]\n- 고위공무원단 또는 이에 상당하는 직위\r[지방자치단체, 공공기관]\n- 임원급 또는 이에 준하는 직위\r역할 - 1. 정보보호 정책 수립\r- 2. 정보보호 예산 확보\r- 3. 정보보호 조직 운영\r- 4. 침해사고 대응 총괄\r- 5. 정보보호 점검 및 개선\r3.3 보안관리위원회 구성 :\n- 위원장: 기관장 또는 부기관장\r- 위원: 정보보호책임관, 주요 부서장\r역할 :\n- 1. 정보보호 정책 심의\r- 2. 중요 보안 사안 의결\r- 3. 보안 예산 심의\r운영 : 분기 1회 이상 개최\n4. 제3장: 국가정보보안 대책 4.1 보안등급 분류 4등급 체계 Ⅰ급 비밀 (최상급)\n누설 시 대한민국 또는 우방의 국가안전보장에 막대한 지장 초래\n[예시]\n- 국방 핵심 기밀\r- 외교 최고 기밀\r- 국가 정보 활동\rⅡ급 비밀\n누설 시 국가안전보장에 상당한 지장 초래\n[예시]\n- 군사 작전 계획\r- 주요 외교 문서\rⅢ급 비밀\n누설 시 국가안전보장에 지장 초래\n[예시]\n- 일반 군사 정보\r- 일반 외교 정보\r대외비\n공개 시 업무 수행에 지장 초래\n[예시]\n- 정책 검토 문서\r- 인사 정보\r- 예산 내역\r보안등급 표시 [등급 표시 방법]\n- Ⅰ급비밀 / Ⅱ급비밀 / Ⅲ급비밀 / 대외비\r- **문서 상단에 표시**\r4.2 보안구역 설정 3등급 체계 - **제한지역**: Ⅰ급 비밀 취급 구역\r- **통제지역**: Ⅱ급 비밀 취급 구역\r- **제한구역**: Ⅲ급 비밀 또는 대외비 취급 구역\r보안구역 관리 [출입통제]\n- 출입증 확인\r- 출입자 명부 작성\r- CCTV 설치\r[표지판]\n- 보안구역 표시\r- 출입 제한 안내\r4.3 인원 보안 보안심사 대상 :\n- 국가기밀 취급 직원\r- 보안구역 근무 직원\r심사 내용 :\n- 신원 조사\r- 범죄 경력\r- 외국과의 관계\r등급 :\n- 1급 심사: Ⅰ급 비밀 취급자\r- 2급 심사: Ⅱ급 비밀 취급자\r- 3급 심사: Ⅲ급 비밀 취급자\r보안서약 국가기밀 취급자는 보안서약서 작성\n[서약 내용]\n- 기밀 누설 금지\r- 퇴직 후에도 준수\r- 위반 시 처벌 감수\r보안교육 [정기 교육]\n- **연 2회 이상** (상반기, 하반기)\r[신규 교육]\n- 채용 시 즉시\r[교육 내용]\n- 보안 규정\r- 기밀 관리\r- 사이버 보안\r- 사례 연구\r4.4 문서 보안 비밀 문서 작성 [표시]\n- 보안등급 표시 (상단)\r- 일련번호\r- 작성자, 작성일\r[페이지]\n- 각 페이지에 보안등급 표시\r비밀 문서 보관 - Ⅰ·Ⅱ급 비밀: 금고 또는 보안 캐비닛 (3중 잠금장치) + 경보장치\r- Ⅲ급 비밀: 보안 캐비닛 (2중 잠금장치)\r- 대외비: 잠금장치가 있는 캐비닛\r비밀 문서 열람 [열람 권한]\n- 보안심사를 받은 자\r- 업무상 알 필요가 있는 자\r[열람 기록]\n- 열람자, 일시 기록\r비밀 문서 전송 [허용 방법]\n- 비밀취급 인가자 전달\r- 등기우편 (봉인)\r- 전자문서 (암호화)\r[금지 방법]\n- 일반 우편\r- 팩스\r- 일반 이메일\r비밀 문서 파기 [방법]\n- 파쇄 (복원 불가능)\r- 소각\r[기록]\n- 파기 대장 작성\r4.5 시설 보안 물리적 경계 - 벽, 철조망 등 물리적 경계\r- 출입구 통제\r출입통제 [제한지역 - Ⅰ급]\n- 생체인증 + 출입증\r- 2인 이상 동행\r[통제지역 - Ⅱ급]\n- 생체인증 또는 출입증\r[제한구역 - Ⅲ급]\n- 출입증\rCCTV - 설치: 보안구역 출입구, 주요 통로\r- 녹화: 24시간 녹화, 보관 (최소 30일)\r외부인 통제 - 방문 신청: 사전 승인\r- 출입: 담당자 동행 필수, 방문증 패용\r- 기록: 방문자 명부\r4.6 정보시스템 보안 접근통제 [사용자 계정]\n- 개인별 고유 ID\r- 공용 계정 금지\r[인증]\n- ID + 비밀번호\r- 관리자: 2차 인증 (OTP 등)\r[비밀번호 정책]\n- 10자 이상\r- 영문, 숫자, 특수문자 조합\r- **90일마다 변경** (공공기관)\r[권한 관리]\n- 최소 권한\r- 분기 1회 검토\r- 퇴직자: 당일 계정 삭제\r네트워크 보안 망분리 : 업무망과 인터넷망 분리 의무\n[방식]\n- 물리적 망분리 (PC 2대)\r- 논리적 망분리 (가상화)\r[예외]\n- 업무상 필요 시 망연계 솔루션 사용\r- 자료 전송 시 악성코드 검사\r[방화벽]\n- 네트워크 경계 설치\r- 최소 허용 원칙 (Deny All)\r- 정책 정기 검토 (분기 1회)\r[IDS/IPS]\n- 침입 탐지 및 차단\r- 실시간 모니터링\r암호화 [암호화 대상]\n- Ⅰ·Ⅱ·Ⅲ급 비밀\r- 대외비 (중요한 것)\r- 개인정보\r[알고리즘 - 국가정보원 검증 암호]\n- SEED\r- ARIA\r- LEA\r- HIGHT\r[알고리즘 - 국제 표준]\n- AES\r[키 관리]\n- 암호키 별도 보관\r- 접근 통제\r- 정기 변경\r로그 관리 [기록 대상]\n- 로그인/로그아웃\r- 중요 파일 접근\r- 시스템 설정 변경\r- 권한 변경\r[보관 기간]\n- **최소 2년**\r[점검]\n- 월 1회 이상\r백업 [정기 백업]\n- 중요 시스템: 일일\r- 일반 시스템: 주간\r[보관]\n- 별도 장소 (재해 대비)\r- 암호화 상태\r[복구 테스트]\n- 분기 1회\r보안 패치 - 중요 패치: 발표 후 **1개월 이내** 적용\r- 정기 패치: 월 1회\r악성코드 방지 - 백신: 모든 PC·서버 설치, 실시간 검사, 자동 업데이트\r- 정기 검사: **주 1회** 전체 검사\r보조저장매체 통제 [허용]\n- **보안 USB**만 사용\r- 일반 USB 차단\r[암호화]\n- 저장 데이터 암호화\r[반출입 관리]\n- 승인 절차\r- 반출입 대장\r이동형 저장매체 (노트북, 태블릿 등) - 디스크 전체 암호화\r- 분실 대비: 원격 삭제 기능\r- 반출입 승인\r4.7 암호 이용 국가정보원 검증 암호 검증 제도 : 국가정보원이 암호 알고리즘 및 모듈 검증\n검증 대상 :\n- 암호 알고리즘\r- 암호 모듈 (제품)\r검증 암호 사용 의무 : 공공기관은 검증받은 암호 사용 권장\n주요 검증 암호 알고리즘 [블록 암호]\n- SEED (128비트)\r- ARIA (128, 192, 256비트)\r- LEA (128, 192, 256비트)\r- HIGHT (64비트, 경량)\r[해시]\n- HAS-160\r- LSH (256, 512비트)\r[공개키]\n- KCDSA (서명)\r- EC-KCDSA (타원곡선 서명)\r5. 제4장: 사이버 위협 대응 5.1 침해사고 예방 취약점 점검 [자체 점검]\n- **분기 1회 이상**\r[외부 점검]\n- **연 1회 이상**\r- 전문기관 수행\r[점검 대상]\n- 서버\r- 네트워크 장비\r- 보안 장비\r- 웹 애플리케이션\r[조치]\n- 발견된 취약점 즉시 조치\r모의해킹 - 주기: **연 1회 이상**\r- 대상: 인터넷 연결 시스템, 주요 시스템\r- 수행: 외부 전문기관\r5.2 침해사고 대응 침해사고 대응 체계 대응팀 구성 : 침해사고대응팀 (CERT) 구성, 정보보호책임관 총괄\n대응 절차 :\n- 1. 탐지 및 보고\r- 2. 분석 및 평가\r- 3. 대응 조치 (격리, 차단)\r- 4. 복구\r- 5. 사후 조치 (원인 분석, 재발 방지)\r침해사고 신고 국가사이버안전센터 신고 : 중대 침해사고 발생 시 즉시 신고\n[신고 대상]\n- 국가기밀 유출\r- 주요 정보 유출\r- 시스템 마비\r- 대규모 개인정보 유출\r모의 훈련 - 주기: **연 1회 이상**\r- 내용: 시나리오 기반, 전 직원 참여\r5.3 보안관제 24시간 보안관제\n[대상 기관]\n- 중앙행정기관\r- 주요 공공기관\r[관제 대상]\n- 침입탐지시스템\r- 방화벽\r- 서버\r- 네트워크\r[조치]\n- 실시간 이상 징후 탐지\r- 즉시 대응\r외부 위탁 가능 : 자체 관제 어려운 기관은 전문기관 위탁\n5.4 정보 공유 보안 위협 정보 공유 [국가사이버안전센터]\n- 위협 정보 수집·분석\r- 공공기관에 전파\r[공공기관]\n- 침해사고 정보 공유\r- 대응 방법 공유\rC-TAS (사이버 위협 분석 공유 시스템) 운영 : 국가정보원\n기능 :\n- 악성코드 분석\r- 침해지표 (IoC) 공유\r- 실시간 위협 정보\r6. 제5장: 평가 및 점검 6.1 자체평가 - 주기: **연 1회**\r- 내용: 정보보안 대책 이행 점검, 자체 체크리스트\r- 결과: 기관장 보고 → 개선 조치\r6.2 외부평가 - 주기: **격년 (2년마다)**\r- 수행: 국가정보원, 전문평가기관\r- 내용: 정보보안 대책 이행 점검, 취약점 점검, 모의해킹\r- 결과: 등급 부여, 미흡 사항 개선 명령\r- 공개: 평가 결과 일부 공개\r7. 제6장: 교육 및 훈련 7.1 정보보호 교육 정기 교육 - 주기: **연 2회 이상** (상반기, 하반기)\r- 대상: 전 직원\r[교육 내용]\n- 정보보호 정책\r- 기밀 관리\r- 개인정보 보호\r- 사이버 위협 (피싱 등)\r[교육 방법]\n- 집합 교육\r- 온라인 교육\r신규 교육 - 주기: 채용 즉시\r- 내용: 기관 정보보호 정책, 보안 규정\r전문 교육 - 대상: 정보보호 담당자\r- 내용: 정보보호 전문 지식, 침해사고 대응, 최신 보안 기술\r7.2 침해사고 대응 훈련 - 주기: **연 1회 이상**\r- 내용: 시나리오 기반, 실전 훈련\r- 참여: 침해사고대응팀, 유관 부서\r8. 망분리 vs 망연계 vs 가상망분리 8.1 물리적 망분리 개념 : 업무망과 인터넷망을 물리적으로 완전 분리\n[방법]\n- PC 2대 사용\r- 업무용 PC: 내부망만 / 인터넷용 PC: 인터넷만\r[장점]\n- 보안 수준 최고\r- 악성코드 침투 차단\r[단점]\n- 비용 증가 (PC 2대)\r- 공간 필요\r- 불편함\r8.2 논리적 망분리 (가상망분리) 개념 : 1대 PC에서 가상화 기술로 2개 망 분리\n[방법]\n- VDI (Virtual Desktop Infrastructure)\r- 가상머신\r[장점]\n- 비용 절감 (PC 1대)\r- 공간 절약\r- 사용 편의성\r[단점]\n- 물리적 분리 대비 보안 수준 낮음\r- 가상화 취약점 존재\r2021년 개정 : 가상망분리 공식 허용 (단, 보안 요구사항 충족 시)\n8.3 망연계 개념 : 분리된 망 간 제한적 자료 전송\n[방법]\n- 망연계 솔루션\r- 보안 USB\r[절차]\n- 1. 자료 전송 신청\r- 2. 승인\r- 3. **악성코드 검사**\r- 4. 전송\r- 5. 로그 기록\r[통제]\n- 파일 형식 제한\r- 크기 제한\r- 전송 기록\r9. 공공기관 vs 민간기업 보안 9.1 주요 차이점 구분 공공기관 민간기업 적용 법규 국가정보보안 기본지침 개인정보보호법, 정보통신망법 망분리 의무 권장 (금융권 일부 의무) CISO 의무 일부 의무 (정보통신망법) 비밀번호 변경 90일 의무 삭제 (2023년) 보안 등급 Ⅰ·Ⅱ·Ⅲ급, 대외비 기밀, 대외비 (자체 기준) 외부 평가 2년마다 (국정원) 임의 보안 USB 필수 권장 9.2 공공기관이 더 엄격한 이유 [국가 안보]\n- 국가기밀 취급\r- 사이버 공격 대상\r[공공성]\n- 국민 정보 보호\r- 행정 서비스 연속성\r[모범 사례]\n- 민간 부문 롤모델\r10. 실무 적용 10.1 공공기관 정보보호 구축 [1단계 - 조직 (1개월)]\n- 정보보호책임관 지정\r- 정보보호 전담 조직 구성\r- 보안관리위원회 구성\r[2단계 - 정책 (1개월)]\n- 정보보호 정책 수립\r- 내부 규정 제·개정\r[3단계 - 인원 보안 (진행 중)]\n- 보안심사\r- 보안서약\r- 교육 (연 2회)\r[4단계 - 시설 보안 (2~3개월)]\n- 보안구역 설정\r- 출입통제 시스템 구축\r- CCTV 설치\r[5단계 - 정보시스템 보안 (3~6개월)]\n- 망분리 (물리적 또는 가상)\r- 방화벽, IDS/IPS\r- 접근통제 시스템\r- 암호화\r- 로그 관리\r- 백신\r[6단계 - 운영 (계속)]\n- 취약점 점검 (분기 1회)\r- 모의해킹 (연 1회)\r- 보안 패치\r- 로그 점검 (월 1회)\r[7단계 - 평가 (연 1회 / 2년 1회)]\n- 자체평가 (연 1회)\r- 외부평가 (2년 1회)\r10.2 공공기관 보안 컨설팅 [Phase 1 - 현황 진단 (1개월)]\n- 국가정보보안 기본지침 갭 분석\r- 미흡 사항 도출\r[Phase 2 - 개선 계획 수립 (1개월)]\n- 우선순위 결정\r- 로드맵 수립\r- 예산 산정\r[Phase 3 - 구축 지원 (3~6개월)]\n- 조직 구성 지원\r- 정책 수립 지원\r- 기술적 통제 구현\r- 교육\r[Phase 4 - 평가 대비 (1~2개월)]\n- 자체평가 지원\r- 외부평가 대비\r- 증적 준비\r11. 체크리스트 관리체계 - [ ] 정보보호책임관을 지정했는가?\r- [ ] 정보보호 전담 조직이 있는가?\r- [ ] 보안관리위원회를 분기 1회 운영하는가?\r보안등급 및 구역 - [ ] 보안등급을 분류했는가?\r- [ ] 보안구역을 설정했는가?\r- [ ] 보안구역 출입을 통제하는가?\r인원 보안 - [ ] 국가기밀 취급자는 보안심사를 받았는가?\r- [ ] 보안서약서를 징구했는가?\r- [ ] 보안교육을 연 2회 실시하는가?\r문서 보안 - [ ] 비밀 문서를 금고/캐비닛에 보관하는가?\r- [ ] 비밀 문서 열람을 기록하는가?\r- [ ] 비밀 문서를 안전하게 파기하는가?\r시설 보안 - [ ] 보안구역에 CCTV를 설치했는가?\r- [ ] 외부인 방문을 관리하는가?\r정보시스템 보안 - 접근통제 - [ ] 개인별 고유 ID를 부여하는가?\r- [ ] 비밀번호를 90일마다 변경하는가?\r- [ ] 관리자 계정에 2차 인증을 사용하는가?\r- [ ] 분기 1회 권한을 검토하는가?\r- [ ] 퇴직자 계정을 당일 삭제하는가?\r정보시스템 보안 - 네트워크 - [ ] 망분리를 구현했는가? (물리적 또는 논리적)\r- [ ] 방화벽을 설치했는가?\r- [ ] IDS/IPS를 설치했는가?\r정보시스템 보안 - 암호화 - [ ] 비밀 정보를 암호화하는가?\r- [ ] 검증된 암호 알고리즘을 사용하는가?\r- [ ] 암호키를 안전하게 관리하는가?\r정보시스템 보안 - 로그 - [ ] 로그를 2년 보관하는가?\r- [ ] 월 1회 로그를 점검하는가?\r정보시스템 보안 - 백업 - [ ] 정기적으로 백업하는가?\r- [ ] 백업본을 별도 장소에 보관하는가?\r- [ ] 분기 1회 복구 테스트를 하는가?\r정보시스템 보안 - 패치 및 백신 - [ ] 중요 패치를 1개월 내 적용하는가?\r- [ ] 백신을 설치했는가?\r- [ ] 주 1회 전체 검사를 하는가?\r정보시스템 보안 - 보조저장매체 - [ ] 보안 USB만 사용하는가?\r- [ ] 반출입을 관리하는가?\r사이버 위협 대응 - [ ] 침해사고대응팀을 구성했는가?\r- [ ] 분기 1회 취약점 점검을 하는가?\r- [ ] 연 1회 모의해킹을 하는가?\r- [ ] 24시간 보안관제를 수행하는가?\r- [ ] 연 1회 침해사고 대응 훈련을 하는가?\r평가 및 교육 - [ ] 연 1회 자체평가를 하는가?\r- [ ] 연 2회 보안교육을 실시하는가?\r학습 정리 오늘 학습한 핵심 내용 :\n- 국가정보보안 기본지침은 공공기관 정보보호 기본 규정 (국정원장 훈령)\r- 2021년 전면 개정 (클라우드, 제로 트러스트, 원격근무 반영)\r- 적용 대상: 공공기관 (민간기업은 국가기밀 취급 시만)\r- 정보보호책임관 지정 의무\r- 보안등급: Ⅰ·Ⅱ·Ⅲ급 비밀, 대외비\r- 보안구역: 제한지역, 통제지역, 제한구역\r- 망분리 의무 (물리적 또는 가상)\r- 검증 암호 사용 권장 (SEED, ARIA, LEA 등)\r- 취약점 점검 분기 1회, 모의해킹 연 1회\r- 24시간 보안관제\r- 자체평가 연 1회, 외부평가 2년 1회\r- 보안교육 연 2회\r- 비밀번호 90일 변경 (공공기관)\r- 공공기관이 민간기업보다 엄격한 보안 규정\r다음 학습 주제 Day 30: ISMS-P (정보보호 및 개인정보보호 관리체계 인증)\n",
+  "wordCount" : "6069",
+  "inLanguage": "ko",
+  "datePublished": "2026-03-13T00:00:00Z",
+  "dateModified": "2026-03-13T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/07_%EA%B3%A0%EC%8B%9C%EB%B0%8F%EC%A7%80%EC%B9%A8/day29_%EA%B5%AD%EA%B0%80%EC%A0%95%EB%B3%B4%EB%B3%B4%EC%95%88%EA%B8%B0%EB%B3%B8%EC%A7%80%EC%B9%A8/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://hojjang98.github.io/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/cyber_law_study/">보안 컨설팅 공부</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Day 29: 국가정보보안 기본지침
+    </h1>
+    <div class="post-meta"><span title='2026-03-13 00:00:00 +0000 UTC'>2026년 3월 13일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="day-29-국가정보보안-기본지침">Day 29: 국가정보보안 기본지침<a hidden class="anchor" aria-hidden="true" href="#day-29-국가정보보안-기본지침">#</a></h1>
+<h2 id="1-국가정보보안-기본지침의-개요">1. 국가정보보안 기본지침의 개요<a hidden class="anchor" aria-hidden="true" href="#1-국가정보보안-기본지침의-개요">#</a></h2>
+<h3 id="11-국가정보보안-기본지침이란">1.1 국가정보보안 기본지침이란?<a hidden class="anchor" aria-hidden="true" href="#11-국가정보보안-기본지침이란">#</a></h3>
+<p><strong>정식 명칭</strong> : 국가정보보안 기본지침</p>
+<p><strong>성격</strong> : 국가정보원장 훈령</p>
+<p><strong>제정</strong> : 2021년 1월 5일 (전면 개정)</p>
+<p><strong>이전 명칭</strong> :</p>
+<pre><code>- 국가사이버안전관리규정 (2015년)
+- 국가정보보안관리규정 (그 이전)
+</code></pre>
+<h3 id="12-법적-근거">1.2 법적 근거<a hidden class="anchor" aria-hidden="true" href="#12-법적-근거">#</a></h3>
+<p><strong>국가정보화 기본법 제3조 (국가의 책무)</strong></p>
+<p>&ldquo;국가는 정보통신망의 안전성·신뢰성 확보를 위한 시책을 마련하여야 한다&rdquo;</p>
+<p><strong>전자정부법 제48조 (행정기관등의 정보보호 대책 마련)</strong></p>
+<p>&ldquo;행정기관등의 장은 소관 정보시스템 및 이를 통하여 처리·보유하고 있는 정보의 안전성·신뢰성 확보를 위하여 필요한 보안대책을 수립·시행하여야 한다&rdquo;</p>
+<h3 id="13-목적">1.3 목적<a hidden class="anchor" aria-hidden="true" href="#13-목적">#</a></h3>
+<pre><code>- 1. 국가 정보 자산 보호
+- 2. 국가 안보 및 공공 안전 확보
+- 3. 공공기관 정보보호 체계 표준화
+- 4. 사이버 위협 대응 능력 강화
+</code></pre>
+<h3 id="14-적용-대상">1.4 적용 대상<a hidden class="anchor" aria-hidden="true" href="#14-적용-대상">#</a></h3>
+<h4 id="공공기관">공공기관<a hidden class="anchor" aria-hidden="true" href="#공공기관">#</a></h4>
+<pre><code>- 중앙행정기관 (부처)
+- 지방자치단체
+- 공공기관 (공기업, 준정부기관)
+- 국·공립 대학
+- 지방공사·공단
+</code></pre>
+<h4 id="국가기밀-취급-민간기업">국가기밀 취급 민간기업<a hidden class="anchor" aria-hidden="true" href="#국가기밀-취급-민간기업">#</a></h4>
+<pre><code>- 방산업체
+- 국가 연구개발 수행 기업
+</code></pre>
+<p><strong>특징</strong> : <strong>민간기업은 원칙적으로 적용 대상 아님</strong> (국가기밀 취급 시 해당 부분만 적용)</p>
+<h3 id="15-2021년-전면-개정-배경">1.5 2021년 전면 개정 배경<a hidden class="anchor" aria-hidden="true" href="#15-2021년-전면-개정-배경">#</a></h3>
+<h4 id="사이버-위협-환경-변화">사이버 위협 환경 변화<a hidden class="anchor" aria-hidden="true" href="#사이버-위협-환경-변화">#</a></h4>
+<pre><code>- 북한 등 국가 배후 해킹 증가
+- 랜섬웨어 등 신종 위협
+- 공급망 공격
+</code></pre>
+<h4 id="재택근무-확산">재택근무 확산<a hidden class="anchor" aria-hidden="true" href="#재택근무-확산">#</a></h4>
+<pre><code>- COVID-19로 원격근무 증가
+- 기존 망분리 중심 정책의 한계
+</code></pre>
+<h4 id="클라우드-전환">클라우드 전환<a hidden class="anchor" aria-hidden="true" href="#클라우드-전환">#</a></h4>
+<pre><code>- 공공기관 클라우드 도입 확대
+- 클라우드 보안 기준 필요
+</code></pre>
+<h4 id="제로-트러스트">제로 트러스트<a hidden class="anchor" aria-hidden="true" href="#제로-트러스트">#</a></h4>
+<pre><code>- 새로운 보안 패러다임 도입
+</code></pre>
+<h2 id="2-전체-구조">2. 전체 구조<a hidden class="anchor" aria-hidden="true" href="#2-전체-구조">#</a></h2>
+<h3 id="21-7개-장">2.1 7개 장<a hidden class="anchor" aria-hidden="true" href="#21-7개-장">#</a></h3>
+<p>[제1장 총칙]</p>
+<pre><code>- 목적, 정의, 적용범위
+</code></pre>
+<p>[제2장 국가정보보안 관리체계]</p>
+<pre><code>- 국가사이버안전센터
+- 정보보호책임관
+- 보안관리위원회
+</code></pre>
+<p>[제3장 국가정보보안 대책]</p>
+<pre><code>- 보안등급 분류
+- 보안구역 설정
+- 인원 보안
+- 문서 보안
+- 시설 보안
+- 정보시스템 보안
+- 암호 이용
+</code></pre>
+<p>[제4장 사이버 위협 대응]</p>
+<pre><code>- 침해사고 예방 및 대응
+- 보안관제
+- 정보 공유
+</code></pre>
+<p>[제5장 평가 및 점검]</p>
+<pre><code>- 자체평가
+- 외부평가
+</code></pre>
+<p>[제6장 교육 및 훈련]</p>
+<p>[제7장 보칙]</p>
+<h2 id="3-제2장-국가정보보안-관리체계">3. 제2장: 국가정보보안 관리체계<a hidden class="anchor" aria-hidden="true" href="#3-제2장-국가정보보안-관리체계">#</a></h2>
+<h3 id="31-국가사이버안전센터">3.1 국가사이버안전센터<a hidden class="anchor" aria-hidden="true" href="#31-국가사이버안전센터">#</a></h3>
+<p><strong>설치</strong> : 국가정보원 내 <strong>국가사이버안전센터</strong> 설치</p>
+<p><strong>역할</strong> :</p>
+<pre><code>- 1. 국가 사이버 안전 정책 총괄
+- 2. 사이버 위협 대응
+- 3. 공공기관 보안 지원
+- 4. 정보 공유 및 경보
+</code></pre>
+<p><strong>권한</strong> :</p>
+<pre><code>- 공공기관 보안 점검
+- 보안 취약점 통보
+- 침해사고 조사 지원
+</code></pre>
+<h3 id="32-정보보호책임관-ciso">3.2 정보보호책임관 (CISO)<a hidden class="anchor" aria-hidden="true" href="#32-정보보호책임관-ciso">#</a></h3>
+<h4 id="지정-의무">지정 의무<a hidden class="anchor" aria-hidden="true" href="#지정-의무">#</a></h4>
+<p>중앙행정기관, 지방자치단체, 공공기관 : 정보보호책임관 지정 <strong>의무</strong></p>
+<h4 id="자격">자격<a hidden class="anchor" aria-hidden="true" href="#자격">#</a></h4>
+<p>[중앙행정기관]</p>
+<pre><code>- 고위공무원단 또는 이에 상당하는 직위
+</code></pre>
+<p>[지방자치단체, 공공기관]</p>
+<pre><code>- 임원급 또는 이에 준하는 직위
+</code></pre>
+<h4 id="역할">역할<a hidden class="anchor" aria-hidden="true" href="#역할">#</a></h4>
+<pre><code>- 1. 정보보호 정책 수립
+- 2. 정보보호 예산 확보
+- 3. 정보보호 조직 운영
+- 4. 침해사고 대응 총괄
+- 5. 정보보호 점검 및 개선
+</code></pre>
+<h3 id="33-보안관리위원회">3.3 보안관리위원회<a hidden class="anchor" aria-hidden="true" href="#33-보안관리위원회">#</a></h3>
+<p><strong>구성</strong> :</p>
+<pre><code>- 위원장: 기관장 또는 부기관장
+- 위원: 정보보호책임관, 주요 부서장
+</code></pre>
+<p><strong>역할</strong> :</p>
+<pre><code>- 1. 정보보호 정책 심의
+- 2. 중요 보안 사안 의결
+- 3. 보안 예산 심의
+</code></pre>
+<p><strong>운영</strong> : <strong>분기 1회 이상</strong> 개최</p>
+<h2 id="4-제3장-국가정보보안-대책">4. 제3장: 국가정보보안 대책<a hidden class="anchor" aria-hidden="true" href="#4-제3장-국가정보보안-대책">#</a></h2>
+<h3 id="41-보안등급-분류">4.1 보안등급 분류<a hidden class="anchor" aria-hidden="true" href="#41-보안등급-분류">#</a></h3>
+<h4 id="4등급-체계">4등급 체계<a hidden class="anchor" aria-hidden="true" href="#4등급-체계">#</a></h4>
+<p><strong>Ⅰ급 비밀 (최상급)</strong></p>
+<p>누설 시 대한민국 또는 우방의 <strong>국가안전보장에 막대한 지장</strong> 초래</p>
+<p>[예시]</p>
+<pre><code>- 국방 핵심 기밀
+- 외교 최고 기밀
+- 국가 정보 활동
+</code></pre>
+<p><strong>Ⅱ급 비밀</strong></p>
+<p>누설 시 국가안전보장에 <strong>상당한 지장</strong> 초래</p>
+<p>[예시]</p>
+<pre><code>- 군사 작전 계획
+- 주요 외교 문서
+</code></pre>
+<p><strong>Ⅲ급 비밀</strong></p>
+<p>누설 시 국가안전보장에 <strong>지장</strong> 초래</p>
+<p>[예시]</p>
+<pre><code>- 일반 군사 정보
+- 일반 외교 정보
+</code></pre>
+<p><strong>대외비</strong></p>
+<p>공개 시 <strong>업무 수행에 지장</strong> 초래</p>
+<p>[예시]</p>
+<pre><code>- 정책 검토 문서
+- 인사 정보
+- 예산 내역
+</code></pre>
+<h4 id="보안등급-표시">보안등급 표시<a hidden class="anchor" aria-hidden="true" href="#보안등급-표시">#</a></h4>
+<p>[등급 표시 방법]</p>
+<pre><code>- Ⅰ급비밀 / Ⅱ급비밀 / Ⅲ급비밀 / 대외비
+- **문서 상단에 표시**
+</code></pre>
+<h3 id="42-보안구역-설정">4.2 보안구역 설정<a hidden class="anchor" aria-hidden="true" href="#42-보안구역-설정">#</a></h3>
+<h4 id="3등급-체계">3등급 체계<a hidden class="anchor" aria-hidden="true" href="#3등급-체계">#</a></h4>
+<pre><code>- **제한지역**: Ⅰ급 비밀 취급 구역
+- **통제지역**: Ⅱ급 비밀 취급 구역
+- **제한구역**: Ⅲ급 비밀 또는 대외비 취급 구역
+</code></pre>
+<h4 id="보안구역-관리">보안구역 관리<a hidden class="anchor" aria-hidden="true" href="#보안구역-관리">#</a></h4>
+<p>[출입통제]</p>
+<pre><code>- 출입증 확인
+- 출입자 명부 작성
+- CCTV 설치
+</code></pre>
+<p>[표지판]</p>
+<pre><code>- 보안구역 표시
+- 출입 제한 안내
+</code></pre>
+<h3 id="43-인원-보안">4.3 인원 보안<a hidden class="anchor" aria-hidden="true" href="#43-인원-보안">#</a></h3>
+<h4 id="보안심사">보안심사<a hidden class="anchor" aria-hidden="true" href="#보안심사">#</a></h4>
+<p><strong>대상</strong> :</p>
+<pre><code>- 국가기밀 취급 직원
+- 보안구역 근무 직원
+</code></pre>
+<p><strong>심사 내용</strong> :</p>
+<pre><code>- 신원 조사
+- 범죄 경력
+- 외국과의 관계
+</code></pre>
+<p><strong>등급</strong> :</p>
+<pre><code>- 1급 심사: Ⅰ급 비밀 취급자
+- 2급 심사: Ⅱ급 비밀 취급자
+- 3급 심사: Ⅲ급 비밀 취급자
+</code></pre>
+<h4 id="보안서약">보안서약<a hidden class="anchor" aria-hidden="true" href="#보안서약">#</a></h4>
+<p>국가기밀 취급자는 <strong>보안서약서</strong> 작성</p>
+<p>[서약 내용]</p>
+<pre><code>- 기밀 누설 금지
+- 퇴직 후에도 준수
+- 위반 시 처벌 감수
+</code></pre>
+<h4 id="보안교육">보안교육<a hidden class="anchor" aria-hidden="true" href="#보안교육">#</a></h4>
+<p>[정기 교육]</p>
+<pre><code>- **연 2회 이상** (상반기, 하반기)
+</code></pre>
+<p>[신규 교육]</p>
+<pre><code>- 채용 시 즉시
+</code></pre>
+<p>[교육 내용]</p>
+<pre><code>- 보안 규정
+- 기밀 관리
+- 사이버 보안
+- 사례 연구
+</code></pre>
+<h3 id="44-문서-보안">4.4 문서 보안<a hidden class="anchor" aria-hidden="true" href="#44-문서-보안">#</a></h3>
+<h4 id="비밀-문서-작성">비밀 문서 작성<a hidden class="anchor" aria-hidden="true" href="#비밀-문서-작성">#</a></h4>
+<p>[표시]</p>
+<pre><code>- 보안등급 표시 (상단)
+- 일련번호
+- 작성자, 작성일
+</code></pre>
+<p>[페이지]</p>
+<pre><code>- 각 페이지에 보안등급 표시
+</code></pre>
+<h4 id="비밀-문서-보관">비밀 문서 보관<a hidden class="anchor" aria-hidden="true" href="#비밀-문서-보관">#</a></h4>
+<pre><code>- Ⅰ·Ⅱ급 비밀: 금고 또는 보안 캐비닛 (3중 잠금장치) + 경보장치
+- Ⅲ급 비밀: 보안 캐비닛 (2중 잠금장치)
+- 대외비: 잠금장치가 있는 캐비닛
+</code></pre>
+<h4 id="비밀-문서-열람">비밀 문서 열람<a hidden class="anchor" aria-hidden="true" href="#비밀-문서-열람">#</a></h4>
+<p>[열람 권한]</p>
+<pre><code>- 보안심사를 받은 자
+- 업무상 알 필요가 있는 자
+</code></pre>
+<p>[열람 기록]</p>
+<pre><code>- 열람자, 일시 기록
+</code></pre>
+<h4 id="비밀-문서-전송">비밀 문서 전송<a hidden class="anchor" aria-hidden="true" href="#비밀-문서-전송">#</a></h4>
+<p>[허용 방법]</p>
+<pre><code>- 비밀취급 인가자 전달
+- 등기우편 (봉인)
+- 전자문서 (암호화)
+</code></pre>
+<p>[금지 방법]</p>
+<pre><code>- 일반 우편
+- 팩스
+- 일반 이메일
+</code></pre>
+<h4 id="비밀-문서-파기">비밀 문서 파기<a hidden class="anchor" aria-hidden="true" href="#비밀-문서-파기">#</a></h4>
+<p>[방법]</p>
+<pre><code>- 파쇄 (복원 불가능)
+- 소각
+</code></pre>
+<p>[기록]</p>
+<pre><code>- 파기 대장 작성
+</code></pre>
+<h3 id="45-시설-보안">4.5 시설 보안<a hidden class="anchor" aria-hidden="true" href="#45-시설-보안">#</a></h3>
+<h4 id="물리적-경계">물리적 경계<a hidden class="anchor" aria-hidden="true" href="#물리적-경계">#</a></h4>
+<pre><code>- 벽, 철조망 등 물리적 경계
+- 출입구 통제
+</code></pre>
+<h4 id="출입통제">출입통제<a hidden class="anchor" aria-hidden="true" href="#출입통제">#</a></h4>
+<p>[제한지역 - Ⅰ급]</p>
+<pre><code>- 생체인증 + 출입증
+- 2인 이상 동행
+</code></pre>
+<p>[통제지역 - Ⅱ급]</p>
+<pre><code>- 생체인증 또는 출입증
+</code></pre>
+<p>[제한구역 - Ⅲ급]</p>
+<pre><code>- 출입증
+</code></pre>
+<h4 id="cctv">CCTV<a hidden class="anchor" aria-hidden="true" href="#cctv">#</a></h4>
+<pre><code>- 설치: 보안구역 출입구, 주요 통로
+- 녹화: 24시간 녹화, 보관 (최소 30일)
+</code></pre>
+<h4 id="외부인-통제">외부인 통제<a hidden class="anchor" aria-hidden="true" href="#외부인-통제">#</a></h4>
+<pre><code>- 방문 신청: 사전 승인
+- 출입: 담당자 동행 필수, 방문증 패용
+- 기록: 방문자 명부
+</code></pre>
+<h3 id="46-정보시스템-보안">4.6 정보시스템 보안<a hidden class="anchor" aria-hidden="true" href="#46-정보시스템-보안">#</a></h3>
+<h4 id="접근통제">접근통제<a hidden class="anchor" aria-hidden="true" href="#접근통제">#</a></h4>
+<p>[사용자 계정]</p>
+<pre><code>- 개인별 고유 ID
+- 공용 계정 금지
+</code></pre>
+<p>[인증]</p>
+<pre><code>- ID + 비밀번호
+- 관리자: 2차 인증 (OTP 등)
+</code></pre>
+<p>[비밀번호 정책]</p>
+<pre><code>- 10자 이상
+- 영문, 숫자, 특수문자 조합
+- **90일마다 변경** (공공기관)
+</code></pre>
+<p>[권한 관리]</p>
+<pre><code>- 최소 권한
+- 분기 1회 검토
+- 퇴직자: 당일 계정 삭제
+</code></pre>
+<h4 id="네트워크-보안">네트워크 보안<a hidden class="anchor" aria-hidden="true" href="#네트워크-보안">#</a></h4>
+<p><strong>망분리</strong> : 업무망과 인터넷망 분리 <strong>의무</strong></p>
+<p>[방식]</p>
+<pre><code>- 물리적 망분리 (PC 2대)
+- 논리적 망분리 (가상화)
+</code></pre>
+<p>[예외]</p>
+<pre><code>- 업무상 필요 시 망연계 솔루션 사용
+- 자료 전송 시 악성코드 검사
+</code></pre>
+<p>[방화벽]</p>
+<pre><code>- 네트워크 경계 설치
+- 최소 허용 원칙 (Deny All)
+- 정책 정기 검토 (분기 1회)
+</code></pre>
+<p>[IDS/IPS]</p>
+<pre><code>- 침입 탐지 및 차단
+- 실시간 모니터링
+</code></pre>
+<h4 id="암호화">암호화<a hidden class="anchor" aria-hidden="true" href="#암호화">#</a></h4>
+<p>[암호화 대상]</p>
+<pre><code>- Ⅰ·Ⅱ·Ⅲ급 비밀
+- 대외비 (중요한 것)
+- 개인정보
+</code></pre>
+<p>[알고리즘 - 국가정보원 검증 암호]</p>
+<pre><code>- SEED
+- ARIA
+- LEA
+- HIGHT
+</code></pre>
+<p>[알고리즘 - 국제 표준]</p>
+<pre><code>- AES
+</code></pre>
+<p>[키 관리]</p>
+<pre><code>- 암호키 별도 보관
+- 접근 통제
+- 정기 변경
+</code></pre>
+<h4 id="로그-관리">로그 관리<a hidden class="anchor" aria-hidden="true" href="#로그-관리">#</a></h4>
+<p>[기록 대상]</p>
+<pre><code>- 로그인/로그아웃
+- 중요 파일 접근
+- 시스템 설정 변경
+- 권한 변경
+</code></pre>
+<p>[보관 기간]</p>
+<pre><code>- **최소 2년**
+</code></pre>
+<p>[점검]</p>
+<pre><code>- 월 1회 이상
+</code></pre>
+<h4 id="백업">백업<a hidden class="anchor" aria-hidden="true" href="#백업">#</a></h4>
+<p>[정기 백업]</p>
+<pre><code>- 중요 시스템: 일일
+- 일반 시스템: 주간
+</code></pre>
+<p>[보관]</p>
+<pre><code>- 별도 장소 (재해 대비)
+- 암호화 상태
+</code></pre>
+<p>[복구 테스트]</p>
+<pre><code>- 분기 1회
+</code></pre>
+<h4 id="보안-패치">보안 패치<a hidden class="anchor" aria-hidden="true" href="#보안-패치">#</a></h4>
+<pre><code>- 중요 패치: 발표 후 **1개월 이내** 적용
+- 정기 패치: 월 1회
+</code></pre>
+<h4 id="악성코드-방지">악성코드 방지<a hidden class="anchor" aria-hidden="true" href="#악성코드-방지">#</a></h4>
+<pre><code>- 백신: 모든 PC·서버 설치, 실시간 검사, 자동 업데이트
+- 정기 검사: **주 1회** 전체 검사
+</code></pre>
+<h4 id="보조저장매체-통제">보조저장매체 통제<a hidden class="anchor" aria-hidden="true" href="#보조저장매체-통제">#</a></h4>
+<p>[허용]</p>
+<pre><code>- **보안 USB**만 사용
+- 일반 USB 차단
+</code></pre>
+<p>[암호화]</p>
+<pre><code>- 저장 데이터 암호화
+</code></pre>
+<p>[반출입 관리]</p>
+<pre><code>- 승인 절차
+- 반출입 대장
+</code></pre>
+<h4 id="이동형-저장매체-노트북-태블릿-등">이동형 저장매체 (노트북, 태블릿 등)<a hidden class="anchor" aria-hidden="true" href="#이동형-저장매체-노트북-태블릿-등">#</a></h4>
+<pre><code>- 디스크 전체 암호화
+- 분실 대비: 원격 삭제 기능
+- 반출입 승인
+</code></pre>
+<h3 id="47-암호-이용">4.7 암호 이용<a hidden class="anchor" aria-hidden="true" href="#47-암호-이용">#</a></h3>
+<h4 id="국가정보원-검증-암호">국가정보원 검증 암호<a hidden class="anchor" aria-hidden="true" href="#국가정보원-검증-암호">#</a></h4>
+<p><strong>검증 제도</strong> : 국가정보원이 암호 알고리즘 및 모듈 검증</p>
+<p><strong>검증 대상</strong> :</p>
+<pre><code>- 암호 알고리즘
+- 암호 모듈 (제품)
+</code></pre>
+<p><strong>검증 암호 사용 의무</strong> : 공공기관은 검증받은 암호 사용 <strong>권장</strong></p>
+<h4 id="주요-검증-암호-알고리즘">주요 검증 암호 알고리즘<a hidden class="anchor" aria-hidden="true" href="#주요-검증-암호-알고리즘">#</a></h4>
+<p>[블록 암호]</p>
+<pre><code>- SEED (128비트)
+- ARIA (128, 192, 256비트)
+- LEA (128, 192, 256비트)
+- HIGHT (64비트, 경량)
+</code></pre>
+<p>[해시]</p>
+<pre><code>- HAS-160
+- LSH (256, 512비트)
+</code></pre>
+<p>[공개키]</p>
+<pre><code>- KCDSA (서명)
+- EC-KCDSA (타원곡선 서명)
+</code></pre>
+<h2 id="5-제4장-사이버-위협-대응">5. 제4장: 사이버 위협 대응<a hidden class="anchor" aria-hidden="true" href="#5-제4장-사이버-위협-대응">#</a></h2>
+<h3 id="51-침해사고-예방">5.1 침해사고 예방<a hidden class="anchor" aria-hidden="true" href="#51-침해사고-예방">#</a></h3>
+<h4 id="취약점-점검">취약점 점검<a hidden class="anchor" aria-hidden="true" href="#취약점-점검">#</a></h4>
+<p>[자체 점검]</p>
+<pre><code>- **분기 1회 이상**
+</code></pre>
+<p>[외부 점검]</p>
+<pre><code>- **연 1회 이상**
+- 전문기관 수행
+</code></pre>
+<p>[점검 대상]</p>
+<pre><code>- 서버
+- 네트워크 장비
+- 보안 장비
+- 웹 애플리케이션
+</code></pre>
+<p>[조치]</p>
+<pre><code>- 발견된 취약점 즉시 조치
+</code></pre>
+<h4 id="모의해킹">모의해킹<a hidden class="anchor" aria-hidden="true" href="#모의해킹">#</a></h4>
+<pre><code>- 주기: **연 1회 이상**
+- 대상: 인터넷 연결 시스템, 주요 시스템
+- 수행: 외부 전문기관
+</code></pre>
+<h3 id="52-침해사고-대응">5.2 침해사고 대응<a hidden class="anchor" aria-hidden="true" href="#52-침해사고-대응">#</a></h3>
+<h4 id="침해사고-대응-체계">침해사고 대응 체계<a hidden class="anchor" aria-hidden="true" href="#침해사고-대응-체계">#</a></h4>
+<p><strong>대응팀 구성</strong> : 침해사고대응팀 (CERT) 구성, 정보보호책임관 총괄</p>
+<p><strong>대응 절차</strong> :</p>
+<pre><code>- 1. 탐지 및 보고
+- 2. 분석 및 평가
+- 3. 대응 조치 (격리, 차단)
+- 4. 복구
+- 5. 사후 조치 (원인 분석, 재발 방지)
+</code></pre>
+<h4 id="침해사고-신고">침해사고 신고<a hidden class="anchor" aria-hidden="true" href="#침해사고-신고">#</a></h4>
+<p><strong>국가사이버안전센터 신고</strong> : 중대 침해사고 발생 시 <strong>즉시</strong> 신고</p>
+<p>[신고 대상]</p>
+<pre><code>- 국가기밀 유출
+- 주요 정보 유출
+- 시스템 마비
+- 대규모 개인정보 유출
+</code></pre>
+<h4 id="모의-훈련">모의 훈련<a hidden class="anchor" aria-hidden="true" href="#모의-훈련">#</a></h4>
+<pre><code>- 주기: **연 1회 이상**
+- 내용: 시나리오 기반, 전 직원 참여
+</code></pre>
+<h3 id="53-보안관제">5.3 보안관제<a hidden class="anchor" aria-hidden="true" href="#53-보안관제">#</a></h3>
+<p><strong>24시간 보안관제</strong></p>
+<p>[대상 기관]</p>
+<pre><code>- 중앙행정기관
+- 주요 공공기관
+</code></pre>
+<p>[관제 대상]</p>
+<pre><code>- 침입탐지시스템
+- 방화벽
+- 서버
+- 네트워크
+</code></pre>
+<p>[조치]</p>
+<pre><code>- 실시간 이상 징후 탐지
+- 즉시 대응
+</code></pre>
+<p><strong>외부 위탁 가능</strong> : 자체 관제 어려운 기관은 전문기관 위탁</p>
+<h3 id="54-정보-공유">5.4 정보 공유<a hidden class="anchor" aria-hidden="true" href="#54-정보-공유">#</a></h3>
+<h4 id="보안-위협-정보-공유">보안 위협 정보 공유<a hidden class="anchor" aria-hidden="true" href="#보안-위협-정보-공유">#</a></h4>
+<p>[국가사이버안전센터]</p>
+<pre><code>- 위협 정보 수집·분석
+- 공공기관에 전파
+</code></pre>
+<p>[공공기관]</p>
+<pre><code>- 침해사고 정보 공유
+- 대응 방법 공유
+</code></pre>
+<h4 id="c-tas-사이버-위협-분석-공유-시스템">C-TAS (사이버 위협 분석 공유 시스템)<a hidden class="anchor" aria-hidden="true" href="#c-tas-사이버-위협-분석-공유-시스템">#</a></h4>
+<p><strong>운영</strong> : 국가정보원</p>
+<p><strong>기능</strong> :</p>
+<pre><code>- 악성코드 분석
+- 침해지표 (IoC) 공유
+- 실시간 위협 정보
+</code></pre>
+<h2 id="6-제5장-평가-및-점검">6. 제5장: 평가 및 점검<a hidden class="anchor" aria-hidden="true" href="#6-제5장-평가-및-점검">#</a></h2>
+<h3 id="61-자체평가">6.1 자체평가<a hidden class="anchor" aria-hidden="true" href="#61-자체평가">#</a></h3>
+<pre><code>- 주기: **연 1회**
+- 내용: 정보보안 대책 이행 점검, 자체 체크리스트
+- 결과: 기관장 보고 → 개선 조치
+</code></pre>
+<h3 id="62-외부평가">6.2 외부평가<a hidden class="anchor" aria-hidden="true" href="#62-외부평가">#</a></h3>
+<pre><code>- 주기: **격년 (2년마다)**
+- 수행: 국가정보원, 전문평가기관
+- 내용: 정보보안 대책 이행 점검, 취약점 점검, 모의해킹
+- 결과: 등급 부여, 미흡 사항 개선 명령
+- 공개: 평가 결과 일부 공개
+</code></pre>
+<h2 id="7-제6장-교육-및-훈련">7. 제6장: 교육 및 훈련<a hidden class="anchor" aria-hidden="true" href="#7-제6장-교육-및-훈련">#</a></h2>
+<h3 id="71-정보보호-교육">7.1 정보보호 교육<a hidden class="anchor" aria-hidden="true" href="#71-정보보호-교육">#</a></h3>
+<h4 id="정기-교육">정기 교육<a hidden class="anchor" aria-hidden="true" href="#정기-교육">#</a></h4>
+<pre><code>- 주기: **연 2회 이상** (상반기, 하반기)
+- 대상: 전 직원
+</code></pre>
+<p>[교육 내용]</p>
+<pre><code>- 정보보호 정책
+- 기밀 관리
+- 개인정보 보호
+- 사이버 위협 (피싱 등)
+</code></pre>
+<p>[교육 방법]</p>
+<pre><code>- 집합 교육
+- 온라인 교육
+</code></pre>
+<h4 id="신규-교육">신규 교육<a hidden class="anchor" aria-hidden="true" href="#신규-교육">#</a></h4>
+<pre><code>- 주기: 채용 즉시
+- 내용: 기관 정보보호 정책, 보안 규정
+</code></pre>
+<h4 id="전문-교육">전문 교육<a hidden class="anchor" aria-hidden="true" href="#전문-교육">#</a></h4>
+<pre><code>- 대상: 정보보호 담당자
+- 내용: 정보보호 전문 지식, 침해사고 대응, 최신 보안 기술
+</code></pre>
+<h3 id="72-침해사고-대응-훈련">7.2 침해사고 대응 훈련<a hidden class="anchor" aria-hidden="true" href="#72-침해사고-대응-훈련">#</a></h3>
+<pre><code>- 주기: **연 1회 이상**
+- 내용: 시나리오 기반, 실전 훈련
+- 참여: 침해사고대응팀, 유관 부서
+</code></pre>
+<h2 id="8-망분리-vs-망연계-vs-가상망분리">8. 망분리 vs 망연계 vs 가상망분리<a hidden class="anchor" aria-hidden="true" href="#8-망분리-vs-망연계-vs-가상망분리">#</a></h2>
+<h3 id="81-물리적-망분리">8.1 물리적 망분리<a hidden class="anchor" aria-hidden="true" href="#81-물리적-망분리">#</a></h3>
+<p><strong>개념</strong> : 업무망과 인터넷망을 <strong>물리적으로 완전 분리</strong></p>
+<p>[방법]</p>
+<pre><code>- PC 2대 사용
+- 업무용 PC: 내부망만 / 인터넷용 PC: 인터넷만
+</code></pre>
+<p>[장점]</p>
+<pre><code>- 보안 수준 최고
+- 악성코드 침투 차단
+</code></pre>
+<p>[단점]</p>
+<pre><code>- 비용 증가 (PC 2대)
+- 공간 필요
+- 불편함
+</code></pre>
+<h3 id="82-논리적-망분리-가상망분리">8.2 논리적 망분리 (가상망분리)<a hidden class="anchor" aria-hidden="true" href="#82-논리적-망분리-가상망분리">#</a></h3>
+<p><strong>개념</strong> : 1대 PC에서 가상화 기술로 2개 망 분리</p>
+<p>[방법]</p>
+<pre><code>- VDI (Virtual Desktop Infrastructure)
+- 가상머신
+</code></pre>
+<p>[장점]</p>
+<pre><code>- 비용 절감 (PC 1대)
+- 공간 절약
+- 사용 편의성
+</code></pre>
+<p>[단점]</p>
+<pre><code>- 물리적 분리 대비 보안 수준 낮음
+- 가상화 취약점 존재
+</code></pre>
+<p><strong>2021년 개정</strong> : 가상망분리 <strong>공식 허용</strong> (단, 보안 요구사항 충족 시)</p>
+<h3 id="83-망연계">8.3 망연계<a hidden class="anchor" aria-hidden="true" href="#83-망연계">#</a></h3>
+<p><strong>개념</strong> : 분리된 망 간 <strong>제한적 자료 전송</strong></p>
+<p>[방법]</p>
+<pre><code>- 망연계 솔루션
+- 보안 USB
+</code></pre>
+<p>[절차]</p>
+<pre><code>- 1. 자료 전송 신청
+- 2. 승인
+- 3. **악성코드 검사**
+- 4. 전송
+- 5. 로그 기록
+</code></pre>
+<p>[통제]</p>
+<pre><code>- 파일 형식 제한
+- 크기 제한
+- 전송 기록
+</code></pre>
+<h2 id="9-공공기관-vs-민간기업-보안">9. 공공기관 vs 민간기업 보안<a hidden class="anchor" aria-hidden="true" href="#9-공공기관-vs-민간기업-보안">#</a></h2>
+<h3 id="91-주요-차이점">9.1 주요 차이점<a hidden class="anchor" aria-hidden="true" href="#91-주요-차이점">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>구분</th>
+          <th>공공기관</th>
+          <th>민간기업</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>적용 법규</td>
+          <td>국가정보보안 기본지침</td>
+          <td>개인정보보호법, 정보통신망법</td>
+      </tr>
+      <tr>
+          <td>망분리</td>
+          <td><strong>의무</strong></td>
+          <td>권장 (금융권 일부 의무)</td>
+      </tr>
+      <tr>
+          <td>CISO</td>
+          <td>의무</td>
+          <td>일부 의무 (정보통신망법)</td>
+      </tr>
+      <tr>
+          <td>비밀번호 변경</td>
+          <td>90일</td>
+          <td>의무 삭제 (2023년)</td>
+      </tr>
+      <tr>
+          <td>보안 등급</td>
+          <td>Ⅰ·Ⅱ·Ⅲ급, 대외비</td>
+          <td>기밀, 대외비 (자체 기준)</td>
+      </tr>
+      <tr>
+          <td>외부 평가</td>
+          <td>2년마다 (국정원)</td>
+          <td>임의</td>
+      </tr>
+      <tr>
+          <td>보안 USB</td>
+          <td>필수</td>
+          <td>권장</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="92-공공기관이-더-엄격한-이유">9.2 공공기관이 더 엄격한 이유<a hidden class="anchor" aria-hidden="true" href="#92-공공기관이-더-엄격한-이유">#</a></h3>
+<p>[국가 안보]</p>
+<pre><code>- 국가기밀 취급
+- 사이버 공격 대상
+</code></pre>
+<p>[공공성]</p>
+<pre><code>- 국민 정보 보호
+- 행정 서비스 연속성
+</code></pre>
+<p>[모범 사례]</p>
+<pre><code>- 민간 부문 롤모델
+</code></pre>
+<h2 id="10-실무-적용">10. 실무 적용<a hidden class="anchor" aria-hidden="true" href="#10-실무-적용">#</a></h2>
+<h3 id="101-공공기관-정보보호-구축">10.1 공공기관 정보보호 구축<a hidden class="anchor" aria-hidden="true" href="#101-공공기관-정보보호-구축">#</a></h3>
+<p>[1단계 - 조직 (1개월)]</p>
+<pre><code>- 정보보호책임관 지정
+- 정보보호 전담 조직 구성
+- 보안관리위원회 구성
+</code></pre>
+<p>[2단계 - 정책 (1개월)]</p>
+<pre><code>- 정보보호 정책 수립
+- 내부 규정 제·개정
+</code></pre>
+<p>[3단계 - 인원 보안 (진행 중)]</p>
+<pre><code>- 보안심사
+- 보안서약
+- 교육 (연 2회)
+</code></pre>
+<p>[4단계 - 시설 보안 (2~3개월)]</p>
+<pre><code>- 보안구역 설정
+- 출입통제 시스템 구축
+- CCTV 설치
+</code></pre>
+<p>[5단계 - 정보시스템 보안 (3~6개월)]</p>
+<pre><code>- 망분리 (물리적 또는 가상)
+- 방화벽, IDS/IPS
+- 접근통제 시스템
+- 암호화
+- 로그 관리
+- 백신
+</code></pre>
+<p>[6단계 - 운영 (계속)]</p>
+<pre><code>- 취약점 점검 (분기 1회)
+- 모의해킹 (연 1회)
+- 보안 패치
+- 로그 점검 (월 1회)
+</code></pre>
+<p>[7단계 - 평가 (연 1회 / 2년 1회)]</p>
+<pre><code>- 자체평가 (연 1회)
+- 외부평가 (2년 1회)
+</code></pre>
+<h3 id="102-공공기관-보안-컨설팅">10.2 공공기관 보안 컨설팅<a hidden class="anchor" aria-hidden="true" href="#102-공공기관-보안-컨설팅">#</a></h3>
+<p>[Phase 1 - 현황 진단 (1개월)]</p>
+<pre><code>- 국가정보보안 기본지침 갭 분석
+- 미흡 사항 도출
+</code></pre>
+<p>[Phase 2 - 개선 계획 수립 (1개월)]</p>
+<pre><code>- 우선순위 결정
+- 로드맵 수립
+- 예산 산정
+</code></pre>
+<p>[Phase 3 - 구축 지원 (3~6개월)]</p>
+<pre><code>- 조직 구성 지원
+- 정책 수립 지원
+- 기술적 통제 구현
+- 교육
+</code></pre>
+<p>[Phase 4 - 평가 대비 (1~2개월)]</p>
+<pre><code>- 자체평가 지원
+- 외부평가 대비
+- 증적 준비
+</code></pre>
+<h2 id="11-체크리스트">11. 체크리스트<a hidden class="anchor" aria-hidden="true" href="#11-체크리스트">#</a></h2>
+<h3 id="관리체계">관리체계<a hidden class="anchor" aria-hidden="true" href="#관리체계">#</a></h3>
+<pre><code>- [ ] 정보보호책임관을 지정했는가?
+- [ ] 정보보호 전담 조직이 있는가?
+- [ ] 보안관리위원회를 분기 1회 운영하는가?
+</code></pre>
+<h3 id="보안등급-및-구역">보안등급 및 구역<a hidden class="anchor" aria-hidden="true" href="#보안등급-및-구역">#</a></h3>
+<pre><code>- [ ] 보안등급을 분류했는가?
+- [ ] 보안구역을 설정했는가?
+- [ ] 보안구역 출입을 통제하는가?
+</code></pre>
+<h3 id="인원-보안">인원 보안<a hidden class="anchor" aria-hidden="true" href="#인원-보안">#</a></h3>
+<pre><code>- [ ] 국가기밀 취급자는 보안심사를 받았는가?
+- [ ] 보안서약서를 징구했는가?
+- [ ] 보안교육을 연 2회 실시하는가?
+</code></pre>
+<h3 id="문서-보안">문서 보안<a hidden class="anchor" aria-hidden="true" href="#문서-보안">#</a></h3>
+<pre><code>- [ ] 비밀 문서를 금고/캐비닛에 보관하는가?
+- [ ] 비밀 문서 열람을 기록하는가?
+- [ ] 비밀 문서를 안전하게 파기하는가?
+</code></pre>
+<h3 id="시설-보안">시설 보안<a hidden class="anchor" aria-hidden="true" href="#시설-보안">#</a></h3>
+<pre><code>- [ ] 보안구역에 CCTV를 설치했는가?
+- [ ] 외부인 방문을 관리하는가?
+</code></pre>
+<h3 id="정보시스템-보안---접근통제">정보시스템 보안 - 접근통제<a hidden class="anchor" aria-hidden="true" href="#정보시스템-보안---접근통제">#</a></h3>
+<pre><code>- [ ] 개인별 고유 ID를 부여하는가?
+- [ ] 비밀번호를 90일마다 변경하는가?
+- [ ] 관리자 계정에 2차 인증을 사용하는가?
+- [ ] 분기 1회 권한을 검토하는가?
+- [ ] 퇴직자 계정을 당일 삭제하는가?
+</code></pre>
+<h3 id="정보시스템-보안---네트워크">정보시스템 보안 - 네트워크<a hidden class="anchor" aria-hidden="true" href="#정보시스템-보안---네트워크">#</a></h3>
+<pre><code>- [ ] 망분리를 구현했는가? (물리적 또는 논리적)
+- [ ] 방화벽을 설치했는가?
+- [ ] IDS/IPS를 설치했는가?
+</code></pre>
+<h3 id="정보시스템-보안---암호화">정보시스템 보안 - 암호화<a hidden class="anchor" aria-hidden="true" href="#정보시스템-보안---암호화">#</a></h3>
+<pre><code>- [ ] 비밀 정보를 암호화하는가?
+- [ ] 검증된 암호 알고리즘을 사용하는가?
+- [ ] 암호키를 안전하게 관리하는가?
+</code></pre>
+<h3 id="정보시스템-보안---로그">정보시스템 보안 - 로그<a hidden class="anchor" aria-hidden="true" href="#정보시스템-보안---로그">#</a></h3>
+<pre><code>- [ ] 로그를 2년 보관하는가?
+- [ ] 월 1회 로그를 점검하는가?
+</code></pre>
+<h3 id="정보시스템-보안---백업">정보시스템 보안 - 백업<a hidden class="anchor" aria-hidden="true" href="#정보시스템-보안---백업">#</a></h3>
+<pre><code>- [ ] 정기적으로 백업하는가?
+- [ ] 백업본을 별도 장소에 보관하는가?
+- [ ] 분기 1회 복구 테스트를 하는가?
+</code></pre>
+<h3 id="정보시스템-보안---패치-및-백신">정보시스템 보안 - 패치 및 백신<a hidden class="anchor" aria-hidden="true" href="#정보시스템-보안---패치-및-백신">#</a></h3>
+<pre><code>- [ ] 중요 패치를 1개월 내 적용하는가?
+- [ ] 백신을 설치했는가?
+- [ ] 주 1회 전체 검사를 하는가?
+</code></pre>
+<h3 id="정보시스템-보안---보조저장매체">정보시스템 보안 - 보조저장매체<a hidden class="anchor" aria-hidden="true" href="#정보시스템-보안---보조저장매체">#</a></h3>
+<pre><code>- [ ] 보안 USB만 사용하는가?
+- [ ] 반출입을 관리하는가?
+</code></pre>
+<h3 id="사이버-위협-대응">사이버 위협 대응<a hidden class="anchor" aria-hidden="true" href="#사이버-위협-대응">#</a></h3>
+<pre><code>- [ ] 침해사고대응팀을 구성했는가?
+- [ ] 분기 1회 취약점 점검을 하는가?
+- [ ] 연 1회 모의해킹을 하는가?
+- [ ] 24시간 보안관제를 수행하는가?
+- [ ] 연 1회 침해사고 대응 훈련을 하는가?
+</code></pre>
+<h3 id="평가-및-교육">평가 및 교육<a hidden class="anchor" aria-hidden="true" href="#평가-및-교육">#</a></h3>
+<pre><code>- [ ] 연 1회 자체평가를 하는가?
+- [ ] 연 2회 보안교육을 실시하는가?
+</code></pre>
+<h2 id="학습-정리">학습 정리<a hidden class="anchor" aria-hidden="true" href="#학습-정리">#</a></h2>
+<p>오늘 학습한 핵심 내용 :</p>
+<pre><code>- 국가정보보안 기본지침은 공공기관 정보보호 기본 규정 (국정원장 훈령)
+- 2021년 전면 개정 (클라우드, 제로 트러스트, 원격근무 반영)
+- 적용 대상: 공공기관 (민간기업은 국가기밀 취급 시만)
+- 정보보호책임관 지정 의무
+- 보안등급: Ⅰ·Ⅱ·Ⅲ급 비밀, 대외비
+- 보안구역: 제한지역, 통제지역, 제한구역
+- 망분리 의무 (물리적 또는 가상)
+- 검증 암호 사용 권장 (SEED, ARIA, LEA 등)
+- 취약점 점검 분기 1회, 모의해킹 연 1회
+- 24시간 보안관제
+- 자체평가 연 1회, 외부평가 2년 1회
+- 보안교육 연 2회
+- 비밀번호 90일 변경 (공공기관)
+- 공공기관이 민간기업보다 엄격한 보안 규정
+</code></pre>
+<h2 id="다음-학습-주제">다음 학습 주제<a hidden class="anchor" aria-hidden="true" href="#다음-학습-주제">#</a></h2>
+<p>Day 30: ISMS-P (정보보호 및 개인정보보호 관리체계 인증)</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://hojjang98.github.io/tags/%EA%B5%AD%EA%B0%80%EC%A0%95%EB%B3%B4%EB%B3%B4%EC%95%88%EA%B8%B0%EB%B3%B8%EC%A7%80%EC%B9%A8/">국가정보보안기본지침</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EA%B3%B5%EA%B3%B5%EA%B8%B0%EA%B4%80%EB%B3%B4%EC%95%88/">공공기관보안</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%A7%9D%EB%B6%84%EB%A6%AC/">망분리</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%B3%B4%EC%95%88%EB%93%B1%EA%B8%89/">보안등급</a></li>
+      <li><a href="https://hojjang98.github.io/tags/ciso/">CISO</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EA%B5%AD%EC%A0%95%EC%9B%90/">국정원</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

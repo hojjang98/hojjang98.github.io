@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>2025.12.31 (Day 46) - 오프라인 미팅과 DNA Lab 역할 분담 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="팀프로젝트, DNA-Lab, 역할분담, 사용자여정, GitHub, 23andMe, 취약점매핑, 페르소나">
+<meta name="description" content="팀 오프라인 대면 회의에서 DNA Lab 페르소나 구체화 및 역할 분담 확정(호짱=Python 스캐너, 백엔드/프론트엔드/문서화), 사용자 여정별 취약점 매핑, 23andMe 사건 기반 시나리오 설계, GitHub 협업 규칙 및 일일 체크인 프로토콜 수립">
+<meta name="author" content="">
+<link rel="canonical" href="https://hojjang98.github.io/daily_logs/week10/20251231_project_02/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.290573799e582c418c4bd84f2bca757d0a77fd1bf9f5c43942030e706df68ec8.css" integrity="sha256-KQVzeZ5YLEGMS9hPK8p1fQp3/Rv59cQ5QgMOcG32jsg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/daily_logs/week10/20251231_project_02/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://hojjang98.github.io/daily_logs/week10/20251231_project_02/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="2025.12.31 (Day 46) - 오프라인 미팅과 DNA Lab 역할 분담">
+  <meta property="og:description" content="팀 오프라인 대면 회의에서 DNA Lab 페르소나 구체화 및 역할 분담 확정(호짱=Python 스캐너, 백엔드/프론트엔드/문서화), 사용자 여정별 취약점 매핑, 23andMe 사건 기반 시나리오 설계, GitHub 협업 규칙 및 일일 체크인 프로토콜 수립">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="daily_logs">
+    <meta property="article:published_time" content="2025-12-31T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-12-31T00:00:00+00:00">
+    <meta property="article:tag" content="팀프로젝트">
+    <meta property="article:tag" content="DNA-Lab">
+    <meta property="article:tag" content="역할분담">
+    <meta property="article:tag" content="사용자여정">
+    <meta property="article:tag" content="GitHub">
+    <meta property="article:tag" content="23andMe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2025.12.31 (Day 46) - 오프라인 미팅과 DNA Lab 역할 분담">
+<meta name="twitter:description" content="팀 오프라인 대면 회의에서 DNA Lab 페르소나 구체화 및 역할 분담 확정(호짱=Python 스캐너, 백엔드/프론트엔드/문서화), 사용자 여정별 취약점 매핑, 23andMe 사건 기반 시나리오 설계, GitHub 협업 규칙 및 일일 체크인 프로토콜 수립">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "6개월, 혹은 그 이상의 보안 여정",
+      "item": "https://hojjang98.github.io/daily_logs/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "2025.12.31 (Day 46) - 오프라인 미팅과 DNA Lab 역할 분담",
+      "item": "https://hojjang98.github.io/daily_logs/week10/20251231_project_02/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "2025.12.31 (Day 46) - 오프라인 미팅과 DNA Lab 역할 분담",
+  "name": "2025.12.31 (Day 46) - 오프라인 미팅과 DNA Lab 역할 분담",
+  "description": "팀 오프라인 대면 회의에서 DNA Lab 페르소나 구체화 및 역할 분담 확정(호짱=Python 스캐너, 백엔드/프론트엔드/문서화), 사용자 여정별 취약점 매핑, 23andMe 사건 기반 시나리오 설계, GitHub 협업 규칙 및 일일 체크인 프로토콜 수립",
+  "keywords": [
+    "팀프로젝트", "DNA-Lab", "역할분담", "사용자여정", "GitHub", "23andMe", "취약점매핑", "페르소나"
+  ],
+  "articleBody": "📄 2025.12.31 (Day 46) - 오프라인 미팅과 DNA Lab 역할 분담 1. 핵심 활동 정리 오프라인 미팅 개요 # 핵심 사항 내용 비고 1 미팅 형태 오프라인 대면 회의 집중적 기획 및 역할 분담 2 주요 안건 역할 분담 및 구체적 업무 배분 각자 강점 기반 배치 3 페르소나 설정 DNA Lab 서비스 구체화 프로젝트 정체성 확립 4 개발 방향 기존 구조 활용 + 커스터마이징 효율성 극대화 5 예상 난이도 웹 해킹 지식 부족으로 난항 예상 학습 곡선 존재 역할 분담 결과 팀원 담당 영역 주요 책임 필요 역량 호짱 (팀장) Python 진단 스크립트 개발 12개 취약점 자동 탐지 도구 구현 Python, 웹 보안 지식, 자동화 팀원 A 백엔드 개발 Spring Boot 로직 구현 및 취약점 삽입 Java, Spring, DB 팀원 B 프론트엔드 개발 Thymeleaf 템플릿 DNA Lab 테마 변환 HTML/CSS, UI/UX 팀원 C 문서화 및 발표 자료 보안 가이드, 대응 방안 문서 작성 기술 문서 작성, PPT 2. DNA Lab 페르소나 설정 서비스 콘셉트 DNA Lab - 개인 유전자 분석 서비스\n구분 내용 보안 관점 서비스 설명 개인의 DNA 샘플을 분석하여 건강, 조상, 유전 질환 예측 제공 민감한 생체정보 처리 타겟 고객 건강 관심층, 가족력 확인 필요자, 조상 추적 관심자 개인정보 + 유전정보 이중 보호 필요 핵심 기능 DNA 검사 신청, 결과 조회, 가족 매칭, 건강 리포트 다양한 공격 표면 존재 차별화 포인트 23andMe 유출 사건 기반 실제 사례 연계 프로젝트 현실성 및 임팩트 강화 기존 인트라넷 -\u003e DNA Lab 매핑 기존 기능 DNA Lab 기능 변경 사항 보안 고려사항 게시판 글쓰기 DNA 검사 신청 제목 -\u003e 이름, 내용 -\u003e 검사목적 개인정보 입력 검증 게시판 목록 검사 신청 내역 신청 상태 표시 추가 타인 신청서 접근 차단 게시판 상세 검사 결과 조회 진행 단계, PDF 다운로드 권한 검증 필수 파일 다운로드 DNA 리포트 다운로드 PDF 형식 건강 리포트 경로 조작 공격 대상 직원 검색 DNA 매칭 (가족 찾기) 유전적 유사도 기반 검색 민감정보 노출 위험 마이페이지 개인정보 및 가족 관계 유전정보 연동 수평적 권한 상승 취약 3. 역할별 상세 업무 정의 호짱 - Python 진단 스크립트 담당 이유:\n보안 교육 과정에서 웹 해킹 기법 학습 Python 자동화 스크립트 작성 경험 SOC 분석가 지망 - 취약점 탐지 역량 필수 개발 범위:\nXSS Scanner - Stored XSS (게시판, 신청서), Reflected XSS (검색, URL 파라미터) SQL Injection Scanner - 로그인 우회, 검색 기능 공격, URL 파라미터 삽입 CSRF Scanner - 토큰 존재 여부, 토큰 검증 우회 시도 인증/인가 Scanner - 약한 비밀번호 정책, 세션 관리 취약점, 권한 검증 미흡 (IDOR) 파일 관련 Scanner - 파일 업로드 취약점, 경로 조작 (Path Traversal) 기타 - 코드 인젝션 (Thymeleaf), 쿠키 변조, 비밀번호 복구 취약점 예상 난관:\n웹 해킹 실무 경험 부족 이론과 실제 구현의 괴리 오탐/미탐 최소화 어려움 팀원 협업 구조 호짱 -\u003e 백엔드 개발자:\n“로그인 페이지에 SQL Injection 취약점 넣어주세요” “CSRF 토큰 검증 로직 빼주세요” “파일 다운로드 시 경로 검증 안 하게 해주세요” 백엔드 개발자 -\u003e 호짱:\n“여기 URL이에요: /dna/apply” “파라미터 이름은 ‘username’, ‘password’입니다” “세션 쿠키 이름은 ‘JSESSIONID’입니다” 호짱 -\u003e 프론트엔드 개발자:\n“검색창 입력값 이스케이프 처리 빼주세요” “신청서 내용 필드에 script 태그 입력 가능하게 해주세요” 프론트엔드 개발자 -\u003e 호짱:\n“어떤 페이지를 스캔해야 하나요?” “입력 필드 name 속성 알려드릴게요” 4. 웹 해킹 지식 부족 문제 직면한 어려움 문제 영역 구체적 어려움 영향도 이론과 실무 격차 교재의 개념은 알지만 실제 공격 구현은 낯섦 높음 HTTP 프로토콜 이해 부족 요청/응답 구조, 헤더, 쿠키 동작 원리 미흡 중간 페이로드 작성 경험 부족 어떤 페이로드가 효과적인지 감이 없음 높음 프레임워크 특성 모름 Spring Boot, Thymeleaf 동작 방식 불명확 중간 오탐/미탐 판단 기준 모호 언제 취약하다고 판정해야 하는지 애매함 높음 학습 곡선 대응 전략 즉시 학습 필요 사항:\nHTTP 요청/응답 구조 Burp Suite로 실제 트래픽 관찰 requests 라이브러리 Session 객체 이해 쿠키, 헤더 조작 방법 실습 실제 페이로드 연구 OWASP Testing Guide 참고 PortSwigger Web Security Academy 실습 기존 도구 (sqlmap, XSStrike) 분석 자동화 스크립트 패턴 BeautifulSoup으로 HTML 파싱 정규표현식으로 응답 검증 예외 처리 및 로깅 우회 전략: 모르는 부분은 단순화, 복잡한 공격보다는 확실한 기본 페이로드 위주로 접근, 고급 기법은 시간 남으면 추가\n5. 오프라인 미팅 주요 결정사항 커뮤니케이션 규칙 일일 체크인 (매일 오후 9시 - 진행상황 공유):\n오늘 한 일 내일 할 일 블로커 (도움 필요한 부분) 이슈 공유 채널:\nNotion / GitHub / 카카오톡 단체방 급한 문제는 즉시 공유 기술적 질문은 상세히 작성 코드 공유:\nGitHub 레포지토리 사용 브랜치 전략: feature/기능명 커밋 메시지: “[영역] 작업 내용” 6. DNA Lab 구체화 사용자 여정 (User Journey)과 취약점 매핑 회원가입\n이메일, 비밀번호, 개인정보 입력 [취약점] 약한 비밀번호 허용 DNA 검사 신청\n이름, 생년월일, 검사 목적, 신분증 업로드 [취약점] XSS (이름 필드), 파일 업로드 검사 진행 상황 조회\n신청 내역 리스트 확인 [취약점] IDOR (타인 신청서 접근) 결과 리포트 다운로드\nPDF 파일 다운로드 [취약점] Path Traversal 가족 찾기 (DNA 매칭)\n유전적 유사도 검색 [취약점] SQL Injection (검색 기능) 개인정보 수정\n마이페이지에서 정보 변경 [취약점] CSRF, 세션 관리 23andMe 사건 연계 실제 사건 개요:\n2023년 10월 발생 690만 명 유전정보 유출 Credential Stuffing 공격 (타 사이트 유출 계정 재사용) 유전정보 특성상 변경 불가능 -\u003e 평생 영향 프로젝트 적용 시나리오: DNA Lab이 23andMe와 유사한 취약점을 가진 경우\n약한 비밀번호 정책 -\u003e Brute Force 공격 성공 인증 우회 (SQL Injection) -\u003e 로그인 없이 시스템 접근 권한 검증 미흡 (IDOR) -\u003e 타인의 DNA 리포트 열람 결과: 690만 명급 대규모 유출 재현 가능 7. 배운 점 및 인사이트 오프라인 미팅의 가치 즉각적 피드백: 온라인 대비 의사결정 속도 5배 빠름 신뢰 구축: 대면 소통으로 팀 결속력 강화 세밀한 조율: 화면 공유로 구조 설명, 즉시 합의 집중도 향상: 외부 방해 요소 차단, 몰입 환경 역할 분담의 중요성 명확한 책임 소재: 각자 자기 영역에 집중 가능 강점 기반 배치: 효율성 극대화 상호 의존성 인식: 내 작업이 남에게 영향 -\u003e 책임감 증대 부담 분산: 팀장 혼자 짊어지지 않아도 됨 웹 해킹 지식 부족 직면 겸손함 유지: 모르는 것 인정하고 학습 자세 실습 중심 학습: 이론보다 직접 해보며 배우기 커뮤니티 활용: PortSwigger, OWASP 같은 리소스 적극 활용 단순함의 미학: 복잡한 공격보다 확실한 기본기 페르소나 설정의 효과 맥락 제공: 단순 기능 나열 -\u003e 스토리 있는 서비스 현실성 강화: 23andMe 사건으로 설득력 증가 차별화 성공: 다른 팀과 겹치지 않는 독특함 동기부여: 실제 일어난 사건 재현한다는 사명감 8. Quick Reference 역할별 핵심 키워드 역할 핵심 기술 주의사항 호짱 Python, requests, BeautifulSoup, 정규표현식 오탐 최소화, 로그인 상태 유지 백엔드 Spring Boot, JPA, Thymeleaf, MySQL 의도적 취약점 명확히, 주석 처리 프론트엔드 HTML, CSS, Thymeleaf, Bootstrap DNA Lab 테마 일관성 유지 문서화 Markdown, PPT, 보안 가이드 비전문가도 이해 가능하게 작성 Today’s Insight:\n오프라인 미팅을 통해 프로젝트가 추상적 계획에서 구체적 실행 단계로 전환되었다. DNA Lab이라는 명확한 페르소나 설정은 단순한 게시판 프로젝트를 현실감 있는 보안 시뮬레이션으로 탈바꿈시켰고, 23andMe 사건과의 연계는 프로젝트에 사회적 의미를 부여했다. 역할 분담 과정에서 각자의 강점을 기반으로 책임을 명확히 한 것이 팀의 효율성을 극대화할 것으로 기대된다. 다만 Python 진단 스크립트 개발을 맡으면서 웹 해킹 지식 부족을 절감했고, 이는 앞으로 극복해야 할 주요 과제다. 이론과 실무의 괴리를 메우기 위해 학습과 실습을 병행하며, 확실한 기본 페이로드 위주로 접근하는 전략을 세웠다. 내일부터는 본격적인 코딩에 돌입하며, 팀원들과의 긴밀한 협업을 통해 각자의 부족함을 보완해 나갈 것이다.\n",
+  "wordCount" : "2934",
+  "inLanguage": "ko",
+  "datePublished": "2025-12-31T00:00:00Z",
+  "dateModified": "2025-12-31T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/daily_logs/week10/20251231_project_02/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://hojjang98.github.io/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/daily_logs/">6개월, 혹은 그 이상의 보안 여정</a></div>
+    <h1 class="post-title entry-hint-parent">
+      2025.12.31 (Day 46) - 오프라인 미팅과 DNA Lab 역할 분담
+    </h1>
+    <div class="post-meta"><span title='2025-12-31 00:00:00 +0000 UTC'>2025년 12월 31일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="-20251231-day-46---오프라인-미팅과-dna-lab-역할-분담">📄 2025.12.31 (Day 46) - 오프라인 미팅과 DNA Lab 역할 분담<a hidden class="anchor" aria-hidden="true" href="#-20251231-day-46---오프라인-미팅과-dna-lab-역할-분담">#</a></h1>
+<hr>
+<h2 id="1-핵심-활동-정리">1. 핵심 활동 정리<a hidden class="anchor" aria-hidden="true" href="#1-핵심-활동-정리">#</a></h2>
+<h3 id="오프라인-미팅-개요">오프라인 미팅 개요<a hidden class="anchor" aria-hidden="true" href="#오프라인-미팅-개요">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">#</th>
+          <th style="text-align: left">핵심 사항</th>
+          <th style="text-align: left">내용</th>
+          <th style="text-align: left">비고</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">1</td>
+          <td style="text-align: left">미팅 형태</td>
+          <td style="text-align: left">오프라인 대면 회의</td>
+          <td style="text-align: left">집중적 기획 및 역할 분담</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">2</td>
+          <td style="text-align: left">주요 안건</td>
+          <td style="text-align: left">역할 분담 및 구체적 업무 배분</td>
+          <td style="text-align: left">각자 강점 기반 배치</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">3</td>
+          <td style="text-align: left">페르소나 설정</td>
+          <td style="text-align: left">DNA Lab 서비스 구체화</td>
+          <td style="text-align: left">프로젝트 정체성 확립</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">4</td>
+          <td style="text-align: left">개발 방향</td>
+          <td style="text-align: left">기존 구조 활용 + 커스터마이징</td>
+          <td style="text-align: left">효율성 극대화</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">5</td>
+          <td style="text-align: left">예상 난이도</td>
+          <td style="text-align: left">웹 해킹 지식 부족으로 난항 예상</td>
+          <td style="text-align: left">학습 곡선 존재</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="역할-분담-결과">역할 분담 결과<a hidden class="anchor" aria-hidden="true" href="#역할-분담-결과">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">팀원</th>
+          <th style="text-align: left">담당 영역</th>
+          <th style="text-align: left">주요 책임</th>
+          <th style="text-align: left">필요 역량</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>호짱 (팀장)</strong></td>
+          <td style="text-align: left">Python 진단 스크립트 개발</td>
+          <td style="text-align: left">12개 취약점 자동 탐지 도구 구현</td>
+          <td style="text-align: left">Python, 웹 보안 지식, 자동화</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>팀원 A</strong></td>
+          <td style="text-align: left">백엔드 개발</td>
+          <td style="text-align: left">Spring Boot 로직 구현 및 취약점 삽입</td>
+          <td style="text-align: left">Java, Spring, DB</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>팀원 B</strong></td>
+          <td style="text-align: left">프론트엔드 개발</td>
+          <td style="text-align: left">Thymeleaf 템플릿 DNA Lab 테마 변환</td>
+          <td style="text-align: left">HTML/CSS, UI/UX</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>팀원 C</strong></td>
+          <td style="text-align: left">문서화 및 발표 자료</td>
+          <td style="text-align: left">보안 가이드, 대응 방안 문서 작성</td>
+          <td style="text-align: left">기술 문서 작성, PPT</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="2-dna-lab-페르소나-설정">2. DNA Lab 페르소나 설정<a hidden class="anchor" aria-hidden="true" href="#2-dna-lab-페르소나-설정">#</a></h2>
+<h3 id="서비스-콘셉트">서비스 콘셉트<a hidden class="anchor" aria-hidden="true" href="#서비스-콘셉트">#</a></h3>
+<p><strong>DNA Lab - 개인 유전자 분석 서비스</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">구분</th>
+          <th style="text-align: left">내용</th>
+          <th style="text-align: left">보안 관점</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>서비스 설명</strong></td>
+          <td style="text-align: left">개인의 DNA 샘플을 분석하여 건강, 조상, 유전 질환 예측 제공</td>
+          <td style="text-align: left">민감한 생체정보 처리</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>타겟 고객</strong></td>
+          <td style="text-align: left">건강 관심층, 가족력 확인 필요자, 조상 추적 관심자</td>
+          <td style="text-align: left">개인정보 + 유전정보 이중 보호 필요</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>핵심 기능</strong></td>
+          <td style="text-align: left">DNA 검사 신청, 결과 조회, 가족 매칭, 건강 리포트</td>
+          <td style="text-align: left">다양한 공격 표면 존재</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>차별화 포인트</strong></td>
+          <td style="text-align: left">23andMe 유출 사건 기반 실제 사례 연계</td>
+          <td style="text-align: left">프로젝트 현실성 및 임팩트 강화</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="기존-인트라넷---dna-lab-매핑">기존 인트라넷 -&gt; DNA Lab 매핑<a hidden class="anchor" aria-hidden="true" href="#기존-인트라넷---dna-lab-매핑">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">기존 기능</th>
+          <th style="text-align: left">DNA Lab 기능</th>
+          <th style="text-align: left">변경 사항</th>
+          <th style="text-align: left">보안 고려사항</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">게시판 글쓰기</td>
+          <td style="text-align: left">DNA 검사 신청</td>
+          <td style="text-align: left">제목 -&gt; 이름, 내용 -&gt; 검사목적</td>
+          <td style="text-align: left">개인정보 입력 검증</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">게시판 목록</td>
+          <td style="text-align: left">검사 신청 내역</td>
+          <td style="text-align: left">신청 상태 표시 추가</td>
+          <td style="text-align: left">타인 신청서 접근 차단</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">게시판 상세</td>
+          <td style="text-align: left">검사 결과 조회</td>
+          <td style="text-align: left">진행 단계, PDF 다운로드</td>
+          <td style="text-align: left">권한 검증 필수</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">파일 다운로드</td>
+          <td style="text-align: left">DNA 리포트 다운로드</td>
+          <td style="text-align: left">PDF 형식 건강 리포트</td>
+          <td style="text-align: left">경로 조작 공격 대상</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">직원 검색</td>
+          <td style="text-align: left">DNA 매칭 (가족 찾기)</td>
+          <td style="text-align: left">유전적 유사도 기반 검색</td>
+          <td style="text-align: left">민감정보 노출 위험</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">마이페이지</td>
+          <td style="text-align: left">개인정보 및 가족 관계</td>
+          <td style="text-align: left">유전정보 연동</td>
+          <td style="text-align: left">수평적 권한 상승 취약</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="3-역할별-상세-업무-정의">3. 역할별 상세 업무 정의<a hidden class="anchor" aria-hidden="true" href="#3-역할별-상세-업무-정의">#</a></h2>
+<h3 id="호짱---python-진단-스크립트">호짱 - Python 진단 스크립트<a hidden class="anchor" aria-hidden="true" href="#호짱---python-진단-스크립트">#</a></h3>
+<p><strong>담당 이유:</strong></p>
+<ul>
+<li>보안 교육 과정에서 웹 해킹 기법 학습</li>
+<li>Python 자동화 스크립트 작성 경험</li>
+<li>SOC 분석가 지망 - 취약점 탐지 역량 필수</li>
+</ul>
+<p><strong>개발 범위:</strong></p>
+<ol>
+<li>XSS Scanner - Stored XSS (게시판, 신청서), Reflected XSS (검색, URL 파라미터)</li>
+<li>SQL Injection Scanner - 로그인 우회, 검색 기능 공격, URL 파라미터 삽입</li>
+<li>CSRF Scanner - 토큰 존재 여부, 토큰 검증 우회 시도</li>
+<li>인증/인가 Scanner - 약한 비밀번호 정책, 세션 관리 취약점, 권한 검증 미흡 (IDOR)</li>
+<li>파일 관련 Scanner - 파일 업로드 취약점, 경로 조작 (Path Traversal)</li>
+<li>기타 - 코드 인젝션 (Thymeleaf), 쿠키 변조, 비밀번호 복구 취약점</li>
+</ol>
+<p><strong>예상 난관:</strong></p>
+<ul>
+<li>웹 해킹 실무 경험 부족</li>
+<li>이론과 실제 구현의 괴리</li>
+<li>오탐/미탐 최소화 어려움</li>
+</ul>
+<hr>
+<h3 id="팀원-협업-구조">팀원 협업 구조<a hidden class="anchor" aria-hidden="true" href="#팀원-협업-구조">#</a></h3>
+<p><strong>호짱 -&gt; 백엔드 개발자:</strong></p>
+<ul>
+<li>&ldquo;로그인 페이지에 SQL Injection 취약점 넣어주세요&rdquo;</li>
+<li>&ldquo;CSRF 토큰 검증 로직 빼주세요&rdquo;</li>
+<li>&ldquo;파일 다운로드 시 경로 검증 안 하게 해주세요&rdquo;</li>
+</ul>
+<p><strong>백엔드 개발자 -&gt; 호짱:</strong></p>
+<ul>
+<li>&ldquo;여기 URL이에요: /dna/apply&rdquo;</li>
+<li>&ldquo;파라미터 이름은 &lsquo;username&rsquo;, &lsquo;password&rsquo;입니다&rdquo;</li>
+<li>&ldquo;세션 쿠키 이름은 &lsquo;JSESSIONID&rsquo;입니다&rdquo;</li>
+</ul>
+<p><strong>호짱 -&gt; 프론트엔드 개발자:</strong></p>
+<ul>
+<li>&ldquo;검색창 입력값 이스케이프 처리 빼주세요&rdquo;</li>
+<li>&ldquo;신청서 내용 필드에 script 태그 입력 가능하게 해주세요&rdquo;</li>
+</ul>
+<p><strong>프론트엔드 개발자 -&gt; 호짱:</strong></p>
+<ul>
+<li>&ldquo;어떤 페이지를 스캔해야 하나요?&rdquo;</li>
+<li>&ldquo;입력 필드 name 속성 알려드릴게요&rdquo;</li>
+</ul>
+<hr>
+<h2 id="4-웹-해킹-지식-부족-문제">4. 웹 해킹 지식 부족 문제<a hidden class="anchor" aria-hidden="true" href="#4-웹-해킹-지식-부족-문제">#</a></h2>
+<h3 id="직면한-어려움">직면한 어려움<a hidden class="anchor" aria-hidden="true" href="#직면한-어려움">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">문제 영역</th>
+          <th style="text-align: left">구체적 어려움</th>
+          <th style="text-align: center">영향도</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>이론과 실무 격차</strong></td>
+          <td style="text-align: left">교재의 개념은 알지만 실제 공격 구현은 낯섦</td>
+          <td style="text-align: center">높음</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>HTTP 프로토콜 이해 부족</strong></td>
+          <td style="text-align: left">요청/응답 구조, 헤더, 쿠키 동작 원리 미흡</td>
+          <td style="text-align: center">중간</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>페이로드 작성 경험 부족</strong></td>
+          <td style="text-align: left">어떤 페이로드가 효과적인지 감이 없음</td>
+          <td style="text-align: center">높음</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>프레임워크 특성 모름</strong></td>
+          <td style="text-align: left">Spring Boot, Thymeleaf 동작 방식 불명확</td>
+          <td style="text-align: center">중간</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>오탐/미탐 판단 기준 모호</strong></td>
+          <td style="text-align: left">언제 취약하다고 판정해야 하는지 애매함</td>
+          <td style="text-align: center">높음</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="학습-곡선-대응-전략">학습 곡선 대응 전략<a hidden class="anchor" aria-hidden="true" href="#학습-곡선-대응-전략">#</a></h3>
+<p><strong>즉시 학습 필요 사항:</strong></p>
+<ol>
+<li>HTTP 요청/응답 구조
+<ul>
+<li>Burp Suite로 실제 트래픽 관찰</li>
+<li>requests 라이브러리 Session 객체 이해</li>
+<li>쿠키, 헤더 조작 방법 실습</li>
+</ul>
+</li>
+<li>실제 페이로드 연구
+<ul>
+<li>OWASP Testing Guide 참고</li>
+<li>PortSwigger Web Security Academy 실습</li>
+<li>기존 도구 (sqlmap, XSStrike) 분석</li>
+</ul>
+</li>
+<li>자동화 스크립트 패턴
+<ul>
+<li>BeautifulSoup으로 HTML 파싱</li>
+<li>정규표현식으로 응답 검증</li>
+<li>예외 처리 및 로깅</li>
+</ul>
+</li>
+</ol>
+<p><strong>우회 전략:</strong> 모르는 부분은 단순화, 복잡한 공격보다는 확실한 기본 페이로드 위주로 접근, 고급 기법은 시간 남으면 추가</p>
+<hr>
+<h2 id="5-오프라인-미팅-주요-결정사항">5. 오프라인 미팅 주요 결정사항<a hidden class="anchor" aria-hidden="true" href="#5-오프라인-미팅-주요-결정사항">#</a></h2>
+<h3 id="커뮤니케이션-규칙">커뮤니케이션 규칙<a hidden class="anchor" aria-hidden="true" href="#커뮤니케이션-규칙">#</a></h3>
+<p><strong>일일 체크인 (매일 오후 9시 - 진행상황 공유):</strong></p>
+<ul>
+<li>오늘 한 일</li>
+<li>내일 할 일</li>
+<li>블로커 (도움 필요한 부분)</li>
+</ul>
+<p><strong>이슈 공유 채널:</strong></p>
+<ul>
+<li>Notion / GitHub / 카카오톡 단체방</li>
+<li>급한 문제는 즉시 공유</li>
+<li>기술적 질문은 상세히 작성</li>
+</ul>
+<p><strong>코드 공유:</strong></p>
+<ul>
+<li>GitHub 레포지토리 사용</li>
+<li>브랜치 전략: feature/기능명</li>
+<li>커밋 메시지: &ldquo;[영역] 작업 내용&rdquo;</li>
+</ul>
+<hr>
+<h2 id="6-dna-lab-구체화">6. DNA Lab 구체화<a hidden class="anchor" aria-hidden="true" href="#6-dna-lab-구체화">#</a></h2>
+<h3 id="사용자-여정-user-journey과-취약점-매핑">사용자 여정 (User Journey)과 취약점 매핑<a hidden class="anchor" aria-hidden="true" href="#사용자-여정-user-journey과-취약점-매핑">#</a></h3>
+<ol>
+<li>
+<p><strong>회원가입</strong></p>
+<ul>
+<li>이메일, 비밀번호, 개인정보 입력</li>
+<li>[취약점] 약한 비밀번호 허용</li>
+</ul>
+</li>
+<li>
+<p><strong>DNA 검사 신청</strong></p>
+<ul>
+<li>이름, 생년월일, 검사 목적, 신분증 업로드</li>
+<li>[취약점] XSS (이름 필드), 파일 업로드</li>
+</ul>
+</li>
+<li>
+<p><strong>검사 진행 상황 조회</strong></p>
+<ul>
+<li>신청 내역 리스트 확인</li>
+<li>[취약점] IDOR (타인 신청서 접근)</li>
+</ul>
+</li>
+<li>
+<p><strong>결과 리포트 다운로드</strong></p>
+<ul>
+<li>PDF 파일 다운로드</li>
+<li>[취약점] Path Traversal</li>
+</ul>
+</li>
+<li>
+<p><strong>가족 찾기 (DNA 매칭)</strong></p>
+<ul>
+<li>유전적 유사도 검색</li>
+<li>[취약점] SQL Injection (검색 기능)</li>
+</ul>
+</li>
+<li>
+<p><strong>개인정보 수정</strong></p>
+<ul>
+<li>마이페이지에서 정보 변경</li>
+<li>[취약점] CSRF, 세션 관리</li>
+</ul>
+</li>
+</ol>
+<h3 id="23andme-사건-연계">23andMe 사건 연계<a hidden class="anchor" aria-hidden="true" href="#23andme-사건-연계">#</a></h3>
+<p><strong>실제 사건 개요:</strong></p>
+<ul>
+<li>2023년 10월 발생</li>
+<li>690만 명 유전정보 유출</li>
+<li>Credential Stuffing 공격 (타 사이트 유출 계정 재사용)</li>
+<li>유전정보 특성상 변경 불가능 -&gt; 평생 영향</li>
+</ul>
+<p><strong>프로젝트 적용 시나리오:</strong> DNA Lab이 23andMe와 유사한 취약점을 가진 경우</p>
+<ol>
+<li>약한 비밀번호 정책 -&gt; Brute Force 공격 성공</li>
+<li>인증 우회 (SQL Injection) -&gt; 로그인 없이 시스템 접근</li>
+<li>권한 검증 미흡 (IDOR) -&gt; 타인의 DNA 리포트 열람</li>
+<li>결과: 690만 명급 대규모 유출 재현 가능</li>
+</ol>
+<hr>
+<h2 id="7-배운-점-및-인사이트">7. 배운 점 및 인사이트<a hidden class="anchor" aria-hidden="true" href="#7-배운-점-및-인사이트">#</a></h2>
+<h3 id="오프라인-미팅의-가치">오프라인 미팅의 가치<a hidden class="anchor" aria-hidden="true" href="#오프라인-미팅의-가치">#</a></h3>
+<ul>
+<li><strong>즉각적 피드백:</strong> 온라인 대비 의사결정 속도 5배 빠름</li>
+<li><strong>신뢰 구축:</strong> 대면 소통으로 팀 결속력 강화</li>
+<li><strong>세밀한 조율:</strong> 화면 공유로 구조 설명, 즉시 합의</li>
+<li><strong>집중도 향상:</strong> 외부 방해 요소 차단, 몰입 환경</li>
+</ul>
+<h3 id="역할-분담의-중요성">역할 분담의 중요성<a hidden class="anchor" aria-hidden="true" href="#역할-분담의-중요성">#</a></h3>
+<ul>
+<li><strong>명확한 책임 소재:</strong> 각자 자기 영역에 집중 가능</li>
+<li><strong>강점 기반 배치:</strong> 효율성 극대화</li>
+<li><strong>상호 의존성 인식:</strong> 내 작업이 남에게 영향 -&gt; 책임감 증대</li>
+<li><strong>부담 분산:</strong> 팀장 혼자 짊어지지 않아도 됨</li>
+</ul>
+<h3 id="웹-해킹-지식-부족-직면">웹 해킹 지식 부족 직면<a hidden class="anchor" aria-hidden="true" href="#웹-해킹-지식-부족-직면">#</a></h3>
+<ul>
+<li><strong>겸손함 유지:</strong> 모르는 것 인정하고 학습 자세</li>
+<li><strong>실습 중심 학습:</strong> 이론보다 직접 해보며 배우기</li>
+<li><strong>커뮤니티 활용:</strong> PortSwigger, OWASP 같은 리소스 적극 활용</li>
+<li><strong>단순함의 미학:</strong> 복잡한 공격보다 확실한 기본기</li>
+</ul>
+<h3 id="페르소나-설정의-효과">페르소나 설정의 효과<a hidden class="anchor" aria-hidden="true" href="#페르소나-설정의-효과">#</a></h3>
+<ul>
+<li><strong>맥락 제공:</strong> 단순 기능 나열 -&gt; 스토리 있는 서비스</li>
+<li><strong>현실성 강화:</strong> 23andMe 사건으로 설득력 증가</li>
+<li><strong>차별화 성공:</strong> 다른 팀과 겹치지 않는 독특함</li>
+<li><strong>동기부여:</strong> 실제 일어난 사건 재현한다는 사명감</li>
+</ul>
+<hr>
+<h2 id="8-quick-reference">8. Quick Reference<a hidden class="anchor" aria-hidden="true" href="#8-quick-reference">#</a></h2>
+<h3 id="역할별-핵심-키워드">역할별 핵심 키워드<a hidden class="anchor" aria-hidden="true" href="#역할별-핵심-키워드">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">역할</th>
+          <th style="text-align: left">핵심 기술</th>
+          <th style="text-align: left">주의사항</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>호짱</strong></td>
+          <td style="text-align: left">Python, requests, BeautifulSoup, 정규표현식</td>
+          <td style="text-align: left">오탐 최소화, 로그인 상태 유지</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>백엔드</strong></td>
+          <td style="text-align: left">Spring Boot, JPA, Thymeleaf, MySQL</td>
+          <td style="text-align: left">의도적 취약점 명확히, 주석 처리</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>프론트엔드</strong></td>
+          <td style="text-align: left">HTML, CSS, Thymeleaf, Bootstrap</td>
+          <td style="text-align: left">DNA Lab 테마 일관성 유지</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>문서화</strong></td>
+          <td style="text-align: left">Markdown, PPT, 보안 가이드</td>
+          <td style="text-align: left">비전문가도 이해 가능하게 작성</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<p><strong>Today&rsquo;s Insight:</strong></p>
+<p>오프라인 미팅을 통해 프로젝트가 추상적 계획에서 구체적 실행 단계로 전환되었다. DNA Lab이라는 명확한 페르소나 설정은 단순한 게시판 프로젝트를 현실감 있는 보안 시뮬레이션으로 탈바꿈시켰고, 23andMe 사건과의 연계는 프로젝트에 사회적 의미를 부여했다. 역할 분담 과정에서 각자의 강점을 기반으로 책임을 명확히 한 것이 팀의 효율성을 극대화할 것으로 기대된다. 다만 Python 진단 스크립트 개발을 맡으면서 웹 해킹 지식 부족을 절감했고, 이는 앞으로 극복해야 할 주요 과제다. 이론과 실무의 괴리를 메우기 위해 학습과 실습을 병행하며, 확실한 기본 페이로드 위주로 접근하는 전략을 세웠다. 내일부터는 본격적인 코딩에 돌입하며, 팀원들과의 긴밀한 협업을 통해 각자의 부족함을 보완해 나갈 것이다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://hojjang98.github.io/tags/%ED%8C%80%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/">팀프로젝트</a></li>
+      <li><a href="https://hojjang98.github.io/tags/dna-lab/">DNA-Lab</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%97%AD%ED%95%A0%EB%B6%84%EB%8B%B4/">역할분담</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%82%AC%EC%9A%A9%EC%9E%90%EC%97%AC%EC%A0%95/">사용자여정</a></li>
+      <li><a href="https://hojjang98.github.io/tags/github/">GitHub</a></li>
+      <li><a href="https://hojjang98.github.io/tags/23andme/">23andMe</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%B7%A8%EC%95%BD%EC%A0%90%EB%A7%A4%ED%95%91/">취약점매핑</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%ED%8E%98%EB%A5%B4%EC%86%8C%EB%82%98/">페르소나</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

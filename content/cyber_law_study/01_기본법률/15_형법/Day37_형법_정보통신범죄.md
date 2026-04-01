@@ -1,6 +1,6 @@
 ---
 title: "Day 37: 형법 (정보통신 범죄)"
-date: 2026-03-21
+date: 2026-03-24
 categories: ["cyber-law-study"]
 tags: ["형법", "정보통신범죄", "해킹", "개인정보", "사이버범죄", "보안컨설팅"]
 draft: false

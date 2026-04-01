@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Day 34: 개인정보 영향평가 (PIA) | HJ&#39;s Security Note</title>
+<meta name="keywords" content="PIA, 개인정보영향평가, 개인정보보호법, 공공기관, KISA, 위험분석, 민감정보, 고유식별정보">
+<meta name="description" content="개인정보 영향평가(PIA) 제도를 학습합니다. 평가 대상 기준, 수행 기관, 7단계 평가 절차, 위험 분석 방법, 위원회 제출 및 결과 공개 의무를 정리합니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/12_%EC%98%81%ED%96%A5%ED%8F%89%EA%B0%80/day34_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%98%81%ED%96%A5%ED%8F%89%EA%B0%80/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.290573799e582c418c4bd84f2bca757d0a77fd1bf9f5c43942030e706df68ec8.css" integrity="sha256-KQVzeZ5YLEGMS9hPK8p1fQp3/Rv59cQ5QgMOcG32jsg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/12_%EC%98%81%ED%96%A5%ED%8F%89%EA%B0%80/day34_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%98%81%ED%96%A5%ED%8F%89%EA%B0%80/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/12_%EC%98%81%ED%96%A5%ED%8F%89%EA%B0%80/day34_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%98%81%ED%96%A5%ED%8F%89%EA%B0%80/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="Day 34: 개인정보 영향평가 (PIA)">
+  <meta property="og:description" content="개인정보 영향평가(PIA) 제도를 학습합니다. 평가 대상 기준, 수행 기관, 7단계 평가 절차, 위험 분석 방법, 위원회 제출 및 결과 공개 의무를 정리합니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="cyber_law_study">
+    <meta property="article:published_time" content="2026-03-18T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-03-18T00:00:00+00:00">
+    <meta property="article:tag" content="PIA">
+    <meta property="article:tag" content="개인정보영향평가">
+    <meta property="article:tag" content="개인정보보호법">
+    <meta property="article:tag" content="공공기관">
+    <meta property="article:tag" content="KISA">
+    <meta property="article:tag" content="위험분석">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Day 34: 개인정보 영향평가 (PIA)">
+<meta name="twitter:description" content="개인정보 영향평가(PIA) 제도를 학습합니다. 평가 대상 기준, 수행 기관, 7단계 평가 절차, 위험 분석 방법, 위원회 제출 및 결과 공개 의무를 정리합니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "보안 컨설팅 공부",
+      "item": "https://hojjang98.github.io/cyber_law_study/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Day 34: 개인정보 영향평가 (PIA)",
+      "item": "https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/12_%EC%98%81%ED%96%A5%ED%8F%89%EA%B0%80/day34_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%98%81%ED%96%A5%ED%8F%89%EA%B0%80/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Day 34: 개인정보 영향평가 (PIA)",
+  "name": "Day 34: 개인정보 영향평가 (PIA)",
+  "description": "개인정보 영향평가(PIA) 제도를 학습합니다. 평가 대상 기준, 수행 기관, 7단계 평가 절차, 위험 분석 방법, 위원회 제출 및 결과 공개 의무를 정리합니다.",
+  "keywords": [
+    "PIA", "개인정보영향평가", "개인정보보호법", "공공기관", "KISA", "위험분석", "민감정보", "고유식별정보"
+  ],
+  "articleBody": "Day 34: 개인정보 영향평가 (PIA) 1. 개인정보 영향평가의 개요 1.1 개인정보 영향평가(PIA)란? 정식 명칭 : Privacy Impact Assessment (PIA)\n정의 : 개인정보를 대량으로 처리 하거나 새로운 시스템을 구축 할 때, 개인정보 침해 위험을 사전에 분석·평가 하여 위험을 감소 시키는 제도\n“이 시스템/서비스가 개인정보 침해 위험이 있나?“를 미리 점검하는 사전 예방 제도입니다.\n[PIA 의무 대상 예시]\n- 사례 1 : 은행이 신용카드 시스템 구축 → 100만명 카드번호(고유식별정보) 처리 → PIA 의무 대상 - 사례 2 : 병원이 전자의무기록 시스템 도입 → 10만명 건강정보(민감정보) 처리 → PIA 의무 대상 - 사례 3 : 쇼핑몰 회원 5천명 → 일반 개인정보만 처리 → PIA 의무 아님 (자율) 1.2 도입 배경 2011년 개인정보보호법 제정 : PIA 제도 최초 도입, 개인정보 침해 사전 예방\n2014년 카드사 개인정보 유출\n- 1억건 유출 대형 사고 - 사후 대응의 한계 입증 - 사전 예방 중요성 부각 1.3 목적 제33조 (개인정보 영향평가)\n“개인정보파일의 운용으로 인하여 정보주체의 개인정보 침해가 우려되는 경우에는 그 위험요인의 분석 과 개선 사항 도출 을 위한 평가를 하여야 한다”\n핵심\n- 위험 요인 사전 발견 - 개선 방안 마련 - 개인정보 침해 예방 1.4 영향평가 vs 인증 구분 개인정보 영향평가 (PIA) ISMS-P 인증 목적 특정 시스템 위험 평가 전사 관리체계 평가 시점 구축 전 또는 변경 시 운영 중 대상 5만명 이상 민감정보 등 일정 규모 이상 정보통신서비스 제공자 평가 기관 KISA 또는 전문기관 KISA 결과 개선 권고 인증서 발급 유효 기간 없음 (1회성) 3년 2. 법적 근거 2.1 개인정보보호법 제33조 제1항 (평가 의무)\n공공기관의 장은 다음 각 호에 해당하는 경우 위험요인 분석과 개선 사항 도출을 위한 영향평가를 하고 그 결과를 보호위원회 에 제출하여야 합니다.\n- 1호 : 5만명 이상의 정보주체에 관한 민감정보 또는 고유식별정보의 처리가 수반되는 개인정보파일의 구축·운용 또는 변경 - 2호 : 개인정보의 국외 이전이 수반되는 개인정보파일의 구축·운용 또는 변경 - 3호 : 이미 구축·운용 중인 개인정보파일을 공공기관 외의 자와 공동으로 이용하려는 경우 - 4호 : 그 밖에 구축·운용 또는 변경으로 인하여 정보주체의 권리를 현저히 침해할 우려가 있는 경우 제2항 (평가 기관)\n영향평가는 개인정보보호위원회가 지정하는 기관 이 해야 하며, 공공기관이 전문 인력 등 요건을 갖춘 경우에는 직접 평가 가 가능합니다.\n제3항 (결과 제출)\n영향평가를 한 공공기관의 장은 결과를 보호위원회 에 제출해야 합니다.\n2.2 시행령 제35조 (평가 대상) 5만명 기준 (제1항)\n- 1호 : 연간 5만명 이상의 민감정보 - 2호 : 연간 50만명 이상의 주민등록번호 - 3호 : 연간 5만명 이상의 주민등록번호 외 고유식별정보 (여권번호, 운전면허번호, 외국인등록번호) 국외 이전 기준 (제2항)\n- 연간 1만명 이상의 개인정보를 국외 이전하는 경우 2.3 시행령 제36조 (평가 기관) 지정 기관\n- 한국인터넷진흥원 (KISA) - 개인정보보호위원회가 지정하는 전문기관 (약 30여개) 자체 평가 가능 요건\n- 개인정보 보호 전담 조직 (3명 이상) - 개인정보 보호 책임자 (CISO) - 개인정보 보호 관련 인증 (ISMS-P, ISO 27701 등) 2.4 시행령 제37조 (필수 평가 항목) - 처리하는 개인정보의 종류 및 규모 - 개인정보의 처리 및 보유 기간 - 개인정보의 처리 흐름 및 처리 현황 - 개인정보 보호 조치의 적정성 - 개인정보파일에 대한 접근통제 및 접근권한 관리 - 그 밖에 개인정보 보호를 위하여 필요한 사항 3. 평가 대상 (중요!) 3.1 대상 판단 기준 [PIA 의무 판단 흐름]\n- Q1. 공공기관인가? → NO : 의무 없음 (자율 수행 가능) - Q1. 공공기관인가? → YES : 다음 질문으로 - Q2. 아래 중 해당하는가? - ① 5만명 이상 민감정보 - ② 50만명 이상 주민등록번호 - ③ 5만명 이상 기타 고유식별정보 - ④ 1만명 이상 국외 이전 - ⑤ 공공기관 외 공동 이용 - Q2. 해당 없음 → 의무 없음 - Q2. 해당 있음 → PIA 의무 3.2 대상 상세 (1) 5만명 이상 민감정보 민감정보 (개인정보보호법 제23조)\n- 사상·신념, 노동조합·정당 가입·탈퇴, 정치적 견해 - 건강, 성생활 등 - 유전정보, 바이오정보 - 범죄 경력 기준 : 연간 5만명 이상 (누적 아님)\n[예시]\n- (O) 병원이 전자의무기록(EMR) 시스템 구축 → 연간 10만명 건강정보 처리 → PIA 의무 - (O) 보험회사가 건강보험 시스템 구축 → 연간 8만명 건강정보 처리 → PIA 의무 - (X) 헬스장 회원 관리 시스템 → 연간 3만명 (5만명 미만) → PIA 의무 아님 (2) 50만명 이상 주민등록번호 기준 : 연간 50만명 이상 (주민등록번호만 해당, 다른 고유식별정보는 5만명)\n[예시]\n- (O) 통신사 고객 관리 시스템 → 연간 100만명 주민등록번호 처리 → PIA 의무 - (O) 은행 신규 뱅킹 시스템 → 연간 80만명 주민등록번호 처리 → PIA 의무 - (X) 중소 쇼핑몰 → 연간 20만명 주민등록번호 → PIA 의무 아님 (3) 5만명 이상 기타 고유식별정보 고유식별정보 (주민등록번호 제외)\n- 여권번호 - 운전면허번호 - 외국인등록번호 [예시]\n- (O) 렌터카 회사 예약 시스템 → 연간 8만명 운전면허번호 처리 → PIA 의무 - (O) 출입국 관리 시스템 → 연간 6만명 여권번호 처리 → PIA 의무 (4) 1만명 이상 국외 이전 기준 : 연간 1만명 이상 개인정보를 외국으로 이전\n[예시]\n- (O) 글로벌 SaaS 도입 (서버 미국) → 연간 3만명 개인정보 미국 이전 → PIA 의무 - (O) 해외 콜센터 위탁 (필리핀) → 연간 5만명 개인정보 필리핀 이전 → PIA 의무 - (X) 소규모 글로벌 서비스 → 연간 5천명 개인정보 국외 이전 → PIA 의무 아님 (5) 공공기관 외 공동 이용 대상 : 기존 운영 중인 개인정보파일을 민간과 공동 이용 시작\n[예시]\n- (O) 정부 부처가 민간 연구기관과 데이터 공동 이용 → PIA 의무 - (O) 공공기관이 민간 기업과 시스템 공동 운영 → PIA 의무 3.3 평가 시점 (1) 구축 전 시스템 구축 전 평가 권장 (설계 단계에서 위험 제거 가능, 구축 후 수정 비용 큼)\n[타임라인]\n- 요구사항 정의 → PIA 실시 → 설계 → 개발 → 테스트 → 오픈 (2) 변경 시 [재평가 필요한 경우]\n- 개인정보 처리 인원 2배 증가 (5만 → 10만) - 민감정보 항목 추가 - 처리 목적 변경 [재평가 불필요한 경우]\n- UI 변경 (개인정보 흐름 동일) - 소프트웨어 버전 업그레이드 (기능 동일) 3.4 민간 기업은? 원칙 : PIA 의무 없음\n자율 : 자발적으로 수행 가능 (권장, 특히 대규모 개인정보 처리 시)\n이유\n- 개인정보 침해 위험 감소 - 대외 신뢰도 향상 - 사전 예방으로 사고 비용 절감 4. 평가 수행 기관 4.1 평가 기관 유형 (1) 한국인터넷진흥원 (KISA) - 장점 : 공신력, 전문성 - 단점 : 비용 높음, 일정 오래 걸림 (2) 개인정보보호위원회 지정 전문기관 유형 : 보안 컨설팅 회사, 법무법인, 회계법인 (현재 약 30여개 기관 지정)\n- 장점 : 비용 상대적 저렴, 일정 유연 - 단점 : 기관별 전문성 차이 지정 요건\n- 개인정보 보호 전문 인력 5명 이상 - PIA 수행 경험 - 기술적 역량 (3) 자체 평가 요건\n- 개인정보 보호 전담 조직 (3명 이상) - 개인정보 보호 책임자 (CISO) - 개인정보 보호 관련 인증 (ISMS-P 등) - 장점 : 비용 절감, 일정 자유 - 단점 : 객관성·전문성 부족 가능 (대부분 외부 기관 위탁) 4.2 평가 기관 선정 고려 사항 - 평가 경험 (레퍼런스) - 전문 인력 - 비용 - 일정 - 보고서 품질 추천 : 중소 공공기관은 전문기관, 대규모 공공기관은 KISA 또는 전문기관\n5. 평가 절차 5.1 전체 프로세스 [PIA 전체 프로세스]\n- 1단계 : 평가 계획 수립 (1주) - 2단계 : 평가팀 구성 (1주) - 3단계 : 평가 수행 (4~8주) - 4단계 : 평가 결과서 작성 (2주) - 5단계 : 개인정보보호위원회 제출 - 6단계 : 위원회 의견 청취 - 7단계 : 개선 조치 총 소요 기간 : 최소 2개월, 평균 3~4개월\n5.2 1단계 : 평가 계획 수립 [평가 범위 설정 예시 - 병원 EMR 시스템]\n- 평가 대상 시스템 : 전자의무기록(EMR) 시스템 - 대상 개인정보 : 이름, 주민등록번호, 연락처, 진료 기록 (민감정보), 처방 기록 (민감정보) - 평가 기간 : 2024년 4월 ~ 6월 [평가 일정 예시]\n- 4월 1주 : 평가 계획 수립 - 4월 2주 : 평가팀 구성 - 4월 3주 ~ 5월 4주 : 평가 수행 (현황 조사, 위험 분석, 개선 방안 도출) - 6월 1~2주 : 보고서 작성 - 6월 3주 : 개인정보보호위원회 제출 평가 기관 선정 (RFP 발송 후 평가 기준)\n- 전문성 (40%) - 비용 (30%) - 일정 (20%) - 레퍼런스 (10%) 5.3 2단계 : 평가팀 구성 필수 인력\n- PM (Project Manager) : 1명 - 평가 전문가 : 2~3명 - 기술 전문가 : 1~2명 [역할]\n- PM : 전체 일정 관리, 고객사 커뮤니케이션, 보고서 총괄 - 평가 전문가 : 법률 검토, 위험 분석, 개선 방안 도출 - 기술 전문가 : 시스템 아키텍처 검토, 보안 기술 검토, 기술적 개선 방안 [킥오프 미팅 안건]\n- 프로젝트 소개 - 평가 범위 확정 - 일정 확정 - 협조 사항 - 제출 자료 요청 (시스템 개요서, 개인정보 흐름도, 처리방침, 내부 관리계획, 보안 정책 등) 5.4 3단계 : 평가 수행 (1) 현황 조사 [개인정보 항목 파악]\n- 필수 : 이름, 주민등록번호, 연락처, 주소 - 선택 : 이메일 - 민감정보 : 진료 기록, 처방 기록, 검사 결과 [개인정보 처리 현황]\n- 개인정보 주체 수 : 연간 처리 10만명, 누적 50만명 - 수집 방법 : 온라인 (병원 홈페이지 예약), 오프라인 (접수창구), 제3자 제공 (건강보험공단) - 이용 목적 : 진료, 예약 관리, 진료비 청구 - 보유 기간 : 진료 기록 10년 (의료법), 예약 기록 1년 - 제3자 제공 : 건강보험공단 (진료비 청구), 보험회사 (보험금 청구, 동의 시) - 위탁 : 콜센터 (예약 상담), IT 운영사 (시스템 운영) - 파기 : 보유 기간 경과 시 자동 파기 [시스템 현황]\n- 아키텍처 : 웹 서버 - 애플리케이션 서버 - DB 서버 - 네트워크 : 인터넷 - 방화벽 - DMZ - 내부망 - 보안 시스템 : 방화벽, IPS, WAF, DB 암호화, 접근통제 시스템 - 백업 : 일일 백업, 별도 장소 보관 [보안 정책 현황]\n- 접근 권한 관리 : 최소 권한 원칙, 분기 1회 검토 - 암호화 : 주민등록번호·건강정보 AES-256, 비밀번호 SHA-256, 전송 TLS 1.2 - 접속기록 : 모든 접속 기록, 2년 보관, 월 1회 점검 - 교육 : 연 2회, 전 직원 대상 (2) 개인정보 흐름도 작성 개인정보의 전체 생명주기(수집 → 이용 → 제공 → 위탁 → 파기)를 파악합니다.\n[개인정보 흐름도 - 병원 EMR 시스템]\n- 수집 : 환자 → 홈페이지 예약 → 웹 서버 → DB / 환자 → 접수 창구 → 접수 시스템 → DB - 저장 : DB 서버 (암호화 AES-256) - 이용 : 의사·간호사 → EMR 시스템 → DB (진료 기록 조회/입력) - 제공 : DB → 건강보험공단 (진료비 청구) / DB → 보험회사 (환자 동의 시) - 위탁 : DB → 콜센터 (예약 상담) / DB → IT 운영사 (시스템 운영) - 파기 : 보유 기간 경과 → 자동 파기 (3) 위험 분석 각 단계별로 위험 요인을 식별하고 위험도를 산정합니다.\n[위험도 산정 기준]\n- 발생 가능성 : 높음 (3점), 중간 (2점), 낮음 (1점) - 영향도 : 높음 (3점, 대량 유출·민감정보), 중간 (2점), 낮음 (1점) - 위험도 = 발생 가능성 × 영향도 - 고위험 (7~9) : 즉시 조치 / 중위험 (4~6) : 계획 조치 / 저위험 (1~3) : 모니터링 [위험 목록 예시]\n- 고위험 R001 : 주민등록번호 평문 전송 (3×3=9) - 고위험 R002 : 관리자 계정 공용 사용 (3×3=9) - 고위험 R003 : 백업본 미암호화 (3×3=9) - 중위험 R004 : 접속기록 6개월 보관 (2×3=6) - 중위험 R005 : 비밀번호 8자 (2×2=4) - 저위험 R006 : 교육 미참석자 일부 (1×2=2) (4) 개선 방안 도출 [위험별 개선 방안]\n- R001 (주민등록번호 평문 전송) : HTTPS (TLS 1.2 이상) 적용 / 우선순위 : 긴급 / 일정 : 즉시 - R002 (관리자 계정 공용 사용) : 개인별 관리자 계정 부여 / 우선순위 : 긴급 / 일정 : 1개월 - R003 (백업본 미암호화) : 백업본 AES-256 암호화 / 우선순위 : 긴급 / 일정 : 1개월 - R004 (접속기록 6개월 보관) : 2년 보관 (법적 요구) / 우선순위 : 높음 / 일정 : 2개월 - R005 (비밀번호 8자) : 10자 이상으로 변경 / 우선순위 : 중간 / 일정 : 3개월 (5) 법적 검토 [개인정보보호법 준수 여부]\n- 동의 (제15조, 제22조) - 목적 명시 (제15조) - 최소 수집 (제16조) - 안전성 확보 (제29조) - 위탁 공개 (제26조) [의료법 및 안전성 확보조치 기준 준수 여부]\n- 진료 기록 10년 보관 (의료법 제22조) - 암호화 (안전성 확보조치 기준 제6조) - 접속기록 보관 (제7조) - 접근 권한 관리 (제5조) 5.5 4단계 : 평가 결과서 작성 [평가 결과서 구성 (평균 80~150페이지)]\n- 제1장 평가 개요 : 평가 배경, 목적, 범위, 기간, 팀 구성 - 제2장 개인정보파일 개요 : 파일 명칭, 항목, 주체 수 (연간 10만명), 처리 목적, 보유 기간 - 제3장 개인정보 처리 현황 : 흐름도, 시스템 구조, 보안 시스템, 보호 조치 - 제4장 위험 분석 : 위험 식별, 위험 평가, 위험 목록 (총 15개 - 고위험 3, 중위험 7, 저위험 5) - 제5장 개선 방안 : 기술적·관리적·물리적 개선 방안 및 일정 - 제6장 법적 검토 : 개인정보보호법, 의료법, 안전성 확보조치 기준 준수 여부 - 제7장 결론 및 권고 사항 5.6 5단계 : 개인정보보호위원회 제출 제출 서류 : 영향평가 결과서, 개인정보 흐름도, 개선 계획서\n제출 방법 : 개인정보보호 종합포털 (https://www.privacy.go.kr)\n[제출 절차]\n- 1. 포털 접속 - 2. 로그인 (공인인증서) - 3. PIA 메뉴 - 4. 결과서 업로드 - 5. 제출 완료 5.7 6단계 : 위원회 의견 청취 검토 기간 : 30일 이내 (복잡한 경우 60일까지 연장 가능)\n[의견 유형]\n- 적정 : 문제 없음, 그대로 진행 가능 - 개선 권고 : 일부 미흡 사항, 개선 후 진행 권장 - 재평가 요구 : 중대한 문제, 재평가 후 재제출 [의견서 예시]\n- 평가 대상 : ○○병원 전자의무기록(EMR) 시스템 - 종합 의견 : 개선 권고 - 세부 의견 1 : 주민등록번호 전송 시 HTTPS 적용 필요 (긴급) - 세부 의견 2 : 백업본 암호화 필요 (긴급) - 세부 의견 3 : 접속기록 보관 기간 2년으로 연장 필요 - 위 사항 개선 후 시스템 오픈 권장 5.8 7단계 : 개선 조치 [개선 계획 예시]\n- HTTPS 적용 : 2024년 7월 - 백업본 암호화 : 2024년 8월 - 접속기록 2년 보관 : 2024년 8월 이행 확인 : 완료 후 증빙 제출 (선택), 개선 완료 후 시스템 정식 오픈 가능\n6. 평가 비용 6.1 비용 범위 - KISA : 3천만원 ~ 1억원 - 전문기관 : 2천만원 ~ 5천만원 변수 : 시스템 규모, 개인정보 규모, 복잡도, 일정\n6.2 비용 산정 예시 [중소 규모]\n- 시스템 : 회원 관리 시스템 - 규모 : 5만명 민감정보 - 기간 : 2개월 - 비용 : 2,500만원 [대규모]\n- 시스템 : 통합 고객 관리 시스템 - 규모 : 100만명 주민등록번호 - 기간 : 4개월 - 비용 : 8,000만원 7. 평가 결과 공개 7.1 공개 의무 제33조제5항\n“공공기관의 장은 영향평가 결과를 홈페이지 등에 공개 하여야 한다”\n7.2 공개 내용 필수 공개 : 평가 대상 시스템, 평가 결과 요약, 위원회 의견\n제외 : 보안상 민감한 내용, 기술적 상세 정보\n[공개 예시]\n- 평가 대상 : 전자의무기록(EMR) 시스템 - 평가 일시 : 2024년 4월 ~ 6월 - 평가 기관 : ㈜ABC컨설팅 - 총 15개 위험 식별 : 고위험 3개 개선 완료 / 중위험 7개 개선 계획 / 저위험 5개 모니터링 - 위원회 의견 : 개선 권고 → 권고 사항 모두 개선 완료 8. 실무 사례 사례 1 : 은행 신규 모바일 뱅킹 배경 : A은행이 신규 모바일 뱅킹 앱 출시, 연간 80만명 주민등록번호 처리\nPIA 수행\n- 평가 기관 : KISA - 기간 : 3개월 - 비용 : 6,000만원 주요 발견\n- 비밀번호 평문 전송 (HTTP) - 생체인증 데이터 미암호화 - 로그 미보관 개선 및 결과\n- HTTPS 적용, 생체인증 데이터 AES-256 암호화, 로그 2년 보관 - 위원회 의견 : 적정 → 개선 후 앱 출시 사례 2 : 병원 전자의무기록 (EMR) 배경 : B병원이 종이 차트 → EMR 전환, 연간 10만명 건강정보 처리\nPIA 수행\n- 평가 기관 : 전문 컨설팅 회사 - 기간 : 2개월 - 비용 : 2,800만원 주요 발견\n- 백업본 미암호화, 퇴직자 계정 미삭제, 접속기록 6개월 보관 개선 및 결과\n- 백업본 암호화, 퇴직 즉시 계정 삭제, 접속기록 2년 보관 - 위원회 의견 : 개선 권고 → 개선 완료 후 시스템 오픈 사례 3 : 정부 부처 데이터 통합 배경 : C부처가 여러 시스템 데이터 통합 후 민간 연구기관과 공동 이용\nPIA 수행\n- 평가 기관 : KISA - 기간 : 4개월 - 비용 : 9,000만원 주요 발견\n- 민간 기관 보안 수준 미흡, 데이터 이용 목적 불명확, 재제공 통제 미흡 개선 및 결과\n- 민간 기관 보안 강화 요구, 이용 목적 명확히 정의, 재제공 금지 계약 조항 추가 - 위원회 의견 : 재평가 요구 → 재평가 후 승인 9. 컨설팅 회사의 PIA 업무 9.1 수행 업무 [사전]\n- 고객사 PIA 대상 여부 판단 지원 - 평가 계획 수립 지원 [평가]\n- 현황 조사 - 개인정보 흐름도 작성 - 위험 분석 - 개선 방안 도출 - 법적 검토 [보고서 및 사후]\n- 평가 결과서 작성, 위원회 제출 대행 - 개선 이행 지원, 재평가 (필요 시) 9.2 필요 역량 - 법률 : 개인정보보호법 및 관련 법령 - 기술 : 시스템 아키텍처, 보안 기술 (암호화·접근통제 등), 네트워크 보안 - 문서 : 보고서 작성, 개인정보 흐름도 작성 - 커뮤니케이션 : 고객사 인터뷰, 위원회 대응 9.3 프로젝트 수행 팁 [사전 준비]\n- 제출 자료 미리 요청 - 일정 여유 확보 [현황 조사]\n- 담당자 인터뷰 꼼꼼히 - 시스템 직접 확인 (문서만 믿지 말기) [위험 분석]\n- 고객사 입장에서 실현 가능한 개선 방안 도출 [보고서 및 위원회 대응]\n- 명확하게 작성, 증빙 자료 첨부, 검토 여러 번 - 질문 예상 및 답변 준비 10. 체크리스트 PIA 대상 여부 체크 [아래 중 하나라도 YES면 PIA 의무]\n- 공공기관인가? - 연간 5만명 이상 민감정보 처리? - 연간 50만명 이상 주민등록번호 처리? - 연간 5만명 이상 기타 고유식별정보 처리? - 연간 1만명 이상 개인정보 국외 이전? - 공공기관 외와 공동 이용? PIA 수행 체크 [수행 단계별 완료 확인]\n- 평가 기관 선정 완료 - 평가 계획 수립 완료 - 킥오프 미팅 완료 - 현황 조사 완료 - 개인정보 흐름도 작성 완료 - 위험 분석 완료 - 개선 방안 도출 완료 - 법적 검토 완료 - 평가 결과서 작성 완료 - 위원회 제출 완료 - 위원회 의견 수령 - 개선 조치 완료 - 결과 공개 완료 학습 정리 오늘 학습한 핵심 내용\n- PIA : 개인정보 침해 위험 사전 예방 제도 - 법적 근거 : 개인정보보호법 제33조 - 대상 : 공공기관 + (5만명 민감정보 / 50만명 주민번호 / 5만명 기타 고유식별정보 / 1만명 국외 이전 / 공동 이용) - 민간 기업 : 의무 아님 (자율) - 평가 기관 : KISA 또는 전문기관 (약 30개) - 평가 절차 : 계획 수립 → 팀 구성 → 평가 수행 → 보고서 작성 → 위원회 제출 → 의견 청취 → 개선 조치 - 평가 수행 : 현황 조사 → 개인정보 흐름도 → 위험 분석 → 개선 방안 도출 → 법적 검토 - 소요 기간 : 2~4개월 - 비용 : 2천만원 ~ 1억원 - 위원회 의견 : 적정, 개선 권고, 재평가 요구 - 결과 공개 의무 (공공기관) - 보안 컨설팅 회사 핵심 업무 중 하나 - 필요 역량 : 법률, 기술, 문서, 커뮤니케이션 다음 학습 주제 Day 35: ISMS-P 인증 실무\n",
+  "wordCount" : "6998",
+  "inLanguage": "ko",
+  "datePublished": "2026-03-18T00:00:00Z",
+  "dateModified": "2026-03-18T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/12_%EC%98%81%ED%96%A5%ED%8F%89%EA%B0%80/day34_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%98%81%ED%96%A5%ED%8F%89%EA%B0%80/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://hojjang98.github.io/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/cyber_law_study/">보안 컨설팅 공부</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Day 34: 개인정보 영향평가 (PIA)
+    </h1>
+    <div class="post-meta"><span title='2026-03-18 00:00:00 +0000 UTC'>2026년 3월 18일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="day-34-개인정보-영향평가-pia">Day 34: 개인정보 영향평가 (PIA)<a hidden class="anchor" aria-hidden="true" href="#day-34-개인정보-영향평가-pia">#</a></h1>
+<h2 id="1-개인정보-영향평가의-개요">1. 개인정보 영향평가의 개요<a hidden class="anchor" aria-hidden="true" href="#1-개인정보-영향평가의-개요">#</a></h2>
+<h3 id="11-개인정보-영향평가pia란">1.1 개인정보 영향평가(PIA)란?<a hidden class="anchor" aria-hidden="true" href="#11-개인정보-영향평가pia란">#</a></h3>
+<p><strong>정식 명칭</strong> : Privacy Impact Assessment (PIA)</p>
+<p><strong>정의</strong> : 개인정보를 <strong>대량으로 처리</strong> 하거나 <strong>새로운 시스템을 구축</strong> 할 때, 개인정보 침해 위험을 <strong>사전에 분석·평가</strong> 하여 <strong>위험을 감소</strong> 시키는 제도</p>
+<p>&ldquo;이 시스템/서비스가 개인정보 침해 위험이 있나?&ldquo;를 미리 점검하는 <strong>사전 예방</strong> 제도입니다.</p>
+<p>[PIA 의무 대상 예시]</p>
+<pre><code>- 사례 1 : 은행이 신용카드 시스템 구축 → 100만명 카드번호(고유식별정보) 처리 → PIA 의무 대상
+- 사례 2 : 병원이 전자의무기록 시스템 도입 → 10만명 건강정보(민감정보) 처리 → PIA 의무 대상
+- 사례 3 : 쇼핑몰 회원 5천명 → 일반 개인정보만 처리 → PIA 의무 아님 (자율)
+</code></pre>
+<h3 id="12-도입-배경">1.2 도입 배경<a hidden class="anchor" aria-hidden="true" href="#12-도입-배경">#</a></h3>
+<p><strong>2011년 개인정보보호법 제정</strong> : PIA 제도 최초 도입, 개인정보 침해 사전 예방</p>
+<p><strong>2014년 카드사 개인정보 유출</strong></p>
+<pre><code>- 1억건 유출 대형 사고
+- 사후 대응의 한계 입증
+- 사전 예방 중요성 부각
+</code></pre>
+<h3 id="13-목적">1.3 목적<a hidden class="anchor" aria-hidden="true" href="#13-목적">#</a></h3>
+<p><strong>제33조 (개인정보 영향평가)</strong></p>
+<p>&ldquo;개인정보파일의 운용으로 인하여 정보주체의 개인정보 침해가 우려되는 경우에는 <strong>그 위험요인의 분석</strong> 과 <strong>개선 사항 도출</strong> 을 위한 평가를 하여야 한다&rdquo;</p>
+<p><strong>핵심</strong></p>
+<pre><code>- 위험 요인 사전 발견
+- 개선 방안 마련
+- 개인정보 침해 예방
+</code></pre>
+<h3 id="14-영향평가-vs-인증">1.4 영향평가 vs 인증<a hidden class="anchor" aria-hidden="true" href="#14-영향평가-vs-인증">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>구분</th>
+          <th>개인정보 영향평가 (PIA)</th>
+          <th>ISMS-P 인증</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>목적</strong></td>
+          <td>특정 시스템 위험 평가</td>
+          <td>전사 관리체계 평가</td>
+      </tr>
+      <tr>
+          <td><strong>시점</strong></td>
+          <td>구축 전 또는 변경 시</td>
+          <td>운영 중</td>
+      </tr>
+      <tr>
+          <td><strong>대상</strong></td>
+          <td>5만명 이상 민감정보 등</td>
+          <td>일정 규모 이상 정보통신서비스 제공자</td>
+      </tr>
+      <tr>
+          <td><strong>평가 기관</strong></td>
+          <td>KISA 또는 전문기관</td>
+          <td>KISA</td>
+      </tr>
+      <tr>
+          <td><strong>결과</strong></td>
+          <td>개선 권고</td>
+          <td>인증서 발급</td>
+      </tr>
+      <tr>
+          <td><strong>유효 기간</strong></td>
+          <td>없음 (1회성)</td>
+          <td>3년</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="2-법적-근거">2. 법적 근거<a hidden class="anchor" aria-hidden="true" href="#2-법적-근거">#</a></h2>
+<h3 id="21-개인정보보호법-제33조">2.1 개인정보보호법 제33조<a hidden class="anchor" aria-hidden="true" href="#21-개인정보보호법-제33조">#</a></h3>
+<p><strong>제1항 (평가 의무)</strong></p>
+<p>공공기관의 장은 다음 각 호에 해당하는 경우 위험요인 분석과 개선 사항 도출을 위한 영향평가를 하고 그 결과를 <strong>보호위원회</strong> 에 제출하여야 합니다.</p>
+<pre><code>- 1호 : 5만명 이상의 정보주체에 관한 민감정보 또는 고유식별정보의 처리가 수반되는 개인정보파일의 구축·운용 또는 변경
+- 2호 : 개인정보의 국외 이전이 수반되는 개인정보파일의 구축·운용 또는 변경
+- 3호 : 이미 구축·운용 중인 개인정보파일을 공공기관 외의 자와 공동으로 이용하려는 경우
+- 4호 : 그 밖에 구축·운용 또는 변경으로 인하여 정보주체의 권리를 현저히 침해할 우려가 있는 경우
+</code></pre>
+<p><strong>제2항 (평가 기관)</strong></p>
+<p>영향평가는 <strong>개인정보보호위원회가 지정하는 기관</strong> 이 해야 하며, 공공기관이 전문 인력 등 요건을 갖춘 경우에는 <strong>직접 평가</strong> 가 가능합니다.</p>
+<p><strong>제3항 (결과 제출)</strong></p>
+<p>영향평가를 한 공공기관의 장은 결과를 <strong>보호위원회</strong> 에 제출해야 합니다.</p>
+<h3 id="22-시행령-제35조-평가-대상">2.2 시행령 제35조 (평가 대상)<a hidden class="anchor" aria-hidden="true" href="#22-시행령-제35조-평가-대상">#</a></h3>
+<p><strong>5만명 기준 (제1항)</strong></p>
+<pre><code>- 1호 : 연간 5만명 이상의 민감정보
+- 2호 : 연간 50만명 이상의 주민등록번호
+- 3호 : 연간 5만명 이상의 주민등록번호 외 고유식별정보 (여권번호, 운전면허번호, 외국인등록번호)
+</code></pre>
+<p><strong>국외 이전 기준 (제2항)</strong></p>
+<pre><code>- 연간 1만명 이상의 개인정보를 국외 이전하는 경우
+</code></pre>
+<h3 id="23-시행령-제36조-평가-기관">2.3 시행령 제36조 (평가 기관)<a hidden class="anchor" aria-hidden="true" href="#23-시행령-제36조-평가-기관">#</a></h3>
+<p><strong>지정 기관</strong></p>
+<pre><code>- 한국인터넷진흥원 (KISA)
+- 개인정보보호위원회가 지정하는 전문기관 (약 30여개)
+</code></pre>
+<p><strong>자체 평가 가능 요건</strong></p>
+<pre><code>- 개인정보 보호 전담 조직 (3명 이상)
+- 개인정보 보호 책임자 (CISO)
+- 개인정보 보호 관련 인증 (ISMS-P, ISO 27701 등)
+</code></pre>
+<h3 id="24-시행령-제37조-필수-평가-항목">2.4 시행령 제37조 (필수 평가 항목)<a hidden class="anchor" aria-hidden="true" href="#24-시행령-제37조-필수-평가-항목">#</a></h3>
+<pre><code>- 처리하는 개인정보의 종류 및 규모
+- 개인정보의 처리 및 보유 기간
+- 개인정보의 처리 흐름 및 처리 현황
+- 개인정보 보호 조치의 적정성
+- 개인정보파일에 대한 접근통제 및 접근권한 관리
+- 그 밖에 개인정보 보호를 위하여 필요한 사항
+</code></pre>
+<h2 id="3-평가-대상-중요">3. 평가 대상 (중요!)<a hidden class="anchor" aria-hidden="true" href="#3-평가-대상-중요">#</a></h2>
+<h3 id="31-대상-판단-기준">3.1 대상 판단 기준<a hidden class="anchor" aria-hidden="true" href="#31-대상-판단-기준">#</a></h3>
+<p>[PIA 의무 판단 흐름]</p>
+<pre><code>- Q1. 공공기관인가? → NO : 의무 없음 (자율 수행 가능)
+- Q1. 공공기관인가? → YES : 다음 질문으로
+- Q2. 아래 중 해당하는가?
+    - ① 5만명 이상 민감정보
+    - ② 50만명 이상 주민등록번호
+    - ③ 5만명 이상 기타 고유식별정보
+    - ④ 1만명 이상 국외 이전
+    - ⑤ 공공기관 외 공동 이용
+- Q2. 해당 없음 → 의무 없음
+- Q2. 해당 있음 → PIA 의무
+</code></pre>
+<h3 id="32-대상-상세">3.2 대상 상세<a hidden class="anchor" aria-hidden="true" href="#32-대상-상세">#</a></h3>
+<h4 id="1-5만명-이상-민감정보">(1) 5만명 이상 민감정보<a hidden class="anchor" aria-hidden="true" href="#1-5만명-이상-민감정보">#</a></h4>
+<p><strong>민감정보 (개인정보보호법 제23조)</strong></p>
+<pre><code>- 사상·신념, 노동조합·정당 가입·탈퇴, 정치적 견해
+- 건강, 성생활 등
+- 유전정보, 바이오정보
+- 범죄 경력
+</code></pre>
+<p><strong>기준</strong> : 연간 5만명 이상 (누적 아님)</p>
+<p>[예시]</p>
+<pre><code>- (O) 병원이 전자의무기록(EMR) 시스템 구축 → 연간 10만명 건강정보 처리 → PIA 의무
+- (O) 보험회사가 건강보험 시스템 구축 → 연간 8만명 건강정보 처리 → PIA 의무
+- (X) 헬스장 회원 관리 시스템 → 연간 3만명 (5만명 미만) → PIA 의무 아님
+</code></pre>
+<h4 id="2-50만명-이상-주민등록번호">(2) 50만명 이상 주민등록번호<a hidden class="anchor" aria-hidden="true" href="#2-50만명-이상-주민등록번호">#</a></h4>
+<p><strong>기준</strong> : 연간 50만명 이상 (주민등록번호만 해당, 다른 고유식별정보는 5만명)</p>
+<p>[예시]</p>
+<pre><code>- (O) 통신사 고객 관리 시스템 → 연간 100만명 주민등록번호 처리 → PIA 의무
+- (O) 은행 신규 뱅킹 시스템 → 연간 80만명 주민등록번호 처리 → PIA 의무
+- (X) 중소 쇼핑몰 → 연간 20만명 주민등록번호 → PIA 의무 아님
+</code></pre>
+<h4 id="3-5만명-이상-기타-고유식별정보">(3) 5만명 이상 기타 고유식별정보<a hidden class="anchor" aria-hidden="true" href="#3-5만명-이상-기타-고유식별정보">#</a></h4>
+<p><strong>고유식별정보 (주민등록번호 제외)</strong></p>
+<pre><code>- 여권번호
+- 운전면허번호
+- 외국인등록번호
+</code></pre>
+<p>[예시]</p>
+<pre><code>- (O) 렌터카 회사 예약 시스템 → 연간 8만명 운전면허번호 처리 → PIA 의무
+- (O) 출입국 관리 시스템 → 연간 6만명 여권번호 처리 → PIA 의무
+</code></pre>
+<h4 id="4-1만명-이상-국외-이전">(4) 1만명 이상 국외 이전<a hidden class="anchor" aria-hidden="true" href="#4-1만명-이상-국외-이전">#</a></h4>
+<p><strong>기준</strong> : 연간 1만명 이상 개인정보를 외국으로 이전</p>
+<p>[예시]</p>
+<pre><code>- (O) 글로벌 SaaS 도입 (서버 미국) → 연간 3만명 개인정보 미국 이전 → PIA 의무
+- (O) 해외 콜센터 위탁 (필리핀) → 연간 5만명 개인정보 필리핀 이전 → PIA 의무
+- (X) 소규모 글로벌 서비스 → 연간 5천명 개인정보 국외 이전 → PIA 의무 아님
+</code></pre>
+<h4 id="5-공공기관-외-공동-이용">(5) 공공기관 외 공동 이용<a hidden class="anchor" aria-hidden="true" href="#5-공공기관-외-공동-이용">#</a></h4>
+<p><strong>대상</strong> : 기존 운영 중인 개인정보파일을 민간과 공동 이용 시작</p>
+<p>[예시]</p>
+<pre><code>- (O) 정부 부처가 민간 연구기관과 데이터 공동 이용 → PIA 의무
+- (O) 공공기관이 민간 기업과 시스템 공동 운영 → PIA 의무
+</code></pre>
+<h3 id="33-평가-시점">3.3 평가 시점<a hidden class="anchor" aria-hidden="true" href="#33-평가-시점">#</a></h3>
+<h4 id="1-구축-전">(1) 구축 전<a hidden class="anchor" aria-hidden="true" href="#1-구축-전">#</a></h4>
+<p>시스템 구축 전 평가 <strong>권장</strong> (설계 단계에서 위험 제거 가능, 구축 후 수정 비용 큼)</p>
+<p>[타임라인]</p>
+<pre><code>- 요구사항 정의 → PIA 실시 → 설계 → 개발 → 테스트 → 오픈
+</code></pre>
+<h4 id="2-변경-시">(2) 변경 시<a hidden class="anchor" aria-hidden="true" href="#2-변경-시">#</a></h4>
+<p>[재평가 필요한 경우]</p>
+<pre><code>- 개인정보 처리 인원 2배 증가 (5만 → 10만)
+- 민감정보 항목 추가
+- 처리 목적 변경
+</code></pre>
+<p>[재평가 불필요한 경우]</p>
+<pre><code>- UI 변경 (개인정보 흐름 동일)
+- 소프트웨어 버전 업그레이드 (기능 동일)
+</code></pre>
+<h3 id="34-민간-기업은">3.4 민간 기업은?<a hidden class="anchor" aria-hidden="true" href="#34-민간-기업은">#</a></h3>
+<p><strong>원칙</strong> : PIA <strong>의무 없음</strong></p>
+<p><strong>자율</strong> : 자발적으로 수행 가능 (권장, 특히 대규모 개인정보 처리 시)</p>
+<p><strong>이유</strong></p>
+<pre><code>- 개인정보 침해 위험 감소
+- 대외 신뢰도 향상
+- 사전 예방으로 사고 비용 절감
+</code></pre>
+<h2 id="4-평가-수행-기관">4. 평가 수행 기관<a hidden class="anchor" aria-hidden="true" href="#4-평가-수행-기관">#</a></h2>
+<h3 id="41-평가-기관-유형">4.1 평가 기관 유형<a hidden class="anchor" aria-hidden="true" href="#41-평가-기관-유형">#</a></h3>
+<h4 id="1-한국인터넷진흥원-kisa">(1) 한국인터넷진흥원 (KISA)<a hidden class="anchor" aria-hidden="true" href="#1-한국인터넷진흥원-kisa">#</a></h4>
+<pre><code>- 장점 : 공신력, 전문성
+- 단점 : 비용 높음, 일정 오래 걸림
+</code></pre>
+<h4 id="2-개인정보보호위원회-지정-전문기관">(2) 개인정보보호위원회 지정 전문기관<a hidden class="anchor" aria-hidden="true" href="#2-개인정보보호위원회-지정-전문기관">#</a></h4>
+<p><strong>유형</strong> : 보안 컨설팅 회사, 법무법인, 회계법인 (현재 약 30여개 기관 지정)</p>
+<pre><code>- 장점 : 비용 상대적 저렴, 일정 유연
+- 단점 : 기관별 전문성 차이
+</code></pre>
+<p><strong>지정 요건</strong></p>
+<pre><code>- 개인정보 보호 전문 인력 5명 이상
+- PIA 수행 경험
+- 기술적 역량
+</code></pre>
+<h4 id="3-자체-평가">(3) 자체 평가<a hidden class="anchor" aria-hidden="true" href="#3-자체-평가">#</a></h4>
+<p><strong>요건</strong></p>
+<pre><code>- 개인정보 보호 전담 조직 (3명 이상)
+- 개인정보 보호 책임자 (CISO)
+- 개인정보 보호 관련 인증 (ISMS-P 등)
+
+- 장점 : 비용 절감, 일정 자유
+- 단점 : 객관성·전문성 부족 가능 (대부분 외부 기관 위탁)
+</code></pre>
+<h3 id="42-평가-기관-선정-고려-사항">4.2 평가 기관 선정 고려 사항<a hidden class="anchor" aria-hidden="true" href="#42-평가-기관-선정-고려-사항">#</a></h3>
+<pre><code>- 평가 경험 (레퍼런스)
+- 전문 인력
+- 비용
+- 일정
+- 보고서 품질
+</code></pre>
+<p><strong>추천</strong> : 중소 공공기관은 전문기관, 대규모 공공기관은 KISA 또는 전문기관</p>
+<h2 id="5-평가-절차">5. 평가 절차<a hidden class="anchor" aria-hidden="true" href="#5-평가-절차">#</a></h2>
+<h3 id="51-전체-프로세스">5.1 전체 프로세스<a hidden class="anchor" aria-hidden="true" href="#51-전체-프로세스">#</a></h3>
+<p>[PIA 전체 프로세스]</p>
+<pre><code>- 1단계 : 평가 계획 수립 (1주)
+- 2단계 : 평가팀 구성 (1주)
+- 3단계 : 평가 수행 (4~8주)
+- 4단계 : 평가 결과서 작성 (2주)
+- 5단계 : 개인정보보호위원회 제출
+- 6단계 : 위원회 의견 청취
+- 7단계 : 개선 조치
+</code></pre>
+<p><strong>총 소요 기간</strong> : 최소 2개월, 평균 3~4개월</p>
+<h3 id="52-1단계--평가-계획-수립">5.2 1단계 : 평가 계획 수립<a hidden class="anchor" aria-hidden="true" href="#52-1단계--평가-계획-수립">#</a></h3>
+<p>[평가 범위 설정 예시 - 병원 EMR 시스템]</p>
+<pre><code>- 평가 대상 시스템 : 전자의무기록(EMR) 시스템
+- 대상 개인정보 : 이름, 주민등록번호, 연락처, 진료 기록 (민감정보), 처방 기록 (민감정보)
+- 평가 기간 : 2024년 4월 ~ 6월
+</code></pre>
+<p>[평가 일정 예시]</p>
+<pre><code>- 4월 1주 : 평가 계획 수립
+- 4월 2주 : 평가팀 구성
+- 4월 3주 ~ 5월 4주 : 평가 수행 (현황 조사, 위험 분석, 개선 방안 도출)
+- 6월 1~2주 : 보고서 작성
+- 6월 3주 : 개인정보보호위원회 제출
+</code></pre>
+<p><strong>평가 기관 선정 (RFP 발송 후 평가 기준)</strong></p>
+<pre><code>- 전문성 (40%)
+- 비용 (30%)
+- 일정 (20%)
+- 레퍼런스 (10%)
+</code></pre>
+<h3 id="53-2단계--평가팀-구성">5.3 2단계 : 평가팀 구성<a hidden class="anchor" aria-hidden="true" href="#53-2단계--평가팀-구성">#</a></h3>
+<p><strong>필수 인력</strong></p>
+<pre><code>- PM (Project Manager) : 1명
+- 평가 전문가 : 2~3명
+- 기술 전문가 : 1~2명
+</code></pre>
+<p>[역할]</p>
+<pre><code>- PM : 전체 일정 관리, 고객사 커뮤니케이션, 보고서 총괄
+- 평가 전문가 : 법률 검토, 위험 분석, 개선 방안 도출
+- 기술 전문가 : 시스템 아키텍처 검토, 보안 기술 검토, 기술적 개선 방안
+</code></pre>
+<p>[킥오프 미팅 안건]</p>
+<pre><code>- 프로젝트 소개
+- 평가 범위 확정
+- 일정 확정
+- 협조 사항
+- 제출 자료 요청 (시스템 개요서, 개인정보 흐름도, 처리방침, 내부 관리계획, 보안 정책 등)
+</code></pre>
+<h3 id="54-3단계--평가-수행">5.4 3단계 : 평가 수행<a hidden class="anchor" aria-hidden="true" href="#54-3단계--평가-수행">#</a></h3>
+<h4 id="1-현황-조사">(1) 현황 조사<a hidden class="anchor" aria-hidden="true" href="#1-현황-조사">#</a></h4>
+<p>[개인정보 항목 파악]</p>
+<pre><code>- 필수 : 이름, 주민등록번호, 연락처, 주소
+- 선택 : 이메일
+- 민감정보 : 진료 기록, 처방 기록, 검사 결과
+</code></pre>
+<p>[개인정보 처리 현황]</p>
+<pre><code>- 개인정보 주체 수 : 연간 처리 10만명, 누적 50만명
+- 수집 방법 : 온라인 (병원 홈페이지 예약), 오프라인 (접수창구), 제3자 제공 (건강보험공단)
+- 이용 목적 : 진료, 예약 관리, 진료비 청구
+- 보유 기간 : 진료 기록 10년 (의료법), 예약 기록 1년
+- 제3자 제공 : 건강보험공단 (진료비 청구), 보험회사 (보험금 청구, 동의 시)
+- 위탁 : 콜센터 (예약 상담), IT 운영사 (시스템 운영)
+- 파기 : 보유 기간 경과 시 자동 파기
+</code></pre>
+<p>[시스템 현황]</p>
+<pre><code>- 아키텍처 : 웹 서버 - 애플리케이션 서버 - DB 서버
+- 네트워크 : 인터넷 - 방화벽 - DMZ - 내부망
+- 보안 시스템 : 방화벽, IPS, WAF, DB 암호화, 접근통제 시스템
+- 백업 : 일일 백업, 별도 장소 보관
+</code></pre>
+<p>[보안 정책 현황]</p>
+<pre><code>- 접근 권한 관리 : 최소 권한 원칙, 분기 1회 검토
+- 암호화 : 주민등록번호·건강정보 AES-256, 비밀번호 SHA-256, 전송 TLS 1.2
+- 접속기록 : 모든 접속 기록, 2년 보관, 월 1회 점검
+- 교육 : 연 2회, 전 직원 대상
+</code></pre>
+<h4 id="2-개인정보-흐름도-작성">(2) 개인정보 흐름도 작성<a hidden class="anchor" aria-hidden="true" href="#2-개인정보-흐름도-작성">#</a></h4>
+<p>개인정보의 전체 생명주기(수집 → 이용 → 제공 → 위탁 → 파기)를 파악합니다.</p>
+<p>[개인정보 흐름도 - 병원 EMR 시스템]</p>
+<pre><code>- 수집 : 환자 → 홈페이지 예약 → 웹 서버 → DB / 환자 → 접수 창구 → 접수 시스템 → DB
+- 저장 : DB 서버 (암호화 AES-256)
+- 이용 : 의사·간호사 → EMR 시스템 → DB (진료 기록 조회/입력)
+- 제공 : DB → 건강보험공단 (진료비 청구) / DB → 보험회사 (환자 동의 시)
+- 위탁 : DB → 콜센터 (예약 상담) / DB → IT 운영사 (시스템 운영)
+- 파기 : 보유 기간 경과 → 자동 파기
+</code></pre>
+<h4 id="3-위험-분석">(3) 위험 분석<a hidden class="anchor" aria-hidden="true" href="#3-위험-분석">#</a></h4>
+<p>각 단계별로 위험 요인을 식별하고 위험도를 산정합니다.</p>
+<p>[위험도 산정 기준]</p>
+<pre><code>- 발생 가능성 : 높음 (3점), 중간 (2점), 낮음 (1점)
+- 영향도 : 높음 (3점, 대량 유출·민감정보), 중간 (2점), 낮음 (1점)
+- 위험도 = 발생 가능성 × 영향도
+- 고위험 (7~9) : 즉시 조치 / 중위험 (4~6) : 계획 조치 / 저위험 (1~3) : 모니터링
+</code></pre>
+<p>[위험 목록 예시]</p>
+<pre><code>- 고위험 R001 : 주민등록번호 평문 전송 (3×3=9)
+- 고위험 R002 : 관리자 계정 공용 사용 (3×3=9)
+- 고위험 R003 : 백업본 미암호화 (3×3=9)
+- 중위험 R004 : 접속기록 6개월 보관 (2×3=6)
+- 중위험 R005 : 비밀번호 8자 (2×2=4)
+- 저위험 R006 : 교육 미참석자 일부 (1×2=2)
+</code></pre>
+<h4 id="4-개선-방안-도출">(4) 개선 방안 도출<a hidden class="anchor" aria-hidden="true" href="#4-개선-방안-도출">#</a></h4>
+<p>[위험별 개선 방안]</p>
+<pre><code>- R001 (주민등록번호 평문 전송) : HTTPS (TLS 1.2 이상) 적용 / 우선순위 : 긴급 / 일정 : 즉시
+- R002 (관리자 계정 공용 사용) : 개인별 관리자 계정 부여 / 우선순위 : 긴급 / 일정 : 1개월
+- R003 (백업본 미암호화) : 백업본 AES-256 암호화 / 우선순위 : 긴급 / 일정 : 1개월
+- R004 (접속기록 6개월 보관) : 2년 보관 (법적 요구) / 우선순위 : 높음 / 일정 : 2개월
+- R005 (비밀번호 8자) : 10자 이상으로 변경 / 우선순위 : 중간 / 일정 : 3개월
+</code></pre>
+<h4 id="5-법적-검토">(5) 법적 검토<a hidden class="anchor" aria-hidden="true" href="#5-법적-검토">#</a></h4>
+<p>[개인정보보호법 준수 여부]</p>
+<pre><code>- 동의 (제15조, 제22조)
+- 목적 명시 (제15조)
+- 최소 수집 (제16조)
+- 안전성 확보 (제29조)
+- 위탁 공개 (제26조)
+</code></pre>
+<p>[의료법 및 안전성 확보조치 기준 준수 여부]</p>
+<pre><code>- 진료 기록 10년 보관 (의료법 제22조)
+- 암호화 (안전성 확보조치 기준 제6조)
+- 접속기록 보관 (제7조)
+- 접근 권한 관리 (제5조)
+</code></pre>
+<h3 id="55-4단계--평가-결과서-작성">5.5 4단계 : 평가 결과서 작성<a hidden class="anchor" aria-hidden="true" href="#55-4단계--평가-결과서-작성">#</a></h3>
+<p>[평가 결과서 구성 (평균 80~150페이지)]</p>
+<pre><code>- 제1장 평가 개요 : 평가 배경, 목적, 범위, 기간, 팀 구성
+- 제2장 개인정보파일 개요 : 파일 명칭, 항목, 주체 수 (연간 10만명), 처리 목적, 보유 기간
+- 제3장 개인정보 처리 현황 : 흐름도, 시스템 구조, 보안 시스템, 보호 조치
+- 제4장 위험 분석 : 위험 식별, 위험 평가, 위험 목록 (총 15개 - 고위험 3, 중위험 7, 저위험 5)
+- 제5장 개선 방안 : 기술적·관리적·물리적 개선 방안 및 일정
+- 제6장 법적 검토 : 개인정보보호법, 의료법, 안전성 확보조치 기준 준수 여부
+- 제7장 결론 및 권고 사항
+</code></pre>
+<h3 id="56-5단계--개인정보보호위원회-제출">5.6 5단계 : 개인정보보호위원회 제출<a hidden class="anchor" aria-hidden="true" href="#56-5단계--개인정보보호위원회-제출">#</a></h3>
+<p><strong>제출 서류</strong> : 영향평가 결과서, 개인정보 흐름도, 개선 계획서</p>
+<p><strong>제출 방법</strong> : 개인정보보호 종합포털 (<a href="https://www.privacy.go.kr">https://www.privacy.go.kr</a>)</p>
+<p>[제출 절차]</p>
+<pre><code>- 1. 포털 접속
+- 2. 로그인 (공인인증서)
+- 3. PIA 메뉴
+- 4. 결과서 업로드
+- 5. 제출 완료
+</code></pre>
+<h3 id="57-6단계--위원회-의견-청취">5.7 6단계 : 위원회 의견 청취<a hidden class="anchor" aria-hidden="true" href="#57-6단계--위원회-의견-청취">#</a></h3>
+<p><strong>검토 기간</strong> : 30일 이내 (복잡한 경우 60일까지 연장 가능)</p>
+<p>[의견 유형]</p>
+<pre><code>- 적정 : 문제 없음, 그대로 진행 가능
+- 개선 권고 : 일부 미흡 사항, 개선 후 진행 권장
+- 재평가 요구 : 중대한 문제, 재평가 후 재제출
+</code></pre>
+<p>[의견서 예시]</p>
+<pre><code>- 평가 대상 : ○○병원 전자의무기록(EMR) 시스템
+- 종합 의견 : 개선 권고
+- 세부 의견 1 : 주민등록번호 전송 시 HTTPS 적용 필요 (긴급)
+- 세부 의견 2 : 백업본 암호화 필요 (긴급)
+- 세부 의견 3 : 접속기록 보관 기간 2년으로 연장 필요
+- 위 사항 개선 후 시스템 오픈 권장
+</code></pre>
+<h3 id="58-7단계--개선-조치">5.8 7단계 : 개선 조치<a hidden class="anchor" aria-hidden="true" href="#58-7단계--개선-조치">#</a></h3>
+<p>[개선 계획 예시]</p>
+<pre><code>- HTTPS 적용 : 2024년 7월
+- 백업본 암호화 : 2024년 8월
+- 접속기록 2년 보관 : 2024년 8월
+</code></pre>
+<p><strong>이행 확인</strong> : 완료 후 증빙 제출 (선택), 개선 완료 후 시스템 정식 오픈 가능</p>
+<h2 id="6-평가-비용">6. 평가 비용<a hidden class="anchor" aria-hidden="true" href="#6-평가-비용">#</a></h2>
+<h3 id="61-비용-범위">6.1 비용 범위<a hidden class="anchor" aria-hidden="true" href="#61-비용-범위">#</a></h3>
+<pre><code>- KISA : 3천만원 ~ 1억원
+- 전문기관 : 2천만원 ~ 5천만원
+</code></pre>
+<p><strong>변수</strong> : 시스템 규모, 개인정보 규모, 복잡도, 일정</p>
+<h3 id="62-비용-산정-예시">6.2 비용 산정 예시<a hidden class="anchor" aria-hidden="true" href="#62-비용-산정-예시">#</a></h3>
+<p>[중소 규모]</p>
+<pre><code>- 시스템 : 회원 관리 시스템
+- 규모 : 5만명 민감정보
+- 기간 : 2개월
+- 비용 : 2,500만원
+</code></pre>
+<p>[대규모]</p>
+<pre><code>- 시스템 : 통합 고객 관리 시스템
+- 규모 : 100만명 주민등록번호
+- 기간 : 4개월
+- 비용 : 8,000만원
+</code></pre>
+<h2 id="7-평가-결과-공개">7. 평가 결과 공개<a hidden class="anchor" aria-hidden="true" href="#7-평가-결과-공개">#</a></h2>
+<h3 id="71-공개-의무">7.1 공개 의무<a hidden class="anchor" aria-hidden="true" href="#71-공개-의무">#</a></h3>
+<p><strong>제33조제5항</strong></p>
+<p>&ldquo;공공기관의 장은 영향평가 결과를 <strong>홈페이지 등에 공개</strong> 하여야 한다&rdquo;</p>
+<h3 id="72-공개-내용">7.2 공개 내용<a hidden class="anchor" aria-hidden="true" href="#72-공개-내용">#</a></h3>
+<p><strong>필수 공개</strong> : 평가 대상 시스템, 평가 결과 요약, 위원회 의견</p>
+<p><strong>제외</strong> : 보안상 민감한 내용, 기술적 상세 정보</p>
+<p>[공개 예시]</p>
+<pre><code>- 평가 대상 : 전자의무기록(EMR) 시스템
+- 평가 일시 : 2024년 4월 ~ 6월
+- 평가 기관 : ㈜ABC컨설팅
+- 총 15개 위험 식별 : 고위험 3개 개선 완료 / 중위험 7개 개선 계획 / 저위험 5개 모니터링
+- 위원회 의견 : 개선 권고 → 권고 사항 모두 개선 완료
+</code></pre>
+<h2 id="8-실무-사례">8. 실무 사례<a hidden class="anchor" aria-hidden="true" href="#8-실무-사례">#</a></h2>
+<h3 id="사례-1--은행-신규-모바일-뱅킹">사례 1 : 은행 신규 모바일 뱅킹<a hidden class="anchor" aria-hidden="true" href="#사례-1--은행-신규-모바일-뱅킹">#</a></h3>
+<p><strong>배경</strong> : A은행이 신규 모바일 뱅킹 앱 출시, 연간 80만명 주민등록번호 처리</p>
+<p><strong>PIA 수행</strong></p>
+<pre><code>- 평가 기관 : KISA
+- 기간 : 3개월
+- 비용 : 6,000만원
+</code></pre>
+<p><strong>주요 발견</strong></p>
+<pre><code>- 비밀번호 평문 전송 (HTTP)
+- 생체인증 데이터 미암호화
+- 로그 미보관
+</code></pre>
+<p><strong>개선 및 결과</strong></p>
+<pre><code>- HTTPS 적용, 생체인증 데이터 AES-256 암호화, 로그 2년 보관
+- 위원회 의견 : 적정 → 개선 후 앱 출시
+</code></pre>
+<h3 id="사례-2--병원-전자의무기록-emr">사례 2 : 병원 전자의무기록 (EMR)<a hidden class="anchor" aria-hidden="true" href="#사례-2--병원-전자의무기록-emr">#</a></h3>
+<p><strong>배경</strong> : B병원이 종이 차트 → EMR 전환, 연간 10만명 건강정보 처리</p>
+<p><strong>PIA 수행</strong></p>
+<pre><code>- 평가 기관 : 전문 컨설팅 회사
+- 기간 : 2개월
+- 비용 : 2,800만원
+</code></pre>
+<p><strong>주요 발견</strong></p>
+<pre><code>- 백업본 미암호화, 퇴직자 계정 미삭제, 접속기록 6개월 보관
+</code></pre>
+<p><strong>개선 및 결과</strong></p>
+<pre><code>- 백업본 암호화, 퇴직 즉시 계정 삭제, 접속기록 2년 보관
+- 위원회 의견 : 개선 권고 → 개선 완료 후 시스템 오픈
+</code></pre>
+<h3 id="사례-3--정부-부처-데이터-통합">사례 3 : 정부 부처 데이터 통합<a hidden class="anchor" aria-hidden="true" href="#사례-3--정부-부처-데이터-통합">#</a></h3>
+<p><strong>배경</strong> : C부처가 여러 시스템 데이터 통합 후 민간 연구기관과 공동 이용</p>
+<p><strong>PIA 수행</strong></p>
+<pre><code>- 평가 기관 : KISA
+- 기간 : 4개월
+- 비용 : 9,000만원
+</code></pre>
+<p><strong>주요 발견</strong></p>
+<pre><code>- 민간 기관 보안 수준 미흡, 데이터 이용 목적 불명확, 재제공 통제 미흡
+</code></pre>
+<p><strong>개선 및 결과</strong></p>
+<pre><code>- 민간 기관 보안 강화 요구, 이용 목적 명확히 정의, 재제공 금지 계약 조항 추가
+- 위원회 의견 : 재평가 요구 → 재평가 후 승인
+</code></pre>
+<h2 id="9-컨설팅-회사의-pia-업무">9. 컨설팅 회사의 PIA 업무<a hidden class="anchor" aria-hidden="true" href="#9-컨설팅-회사의-pia-업무">#</a></h2>
+<h3 id="91-수행-업무">9.1 수행 업무<a hidden class="anchor" aria-hidden="true" href="#91-수행-업무">#</a></h3>
+<p>[사전]</p>
+<pre><code>- 고객사 PIA 대상 여부 판단 지원
+- 평가 계획 수립 지원
+</code></pre>
+<p>[평가]</p>
+<pre><code>- 현황 조사
+- 개인정보 흐름도 작성
+- 위험 분석
+- 개선 방안 도출
+- 법적 검토
+</code></pre>
+<p>[보고서 및 사후]</p>
+<pre><code>- 평가 결과서 작성, 위원회 제출 대행
+- 개선 이행 지원, 재평가 (필요 시)
+</code></pre>
+<h3 id="92-필요-역량">9.2 필요 역량<a hidden class="anchor" aria-hidden="true" href="#92-필요-역량">#</a></h3>
+<pre><code>- 법률 : 개인정보보호법 및 관련 법령
+- 기술 : 시스템 아키텍처, 보안 기술 (암호화·접근통제 등), 네트워크 보안
+- 문서 : 보고서 작성, 개인정보 흐름도 작성
+- 커뮤니케이션 : 고객사 인터뷰, 위원회 대응
+</code></pre>
+<h3 id="93-프로젝트-수행-팁">9.3 프로젝트 수행 팁<a hidden class="anchor" aria-hidden="true" href="#93-프로젝트-수행-팁">#</a></h3>
+<p>[사전 준비]</p>
+<pre><code>- 제출 자료 미리 요청
+- 일정 여유 확보
+</code></pre>
+<p>[현황 조사]</p>
+<pre><code>- 담당자 인터뷰 꼼꼼히
+- 시스템 직접 확인 (문서만 믿지 말기)
+</code></pre>
+<p>[위험 분석]</p>
+<pre><code>- 고객사 입장에서 실현 가능한 개선 방안 도출
+</code></pre>
+<p>[보고서 및 위원회 대응]</p>
+<pre><code>- 명확하게 작성, 증빙 자료 첨부, 검토 여러 번
+- 질문 예상 및 답변 준비
+</code></pre>
+<h2 id="10-체크리스트">10. 체크리스트<a hidden class="anchor" aria-hidden="true" href="#10-체크리스트">#</a></h2>
+<h3 id="pia-대상-여부-체크">PIA 대상 여부 체크<a hidden class="anchor" aria-hidden="true" href="#pia-대상-여부-체크">#</a></h3>
+<p>[아래 중 하나라도 YES면 PIA 의무]</p>
+<pre><code>- 공공기관인가?
+- 연간 5만명 이상 민감정보 처리?
+- 연간 50만명 이상 주민등록번호 처리?
+- 연간 5만명 이상 기타 고유식별정보 처리?
+- 연간 1만명 이상 개인정보 국외 이전?
+- 공공기관 외와 공동 이용?
+</code></pre>
+<h3 id="pia-수행-체크">PIA 수행 체크<a hidden class="anchor" aria-hidden="true" href="#pia-수행-체크">#</a></h3>
+<p>[수행 단계별 완료 확인]</p>
+<pre><code>- 평가 기관 선정 완료
+- 평가 계획 수립 완료
+- 킥오프 미팅 완료
+- 현황 조사 완료
+- 개인정보 흐름도 작성 완료
+- 위험 분석 완료
+- 개선 방안 도출 완료
+- 법적 검토 완료
+- 평가 결과서 작성 완료
+- 위원회 제출 완료
+- 위원회 의견 수령
+- 개선 조치 완료
+- 결과 공개 완료
+</code></pre>
+<h2 id="학습-정리">학습 정리<a hidden class="anchor" aria-hidden="true" href="#학습-정리">#</a></h2>
+<p><strong>오늘 학습한 핵심 내용</strong></p>
+<pre><code>- PIA : 개인정보 침해 위험 사전 예방 제도
+- 법적 근거 : 개인정보보호법 제33조
+- 대상 : 공공기관 + (5만명 민감정보 / 50만명 주민번호 / 5만명 기타 고유식별정보 / 1만명 국외 이전 / 공동 이용)
+- 민간 기업 : 의무 아님 (자율)
+- 평가 기관 : KISA 또는 전문기관 (약 30개)
+- 평가 절차 : 계획 수립 → 팀 구성 → 평가 수행 → 보고서 작성 → 위원회 제출 → 의견 청취 → 개선 조치
+- 평가 수행 : 현황 조사 → 개인정보 흐름도 → 위험 분석 → 개선 방안 도출 → 법적 검토
+- 소요 기간 : 2~4개월
+- 비용 : 2천만원 ~ 1억원
+- 위원회 의견 : 적정, 개선 권고, 재평가 요구
+- 결과 공개 의무 (공공기관)
+- 보안 컨설팅 회사 핵심 업무 중 하나
+- 필요 역량 : 법률, 기술, 문서, 커뮤니케이션
+</code></pre>
+<h2 id="다음-학습-주제">다음 학습 주제<a hidden class="anchor" aria-hidden="true" href="#다음-학습-주제">#</a></h2>
+<p>Day 35: ISMS-P 인증 실무</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://hojjang98.github.io/tags/pia/">PIA</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%98%81%ED%96%A5%ED%8F%89%EA%B0%80/">개인정보영향평가</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/">개인정보보호법</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EA%B3%B5%EA%B3%B5%EA%B8%B0%EA%B4%80/">공공기관</a></li>
+      <li><a href="https://hojjang98.github.io/tags/kisa/">KISA</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%9C%84%ED%97%98%EB%B6%84%EC%84%9D/">위험분석</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%AF%BC%EA%B0%90%EC%A0%95%EB%B3%B4/">민감정보</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EA%B3%A0%EC%9C%A0%EC%8B%9D%EB%B3%84%EC%A0%95%EB%B3%B4/">고유식별정보</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
