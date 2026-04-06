@@ -1,0 +1,159 @@
+---
+title: "Information Security Risk Assessments following Cybersecurity Breaches: The Mediating Role of Top Management Attention to Cybersecurity"
+date: 2026-04-06
+categories: ["paper-review"]
+tags: ["보안컨설팅", "ISRA", "TopManagement", "ABV", "CybersecurityGovernance", "CybersecurityBreach", "RiskAssessment", "PaperReview", "SKShieldusRookies"]
+draft: false
+summary: "사이버보안 침해사고 비용이 TMT의 보안 주목도를 매개로 ISRA 실시 결정에 미치는 영향을 주의기반관점(ABV)으로 실증한 Shaikh & Siponen(2023) 논문 리뷰"
+---
+
+# Research Review: Information Security Risk Assessments following Cybersecurity Breaches: The Mediating Role of Top Management Attention to Cybersecurity
+
+>  Analyzed Date :  2026.04.06 - 2026.04.10
+>  Keywords :  Cybersecurity Breach, ISRA, Top Management Team, Attention-Based View, Cybersecurity Governance
+>  Source :  Computers & Security, 2023, Vol. 124, Article 102974. https://doi.org/10.1016/j.cose.2022.102974
+
+---
+
+## Why This Paper?
+
+### 선정 배경
+
+이 논문을 선택한 이유 :
+
+    - Ahmad et al.(2020)에서 침해사고 이후 조직학습의 가능성을 다뤘는데, 이 논문은 그 구조적 조건인 경영진 주목도가 어떻게 형성되고 어떤 행동으로 이어지는지를 실증적으로 보완한다.
+    - 보안 컨설팅 현장에서 반복적으로 요구되는 경영진 설득과 보안 투자 의사결정 메커니즘을 학술적으로 이해하기 위해 선정했다.
+    - ISRA의 실시 여부가 TMT의 주목도에 의해 매개된다는 구조는, 컨설턴트가 클라이언트 경영진에게 접근하는 타이밍과 방식을 설계하는 데 직접적인 근거를 제공한다.
+    - ISMS-P 및 ISO 27001의 경영 검토 및 리스크 관리 항목과 직접 연결되는 거버넌스 연구다.
+
+학습 목표 :
+
+    - 주의기반관점  ( ABV )이 TMT의 보안 의사결정을 어떻게 설명하는지 이해한다.
+    - 침해사고 비용  →  TMT 주목도  →  ISRA 실시라는 인과 경로의 이론적 구조를 파악한다.
+    - 경영진 보안 커뮤니케이션 전략의 이론적 기반으로 활용 가능한 프레임워크를 확보한다.
+
+---
+
+## Day 1 - Research Context & Motivation
+*(침해사고 이후 경영진은 왜 움직이는가)*
+
+### 1. 연구 배경: TMT 역할의 공백
+
+침해사고 이후 내부 행동 연구의 부재
+
+사이버보안 침해사고(cybersecurity breach)는 기업의 시장 가치, 평판, 경쟁 우위에 영향을 미친다. 기존 IS 연구는 침해사고 이후 기업 행동을 주로 외부 지향적 관점에서 분석해왔다. 고객 피해 보상, 위기 커뮤니케이션 전략, 시장 가치 회복 등이 그 예다. 그러나 침해사고는 조직 내부의 구조적 문제를 드러내는 증상일 수 있으며, 즉각적인 기술적 수정에만 집중하면 장기적인 보안 취약점이 방치될 수 있다.
+
+이 공백을 메우는 핵심 수단이 정보보안 리스크 평가(ISRA)다. ISRA는 리스크 관리 프로세스의 첫 번째 단계로, 침해사고 이후 드러나지 않은 다른 취약점을 식별하는 데 기여한다. 그러나 실제로 기업들은 ISRA를 형식적으로, 또는 간헐적으로만 실시하는 경향이 있다(Webb et al., 2014). 예산과 전문성이 부족한 중소기업에서는 이 경향이 특히 두드러진다(Ng et al., 2013).
+
+기존 연구의 한계
+
+IS 연구에서 TMT의 역할은 주로 IT 거버넌스의 거시적 구조(IT 투자 의사결정, IT-비즈니스 정렬 등) 차원에서 다뤄졌다. 침해사고라는 구체적인 위기 상황에서 TMT가 어떻게 행동하는지, 그리고 그 행동이 ISRA 실시 여부에 어떤 영향을 미치는지는 IS 연구에서 이론화와 실증 검증이 모두 부족한 영역이다.
+
+IT 부서는 기술적 취약점과 즉각적인 문제를 수정할 수 있지만, 구조적인 문제와 리스크를 관리하려면 고위 경영진의 개입이 필요하다. 규제 측면에서도 TMT는 침해사고에 대한 최종 책임을 진다. Sarbanes-Oxley Act는 TMT에게 IT 리스크를 포함한 리스크 관리 및 보고의 법적 책임을 부과하며, GDPR 하에서도 이사진은 보안 기준 및 개인정보 보호 규정 위반에 대한 책임을 진다.
+
+연구 문제의식
+
+이 논문이 답하려는 핵심 질문은 다음과 같다.
+
+>  사이버보안 침해사고 비용과 TMT의 보안 주목도는 ISRA 실시 결정에 어떤 영향을 미치는가?
+
+---
+
+### 2. 핵심 개념
+
+| 개념 | 정의 | 컨설팅 맥락에서의 의미 |
+|------|------|---------------------|
+| ISRA | IT 자산을 우선순위에 따라 분류하고 관련 리스크 및 잠재적 피해 수준을 평가하는 활동. 보안 감사, 침투 테스트, 보안 인식 테스트 등을 포함하는 리스크 관리의 첫 단계 | 컨설턴트가 클라이언트에게 제안하는 진단 서비스의 학술적 정의. 침해사고 이후 ISRA 실시를 권고할 때의 이론적 근거로 활용 가능 |
+| TMT | 조직 최상위의 소규모 영향력 있는 경영진 집단. 공식 위원회가 아닌 CEO, CFO, CIO, CISO 등 최고위 임원으로 구성된 실질적 의사결정 주체 | 클라이언트사에서 보안 투자 승인 권한을 가진 실질적 대화 상대. 컨설턴트는 이 집단의 주목도를 확보하는 것을 목표로 삼아야 한다 |
+| 주의기반관점  ( ABV ) | 조직 행동은 의사결정자들이 주목하는 것의 결과라는 이론. 제한된 주의 자원을 가진 TMT가 어떤 이슈에 주목하느냐에 따라 기업 행동이 결정된다는 관점 | 경영진 커뮤니케이션 전략의 이론적 토대. 보안 이슈를 경영진의 주목을 끌 수 있는 방식으로 프레이밍해야 함을 시사 |
+| 침해 비용 | 탐지 비용, 규제 통보, 고객 보상, 소송, 시장 가치 손실, 규제 과징금, 갈취 대금, 사업 손실 등 침해사고로 발생하는 경제적 비용의 총체 | ISRA 실시를 촉발하는 핵심 변수. 클라이언트에게 침해 비용의 규모가 향후 보안 투자 결정을 좌우함을 설명하는 근거 |
+
+---
+
+### 3. 이론적 기반: 주의기반관점  ( Attention-Based View, ABV )
+
+[ Ocasio, 1997의 주의기반관점 3원칙 ]
+
+[ 원칙 1 : 주목의 집중  ( Focus of Attention ) ]
+
+    - TMT는 제한된 주의 자원을 이슈의 현저성과 관련성에 따라 배분
+    - 고비용 침해사고는 성과 기대치 하회  →  보안 이슈의 현저성 증가
+    - TMT 주목 유발
+
+[ 원칙 2 : 주목의 구조적 분포  ( Structural Distribution of Attention ) ]
+
+    - 조직 계층에서의 위치가 주목 배분 방식을 결정
+    - TMT는 수탁 책임 + 법적 책임  ( SOX, GDPR )으로 보안에 주목할 구조적 의무
+    - 고비용 침해사고 시 TMT 개입 당위성 증가
+
+[ 원칙 3 : 상황적 주목  ( Situated Attention ) ]
+
+    - 주목은 상황의 산물 : 이슈 심각성과 과업 긴박성이 주목을 유발
+    - 소규모 침해는 IT 부서 선에서 처리, 고비용 침해는 TMT 주목 요구
+    - 침해 비용 규모가 TMT 주목도를 결정하는 상황적 트리거
+
+핵심 아이디어 :
+
+ABV는 조직 행동을 의사결정자의 주목 배분 결과로 설명한다. 핵심 명제는 TMT가 모든 이슈에 동등하게 주목할 수 없기 때문에, 어떤 이슈가 TMT의 주목을 확보하느냐가 조직의 실질적 행동을 결정한다는 것이다. 이 논문은 ABV의 세 원칙을 통해, 사이버보안 침해사고 비용이 충분히 높을 때 TMT가 보안에 주목하게 되고, 그 주목이 ISRA 실시라는 구체적 행동으로 이어지는 메커니즘을 이론화했다.
+
+---
+
+### 4. 연구의 핵심 기여
+
+학술적 기여 :
+
+    - TMT의 보안 역할을 단순한 거버넌스 선언이 아닌, 주목 배분 메커니즘으로 이론화한 최초 시도
+    - ABV를 사이버보안 거버넌스 영역에 적용함으로써 IS 보안 연구에 새로운 이론적 렌즈를 도입
+    - 침해사고 이후의 기업 내부 행동, 특히 ISRA 실시 결정을 학술적으로 분석한 희소한 연구
+
+실무 기여 :
+
+    - 침해사고 이후 ISRA가 반드시 이루어지지 않는다는 현실적 관찰에 이론적 설명을 제공
+    - TMT와 사이버보안 기능 간의 협력이 침해 대응에 필수적임을 실증적으로 근거 제시
+    - 소규모 침해에 대한 대응과 대규모 침해에 대한 대응을 구분하는 의사결정 논리 제공
+
+---
+
+### 5. 컨설팅 관점 인사이트
+
+적용 가능성 :
+
+이 논문의 핵심 구조(침해 비용 → TMT 주목도 → ISRA 실시)는 컨설턴트가 클라이언트에게 보안 진단의 타이밍과 필요성을 설명할 때 직접 활용 가능한 논리다. 단순히 규제 준수나 예방적 관점이 아닌, 침해사고의 비용이 경영진을 움직이는 구조적 메커니즘을 이해함으로써 개입 전략을 정교화할 수 있다.
+
+기존 학습과의 연결 :
+
+Ahmad et al.(2020)은 침해사고 이후 ISM과 IR 기능의 통합이 조직학습으로 이어지는 과정을 다뤘다. Shaikh & Siponen(2023)은 그 이전 단계, 즉 TMT가 보안에 주목하게 되는 조건을 설명한다. 두 논문을 함께 읽으면, 침해사고 → TMT 주목도 확보 → ISRA 실시 → ISM-IR 통합 → 조직학습이라는 완성된 인과 사슬이 만들어진다.
+
+Gordon & Loeb(2002)의 보안 투자 경제학도 연결된다. 그 논문이 보안 투자의 최적 수준을 수학적으로 분석했다면, 이 논문은 실제로 어떤 조건에서 경영진이 그 투자 결정을 내리게 되는지를 행동적으로 설명한다.
+
+현실적 고려사항 :
+
+    - 이 연구는 영국 기업 데이터를 기반으로 하며, 한국 기업 환경에서의 TMT 구조와 의사결정 방식의 차이를 고려해야 한다.
+    - ISRA 실시 결정이 TMT 주목도에 의해 매개된다는 구조는, 역으로 경영진의 주목을 확보하지 못하면 ISRA가 형식적으로 흐를 수 있음을 시사한다.
+    - 중소기업의 경우 TMT 구조 자체가 단순하거나 비공식적일 수 있어, 이론의 적용 범위가 달라질 수 있다.
+
+---
+
+Day 2 Preview :
+
+연구 모델의 구체적인 구조, 가설 설계, 데이터 수집 방법(영국 사이버보안 서베이 4개 웨이브), 변수 측정 방식, 그리고 매개효과 분석 방법론을 다룬다.
+
+---
+
+## References
+
+[1] Shaikh, F.A., & Siponen, M. (2023). Information security risk assessments following cybersecurity breaches: The mediating role of top management attention to cybersecurity. *Computers & Security*, 124, 102974. https://doi.org/10.1016/j.cose.2022.102974
+
+[2] Ocasio, W. (1997). Towards an attention-based view of the firm. *Strategic Management Journal*, 18(S1), 187-206.
+
+[3] Ahmad, A., Desouza, K.C., Maynard, S.B., Naseer, H., & Baskerville, R.L. (2020). How integration of cyber security management and incident response enables organizational learning. *Journal of the Association for Information Science and Technology*, 71(8), 939-953.
+
+[4] Gordon, L.A., & Loeb, M.P. (2002). The economics of information security investment. *ACM Transactions on Information and System Security*, 5(4), 438-457.
+
+[5] Webb, J., Ahmad, A., Maynard, S.B., & Shanks, G. (2014). A situation awareness model for information security risk management. *Computers & Security*, 44, 1-15.
+
+---
+
+## Tags
+
+보안컨설팅  /  SecurityConsulting  /  ISRA  /  TopManagement  /  ABV  /  CybersecurityGovernance  /  CybersecurityBreach  /  RiskAssessment  /  PaperReview  /  SKShieldusRookies
