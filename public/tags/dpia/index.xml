@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>DPIA on HJ's Security Note</title><link>https://hojjang98.github.io/tags/dpia/</link><description>Recent content in DPIA on HJ's Security Note</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Fri, 06 Mar 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://hojjang98.github.io/tags/dpia/index.xml" rel="self" type="application/rss+xml"/><item><title>Day 24: GDPR (EU 일반 데이터 보호 규정)</title><link>https://hojjang98.github.io/cyber_law_study/03_%EC%9D%B8%EC%A6%9D%EB%B0%8F%EA%B5%AD%EC%A0%9C%ED%91%9C%EC%A4%80/05_gdpr/day24_gdpr/</link><pubDate>Fri, 06 Mar 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/cyber_law_study/03_%EC%9D%B8%EC%A6%9D%EB%B0%8F%EA%B5%AD%EC%A0%9C%ED%91%9C%EC%A4%80/05_gdpr/day24_gdpr/</guid><description>EU 일반 데이터 보호 규정(GDPR)의 7대 원칙, 6가지 법적 근거, 정보주체 권리, 컨트롤러·프로세서 의무 및 한국 기업의 GDPR 대응 전략을 학습합니다.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>DPIA on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/dpia/</link>
+    <description>Recent content in DPIA on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Fri, 06 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/dpia/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Day 24: GDPR (EU 일반 데이터 보호 규정)</title>
+      <link>http://localhost:1313/cyber_law_study/03_%EC%9D%B8%EC%A6%9D%EB%B0%8F%EA%B5%AD%EC%A0%9C%ED%91%9C%EC%A4%80/05_gdpr/day24_gdpr/</link>
+      <pubDate>Fri, 06 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/cyber_law_study/03_%EC%9D%B8%EC%A6%9D%EB%B0%8F%EA%B5%AD%EC%A0%9C%ED%91%9C%EC%A4%80/05_gdpr/day24_gdpr/</guid>
+      <description>EU 일반 데이터 보호 규정(GDPR)의 7대 원칙, 6가지 법적 근거, 정보주체 권리, 컨트롤러·프로세서 의무 및 한국 기업의 GDPR 대응 전략을 학습합니다.</description>
+    </item>
+  </channel>
+</rss>

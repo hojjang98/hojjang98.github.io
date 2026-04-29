@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="ko" dir="auto" data-theme="auto">
 
-<head><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="noindex, nofollow">
 <title>Week 14 — E-Commerce 보안 컨설팅 시뮬레이션 3/4: 보안 개선 구현 | HJ&#39;s Security Note</title>
 <meta name="keywords" content="보안컨설팅, Flask, PreparedStatement, XSS방어, 파일업로드, CSRF, 보안헤더, SK쉴더스루키즈">
 <meta name="description" content="4주 보안 컨설팅 시뮬레이션 3주차 — Week 13 진단 결과를 바탕으로 Critical/High 취약점 4개를 완전 제거하고 Before/After 비교 검증까지 완료한 보안 개선 단계">
 <meta name="author" content="">
-<link rel="canonical" href="https://hojjang98.github.io/project/week_14/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.290573799e582c418c4bd84f2bca757d0a77fd1bf9f5c43942030e706df68ec8.css" integrity="sha256-KQVzeZ5YLEGMS9hPK8p1fQp3/Rv59cQ5QgMOcG32jsg=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
+<link rel="canonical" href="http://localhost:1313/project/week_14/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c8c3b65cd6d058be2b4f050fd7a688ac13a23056571601dabe4f70d8d008259e.css" integrity="sha256-yMO2XNbQWL4rTwUP16aIrBOiMFZXFgHavk9w2NAIJZ4=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/project/week_14/">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/project/week_14/">
 <noscript>
     <style>
         #theme-toggle,
@@ -70,87 +70,13 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
-</script><meta property="og:url" content="https://hojjang98.github.io/project/week_14/">
-  <meta property="og:site_name" content="HJ&#39;s Security Note">
-  <meta property="og:title" content="Week 14 — E-Commerce 보안 컨설팅 시뮬레이션 3/4: 보안 개선 구현">
-  <meta property="og:description" content="4주 보안 컨설팅 시뮬레이션 3주차 — Week 13 진단 결과를 바탕으로 Critical/High 취약점 4개를 완전 제거하고 Before/After 비교 검증까지 완료한 보안 개선 단계">
-  <meta property="og:locale" content="ko-kr">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="project">
-    <meta property="article:published_time" content="2026-02-02T00:00:00+00:00">
-    <meta property="article:modified_time" content="2026-02-02T00:00:00+00:00">
-    <meta property="article:tag" content="보안컨설팅">
-    <meta property="article:tag" content="Flask">
-    <meta property="article:tag" content="PreparedStatement">
-    <meta property="article:tag" content="XSS방어">
-    <meta property="article:tag" content="파일업로드">
-    <meta property="article:tag" content="CSRF">
-      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_19/">
-      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_18/">
-      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_17/">
-      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_16/">
-      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_15/">
-      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_13/">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Week 14 — E-Commerce 보안 컨설팅 시뮬레이션 3/4: 보안 개선 구현">
-<meta name="twitter:description" content="4주 보안 컨설팅 시뮬레이션 3주차 — Week 13 진단 결과를 바탕으로 Critical/High 취약점 4개를 완전 제거하고 Before/After 비교 검증까지 완료한 보안 개선 단계">
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "프로젝트",
-      "item": "https://hojjang98.github.io/project/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "Week 14 — E-Commerce 보안 컨설팅 시뮬레이션 3/4: 보안 개선 구현",
-      "item": "https://hojjang98.github.io/project/week_14/"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Week 14 — E-Commerce 보안 컨설팅 시뮬레이션 3/4: 보안 개선 구현",
-  "name": "Week 14 — E-Commerce 보안 컨설팅 시뮬레이션 3\/4: 보안 개선 구현",
-  "description": "4주 보안 컨설팅 시뮬레이션 3주차 — Week 13 진단 결과를 바탕으로 Critical/High 취약점 4개를 완전 제거하고 Before/After 비교 검증까지 완료한 보안 개선 단계",
-  "keywords": [
-    "보안컨설팅", "Flask", "PreparedStatement", "XSS방어", "파일업로드", "CSRF", "보안헤더", "SK쉴더스루키즈"
-  ],
-  "articleBody": "Week 14 — E-Commerce 보안 컨설팅 시뮬레이션 3/4: 보안 개선 구현 전체 소스코드 및 검증 결과는 GitHub에서 확인할 수 있습니다. hojjang98 / skshielders-rookies-28 — projects/week_14\n개요 Week 13 에서 발굴한 취약점 12개를 실제로 수정하는 단계다. 코드를 고치는 것 자체보다, “어떻게 고쳐야 공격을 원천 차단할 수 있는가” 를 설계하는 과정이 더 중요했다.\n개선 목표:\nCritical (2개) : SQL Injection (로그인, 검색) =\u003e 완전 제거\rHigh (2개) : XSS, 파일 업로드 =\u003e 완전 제거\rMedium (3개) : CSRF, CSP, Clickjacking =\u003e 1개 해결 (CSRF)\rLow (5개) : 보안 헤더 누락 등 =\u003e 1개 해결 (X-Frame-Options)\r취약 버전(Week 12)과 개선 버전(Week 14)을 동시에 실행할 수 있도록 포트를 분리했다:\nWeek 12 (취약) : http://localhost:5000\rWeek 14 (개선) : http://localhost:5001\r핵심 개선 — app.py 전체 설계 변경 1. 시크릿 키 강화 Before — 예측 가능한 하드코딩 문자열:\napp.secret_key = 'vulnerable_secret_key_123'\rAfter — 실행마다 무작위 32바이트 생성:\napp.secret_key = os.urandom(32)\rFlask 세션 쿠키는 시크릿 키로 서명된다. os.urandom(32) 는 암호학적으로 안전한 난수를 생성하여 세션 위조를 원천 차단한다.\n2. 보안 헤더 전역 적용 모든 HTTP 응답에 자동으로 보안 헤더를 삽입한다:\n@app.after_request\rdef set_security_headers(response):\rresponse.headers['X-Frame-Options'] = 'DENY'\rresponse.headers['X-Content-Type-Options'] = 'nosniff'\rresponse.headers['Content-Security-Policy'] = \"default-src 'self'; style-src 'self' 'unsafe-inline'\"\rresponse.headers['X-XSS-Protection'] = '1; mode=block'\rreturn response\r각 헤더의 역할:\nX-Frame-Options: DENY =\u003e Clickjacking 차단 (iframe 삽입 불가)\rX-Content-Type-Options: nosniff =\u003e MIME 스니핑 공격 차단\rContent-Security-Policy =\u003e 인라인 스크립트 실행 차단 (XSS 2차 방어)\rX-XSS-Protection: 1; mode=block =\u003e 브라우저 내장 XSS 필터 활성화\r3. CSRF 전역 보호 Flask-WTF 라이브러리로 모든 POST 폼에 CSRF 토큰을 자동 적용한다:\nfrom flask_wtf.csrf import CSRFProtect\rcsrf = CSRFProtect(app)\rCSRFProtect(app) 한 줄로 애플리케이션 전체의 POST 요청이 보호된다. 각 템플릿에서는 {{ form.csrf_token }} 또는 {{ csrf_token() }} 으로 토큰을 삽입한다.\nCritical 취약점 수정 — SQL Injection Before / After — 로그인 Before (Week 12) — f-string 직접 삽입:\nquery = f\"SELECT * FROM users WHERE username='{username}' AND password='{password}'\"\ruser = conn.execute(query).fetchone()\r공격: admin' OR '1'='1 입력 시 =\u003e 비밀번호 검증 없이 로그인 성공\rAfter (Week 14) — Prepared Statement:\nuser = conn.execute(\r'SELECT * FROM users WHERE username=? AND password=?',\r(username, password)\r).fetchone()\r동일 공격 시 =\u003e admin' OR '1'='1 전체가 하나의 문자열 파라미터로 처리\r=\u003e SQL 구문으로 해석 불가 =\u003e 로그인 실패\rBefore / After — 상품 검색 Before (Week 12):\nquery = f\"SELECT * FROM products WHERE name LIKE '%{search}%'\"\rproducts = conn.execute(query).fetchall()\rAfter (Week 14):\nproducts = conn.execute(\r'SELECT * FROM products WHERE name LIKE ?',\r(f'%{search}%',)\r).fetchall()\r검증 결과:\n공격 입력 : ' OR '1'='1\rWeek 12 : 전체 상품 10개 노출 (필터 무력화)\rWeek 14 : 검색 결과 없음 (파라미터로 바인딩 =\u003e 공격 차단)\rHigh 취약점 수정 — XSS Before / After — 댓글 출력 Before (Week 12) — |safe 필터로 이스케이프 비활성화:\n{{ comment.comment|safe }}\n공격: 결과: 페이지 로드 시 스크립트 실행\rAfter (Week 14) — |safe 제거:\n{{ comment.comment }}\n동일 입력 시: \u0026lt;script\u0026gt;alert('XSS')\u0026lt;/script\u0026gt; 로 이스케이프\r결과: 텍스트로만 표시 =\u003e 실행되지 않음\rJinja2 는 기본적으로 이스케이프를 켜놓는다. |safe 를 제거하는 것만으로 보호가 복원된다.\nHigh 취약점 수정 — 파일 업로드 화이트리스트 기반 검증 추가 Before (Week 12) — 검증 전무:\nfilename = file.filename\rfilepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)\rfile.save(filepath)\r결과: 모든 파일 형식 업로드 가능 =\u003e 웹쉘 업로드 가능\rAfter (Week 14) — 화이트리스트 + secure_filename:\napp.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg', 'gif'}\rdef allowed_file(filename):\rreturn '.' in filename and \\\rfilename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']\r# 업로드 처리 시\rif not allowed_file(file.filename):\rflash('허용되지 않는 파일 형식입니다.')\rreturn redirect(request.url)\rfilename = secure_filename(file.filename) # 경로 조작 방지\rfilepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)\rfile.save(filepath)\r결과: txt, php, py, sh 등 모든 비허용 파일 업로드 차단\rsecure_filename() 의 역할 — ../../../etc/passwd 같은 경로 조작 공격도 함께 차단한다.\nBefore / After 비교 검증 결과 수동 공격 테스트 공격 유형 Week 12 (취약) Week 14 (개선) SQL Injection (로그인) 성공 차단 SQL Injection (검색) 성공 차단 XSS (댓글) 성공 차단 파일 업로드 (.txt) 성공 차단 OWASP ZAP 자동 스캔 비교 심각도 Week 12 Week 14 변화 Critical 2 0 -2 High 2 0 -2 Medium 3 2 -1 Low 5 4 -1 총 6개 취약점 해결 (Critical + High 100% 제거)\n주목할 점 — ZAP 은 여전히 Critical / High 를 0개로 표시한다. 이는 Week 13 에서 확인했듯이 자동화 스캐너가 인증 기반 취약점을 탐지하지 못하는 한계를 그대로 보여준다. Critical 차단 여부는 오직 수동 테스트로만 검증 가능하다.\n남은 취약점 현황 Medium (2개 잔존) CSP 정책 강화 — 현재 style-src 'unsafe-inline' 허용 상태로, 인라인 스타일 XSS 가능성 잔존. 추가 조치 필요: Nonce 기반 CSP 적용 또는 외부 CSS 파일 분리\nClickjacking — X-Frame-Options: DENY 설정으로 1차 방어했지만, 오래된 브라우저에서 추가 검증이 필요하다.\nLow (4개 잔존) 보안 헤더 추가(X-Content-Type-Options, X-XSS-Protection)로 1개 감소했으나, 다음 항목이 남아있다:\n- 쿠키 SameSite 속성 미설정\r- 서버 버전 정보 노출 (Werkzeug 헤더)\r- Permissions-Policy 미설정\r- Cross-Origin 헤더 없음\r학습 성과 정리 영역 학습 내용 Prepared Statement ? 바인딩이 SQL Injection 을 원천 차단하는 이유를 코드로 직접 확인 Jinja2 보안 ` 파일 업로드 보안 화이트리스트 + secure_filename() 이중 방어의 구현 방법 보안 헤더 @app.after_request 로 전역 보안 헤더를 적용하는 패턴 Before/After 검증 방어 구현 후 실제 공격으로 차단 여부를 직접 확인하는 습관 다음 주 예고 — Week 15: 모니터링 + 최종 보고서 4주 시리즈의 마지막 주. 로그 분석 시스템을 구축하고, 4주 전체를 하나의 보안 컨설팅 최종 보고서 로 정리한다.\n구현 예정:\r- log_analyzer.py : 보안 이벤트 탐지 스크립트\r- dashboard.html : 보안 이벤트 대시보드\r- consulting_report : Executive Summary + 전체 결과 종합\r",
-  "wordCount" : "1751",
-  "inLanguage": "ko",
-  "datePublished": "2026-02-02T00:00:00Z",
-  "dateModified": "2026-02-02T00:00:00Z",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://hojjang98.github.io/project/week_14/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "HJ's Security Note",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://hojjang98.github.io/favicon.ico"
-    }
-  }
-}
 </script>
 </head>
 <body id="top">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -176,37 +102,37 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="https://hojjang98.github.io/about" title="소개">
+                <a href="http://localhost:1313/about" title="소개">
                     <span>소개</span>
                 </a>
             </li>
             <li>
-                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
+                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
                     <span>일일 로그</span>
                 </a>
             </li>
             <li>
-                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
+                <a href="http://localhost:1313/categories/projects/" title="Projects">
                     <span>프로젝트</span>
                 </a>
             </li>
             <li>
-                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
+                <a href="http://localhost:1313/categories/cyber-law-study/" title="Cyber-Law-Study">
                     <span>보안법 공부</span>
                 </a>
             </li>
             <li>
-                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
                     <span>보안 시사 분석</span>
                 </a>
             </li>
             <li>
-                <a href="https://hojjang98.github.io/tags/" title="Tags">
+                <a href="http://localhost:1313/tags/" title="Tags">
                     <span>태그</span>
                 </a>
             </li>
             <li>
-                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
+                <a href="http://localhost:1313/categories/paper-review/" title="Paper-Review">
                     <span>논문 리뷰</span>
                 </a>
             </li>
@@ -217,7 +143,7 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/project/">프로젝트</a></div>
+    <div class="breadcrumbs"><a href="http://localhost:1313/">홈</a>&nbsp;»&nbsp;<a href="http://localhost:1313/project/">프로젝트</a></div>
     <h1 class="post-title entry-hint-parent">
       Week 14 — E-Commerce 보안 컨설팅 시뮬레이션 3/4: 보안 개선 구현
     </h1>
@@ -497,21 +423,21 @@ file.save(filepath)
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://hojjang98.github.io/tags/%EB%B3%B4%EC%95%88%EC%BB%A8%EC%84%A4%ED%8C%85/">보안컨설팅</a></li>
-      <li><a href="https://hojjang98.github.io/tags/flask/">Flask</a></li>
-      <li><a href="https://hojjang98.github.io/tags/preparedstatement/">PreparedStatement</a></li>
-      <li><a href="https://hojjang98.github.io/tags/xss%EB%B0%A9%EC%96%B4/">XSS방어</a></li>
-      <li><a href="https://hojjang98.github.io/tags/%ED%8C%8C%EC%9D%BC%EC%97%85%EB%A1%9C%EB%93%9C/">파일업로드</a></li>
-      <li><a href="https://hojjang98.github.io/tags/csrf/">CSRF</a></li>
-      <li><a href="https://hojjang98.github.io/tags/%EB%B3%B4%EC%95%88%ED%97%A4%EB%8D%94/">보안헤더</a></li>
-      <li><a href="https://hojjang98.github.io/tags/sk%EC%89%B4%EB%8D%94%EC%8A%A4%EB%A3%A8%ED%82%A4%EC%A6%88/">SK쉴더스루키즈</a></li>
+      <li><a href="http://localhost:1313/tags/%EB%B3%B4%EC%95%88%EC%BB%A8%EC%84%A4%ED%8C%85/">보안컨설팅</a></li>
+      <li><a href="http://localhost:1313/tags/flask/">Flask</a></li>
+      <li><a href="http://localhost:1313/tags/preparedstatement/">PreparedStatement</a></li>
+      <li><a href="http://localhost:1313/tags/xss%EB%B0%A9%EC%96%B4/">XSS방어</a></li>
+      <li><a href="http://localhost:1313/tags/%ED%8C%8C%EC%9D%BC%EC%97%85%EB%A1%9C%EB%93%9C/">파일업로드</a></li>
+      <li><a href="http://localhost:1313/tags/csrf/">CSRF</a></li>
+      <li><a href="http://localhost:1313/tags/%EB%B3%B4%EC%95%88%ED%97%A4%EB%8D%94/">보안헤더</a></li>
+      <li><a href="http://localhost:1313/tags/sk%EC%89%B4%EB%8D%94%EC%8A%A4%EB%A3%A8%ED%82%A4%EC%A6%88/">SK쉴더스루키즈</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
+        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
 
     <span>
         Powered by

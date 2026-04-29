@@ -1,1 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>TMDB on HJ's Security Note</title><link>https://hojjang98.github.io/tags/tmdb/</link><description>Recent content in TMDB on HJ's Security Note</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Fri, 21 Nov 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://hojjang98.github.io/tags/tmdb/index.xml" rel="self" type="application/rss+xml"/><item><title>Mini Project 01 — LLM/RAG 기반 영화 흥행 분석 시스템</title><link>https://hojjang98.github.io/project/week_03_04/</link><pubDate>Fri, 21 Nov 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/project/week_03_04/</guid><description>Week 3 &amp;amp; 4 통합 첫 번째 팀 미니프로젝트 — TMDB 데이터 기반 RAG 추천·흥행 분석·투자 판단 종합 플랫폼 (팀장)</description></item><item><title>2025.11.14 (Day 15) 팀 프로젝트 킥오프 · 영화 흥행 요인 분석</title><link>https://hojjang98.github.io/daily_logs/week03/20251114_team_project01/</link><pubDate>Fri, 14 Nov 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week03/20251114_team_project01/</guid><description>팀 프로젝트 킥오프 - 영화 흥행 요인 분석 프로젝트 기획서·기술 정의서 작성 및 기술 스택 확정</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>TMDB on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/tmdb/</link>
+    <description>Recent content in TMDB on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Fri, 21 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/tmdb/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mini Project 01 — LLM/RAG 기반 영화 흥행 분석 시스템</title>
+      <link>http://localhost:1313/project/week_03_04/</link>
+      <pubDate>Fri, 21 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/project/week_03_04/</guid>
+      <description>Week 3 &amp;amp; 4 통합 첫 번째 팀 미니프로젝트 — TMDB 데이터 기반 RAG 추천·흥행 분석·투자 판단 종합 플랫폼 (팀장)</description>
+    </item>
+    <item>
+      <title>2025.11.14 (Day 15) 팀 프로젝트 킥오프 · 영화 흥행 요인 분석</title>
+      <link>http://localhost:1313/daily_logs/week03/20251114_team_project01/</link>
+      <pubDate>Fri, 14 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week03/20251114_team_project01/</guid>
+      <description>팀 프로젝트 킥오프 - 영화 흥행 요인 분석 프로젝트 기획서·기술 정의서 작성 및 기술 스택 확정</description>
+    </item>
+  </channel>
+</rss>

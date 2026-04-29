@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>SQLMap on HJ's Security Note</title><link>https://hojjang98.github.io/tags/sqlmap/</link><description>Recent content in SQLMap on HJ's Security Note</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Wed, 21 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://hojjang98.github.io/tags/sqlmap/index.xml" rel="self" type="application/rss+xml"/><item><title>2026.01.21 (Day 60) - Security Onion IDS/IPS 및 SQLMap 공격 탐지 실전</title><link>https://hojjang98.github.io/daily_logs/week13/20260121_soc_day3/</link><pubDate>Wed, 21 Jan 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week13/20260121_soc_day3/</guid><description>Security Onion IDS/IPS 심화 실습, Kali Linux에서 SQLMap으로 DVWA(Security Level: Low) SQL Injection 자동화 공격 수행 후 DB 전체 덤프, Security Onion 커스텀 Snort 룰(SQLMap User-Agent·UNION SELECT·Boolean-based) 작성으로 실시간 탐지, Sguil에서 공격-탐지 연동 전 과정 확인</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>SQLMap on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/sqlmap/</link>
+    <description>Recent content in SQLMap on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Wed, 21 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/sqlmap/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2026.01.21 (Day 60) - Security Onion IDS/IPS 및 SQLMap 공격 탐지 실전</title>
+      <link>http://localhost:1313/daily_logs/week13/20260121_soc_day3/</link>
+      <pubDate>Wed, 21 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week13/20260121_soc_day3/</guid>
+      <description>Security Onion IDS/IPS 심화 실습, Kali Linux에서 SQLMap으로 DVWA(Security Level: Low) SQL Injection 자동화 공격 수행 후 DB 전체 덤프, Security Onion 커스텀 Snort 룰(SQLMap User-Agent·UNION SELECT·Boolean-based) 작성으로 실시간 탐지, Sguil에서 공격-탐지 연동 전 과정 확인</description>
+    </item>
+  </channel>
+</rss>

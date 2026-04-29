@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Seaborn on HJ's Security Note</title><link>https://hojjang98.github.io/tags/seaborn/</link><description>Recent content in Seaborn on HJ's Security Note</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Thu, 06 Nov 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://hojjang98.github.io/tags/seaborn/index.xml" rel="self" type="application/rss+xml"/><item><title>2025.11.06 (Day 9) Matplotlib · Seaborn 기반 로그 시각화 및 데이터 분석 학습 로그</title><link>https://hojjang98.github.io/daily_logs/week02/20251106_visualization/</link><pubDate>Thu, 06 Nov 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week02/20251106_visualization/</guid><description>Matplotlib과 Seaborn을 활용한 보안 로그 시각화 기초 학습. 로그인 실패율·지연시간 분석, 사용자별 이상 패턴 탐지, 피벗 기반 히트맵 구성 방법 정리.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Seaborn on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/seaborn/</link>
+    <description>Recent content in Seaborn on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Thu, 06 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/seaborn/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2025.11.06 (Day 9) Matplotlib · Seaborn 기반 로그 시각화 및 데이터 분석 학습 로그</title>
+      <link>http://localhost:1313/daily_logs/week02/20251106_visualization/</link>
+      <pubDate>Thu, 06 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week02/20251106_visualization/</guid>
+      <description>Matplotlib과 Seaborn을 활용한 보안 로그 시각화 기초 학습. 로그인 실패율·지연시간 분석, 사용자별 이상 패턴 탐지, 피벗 기반 히트맵 구성 방법 정리.</description>
+    </item>
+  </channel>
+</rss>

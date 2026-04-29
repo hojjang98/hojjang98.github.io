@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>BlackBox on HJ's Security Note</title><link>https://hojjang98.github.io/tags/blackbox/</link><description>Recent content in BlackBox on HJ's Security Note</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Tue, 30 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://hojjang98.github.io/tags/blackbox/index.xml" rel="self" type="application/rss+xml"/><item><title>2025.12.30 (Day 45) - 웹 취약점 자동 진단 도구 개발과 DNA Lab 프로젝트 기획</title><link>https://hojjang98.github.io/daily_logs/week10/20251230_project_01/</link><pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week10/20251230_project_01/</guid><description>Python 기반 12개 웹 취약점 자동 진단 스크립트 개발, XSS 탐지 실패/백신 오탐 트러블슈팅, 인트라넷에서 DNA 검사 서비스(23andMe 690만명 유출 연계)로 프로젝트 주제 전환, 기존 페이지 구조 재활용 전략 수립</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>BlackBox on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/blackbox/</link>
+    <description>Recent content in BlackBox on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Tue, 30 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/blackbox/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2025.12.30 (Day 45) - 웹 취약점 자동 진단 도구 개발과 DNA Lab 프로젝트 기획</title>
+      <link>http://localhost:1313/daily_logs/week10/20251230_project_01/</link>
+      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week10/20251230_project_01/</guid>
+      <description>Python 기반 12개 웹 취약점 자동 진단 스크립트 개발, XSS 탐지 실패/백신 오탐 트러블슈팅, 인트라넷에서 DNA 검사 서비스(23andMe 690만명 유출 연계)로 프로젝트 주제 전환, 기존 페이지 구조 재활용 전략 수립</description>
+    </item>
+  </channel>
+</rss>

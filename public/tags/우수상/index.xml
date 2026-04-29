@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>우수상 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%EC%9A%B0%EC%88%98%EC%83%81/</link>
+    <description>Recent content in 우수상 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Fri, 17 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%EC%9A%B0%EC%88%98%EC%83%81/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2026.04.17 (Day 118) - 최종 발표 및 우수상 수상</title>
+      <link>http://localhost:1313/daily_logs/week24/20260417_final_project_43/</link>
+      <pubDate>Fri, 17 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week24/20260417_final_project_43/</guid>
+      <description>5조 리베로의 하랑항공 개인정보 위수탁 관리체계 보안 컨설팅 최종 발표를 완료하고 우수상을 수상하였다. 심사위원으로부터 &amp;ldquo;리베로에 실제로 컨설팅을 맡기고 싶다&amp;quot;는 총평을 받았다.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>COBIT on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/cobit/</link>
+    <description>Recent content in COBIT on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Mon, 13 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/cobit/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Maturity Level Assessments of Information Security Controls: An Empirical Analysis of Practitioners&#39; Assessment Capabilities</title>
+      <link>http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/schmitz-2021/</link>
+      <pubDate>Mon, 13 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/schmitz-2021/</guid>
+      <description>보안 전문가 56명이 ISO/IEC 27002 통제 항목의 COBIT 성숙도를 얼마나 정확하게 평가할 수 있는지를 실증한 Schmitz(2021) 논문 리뷰. 평가자 역량 편차와 던닝-크루거 효과를 분석하여 컨설팅 진단 품질 관리에 시사점을 제공한다.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>MediaWiki on HJ's Security Note</title><link>https://hojjang98.github.io/tags/mediawiki/</link><description>Recent content in MediaWiki on HJ's Security Note</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Mon, 09 Mar 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://hojjang98.github.io/tags/mediawiki/index.xml" rel="self" type="application/rss+xml"/><item><title>Wikipedia JavaScript 웜 내부 활성화 — 보안 검토 중 자가증식 전파</title><link>https://hojjang98.github.io/security-issues-analysis/2026/week10/wikipedia_js_worm_internal_activation/</link><pubDate>Mon, 09 Mar 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/security-issues-analysis/2026/week10/wikipedia_js_worm_internal_activation/</guid><description>2026년 3월 5일 Wikimedia Foundation 직원이 보안 검토 작업 중 2년 전 심어진 악성 JavaScript 웜을 의도치 않게 활성화해 Meta-Wiki 전체로 자가증식 전파가 발생한 사건을 분석한다.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>MediaWiki on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/mediawiki/</link>
+    <description>Recent content in MediaWiki on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Mon, 09 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/mediawiki/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Wikipedia JavaScript 웜 내부 활성화 — 보안 검토 중 자가증식 전파</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week10/wikipedia_js_worm_internal_activation/</link>
+      <pubDate>Mon, 09 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week10/wikipedia_js_worm_internal_activation/</guid>
+      <description>2026년 3월 5일 Wikimedia Foundation 직원이 보안 검토 작업 중 2년 전 심어진 악성 JavaScript 웜을 의도치 않게 활성화해 Meta-Wiki 전체로 자가증식 전파가 발생한 사건을 분석한다.</description>
+    </item>
+  </channel>
+</rss>

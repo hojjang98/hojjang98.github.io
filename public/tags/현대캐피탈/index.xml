@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>현대캐피탈 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%ED%98%84%EB%8C%80%EC%BA%90%ED%94%BC%ED%83%88/</link>
+    <description>Recent content in 현대캐피탈 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Mon, 13 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%ED%98%84%EB%8C%80%EC%BA%90%ED%94%BC%ED%83%88/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Day 51: 실무 사례 #11 - 현대캐피탈 개인정보 유출 (2020)</title>
+      <link>http://localhost:1313/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C/day51_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C%EC%82%AC%EB%A1%806_%ED%98%84%EB%8C%80%EC%BA%90%ED%94%BC%ED%83%88/</link>
+      <pubDate>Mon, 13 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C/day51_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C%EC%82%AC%EB%A1%806_%ED%98%84%EB%8C%80%EC%BA%90%ED%94%BC%ED%83%88/</guid>
+      <description>2020년 8월 현대캐피탈이 외부 해킹으로 175만 건의 개인정보를 유출당하고 금융권 최초 과징금 67억원을 부과받은 사건을 법률 위반, 기술적 취약점, 금융권 보안 기준 관점에서 분석합니다.</description>
+    </item>
+  </channel>
+</rss>

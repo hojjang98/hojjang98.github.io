@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>2026.04.08 (Day 110) - 최종 발표 PPT 피드백 및 수정사항 정리 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="보안컨설팅, PPT, 발표준비, 용어통일, 슬라이드수정, 프로젝트관리">
+<meta name="description" content="최종 발표 PPT의 세부 수정사항을 정리하였다. 4.4 명칭 오류 수정, 5장과 6장 순서 교체, 6장 존치 번복, AI 워터마크 제거 등 디테일 완성도에 집중한 하루였다.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/daily_logs/week23/20260408_final_project_35/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c8c3b65cd6d058be2b4f050fd7a688ac13a23056571601dabe4f70d8d008259e.css" integrity="sha256-yMO2XNbQWL4rTwUP16aIrBOiMFZXFgHavk9w2NAIJZ4=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/daily_logs/week23/20260408_final_project_35/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">홈</a>&nbsp;»&nbsp;<a href="http://localhost:1313/daily_logs/">6개월, 혹은 그 이상의 보안 여정</a></div>
+    <h1 class="post-title entry-hint-parent">
+      2026.04.08 (Day 110) - 최종 발표 PPT 피드백 및 수정사항 정리
+    </h1>
+    <div class="post-meta"><span title='2026-04-08 00:00:00 +0000 UTC'>2026년 4월 8일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>[ 1. 핵심 개념 정리 ]</p>
+<pre><code>[ 4/7 잔여 항목 처리 현황 ]
+
+| # | 항목 | 처리 여부 | 비고 |
+|:---:|:---|:---:|:---|
+| 1 | 1.1 &amp; 1.2 순서 변경 + 사진 교체 | 완료 | |
+| 2 | 1.3 위치 이동 (뒤로) | 완료 | |
+| 3 | 1.4 하랑항공 문구 삭제 + 쉴더스 플로우 교체 | 완료 | |
+| 4 | 2장 전반 구조 재편 | 진행 중 | 2.1 - 2.5 작업 중 |
+| 5 | 6장 소멸 | 번복 | 6장이 살아남 |
+| 6 | 6.1 기대효과 재구성 | 진행 중 | 내용 수정 필요 |
+| 7 | 6.2 인사이트  -&gt;  7장 이동 | 확정 유지 | |
+| 8 | 5.2 AI 프롬프트 표현 방식 | 미확정 | |
+
+[ 4/8 신규 피드백 — 파트별 요약 ]
+
+| # | 파트 | 피드백 내용 | 우선순위 |
+|:---:|:---|:---|:---:|
+| 1 | 1장 | 1.1 &amp; 1.2 순서 재검토 | 중간 |
+| 2 | 2장 | 2.1 리베로 소개  -&gt;  컨설팅 업체 소개로 변경 검토 / 2.2 &amp; 2.3 순서 변경 | 높음 |
+| 3 | 3장 | 3.3 이행 여부 확인 문구 삭제 / 3.4 체크리스트 사진 수정 + 흐름 조정 / 3.7 AI 워터마크 제거 | 높음 |
+| 4 | 4장 | 4.1 내용 변경 + 문서 사진 통일 / 4.3 디자인 투표 / 4.4 명칭 수정 / 등급 산정 표 부분 수정 / 4.5 교육자료 위치 검토 | 높음 |
+| 5 | 6장 | 6.1 내용 수정 (항목 2개로 축소) / 6.2 위탁사 결론 2개로 축소 | 중간 |
+| 6 | 목차 | 5장 &amp; 6장 순서 교체 | 높음 |
+| 7 | 7장 | 7.2 소제목 수정 / 자료 출처 추가 | 중간 |
+</code></pre>
+<p>[ 2. 회의 내용 상세 정리 ]</p>
+<pre><code>[ 1장 — 추가 검토사항 ]
+
+-  1.1 &amp; 1.2 순서에 대한 재검토 의견 제기 — 확정 필요
+
+[ 2장 — 추가 수정사항 ]
+
+-  2.1 : &quot;리베로 소개&quot;  -&gt;  &quot;컨설팅 업체 소개&quot;로 명칭 변경 검토
+    팀 이름 강조보다 역할 전문성 중심의 소개가 더 적합할 수 있다는 의견
+
+-  2.2 &amp; 2.3 순서 변경 :
+    기존 : 위 수탁사 선정 이유(2.2)  -&gt;  위 수탁사 소개(2.3)
+    변경 : 위 수탁사 소개 먼저, 선정 이유 후 배치 검토
+
+[ 3장 — 세부 수정사항 ]
+
+-  3.3 수탁사 점검 계획서 : &quot;점검 계획에서 이행 여부 확인&quot; 문구 삭제
+
+-  3.4 체크리스트 :
+    사진 내용 수정 필요
+    흐름 문제 : 점검 방법론이 등장했다가 다시 체크리스트가 나오는 흐름이 어색함
+     -&gt;  점검 방법론을 범주 뒤로 이동하는 방향 검토
+
+-  3.7 증적자료 : 사진에 포함된 AI 워터마크 제거 필요
+
+흐름 개선 방향 :
+    현행 : 체크리스트 수립 과정  -&gt;  점검 방법론  -&gt;  범주  -&gt;  체크리스트
+    검토 : 체크리스트 수립 과정  -&gt;  범주  -&gt;  점검 방법론  -&gt;  체크리스트
+
+[ 4장 — 세부 수정사항 ]
+
+-  4.1 수탁사별 점검 결과 보고서 : 목적 및 내용 변경, 삽입 문서 사진 통일
+-  4.3 수탁사별 개선방안 보고서 : 디자인 투표 진행 필요
+-  4.4 : &quot;위탁사 통합 점검 결과 보고서&quot;  -&gt;  &quot;수탁사 통합 점검 결과 보고서&quot;로 명칭 수정
+-  등급 산정 및 결과 분석 : 표 부분만 추가 수정
+-  4.5 교육자료 : 위치 검토 필요
+
+[ 목차 — 5장 &amp; 6장 순서 교체 확정 ]
+
+-  기존 : 5장(협업 AI)  -&gt;  6장(기대효과)
+-  변경 : 6장(기대효과)  -&gt;  5장(협업 AI) 순서로 교체
+-  결과 인사이트에 해당하는 내용을 협업 툴 AI 소개보다 앞에 배치하는 것이 흐름상 자연스럽다는 판단
+
+[ 6장 — 살아났다 ]
+
+확정 내용 :
+
+-  4/7에 소멸로 결정됐던 6장이 존치로 번복
+-  6.1 기대효과 : 내용 수정, 추매창 장고확 등 항목 삭제  -&gt;  2개 항목만 남기기
+-  6.2 위탁사 결론 : 2개 항목으로 정리
+
+[ 7장 — 마무리 보완 ]
+
+-  7.2 소제목 수정
+-  전체 자료 출처 추가
+</code></pre>
+<p>[ 3. 변경 전후 비교 ]</p>
+<pre><code>[ 주요 변경사항 정리 ]
+
+| 항목 | 변경 전 | 변경 후 | 비고 |
+|:---:|:---|:---|:---|
+| 2.1 제목 | 리베로 소개 | 컨설팅 업체 소개 (검토 중) | 방향 미확정 |
+| 2.2 &amp; 2.3 순서 | 선정 이유  -&gt;  소개 | 소개  -&gt;  선정 이유 (검토 중) | 방향 미확정 |
+| 3.4 흐름 | 방법론  -&gt;  범주 | 범주  -&gt;  방법론 (검토 중) | 자연스러운 흐름 위해 |
+| 4.4 명칭 | 위탁사 통합 점검 결과 보고서 | 수탁사 통합 점검 결과 보고서 | 확정 |
+| 5장 &amp; 6장 순서 | 협업 AI  -&gt;  기대효과 | 기대효과  -&gt;  협업 AI | 확정 |
+| 6장 존치 여부 | 소멸 확정 (4/7) | 존치로 번복 | 확정 |
+| 3.7 증적자료 | AI 워터마크 포함 사진 | 워터마크 제거 | 확정 |
+
+[ 미확정 항목 정리 ]
+
+| 항목 | 선택지 | 현황 |
+|:---|:---|:---|
+| 1.1 &amp; 1.2 순서 | 현행 유지 vs 재변경 | 재검토 필요 |
+| 2.1 명칭 | 리베로 소개 vs 컨설팅 업체 소개 | 미확정 |
+| 2.2 &amp; 2.3 순서 | 선정이유  -&gt;  소개 vs 소개  -&gt;  선정이유 | 미확정 |
+| 3.4 점검 방법론 위치 | 범주 앞 vs 범주 뒤 | 미확정 |
+| 4.3 디자인 | 투표 미진행 | 투표 필요 |
+| 4.5 교육자료 위치 | 미정 | 미확정 |
+| 5.2 AI 프롬프트 표현 방식 | 예시 / 텍스트 / 애니메이션 | 미확정 |
+</code></pre>
+<p>[ 4. 심화 분석 ]</p>
+<pre><code>[ 6장 존치 번복의 의미 ]
+
+-  배경 : 4/7에 내용 무게 부족으로 소멸 결정
+    컨설팅 발표에서 기대효과 결론은 독립 장으로서의 가치가 있음
+
+-  번복 이유 : 기대효과와 위탁사 결론이 발표 마무리에 필요한 설득 요소라는 판단
+    단순 편집보다 발표 전체 서사를 고려한 결정
+
+-  조정 방향 : 항목 과다  -&gt;  핵심 2개로 압축
+    분량 문제는 삭제가 아니라 압축으로 해결
+
+[ 3.4 흐름 문제 분석 ]
+
+문제 인식 :
+    점검 방법론 (P/Y/N 설명)  -&gt;  범주 (8개 영역)  -&gt;  체크리스트 순서로 진행 시,
+    방법론이 등장한 뒤 범주가 끼어들어 흐름이 끊기는 느낌 발생
+
+개선 방향 :
+    범주(8개 영역 소개)  -&gt;  점검 방법론(판단 기준 P/Y/N)  -&gt;  체크리스트(실제 항목)
+    &quot;무엇을 점검하는가(범주)&quot;를 먼저 설명한 뒤 &quot;어떻게 판단하는가(방법론)&quot;를 연결하면
+    청중 입장에서 논리 순서가 더 자연스러움
+
+[ 4.4 명칭 오류의 의미 ]
+
+-  &quot;위탁사 통합 점검 결과 보고서&quot;는 명백한 오기
+    점검 대상은 수탁사이므로 &quot;수탁사 통합 점검 결과 보고서&quot;가 정확함
+
+-  이 오류가 최종 발표 직전까지 발견되지 않았다는 것은,
+    문서 검토 시 용어 일관성 점검이 별도로 필요함을 시사함
+</code></pre>
+<p>[ 5. 실무 적용 ]</p>
+<pre><code>[ 보안 전문가 관점 — 최종 발표 전 최종 점검 항목 ]
+
+| 점검 항목 | 확인 방법 | 처리 상태 |
+|:---|:---|:---:|
+| 용어 통일 (위탁사/수탁사 혼용 여부) | 전체 슬라이드 텍스트 검색 | 4.4 발견  -&gt;  수정 확정 |
+| AI 생성 이미지 워터마크 제거 | 3.7 증적자료 사진 육안 확인 | 수정 필요 |
+| 문서 사진 스타일 통일 | 4.1 삽입 이미지 비교 | 수정 필요 |
+| 자료 출처 표기 | 전체 데이터 이미지 통계 출처 확인 | 추가 필요 |
+| 흐름 어색한 구간 | 3.4 방법론-범주 순서 / 5장 6장 순서 | 수정 중 |
+| 삭제 예정 문구 최종 확인 | 3.3 이행여부 확인 문구 / 6.1 추매창 장고확 | 수정 필요 |
+</code></pre>
+<p>[ 6. 배운 점 및 인사이트 ]</p>
+<pre><code>[ 새로 알게 된 점 ]
+
+-  결정의 가역성 : 4/7에 6장 소멸로 확정했던 사항이 하루 만에 번복됨
+    팀 발표 준비 과정에서는 확정된 사항도 전체 흐름을 보면서 재검토할 수 있어야 함.
+    단, 번복이 잦아지면 작업 효율이 떨어지므로 번복 이유를 명확히 하고 기록해두는 것이 중요함.
+
+-  명칭 오류의 파급력 : &quot;위탁사  -&gt;  수탁사&quot; 단어 하나의 차이가 보고서 전체의 논리를 뒤집을 수 있음
+    컨설팅 산출물에서 용어 오류는 전문성 신뢰도에 직접적인 타격을 줌.
+
+-  흐름의 설계 : 3.4 체크리스트 파트에서 범주를 먼저 보여주고 방법론을 연결하는 것이 더 자연스럽다는 판단은,
+    청중이 &quot;무엇을  -&gt;  어떻게&quot;의 순서로 정보를 받아들인다는 기본 원칙을 다시 확인시켜 줌.
+
+-  압축이 삭제보다 낫다 : 6장 항목 수를 줄여 존치하는 방향이 소멸보다 낫다는 결론은,
+    콘텐츠가 약할 때 해결책은 삭제가 아니라 핵심만 남기는 편집임을 보여줌.
+
+-  워터마크 문제 : AI 생성 이미지에 워터마크가 남아있는 것은 보고서의 완성도와 저작권 두 측면에서 모두 문제가 됨
+    실제 컨설팅 납품 산출물에 이런 요소가 포함되면 즉시 반려 대상.
+
+[ 이전 학습과의 연결고리 ]
+
+-  용어 일관성 점검 : 중간 발표 피드백에서도 실제 업체명 노출, 수치 불일치 문제가 있었음
+    이번 4.4 명칭 오류는 같은 맥락의 반복이며, 최종 발표 전 전체 텍스트 일괄 검토가 필수임을 다시 확인.
+
+-  구조 재편의 누적 : 4/6  -&gt;  4/7  -&gt;  4/8 사흘에 걸쳐 같은 슬라이드가 반복적으로 수정되고 있음
+    초기 구조를 더 철저히 설계했다면 후반부 수정 비용이 줄었을 것.
+    컨설팅 프로젝트에서 초기 설계 단계의 중요성을 다시 체감.
+
+[ 실무 적용 아이디어 ]
+
+보안 전문가 관점 :
+
+-  산출물 제출 전 용어 검수 루틴 필수화 : 위탁사/수탁사처럼 혼동하기 쉬운 핵심 용어는
+    최종 제출 전 전문 검색 대체 도구로 전수 확인하는 것이 기본.
+
+-  외부 이미지 사용 시 라이선스 워터마크 체크리스트 운용 :
+    AI 생성 이미지, 스톡 사진 등 외부 출처 이미지는 사용 전 저작권 및 워터마크 여부를 확인하는
+    절차를 팀 내 표준으로 만들 필요가 있음.
+
+컨설팅 관점 :
+
+-  목차 순서 변경의 서사적 효과 : 5장 6장 순서 교체처럼, 목차 순서는 단순한 나열이 아니라
+    청중이 발표를 어떤 흐름으로 경험하는지를 결정함
+    결론 기대효과를 협업 툴 소개보다 앞에 두는 것이 &quot;이 프로젝트가 의미 있다&quot;는 인상을 더 일찍 심어줌.
+</code></pre>
+<p>[ 7. Quick Reference ]</p>
+<pre><code>[ 잔여 작업 목록 (4/8 기준) ]
+
+확정 — 즉시 처리 :
+    -  4.4 명칭 수정 : 위탁사  -&gt;  수탁사 통합 점검 결과 보고서
+    -  5장 &amp; 6장 목차 순서 교체
+    -  3.3 &quot;이행 여부 확인&quot; 문구 삭제
+    -  3.7 AI 워터마크 제거
+    -  6.1 내용 수정 (추매창 장고확 삭제, 2개 항목으로 압축)
+    -  6.2 위탁사 결론 2개 항목으로 정리
+    -  7.2 소제목 수정
+    -  전체 자료 출처 추가
+
+투표 필요 :
+    -  4.3 개선방안 보고서 디자인
+    -  1.1 &amp; 1.2 순서 최종 확정
+
+미확정 — 추가 논의 :
+    -  2.1 명칭 (리베로 소개 vs 컨설팅 업체 소개)
+    -  2.2 &amp; 2.3 순서
+    -  3.4 점검 방법론 위치 (범주 앞 vs 뒤)
+    -  4.5 교육자료 위치
+    -  5.2 AI 프롬프트 표현 방식
+
+진행 중 :
+    -  4.1 문서 사진 통일
+    -  등급 산정 표 부분 수정
+    -  3.4 체크리스트 사진 수정
+
+[ 전체 PPT 장 구성 (4/8 기준 확정) ]
+
+| 순서 | 장 | 주제 | 비고 |
+|:---:|:---:|:---|:---|
+| 1 | 1장 | 위수탁 배경 필요성 | 1.1/1.2 순서 재검토 중 |
+| 2 | 2장 | 팀 수탁사 소개 | 2.1 명칭, 2.2/2.3 순서 미확정 |
+| 3 | 3장 | 점검 수행 | 3.4 흐름 조정 검토 중 |
+| 4 | 4장 | 점검 결과 + 개선방안 | 4.3 디자인 투표 필요 |
+| 5 | 6장 (이동) | 기대효과 + 결론 | 목차 순서 교체로 앞으로 이동 |
+| 6 | 5장 (이동) | 협업 AI 활용 | 5.2 미확정 |
+| 7 | 7장 | 마무리 소감 | 소감 보강 + 출처 추가 |
+</code></pre>
+<p>[ 8. 트러블슈팅 ]</p>
+<pre><code>| 문제 | 원인 | 해결 방법 |
+|:---|:---|:---|
+| 4.4 명칭 오류 (위탁사  -&gt;  수탁사) | 작성 시 용어 혼용 | 전체 슬라이드 용어 검수 후 일괄 수정 |
+| 3.7 증적자료 사진 AI 워터마크 노출 | AI 생성 이미지 그대로 삽입 | 워터마크 없는 이미지로 교체 또는 편집 |
+| 3.4 점검 흐름 어색함 | 방법론과 범주 순서가 청중 이해 흐름과 불일치 | 범주  -&gt;  방법론 순서로 재배치 검토 |
+| 6장 존치 여부 번복 | 소멸 결정 후 발표 서사 측면에서 재검토 | 항목 2개로 압축하여 존치 확정 |
+| 문서 사진 스타일 불통일 | 각자 작업한 슬라이드 이미지 기준 상이 | 4.1 기준으로 전체 문서 사진 스타일 통일 |
+</code></pre>
+<p>Today&rsquo;s Insight :</p>
+<p>사흘째 같은 PPT를 들여다보고 있지만, 오늘 피드백은 어제와 결이 달랐다.
+어제가 큰 구조를 바꾸는 날이었다면, 오늘은 디테일이 발표의 신뢰도를 좌우한다는 것을 확인한 날이었다.
+4.4의 위탁사/수탁사 명칭 오류 하나, 3.7의 워터마크 하나, 출처 누락 하나 —
+이것들이 쌓이면 청중은 내용보다 완성도를 먼저 의심하게 된다.
+컨설팅 보고서에서 &ldquo;틀린 내용&quot;보다 &ldquo;허술한 마무리&quot;가 때로 더 치명적인 이유다.
+발표 전 마지막 검수는 내용이 아니라 형식과 용어부터 시작해야 한다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/%EB%B3%B4%EC%95%88%EC%BB%A8%EC%84%A4%ED%8C%85/">보안컨설팅</a></li>
+      <li><a href="http://localhost:1313/tags/ppt/">PPT</a></li>
+      <li><a href="http://localhost:1313/tags/%EB%B0%9C%ED%91%9C%EC%A4%80%EB%B9%84/">발표준비</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%9A%A9%EC%96%B4%ED%86%B5%EC%9D%BC/">용어통일</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C%EC%88%98%EC%A0%95/">슬라이드수정</a></li>
+      <li><a href="http://localhost:1313/tags/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EA%B4%80%EB%A6%AC/">프로젝트관리</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

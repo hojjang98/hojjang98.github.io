@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>AICPA on HJ's Security Note</title><link>https://hojjang98.github.io/tags/aicpa/</link><description>Recent content in AICPA on HJ's Security Note</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Sat, 07 Mar 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://hojjang98.github.io/tags/aicpa/index.xml" rel="self" type="application/rss+xml"/><item><title>Day 25: SOC 2 (Service Organization Control 2)</title><link>https://hojjang98.github.io/cyber_law_study/03_%EC%9D%B8%EC%A6%9D%EB%B0%8F%EA%B5%AD%EC%A0%9C%ED%91%9C%EC%A4%80/06_soc2/day25_soc2/</link><pubDate>Sat, 07 Mar 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/cyber_law_study/03_%EC%9D%B8%EC%A6%9D%EB%B0%8F%EA%B5%AD%EC%A0%9C%ED%91%9C%EC%A4%80/06_soc2/day25_soc2/</guid><description>미국 서비스 조직의 내부 통제 감사 기준인 SOC 2의 TSC 5개 영역, Type I/II 보고서 차이, 감사 절차 및 미국 시장 진출 시 활용 전략을 학습합니다.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>AICPA on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/aicpa/</link>
+    <description>Recent content in AICPA on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sat, 07 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/aicpa/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Day 25: SOC 2 (Service Organization Control 2)</title>
+      <link>http://localhost:1313/cyber_law_study/03_%EC%9D%B8%EC%A6%9D%EB%B0%8F%EA%B5%AD%EC%A0%9C%ED%91%9C%EC%A4%80/06_soc2/day25_soc2/</link>
+      <pubDate>Sat, 07 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/cyber_law_study/03_%EC%9D%B8%EC%A6%9D%EB%B0%8F%EA%B5%AD%EC%A0%9C%ED%91%9C%EC%A4%80/06_soc2/day25_soc2/</guid>
+      <description>미국 서비스 조직의 내부 통제 감사 기준인 SOC 2의 TSC 5개 영역, Type I/II 보고서 차이, 감사 절차 및 미국 시장 진출 시 활용 전략을 학습합니다.</description>
+    </item>
+  </channel>
+</rss>

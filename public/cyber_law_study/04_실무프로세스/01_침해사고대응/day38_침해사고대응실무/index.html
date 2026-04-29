@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="ko" dir="auto" data-theme="auto">
 
-<head><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="noindex, nofollow">
 <title>Day 38: 침해사고 대응 실무 | HJ&#39;s Security Note</title>
 <meta name="keywords" content="침해사고대응, CSIRT, 포렌식, 사이버보안, 실무프로세스">
 <meta name="description" content="침해사고 대응 6단계(준비-탐지-억제-제거-복구-사후)와 CSIRT 구성, 법적 신고 의무, 유형별 대응 방법을 실무 관점에서 학습합니다.">
 <meta name="author" content="">
-<link rel="canonical" href="https://hojjang98.github.io/cyber_law_study/04_%EC%8B%A4%EB%AC%B4%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4/01_%EC%B9%A8%ED%95%B4%EC%82%AC%EA%B3%A0%EB%8C%80%EC%9D%91/day38_%EC%B9%A8%ED%95%B4%EC%82%AC%EA%B3%A0%EB%8C%80%EC%9D%91%EC%8B%A4%EB%AC%B4/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.290573799e582c418c4bd84f2bca757d0a77fd1bf9f5c43942030e706df68ec8.css" integrity="sha256-KQVzeZ5YLEGMS9hPK8p1fQp3/Rv59cQ5QgMOcG32jsg=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
+<link rel="canonical" href="http://localhost:1313/cyber_law_study/04_%EC%8B%A4%EB%AC%B4%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4/01_%EC%B9%A8%ED%95%B4%EC%82%AC%EA%B3%A0%EB%8C%80%EC%9D%91/day38_%EC%B9%A8%ED%95%B4%EC%82%AC%EA%B3%A0%EB%8C%80%EC%9D%91%EC%8B%A4%EB%AC%B4/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c8c3b65cd6d058be2b4f050fd7a688ac13a23056571601dabe4f70d8d008259e.css" integrity="sha256-yMO2XNbQWL4rTwUP16aIrBOiMFZXFgHavk9w2NAIJZ4=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/cyber_law_study/04_%EC%8B%A4%EB%AC%B4%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4/01_%EC%B9%A8%ED%95%B4%EC%82%AC%EA%B3%A0%EB%8C%80%EC%9D%91/day38_%EC%B9%A8%ED%95%B4%EC%82%AC%EA%B3%A0%EB%8C%80%EC%9D%91%EC%8B%A4%EB%AC%B4/">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/cyber_law_study/04_%EC%8B%A4%EB%AC%B4%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4/01_%EC%B9%A8%ED%95%B4%EC%82%AC%EA%B3%A0%EB%8C%80%EC%9D%91/day38_%EC%B9%A8%ED%95%B4%EC%82%AC%EA%B3%A0%EB%8C%80%EC%9D%91%EC%8B%A4%EB%AC%B4/">
 <noscript>
     <style>
         #theme-toggle,
@@ -70,80 +70,13 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
-</script><meta property="og:url" content="https://hojjang98.github.io/cyber_law_study/04_%EC%8B%A4%EB%AC%B4%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4/01_%EC%B9%A8%ED%95%B4%EC%82%AC%EA%B3%A0%EB%8C%80%EC%9D%91/day38_%EC%B9%A8%ED%95%B4%EC%82%AC%EA%B3%A0%EB%8C%80%EC%9D%91%EC%8B%A4%EB%AC%B4/">
-  <meta property="og:site_name" content="HJ&#39;s Security Note">
-  <meta property="og:title" content="Day 38: 침해사고 대응 실무">
-  <meta property="og:description" content="침해사고 대응 6단계(준비-탐지-억제-제거-복구-사후)와 CSIRT 구성, 법적 신고 의무, 유형별 대응 방법을 실무 관점에서 학습합니다.">
-  <meta property="og:locale" content="ko-kr">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="cyber_law_study">
-    <meta property="article:published_time" content="2026-03-11T00:00:00+00:00">
-    <meta property="article:modified_time" content="2026-03-11T00:00:00+00:00">
-    <meta property="article:tag" content="침해사고대응">
-    <meta property="article:tag" content="CSIRT">
-    <meta property="article:tag" content="포렌식">
-    <meta property="article:tag" content="사이버보안">
-    <meta property="article:tag" content="실무프로세스">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Day 38: 침해사고 대응 실무">
-<meta name="twitter:description" content="침해사고 대응 6단계(준비-탐지-억제-제거-복구-사후)와 CSIRT 구성, 법적 신고 의무, 유형별 대응 방법을 실무 관점에서 학습합니다.">
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "보안 컨설팅 공부",
-      "item": "https://hojjang98.github.io/cyber_law_study/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  4 ,
-      "name": "Day 38: 침해사고 대응 실무",
-      "item": "https://hojjang98.github.io/cyber_law_study/04_%EC%8B%A4%EB%AC%B4%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4/01_%EC%B9%A8%ED%95%B4%EC%82%AC%EA%B3%A0%EB%8C%80%EC%9D%91/day38_%EC%B9%A8%ED%95%B4%EC%82%AC%EA%B3%A0%EB%8C%80%EC%9D%91%EC%8B%A4%EB%AC%B4/"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Day 38: 침해사고 대응 실무",
-  "name": "Day 38: 침해사고 대응 실무",
-  "description": "침해사고 대응 6단계(준비-탐지-억제-제거-복구-사후)와 CSIRT 구성, 법적 신고 의무, 유형별 대응 방법을 실무 관점에서 학습합니다.",
-  "keywords": [
-    "침해사고대응", "CSIRT", "포렌식", "사이버보안", "실무프로세스"
-  ],
-  "articleBody": "Day 38: 침해사고 대응 실무 [ 1. 침해사고 대응 개요 ]\n- 침해사고 정의 : 정보시스템 또는 개인정보에 대한 불법적인 접근, 유출, 훼손, 파괴 등의 사고 - 침해사고 유형 - 해킹 (외부 침입) - 개인정보 유출 - 랜섬웨어 감염 - DDoS 공격 - 내부자 유출 - 악성코드 감염 - 시스템 장애 (보안 사고 연계) [ 1.1 왜 대응 절차가 중요한가? ]\n- 법적 의무 - 개인정보보호법 제34조 (개인정보 유출 통지 등) : 개인정보 유출 시 즉시 통지 의무 - 정보통신망법 제27조의3 (개인정보의 유출 통지 등) : 동일 - 지연 시 : 과태료, 과징금, 형사 처벌 - 피해 최소화 - 신속한 대응 : 추가 유출 차단, 2차 피해 방지 - 늦은 대응 : 피해 확대, 복구 비용 증가 - 신뢰도 - 적절한 대응 : 고객 신뢰 유지 - 미흡한 대응 : 평판 추락, 고객 이탈 [ 1.2 침해사고 대응 생명주기 ]\n- 1단계 : 준비 (사전) - 2단계 : 탐지 및 분석 - 3단계 : 억제 (Containment) - 4단계 : 제거 (Eradication) - 5단계 : 복구 (Recovery) - 6단계 : 사후 조치 (Post-Incident) 출처 : NIST Cybersecurity Framework [ 2. 1단계 - 준비 (사전) ]\n[ 2.1 침해사고 대응팀 구성 - CSIRT ] CSIRT (Computer Security Incident Response Team) 필수 인원 1. 총괄 책임자 (CISO) - 역할 : 전체 대응 지휘, 의사 결정 2. 기술팀 리더 - 역할 : 기술적 대응 총괄 3. 보안 엔지니어 (2-3명) - 역할 : 로그 분석, 침입 경로 파악, 조치 4. 시스템 관리자 (1-2명) - 역할 : 시스템 복구, 패치 5. 네트워크 관리자 (1명) - 역할 : 네트워크 차단, 트래픽 분석 6. 법무팀 (1명) - 역할 : 법적 대응, 신고, 고소 7. 홍보팀 (1명) - 역할 : 대외 커뮤니케이션 8. 경영진 연락 담당 (1명) - 역할 : 경영진 보고 연락망 : 24시간 연락 가능 체계 구축 필수 [ 2.2 침해사고 분류 및 등급 ]\nLevel 1 (Critical) - 대규모 개인정보 유출 (1만명 이상) - 주요 시스템 마비 - 금전적 피해 발생 - 대응 : CSIRT 전체 소집, 경영진 즉시 보고, 외부 전문가 투입 Level 2 (High) - 중규모 개인정보 유출 (1천명 - 1만명) - 일부 시스템 마비 - 서비스 일부 중단 - 대응 : CSIRT 주요 인원 소집, 경영진 보고 Level 3 (Medium) - 소규모 개인정보 유출 (1천명 미만) - 시스템 장애 (경미) - 대응 : 보안팀 대응, CISO 보고 Level 4 (Low) - 악성코드 탐지 (확산 전) - 보안 정책 위반 - 대응 : 담당자 대응 [ 2.3 도구 및 시스템 준비 ]\n보안 시스템 (필수) - 침입탐지시스템 (IDS) - 침입차단시스템 (IPS) - 방화벽 - 웹 방화벽 (WAF) - 백신 - SIEM (로그 통합 관리) 포렌식 도구 (필수) - 디스크 이미징 도구 (FTK Imager 등) - 메모리 덤프 도구 - 로그 분석 도구 - 네트워크 패킷 분석 도구 (Wireshark 등) 백업 체계 - 정기 백업 : 일일 백업, 주간 전체 백업, 백업본 별도 보관 - 백업 테스트 : 분기 1회 복구 테스트 [ 2.4 모의 훈련 ]\n- 연 1회 이상 실시 - 시나리오 예시 : 비정상 트래픽 탐지 \u003e 대응팀 소집 \u003e 로그 분석 \u003e 침입 경로 파악 \u003e 차단 조치 \u003e 복구 \u003e 보고서 작성 - 평가 항목 : 대응 시간, 의사 결정, 커뮤니케이션 [ 3. 2단계 - 탐지 및 분석 ]\n[ 3.1 탐지 방법 ] 자동 탐지 - IDS / IPS 알림 - SIEM 알림 - 백신 탐지 모니터링 - 보안 관제 센터 (SOC) - 로그 점검 신고 - 직원 신고 - 고객 신고 - 외부 기관 통보 (KISA 등) 의심 징후 - 비정상 로그인 시도 (다량) - 비정상 트래픽 (급증) - 시스템 느려짐 - 파일 변조 탐지 - 백신 알림 - 외부 기관 통보 - 다크웹 개인정보 발견 신고 [ 3.2 신고 및 보고 ]\n내부 신고 : 발견자 \u003e 보안팀으로 즉시 신고 신고 채널 : 비상 연락망 (전화), 이메일, 메신저 경영진 보고 기준 - Level 1 (Critical) : 30분 이내 즉시 보고 - Level 2 (High) : 1시간 이내 보고 [ 3.3 초동 대응 ]\n우선 순위 1. 추가 피해 차단 2. 증거 보존 3. 원인 파악 즉시 조치 (1) 격리 (Isolation) - 침해당한 시스템을 네트워크에서 격리 - 방법 : 네트워크 케이블 제거, 방화벽 차단, 계정 비활성화 - 주의 : 전원은 끄지 말 것 (메모리 증거 소실) (2) 계정 차단 - 해킹당한 계정 즉시 비활성화 - 비정상 활동 계정 즉시 비활성화 (3) 비밀번호 변경 - 관리자 계정 즉시 변경 - 시스템 계정 즉시 변경 (4) 백업 확인 - 언제 백업했는지 확인 - 정상 작동 여부 확인 - 복구 가능 여부 확인 [ 3.4 증거 보존 ]\n(1) 로그 보존 - 모든 로그 즉시 백업 - 시스템 로그 - 애플리케이션 로그 - 네트워크 로그 - 방화벽 로그 - 웹 로그 (2) 메모리 덤프 - 침해당한 서버 메모리 덤프 - 도구 : FTK Imager, Volatility (3) 디스크 이미징 - 침해당한 서버 디스크 이미징 - 도구 : dd, FTK Imager (4) 네트워크 패킷 캡처 - 네트워크 트래픽 캡처 - 도구 : tcpdump, Wireshark 주의 : 원본 보존 필수, 모든 작업은 복사본에서 진행 [ 3.5 상세 분석 ]\n(1) 침입 경로 분석 - 언제 침입했나? (시간) - 어디로 침입했나? (경로) - 무엇을 했나? (행위) - 어떤 데이터에 접근했나? (2) 피해 범위 확인 - 유출된 데이터 종류 - 유출된 데이터 건수 - 유출된 개인정보 항목 - 민감정보 포함 여부 - 고유식별정보 포함 여부 (3) 공격자 프로파일링 - IP 추적 및 역추적 (VPN 사용 여부 등) - 공격 도구 분석 (User-Agent 분석 등) - 공격 기법 파악 (4) 취약점 확인 - 어떻게 침입했는지 근본 원인 파악 - 취약 코드 및 설정 위치 특정 [ 4. 3단계 - 억제 (Containment) ]\n단기 억제 (Short-term) - 목적 : 추가 피해 즉시 차단 - 해당 서버 네트워크 격리 - 공격 IP 차단 (방화벽) - 취약한 서비스 중단 - 계정 비활성화 장기 억제 (Long-term) - 목적 : 정상 서비스 유지하면서 추가 피해 차단 - 취약점 임시 패치 - 접근통제 강화 - 모니터링 강화 [ 5. 4단계 - 제거 (Eradication) ]\n악성코드 제거 - 백신 전체 스캔 - 악성코드 탐지 후 삭제 취약점 제거 - 영구 패치 적용 - 입력값 검증 강화 (SQL Injection 등) - Prepared Statement 사용 등 백도어 제거 - 불필요한 계정 삭제 - 의심 파일 삭제 - 스케줄러 확인 [ 6. 5단계 - 복구 (Recovery) ]\n복구 방법 결정 옵션 1 : 백업 복구 (권장) - 장점 : 빠름, 확실함 - 단점 : 최신 데이터 손실 가능 - 조건 : 깨끗한 백업이 있고 백업 시점 이후 데이터 손실 감수 가능한 경우 옵션 2 : 재설치 - 장점 : 완전히 깨끗함 - 단점 : 시간 소요, 데이터 손실 - 조건 : 백업 없거나 백업도 감염된 경우 옵션 3 : 수동 복구 - 장점 : 데이터 보존 - 단점 : 시간 소요, 불완전할 수 있음 - 조건 : 백업 없고 데이터가 매우 중요한 경우 복구 절차 1. 시스템 점검 - 백도어 제거 확인, 취약점 패치 확인 2. 백업 복구 (또는 재설치) 3. 패치 적용 - 최신 보안 패치, 취약점 패치 4. 보안 설정 강화 - 방화벽 정책, 접근통제 5. 테스트 - 기능 테스트, 보안 테스트 6. 모니터링 - 재침입 감시 서비스 재개 (단계적 접근) 1. 내부 테스트 (1-2일) 2. 베타 오픈 (일부 사용자, 1-2일) 3. 전체 오픈 [ 7. 6단계 - 사후 조치 ]\n[ 7.1 법적 신고 ] 개인정보 유출 시 신고 대상 (1) 개인정보보호위원회 (또는 KISA) - 신고 시기 : 유출 사실 확인 즉시 (24시간 이내 권장) - 개인정보보호 종합포털 신고 - KISA : 국번없이 118 (2) 경찰 - 가해자 처벌 원할 경우 고소 - 증거 제출 : 로그, 포렌식 결과 신고 기한 (개인정보보호법 제34조) - \"개인정보 유출 사실을 안 때부터 지체 없이 해당 정보주체에게 알려야 한다\" - 실무 : 유출 확인 후 24시간 이내 신고 권장, 늦어도 3일 이내 [ 7.2 정보주체 통지 ]\n통지 의무 : 개인정보보호법 제34조 - 개인정보 유출 시 정보주체에게 통지 의무 통지 필수 항목 1. 유출된 개인정보 항목 2. 유출 시점 및 경위 3. 유출로 인해 발생할 수 있는 피해 최소화 방법 4. 대응 조치 및 피해 구제 절차 5. 정보주체에게 피해가 발생한 경우 신고를 접수할 수 있는 담당 부서 및 연락처 통지 방법 : 이메일, SMS, 우편, 전화 (개별 통지 원칙) [ 7.3 공시 (상장사) ]\n- 금융감독원 전자공시 (긴급 공시) - 공시 내용 : 사고 개요, 피해 규모, 조치 사항 [ 7.4 사후 분석 - 사고 보고서 작성 ]\n목차 1. 사고 개요 - 발생 일시, 탐지 일시, 사고 유형 2. 침입 경로 및 방법 - 취약점, 공격 기법 3. 피해 범위 - 유출 데이터, 금전 피해 4. 대응 조치 - 초동 대응, 복구, 법적 신고 5. 근본 원인 분석 (Root Cause Analysis) 6. 재발 방지 대책 - 기술적 대책, 관리적 대책, 교육 7. 교훈 (Lessons Learned) 재발 방지 대책 기술적 - 취약점 패치 - 보안 시스템 강화 (WAF 도입 등) - 접근통제 강화 - 모니터링 강화 관리적 - 보안 정책 강화 - 권한 재검토 - 내부 규정 개정 교육 - 전 직원 보안 교육 - 개발자 시큐어 코딩 교육 [ 7.5 손해배상 ]\n정보주체에 대한 보상 - 개인정보보호법 : 손해배상 책임 - 실무 : 소액 보상 (1-10만원), 신용정보 모니터링 서비스 제공, 사과문 사이버 보험 - 개인정보 유출 보상 - 복구 비용 - 법률 비용 [ 8. 외부 기관 연락처 ]\n신고 기관 한국인터넷진흥원 (KISA) - 전화 : 국번없이 118 - 역할 : 침해사고 신고, 기술 지원 개인정보보호위원회 - 전화 : 1833-6972 - 역할 : 개인정보 유출 신고 경찰청 사이버안전국 - 전화 : 국번없이 112 - 역할 : 범죄 수사 기술 지원 KISA 침해사고대응지원센터 (KrCERT) - 역할 : 기술 지원, 포렌식 지원, 정보 공유 보안 업체 - 긴급 대응 서비스 - 포렌식 [ 9. 침해사고 유형별 대응 ]\n[ 9.1 랜섬웨어 ] 특징 - 파일 암호화 - 금전 요구 대응 (1) 즉시 조치 - 감염 PC 네트워크 격리 (즉시) - 전원 끄지 말 것 (복구 가능성) - 백업 확인 (2) 복구 - 옵션 1 : 백업 복구 (권장) - 옵션 2 : 복호화 툴 시도 (No More Ransom 등) - 옵션 3 : 돈 지불 (비권장) (3) 신고 - 경찰 고소 - KISA 신고 [ 9.2 DDoS 공격 ] 특징 - 서비스 마비 - 트래픽 폭증 대응 (1) 즉시 조치 - ISP에 연락 (트래픽 차단) - CDN 활성화 (Cloudflare 등) - 불필요한 서비스 중단 (2) 완화 - Rate Limiting - IP 차단 (3) 복구 - 공격 종료 확인 후 서비스 재개 [ 9.3 내부자 유출 ] 특징 - 직원이 고의로 정보 유출 - 발견 어려움 대응 (1) 즉시 조치 - 해당 직원 계정 즉시 비활성화 - 접근 권한 박탈 - 출입 제한 (2) 조사 - 로그 분석 (언제, 무엇을, 어떻게) - 유출 범위 확인 (3) 법적 조치 - 경찰 고소 - 징계 (해고) - 손해배상 청구 [ 9.4 피싱 (Phishing) ] 특징 - 가짜 사이트로 유인 - 개인정보 입력 유도 대응 (1) 즉시 조치 - 가짜 사이트 URL 파악 - ISP에 차단 요청 (2) 고객 안내 - 피싱 사이트 경고 - 비밀번호 변경 권고 (3) 신고 - 경찰 고소 - KISA 신고 [ 10. 체크리스트 ]\n사전 준비 체크리스트 - 침해사고 대응팀 구성 - 대응 절차서 작성 - 연락망 구축 - 보안 시스템 구축 (IDS, IPS, 방화벽 등) - 포렌식 도구 준비 - 백업 체계 구축 - 모의 훈련 (연 1회) 탐지 시 체크리스트 - 보안팀 즉시 신고 - 증거 보존 (로그, 메모리, 디스크) - 경영진 보고 - CSIRT 소집 (등급에 따라) 대응 체크리스트 - 격리 (침해 시스템) - 계정 차단 - 비밀번호 변경 - 백업 확인 - 침입 경로 분석 - 피해 범위 확인 - 취약점 패치 - 복구 사후 조치 체크리스트 - 법적 신고 (개인정보보호위원회, 경찰) - 정보주체 통지 (이메일, SMS 등) - 공시 (상장사) - 사고 보고서 작성 - 재발 방지 대책 수립 - 손해배상 [ 11. 실무 사례 ]\n[ 사례 1 : 쇼핑몰 해킹 (2019년) ] 사고 개요 - 온라인 쇼핑몰 A사 - 외부 해커가 SQL Injection 공격 - 고객 개인정보 10만건 유출 타임라인 Day 0 (4/1) - 14:00 - 해킹 발생 - 15:30 - 보안팀 탐지 - 15:45 - CISO 보고 - 16:00 - CSIRT 소집 - 16:30 - 서버 격리 - 17:00 - 로그 분석 시작 Day 1 (4/2) - 09:00 - 유출 범위 확인 (10만건) - 10:00 - 경영진 보고 - 11:00 - 개인정보보호위원회 신고 - 14:00 - 고객 통지 (이메일) - 16:00 - 취약점 패치 Day 2 (4/3) - 09:00 - 포렌식 착수 - 12:00 - 경찰 고소 Day 3-7 - 시스템 복구 - 보안 강화 - 사고 보고서 작성 Day 8 (4/8) - 서비스 재개 결과 - 과징금 3억원 - 고객 보상 10억원 - CEO 사과 [ 사례 2 : 랜섬웨어 (2021년) ] 사고 개요 - 제조 회사 B사 - 직원이 피싱 메일 열람 - 랜섬웨어 감염 - 전사 시스템 마비 대응 타임라인 Day 0 - 07:00 - 직원 출근 후 PC 파일 암호화 발견 - 07:10 - IT팀 신고 - 07:15 - 감염 PC 네트워크 격리 - 07:30 - 전사 PC 점검 시작 - 08:00 - 추가 감염 PC 50대 발견 - 09:00 - 전사 네트워크 차단 - 10:00 - 백업 확인 (3일 전 백업 존재) - 12:00 - 백업 복구 시작 Day 1-3 - 시스템 복구 - 보안 강화 Day 4 - 서비스 재개 결과 - 3일간 생산 중단 (손실 50억원) - 백업 덕분에 데이터 복구 성공 - 돈 지불 없이 해결 [ 12. 보안 컨설턴트의 역할 ]\n평상시 (준비 지원) - 침해사고 대응 절차 수립 - 대응 조직 구축 - 모의 훈련 실시 침해사고 발생 시 (긴급 대응) - 현장 출동 - 기술 지원 (로그 분석, 포렌식) - 대응 자문 - 신고 절차 안내 - 신고서 작성 지원 - 정보주체 통지 문구 검토 사후 (재발 방지) - 취약점 개선 - 보안 시스템 강화 - 교육 [ 학습 정리 ]\n- 침해사고 대응 6단계 : 준비 \u003e 탐지 \u003e 억제 \u003e 제거 \u003e 복구 \u003e 사후 - 사전 준비 : CSIRT 구성, 대응 절차 수립, 도구 준비, 훈련 - 탐지 : 자동 탐지, 모니터링, 신고 - 초동 대응 : 격리, 계정 차단, 증거 보존 (로그, 메모리, 디스크) - 분석 : 침입 경로, 피해 범위, 취약점 확인 - 억제 : 추가 피해 차단 - 제거 : 악성코드 제거, 취약점 패치, 백도어 제거 - 복구 : 백업 복구 또는 재설치, 단계적 재개 - 사후 : 법적 신고 (개보위, 경찰), 정보주체 통지, 사고 보고서, 재발 방지 - 개인정보 유출 시 즉시 신고 의무 (24시간 이내 권장) - 정보주체 통지 의무 (개별 통지) - 유형별 대응 : 랜섬웨어 (격리, 백업 복구), DDoS (ISP 연락), 내부자 (계정 차단, 고소) [ 다음 학습 주제 ]\n- Day 39 : 저작권법 (디지털 관점) ",
-  "wordCount" : "4774",
-  "inLanguage": "ko",
-  "datePublished": "2026-03-11T00:00:00Z",
-  "dateModified": "2026-03-11T00:00:00Z",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://hojjang98.github.io/cyber_law_study/04_%EC%8B%A4%EB%AC%B4%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4/01_%EC%B9%A8%ED%95%B4%EC%82%AC%EA%B3%A0%EB%8C%80%EC%9D%91/day38_%EC%B9%A8%ED%95%B4%EC%82%AC%EA%B3%A0%EB%8C%80%EC%9D%91%EC%8B%A4%EB%AC%B4/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "HJ's Security Note",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://hojjang98.github.io/favicon.ico"
-    }
-  }
-}
 </script>
 </head>
 <body id="top">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -169,37 +102,37 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="https://hojjang98.github.io/about" title="소개">
+                <a href="http://localhost:1313/about" title="소개">
                     <span>소개</span>
                 </a>
             </li>
             <li>
-                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
+                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
                     <span>일일 로그</span>
                 </a>
             </li>
             <li>
-                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
+                <a href="http://localhost:1313/categories/projects/" title="Projects">
                     <span>프로젝트</span>
                 </a>
             </li>
             <li>
-                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
+                <a href="http://localhost:1313/categories/cyber-law-study/" title="Cyber-Law-Study">
                     <span>보안법 공부</span>
                 </a>
             </li>
             <li>
-                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
                     <span>보안 시사 분석</span>
                 </a>
             </li>
             <li>
-                <a href="https://hojjang98.github.io/tags/" title="Tags">
+                <a href="http://localhost:1313/tags/" title="Tags">
                     <span>태그</span>
                 </a>
             </li>
             <li>
-                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
+                <a href="http://localhost:1313/categories/paper-review/" title="Paper-Review">
                     <span>논문 리뷰</span>
                 </a>
             </li>
@@ -210,11 +143,11 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/cyber_law_study/">보안 컨설팅 공부</a></div>
+    <div class="breadcrumbs"><a href="http://localhost:1313/">홈</a>&nbsp;»&nbsp;<a href="http://localhost:1313/cyber_law_study/">보안 컨설팅 공부</a></div>
     <h1 class="post-title entry-hint-parent">
       Day 38: 침해사고 대응 실무
     </h1>
-    <div class="post-meta"><span title='2026-03-11 00:00:00 +0000 UTC'>2026년 3월 11일</span>
+    <div class="post-meta"><span title='2026-03-25 00:00:00 +0000 UTC'>2026년 3월 25일</span>
 
 </div>
   </header> 
@@ -833,18 +766,18 @@ Day 4
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://hojjang98.github.io/tags/%EC%B9%A8%ED%95%B4%EC%82%AC%EA%B3%A0%EB%8C%80%EC%9D%91/">침해사고대응</a></li>
-      <li><a href="https://hojjang98.github.io/tags/csirt/">CSIRT</a></li>
-      <li><a href="https://hojjang98.github.io/tags/%ED%8F%AC%EB%A0%8C%EC%8B%9D/">포렌식</a></li>
-      <li><a href="https://hojjang98.github.io/tags/%EC%82%AC%EC%9D%B4%EB%B2%84%EB%B3%B4%EC%95%88/">사이버보안</a></li>
-      <li><a href="https://hojjang98.github.io/tags/%EC%8B%A4%EB%AC%B4%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4/">실무프로세스</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%B9%A8%ED%95%B4%EC%82%AC%EA%B3%A0%EB%8C%80%EC%9D%91/">침해사고대응</a></li>
+      <li><a href="http://localhost:1313/tags/csirt/">CSIRT</a></li>
+      <li><a href="http://localhost:1313/tags/%ED%8F%AC%EB%A0%8C%EC%8B%9D/">포렌식</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%82%AC%EC%9D%B4%EB%B2%84%EB%B3%B4%EC%95%88/">사이버보안</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%8B%A4%EB%AC%B4%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4/">실무프로세스</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
+        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
 
     <span>
         Powered by

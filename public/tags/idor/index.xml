@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>IDOR on HJ's Security Note</title><link>https://hojjang98.github.io/tags/idor/</link><description>Recent content in IDOR on HJ's Security Note</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Mon, 23 Mar 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://hojjang98.github.io/tags/idor/index.xml" rel="self" type="application/rss+xml"/><item><title>HackerOne Navia BOLA API 침해 - 버그바운티 플랫폼 직원 개인정보 270만 명 노출</title><link>https://hojjang98.github.io/security-issues-analysis/2026/week12/hackerone_navia_bola_api_breach/</link><pubDate>Mon, 23 Mar 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/security-issues-analysis/2026/week12/hackerone_navia_bola_api_breach/</guid><description>2025년 12월부터 2026년 1월까지 복리후생 관리 플랫폼 Navia의 BOLA 취약점으로 270만 명 이상의 개인정보가 노출된 사건을 분석한다. 피해 조직 중 하나가 버그바운티 플랫폼 HackerOne이라는 점이 서드파티 보안 관리의 핵심 교훈을 제공한다.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>IDOR on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/idor/</link>
+    <description>Recent content in IDOR on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Mon, 23 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/idor/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HackerOne Navia BOLA API 침해 - 버그바운티 플랫폼 직원 개인정보 270만 명 노출</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week12/hackerone_navia_bola_api_breach/</link>
+      <pubDate>Mon, 23 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week12/hackerone_navia_bola_api_breach/</guid>
+      <description>2025년 12월부터 2026년 1월까지 복리후생 관리 플랫폼 Navia의 BOLA 취약점으로 270만 명 이상의 개인정보가 노출된 사건을 분석한다. 피해 조직 중 하나가 버그바운티 플랫폼 HackerOne이라는 점이 서드파티 보안 관리의 핵심 교훈을 제공한다.</description>
+    </item>
+  </channel>
+</rss>

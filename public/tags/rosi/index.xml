@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>ROSI on HJ's Security Note</title><link>https://hojjang98.github.io/tags/rosi/</link><description>Recent content in ROSI on HJ's Security Note</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Mon, 02 Mar 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://hojjang98.github.io/tags/rosi/index.xml" rel="self" type="application/rss+xml"/><item><title>The Economics of Information Security Investment</title><link>https://hojjang98.github.io/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/gordon_loeb_economics_information_system/</link><pubDate>Mon, 02 Mar 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/gordon_loeb_economics_information_system/</guid><description>보안 투자 최적화 문제를 경제 모델로 처음 정형화한 분야 창시 논문. 최적 투자액이 예상 손실의 1/e(약 37%)를 초과하지 않는다는 핵심 명제와 취약성-투자액의 비단조 관계를 수학적으로 증명한다.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>ROSI on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/rosi/</link>
+    <description>Recent content in ROSI on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Mon, 02 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/rosi/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Economics of Information Security Investment</title>
+      <link>http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/gordon_loeb_economics_information_system/</link>
+      <pubDate>Mon, 02 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/gordon_loeb_economics_information_system/</guid>
+      <description>보안 투자 최적화 문제를 경제 모델로 처음 정형화한 분야 창시 논문. 최적 투자액이 예상 손실의 1/e(약 37%)를 초과하지 않는다는 핵심 명제와 취약성-투자액의 비단조 관계를 수학적으로 증명한다.</description>
+    </item>
+  </channel>
+</rss>

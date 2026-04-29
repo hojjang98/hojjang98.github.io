@@ -1,1 +1,278 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>SK쉴더스루키즈 on HJ's Security Note</title><link>https://hojjang98.github.io/tags/sk%EC%89%B4%EB%8D%94%EC%8A%A4%EB%A3%A8%ED%82%A4%EC%A6%88/</link><description>Recent content in SK쉴더스루키즈 on HJ's Security Note</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Mon, 16 Mar 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://hojjang98.github.io/tags/sk%EC%89%B4%EB%8D%94%EC%8A%A4%EB%A3%A8%ED%82%A4%EC%A6%88/index.xml" rel="self" type="application/rss+xml"/><item><title>Week 19 — 파이널 프로젝트: 산출물 마스터 플랜 확정 (Team LIBERO)</title><link>https://hojjang98.github.io/project/week_19/</link><pubDate>Mon, 16 Mar 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/project/week_19/</guid><description>파이널 프로젝트 4단계 — 하랑항공 수탁사 점검 보안컨설팅 프로젝트의 최종 제출 산출물 목록을 전수 점검하고, 완성/진행 중/미착수/제외 현황을 확정한 Team LIBERO의 마스터 플랜</description></item><item><title>Week 18 — 파이널 프로젝트: 하랑케이터링 현장 실사 및 증적자료 작성</title><link>https://hojjang98.github.io/project/week_18/</link><pubDate>Mon, 09 Mar 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/project/week_18/</guid><description>파이널 프로젝트 3단계 — 하랑케이터링을 대상으로 WBS·점검보고서 초안을 작성하고, 현장 실사 기반 5종 증적자료(출력물 관리·계정점검·ERP 로그·교육이수·파기현황)를 산출</description></item><item><title>Week 17 — 파이널 프로젝트: 수탁사 현황 시나리오 수립 (항공사 위탁 관리체계)</title><link>https://hojjang98.github.io/project/week_17/</link><pubDate>Mon, 23 Feb 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/project/week_17/</guid><description>파이널 프로젝트 2단계 — 국내 항공사를 위탁자로 설정하고 9개 업종 수탁사별 개인정보 처리 현황과 핵심 컴플라이언스 이슈를 구체화한 시나리오 스케치</description></item><item><title>Week 16 — 파이널 프로젝트 준비: 개인정보 위·수탁 관리체계 컨설팅</title><link>https://hojjang98.github.io/project/week_16/</link><pubDate>Mon, 16 Feb 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/project/week_16/</guid><description>SK쉴더스 루키즈 28기 파이널 프로젝트 1단계 — 개인정보 위·수탁 관리체계 컨설팅의 프로젝트 구조 이해, 위탁자/수탁사 후보 선정, AI 기업 관련 보안 사고 사례 분석</description></item><item><title>Week 15 — E-Commerce 보안 컨설팅 시뮬레이션 4/4: 모니터링 &amp; 최종 보고서</title><link>https://hojjang98.github.io/project/week_15/</link><pubDate>Mon, 09 Feb 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/project/week_15/</guid><description>4주 보안 컨설팅 시뮬레이션 최종 주 — 보안 로그 분석 시스템 구축과 대시보드 개발, 그리고 4주간의 전체 프로세스를 담은 최종 컨설팅 보고서 작성 완료</description></item><item><title>Week 14 — E-Commerce 보안 컨설팅 시뮬레이션 3/4: 보안 개선 구현</title><link>https://hojjang98.github.io/project/week_14/</link><pubDate>Mon, 02 Feb 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/project/week_14/</guid><description>4주 보안 컨설팅 시뮬레이션 3주차 — Week 13 진단 결과를 바탕으로 Critical/High 취약점 4개를 완전 제거하고 Before/After 비교 검증까지 완료한 보안 개선 단계</description></item><item><title>Week 13 — E-Commerce 보안 컨설팅 시뮬레이션 2/4: 취약점 진단</title><link>https://hojjang98.github.io/project/week_13/</link><pubDate>Mon, 26 Jan 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/project/week_13/</guid><description>4주 보안 컨설팅 시뮬레이션 2주차 — OWASP ZAP 자동화 스캔 + Python 수동 진단으로 Critical 2 / High 2 / Medium 3 / Low 5 총 12개 취약점을 발굴하고 종합 보고서를 작성</description></item><item><title>Week 12 — E-Commerce 보안 컨설팅 시뮬레이션 1/4: 취약 시스템 구축</title><link>https://hojjang98.github.io/project/week_12/</link><pubDate>Sun, 18 Jan 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/project/week_12/</guid><description>4주 보안 컨설팅 시뮬레이션의 첫 번째 주 — 의도적 취약점을 내포한 E-Commerce Flask 앱을 직접 구축하여 진단 대상 시스템을 준비한 개인 솔로 프로젝트</description></item><item><title>Mini Project 02 — DNA Lab Security Scanner</title><link>https://hojjang98.github.io/project/week_10/</link><pubDate>Fri, 16 Jan 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/project/week_10/</guid><description>23andMe 데이터 유출 사건을 배경으로, 유전 정보를 다루는 DNA Lab 웹앱을 대상으로 웹 15종 + OS 50종 총 65개 스캐너를 구현한 두 번째 팀 미니프로젝트 (리드 보안 엔지니어)</description></item><item><title>Week 11 — ISO 27001 보안 컨설팅 보고서 (DNA Lab)</title><link>https://hojjang98.github.io/project/week_11/</link><pubDate>Sun, 11 Jan 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/project/week_11/</guid><description>Week 10 DNA Lab 스캐너로 발견한 102개 취약점을 ISO 27001:2022 통제항목과 매핑하여 Gap Analysis 및 6개월 개선 로드맵을 도출한 보안 컨설팅 보고서</description></item><item><title>Week 09 — 웹 취약점 자동화 스캐너 개발</title><link>https://hojjang98.github.io/project/week_09/</link><pubDate>Fri, 02 Jan 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/project/week_09/</guid><description>Week 08에서 공격자 시점을 체험했다면, Week 09는 그 반대편 — 취약점을 자동으로 탐지하는 Python 보안 스캐너를 직접 설계하고 구현한 프로젝트</description></item><item><title>Week 08 — 웹 해킹 기초: SQL Injection &amp; XSS 실습</title><link>https://hojjang98.github.io/project/week_08/</link><pubDate>Tue, 23 Dec 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/project/week_08/</guid><description>의도적으로 취약한 Flask 웹 애플리케이션을 직접 구현하고, SQL Injection과 XSS 공격을 실습하여 방어 기법까지 체득한 프로젝트</description></item><item><title>Week 07 — AWS 3-Tier 웹 서비스 인프라 완전 구축</title><link>https://hojjang98.github.io/project/week_07/</link><pubDate>Thu, 11 Dec 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/project/week_07/</guid><description>중소 규모 전자상거래 시나리오를 가정하여 AWS에서 프로덕션 수준의 3-Tier 웹 인프라를 약 3시간 만에 직접 구축한 실습 프로젝트</description></item><item><title>Week 06 — TCP/IP 네트워크 프로토콜 분석 및 실무 적용</title><link>https://hojjang98.github.io/project/week_06/</link><pubDate>Fri, 05 Dec 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/project/week_06/</guid><description>TCP/IP 계층 모델부터 주요 프로토콜 동작 원리, 네트워크 보안 기초까지 실무 관점으로 정리한 기술 보고서</description></item><item><title>Week 05 — 리눅스 파일 시스템과 권한 관리</title><link>https://hojjang98.github.io/project/week_05/</link><pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/project/week_05/</guid><description>리눅스 파일 시스템 계층 구조와 권한 관리 메커니즘을 보안 관점으로 정리한 기술 보고서</description></item><item><title>2025.11.21 (Day 20) 팀 프로젝트: 최종 프레젠테이션 및 발표</title><link>https://hojjang98.github.io/daily_logs/week04/20251121_project_final_presentation/</link><pubDate>Fri, 21 Nov 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week04/20251121_project_final_presentation/</guid><description>팀 프로젝트 최종 프레젠테이션 성공적 마무리 및 Q/A 대응 회고</description></item><item><title>Mini Project 01 — LLM/RAG 기반 영화 흥행 분석 시스템</title><link>https://hojjang98.github.io/project/week_03_04/</link><pubDate>Fri, 21 Nov 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/project/week_03_04/</guid><description>Week 3 &amp;amp; 4 통합 첫 번째 팀 미니프로젝트 — TMDB 데이터 기반 RAG 추천·흥행 분석·투자 판단 종합 플랫폼 (팀장)</description></item><item><title>2025.11.20 (Day 19) Project: 분석 결과 수정 및 최종 발표 자료 완성</title><link>https://hojjang98.github.io/daily_logs/week04/20251120_project_final_review_completion/</link><pubDate>Thu, 20 Nov 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week04/20251120_project_final_review_completion/</guid><description>최종 QA 및 에러 핸들링 점검, 발표 스크립트 및 시연 동선 확정</description></item><item><title>2025.11.19 (Day 18) Project: LangChain/RAG 분석 모델 통합 및 PPT 초안 제작</title><link>https://hojjang98.github.io/daily_logs/week04/20251119_project_rag_integration_and_ppt/</link><pubDate>Wed, 19 Nov 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week04/20251119_project_rag_integration_and_ppt/</guid><description>LangChain/RAG 분석 모델 Streamlit 통합 완료 및 발표 PPT 핵심 시나리오 구성</description></item><item><title>2025.11.18 (Day 17) Project: Streamlit 시각화 대시보드 구현 완료</title><link>https://hojjang98.github.io/daily_logs/week04/20251118_project_visualization_complete/</link><pubDate>Tue, 18 Nov 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week04/20251118_project_visualization_complete/</guid><description>Streamlit 멀티페이지 대시보드 구현 및 RAG 기반 영화 추천 UI 완성</description></item><item><title>2025.11.17 (Day 16) Project: Data Acquisition &amp; Preprocessing</title><link>https://hojjang98.github.io/daily_logs/week04/20251117_project_data_acquisition/</link><pubDate>Mon, 17 Nov 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week04/20251117_project_data_acquisition/</guid><description>TMDB 데이터 이상치 제거·텍스트 정제 및 ChromaDB Vector DB 구축</description></item><item><title>2025.11.14 (Day 15) 팀 프로젝트 킥오프 · 영화 흥행 요인 분석</title><link>https://hojjang98.github.io/daily_logs/week03/20251114_team_project01/</link><pubDate>Fri, 14 Nov 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week03/20251114_team_project01/</guid><description>팀 프로젝트 킥오프 - 영화 흥행 요인 분석 프로젝트 기획서·기술 정의서 작성 및 기술 스택 확정</description></item><item><title>2025.11.13 (Day 14) 실시간 로그 모니터링 · RAG 보안 챗봇 통합 실습</title><link>https://hojjang98.github.io/daily_logs/week03/20251113_streaming_log_monitoring_with_rag_security_assistant/</link><pubDate>Thu, 13 Nov 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week03/20251113_streaming_log_monitoring_with_rag_security_assistant/</guid><description>실시간 로그 스트리밍과 RAG 기반 보안 챗봇을 하나의 Streamlit 앱으로 통합한 모니터링 시스템 구현</description></item><item><title>2025.11.12 (Day 13) RAG &amp; LLM 기반 보안 로그 분석 대시보드</title><link>https://hojjang98.github.io/daily_logs/week03/20251112_rag_llm_security_log_analysis/</link><pubDate>Wed, 12 Nov 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week03/20251112_rag_llm_security_log_analysis/</guid><description>LLM과 RAG를 활용한 보안 로그 자동 분석, 위험도 분류, 지리적 공격 시각화 대시보드 구현</description></item><item><title>2025.11.11 (Day 12) LangChain · RAG 기반 OpenAI Dashboard 구축</title><link>https://hojjang98.github.io/daily_logs/week03/20251111_langchain/</link><pubDate>Tue, 11 Nov 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week03/20251111_langchain/</guid><description>LangChain의 RAG 구조와 FAISS 벡터스토어를 활용한 검색 기반 OpenAI Dashboard 구현</description></item><item><title>2025.11.10 (Day 11) Streamlit · OpenAI API를 활용한 보안형 챗봇 앱 구현</title><link>https://hojjang98.github.io/daily_logs/week03/20251110_openai_streamlit/</link><pubDate>Mon, 10 Nov 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week03/20251110_openai_streamlit/</guid><description>Streamlit과 OpenAI API를 연결하여 API Key 보호·입력 검증·보안형 LLM 챗봇 앱 구현</description></item><item><title>2025.11.07 (Day 10) Folium · Plotly · Streamlit 기반 시각화 실습 학습 로그</title><link>https://hojjang98.github.io/daily_logs/week02/20251107_visualization_streamlit/</link><pubDate>Fri, 07 Nov 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week02/20251107_visualization_streamlit/</guid><description>Folium 지도 시각화, Plotly 인터랙티브 그래프, Streamlit 대시보드 구성 실습. 공격 지점·시간대별 패턴 분석을 위한 보안 시각화 파이프라인 구성 방법 정리.</description></item><item><title>Project 02 — Streamlit Log Dashboard</title><link>https://hojjang98.github.io/project/week_02/</link><pubDate>Fri, 07 Nov 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/project/week_02/</guid><description>Week1 탐지 엔진을 데이터 분석 레이어로 확장한 Streamlit 기반 보안 로그 대시보드</description></item><item><title>2025.11.06 (Day 9) Matplotlib · Seaborn 기반 로그 시각화 및 데이터 분석 학습 로그</title><link>https://hojjang98.github.io/daily_logs/week02/20251106_visualization/</link><pubDate>Thu, 06 Nov 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week02/20251106_visualization/</guid><description>Matplotlib과 Seaborn을 활용한 보안 로그 시각화 기초 학습. 로그인 실패율·지연시간 분석, 사용자별 이상 패턴 탐지, 피벗 기반 히트맵 구성 방법 정리.</description></item><item><title>2025.11.05 (Day 8) Numpy &amp; Pandas 기반 로그 정규화 학습 로그</title><link>https://hojjang98.github.io/daily_logs/week02/20251105_numpy_pandas_basics/</link><pubDate>Wed, 05 Nov 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week02/20251105_numpy_pandas_basics/</guid><description>Numpy와 Pandas를 활용한 보안 로그 정규화 기초 학습. loadtxt, DataFrame 변환, 결측치 처리, 타입 변환을 통한 로그 전처리 파이프라인 구성 방법 정리.</description></item><item><title>2025.11.04 (Day 7) Numpy &amp; Pandas 기초 / 데이터 처리 및 EDA 학습 로그</title><link>https://hojjang98.github.io/daily_logs/week02/20251104_numpy_pandas_eda/</link><pubDate>Tue, 04 Nov 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week02/20251104_numpy_pandas_eda/</guid><description>Numpy &amp;amp; Pandas 기반 로그 적재, 결측값 처리, JSON 변환, 기초 이상 탐지 흐름 학습</description></item><item><title>2025.11.03 (Day 6) Numpy 기초 및 벡터화 연산 학습 로그</title><link>https://hojjang98.github.io/daily_logs/week02/20251103_numpy_vectorization/</link><pubDate>Mon, 03 Nov 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week02/20251103_numpy_vectorization/</guid><description>Numpy ndarray 구조와 벡터화 연산, 불리언 인덱싱, 브로드캐스팅의 보안 분야 적용 방법 학습</description></item><item><title>2025.10.31 (Day 5) 파이썬 예외 처리·로깅 및 보안 감사 로그 설계</title><link>https://hojjang98.github.io/daily_logs/week01/20251031_code_resilience_and_logging/</link><pubDate>Fri, 31 Oct 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week01/20251031_code_resilience_and_logging/</guid><description>파이썬 예외 처리, 로깅 학습 및 보안 감사 로그 설계 실습</description></item><item><title>Project 01 — Mini Security Log Monitor</title><link>https://hojjang98.github.io/project/week_01/</link><pubDate>Fri, 31 Oct 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/project/week_01/</guid><description>파이썬 기초 문법을 보안 관점으로 재구성한 입문형 보안 로그 탐지 시스템</description></item><item><title>2025.10.30 (Day 4) 파이썬 함수·클로저·스코프와 보안 게이트웨이 설계</title><link>https://hojjang98.github.io/daily_logs/week01/20251030_python_function_lambda/</link><pubDate>Thu, 30 Oct 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week01/20251030_python_function_lambda/</guid><description>파이썬 함수, 클로저, 스코프 개념 학습 및 보안 게이트웨이 설계 실습</description></item><item><title>2025.10.29 (Day 3) 파이썬 제어문·문자열·날짜 처리 및 보안 자동화 기초</title><link>https://hojjang98.github.io/daily_logs/week01/20251029_python_control_string_date/</link><pubDate>Wed, 29 Oct 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week01/20251029_python_control_string_date/</guid><description>파이썬 제어문, 문자열, 날짜 처리 학습 및 보안 자동화 기초 실습</description></item><item><title>2025.10.28 (Day 2) 파이썬 클래스/제어문 및 보안 시스템 설계 로그</title><link>https://hojjang98.github.io/daily_logs/week01/20251028_python_basic_dict/</link><pubDate>Tue, 28 Oct 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week01/20251028_python_basic_dict/</guid><description>파이썬 클래스, 제어문 학습 및 보안 시스템 설계 인사이트 정리</description></item><item><title>2025.10.27 (Day 1) 파이썬 기초 및 보안 활용 종합 학습 로그</title><link>https://hojjang98.github.io/daily_logs/week01/20251027_python_basic_types/</link><pubDate>Mon, 27 Oct 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week01/20251027_python_basic_types/</guid><description>파이썬 기초 문법과 보안 분야 활용 방법 종합 학습</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>SK쉴더스루키즈 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/sk%EC%89%B4%EB%8D%94%EC%8A%A4%EB%A3%A8%ED%82%A4%EC%A6%88/</link>
+    <description>Recent content in SK쉴더스루키즈 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Mon, 16 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/sk%EC%89%B4%EB%8D%94%EC%8A%A4%EB%A3%A8%ED%82%A4%EC%A6%88/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Week 19 — 파이널 프로젝트: 산출물 마스터 플랜 확정 (Team LIBERO)</title>
+      <link>http://localhost:1313/project/week_19/</link>
+      <pubDate>Mon, 16 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/project/week_19/</guid>
+      <description>파이널 프로젝트 4단계 — 하랑항공 수탁사 점검 보안컨설팅 프로젝트의 최종 제출 산출물 목록을 전수 점검하고, 완성/진행 중/미착수/제외 현황을 확정한 Team LIBERO의 마스터 플랜</description>
+    </item>
+    <item>
+      <title>Week 18 — 파이널 프로젝트: 하랑케이터링 현장 실사 및 증적자료 작성</title>
+      <link>http://localhost:1313/project/week_18/</link>
+      <pubDate>Mon, 09 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/project/week_18/</guid>
+      <description>파이널 프로젝트 3단계 — 하랑케이터링을 대상으로 WBS·점검보고서 초안을 작성하고, 현장 실사 기반 5종 증적자료(출력물 관리·계정점검·ERP 로그·교육이수·파기현황)를 산출</description>
+    </item>
+    <item>
+      <title>Week 17 — 파이널 프로젝트: 수탁사 현황 시나리오 수립 (항공사 위탁 관리체계)</title>
+      <link>http://localhost:1313/project/week_17/</link>
+      <pubDate>Mon, 23 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/project/week_17/</guid>
+      <description>파이널 프로젝트 2단계 — 국내 항공사를 위탁자로 설정하고 9개 업종 수탁사별 개인정보 처리 현황과 핵심 컴플라이언스 이슈를 구체화한 시나리오 스케치</description>
+    </item>
+    <item>
+      <title>Week 16 — 파이널 프로젝트 준비: 개인정보 위·수탁 관리체계 컨설팅</title>
+      <link>http://localhost:1313/project/week_16/</link>
+      <pubDate>Mon, 16 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/project/week_16/</guid>
+      <description>SK쉴더스 루키즈 28기 파이널 프로젝트 1단계 — 개인정보 위·수탁 관리체계 컨설팅의 프로젝트 구조 이해, 위탁자/수탁사 후보 선정, AI 기업 관련 보안 사고 사례 분석</description>
+    </item>
+    <item>
+      <title>Week 15 — E-Commerce 보안 컨설팅 시뮬레이션 4/4: 모니터링 &amp; 최종 보고서</title>
+      <link>http://localhost:1313/project/week_15/</link>
+      <pubDate>Mon, 09 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/project/week_15/</guid>
+      <description>4주 보안 컨설팅 시뮬레이션 최종 주 — 보안 로그 분석 시스템 구축과 대시보드 개발, 그리고 4주간의 전체 프로세스를 담은 최종 컨설팅 보고서 작성 완료</description>
+    </item>
+    <item>
+      <title>Week 14 — E-Commerce 보안 컨설팅 시뮬레이션 3/4: 보안 개선 구현</title>
+      <link>http://localhost:1313/project/week_14/</link>
+      <pubDate>Mon, 02 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/project/week_14/</guid>
+      <description>4주 보안 컨설팅 시뮬레이션 3주차 — Week 13 진단 결과를 바탕으로 Critical/High 취약점 4개를 완전 제거하고 Before/After 비교 검증까지 완료한 보안 개선 단계</description>
+    </item>
+    <item>
+      <title>Week 13 — E-Commerce 보안 컨설팅 시뮬레이션 2/4: 취약점 진단</title>
+      <link>http://localhost:1313/project/week_13/</link>
+      <pubDate>Mon, 26 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/project/week_13/</guid>
+      <description>4주 보안 컨설팅 시뮬레이션 2주차 — OWASP ZAP 자동화 스캔 + Python 수동 진단으로 Critical 2 / High 2 / Medium 3 / Low 5 총 12개 취약점을 발굴하고 종합 보고서를 작성</description>
+    </item>
+    <item>
+      <title>Week 12 — E-Commerce 보안 컨설팅 시뮬레이션 1/4: 취약 시스템 구축</title>
+      <link>http://localhost:1313/project/week_12/</link>
+      <pubDate>Sun, 18 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/project/week_12/</guid>
+      <description>4주 보안 컨설팅 시뮬레이션의 첫 번째 주 — 의도적 취약점을 내포한 E-Commerce Flask 앱을 직접 구축하여 진단 대상 시스템을 준비한 개인 솔로 프로젝트</description>
+    </item>
+    <item>
+      <title>Mini Project 02 — DNA Lab Security Scanner</title>
+      <link>http://localhost:1313/project/week_10/</link>
+      <pubDate>Fri, 16 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/project/week_10/</guid>
+      <description>23andMe 데이터 유출 사건을 배경으로, 유전 정보를 다루는 DNA Lab 웹앱을 대상으로 웹 15종 + OS 50종 총 65개 스캐너를 구현한 두 번째 팀 미니프로젝트 (리드 보안 엔지니어)</description>
+    </item>
+    <item>
+      <title>Week 11 — ISO 27001 보안 컨설팅 보고서 (DNA Lab)</title>
+      <link>http://localhost:1313/project/week_11/</link>
+      <pubDate>Sun, 11 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/project/week_11/</guid>
+      <description>Week 10 DNA Lab 스캐너로 발견한 102개 취약점을 ISO 27001:2022 통제항목과 매핑하여 Gap Analysis 및 6개월 개선 로드맵을 도출한 보안 컨설팅 보고서</description>
+    </item>
+    <item>
+      <title>Week 09 — 웹 취약점 자동화 스캐너 개발</title>
+      <link>http://localhost:1313/project/week_09/</link>
+      <pubDate>Fri, 02 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/project/week_09/</guid>
+      <description>Week 08에서 공격자 시점을 체험했다면, Week 09는 그 반대편 — 취약점을 자동으로 탐지하는 Python 보안 스캐너를 직접 설계하고 구현한 프로젝트</description>
+    </item>
+    <item>
+      <title>Week 08 — 웹 해킹 기초: SQL Injection &amp; XSS 실습</title>
+      <link>http://localhost:1313/project/week_08/</link>
+      <pubDate>Tue, 23 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/project/week_08/</guid>
+      <description>의도적으로 취약한 Flask 웹 애플리케이션을 직접 구현하고, SQL Injection과 XSS 공격을 실습하여 방어 기법까지 체득한 프로젝트</description>
+    </item>
+    <item>
+      <title>Week 07 — AWS 3-Tier 웹 서비스 인프라 완전 구축</title>
+      <link>http://localhost:1313/project/week_07/</link>
+      <pubDate>Thu, 11 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/project/week_07/</guid>
+      <description>중소 규모 전자상거래 시나리오를 가정하여 AWS에서 프로덕션 수준의 3-Tier 웹 인프라를 약 3시간 만에 직접 구축한 실습 프로젝트</description>
+    </item>
+    <item>
+      <title>Week 06 — TCP/IP 네트워크 프로토콜 분석 및 실무 적용</title>
+      <link>http://localhost:1313/project/week_06/</link>
+      <pubDate>Fri, 05 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/project/week_06/</guid>
+      <description>TCP/IP 계층 모델부터 주요 프로토콜 동작 원리, 네트워크 보안 기초까지 실무 관점으로 정리한 기술 보고서</description>
+    </item>
+    <item>
+      <title>Week 05 — 리눅스 파일 시스템과 권한 관리</title>
+      <link>http://localhost:1313/project/week_05/</link>
+      <pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/project/week_05/</guid>
+      <description>리눅스 파일 시스템 계층 구조와 권한 관리 메커니즘을 보안 관점으로 정리한 기술 보고서</description>
+    </item>
+    <item>
+      <title>2025.11.21 (Day 20) 팀 프로젝트: 최종 프레젠테이션 및 발표</title>
+      <link>http://localhost:1313/daily_logs/week04/20251121_project_final_presentation/</link>
+      <pubDate>Fri, 21 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week04/20251121_project_final_presentation/</guid>
+      <description>팀 프로젝트 최종 프레젠테이션 성공적 마무리 및 Q/A 대응 회고</description>
+    </item>
+    <item>
+      <title>Mini Project 01 — LLM/RAG 기반 영화 흥행 분석 시스템</title>
+      <link>http://localhost:1313/project/week_03_04/</link>
+      <pubDate>Fri, 21 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/project/week_03_04/</guid>
+      <description>Week 3 &amp;amp; 4 통합 첫 번째 팀 미니프로젝트 — TMDB 데이터 기반 RAG 추천·흥행 분석·투자 판단 종합 플랫폼 (팀장)</description>
+    </item>
+    <item>
+      <title>2025.11.20 (Day 19) Project: 분석 결과 수정 및 최종 발표 자료 완성</title>
+      <link>http://localhost:1313/daily_logs/week04/20251120_project_final_review_completion/</link>
+      <pubDate>Thu, 20 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week04/20251120_project_final_review_completion/</guid>
+      <description>최종 QA 및 에러 핸들링 점검, 발표 스크립트 및 시연 동선 확정</description>
+    </item>
+    <item>
+      <title>2025.11.19 (Day 18) Project: LangChain/RAG 분석 모델 통합 및 PPT 초안 제작</title>
+      <link>http://localhost:1313/daily_logs/week04/20251119_project_rag_integration_and_ppt/</link>
+      <pubDate>Wed, 19 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week04/20251119_project_rag_integration_and_ppt/</guid>
+      <description>LangChain/RAG 분석 모델 Streamlit 통합 완료 및 발표 PPT 핵심 시나리오 구성</description>
+    </item>
+    <item>
+      <title>2025.11.18 (Day 17) Project: Streamlit 시각화 대시보드 구현 완료</title>
+      <link>http://localhost:1313/daily_logs/week04/20251118_project_visualization_complete/</link>
+      <pubDate>Tue, 18 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week04/20251118_project_visualization_complete/</guid>
+      <description>Streamlit 멀티페이지 대시보드 구현 및 RAG 기반 영화 추천 UI 완성</description>
+    </item>
+    <item>
+      <title>2025.11.17 (Day 16) Project: Data Acquisition &amp; Preprocessing</title>
+      <link>http://localhost:1313/daily_logs/week04/20251117_project_data_acquisition/</link>
+      <pubDate>Mon, 17 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week04/20251117_project_data_acquisition/</guid>
+      <description>TMDB 데이터 이상치 제거·텍스트 정제 및 ChromaDB Vector DB 구축</description>
+    </item>
+    <item>
+      <title>2025.11.14 (Day 15) 팀 프로젝트 킥오프 · 영화 흥행 요인 분석</title>
+      <link>http://localhost:1313/daily_logs/week03/20251114_team_project01/</link>
+      <pubDate>Fri, 14 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week03/20251114_team_project01/</guid>
+      <description>팀 프로젝트 킥오프 - 영화 흥행 요인 분석 프로젝트 기획서·기술 정의서 작성 및 기술 스택 확정</description>
+    </item>
+    <item>
+      <title>2025.11.13 (Day 14) 실시간 로그 모니터링 · RAG 보안 챗봇 통합 실습</title>
+      <link>http://localhost:1313/daily_logs/week03/20251113_streaming_log_monitoring_with_rag_security_assistant/</link>
+      <pubDate>Thu, 13 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week03/20251113_streaming_log_monitoring_with_rag_security_assistant/</guid>
+      <description>실시간 로그 스트리밍과 RAG 기반 보안 챗봇을 하나의 Streamlit 앱으로 통합한 모니터링 시스템 구현</description>
+    </item>
+    <item>
+      <title>2025.11.12 (Day 13) RAG &amp; LLM 기반 보안 로그 분석 대시보드</title>
+      <link>http://localhost:1313/daily_logs/week03/20251112_rag_llm_security_log_analysis/</link>
+      <pubDate>Wed, 12 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week03/20251112_rag_llm_security_log_analysis/</guid>
+      <description>LLM과 RAG를 활용한 보안 로그 자동 분석, 위험도 분류, 지리적 공격 시각화 대시보드 구현</description>
+    </item>
+    <item>
+      <title>2025.11.11 (Day 12) LangChain · RAG 기반 OpenAI Dashboard 구축</title>
+      <link>http://localhost:1313/daily_logs/week03/20251111_langchain/</link>
+      <pubDate>Tue, 11 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week03/20251111_langchain/</guid>
+      <description>LangChain의 RAG 구조와 FAISS 벡터스토어를 활용한 검색 기반 OpenAI Dashboard 구현</description>
+    </item>
+    <item>
+      <title>2025.11.10 (Day 11) Streamlit · OpenAI API를 활용한 보안형 챗봇 앱 구현</title>
+      <link>http://localhost:1313/daily_logs/week03/20251110_openai_streamlit/</link>
+      <pubDate>Mon, 10 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week03/20251110_openai_streamlit/</guid>
+      <description>Streamlit과 OpenAI API를 연결하여 API Key 보호·입력 검증·보안형 LLM 챗봇 앱 구현</description>
+    </item>
+    <item>
+      <title>2025.11.07 (Day 10) Folium · Plotly · Streamlit 기반 시각화 실습 학습 로그</title>
+      <link>http://localhost:1313/daily_logs/week02/20251107_visualization_streamlit/</link>
+      <pubDate>Fri, 07 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week02/20251107_visualization_streamlit/</guid>
+      <description>Folium 지도 시각화, Plotly 인터랙티브 그래프, Streamlit 대시보드 구성 실습. 공격 지점·시간대별 패턴 분석을 위한 보안 시각화 파이프라인 구성 방법 정리.</description>
+    </item>
+    <item>
+      <title>Project 02 — Streamlit Log Dashboard</title>
+      <link>http://localhost:1313/project/week_02/</link>
+      <pubDate>Fri, 07 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/project/week_02/</guid>
+      <description>Week1 탐지 엔진을 데이터 분석 레이어로 확장한 Streamlit 기반 보안 로그 대시보드</description>
+    </item>
+    <item>
+      <title>2025.11.06 (Day 9) Matplotlib · Seaborn 기반 로그 시각화 및 데이터 분석 학습 로그</title>
+      <link>http://localhost:1313/daily_logs/week02/20251106_visualization/</link>
+      <pubDate>Thu, 06 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week02/20251106_visualization/</guid>
+      <description>Matplotlib과 Seaborn을 활용한 보안 로그 시각화 기초 학습. 로그인 실패율·지연시간 분석, 사용자별 이상 패턴 탐지, 피벗 기반 히트맵 구성 방법 정리.</description>
+    </item>
+    <item>
+      <title>2025.11.05 (Day 8) Numpy &amp; Pandas 기반 로그 정규화 학습 로그</title>
+      <link>http://localhost:1313/daily_logs/week02/20251105_numpy_pandas_basics/</link>
+      <pubDate>Wed, 05 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week02/20251105_numpy_pandas_basics/</guid>
+      <description>Numpy와 Pandas를 활용한 보안 로그 정규화 기초 학습. loadtxt, DataFrame 변환, 결측치 처리, 타입 변환을 통한 로그 전처리 파이프라인 구성 방법 정리.</description>
+    </item>
+    <item>
+      <title>2025.11.04 (Day 7) Numpy &amp; Pandas 기초 / 데이터 처리 및 EDA 학습 로그</title>
+      <link>http://localhost:1313/daily_logs/week02/20251104_numpy_pandas_eda/</link>
+      <pubDate>Tue, 04 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week02/20251104_numpy_pandas_eda/</guid>
+      <description>Numpy &amp;amp; Pandas 기반 로그 적재, 결측값 처리, JSON 변환, 기초 이상 탐지 흐름 학습</description>
+    </item>
+    <item>
+      <title>2025.11.03 (Day 6) Numpy 기초 및 벡터화 연산 학습 로그</title>
+      <link>http://localhost:1313/daily_logs/week02/20251103_numpy_vectorization/</link>
+      <pubDate>Mon, 03 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week02/20251103_numpy_vectorization/</guid>
+      <description>Numpy ndarray 구조와 벡터화 연산, 불리언 인덱싱, 브로드캐스팅의 보안 분야 적용 방법 학습</description>
+    </item>
+    <item>
+      <title>2025.10.31 (Day 5) 파이썬 예외 처리·로깅 및 보안 감사 로그 설계</title>
+      <link>http://localhost:1313/daily_logs/week01/20251031_code_resilience_and_logging/</link>
+      <pubDate>Fri, 31 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week01/20251031_code_resilience_and_logging/</guid>
+      <description>파이썬 예외 처리, 로깅 학습 및 보안 감사 로그 설계 실습</description>
+    </item>
+    <item>
+      <title>Project 01 — Mini Security Log Monitor</title>
+      <link>http://localhost:1313/project/week_01/</link>
+      <pubDate>Fri, 31 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/project/week_01/</guid>
+      <description>파이썬 기초 문법을 보안 관점으로 재구성한 입문형 보안 로그 탐지 시스템</description>
+    </item>
+    <item>
+      <title>2025.10.30 (Day 4) 파이썬 함수·클로저·스코프와 보안 게이트웨이 설계</title>
+      <link>http://localhost:1313/daily_logs/week01/20251030_python_function_lambda/</link>
+      <pubDate>Thu, 30 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week01/20251030_python_function_lambda/</guid>
+      <description>파이썬 함수, 클로저, 스코프 개념 학습 및 보안 게이트웨이 설계 실습</description>
+    </item>
+    <item>
+      <title>2025.10.29 (Day 3) 파이썬 제어문·문자열·날짜 처리 및 보안 자동화 기초</title>
+      <link>http://localhost:1313/daily_logs/week01/20251029_python_control_string_date/</link>
+      <pubDate>Wed, 29 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week01/20251029_python_control_string_date/</guid>
+      <description>파이썬 제어문, 문자열, 날짜 처리 학습 및 보안 자동화 기초 실습</description>
+    </item>
+    <item>
+      <title>2025.10.28 (Day 2) 파이썬 클래스/제어문 및 보안 시스템 설계 로그</title>
+      <link>http://localhost:1313/daily_logs/week01/20251028_python_basic_dict/</link>
+      <pubDate>Tue, 28 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week01/20251028_python_basic_dict/</guid>
+      <description>파이썬 클래스, 제어문 학습 및 보안 시스템 설계 인사이트 정리</description>
+    </item>
+    <item>
+      <title>2025.10.27 (Day 1) 파이썬 기초 및 보안 활용 종합 학습 로그</title>
+      <link>http://localhost:1313/daily_logs/week01/20251027_python_basic_types/</link>
+      <pubDate>Mon, 27 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week01/20251027_python_basic_types/</guid>
+      <description>파이썬 기초 문법과 보안 분야 활용 방법 종합 학습</description>
+    </item>
+  </channel>
+</rss>

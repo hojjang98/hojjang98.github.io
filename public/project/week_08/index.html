@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="ko" dir="auto" data-theme="auto">
 
-<head><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="noindex, nofollow">
 <title>Week 08 — 웹 해킹 기초: SQL Injection &amp; XSS 실습 | HJ&#39;s Security Note</title>
 <meta name="keywords" content="웹보안, SQLInjection, XSS, OWASP, Flask, 취약점분석, 보안실습, SK쉴더스루키즈">
 <meta name="description" content="의도적으로 취약한 Flask 웹 애플리케이션을 직접 구현하고, SQL Injection과 XSS 공격을 실습하여 방어 기법까지 체득한 프로젝트">
 <meta name="author" content="">
-<link rel="canonical" href="https://hojjang98.github.io/project/week_08/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.290573799e582c418c4bd84f2bca757d0a77fd1bf9f5c43942030e706df68ec8.css" integrity="sha256-KQVzeZ5YLEGMS9hPK8p1fQp3/Rv59cQ5QgMOcG32jsg=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
+<link rel="canonical" href="http://localhost:1313/project/week_08/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c8c3b65cd6d058be2b4f050fd7a688ac13a23056571601dabe4f70d8d008259e.css" integrity="sha256-yMO2XNbQWL4rTwUP16aIrBOiMFZXFgHavk9w2NAIJZ4=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/project/week_08/">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/project/week_08/">
 <noscript>
     <style>
         #theme-toggle,
@@ -70,88 +70,13 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
-</script><meta property="og:url" content="https://hojjang98.github.io/project/week_08/">
-  <meta property="og:site_name" content="HJ&#39;s Security Note">
-  <meta property="og:title" content="Week 08 — 웹 해킹 기초: SQL Injection & XSS 실습">
-  <meta property="og:description" content="의도적으로 취약한 Flask 웹 애플리케이션을 직접 구현하고, SQL Injection과 XSS 공격을 실습하여 방어 기법까지 체득한 프로젝트">
-  <meta property="og:locale" content="ko-kr">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="project">
-    <meta property="article:published_time" content="2025-12-23T00:00:00+00:00">
-    <meta property="article:modified_time" content="2025-12-23T00:00:00+00:00">
-    <meta property="article:tag" content="웹보안">
-    <meta property="article:tag" content="SQLInjection">
-    <meta property="article:tag" content="XSS">
-    <meta property="article:tag" content="OWASP">
-    <meta property="article:tag" content="Flask">
-    <meta property="article:tag" content="취약점분석">
-      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_19/">
-      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_18/">
-      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_17/">
-      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_16/">
-      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_15/">
-      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_14/">
-      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_13/">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Week 08 — 웹 해킹 기초: SQL Injection &amp; XSS 실습">
-<meta name="twitter:description" content="의도적으로 취약한 Flask 웹 애플리케이션을 직접 구현하고, SQL Injection과 XSS 공격을 실습하여 방어 기법까지 체득한 프로젝트">
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "프로젝트",
-      "item": "https://hojjang98.github.io/project/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "Week 08 — 웹 해킹 기초: SQL Injection \u0026 XSS 실습",
-      "item": "https://hojjang98.github.io/project/week_08/"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Week 08 — 웹 해킹 기초: SQL Injection \u0026 XSS 실습",
-  "name": "Week 08 — 웹 해킹 기초: SQL Injection \u0026 XSS 실습",
-  "description": "의도적으로 취약한 Flask 웹 애플리케이션을 직접 구현하고, SQL Injection과 XSS 공격을 실습하여 방어 기법까지 체득한 프로젝트",
-  "keywords": [
-    "웹보안", "SQLInjection", "XSS", "OWASP", "Flask", "취약점분석", "보안실습", "SK쉴더스루키즈"
-  ],
-  "articleBody": "Week 08 — 웹 해킹 기초: SQL Injection \u0026 XSS 실습 전체 소스코드 및 실습 보고서는 GitHub에서 확인할 수 있습니다. hojjang98 / skshielders-rookies-28 — projects/week_08\n학습 목적으로 구성된 실습입니다. 의도적으로 취약한 환경을 직접 구축하고 공격함으로써 보안의 중요성을 체감하는 교육용 프로젝트입니다. 실제 서비스에 대한 무단 공격은 정보통신망법 위반입니다.\n개요 Week 8 은 OWASP Top 10 에 포함된 대표적인 웹 취약점을 직접 구현하고 공격해보는 실습 주간이었다.\n취약점을 단순히 이론으로 배우는 것과, 직접 코드를 짜고 공격이 성공하는 순간을 눈으로 보는 것 은 차원이 다른 경험이다. “왜 Prepared Statement 를 써야 하는가?” 라는 질문에, 이제는 몸으로 답할 수 있다.\n실습 환경 — Jupyter Notebook + Flask 2.2.2 + SQLite3 실습일 — 2025년 12월 23일 소요 시간 — 약 1시간 실습 시스템 구조 브라우저 (공격자 = 사용자)\r│\r▼\rFlask Web Application\r├── / =\u003e 로그인 페이지 (SQL Injection 취약)\r├── /login =\u003e 인증 처리\r├── /board =\u003e 게시판 (XSS 취약)\r└── /post =\u003e 글 작성\r│\r▼\rSQLite Database (users.db)\r├── users 테이블 (id, username, password)\r└── posts 테이블 (id, title, content)\r초기 계정 데이터:\nusers 테이블\r┌────┬──────────┬─────────────┐\r│ id │ username │ password │\r├────┼──────────┼─────────────┤\r│ 1 │ admin │ password123 │\r│ 2 │ user1 │ mypass │\r└────┴──────────┴─────────────┘\r취약점 1 — SQL Injection (인증 우회) 취약한 코드의 문제점 아래는 절대 해서는 안 되는 로그인 처리 방식이다. 사용자 입력을 검증 없이 SQL 문자열에 직접 삽입한다.\n@app.route('/login', methods=['POST'])\rdef login():\rusername = request.form['username']\rpassword = request.form['password']\r# 위험: 사용자 입력이 쿼리 문자열에 그대로 삽입됨\rquery = f\"SELECT * FROM users WHERE username='{username}' AND password='{password}'\"\rcursor.execute(query)\r이 코드에 정상 값이 들어올 때의 쿼리:\nSELECT * FROM users WHERE username='admin' AND password='password123'\r공격 시나리오 — admin’ – 공격자가 아이디에 admin’ – 를 입력하면 어떻게 될까?\n입력값:\r- 아이디 =\u003e admin' --\r- 비밀번호 =\u003e (아무 값)\r실제 실행되는 쿼리:\rSELECT * FROM users WHERE username='admin' --' AND password='아무값'\r분해하면:\nusername='admin' \u003c- username 조건 정상 완성\r-- \u003c- SQL 주석 시작. 이후 모든 구문 무시\r' AND password='아무값' \u003c- 완전히 무시됨\r결과 =\u003e password 검증 없이 admin 계정 로그인 성공\n공격이 가능한 이유 입력값이 쿼리의 데이터(값) 가 아닌 SQL 구문(코드) 의 일부가 되었기 때문이다. 공격자는 입력값에 SQL 문법을 삽입하여 개발자가 의도한 쿼리 구조를 완전히 바꾼다.\nSQL Injection 으로 가능한 공격 범위:\n인증 우회 (이번 실습) 전체 DB 데이터 추출 ( UNION SELECT 기법) 데이터 변조 / 삭제 (INSERT, UPDATE, DELETE 삽입) DB 권한에 따라 OS 명령 실행까지 가능 (xp_cmdshell 등) 실제 피해 사례:\n2017년 Equifax 해킹 — 1억 4천만 명 개인정보 유출 Sony PlayStation Network 해킹 — 7,700만 계정 정보 유출 취약점 2 — XSS (Cross-Site Scripting) 취약한 코드의 문제점 Jinja2 템플릿은 기본적으로 HTML 특수문자를 이스케이프한다. 그런데 |safe 필터를 사용하면 이 보호를 개발자가 직접 해제해버린다.\n{% for post in posts %}\r{{ post[1] }}\r{{ post[2]|safe }}\n\u003c- |safe 로 HTML 이스케이프 비활성화!\r{% endfor %}\r공격 시나리오 — 스크립트 삽입 게시판 글 작성 시 내용에 JavaScript 코드를 삽입한다.\n제목: XSS 테스트\r내용: DB 에 저장되는 내용은 그대로 위 문자열이다. 게시판 페이지를 열 때 |safe 로 인해 HTML 이스케이프 없이 그대로 렌더링되면, 브라우저는 이것을 텍스트가 아닌 실행 가능한 JavaScript 코드로 해석한다.\n결과 =\u003e 페이지 로드 시 alert 창 실행 (스크립트 실행 성공)\nXSS 의 실제 위협 — alert 는 시작일 뿐 alert 창이 뜨는 것 자체는 무해하지만, 같은 원리로 아래가 가능하다.\n쿠키 탈취 (세션 하이재킹):\n=\u003e 피해자가 페이지를 열면 로그인 세션 쿠키가 공격자 서버로 전송됨\r=\u003e 공격자는 피해자의 세션으로 로그인 가능 (비밀번호 불필요)\r가짜 로그인 폼 삽입 (피싱):\n=\u003e 정상 사이트처럼 보이는 가짜 로그인 폼으로 자격증명 수집\rXSS 유형 정리:\n유형 설명 이번 실습 Stored XSS 악성 스크립트가 DB 에 저장되어 페이지를 여는 모든 사용자에게 실행 이번 실습 Reflected XSS 입력값이 URL 파라미터로 즉시 응답에 반사 — DOM-based XSS 서버 응답이 아닌 클라이언트 JS 에서 발생 — 방어 기법 SQL Injection 방어 방법 1 — Prepared Statement (가장 중요)\n파라미터 바인딩을 사용하면 사용자 입력이 절대로 SQL 구문이 될 수 없다. ? 자리표시자에 값이 바인딩될 때 DB 드라이버가 자동으로 이스케이프 처리한다.\n# 취약한 코드\rquery = f\"SELECT * FROM users WHERE username='{username}' AND password='{password}'\"\rcursor.execute(query)\r# 안전한 코드 (Prepared Statement)\rcursor.execute(\r\"SELECT * FROM users WHERE username=? AND password=?\",\r(username, password)\r)\radmin' -- 를 입력해도 ? 에 바인딩되면:\r=\u003e username 값은 문자열 \"admin' --\" 그 자체로 처리됨\r=\u003e SQL 구문으로 해석되지 않음 =\u003e 공격 차단\r방법 2 — ORM 사용\nSQLAlchemy, Django ORM 같은 ORM 은 내부적으로 Prepared Statement 를 사용한다.\n# SQLAlchemy 예시\ruser = User.query.filter_by(username=username, password=password).first()\r방법 3 — 입력 검증 (보조 수단)\n특수문자를 거부하는 검증은 보조 수단으로만 활용한다. Prepared Statement 없이 입력 검증만으로 SQL Injection 을 완전히 막을 수 없다.\nimport re\rif re.search(r\"[';\\\"--]\", username):\rreturn \"유효하지 않은 입력입니다.\"\rXSS 방어 방법 1 — HTML 이스케이프 (Jinja2 기본 동작 유지)\n|safe 필터를 제거하는 것만으로 Jinja2 의 자동 이스케이프가 복원된다.\n# 취약한 코드\r{{ post[2]|safe }}\n# 안전한 코드 (|safe 제거)\r{{ post[2] }}\n를 삽입해도:\r=\u003e \u0026lt;script\u0026gt;alert(\u0026#39;XSS\u0026#39;)\u0026lt;/script\u0026gt; 로 이스케이프\r=\u003e 브라우저가 텍스트로 표시, 실행 안 됨\r방법 2 — Content Security Policy (CSP)\nHTTP 응답 헤더로 브라우저에게 “이 사이트에서는 외부 스크립트를 실행하지 말라” 고 지시한다.\n@app.after_request\rdef set_csp(response):\rresponse.headers['Content-Security-Policy'] = \"default-src 'self'\"\rreturn response\r=\u003e 인라인 ",
-  "wordCount" : "2801",
-  "inLanguage": "ko",
-  "datePublished": "2025-12-23T00:00:00Z",
-  "dateModified": "2025-12-23T00:00:00Z",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://hojjang98.github.io/project/week_08/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "HJ's Security Note",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://hojjang98.github.io/favicon.ico"
-    }
-  }
-}
 </script>
 </head>
 <body id="top">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -177,37 +102,37 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="https://hojjang98.github.io/about" title="소개">
+                <a href="http://localhost:1313/about" title="소개">
                     <span>소개</span>
                 </a>
             </li>
             <li>
-                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
+                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
                     <span>일일 로그</span>
                 </a>
             </li>
             <li>
-                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
+                <a href="http://localhost:1313/categories/projects/" title="Projects">
                     <span>프로젝트</span>
                 </a>
             </li>
             <li>
-                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
+                <a href="http://localhost:1313/categories/cyber-law-study/" title="Cyber-Law-Study">
                     <span>보안법 공부</span>
                 </a>
             </li>
             <li>
-                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
                     <span>보안 시사 분석</span>
                 </a>
             </li>
             <li>
-                <a href="https://hojjang98.github.io/tags/" title="Tags">
+                <a href="http://localhost:1313/tags/" title="Tags">
                     <span>태그</span>
                 </a>
             </li>
             <li>
-                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
+                <a href="http://localhost:1313/categories/paper-review/" title="Paper-Review">
                     <span>논문 리뷰</span>
                 </a>
             </li>
@@ -218,7 +143,7 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/project/">프로젝트</a></div>
+    <div class="breadcrumbs"><a href="http://localhost:1313/">홈</a>&nbsp;»&nbsp;<a href="http://localhost:1313/project/">프로젝트</a></div>
     <h1 class="post-title entry-hint-parent">
       Week 08 — 웹 해킹 기초: SQL Injection &amp; XSS 실습
     </h1>
@@ -535,21 +460,21 @@ content = escape(request.form['content'])
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://hojjang98.github.io/tags/%EC%9B%B9%EB%B3%B4%EC%95%88/">웹보안</a></li>
-      <li><a href="https://hojjang98.github.io/tags/sqlinjection/">SQLInjection</a></li>
-      <li><a href="https://hojjang98.github.io/tags/xss/">XSS</a></li>
-      <li><a href="https://hojjang98.github.io/tags/owasp/">OWASP</a></li>
-      <li><a href="https://hojjang98.github.io/tags/flask/">Flask</a></li>
-      <li><a href="https://hojjang98.github.io/tags/%EC%B7%A8%EC%95%BD%EC%A0%90%EB%B6%84%EC%84%9D/">취약점분석</a></li>
-      <li><a href="https://hojjang98.github.io/tags/%EB%B3%B4%EC%95%88%EC%8B%A4%EC%8A%B5/">보안실습</a></li>
-      <li><a href="https://hojjang98.github.io/tags/sk%EC%89%B4%EB%8D%94%EC%8A%A4%EB%A3%A8%ED%82%A4%EC%A6%88/">SK쉴더스루키즈</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%9B%B9%EB%B3%B4%EC%95%88/">웹보안</a></li>
+      <li><a href="http://localhost:1313/tags/sqlinjection/">SQLInjection</a></li>
+      <li><a href="http://localhost:1313/tags/xss/">XSS</a></li>
+      <li><a href="http://localhost:1313/tags/owasp/">OWASP</a></li>
+      <li><a href="http://localhost:1313/tags/flask/">Flask</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%B7%A8%EC%95%BD%EC%A0%90%EB%B6%84%EC%84%9D/">취약점분석</a></li>
+      <li><a href="http://localhost:1313/tags/%EB%B3%B4%EC%95%88%EC%8B%A4%EC%8A%B5/">보안실습</a></li>
+      <li><a href="http://localhost:1313/tags/sk%EC%89%B4%EB%8D%94%EC%8A%A4%EB%A3%A8%ED%82%A4%EC%A6%88/">SK쉴더스루키즈</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
+        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
 
     <span>
         Powered by

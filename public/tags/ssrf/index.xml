@@ -1,1 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>SSRF on HJ's Security Note</title><link>https://hojjang98.github.io/tags/ssrf/</link><description>Recent content in SSRF on HJ's Security Note</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Thu, 05 Feb 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://hojjang98.github.io/tags/ssrf/index.xml" rel="self" type="application/rss+xml"/><item><title>2026.02.05 (Day 71) - SSRF (Server-Side Request Forgery) 취약점</title><link>https://hojjang98.github.io/daily_logs/week15/20260205_pentest_day8/</link><pubDate>Thu, 05 Feb 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week15/20260205_pentest_day8/</guid><description>SSRF 공격 유형(Basic·Blind·URL Shortener·프로토콜 변조)과 IP 인코딩 우회(10진수·16진수·IPv6), Flask 리다이렉트 서버 구축을 통한 내부 DB 파일 탈취, DNS 리바인딩 공격과 안전한 SSRF 방어 코드 구현 분석</description></item><item><title>2026.02.04 (Day 70) - CSRF와 SSRF 취약점 심화</title><link>https://hojjang98.github.io/daily_logs/week15/20260204_pentest_day7/</link><pubDate>Wed, 04 Feb 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week15/20260204_pentest_day7/</guid><description>CSRF GET·POST 방식 공격과 iframe을 이용한 CSRF Token 우회 기법, SSRF로 내부 DB 설정 파일 접근, 은행 이체 프로세스의 다층 방어 구조와 CSRF·SSRF 방어 전략 비교 정리</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>SSRF on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/ssrf/</link>
+    <description>Recent content in SSRF on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Thu, 05 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/ssrf/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2026.02.05 (Day 71) - SSRF (Server-Side Request Forgery) 취약점</title>
+      <link>http://localhost:1313/daily_logs/week15/20260205_pentest_day8/</link>
+      <pubDate>Thu, 05 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week15/20260205_pentest_day8/</guid>
+      <description>SSRF 공격 유형(Basic·Blind·URL Shortener·프로토콜 변조)과 IP 인코딩 우회(10진수·16진수·IPv6), Flask 리다이렉트 서버 구축을 통한 내부 DB 파일 탈취, DNS 리바인딩 공격과 안전한 SSRF 방어 코드 구현 분석</description>
+    </item>
+    <item>
+      <title>2026.02.04 (Day 70) - CSRF와 SSRF 취약점 심화</title>
+      <link>http://localhost:1313/daily_logs/week15/20260204_pentest_day7/</link>
+      <pubDate>Wed, 04 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week15/20260204_pentest_day7/</guid>
+      <description>CSRF GET·POST 방식 공격과 iframe을 이용한 CSRF Token 우회 기법, SSRF로 내부 DB 설정 파일 접근, 은행 이체 프로세스의 다층 방어 구조와 CSRF·SSRF 방어 전략 비교 정리</description>
+    </item>
+  </channel>
+</rss>

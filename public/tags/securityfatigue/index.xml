@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>SecurityFatigue on HJ's Security Note</title><link>https://hojjang98.github.io/tags/securityfatigue/</link><description>Recent content in SecurityFatigue on HJ's Security Note</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Tue, 17 Mar 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://hojjang98.github.io/tags/securityfatigue/index.xml" rel="self" type="application/rss+xml"/><item><title>Cyber Security Awareness Campaigns: Why do they fail to change behaviour?</title><link>https://hojjang98.github.io/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/bada_sasse_nurse/</link><pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/bada_sasse_nurse/</guid><description>인식 캠페인이 행동 변화로 이어지지 못하는 심리학적 원인을 분석한 Bada, Sasse &amp;amp; Nurse(2019) 논문 리뷰 — PMT, 조절초점이론, 문화적 적합성을 중심으로</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>SecurityFatigue on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/securityfatigue/</link>
+    <description>Recent content in SecurityFatigue on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Tue, 17 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/securityfatigue/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cyber Security Awareness Campaigns: Why do they fail to change behaviour?</title>
+      <link>http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/bada_sasse_nurse/</link>
+      <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/bada_sasse_nurse/</guid>
+      <description>인식 캠페인이 행동 변화로 이어지지 못하는 심리학적 원인을 분석한 Bada, Sasse &amp;amp; Nurse(2019) 논문 리뷰 — PMT, 조절초점이론, 문화적 적합성을 중심으로</description>
+    </item>
+  </channel>
+</rss>

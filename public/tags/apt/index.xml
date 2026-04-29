@@ -1,1 +1,47 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>APT on HJ's Security Note</title><link>https://hojjang98.github.io/tags/apt/</link><description>Recent content in APT on HJ's Security Note</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Tue, 03 Mar 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://hojjang98.github.io/tags/apt/index.xml" rel="self" type="application/rss+xml"/><item><title>UNC2814 GRIDTIDE Espionage Campaign - Chinese APT Abusing Google Sheets as C2</title><link>https://hojjang98.github.io/security-issues-analysis/2026/week09/gridtide_espionage_campaign/</link><pubDate>Tue, 03 Mar 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/security-issues-analysis/2026/week09/gridtide_espionage_campaign/</guid><description>중국 국가 연계 APT 그룹 UNC2814가 Google Sheets API를 C2 채널로 악용한 GRIDTIDE 백도어를 이용해 42개국 53개 통신사 및 정부기관을 9년간 침해한 광범위한 사이버 첩보 캠페인 분석</description></item><item><title>폴란드 재생에너지 인프라 대상 협공 사이버 공격</title><link>https://hojjang98.github.io/security-issues-analysis/2026/week06/poland_energy_infrastructure_attack/</link><pubDate>Sun, 08 Feb 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/security-issues-analysis/2026/week06/poland_energy_infrastructure_attack/</guid><description>러시아 연계 Static Tundra 그룹이 극한 추위 속 신년 직전을 노려 폴란드 풍력·태양광 발전소 30개소 이상을 협조 공격하고 와이퍼 악성코드로 제어 시스템을 마비시킨 사건 분석</description></item><item><title>2025.11.27 (Day 24) - Linux 시스템 보안: 로그 관리, 무결성 검사, 패키지 &amp; 압축</title><link>https://hojjang98.github.io/daily_logs/week05/20251127_linux_security/</link><pubDate>Thu, 27 Nov 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week05/20251127_linux_security/</guid><description>시스템 로그 실시간 모니터링, debsums/dpkg-V 파일 무결성 검사, APT 패키지 관리, tar/gzip/bzip2 압축 실습</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>APT on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/apt/</link>
+    <description>Recent content in APT on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Fri, 17 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/apt/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Day55 실무 사례 - 한국수력원자력 해킹 (2014)</title>
+      <link>http://localhost:1313/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/02_%ED%95%B4%ED%82%B9%EC%B9%A8%ED%95%B4/day55_%ED%95%B4%ED%82%B9%EC%B9%A8%ED%95%B4%EC%82%AC%EB%A1%805_%ED%95%9C%EC%88%98%EC%9B%90/</link>
+      <pubDate>Fri, 17 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/02_%ED%95%B4%ED%82%B9%EC%B9%A8%ED%95%B4/day55_%ED%95%B4%ED%82%B9%EC%B9%A8%ED%95%B4%EC%82%AC%EB%A1%805_%ED%95%9C%EC%88%98%EC%9B%90/</guid>
+      <description>2014년 12월 북한 정찰총국이 한국수력원자력을 해킹해 원전 설계도 등 약 10,000건 문서를 탈취한 사건. 스피어 피싱으로 사무망 침투, 제어 시스템은 물리적 격리로 안전, 간첩죄 및 원자력방호법 적용.</description>
+    </item>
+    <item>
+      <title>Day54 실무 사례 - 메리어트 호텔 데이터 유출 (2018)</title>
+      <link>http://localhost:1313/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/04_%EB%9E%9C%EC%84%AC%EC%9B%A8%EC%96%B4/day54_%EB%9E%9C%EC%84%AC%EC%9B%A8%EC%96%B4%EC%82%AC%EB%A1%802_%EB%A9%94%EB%A6%AC%EC%96%B4%ED%8A%B8/</link>
+      <pubDate>Thu, 16 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/04_%EB%9E%9C%EC%84%AC%EC%9B%A8%EC%96%B4/day54_%EB%9E%9C%EC%84%AC%EC%9B%A8%EC%96%B4%EC%82%AC%EB%A1%802_%EB%A9%94%EB%A6%AC%EC%96%B4%ED%8A%B8/</guid>
+      <description>메리어트 호텔 그룹의 2014~2018년 APT 해킹 사건. 약 5억 명 고객 정보 유출, 4년간 탐지 실패, 중국 정부 배후 추정, GDPR 위반 벌금 2,400만 달러.</description>
+    </item>
+    <item>
+      <title>UNC2814 GRIDTIDE Espionage Campaign - Chinese APT Abusing Google Sheets as C2</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week09/gridtide_espionage_campaign/</link>
+      <pubDate>Tue, 03 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week09/gridtide_espionage_campaign/</guid>
+      <description>중국 국가 연계 APT 그룹 UNC2814가 Google Sheets API를 C2 채널로 악용한 GRIDTIDE 백도어를 이용해 42개국 53개 통신사 및 정부기관을 9년간 침해한 광범위한 사이버 첩보 캠페인 분석</description>
+    </item>
+    <item>
+      <title>폴란드 재생에너지 인프라 대상 협공 사이버 공격</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week06/poland_energy_infrastructure_attack/</link>
+      <pubDate>Sun, 08 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week06/poland_energy_infrastructure_attack/</guid>
+      <description>러시아 연계 Static Tundra 그룹이 극한 추위 속 신년 직전을 노려 폴란드 풍력·태양광 발전소 30개소 이상을 협조 공격하고 와이퍼 악성코드로 제어 시스템을 마비시킨 사건 분석</description>
+    </item>
+    <item>
+      <title>2025.11.27 (Day 24) - Linux 시스템 보안: 로그 관리, 무결성 검사, 패키지 &amp; 압축</title>
+      <link>http://localhost:1313/daily_logs/week05/20251127_linux_security/</link>
+      <pubDate>Thu, 27 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week05/20251127_linux_security/</guid>
+      <description>시스템 로그 실시간 모니터링, debsums/dpkg-V 파일 무결성 검사, APT 패키지 관리, tar/gzip/bzip2 압축 실습</description>
+    </item>
+  </channel>
+</rss>

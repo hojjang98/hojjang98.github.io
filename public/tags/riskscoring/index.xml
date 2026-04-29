@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>RiskScoring on HJ's Security Note</title><link>https://hojjang98.github.io/tags/riskscoring/</link><description>Recent content in RiskScoring on HJ's Security Note</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Mon, 23 Mar 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://hojjang98.github.io/tags/riskscoring/index.xml" rel="self" type="application/rss+xml"/><item><title>Cyber Third-Party Risk Management: A Comparison of Non-Intrusive Risk Scoring Reports</title><link>https://hojjang98.github.io/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/keskin-et-al-2021/</link><pubDate>Mon, 23 Mar 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/keskin-et-al-2021/</guid><description>비침습적 위험 점수화 도구 비교 분석을 통해 C-TPRM 방법론의 한계와 실무 적용 가능성을 탐색한 Keskin et al.(2021) 논문 리뷰</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>RiskScoring on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/riskscoring/</link>
+    <description>Recent content in RiskScoring on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Mon, 23 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/riskscoring/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cyber Third-Party Risk Management: A Comparison of Non-Intrusive Risk Scoring Reports</title>
+      <link>http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/keskin-et-al-2021/</link>
+      <pubDate>Mon, 23 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/keskin-et-al-2021/</guid>
+      <description>비침습적 위험 점수화 도구 비교 분석을 통해 C-TPRM 방법론의 한계와 실무 적용 가능성을 탐색한 Keskin et al.(2021) 논문 리뷰</description>
+    </item>
+  </channel>
+</rss>

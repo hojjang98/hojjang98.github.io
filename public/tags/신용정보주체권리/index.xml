@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>신용정보주체권리 on HJ's Security Note</title><link>https://hojjang98.github.io/tags/%EC%8B%A0%EC%9A%A9%EC%A0%95%EB%B3%B4%EC%A3%BC%EC%B2%B4%EA%B6%8C%EB%A6%AC/</link><description>Recent content in 신용정보주체권리 on HJ's Security Note</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Wed, 18 Feb 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://hojjang98.github.io/tags/%EC%8B%A0%EC%9A%A9%EC%A0%95%EB%B3%B4%EC%A3%BC%EC%B2%B4%EA%B6%8C%EB%A6%AC/index.xml" rel="self" type="application/rss+xml"/><item><title>Day 13: 신용정보법</title><link>https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/04_%EC%8B%A0%EC%9A%A9%EC%A0%95%EB%B3%B4%EB%B2%95/day13_%EC%8B%A0%EC%9A%A9%EC%A0%95%EB%B3%B4%EB%B2%95/</link><pubDate>Wed, 18 Feb 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/04_%EC%8B%A0%EC%9A%A9%EC%A0%95%EB%B3%B4%EB%B2%95/day13_%EC%8B%A0%EC%9A%A9%EC%A0%95%EB%B3%B4%EB%B2%95/</guid><description>개인신용정보의 수집·제공 제한, 신용정보주체의 권리(열람, 정정·삭제, 동의철회), 마이데이터 제도를 학습합니다.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>신용정보주체권리 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%EC%8B%A0%EC%9A%A9%EC%A0%95%EB%B3%B4%EC%A3%BC%EC%B2%B4%EA%B6%8C%EB%A6%AC/</link>
+    <description>Recent content in 신용정보주체권리 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Wed, 18 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%EC%8B%A0%EC%9A%A9%EC%A0%95%EB%B3%B4%EC%A3%BC%EC%B2%B4%EA%B6%8C%EB%A6%AC/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Day 13: 신용정보법</title>
+      <link>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/04_%EC%8B%A0%EC%9A%A9%EC%A0%95%EB%B3%B4%EB%B2%95/day13_%EC%8B%A0%EC%9A%A9%EC%A0%95%EB%B3%B4%EB%B2%95/</link>
+      <pubDate>Wed, 18 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/04_%EC%8B%A0%EC%9A%A9%EC%A0%95%EB%B3%B4%EB%B2%95/day13_%EC%8B%A0%EC%9A%A9%EC%A0%95%EB%B3%B4%EB%B2%95/</guid>
+      <description>개인신용정보의 수집·제공 제한, 신용정보주체의 권리(열람, 정정·삭제, 동의철회), 마이데이터 제도를 학습합니다.</description>
+    </item>
+  </channel>
+</rss>

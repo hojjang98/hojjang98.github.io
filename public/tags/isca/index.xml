@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>ISCA on HJ's Security Note</title><link>https://hojjang98.github.io/tags/isca/</link><description>Recent content in ISCA on HJ's Security Note</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Tue, 10 Mar 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://hojjang98.github.io/tags/isca/index.xml" rel="self" type="application/rss+xml"/><item><title>A Framework and Assessment Instrument for Information Security Culture</title><link>https://hojjang98.github.io/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/da_veiga_eloff/</link><pubDate>Tue, 10 Mar 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/da_veiga_eloff/</guid><description>기술적 통제만으로 해결되지 않는 직원 행동 문제를 조직문화 차원에서 접근한 논문. Schein의 3층 문화 모델과 조직행동 3계층을 통합하여 보안 문화를 측정하고 개선하는 ISCF 프레임워크와 ISCA 평가 도구를 제시한다.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>ISCA on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/isca/</link>
+    <description>Recent content in ISCA on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Tue, 10 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/isca/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A Framework and Assessment Instrument for Information Security Culture</title>
+      <link>http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/da_veiga_eloff/</link>
+      <pubDate>Tue, 10 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/da_veiga_eloff/</guid>
+      <description>기술적 통제만으로 해결되지 않는 직원 행동 문제를 조직문화 차원에서 접근한 논문. Schein의 3층 문화 모델과 조직행동 3계층을 통합하여 보안 문화를 측정하고 개선하는 ISCF 프레임워크와 ISCA 평가 도구를 제시한다.</description>
+    </item>
+  </channel>
+</rss>

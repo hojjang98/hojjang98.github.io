@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="ko" dir="auto" data-theme="auto">
 
-<head><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="noindex, nofollow">
 <title>Stryker Handala MOIS 와이퍼 공격 - Microsoft Intune 남용과 지정학적 사이버 보복 | HJ&#39;s Security Note</title>
 <meta name="keywords" content="Handala, MOIS, 와이퍼공격, Stryker, Intune, MDM남용, 지정학적사이버위협, LOTL, 이란APT">
 <meta name="description" content="2026년 3월 11일 이란 MOIS 연계 Handala 그룹이 Stryker의 Microsoft Intune 관리자 권한을 탈취하여 전 세계 200,000대 이상 기기를 원격 초기화한 와이퍼 공격을 분석한다. 합법적 관리 도구의 무기화와 지정학적 사이버 위협의 실체를 다룬다.">
 <meta name="author" content="">
-<link rel="canonical" href="https://hojjang98.github.io/security-issues-analysis/2026/week13/stryker_handala_mois_wiper_attack/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.290573799e582c418c4bd84f2bca757d0a77fd1bf9f5c43942030e706df68ec8.css" integrity="sha256-KQVzeZ5YLEGMS9hPK8p1fQp3/Rv59cQ5QgMOcG32jsg=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
+<link rel="canonical" href="http://localhost:1313/security-issues-analysis/2026/week13/stryker_handala_mois_wiper_attack/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c8c3b65cd6d058be2b4f050fd7a688ac13a23056571601dabe4f70d8d008259e.css" integrity="sha256-yMO2XNbQWL4rTwUP16aIrBOiMFZXFgHavk9w2NAIJZ4=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/security-issues-analysis/2026/week13/stryker_handala_mois_wiper_attack/">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/security-issues-analysis/2026/week13/stryker_handala_mois_wiper_attack/">
 <noscript>
     <style>
         #theme-toggle,
@@ -70,93 +70,13 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
-</script><meta property="og:url" content="https://hojjang98.github.io/security-issues-analysis/2026/week13/stryker_handala_mois_wiper_attack/">
-  <meta property="og:site_name" content="HJ&#39;s Security Note">
-  <meta property="og:title" content="Stryker Handala MOIS 와이퍼 공격 - Microsoft Intune 남용과 지정학적 사이버 보복">
-  <meta property="og:description" content="2026년 3월 11일 이란 MOIS 연계 Handala 그룹이 Stryker의 Microsoft Intune 관리자 권한을 탈취하여 전 세계 200,000대 이상 기기를 원격 초기화한 와이퍼 공격을 분석한다. 합법적 관리 도구의 무기화와 지정학적 사이버 위협의 실체를 다룬다.">
-  <meta property="og:locale" content="ko-kr">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="security-issues-analysis">
-    <meta property="article:published_time" content="2026-03-29T00:00:00+00:00">
-    <meta property="article:modified_time" content="2026-03-29T00:00:00+00:00">
-    <meta property="article:tag" content="Handala">
-    <meta property="article:tag" content="MOIS">
-    <meta property="article:tag" content="와이퍼공격">
-    <meta property="article:tag" content="Stryker">
-    <meta property="article:tag" content="Intune">
-    <meta property="article:tag" content="MDM남용">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Stryker Handala MOIS 와이퍼 공격 - Microsoft Intune 남용과 지정학적 사이버 보복">
-<meta name="twitter:description" content="2026년 3월 11일 이란 MOIS 연계 Handala 그룹이 Stryker의 Microsoft Intune 관리자 권한을 탈취하여 전 세계 200,000대 이상 기기를 원격 초기화한 와이퍼 공격을 분석한다. 합법적 관리 도구의 무기화와 지정학적 사이버 위협의 실체를 다룬다.">
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "보안 시사 분석",
-      "item": "https://hojjang98.github.io/security-issues-analysis/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "2026",
-      "item": "https://hojjang98.github.io/security-issues-analysis/2026/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  3 ,
-      "name": "Week 13",
-      "item": "https://hojjang98.github.io/security-issues-analysis/2026/week13/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  4 ,
-      "name": "Stryker Handala MOIS 와이퍼 공격 - Microsoft Intune 남용과 지정학적 사이버 보복",
-      "item": "https://hojjang98.github.io/security-issues-analysis/2026/week13/stryker_handala_mois_wiper_attack/"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Stryker Handala MOIS 와이퍼 공격 - Microsoft Intune 남용과 지정학적 사이버 보복",
-  "name": "Stryker Handala MOIS 와이퍼 공격 - Microsoft Intune 남용과 지정학적 사이버 보복",
-  "description": "2026년 3월 11일 이란 MOIS 연계 Handala 그룹이 Stryker의 Microsoft Intune 관리자 권한을 탈취하여 전 세계 200,000대 이상 기기를 원격 초기화한 와이퍼 공격을 분석한다. 합법적 관리 도구의 무기화와 지정학적 사이버 위협의 실체를 다룬다.",
-  "keywords": [
-    "Handala", "MOIS", "와이퍼공격", "Stryker", "Intune", "MDM남용", "지정학적사이버위협", "LOTL", "이란APT"
-  ],
-  "articleBody": "Stryker 와이퍼 공격 - Handala MOIS의 Microsoft Intune 남용 [ 인시던트 개요 ]\n- 발생 일자 - 2026년 3월 11일 ( 미국 동부 시각 자정 직후 ) - 공격자 - Handala ( 이란 정보부 MOIS 산하 핵티비스트 페르소나, Void Manticore 연계 ) - 피해 대상 - Stryker ( 미국 미시간 주 소재 의료기기 제조사, 연매출 250억 달러, 61개국 56,000명 임직원 ) - 공격 유형 - 원격 기기 초기화 ( Wiper ), 데이터 탈취 주장 - 주장 피해 규모 - 79개국 200,000대 이상 기기 ( 서버, 노트북, 모바일 ) 초기화, 50TB 데이터 탈취 - 실제 확인된 피해 - 전사적 Microsoft 환경 운영 중단, 주문 처리·제조·배송 중단 - 억제 선언 - 2026년 3월 15일 ( Stryker 공식 발표 ) - 미국 정부 대응 - DOJ의 MOIS-Handala 연계 공식 확인, FBI의 Handala 웹사이트 4개 압수 [ 기술적 세부 사항 ]\n[ 초기 접근 벡터 ]\n공식적으로 확인된 초기 접근 경로는 현재까지 공개되지 않았다. 사이버보안 연구자 Kevin Beaumont의 분석과 커뮤니티 보고에 따르면, Handala가 인포스틸러 ( infostealer ) 악성코드를 통해 획득한 자격증명을 사용하여 Stryker의 Active Directory 서비스에 접근한 것으로 추정된다. 해당 자격증명을 통해 공격자는 엔드포인트 관리 플랫폼인 Microsoft Intune에 대한 관리자 수준의 접근 권한을 확보하였다.\nStryker의 자체 조사에서는 공격자가 특정 명령 실행을 위해 악성 파일을 사용하였으며, 이 파일이 활동을 은폐하는 데 활용되었음이 확인되었다. 해당 파일은 전파 기능이 없었으며 악성코드나 랜섬웨어 형태가 아닌 명령 실행 수단으로 사용되었다.\n[ 공격 실행 메커니즘 - Microsoft Intune 남용 ]\nIntune은 기업 환경에서 노트북, 스마트폰 등 엔드포인트 기기를 원격으로 관리 ( 등록, 정책 배포, 애플리케이션 설치, 초기화 ) 하는 Microsoft의 MDM ( Mobile Device Management ) 솔루션이다. 공격자는 Intune 관리자 권한을 획득한 후, 합법적인 기기 초기화 ( Factory Reset ) 기능을 악용하여 전 세계 Stryker 기기에 대한 원격 초기화 명령을 일괄 실행하였다.\n이 공격 방식의 핵심은 별도의 악성코드를 배포하지 않고 Microsoft가 제공하는 정상적인 관리 기능 자체를 무기화했다는 점이다. BYOD ( Bring Your Own Device ) 정책에 따라 개인 기기에 Intune이 설치된 경우, 개인 기기도 초기화 대상에 포함된 것으로 보고되었다. 아일랜드 Stryker 사무소 직원들의 보고에 따르면 Microsoft Outlook이 설치된 개인 휴대폰도 초기화되었다.\n[ FBI 공개 악성코드 분석 - 사후 ]\nFBI는 사건 이후 Handala ( MOIS ) 위협 행위자들이 사용하는 악성코드 샘플에 대한 기술 경보를 발표하였다. 해당 악성코드는 3단계 구조로 설계되어 있다.\n- 1단계 ( 마스커레이딩 악성코드 ) - Pictory, KeePass, Telegram 과 같이 일반적으로 사용되는 정상 애플리케이션으로 위장하며, 2단계 페이로드 바이너리를 포함 - 2단계 ( 영속 임플란트 ) - 마스커레이딩 악성코드 실행 및 사용자 상호작용 이후 배포되는 지속적 접근 수단. 일부 2단계 샘플에는 추가적인 고유 기능이 포함 [ 지정학적 맥락 ]\nHandala는 Hamas의 2023년 10월 7일 이스라엘 공격 이후 등장한 핵티비스트 페르소나로, 이스라엘 민간 인프라, 에너지 기업, 서방 조직을 표적으로 하는 활동을 지속해왔다. 이번 Stryker 공격은 2026년 3월 3일 미국-이스라엘 연합군의 이란 Minab 여학교 공습 ( 이란 측 발표 기준 175명 이상 사망, 다수 어린이 포함 ) 에 대한 보복으로 Handala가 직접 명시하였다. Stryker를 표적으로 선택한 이유로는 Stryker가 2019년에 인수한 이스라엘 정형외과 기기 회사 OrthoSpace와의 연관성이 제시되었다.\nPalo Alto Networks는 Handala가 실제로는 실제 침해 작전을 수행하는 팀과 Handala 페르소나를 유지·운영하는 팀이 분리된 구조일 가능성이 있다고 분석하였다. 이는 이란 정부가 이란의 관여를 공식 부인할 수 있는 전략적 모호성 ( strategic ambiguity ) 유지를 위한 설계다.\n[ 근본 원인 분석 ]\n[ 기술적 요인 ]\nMDM 플랫폼에 대한 관리자 권한이 단일 자격증명 세트로 보호되고 있었던 점이 핵심 취약점이다. Microsoft Intune과 같이 대규모 기기 관리 권한을 가진 시스템에 대한 접근은 다중인증 ( MFA ), 조건부 접근 정책 ( Conditional Access ), 권한 최소화 원칙이 엄격하게 적용되어야 한다.\n인포스틸러를 통한 자격증명 탈취가 초기 접근 수단으로 추정되는 점에서, 직원 기기에 인포스틸러가 설치되어 자격증명이 유출된 후에도 해당 자격증명이 유효하게 사용될 수 있었다는 감지 체계 부재가 확인된다.\n[ 관리적 요인 ]\nBYOD 정책 하에서 개인 기기에 기업 MDM을 설치하는 경우, 해당 기기의 초기화 대상 포함 여부 및 사용자 동의 범위에 대한 정책이 명확하게 수립되어야 한다. 이번 사건에서 BYOD 기기가 초기화됨으로써 직원들의 개인 데이터 손실이 발생하였다.\n대규모 기기 초기화와 같은 고위험 관리 작업에 대한 다중 승인 프로세스 ( 4-eyes principle ) 및 실행 전 알림 메커니즘이 부재하였던 것으로 추정된다.\n[ 인적 요인 ]\nHandala가 활용한 마스커레이딩 악성코드는 Telegram, KeePass 등 직원들이 실제 사용하는 애플리케이션으로 위장한다. 이러한 악성코드는 전통적인 피싱 인식 교육만으로는 방어하기 어려우며, 엔드포인트 기반의 행동 탐지가 필요하다.\n[ 피해 영향 평가 ]\n[ 운영 영향 ]\n전사적 Microsoft 환경 운영 중단으로 인해 주문 처리, 제조 라인, 배송 운영이 중단되었다. 의료기기 제조사로서의 특성상, 일선 병원과 수술실에 납품되는 의료기기와 소모품의 공급 차질이 환자 치료에 간접적인 영향을 미칠 가능성이 있었다. 다만 환자 연결 의료기기와 직접적인 환자 관련 서비스는 영향을 받지 않았다고 Stryker가 공식 발표하였다.\n[ 재무 영향 ]\nStryker는 SEC ( 미국 증권거래위원회 ) 8-K 공시를 통해 사건을 신고하였으며, 사건이 계속해서 운영상의 중단을 야기할 것임을 명시하였다. 구체적인 재무 피해 규모는 공개되지 않았다.\n[ 법적 및 규제 영향 ]\nDOJ가 MOIS와 Handala의 연계를 공식 확인함으로써, 이번 사건은 단순 사이버 범죄가 아닌 국가 지원 사이버 공격으로 분류되었다. 이란과의 지정학적 긴장이 지속되는 상황에서, 이스라엘에 사업적 연관성이 있는 글로벌 기업들은 유사한 공격의 잠재적 표적이 될 수 있다.\n[ 예방 및 대응 조치 ]\n[ 즉각적 조치 ]\n- MDM 플랫폼에 대한 관리자 접근에 MFA 즉시 적용 - Microsoft Intune 관리자 계정에 조건부 접근 정책 ( 신뢰할 수 있는 위치, 신뢰할 수 있는 기기 조건 ) 적용 - 고위험 관리 작업 ( 대량 기기 초기화, 정책 변경 ) 에 대한 다중 승인 프로세스 도입 [ 단기 조치 ]\n- MDM 플랫폼의 접근 로그를 SIEM에 통합하고, 비정상적인 대규모 명령 실행을 탐지하는 경보 설정 - 인포스틸러 탐지를 위해 엔드포인트 기반 행동 탐지 ( EDR ) 솔루션 강화 - 자격증명 유출 모니터링 서비스를 통해 다크웹 등에 공개된 자사 직원 자격증명 선제적 탐지 [ 장기 조치 ]\n- 이스라엘 사업 연관성, 미국-이란 지정학적 맥락 등 지정학적 리스크를 조직의 위협 인텔리전스 프로그램에 반영 - Handala, Void Manticore 등 MOIS 연계 위협 행위자의 TTP를 정기적으로 모니터링하고 방어 체계에 적용 [ 컨설팅 커뮤니케이션 전략 ]\n[ 비기술 직원 대상 ]\n이번 사건은 우리 회사가 어떤 정치적 사건에 관여하지 않더라도, 특정 국가나 기업과의 사업적 연관성만으로 국가 지원 사이버 공격의 표적이 될 수 있다는 점을 보여준다. Stryker는 의료기기를 만드는 회사로 이번 분쟁과 직접적 관련이 없었으나, 과거의 이스라엘 기업 인수가 공격 이유로 활용되었다.\n[ 기술팀 대상 ]\n이번 공격에서 핵심은 공격자가 별도의 악성코드를 배포하지 않고 Microsoft Intune이라는 합법적인 관리 도구를 무기화했다는 점이다. 이는 MDM 플랫폼 접근 제어의 중요성을 보여준다. Intune 관리자 계정의 접근 제어, MFA, 조건부 접근 정책, 고위험 작업에 대한 승인 프로세스를 점검해야 한다. 합법적 도구의 무기화는 시그니처 기반 탐지로는 식별되지 않으므로, 행동 기반 이상 탐지 ( anomaly detection ) 가 필수적이다.\n[ 경영진 대상 ]\n지정학적 사이버 위협은 더 이상 방산, 에너지, 정부 기관에 국한된 문제가 아니다. 의료기기 제조사인 Stryker가 이란-미국 지정학적 갈등의 사이버 보복 대상이 된 사례에서 볼 수 있듯, 자사의 공급망, 해외 사업 파트너, 인수합병 이력이 지정학적 표적 선정 기준이 될 수 있다. 위협 인텔리전스 프로그램에 지정학적 리스크 평가를 포함해야 한다.\n[ 법무/컴플라이언스 대상 ]\n국가 지원 사이버 공격의 경우, 일반적인 보험 정책에서 면책 조항 ( act of war exclusion ) 이 적용될 수 있다. 사이버 보험 정책에 국가 지원 공격 포함 여부를 검토해야 한다. 또한 SEC 공시 의무 ( Form 8-K ) 는 중요한 사이버 사건 발생 시 4영업일 이내 신고를 요구한다. 이번 Stryker 사례처럼 신속한 공시 대응 절차를 사전에 수립해야 한다.\n[ 예상 Q\u0026A ]\nQ. 우리 회사도 Handala의 표적이 될 수 있나?\nA. Handala는 이스라엘과 사업적 연관성이 있거나, 미국-이스라엘 연합을 지지하는 것으로 인식되는 서방 기업들을 잠재적 표적으로 삼는다. 자사의 이스라엘 사무소, 이스라엘 기업과의 파트너십, 이스라엘 국방 조달 참여 여부 등을 검토하여 표적 가능성을 평가해야 한다. 지정학적 상황이 변화하면 표적 기준도 변화하므로 지속적인 모니터링이 필요하다.\nQ. MDM 없이 기기 관리를 해야 하나?\nA. MDM 제거가 해결책이 아니다. MDM은 기업 기기 관리에 필수적이며, 문제는 MDM 관리자 권한 보호가 불충분했다는 점이다. MFA, 조건부 접근, 최소 권한 원칙, 대량 작업 승인 프로세스를 적용한 MDM 사용은 안전하다.\nQ. Stryker가 더 일찍 공격을 막을 수 있었나?\nA. 초기 접근 단계에서 인포스틸러를 통한 자격증명 탈취를 사전에 탐지하고 해당 자격증명을 즉시 무효화했다면 이번 공격을 차단할 수 있었을 가능성이 있다. 또한 Intune 관리자 계정의 접근 시도를 실시간으로 모니터링하는 체계가 있었다면 공격 실행 전에 탐지가 가능했을 것이다.\n[ 핵심 학습 포인트 ]\n- 합법적인 관리 도구 ( Living Off the Land, LOTL ) 의 무기화 - 공격자는 별도의 악성코드를 배포하지 않고 Microsoft Intune의 기기 초기화 기능을 그대로 사용하여 전사적 파괴를 달성하였다. 이는 시그니처 기반 탐지 체계의 근본적 한계를 보여준다. - 지정학적 맥락이 사이버 위협 평가에 포함되어야 한다. 이스라엘 기업 인수, 특정 국가 정부와의 계약, 지정학적 갈등 당사국에서의 사업 활동은 사이버 위협 수준을 높이는 요인이 될 수 있다. - Handala가 핵티비스트 페르소나를 유지하면서 실제로는 MOIS의 지시를 받는 이중 구조는, 향후 국가 지원 사이버 공격에서 활용될 귀속 ( attribution ) 모호성 전략의 표준 사례가 될 수 있다. - BYOD 정책과 MDM 관리자 권한 보호는 반드시 함께 설계되어야 한다. 개인 기기를 기업 MDM에 등록할 때 초기화 포함 여부와 범위를 사용자에게 명확히 고지하고 동의를 받는 절차가 필요하다. ",
-  "wordCount" : "4006",
-  "inLanguage": "ko",
-  "datePublished": "2026-03-29T00:00:00Z",
-  "dateModified": "2026-03-29T00:00:00Z",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://hojjang98.github.io/security-issues-analysis/2026/week13/stryker_handala_mois_wiper_attack/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "HJ's Security Note",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://hojjang98.github.io/favicon.ico"
-    }
-  }
-}
 </script>
 </head>
 <body id="top">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -182,37 +102,37 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="https://hojjang98.github.io/about" title="소개">
+                <a href="http://localhost:1313/about" title="소개">
                     <span>소개</span>
                 </a>
             </li>
             <li>
-                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
+                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
                     <span>일일 로그</span>
                 </a>
             </li>
             <li>
-                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
+                <a href="http://localhost:1313/categories/projects/" title="Projects">
                     <span>프로젝트</span>
                 </a>
             </li>
             <li>
-                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
+                <a href="http://localhost:1313/categories/cyber-law-study/" title="Cyber-Law-Study">
                     <span>보안법 공부</span>
                 </a>
             </li>
             <li>
-                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
                     <span>보안 시사 분석</span>
                 </a>
             </li>
             <li>
-                <a href="https://hojjang98.github.io/tags/" title="Tags">
+                <a href="http://localhost:1313/tags/" title="Tags">
                     <span>태그</span>
                 </a>
             </li>
             <li>
-                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
+                <a href="http://localhost:1313/categories/paper-review/" title="Paper-Review">
                     <span>논문 리뷰</span>
                 </a>
             </li>
@@ -223,7 +143,7 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/security-issues-analysis/">보안 시사 분석</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/security-issues-analysis/2026/">2026</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/security-issues-analysis/2026/week13/">Week 13</a></div>
+    <div class="breadcrumbs"><a href="http://localhost:1313/">홈</a>&nbsp;»&nbsp;<a href="http://localhost:1313/security-issues-analysis/">보안 시사 분석</a>&nbsp;»&nbsp;<a href="http://localhost:1313/security-issues-analysis/2026/">2026</a>&nbsp;»&nbsp;<a href="http://localhost:1313/security-issues-analysis/2026/week13/">Week 13</a></div>
     <h1 class="post-title entry-hint-parent">
       Stryker Handala MOIS 와이퍼 공격 - Microsoft Intune 남용과 지정학적 사이버 보복
     </h1>
@@ -316,22 +236,22 @@
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://hojjang98.github.io/tags/handala/">Handala</a></li>
-      <li><a href="https://hojjang98.github.io/tags/mois/">MOIS</a></li>
-      <li><a href="https://hojjang98.github.io/tags/%EC%99%80%EC%9D%B4%ED%8D%BC%EA%B3%B5%EA%B2%A9/">와이퍼공격</a></li>
-      <li><a href="https://hojjang98.github.io/tags/stryker/">Stryker</a></li>
-      <li><a href="https://hojjang98.github.io/tags/intune/">Intune</a></li>
-      <li><a href="https://hojjang98.github.io/tags/mdm%EB%82%A8%EC%9A%A9/">MDM남용</a></li>
-      <li><a href="https://hojjang98.github.io/tags/%EC%A7%80%EC%A0%95%ED%95%99%EC%A0%81%EC%82%AC%EC%9D%B4%EB%B2%84%EC%9C%84%ED%98%91/">지정학적사이버위협</a></li>
-      <li><a href="https://hojjang98.github.io/tags/lotl/">LotL</a></li>
-      <li><a href="https://hojjang98.github.io/tags/%EC%9D%B4%EB%9E%80apt/">이란APT</a></li>
+      <li><a href="http://localhost:1313/tags/handala/">Handala</a></li>
+      <li><a href="http://localhost:1313/tags/mois/">MOIS</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%99%80%EC%9D%B4%ED%8D%BC%EA%B3%B5%EA%B2%A9/">와이퍼공격</a></li>
+      <li><a href="http://localhost:1313/tags/stryker/">Stryker</a></li>
+      <li><a href="http://localhost:1313/tags/intune/">Intune</a></li>
+      <li><a href="http://localhost:1313/tags/mdm%EB%82%A8%EC%9A%A9/">MDM남용</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%A7%80%EC%A0%95%ED%95%99%EC%A0%81%EC%82%AC%EC%9D%B4%EB%B2%84%EC%9C%84%ED%98%91/">지정학적사이버위협</a></li>
+      <li><a href="http://localhost:1313/tags/lotl/">LotL</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%9D%B4%EB%9E%80apt/">이란APT</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
+        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
 
     <span>
         Powered by

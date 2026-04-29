@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>2026.04.14 (Day 114) - 최종 발표 리허설 피드백 정리 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="보안컨설팅, 발표준비, 리허설, 피드백, PPT, 프로젝트마무리">
+<meta name="description" content="최종 발표 리허설을 진행하고 팀원 및 강사님 피드백을 수렴하였다. 발표 속도, 근거 부족(0.7 가중치·ABCD 등급), 분량 불균형, 포인터 미사용 등을 주요 개선사항으로 확인하였다.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/daily_logs/week24/20260414_final_project_40/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c8c3b65cd6d058be2b4f050fd7a688ac13a23056571601dabe4f70d8d008259e.css" integrity="sha256-yMO2XNbQWL4rTwUP16aIrBOiMFZXFgHavk9w2NAIJZ4=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/daily_logs/week24/20260414_final_project_40/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">홈</a>&nbsp;»&nbsp;<a href="http://localhost:1313/daily_logs/">6개월, 혹은 그 이상의 보안 여정</a></div>
+    <h1 class="post-title entry-hint-parent">
+      2026.04.14 (Day 114) - 최종 발표 리허설 피드백 정리
+    </h1>
+    <div class="post-meta"><span title='2026-04-14 00:00:00 +0000 UTC'>2026년 4월 14일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>[ 1. 핵심 개념 정리 ]</p>
+<pre><code>[ 피드백 수집 개요 ]
+
+| # | 피드백 출처 | 핵심 지적 사항 | 조치 필요 여부 |
+|:---:|:---|:---|:---|
+| 1 | 팀원 ○○ | 흐름도 설명 보강, 수탁사 현황 진입 맥락 설명 필요 | 즉시 |
+| 2 | 팀원 ○○ | 전반적으로 발표 속도가 너무 빠름, 대본 숙지 필요 | 즉시 |
+| 3 | 팀원 ○○ | 범주 영역 언급 필요, 결과 설명 간소화, 개선방안 언급 누락 | 즉시 |
+| 4 | 팀원 ○○ | 오발화 수정(보존기간  -&gt;  공지 및 교육), 취약점 수탁사별 1개로 압축, 협업도구 설명 간소화 | 즉시 |
+| 5 | 팀원 ○○ | 수탁사 연결 흐름 개선, 등급 순서(취약  -&gt;  양호) 어색함, 40p 근거 방향 논의 필요 | 협의 |
+| 6 | 팀원 ○○ | 리허설 추가 5회, 프로포절  -&gt;  제안요청서 표현 수정, AI 도구 소개 방식 개선 | 즉시 |
+| 7 | 팀원 ○○ | 페이지 중요도 대비 설명 분량 불균형 (수탁사 개념 1분 1초 vs 등급산정 16초) | 즉시 |
+| 8 | 팀원 ○○ | 영역 포인터 설명 병행, 시각자료 설명 시간 확보, 체크리스트 슬라이드 언급 누락 | 즉시 |
+| 9 | 강사님 | 속도 포인터 근거 부족(0.7 기준, ABCD 등급), 질문은 담당자가 직접 답변 | 최우선 |
+</code></pre>
+<p>[ 2. 피드백 상세 내용 ]</p>
+<pre><code>[ 슬라이드별 주요 피드백 ]
+
+| 슬라이드 | 지적 사항 | 수정 방향 |
+|:---:|:---|:---|
+| 12 - 13p | 수탁사 소개 연결이 어색함 / 영역 구분 설명 없이 나열됨 | 일반 수탁사 3개 + 항공 특화 3개 구분 명시 후 소개 |
+| 15p | 흐름도 설명이 너무 간략함 | 사업 제안서 이후 현황 수령까지의 흐름을 구체적으로 설명 |
+| 18p | 시스템 현황 표를 줄줄이 읽음 | 핵심 키워드 위주로만 언급 |
+| 28p | 슬라이드는 양호부터인데 설명은 취약부터 시작하여 어색 | 슬라이드 흐름에 맞춰 설명 순서 통일 |
+| 29p | 체크리스트 점검 방법 슬라이드인데 설명 아예 없음 | 점검 진행 방식 + 항목 내용 간략히 언급 필수 |
+| 40p | 근거 없이 수치(0.7) 제시 | 근거 먼저 제시 후 수치로 연결하는 구조로 재구성 |
+| 48p | 슬라이드 내용과 실제 발표 내용 불일치 | 대본 재검토 및 슬라이드 내용과 정합 확인 |
+| 58p | AI 도구 구구절절 소개  -&gt;  지루함 | 모델명만 간단히 제시하고 상황별 활용 사례 중심으로 전환 |
+| 59p | 발표 진행 순서 안내 방식 미정 | 먼저 전체 순서 안내 후 진행할지, 순차 진행할지 팀 협의 필요 |
+| 70p | 팀원별 소감 처리 방식 미정 | 전체 슬라이드 노출 후 팀장만 대표 낭독 방식 검토 |
+
+[ 강사님 피드백 - 최우선 반영 사항 ]
+
+| # | 지적 사항 | 세부 내용 | 조치 방안 |
+|:---:|:---|:---|:---|
+| 1 | 발표 속도 | 전반적으로 너무 빠름 | 각 슬라이드 최소 체류 시간 설정, 천천히 |
+| 2 | 포인터 미사용 | 시각자료 설명 시 포인터 없어 청중 집중 어려움 | 포인터 지참 필수 |
+| 3 | 0.7 근거 부족 | 가중치 산정 기준에 대한 납득 가능한 설명 없음 | 근거 데이터/논리 보완 |
+| 4 | ABCD 등급 근거 부족 | 등급 구간 설정 이유 설명 없음 | 등급 산정 기준 논거 보강 |
+| 5 | 질의응답 | 담당자가 직접 답해야 함 | 파트별 담당자 사전 지정 및 숙지 |
+| 6 | 매니저 개입 | 매니저가 손들어도 발표 계속 진행 | 발표 중 외부 개입 무시하고 끝까지 진행 |
+</code></pre>
+<p>[ 3. 분량 불균형 분석 ]</p>
+<pre><code>[ 페이지별 설명 시간 vs 중요도 ]
+
+| 슬라이드 | 실제 소요 시간 | 상대적 중요도 | 평가 |
+|:---:|:---|:---|:---|
+| 수탁사 개념 설명 | 약 1분 1초 | 중 | 과다 — 축소 필요 |
+| 등급 산정 및 결과 | 약 16초 | 상 | 과소 — 보강 필요 |
+| 수탁사 위험도 그래프 | 약 40초 | 상 | 보강 또는 유지 |
+| 결과 분석 법적 리스크 | 약 50초 | 상 | 적정 수준 |
+| AI 도구 설명 | 약 29초 | 하 | 과다 — 추가 축소 |
+</code></pre>
+<p>[ 4. 표현 수정 목록 ]</p>
+<pre><code>| 기존 표현 | 수정 표현 | 비고 |
+|:---|:---|:---|
+| 프로포절 | 제안요청서 | 한국어 표현으로 통일 |
+| 보존기간 (4.3 단기조치) | 공지 및 교육 | 오발화 수정 |
+| AI 도구 구구절절 소개 | 모델명 나열 후 상황별 활용 사례 중심 | 발표 흐름 개선 |
+</code></pre>
+<p>[ 5. 협의 필요 사항 ]</p>
+<pre><code>[ 팀 논의 필요 항목 ]
+
+| # | 항목 | 현황 | 논의 방향 |
+|:---:|:---|:---|:---|
+| 1 | 40p 근거 제시 방식 | 수치만 제시, 근거 없음 | 근거 먼저  -&gt;  수치 연결 구조로 재구성 여부 합의 |
+| 2 | 59p 발표 진행 방식 | 순서 안내 방식 미결정 | 전체 순서 먼저 vs 순차 진행 방식 선택 |
+| 3 | 체크리스트 예시 방식 | 종합 예시 사용 중 | 단일 항목 상세 예시로 변경 여부 검토 |
+| 4 | 개선방안 보고서 소개 | 전체 내용으로 설명 | 일부 발췌본임을 명시하는 멘트 추가 |
+</code></pre>
+<p>[ 6. 배운 점 및 인사이트 ]</p>
+<pre><code>[ 새로 알게 된 점 ]
+
+-  분량 불균형의 위험성 : 발표 준비 과정에서 중요도와 설명 시간이 반비례하는 현상이 실제로 발생했고,
+    이를 수치로 확인하니 개선 방향이 명확해졌다.
+
+-  대본 숙지 vs 슬라이드 의존 : 대본 미숙지 상태에서는 슬라이드를 그대로 읽게 되어
+    청중과의 소통이 끊어진다.
+
+-  근거 없는 수치는 신뢰를 깎는다 : 0.7 가중치, ABCD 등급 구간 모두 &quot;왜&quot;를 설명하지 못하면
+    컨설팅의 신뢰도 전체가 흔들린다.
+
+-  포인터의 역할 : 단순 도구가 아니라 청중의 시선을 유도하고 발표 흐름을 통제하는 수단이다.
+
+-  표현의 일관성 : 외래어(프로포절)와 한국어(제안요청서)가 혼재하면 전문성 인상이 희석된다.
+
+[ 이전 학습과의 연결고리 ]
+
+-  컨설팅 방법론과 연계 : &quot;Process is the persona&quot; — 발표에서도 방법론적 엄밀함(근거 제시, 흐름 일관성)이
+    곧 팀의 컨설팅 정체성임을 재확인.
+
+-  ABCD 등급 설계  -&gt;  발표 설명으로 확장 : 등급 체계 설계 당시 충분히 논의했던 내용이지만,
+    발표 대본에 이 논거가 반영되지 않았던 것이 이번 피드백의 핵심.
+
+-  피어리뷰 경험  -&gt;  실전 적용 : 문서 피어리뷰에서 익힌 &quot;검증 가능성&quot; 원칙이
+    발표 근거 제시에도 동일하게 적용된다는 점을 확인.
+
+[ 실무 적용 아이디어 ]
+
+보안 전문가 관점 :
+
+-  발표 구조화 원칙 : 기술 브리핑이든 컨설팅 발표든 &quot;주장  -&gt;  근거  -&gt;  결론&quot; 구조는
+    협상 상황에서 신뢰를 만드는 기본이다.
+
+-  시각자료 활용 : 포인터나 하이라이트를 통한 시선 유도는
+    SOC 브리핑, 인시던트 보고 등 실무 발표에서도 필수 요소다.
+
+-  담당 파트 책임 : 질의응답 시 담당자가 직접 답변하는 구조는 실무 팀에서도 그대로 적용된다.
+</code></pre>
+<p>[ 7. Quick Reference ]</p>
+<pre><code>[ 최종 발표 전 체크리스트 ]
+
+대본 및 내용 :
+    -  0.7 가중치 근거 보강
+    -  ABCD 등급 산정 기준 논거 추가
+    -  프로포절  -&gt;  제안요청서 표현 수정
+    -  4.3 오발화(보존기간  -&gt;  공지 및 교육) 수정
+    -  체크리스트 슬라이드(29p) 설명 추가
+    -  개선방안 보고서 발췌 안내 멘트 추가
+    -  슬라이드 내용과 대본 정합성 전체 재검토 (특히 48p)
+
+발표 스킬 :
+    -  포인터 준비
+    -  발표 속도 의식적 조절 (각 슬라이드 최소 체류 시간 설정)
+    -  리허설 5회 추가 진행
+    -  질의응답 파트별 담당자 사전 지정
+
+팀 협의 :
+    -  40p 근거 제시 방식 합의
+    -  59p 발표 진행 순서 안내 방식 결정
+    -  체크리스트 예시 방식 변경 여부 결정
+    -  70p 소감 처리 방식 결정
+</code></pre>
+<p>[ 8. 트러블슈팅 ]</p>
+<pre><code>| 문제 | 원인 | 해결 방법 |
+|:---|:---|:---|
+| 발표 속도가 너무 빠름 | 대본 미숙지 + 긴장 | 리허설 반복, 슬라이드별 체류 시간 설정 |
+| 슬라이드와 대본 불일치 | 수정 과정에서 대본-슬라이드 싱크 미확인 | 최종 슬라이드 확정 후 대본 전면 재검토 |
+| 근거 없는 수치 제시 | 설계 단계 논거가 대본에 미반영 | ABCD 기준 0.7 가중치 근거 문단 대본 삽입 |
+| 특정 페이지 과도한 설명 | 중요도 기준 없이 아는 만큼 설명 | 슬라이드별 목표 설명 시간 사전 배분 |
+| 질의응답 담당 불명확 | 파트 책임자 미사전 지정 | 슬라이드 범위별 담당자 표 작성 및 공유 |
+</code></pre>
+<p>Today&rsquo;s Insight :</p>
+<p>오늘 리허설은 단순한 연습이 아니라 팀의 현재 위치를 정직하게 드러낸 진단이었다.
+가장 핵심적인 지적은 두 가지로 압축된다.
+첫째, 우리가 설계한 기준(가중치 등급)의 논거가 발표 대본에 제대로 담기지 않았다는 것.
+컨설팅의 설득력은 결국 &ldquo;왜 이 기준인가&quot;에 답할 수 있느냐에 달려 있다.
+둘째, 중요한 슬라이드일수록 오히려 설명이 짧았다는 분량 불균형.
+남은 기간 동안 대본 숙지와 근거 보강, 그리고 슬라이드별 시간 배분을 정비하면
+완성도는 충분히 올릴 수 있다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/%EB%B3%B4%EC%95%88%EC%BB%A8%EC%84%A4%ED%8C%85/">보안컨설팅</a></li>
+      <li><a href="http://localhost:1313/tags/%EB%B0%9C%ED%91%9C%EC%A4%80%EB%B9%84/">발표준비</a></li>
+      <li><a href="http://localhost:1313/tags/%EB%A6%AC%ED%97%88%EC%84%A4/">리허설</a></li>
+      <li><a href="http://localhost:1313/tags/%ED%94%BC%EB%93%9C%EB%B0%B1/">피드백</a></li>
+      <li><a href="http://localhost:1313/tags/ppt/">PPT</a></li>
+      <li><a href="http://localhost:1313/tags/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EB%A7%88%EB%AC%B4%EB%A6%AC/">프로젝트마무리</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

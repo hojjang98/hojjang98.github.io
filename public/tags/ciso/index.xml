@@ -1,1 +1,61 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>CISO on HJ's Security Note</title><link>https://hojjang98.github.io/tags/ciso/</link><description>Recent content in CISO on HJ's Security Note</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Fri, 20 Mar 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://hojjang98.github.io/tags/ciso/index.xml" rel="self" type="application/rss+xml"/><item><title>Day 36: 데이터 3법 비교 정리</title><link>https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/14_%EB%8D%B0%EC%9D%B4%ED%84%B03%EB%B2%95/day36_%EB%8D%B0%EC%9D%B4%ED%84%B03%EB%B2%95%EB%B9%84%EA%B5%90/</link><pubDate>Fri, 20 Mar 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/14_%EB%8D%B0%EC%9D%B4%ED%84%B03%EB%B2%95/day36_%EB%8D%B0%EC%9D%B4%ED%84%B03%EB%B2%95%EB%B9%84%EA%B5%90/</guid><description>개인정보보호법, 정보통신망법, 신용정보법 3개 법률의 적용 대상, 보호 범위, 동의·암호화·CISO 등 주요 규정 비교 및 실무 적용 가이드</description></item><item><title>Day 32: 전기통신사업법</title><link>https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/10_%ED%86%B5%EC%8B%A0%EC%82%AC%EC%97%85/day32_%EC%A0%84%EA%B8%B0%ED%86%B5%EC%8B%A0%EC%82%AC%EC%97%85%EB%B2%95/</link><pubDate>Mon, 16 Mar 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/10_%ED%86%B5%EC%8B%A0%EC%82%AC%EC%97%85/day32_%EC%A0%84%EA%B8%B0%ED%86%B5%EC%8B%A0%EC%82%AC%EC%97%85%EB%B2%95/</guid><description>통신사업자를 규제하는 전기통신사업법을 학습합니다. 사업자 분류, 정보보호 의무, 통신비밀 보호, 망 중립성 원칙, 통신 자료 제공 절차를 정리합니다.</description></item><item><title>Day 31: 정보통신기반 보호법</title><link>https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/09_%EA%B8%B0%EB%B0%98%EC%8B%9C%EC%84%A4%EB%B3%B4%ED%98%B8/day31_%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EA%B8%B0%EB%B0%98%EB%B3%B4%ED%98%B8%EB%B2%95/</link><pubDate>Sun, 15 Mar 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/09_%EA%B8%B0%EB%B0%98%EC%8B%9C%EC%84%A4%EB%B3%B4%ED%98%B8/day31_%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EA%B8%B0%EB%B0%98%EB%B3%B4%ED%98%B8%EB%B2%95/</guid><description>국가 기반시설 보호를 위한 정보통신기반 보호법을 학습합니다. 주요정보통신기반시설 지정 기준, 관리기관 의무, KISA 역할, 침해사고 대응 절차를 정리합니다.</description></item><item><title>Day 29: 국가정보보안 기본지침</title><link>https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/07_%EA%B3%A0%EC%8B%9C%EB%B0%8F%EC%A7%80%EC%B9%A8/day29_%EA%B5%AD%EA%B0%80%EC%A0%95%EB%B3%B4%EB%B3%B4%EC%95%88%EA%B8%B0%EB%B3%B8%EC%A7%80%EC%B9%A8/</link><pubDate>Fri, 13 Mar 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/07_%EA%B3%A0%EC%8B%9C%EB%B0%8F%EC%A7%80%EC%B9%A8/day29_%EA%B5%AD%EA%B0%80%EC%A0%95%EB%B3%B4%EB%B3%B4%EC%95%88%EA%B8%B0%EB%B3%B8%EC%A7%80%EC%B9%A8/</guid><description>국가정보원장 훈령인 국가정보보안 기본지침의 전체 구조를 학습합니다. 보안등급 분류, 망분리 의무, 검증 암호 알고리즘 등 공공기관 정보보호 핵심 기준을 정리합니다.</description></item><item><title>Day 27: 전자금융감독규정</title><link>https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/07_%EA%B3%A0%EC%8B%9C%EB%B0%8F%EC%A7%80%EC%B9%A8/day27_%EC%A0%84%EC%9E%90%EA%B8%88%EC%9C%B5%EA%B0%90%EB%8F%85%EA%B7%9C%EC%A0%95/</link><pubDate>Wed, 11 Mar 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/07_%EA%B3%A0%EC%8B%9C%EB%B0%8F%EC%A7%80%EC%B9%A8/day27_%EC%A0%84%EC%9E%90%EA%B8%88%EC%9C%B5%EA%B0%90%EB%8F%85%EA%B7%9C%EC%A0%95/</guid><description>금융위원회 고시인 전자금융감독규정의 주요 조항을 학습합니다. CISO 지정, 접근통제, 암호화, 망분리, 보안관제 등 금융권 보안 실무 기준을 정리합니다.</description></item><item><title>Day 09: 정보통신망법 기초</title><link>https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/02_%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%A7%9D%EB%B2%95/day09_%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%A7%9D%EB%B2%95_%EA%B8%B0%EC%B4%88/</link><pubDate>Thu, 12 Feb 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/02_%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%A7%9D%EB%B2%95/day09_%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%A7%9D%EB%B2%95_%EA%B8%B0%EC%B4%88/</guid><description>정보통신서비스 제공자에 적용되는 정보통신망법의 기본 개념, CISO 지정 의무, ISMS-P 인증 대상을 학습합니다.</description></item><item><title>2026.01.14 (Day 55) - ISMS-P 인증제도 및 정보보호 관리체계 수립</title><link>https://hojjang98.github.io/daily_logs/week12/20260114_consulting_last_day/</link><pubDate>Wed, 14 Jan 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week12/20260114_consulting_last_day/</guid><description>ISMS-P 101개 통제항목 구조, 조직/업무/IT 환경분석 3단계, 정보서비스 흐름도 및 개인정보 흐름도 작성 절차(수집/저장/이용/제공/파기 단계별), 자산 중요도 1-3등급 평가(기밀성/무결성/가용성), CISO/CPO/CSO 관리책임자 역할 비교, 정형/비정형 보안컨설팅 사업 유형</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>CISO on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/ciso/</link>
+    <description>Recent content in CISO on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Fri, 20 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/ciso/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Day 36: 데이터 3법 비교 정리</title>
+      <link>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/14_%EB%8D%B0%EC%9D%B4%ED%84%B03%EB%B2%95/day36_%EB%8D%B0%EC%9D%B4%ED%84%B03%EB%B2%95%EB%B9%84%EA%B5%90/</link>
+      <pubDate>Fri, 20 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/14_%EB%8D%B0%EC%9D%B4%ED%84%B03%EB%B2%95/day36_%EB%8D%B0%EC%9D%B4%ED%84%B03%EB%B2%95%EB%B9%84%EA%B5%90/</guid>
+      <description>개인정보보호법, 정보통신망법, 신용정보법 3개 법률의 적용 대상, 보호 범위, 동의·암호화·CISO 등 주요 규정 비교 및 실무 적용 가이드</description>
+    </item>
+    <item>
+      <title>Day 32: 전기통신사업법</title>
+      <link>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/10_%ED%86%B5%EC%8B%A0%EC%82%AC%EC%97%85/day32_%EC%A0%84%EA%B8%B0%ED%86%B5%EC%8B%A0%EC%82%AC%EC%97%85%EB%B2%95/</link>
+      <pubDate>Mon, 16 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/10_%ED%86%B5%EC%8B%A0%EC%82%AC%EC%97%85/day32_%EC%A0%84%EA%B8%B0%ED%86%B5%EC%8B%A0%EC%82%AC%EC%97%85%EB%B2%95/</guid>
+      <description>통신사업자를 규제하는 전기통신사업법을 학습합니다. 사업자 분류, 정보보호 의무, 통신비밀 보호, 망 중립성 원칙, 통신 자료 제공 절차를 정리합니다.</description>
+    </item>
+    <item>
+      <title>Day 31: 정보통신기반 보호법</title>
+      <link>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/09_%EA%B8%B0%EB%B0%98%EC%8B%9C%EC%84%A4%EB%B3%B4%ED%98%B8/day31_%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EA%B8%B0%EB%B0%98%EB%B3%B4%ED%98%B8%EB%B2%95/</link>
+      <pubDate>Sun, 15 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/09_%EA%B8%B0%EB%B0%98%EC%8B%9C%EC%84%A4%EB%B3%B4%ED%98%B8/day31_%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EA%B8%B0%EB%B0%98%EB%B3%B4%ED%98%B8%EB%B2%95/</guid>
+      <description>국가 기반시설 보호를 위한 정보통신기반 보호법을 학습합니다. 주요정보통신기반시설 지정 기준, 관리기관 의무, KISA 역할, 침해사고 대응 절차를 정리합니다.</description>
+    </item>
+    <item>
+      <title>Day 29: 국가정보보안 기본지침</title>
+      <link>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/07_%EA%B3%A0%EC%8B%9C%EB%B0%8F%EC%A7%80%EC%B9%A8/day29_%EA%B5%AD%EA%B0%80%EC%A0%95%EB%B3%B4%EB%B3%B4%EC%95%88%EA%B8%B0%EB%B3%B8%EC%A7%80%EC%B9%A8/</link>
+      <pubDate>Fri, 13 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/07_%EA%B3%A0%EC%8B%9C%EB%B0%8F%EC%A7%80%EC%B9%A8/day29_%EA%B5%AD%EA%B0%80%EC%A0%95%EB%B3%B4%EB%B3%B4%EC%95%88%EA%B8%B0%EB%B3%B8%EC%A7%80%EC%B9%A8/</guid>
+      <description>국가정보원장 훈령인 국가정보보안 기본지침의 전체 구조를 학습합니다. 보안등급 분류, 망분리 의무, 검증 암호 알고리즘 등 공공기관 정보보호 핵심 기준을 정리합니다.</description>
+    </item>
+    <item>
+      <title>Day 27: 전자금융감독규정</title>
+      <link>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/07_%EA%B3%A0%EC%8B%9C%EB%B0%8F%EC%A7%80%EC%B9%A8/day27_%EC%A0%84%EC%9E%90%EA%B8%88%EC%9C%B5%EA%B0%90%EB%8F%85%EA%B7%9C%EC%A0%95/</link>
+      <pubDate>Wed, 11 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/07_%EA%B3%A0%EC%8B%9C%EB%B0%8F%EC%A7%80%EC%B9%A8/day27_%EC%A0%84%EC%9E%90%EA%B8%88%EC%9C%B5%EA%B0%90%EB%8F%85%EA%B7%9C%EC%A0%95/</guid>
+      <description>금융위원회 고시인 전자금융감독규정의 주요 조항을 학습합니다. CISO 지정, 접근통제, 암호화, 망분리, 보안관제 등 금융권 보안 실무 기준을 정리합니다.</description>
+    </item>
+    <item>
+      <title>Day 09: 정보통신망법 기초</title>
+      <link>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/02_%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%A7%9D%EB%B2%95/day09_%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%A7%9D%EB%B2%95_%EA%B8%B0%EC%B4%88/</link>
+      <pubDate>Thu, 12 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/02_%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%A7%9D%EB%B2%95/day09_%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%A7%9D%EB%B2%95_%EA%B8%B0%EC%B4%88/</guid>
+      <description>정보통신서비스 제공자에 적용되는 정보통신망법의 기본 개념, CISO 지정 의무, ISMS-P 인증 대상을 학습합니다.</description>
+    </item>
+    <item>
+      <title>2026.01.14 (Day 55) - ISMS-P 인증제도 및 정보보호 관리체계 수립</title>
+      <link>http://localhost:1313/daily_logs/week12/20260114_consulting_last_day/</link>
+      <pubDate>Wed, 14 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week12/20260114_consulting_last_day/</guid>
+      <description>ISMS-P 101개 통제항목 구조, 조직/업무/IT 환경분석 3단계, 정보서비스 흐름도 및 개인정보 흐름도 작성 절차(수집/저장/이용/제공/파기 단계별), 자산 중요도 1-3등급 평가(기밀성/무결성/가용성), CISO/CPO/CSO 관리책임자 역할 비교, 정형/비정형 보안컨설팅 사업 유형</description>
+    </item>
+  </channel>
+</rss>

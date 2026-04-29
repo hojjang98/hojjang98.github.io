@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>감청시스템 on HJ's Security Note</title><link>https://hojjang98.github.io/tags/%EA%B0%90%EC%B2%AD%EC%8B%9C%EC%8A%A4%ED%85%9C/</link><description>Recent content in 감청시스템 on HJ's Security Note</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Mon, 09 Mar 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://hojjang98.github.io/tags/%EA%B0%90%EC%B2%AD%EC%8B%9C%EC%8A%A4%ED%85%9C/index.xml" rel="self" type="application/rss+xml"/><item><title>FBI DCSNet 감청 시스템 침해 — 법집행 인프라 네트워크 침해</title><link>https://hojjang98.github.io/security-issues-analysis/2026/week10/fbi_dscnet_wiretap_system_breach/</link><pubDate>Mon, 09 Mar 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/security-issues-analysis/2026/week10/fbi_dscnet_wiretap_system_breach/</guid><description>2026년 3월 5일 FBI 내부 감청·영장 관리 시스템 DCSNet이 침해된 사건으로, 법집행 인프라가 공격 표면이 되는 구조적 취약성과 민간 통신사 합법적 도청 연동 지점이 반복적 공격 경로가 되는 문제를 분석한다.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>감청시스템 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%EA%B0%90%EC%B2%AD%EC%8B%9C%EC%8A%A4%ED%85%9C/</link>
+    <description>Recent content in 감청시스템 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Mon, 09 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%EA%B0%90%EC%B2%AD%EC%8B%9C%EC%8A%A4%ED%85%9C/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FBI DCSNet 감청 시스템 침해 — 법집행 인프라 네트워크 침해</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week10/fbi_dscnet_wiretap_system_breach/</link>
+      <pubDate>Mon, 09 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week10/fbi_dscnet_wiretap_system_breach/</guid>
+      <description>2026년 3월 5일 FBI 내부 감청·영장 관리 시스템 DCSNet이 침해된 사건으로, 법집행 인프라가 공격 표면이 되는 구조적 취약성과 민간 통신사 합법적 도청 연동 지점이 반복적 공격 경로가 되는 문제를 분석한다.</description>
+    </item>
+  </channel>
+</rss>

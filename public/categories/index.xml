@@ -1,1 +1,75 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Categories on HJ's Security Note</title><link>https://hojjang98.github.io/categories/</link><description>Recent content in Categories on HJ's Security Note</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Tue, 31 Mar 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://hojjang98.github.io/categories/index.xml" rel="self" type="application/rss+xml"/><item><title>Daily-Logs</title><link>https://hojjang98.github.io/categories/daily-logs/</link><pubDate>Tue, 31 Mar 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/categories/daily-logs/</guid><description/></item><item><title>Paper-Review</title><link>https://hojjang98.github.io/categories/paper-review/</link><pubDate>Tue, 31 Mar 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/categories/paper-review/</guid><description/></item><item><title>Security-Issues-Analysis</title><link>https://hojjang98.github.io/categories/security-issues-analysis/</link><pubDate>Sun, 29 Mar 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/categories/security-issues-analysis/</guid><description/></item><item><title>Cyber-Law-Study</title><link>https://hojjang98.github.io/categories/cyber-law-study/</link><pubDate>Mon, 23 Mar 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/categories/cyber-law-study/</guid><description/></item><item><title>Projects</title><link>https://hojjang98.github.io/categories/projects/</link><pubDate>Mon, 16 Mar 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/categories/projects/</guid><description/></item><item><title>SK 루키즈</title><link>https://hojjang98.github.io/categories/sk-%EB%A3%A8%ED%82%A4%EC%A6%88/</link><pubDate>Fri, 06 Feb 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/categories/sk-%EB%A3%A8%ED%82%A4%EC%A6%88/</guid><description/></item><item><title>모의해킹</title><link>https://hojjang98.github.io/categories/%EB%AA%A8%EC%9D%98%ED%95%B4%ED%82%B9/</link><pubDate>Fri, 06 Feb 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/categories/%EB%AA%A8%EC%9D%98%ED%95%B4%ED%82%B9/</guid><description/></item><item><title>OT-Security</title><link>https://hojjang98.github.io/categories/ot-security/</link><pubDate>Fri, 19 Dec 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/categories/ot-security/</guid><description/></item><item><title>Research-Review</title><link>https://hojjang98.github.io/categories/research-review/</link><pubDate>Fri, 19 Dec 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/categories/research-review/</guid><description/></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Categories on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/categories/</link>
+    <description>Recent content in Categories on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Fri, 17 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cyber-Law-Study</title>
+      <link>http://localhost:1313/categories/cyber-law-study/</link>
+      <pubDate>Fri, 17 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/cyber-law-study/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Daily-Logs</title>
+      <link>http://localhost:1313/categories/daily-logs/</link>
+      <pubDate>Fri, 17 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/daily-logs/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Paper-Review</title>
+      <link>http://localhost:1313/categories/paper-review/</link>
+      <pubDate>Mon, 13 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/paper-review/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Security-Issues-Analysis</title>
+      <link>http://localhost:1313/categories/security-issues-analysis/</link>
+      <pubDate>Sun, 29 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/security-issues-analysis/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Projects</title>
+      <link>http://localhost:1313/categories/projects/</link>
+      <pubDate>Mon, 16 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/projects/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>SK 루키즈</title>
+      <link>http://localhost:1313/categories/sk-%EB%A3%A8%ED%82%A4%EC%A6%88/</link>
+      <pubDate>Fri, 06 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/sk-%EB%A3%A8%ED%82%A4%EC%A6%88/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>모의해킹</title>
+      <link>http://localhost:1313/categories/%EB%AA%A8%EC%9D%98%ED%95%B4%ED%82%B9/</link>
+      <pubDate>Fri, 06 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/%EB%AA%A8%EC%9D%98%ED%95%B4%ED%82%B9/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>OT-Security</title>
+      <link>http://localhost:1313/categories/ot-security/</link>
+      <pubDate>Fri, 19 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/ot-security/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Research-Review</title>
+      <link>http://localhost:1313/categories/research-review/</link>
+      <pubDate>Fri, 19 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/research-review/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

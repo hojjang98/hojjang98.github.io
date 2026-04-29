@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Day54 실무 사례 - 메리어트 호텔 데이터 유출 (2018) | HJ&#39;s Security Note</title>
+<meta name="keywords" content="메리어트, GDPR, APT, 개인정보유출, M&amp;A보안, 실무사례">
+<meta name="description" content="메리어트 호텔 그룹의 2014~2018년 APT 해킹 사건. 약 5억 명 고객 정보 유출, 4년간 탐지 실패, 중국 정부 배후 추정, GDPR 위반 벌금 2,400만 달러.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/04_%EB%9E%9C%EC%84%AC%EC%9B%A8%EC%96%B4/day54_%EB%9E%9C%EC%84%AC%EC%9B%A8%EC%96%B4%EC%82%AC%EB%A1%802_%EB%A9%94%EB%A6%AC%EC%96%B4%ED%8A%B8/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c8c3b65cd6d058be2b4f050fd7a688ac13a23056571601dabe4f70d8d008259e.css" integrity="sha256-yMO2XNbQWL4rTwUP16aIrBOiMFZXFgHavk9w2NAIJZ4=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/04_%EB%9E%9C%EC%84%AC%EC%9B%A8%EC%96%B4/day54_%EB%9E%9C%EC%84%AC%EC%9B%A8%EC%96%B4%EC%82%AC%EB%A1%802_%EB%A9%94%EB%A6%AC%EC%96%B4%ED%8A%B8/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">홈</a>&nbsp;»&nbsp;<a href="http://localhost:1313/cyber_law_study/">보안 컨설팅 공부</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Day54 실무 사례 - 메리어트 호텔 데이터 유출 (2018)
+    </h1>
+    <div class="post-meta"><span title='2026-04-16 00:00:00 +0000 UTC'>2026년 4월 16일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>[ 1. 사건 개요 ]</p>
+<pre><code>- 회사  :  메리어트 인터내셔널 (Marriott International)
+- 피해 브랜드  :  스타우드 호텔 (Starwood Hotels, 메리어트 인수)
+- 발생 시기  :  2014년 - 2018년 (약 4년간)
+- 발견  :  2018년 9월
+- 유출 규모  :  약 5억 명 (전 세계)
+- 유출 방식  :  외부 해킹 (APT 공격)
+- 공격자  :  중국 정부 배후 해커 그룹 (추정)
+</code></pre>
+<p>사건 요약</p>
+<p>2018년, 메리어트 호텔 그룹이 2014년부터 약 4년간 해커의 침입을 받아
+전 세계 고객 약 5억 명의 개인정보가 유출된 사실이 뒤늦게 발견되었다.
+유출 정보에는 이름, 여권번호, 이메일, 전화번호, 체크인/아웃 날짜, 신용카드 정보 등이 포함되었다.
+역사상 최대 규모의 호텔 업계 데이터 유출 사건으로, 중국 정부 배후 해킹으로 추정되며
+국가 안보 차원의 정보 수집 목적이었던 것으로 분석된다.
+유럽 GDPR 위반으로 약 1억 달러 이상의 벌금이 부과되었다.</p>
+<p>[ 1.1 상세 경위 ]</p>
+<pre><code>- 침입 시점  :  2014년 (스타우드 호텔 예약 시스템)
+</code></pre>
+<p>배경</p>
+<p>메리어트는 2016년 스타우드 호텔 체인을 인수.
+스타우드 - 쉐라톤, 웨스틴, W 호텔 등 유명 브랜드.
+인수 당시 이미 해커가 스타우드 시스템에 침투해 있었음 (메리어트는 몰랐음).</p>
+<p>공격 단계</p>
+<pre><code>- 1단계 초기 침투 (2014년)  :  스타우드 예약 시스템 취약점 악용, 내부망 침투, 백도어 설치
+- 2단계 장기 잠복 (2014-2018)  :  약 4년간 은밀히 잠복, 고객 예약 데이터 수집, 외부 전송 (C&amp;C 서버)
+- 3단계 메리어트 인수 (2016)  :  메리어트가 스타우드 인수, 해킹 사실 모름, 시스템 통합 진행
+- 4단계 발견 (2018년 9월)  :  메리어트 보안팀이 비정상 DB 접근 탐지, 조사 착수, 2014년부터 침입 확인
+</code></pre>
+<p>유출 데이터 (약 3억 8,300만 명, 전체 5억 건 중 중복 제외)</p>
+<pre><code>- 이름
+- 이메일
+- 전화번호
+- 여권번호 (약 500만 명)
+- 생년월일
+- 성별
+- 체크인/체크아웃 날짜
+- 호텔 위치
+- 신용카드 정보 (일부, 암호화되었으나 해독 가능성)
+</code></pre>
+<p>유출 규모 의미</p>
+<pre><code>- 약 5억 명  :  역사상 최대 규모 호텔 데이터 유출
+- 전 세계 주요 정부 관료, 기업 임원, 유명인사 포함 (추정)
+</code></pre>
+<p>공격 목적 (추정)</p>
+<pre><code>- 중국 정부 정보 수집
+- 여행 패턴 파악 (정부 관료, 기업 임원)
+- 국가 안보 정보 수집
+- 스파이 활동 지원
+</code></pre>
+<p>[ 1.2 타임라인 ]</p>
+<pre><code>- 2014년  :  해커 스타우드 예약 시스템 침투, 백도어 설치, 데이터 수집 시작
+- 2014-2018년  :  약 4년간 지속적 데이터 수집, 고객 예약 정보 외부 전송, 탐지 못함
+- 2016년 9월  :  메리어트 스타우드 인수 (약 130억 달러), 시스템 통합 시작, 해킹 사실 여전히 모름
+- 2018년 9월 8일  :  메리어트 보안팀 비정상 DB 접근 탐지, 내부 조사 착수
+- 2018년 9월-11월  :  포렌식 조사, 2014년부터 침입 확인, 유출 규모 파악 (약 5억 건)
+- 2018년 11월 30일  :  메리어트 공식 발표, 언론 보도 시작 (전 세계)
+- 2018년 12월  :  고객 통지 시작 (이메일), 무료 신용 모니터링 서비스 제공
+- 2019년 1월-6월  :  미국 FBI, 영국 정보기관 합동 수사, 중국 정부 배후 결론 (추정)
+- 2019년 7월  :  영국 ICO 초기 벌금 예고 - 약 1억 2,400만 달러 (GDPR 위반)
+- 2020년 10월  :  영국 ICO 최종 벌금 확정 - 약 2,400만 달러 (감액, 코로나19 및 협조 반영)
+- 2021년-현재  :  집단 소송 진행 중 (미국, 영국 등)
+</code></pre>
+<p>[ 2. 법률 분석 ]</p>
+<p>[ 2.1 적용 법률 ]</p>
+<pre><code>- GDPR (유럽 개인정보보호법, 핵심)
+- 미국 각 주 개인정보보호법
+- 영국 Data Protection Act
+</code></pre>
+<p>이유</p>
+<p>메리어트는 글로벌 기업으로 유럽 고객 다수 보유.
+GDPR 적용 (2018년 5월 시행), 미국 및 영국 등 각국 법률도 적용.</p>
+<p>[ 2.2 GDPR 위반 내용 ]</p>
+<p>GDPR Article 5 (개인정보 처리 원칙)</p>
+<pre><code>- 조문  :  개인정보는 적절한 기술적·조직적 조치를 통해 안전하게 처리되어야 한다 (무결성 및 기밀성 원칙)
+- 위반  :  4년간 해킹 탐지 못함, 안전성 확보 조치 미흡, 인수 실사 (Due Diligence) 부족
+</code></pre>
+<p>GDPR Article 33 (유출 통지)</p>
+<pre><code>- 조문  :  개인정보 유출 발견 시 72시간 이내 감독기관 통지
+- 위반  :  2018년 9월 발견 - 11월 30일 발표 (약 3개월 소요, 72시간 초과)
+- 이유  :  유출 규모 파악 시간 소요 (4년 치 로그 분석)
+</code></pre>
+<p>GDPR Article 34 (정보주체 통지)</p>
+<pre><code>- 조문  :  정보주체에게 지체 없이 통지
+- 대응  :  2018년 12월 통지 시작 (약간 지연)
+</code></pre>
+<p>GDPR Article 83 (과징금)</p>
+<pre><code>- 조문  :  위반 시 연간 매출액의 4% 또는 2,000만 유로 중 높은 금액
+- 초기 예고  :  약 1억 2,400만 달러 (약 9,920만 파운드, GDPR 역대 최대 예정)
+- 최종 확정  :  약 2,400만 달러 (약 1,850만 파운드)
+- 감액 이유  :  코로나19 경제 상황, 메리어트 협조적 태도, 인수 전 해킹 (직접 책임 아님)
+</code></pre>
+<p>[ 2.3 미국 법 적용 ]</p>
+<pre><code>- 미국 연방법  :  특정 개인정보보호법 없음 (업종별 법만)
+- 캘리포니아 CCPA (2020년 시행, 사건 이후)
+- 뉴욕 SHIELD Act
+- 대응  :  각 주 법률 준수, 집단 소송 방어, 합의 진행 중
+</code></pre>
+<p>[ 2.4 처벌 및 제재 ]</p>
+<p>해커</p>
+<pre><code>- 미검거 (중국 정부 배후 추정, 검거 불가)
+</code></pre>
+<p>메리어트 제재</p>
+<pre><code>- 영국 ICO 벌금  :  약 2,400만 달러 (1,850만 파운드)
+- 미국 각 주 집단 소송  :  진행 중 (합의 금액 미공개, 수억 달러 추정)
+</code></pre>
+<p>총 비용</p>
+<pre><code>- 벌금  :  약 2,400만 달러 (영국)
+- 집단 소송 합의  :  수억 달러 (추정)
+- 무료 신용 모니터링  :  약 1억 달러 (수억 명 × 2년)
+- 시스템 개선  :  약 5억 달러 (추정)
+- 평판 손실  :  측정 불가
+- 총 직접 비용  :  약 10억 달러 이상
+</code></pre>
+<p>[ 2.5 법적 의미 ]</p>
+<pre><code>- GDPR 최대 벌금 (당시)  :  초기 예고 1억 2,400만 달러 = GDPR 역대 최대 (당시), 최종 감액되었으나 여전히 대규모
+- 글로벌 규제  :  한 사건으로 여러 국가 규제 동시 적용, 글로벌 기업 = 다중 책임
+- 인수 실사 중요성  :  스타우드 인수 시 보안 점검 부족, 인수 후 해킹 발견, M&amp;A 시 보안 실사 필수
+- 인수 전 해킹도 책임  :  인수 대상 시스템의 해킹 = 인수 기업 책임
+</code></pre>
+<p>[ 3. 기술적 분석 ]</p>
+<p>[ 3.1 APT 공격 (4년 잠복) ]</p>
+<p>특징</p>
+<pre><code>- 약 4년간 탐지 안 됨
+- 국가 배후 해킹 = 고도화
+- 정보 수집 목적 (파괴 아님)
+</code></pre>
+<p>공격 단계</p>
+<pre><code>- 초기 침투 (2014)  :  취약점 악용
+- 거점 확보  :  백도어 설치
+- 권한 상승  :  관리자 권한 획득
+- 장기 잠복  :  은밀히 정보 수집
+- 지속적 전송  :  C&amp;C 서버로 데이터 전송
+</code></pre>
+<p>탐지 회피 방법</p>
+<pre><code>- 정상 트래픽으로 위장
+- 소량씩 전송 (대량 전송 = 탐지 위험)
+- 암호화 통신
+</code></pre>
+<p>[ 3.2 보안 취약점 분석 ]</p>
+<p>APT 탐지 실패</p>
+<pre><code>- 문제  :  4년간 탐지 못함, IDS/IPS 미흡, SIEM 미구축 또는 미흡, 로그 분석 부족
+- 대책  :  차세대 IDS/IPS, SIEM, 24/365 SOC, AI 기반 이상 탐지, 외부 통신 모니터링
+</code></pre>
+<p>인수 실사 부족</p>
+<pre><code>- 문제  :  스타우드 인수 시 보안 점검 부족, 인수 당시 이미 해커 잠복, 메리어트 몰랐음
+- 대책  :  M&amp;A 시 보안 실사 (Security Due Diligence), 전체 시스템 포렌식 분석, 인수 전 보안 점검 필수
+</code></pre>
+<p>레거시 시스템</p>
+<pre><code>- 문제  :  스타우드 예약 시스템 = 오래된 시스템, 보안 패치 지연, 취약점 다수
+- 대책  :  레거시 시스템 현대화, 정기 보안 패치, 취약점 스캔
+</code></pre>
+<p>데이터 암호화 미흡</p>
+<pre><code>- 문제  :  여권번호, 신용카드 정보 암호화 미흡, 일부 평문 저장 (추정)
+- 대책  :  전체 DB 암호화 (TDE), 여권번호 AES-256, 신용카드 토큰화
+</code></pre>
+<p>[ 3.3 사후 보안 강화 조치 ]</p>
+<pre><code>- 스타우드 시스템 완전 교체, 차세대 보안 솔루션 도입
+- IDS/IPS, SIEM, EDR 전면 구축
+- 24/365 글로벌 보안관제센터 (SOC) 운영
+- 실시간 위협 탐지, AI 기반 이상 탐지
+- 전체 DB 암호화, 여권번호/신용카드 AES-256, 토큰화
+- 정기 모의해킹 (분기 1회), 레드팀 운영
+- CISO 권한 강화, 보안팀 인력 3배 증원
+- 향후 5년간 보안 투자 10억 달러 계획
+</code></pre>
+<p>[ 4. 대응 평가 ]</p>
+<p>잘한 점</p>
+<pre><code>- 자체 탐지  :  2018년 자체 보안팀이 탐지 (외부 신고 아님)
+- 투명한 공개  :  전 세계 공개, 수억 명 통지
+- 무료 서비스  :  무료 신용 모니터링 2년 제공 (수억 명)
+- 협조적 태도  :  규제기관 협조 (벌금 감액 이유 중 하나)
+</code></pre>
+<p>미흡한 점</p>
+<pre><code>- 4년간 탐지 못함  :  2014-2018 = 너무 늦음, APT 탐지 실패
+- 인수 실사 부족  :  스타우드 인수 시 보안 점검 안 함
+- 통지 지연  :  GDPR 72시간 규정 위반 (9월 발견 - 11월 발표)
+- 레거시 시스템  :  오래된 시스템 방치, 보안 투자 부족
+</code></pre>
+<p>[ 5. 교훈 및 시사점 ]</p>
+<p>[ 5.1 기술적 교훈 ]</p>
+<p>APT = 장기전</p>
+<pre><code>- 4년 잠복 = 지속적 모니터링 필요
+- 국가 배후 = 고도화
+- 대응  :  24/365 SOC, SIEM, AI 이상 탐지, 외부 통신 모니터링
+</code></pre>
+<p>M&amp;A 시 보안 실사 필수</p>
+<pre><code>- 인수 전 보안 점검, 전체 시스템 포렌식, 해킹 여부 확인
+- 대응  :  Security Due Diligence, 전문가 참여, 인수 조건에 보안 점검 포함
+</code></pre>
+<p>레거시 시스템 위험</p>
+<pre><code>- 오래된 시스템 = 취약점 다수, 현대화 필요
+- 대응  :  정기 업데이트, 취약점 스캔, 시스템 교체 (5년 이상)
+</code></pre>
+<p>글로벌 = 다중 규제</p>
+<pre><code>- 한 사건으로 여러 국가 규제 동시 적용 (GDPR, 미국, 영국 등)
+- 대응  :  가장 엄격한 기준 (GDPR) 준수, 글로벌 통합 보안 정책
+</code></pre>
+<p>호텔 = 고위험 표적</p>
+<pre><code>- 정부 관료, 기업 임원 투숙, 여행 패턴 = 정보 가치, 국가 해킹 대상
+- 대응  :  호텔 업계 = 높은 보안 기준, 국가 수준 공격 대비
+</code></pre>
+<p>[ 5.2 법률적 교훈 ]</p>
+<p>GDPR = 강력한 규제</p>
+<pre><code>- 최대 매출액 4%, 메리어트 초기 1억 2,400만 달러
+- 교훈  :  GDPR 준수 필수, 유럽 고객 있으면 적용
+</code></pre>
+<p>72시간 통지 규정 (GDPR Article 33)</p>
+<pre><code>- 72시간 내 감독기관 통지 의무
+- 메리어트 = 3개월 소요 (위반)
+- 교훈  :  초기 파악 어려워도 72시간 내 1차 통지, 추가 정보는 나중 보고
+</code></pre>
+<p>인수 전 해킹도 책임</p>
+<pre><code>- 메리어트 = 인수 후 발견이지만 책임 있음 (인수 실사 부족)
+- 교훈  :  인수 = 책임도 인수, 보안 실사 필수
+</code></pre>
+<p>글로벌 소송</p>
+<pre><code>- 미국, 영국 등 여러 국가 동시 소송, 수억 달러 합의
+- 교훈  :  글로벌 기업 = 다중 소송 위험
+</code></pre>
+<p>[ 5.3 경영적 교훈 ]</p>
+<p>피해 규모 비교</p>
+<pre><code>- 총 비용  :  약 10억 달러 이상
+- 사전 투자 (추정)  :  보안 시스템 현대화 1억 달러 + 인수 실사 1,000만 달러 = 약 1.1억 달러
+- 비교  :  10억 달러 vs 1.1억 달러 = 약 9배 차이
+</code></pre>
+<p>M&amp;A 위험</p>
+<pre><code>- 인수 = 자산 + 부채 + 보안 위험
+- 교훈  :  M&amp;A 시 보안 실사 철저히
+</code></pre>
+<p>[ 5.4 국가 안보 관점 ]</p>
+<pre><code>- 메리어트 해킹 = 중국 정부 배후 (추정, 미국 FBI / 영국 정보기관 결론)
+- 목적  :  정부 관료 여행 패턴, 국가 안보 정보 수집, 스파이 활동 지원
+- 대응  :  호텔 업계 = 국가 안보 차원, 정부 협력 강화
+</code></pre>
+<p>[ 6. 주요 글로벌 데이터 유출 사건 비교 ]</p>
+<p>메리어트 (2014-2018)</p>
+<pre><code>- 유출 규모  :  5억 명
+- 유출 방식  :  APT (중국 정부 배후)
+- 벌금  :  2,400만 달러 (GDPR)
+</code></pre>
+<p>야후 (2013-2014)</p>
+<pre><code>- 유출 규모  :  30억 명
+- 유출 방식  :  외부 해킹
+- 벌금  :  1억 1,700만 달러
+</code></pre>
+<p>에퀴팩스 (2017)</p>
+<pre><code>- 유출 규모  :  1억 4,700만 명
+- 유출 방식  :  외부 해킹
+- 벌금  :  7억 달러 (합의)
+</code></pre>
+<p>페이스북 (2019)</p>
+<pre><code>- 유출 규모  :  5억 3,300만 명
+- 유출 방식  :  데이터 스크래핑
+- 벌금  :  5억 5,000만 달러 (합의)
+</code></pre>
+<p>메리어트 특징</p>
+<pre><code>- 호텔 업계 최대, 4년 장기 잠복, 중국 정부 배후, 여권번호 포함, GDPR 적용, 글로벌 규제
+</code></pre>
+<p>[ 7. 체크리스트 ]</p>
+<p>APT 대응</p>
+<pre><code>- 24/365 SOC (보안관제센터)
+- SIEM (보안 정보 통합)
+- 차세대 IDS/IPS
+- AI 기반 이상 탐지
+- 외부 통신 모니터링
+- C&amp;C 서버 통신 차단
+- 정기 포렌식 분석
+</code></pre>
+<p>M&amp;A 보안 실사</p>
+<pre><code>- 인수 전 전체 시스템 보안 점검
+- 포렌식 분석 (해킹 여부)
+- 취약점 스캔
+- 보안 전문가 참여
+- 인수 조건에 보안 점검 포함
+- 인수 후 시스템 격리 (통합 전)
+</code></pre>
+<p>레거시 시스템</p>
+<pre><code>- 5년 이상 시스템 교체 검토
+- 정기 보안 패치
+- 취약점 스캔 (월 1회)
+- EOL (End of Life) 시스템 교체
+</code></pre>
+<p>데이터 암호화</p>
+<pre><code>- DB 전체 암호화 (TDE)
+- 여권번호 AES-256
+- 신용카드 토큰화
+- 전송 암호화 (TLS 1.3)
+</code></pre>
+<p>글로벌 규제 준수</p>
+<pre><code>- GDPR 준수 (가장 엄격한 기준)
+- 72시간 내 감독기관 통지
+- 데이터 최소화
+- 동의 관리
+</code></pre>
+<p>조직</p>
+<pre><code>- CISO (글로벌)
+- 지역별 보안 책임자
+- 24/365 SOC
+- 외부 전문가 자문
+</code></pre>
+<p>침투 테스트</p>
+<pre><code>- 모의해킹 (분기 1회)
+- 레드팀 운영
+- 버그 바운티 프로그램
+</code></pre>
+<p>[ 8. 관련 법령 ]</p>
+<p>GDPR (유럽)</p>
+<pre><code>- Article 5  :  처리 원칙 (무결성 및 기밀성)
+- Article 32  :  안전성 확보 조치
+- Article 33  :  유출 통지 (72시간 이내 감독기관)
+- Article 34  :  정보주체 통지
+- Article 83  :  과징금 (매출액 4% 또는 2,000만 유로)
+</code></pre>
+<p>영국</p>
+<pre><code>- Data Protection Act 2018
+</code></pre>
+<p>미국</p>
+<pre><code>- 캘리포니아 CCPA
+- 뉴욕 SHIELD Act
+</code></pre>
+<p>[ 9. 실무 적용 ]</p>
+<p>[ 9.1 M&amp;A 보안 실사 절차 ]</p>
+<pre><code>- Phase 1 초기 평가 (인수 전)  :  보안 정책 검토, 최근 보안 사고 이력, 규제 위반 이력
+- Phase 2 기술 점검 (인수 결정 전)  :  전체 시스템 보안 스캔, 취약점 진단, 침투 테스트, 포렌식 분석
+- Phase 3 실사 보고서  :  발견된 문제점, 위험 평가, 비용 산정, 인수가 조정 또는 조건
+- Phase 4 인수 후 (통합 전)  :  인수 대상 시스템 격리, 보안 개선 완료 후 통합, 지속적 모니터링
+</code></pre>
+<p>[ 9.2 GDPR 72시간 통지 실무 ]</p>
+<p>원칙</p>
+<pre><code>- 유출 인지 시점부터 72시간 내 감독기관 통지
+</code></pre>
+<p>1단계 통지 (24시간 내)</p>
+<pre><code>- 유출 발생 사실
+- 초기 파악 정보 (약 ○○만 건 추정)
+- 조사 진행 중, 추가 정보 제공 예정
+</code></pre>
+<p>2단계 통지 (72시간 내)</p>
+<pre><code>- 유출 규모 (정확), 유출 항목, 원인, 영향
+- 대응 조치, 재발 방지 대책
+</code></pre>
+<p>정보주체 통지</p>
+<pre><code>- 고위험 유출 = 즉시 통지
+- 저위험 = 감독기관만 통지 가능
+- 메리어트 = 고위험 (여권번호 등) - 즉시 통지 의무
+</code></pre>
+<p>[ 9.3 APT 탐지 방법 ]</p>
+<pre><code>- 베이스라인 분석  :  정상 트래픽 패턴 학습, AI/ML 기반 비정상 탐지
+- 외부 통신 모니터링  :  모든 외부 통신 로그, 알려지지 않은 IP 경고, 해외 IP 모니터링
+- 데이터 유출 패턴  :  대량 DB 조회, 반복적 조회, 비정상 시간대 (야간/주말)
+- C&amp;C 통신 탐지  :  주기적 통신 (heartbeat), 암호화된 통신, 위협 인텔리전스 (알려진 C&amp;C IP)
+- 포렌식  :  정기 전체 시스템 포렌식 (연 1회), 숨겨진 백도어 탐지
+</code></pre>
+<p>[ 9.4 호텔 업계 특화 보안 ]</p>
+<p>고위험 데이터</p>
+<pre><code>- 여권번호 (신분 도용)
+- 체크인 날짜 (여행 패턴)
+- 신용카드 (금전적 피해)
+- VIP 정보 (정부, 기업 임원)
+</code></pre>
+<p>특화 대책</p>
+<pre><code>- 여권번호 최소 수집  :  법적 의무 있는 국가만, 수집 시 AES-256 암호화
+- VIP 보호  :  정부 관료/기업 임원 별도 보안, 추가 암호화, 접근 로그 강화
+- 예약 시스템 강화  :  핵심 표적 = 최고 수준 보안, 정기 침투 테스트
+- 물리적 보안  :  객실 키 시스템, CCTV, 출입 통제
+</code></pre>
+<p>[ 학습 정리 ]</p>
+<pre><code>- 역사상 최대 호텔 데이터 유출 (약 5억 명)
+- 2014-2018년 약 4년간 APT 공격으로 장기 잠복
+- 중국 정부 배후 해킹 (추정, 정보 수집 목적)
+- 스타우드 호텔 인수 전부터 해킹되어 있었으나 발견 못함
+- 여권번호, 신용카드 등 민감정보 유출
+- GDPR 위반으로 영국 ICO 벌금 2,400만 달러
+- 72시간 통지 규정 위반 (9월 발견 - 11월 발표)
+- M&amp;A 시 보안 실사 부족이 핵심 원인
+- 4년간 APT 탐지 못함 (IDS/IPS, SIEM 미흡)
+- 레거시 시스템 보안 취약
+- M&amp;A 시 Security Due Diligence 필수
+- 인수 전 전체 시스템 포렌식 분석 필요
+- 24/365 SOC, SIEM, AI 이상 탐지 필수
+- GDPR 72시간 통지 규정 (초기라도 1차 통지)
+- 글로벌 기업 = 가장 엄격한 기준 (GDPR) 준수
+- 총 비용 10억 달러 vs 사전 투자 1.1억 달러 (약 9배 차이)
+</code></pre>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/%EB%A9%94%EB%A6%AC%EC%96%B4%ED%8A%B8/">메리어트</a></li>
+      <li><a href="http://localhost:1313/tags/gdpr/">GDPR</a></li>
+      <li><a href="http://localhost:1313/tags/apt/">APT</a></li>
+      <li><a href="http://localhost:1313/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C/">개인정보유출</a></li>
+      <li><a href="http://localhost:1313/tags/ma%EB%B3%B4%EC%95%88/">M&amp;A보안</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/">실무사례</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

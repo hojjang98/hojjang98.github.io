@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>DDoS on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/ddos/</link>
+    <description>Recent content in DDoS on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Fri, 10 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/ddos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Day 50: 실무 사례 #10 - 7.7 DDoS 대란 (2009)</title>
+      <link>http://localhost:1313/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/02_%ED%95%B4%ED%82%B9%EC%B9%A8%ED%95%B4/day50_%ED%95%B4%ED%82%B9%EC%B9%A8%ED%95%B4%EC%82%AC%EB%A1%803_ddos%EB%8C%80%EB%9E%80/</link>
+      <pubDate>Fri, 10 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/02_%ED%95%B4%ED%82%B9%EC%B9%A8%ED%95%B4/day50_%ED%95%B4%ED%82%B9%EC%B9%A8%ED%95%B4%EC%82%AC%EB%A1%803_ddos%EB%8C%80%EB%9E%80/</guid>
+      <description>2009년 7월 7일 북한 추정 세력이 좀비 PC 16만대를 동원해 정부 기관 11곳과 주요 포털 15곳을 3일간 마비시킨 7.7 DDoS 대란을 공격 기법, 법률 분석, 국가 안보 관점에서 분석합니다.</description>
+    </item>
+  </channel>
+</rss>

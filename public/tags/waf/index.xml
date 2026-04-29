@@ -1,1 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>WAF on HJ's Security Note</title><link>https://hojjang98.github.io/tags/waf/</link><description>Recent content in WAF on HJ's Security Note</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Fri, 19 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://hojjang98.github.io/tags/waf/index.xml" rel="self" type="application/rss+xml"/><item><title>2025.12.19 (Day 39) - 웹 해킹: SQL Injection과 XSS</title><link>https://hojjang98.github.io/daily_logs/week08/20251219_sql_injection_xss/</link><pubDate>Fri, 19 Dec 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week08/20251219_sql_injection_xss/</guid><description>OWASP Top 10 취약점 공격 시나리오 심화, SOC 관점 웹 공격 단계별 탐지 포인트, WAF ModSecurity 룰셋, 웹 보안 점검 체크리스트 정리</description></item><item><title>2025.12.10 (Day 33) - AWS 보안 서비스: Shield, WAF, GuardDuty, Config</title><link>https://hojjang98.github.io/daily_logs/week07/20251210_aws_security--log/</link><pubDate>Wed, 10 Dec 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week07/20251210_aws_security--log/</guid><description>AWS 공동 책임 모델, CloudTrail/VPC Flow Logs 로그 수집 실습, WAF IP Set 및 WebACL 구성, Shield/GuardDuty/Config/Security Hub 보안 서비스 계층 구성</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>WAF on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/waf/</link>
+    <description>Recent content in WAF on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Fri, 19 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/waf/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2025.12.19 (Day 39) - 웹 해킹: SQL Injection과 XSS</title>
+      <link>http://localhost:1313/daily_logs/week08/20251219_sql_injection_xss/</link>
+      <pubDate>Fri, 19 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week08/20251219_sql_injection_xss/</guid>
+      <description>OWASP Top 10 취약점 공격 시나리오 심화, SOC 관점 웹 공격 단계별 탐지 포인트, WAF ModSecurity 룰셋, 웹 보안 점검 체크리스트 정리</description>
+    </item>
+    <item>
+      <title>2025.12.10 (Day 33) - AWS 보안 서비스: Shield, WAF, GuardDuty, Config</title>
+      <link>http://localhost:1313/daily_logs/week07/20251210_aws_security--log/</link>
+      <pubDate>Wed, 10 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week07/20251210_aws_security--log/</guid>
+      <description>AWS 공동 책임 모델, CloudTrail/VPC Flow Logs 로그 수집 실습, WAF IP Set 및 WebACL 구성, Shield/GuardDuty/Config/Security Hub 보안 서비스 계층 구성</description>
+    </item>
+  </channel>
+</rss>

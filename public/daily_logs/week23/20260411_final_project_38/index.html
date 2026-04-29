@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>2026.04.11 (Day 113) - 마지막 멘토링 및 최종 PPT 피드백 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="보안컨설팅, PPT, 멘토링, 면접준비, 네트워크보안, 개인정보보호, 위험평가">
+<meta name="description" content="마지막 멘토링 수업에서 인라인/미러 구성, CIA 프레임워크, CVE/CCE 개념을 정리하고 최종 PPT 슬라이드별 피드백을 수렴하였다. 면접 대비 핵심 포인트도 함께 점검하였다.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/daily_logs/week23/20260411_final_project_38/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c8c3b65cd6d058be2b4f050fd7a688ac13a23056571601dabe4f70d8d008259e.css" integrity="sha256-yMO2XNbQWL4rTwUP16aIrBOiMFZXFgHavk9w2NAIJZ4=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/daily_logs/week23/20260411_final_project_38/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">홈</a>&nbsp;»&nbsp;<a href="http://localhost:1313/daily_logs/">6개월, 혹은 그 이상의 보안 여정</a></div>
+    <h1 class="post-title entry-hint-parent">
+      2026.04.11 (Day 113) - 마지막 멘토링 및 최종 PPT 피드백
+    </h1>
+    <div class="post-meta"><span title='2026-04-11 00:00:00 +0000 UTC'>2026년 4월 11일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>[ 1. 핵심 개념 정리 ]</p>
+<pre><code>[ 보안 인프라 및 위험 관리 개념 ]
+
+-  인라인 구성 : 트래픽 흐름 선상에 직접 위치. 장애 발생 시 서비스 중단 가능
+    IPS 등 차단 목적 장비에 사용. 가용성 리스크 존재
+
+-  미러 구성 : 트래픽을 복제해 모니터링만 수행. 장애가 나도 서비스에 무영향
+    IDS 등 탐지 목적 장비에 주로 사용. 대응은 별도 처리 필요
+
+-  네트워크 보안 구간 : DDoS - F/W - IDS/IPS - WEB - 웹방화벽 - WAS - DB 순서로 구성되며,
+    F/W는 어느 위치에도 배치 가능
+    실제 구성은 환경마다 다르며, 각 레이어의 역할 구분이 중요
+
+-  위험 평가 (CIA) : 기밀성, 무결성, 가용성 세 축으로 자산 위험을 평가하는 프레임워크
+    컨설팅 면접 양쪽에서 자주 언급됨. 전체 흐름 숙지 필수
+
+-  ISRM : 정보보안 위험 관리 체계. 위험 식별  -&gt;  분석  -&gt;  평가  -&gt;  처리 흐름
+    개인정보 안전성 확보조치와 연계해 이해하면 실무 적용력 상승
+
+[ 개인정보보호 법령 체계 ]
+
+-  법령 연쇄 구조 : 개보법 개정  -&gt;  시행령 개정  -&gt;  고시 가이드라인 순으로 연쇄 변경
+    법 조문만 아니라 시행령 고시 수준까지 추적해야 현행 기준 파악 가능
+
+-  CVE vs CCE : CVE는 공개된 취약점 식별자, CCE는 보안 설정 기준 식별자
+    점검 시 CCE는 시스템 설정 적절성 판단에 활용, CVE는 패치 관리와 연계
+
+-  개인정보 안전성 확보조치 : 개보법 제29조 기반. 수탁사 점검 시 최소한 알아야 할 기술적 관리적 조치 기준
+    위수탁 컨설팅에서 수탁사 적정성 판단의 핵심 근거
+
+-  ISMS-P 인증제 실효성 강화방안 : 과기부 발간 자료. 인증제 운영 방향성과 개선 방안 담긴 공식 문서
+    면접 전 필독. 인증 체계 이해도를 묻는 질문에 직접 활용 가능
+
+-  컨설팅 방법론 : 산출물 전반에 걸쳐 일관된 방법론이 드러나야 함. 진단항목 설계 과정 포함
+    면접에서 &quot;어떻게 만들었느냐&quot;는 질문에 구체적 프로세스로 답해야 함
+
+[ 면접 대비 주요 포인트 ]
+
+-  AI 활용 질문 대비 : 프로젝트에서 AI를 어떻게 활용했는지, 어떤 프롬프트를 썼는지 물어볼 수 있음
+    점검 기준 및 프로젝트 내용을 프롬프트에 넣고 면접 예상 질문 뽑는 연습 권장
+
+-  상황형 질문 대응 : 고객사와 갈등, PM의 야근 요청, 의견 충돌 등 시나리오 기반 질문 빈출
+    회피형 답변 지양. 논리와 우선순위를 기반으로 답변 구조 미리 설계
+
+-  진단항목 출처 설명 : 체크리스트 진단항목은 팀이 직접 설계한 것임을 명확히 표현
+    &quot;멘토님이 틀을 주셨고, 증적 법적 준거성 점검 내역 등은 저희가 직접 채웠습니다&quot;
+
+-  비대면 vs 서면 점검 차이 : 서면 점검은 서류 제출만으로 진행, 현장 방문 없음. 비대면은 화상 등 원격 수단 활용
+    발표 시 보완점 발전 방향으로 연결해서 언급하면 완성도 있는 마무리 가능
+
+-  화상 면접 준비사항 : 카메라 각도, 자세, 조명 체크. 집 이어폰 모두 허용. 면접관 2 - 4명 예상
+    &quot;면접 준비를 잘 했습니다&quot;라는 인상을 줄 수 있는 환경 세팅이 비언어 신호 역할
+</code></pre>
+<p>[ 2. 멘토 피드백 정리 ]</p>
+<pre><code>오늘은 별도 기술 실습 없이, 마지막 멘토링 수업과 최종 PPT 피드백으로 진행되었다.
+
+[ PPT 슬라이드별 수정 사항 정리 ]
+
+표지 / 목차 :
+
+| 슬라이드 | 피드백 내용 | 조치 방향 |
+|:---|:---|:---|
+| 표지 | ○○○ 이름 순서 변경 필요 | 팀원 확인 후 순서 조정 |
+| 목차 | 1번 디자인 깔끔하나 숫자 가독성 낮음 | 폰트 크기 또는 색 조정 검토 |
+
+Chapter 1 :
+
+| 슬라이드 | 피드백 내용 | 조치 방향 |
+|:---|:---|:---|
+| 1.1 | 롯데카드 영업정지 4.5개월 기사 추가 권장, 그래프 하단 회색 글씨 가독성 낮음 | 기사 삽입 + 글씨 크기 대비 조정 |
+| 1.2 | 수정 없이 발표 시 &quot;개인정보 위수탁&quot;이라고 명시적으로 언급할 것 | 발표 스크립트에 반영 |
+| 1.3 | 쉴더스 로고 제거 또는 페이지 삭제 검토 / 프로젝트 목표 내용 수정 | 로고 제거 방향으로 정리 |
+
+Chapter 2 :
+
+| 슬라이드 | 피드백 내용 | 조치 방향 |
+|:---|:---|:---|
+| 2.1 | &quot;개인정보보호 자격 보유자&quot;  -&gt;  &quot;전문 컨설턴트&quot;로 용어 교체 | 용어 일괄 수정 |
+| 2.2 | 배경 위 회색 글씨 가독성 이슈 | 투명도 조정 또는 글씨 색 강화 |
+| 2.5 | 소제목을 &quot;개인정보 수탁사 점검 컨설팅 흐름도&quot;로 수정 | 소제목 텍스트 교체 |
+
+Chapter 3 :
+
+| 슬라이드 | 피드백 내용 | 조치 방향 |
+|:---|:---|:---|
+| 3.2 | 수탁사 현황 - 특이사항 언급 정도로만 다루기 | 발표 분량 조정 |
+| 3.4 | &quot;점검 방식론&quot;  -&gt;  &quot;판단기준&quot; / &quot;점검 내용 종합&quot;  -&gt;  &quot;점검 내용 예시&quot;로 수정 | 텍스트 교체 |
+| 3.7 | 주요 증적 자료에 취약/양호 판단 근거 간략 설명 추가, ○○케이터링 증적 수정, ○○금융 알고리즘 적용 내용 정합성 재확인 | 증적 자료별 설명 레이블 추가 |
+
+Chapter 4 :
+
+| 슬라이드 | 피드백 내용 | 조치 방향 |
+|:---|:---|:---|
+| 4.2 | P값 0.7 설정 근거 질문 대비 / ○○로지스 &quot;망분리 붕괴&quot; 표현 수정 / ○○금융 &quot;공유 폴더 노출&quot; 구체적 사례 정의 필요 | 발표 답변 시나리오 준비 |
+| 4.3 | 5개 수탁사 모아둔 페이지에 열 제목 추가 | 표 헤더 삽입 |
+| 4.6 | 위험 수탁사 탑3 관련 문구 수정 | 텍스트 재작성 |
+
+Chapter 5 :
+
+| 슬라이드 | 피드백 내용 | 조치 방향 |
+|:---|:---|:---|
+| 5.1 | &quot;결론&quot;  -&gt;  &quot;성과&quot;로 용어 변경 (수탁사 점검 맥락에서 결론은 부적절) | 용어 교체 |
+
+Chapter 7 :
+
+| 슬라이드 | 피드백 내용 | 조치 방향 |
+|:---|:---|:---|
+| 7.1 | 컨설팅 프로세스 설계 과정 질문 대비. 진단항목 직접 설계했음을 강조 | 발표 스크립트 보강 |
+| 7.2 | 비대면 점검과 서면 점검 차이 질문 대비 / 발표 시 보완점 발전 방향 언급 | 차이 정의 정리 후 스크립트 반영 |
+| 7.3 | 삭제 검토 | 팀 내 협의 후 결정 |
+
+Chapter 8 :
+
+| 슬라이드 | 피드백 내용 | 조치 방향 |
+|:---|:---|:---|
+| 출처 | 고시 추가 / 동일법 출처 순서 : 법  -&gt;  시행령  -&gt;  고시 순으로 정렬 | 출처 목록 재정렬 |
+</code></pre>
+<p>[ 3. 비교 분석 표 ]</p>
+<pre><code>[ 인라인 vs 미러 구성 비교 ]
+
+| 항목 | 인라인 | 미러 | 사용 시기/적용 방안 |
+|:---:|:---|:---|:---|
+| 트래픽 처리 방식 | 실제 흐름 선상에 위치, 직접 처리 | 트래픽 복제 후 수신, 원본 흐름 비개입 | 차단 목적이면 인라인, 탐지 모니터링이면 미러 |
+| 장애 영향 | 장비 장애 시 서비스 중단 가능 | 장비 장애가 서비스에 무영향 | 가용성이 중요한 구간은 미러 또는 우회 설계 고려 |
+| 대표 장비 | IPS, 웹방화벽 (WAF) | IDS, 패킷 분석 장비 | 역할 구분 명확히 해야 보안 아키텍처 설명 가능 |
+| 보안 효과 | 실시간 차단 가능 | 탐지 후 수동 대응 필요 | 두 구성을 병행해 차단과 분석을 동시에 확보하는 것이 이상적 |
+
+[ 점검 방식 비교 (비대면 vs 서면) ]
+
+| 항목 | 비대면 점검 | 서면 점검 |
+|:---|:---|:---|
+| 수행 방식 | 화상, 원격 도구 등 비대면 수단으로 실시간 점검 | 서류 제출만으로 현장 방문 없이 진행 |
+| 현장성 | 일부 현장 확인 대체 가능 | 현장 확인 불가, 제출 자료에 전적으로 의존 |
+| 한계 | 네트워크 환경 실사 대체 한계 | 허위 자료 제출 위험, 실태 파악 곤란 |
+| 발전 방향 | 증적 수집 자동화, 원격 진단 도구 연계 | 자기 점검과 병행해 보완 가능 |
+</code></pre>
+<p>[ 4. 심화 분석 ]</p>
+<pre><code>[ 위험 평가 CIA 프레임워크 상세 분석 ]
+
+-  기밀성 (Confidentiality)
+    정의 : 인가된 자만 정보 접근 가능
+    위협 예시 : 개인정보 유출, 비인가 접근
+    점검 연계 : 접근통제, 암호화 적용 여부
+
+-  무결성 (Integrity)
+    정의 : 정보가 허가 없이 변경되지 않음
+    위협 예시 : 데이터 위변조, SQL 인젝션
+    점검 연계 : 변경 이력 관리, 무결성 검증 체계
+
+-  가용성 (Availability)
+    정의 : 인가된 자가 필요 시 항상 접근 가능
+    위협 예시 : DDoS 공격, 시스템 장애
+    점검 연계 : 백업, BCP/DR 계획 수립 여부
+
+세 요소는 트레이드오프 관계. 과도한 접근통제는 가용성 저하.
+체크리스트 8개 카테고리와 CIA 매핑하면 구조적 설명 가능.
+</code></pre>
+<p>[ 5. 보안 전문가 관점 적용 ]</p>
+<pre><code>[ 컨설팅 현장 질문 대응 전략 ]
+
+-  P값 0.7 설정 근거는?
+    핵심 답변 : 부분 이행(Partial) 항목에 가중치를 부여해 완전 미이행과 차등화하기 위한 설계 판단
+    주의 : 수치에 대한 근거 없이 &quot;그렇게 정했습니다&quot;는 금물
+
+-  수탁사 취약 항목이 많은 이유는?
+    핵심 답변 : 법적 의무 인식 부족, 관리 체계 미비, 기술적 조치 인력 예산 부족이 복합적으로 작용
+    주의 : 특정 수탁사를 일방적으로 비판하는 표현 지양
+
+-  진단항목을 직접 만들었나?
+    핵심 답변 : 기본 틀은 멘토님 제공, 증적 항목 법적 준거성 점검 내역은 팀이 직접 설계 및 작성
+    주의 : &quot;만들었다&quot;와 &quot;채웠다&quot;의 구분을 명확히 해야 오해 없음
+
+-  AI를 어떻게 활용했나?
+    핵심 답변 : 프로젝트 구조와 점검 기준을 프롬프트에 넣어 법령 근거 검토, 개선안 초안 작성, 면접 예상 질문 도출에 활용
+    주의 : 어떤 프롬프트를 어떤 목적으로 사용했는지 구체적으로 설명 가능해야 함
+
+-  고객사와 갈등 시 어떻게 해결하나?
+    핵심 답변 : 감정보다 논리 우선. 계약 범위 법적 근거 상호 합의한 기준으로 귀결
+    주의 : &quot;싸웠다&quot; 류의 표현은 절대 사용 금지
+</code></pre>
+<p>[ 6. 배운 점 및 인사이트 ]</p>
+<pre><code>[ 새로 알게 된 점 ]
+
+-  인라인 미러 개념의 실무 의미 : 단순 용어 구분이 아니라,
+    장애 시 서비스 영향 여부라는 운영 관점에서 이해하는 것이 핵심이다.
+
+-  법령 연쇄 구조 : 개보법이 바뀌면 시행령, 고시, 가이드라인까지 연쇄 변경된다는 흐름 자체가
+    실무에서 법령 추적의 기준이 된다.
+
+-  CVE vs CCE 구분 : CVE는 취약점 식별, CCE는 보안 설정 기준 식별이라는 역할 차이가
+    점검 항목 설계 시 직접 연결된다.
+
+-  억지 대답의 위험성 : 모르면 모른다고 하되,
+    &quot;그 부분은 생각 못했습니다&quot;라는 솔직한 답변이 신뢰를 오히려 높일 수 있다.
+
+-  ISMS-P 실효성 강화방안 자료 : 면접 전에 반드시 읽어야 할 공식 문서로 확인.
+    인증제 전반의 맥락을 잡는 데 유효하다.
+
+[ 이전 학습과의 연결고리 ]
+
+-  개보법 제26조 제29조와 연계 : 위수탁 관계에서의 의무와 안전성 확보조치는
+    이번 프로젝트 전반을 관통하는 법적 근거였고, 오늘 멘토링에서 그 중요성이 재확인되었다.
+
+-  ISMS-P 인증 체계와 연계 : 점검 체크리스트 설계 방식이 ISMS-P 인증 심사 구조와 맞닿아 있어,
+    학습한 인증 개념이 실제 산출물에 녹아 있었음을 확인했다.
+
+-  CIA 프레임워크  -&gt;  위험 평가 실무 전환 : 이론으로 배운 CIA 트라이어드가
+    수탁사 점검 결과 분석 및 면접 답변 구성에 직접 활용 가능한 프레임임을 체감했다.
+
+[ 실무 적용 아이디어 ]
+
+보안 전문가 관점 :
+
+-  면접 질문 시뮬레이션 : 프로젝트 전체 내용 + 점검 기준을 AI 프롬프트에 넣고
+    예상 질문을 뽑아 실전 대비에 활용한다.
+
+-  법령 트래킹 습관화 : 관심 있는 개보법 조항의 시행령 고시 개정 이력을
+    주기적으로 확인하는 루틴을 만든다.
+
+-  발표 스크립트 정교화 : 슬라이드 수정과 병행해, 질문이 집중될 슬라이드(4.2, 7.1, 7.2)는
+    답변 시나리오를 미리 작성해 두는 것이 유효하다.
+
+컨설턴트 관점 :
+
+-  산출물 일관성 점검 : 이번 피드백에서 나온 용어 불일치(결론 vs 성과, 방식론 vs 판단기준)는
+    산출물 전체를 동일한 기준으로 검토하지 않았을 때 발생하는 전형적 이슈다.
+    최종 제출 전 전수 검토가 필수다.
+
+-  증적 자료 설명 레이블 : 취약/양호 여부가 직관적으로 보이지 않는 자료에는
+    반드시 맥락 설명을 붙이는 것이 컨설팅 보고서의 기본 품질이다.
+</code></pre>
+<p>[ 7. Quick Reference ]</p>
+<pre><code>[ 면접 핵심 키워드 모음 ]
+
+기술 개념 :
+    -  인라인(Inline) / 미러(Mirror) 구성 차이
+    -  DDoS - F/W - IDS/IPS - WEB - WAF - WAS - DB 구간 역할
+    -  CIA 트라이어드 (기밀성 / 무결성 / 가용성)
+    -  CVE (취약점 식별) vs CCE (보안 설정 기준)
+    -  ISRM (정보보안 위험 관리 체계)
+
+법령 체계 :
+    -  개보법  -&gt;  시행령  -&gt;  고시  -&gt;  가이드라인 연쇄 구조
+    -  개인정보 안전성 확보조치 (제29조)
+    -  개인정보 위수탁 관리 의무 (제26조)
+
+컨설팅 방법론 :
+    -  진단항목 직접 설계 이력
+    -  비대면 점검 vs 서면 점검 차이
+    -  P값 산정 근거 (부분 이행 가중치 설계)
+
+[ 최종 PPT 수정 체크리스트 ]
+
+즉시 수정 (텍스트/디자인) :
+    -  표지 이름 순서 변경 (○○○)
+    -  목차 숫자 가독성 개선
+    -  1.1 롯데카드 기사 삽입 + 그래프 하단 글씨 크기 조정
+    -  1.3 쉴더스 로고 제거 / 프로젝트 목표 내용 수정
+    -  2.1 &quot;전문 컨설턴트&quot;로 용어 교체
+    -  2.2 회색 글씨 투명도 조정
+    -  2.5 소제목 수정  -&gt;  &quot;개인정보 수탁사 점검 컨설팅 흐름도&quot;
+    -  3.4 &quot;판단기준&quot; / &quot;점검 내용 예시&quot;로 텍스트 교체
+    -  4.2 ○○로지스 &quot;망분리&quot; 표현 수정
+    -  4.3 수탁사 표 열 제목 추가
+    -  4.6 위험 수탁사 탑3 문구 수정
+    -  5.1 &quot;결론&quot;  -&gt;  &quot;성과&quot; 교체
+    -  7.3 삭제 여부 팀 내 최종 확인
+    -  8장 출처 고시 추가 / 순서 재정렬 (법  -&gt;  시행령  -&gt;  고시)
+
+발표 스크립트 보강 :
+    -  1.2 &quot;개인정보 위수탁&quot; 구두 언급 추가
+    -  3.7 증적 자료별 취약/양호 설명 레이블 추가
+    -  4.2 P값 0.7 근거 답변 준비
+    -  4.2 수탁사 취약 항목 多 이유 답변 준비
+    -  7.1 컨설팅 프로세스 설계 과정 설명 스크립트 보강
+    -  7.2 비대면 vs 서면 점검 차이 + 보완점 언급
+
+면접 준비 :
+    -  AI 활용 방식 (프롬프트 포함) 답변 정리
+    -  상황형 질문 시나리오 3가지 이상 준비
+    -  ISMS-P 인증제 실효성 강화방안 자료 정독
+    -  화상 면접 환경 점검 (조명, 카메라 각도, 자세)
+</code></pre>
+<p>[ 8. 트러블슈팅 ]</p>
+<pre><code>| 문제 | 원인 | 해결 방법 |
+|:---|:---|:---|
+| 증적 자료에서 취약/양호 판단이 어려움 | 설명 없이 이미지만 나열되어 맥락이 불분명 | 각 증적에 1 - 2줄 설명 레이블 추가 / 취약 이유 또는 양호 근거 명시 / 점검 항목과 증적 자료 연결 관계 명확화 |
+| ○○금융 알고리즘 적용 내용 정합성 불확실 | 작성 시 법적 기준과의 대조 검토 미흡 | 개인정보 암호화 고시 기준과 대조 / 적용 알고리즘이 허용 기준에 해당하는지 재확인 / 수정 필요 시 팀 내 검토 후 즉시 반영 |
+| 슬라이드 전반에 용어 불일치 발생 | 분업 작성 과정에서 통일된 용어 기준 부재 | 용어 기준표 작성 후 전수 교체 / 결론/성과, 방식론/판단기준 등 주요 수정 목록화 / 최종 제출 전 팀장 검토 필수 |
+| 회색 글씨 가독성 이슈 반복 | 배경 이미지 위 텍스트 배치 시 대비 고려 부족 | 텍스트 색 강화 또는 배경 투명도 조정 / 다양한 화면 환경에서 미리보기 테스트 / 이후 작업 시 글씨-배경 명도 대비 체크 습관화 |
+</code></pre>
+<p>Today&rsquo;s Insight :</p>
+<p>마지막 멘토링은 기술 지식을 채우는 자리이기도 했지만,
+결국 &ldquo;무엇을 알고 있는가&quot;보다 &ldquo;어떻게 말할 수 있는가&quot;를 점검하는 시간이었다.
+인라인과 미러, CIA, CVE/CCE 같은 개념들은 이미 배운 것들이지만,
+면접 상황에서 맥락에 맞게 꺼내 쓰는 훈련이 별개로 필요하다는 걸 다시 확인했다.
+PPT 피드백에서 드러난 용어 불일치와 가독성 문제는 분업의 자연스러운 부산물이지만,
+최종 산출물에서는 그게 팀 전체의 완성도로 읽힌다.
+진단항목을 직접 설계했다는 사실, AI를 어떤 목적으로 어떻게 사용했는지를 구체적으로 설명할 수 있는 것 —
+이 두 가지가 이번 프로젝트를 면접에서 자기 이야기로 만드는 핵심이다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/%EB%B3%B4%EC%95%88%EC%BB%A8%EC%84%A4%ED%8C%85/">보안컨설팅</a></li>
+      <li><a href="http://localhost:1313/tags/ppt/">PPT</a></li>
+      <li><a href="http://localhost:1313/tags/%EB%A9%98%ED%86%A0%EB%A7%81/">멘토링</a></li>
+      <li><a href="http://localhost:1313/tags/%EB%A9%B4%EC%A0%91%EC%A4%80%EB%B9%84/">면접준비</a></li>
+      <li><a href="http://localhost:1313/tags/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC%EB%B3%B4%EC%95%88/">네트워크보안</a></li>
+      <li><a href="http://localhost:1313/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8/">개인정보보호</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%9C%84%ED%97%98%ED%8F%89%EA%B0%80/">위험평가</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

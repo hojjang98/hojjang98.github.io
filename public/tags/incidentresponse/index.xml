@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>IncidentResponse on HJ's Security Note</title><link>https://hojjang98.github.io/tags/incidentresponse/</link><description>Recent content in IncidentResponse on HJ's Security Note</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Tue, 31 Mar 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://hojjang98.github.io/tags/incidentresponse/index.xml" rel="self" type="application/rss+xml"/><item><title>How Integration of Cyber Security Management and Incident Response Enables Organizational Learning</title><link>https://hojjang98.github.io/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/ahmad-et-al-2020/</link><pubDate>Tue, 31 Mar 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/ahmad-et-al-2020/</guid><description>ISM과 IR의 기능적 단절 문제를 조직학습 이론으로 분석하고, 5개 통합 프로세스(I1-I5) 프레임워크를 통해 보안 조직의 이중 루프 학습 역량 강화 방안을 제시한 Ahmad et al.(2020) 논문 리뷰</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>IncidentResponse on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/incidentresponse/</link>
+    <description>Recent content in IncidentResponse on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Tue, 31 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/incidentresponse/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How Integration of Cyber Security Management and Incident Response Enables Organizational Learning</title>
+      <link>http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/ahmad-et-al-2020/</link>
+      <pubDate>Tue, 31 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/paper_review/consulting_%EB%B3%B4%EC%95%88_%EC%BB%A8%EC%84%A4%ED%8C%85/ahmad-et-al-2020/</guid>
+      <description>ISM과 IR의 기능적 단절 문제를 조직학습 이론으로 분석하고, 5개 통합 프로세스(I1-I5) 프레임워크를 통해 보안 조직의 이중 루프 학습 역량 강화 방안을 제시한 Ahmad et al.(2020) 논문 리뷰</description>
+    </item>
+  </channel>
+</rss>

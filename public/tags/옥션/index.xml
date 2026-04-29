@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>옥션 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%EC%98%A5%EC%85%98/</link>
+    <description>Recent content in 옥션 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Thu, 09 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%EC%98%A5%EC%85%98/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Day 49: 실무 사례 #9 - 옥션·G마켓 개인정보 유출 (2008)</title>
+      <link>http://localhost:1313/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C/day49_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C%EC%82%AC%EB%A1%805_%EC%98%A5%EC%85%98g%EB%A7%88%EC%BC%93/</link>
+      <pubDate>Thu, 09 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C/day49_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C%EC%82%AC%EB%A1%805_%EC%98%A5%EC%85%98g%EB%A7%88%EC%BC%93/</guid>
+      <description>2008년 2월 오픈마켓 옥션과 G마켓에서 중국인 협력업체 직원이 고객 개인정보 1,860만 건을 유출하여 중국으로 반출한 사건을 법률 위반, 기술적 취약점, 협력업체 관리 관점에서 분석합니다.</description>
+    </item>
+  </channel>
+</rss>

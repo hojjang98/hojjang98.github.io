@@ -1,1 +1,33 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Week 10 on HJ's Security Note</title><link>https://hojjang98.github.io/security-issues-analysis/2026/week10/</link><description>Recent content in Week 10 on HJ's Security Note</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Mon, 09 Mar 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://hojjang98.github.io/security-issues-analysis/2026/week10/index.xml" rel="self" type="application/rss+xml"/><item><title>FBI DCSNet 감청 시스템 침해 — 법집행 인프라 네트워크 침해</title><link>https://hojjang98.github.io/security-issues-analysis/2026/week10/fbi_dscnet_wiretap_system_breach/</link><pubDate>Mon, 09 Mar 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/security-issues-analysis/2026/week10/fbi_dscnet_wiretap_system_breach/</guid><description>2026년 3월 5일 FBI 내부 감청·영장 관리 시스템 DCSNet이 침해된 사건으로, 법집행 인프라가 공격 표면이 되는 구조적 취약성과 민간 통신사 합법적 도청 연동 지점이 반복적 공격 경로가 되는 문제를 분석한다.</description></item><item><title>UAT-9244 남미 통신 인프라 APT — TernDoor·PeerTime·BruteEntry 신규 악성코드 3종</title><link>https://hojjang98.github.io/security-issues-analysis/2026/week10/uat9244_south_america_telecom_apt/</link><pubDate>Mon, 09 Mar 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/security-issues-analysis/2026/week10/uat9244_south_america_telecom_apt/</guid><description>Cisco Talos가 공개한 중국 연계 APT 클러스터 UAT-9244가 남미 통신 인프라를 대상으로 TernDoor·PeerTime·BruteEntry 3종의 신규 악성코드를 활용해 2024년부터 장기 침투를 수행한 캠페인을 분석한다.</description></item><item><title>Wikipedia JavaScript 웜 내부 활성화 — 보안 검토 중 자가증식 전파</title><link>https://hojjang98.github.io/security-issues-analysis/2026/week10/wikipedia_js_worm_internal_activation/</link><pubDate>Mon, 09 Mar 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/security-issues-analysis/2026/week10/wikipedia_js_worm_internal_activation/</guid><description>2026년 3월 5일 Wikimedia Foundation 직원이 보안 검토 작업 중 2년 전 심어진 악성 JavaScript 웜을 의도치 않게 활성화해 Meta-Wiki 전체로 자가증식 전파가 발생한 사건을 분석한다.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Week 10 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/security-issues-analysis/2026/week10/</link>
+    <description>Recent content in Week 10 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Mon, 09 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/security-issues-analysis/2026/week10/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FBI DCSNet 감청 시스템 침해 — 법집행 인프라 네트워크 침해</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week10/fbi_dscnet_wiretap_system_breach/</link>
+      <pubDate>Mon, 09 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week10/fbi_dscnet_wiretap_system_breach/</guid>
+      <description>2026년 3월 5일 FBI 내부 감청·영장 관리 시스템 DCSNet이 침해된 사건으로, 법집행 인프라가 공격 표면이 되는 구조적 취약성과 민간 통신사 합법적 도청 연동 지점이 반복적 공격 경로가 되는 문제를 분석한다.</description>
+    </item>
+    <item>
+      <title>UAT-9244 남미 통신 인프라 APT — TernDoor·PeerTime·BruteEntry 신규 악성코드 3종</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week10/uat9244_south_america_telecom_apt/</link>
+      <pubDate>Mon, 09 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week10/uat9244_south_america_telecom_apt/</guid>
+      <description>Cisco Talos가 공개한 중국 연계 APT 클러스터 UAT-9244가 남미 통신 인프라를 대상으로 TernDoor·PeerTime·BruteEntry 3종의 신규 악성코드를 활용해 2024년부터 장기 침투를 수행한 캠페인을 분석한다.</description>
+    </item>
+    <item>
+      <title>Wikipedia JavaScript 웜 내부 활성화 — 보안 검토 중 자가증식 전파</title>
+      <link>http://localhost:1313/security-issues-analysis/2026/week10/wikipedia_js_worm_internal_activation/</link>
+      <pubDate>Mon, 09 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/security-issues-analysis/2026/week10/wikipedia_js_worm_internal_activation/</guid>
+      <description>2026년 3월 5일 Wikimedia Foundation 직원이 보안 검토 작업 중 2년 전 심어진 악성 JavaScript 웜을 의도치 않게 활성화해 Meta-Wiki 전체로 자가증식 전파가 발생한 사건을 분석한다.</description>
+    </item>
+  </channel>
+</rss>

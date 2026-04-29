@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>스토리지 on HJ's Security Note</title><link>https://hojjang98.github.io/tags/%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80/</link><description>Recent content in 스토리지 on HJ's Security Note</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Mon, 08 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://hojjang98.github.io/tags/%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80/index.xml" rel="self" type="application/rss+xml"/><item><title>2025.12.08 (Day 31) - AWS 스토리지 서비스: S3, EBS, 데이터 전송</title><link>https://hojjang98.github.io/daily_logs/week07/20251208_aws_s3/</link><pubDate>Mon, 08 Dec 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week07/20251208_aws_s3/</guid><description>Amazon S3 버킷 생성/버전 관리/정적 웹 호스팅/퍼블릭 접근 제어 실습, EBS 볼륨 연결 및 파일시스템 구성, VPC Gateway Endpoint로 프라이빗 S3 접근</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>스토리지 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80/</link>
+    <description>Recent content in 스토리지 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Mon, 08 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2025.12.08 (Day 31) - AWS 스토리지 서비스: S3, EBS, 데이터 전송</title>
+      <link>http://localhost:1313/daily_logs/week07/20251208_aws_s3/</link>
+      <pubDate>Mon, 08 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week07/20251208_aws_s3/</guid>
+      <description>Amazon S3 버킷 생성/버전 관리/정적 웹 호스팅/퍼블릭 접근 제어 실습, EBS 볼륨 연결 및 파일시스템 구성, VPC Gateway Endpoint로 프라이빗 S3 접근</description>
+    </item>
+  </channel>
+</rss>

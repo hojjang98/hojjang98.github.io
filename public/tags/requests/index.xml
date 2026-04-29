@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Requests on HJ's Security Note</title><link>https://hojjang98.github.io/tags/requests/</link><description>Recent content in Requests on HJ's Security Note</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Fri, 30 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://hojjang98.github.io/tags/requests/index.xml" rel="self" type="application/rss+xml"/><item><title>2026.01.30 (Day 67) - Python을 활용한 Blind SQL Injection 자동화 공격</title><link>https://hojjang98.github.io/daily_logs/week14/20260130_pentest_day4/</link><pubDate>Fri, 30 Jan 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week14/20260130_pentest_day4/</guid><description>Python requests 모듈로 Boolean-based Blind SQL Injection 완전 자동화, 이진탐색 알고리즘으로 공격 효율 127배 향상(127회 -&amp;gt; 7회), 함수화된 이진탐색으로 Oracle DB 사용자명 완전 탈취, POST 요청 자동화 Brute Force 로그인 공격, CSRF 토큰 재사용·계정 잠금 부재 취약점 확인</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Requests on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/requests/</link>
+    <description>Recent content in Requests on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Fri, 30 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/requests/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2026.01.30 (Day 67) - Python을 활용한 Blind SQL Injection 자동화 공격</title>
+      <link>http://localhost:1313/daily_logs/week14/20260130_pentest_day4/</link>
+      <pubDate>Fri, 30 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week14/20260130_pentest_day4/</guid>
+      <description>Python requests 모듈로 Boolean-based Blind SQL Injection 완전 자동화, 이진탐색 알고리즘으로 공격 효율 127배 향상(127회 -&amp;gt; 7회), 함수화된 이진탐색으로 Oracle DB 사용자명 완전 탈취, POST 요청 자동화 Brute Force 로그인 공격, CSRF 토큰 재사용·계정 잠금 부재 취약점 확인</description>
+    </item>
+  </channel>
+</rss>

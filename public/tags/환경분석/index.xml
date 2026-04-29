@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>환경분석 on HJ's Security Note</title><link>https://hojjang98.github.io/tags/%ED%99%98%EA%B2%BD%EB%B6%84%EC%84%9D/</link><description>Recent content in 환경분석 on HJ's Security Note</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Wed, 14 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://hojjang98.github.io/tags/%ED%99%98%EA%B2%BD%EB%B6%84%EC%84%9D/index.xml" rel="self" type="application/rss+xml"/><item><title>2026.01.14 (Day 55) - ISMS-P 인증제도 및 정보보호 관리체계 수립</title><link>https://hojjang98.github.io/daily_logs/week12/20260114_consulting_last_day/</link><pubDate>Wed, 14 Jan 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week12/20260114_consulting_last_day/</guid><description>ISMS-P 101개 통제항목 구조, 조직/업무/IT 환경분석 3단계, 정보서비스 흐름도 및 개인정보 흐름도 작성 절차(수집/저장/이용/제공/파기 단계별), 자산 중요도 1-3등급 평가(기밀성/무결성/가용성), CISO/CPO/CSO 관리책임자 역할 비교, 정형/비정형 보안컨설팅 사업 유형</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>환경분석 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%ED%99%98%EA%B2%BD%EB%B6%84%EC%84%9D/</link>
+    <description>Recent content in 환경분석 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Wed, 14 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%ED%99%98%EA%B2%BD%EB%B6%84%EC%84%9D/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2026.01.14 (Day 55) - ISMS-P 인증제도 및 정보보호 관리체계 수립</title>
+      <link>http://localhost:1313/daily_logs/week12/20260114_consulting_last_day/</link>
+      <pubDate>Wed, 14 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week12/20260114_consulting_last_day/</guid>
+      <description>ISMS-P 101개 통제항목 구조, 조직/업무/IT 환경분석 3단계, 정보서비스 흐름도 및 개인정보 흐름도 작성 절차(수집/저장/이용/제공/파기 단계별), 자산 중요도 1-3등급 평가(기밀성/무결성/가용성), CISO/CPO/CSO 관리책임자 역할 비교, 정형/비정형 보안컨설팅 사업 유형</description>
+    </item>
+  </channel>
+</rss>

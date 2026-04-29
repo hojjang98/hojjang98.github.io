@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>2026.04.02 (Day 106) - 산출물 최종 점검 및 PPT 제작 착수 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="보안컨설팅, 산출물관리, 피어리뷰, 점검결과보고서, 개선방안보고서, PPT, 프로젝트관리">
+<meta name="description" content="수탁사별 산출물 최종 수정 및 피어리뷰를 진행하고 최종 발표 PPT 제작에 착수하였다. 패스트레인 3종 문서 동시 수정 사례를 통해 문서 간 정합성 관리의 중요성을 재확인하였다.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/daily_logs/week22/20260402_final_project_31/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c8c3b65cd6d058be2b4f050fd7a688ac13a23056571601dabe4f70d8d008259e.css" integrity="sha256-yMO2XNbQWL4rTwUP16aIrBOiMFZXFgHavk9w2NAIJZ4=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/daily_logs/week22/20260402_final_project_31/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">홈</a>&nbsp;»&nbsp;<a href="http://localhost:1313/daily_logs/">6개월, 혹은 그 이상의 보안 여정</a></div>
+    <h1 class="post-title entry-hint-parent">
+      2026.04.02 (Day 106) - 산출물 최종 점검 및 PPT 제작 착수
+    </h1>
+    <div class="post-meta"><span title='2026-04-02 00:00:00 +0000 UTC'>2026년 4월 2일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>[ 1. 핵심 개념 정리 ]</p>
+<pre><code>[ 개인정보 위수탁 컨설팅 프로젝트 - 최종 마무리 단계 ]
+
+-  산출물 완결성 : 모든 수탁사별 산출물이 형식 내용 등급 기준에서 일관성을 유지해야 함
+    단 하나의 불일치도 컨설팅 신뢰도 전체를 흔들 수 있음
+
+-  피어리뷰 : 팀원 간 상호 검토로 오류 불일치 누락 사항을 교차 확인하는 내부 품질 통제 절차
+    최종 납품 전 마지막 방어선으로 기능함
+
+-  현황 문서 수정 : 수탁사의 실제 처리 현황을 반영한 기초 문서로, 이후 모든 산출물의 근거가 됨
+    현황이 틀리면 점검 결과 전체가 연쇄적으로 잘못됨
+
+-  개선 방안 보고서 : 점검 결과에서 도출된 결함에 대해 조치 우선순위 일정 방법을 명시한 문서
+    긴급 단기 중기 분류 기준의 명확한 적용이 핵심
+
+-  점검 결과 보고서 : 체크리스트 결과를 종합하여 등급 산출 및 주요 발견사항을 정리한 핵심 산출물
+    4단계 등급(A/B/C/D) 기준이 수탁사별로 일관되게 적용되었는지 확인 필요
+
+[ 산출물 현황 및 진행 상태 ]
+
+| # | 산출물 | 상태 | 비고 |
+|:---:|:---|:---:|:---|
+| 6 | 데일리 스크럼 | 완료 | |
+| 7 | WBS | 완료 | |
+| 8 | 수행계획서 | 완료 | |
+| 9 | 프로젝트 최종 발표자료 | 진행 중 | PPT 제작 착수 |
+| 10 | 수탁사 현황 목록 | 완료 | |
+| 11 | 수탁사 점검 체크리스트 원본 | 완료 | |
+| 12 | 개인정보처리 위수탁 표준 계약서 | 완료 | |
+| 13 | 수탁사 대상 개인정보 교육자료 | 완료 | |
+| 14 | 수탁사별 점검 계획서 | 완료 | |
+| 15 | 수탁사별 현황 | 완료 | |
+| 16 | 수탁사별 점검 체크리스트 결과 | 완료 | |
+| 17 | 수탁사별 주요 증적자료 | 완료 | |
+| 18 | 수탁사별 점검 결과보고서 | 완료 | |
+| 19 | 수탁사별 개선 방안보고서 | 완료 | |
+| 20 | 수탁사 통합 점검 결과 보고서 | 진행 중 | |
+</code></pre>
+<p>[ 2. 오늘의 회의 내용 정리 ]</p>
+<pre><code>[ 회의 안건 및 진행 결과 ]
+
+안건 1 : 어제 수정하던 산출물 이어서 진행
+
+각 담당자별 수정 내역은 다음과 같음.
+
+| 담당자 | 수탁사 | 수정 항목 |
+|:---:|:---|:---|
+| ○○ | 온다로지스 | 현황 수정 |
+| ○○ | 다온컨택 | 개선 방안보고서 수정 |
+| ○○ | 해랑금융 | 현황 수정 |
+| ○○ | 패스트레인 | 현황, 개선 방안보고서, 점검 결과보고서 수정 |
+| ○○ | 플라이메이트 | 개선 방안보고서 수정 |
+
+안건 2 : 수정 완료 후 피어리뷰 진행
+
+-  수정 완료된 산출물에 대해 팀원 간 교차 검토 실시
+-  형식 일관성, 등급 적용 기준, 법령 인용 정확성 등을 중점 확인
+
+안건 3 : 최종 발표 PPT 제작 착수
+
+-  발표자료 그룹(4명)이 본격적으로 PPT 제작 시작
+-  현재 WIP 상태로 전환
+</code></pre>
+<p>[ 3. 비교 분석 표 ]</p>
+<pre><code>[ 수탁사별 수정 범위 비교 ]
+
+| 수탁사 | 현황 | 개선 방안보고서 | 점검 결과보고서 | 수정 규모 |
+|:---:|:---:|:---:|:---:|:---|
+| 온다로지스 | 수정 | - | - | 소 |
+| 다온컨택 | - | 수정 | - | 소 |
+| 해랑금융 | 수정 | - | - | 소 |
+| 패스트레인 | 수정 | 수정 | 수정 | 대 |
+| 플라이메이트 | - | 수정 | - | 소 |
+
+패스트레인의 경우 세 종류 문서가 동시에 수정된 만큼,
+문서 간 수치 등급 조치 내용의 연계 일관성을 반드시 재확인해야 함.
+</code></pre>
+<p>[ 4. 심화 분석 ]</p>
+<pre><code>[ 남은 WIP 산출물 완료 전략 ]
+
+-  프로젝트 최종 발표자료
+    현재 상태 : 제작 착수
+    완료 요건 : 5개 수탁사 결과 통합 + 컨설팅 흐름 서사 구성
+    주요 리스크 : 각 산출물 최종본과 발표 내용 불일치 가능성
+
+-  수탁사 통합 점검 결과 보고서
+    현재 상태 : 진행 중
+    완료 요건 : 수탁사별 점검 결과보고서 전체 확정 후 취합
+    주요 리스크 : 개별 문서 수정 이력이 통합본에 미반영될 위험
+</code></pre>
+<p>[ 5. 실무 적용 ]</p>
+<pre><code>[ 보안 전문가 관점 - 컨설팅 산출물 품질 관리 포인트 ]
+
+-  개별 수정 단계
+    점검 포인트 : 문서 간 정합성
+    주요 확인 항목 : 현황 체크리스트 결과보고서 개선보고서의 수치 일치 여부
+    대응 방안 : 수정 시 연관 문서 동시 검토
+
+-  피어리뷰 단계
+    점검 포인트 : 법령 인용 정확성
+    주요 확인 항목 : 개인정보 보호법 제26조 제29조 조항 번호 내용 정확성
+    대응 방안 : 조항 직접 대조 확인
+
+-  PPT 제작 단계
+    점검 포인트 : 발표 내용 일치
+    주요 확인 항목 : 산출물 최종본 수치와 발표 슬라이드 수치 동일 여부
+    대응 방안 : PPT 완성 후 역검토 필수
+
+-  통합 보고서 단계
+    점검 포인트 : 누락 수탁사 없음
+    주요 확인 항목 : 5개 수탁사 전체 반영 여부
+    대응 방안 : 체크리스트로 수탁사별 완료 확인
+</code></pre>
+<p>[ 6. 배운 점 및 인사이트 ]</p>
+<pre><code>[ 새로 알게 된 점 ]
+
+-  산출물 의존 구조 : 현황 문서가 수정되면 이를 참조하는 결과보고서와 개선 방안보고서도 연쇄적으로 영향을 받음.
+    오늘 패스트레인 사례가 이를 잘 보여줌.
+
+-  피어리뷰 타이밍 : 수정 직후 피어리뷰를 실시하는 흐름이 오류 누적을 막는 가장 효과적인 방식임을 재확인.
+
+-  WIP 산출물 집중 관리 : 완료된 산출물보다 WIP 2개에 팀 에너지를 집중해야 할 시점.
+
+[ 이전 학습과의 연결고리 ]
+
+-  문서 일관성 원칙 적용 : 이전 회의에서 수립한 &quot;점검 결과보고서를 기준 템플릿으로 삼는다&quot;는 원칙이
+    오늘 수정 작업 전반에 실질적으로 적용됨.
+
+-  긴급 단기 중기 분류 기준 : 개선 방안보고서 수정 과정에서
+    조치 우선순위 기준의 통일이 여전히 중요한 사안으로 남아 있음.
+
+[ 실무 적용 아이디어 ]
+
+보안 전문가 관점 :
+
+-  연계 문서 동시 수정 체계화 : 실무 컨설팅에서도 특정 문서 수정 시 영향을 받는 연관 문서 목록을
+    사전에 정의해두면 누락을 방지할 수 있음.
+
+-  WIP 투명화 : 팀 전체가 완료 진행 중 상태를 실시간으로 파악할 수 있도록
+    WBS를 지속 갱신하는 습관이 프로젝트 말미에 특히 중요.
+</code></pre>
+<p>[ 7. Quick Reference ]</p>
+<pre><code>[ 산출물 완료 현황 체크리스트 ]
+
+완료 :
+    -  데일리 스크럼
+    -  WBS
+    -  수행계획서
+    -  수탁사 현황 목록
+    -  수탁사 점검 체크리스트 원본
+    -  개인정보처리 위수탁 표준 계약서
+    -  수탁사 대상 개인정보 교육자료
+    -  수탁사별 점검 계획서
+    -  수탁사별 현황
+    -  수탁사별 점검 체크리스트 결과
+    -  수탁사별 주요 증적자료
+    -  수탁사별 점검 결과보고서
+    -  수탁사별 개선 방안보고서
+
+진행 중 :
+    -  프로젝트 최종 발표자료 (PPT)
+    -  수탁사 통합 점검 결과 보고서
+</code></pre>
+<p>[ 8. 트러블슈팅 ]</p>
+<pre><code>| 문제 | 원인 | 해결 방법 |
+|:---|:---|:---|
+| 패스트레인 3종 문서 동시 수정 | 현황 수정이 결과보고서 개선보고서에 연쇄 영향 | 수정 완료 후 3개 문서 간 수치 등급 재대조 필수 |
+| 통합 보고서 완료 지연 | 개별 수탁사 문서 수정이 선행되어야 취합 가능 | 개별 문서 최종 확정 즉시 통합본에 반영 |
+| PPT 발표 내용과 산출물 불일치 가능성 | 산출물 수정 이후 PPT 제작 진행 중 | PPT 완성 후 산출물 최종본과 역검토 실시 |
+</code></pre>
+<p>Today&rsquo;s Insight :</p>
+<p>프로젝트 막바지에 이르면 각 산출물의 완성도보다 문서 간 정합성이 더 중요해진다.
+오늘 패스트레인 사례처럼 하나의 문서를 수정하면 연관된 문서 전체가 영향을 받는 구조가
+실제 컨설팅 현장에서도 그대로 나타난다.
+WIP로 남은 발표자료와 통합 보고서 2개가 전체 프로젝트의 마지막 고비인 만큼,
+완료된 산출물의 최종본이 확정된 시점을 기준으로 두 문서를 동기화하는 작업이
+다음 단계의 핵심이 될 것이다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/%EB%B3%B4%EC%95%88%EC%BB%A8%EC%84%A4%ED%8C%85/">보안컨설팅</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%82%B0%EC%B6%9C%EB%AC%BC%EA%B4%80%EB%A6%AC/">산출물관리</a></li>
+      <li><a href="http://localhost:1313/tags/%ED%94%BC%EC%96%B4%EB%A6%AC%EB%B7%B0/">피어리뷰</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%A0%90%EA%B2%80%EA%B2%B0%EA%B3%BC%EB%B3%B4%EA%B3%A0%EC%84%9C/">점검결과보고서</a></li>
+      <li><a href="http://localhost:1313/tags/%EA%B0%9C%EC%84%A0%EB%B0%A9%EC%95%88%EB%B3%B4%EA%B3%A0%EC%84%9C/">개선방안보고서</a></li>
+      <li><a href="http://localhost:1313/tags/ppt/">PPT</a></li>
+      <li><a href="http://localhost:1313/tags/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EA%B4%80%EB%A6%AC/">프로젝트관리</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

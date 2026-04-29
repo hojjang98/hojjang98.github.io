@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>리허설 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%EB%A6%AC%ED%97%88%EC%84%A4/</link>
+    <description>Recent content in 리허설 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Tue, 14 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%EB%A6%AC%ED%97%88%EC%84%A4/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2026.04.14 (Day 114) - 최종 발표 리허설 피드백 정리</title>
+      <link>http://localhost:1313/daily_logs/week24/20260414_final_project_40/</link>
+      <pubDate>Tue, 14 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week24/20260414_final_project_40/</guid>
+      <description>최종 발표 리허설을 진행하고 팀원 및 강사님 피드백을 수렴하였다. 발표 속도, 근거 부족(0.7 가중치·ABCD 등급), 분량 불균형, 포인터 미사용 등을 주요 개선사항으로 확인하였다.</description>
+    </item>
+    <item>
+      <title>2026.04.13 (Day 114) - 최종 발표 리허설 피드백 정리</title>
+      <link>http://localhost:1313/daily_logs/week24/20260412_final_project_39/</link>
+      <pubDate>Mon, 13 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week24/20260412_final_project_39/</guid>
+      <description>최종 발표 리허설을 진행하고 팀원 및 강사님 피드백을 수렴하였다. 발표 속도, 근거 부족(0.7 가중치·ABCD 등급), 분량 불균형, 포인터 미사용 등을 주요 개선사항으로 확인하였다.</description>
+    </item>
+  </channel>
+</rss>

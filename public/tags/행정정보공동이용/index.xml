@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>행정정보공동이용 on HJ's Security Note</title><link>https://hojjang98.github.io/tags/%ED%96%89%EC%A0%95%EC%A0%95%EB%B3%B4%EA%B3%B5%EB%8F%99%EC%9D%B4%EC%9A%A9/</link><description>Recent content in 행정정보공동이용 on HJ's Security Note</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Tue, 24 Feb 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://hojjang98.github.io/tags/%ED%96%89%EC%A0%95%EC%A0%95%EB%B3%B4%EA%B3%B5%EB%8F%99%EC%9D%B4%EC%9A%A9/index.xml" rel="self" type="application/rss+xml"/><item><title>Day 19: 전자정부법 및 공공기관 개인정보보호 지침</title><link>https://hojjang98.github.io/cyber_law_study/02_%EC%82%B0%EC%97%85%EB%B3%84%EA%B7%9C%EC%A0%9C/04_%EC%A0%84%EC%9E%90%EC%A0%95%EB%B6%80%EB%B2%95%EB%B0%8F%EA%B3%B5%EA%B3%B5%EA%B8%B0%EA%B4%80%EC%A7%80%EC%B9%A8/day19_%EC%A0%84%EC%9E%90%EC%A0%95%EB%B6%80%EB%B2%95%EB%B0%8F%EA%B3%B5%EA%B3%B5%EA%B8%B0%EA%B4%80%EC%A7%80%EC%B9%A8/</link><pubDate>Tue, 24 Feb 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/cyber_law_study/02_%EC%82%B0%EC%97%85%EB%B3%84%EA%B7%9C%EC%A0%9C/04_%EC%A0%84%EC%9E%90%EC%A0%95%EB%B6%80%EB%B2%95%EB%B0%8F%EA%B3%B5%EA%B3%B5%EA%B8%B0%EA%B4%80%EC%A7%80%EC%B9%A8/day19_%EC%A0%84%EC%9E%90%EC%A0%95%EB%B6%80%EB%B2%95%EB%B0%8F%EA%B3%B5%EA%B3%B5%EA%B8%B0%EA%B4%80%EC%A7%80%EC%B9%A8/</guid><description>행정기관의 전자정부 서비스 안전성 확보를 위한 전자정부법과 공공기관 특유의 엄격한 개인정보 보호 조치, 영향평가 및 망분리 의무 사항을 학습합니다.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>행정정보공동이용 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%ED%96%89%EC%A0%95%EC%A0%95%EB%B3%B4%EA%B3%B5%EB%8F%99%EC%9D%B4%EC%9A%A9/</link>
+    <description>Recent content in 행정정보공동이용 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Tue, 24 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%ED%96%89%EC%A0%95%EC%A0%95%EB%B3%B4%EA%B3%B5%EB%8F%99%EC%9D%B4%EC%9A%A9/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Day 19: 전자정부법 및 공공기관 개인정보보호 지침</title>
+      <link>http://localhost:1313/cyber_law_study/02_%EC%82%B0%EC%97%85%EB%B3%84%EA%B7%9C%EC%A0%9C/04_%EC%A0%84%EC%9E%90%EC%A0%95%EB%B6%80%EB%B2%95%EB%B0%8F%EA%B3%B5%EA%B3%B5%EA%B8%B0%EA%B4%80%EC%A7%80%EC%B9%A8/day19_%EC%A0%84%EC%9E%90%EC%A0%95%EB%B6%80%EB%B2%95%EB%B0%8F%EA%B3%B5%EA%B3%B5%EA%B8%B0%EA%B4%80%EC%A7%80%EC%B9%A8/</link>
+      <pubDate>Tue, 24 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/cyber_law_study/02_%EC%82%B0%EC%97%85%EB%B3%84%EA%B7%9C%EC%A0%9C/04_%EC%A0%84%EC%9E%90%EC%A0%95%EB%B6%80%EB%B2%95%EB%B0%8F%EA%B3%B5%EA%B3%B5%EA%B8%B0%EA%B4%80%EC%A7%80%EC%B9%A8/day19_%EC%A0%84%EC%9E%90%EC%A0%95%EB%B6%80%EB%B2%95%EB%B0%8F%EA%B3%B5%EA%B3%B5%EA%B8%B0%EA%B4%80%EC%A7%80%EC%B9%A8/</guid>
+      <description>행정기관의 전자정부 서비스 안전성 확보를 위한 전자정부법과 공공기관 특유의 엄격한 개인정보 보호 조치, 영향평가 및 망분리 의무 사항을 학습합니다.</description>
+    </item>
+  </channel>
+</rss>

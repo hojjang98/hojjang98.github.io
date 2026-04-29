@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>화이트박스 on HJ's Security Note</title><link>https://hojjang98.github.io/tags/%ED%99%94%EC%9D%B4%ED%8A%B8%EB%B0%95%EC%8A%A4/</link><description>Recent content in 화이트박스 on HJ's Security Note</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Fri, 16 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://hojjang98.github.io/tags/%ED%99%94%EC%9D%B4%ED%8A%B8%EB%B0%95%EC%8A%A4/index.xml" rel="self" type="application/rss+xml"/><item><title>Mini Project 02 — DNA Lab Security Scanner</title><link>https://hojjang98.github.io/project/week_10/</link><pubDate>Fri, 16 Jan 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/project/week_10/</guid><description>23andMe 데이터 유출 사건을 배경으로, 유전 정보를 다루는 DNA Lab 웹앱을 대상으로 웹 15종 + OS 50종 총 65개 스캐너를 구현한 두 번째 팀 미니프로젝트 (리드 보안 엔지니어)</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>화이트박스 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%ED%99%94%EC%9D%B4%ED%8A%B8%EB%B0%95%EC%8A%A4/</link>
+    <description>Recent content in 화이트박스 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Fri, 16 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%ED%99%94%EC%9D%B4%ED%8A%B8%EB%B0%95%EC%8A%A4/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mini Project 02 — DNA Lab Security Scanner</title>
+      <link>http://localhost:1313/project/week_10/</link>
+      <pubDate>Fri, 16 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/project/week_10/</guid>
+      <description>23andMe 데이터 유출 사건을 배경으로, 유전 정보를 다루는 DNA Lab 웹앱을 대상으로 웹 15종 + OS 50종 총 65개 스캐너를 구현한 두 번째 팀 미니프로젝트 (리드 보안 엔지니어)</description>
+    </item>
+  </channel>
+</rss>

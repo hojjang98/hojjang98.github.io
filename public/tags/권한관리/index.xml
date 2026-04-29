@@ -1,1 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>권한관리 on HJ's Security Note</title><link>https://hojjang98.github.io/tags/%EA%B6%8C%ED%95%9C%EA%B4%80%EB%A6%AC/</link><description>Recent content in 권한관리 on HJ's Security Note</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Sat, 29 Nov 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://hojjang98.github.io/tags/%EA%B6%8C%ED%95%9C%EA%B4%80%EB%A6%AC/index.xml" rel="self" type="application/rss+xml"/><item><title>Week 05 — 리눅스 파일 시스템과 권한 관리</title><link>https://hojjang98.github.io/project/week_05/</link><pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/project/week_05/</guid><description>리눅스 파일 시스템 계층 구조와 권한 관리 메커니즘을 보안 관점으로 정리한 기술 보고서</description></item><item><title>2025.11.24 (Day 21) - Linux 시스템 기초 및 파일 접근 통제</title><link>https://hojjang98.github.io/daily_logs/week05/20251124_linux_basic/</link><pubDate>Mon, 24 Nov 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week05/20251124_linux_basic/</guid><description>리눅스 파일 권한 모델(UGO), Setuid/Sticky Bit 특수 권한, Umask 설정을 통한 최소 권한 원칙 적용</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>권한관리 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%EA%B6%8C%ED%95%9C%EA%B4%80%EB%A6%AC/</link>
+    <description>Recent content in 권한관리 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sat, 29 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%EA%B6%8C%ED%95%9C%EA%B4%80%EB%A6%AC/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Week 05 — 리눅스 파일 시스템과 권한 관리</title>
+      <link>http://localhost:1313/project/week_05/</link>
+      <pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/project/week_05/</guid>
+      <description>리눅스 파일 시스템 계층 구조와 권한 관리 메커니즘을 보안 관점으로 정리한 기술 보고서</description>
+    </item>
+    <item>
+      <title>2025.11.24 (Day 21) - Linux 시스템 기초 및 파일 접근 통제</title>
+      <link>http://localhost:1313/daily_logs/week05/20251124_linux_basic/</link>
+      <pubDate>Mon, 24 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week05/20251124_linux_basic/</guid>
+      <description>리눅스 파일 권한 모델(UGO), Setuid/Sticky Bit 특수 권한, Umask 설정을 통한 최소 권한 원칙 적용</description>
+    </item>
+  </channel>
+</rss>

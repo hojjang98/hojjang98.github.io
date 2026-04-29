@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>2026.04.16 (Day 117) - 최종 발표 Q&amp;A 준비 정리 | HJ&#39;s Security Note</title>
+<meta name="keywords" content="보안컨설팅, 발표준비, QA, 개인정보보호법, AI활용, 체크리스트, 등급산정">
+<meta name="description" content="최종 발표 Q&amp;A 예상 질문을 파트별로 수집하고 답변 핵심을 정리하였다. 법적 근거, 체크리스트 설계, 등급 산정, AI 활용, 해랑금융 심층 분석 등 전 파트를 망라하였다.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/daily_logs/week24/20260416_final_project_42/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c8c3b65cd6d058be2b4f050fd7a688ac13a23056571601dabe4f70d8d008259e.css" integrity="sha256-yMO2XNbQWL4rTwUP16aIrBOiMFZXFgHavk9w2NAIJZ4=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/daily_logs/week24/20260416_final_project_42/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">홈</a>&nbsp;»&nbsp;<a href="http://localhost:1313/daily_logs/">6개월, 혹은 그 이상의 보안 여정</a></div>
+    <h1 class="post-title entry-hint-parent">
+      2026.04.16 (Day 117) - 최종 발표 Q&amp;A 준비 정리
+    </h1>
+    <div class="post-meta"><span title='2026-04-16 00:00:00 +0000 UTC'>2026년 4월 16일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>[ 1. 핵심 개념 정리 ]</p>
+<pre><code>[ Q&amp;A 출처 및 파트 구성 ]
+
+| # | 출처 | 담당 파트 | 질문 난이도 분포 |
+|:---:|:---|:---|:---|
+| 1 | 팀원 ○○ | 프로젝트 배경 법적 근거, 위수탁사 구조, 체크리스트 설계, 등급 산정, 기술적 취약점, 점검 방법론, 개선방안 | 전 파트 고르게 분포 |
+| 2 | 팀원 ○○ | 체크리스트 설계, 점검 수행, 결과 분석, 개선방안, AI 활용, 프로젝트 전반 | 관리적 관점 중심 |
+| 3 | 팀원 ○○ | 프로젝트 전 파트 (노트북LM 활용) | 실무 현실성 컨설팅 방법론 집중 |
+| 4 | 팀원 ○○ &amp; ○○ | AI 활용 및 프롬프트 설계 | 기술적 깊이 있는 고난도 포함 |
+| 5 | 팀원 ○○ &amp; ○○ | 해랑금융 심층 분석 | 금융 법령 기술 복합 |
+</code></pre>
+<p>[ 2. 파트별 Q&amp;A 상세 정리 ]</p>
+<pre><code>[ 법적 근거 및 재위탁 ]
+
+| 질문 | 답변 핵심 | 관련 법령 |
+|:---|:---|:---|
+| 개인정보보호법과 항공보안법 충돌 중복 여부 | 항공보안법이 수집 명분(생체정보 등) 제공, 구체적 암호화 파기 절차는 개인정보보호법이 통제 — 중복 규제 구조 | 개인정보보호법, 항공보안법 |
+| 구두 재위탁 지시 시 법적 제재 | 제26조 제1항 위반  -&gt;  위탁사 수탁사 모두 1,000만원 이하 과태료 | 개인정보보호법 제26조 제1항 |
+| 재위탁 발생 시 하랑항공의 관리 감독 의무 | 수탁사의 재수탁에 대해서도 원위탁사 하랑항공이 관리 감독 의무 부담 (추가 공부 필요) | 개인정보보호법 제26조 |
+| 여권번호 비자 유출 시 추가 법적 제재 | 개인정보보호법 외 출입국관리법 제74조의2, 관세법상 목적 외 사용 누설 금지 조항 위반 가능, 엄격한 징역형 구형 여지 | 출입국관리법, 관세법 |
+| 교육 미실시 시 위탁사 제재 | 교육 미실시 자체 직접 제재는 없으나, 점검 시 시정조치  -&gt;  기간 내 미이행 시 3,000만원 이하 과태료 | 개인정보보호법 제26조 제4항 |
+| ISMS-P 심사에서 수탁사 관리 미흡 부적합 항목 | ISMS-P 내 수탁사 관련 심사 항목 구체적 파악 필요 (추가 공부 필요) | ISMS-P |
+
+[ 체크리스트 설계 ]
+
+| 질문 | 답변 핵심 |
+|:---|:---|
+| 53개 항목 8개 범주 근거 | 개인정보보호법 안전성 확보 조치 기준을 뼈대로, 6개 수탁사 공통 개별 현황을 반영해 14개 세부 영역  -&gt;  공통 항목끼리 묶어 8개 범주로 구성 |
+| ISMS-P와의 연계 차별점 | 독자 체크리스트(L-CHECK). ISMS-P 인증기관과 별도 연계 없음. 법령 대통령령 가이드라인 + 수탁사 연관성 + 항공보안법 기반으로 자체 설계 |
+| 동일 체크리스트 이기종 수탁사 적용 적절성 | 공통 기준 유지하되 점검 방법과 내역을 수탁사별로 유연하게 조정하여 적용성 보완 |
+| 부분양호(P) 0.7 설정 이유 | 0.5 적용 시 특정 등급 쏠림 현상 발생  -&gt;  등급 분포를 고르게 만들어 위탁사가 수탁사 위험도를 한눈에 파악할 수 있도록 0.7로 조정 |
+| 해당없음(N/A) 등급 산정 처리 | 산정에 반영하지 않음 |
+| 가중치 차등 적용 여부 | 항목 자체 점수 가중치는 없음. 대신 개선방안 보고서에서 긴급 단기 중기 이행 우선순위로 차등 반영 |
+| 클라우드 환경 체크 항목 포함 여부 | 각 팀에서 검토 필요 |
+| 부분양호 기준 객관화 방법 | 공통 프롬프트 템플릿으로 팀 내 기준 통일, 팀원 교차 검토로 편차 최소화 |
+
+[ 등급 산정 및 결과 분석 ]
+
+| 질문 | 답변 핵심 |
+|:---|:---|
+| A등급 수탁사가 없는 이유 | 각 수탁사 시나리오 설계 시 취약점을 의도적으로 포함했기 때문에 B가 최상위 등급이 됨 |
+| 온다로지스 D등급 결정적 원인 | 대부분 범주 취약, 기본 비밀번호 복잡도 설정 부재 등 전반적 통제 미흡 (세부 원인 추가 숙지 필요) |
+| 수탁사 공통 취약 범주 | 추가 파악 필요 |
+| 위험 비율 산출 기준 | 양호 부분양호 취약 개수에 등급 산정식(1점 0.7점 0점) 적용 후 산출한 비율 |
+| 핵심 위험 사항 선별 기준 | 위탁사 입장에서 법적으로 크리티컬한 사항 + ISMS-P 기준 심각 사항 위주 선정 |
+| 실제 현업 적용 시 보완점 | 위수탁사별 맞춤형 등급 산정 방식 별도 설계 필요. 현재 산정식은 분포 가시화 목적에 최적화됨 |
+| 등급 기준 4단계 근거 | 10점 단위 구간 설정 후 부분양호 점수(0.7)와 정합하도록 산정식 역설계 |
+
+[ 기술적 취약점 심층 ]
+
+| 질문 | 답변 핵심 |
+|:---|:---|
+| 온다로지스 배송 명단 평문 전송 개선 방안 | 보안 메일 시스템 및 DRM 적용 |
+| 하랑케이터링 AES-256 DB 암호화에도 평문 존재 이유 | 전체 암호화 시 쿼리 속도 저하 인덱싱 문제  -&gt;  중요 필드만 선택 암호화하는 관행에서 취약점 발생으로 가정 |
+| 패스트레인 디버그 모드 노출 개인정보 침해 경로 | 추가 파악 필요 |
+| 해랑금융 AES-256 관련 | AES: 대칭키 블록 암호화 알고리즘. TLS 1.2: 인터넷 데이터 전송 표준 보안 프로토콜 |
+| 토큰화 데이터 개인정보 해당 여부 | 재식별 가능성이 있으면 개인정보, 없으면 아님. 해랑금융 시나리오에서는 재식별 가능성 없음으로 설정 |
+| 패스트레인 키오스크 재위탁 책임 소재 | 단순 유지보수 용역이라 유출 가능성 낮으나, 유출 시 위수탁 양측 모두 책임 가능성 |
+
+[ 점검 방법론 ]
+
+| 질문 | 답변 핵심 |
+|:---|:---|
+| 비대면 점검임에도 현장 사진 수집 방법 | 보고서 형태 증적: 실제 서식 기반 직접 작성. 단순 사진(파쇄 등): 직접 촬영. 현장 사진: Gemini 이미지 생성 활용 |
+| 서면 현장 점검 결과 상이 시 최종 기준 | 현장 점검 결과를 최종 판단 기준으로 설정 |
+| 부분양호 기준 팀 내 통일 방법 | 공통 프롬프트 템플릿 공유 + 팀원 교차 검토 |
+
+[ 개선방안 ]
+
+| 질문 | 답변 핵심 |
+|:---|:---|
+| 긴급 단기 중기 기한 설정 기준 | 긴급: 당장의 위험. 단기: 추가 예산 없이 2개월 내 조치 가능. 중기: 예산 편성 인원 및 시스템 조율 필요. 실무 통용 기준 참조 |
+| 녹취 암호화 4주 현실성 | 촉박함 인지하나, 법적 위반 지속 리스크가 더 크다고 판단. 2개월 이상 방치는 용인 불가 |
+| 후속 이행 점검 계획 | 가상 프로젝트 범위 내에서는 별도 후속 점검 계획은 미수립 |
+| 교육 자료 산출물 포함 이유 | 개인정보보호법 제26조 제4항 — 교육 실시는 위탁사 의무. 컨설팅 완결성 확보 및 법적 의무 이행 지원 목적 |
+
+[ AI 활용 및 프롬프트 설계 ]
+
+| 질문 | 답변 핵심 | 난이도 |
+|:---|:---|:---:|
+| 세 AI를 분리 사용한 이유 | 단일 AI 환각 리스크 분산. Claude: 법적 논리 문서 구조화. ChatGPT: 초안 아이디어 발산. Gemini: 이미지 포함 증적 생성 | 하 |
+| 역할 부여(&quot;개인정보보호 전문가&quot;) 효과 | 역할 없을 때 방향 이탈 법령 불일치 발생. 역할 명시 시 법령 기반 실무 지향 답변 도출, 환각 감소 | 중 |
+| 취약 양호 최적 3시나리오 동시 요청 이유 | 평가 기준선 확보. 취약=문제 발굴 기준, 양호=현 이행 수준 평가, 최적=개선 목표 수준. 동시 출력으로 일관된 평가 스펙트럼 확보 | 중 |
+| 법령 조항 명시 효과 | 해당 조항 범위 내 답변 생성  -&gt;  자의적 판단 배제. 법적 타당성 향상 | 중 |
+| AI 생성 증적의 신뢰성 문제 | 현업에서는 절대 불가. 법적 증거 능력 없음, 조작 가능성, 할루시네이션 위험. 이번 프로젝트는 학습용 가상 시나리오 전제 | 상 |
+| 일관성 확보 방법 | 공통 프롬프트 템플릿 고정 + 표 형태 출력 명시로 자유도 감소 + 팀원 교차 검토 | 상 |
+| 컨텍스트 윈도우 한계 대응 | 53개 항목 전체 입력 시 후반부 품질 저하  -&gt;  8개 범주별 분할 질의로 대응. 정확도도 함께 향상 | 상 |
+| 할루시네이션 방지 3가지 방법 | 프롬프트에 법령 조항 번호 명시 / 법제처 원문 교차 검증 / 범주별 분할 질의 | 상 |
+| 보안 컨설팅 문서에 가장 적합한 AI | Claude. 긴 문서 구조 일관성 법적 논리 전개 우수. 단, 법령 일치 여부는 반드시 직접 확인 필요 | 상 |
+| 현업 AI 활용 시 보완점 | AI 생성물 실제 증적 구분 기준 사전 수립 / 법령 인용 이중 확인 체계 / 팀 내 AI 가이드라인 문서화 | 상 |
+
+[ 해랑금융 심층 ]
+
+| 질문 | 답변 핵심 |
+|:---|:---|
+| ISO 27001 PCI-DSS 인증에도 B등급 — 외부 인증과 실제 보안 수준 괴리 | 인증은 특정 시점 스냅샷. 실제 운영 단계에서 절차 미이행(서약서 누락 등) 발생 가능. 인증 = 보안 수준 보장이 아님 |
+| 전자금융거래법 개인정보보호법 충돌 시 우선 기준 | 특별법 우선 원칙에 따라 금융 거래 데이터는 전자금융거래법 우선 적용 |
+| mTLS vs TLS 차이 및 적용 이유 | TLS: 서버만 인증. mTLS: 클라이언트 서버 상호 인증. 금융 API처럼 신뢰된 시스템 간 통신에서 위변조 도용 방지 목적 |
+| bcrypt cost 12 적절성 | 현시점 적절한 수준. 하드웨어 성능 향상에 따라 주기적 상향 검토 필요 |
+| 결제 DB 접속기록 6개 필수 항목 | 개인정보보호법 안전성 확보 조치 기준 기반: 계정, 접속 일시, 접속지 정보, 처리한 정보 주체 정보, 수행 업무 (추가 확인 필요) |
+| 보안 서약서 미징구 — 절차 부재 vs 미이행 | 시나리오 설정에 따라 다름. 담당자 숙지 필요 |
+| B등급이 적절한가 (금융 데이터 취급) | 기술적 통제는 상당 수준이나 관리적 취약점(서약서 등)이 존재. 금융사 특성상 더 엄격한 기준 적용 여지 있음 |
+| 관리적 기술적 항목 동일 가중치 적절성 | 동일 가중치 한계 인식하나, 개선방안에서 긴급 단기 중기로 실질적 차등 반영 |
+</code></pre>
+<p>[ 3. 비교 분석표 ]</p>
+<pre><code>[ 파트별 질문 성격 분류 ]
+
+| 파트 | 쉬운 질문 | 중간 질문 | 고난도 질문 | 특이사항 |
+|:---:|:---|:---|:---|:---|
+| 법적 근거 | 재위탁 과태료 | 항공보안법 개인정보보호법 중복 | ISMS-P 부적합 항목, 재위탁 의무 | 법령 암기 필요 |
+| 체크리스트 | N/A 처리 방식 | 0.7 가중치 이유, 범주 구성 근거 | 부분양호 객관화 방법 | 근거 논리 중요 |
+| 등급 산정 | A등급 없는 이유 | 위험 비율 산출 기준 | 현업 보완점 | 수치 숙지 필요 |
+| AI 활용 | 각 AI 역할 분리 이유 | 역할 부여 효과, 법령 명시 효과 | 증적 신뢰성, 할루시네이션 방지 | 원칙 중심 답변 |
+| 해랑금융 | 토큰화 개인정보 여부 | mTLS 차이, 인증-보안 괴리 | 전자금융거래법 충돌 처리 | 금융 도메인 지식 필요 |
+</code></pre>
+<p>[ 4. 추가 공부 필요 사항 ]</p>
+<pre><code>[ 발표 전 보완 필수 항목 ]
+
+| # | 항목 | 현황 | 참고 자료 |
+|:---:|:---|:---|:---|
+| 1 | 재위탁 시 원위탁사 관리 감독 의무 법적 근거 | 미파악 | 개인정보보호법 제26조 전문 |
+| 2 | ISMS-P 심사 수탁사 관리 관련 부적합 항목 | 미파악 | KISA ISMS-P 인증 기준 |
+| 3 | 온다로지스 D등급 세부 원인 | 일부 파악 | 온다로지스 체크리스트 결과 |
+| 4 | 수탁사 공통 취약 범주 | 미파악 | 전체 체크리스트 결과 비교 |
+| 5 | 패스트레인 디버그 모드 개인정보 침해 경로 | 미파악 | 디버그 모드 보안 위협 자료 |
+| 6 | 결제 DB 접속기록 6개 필수 항목 | 일부 파악 | 개인정보보호법 안전성 확보 조치 기준 |
+| 7 | AI 도구 사용 팀 내 가이드라인 유무 | 미파악 | 팀원 확인 필요 |
+</code></pre>
+<p>[ 6. 배운 점 및 인사이트 ]</p>
+<pre><code>[ 새로 알게 된 점 ]
+
+-  Q&amp;A의 깊이는 발표보다 더 깊다 : 발표에서 한 줄로 넘어간 내용도 질문으로 들어오면
+    법령 조항, 기술 원리, 현업 적용 가능성까지 풀어야 한다. 설계 단계의 모든 판단에 근거가 있어야 한다.
+
+-  파트 책임 구조의 중요성 : 파트별로 예상 질문이 나뉘어 있다는 것은,
+    각자 자기 파트는 세부 수치와 법령 조항까지 완벽히 숙지해야 한다는 뜻이다.
+
+-  AI 활용 답변의 원칙 : &quot;현업에서는 절대 불가, 이번 프로젝트는 학습용 가상 시나리오 전제&quot;라는
+    선 긋기가 모든 AI 관련 질문의 전제가 된다.
+
+-  관리적 취약점의 무게 : 보안 서약서 미징구처럼 기술적으로 단순해 보이는 관리적 취약점도
+    법적 제재와 직결된다는 점에서 가중치 논의가 의미 있다.
+
+[ 이전 학습과의 연결고리 ]
+
+-  Day114 리허설 피드백  -&gt;  Q&amp;A 반영 : 강사님이 지적한 &quot;0.7 근거 부족, ABCD 근거 부족&quot;이
+    오늘 Q&amp;A에서 가장 핵심 질문으로 그대로 등장했다. 피드백이 정확했다.
+
+-  Day115 대본 정리  -&gt;  Q&amp;A 답변 연결 : 대본에서 근거 없이 넘어갔던 슬라이드들이
+    Q&amp;A에서 날카로운 질문으로 돌아왔다. 발표와 Q&amp;A는 하나의 세트다.
+
+[ 실무 적용 아이디어 ]
+
+보안 전문가 관점 :
+
+-  법령 조항 암기의 중요성 : 컨설팅 현장에서 &quot;법적 근거가 무엇입니까&quot;라는 질문은 반드시 나온다.
+    조항 번호와 내용을 함께 말할 수 있어야 신뢰가 생긴다.
+
+-  설계 판단의 문서화 : 0.7 가중치처럼 기준을 설정할 때마다 그 이유를 내부 문서로 남겨두는 습관이
+    실무에서도 필수다.
+
+-  AI 활용 경계 인식 : 보안 컨설팅에서 AI는 구조화와 초안 작성에 유효하지만,
+    법령 검증과 최종 판단은 반드시 전문가가 직접 수행해야 한다.
+</code></pre>
+<p>[ 7. Quick Reference ]</p>
+<pre><code>[ 핵심 법령 빠른 참조 ]
+
+| 조항 | 내용 | 제재 |
+|:---:|:---|:---|
+| 개인정보보호법 제26조 제1항 | 재위탁 시 위탁사 사전 동의 필요 | 위탁사 수탁사 모두 1,000만원 이하 과태료 |
+| 개인정보보호법 제26조 제4항 | 수탁사 교육 실시 위탁사 의무 | 직접 제재 없음, 시정조치 미이행 시 3,000만원 이하 과태료 |
+| 출입국관리법 제74조의2 | 여권 비자 정보 목적 외 사용 금지 | 징역형 구형 가능 |
+
+[ Q&amp;A 당일 체크리스트 ]
+
+답변 준비 :
+    -  0.7 가중치 근거 — 분포 쏠림 현상 설명 숙지
+    -  ABCD 등급 4단계 근거 — 10점 단위 구간 설명 숙지
+    -  재위탁 법적 근거 — 제26조 조항 숙지
+    -  ISMS-P 수탁사 관련 부적합 항목 파악
+    -  온다로지스 D등급 세부 원인 숙지
+    -  결제 DB 접속기록 6개 항목 확인
+    -  패스트레인 디버그 모드 위협 경로 파악
+
+태도 :
+    -  모르는 것은 인정하되 관련 원칙으로 연결하기
+    -  담당 파트 질문은 담당자가 직접 답변
+    -  침착하게, 결론부터
+</code></pre>
+<p>[ 8. 트러블슈팅 ]</p>
+<pre><code>| 문제 | 원인 | 해결 방법 |
+|:---|:---|:---|
+| 법령 조항 번호가 헷갈릴 때 | 조항 암기 없이 내용만 숙지 | 제26조 계열 조항 번호 내용 세트로 암기 |
+| AI 관련 질문에서 방어적이 될 때 | 현업 기준과 학습 시나리오 혼용 | &quot;가상 시나리오 전제&quot; 원칙 먼저 선언 후 답변 |
+| 기술 질문에서 깊이가 부족할 때 | 파트 외 영역 숙지 미흡 | 담당 파트 집중 + 공통 핵심 기술(AES, TLS 등) 기본 개념 숙지 |
+| 가중치 관련 질문에서 논리 흔들릴 때 | 설계 근거 서술 훈련 부족 | 분포 가시화  -&gt;  0.7 조정  -&gt;  등급 분화 순서로 논리 흐름 연습 |
+</code></pre>
+<p>Today&rsquo;s Insight :</p>
+<p>Q&amp;A를 준비하면서 느낀 건, 발표는 팀이 만든 결과물을 보여주는 자리지만
+Q&amp;A는 각자가 그 결과물을 얼마나 소화했는지를 드러내는 자리라는 점이다.
+0.7 가중치 하나도, ABCD 등급 하나도 &ldquo;왜&quot;라는 질문 앞에서 흔들리지 않으려면
+설계 당시의 판단 근거를 자기 언어로 다시 말할 수 있어야 한다.
+발표가 잘 됐다는 건 그 기반이 충분히 쌓였다는 뜻이고,
+오늘 Q&amp;A 정리로 마지막 빈자리를 채웠다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/%EB%B3%B4%EC%95%88%EC%BB%A8%EC%84%A4%ED%8C%85/">보안컨설팅</a></li>
+      <li><a href="http://localhost:1313/tags/%EB%B0%9C%ED%91%9C%EC%A4%80%EB%B9%84/">발표준비</a></li>
+      <li><a href="http://localhost:1313/tags/qa/">QA</a></li>
+      <li><a href="http://localhost:1313/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/">개인정보보호법</a></li>
+      <li><a href="http://localhost:1313/tags/ai%ED%99%9C%EC%9A%A9/">AI활용</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%B2%B4%ED%81%AC%EB%A6%AC%EC%8A%A4%ED%8A%B8/">체크리스트</a></li>
+      <li><a href="http://localhost:1313/tags/%EB%93%B1%EA%B8%89%EC%82%B0%EC%A0%95/">등급산정</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

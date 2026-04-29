@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>인증절차 on HJ's Security Note</title><link>https://hojjang98.github.io/tags/%EC%9D%B8%EC%A6%9D%EC%A0%88%EC%B0%A8/</link><description>Recent content in 인증절차 on HJ's Security Note</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Thu, 19 Mar 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://hojjang98.github.io/tags/%EC%9D%B8%EC%A6%9D%EC%A0%88%EC%B0%A8/index.xml" rel="self" type="application/rss+xml"/><item><title>Day 35: ISMS-P 인증 실무</title><link>https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/13_isms-p%EC%9D%B8%EC%A6%9D/day35_ismsp%EC%9D%B8%EC%A6%9D%EC%8B%A4%EB%AC%B4/</link><pubDate>Thu, 19 Mar 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/13_isms-p%EC%9D%B8%EC%A6%9D/day35_ismsp%EC%9D%B8%EC%A6%9D%EC%8B%A4%EB%AC%B4/</guid><description>ISMS-P 인증의 법적 근거, 의무 대상, 104개 인증기준, 7단계 인증 절차, 현장심사 방법, 비용 및 실무 사례 정리</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>인증절차 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%EC%9D%B8%EC%A6%9D%EC%A0%88%EC%B0%A8/</link>
+    <description>Recent content in 인증절차 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Thu, 19 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%EC%9D%B8%EC%A6%9D%EC%A0%88%EC%B0%A8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Day 35: ISMS-P 인증 실무</title>
+      <link>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/13_isms-p%EC%9D%B8%EC%A6%9D/day35_ismsp%EC%9D%B8%EC%A6%9D%EC%8B%A4%EB%AC%B4/</link>
+      <pubDate>Thu, 19 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/13_isms-p%EC%9D%B8%EC%A6%9D/day35_ismsp%EC%9D%B8%EC%A6%9D%EC%8B%A4%EB%AC%B4/</guid>
+      <description>ISMS-P 인증의 법적 근거, 의무 대상, 104개 인증기준, 7단계 인증 절차, 현장심사 방법, 비용 및 실무 사례 정리</description>
+    </item>
+  </channel>
+</rss>

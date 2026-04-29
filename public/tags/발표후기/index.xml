@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>발표후기 on HJ's Security Note</title><link>https://hojjang98.github.io/tags/%EB%B0%9C%ED%91%9C%ED%9B%84%EA%B8%B0/</link><description>Recent content in 발표후기 on HJ's Security Note</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Tue, 06 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://hojjang98.github.io/tags/%EB%B0%9C%ED%91%9C%ED%9B%84%EA%B8%B0/index.xml" rel="self" type="application/rss+xml"/><item><title>2026.01.06 (Day 49) - 최종 발표 및 프로젝트 완료</title><link>https://hojjang98.github.io/daily_logs/week11/20260106_project_05/</link><pubDate>Tue, 06 Jan 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week11/20260106_project_05/</guid><description>DNA Lab 최종 발표 완료, 강사님 &amp;lsquo;3조 정말 잘했습니다&amp;rsquo; 칭찬 4가지, Q&amp;amp;A 3개 답변, 웹 93.8%/OS 28.0% 탐지율 성과, 팀장 발표 소회 및 리더십 성장 경험, 이후 SOC 분석가 방향 설정</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>발표후기 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%EB%B0%9C%ED%91%9C%ED%9B%84%EA%B8%B0/</link>
+    <description>Recent content in 발표후기 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Tue, 06 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%EB%B0%9C%ED%91%9C%ED%9B%84%EA%B8%B0/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2026.01.06 (Day 49) - 최종 발표 및 프로젝트 완료</title>
+      <link>http://localhost:1313/daily_logs/week11/20260106_project_05/</link>
+      <pubDate>Tue, 06 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week11/20260106_project_05/</guid>
+      <description>DNA Lab 최종 발표 완료, 강사님 &amp;lsquo;3조 정말 잘했습니다&amp;rsquo; 칭찬 4가지, Q&amp;amp;A 3개 답변, 웹 93.8%/OS 28.0% 탐지율 성과, 팀장 발표 소회 및 리더십 성장 경험, 이후 SOC 분석가 방향 설정</description>
+    </item>
+  </channel>
+</rss>

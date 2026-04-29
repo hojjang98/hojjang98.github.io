@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>프로젝트마무리 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EB%A7%88%EB%AC%B4%EB%A6%AC/</link>
+    <description>Recent content in 프로젝트마무리 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Tue, 14 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EB%A7%88%EB%AC%B4%EB%A6%AC/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2026.04.14 (Day 114) - 최종 발표 리허설 피드백 정리</title>
+      <link>http://localhost:1313/daily_logs/week24/20260414_final_project_40/</link>
+      <pubDate>Tue, 14 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week24/20260414_final_project_40/</guid>
+      <description>최종 발표 리허설을 진행하고 팀원 및 강사님 피드백을 수렴하였다. 발표 속도, 근거 부족(0.7 가중치·ABCD 등급), 분량 불균형, 포인터 미사용 등을 주요 개선사항으로 확인하였다.</description>
+    </item>
+    <item>
+      <title>2026.04.13 (Day 114) - 최종 발표 리허설 피드백 정리</title>
+      <link>http://localhost:1313/daily_logs/week24/20260412_final_project_39/</link>
+      <pubDate>Mon, 13 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week24/20260412_final_project_39/</guid>
+      <description>최종 발표 리허설을 진행하고 팀원 및 강사님 피드백을 수렴하였다. 발표 속도, 근거 부족(0.7 가중치·ABCD 등급), 분량 불균형, 포인터 미사용 등을 주요 개선사항으로 확인하였다.</description>
+    </item>
+    <item>
+      <title>2026.04.10 (Day 112) - 최종 발표 PPT 작업 완료</title>
+      <link>http://localhost:1313/daily_logs/week23/20260410_final_project_37/</link>
+      <pubDate>Fri, 10 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week23/20260410_final_project_37/</guid>
+      <description>4/6부터 시작된 PPT 피드백 반영 작업이 오늘로 사실상 마무리됐다. 내일 멘토 최종 피드백 수렴 후 PPT 최종본을 확정할 예정이다.</description>
+    </item>
+    <item>
+      <title>2026.04.09 (Day 111) - 최종 발표 PPT 제작 마무리 단계 진입</title>
+      <link>http://localhost:1313/daily_logs/week23/20260409_final_project_36/</link>
+      <pubDate>Thu, 09 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week23/20260409_final_project_36/</guid>
+      <description>사흘 넘게 이어진 PPT 피드백-수정 사이클을 거쳐 처음으로 마무리 단계에 진입하였다. 전체 흐름이 잡히면서 발표 자료로서의 형태가 나오기 시작했다.</description>
+    </item>
+  </channel>
+</rss>

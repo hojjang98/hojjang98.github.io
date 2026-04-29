@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>랜섬웨어 사례 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/04_%EB%9E%9C%EC%84%AC%EC%9B%A8%EC%96%B4/</link>
+    <description>Recent content in 랜섬웨어 사례 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Thu, 16 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/04_%EB%9E%9C%EC%84%AC%EC%9B%A8%EC%96%B4/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Day54 실무 사례 - 메리어트 호텔 데이터 유출 (2018)</title>
+      <link>http://localhost:1313/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/04_%EB%9E%9C%EC%84%AC%EC%9B%A8%EC%96%B4/day54_%EB%9E%9C%EC%84%AC%EC%9B%A8%EC%96%B4%EC%82%AC%EB%A1%802_%EB%A9%94%EB%A6%AC%EC%96%B4%ED%8A%B8/</link>
+      <pubDate>Thu, 16 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/04_%EB%9E%9C%EC%84%AC%EC%9B%A8%EC%96%B4/day54_%EB%9E%9C%EC%84%AC%EC%9B%A8%EC%96%B4%EC%82%AC%EB%A1%802_%EB%A9%94%EB%A6%AC%EC%96%B4%ED%8A%B8/</guid>
+      <description>메리어트 호텔 그룹의 2014~2018년 APT 해킹 사건. 약 5억 명 고객 정보 유출, 4년간 탐지 실패, 중국 정부 배후 추정, GDPR 위반 벌금 2,400만 달러.</description>
+    </item>
+    <item>
+      <title>Day 48: 실무 사례 #8 - 웹젠·나야나 랜섬웨어 공격 (2017)</title>
+      <link>http://localhost:1313/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/04_%EB%9E%9C%EC%84%AC%EC%9B%A8%EC%96%B4/day48_%EB%9E%9C%EC%84%AC%EC%9B%A8%EC%96%B4%EC%82%AC%EB%A1%801_%EC%9B%B9%EC%A0%A0%EB%82%98%EC%95%BC%EB%82%98/</link>
+      <pubDate>Wed, 08 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/04_%EB%9E%9C%EC%84%AC%EC%9B%A8%EC%96%B4/day48_%EB%9E%9C%EC%84%AC%EC%9B%A8%EC%96%B4%EC%82%AC%EB%A1%801_%EC%9B%B9%EC%A0%A0%EB%82%98%EC%95%BC%EB%82%98/</guid>
+      <description>2017년 6월 웹 호스팅 업체 나야나가 Erebus 랜섬웨어 공격으로 서버 153대가 암호화되고 고객사 3,400개가 마비된 사건을 법률 위반, 기술적 취약점, 백업 전략 관점에서 분석합니다.</description>
+    </item>
+  </channel>
+</rss>

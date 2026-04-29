@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>산출물검토 on HJ's Security Note</title><link>https://hojjang98.github.io/tags/%EC%82%B0%EC%B6%9C%EB%AC%BC%EA%B2%80%ED%86%A0/</link><description>Recent content in 산출물검토 on HJ's Security Note</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Tue, 24 Mar 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://hojjang98.github.io/tags/%EC%82%B0%EC%B6%9C%EB%AC%BC%EA%B2%80%ED%86%A0/index.xml" rel="self" type="application/rss+xml"/><item><title>2026.03.24 (Day 99) - 전 산출물 최종 검토 및 PPT 구성 확정</title><link>https://hojjang98.github.io/daily_logs/week21/20260324_final_project_24/</link><pubDate>Tue, 24 Mar 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week21/20260324_final_project_24/</guid><description>중간 발표 전날 전 산출물 전수 검토 및 수정, 용어·정렬·글머리 기호 기준 최종 확정, PPT 구성 완료.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>산출물검토 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%EC%82%B0%EC%B6%9C%EB%AC%BC%EA%B2%80%ED%86%A0/</link>
+    <description>Recent content in 산출물검토 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Tue, 24 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%EC%82%B0%EC%B6%9C%EB%AC%BC%EA%B2%80%ED%86%A0/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2026.03.24 (Day 99) - 전 산출물 최종 검토 및 PPT 구성 확정</title>
+      <link>http://localhost:1313/daily_logs/week21/20260324_final_project_24/</link>
+      <pubDate>Tue, 24 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week21/20260324_final_project_24/</guid>
+      <description>중간 발표 전날 전 산출물 전수 검토 및 수정, 용어·정렬·글머리 기호 기준 최종 확정, PPT 구성 완료.</description>
+    </item>
+  </channel>
+</rss>

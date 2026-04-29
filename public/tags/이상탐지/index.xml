@@ -1,1 +1,40 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>이상탐지 on HJ's Security Note</title><link>https://hojjang98.github.io/tags/%EC%9D%B4%EC%83%81%ED%83%90%EC%A7%80/</link><description>Recent content in 이상탐지 on HJ's Security Note</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Thu, 06 Nov 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://hojjang98.github.io/tags/%EC%9D%B4%EC%83%81%ED%83%90%EC%A7%80/index.xml" rel="self" type="application/rss+xml"/><item><title>2025.11.06 (Day 9) Matplotlib · Seaborn 기반 로그 시각화 및 데이터 분석 학습 로그</title><link>https://hojjang98.github.io/daily_logs/week02/20251106_visualization/</link><pubDate>Thu, 06 Nov 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week02/20251106_visualization/</guid><description>Matplotlib과 Seaborn을 활용한 보안 로그 시각화 기초 학습. 로그인 실패율·지연시간 분석, 사용자별 이상 패턴 탐지, 피벗 기반 히트맵 구성 방법 정리.</description></item><item><title>2025.11.05 (Day 8) Numpy &amp; Pandas 기반 로그 정규화 학습 로그</title><link>https://hojjang98.github.io/daily_logs/week02/20251105_numpy_pandas_basics/</link><pubDate>Wed, 05 Nov 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week02/20251105_numpy_pandas_basics/</guid><description>Numpy와 Pandas를 활용한 보안 로그 정규화 기초 학습. loadtxt, DataFrame 변환, 결측치 처리, 타입 변환을 통한 로그 전처리 파이프라인 구성 방법 정리.</description></item><item><title>2025.11.04 (Day 7) Numpy &amp; Pandas 기초 / 데이터 처리 및 EDA 학습 로그</title><link>https://hojjang98.github.io/daily_logs/week02/20251104_numpy_pandas_eda/</link><pubDate>Tue, 04 Nov 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week02/20251104_numpy_pandas_eda/</guid><description>Numpy &amp;amp; Pandas 기반 로그 적재, 결측값 처리, JSON 변환, 기초 이상 탐지 흐름 학습</description></item><item><title>2025.11.03 (Day 6) Numpy 기초 및 벡터화 연산 학습 로그</title><link>https://hojjang98.github.io/daily_logs/week02/20251103_numpy_vectorization/</link><pubDate>Mon, 03 Nov 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week02/20251103_numpy_vectorization/</guid><description>Numpy ndarray 구조와 벡터화 연산, 불리언 인덱싱, 브로드캐스팅의 보안 분야 적용 방법 학습</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>이상탐지 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%EC%9D%B4%EC%83%81%ED%83%90%EC%A7%80/</link>
+    <description>Recent content in 이상탐지 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Thu, 06 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%EC%9D%B4%EC%83%81%ED%83%90%EC%A7%80/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2025.11.06 (Day 9) Matplotlib · Seaborn 기반 로그 시각화 및 데이터 분석 학습 로그</title>
+      <link>http://localhost:1313/daily_logs/week02/20251106_visualization/</link>
+      <pubDate>Thu, 06 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week02/20251106_visualization/</guid>
+      <description>Matplotlib과 Seaborn을 활용한 보안 로그 시각화 기초 학습. 로그인 실패율·지연시간 분석, 사용자별 이상 패턴 탐지, 피벗 기반 히트맵 구성 방법 정리.</description>
+    </item>
+    <item>
+      <title>2025.11.05 (Day 8) Numpy &amp; Pandas 기반 로그 정규화 학습 로그</title>
+      <link>http://localhost:1313/daily_logs/week02/20251105_numpy_pandas_basics/</link>
+      <pubDate>Wed, 05 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week02/20251105_numpy_pandas_basics/</guid>
+      <description>Numpy와 Pandas를 활용한 보안 로그 정규화 기초 학습. loadtxt, DataFrame 변환, 결측치 처리, 타입 변환을 통한 로그 전처리 파이프라인 구성 방법 정리.</description>
+    </item>
+    <item>
+      <title>2025.11.04 (Day 7) Numpy &amp; Pandas 기초 / 데이터 처리 및 EDA 학습 로그</title>
+      <link>http://localhost:1313/daily_logs/week02/20251104_numpy_pandas_eda/</link>
+      <pubDate>Tue, 04 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week02/20251104_numpy_pandas_eda/</guid>
+      <description>Numpy &amp;amp; Pandas 기반 로그 적재, 결측값 처리, JSON 변환, 기초 이상 탐지 흐름 학습</description>
+    </item>
+    <item>
+      <title>2025.11.03 (Day 6) Numpy 기초 및 벡터화 연산 학습 로그</title>
+      <link>http://localhost:1313/daily_logs/week02/20251103_numpy_vectorization/</link>
+      <pubDate>Mon, 03 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week02/20251103_numpy_vectorization/</guid>
+      <description>Numpy ndarray 구조와 벡터화 연산, 불리언 인덱싱, 브로드캐스팅의 보안 분야 적용 방법 학습</description>
+    </item>
+  </channel>
+</rss>

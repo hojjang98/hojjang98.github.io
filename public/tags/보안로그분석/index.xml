@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>보안로그분석 on HJ's Security Note</title><link>https://hojjang98.github.io/tags/%EB%B3%B4%EC%95%88%EB%A1%9C%EA%B7%B8%EB%B6%84%EC%84%9D/</link><description>Recent content in 보안로그분석 on HJ's Security Note</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Wed, 12 Nov 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://hojjang98.github.io/tags/%EB%B3%B4%EC%95%88%EB%A1%9C%EA%B7%B8%EB%B6%84%EC%84%9D/index.xml" rel="self" type="application/rss+xml"/><item><title>2025.11.12 (Day 13) RAG &amp; LLM 기반 보안 로그 분석 대시보드</title><link>https://hojjang98.github.io/daily_logs/week03/20251112_rag_llm_security_log_analysis/</link><pubDate>Wed, 12 Nov 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week03/20251112_rag_llm_security_log_analysis/</guid><description>LLM과 RAG를 활용한 보안 로그 자동 분석, 위험도 분류, 지리적 공격 시각화 대시보드 구현</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>보안로그분석 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%EB%B3%B4%EC%95%88%EB%A1%9C%EA%B7%B8%EB%B6%84%EC%84%9D/</link>
+    <description>Recent content in 보안로그분석 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Wed, 12 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%EB%B3%B4%EC%95%88%EB%A1%9C%EA%B7%B8%EB%B6%84%EC%84%9D/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2025.11.12 (Day 13) RAG &amp; LLM 기반 보안 로그 분석 대시보드</title>
+      <link>http://localhost:1313/daily_logs/week03/20251112_rag_llm_security_log_analysis/</link>
+      <pubDate>Wed, 12 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week03/20251112_rag_llm_security_log_analysis/</guid>
+      <description>LLM과 RAG를 활용한 보안 로그 자동 분석, 위험도 분류, 지리적 공격 시각화 대시보드 구현</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>투표 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%ED%88%AC%ED%91%9C/</link>
+    <description>Recent content in 투표 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Tue, 07 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%ED%88%AC%ED%91%9C/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2026.04.07 (Day 109) - 최종 발표 PPT 투표 및 수정사항 확정</title>
+      <link>http://localhost:1313/daily_logs/week23/20260407_final_project_34/</link>
+      <pubDate>Tue, 07 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week23/20260407_final_project_34/</guid>
+      <description>최종 발표 PPT의 장별 구조를 전면 재편하고 미결 투표 항목을 확정하였다. 1장 위수탁 단일화, 6장 소멸, 등급 산정 위치 확정 등 발표 전체의 서사 구조를 다시 설계하였다.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,1 +1,96 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>팀프로젝트 on HJ's Security Note</title><link>https://hojjang98.github.io/tags/%ED%8C%80%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/</link><description>Recent content in 팀프로젝트 on HJ's Security Note</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Fri, 27 Feb 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://hojjang98.github.io/tags/%ED%8C%80%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/index.xml" rel="self" type="application/rss+xml"/><item><title>2026.02.27 (Day 82) - 위수탁·제3자 제공 개념 정립 + 팀 프로젝트 방향 논의</title><link>https://hojjang98.github.io/daily_logs/week17/20260227_final_project_day07/</link><pubDate>Fri, 27 Feb 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week17/20260227_final_project_day07/</guid><description>개인정보 처리 위수탁과 제3자 제공 구분 기준, 토스·NICE·PASS 법적 구조 분석, 팀 프로젝트 역할 및 멘토링 질문 준비.</description></item><item><title>Mini Project 02 — DNA Lab Security Scanner</title><link>https://hojjang98.github.io/project/week_10/</link><pubDate>Fri, 16 Jan 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/project/week_10/</guid><description>23andMe 데이터 유출 사건을 배경으로, 유전 정보를 다루는 DNA Lab 웹앱을 대상으로 웹 15종 + OS 50종 총 65개 스캐너를 구현한 두 번째 팀 미니프로젝트 (리드 보안 엔지니어)</description></item><item><title>2026.01.06 (Day 49) - 최종 발표 및 프로젝트 완료</title><link>https://hojjang98.github.io/daily_logs/week11/20260106_project_05/</link><pubDate>Tue, 06 Jan 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week11/20260106_project_05/</guid><description>DNA Lab 최종 발표 완료, 강사님 &amp;lsquo;3조 정말 잘했습니다&amp;rsquo; 칭찬 4가지, Q&amp;amp;A 3개 답변, 웹 93.8%/OS 28.0% 탐지율 성과, 팀장 발표 소회 및 리더십 성장 경험, 이후 SOC 분석가 방향 설정</description></item><item><title>2026.01.05 (Day 48) - 발표 자료 완성 및 최종 점검</title><link>https://hojjang98.github.io/daily_logs/week11/20260105_project_04/</link><pubDate>Mon, 05 Jan 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week11/20260105_project_04/</guid><description>DNA Lab 최종 발표 PPT 16슬라이드 완성, 발표 스크립트 작성 및 3차 리허설(22분 조정), 웹 93.8%(15/16)/OS 28.0%(14/50)/전체 43.9%(29/66) 진단 결과 데이터 정리, 4가지 프로젝트 한계점 및 예상 Q&amp;amp;A 20개 준비</description></item><item><title>2025.12.31 (Day 46) - 오프라인 미팅과 DNA Lab 역할 분담</title><link>https://hojjang98.github.io/daily_logs/week10/20251231_project_02/</link><pubDate>Wed, 31 Dec 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week10/20251231_project_02/</guid><description>팀 오프라인 대면 회의에서 DNA Lab 페르소나 구체화 및 역할 분담 확정(호짱=Python 스캐너, 백엔드/프론트엔드/문서화), 사용자 여정별 취약점 매핑, 23andMe 사건 기반 시나리오 설계, GitHub 협업 규칙 및 일일 체크인 프로토콜 수립</description></item><item><title>2025.11.21 (Day 20) 팀 프로젝트: 최종 프레젠테이션 및 발표</title><link>https://hojjang98.github.io/daily_logs/week04/20251121_project_final_presentation/</link><pubDate>Fri, 21 Nov 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week04/20251121_project_final_presentation/</guid><description>팀 프로젝트 최종 프레젠테이션 성공적 마무리 및 Q/A 대응 회고</description></item><item><title>Mini Project 01 — LLM/RAG 기반 영화 흥행 분석 시스템</title><link>https://hojjang98.github.io/project/week_03_04/</link><pubDate>Fri, 21 Nov 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/project/week_03_04/</guid><description>Week 3 &amp;amp; 4 통합 첫 번째 팀 미니프로젝트 — TMDB 데이터 기반 RAG 추천·흥행 분석·투자 판단 종합 플랫폼 (팀장)</description></item><item><title>2025.11.20 (Day 19) Project: 분석 결과 수정 및 최종 발표 자료 완성</title><link>https://hojjang98.github.io/daily_logs/week04/20251120_project_final_review_completion/</link><pubDate>Thu, 20 Nov 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week04/20251120_project_final_review_completion/</guid><description>최종 QA 및 에러 핸들링 점검, 발표 스크립트 및 시연 동선 확정</description></item><item><title>2025.11.19 (Day 18) Project: LangChain/RAG 분석 모델 통합 및 PPT 초안 제작</title><link>https://hojjang98.github.io/daily_logs/week04/20251119_project_rag_integration_and_ppt/</link><pubDate>Wed, 19 Nov 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week04/20251119_project_rag_integration_and_ppt/</guid><description>LangChain/RAG 분석 모델 Streamlit 통합 완료 및 발표 PPT 핵심 시나리오 구성</description></item><item><title>2025.11.18 (Day 17) Project: Streamlit 시각화 대시보드 구현 완료</title><link>https://hojjang98.github.io/daily_logs/week04/20251118_project_visualization_complete/</link><pubDate>Tue, 18 Nov 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week04/20251118_project_visualization_complete/</guid><description>Streamlit 멀티페이지 대시보드 구현 및 RAG 기반 영화 추천 UI 완성</description></item><item><title>2025.11.17 (Day 16) Project: Data Acquisition &amp; Preprocessing</title><link>https://hojjang98.github.io/daily_logs/week04/20251117_project_data_acquisition/</link><pubDate>Mon, 17 Nov 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week04/20251117_project_data_acquisition/</guid><description>TMDB 데이터 이상치 제거·텍스트 정제 및 ChromaDB Vector DB 구축</description></item><item><title>2025.11.14 (Day 15) 팀 프로젝트 킥오프 · 영화 흥행 요인 분석</title><link>https://hojjang98.github.io/daily_logs/week03/20251114_team_project01/</link><pubDate>Fri, 14 Nov 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week03/20251114_team_project01/</guid><description>팀 프로젝트 킥오프 - 영화 흥행 요인 분석 프로젝트 기획서·기술 정의서 작성 및 기술 스택 확정</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>팀프로젝트 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%ED%8C%80%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/</link>
+    <description>Recent content in 팀프로젝트 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Fri, 27 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%ED%8C%80%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2026.02.27 (Day 82) - 위수탁·제3자 제공 개념 정립 &#43; 팀 프로젝트 방향 논의</title>
+      <link>http://localhost:1313/daily_logs/week17/20260227_final_project_day07/</link>
+      <pubDate>Fri, 27 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week17/20260227_final_project_day07/</guid>
+      <description>개인정보 처리 위수탁과 제3자 제공 구분 기준, 토스·NICE·PASS 법적 구조 분석, 팀 프로젝트 역할 및 멘토링 질문 준비.</description>
+    </item>
+    <item>
+      <title>Mini Project 02 — DNA Lab Security Scanner</title>
+      <link>http://localhost:1313/project/week_10/</link>
+      <pubDate>Fri, 16 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/project/week_10/</guid>
+      <description>23andMe 데이터 유출 사건을 배경으로, 유전 정보를 다루는 DNA Lab 웹앱을 대상으로 웹 15종 + OS 50종 총 65개 스캐너를 구현한 두 번째 팀 미니프로젝트 (리드 보안 엔지니어)</description>
+    </item>
+    <item>
+      <title>2026.01.06 (Day 49) - 최종 발표 및 프로젝트 완료</title>
+      <link>http://localhost:1313/daily_logs/week11/20260106_project_05/</link>
+      <pubDate>Tue, 06 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week11/20260106_project_05/</guid>
+      <description>DNA Lab 최종 발표 완료, 강사님 &amp;lsquo;3조 정말 잘했습니다&amp;rsquo; 칭찬 4가지, Q&amp;amp;A 3개 답변, 웹 93.8%/OS 28.0% 탐지율 성과, 팀장 발표 소회 및 리더십 성장 경험, 이후 SOC 분석가 방향 설정</description>
+    </item>
+    <item>
+      <title>2026.01.05 (Day 48) - 발표 자료 완성 및 최종 점검</title>
+      <link>http://localhost:1313/daily_logs/week11/20260105_project_04/</link>
+      <pubDate>Mon, 05 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week11/20260105_project_04/</guid>
+      <description>DNA Lab 최종 발표 PPT 16슬라이드 완성, 발표 스크립트 작성 및 3차 리허설(22분 조정), 웹 93.8%(15/16)/OS 28.0%(14/50)/전체 43.9%(29/66) 진단 결과 데이터 정리, 4가지 프로젝트 한계점 및 예상 Q&amp;amp;A 20개 준비</description>
+    </item>
+    <item>
+      <title>2025.12.31 (Day 46) - 오프라인 미팅과 DNA Lab 역할 분담</title>
+      <link>http://localhost:1313/daily_logs/week10/20251231_project_02/</link>
+      <pubDate>Wed, 31 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week10/20251231_project_02/</guid>
+      <description>팀 오프라인 대면 회의에서 DNA Lab 페르소나 구체화 및 역할 분담 확정(호짱=Python 스캐너, 백엔드/프론트엔드/문서화), 사용자 여정별 취약점 매핑, 23andMe 사건 기반 시나리오 설계, GitHub 협업 규칙 및 일일 체크인 프로토콜 수립</description>
+    </item>
+    <item>
+      <title>2025.11.21 (Day 20) 팀 프로젝트: 최종 프레젠테이션 및 발표</title>
+      <link>http://localhost:1313/daily_logs/week04/20251121_project_final_presentation/</link>
+      <pubDate>Fri, 21 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week04/20251121_project_final_presentation/</guid>
+      <description>팀 프로젝트 최종 프레젠테이션 성공적 마무리 및 Q/A 대응 회고</description>
+    </item>
+    <item>
+      <title>Mini Project 01 — LLM/RAG 기반 영화 흥행 분석 시스템</title>
+      <link>http://localhost:1313/project/week_03_04/</link>
+      <pubDate>Fri, 21 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/project/week_03_04/</guid>
+      <description>Week 3 &amp;amp; 4 통합 첫 번째 팀 미니프로젝트 — TMDB 데이터 기반 RAG 추천·흥행 분석·투자 판단 종합 플랫폼 (팀장)</description>
+    </item>
+    <item>
+      <title>2025.11.20 (Day 19) Project: 분석 결과 수정 및 최종 발표 자료 완성</title>
+      <link>http://localhost:1313/daily_logs/week04/20251120_project_final_review_completion/</link>
+      <pubDate>Thu, 20 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week04/20251120_project_final_review_completion/</guid>
+      <description>최종 QA 및 에러 핸들링 점검, 발표 스크립트 및 시연 동선 확정</description>
+    </item>
+    <item>
+      <title>2025.11.19 (Day 18) Project: LangChain/RAG 분석 모델 통합 및 PPT 초안 제작</title>
+      <link>http://localhost:1313/daily_logs/week04/20251119_project_rag_integration_and_ppt/</link>
+      <pubDate>Wed, 19 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week04/20251119_project_rag_integration_and_ppt/</guid>
+      <description>LangChain/RAG 분석 모델 Streamlit 통합 완료 및 발표 PPT 핵심 시나리오 구성</description>
+    </item>
+    <item>
+      <title>2025.11.18 (Day 17) Project: Streamlit 시각화 대시보드 구현 완료</title>
+      <link>http://localhost:1313/daily_logs/week04/20251118_project_visualization_complete/</link>
+      <pubDate>Tue, 18 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week04/20251118_project_visualization_complete/</guid>
+      <description>Streamlit 멀티페이지 대시보드 구현 및 RAG 기반 영화 추천 UI 완성</description>
+    </item>
+    <item>
+      <title>2025.11.17 (Day 16) Project: Data Acquisition &amp; Preprocessing</title>
+      <link>http://localhost:1313/daily_logs/week04/20251117_project_data_acquisition/</link>
+      <pubDate>Mon, 17 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week04/20251117_project_data_acquisition/</guid>
+      <description>TMDB 데이터 이상치 제거·텍스트 정제 및 ChromaDB Vector DB 구축</description>
+    </item>
+    <item>
+      <title>2025.11.14 (Day 15) 팀 프로젝트 킥오프 · 영화 흥행 요인 분석</title>
+      <link>http://localhost:1313/daily_logs/week03/20251114_team_project01/</link>
+      <pubDate>Fri, 14 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week03/20251114_team_project01/</guid>
+      <description>팀 프로젝트 킥오프 - 영화 흥행 요인 분석 프로젝트 기획서·기술 정의서 작성 및 기술 스택 확정</description>
+    </item>
+  </channel>
+</rss>

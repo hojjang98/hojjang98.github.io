@@ -1,1 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>AutoScaling on HJ's Security Note</title><link>https://hojjang98.github.io/tags/autoscaling/</link><description>Recent content in AutoScaling on HJ's Security Note</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Thu, 11 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://hojjang98.github.io/tags/autoscaling/index.xml" rel="self" type="application/rss+xml"/><item><title>Week 07 — AWS 3-Tier 웹 서비스 인프라 완전 구축</title><link>https://hojjang98.github.io/project/week_07/</link><pubDate>Thu, 11 Dec 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/project/week_07/</guid><description>중소 규모 전자상거래 시나리오를 가정하여 AWS에서 프로덕션 수준의 3-Tier 웹 인프라를 약 3시간 만에 직접 구축한 실습 프로젝트</description></item><item><title>2025.12.05 (Day 30) - AWS 컴퓨팅 서비스: 서버, 서버리스, 컨테이너</title><link>https://hojjang98.github.io/daily_logs/week06/20251205_aws_ec2/</link><pubDate>Fri, 05 Dec 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week06/20251205_aws_ec2/</guid><description>EC2 인스턴스 생성 및 접근 제어, EBS 스냅샷, ALB + Auto Scaling 구성, Lambda 서버리스 함수, ECS/Fargate 컨테이너 오케스트레이션 개요</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>AutoScaling on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/autoscaling/</link>
+    <description>Recent content in AutoScaling on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Thu, 11 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/autoscaling/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Week 07 — AWS 3-Tier 웹 서비스 인프라 완전 구축</title>
+      <link>http://localhost:1313/project/week_07/</link>
+      <pubDate>Thu, 11 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/project/week_07/</guid>
+      <description>중소 규모 전자상거래 시나리오를 가정하여 AWS에서 프로덕션 수준의 3-Tier 웹 인프라를 약 3시간 만에 직접 구축한 실습 프로젝트</description>
+    </item>
+    <item>
+      <title>2025.12.05 (Day 30) - AWS 컴퓨팅 서비스: 서버, 서버리스, 컨테이너</title>
+      <link>http://localhost:1313/daily_logs/week06/20251205_aws_ec2/</link>
+      <pubDate>Fri, 05 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week06/20251205_aws_ec2/</guid>
+      <description>EC2 인스턴스 생성 및 접근 제어, EBS 스냅샷, ALB + Auto Scaling 구성, Lambda 서버리스 함수, ECS/Fargate 컨테이너 오케스트레이션 개요</description>
+    </item>
+  </channel>
+</rss>

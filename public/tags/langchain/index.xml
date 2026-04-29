@@ -1,1 +1,33 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>LangChain on HJ's Security Note</title><link>https://hojjang98.github.io/tags/langchain/</link><description>Recent content in LangChain on HJ's Security Note</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Fri, 21 Nov 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://hojjang98.github.io/tags/langchain/index.xml" rel="self" type="application/rss+xml"/><item><title>Mini Project 01 — LLM/RAG 기반 영화 흥행 분석 시스템</title><link>https://hojjang98.github.io/project/week_03_04/</link><pubDate>Fri, 21 Nov 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/project/week_03_04/</guid><description>Week 3 &amp;amp; 4 통합 첫 번째 팀 미니프로젝트 — TMDB 데이터 기반 RAG 추천·흥행 분석·투자 판단 종합 플랫폼 (팀장)</description></item><item><title>2025.11.19 (Day 18) Project: LangChain/RAG 분석 모델 통합 및 PPT 초안 제작</title><link>https://hojjang98.github.io/daily_logs/week04/20251119_project_rag_integration_and_ppt/</link><pubDate>Wed, 19 Nov 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week04/20251119_project_rag_integration_and_ppt/</guid><description>LangChain/RAG 분석 모델 Streamlit 통합 완료 및 발표 PPT 핵심 시나리오 구성</description></item><item><title>2025.11.11 (Day 12) LangChain · RAG 기반 OpenAI Dashboard 구축</title><link>https://hojjang98.github.io/daily_logs/week03/20251111_langchain/</link><pubDate>Tue, 11 Nov 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week03/20251111_langchain/</guid><description>LangChain의 RAG 구조와 FAISS 벡터스토어를 활용한 검색 기반 OpenAI Dashboard 구현</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>LangChain on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/langchain/</link>
+    <description>Recent content in LangChain on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Fri, 21 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/langchain/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mini Project 01 — LLM/RAG 기반 영화 흥행 분석 시스템</title>
+      <link>http://localhost:1313/project/week_03_04/</link>
+      <pubDate>Fri, 21 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/project/week_03_04/</guid>
+      <description>Week 3 &amp;amp; 4 통합 첫 번째 팀 미니프로젝트 — TMDB 데이터 기반 RAG 추천·흥행 분석·투자 판단 종합 플랫폼 (팀장)</description>
+    </item>
+    <item>
+      <title>2025.11.19 (Day 18) Project: LangChain/RAG 분석 모델 통합 및 PPT 초안 제작</title>
+      <link>http://localhost:1313/daily_logs/week04/20251119_project_rag_integration_and_ppt/</link>
+      <pubDate>Wed, 19 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week04/20251119_project_rag_integration_and_ppt/</guid>
+      <description>LangChain/RAG 분석 모델 Streamlit 통합 완료 및 발표 PPT 핵심 시나리오 구성</description>
+    </item>
+    <item>
+      <title>2025.11.11 (Day 12) LangChain · RAG 기반 OpenAI Dashboard 구축</title>
+      <link>http://localhost:1313/daily_logs/week03/20251111_langchain/</link>
+      <pubDate>Tue, 11 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week03/20251111_langchain/</guid>
+      <description>LangChain의 RAG 구조와 FAISS 벡터스토어를 활용한 검색 기반 OpenAI Dashboard 구현</description>
+    </item>
+  </channel>
+</rss>

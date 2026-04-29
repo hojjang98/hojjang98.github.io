@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>DynamoDB on HJ's Security Note</title><link>https://hojjang98.github.io/tags/dynamodb/</link><description>Recent content in DynamoDB on HJ's Security Note</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Tue, 09 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://hojjang98.github.io/tags/dynamodb/index.xml" rel="self" type="application/rss+xml"/><item><title>2025.12.09 (Day 32) - AWS 네트워크 심화 및 데이터베이스 서비스</title><link>https://hojjang98.github.io/daily_logs/week07/20251209_aws_database/</link><pubDate>Tue, 09 Dec 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week07/20251209_aws_database/</guid><description>Route 53 라우팅 정책, CloudFront CDN, API Gateway, RDS/Aurora Multi-AZ 고가용성, DynamoDB NoSQL, Redshift 데이터 웨어하우스 개요 및 실습</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>DynamoDB on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/dynamodb/</link>
+    <description>Recent content in DynamoDB on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Tue, 09 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/dynamodb/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2025.12.09 (Day 32) - AWS 네트워크 심화 및 데이터베이스 서비스</title>
+      <link>http://localhost:1313/daily_logs/week07/20251209_aws_database/</link>
+      <pubDate>Tue, 09 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week07/20251209_aws_database/</guid>
+      <description>Route 53 라우팅 정책, CloudFront CDN, API Gateway, RDS/Aurora Multi-AZ 고가용성, DynamoDB NoSQL, Redshift 데이터 웨어하우스 개요 및 실습</description>
+    </item>
+  </channel>
+</rss>

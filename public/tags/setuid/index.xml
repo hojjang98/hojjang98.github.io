@@ -1,1 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Setuid on HJ's Security Note</title><link>https://hojjang98.github.io/tags/setuid/</link><description>Recent content in Setuid on HJ's Security Note</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Tue, 25 Nov 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://hojjang98.github.io/tags/setuid/index.xml" rel="self" type="application/rss+xml"/><item><title>2025.11.25 (Day 22) - Linux 시스템 관리: 권한 통제, 쉘 기초 및 Vi</title><link>https://hojjang98.github.io/daily_logs/week05/20251125_linux_admin_shell_basics/</link><pubDate>Tue, 25 Nov 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week05/20251125_linux_admin_shell_basics/</guid><description>계정 파일 구조(/etc/passwd, /etc/shadow), SetUID 권한 상승 위협 재현, 쉘 지역/환경 변수 상속 실습</description></item><item><title>2025.11.24 (Day 21) - Linux 시스템 기초 및 파일 접근 통제</title><link>https://hojjang98.github.io/daily_logs/week05/20251124_linux_basic/</link><pubDate>Mon, 24 Nov 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week05/20251124_linux_basic/</guid><description>리눅스 파일 권한 모델(UGO), Setuid/Sticky Bit 특수 권한, Umask 설정을 통한 최소 권한 원칙 적용</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Setuid on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/setuid/</link>
+    <description>Recent content in Setuid on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Tue, 25 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/setuid/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2025.11.25 (Day 22) - Linux 시스템 관리: 권한 통제, 쉘 기초 및 Vi</title>
+      <link>http://localhost:1313/daily_logs/week05/20251125_linux_admin_shell_basics/</link>
+      <pubDate>Tue, 25 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week05/20251125_linux_admin_shell_basics/</guid>
+      <description>계정 파일 구조(/etc/passwd, /etc/shadow), SetUID 권한 상승 위협 재현, 쉘 지역/환경 변수 상속 실습</description>
+    </item>
+    <item>
+      <title>2025.11.24 (Day 21) - Linux 시스템 기초 및 파일 접근 통제</title>
+      <link>http://localhost:1313/daily_logs/week05/20251124_linux_basic/</link>
+      <pubDate>Mon, 24 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week05/20251124_linux_basic/</guid>
+      <description>리눅스 파일 권한 모델(UGO), Setuid/Sticky Bit 특수 권한, Umask 설정을 통한 최소 권한 원칙 적용</description>
+    </item>
+  </channel>
+</rss>

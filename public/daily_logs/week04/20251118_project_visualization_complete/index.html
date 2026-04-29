@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="ko" dir="auto" data-theme="auto">
 
-<head><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="noindex, nofollow">
 <title>2025.11.18 (Day 17) Project: Streamlit 시각화 대시보드 구현 완료 | HJ&#39;s Security Note</title>
 <meta name="keywords" content="팀프로젝트, Streamlit, 멀티페이지, 대시보드, SK쉴더스루키즈">
 <meta name="description" content="Streamlit 멀티페이지 대시보드 구현 및 RAG 기반 영화 추천 UI 완성">
 <meta name="author" content="">
-<link rel="canonical" href="https://hojjang98.github.io/daily_logs/week04/20251118_project_visualization_complete/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.290573799e582c418c4bd84f2bca757d0a77fd1bf9f5c43942030e706df68ec8.css" integrity="sha256-KQVzeZ5YLEGMS9hPK8p1fQp3/Rv59cQ5QgMOcG32jsg=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
+<link rel="canonical" href="http://localhost:1313/daily_logs/week04/20251118_project_visualization_complete/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c8c3b65cd6d058be2b4f050fd7a688ac13a23056571601dabe4f70d8d008259e.css" integrity="sha256-yMO2XNbQWL4rTwUP16aIrBOiMFZXFgHavk9w2NAIJZ4=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/daily_logs/week04/20251118_project_visualization_complete/">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/daily_logs/week04/20251118_project_visualization_complete/">
 <noscript>
     <style>
         #theme-toggle,
@@ -70,80 +70,13 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
-</script><meta property="og:url" content="https://hojjang98.github.io/daily_logs/week04/20251118_project_visualization_complete/">
-  <meta property="og:site_name" content="HJ&#39;s Security Note">
-  <meta property="og:title" content="2025.11.18 (Day 17) Project: Streamlit 시각화 대시보드 구현 완료">
-  <meta property="og:description" content="Streamlit 멀티페이지 대시보드 구현 및 RAG 기반 영화 추천 UI 완성">
-  <meta property="og:locale" content="ko-kr">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="daily_logs">
-    <meta property="article:published_time" content="2025-11-18T00:00:00+00:00">
-    <meta property="article:modified_time" content="2025-11-18T00:00:00+00:00">
-    <meta property="article:tag" content="팀프로젝트">
-    <meta property="article:tag" content="Streamlit">
-    <meta property="article:tag" content="멀티페이지">
-    <meta property="article:tag" content="대시보드">
-    <meta property="article:tag" content="SK쉴더스루키즈">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2025.11.18 (Day 17) Project: Streamlit 시각화 대시보드 구현 완료">
-<meta name="twitter:description" content="Streamlit 멀티페이지 대시보드 구현 및 RAG 기반 영화 추천 UI 완성">
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "6개월, 혹은 그 이상의 보안 여정",
-      "item": "https://hojjang98.github.io/daily_logs/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "2025.11.18 (Day 17) Project: Streamlit 시각화 대시보드 구현 완료",
-      "item": "https://hojjang98.github.io/daily_logs/week04/20251118_project_visualization_complete/"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "2025.11.18 (Day 17) Project: Streamlit 시각화 대시보드 구현 완료",
-  "name": "2025.11.18 (Day 17) Project: Streamlit 시각화 대시보드 구현 완료",
-  "description": "Streamlit 멀티페이지 대시보드 구현 및 RAG 기반 영화 추천 UI 완성",
-  "keywords": [
-    "팀프로젝트", "Streamlit", "멀티페이지", "대시보드", "SK쉴더스루키즈"
-  ],
-  "articleBody": "📄 2025.11.18 (Day 17) [Project: Streamlit 시각화 대시보드 구현 완료] 1. 핵심 개념 정리 (Concepts \u0026 Theory) # 핵심 개념 간결한 설명 적용 내용 1 Streamlit Multi-Page 하나의 app.py를 중심으로 여러 Python 파일을 독립된 페이지로 분리하는 구조. app.py가 메인, 나머지 파일이 개별 페이지 역할. 2 @st.cache_data 데이터 로드 함수에 적용하여 데이터가 변경되지 않는 한 재실행 없이 캐시된 결과를 재사용. load_data() 함수에 적용하여 대시보드 로딩 속도 최적화. 3 RAG 기반 추천 UI 사용자의 자연어 쿼리 또는 영화 제목으로 Vector DB를 검색하고, LLM이 추천 사유를 생성하도록 UI 구성. movie_recommendation.py에서 st.radio로 검색 모드 선택 기능 구현. 4 재사용 가능한 유틸리티 데이터 로드, Vector DB 로드, LLM 호출 등 핵심 기능을 별도 모듈로 분리하여 코드의 모듈화 및 재사용성 극대화. data_loader.py, vector_db.py, llm_utils.py로 분리. 2. 모듈 및 역할 분담 (Module Breakdown \u0026 Suggested Roles) 역할 (Suggested Role) 파일 명 주요 기능/담당 업무 데이터/인프라 엔지니어 data_loader.py, vector_db.py 데이터 로드 및 전처리 데이터 제공, TMDB 포스터 URL 생성, ChromaDB 로드 및 검색 유틸리티 구현. 분석/시각화 개발자 eda_dashboard.py, box_office_analysis.py 장르별 분석, 시계열 트렌드 분석 (Plotly), 흥행 지표(ROI, 수익) 시각화 및 흥행 영화 Top 10% 기준 분석. AI/LLM 시스템 개발자 llm_utils.py, movie_recommendation.py LLM 클라이언트 설정, Vector 검색 기반 추천 UI 구성, LLM 추천 설명 및 흥행 요인 분석 API 연결. 프로젝트 통합 담당 app.py Streamlit 멀티페이지 구조 정의 및 통합, 메인 페이지 구현, 전체 데이터 통계 요약 및 페이지 라우팅 관리. 3. 핵심 코드 (Streamlit UI 구성) (A) 메인 앱 구조 (app.py) import streamlit as st # 페이지 설정 st.set_page_config( page_title=\"Movie Analysis \u0026 Recommendation\", page_icon=\"🎬\", layout=\"wide\", initial_sidebar_state=\"expanded\" ) st.title(\"🎬 Movie Analysis \u0026 Recommendation System\") st.markdown(\"\"\" ## Welcome to the Movie Analysis Platform! ... (주요 기능 목록) 왼쪽 사이드바에서 원하는 페이지를 선택하세요! \"\"\") # 데이터 통계 요약 (data_loader.py 사용) # ... (생략) ```python ### (B) 추천 시스템 UI (movie_recommendation.py) ```python # 검색 방식 선택 search_mode = st.radio( \"검색 방식 선택:\", [\"자연어로 검색\", \"영화 제목으로 검색\"], horizontal=True ) # 검색 입력 창 query = st.text_input(\"검색어를 입력하세요:\", value=\"\") n_results = st.slider(\"추천 개수\", 1, 10, 5) if st.button(\"검색 시작\"): # vector_db.py의 search_similar_movies 호출 # ... (검색 결과 출력 및 LLM 설명 호출) 4. 요약 및 다음 단계 (Summary \u0026 Next Steps) 팀 프로젝트의 핵심인 Streamlit 기반 대시보드 구현을 완료했습니다. 데이터 로드, 벡터 DB, LLM 호출 등 기능을 모듈화하여 구조적 안정성을 확보했습니다. ",
-  "wordCount" : "978",
-  "inLanguage": "ko",
-  "datePublished": "2025-11-18T00:00:00Z",
-  "dateModified": "2025-11-18T00:00:00Z",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://hojjang98.github.io/daily_logs/week04/20251118_project_visualization_complete/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "HJ's Security Note",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://hojjang98.github.io/favicon.ico"
-    }
-  }
-}
 </script>
 </head>
 <body id="top">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -169,37 +102,37 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="https://hojjang98.github.io/about" title="소개">
+                <a href="http://localhost:1313/about" title="소개">
                     <span>소개</span>
                 </a>
             </li>
             <li>
-                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
+                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
                     <span>일일 로그</span>
                 </a>
             </li>
             <li>
-                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
+                <a href="http://localhost:1313/categories/projects/" title="Projects">
                     <span>프로젝트</span>
                 </a>
             </li>
             <li>
-                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
+                <a href="http://localhost:1313/categories/cyber-law-study/" title="Cyber-Law-Study">
                     <span>보안법 공부</span>
                 </a>
             </li>
             <li>
-                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
                     <span>보안 시사 분석</span>
                 </a>
             </li>
             <li>
-                <a href="https://hojjang98.github.io/tags/" title="Tags">
+                <a href="http://localhost:1313/tags/" title="Tags">
                     <span>태그</span>
                 </a>
             </li>
             <li>
-                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
+                <a href="http://localhost:1313/categories/paper-review/" title="Paper-Review">
                     <span>논문 리뷰</span>
                 </a>
             </li>
@@ -210,7 +143,7 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/daily_logs/">6개월, 혹은 그 이상의 보안 여정</a></div>
+    <div class="breadcrumbs"><a href="http://localhost:1313/">홈</a>&nbsp;»&nbsp;<a href="http://localhost:1313/daily_logs/">6개월, 혹은 그 이상의 보안 여정</a></div>
     <h1 class="post-title entry-hint-parent">
       2025.11.18 (Day 17) Project: Streamlit 시각화 대시보드 구현 완료
     </h1>
@@ -339,18 +272,18 @@
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://hojjang98.github.io/tags/%ED%8C%80%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/">팀프로젝트</a></li>
-      <li><a href="https://hojjang98.github.io/tags/streamlit/">Streamlit</a></li>
-      <li><a href="https://hojjang98.github.io/tags/%EB%A9%80%ED%8B%B0%ED%8E%98%EC%9D%B4%EC%A7%80/">멀티페이지</a></li>
-      <li><a href="https://hojjang98.github.io/tags/%EB%8C%80%EC%8B%9C%EB%B3%B4%EB%93%9C/">대시보드</a></li>
-      <li><a href="https://hojjang98.github.io/tags/sk%EC%89%B4%EB%8D%94%EC%8A%A4%EB%A3%A8%ED%82%A4%EC%A6%88/">SK쉴더스루키즈</a></li>
+      <li><a href="http://localhost:1313/tags/%ED%8C%80%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/">팀프로젝트</a></li>
+      <li><a href="http://localhost:1313/tags/streamlit/">Streamlit</a></li>
+      <li><a href="http://localhost:1313/tags/%EB%A9%80%ED%8B%B0%ED%8E%98%EC%9D%B4%EC%A7%80/">멀티페이지</a></li>
+      <li><a href="http://localhost:1313/tags/%EB%8C%80%EC%8B%9C%EB%B3%B4%EB%93%9C/">대시보드</a></li>
+      <li><a href="http://localhost:1313/tags/sk%EC%89%B4%EB%8D%94%EC%8A%A4%EB%A3%A8%ED%82%A4%EC%A6%88/">SK쉴더스루키즈</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
+        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
 
     <span>
         Powered by

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>재해복구 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%EC%9E%AC%ED%95%B4%EB%B3%B5%EA%B5%AC/</link>
+    <description>Recent content in 재해복구 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sat, 04 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%EC%9E%AC%ED%95%B4%EB%B3%B5%EA%B5%AC/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Day 45: 실무 사례 #5 - 카카오 데이터센터 화재 (2022)</title>
+      <link>http://localhost:1313/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/03_%EC%9E%AC%ED%95%B4%EB%B3%B5%EA%B5%AC/day45_%EC%9E%AC%ED%95%B4%EB%B3%B5%EA%B5%AC%EC%82%AC%EB%A1%801_%EC%B9%B4%EC%B9%B4%EC%98%A4/</link>
+      <pubDate>Sat, 04 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/03_%EC%9E%AC%ED%95%B4%EB%B3%B5%EA%B5%AC/day45_%EC%9E%AC%ED%95%B4%EB%B3%B5%EA%B5%AC%EC%82%AC%EB%A1%801_%EC%B9%B4%EC%B9%B4%EC%98%A4/</guid>
+      <description>2022년 카카오 판교 데이터센터 화재로 국민 4,700만명 서비스가 5일간 마비된 사건을 재해복구 실패 원인, 법률 위반, 기술적 교훈 관점에서 분석합니다.</description>
+    </item>
+    <item>
+      <title>Day 43: 실무 사례 #3 - 농협 전산망 마비 사건 (2011)</title>
+      <link>http://localhost:1313/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/02_%ED%95%B4%ED%82%B9%EC%B9%A8%ED%95%B4/day43_%ED%95%B4%ED%82%B9%EC%B9%A8%ED%95%B4%EC%82%AC%EB%A1%801_%EB%86%8D%ED%98%91/</link>
+      <pubDate>Thu, 02 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/02_%ED%95%B4%ED%82%B9%EC%B9%A8%ED%95%B4/day43_%ED%95%B4%ED%82%B9%EC%B9%A8%ED%95%B4%EC%82%AC%EB%A1%801_%EB%86%8D%ED%98%91/</guid>
+      <description>2011년 북한 해커로 추정되는 APT 공격으로 농협 전산망 273대 서버가 파괴되어 5일간 마비된 사건을 법률 위반, 기술적 원인, 국가안보 관점에서 분석합니다.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Day 50: 실무 사례 #10 - 7.7 DDoS 대란 (2009) | HJ&#39;s Security Note</title>
+<meta name="keywords" content="실무사례, DDoS, 사이버테러, 정보통신기반보호법, 봇넷, 북한해킹, 좀비PC, 국가안보">
+<meta name="description" content="2009년 7월 7일 북한 추정 세력이 좀비 PC 16만대를 동원해 정부 기관 11곳과 주요 포털 15곳을 3일간 마비시킨 7.7 DDoS 대란을 공격 기법, 법률 분석, 국가 안보 관점에서 분석합니다.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/02_%ED%95%B4%ED%82%B9%EC%B9%A8%ED%95%B4/day50_%ED%95%B4%ED%82%B9%EC%B9%A8%ED%95%B4%EC%82%AC%EB%A1%803_ddos%EB%8C%80%EB%9E%80/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c8c3b65cd6d058be2b4f050fd7a688ac13a23056571601dabe4f70d8d008259e.css" integrity="sha256-yMO2XNbQWL4rTwUP16aIrBOiMFZXFgHavk9w2NAIJZ4=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/02_%ED%95%B4%ED%82%B9%EC%B9%A8%ED%95%B4/day50_%ED%95%B4%ED%82%B9%EC%B9%A8%ED%95%B4%EC%82%AC%EB%A1%803_ddos%EB%8C%80%EB%9E%80/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">홈</a>&nbsp;»&nbsp;<a href="http://localhost:1313/cyber_law_study/">보안 컨설팅 공부</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Day 50: 실무 사례 #10 - 7.7 DDoS 대란 (2009)
+    </h1>
+    <div class="post-meta"><span title='2026-04-10 00:00:00 +0000 UTC'>2026년 4월 10일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="day-50-실무-사례-10---77-ddos-대란-2009">Day 50: 실무 사례 #10 - 7.7 DDoS 대란 (2009)<a hidden class="anchor" aria-hidden="true" href="#day-50-실무-사례-10---77-ddos-대란-2009">#</a></h1>
+<p>[ 1. 사건 개요 ]</p>
+<pre><code>기본 정보
+    - 발생 시기 : 2009년 7월 7일 - 7월 9일
+    - 사건 유형 : 대규모 DDoS 공격 (분산 서비스 거부 공격)
+    - 공격 대상 : 정부 기관 및 주요 포털 총 26개
+    - 공격 규모 : 좀비 PC 약 16만대, 트래픽 폭주
+    - 공격 주체 : 북한 (추정)
+
+사건 요약
+    - 2009년 7월 7일부터 3일간 청와대, 국방부, 국회 등 정부 주요 기관 11곳과 네이버, 다음 등 주요 포털 15곳에 대규모 DDoS 공격이 발생했다.
+    - 약 16만대의 좀비 PC가 동원되어 동시에 대량의 트래픽을 발생시켜 웹사이트 접속이 마비되었다.
+    - 정부와 민간이 모두 공격받은 초대형 사이버테러로, 북한의 소행으로 추정되었다.
+    - 이 사건을 계기로 국가 사이버 안보 체계가 대폭 강화되었다.
+</code></pre>
+<p>[ 1.1 상세 경위 ]</p>
+<pre><code>공격 시점 : 2009년 7월 7일 18:00 (한국 시각)
+
+공격 대상
+    - 정부 기관 11곳 : 청와대, 국방부, 국회, 외교통상부, 국가정보원, 행정안전부, 금융감독원, 국민은행, 신한은행 등
+    - 민간 포털 15곳 : 네이버, 다음, 네이트, 옥션, 인터파크 등
+    - 총 26개 기관 및 사이트
+
+공격 방법
+    1. 사전 준비 (수개월 전)
+        - 악성코드 유포 (이메일, 웹사이트)
+        - 좀비 PC 확보 (약 16만대), 봇넷 구축
+    2. C&amp;C 서버 운영 (Command &amp; Control)
+        - 해외 서버에서 좀비 PC 원격 조종
+    3. DDoS 공격 개시 (7월 7일 18:00)
+        - 16만대 좀비 PC가 동시에 공격 대상에 접속 요청
+        - 트래픽 폭주로 서버 마비
+    4. 파상 공격
+        - 3일간 지속적 공격
+        - 일부 서버는 파괴 시도 (데이터 삭제)
+
+공격 유형
+    - HTTP Flooding : 웹 서버에 대량의 HTTP 요청
+    - SYN Flooding : TCP 연결 요청 폭주
+    - UDP Flooding : UDP 패킷 폭주
+
+피해 상황
+    - 청와대 홈페이지 접속 불가 (3일), 국방부·국회 홈페이지 마비
+    - 네이버 일부 서비스 지연, 다음 접속 장애, 네이트 마비
+    - 좀비 PC 약 16만대 국내 PC 감염 (일반 사용자 피해)
+</code></pre>
+<p>[ 1.2 타임라인 ]</p>
+<pre><code>2009년 7월 4 - 6일
+    - 악성코드 추가 유포 (마지막 준비), 좀비 PC 최종 확보
+
+2009년 7월 7일 06:00
+    - 해외 사이트 (미국 정부)에 DDoS 공격 시작
+
+2009년 7월 7일 18:00
+    - 한국 정부 및 포털에 DDoS 공격 개시
+    - 청와대, 국방부 등 정부 사이트 접속 불가
+    - 네이버, 다음 등 포털 일부 장애
+
+2009년 7월 7일 19:00
+    - 국가정보원, 행정안전부 긴급 대응
+    - 국가사이버안전센터 가동
+
+2009년 7월 7일 22:00
+    - 정부 긴급 대책 회의 (국무총리 주재)
+
+2009년 7월 8일
+    - DDoS 공격 지속, 일부 사이트 복구 시작
+    - 백신 업체 무료 백신 배포, 좀비 PC 치료 작업 시작
+
+2009년 7월 9일
+    - DDoS 공격 강도 약화, 대부분 사이트 복구
+    - 일부 좀비 PC에서 데이터 삭제 악성코드 발견
+
+2009년 7월 10일
+    - DDoS 공격 종료 (3일 만), 전체 복구 완료
+
+2009년 7월 21일
+    - 정부 발표 : 북한 소행 추정, 국가 사이버 안보 강화 대책 발표
+</code></pre>
+<p>[ 2. 법률 분석 ]</p>
+<p>[ 2.1 적용 법률 ]</p>
+<pre><code>주요 법률
+    1. 정보통신기반보호법 (핵심)
+    2. 정보통신망법
+    3. 형법
+
+정부 기관 = 주요정보통신기반시설, DDoS 공격 = 전자적 침해행위, 북한 배후 (국가 지원)에 해당한다.
+</code></pre>
+<p>[ 2.2 전자적 침해행위 (DDoS) ]</p>
+<pre><code>법적 근거 : 정보통신기반보호법 제14조 (벌칙)
+
+조문
+    - 주요정보통신기반시설에 대하여 전자적 침해행위를 한 자는 10년 이하의 징역 또는 1억원 이하의 벌금에 처한다.
+
+전자적 침해행위 정의 (제2조 제3호)
+    가. 정당한 권한 없이 정보통신기반시설에 침입하는 행위
+    나. 악성프로그램을 전달·실행하는 행위
+    다. 대량의 신호·데이터를 보내거나 부정한 명령을 처리하도록 하는 등의 방법으로 정상적인 운영을 방해하는 행위
+
+7.7 DDoS 해당
+    - 다목 : 대량의 신호·데이터를 보내 정상 운영 방해 (DDoS 정확히 해당)
+    - 처벌 : 10년 이하 징역 (가장 무거운 처벌)
+
+정보통신망법 적용
+
+법적 근거 : 정보통신망법 제48조 (벌칙)
+    - 정보통신망에 장애를 발생하게 하거나 악성프로그램을 전달·유포한 자
+    - 5년 이하의 징역 또는 5천만원 이하의 벌금
+
+해당 사항
+    - 좀비 PC 악성코드 유포
+
+형법 적용
+    - 컴퓨터등장애업무방해죄 : 형법 제314조의2 - 5년 이하 징역
+</code></pre>
+<p>[ 2.3 처벌 ]</p>
+<pre><code>공격자 (북한)
+    - 검거 불가, 처벌 없음
+    - 법적으로는 최대 10년 이하 징역 해당
+
+좀비 PC 소유자
+    - 악성코드 감염 = 피해자, 처벌 없음
+
+피해 기관 책임
+    - 불가항력 (국가 배후 공격), 별도 제재 없음
+    - 시정 권고 (사이버 방어 강화)
+</code></pre>
+<p>[ 2.4 국가 대응 ]</p>
+<pre><code>사이버 안보 강화 (2009년 이후)
+
+    국가사이버안전센터 확대
+        - 국정원 산하, 24/365 모니터링
+        - 인력 대폭 증원, 예산 증액
+
+    사이버 사령부 창설 (2010년)
+        - 국방부 산하, 군 사이버 전담 부대
+        - 사이버 전쟁 대비
+
+    민관 협력 강화
+        - 정부 - 포털 - 통신사 협력 체계
+        - 위협 정보 공유, 합동 훈련 (연 2회)
+
+    DDoS 대응 체계
+        - ISP (통신사) DDoS 차단 시스템 구축
+        - CDN 활용, 트래픽 분산
+</code></pre>
+<p>[ 3. 기술적 분석 ]</p>
+<p>[ 3.1 DDoS 공격이란? ]</p>
+<pre><code>DDoS (Distributed Denial of Service)
+    - 분산 서비스 거부 공격
+    - 다수의 공격자 (좀비 PC)가 동시에 대량의 트래픽을 발생시켜 서버를 마비시키는 공격
+
+DoS vs DDoS
+    - DoS (Denial of Service) : 1대가 공격 (차단 쉬움)
+    - DDoS : 수천 - 수만대가 동시 공격 (차단 어려움)
+
+공격 메커니즘
+    1. 봇넷 구축 : 악성코드로 다수 PC 감염 (좀비 PC), C&amp;C 서버에서 원격 조종
+    2. 공격 명령 : C&amp;C 서버가 좀비 PC에 공격 명령 전달
+    3. 트래픽 폭주 : 모든 좀비 PC가 동시에 대상 서버 접속, 서버 과부하로 다운
+</code></pre>
+<p>[ 3.2 7.7 DDoS 공격 분석 ]</p>
+<pre><code>좀비 PC 확보 과정
+
+    1단계 : 악성코드 유포 (수개월 전)
+        - 이메일 첨부파일 (스피어 피싱)
+        - P2P 사이트 (영화, 음악 파일 위장)
+        - 웹사이트 Drive-by Download (방문만으로 감염)
+
+    2단계 : 좀비 PC 감염
+        - 약 16만대 국내 PC 감염
+        - 사용자 모르게 백그라운드 실행, 백신 탐지 회피
+
+    3단계 : 봇넷 구축
+        - C&amp;C 서버 (해외, 미국·일본 등)
+        - 좀비 PC들이 C&amp;C 서버에 주기적 접속, 명령 대기
+
+공격 유형별 분석
+
+    HTTP Flooding
+        - 웹 페이지 요청 폭주, GET/POST 요청 반복
+        - 정상 트래픽처럼 보임 (차단 어려움)
+
+    SYN Flooding
+        - TCP 연결 요청 폭주, 서버 자원 고갈
+
+    UDP Flooding
+        - UDP 패킷 폭주, 대역폭 소진
+
+데이터 파괴 시도
+    - 일부 좀비 PC에서 추가 악성코드 발견
+    - 7월 10일 특정 시각에 하드디스크 데이터 삭제 시도
+    - 대부분 백신으로 차단
+</code></pre>
+<p>[ 3.3 피해 기관의 대응 ]</p>
+<pre><code>초기 대응 (7월 7일)
+    1. 트래픽 급증 감지, 서버 과부하 경고
+    2. 일부 서비스 중단 (서버 보호), 방화벽 설정 강화
+    3. 국가사이버안전센터 가동, ISP 협조 요청
+
+복구 과정 (7월 8 - 9일)
+
+    ISP 차단
+        - 통신사가 C&amp;C 서버 IP 차단
+        - 좀비 PC와 C&amp;C 연결 차단, 공격 트래픽 감소
+
+    좀비 PC 치료
+        - 백신 업체 무료 백신 배포
+        - 좀비 PC 소유자에게 치료 안내 (SMS, 이메일)
+        - 약 16만대 중 대부분 치료
+
+    서버 복구
+        - 과부하 해소, 서비스 재개
+</code></pre>
+<p>[ 3.4 기술적 교훈 ]</p>
+<pre><code>DDoS는 차단 어려움
+    - 정상 트래픽처럼 보임, IP 차단 불가능 (좀비 PC = 일반 사용자)
+    - 대응 : ISP 차단 (통신사 협조), CDN 트래픽 분산, DDoS 전문 서비스 (Cloudflare, Akamai 등)
+
+봇넷 예방 중요
+    - 봇넷 없으면 DDoS 공격 불가
+    - 대응 : PC 보안 강화, 백신 설치, 윈도우 업데이트, 의심 파일 실행 금지
+
+국가 차원 협력 필수
+    - 정부 + 민간 + 통신사 협력 필요, ISP만 C&amp;C 차단 가능
+    - 대응 : 평시 협력 체계 구축, 위협 정보 공유, 합동 훈련
+
+백업 및 DR 필요
+    - DDoS로 서비스 중단 가능, 백업 사이트 필요
+    - 대응 : 예비 서버 (다른 IDC), 클라우드 활용, DNS 페일오버
+</code></pre>
+<p>[ 4. 대응 평가 ]</p>
+<p>[ 4.1 잘한 점 ]</p>
+<pre><code>신속한 국가 대응
+    - 공격 당일 국가사이버안전센터 가동
+    - 국무총리 주재 긴급 회의, 민관 협력 즉시 가동
+
+ISP 협력
+    - 통신사 (KT, SKT, LGU+) 즉시 협조
+    - C&amp;C 서버 IP 차단, 트래픽 필터링
+
+좀비 PC 치료
+    - 백신 업체 무료 백신 배포, 대국민 안내, 대부분 치료 성공
+
+빠른 복구
+    - 3일 만에 대부분 복구, 피해 최소화
+</code></pre>
+<p>[ 4.2 미흡한 점 ]</p>
+<pre><code>사전 예방 실패
+    - 수개월 전부터 봇넷 구축, 탐지 못함
+    - 16만대 감염 허용
+
+국제 공조 부족
+    - C&amp;C 서버 대부분 해외, 해외 서버 제거 못함 (일부만 차단)
+
+일부 데이터 파괴
+    - 일부 좀비 PC에서 데이터 삭제 발생 (소수), 예방 못함
+</code></pre>
+<p>[ 5. 교훈 및 시사점 ]</p>
+<p>[ 5.1 기술적 교훈 ]</p>
+<pre><code>DDoS는 누구나 당할 수 있음
+    - 정부도, 대형 포털도 마비, 완벽한 방어 불가
+    - 대응 : 다층 방어, ISP 협력, CDN, DDoS 전문 서비스
+
+봇넷 예방이 최선
+    - 봇넷 없으면 DDoS 불가, PC 보안 = 국가 안보
+    - 대응 : 국민 보안 인식 제고, 백신 무료 배포, 강제 업데이트
+
+민관 협력 필수
+    - 정부 혼자 못 막음, 통신사 협력 필수
+    - 대응 : 평시 협력 체계, 연락망, 훈련
+
+국제 공조 필요
+    - C&amp;C 서버 대부분 해외, 해외 협력 필요
+    - 대응 : 국제 사이버 안보 협력, CERT 간 협력
+</code></pre>
+<p>[ 5.2 법률적 교훈 ]</p>
+<pre><code>DDoS = 10년 이하 징역
+    - 정보통신기반보호법 제14조
+    - 주요기반시설 DDoS = 가장 무거운 처벌
+    - 하지만 북한 = 검거 불가, 실효성 한계
+
+사이버 전쟁
+    - 국가 배후 공격 = 전쟁 행위
+    - 사이버 공격 = 새로운 전쟁 수단
+    - 대응 : 국가 차원 사이버 방어, 사이버 사령부
+
+좀비 PC 소유자 무죄
+    - 악성코드 감염 = 피해자, 처벌 안 함
+    - 하지만 PC 보안 = 국민의 도덕적 의무
+
+국가 안보 차원
+    - 7.7 DDoS = 국가 안보 위협
+    - 국가사이버안전센터 확대, 사이버 사령부 창설, 예산 대폭 증액
+</code></pre>
+<p>[ 5.3 국가 안보 관점 ]</p>
+<pre><code>사이버 전쟁의 시작
+    - 7.7 DDoS = 사이버 전쟁 개념 확산
+    - 북한의 사이버 능력 과시, 한국의 사이버 취약성 노출
+
+국가 대응 강화
+    - 사이버 사령부 창설 (2010년)
+    - 국가사이버안전센터 확대, 예산 수천억원 투입
+
+국제 협력
+    - 미국, 일본 등과 사이버 안보 협력
+    - NATO 사이버 방어 센터 참관
+    - 사이버 전쟁 대비 국제 공조
+</code></pre>
+<p>[ 6. 주요 DDoS 사건 비교 ]</p>
+<pre><code>7.7 DDoS (2009년 7월)
+    - 공격자 : 북한 (추정)
+    - 피해 규모 : 정부 11 + 포털 15 = 26곳
+    - 좀비 PC : 16만대
+
+3.4 DDoS (2011년 3월)
+    - 공격자 : 북한 (추정)
+    - 피해 규모 : 정부 기관 40여곳
+    - 좀비 PC : 미공개
+
+6.25 DDoS (2013년 6월)
+    - 공격자 : 북한 (추정)
+    - 피해 규모 : 정부 + 언론 웹사이트
+    - 좀비 PC : 미공개
+
+7.7 특징
+    - 최초 대규모 정부 + 민간 동시 공격
+    - 3일간 지속
+    - 국가 사이버 안보 강화 계기
+    - 북한 사이버 능력 과시
+</code></pre>
+<p>[ 7. 체크리스트 - DDoS 대응 ]</p>
+<pre><code>봇넷 예방 (개인)
+    - PC 백신 설치
+    - 윈도우 자동 업데이트
+    - 의심 이메일 열지 않기
+    - P2P 사이트 주의
+
+서버 보안 (기업)
+    - 방화벽 설정, 트래픽 모니터링
+    - 이상 징후 탐지 시스템
+
+DDoS 방어 체계
+    - ISP 협력 : 통신사와 협력 체계, 비상 연락망, C&amp;C 차단 요청 절차
+    - CDN 활용 : Cloudflare, Akamai 등, 트래픽 분산 및 캐싱
+    - DDoS 전문 서비스 : Anti-DDoS 솔루션, 트래픽 필터링, 자동 차단
+
+재해복구
+    - 예비 서버 (다른 IDC)
+    - 클라우드 백업
+    - DNS 페일오버
+
+사고 대응 절차
+    1. 트래픽 급증 확인
+    2. 국가사이버안전센터 신고 (118)
+    3. ISP 협조 요청
+    4. CDN 활성화
+    5. 원인 분석 및 재발 방지 대책
+</code></pre>
+<p>[ 8. 관련 법령 ]</p>
+<pre><code>정보통신기반보호법
+    - 제2조 (정의 - 전자적 침해행위)
+    - 제14조 (벌칙 - 10년 이하 징역)
+
+정보통신망법
+    - 제48조 (벌칙 - 악성프로그램 유포, 5년 이하)
+
+형법
+    - 제314조의2 (컴퓨터등장애업무방해, 5년 이하)
+</code></pre>
+<p>[ 학습 정리 ]</p>
+<pre><code>7.7 DDoS 대란에서 배운 점
+
+    - 2009년 국내 최초 대규모 정부 + 민간 동시 DDoS 공격
+    - 북한 배후 (강력 추정), 좀비 PC 16만대 동원
+    - 청와대, 국방부 등 정부 11곳 + 네이버, 다음 등 포털 15곳 총 26곳 마비
+    - 3일간 지속 공격, HTTP/SYN/UDP Flooding 복합
+    - 정보통신기반보호법 적용 (10년 이하 징역, 가장 무거운 처벌)
+    - ISP (통신사) 협력으로 C&amp;C 차단, 3일 만에 복구
+    - 좀비 PC 소유자는 피해자 (처벌 없음)
+    - DDoS는 완벽한 방어 불가, 다층 방어 필요
+    - 봇넷 예방이 최선 (PC 보안 = 국가 안보)
+    - 민관 협력 필수 (정부 + 포털 + 통신사)
+    - 국가사이버안전센터 확대, 사이버 사령부 창설 계기
+    - 사이버 공격 = 국가 안보 위협
+    - CDN, DDoS 전문 서비스 필수
+    - 국제 공조 필요 (C&amp;C 서버 대부분 해외)
+</code></pre>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/">실무사례</a></li>
+      <li><a href="http://localhost:1313/tags/ddos/">DDoS</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%82%AC%EC%9D%B4%EB%B2%84%ED%85%8C%EB%9F%AC/">사이버테러</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EA%B8%B0%EB%B0%98%EB%B3%B4%ED%98%B8%EB%B2%95/">정보통신기반보호법</a></li>
+      <li><a href="http://localhost:1313/tags/%EB%B4%87%EB%84%B7/">봇넷</a></li>
+      <li><a href="http://localhost:1313/tags/%EB%B6%81%ED%95%9C%ED%95%B4%ED%82%B9/">북한해킹</a></li>
+      <li><a href="http://localhost:1313/tags/%EC%A2%80%EB%B9%84pc/">좀비PC</a></li>
+      <li><a href="http://localhost:1313/tags/%EA%B5%AD%EA%B0%80%EC%95%88%EB%B3%B4/">국가안보</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

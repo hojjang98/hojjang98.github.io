@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>전산망마비 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%EC%A0%84%EC%82%B0%EB%A7%9D%EB%A7%88%EB%B9%84/</link>
+    <description>Recent content in 전산망마비 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Thu, 02 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%EC%A0%84%EC%82%B0%EB%A7%9D%EB%A7%88%EB%B9%84/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Day 43: 실무 사례 #3 - 농협 전산망 마비 사건 (2011)</title>
+      <link>http://localhost:1313/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/02_%ED%95%B4%ED%82%B9%EC%B9%A8%ED%95%B4/day43_%ED%95%B4%ED%82%B9%EC%B9%A8%ED%95%B4%EC%82%AC%EB%A1%801_%EB%86%8D%ED%98%91/</link>
+      <pubDate>Thu, 02 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/02_%ED%95%B4%ED%82%B9%EC%B9%A8%ED%95%B4/day43_%ED%95%B4%ED%82%B9%EC%B9%A8%ED%95%B4%EC%82%AC%EB%A1%801_%EB%86%8D%ED%98%91/</guid>
+      <description>2011년 북한 해커로 추정되는 APT 공격으로 농협 전산망 273대 서버가 파괴되어 5일간 마비된 사건을 법률 위반, 기술적 원인, 국가안보 관점에서 분석합니다.</description>
+    </item>
+  </channel>
+</rss>

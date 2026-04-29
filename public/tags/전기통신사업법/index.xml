@@ -1,1 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>전기통신사업법 on HJ's Security Note</title><link>https://hojjang98.github.io/tags/%EC%A0%84%EA%B8%B0%ED%86%B5%EC%8B%A0%EC%82%AC%EC%97%85%EB%B2%95/</link><description>Recent content in 전기통신사업법 on HJ's Security Note</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Mon, 16 Mar 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://hojjang98.github.io/tags/%EC%A0%84%EA%B8%B0%ED%86%B5%EC%8B%A0%EC%82%AC%EC%97%85%EB%B2%95/index.xml" rel="self" type="application/rss+xml"/><item><title>Day 32: 전기통신사업법</title><link>https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/10_%ED%86%B5%EC%8B%A0%EC%82%AC%EC%97%85/day32_%EC%A0%84%EA%B8%B0%ED%86%B5%EC%8B%A0%EC%82%AC%EC%97%85%EB%B2%95/</link><pubDate>Mon, 16 Mar 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/10_%ED%86%B5%EC%8B%A0%EC%82%AC%EC%97%85/day32_%EC%A0%84%EA%B8%B0%ED%86%B5%EC%8B%A0%EC%82%AC%EC%97%85%EB%B2%95/</guid><description>통신사업자를 규제하는 전기통신사업법을 학습합니다. 사업자 분류, 정보보호 의무, 통신비밀 보호, 망 중립성 원칙, 통신 자료 제공 절차를 정리합니다.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>전기통신사업법 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%EC%A0%84%EA%B8%B0%ED%86%B5%EC%8B%A0%EC%82%AC%EC%97%85%EB%B2%95/</link>
+    <description>Recent content in 전기통신사업법 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Wed, 01 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%EC%A0%84%EA%B8%B0%ED%86%B5%EC%8B%A0%EC%82%AC%EC%97%85%EB%B2%95/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Day 42: 실무 사례 #2 - KT 고객정보 유출 사건 (2012)</title>
+      <link>http://localhost:1313/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C/day42_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C%EC%82%AC%EB%A1%802_kt/</link>
+      <pubDate>Wed, 01 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C/day42_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C%EC%82%AC%EB%A1%802_kt/</guid>
+      <description>2012년 KT 내부자가 7개월간 고객 개인정보 1,200만 건을 유출한 사건을 법률 위반, 기술적 원인, 처벌 결과, 인터파크 사건 비교 관점에서 분석합니다.</description>
+    </item>
+    <item>
+      <title>Day 32: 전기통신사업법</title>
+      <link>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/10_%ED%86%B5%EC%8B%A0%EC%82%AC%EC%97%85/day32_%EC%A0%84%EA%B8%B0%ED%86%B5%EC%8B%A0%EC%82%AC%EC%97%85%EB%B2%95/</link>
+      <pubDate>Mon, 16 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/10_%ED%86%B5%EC%8B%A0%EC%82%AC%EC%97%85/day32_%EC%A0%84%EA%B8%B0%ED%86%B5%EC%8B%A0%EC%82%AC%EC%97%85%EB%B2%95/</guid>
+      <description>통신사업자를 규제하는 전기통신사업법을 학습합니다. 사업자 분류, 정보보호 의무, 통신비밀 보호, 망 중립성 원칙, 통신 자료 제공 절차를 정리합니다.</description>
+    </item>
+  </channel>
+</rss>

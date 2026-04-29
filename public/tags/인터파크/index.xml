@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>인터파크 on HJ's Security Note</title><link>https://hojjang98.github.io/tags/%EC%9D%B8%ED%84%B0%ED%8C%8C%ED%81%AC/</link><description>Recent content in 인터파크 on HJ's Security Note</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Sat, 14 Mar 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://hojjang98.github.io/tags/%EC%9D%B8%ED%84%B0%ED%8C%8C%ED%81%AC/index.xml" rel="self" type="application/rss+xml"/><item><title>Day 41: 실무 사례 #1 - 인터파크 개인정보 유출 사건 (2016)</title><link>https://hojjang98.github.io/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C/day41_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C%EC%82%AC%EB%A1%801_%EC%9D%B8%ED%84%B0%ED%8C%8C%ED%81%AC/</link><pubDate>Sat, 14 Mar 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C/day41_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C%EC%82%AC%EB%A1%801_%EC%9D%B8%ED%84%B0%ED%8C%8C%ED%81%AC/</guid><description>2016년 인터파크 해킹으로 1,030만 건 개인정보가 유출된 사건을 법률 위반, 기술적 원인, 처벌 결과, 교훈 관점에서 분석합니다.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>인터파크 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%EC%9D%B8%ED%84%B0%ED%8C%8C%ED%81%AC/</link>
+    <description>Recent content in 인터파크 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Tue, 31 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%EC%9D%B8%ED%84%B0%ED%8C%8C%ED%81%AC/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Day 41: 실무 사례 #1 - 인터파크 개인정보 유출 사건 (2016)</title>
+      <link>http://localhost:1313/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C/day41_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C%EC%82%AC%EB%A1%801_%EC%9D%B8%ED%84%B0%ED%8C%8C%ED%81%AC/</link>
+      <pubDate>Tue, 31 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C/day41_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C%EC%82%AC%EB%A1%801_%EC%9D%B8%ED%84%B0%ED%8C%8C%ED%81%AC/</guid>
+      <description>2016년 인터파크 해킹으로 1,030만 건 개인정보가 유출된 사건을 법률 위반, 기술적 원인, 처벌 결과, 교훈 관점에서 분석합니다.</description>
+    </item>
+  </channel>
+</rss>

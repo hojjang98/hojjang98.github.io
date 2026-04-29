@@ -1,1 +1,96 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>발표준비 on HJ's Security Note</title><link>https://hojjang98.github.io/tags/%EB%B0%9C%ED%91%9C%EC%A4%80%EB%B9%84/</link><description>Recent content in 발표준비 on HJ's Security Note</description><generator>Hugo -- 0.155.3</generator><language>ko-kr</language><lastBuildDate>Mon, 23 Mar 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://hojjang98.github.io/tags/%EB%B0%9C%ED%91%9C%EC%A4%80%EB%B9%84/index.xml" rel="self" type="application/rss+xml"/><item><title>2026.03.23 (Day 98) - 중간 발표 주간 총력전 돌입</title><link>https://hojjang98.github.io/daily_logs/week21/20260323_final_project_23/</link><pubDate>Mon, 23 Mar 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week21/20260323_final_project_23/</guid><description>중간 발표 주간 돌입, 산출물 현황 점검 및 요일별 목표 수립, PPT 구성과 발표 흐름 병렬 진행.</description></item><item><title>2026.01.05 (Day 48) - 발표 자료 완성 및 최종 점검</title><link>https://hojjang98.github.io/daily_logs/week11/20260105_project_04/</link><pubDate>Mon, 05 Jan 2026 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week11/20260105_project_04/</guid><description>DNA Lab 최종 발표 PPT 16슬라이드 완성, 발표 스크립트 작성 및 3차 리허설(22분 조정), 웹 93.8%(15/16)/OS 28.0%(14/50)/전체 43.9%(29/66) 진단 결과 데이터 정리, 4가지 프로젝트 한계점 및 예상 Q&amp;amp;A 20개 준비</description></item><item><title>2025.11.20 (Day 19) Project: 분석 결과 수정 및 최종 발표 자료 완성</title><link>https://hojjang98.github.io/daily_logs/week04/20251120_project_final_review_completion/</link><pubDate>Thu, 20 Nov 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week04/20251120_project_final_review_completion/</guid><description>최종 QA 및 에러 핸들링 점검, 발표 스크립트 및 시연 동선 확정</description></item><item><title>2025.11.19 (Day 18) Project: LangChain/RAG 분석 모델 통합 및 PPT 초안 제작</title><link>https://hojjang98.github.io/daily_logs/week04/20251119_project_rag_integration_and_ppt/</link><pubDate>Wed, 19 Nov 2025 00:00:00 +0000</pubDate><guid>https://hojjang98.github.io/daily_logs/week04/20251119_project_rag_integration_and_ppt/</guid><description>LangChain/RAG 분석 모델 Streamlit 통합 완료 및 발표 PPT 핵심 시나리오 구성</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>발표준비 on HJ&#39;s Security Note</title>
+    <link>http://localhost:1313/tags/%EB%B0%9C%ED%91%9C%EC%A4%80%EB%B9%84/</link>
+    <description>Recent content in 발표준비 on HJ&#39;s Security Note</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Thu, 16 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%EB%B0%9C%ED%91%9C%EC%A4%80%EB%B9%84/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2026.04.16 (Day 117) - 최종 발표 Q&amp;A 준비 정리</title>
+      <link>http://localhost:1313/daily_logs/week24/20260416_final_project_42/</link>
+      <pubDate>Thu, 16 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week24/20260416_final_project_42/</guid>
+      <description>최종 발표 Q&amp;amp;A 예상 질문을 파트별로 수집하고 답변 핵심을 정리하였다. 법적 근거, 체크리스트 설계, 등급 산정, AI 활용, 해랑금융 심층 분석 등 전 파트를 망라하였다.</description>
+    </item>
+    <item>
+      <title>2026.04.14 (Day 114) - 최종 발표 리허설 피드백 정리</title>
+      <link>http://localhost:1313/daily_logs/week24/20260414_final_project_40/</link>
+      <pubDate>Tue, 14 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week24/20260414_final_project_40/</guid>
+      <description>최종 발표 리허설을 진행하고 팀원 및 강사님 피드백을 수렴하였다. 발표 속도, 근거 부족(0.7 가중치·ABCD 등급), 분량 불균형, 포인터 미사용 등을 주요 개선사항으로 확인하였다.</description>
+    </item>
+    <item>
+      <title>2026.04.13 (Day 114) - 최종 발표 리허설 피드백 정리</title>
+      <link>http://localhost:1313/daily_logs/week24/20260412_final_project_39/</link>
+      <pubDate>Mon, 13 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week24/20260412_final_project_39/</guid>
+      <description>최종 발표 리허설을 진행하고 팀원 및 강사님 피드백을 수렴하였다. 발표 속도, 근거 부족(0.7 가중치·ABCD 등급), 분량 불균형, 포인터 미사용 등을 주요 개선사항으로 확인하였다.</description>
+    </item>
+    <item>
+      <title>2026.04.10 (Day 112) - 최종 발표 PPT 작업 완료</title>
+      <link>http://localhost:1313/daily_logs/week23/20260410_final_project_37/</link>
+      <pubDate>Fri, 10 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week23/20260410_final_project_37/</guid>
+      <description>4/6부터 시작된 PPT 피드백 반영 작업이 오늘로 사실상 마무리됐다. 내일 멘토 최종 피드백 수렴 후 PPT 최종본을 확정할 예정이다.</description>
+    </item>
+    <item>
+      <title>2026.04.09 (Day 111) - 최종 발표 PPT 제작 마무리 단계 진입</title>
+      <link>http://localhost:1313/daily_logs/week23/20260409_final_project_36/</link>
+      <pubDate>Thu, 09 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week23/20260409_final_project_36/</guid>
+      <description>사흘 넘게 이어진 PPT 피드백-수정 사이클을 거쳐 처음으로 마무리 단계에 진입하였다. 전체 흐름이 잡히면서 발표 자료로서의 형태가 나오기 시작했다.</description>
+    </item>
+    <item>
+      <title>2026.04.08 (Day 110) - 최종 발표 PPT 피드백 및 수정사항 정리</title>
+      <link>http://localhost:1313/daily_logs/week23/20260408_final_project_35/</link>
+      <pubDate>Wed, 08 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week23/20260408_final_project_35/</guid>
+      <description>최종 발표 PPT의 세부 수정사항을 정리하였다. 4.4 명칭 오류 수정, 5장과 6장 순서 교체, 6장 존치 번복, AI 워터마크 제거 등 디테일 완성도에 집중한 하루였다.</description>
+    </item>
+    <item>
+      <title>2026.04.07 (Day 109) - 최종 발표 PPT 투표 및 수정사항 확정</title>
+      <link>http://localhost:1313/daily_logs/week23/20260407_final_project_34/</link>
+      <pubDate>Tue, 07 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week23/20260407_final_project_34/</guid>
+      <description>최종 발표 PPT의 장별 구조를 전면 재편하고 미결 투표 항목을 확정하였다. 1장 위수탁 단일화, 6장 소멸, 등급 산정 위치 확정 등 발표 전체의 서사 구조를 다시 설계하였다.</description>
+    </item>
+    <item>
+      <title>2026.04.06 (Day 108) - 최종 발표 PPT 멘토 피드백 반영 회의</title>
+      <link>http://localhost:1313/daily_logs/week23/20260406_final_project_33/</link>
+      <pubDate>Mon, 06 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week23/20260406_final_project_33/</guid>
+      <description>최종 발표 PPT에 대한 멘토 피드백을 반영하여 슬라이드 구조를 전면 개편하였다. L-CHECK 보류, 사업제안서 목차 대체, 페이지 이동 및 통합 방향을 논의하고 투표 대기 항목을 정리하였다.</description>
+    </item>
+    <item>
+      <title>2026.03.23 (Day 98) - 중간 발표 주간 총력전 돌입</title>
+      <link>http://localhost:1313/daily_logs/week21/20260323_final_project_23/</link>
+      <pubDate>Mon, 23 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week21/20260323_final_project_23/</guid>
+      <description>중간 발표 주간 돌입, 산출물 현황 점검 및 요일별 목표 수립, PPT 구성과 발표 흐름 병렬 진행.</description>
+    </item>
+    <item>
+      <title>2026.01.05 (Day 48) - 발표 자료 완성 및 최종 점검</title>
+      <link>http://localhost:1313/daily_logs/week11/20260105_project_04/</link>
+      <pubDate>Mon, 05 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week11/20260105_project_04/</guid>
+      <description>DNA Lab 최종 발표 PPT 16슬라이드 완성, 발표 스크립트 작성 및 3차 리허설(22분 조정), 웹 93.8%(15/16)/OS 28.0%(14/50)/전체 43.9%(29/66) 진단 결과 데이터 정리, 4가지 프로젝트 한계점 및 예상 Q&amp;amp;A 20개 준비</description>
+    </item>
+    <item>
+      <title>2025.11.20 (Day 19) Project: 분석 결과 수정 및 최종 발표 자료 완성</title>
+      <link>http://localhost:1313/daily_logs/week04/20251120_project_final_review_completion/</link>
+      <pubDate>Thu, 20 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week04/20251120_project_final_review_completion/</guid>
+      <description>최종 QA 및 에러 핸들링 점검, 발표 스크립트 및 시연 동선 확정</description>
+    </item>
+    <item>
+      <title>2025.11.19 (Day 18) Project: LangChain/RAG 분석 모델 통합 및 PPT 초안 제작</title>
+      <link>http://localhost:1313/daily_logs/week04/20251119_project_rag_integration_and_ppt/</link>
+      <pubDate>Wed, 19 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/daily_logs/week04/20251119_project_rag_integration_and_ppt/</guid>
+      <description>LangChain/RAG 분석 모델 Streamlit 통합 완료 및 발표 PPT 핵심 시나리오 구성</description>
+    </item>
+  </channel>
+</rss>
