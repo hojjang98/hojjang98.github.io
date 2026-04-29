@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="ko" dir="auto" data-theme="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>Week 13 — E-Commerce 보안 컨설팅 시뮬레이션 2/4: 취약점 진단 | HJ&#39;s Security Note</title>
 <meta name="keywords" content="보안컨설팅, 취약점진단, OWASPZAP, SQLInjection, XSS, 파일업로드, CSRF, 모의해킹, SK쉴더스루키즈">
 <meta name="description" content="4주 보안 컨설팅 시뮬레이션 2주차 — OWASP ZAP 자동화 스캔 &#43; Python 수동 진단으로 Critical 2 / High 2 / Medium 3 / Low 5 총 12개 취약점을 발굴하고 종합 보고서를 작성">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/project/week_13/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.c8c3b65cd6d058be2b4f050fd7a688ac13a23056571601dabe4f70d8d008259e.css" integrity="sha256-yMO2XNbQWL4rTwUP16aIrBOiMFZXFgHavk9w2NAIJZ4=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="canonical" href="https://hojjang98.github.io/project/week_13/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.898219bd95f420a374e6df8d4ee9050d8913bfcf44c82e41bddff27ad9322aec.css" integrity="sha256-iYIZvZX0IKN05t&#43;NTukFDYkTv89EyC5Bvd/yetkyKuw=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="ko" href="http://localhost:1313/project/week_13/">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/project/week_13/">
 <noscript>
     <style>
         #theme-toggle,
@@ -70,13 +70,87 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
+</script><meta property="og:url" content="https://hojjang98.github.io/project/week_13/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="Week 13 — E-Commerce 보안 컨설팅 시뮬레이션 2/4: 취약점 진단">
+  <meta property="og:description" content="4주 보안 컨설팅 시뮬레이션 2주차 — OWASP ZAP 자동화 스캔 &#43; Python 수동 진단으로 Critical 2 / High 2 / Medium 3 / Low 5 총 12개 취약점을 발굴하고 종합 보고서를 작성">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="project">
+    <meta property="article:published_time" content="2026-01-26T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-01-26T00:00:00+00:00">
+    <meta property="article:tag" content="보안컨설팅">
+    <meta property="article:tag" content="취약점진단">
+    <meta property="article:tag" content="OWASPZAP">
+    <meta property="article:tag" content="SQLInjection">
+    <meta property="article:tag" content="XSS">
+    <meta property="article:tag" content="파일업로드">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_19/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_18/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_17/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_16/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_15/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_14/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Week 13 — E-Commerce 보안 컨설팅 시뮬레이션 2/4: 취약점 진단">
+<meta name="twitter:description" content="4주 보안 컨설팅 시뮬레이션 2주차 — OWASP ZAP 자동화 스캔 &#43; Python 수동 진단으로 Critical 2 / High 2 / Medium 3 / Low 5 총 12개 취약점을 발굴하고 종합 보고서를 작성">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "프로젝트",
+      "item": "https://hojjang98.github.io/project/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Week 13 — E-Commerce 보안 컨설팅 시뮬레이션 2/4: 취약점 진단",
+      "item": "https://hojjang98.github.io/project/week_13/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Week 13 — E-Commerce 보안 컨설팅 시뮬레이션 2/4: 취약점 진단",
+  "name": "Week 13 — E-Commerce 보안 컨설팅 시뮬레이션 2\/4: 취약점 진단",
+  "description": "4주 보안 컨설팅 시뮬레이션 2주차 — OWASP ZAP 자동화 스캔 + Python 수동 진단으로 Critical 2 / High 2 / Medium 3 / Low 5 총 12개 취약점을 발굴하고 종합 보고서를 작성",
+  "keywords": [
+    "보안컨설팅", "취약점진단", "OWASPZAP", "SQLInjection", "XSS", "파일업로드", "CSRF", "모의해킹", "SK쉴더스루키즈"
+  ],
+  "articleBody": "Week 13 — E-Commerce 보안 컨설팅 시뮬레이션 2/4: 취약점 진단 전체 소스코드 및 진단 보고서는 GitHub에서 확인할 수 있습니다. hojjang98 / skshielders-rookies-28 — projects/week_13\n진단 개요 항목 내용 진단 대상 Week 12 에서 구축한 E-Commerce 웹 애플리케이션 진단 URL http://localhost:5000 진단 일자 2026년 1월 26일 진단자 호짱 (개인 솔로 프로젝트) 진단 방법 OWASP ZAP (자동화) + Python 스크립트 (수동) 이번 주는 공격자의 시선 으로 지난주에 내가 직접 만든 쇼핑몰을 들여다보는 시간이었다. 설계자로서 어디에 취약점을 심었는지 알고 있음에도, 도구를 실제로 돌리고 PoC 를 작성하는 과정은 새로운 관점을 제공했다.\n진단 프로세스 1단계 — 자동화 스캔\rOWASP ZAP baseline 스캔 실행\r=\u003e 전체 애플리케이션 크롤링 + 취약점 자동 탐지\r=\u003e 결과: Medium 3개, Low 5개, Info 6개 발견\r2단계 — 수동 진단\rPython 스크립트로 SQL Injection / XSS / 파일 업로드 직접 공격\r=\u003e OWASP ZAP 이 못 잡은 Critical 취약점 2개 추가 발굴\r3단계 — 보고서 작성\r심각도별 분류 (Critical / High / Medium / Low)\r공격 시연 스크린샷 첨부\r비즈니스 영향도 + 개선 권고안 도출\r사용 도구:\nOWASP ZAP — 자동화 취약점 스캐너 (baseline 모드) Python requests + BeautifulSoup — 수동 진단 스크립트 브라우저 직접 테스트 — XSS / 파일 업로드 PoC 확인 진단 결과 요약 총 발견 취약점: 12개 (+ 정보성 항목 6개)\n심각도별 분포:\r┌──────────┬──────┬───────────────────────────────────────┐\r│ 심각도 │ 수 │ 항목 │\r├──────────┼──────┼───────────────────────────────────────┤\r│ Critical │ 2 │ SQL Injection (로그인 우회, 검색 필터) │\r├──────────┼──────┼───────────────────────────────────────┤\r│ High │ 2 │ XSS (댓글), 파일 업로드 취약점 │\r├──────────┼──────┼───────────────────────────────────────┤\r│ Medium │ 3 │ CSRF 토큰 없음, CSP 미설정, Clickjacking│\r├──────────┼──────┼───────────────────────────────────────┤\r│ Low │ 5 │ 쿠키 SameSite, 서버 정보 노출 등 │\r└──────────┴──────┴───────────────────────────────────────┘\rOWASP ZAP vs 수동 진단 비교:\nOWASP ZAP (자동화) : Medium 3 / Low 5 / Info 6\r수동 진단 (직접 공격): Critical 2 / High 2 추가 발굴\r=\u003e 자동화 도구만으로는 Critical 취약점을 놓칠 수 있음\r=\u003e 반드시 수동 진단을 병행해야 함\rCritical 취약점 상세 CRIT-01 — SQL Injection (로그인 우회) 위치: /login POST\n공격 시연:\nUsername : admin' OR '1'='1\rPassword : anything\r실행 쿼리 =\u003e SELECT * FROM users\rWHERE username='admin' OR '1'='1' AND password='anything'\rOR '1'='1' 조건으로 WHERE 절 항상 참\r=\u003e 비밀번호 검증 없이 관리자 계정 로그인 성공\r취약 코드 — f-string 직접 삽입:\nquery = f\"SELECT * FROM users WHERE username='{username}' AND password='{password}'\"\ruser = conn.execute(query).fetchone()\r개선 코드 — Prepared Statement 적용:\nuser = conn.execute(\r'SELECT * FROM users WHERE username=? AND password=?',\r(username, password)\r).fetchone()\radmin' OR '1'='1 입력 시 =\u003e 문자열 전체가 하나의 파라미터로 바인딩\r=\u003e SQL 구문으로 해석 불가 =\u003e 공격 차단\r비즈니스 영향: 관리자 계정 탈취 =\u003e 전체 고객 데이터 유출, 주문 조작 가능\nCRIT-02 — SQL Injection (상품 검색 필터 우회) 위치: /?search= GET 파라미터\n공격 시연:\n검색어 : ' OR '1'='1\r실행 쿼리 =\u003e SELECT * FROM products WHERE name LIKE '%' OR '1'='1%'\r결과 =\u003e LIKE 조건 무력화 =\u003e 전체 상품 10개 일괄 노출\r취약 코드:\nquery = f\"SELECT * FROM products WHERE name LIKE '%{search}%'\"\rproducts = conn.execute(query).fetchall()\r개선 코드:\nproducts = conn.execute(\r'SELECT * FROM products WHERE name LIKE ?',\r(f'%{search}%',)\r).fetchall()\r비즈니스 영향: 검색 필터 우회 =\u003e DB 스키마 탐색 + UNION 기반 데이터 추출로 확장 가능\nHigh 취약점 상세 HIGH-01 — XSS (Stored XSS, 댓글) 위치: /product/ 댓글 출력 (product.html)\n공격 시연:\n댓글 입력 : 저장 =\u003e DB에 그대로 저장\r출력 =\u003e |safe 필터로 HTML 이스케이프 없이 렌더링\r결과 =\u003e 페이지를 방문하는 모든 사용자에게 스크립트 실행\rStored XSS 이므로 한 번 삽입하면 모든 방문자에게 지속 실행된다.\n취약 코드:\n{{ comment.comment|safe }}\n개선 코드 — |safe 제거:\n{{ comment.comment }}\n=\u003e Jinja2 기본 이스케이프 복원\r=\u003e ",
+  "wordCount" : "2895",
+  "inLanguage": "ko",
+  "datePublished": "2026-01-26T00:00:00Z",
+  "dateModified": "2026-01-26T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/project/week_13/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
 </script>
 </head>
 <body id="top">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -102,37 +176,37 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/about" title="소개">
+                <a href="https://hojjang98.github.io/about" title="소개">
                     <span>소개</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
                     <span>일일 로그</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/projects/" title="Projects">
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
                     <span>프로젝트</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/cyber-law-study/" title="Cyber-Law-Study">
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
                     <span>보안법 공부</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
                     <span>보안 시사 분석</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
                     <span>태그</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/paper-review/" title="Paper-Review">
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
                     <span>논문 리뷰</span>
                 </a>
             </li>
@@ -143,7 +217,7 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/">홈</a>&nbsp;»&nbsp;<a href="http://localhost:1313/project/">프로젝트</a></div>
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/project/">프로젝트</a></div>
     <h1 class="post-title entry-hint-parent">
       Week 13 — E-Commerce 보안 컨설팅 시뮬레이션 2/4: 취약점 진단
     </h1>
@@ -523,22 +597,22 @@ def set_security_headers(response):
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/%EB%B3%B4%EC%95%88%EC%BB%A8%EC%84%A4%ED%8C%85/">보안컨설팅</a></li>
-      <li><a href="http://localhost:1313/tags/%EC%B7%A8%EC%95%BD%EC%A0%90%EC%A7%84%EB%8B%A8/">취약점진단</a></li>
-      <li><a href="http://localhost:1313/tags/owaspzap/">OWASPZAP</a></li>
-      <li><a href="http://localhost:1313/tags/sqlinjection/">SQLInjection</a></li>
-      <li><a href="http://localhost:1313/tags/xss/">XSS</a></li>
-      <li><a href="http://localhost:1313/tags/%ED%8C%8C%EC%9D%BC%EC%97%85%EB%A1%9C%EB%93%9C/">파일업로드</a></li>
-      <li><a href="http://localhost:1313/tags/csrf/">CSRF</a></li>
-      <li><a href="http://localhost:1313/tags/%EB%AA%A8%EC%9D%98%ED%95%B4%ED%82%B9/">모의해킹</a></li>
-      <li><a href="http://localhost:1313/tags/sk%EC%89%B4%EB%8D%94%EC%8A%A4%EB%A3%A8%ED%82%A4%EC%A6%88/">SK쉴더스루키즈</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%B3%B4%EC%95%88%EC%BB%A8%EC%84%A4%ED%8C%85/">보안컨설팅</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%B7%A8%EC%95%BD%EC%A0%90%EC%A7%84%EB%8B%A8/">취약점진단</a></li>
+      <li><a href="https://hojjang98.github.io/tags/owaspzap/">OWASPZAP</a></li>
+      <li><a href="https://hojjang98.github.io/tags/sqlinjection/">SQLInjection</a></li>
+      <li><a href="https://hojjang98.github.io/tags/xss/">XSS</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%ED%8C%8C%EC%9D%BC%EC%97%85%EB%A1%9C%EB%93%9C/">파일업로드</a></li>
+      <li><a href="https://hojjang98.github.io/tags/csrf/">CSRF</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%AA%A8%EC%9D%98%ED%95%B4%ED%82%B9/">모의해킹</a></li>
+      <li><a href="https://hojjang98.github.io/tags/sk%EC%89%B4%EB%8D%94%EC%8A%A4%EB%A3%A8%ED%82%A4%EC%A6%88/">SK쉴더스루키즈</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
 
     <span>
         Powered by

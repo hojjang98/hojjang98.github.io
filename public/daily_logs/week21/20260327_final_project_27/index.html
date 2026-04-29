@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="ko" dir="auto" data-theme="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>2026.03.27 (Day 102) - 체크리스트 전수 피어 리뷰 및 공통 문제점 도출 | HJ&#39;s Security Note</title>
 <meta name="keywords" content="체크리스트, 피어리뷰, 판정기준, 수치처리, 전문용어, 증적자료, 컨설팅">
 <meta name="description" content="수탁사별 체크리스트 전수 교차 점검, 공통 오류 패턴 8가지 도출, 판정 기준 및 수치 처리 원칙 재정비.">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/daily_logs/week21/20260327_final_project_27/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.c8c3b65cd6d058be2b4f050fd7a688ac13a23056571601dabe4f70d8d008259e.css" integrity="sha256-yMO2XNbQWL4rTwUP16aIrBOiMFZXFgHavk9w2NAIJZ4=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="canonical" href="https://hojjang98.github.io/daily_logs/week21/20260327_final_project_27/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.898219bd95f420a374e6df8d4ee9050d8913bfcf44c82e41bddff27ad9322aec.css" integrity="sha256-iYIZvZX0IKN05t&#43;NTukFDYkTv89EyC5Bvd/yetkyKuw=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="ko" href="http://localhost:1313/daily_logs/week21/20260327_final_project_27/">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/daily_logs/week21/20260327_final_project_27/">
 <noscript>
     <style>
         #theme-toggle,
@@ -70,13 +70,81 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
+</script><meta property="og:url" content="https://hojjang98.github.io/daily_logs/week21/20260327_final_project_27/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="2026.03.27 (Day 102) - 체크리스트 전수 피어 리뷰 및 공통 문제점 도출">
+  <meta property="og:description" content="수탁사별 체크리스트 전수 교차 점검, 공통 오류 패턴 8가지 도출, 판정 기준 및 수치 처리 원칙 재정비.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="daily_logs">
+    <meta property="article:published_time" content="2026-03-27T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-03-27T00:00:00+00:00">
+    <meta property="article:tag" content="체크리스트">
+    <meta property="article:tag" content="피어리뷰">
+    <meta property="article:tag" content="판정기준">
+    <meta property="article:tag" content="수치처리">
+    <meta property="article:tag" content="전문용어">
+    <meta property="article:tag" content="증적자료">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2026.03.27 (Day 102) - 체크리스트 전수 피어 리뷰 및 공통 문제점 도출">
+<meta name="twitter:description" content="수탁사별 체크리스트 전수 교차 점검, 공통 오류 패턴 8가지 도출, 판정 기준 및 수치 처리 원칙 재정비.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "6개월, 혹은 그 이상의 보안 여정",
+      "item": "https://hojjang98.github.io/daily_logs/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "2026.03.27 (Day 102) - 체크리스트 전수 피어 리뷰 및 공통 문제점 도출",
+      "item": "https://hojjang98.github.io/daily_logs/week21/20260327_final_project_27/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "2026.03.27 (Day 102) - 체크리스트 전수 피어 리뷰 및 공통 문제점 도출",
+  "name": "2026.03.27 (Day 102) - 체크리스트 전수 피어 리뷰 및 공통 문제점 도출",
+  "description": "수탁사별 체크리스트 전수 교차 점검, 공통 오류 패턴 8가지 도출, 판정 기준 및 수치 처리 원칙 재정비.",
+  "keywords": [
+    "체크리스트", "피어리뷰", "판정기준", "수치처리", "전문용어", "증적자료", "컨설팅"
+  ],
+  "articleBody": "1. 핵심 개념 정리 체크리스트 피어 리뷰 공통 문제점 # 문제 유형 내용 조치 방향 1 수치·퍼센테이지 남용 증명할 수 없는 % 수치가 점검 내역에 다수 포함 증빙 가능한 수치만 유지. 나머지 전부 삭제 2 어려운 전문용어 SLA, BCP, MDM, GPO, WORM, DLP 등 설명 없이 사용 설명 가능하면 유지. 불가능하면 알기 쉬운 표현으로 대체 3 점검항목 불일치 점검 항목과 관련 없는 내용이 점검 내역에 포함 항목 취지에 맞지 않는 내용 전부 삭제 4 부분양호·양호 판정 오류 판정 기준이 애매하거나 실제 내용과 불일치 판정 기준 재검토 후 Y/P/N 재정의 5 판정 근거 문구 “부분양호로 판단함” 류의 서술형 판단 문구 포함 전부 삭제. 판정은 열(Y/P/N)로만 표기 6 점검항목 누락 F열에 명시된 확인 항목이 H열 점검 내역에 없음 F열 항목과 H열 내용 1:1 대응 여부 전수 확인 7 증적 불일치 점검 내역 내용과 실제 증적 자료가 맞지 않음 증적 자료와 점검 내역 교차 확인 필수 8 실제 업체명·솔루션명 노출 가상 시나리오임에도 실제 솔루션명·업체명 그대로 기재 가상 업체명으로 대체 또는 삭제 수탁사별 점검 담당 및 주요 이슈 # 수탁사 담당 핵심 이슈 9 다온컨택 담당자 2인 F열 항목 누락 다수, 판정 불일치(H열·J열 상이), 증적 없는 수치 10 온다로지스 담당자 2인 점검항목 불일치 내용 다수, 퍼센테이지 삭제, 핵심 내용 축약 필요 11 패스트레인 담당자 2인 솔루션명 노출, 점검 항목과 내용 불일치, 판정 오류(양호인데 N 표기) 12 플라이메이트 담당자 수치 남발, 날짜 오류, 항목 불일치 내용 다수, 전문용어 과다 13 하랑케이터링 담당자 특정 솔루션 내용 과다, 부분양호·취약 구분 불명확 14 해랑금융 담당자 2인 전문용어 과다, 수치 미검증, 항목 누락, 솔루션명 확인 필요 2. 실습 내용 정리 활동 1: 수탁사별 체크리스트 교차 점검 목표 : 팀 전체가 타 담당자의 체크리스트를 교차 검토하여 오류 전수 발굴\n점검 기준 :\n- F열 점검 항목과 H열 점검 내역이 1:1 대응되는가 - H열과 J열의 판정(Y/P/N)이 일치하는가 - 수치(%)에 증빙 가능한 근거가 있는가 - 전문용어를 설명할 수 있는가, 없다면 대체 가능한가 - 실제 솔루션명·업체명이 노출되어 있지 않은가 - \"부분양호로 판단함\" 류의 서술형 판단 문구가 없는가 - 점검 항목 취지에 벗어난 내용이 포함되어 있지 않은가 - 증적 자료와 점검 내역 내용이 일치하는가 보안 인사이트 :\n체크리스트는 점검의 결과물인 동시에 법적 증빙 자료. 내용과 증적이 불일치하면 점검 자체의 신뢰도가 무너짐 판정 열(Y/P/N)과 서술 내용이 일치하지 않으면 심사자 입장에서 가장 먼저 눈에 띄는 오류가 됨 설명할 수 없는 전문용어는 오히려 발표·면접에서 역으로 공격받는 포인트가 됨 3. 비교/분석 표 판정 기준 재정비 판정 의미 기준 주의사항 Y (양호) 점검 항목 기준 완전 충족 관련 증빙 자료 완비, 정책·절차 수립 및 이행 확인 애매한 경우 P로 내리는 것이 안전 P (부분양호) 일부 충족, 일부 미흡 정책은 있으나 이행 미흡, 또는 항목 일부 누락 Y와 N의 경계가 불명확할 때 적용 N (취약) 기준 미충족 정책·절차 미수립 또는 이행 전혀 없음 판정과 내용 설명이 반드시 일치해야 함 NA 해당 없음 수탁사 업무 특성상 적용 불가 항목 남용 금지. 이유 명시 필요 수치 처리 기준 상황 처리 방법 증빙 자료(로그, 관리대장 등)에서 확인된 수치 유지. 출처 명시 인터뷰 기반 추정 수치 삭제 또는 “인터뷰 확인” 표기로 대체 근거 불명확한 퍼센테이지 전부 삭제 100% 표기 전부 삭제 또는 “전수 확인” 표기로 대체 4. 심화 분석 자주 나온 오류 패턴 분석 [ 패턴 1 : 점검항목 불일치 ] - 점검 항목 : 암호화 키 관리대장 확인 - 잘못된 내역 : 사고 조치 내용, 외부 유출 대응 방법 - 올바른 내역 : 관리대장 존재 여부, 관리자 기록 여부, 접근 권한 확인\n[ 패턴 2 : 판정 불일치 ] - H열 : 취약이라 서술 - J열 : P(부분양호)로 표기 - 조치 : 둘 중 하나로 통일. 서술이 맞으면 J열 수정, J열이 맞으면 서술 수정\n[ 패턴 3 : 근거 없는 수치 ] - “94% 적용률 확인” -\u003e 어떤 증적에서 나온 수치인가? - “100% 완료” -\u003e 전수 확인 방법은? - 조치 : 증빙 불가 시 삭제. “전수 확인 완료” 등 서술로 대체\n[ 패턴 4 : 서술형 판단 문구 ] - “부분양호로 판단함”, “양호로 볼 수 있음” - 조치 : 전부 삭제. 판정은 열로만 표기\n5. 실무/보안 적용 보안 전문가 관점 - 체크리스트 품질 기준 기준 설명 실무 적용 항목 정합성 점검 항목 취지와 점검 내역 내용이 일치해야 함 F열 항목 제목을 항상 먼저 읽고 H열 내용 작성 판정 일관성 서술 내용과 Y/P/N 판정이 반드시 일치해야 함 작성 후 H열·J열 교차 확인 필수 수치 신뢰성 모든 수치는 증빙 자료에서 도출되어야 함 근거 없는 수치는 삭제가 원칙 용어 적절성 설명 가능한 전문용어만 사용 설명 불가능한 용어는 일반 표현으로 대체 증적 연계성 점검 내역과 증적 자료가 동일한 사실을 가리켜야 함 증적 파일명과 해당 내역을 함께 기재 6. 배운 점 및 인사이트 새로 알게 된 점 퍼센테이지의 함정 : 수치는 구체적으로 보이지만 증빙이 없으면 오히려 신뢰도를 낮춤. “94%” 보다 “시스템 점검 결과 미적용 항목 없음 확인\"이 더 강한 표현일 수 있음\n전문용어는 양날의 검 : 전문용어를 쓰면 전문적으로 보이지만, 설명하지 못하면 발표·면접에서 그 자리가 약점이 됨. 쓸 수 있는 것과 써도 되는 것은 다름\n피어 리뷰의 위력 : 본인이 작성한 체크리스트의 오류는 본인 눈에 잘 안 보임. 오늘처럼 타 담당자가 교차 점검할 때 나오는 지적이 실제 심사자 시선에 가장 가까움\n이전 학습과의 연결고리 Day 94 Y/P/N/NA 기준 확정과 연계 : 오늘 판정 오류들이 당시 기준을 제대로 적용하지 않은 데서 발생\nDay 101 출처·근거 피드백과 연계 : 중간 발표에서 받은 “근거를 명확히 하라\"는 피드백이 체크리스트 수치 문제와 정확히 같은 맥락\n실무 적용 아이디어 보안 전문가 관점 :\n- 체크리스트 작성 순서 : F열 항목 확인 -\u003e 증적 자료 확인 -\u003e H열 내역 작성 -\u003e J열 판정 -\u003e 교차 확인 순으로 진행하면 오늘 나온 오류 대부분을 사전 방지 가능 - 수치 처리 원칙 내재화 : 실무에서도 보고서 내 수치는 출처 명시가 기본. 출처 없는 수치는 삭제하는 습관이 컨설팅 품질의 기본선 7. Quick Reference 체크리스트 수정 전 확인 항목 [ 항목 정합성 ] - F열 점검 항목 제목을 먼저 읽는다 - H열 내용이 해당 항목 취지에 맞는가 확인 - 취지 벗어난 내용은 삭제\n[ 수치 처리 ] - 모든 % 수치 : 증빙 자료 출처 확인 - 출처 없으면 삭제 - 100% 표기 : 전부 삭제 또는 서술로 대체\n[ 판정 일치 ] - H열 서술 내용과 J열 Y/P/N이 같은 판단을 가리키는가 - 불일치 시 서술 또는 판정 중 하나 수정\n[ 용어 점검 ] - 전문용어 목록 작성 후 설명 가능 여부 확인 - 설명 불가 -\u003e 일반 표현으로 대체\n[ 삭제 대상 ] - “부분양호로 판단함” 류 서술형 판단 문구 - 근거 없는 퍼센테이지 - 점검 항목과 무관한 내용 - 실제 솔루션명·업체명 (가상명으로 대체)\n판정별 점검 내역 작성 기준 [ Y (양호) ] - 정책 수립 확인 + 이행 확인 + 증적 확인 - 세 가지 모두 충족 시만 Y\n[ P (부분양호) ] - 정책은 있으나 이행 미흡 - 항목 일부만 충족 - 증적 일부 누락\n[ N (취약) ] - 정책 미수립 또는 이행 전혀 없음 - 서술 내용이 명확히 결함을 설명해야 함\n8. 트러블슈팅 문제 원인 해결 방법 H열·J열 판정 불일치 서술 작성 후 판정 열 업데이트 누락 작성 완료 후 H열 - J열 교차 확인을 별도 단계로 진행 근거 없는 수치 포함 AI 생성 내용을 검증 없이 사용 모든 수치에 증빙 자료 출처 병기. 없으면 삭제 전문용어 과다 전문성을 보여주려는 의도 설명 가능 여부 기준으로 유지·삭제 결정 점검항목 불일치 내용 F열을 확인하지 않고 H열 작성 F열 항목 제목 확인을 작성 첫 단계로 고정 실제 솔루션명 노출 가상 시나리오 설정 미반영 가상 업체명·솔루션명으로 일괄 대체 또는 삭제 Today’s Insight :\n오늘 피어 리뷰에서 나온 지적들은 결국 하나의 원칙으로 수렴된다. 쓴 내용은 증명할 수 있어야 한다. 수치는 증빙이 있어야 하고, 전문용어는 설명할 수 있어야 하고, 판정은 서술과 일치해야 하고, 내용은 항목 취지에 맞아야 한다. 이 네 가지 기준을 체크리스트 작성 단계에서부터 지켰다면 오늘 나온 지적의 절반 이상은 처음부터 없었을 것이다. 남은 수정 작업에서 이 기준을 기준선으로 삼으면 된다.\n",
+  "wordCount" : "3138",
+  "inLanguage": "ko",
+  "datePublished": "2026-03-27T00:00:00Z",
+  "dateModified": "2026-03-27T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/daily_logs/week21/20260327_final_project_27/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
 </script>
 </head>
 <body id="top">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -102,37 +170,37 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/about" title="소개">
+                <a href="https://hojjang98.github.io/about" title="소개">
                     <span>소개</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
                     <span>일일 로그</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/projects/" title="Projects">
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
                     <span>프로젝트</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/cyber-law-study/" title="Cyber-Law-Study">
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
                     <span>보안법 공부</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
                     <span>보안 시사 분석</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
                     <span>태그</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/paper-review/" title="Paper-Review">
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
                     <span>논문 리뷰</span>
                 </a>
             </li>
@@ -143,7 +211,7 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/">홈</a>&nbsp;»&nbsp;<a href="http://localhost:1313/daily_logs/">6개월, 혹은 그 이상의 보안 여정</a></div>
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/daily_logs/">6개월, 혹은 그 이상의 보안 여정</a></div>
     <h1 class="post-title entry-hint-parent">
       2026.03.27 (Day 102) - 체크리스트 전수 피어 리뷰 및 공통 문제점 도출
     </h1>
@@ -514,20 +582,20 @@
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/%EC%B2%B4%ED%81%AC%EB%A6%AC%EC%8A%A4%ED%8A%B8/">체크리스트</a></li>
-      <li><a href="http://localhost:1313/tags/%ED%94%BC%EC%96%B4%EB%A6%AC%EB%B7%B0/">피어리뷰</a></li>
-      <li><a href="http://localhost:1313/tags/%ED%8C%90%EC%A0%95%EA%B8%B0%EC%A4%80/">판정기준</a></li>
-      <li><a href="http://localhost:1313/tags/%EC%88%98%EC%B9%98%EC%B2%98%EB%A6%AC/">수치처리</a></li>
-      <li><a href="http://localhost:1313/tags/%EC%A0%84%EB%AC%B8%EC%9A%A9%EC%96%B4/">전문용어</a></li>
-      <li><a href="http://localhost:1313/tags/%EC%A6%9D%EC%A0%81%EC%9E%90%EB%A3%8C/">증적자료</a></li>
-      <li><a href="http://localhost:1313/tags/%EC%BB%A8%EC%84%A4%ED%8C%85/">컨설팅</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%B2%B4%ED%81%AC%EB%A6%AC%EC%8A%A4%ED%8A%B8/">체크리스트</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%ED%94%BC%EC%96%B4%EB%A6%AC%EB%B7%B0/">피어리뷰</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%ED%8C%90%EC%A0%95%EA%B8%B0%EC%A4%80/">판정기준</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%88%98%EC%B9%98%EC%B2%98%EB%A6%AC/">수치처리</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%A0%84%EB%AC%B8%EC%9A%A9%EC%96%B4/">전문용어</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%A6%9D%EC%A0%81%EC%9E%90%EB%A3%8C/">증적자료</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%BB%A8%EC%84%A4%ED%8C%85/">컨설팅</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
 
     <span>
         Powered by

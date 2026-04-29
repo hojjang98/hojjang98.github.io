@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="ko" dir="auto" data-theme="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>FBI DCSNet 감청 시스템 침해 — 법집행 인프라 네트워크 침해 | HJ&#39;s Security Note</title>
 <meta name="keywords" content="법집행인프라, DCSNet, 감청시스템, SaltTyphoon, 국가안보, FBI, FISA">
 <meta name="description" content="2026년 3월 5일 FBI 내부 감청·영장 관리 시스템 DCSNet이 침해된 사건으로, 법집행 인프라가 공격 표면이 되는 구조적 취약성과 민간 통신사 합법적 도청 연동 지점이 반복적 공격 경로가 되는 문제를 분석한다.">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/security-issues-analysis/2026/week10/fbi_dscnet_wiretap_system_breach/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.c8c3b65cd6d058be2b4f050fd7a688ac13a23056571601dabe4f70d8d008259e.css" integrity="sha256-yMO2XNbQWL4rTwUP16aIrBOiMFZXFgHavk9w2NAIJZ4=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="canonical" href="https://hojjang98.github.io/security-issues-analysis/2026/week10/fbi_dscnet_wiretap_system_breach/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.898219bd95f420a374e6df8d4ee9050d8913bfcf44c82e41bddff27ad9322aec.css" integrity="sha256-iYIZvZX0IKN05t&#43;NTukFDYkTv89EyC5Bvd/yetkyKuw=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="ko" href="http://localhost:1313/security-issues-analysis/2026/week10/fbi_dscnet_wiretap_system_breach/">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/security-issues-analysis/2026/week10/fbi_dscnet_wiretap_system_breach/">
 <noscript>
     <style>
         #theme-toggle,
@@ -70,13 +70,93 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
+</script><meta property="og:url" content="https://hojjang98.github.io/security-issues-analysis/2026/week10/fbi_dscnet_wiretap_system_breach/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="FBI DCSNet 감청 시스템 침해 — 법집행 인프라 네트워크 침해">
+  <meta property="og:description" content="2026년 3월 5일 FBI 내부 감청·영장 관리 시스템 DCSNet이 침해된 사건으로, 법집행 인프라가 공격 표면이 되는 구조적 취약성과 민간 통신사 합법적 도청 연동 지점이 반복적 공격 경로가 되는 문제를 분석한다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="security-issues-analysis">
+    <meta property="article:published_time" content="2026-03-09T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-03-09T00:00:00+00:00">
+    <meta property="article:tag" content="법집행인프라">
+    <meta property="article:tag" content="DCSNet">
+    <meta property="article:tag" content="감청시스템">
+    <meta property="article:tag" content="SaltTyphoon">
+    <meta property="article:tag" content="국가안보">
+    <meta property="article:tag" content="FBI">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="FBI DCSNet 감청 시스템 침해 — 법집행 인프라 네트워크 침해">
+<meta name="twitter:description" content="2026년 3월 5일 FBI 내부 감청·영장 관리 시스템 DCSNet이 침해된 사건으로, 법집행 인프라가 공격 표면이 되는 구조적 취약성과 민간 통신사 합법적 도청 연동 지점이 반복적 공격 경로가 되는 문제를 분석한다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "보안 시사 분석",
+      "item": "https://hojjang98.github.io/security-issues-analysis/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "2026",
+      "item": "https://hojjang98.github.io/security-issues-analysis/2026/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Week 10",
+      "item": "https://hojjang98.github.io/security-issues-analysis/2026/week10/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  4 ,
+      "name": "FBI DCSNet 감청 시스템 침해 — 법집행 인프라 네트워크 침해",
+      "item": "https://hojjang98.github.io/security-issues-analysis/2026/week10/fbi_dscnet_wiretap_system_breach/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "FBI DCSNet 감청 시스템 침해 — 법집행 인프라 네트워크 침해",
+  "name": "FBI DCSNet 감청 시스템 침해 — 법집행 인프라 네트워크 침해",
+  "description": "2026년 3월 5일 FBI 내부 감청·영장 관리 시스템 DCSNet이 침해된 사건으로, 법집행 인프라가 공격 표면이 되는 구조적 취약성과 민간 통신사 합법적 도청 연동 지점이 반복적 공격 경로가 되는 문제를 분석한다.",
+  "keywords": [
+    "법집행인프라", "DCSNet", "감청시스템", "SaltTyphoon", "국가안보", "FBI", "FISA"
+  ],
+  "articleBody": "FBI DCSNet 감청·영장 관리 시스템 침해 사건 사건 개요 2026년 3월 5일, CNN이 익명의 수사 관계자를 인용하여 FBI 내부 네트워크에서 의심스러운 침해 활동이 확인됐다고 최초 보도했다. FBI는 같은 날 BleepingComputer, TechCrunch 등 주요 매체에 공식 성명을 제공하며 침해 사실을 확인했다.\n침해 대상은 FBI가 법원 승인 도청 영장과 FISA(외국정보감시법) 감청 영장을 관리하는 데 사용하는 내부 디지털 플랫폼이다. 해당 시스템은 DCSNet(Digital Collection System Network)으로 알려져 있으며, DCS-3000(전화 및 인터넷 도청 관리), DCS-6000(실시간 음성 통화 감청), DCS-5000(국가안보 도청 전용)으로 구성된다. 2024년 기준 DCSNet 프로그램 예산은 약 3천만 달러로 보고됐다.\nFBI는 활동이 이미 대응 완료됐다고 밝혔으나, 공격 경로, 피해 범위, 데이터 유출 여부, 위협 행위자 신원에 대해서는 일절 공개하지 않았다.\n기술적 세부사항 침해 대상 시스템의 구조와 민감도 DCSNet은 FBI가 통신 서비스 제공업체에 도청 명령을 전달하고 결과 데이터를 수신·관리하는 중앙 집중형 플랫폼이다. 이 시스템에는 다음 정보가 집약된다.\n법원이 발부한 도청 영장의 세부 내용(대상자, 감청 기간, 방식) FISA Section 702 기반 해외 감청 대상 정보 현재 진행 중인 수사의 실시간 감청 데이터 수신 인터페이스 통신 서비스 제공업체와의 합법적 도청 연계 시스템(Lawful Intercept 인터페이스) 기밀 정보원(CI) 및 감시 대상 신원과 연계될 수 있는 수사 메타데이터 이 시스템은 법집행 권한, 국가안보, 시민 자유 보호 의무가 교차하는 지점에 위치하므로 단순 데이터 침해와 성격이 다르다. 감시 대상자가 노출될 경우 수사 무력화, 정보원 신원 노출, 증거 무결성 훼손 등의 연쇄 피해가 발생한다.\n공격 벡터 및 위협 행위자 공개된 정보에 따르면 FBI는 공격 경로나 위협 행위자를 특정하지 않았다. 다만 수사에는 시민 자유 및 국가안보 담당 FBI·법무부 고위 관리들이 동시에 투입됐으며, 이는 사건의 심각도가 일반 사이버 침해 수준을 넘는다는 점을 시사한다.\n일부 매체는 2024년 중국 국가 연계 APT 그룹 Salt Typhoon이 AT\u0026T, Verizon, Lumen 등 미국 주요 통신사의 합법적 도청 인터페이스에 침투했던 선례와의 연관 가능성을 제기했다. 그러나 FBI는 이번 사건이 Salt Typhoon과 관련이 있는지 공식 확인하지 않았다. 이 연관 가능성은 현재까지 추정 수준이며 확인된 사실이 아니다.\n내부자 위협 가능성도 배제할 수 없다. FBI는 최근 1년간 Kash Patel 국장 체제 하에서 사이버 부문 고위 인력 다수가 해고·퇴직·조기 은퇴했으며, 이는 기관 내 보안 지식 손실과 접근 통제 공백을 초래했을 가능성이 있다.\n확인되지 않은 정보 현재까지 공식 확인이 없는 사항은 다음과 같다.\n실제 데이터 유출 여부 침해가 발생한 구체적 시점 감청 시스템 DCS-5000(기밀 네트워크)이 포함됐는지 여부 진행 중인 수사에 대한 실질적 피해 법원 또는 FISA 감시법원(FISC)에 대한 통지 여부 이 모든 사항은 현재 공개된 정보 기준으로는 언급되지 않았거나 확인 불가능하다.\n근본 원인 분석 기술적 요인 공격 경로에 대한 공식 정보가 없으므로 기술적 원인을 단정하는 것은 현재 불가능하다. 다만 공개된 정보를 바탕으로 구조적 취약 요소를 파악할 수 있다.\nDCSNet과 같은 고도 민감 시스템이 외부 통신사 합법적 도청 시스템과 연동된다는 점 자체가 공격 표면을 확장한다. 네트워크 연동 지점은 잠재적 진입 경로가 된다. 또한 FBI는 2021년 이메일 서버 해킹, 2023년 뉴욕 지부 시스템 침해 등 반복적 침해 이력이 있으므로 기존 취약점이 완전히 제거되지 않았을 가능성이 있다.\n관리적 요인 Exabeam 수석 위협 연구 엔지니어 Sally Vincent의 언급에 따르면 이번 사건은 FBI의 사이버 대응 역량이 이미 심각한 압박을 받고 있는 시점에 발생했다. FBI 사이버 부문의 고위 리더십과 시니어 인력이 대거 이탈한 상황이며, 이는 기관 내부의 보안 정책 집행력과 인시던트 대응 역량 저하로 이어진다.\n추가로 CISA에 대한 대규모 예산 삭감과 인력 축소도 미국 연방 정부 전체의 사이버 방어 역량에 영향을 미치고 있는 것으로 보인다.\n인적 요인 내부자 행위에 대한 정보는 현재 공개된 바 없다. 다만 대규모 인력 이동 환경에서는 퇴직자의 접근 권한 회수 지연, 인수인계 미비로 인한 설정 오류 등 인적 요인에서 비롯된 공백이 발생할 수 있다.\n영향 평가 직접적 운영 영향 FBI는 의심 활동이 이미 대응 완료됐다고 밝혔다. 그러나 감청 관리 시스템에 대한 침해는 그 특성상 대응 완료 이후에도 다음 영향이 잔존할 수 있다.\n진행 중인 수사에서 감시 대상자가 사전에 경고받았을 가능성 특정 수사 기법이나 감청 방법론이 노출됐을 가능성 통신 서비스 제공업체와의 합법적 도청 연동 인터페이스가 일시적으로 무력화됐을 가능성 이 중 어느 것도 현재 공식 확인된 사항이 아니다.\n국가안보 함의 DCSNet은 FBI의 대테러, 방첩, 조직범죄 수사 전반에 걸쳐 사용된다. 2024년 Salt Typhoon이 미국 통신사의 합법적 도청 시스템에 침투해 고위 정치인 및 정부 관리의 통신 데이터에 접근했던 사례와 구조적으로 유사하다. 이번 사건이 그 캠페인의 연장선인지 별개 사건인지는 현재 확인되지 않는다.\n법적·제도적 함의 FISA 감시 시스템에 대한 침해가 확인될 경우 FISA 감시법원(FISC)에 대한 의무 통보, 의회 정보위원회 보고, 해당 수사 기소 절차에서의 증거 무결성 검토 등의 법적 파급 효과가 발생한다. 이 역시 현재 공개된 정보에서는 확인되지 않는다.\n예방 및 대응 방안 즉각 조치 침해가 확인된 시스템에 연계된 모든 자격증명과 접근 토큰의 즉시 교체가 최우선이다. 침해 발생 시점부터 발견 시점까지의 전체 로그를 보존하고, DCSNet에 접속한 모든 계정의 행동 이력을 소급 감사해야 한다. 통신 서비스 제공업체와의 합법적 도청 연동 인터페이스의 비정상 요청 여부도 확인이 필요하다.\n구조적 개선 고도 민감 시스템과 일반 업무 네트워크 간 물리적·논리적 격리 강화가 필요하다. 특권 접근 관리(PAM) 시스템 도입과 최소 권한 원칙 적용이 요구된다. 인력 이탈이 빈번한 환경에서는 퇴직자 접근 권한의 즉시 회수 절차 자동화가 필수적이다.\n법집행 인프라와 민간 통신사 합법적 도청 시스템 간 연동 표준에 대한 보안 감사도 정기적으로 실시해야 한다.\n컨설팅 관점 고객사 커뮤니케이션 전략 비기술 직원 대상\nFBI 내부의 도청 관리 시스템이 침해됐다는 것은 법집행 기관도 사이버 공격의 표적이 된다는 것을 보여준다. 특히 고도로 민감한 데이터를 다루는 조직일수록 더 강화된 접근 통제와 시스템 격리가 필요하다는 점을 이 사건은 재확인한다.\n기술팀 대상\n이 사건의 핵심 교훈은 법집행 인프라와 민간 통신사 합법적 도청 시스템 간의 연동 지점, 즉 Lawful Intercept 인터페이스가 공격 표면임을 다시 확인한 것이다. 내부망과 외부 연동 시스템 사이에 제로 트러스트 아키텍처와 강력한 세그멘테이션이 적용되지 않으면 연동 지점이 침투 경로가 된다. DCSNet과 같이 대규모 조직에서 수십 년에 걸쳐 구축된 레거시 법집행 인프라는 현대적 위협 모델에 맞게 재설계가 필요하다.\n경영진 대상\n법집행 기관의 사이버 역량 저하는 민간 기업에도 간접적 영향을 미친다. FBI와 CISA의 사이버 대응 역량이 약화되면 기업이 사이버 공격 피해를 입었을 때 정부 지원에 의존하는 인시던트 대응 전략의 실효성이 떨어진다. 자체적인 사이버 복원력 구축이 더욱 중요해지는 환경이다.\n법무/컴플라이언스 대상\n이번 사건이 FISA 감시 데이터와 관련이 있다면, 관련 수사에서 증거 무결성 문제가 제기될 가능성이 있다. 법집행 기관의 사이버 침해가 관련 기소 및 법적 절차에 미치는 영향은 선례가 없는 영역으로, 법무팀이 주목해야 할 리스크다.\n예상 질문 및 답변 Q: Salt Typhoon과의 연관성이 있다면 이것은 국가 간 사이버 전쟁 수준의 사건인가?\nA: 현재 FBI는 Salt Typhoon과의 연관성을 공식 확인하지 않았다. 다만 2024년 Salt Typhoon이 미국 주요 통신사의 합법적 도청 인터페이스에 침투해 정부 고위 관리 통신 데이터에 접근한 사례가 있었다. 만약 이번 사건이 그 캠페인의 연장이라면 중국 국가 연계 위협 행위자가 미국 사법 및 정보 수집 인프라 전반을 체계적으로 표적으로 삼고 있다는 것을 의미한다. 그러나 이는 아직 확인된 사실이 아니므로, 현재 공개된 정보의 범위 내에서만 판단해야 한다.\nQ: FBI가 공식 공개를 꺼리는 이유는 무엇인가?\nA: 감청 시스템 침해에 대한 세부 공개는 그 자체로 추가 피해를 초래할 수 있다. 어떤 수사가 영향을 받았는지, 어떤 감청 대상자가 노출됐는지가 공개되면 진행 중인 수사가 무력화된다. 또한 FBI의 감청 인프라 구조가 노출되면 향후 유사 공격의 설계도가 제공되는 셈이다. 따라서 이런 유형의 사건에서 공식 최소 공개는 의도적 전략이다.\n학습 내용 및 시사점 첫째, 법집행 인프라는 민간 기업과 달리 침해 시 단순한 데이터 손실을 넘어 수사 무력화, 정보원 신원 노출, 사법 절차 훼손이라는 연쇄 피해가 발생한다. 이 사건은 국가 기관의 보안 인프라가 민간 기업 기준을 훨씬 초과하는 격리와 접근 통제를 요구한다는 것을 보여준다.\n둘째, 민간 통신사의 합법적 도청 인터페이스(Lawful Intercept) 가 FBI 내부 시스템과 연동되는 구조는 Salt Typhoon 캠페인에서도, 이번 사건에서도 반복적인 공격 표면이 되고 있다. 공급망 리스크가 법집행 도메인에서도 동일하게 적용된다는 점이 확인됐다.\n셋째, 조직 내 사이버 리더십의 대규모 이탈은 기술적 취약점만큼 위험하다. FBI의 사이버 고위 인력 이탈이 이번 사건의 배경 요인 중 하나로 지목된다는 점은 인적 자본이 사이버 보안 역량의 핵심 구성 요소임을 재확인한다.\n",
+  "wordCount" : "3580",
+  "inLanguage": "ko",
+  "datePublished": "2026-03-09T00:00:00Z",
+  "dateModified": "2026-03-09T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/security-issues-analysis/2026/week10/fbi_dscnet_wiretap_system_breach/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
 </script>
 </head>
 <body id="top">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -102,37 +182,37 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/about" title="소개">
+                <a href="https://hojjang98.github.io/about" title="소개">
                     <span>소개</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
                     <span>일일 로그</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/projects/" title="Projects">
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
                     <span>프로젝트</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/cyber-law-study/" title="Cyber-Law-Study">
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
                     <span>보안법 공부</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
                     <span>보안 시사 분석</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
                     <span>태그</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/paper-review/" title="Paper-Review">
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
                     <span>논문 리뷰</span>
                 </a>
             </li>
@@ -143,7 +223,7 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/">홈</a>&nbsp;»&nbsp;<a href="http://localhost:1313/security-issues-analysis/">보안 시사 분석</a>&nbsp;»&nbsp;<a href="http://localhost:1313/security-issues-analysis/2026/">2026</a>&nbsp;»&nbsp;<a href="http://localhost:1313/security-issues-analysis/2026/week10/">Week 10</a></div>
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/security-issues-analysis/">보안 시사 분석</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/security-issues-analysis/2026/">2026</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/security-issues-analysis/2026/week10/">Week 10</a></div>
     <h1 class="post-title entry-hint-parent">
       FBI DCSNet 감청 시스템 침해 — 법집행 인프라 네트워크 침해
     </h1>
@@ -234,20 +314,20 @@
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/%EB%B2%95%EC%A7%91%ED%96%89%EC%9D%B8%ED%94%84%EB%9D%BC/">법집행인프라</a></li>
-      <li><a href="http://localhost:1313/tags/dcsnet/">DCSNet</a></li>
-      <li><a href="http://localhost:1313/tags/%EA%B0%90%EC%B2%AD%EC%8B%9C%EC%8A%A4%ED%85%9C/">감청시스템</a></li>
-      <li><a href="http://localhost:1313/tags/salttyphoon/">SaltTyphoon</a></li>
-      <li><a href="http://localhost:1313/tags/%EA%B5%AD%EA%B0%80%EC%95%88%EB%B3%B4/">국가안보</a></li>
-      <li><a href="http://localhost:1313/tags/fbi/">FBI</a></li>
-      <li><a href="http://localhost:1313/tags/fisa/">FISA</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%B2%95%EC%A7%91%ED%96%89%EC%9D%B8%ED%94%84%EB%9D%BC/">법집행인프라</a></li>
+      <li><a href="https://hojjang98.github.io/tags/dcsnet/">DCSNet</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EA%B0%90%EC%B2%AD%EC%8B%9C%EC%8A%A4%ED%85%9C/">감청시스템</a></li>
+      <li><a href="https://hojjang98.github.io/tags/salttyphoon/">SaltTyphoon</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EA%B5%AD%EA%B0%80%EC%95%88%EB%B3%B4/">국가안보</a></li>
+      <li><a href="https://hojjang98.github.io/tags/fbi/">FBI</a></li>
+      <li><a href="https://hojjang98.github.io/tags/fisa/">FISA</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
 
     <span>
         Powered by

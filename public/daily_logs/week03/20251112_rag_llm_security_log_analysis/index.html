@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="ko" dir="auto" data-theme="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>2025.11.12 (Day 13) RAG &amp; LLM 기반 보안 로그 분석 대시보드 | HJ&#39;s Security Note</title>
 <meta name="keywords" content="RAG, LLM, 보안로그분석, Plotly, SK쉴더스루키즈">
 <meta name="description" content="LLM과 RAG를 활용한 보안 로그 자동 분석, 위험도 분류, 지리적 공격 시각화 대시보드 구현">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/daily_logs/week03/20251112_rag_llm_security_log_analysis/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.c8c3b65cd6d058be2b4f050fd7a688ac13a23056571601dabe4f70d8d008259e.css" integrity="sha256-yMO2XNbQWL4rTwUP16aIrBOiMFZXFgHavk9w2NAIJZ4=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="canonical" href="https://hojjang98.github.io/daily_logs/week03/20251112_rag_llm_security_log_analysis/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.898219bd95f420a374e6df8d4ee9050d8913bfcf44c82e41bddff27ad9322aec.css" integrity="sha256-iYIZvZX0IKN05t&#43;NTukFDYkTv89EyC5Bvd/yetkyKuw=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="ko" href="http://localhost:1313/daily_logs/week03/20251112_rag_llm_security_log_analysis/">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/daily_logs/week03/20251112_rag_llm_security_log_analysis/">
 <noscript>
     <style>
         #theme-toggle,
@@ -70,13 +70,80 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
+</script><meta property="og:url" content="https://hojjang98.github.io/daily_logs/week03/20251112_rag_llm_security_log_analysis/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="2025.11.12 (Day 13) RAG & LLM 기반 보안 로그 분석 대시보드">
+  <meta property="og:description" content="LLM과 RAG를 활용한 보안 로그 자동 분석, 위험도 분류, 지리적 공격 시각화 대시보드 구현">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="daily_logs">
+    <meta property="article:published_time" content="2025-11-12T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-11-12T00:00:00+00:00">
+    <meta property="article:tag" content="RAG">
+    <meta property="article:tag" content="LLM">
+    <meta property="article:tag" content="보안로그분석">
+    <meta property="article:tag" content="Plotly">
+    <meta property="article:tag" content="SK쉴더스루키즈">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2025.11.12 (Day 13) RAG &amp; LLM 기반 보안 로그 분석 대시보드">
+<meta name="twitter:description" content="LLM과 RAG를 활용한 보안 로그 자동 분석, 위험도 분류, 지리적 공격 시각화 대시보드 구현">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "6개월, 혹은 그 이상의 보안 여정",
+      "item": "https://hojjang98.github.io/daily_logs/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "2025.11.12 (Day 13) RAG \u0026 LLM 기반 보안 로그 분석 대시보드",
+      "item": "https://hojjang98.github.io/daily_logs/week03/20251112_rag_llm_security_log_analysis/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "2025.11.12 (Day 13) RAG \u0026 LLM 기반 보안 로그 분석 대시보드",
+  "name": "2025.11.12 (Day 13) RAG \u0026 LLM 기반 보안 로그 분석 대시보드",
+  "description": "LLM과 RAG를 활용한 보안 로그 자동 분석, 위험도 분류, 지리적 공격 시각화 대시보드 구현",
+  "keywords": [
+    "RAG", "LLM", "보안로그분석", "Plotly", "SK쉴더스루키즈"
+  ],
+  "articleBody": "2025.11.12 (Day 13) RAG \u0026 LLM 기반 보안 로그 분석 대시보드 1. 주요 개념 요약 LLM 기반 로그 요약: 원시 로그 일부를 LLM에게 전달하여 공격 유형·국가·위험도 등을 JSON 구조로 자동 추출한다. JSON-only 시스템 프롬프트 설계가 핵심이다. RAG (Retrieval-Augmented Generation): 외부 문서(보안 정책, 룰북, MITRE 문서 등)를 임베딩 후 검색하여 LLM이 맥락 기반 분석을 수행하도록 한다. Streamlit 보안 대시보드: CSV 업로드 → 전처리 → LLM 분석 → 시각화까지 한 화면에서 처리하는 파이프라인을 구축한다. 지리 기반 보안 시각화: 공격 IP의 위도·경도를 기반으로 세계 지도 상에 공격 분포를 표현하여 공격 국가와 집중 지역을 직관적으로 파악한다. 위험도 기반 우선순위화: LLM이 생성한 risk_score(1~10) 기준으로 고위험 IP를 자동 필터링하여 대응 우선순위를 결정한다. 2. 실습 코드 및 응용 A. LLM 로그 구조화 프롬프트 JSON-only 시스템 프롬프트를 사용하여 LLM이 로그에서 핵심 엔터티를 구조화된 형태로 추출하도록 한다. system_content = ''' 당신은 사이버보안 전문가입니다. 업로드된 로그를 분석하고 JSON만 출력하세요. [ {\"ip\": \"\", \"country\": \"\", \"attack_type\": \"\", \"risk_score\": 8} ] ''' B. Streamlit 대시보드 기본 흐름 CSV 파일 업로드부터 LLM 분석, 결과 시각화까지 하나의 대시보드로 구성하여 가벼운 SIEM 형태의 로그 분석 파이프라인을 구현한다. st.title(\"LLM 기반 보안 로그 분석 대시보드\") file = st.file_uploader(\"로그 CSV 업로드\") if file: df = pd.read_csv(file) response = ask_llm(df) result = pd.DataFrame(json.loads(response.choices[0].message.content)) st.dataframe(result) C. Plotly 기반 공격 위치 시각화 risk_score를 색상으로, 공격 IP의 위도·경도를 좌표로 사용하여 공격 분포를 세계 지도에 시각화한다. fig = px.scatter_geo( result, lat=\"latitude\", lon=\"longitude\", color=\"risk_score\", hover_name=\"ip\", projection=\"natural earth\", color_continuous_scale=\"Reds\", size=\"risk_score\" ) st.plotly_chart(fig) 3. 보안 관점 분석 SOC / 관제: LLM이 로그의 핵심 엔터티를 정리하여 탐지 속도를 높이고, 지리적 분포를 통해 공격 국가·집중 지역을 빠르게 파악할 수 있다. CERT / 사고대응: IP·공격 유형·국가 자동 추출을 통해 사고 흐름(시간 → 공격자 → 피해 범위)을 재구성하고 공격자의 패턴·경로를 시각적으로 재현할 수 있다. 위협 인텔리전스: 위험도 기반으로 우선 대응해야 할 공격자 그룹을 분리하고, 공격 유형 분포를 통해 최신 공격 트렌드를 파악한다. DevSecOps: 빌드·스캔 로그도 동일한 구조로 요약·분석하여 반복적 오류·취약점의 자동 분류에 활용할 수 있다. 개인정보 보호: IP나 User ID를 마스킹한 뒤 요약하도록 설계하여 분석 요건과 규제 준수를 동시에 만족한다. 4. 요약 RAG + LLM + Streamlit을 결합해 가벼운 SIEM 형태의 로그 분석 파이프라인을 구축했다. 공격 유형·국가·위험도를 구조화하고 시각화(Bar + Geo Plot)를 통해 보안 인사이트를 강화했다. LLM을 단순 요약기가 아닌 보안 이벤트 해석 엔진으로 활용할 수 있음을 확인했다. ",
+  "wordCount" : "1012",
+  "inLanguage": "ko",
+  "datePublished": "2025-11-12T00:00:00Z",
+  "dateModified": "2025-11-12T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/daily_logs/week03/20251112_rag_llm_security_log_analysis/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
 </script>
 </head>
 <body id="top">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -102,37 +169,37 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/about" title="소개">
+                <a href="https://hojjang98.github.io/about" title="소개">
                     <span>소개</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
                     <span>일일 로그</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/projects/" title="Projects">
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
                     <span>프로젝트</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/cyber-law-study/" title="Cyber-Law-Study">
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
                     <span>보안법 공부</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
                     <span>보안 시사 분석</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
                     <span>태그</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/paper-review/" title="Paper-Review">
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
                     <span>논문 리뷰</span>
                 </a>
             </li>
@@ -143,7 +210,7 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/">홈</a>&nbsp;»&nbsp;<a href="http://localhost:1313/daily_logs/">6개월, 혹은 그 이상의 보안 여정</a></div>
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/daily_logs/">6개월, 혹은 그 이상의 보안 여정</a></div>
     <h1 class="post-title entry-hint-parent">
       2025.11.12 (Day 13) RAG &amp; LLM 기반 보안 로그 분석 대시보드
     </h1>
@@ -223,18 +290,18 @@
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/rag/">RAG</a></li>
-      <li><a href="http://localhost:1313/tags/llm/">LLM</a></li>
-      <li><a href="http://localhost:1313/tags/%EB%B3%B4%EC%95%88%EB%A1%9C%EA%B7%B8%EB%B6%84%EC%84%9D/">보안로그분석</a></li>
-      <li><a href="http://localhost:1313/tags/plotly/">Plotly</a></li>
-      <li><a href="http://localhost:1313/tags/sk%EC%89%B4%EB%8D%94%EC%8A%A4%EB%A3%A8%ED%82%A4%EC%A6%88/">SK쉴더스루키즈</a></li>
+      <li><a href="https://hojjang98.github.io/tags/rag/">RAG</a></li>
+      <li><a href="https://hojjang98.github.io/tags/llm/">LLM</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%B3%B4%EC%95%88%EB%A1%9C%EA%B7%B8%EB%B6%84%EC%84%9D/">보안로그분석</a></li>
+      <li><a href="https://hojjang98.github.io/tags/plotly/">Plotly</a></li>
+      <li><a href="https://hojjang98.github.io/tags/sk%EC%89%B4%EB%8D%94%EC%8A%A4%EB%A3%A8%ED%82%A4%EC%A6%88/">SK쉴더스루키즈</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
 
     <span>
         Powered by

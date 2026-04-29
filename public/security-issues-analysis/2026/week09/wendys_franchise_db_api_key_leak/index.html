@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="ko" dir="auto" data-theme="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>Wendy&#39;s International Franchise DB Leak - SaaS Platform Breach and Live API Key Exposure | HJ&#39;s Security Note</title>
 <meta name="keywords" content="공급망침해, SaaS침해, API키유출, 프랜차이즈보안, 결제자격증명, GDPR, 다크웹유출">
 <meta name="description" content="Wendy&rsquo;s 인터내셔널 프랜차이즈 데이터베이스가 다크웹에 공개된 사건으로, 실제 피해 주체는 QikServe SaaS 플랫폼으로 추정되며 결제 자격증명과 가맹점 PII가 혼재 노출된 공급망 침해 사례 분석">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/security-issues-analysis/2026/week09/wendys_franchise_db_api_key_leak/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.c8c3b65cd6d058be2b4f050fd7a688ac13a23056571601dabe4f70d8d008259e.css" integrity="sha256-yMO2XNbQWL4rTwUP16aIrBOiMFZXFgHavk9w2NAIJZ4=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="canonical" href="https://hojjang98.github.io/security-issues-analysis/2026/week09/wendys_franchise_db_api_key_leak/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.898219bd95f420a374e6df8d4ee9050d8913bfcf44c82e41bddff27ad9322aec.css" integrity="sha256-iYIZvZX0IKN05t&#43;NTukFDYkTv89EyC5Bvd/yetkyKuw=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="ko" href="http://localhost:1313/security-issues-analysis/2026/week09/wendys_franchise_db_api_key_leak/">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/security-issues-analysis/2026/week09/wendys_franchise_db_api_key_leak/">
 <noscript>
     <style>
         #theme-toggle,
@@ -70,13 +70,93 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
+</script><meta property="og:url" content="https://hojjang98.github.io/security-issues-analysis/2026/week09/wendys_franchise_db_api_key_leak/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="Wendy&#39;s International Franchise DB Leak - SaaS Platform Breach and Live API Key Exposure">
+  <meta property="og:description" content="Wendy’s 인터내셔널 프랜차이즈 데이터베이스가 다크웹에 공개된 사건으로, 실제 피해 주체는 QikServe SaaS 플랫폼으로 추정되며 결제 자격증명과 가맹점 PII가 혼재 노출된 공급망 침해 사례 분석">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="security-issues-analysis">
+    <meta property="article:published_time" content="2026-03-03T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-03-03T00:00:00+00:00">
+    <meta property="article:tag" content="공급망침해">
+    <meta property="article:tag" content="SaaS침해">
+    <meta property="article:tag" content="API키유출">
+    <meta property="article:tag" content="프랜차이즈보안">
+    <meta property="article:tag" content="결제자격증명">
+    <meta property="article:tag" content="GDPR">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Wendy&#39;s International Franchise DB Leak - SaaS Platform Breach and Live API Key Exposure">
+<meta name="twitter:description" content="Wendy&rsquo;s 인터내셔널 프랜차이즈 데이터베이스가 다크웹에 공개된 사건으로, 실제 피해 주체는 QikServe SaaS 플랫폼으로 추정되며 결제 자격증명과 가맹점 PII가 혼재 노출된 공급망 침해 사례 분석">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "보안 시사 분석",
+      "item": "https://hojjang98.github.io/security-issues-analysis/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "2026",
+      "item": "https://hojjang98.github.io/security-issues-analysis/2026/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Week 09",
+      "item": "https://hojjang98.github.io/security-issues-analysis/2026/week09/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  4 ,
+      "name": "Wendy's International Franchise DB Leak - SaaS Platform Breach and Live API Key Exposure",
+      "item": "https://hojjang98.github.io/security-issues-analysis/2026/week09/wendys_franchise_db_api_key_leak/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Wendy's International Franchise DB Leak - SaaS Platform Breach and Live API Key Exposure",
+  "name": "Wendy\u0027s International Franchise DB Leak - SaaS Platform Breach and Live API Key Exposure",
+  "description": "Wendy\u0026rsquo;s 인터내셔널 프랜차이즈 데이터베이스가 다크웹에 공개된 사건으로, 실제 피해 주체는 QikServe SaaS 플랫폼으로 추정되며 결제 자격증명과 가맹점 PII가 혼재 노출된 공급망 침해 사례 분석",
+  "keywords": [
+    "공급망침해", "SaaS침해", "API키유출", "프랜차이즈보안", "결제자격증명", "GDPR", "다크웹유출"
+  ],
+  "articleBody": "Wendy’s 인터내셔널 프랜차이즈 DB 유출 — SaaS 플랫폼 침해와 라이브 API 키 노출 사건 개요 2026년 2월 22일, Eliasxy라는 닉네임의 위협 행위자가 다크웹 포럼에 Wendy’s 인터내셔널 프랜차이즈 데이터베이스를 공개 게시했다. 유출된 데이터셋은 단순한 고객 명단이 아닌 프랜차이즈 운영 설정 / 가맹점 연락처 정보 / 라이브 결제 통합 자격증명을 포함하는 복합적 데이터다. Wendy’s 미국 및 영국 법인은 해당 사건에 대해 공식 입장을 내지 않았다. Cybernews 연구팀은 유출된 샘플의 구조적 일관성과 2026년 2월 타임스탬프를 근거로 진위도를 4/4로 평가했다. 사건의 실제 피해자는 Wendy’s가 아니라 QikServe by The Access Group이라는 SaaS 플랫폼일 가능성이 높다.\n기술적 세부사항 유출 데이터 구성 유출 데이터셋에는 세 가지 범주의 정보가 포함됐다.\n운영 데이터\n프랜차이즈 매장의 전체 주소 및 GPS 좌표 일별 운영 설정(영업시간 / 픽업·딜리버리 활성화 여부 / 다음 주문 가능 시간 슬롯) 시간대 및 로케일 설정 내부 매장 상태(ACTIVE) 기능 플래그(어떤 플랫폼 기능이 각 매장에서 활성화돼 있는지) 프로모션 레코드(가장 최근 업데이트 타임스탬프가 2026년 2월로 확인됨) 가맹점 PII\n가맹점주 성명 / 실제 물리 주소 / 이메일 주소 이 정보는 표적형 소셜 엔지니어링 및 피싱 공격의 재료가 됨 결제 통합 자격증명 (가장 심각한 항목)\nWorldpay Access 설정 Apple Pay / Google Pay 가맹점 ID Stripe pk_live 퍼블리셔블 키(프로덕션 환경 키) Sentry DSN(Data Source Name) Stripe 퍼블리셔블 키는 설계상 클라이언트 사이드에 노출되는 키이나, 가맹점 ID와 Sentry DSN과 결합되면 공격 표면이 크게 확장된다. Sentry DSN 유출 시 공격자는 가짜 텔레메트리 주입 / 애플리케이션 에러 모니터링 / 백엔드 인프라 정보 수집이 가능해진다.\n샘플 레코드에는 Wendy’s Oxford(영국), Brackley Pub, Sbarro Colne(주유소 내), City Mill Bakes(지브롤터), KFC Nitra(슬로바키아) 등이 확인됐다. 다수 브랜드가 혼재하는 점은 단일 SaaS 플랫폼 침해임을 강하게 시사한다.\n실제 피해 주체: QikServe SaaS 플랫폼 다음 세 가지 근거로 실제 침해 대상이 QikServe 플랫폼임이 추정된다.\n데이터셋에 Wendy’s 외에 Sbarro / KFC 등 여러 브랜드의 데이터가 혼재 데이터베이스 스키마가 알려진 온라인 주문 백엔드 구조와 정확히 일치 Cybernews 연구팀이 QikServe by The Access Group을 공통 기반 인프라로 특정 QikServe는 8,000개 이상 매장 / 연간 £30억 이상의 거래를 처리하는 SaaS 플랫폼이다. Wendy’s와 The Access Group 양측 모두 공식 성명을 발표하지 않았으므로, QikServe 플랫폼 침해 여부는 현재 공식 확인되지 않은 상태다.\n공격 벡터 추정 위협 행위자는 클라이언트 사이드 취약점 악용을 주장했다. Cybernews 연구팀은 데이터 구조 분석을 통해 표적이 Wendy’s 자체 시스템이 아닌 제3자 SaaS 플랫폼일 가능성이 높다고 평가했다. 정확한 침투 경로는 현재 공개된 정보로는 확인이 불가능하다.\n근본 원인 분석 기술적 원인 프로덕션 환경의 라이브 API 자격증명이 데이터베이스에 평문으로 저장됐을 가능성이 높다. 민감한 자격증명과 운영 데이터 / 가맹점 PII가 동일한 데이터베이스에 혼재하는 구조 자체가 침해 시 피해를 극대화한다. API 키 관리를 위한 시크릿 볼트(HashiCorp Vault 등) 사용이 이루어지지 않았음을 시사한다.\n관리적 원인 SaaS 공급업체에 대한 정기적 보안 평가가 이루어지지 않았을 가능성이 있다. 프랜차이즈 모델 특성상 중앙 플랫폼에 다수 가맹점의 자격증명과 운영 데이터가 집중되는 구조에 대한 리스크 인식이 부족했다. 또한 Wendy’s와 The Access Group이 침해 후 공식 확인을 하지 않는 것은 GDPR상 72시간 이내 신고 의무를 위반할 수 있다.\n인적 원인 이번 사건에서 내부자 행위나 소셜 엔지니어링에 대한 정보는 공개된 바 없다.\n실질적 위협 분석 API 키 노출의 실제 위험 Stripe 퍼블리셔블 키 단독으로는 결제 처리가 불가능하지만, 가맹점 ID와 결합되면 허위 결제 흐름 생성이 가능 Sentry DSN 접근은 애플리케이션 에러 로그 열람을 통한 백엔드 인프라 정보 수집 및 가짜 에러 이벤트 주입으로 탐지 회피에 악용 가능 Worldpay Access 설정 노출은 결제 게이트웨이 설정 변경 시도의 위험 존재 GDPR 관련 의무 영국 및 EU 소재 가맹점 PII가 포함됐으므로 GDPR Article 33에 따라 인지 후 72시간 이내 감독기관 신고 의무가 발생한다. 침해 사실 인지 시점부터 신고 시계가 작동한다.\n예방 및 대응 방안 즉각 조치 유출된 모든 결제 및 모니터링 자격증명의 즉시 교체 및 기존 키 비활성화가 최우선이다. 시크릿 볼트 시스템을 통한 신규 키 생성과 프로덕션 환경 전체 반영이 필요하다. Sentry 로그 분석을 통한 비정상 접근 또는 허위 이벤트 주입 여부 확인 / 결제 거래 이상 패턴 모니터링도 병행해야 한다.\n구조적 개선 민감 자격증명과 운영 데이터 / PII의 분리 저장 구조로 재설계 SaaS 공급업체 선정 및 계약 시 보안 평가 체크리스트와 자격증명 관리 정책 적용을 계약 조건으로 명시 프랜차이즈 모델에서 중앙 플랫폼 침해 시 피해 범위를 제한하기 위한 가맹점별 자격증명 분리 검토 컨설팅 관점 고객사 커뮤니케이션 전략 기술팀 대상\n이번 사건은 Wendy’s 자체 보안 수준과 무관하게 제3자 SaaS 플랫폼을 통해 발생한 침해다. SaaS 플랫폼에 업무 데이터와 자격증명을 위탁할 때는 해당 플랫폼의 보안 수준이 곧 내 데이터의 보안 수준이 된다. SOC 2 Type II 인증 보유 여부 / 침해 통보 조항 / 데이터 분리 구조를 계약 단계에서 확인해야 한다.\n경영진 대상\n프랜차이즈 모델 + 다수의 SaaS 플랫폼 의존 + 여러 브랜드의 데이터가 단일 플랫폼에 집중되는 구조는 공급망 리스크를 극대화한다. 단일 SaaS 침해가 수천 개 가맹점과 다수 브랜드에 동시 영향을 미칠 수 있다.\n법무/컴플라이언스 대상\n영국과 EU 소재 가맹점 데이터가 포함된 경우 GDPR 위반 가능성을 즉시 검토해야 한다. Wendy’s와 The Access Group이 침해 사실을 인지했음에도 공식 확인 및 신고를 지연하면 GDPR 과징금 위험이 가중된다.\n예상 질문 및 답변 Q: Stripe 퍼블리셔블 키는 원래 공개되는 키 아닌가? 왜 문제인가?\nA: Stripe 퍼블리셔블 키(pk_live_)는 클라이언트 사이드 결제 폼에서 사용하도록 설계된 공개 키다. 단독으로는 결제 처리나 계좌 접근이 불가능하다. 그러나 가맹점 ID / Worldpay 설정 / Sentry DSN과 결합되면 공격자가 해당 결제 인프라의 구조를 파악하고 허위 결제 흐름을 만들거나 백엔드 에러 정보를 수집하는 데 활용할 수 있다. 설계상 공개되는 키라도 다른 운영 정보와 결합될 때 위험이 증폭된다.\nQ: 이 사건이 실제로 Wendy’s 침해인지 SaaS 플랫폼 침해인지 확인이 됐나?\nA: 현재까지 Wendy’s와 The Access Group(QikServe 운영사) 모두 공식 확인을 하지 않았다. Cybernews 연구팀의 분석에 따르면 데이터 구조와 멀티 브랜드 혼재 패턴을 볼 때 QikServe 플랫폼이 실제 침해 대상일 가능성이 높다. 이는 Wendy’s 입장에서 직접 해킹이 아닌 공급망 침해에 해당한다.\n학습 내용 및 시사점 이 사건에서 도출할 수 있는 핵심 학습은 세 가지다. 첫째, 프랜차이즈와 SaaS 모델이 결합될 때 공급망 리스크가 극대화된다. 단일 SaaS 플랫폼 침해가 여러 브랜드와 수천 개 가맹점에 동시 영향을 미치는 구조다. 둘째, 라이브 결제 자격증명과 운영 데이터의 혼재 저장은 침해 시 피해를 즉각적으로 확장시킨다. 자격증명은 반드시 시크릿 볼트에 별도 관리해야 한다. 셋째, 단일 위협 행위자의 다크웹 포럼 게시만으로도 공식 확인 전에 대규모 보안 위협이 발생하며, 초기 탐지와 신속한 자격증명 교체 대응이 피해 범위를 결정한다.\n",
+  "wordCount" : "2751",
+  "inLanguage": "ko",
+  "datePublished": "2026-03-03T00:00:00Z",
+  "dateModified": "2026-03-03T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/security-issues-analysis/2026/week09/wendys_franchise_db_api_key_leak/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
 </script>
 </head>
 <body id="top">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -102,37 +182,37 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/about" title="소개">
+                <a href="https://hojjang98.github.io/about" title="소개">
                     <span>소개</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
                     <span>일일 로그</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/projects/" title="Projects">
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
                     <span>프로젝트</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/cyber-law-study/" title="Cyber-Law-Study">
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
                     <span>보안법 공부</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
                     <span>보안 시사 분석</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
                     <span>태그</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/paper-review/" title="Paper-Review">
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
                     <span>논문 리뷰</span>
                 </a>
             </li>
@@ -143,7 +223,7 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/">홈</a>&nbsp;»&nbsp;<a href="http://localhost:1313/security-issues-analysis/">보안 시사 분석</a>&nbsp;»&nbsp;<a href="http://localhost:1313/security-issues-analysis/2026/">2026</a>&nbsp;»&nbsp;<a href="http://localhost:1313/security-issues-analysis/2026/week09/">Week 09</a></div>
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/security-issues-analysis/">보안 시사 분석</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/security-issues-analysis/2026/">2026</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/security-issues-analysis/2026/week09/">Week 09</a></div>
     <h1 class="post-title entry-hint-parent">
       Wendy&#39;s International Franchise DB Leak - SaaS Platform Breach and Live API Key Exposure
     </h1>
@@ -236,20 +316,20 @@
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/%EA%B3%B5%EA%B8%89%EB%A7%9D%EC%B9%A8%ED%95%B4/">공급망침해</a></li>
-      <li><a href="http://localhost:1313/tags/saas%EC%B9%A8%ED%95%B4/">SaaS침해</a></li>
-      <li><a href="http://localhost:1313/tags/api%ED%82%A4%EC%9C%A0%EC%B6%9C/">API키유출</a></li>
-      <li><a href="http://localhost:1313/tags/%ED%94%84%EB%9E%9C%EC%B0%A8%EC%9D%B4%EC%A6%88%EB%B3%B4%EC%95%88/">프랜차이즈보안</a></li>
-      <li><a href="http://localhost:1313/tags/%EA%B2%B0%EC%A0%9C%EC%9E%90%EA%B2%A9%EC%A6%9D%EB%AA%85/">결제자격증명</a></li>
-      <li><a href="http://localhost:1313/tags/gdpr/">GDPR</a></li>
-      <li><a href="http://localhost:1313/tags/%EB%8B%A4%ED%81%AC%EC%9B%B9%EC%9C%A0%EC%B6%9C/">다크웹유출</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EA%B3%B5%EA%B8%89%EB%A7%9D%EC%B9%A8%ED%95%B4/">공급망침해</a></li>
+      <li><a href="https://hojjang98.github.io/tags/saas%EC%B9%A8%ED%95%B4/">SaaS침해</a></li>
+      <li><a href="https://hojjang98.github.io/tags/api%ED%82%A4%EC%9C%A0%EC%B6%9C/">API키유출</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%ED%94%84%EB%9E%9C%EC%B0%A8%EC%9D%B4%EC%A6%88%EB%B3%B4%EC%95%88/">프랜차이즈보안</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EA%B2%B0%EC%A0%9C%EC%9E%90%EA%B2%A9%EC%A6%9D%EB%AA%85/">결제자격증명</a></li>
+      <li><a href="https://hojjang98.github.io/tags/gdpr/">GDPR</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%8B%A4%ED%81%AC%EC%9B%B9%EC%9C%A0%EC%B6%9C/">다크웹유출</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
 
     <span>
         Powered by

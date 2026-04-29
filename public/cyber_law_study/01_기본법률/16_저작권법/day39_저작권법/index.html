@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="ko" dir="auto" data-theme="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>Day 39: 저작권법 (디지털 관점) | HJ&#39;s Security Note</title>
 <meta name="keywords" content="저작권법, 소프트웨어, 불법복제, 오픈소스, GPL, SAM, 소스코드">
 <meta name="description" content="보안 담당자 관점에서의 저작권법 - 소프트웨어 저작물 보호, 불법 복제 처벌, 오픈소스 라이선스 관리, 소스코드 유출 방지 및 SAM 실무 가이드">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/16_%EC%A0%80%EC%9E%91%EA%B6%8C%EB%B2%95/day39_%EC%A0%80%EC%9E%91%EA%B6%8C%EB%B2%95/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.c8c3b65cd6d058be2b4f050fd7a688ac13a23056571601dabe4f70d8d008259e.css" integrity="sha256-yMO2XNbQWL4rTwUP16aIrBOiMFZXFgHavk9w2NAIJZ4=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="canonical" href="https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/16_%EC%A0%80%EC%9E%91%EA%B6%8C%EB%B2%95/day39_%EC%A0%80%EC%9E%91%EA%B6%8C%EB%B2%95/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.898219bd95f420a374e6df8d4ee9050d8913bfcf44c82e41bddff27ad9322aec.css" integrity="sha256-iYIZvZX0IKN05t&#43;NTukFDYkTv89EyC5Bvd/yetkyKuw=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="ko" href="http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/16_%EC%A0%80%EC%9E%91%EA%B6%8C%EB%B2%95/day39_%EC%A0%80%EC%9E%91%EA%B6%8C%EB%B2%95/">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/16_%EC%A0%80%EC%9E%91%EA%B6%8C%EB%B2%95/day39_%EC%A0%80%EC%9E%91%EA%B6%8C%EB%B2%95/">
 <noscript>
     <style>
         #theme-toggle,
@@ -70,13 +70,81 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
+</script><meta property="og:url" content="https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/16_%EC%A0%80%EC%9E%91%EA%B6%8C%EB%B2%95/day39_%EC%A0%80%EC%9E%91%EA%B6%8C%EB%B2%95/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="Day 39: 저작권법 (디지털 관점)">
+  <meta property="og:description" content="보안 담당자 관점에서의 저작권법 - 소프트웨어 저작물 보호, 불법 복제 처벌, 오픈소스 라이선스 관리, 소스코드 유출 방지 및 SAM 실무 가이드">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="cyber_law_study">
+    <meta property="article:published_time" content="2026-03-26T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-03-26T00:00:00+00:00">
+    <meta property="article:tag" content="저작권법">
+    <meta property="article:tag" content="소프트웨어">
+    <meta property="article:tag" content="불법복제">
+    <meta property="article:tag" content="오픈소스">
+    <meta property="article:tag" content="GPL">
+    <meta property="article:tag" content="SAM">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Day 39: 저작권법 (디지털 관점)">
+<meta name="twitter:description" content="보안 담당자 관점에서의 저작권법 - 소프트웨어 저작물 보호, 불법 복제 처벌, 오픈소스 라이선스 관리, 소스코드 유출 방지 및 SAM 실무 가이드">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "보안 컨설팅 공부",
+      "item": "https://hojjang98.github.io/cyber_law_study/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Day 39: 저작권법 (디지털 관점)",
+      "item": "https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/16_%EC%A0%80%EC%9E%91%EA%B6%8C%EB%B2%95/day39_%EC%A0%80%EC%9E%91%EA%B6%8C%EB%B2%95/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Day 39: 저작권법 (디지털 관점)",
+  "name": "Day 39: 저작권법 (디지털 관점)",
+  "description": "보안 담당자 관점에서의 저작권법 - 소프트웨어 저작물 보호, 불법 복제 처벌, 오픈소스 라이선스 관리, 소스코드 유출 방지 및 SAM 실무 가이드",
+  "keywords": [
+    "저작권법", "소프트웨어", "불법복제", "오픈소스", "GPL", "SAM", "소스코드"
+  ],
+  "articleBody": "1. 저작권법 개요 1.1 왜 보안 담당자가 저작권법을? 실무 시나리오:\n[시나리오 1] 소프트웨어 불법 복제 적발\n[내용] - 직원이 회사 PC에 불법 복제 소프트웨어 설치 - BSA 적발 - 회사 책임 문제 발생\n[시나리오 2] 오픈소스 라이선스 위반\n[내용] - 개발팀이 GPL 라이선스 오픈소스 사용 - 소스코드 공개 의무 위반 - 법적 분쟁 발생\n[시나리오 3] 직원 퇴사 시 소스코드 유출\n[내용] - 퇴사자가 회사 소스코드 복사해서 가져감 - 저작권 침해 문제 발생\n보안 담당자가 알아야 할 이유:\n소프트웨어 자산 관리 (SAM) 직원 보안 교육 (불법 복제 금지) 소스코드 유출 방지 오픈소스 관리 라이선스 컴플라이언스 1.2 저작권법이란? 정식 명칭 : 저작권법\n제정 : 1957년 1월 28일\n최신 개정 : 2023년\n목적 (제1조): “이 법은 저작자의 권리와 이에 인접하는 권리를 보호하고 저작물의 공정한 이용을 도모함으로써 문화 및 관련 산업의 향상발전에 이바지함을 목적으로 한다”\n주무 부처: 문화체육관광부\n1.3 디지털 시대 저작권 전통적 저작권:\n책, 음악, 그림 등 디지털 저작권:\n소프트웨어 데이터베이스 웹사이트 콘텐츠 디지털 음원 동영상 특징:\n복제 쉬움 (Ctrl+C, Ctrl+V) 배포 빠름 (인터넷) 추적 어려움 2. 저작물과 저작권 2.1 저작물이란? 제2조 (정의): “저작물\"이란 인간의 사상 또는 감정을 창작적으로 표현한 것을 말한다\n요건:\n인간의 창작 (AI는 해당 없음) 사상 또는 감정 표현 창작성 (독창성) 표현 (아이디어 자체는 해당 없음) [저작물 (O)] - 소설, 시 - 음악, 그림 - 사진, 영상 - 소프트웨어 (프로그램) - 데이터베이스 (창작성 있으면)\n[저작물 아님 (X)] - 단순 아이디어 - 알고리즘 (수학 공식) - 사실 (뉴스 사실 자체) - 법령, 판결문\n2.2 저작물의 종류 제4조 (저작물의 예시):\n1호 : 어문저작물 - 소설, 시, 논문, 강연 등 / 컴퓨터프로그램저작물 (소스코드) 포함\n2호 : 음악저작물\n3호 : 연극저작물\n4호 : 미술저작물\n5호 : 건축저작물\n6호 : 사진저작물\n7호 : 영상저작물\n8호 : 도형저작물 - 지도, 설계도, 약도, 모형 등\n9호 : 컴퓨터프로그램저작물 - 특정한 결과를 얻기 위하여 컴퓨터 등 정보처리능력을 가진 장치 내에서 직접 또는 간접으로 사용되는 일련의 지시·명령으로 표현된 창작물\n2.3 저작권의 종류 저작재산권 (Economic Rights):\n복제권 공연권 공중송신권 (전송권, 방송권 등) 전시권 배포권 대여권 2차적저작물작성권 저작인격권 (Moral Rights):\n공표권 성명표시권 동일성유지권 차이:\n[저작재산권] - 양도 가능 - 상속 가능 - 기간 있음 (사후 70년)\n[저작인격권] - 양도 불가 - 포기 불가 - 영구\n2.4 저작권 보호 기간 원칙: 저작자 생존 + 사후 70년\n예외:\n무명 저작물 : 공표 후 70년 업무상 저작물 : 공표 후 70년 영상저작물 : 공표 후 70년 보호 기간 만료:\n공공의 영역 (Public Domain) - 자유롭게 이용 가능 3. 컴퓨터프로그램저작물 (핵심!) 3.1 프로그램 저작권 컴퓨터프로그램보호법 (1986-2009):\n과거에는 별도 법 2009년 저작권법에 통합 현재: 저작권법으로 보호\n3.2 보호 대상 소스코드 (Source Code):\n[예시 - 이 코드 자체가 저작물] - def hello(): - print(“Hello, World!”)\n오브젝트 코드 (Object Code):\n[이진 코드] - 컴파일된 바이너리 코드도 저작물로 보호됨\n화면 UI:\n창작성 있으면 저작물 알고리즘:\n알고리즘 자체는 저작물 아님 (아이디어) 하지만 코드로 표현하면 저작물 3.3 보호 내용 복제권 (제16조): “저작자는 그의 저작물을 복제할 권리를 가진다”\n프로그램에서:\n코드 복사 : 복제 백업 : 복제 다운로드 : 복제 설치 : 복제 2차적저작물작성권 (제22조): “저작자는 그의 저작물을 원저작물로 하는 2차적저작물을 작성하여 이용할 권리를 가진다”\n프로그램에서:\n수정 번역 (다른 언어로) 각색 3.4 업무상 저작물 제9조 (업무상 저작물): “법인등의 명의로 공표되는 업무상 저작물의 저작자는 계약 또는 근무규칙 등에 다른 정함이 없는 때에는 그 법인등이 된다”\n요건:\n법인 등의 기획 법인 등의 업무에 종사하는 자 업무상 작성 법인 등의 명의로 공표 쉽게: 회사 직원이 회사 업무로 만든 프로그램 - 회사가 저작권자\n[회사 소유] - 직원 A가 업무 시간에 회사 업무로 개발한 프로그램 - 저작권 : 회사\n[개인 소유] - 직원 B가 퇴근 후 집에서 개인 취미로 개발한 프로그램 - 저작권 : 본인\n[애매한 경우] - 직원 C가 회사 업무 + 개인 시간 혼합으로 개발 - 근무규칙, 계약서 확인 필요\n3.5 공동저작물 제2조: “2인 이상이 공동으로 창작한 저작물로서 각자의 이바지한 부분을 분리하여 이용할 수 없는 것”\n[예시] - 개발자 3명이 함께 개발 - 공동저작권 - 각자 모듈 분리 가능하면 - 각각 저작권\n4. 저작권 침해 4.1 침해 행위 제136조 (벌칙): “다음 각 호의 어느 하나에 해당하는 자는 5년 이하의 징역 또는 5천만원 이하의 벌금에 처하거나 이를 병과할 수 있다”\n1호: “저작재산권, 그 밖에 이 법에 따라 보호되는 재산적 권리를 복제, 공연, 공중송신, 전시, 배포, 대여, 2차적저작물 작성의 방법으로 침해한 자”\n4.2 소프트웨어 불법 복제 유형 (1) 개인 불법 복제\n[사건 내용] - 직원이 회사 PC에 Adobe Photoshop 불법 복제본 설치 - 적용 : 저작권 침해 (5년 이하 징역)\n(2) 업무 사용\n[사건 내용] - 회사가 라이선스 10개 구입 - PC 50대에 설치 - 적용 : 저작권 침해 (회사 책임)\n(3) 배포\n[사건 내용] - 불법 복제본을 인터넷에 업로드 또는 판매 - 적용 : 저작권 침해 (더 무거움)\n처벌 형사:\n5년 이하 징역 or 5천만원 이하 벌금 민사:\n손해배상 회사 책임:\n[원칙] - 직원 개인 행위여도 회사가 관리·감독 소홀하면 회사도 책임\n4.3 소스코드 유출 [Case 1] 퇴사자 유출\n[사건 내용] - 개발자 A가 퇴사하면서 회사 소스코드를 USB에 복사 - 새 회사에서 사용 - 적용 : 저작권 침해 (5년 이하) + 부정경쟁방지법 위반 (영업비밀)\n[Case 2] 외주 개발자 유출\n[사건 내용] - 외주 개발자 B가 프로젝트 소스코드를 다른 곳에 재사용 - 적용 : 저작권 침해 (계약 위반)\n[Case 3] 내부자 판매\n[사건 내용] - 직원 C가 회사 소스코드를 경쟁사에 판매 - 적용 : 저작권 침해 + 업무상 배임죄 (형법)\n예방 기술적: - USB 차단 - 소스코드 접근 통제 - 다운로드 로그 기록 - 워터마크 (소스코드에 흔적)\n관리적: - 보안 서약서 - 퇴사 시 반납 확인 - 경업금지 계약\n4.4 오픈소스 라이선스 위반 오픈소스 라이선스 종류 GPL (GNU General Public License):\n가장 엄격 소스코드 공개 의무 (Copyleft) 상업적 사용 시 주의 MIT License:\n가장 자유로움 저작권 표시만 하면 OK Apache License 2.0:\n특허권 조항 포함 상업적 사용 OK BSD License:\n자유로움 상업적 사용 OK GPL 위반 사례 [사건 내용] - 회사가 GPL 라이선스 오픈소스를 자사 제품에 포함 - 소스코드 공개 안 함 - GPL 위반 - 저작권 침해\n[결과] - 소스코드 공개 강제 - 손해배상 - 평판 추락\n예방 오픈소스 관리: - 사용 오픈소스 목록 관리 - 라이선스 확인 - GPL 사용 시 법무팀 검토 - 라이선스 스캐닝 도구 사용\n5. 저작권 제한 (공정 이용) 5.1 공정 이용 제35조의5 (저작물의 공정한 이용): “저작물의 통상적인 이용 방법과 충돌하지 아니하고 저작자의 정당한 이익을 부당하게 해치지 아니하는 경우\"에는 저작물 이용 가능\n판단 기준:\n이용의 목적 및 성격 저작물의 종류 및 용도 이용된 부분이 저작물 전체에서 차지하는 비중 저작물의 이용이 저작물의 시장에 미치는 영향 쉽게:\n교육 목적 - OK 비평, 논평 - OK 연구 목적 - OK 상업적 목적 - 주의 5.2 프로그램 관련 제한 제101조의3 (프로그램코드역분석): “프로그램저작물의 기능을 조사·연구하거나 호환에 필요한 정보를 얻기 위하여 그 코드를 역분석하는 경우”\n허용:\n호환성 확보 목적 연구 목적 금지:\n복제 목적 상업적 이용 목적 제101조의4 (정당한 이용자에 의한 보존을 위한 복제 등): “프로그램을 백업 목적으로 복제하는 경우”\n허용:\n정당한 이용자 백업 목적만 5.3 실무 적용 [허용 (O)] - 정품 소프트웨어 백업 - 호환성 연구를 위한 리버스 엔지니어링 - 교육 목적 소스코드 일부 인용 (출처 표시)\n[불허 (X)] - 불법 복제 - 라이선스 없이 사용 - 소스코드 전체 복사\n6. 실무 가이드 6.1 소프트웨어 자산 관리 (SAM) 목적 불법 복제 방지 라이선스 컴플라이언스 비용 최적화 절차 1. 자산 조사\n[모든 PC, 서버의 소프트웨어 설치 현황 조사] - 도구 : 자산 관리 솔루션 - 도구 : 수동 점검\n2. 라이선스 확인\n[구매한 라이선스 수 확인] - 구매 증빙 - 계약서 - 라이선스 키\n3. Gap 분석\n[설치 수 vs 라이선스 수 비교] - Adobe Photoshop 설치 : 50개 - 라이선스 : 10개 - Gap : 40개 (불법!)\n4. 조치\n[대응 옵션] - Option 1 : 라이선스 추가 구매 - Option 2 : 불필요한 설치 삭제 - Option 3 : 대체 솔루션 (오픈소스 등)\n5. 주기적 점검\n[점검 주기] - 분기 1회 또는 연 1회\n6.2 직원 보안 교육 [교육 내용] - 1. 소프트웨어 불법 복제 금지 : 형사 처벌 (5년 이하 징역), 회사도 책임 - 2. 소스코드 유출 금지 : 퇴사 시 반납, USB 사용 금지 - 3. 오픈소스 사용 시 주의 : 라이선스 확인, GPL 주의\n6.3 퇴사자 관리 퇴사 당일 체크리스트: - 계정 비활성화 - PC 회수 - USB, 외장하드 반납 - 클라우드 계정 삭제 - 이메일 백업 후 삭제 - 소스코드 접근 권한 삭제\n퇴사 후: - 보안 서약 (비밀유지) - 경업금지 계약 (선택)\n6.4 외주 개발 시 계약서 필수 조항:\n[저작권 귀속 조항 (예시)] - 본 프로젝트로 개발된 모든 산출물의 저작권은 발주자(甲)에게 귀속 - 수급자(乙)는 본 프로젝트 종료 후 모든 소스코드 및 문서를 甲에게 인도하고 乙은 사본을 보유하지 아니함 - 乙은 본 프로젝트 소스코드를 타 프로젝트에 재사용할 수 없음\n6.5 오픈소스 관리 [관리 프로세스] - 1. 사용 전 검토 : 라이선스 확인, GPL - 법무팀 검토 - 2. 목록 관리 : 사용 오픈소스 목록, 라이선스 종류, 버전 - 3. 라이선스 준수 : 저작권 표시, GPL - 소스코드 공개 (해당 시) - 4. 정기 점검 : 라이선스 스캐닝 도구, 신규 오픈소스 추가 시 검토\n도구:\nBlack Duck (상용) FOSSology (오픈소스) WhiteSource (상용) 7. 침해 발견 시 대응 7.1 내부 침해 (직원) 발견: 직원 PC에서 불법 소프트웨어 발견\n대응:\n[조치 순서] - 1. 즉시 삭제 - 2. 직원 교육 - 3. 징계 (경고, 감봉 등) - 4. 정품 구매 또는 대체 솔루션\n7.2 외부 침해 (타인이 우리 저작물 침해) 발견: 경쟁사가 우리 소스코드 무단 사용\n대응:\n[조치 순서] - 1. 증거 확보 : 침해 사실 확인, 스크린샷, 로그 등 - 2. 경고 : 내용증명 발송, 침해 중단 요구 - 3. 법적 조치 : 민사 (손해배상 청구), 형사 (고소) - 4. 중재 : 한국저작권위원회 중재\n7.3 BSA 감사 대응 BSA (Business Software Alliance):\n소프트웨어 저작권 보호 단체 불법 복제 단속 감사 프로세스:\n[절차] - 1. BSA 감사 통지 - 2. 자산 조사 - 3. 현장 감사 - 4. 결과 통보 - 5. 합의 또는 소송\n대응:\n[사전] - SAM 체계 구축 - 정기 자체 점검\n[감사 시] - 협조적 태도 - 정확한 자료 제출 - 법무팀 참여\n[사후] - Gap 해소 - 재발 방지\n8. 벌칙 8.1 형사 처벌 제136조 (5년 이하 징역 or 5천만원 이하 벌금):\n저작권 침해 제137조 (3년 이하 징역 or 3천만원 이하 벌금):\n출처 명시 위반 등 8.2 민사 책임 손해배상:\n실제 손실액 또는 침해자 이익 상당액 [손해배상 계산 예시] - Adobe Photoshop 정품 : 100만원 - 불법 설치 : 50개 - 손해배상 가능 금액 : 5,000만원\n9. 체크리스트 소프트웨어 자산 관리 - 전사 소프트웨어 설치 현황 파악 - 라이선스 보유 현황 확인 - Gap 분석 (설치 수 vs 라이선스 수) - 불법 소프트웨어 제거 - 정품 구매 또는 대체 솔루션 - 정기 점검 (분기 1회 or 연 1회) 소스코드 관리 - 접근 권한 통제 - USB 차단 - 다운로드 로그 기록 - 퇴사자 계정 즉시 삭제 - 보안 서약서 징구 오픈소스 관리 - 사용 오픈소스 목록 관리 - 라이선스 확인 - GPL 사용 시 법무팀 검토 - 라이선스 스캐닝 도구 사용 교육 - 연 1회 저작권 교육 - 불법 복제 금지 - 처벌 안내 10. 실무 사례 사례 1: 소프트웨어 불법 복제 (2018년) 사건:\n[내용] - A회사 직원들이 Adobe, Microsoft 제품 불법 복제 사용 - BSA 감사 진행 - 라이선스 50개 부족 발견\n결과:\n[피해 규모] - 합의금 2억원 - 정품 구매 1억원 - 총 3억원 손실\n교훈: - SAM 체계 구축 필수 - 정기 점검\n사례 2: 오픈소스 라이선스 위반 (2019년) 사건:\n[내용] - B회사가 GPL 오픈소스를 자사 제품에 포함 - 소스코드 공개 안 함 - 오픈소스 커뮤니티 제보\n결과:\n[피해 규모] - 소스코드 공개 강제 - 손해배상 5천만원 - 평판 추락\n교훈: - GPL 사용 시 주의 - 법무팀 검토 필수\n사례 3: 퇴사자 소스코드 유출 (2020년) 사건:\n[내용] - C회사 개발자 D가 퇴사 - 회사 소스코드를 USB로 복사 - 새 회사에서 유사 제품 개발 - C회사 발견\n결과:\n[피해 규모] - 형사 고소 (저작권 침해) - 징역 1년 집행유예 2년 - 손해배상 1억원\n교훈: - 퇴사자 관리 철저 - USB 차단 - 접근 권한 즉시 삭제\n11. 보안 컨설턴트의 역할 11.1 SAM 구축 지원 서비스:\n자산 조사 Gap 분석 개선 방안 도구 도입 11.2 교육 직원 교육:\n저작권법 기초 불법 복제 금지 처벌 사례 11.3 정책 수립 저작권 관리 정책:\n소프트웨어 설치 정책 오픈소스 사용 정책 소스코드 관리 정책 학습 정리 오늘 학습한 핵심 내용:\n저작권법은 소프트웨어, 소스코드도 보호 컴퓨터프로그램저작물 : 소스코드, 오브젝트 코드 모두 저작물 업무상 저작물 : 회사 업무로 만든 프로그램은 회사가 저작권자 저작권 침해 : 5년 이하 징역 or 5천만원 이하 벌금 소프트웨어 불법 복제 : 형사 처벌 + 회사 책임 소스코드 유출 : 저작권 침해 + 부정경쟁방지법 위반 오픈소스 라이선스 : GPL (엄격, 소스공개 의무), MIT (자유) 공정 이용 : 교육, 연구 목적은 제한적 허용 SAM (소프트웨어 자산 관리) : 자산 조사 - 라이선스 확인 - Gap 분석 - 조치 BSA 감사 대응 : 사전 준비, 정기 점검 퇴사자 관리 : 계정 삭제, 소스코드 접근 차단, 반납 확인 외주 개발 : 저작권 귀속 명시 계약 필수 다음 학습 주제 Day 40: 종합 정리 \u0026 면접 대비 (최종화!)\n",
+  "wordCount" : "5193",
+  "inLanguage": "ko",
+  "datePublished": "2026-03-26T00:00:00Z",
+  "dateModified": "2026-03-26T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/16_%EC%A0%80%EC%9E%91%EA%B6%8C%EB%B2%95/day39_%EC%A0%80%EC%9E%91%EA%B6%8C%EB%B2%95/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
 </script>
 </head>
 <body id="top">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -102,37 +170,37 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/about" title="소개">
+                <a href="https://hojjang98.github.io/about" title="소개">
                     <span>소개</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
                     <span>일일 로그</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/projects/" title="Projects">
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
                     <span>프로젝트</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/cyber-law-study/" title="Cyber-Law-Study">
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
                     <span>보안법 공부</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
                     <span>보안 시사 분석</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
                     <span>태그</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/paper-review/" title="Paper-Review">
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
                     <span>논문 리뷰</span>
                 </a>
             </li>
@@ -143,7 +211,7 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/">홈</a>&nbsp;»&nbsp;<a href="http://localhost:1313/cyber_law_study/">보안 컨설팅 공부</a></div>
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/cyber_law_study/">보안 컨설팅 공부</a></div>
     <h1 class="post-title entry-hint-parent">
       Day 39: 저작권법 (디지털 관점)
     </h1>
@@ -732,20 +800,20 @@
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/%EC%A0%80%EC%9E%91%EA%B6%8C%EB%B2%95/">저작권법</a></li>
-      <li><a href="http://localhost:1313/tags/%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4/">소프트웨어</a></li>
-      <li><a href="http://localhost:1313/tags/%EB%B6%88%EB%B2%95%EB%B3%B5%EC%A0%9C/">불법복제</a></li>
-      <li><a href="http://localhost:1313/tags/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/">오픈소스</a></li>
-      <li><a href="http://localhost:1313/tags/gpl/">GPL</a></li>
-      <li><a href="http://localhost:1313/tags/sam/">SAM</a></li>
-      <li><a href="http://localhost:1313/tags/%EC%86%8C%EC%8A%A4%EC%BD%94%EB%93%9C/">소스코드</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%A0%80%EC%9E%91%EA%B6%8C%EB%B2%95/">저작권법</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4/">소프트웨어</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%B6%88%EB%B2%95%EB%B3%B5%EC%A0%9C/">불법복제</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/">오픈소스</a></li>
+      <li><a href="https://hojjang98.github.io/tags/gpl/">GPL</a></li>
+      <li><a href="https://hojjang98.github.io/tags/sam/">SAM</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%86%8C%EC%8A%A4%EC%BD%94%EB%93%9C/">소스코드</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
 
     <span>
         Powered by

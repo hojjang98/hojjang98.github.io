@@ -33,7 +33,7 @@ summaryLength = 30
 [params.profileMode]
   enabled = true
   title = "Hojun Choi"
-  subtitle = "Security Governance & Legal Analysis"
+  subtitle = "개인정보보호법 · 보안감사 · 컨설팅 방향의 보안 전공자"
   imageUrl = "profile.jpg"
   imageWidth = 120
   imageHeight = 120

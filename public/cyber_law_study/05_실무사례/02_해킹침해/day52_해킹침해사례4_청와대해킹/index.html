@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="ko" dir="auto" data-theme="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>Day 52: 실무 사례 #12 - 청와대 해킹 사건 (2013) | HJ&#39;s Security Note</title>
 <meta name="keywords" content="실무사례, 해킹침해, 청와대해킹, 스피어피싱, APT공격, 간첩죄, 정보통신기반보호법, 국가안보">
 <meta name="description" content="2013년 6월 북한 정찰총국이 스피어 피싱으로 청와대 내부망에 침투해 6개월간 기밀 문서를 탈취한 사건을 공격 기법, 법률 분석, 제로 트러스트 관점에서 분석합니다.">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/02_%ED%95%B4%ED%82%B9%EC%B9%A8%ED%95%B4/day52_%ED%95%B4%ED%82%B9%EC%B9%A8%ED%95%B4%EC%82%AC%EB%A1%804_%EC%B2%AD%EC%99%80%EB%8C%80%ED%95%B4%ED%82%B9/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.c8c3b65cd6d058be2b4f050fd7a688ac13a23056571601dabe4f70d8d008259e.css" integrity="sha256-yMO2XNbQWL4rTwUP16aIrBOiMFZXFgHavk9w2NAIJZ4=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="canonical" href="https://hojjang98.github.io/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/02_%ED%95%B4%ED%82%B9%EC%B9%A8%ED%95%B4/day52_%ED%95%B4%ED%82%B9%EC%B9%A8%ED%95%B4%EC%82%AC%EB%A1%804_%EC%B2%AD%EC%99%80%EB%8C%80%ED%95%B4%ED%82%B9/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.898219bd95f420a374e6df8d4ee9050d8913bfcf44c82e41bddff27ad9322aec.css" integrity="sha256-iYIZvZX0IKN05t&#43;NTukFDYkTv89EyC5Bvd/yetkyKuw=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="ko" href="http://localhost:1313/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/02_%ED%95%B4%ED%82%B9%EC%B9%A8%ED%95%B4/day52_%ED%95%B4%ED%82%B9%EC%B9%A8%ED%95%B4%EC%82%AC%EB%A1%804_%EC%B2%AD%EC%99%80%EB%8C%80%ED%95%B4%ED%82%B9/">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/02_%ED%95%B4%ED%82%B9%EC%B9%A8%ED%95%B4/day52_%ED%95%B4%ED%82%B9%EC%B9%A8%ED%95%B4%EC%82%AC%EB%A1%804_%EC%B2%AD%EC%99%80%EB%8C%80%ED%95%B4%ED%82%B9/">
 <noscript>
     <style>
         #theme-toggle,
@@ -70,13 +70,81 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
+</script><meta property="og:url" content="https://hojjang98.github.io/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/02_%ED%95%B4%ED%82%B9%EC%B9%A8%ED%95%B4/day52_%ED%95%B4%ED%82%B9%EC%B9%A8%ED%95%B4%EC%82%AC%EB%A1%804_%EC%B2%AD%EC%99%80%EB%8C%80%ED%95%B4%ED%82%B9/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="Day 52: 실무 사례 #12 - 청와대 해킹 사건 (2013)">
+  <meta property="og:description" content="2013년 6월 북한 정찰총국이 스피어 피싱으로 청와대 내부망에 침투해 6개월간 기밀 문서를 탈취한 사건을 공격 기법, 법률 분석, 제로 트러스트 관점에서 분석합니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="cyber_law_study">
+    <meta property="article:published_time" content="2026-04-14T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-04-14T00:00:00+00:00">
+    <meta property="article:tag" content="실무사례">
+    <meta property="article:tag" content="해킹침해">
+    <meta property="article:tag" content="청와대해킹">
+    <meta property="article:tag" content="스피어피싱">
+    <meta property="article:tag" content="APT공격">
+    <meta property="article:tag" content="간첩죄">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Day 52: 실무 사례 #12 - 청와대 해킹 사건 (2013)">
+<meta name="twitter:description" content="2013년 6월 북한 정찰총국이 스피어 피싱으로 청와대 내부망에 침투해 6개월간 기밀 문서를 탈취한 사건을 공격 기법, 법률 분석, 제로 트러스트 관점에서 분석합니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "보안 컨설팅 공부",
+      "item": "https://hojjang98.github.io/cyber_law_study/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  4 ,
+      "name": "Day 52: 실무 사례 #12 - 청와대 해킹 사건 (2013)",
+      "item": "https://hojjang98.github.io/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/02_%ED%95%B4%ED%82%B9%EC%B9%A8%ED%95%B4/day52_%ED%95%B4%ED%82%B9%EC%B9%A8%ED%95%B4%EC%82%AC%EB%A1%804_%EC%B2%AD%EC%99%80%EB%8C%80%ED%95%B4%ED%82%B9/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Day 52: 실무 사례 #12 - 청와대 해킹 사건 (2013)",
+  "name": "Day 52: 실무 사례 #12 - 청와대 해킹 사건 (2013)",
+  "description": "2013년 6월 북한 정찰총국이 스피어 피싱으로 청와대 내부망에 침투해 6개월간 기밀 문서를 탈취한 사건을 공격 기법, 법률 분석, 제로 트러스트 관점에서 분석합니다.",
+  "keywords": [
+    "실무사례", "해킹침해", "청와대해킹", "스피어피싱", "APT공격", "간첩죄", "정보통신기반보호법", "국가안보"
+  ],
+  "articleBody": "Day 52: 실무 사례 #12 - 청와대 해킹 사건 (2013) [ 1. 사건 개요 ]\n기본 정보 - 피해 기관 : 청와대 (대통령 비서실) - 발생 시기 : 2013년 6월 - 사건 유형 : APT 공격 + 정보 탈취 - 공격 주체 : 북한 정찰총국 (확정) - 유출 정보 : 청와대 내부 문서, 기밀 정보 (정확한 규모 미공개) 사건 요약 - 2013년 6월, 북한 해커 조직이 청와대 직원을 대상으로 스피어 피싱 공격을 감행하여 내부망에 침투했다. - 약 6개월간 잠복하며 청와대 내부 문서와 기밀 정보를 탈취했다. - 대통령 일정, 국가안보회의 자료, 대북 정책 문서 등이 유출된 것으로 추정된다. - 국가 최고 기관인 청와대가 해킹당한 초유의 사태로, 국가 안보에 심각한 위협이 되었다. - 이 사건을 계기로 정부 기관 보안이 전면 재점검되었다. [ 1.1 상세 경위 ]\n침투 시점 : 2012년 말 - 2013년 초 (추정) 공격 방법 1. 스피어 피싱 - 청와대 직원 대상 맞춤형 피싱 이메일 - \"대통령 일정 조정\" 등 업무 관련 제목 - 악성 첨부파일 (한글 문서 위장) 2. 악성코드 감염 - 직원이 첨부파일 실행, PC 감염, 백도어 설치 3. 내부망 침투 - 감염 PC에서 내부망 침투 - 관리자 권한 탈취, 다른 PC로 확산 4. 정보 탈취 - 약 6개월간 잠복, 내부 문서 수집 - C\u0026C 서버로 외부 전송 탈취 정보 (추정) - 대통령 일정 및 동선 - 국가안보회의 (NSC) 회의록 - 대북 정책 문서, 외교 문서 - 청와대 내부 조직도, 직원 명단 및 연락처 - 기타 기밀 문서 (정확한 내용 미공개, 국가 기밀) 탈취 규모 - 정확한 규모 미공개 (국가 안보상) - 수천 - 수만 건 문서 추정 [ 1.2 타임라인 ]\n2012년 말 - 2013년 초 - 북한 해커, 청와대 직원 대상 스피어 피싱 시작 - 일부 직원 감염, 내부망 침투 2013년 1 - 5월 - 내부망 잠복, 정보 수집 및 탈취, 외부 전송 2013년 6월 10일 - 국정원 이상 징후 포착 후 청와대 협조 요청 - 해킹 사실 확인, 악성코드 발견, 감염 PC 격리 2013년 6월 11일 - 청와대 긴급 보안 점검, 전 직원 PC 점검, 악성코드 제거 작업 2013년 6월 17일 - 정부 공식 발표 : \"청와대 일부 PC 해킹 확인, 북한 소행 추정\" 2013년 7월 15일 - 정부 최종 발표 : \"북한 정찰총국 소행 확정, 일부 문서 유출 확인\" - 구체적 내용 비공개 (국가 안보) 2013년 8월 - 청와대 보안 시스템 전면 개편, 전 정부 기관 보안 강화 [ 2. 법률 분석 ]\n[ 2.1 적용 법률 ]\n주요 법률 1. 형법 (국가 기밀 누설) 2. 군사기밀보호법 3. 정보통신기반보호법 4. 국가정보원법 청와대 = 국가 최고 기관, 기밀 정보 다수, 국가 안보 직결. [ 2.2 간첩죄 ]\n법적 근거 : 형법 제111조 (간첩) 조문 - 적국을 위하여 간첩하거나 적국의 간첩을 방조한 자는 사형, 무기 또는 7년 이상의 징역에 처한다. 해당 사항 - 북한 = 적국, 청와대 기밀 탈취 = 간첩 행위 처벌 : 사형, 무기 또는 7년 이상 징역 (가장 무거운 처벌) 형법 제113조 (특수공무비밀누설) - 공무원이 국가의 중대한 이익에 관한 비밀을 외국 또는 외국인에게 누설한 때에는 10년 이하의 징역 - 해당 사항 : 청와대 직원 PC 감염으로 정보 유출 - 하지만 직원은 피해자 (의도적 누설 아님), 처벌 대상 아님 [ 2.3 군사기밀보호법 ]\n법적 근거 : 군사기밀보호법 제13조 (간첩) 조문 - 간첩 목적으로 군사기밀을 탐지·수집·누설·전달하거나 중개한 자는 사형, 무기 또는 7년 이상의 징역에 처한다. 해당 사항 - 청와대 국가안보회의 자료 = 군사 기밀 포함 가능 [ 2.4 정보통신기반보호법 ]\n법적 근거 : 정보통신기반보호법 제14조 (벌칙) 조문 - 주요정보통신기반시설에 대하여 전자적 침해행위를 한 자는 10년 이하의 징역 또는 1억원 이하의 벌금에 처한다. 해당 사항 - 청와대 = 주요정보통신기반시설 (국가 지정) - 처벌 : 10년 이하 징역 [ 2.5 처벌 ]\n북한 해커 - 검거 불가 (북한 소재), 처벌 없음 - 법적 적용 시 : 간첩죄 = 사형·무기·7년 이상, 정통기반법 = 10년 이하 징역 청와대 - 안전조치 의무 위반, 하지만 국가 기관 = 별도 처벌 없음 - 담당자 내부 징계 국가 대응 - 보안 시스템 전면 개편, 예산 증액, 조직 강화 [ 2.6 국가 안보 차원 ]\n청와대 해킹 = 국가 안보 위협 - 대통령 일정 = 암살 위험 - NSC 회의록 = 대북 전략 노출 - 외교 문서 = 협상 불리 대북 관계 - 정부 발표 : \"북한 정찰총국 소행 확정\" - 유엔 안보리 제재 요청, 국제 사회 북한 규탄 사이버 전쟁 - 청와대 해킹 = 사이버 전쟁 수준 - 물리적 전쟁 없이 국가 핵심 정보 탈취 [ 3. 기술적 분석 ]\n[ 3.1 공격 기법 - 스피어 피싱 (Spear Phishing) ]\n일반 피싱 vs 스피어 피싱 - 일반 피싱 : 불특정 다수 대상, \"계좌 정지, 클릭하세요\", 명백히 수상함 - 스피어 피싱 : 특정 개인 맞춤, 사전 정보 수집 (이름, 직책, 업무 등), 실제 업무처럼 위장, 탐지 어려움 청와대 스피어 피싱 예시 (추정) - 발신자 : 대통령비서실 비서관 (실제 인물 또는 위조) - 제목 : [긴급] 대통령 일정 조정 안내 - 내용 : \"대통령 일정이 변경되었습니다. 첨부 파일 확인 바랍니다.\" - 첨부파일 : 대통령_일정표.hwp (악성코드) - 특징 : 긴급성 강조, 실제 업무처럼 보여 직원이 의심 없이 실행 [ 3.2 악성코드 분석 ]\n주요 기능 1. 백도어 : 외부에서 원격 접속 가능, C\u0026C 서버와 통신 2. 키로거 : 키보드 입력 기록, 비밀번호 탈취 3. 파일 탐색 : 문서 파일 검색 (hwp, doc, pdf, xls 등), 특정 키워드 포함 파일 수집 (\"대통령\", \"NSC\", \"대북\", \"기밀\" 등) 4. 파일 전송 : 수집한 파일 외부 전송 (C\u0026C 서버), 암호화 통신 (탐지 회피) 5. 자기 은폐 : 백신 탐지 회피, 정상 프로세스로 위장, 흔적 삭제 특징 - 고도화된 APT 악성코드 (국가 지원 해킹 그룹 수준) - 장기간 잠복 (6개월), 은밀한 정보 탈취 [ 3.3 보안 취약점 분석 ]\n스피어 피싱 대응 부족 - 직원이 악성 첨부파일 실행, 스피어 피싱 인지 못함 - 원인 : 보안 교육 부족, 피싱 메일 필터링 미흡, 첨부파일 자동 실행 허용 - 필요한 대책 : 정기 보안 교육 (월 1회), 모의 훈련 (분기 1회), 이메일 첨부파일 샌드박스 검사 후 허용 내부망 침투 허용 - 감염 PC에서 내부망 전체 접근 가능, 다른 PC로 확산 - 원인 : 네트워크 세그먼트 부족, 내부망 신뢰 (외부만 방어), 권한 관리 부실 - 필요한 대책 : 네트워크 세그먼트 (팀별, 등급별), 제로 트러스트, 최소 권한 원칙 장기 잠복 탐지 실패 - 6개월간 잠복, 탐지 못함 - 원인 : IDS/IPS 미흡, 로그 분석 부족, 비정상 통신 탐지 실패 (C\u0026C 서버) - 필요한 대책 : 차세대 IDS/IPS, SIEM, 외부 통신 모니터링, AI 기반 이상 탐지 문서 접근 통제 부족 - 일반 직원도 기밀 문서 접근 가능 (PC 감염 시) - 필요한 대책 : 문서 등급화 (일반, 대외비, 비밀, 극비), 등급별 접근 권한, DRM (Digital Rights Management) 반출 통제 미흡 - 감염 PC에서 파일 외부 전송 가능 - 필요한 대책 : USB 차단, DLP, 외부 전송 모니터링, 이메일 첨부 제한 [ 3.4 사후 보안 강화 조치 ]\n이메일 보안 강화 - 모든 첨부파일 샌드박스 검사 - 실행 파일 차단 (.exe, .scr 등), 문서 파일도 검사 후 허용 - 외부 이메일 경고 표시 네트워크 재설계 - 네트워크 세그먼트 (5단계 분리) - 제로 트러스트 아키텍처, 내부에서도 권한 검증 APT 탐지 강화 - 차세대 IDS/IPS, SIEM - 24/365 보안관제센터 (국정원 지원) - AI 기반 이상 탐지, 외부 통신 전수 조사 문서 보안 - DRM 전면 적용, 등급별 접근 통제 - 문서 암호화, 출력/복사 제한, 워터마크 교육 강화 - 전 직원 월 1회 보안 교육 - 모의 훈련 (분기 1회), 스피어 피싱 시뮬레이션 - 위반 시 징계 조직 강화 - 청와대 자체 보안팀 신설 - 국정원 파견 인력 증원, 외부 보안 전문가 자문 [ 4. 대응 평가 ]\n[ 4.1 잘한 점 ]\n국정원 협조 - 국정원이 이상 징후 포착, 청와대 협조로 신속 대응 전면 점검 - 전 직원 PC 점검, 악성코드 전면 제거 보안 개편 - 사건 후 보안 시스템 전면 개편, 재발 방지 정보 통제 - 국가 안보 고려 상세 내용 비공개 (적절한 정보 통제) [ 4.2 미흡한 점 ]\n사전 예방 실패 - 스피어 피싱 대응 부족 - 6개월간 탐지 못함 - 청와대임에도 기본 보안 취약 정보 유출 - 일부 기밀 문서 유출 확인, 국가 안보 피해, 복구 불가 늦은 발견 - 6개월 잠복 = 너무 늦음, 실시간 탐지 실패 [ 5. 교훈 및 시사점 ]\n[ 5.1 기술적 교훈 ]\n스피어 피싱 = 가장 위험 - 맞춤형 공격 = 탐지 어려움, 직원 교육이 최우선 - 대응 : 월 1회 교육, 모의 훈련, 첨부파일 샌드박스, 의심 시 전화 확인 제로 트러스트 (Zero Trust) - 내부망도 신뢰하지 말 것, 내부에서도 권한 검증 - 대응 : 네트워크 세그먼트, 최소 권한, 내부 통신도 모니터링 APT = 장기전 - 수개월 잠복, 지속적 모니터링 필요 - 대응 : 24/365 모니터링, SIEM, AI 이상 탐지, 외부 통신 전수 조사 문서 보안 - 청와대 = 기밀 문서 다수, 문서 자체 보안 필요 - 대응 : DRM, 등급화, 암호화, 접근 제한 보안 = 조직 문화 - 기술만으로 부족, 전 직원 보안 의식 필요 - 대응 : 정기 교육, 위반 시 징계, 보안 우수자 포상 [ 5.2 법률적 교훈 ]\n청와대 해킹 = 간첩죄 - 형법 제111조 : 사형, 무기 또는 7년 이상 징역 - 하지만 북한 = 검거 불가, 실효성 한계 정보통신기반보호법 - 청와대 = 주요기반시설, 침해 = 10년 이하 징역 국가 기밀 - 군사기밀보호법 : 간첩 목적 군사기밀 탈취 = 사형·무기·7년 이상 - 특수공무비밀누설 : 10년 이하 징역 직원 책임 - 피싱 당한 직원 = 피해자, 의도적 누설 아님, 처벌 없음 - 하지만 부주의 = 징계 가능 [ 5.3 국가 안보 교훈 ]\n사이버 공격 = 전쟁 - 청와대 해킹 = 사이버 전쟁 수준 - 물리적 침입보다 효과적, 국가 안보 위협 - 대응 : 국가 차원 사이버 방어, 사이버 사령부, 국정원 강화 청와대 = 최우선 방어 - 국가 최고 기관, 대통령 안전, 국가 전략 직결 - 대응 : 최고 수준 보안 투자, 국정원 직접 관리 북한 사이버 위협 지속 - 2009년 7.7 DDoS → 2011년 농협 → 2013년 3.20 + 청와대 - 대응 : 대북 사이버 방어 강화, 국제 공조 정보 = 국력 - 기밀 유출 = 국가 손실 (대북 협상, 외교 불리) - 정보 보호 = 국가 안보 최우선 과제 [ 6. 주요 정부 기관 해킹 사건 비교 ]\n청와대 (2013년 6월) - 공격 방식 : 스피어 피싱 + APT - 피해 : 기밀 문서 유출 국방부 (2016년 9월) - 공격 방식 : APT - 피해 : 군사 기밀 유출 한국수력원자력 (2014년 12월) - 공격 방식 : 해킹 - 피해 : 원전 설계도 유출 7.7 DDoS (2009년 7월) - 공격 방식 : DDoS - 피해 : 정부 11곳 + 포털 서비스 마비 청와대 특징 - 국가 최고 기관, 기밀 정보 최다 - 대통령 안전 직결 - APT + 스피어 피싱, 장기 잠복 (6개월) - 북한 소행 확정 [ 7. 체크리스트 - 정부 기관 보안 ]\n스피어 피싱 대응 - 전 직원 월 1회 보안 교육 - 모의 훈련 (분기 1회) - 이메일 첨부파일 샌드박스 검사 - 실행 파일 차단, 문서 파일도 검사 후 허용 - 외부 이메일 경고 표시 - 의심 시 발신자 확인 (전화) 네트워크 - 네트워크 세그먼트 (등급별) - 제로 트러스트 아키텍처 - 최소 권한 원칙 - 내부 통신도 모니터링 APT 탐지 - 차세대 IDS/IPS, SIEM - 24/365 보안관제센터 - AI 기반 이상 탐지 - 외부 통신 전수 조사 - C\u0026C 서버 통신 차단 문서 보안 - DRM 전면 적용 - 문서 등급화 (일반, 대외비, 비밀, 극비) - 등급별 접근 권한 - 문서 암호화, 출력/복사 제한, 워터마크 반출 통제 - USB 완전 차단, DLP - 이메일 외부 전송 승인제 - 파일 전송 로그 기록 교육 - 월 1회 보안 교육 - 스피어 피싱 시뮬레이션 - 위반 시 징계, 보안 우수자 포상 물리적 보안 - 출입 통제 강화 - CCTV 확대, 보안 구역 재설정 [ 8. 관련 법령 ]\n형법 - 제111조 (간첩, 사형·무기·7년 이상) - 제113조 (특수공무비밀누설, 10년 이하) 군사기밀보호법 - 제13조 (간첩, 사형·무기·7년 이상) 정보통신기반보호법 - 제14조 (벌칙, 10년 이하) 국가공무원법 - 제60조 (비밀 엄수 의무) [ 학습 정리 ]\n청와대 해킹 사건에서 배운 점 - 2013년 국가 최고 기관 청와대 해킹 (초유의 사태) - 북한 정찰총국 소행 확정 (스피어 피싱 + APT) - 약 6개월간 잠복하며 기밀 문서 탈취 - 대통령 일정, NSC 회의록, 대북 정책 문서 등 유출 추정 - 간첩죄 적용 시 사형·무기·7년 이상 징역 (가장 무거운 처벌) - 정보통신기반보호법 10년 이하 징역 - 스피어 피싱으로 직원 PC 감염 (첨부파일) - 내부망 침투 후 장기 잠복 (제로 트러스트 부재) - 6개월간 탐지 못함 (IDS/IPS, SIEM 미흡) - 문서 접근 통제 부족 (DRM 미적용) - 사건 후 청와대 보안 전면 개편 - 전 정부 기관 보안 강화 계기 - 스피어 피싱 교육, 샌드박스, DRM 필수 - 제로 트러스트 아키텍처 (내부도 검증) - 사이버 공격 = 전쟁 수준 (국가 안보 위협) ",
+  "wordCount" : "4679",
+  "inLanguage": "ko",
+  "datePublished": "2026-04-14T00:00:00Z",
+  "dateModified": "2026-04-14T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/02_%ED%95%B4%ED%82%B9%EC%B9%A8%ED%95%B4/day52_%ED%95%B4%ED%82%B9%EC%B9%A8%ED%95%B4%EC%82%AC%EB%A1%804_%EC%B2%AD%EC%99%80%EB%8C%80%ED%95%B4%ED%82%B9/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
 </script>
 </head>
 <body id="top">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -102,37 +170,37 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/about" title="소개">
+                <a href="https://hojjang98.github.io/about" title="소개">
                     <span>소개</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
                     <span>일일 로그</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/projects/" title="Projects">
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
                     <span>프로젝트</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/cyber-law-study/" title="Cyber-Law-Study">
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
                     <span>보안법 공부</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
                     <span>보안 시사 분석</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
                     <span>태그</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/paper-review/" title="Paper-Review">
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
                     <span>논문 리뷰</span>
                 </a>
             </li>
@@ -143,7 +211,7 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/">홈</a>&nbsp;»&nbsp;<a href="http://localhost:1313/cyber_law_study/">보안 컨설팅 공부</a></div>
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/cyber_law_study/">보안 컨설팅 공부</a></div>
     <h1 class="post-title entry-hint-parent">
       Day 52: 실무 사례 #12 - 청와대 해킹 사건 (2013)
     </h1>
@@ -554,21 +622,21 @@ APT 탐지
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/">실무사례</a></li>
-      <li><a href="http://localhost:1313/tags/%ED%95%B4%ED%82%B9%EC%B9%A8%ED%95%B4/">해킹침해</a></li>
-      <li><a href="http://localhost:1313/tags/%EC%B2%AD%EC%99%80%EB%8C%80%ED%95%B4%ED%82%B9/">청와대해킹</a></li>
-      <li><a href="http://localhost:1313/tags/%EC%8A%A4%ED%94%BC%EC%96%B4%ED%94%BC%EC%8B%B1/">스피어피싱</a></li>
-      <li><a href="http://localhost:1313/tags/apt%EA%B3%B5%EA%B2%A9/">APT공격</a></li>
-      <li><a href="http://localhost:1313/tags/%EA%B0%84%EC%B2%A9%EC%A3%84/">간첩죄</a></li>
-      <li><a href="http://localhost:1313/tags/%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EA%B8%B0%EB%B0%98%EB%B3%B4%ED%98%B8%EB%B2%95/">정보통신기반보호법</a></li>
-      <li><a href="http://localhost:1313/tags/%EA%B5%AD%EA%B0%80%EC%95%88%EB%B3%B4/">국가안보</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/">실무사례</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%ED%95%B4%ED%82%B9%EC%B9%A8%ED%95%B4/">해킹침해</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%B2%AD%EC%99%80%EB%8C%80%ED%95%B4%ED%82%B9/">청와대해킹</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%8A%A4%ED%94%BC%EC%96%B4%ED%94%BC%EC%8B%B1/">스피어피싱</a></li>
+      <li><a href="https://hojjang98.github.io/tags/apt%EA%B3%B5%EA%B2%A9/">APT공격</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EA%B0%84%EC%B2%A9%EC%A3%84/">간첩죄</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EA%B8%B0%EB%B0%98%EB%B3%B4%ED%98%B8%EB%B2%95/">정보통신기반보호법</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EA%B5%AD%EA%B0%80%EC%95%88%EB%B3%B4/">국가안보</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
 
     <span>
         Powered by

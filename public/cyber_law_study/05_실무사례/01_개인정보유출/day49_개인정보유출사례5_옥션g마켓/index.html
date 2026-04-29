@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="ko" dir="auto" data-theme="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>Day 49: 실무 사례 #9 - 옥션·G마켓 개인정보 유출 (2008) | HJ&#39;s Security Note</title>
 <meta name="keywords" content="실무사례, 개인정보유출, 옥션, G마켓, 내부자유출, 정보통신망법, 협력업체관리, 중국반출">
 <meta name="description" content="2008년 2월 오픈마켓 옥션과 G마켓에서 중국인 협력업체 직원이 고객 개인정보 1,860만 건을 유출하여 중국으로 반출한 사건을 법률 위반, 기술적 취약점, 협력업체 관리 관점에서 분석합니다.">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C/day49_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C%EC%82%AC%EB%A1%805_%EC%98%A5%EC%85%98g%EB%A7%88%EC%BC%93/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.c8c3b65cd6d058be2b4f050fd7a688ac13a23056571601dabe4f70d8d008259e.css" integrity="sha256-yMO2XNbQWL4rTwUP16aIrBOiMFZXFgHavk9w2NAIJZ4=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="canonical" href="https://hojjang98.github.io/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C/day49_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C%EC%82%AC%EB%A1%805_%EC%98%A5%EC%85%98g%EB%A7%88%EC%BC%93/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.898219bd95f420a374e6df8d4ee9050d8913bfcf44c82e41bddff27ad9322aec.css" integrity="sha256-iYIZvZX0IKN05t&#43;NTukFDYkTv89EyC5Bvd/yetkyKuw=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="ko" href="http://localhost:1313/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C/day49_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C%EC%82%AC%EB%A1%805_%EC%98%A5%EC%85%98g%EB%A7%88%EC%BC%93/">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C/day49_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C%EC%82%AC%EB%A1%805_%EC%98%A5%EC%85%98g%EB%A7%88%EC%BC%93/">
 <noscript>
     <style>
         #theme-toggle,
@@ -70,13 +70,81 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
+</script><meta property="og:url" content="https://hojjang98.github.io/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C/day49_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C%EC%82%AC%EB%A1%805_%EC%98%A5%EC%85%98g%EB%A7%88%EC%BC%93/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="Day 49: 실무 사례 #9 - 옥션·G마켓 개인정보 유출 (2008)">
+  <meta property="og:description" content="2008년 2월 오픈마켓 옥션과 G마켓에서 중국인 협력업체 직원이 고객 개인정보 1,860만 건을 유출하여 중국으로 반출한 사건을 법률 위반, 기술적 취약점, 협력업체 관리 관점에서 분석합니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="cyber_law_study">
+    <meta property="article:published_time" content="2026-04-09T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-04-09T00:00:00+00:00">
+    <meta property="article:tag" content="실무사례">
+    <meta property="article:tag" content="개인정보유출">
+    <meta property="article:tag" content="옥션">
+    <meta property="article:tag" content="G마켓">
+    <meta property="article:tag" content="내부자유출">
+    <meta property="article:tag" content="정보통신망법">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Day 49: 실무 사례 #9 - 옥션·G마켓 개인정보 유출 (2008)">
+<meta name="twitter:description" content="2008년 2월 오픈마켓 옥션과 G마켓에서 중국인 협력업체 직원이 고객 개인정보 1,860만 건을 유출하여 중국으로 반출한 사건을 법률 위반, 기술적 취약점, 협력업체 관리 관점에서 분석합니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "보안 컨설팅 공부",
+      "item": "https://hojjang98.github.io/cyber_law_study/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  4 ,
+      "name": "Day 49: 실무 사례 #9 - 옥션·G마켓 개인정보 유출 (2008)",
+      "item": "https://hojjang98.github.io/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C/day49_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C%EC%82%AC%EB%A1%805_%EC%98%A5%EC%85%98g%EB%A7%88%EC%BC%93/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Day 49: 실무 사례 #9 - 옥션·G마켓 개인정보 유출 (2008)",
+  "name": "Day 49: 실무 사례 #9 - 옥션·G마켓 개인정보 유출 (2008)",
+  "description": "2008년 2월 오픈마켓 옥션과 G마켓에서 중국인 협력업체 직원이 고객 개인정보 1,860만 건을 유출하여 중국으로 반출한 사건을 법률 위반, 기술적 취약점, 협력업체 관리 관점에서 분석합니다.",
+  "keywords": [
+    "실무사례", "개인정보유출", "옥션", "G마켓", "내부자유출", "정보통신망법", "협력업체관리", "중국반출"
+  ],
+  "articleBody": "Day 49: 실무 사례 #9 - 옥션·G마켓 개인정보 유출 (2008) [ 1. 사건 개요 ]\n기본 정보 - 회사 : 옥션 (Auction), G마켓 (Gmarket) - 발생 시기 : 2008년 2월 - 유출 규모 : 약 1,860만 건 (당시 국내 최대) - 유출 방식 : 내부자 유출 (중국인 협력업체 직원) 사건 요약 - 2008년 2월, 오픈마켓 업체 옥션과 G마켓의 중국인 협력업체 직원이 고객 개인정보 약 1,860만 건을 불법으로 유출했다. - 유출 정보에는 이름, 주민등록번호, 전화번호, 이메일, 주소, 계좌번호 등이 포함되었다. - 유출된 정보는 중국으로 반출되어 스팸 발송, 보이스피싱 등에 악용되었다. - 개인정보보호법 시행 전이었으나 사회적 충격이 컸으며, 개인정보 보호 제도 강화의 계기가 된 사건이다. [ 1.1 상세 경위 ]\n범행 기간 : 2007년 말 - 2008년 초 범행 주체 - 주범 : 중국인 A씨 (옥션 협력업체 직원) - 공범 : 중국인 B씨 (G마켓 협력업체 직원) - 중개인 : 중국 내 개인정보 거래 브로커 범행 방법 1. 정당한 업무 권한으로 접근 : 고객센터 업무로 고객 정보 조회 권한 보유 2. 대량 조회 및 복사 : 수개월간 고객 정보 대량 조회, USB 및 이메일로 복사 3. 중국으로 반출 : 유출 정보를 중국으로 전송, 중국 내 개인정보 거래 시장에 판매 4. 스팸 및 보이스피싱 악용 : 구매자에게 스팸 이메일, 보이스피싱 전화 유출 데이터 - 이름, 주민등록번호, 전화번호, 휴대폰번호 - 이메일, 주소, 계좌번호 (일부) 유출 규모 - 옥션 : 약 1,080만 건 - G마켓 : 약 780만 건 - 총 : 약 1,860만 건 - 실제 피해자 : 약 1,000만 명 추정 (대한민국 인구의 20%) 2차 피해 - 스팸 이메일 폭주 - 보이스피싱 전화 (중국발) : \"택배 확인하세요\", \"카드 정지되었습니다\" 등 - 일부 피해자 금전적 손실 [ 1.2 타임라인 ]\n2007년 말 - 2008년 초 - 중국인 직원 A, B가 고객 정보 대량 조회 및 복사 시작, 수개월간 지속 2008년 2월 15일 - 옥션, 이상 징후 포착, 내부 조사 착수 2008년 2월 18일 - 경찰 신고, 정보통신부 신고 2008년 2월 19일 - G마켓도 유출 확인 (동일 수법) 2008년 2월 21일 - 옥션, G마켓 대표 긴급 사과, 고객 통지 (이메일, SMS) 2008년 2월 22일 - 중국인 직원 A, B 출국 확인 (이미 중국 귀국), 검거 불가능 2008년 3월 - 정보통신부 제재 발표 2008년 4월 - 집단 소송 제기 시작 2009 - 2010년 - 민사 소송 진행 및 손해배상 판결 [ 2. 법률 분석 ]\n[ 2.1 적용 법률 ]\n주요 법률 1. 정보통신망법 (당시 주요 법률) 2. 형법 3. 개인정보보호법 (미시행 - 2011년 9월 시행) 2008년 당시 개인정보보호법이 없었으며, 정보통신망법이 주요 적용 법률이었다. [ 2.2 내부자에 대한 처벌 ]\n정보통신망법 적용 법적 근거 : 정보통신망법 제49조 (벌칙, 2008년 당시) 조문 - 업무상 알게 된 개인정보를 누설하거나 권한 없이 다른 사람이 이용하도록 제공한 자 - 5년 이하의 징역 또는 5천만원 이하의 벌금 해당 사항 - 중국인 직원 A, B가 업무상 알게 된 고객 정보 누설 형법 적용 - 업무상 배임죄 : 형법 제356조 - 10년 이하 징역 실제 처벌 - 중국인 직원 A, B : 출국 후 중국 귀국 - 한국 경찰 검거 불가, 중국 공안 협조 거부 - 처벌 없음 [ 2.3 옥션·G마켓의 책임 ]\n안전성 확보 조치 의무 위반 법적 근거 : 정보통신망법 제28조 (개인정보의 보호조치, 2008년 당시) 위반 내용 1. 접근통제 미흡 - 협력업체 직원이 무제한 고객 정보 조회 - 업무 목적 외 조회 차단 안 됨, 권한 관리 부실 2. 로그 관리 미흡 - 대량 조회 기록 점검 안 함 - 비정상 조회 패턴 탐지 실패 - 수개월간 유출 탐지 못함 3. USB 차단 미흡 - 협력업체 직원 PC에서 USB 사용 가능 - 개인정보 반출 통제 없음 4. 이메일 모니터링 부재 - 개인정보 포함 이메일 전송 차단 안 됨 5. 협력업체 관리 부실 - 중국인 협력업체 직원 관리 미흡 - 보안 교육 부족, 감독 부실 해당 조항 - 정보통신망법 제73조 (벌칙, 당시) : 제28조 위반 시 2년 이하 징역 또는 2천만원 이하 벌금 [ 2.4 처벌 및 제재 ]\n정보통신부 제재 (2008년 3월) 옥션 및 G마켓 - 과태료 : 미부과 (당시 과징금 제도 없음) - 시정명령 : 내부 통제 강화, 협력업체 관리 강화, 보안 체계 개선 - 경고 민사 배상 집단 소송 (2008년 4월 제기) - 원고 : 약 20만 명 - 청구액 : 1인당 50만원 - 100만원, 총 청구액 약 1,000억원 규모 1심 판결 (2009년) - 1인당 5만원 - 10만원 배상 (일부 인용) - 총 배상액 : 약 10 - 20억원 2심 판결 (2010년) - 1심 유지, 총 배상액 약 10 - 20억원 확정 총 비용 추정 - 민사 배상 : 약 10 - 20억원 - 시스템 개선 : 약 100억원 (추정) - 총 직접 비용 : 약 120억원 이상 [ 2.5 사건의 법적 의미 ]\n개인정보보호법 제정 촉진 - 옥션·G마켓 사건 = 개인정보 보호 제도 강화 계기 - 2011년 개인정보보호법 제정 및 시행 - 과징금 제도 도입, 안전조치 기준 강화 과징금 제도 부재 (2008년 당시) - 시정명령만 가능, 처벌 약함 - 이후 과징금 제도 도입 (매출액 3%) 국제 공조 필요성 - 중국인 범인 검거 불가, 중국 공안 비협조 - 범죄인 인도 협정 및 국제 공조 필요성 인식 [ 3. 기술적 분석 ]\n[ 3.1 내부자 유출 수법 ]\n정당한 권한 악용 - 고객센터 업무로 정당한 조회 권한 보유 - 업무 목적 외 대량 조회 (탐지 어려움) 은밀한 유출 - 수개월간 일일 수천 건씩 조회하여 누적 - 한 번에 대량 조회하면 탐지 위험 회피 다양한 반출 경로 - USB 복사 - 이메일 전송 (개인 이메일 계정) - 클라우드 업로드 (추정) 중국 반출 - 중국으로 전송 후 개인정보 거래 시장에 판매 - 건당 수십 원 - 수백 원 [ 3.2 보안 취약점 ]\n접근통제 미흡 - 고객센터 직원도 주민번호, 계좌번호 무제한 조회 가능 - 최소 권한 원칙 미적용 - 필요한 대책 : 직무별 차등 권한, 조회 사유 입력 의무화, 민감정보 조회 제한 로그 관리 미흡 - 수개월간 대량 조회 = 명백히 비정상, 탐지 못함 - 로그 점검 안 함, 비정상 패턴 탐지 시스템 없음 - 필요한 대책 : 실시간 모니터링, 대량 조회 자동 경고, 월 1회 로그 점검 USB 차단 미흡 - 협력업체 직원 PC에서 USB 사용 가능, 아무런 제약 없음 - 필요한 대책 : USB 차단 (물리적 또는 정책), DLP, 워터마크 이메일 모니터링 부재 - 개인정보 포함 이메일 전송 차단 안 됨 - 필요한 대책 : 이메일 DLP, 개인정보 패턴 감지 및 차단, 외부 이메일 전송 제한 협력업체 관리 부실 - 중국인 직원에게 정규직과 동일한 권한 부여 - 보안 교육, 감독 미흡 - 필요한 대책 : 권한 최소화, 별도 감독, 외국인 직원 특별 관리 [ 3.3 사후 보안 강화 조치 ]\n접근통제 강화 - 최소 권한 원칙 적용, 직무별 차등 권한 - 조회 사유 입력 의무화 - 민감정보 조회 제한 (주민번호, 계좌번호) 로그 모니터링 강화 - 실시간 비정상 조회 탐지, 대량 조회 자동 경고 - 주 1회 로그 점검 USB 차단 및 이메일 모니터링 - 협력업체 PC USB 완전 차단, DLP 도입 - 이메일 DLP, 개인정보 포함 이메일 차단, 외부 전송 승인제 협력업체 관리 강화 - 연 4회 보안 교육, 법적 서약서 - 권한 최소화, 월 1회 점검 [ 4. 대응 평가 ]\n[ 4.1 잘한 점 ]\n자체 탐지 - 외부 신고가 아닌 자체 이상 징후 포착, 내부 조사로 유출 확인 신속한 신고 - 유출 확인 즉시 경찰, 정부 신고 투명한 공개 - 언론 브리핑, 고객 통지, 대표 공식 사과 [ 4.2 미흡한 점 ]\n사전 예방 실패 - 수개월간 탐지 못함 - 로그 점검 안 함 - 접근통제, USB 차단 등 기본 통제 부재 협력업체 관리 부실 - 중국인 협력업체 직원 = 고위험, 하지만 관리 미흡 범인 검거 실패 - 중국 귀국 후 검거 불가, 중국 공안 비협조, 처벌 없음 [ 5. 교훈 및 시사점 ]\n[ 5.1 기술적 교훈 ]\n내부자 위협 = 최대 위협 - 외부 해킹보다 내부자 유출이 더 위험 (정당한 권한 악용) - 대응 : 최소 권한 원칙, 로그 실시간 모니터링, 제로 트러스트 협력업체 = 취약점 - 특히 외국인 직원 = 반출 위험 높음 (중국 내 개인정보 시장) - 대응 : 협력업체 권한 최소화, 별도 관리 감독, 보안 교육 강화 로그 모니터링 필수 - 수개월간 대량 조회 = 탐지 가능했으나 로그 점검 안 해서 놓침 - 대응 : 실시간 + 주 1회 점검, 비정상 패턴 자동 탐지 USB + 이메일 동시 차단 - USB + 개인 이메일 = 대표적 반출 경로 - 대응 : USB 완전 차단, 이메일 DLP, 외부 전송 승인제 [ 5.2 법률적 교훈 ]\n개인정보보호법 제정 촉진 - 옥션·G마켓 사건 = 2011년 개인정보보호법 제정 계기 과징금 제도 부재 (2008년 당시) - 시정명령만 가능, 처벌 약함 - 이후 과징금 제도 도입 (매출액 3%) 국제 공조 필요 - 중국인 범인 검거 불가, 중국 공안 비협조 - 교훈 : 국제 공조 및 범죄인 인도 협정 필요 협력업체 직원도 동일 책임 - 협력업체 직원도 개인정보 취급자로서 동일한 법적 의무와 처벌 - 회사는 협력업체 관리 책임 [ 5.3 경영적 교훈 ]\n내부 통제 투자 필수 - 옥션·G마켓 총 손실 : 약 120억원 이상 - 사전 투자 추정 : 접근통제 10억원, DLP 5억원, 협력업체 관리 5억원 = 총 20억원 - 120억원 vs 20억원 = 6배 차이 협력업체 관리 = 필수 - 협력업체 = 보안 취약점, 하지만 현실적으로 필요 (고객센터 등) - 협력업체도 정규직과 동일 보안 기준 적용 외국인 직원 특별 관리 - 중국인 직원 = 중국 개인정보 시장 반출 위험 - 외국인 직원에 더 엄격한 권한 제한 및 모니터링 필요 [ 6. 2000년대 주요 개인정보 유출 사건 비교 ]\n옥션·G마켓 (2008년 2월) - 유출 규모 : 1,860만 건 - 유출 방식 : 내부자 (중국인) - 과징금 및 배상 : 과징금 없음, 배상 10 - 20억원 SK컴즈 (2011년 7월) - 유출 규모 : 3,500만 건 - 유출 방식 : 외부 해킹 (SQL Injection) - 과징금 및 배상 : 과징금 없음, 배상 100 - 150억원 KT (2012년 1월) - 유출 규모 : 1,200만 건 - 유출 방식 : 내부자 (콜센터) - 과징금 및 배상 : 과징금 4억원, 배상 50억원 옥션·G마켓 특징 - 2000년대 최대 규모 - 중국인 내부자, 중국 반출 - 개인정보보호법 시행 전 (과징금 없음) - 법 제정 계기 [ 7. 체크리스트 - 협력업체 관리 ]\n협력업체 선정 - 보안 능력 평가 - 과거 보안 사고 이력 확인 - 계약서에 보안 의무 및 위반 시 손해배상 조항 명시 협력업체 직원 관리 - 보안 교육 (연 4회) - 법적 구속력 있는 서약서 - 신원 조사 (외국인 특히 엄격) - 권한 최소화, 민감정보 접근 제한 접근통제 - 최소 권한 원칙, 직무별 차등 권한 - 조회 사유 입력 의무 - 조회 건수 제한, 민감정보 조회 제한 로그 관리 - 협력업체 직원 로그 별도 점검 (주 1회 이상) - 실시간 비정상 조회 탐지, 대량 조회 자동 경고 반출 통제 - USB 차단 (협력업체 PC) - DLP 도입, 워터마크, 화면 캡처 방지 - 이메일 모니터링, 외부 전송 승인제 감독 - 월 1회 현장 점검 - 분기 1회 보안 감사 - 이상 징후 즉시 조사 계약 종료 시 - 즉시 권한 회수 - 데이터 삭제 확인 - 서약 준수 확인 외국인 직원 추가 조치 - 더 엄격한 권한 제한 (정규직 기준의 50%) - 출국 전 데이터 삭제 확인 - 해당 국가 IP 접속 차단 (내부 시스템) [ 8. 관련 법령 ]\n정보통신망법 (2008년 당시) - 제28조 (개인정보의 보호조치) - 제49조 (벌칙 - 개인정보 누설, 5년 이하) - 제73조 (벌칙 - 안전조치 위반, 2년 이하) 형법 - 제356조 (업무상 배임, 10년 이하) 개인정보보호법 (2011년 시행, 사후 입법) - 제29조 (안전성 확보 조치) - 제70조 (벌칙 - 5년 이하) - 제71조 (벌칙 - 2년 이하) [ 학습 정리 ]\n옥션·G마켓 사건에서 배운 점 - 2008년 국내 최대 규모 개인정보 유출 (1,860만 건) - 중국인 협력업체 직원이 정당한 권한 악용 - 수개월간 대량 조회했으나 탐지 못함 - USB, 이메일로 중국 반출 후 거래 시장 판매 - 개인정보보호법 시행 전이라 과징금 없음 (시정명령만) - 접근통제 미흡, 로그 점검 안 함, USB 및 이메일 차단 안 됨 - 협력업체 관리 부실이 핵심 원인 - 중국 귀국 후 검거 불가 (중국 공안 비협조) - 민사 배상 10 - 20억원 - 개인정보보호법 제정 촉진 계기 - 협력업체, 특히 외국인 직원 관리 중요성 인식 - 최소 권한 원칙, 로그 모니터링, USB 및 이메일 차단 필수 - 국제 공조 필요성 인식 - 사전 투자 20억원으로 120억원 손실 예방 가능 (6배 차이) ",
+  "wordCount" : "4496",
+  "inLanguage": "ko",
+  "datePublished": "2026-04-09T00:00:00Z",
+  "dateModified": "2026-04-09T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C/day49_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C%EC%82%AC%EB%A1%805_%EC%98%A5%EC%85%98g%EB%A7%88%EC%BC%93/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
 </script>
 </head>
 <body id="top">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -102,37 +170,37 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/about" title="소개">
+                <a href="https://hojjang98.github.io/about" title="소개">
                     <span>소개</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
                     <span>일일 로그</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/projects/" title="Projects">
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
                     <span>프로젝트</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/cyber-law-study/" title="Cyber-Law-Study">
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
                     <span>보안법 공부</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
                     <span>보안 시사 분석</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
                     <span>태그</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/paper-review/" title="Paper-Review">
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
                     <span>논문 리뷰</span>
                 </a>
             </li>
@@ -143,7 +211,7 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/">홈</a>&nbsp;»&nbsp;<a href="http://localhost:1313/cyber_law_study/">보안 컨설팅 공부</a></div>
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/cyber_law_study/">보안 컨설팅 공부</a></div>
     <h1 class="post-title entry-hint-parent">
       Day 49: 실무 사례 #9 - 옥션·G마켓 개인정보 유출 (2008)
     </h1>
@@ -553,21 +621,21 @@ KT (2012년 1월)
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/">실무사례</a></li>
-      <li><a href="http://localhost:1313/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C/">개인정보유출</a></li>
-      <li><a href="http://localhost:1313/tags/%EC%98%A5%EC%85%98/">옥션</a></li>
-      <li><a href="http://localhost:1313/tags/g%EB%A7%88%EC%BC%93/">G마켓</a></li>
-      <li><a href="http://localhost:1313/tags/%EB%82%B4%EB%B6%80%EC%9E%90%EC%9C%A0%EC%B6%9C/">내부자유출</a></li>
-      <li><a href="http://localhost:1313/tags/%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%A7%9D%EB%B2%95/">정보통신망법</a></li>
-      <li><a href="http://localhost:1313/tags/%ED%98%91%EB%A0%A5%EC%97%85%EC%B2%B4%EA%B4%80%EB%A6%AC/">협력업체관리</a></li>
-      <li><a href="http://localhost:1313/tags/%EC%A4%91%EA%B5%AD%EB%B0%98%EC%B6%9C/">중국반출</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/">실무사례</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C/">개인정보유출</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%98%A5%EC%85%98/">옥션</a></li>
+      <li><a href="https://hojjang98.github.io/tags/g%EB%A7%88%EC%BC%93/">G마켓</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%82%B4%EB%B6%80%EC%9E%90%EC%9C%A0%EC%B6%9C/">내부자유출</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%A0%95%EB%B3%B4%ED%86%B5%EC%8B%A0%EB%A7%9D%EB%B2%95/">정보통신망법</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%ED%98%91%EB%A0%A5%EC%97%85%EC%B2%B4%EA%B4%80%EB%A6%AC/">협력업체관리</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%A4%91%EA%B5%AD%EB%B0%98%EC%B6%9C/">중국반출</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
 
     <span>
         Powered by

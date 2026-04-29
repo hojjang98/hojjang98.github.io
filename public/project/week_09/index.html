@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="ko" dir="auto" data-theme="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>Week 09 — 웹 취약점 자동화 스캐너 개발 | HJ&#39;s Security Note</title>
 <meta name="keywords" content="Python, 웹보안, 자동화, 스캐너, SQLInjection, XSS, CSRF, 파일업로드, OWASP, SK쉴더스루키즈">
 <meta name="description" content="Week 08에서 공격자 시점을 체험했다면, Week 09는 그 반대편 — 취약점을 자동으로 탐지하는 Python 보안 스캐너를 직접 설계하고 구현한 프로젝트">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/project/week_09/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.c8c3b65cd6d058be2b4f050fd7a688ac13a23056571601dabe4f70d8d008259e.css" integrity="sha256-yMO2XNbQWL4rTwUP16aIrBOiMFZXFgHavk9w2NAIJZ4=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="canonical" href="https://hojjang98.github.io/project/week_09/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.898219bd95f420a374e6df8d4ee9050d8913bfcf44c82e41bddff27ad9322aec.css" integrity="sha256-iYIZvZX0IKN05t&#43;NTukFDYkTv89EyC5Bvd/yetkyKuw=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="ko" href="http://localhost:1313/project/week_09/">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/project/week_09/">
 <noscript>
     <style>
         #theme-toggle,
@@ -70,13 +70,88 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
+</script><meta property="og:url" content="https://hojjang98.github.io/project/week_09/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="Week 09 — 웹 취약점 자동화 스캐너 개발">
+  <meta property="og:description" content="Week 08에서 공격자 시점을 체험했다면, Week 09는 그 반대편 — 취약점을 자동으로 탐지하는 Python 보안 스캐너를 직접 설계하고 구현한 프로젝트">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="project">
+    <meta property="article:published_time" content="2026-01-02T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-01-02T00:00:00+00:00">
+    <meta property="article:tag" content="Python">
+    <meta property="article:tag" content="웹보안">
+    <meta property="article:tag" content="자동화">
+    <meta property="article:tag" content="스캐너">
+    <meta property="article:tag" content="SQLInjection">
+    <meta property="article:tag" content="XSS">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_19/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_18/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_17/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_16/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_15/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_14/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_13/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Week 09 — 웹 취약점 자동화 스캐너 개발">
+<meta name="twitter:description" content="Week 08에서 공격자 시점을 체험했다면, Week 09는 그 반대편 — 취약점을 자동으로 탐지하는 Python 보안 스캐너를 직접 설계하고 구현한 프로젝트">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "프로젝트",
+      "item": "https://hojjang98.github.io/project/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Week 09 — 웹 취약점 자동화 스캐너 개발",
+      "item": "https://hojjang98.github.io/project/week_09/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Week 09 — 웹 취약점 자동화 스캐너 개발",
+  "name": "Week 09 — 웹 취약점 자동화 스캐너 개발",
+  "description": "Week 08에서 공격자 시점을 체험했다면, Week 09는 그 반대편 — 취약점을 자동으로 탐지하는 Python 보안 스캐너를 직접 설계하고 구현한 프로젝트",
+  "keywords": [
+    "Python", "웹보안", "자동화", "스캐너", "SQLInjection", "XSS", "CSRF", "파일업로드", "OWASP", "SK쉴더스루키즈"
+  ],
+  "articleBody": "Week 09 — 웹 취약점 자동화 스캐너 개발 전체 소스코드는 GitHub에서 확인할 수 있습니다. hojjang98 / skshielders-rookies-28 — projects/week_09\n교육 목적으로 구성된 실습입니다. 의도적으로 취약한 환경을 대상으로만 사용하며, 무단 스캔은 정보통신망법 위반입니다.\n개요 Week 08 에서는 공격자 시점에서 SQL Injection 과 XSS 를 직접 수행했다. Week 09 는 그 반대편이다. 이번에는 방어자 시점에서, 취약점을 자동으로 찾아내는 Python 기반 보안 스캐너를 직접 설계하고 구현했다.\n단순히 “공격이 가능한가?“를 넘어 어디에, 어떤 심각도로, 왜 취약한가 를 자동으로 판단하고 리포트로 출력하는 도구를 만드는 것이 이번 주의 핵심이었다.\n시스템 전체 구조 프로젝트는 취약한 타깃 앱 과 이를 진단하는 스캐너 두 부분으로 구성된다.\nvulnerable_app/ -- 의도적으로 취약하게 구현한 Flask 웹 앱 (스캔 대상)\r├── app.py -- 메인 애플리케이션 (SQL Injection, XSS, CSRF, 파일업로드 취약)\r├── templates/ -- 로그인, 게시판, 검색, 업로드, 프로필 HTML\r└── uploads/ -- 업로드 파일 저장소 (확장자 검증 없음)\rscanners/ -- 자동화 취약점 스캐너 모음\r├── sql_injection_scanner.py\r├── xss_scanner.py\r├── csrf_scanner.py\r├── file_upload_scanner.py\r└── integrated_scanner.py -- 4개 스캐너를 통합 실행하는 오케스트레이터\rreports/ -- 스캔 결과 자동 저장\r└── FINAL_COMPREHENSIVE_REPORT_*.txt\r구현된 취약점 4종 (타깃 앱) 타깃 앱은 현실적인 공격 시나리오를 테스트할 수 있도록 4가지 취약점을 의도적으로 내포하고 있다.\n취약점 위치 심각도 대표 페이로드 SQL Injection 로그인 폼, 검색 기능 CRITICAL ~ HIGH ’ OR ‘1’=‘1 XSS 게시판, 검색 결과 HIGH script 태그, img onerror CSRF 프로필 수정, 글 작성 HIGH ~ MEDIUM CSRF 토큰 미구현 File Upload 파일 업로드 기능 CRITICAL .php, .py, .exe 업로드 가능 테스트 계정:\nadmin / admin123 -- 관리자 계정\ruser1 / password1 -- 일반 사용자\rtestuser / test123 -- 테스트 사용자\r핵심 코드 — 스캐너 설계 원칙 1. 공통 스캔 인터페이스 각 개별 스캐너는 동일한 구조의 딕셔너리를 반환한다. 이 일관된 인터페이스 덕분에 IntegratedScanner 가 결과를 타입 무관하게 수집하고 집계할 수 있다.\n# 각 스캐너의 반환 형식 (예: SQL Injection 취약점 발견 시)\r{\r\"type\": \"SQL Injection\",\r\"severity\": \"CRITICAL\",\r\"location\": \"http://localhost:5000/login\",\r\"payload\": \"' OR '1'='1' --\",\r\"description\": \"로그인 폼에서 SQL Injection 취약점 발견. 인증 우회 가능\"\r}\r심각도 기준:\nCRITICAL — 즉각적인 데이터 탈취 또는 시스템 제어 가능 (파일 업로드, SQLi 인증 우회) HIGH — 사용자 세션 탈취 또는 중요 기능 조작 가능 (XSS, CSRF) MEDIUM — 정보 노출 또는 부분적 기능 영향 2. IntegratedScanner — 오케스트레이터 패턴 4개의 개별 스캐너를 순차 실행하고, 결과를 통합하여 종합 리포트를 생성하는 클래스다.\n흐름:\nIntegratedScanner(\"http://localhost:5000\")\r│\r├── [1/4] SQLInjectionScanner.scan() =\u003e sql_vulns 리스트\r├── [2/4] XSSScanner.scan() =\u003e xss_vulns 리스트\r├── [3/4] CSRFScanner.scan() =\u003e csrf_vulns 리스트\r└── [4/4] FileUploadScanner.scan() =\u003e upload_vulns 리스트\r│\r▼\rall_vulnerabilities 통합\r│\r▼\rgenerate_summary_report()\r=\u003e CRITICAL / HIGH / MEDIUM 심각도별 분류\r=\u003e 취약점별 위치 + 페이로드 + 설명 상세 기록\r=\u003e 보안 권장사항 자동 추가\r핵심 집계 로직 (축약):\nclass IntegratedScanner:\rdef __init__(self, base_url):\rself.base_url = base_url\rself.all_vulnerabilities = []\rself.scan_results = {}\rdef run_all_scans(self):\rfor Scanner, key in [(SQLInjectionScanner, 'SQL Injection'), ...]:\rvulns = Scanner(self.base_url).scan()\rself.scan_results[key] = vulns\rself.all_vulnerabilities.extend(vulns) # 타입 무관 통합\rdef generate_summary_report(self):\rcritical = [v for v in self.all_vulnerabilities if v.get('severity') == 'CRITICAL']\rhigh = [v for v in self.all_vulnerabilities if v.get('severity') == 'HIGH']\rmedium = [v for v in self.all_vulnerabilities if v.get('severity') == 'MEDIUM']\r# 심각도별 분류 후 리포트 문자열 생성\r스캐너별 탐지 방식 SQL Injection 스캐너 로그인 폼과 검색 기능에 페이로드를 자동으로 주입하고 응답을 분석한다.\n테스트 페이로드 목록:\r- ' OR '1'='1 =\u003e Boolean-based: 항상 참인 조건 삽입\r- ' OR '1'='1' -- =\u003e 주석으로 나머지 쿼리 무력화\r- ' UNION SELECT username, password FROM users-- =\u003e UNION 기반 데이터 추출 시도\r- '; DROP TABLE users-- =\u003e 구조 파괴 시도 (오류 메시지 분석용)\r탐지 기준:\r- 응답에 \"Welcome\", \"Dashboard\" 등 로그인 성공 키워드 포함 =\u003e 인증 우회 확인\r- 응답에 \"SQL\", \"sqlite\", \"syntax error\" 포함 =\u003e 에러 기반 SQLi 확인\rXSS 스캐너 게시판 글 작성과 검색 기능에 스크립트 페이로드를 삽입하고 응답 HTML 에 그대로 반영되는지 확인한다.\n테스트 페이로드 목록:\r- - =\u003e 이벤트 핸들러 기반 (필터 우회 변형)\r- =\u003e SVG 태그 활용 우회\r- javascript:alert('XSS') =\u003e URL 스킴 기반\r탐지 기준:\r- 응답 HTML 에 페이로드 문자열이 이스케이프 없이 그대로 포함되면 취약으로 판정\rCSRF 스캐너 상태 변경 기능(프로필 수정, 글 작성)의 HTML 폼에 CSRF 토큰이 존재하는지 점검한다.\n탐지 기준:\r- 폼 내부에 csrf_token, _token, authenticity_token 등 토큰 필드 부재 =\u003e CSRF 취약\r- 요청 헤더에 Origin / Referer 검증 로직 부재 여부도 확인\rFile Upload 스캐너 위험한 확장자의 파일을 업로드하고 서버가 수용하는지 테스트한다.\n테스트 확장자 목록:\r.php, .php5, .phtml, =\u003e 서버사이드 코드 실행 가능\r.py, .rb, .pl, =\u003e 스크립트 실행\r.sh, .bash, =\u003e 쉘 스크립트\r.exe, .bat, =\u003e 실행 파일\r.htaccess =\u003e 서버 설정 덮어쓰기\r탐지 기준:\r- 업로드 요청 응답 코드가 200 이고 \"success\" 등의 키워드 포함 =\u003e CRITICAL\r종합 리포트 출력 구조 스캔 완료 후 자동으로 생성되는 리포트 형식:\n======================================================================\rCOMPREHENSIVE SECURITY SCAN REPORT\r======================================================================\rScan Date: 2026-01-02 14:30:00\rTarget URL: http://localhost:5000\r======================================================================\rVULNERABILITY SUMMARY\r----------------------------------------------------------------------\rTotal Vulnerabilities Found: 9\r- SQL Injection : 3 vulnerabilities\r- XSS : 2 vulnerabilities\r- CSRF : 2 vulnerabilities\r- File Upload : 2 vulnerabilities\rSEVERITY BREAKDOWN\r----------------------------------------------------------------------\rCRITICAL : 3\rHIGH : 5\rMEDIUM : 1\rDETAILED VULNERABILITY LIST\r======================================================================\r1. [CRITICAL] SQL Injection\rLocation : http://localhost:5000/login\rPayload : ' OR '1'='1' --\rDescription: 로그인 폼 인증 우회 가능\r...\rSECURITY RECOMMENDATIONS\r======================================================================\r1. SQL Injection Prevention:\r- Use parameterized queries (prepared statements)\r...\rWeek 08 -\u003e Week 09 성장 포인트 관점 Week 08 (공격자) Week 09 (방어자) 역할 취약점을 직접 익스플로잇 취약점을 자동으로 탐지 도구 브라우저 입력창 Python requests + BeautifulSoup 대상 단일 취약점 실습 4가지 취약점 종합 스캔 결과물 공격 성공 확인 심각도별 분류 + 자동 리포트 관점 “어떻게 뚫을까?” “어디가 뚫릴 수 있는가?” 방어 권장사항 (리포트 내 자동 생성) SQL Injection Parameterized Queries (Prepared Statements) 사용 ORM 프레임워크 활용 (SQLAlchemy, Django ORM) 입력값 화이트리스트 검증 XSS Output Encoding / Escaping 구현 Content Security Policy (CSP) 헤더 적용 템플릿 엔진의 Auto-escaping 유지 (|safe 미사용) CSRF 모든 상태 변경 요청에 CSRF 토큰 구현 SameSite 쿠키 속성 설정 (Strict 또는 Lax) Origin / Referer 헤더 서버 측 검증 File Upload 화이트리스트 기반 확장자 검증 (허용 목록만 통과) 파일 내용 검증 (Magic Bytes 확인) 업로드 파일을 웹 루트 외부 경로에 저장 업로드 파일명 서버 측 재생성 (원본 파일명 사용 금지) 업로드 용량 제한 설정 학습 성과 정리 영역 학습 내용 보안 자동화 반복적인 취약점 테스트를 스크립트로 자동화하는 방법론 체득 스캐너 설계 공통 인터페이스 기반 모듈화로 확장성 있는 구조 설계 취약점 탐지 SQL Injection / XSS / CSRF / File Upload 자동 탐지 로직 구현 리포트 생성 심각도별 분류, 발견사항 상세 기록, 권장사항 자동 출력 공격-방어 연결 공격 기법을 이해해야 탐지 로직을 설계할 수 있다는 원칙 체감 향후 확장 방향 Path Traversal 스캐너 — ../../../etc/passwd 형태의 디렉토리 탐색 탐지 SSRF 스캐너 — 서버를 통한 내부 네트워크 요청 위조 탐지 인증/세션 스캐너 — 세션 고정, 취약한 쿠키 설정 탐지 HTML 리포트 — 텍스트 리포트를 색상 코드 기반 인터랙티브 HTML 로 전환 크롤러 통합 — 엔드포인트를 자동 탐색하여 스캔 범위 자동 확장 ",
+  "wordCount" : "2355",
+  "inLanguage": "ko",
+  "datePublished": "2026-01-02T00:00:00Z",
+  "dateModified": "2026-01-02T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/project/week_09/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
 </script>
 </head>
 <body id="top">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -102,37 +177,37 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/about" title="소개">
+                <a href="https://hojjang98.github.io/about" title="소개">
                     <span>소개</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
                     <span>일일 로그</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/projects/" title="Projects">
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
                     <span>프로젝트</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/cyber-law-study/" title="Cyber-Law-Study">
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
                     <span>보안법 공부</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
                     <span>보안 시사 분석</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
                     <span>태그</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/paper-review/" title="Paper-Review">
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
                     <span>논문 리뷰</span>
                 </a>
             </li>
@@ -143,7 +218,7 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/">홈</a>&nbsp;»&nbsp;<a href="http://localhost:1313/project/">프로젝트</a></div>
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/project/">프로젝트</a></div>
     <h1 class="post-title entry-hint-parent">
       Week 09 — 웹 취약점 자동화 스캐너 개발
     </h1>
@@ -482,23 +557,23 @@ SECURITY RECOMMENDATIONS
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/python/">Python</a></li>
-      <li><a href="http://localhost:1313/tags/%EC%9B%B9%EB%B3%B4%EC%95%88/">웹보안</a></li>
-      <li><a href="http://localhost:1313/tags/%EC%9E%90%EB%8F%99%ED%99%94/">자동화</a></li>
-      <li><a href="http://localhost:1313/tags/%EC%8A%A4%EC%BA%90%EB%84%88/">스캐너</a></li>
-      <li><a href="http://localhost:1313/tags/sqlinjection/">SQLInjection</a></li>
-      <li><a href="http://localhost:1313/tags/xss/">XSS</a></li>
-      <li><a href="http://localhost:1313/tags/csrf/">CSRF</a></li>
-      <li><a href="http://localhost:1313/tags/%ED%8C%8C%EC%9D%BC%EC%97%85%EB%A1%9C%EB%93%9C/">파일업로드</a></li>
-      <li><a href="http://localhost:1313/tags/owasp/">OWASP</a></li>
-      <li><a href="http://localhost:1313/tags/sk%EC%89%B4%EB%8D%94%EC%8A%A4%EB%A3%A8%ED%82%A4%EC%A6%88/">SK쉴더스루키즈</a></li>
+      <li><a href="https://hojjang98.github.io/tags/python/">Python</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%9B%B9%EB%B3%B4%EC%95%88/">웹보안</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%9E%90%EB%8F%99%ED%99%94/">자동화</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%8A%A4%EC%BA%90%EB%84%88/">스캐너</a></li>
+      <li><a href="https://hojjang98.github.io/tags/sqlinjection/">SQLInjection</a></li>
+      <li><a href="https://hojjang98.github.io/tags/xss/">XSS</a></li>
+      <li><a href="https://hojjang98.github.io/tags/csrf/">CSRF</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%ED%8C%8C%EC%9D%BC%EC%97%85%EB%A1%9C%EB%93%9C/">파일업로드</a></li>
+      <li><a href="https://hojjang98.github.io/tags/owasp/">OWASP</a></li>
+      <li><a href="https://hojjang98.github.io/tags/sk%EC%89%B4%EB%8D%94%EC%8A%A4%EB%A3%A8%ED%82%A4%EC%A6%88/">SK쉴더스루키즈</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
 
     <span>
         Powered by

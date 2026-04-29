@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="ko" dir="auto" data-theme="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>Day 32: 전기통신사업법 | HJ&#39;s Security Note</title>
 <meta name="keywords" content="전기통신사업법, 기간통신사업자, 통신비밀, 망중립성, CISO, ISMS, 통신장애, 통신자료">
 <meta name="description" content="통신사업자를 규제하는 전기통신사업법을 학습합니다. 사업자 분류, 정보보호 의무, 통신비밀 보호, 망 중립성 원칙, 통신 자료 제공 절차를 정리합니다.">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/10_%ED%86%B5%EC%8B%A0%EC%82%AC%EC%97%85/day32_%EC%A0%84%EA%B8%B0%ED%86%B5%EC%8B%A0%EC%82%AC%EC%97%85%EB%B2%95/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.c8c3b65cd6d058be2b4f050fd7a688ac13a23056571601dabe4f70d8d008259e.css" integrity="sha256-yMO2XNbQWL4rTwUP16aIrBOiMFZXFgHavk9w2NAIJZ4=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="canonical" href="https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/10_%ED%86%B5%EC%8B%A0%EC%82%AC%EC%97%85/day32_%EC%A0%84%EA%B8%B0%ED%86%B5%EC%8B%A0%EC%82%AC%EC%97%85%EB%B2%95/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.898219bd95f420a374e6df8d4ee9050d8913bfcf44c82e41bddff27ad9322aec.css" integrity="sha256-iYIZvZX0IKN05t&#43;NTukFDYkTv89EyC5Bvd/yetkyKuw=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="ko" href="http://localhost:1313/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/10_%ED%86%B5%EC%8B%A0%EC%82%AC%EC%97%85/day32_%EC%A0%84%EA%B8%B0%ED%86%B5%EC%8B%A0%EC%82%AC%EC%97%85%EB%B2%95/">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/10_%ED%86%B5%EC%8B%A0%EC%82%AC%EC%97%85/day32_%EC%A0%84%EA%B8%B0%ED%86%B5%EC%8B%A0%EC%82%AC%EC%97%85%EB%B2%95/">
 <noscript>
     <style>
         #theme-toggle,
@@ -70,13 +70,81 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
+</script><meta property="og:url" content="https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/10_%ED%86%B5%EC%8B%A0%EC%82%AC%EC%97%85/day32_%EC%A0%84%EA%B8%B0%ED%86%B5%EC%8B%A0%EC%82%AC%EC%97%85%EB%B2%95/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="Day 32: 전기통신사업법">
+  <meta property="og:description" content="통신사업자를 규제하는 전기통신사업법을 학습합니다. 사업자 분류, 정보보호 의무, 통신비밀 보호, 망 중립성 원칙, 통신 자료 제공 절차를 정리합니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="cyber_law_study">
+    <meta property="article:published_time" content="2026-03-16T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-03-16T00:00:00+00:00">
+    <meta property="article:tag" content="전기통신사업법">
+    <meta property="article:tag" content="기간통신사업자">
+    <meta property="article:tag" content="통신비밀">
+    <meta property="article:tag" content="망중립성">
+    <meta property="article:tag" content="CISO">
+    <meta property="article:tag" content="ISMS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Day 32: 전기통신사업법">
+<meta name="twitter:description" content="통신사업자를 규제하는 전기통신사업법을 학습합니다. 사업자 분류, 정보보호 의무, 통신비밀 보호, 망 중립성 원칙, 통신 자료 제공 절차를 정리합니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "보안 컨설팅 공부",
+      "item": "https://hojjang98.github.io/cyber_law_study/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Day 32: 전기통신사업법",
+      "item": "https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/10_%ED%86%B5%EC%8B%A0%EC%82%AC%EC%97%85/day32_%EC%A0%84%EA%B8%B0%ED%86%B5%EC%8B%A0%EC%82%AC%EC%97%85%EB%B2%95/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Day 32: 전기통신사업법",
+  "name": "Day 32: 전기통신사업법",
+  "description": "통신사업자를 규제하는 전기통신사업법을 학습합니다. 사업자 분류, 정보보호 의무, 통신비밀 보호, 망 중립성 원칙, 통신 자료 제공 절차를 정리합니다.",
+  "keywords": [
+    "전기통신사업법", "기간통신사업자", "통신비밀", "망중립성", "CISO", "ISMS", "통신장애", "통신자료"
+  ],
+  "articleBody": "Day 32: 전기통신사업법 1. 전기통신사업법의 개요 1.1 전기통신사업법이란? 정식 명칭 : 전기통신사업법\n약칭 : 전기통신법, 통신사업법\n제정 : 1983년 12월 30일\n최신 개정 : 2024년\n1.2 목적 제1조 (목적)\n“이 법은 전기통신사업의 적정한 운영을 도모함으로써 전기통신의 효율적 관리 및 이용자의 권익을 보호 하고 전기통신산업의 건전한 발전 을 촉진하여 공공복리의 증진 에 이바지함을 목적으로 한다”\n핵심\n- 통신사업 규제 (KT, SK텔레콤, LG U+ 등) - 이용자 보호 - 통신산업 발전 - 공공복리 1.3 주무 부처 과학기술정보통신부 (과기정통부)\n1.4 다른 법과의 관계 법률 관계 정보통신망법 정보통신서비스 제공자 규제 (온라인 서비스) 전기통신사업법 통신사업자 규제 (통신망 운영) 정보통신기반 보호법 주요기반시설 보호 (중첩 가능) 개인정보보호법 개인정보 보호 (중첩) 차이점\n- 전기통신사업법 : 통신망 운영자 (KT, SKT 등) - 정보통신망법 : 온라인 서비스 (네이버, 카카오 등) 2. 주요 용어 2.1 전기통신 정의 (제2조)\n“유선·무선·광선 및 그 밖의 전자적 방식으로 부호·문언·음향 또는 영상을 송신하거나 수신 하는 것”\n예시\n- 전화 통화 - 문자 메시지 (SMS) - 인터넷 데이터 전송 - 영상 통화 2.2 전기통신설비 정의 (제2조)\n“전기통신을 하기 위한 기계·기구·선로 및 그 밖에 필요한 설비 \"\n예시\n- 기지국 (5G, LTE) - 교환기 - 광케이블 - 위성 - 해저 케이블 2.3 전기통신역무 정의 (제2조)\n“전기통신설비를 이용하여 타인의 통신을 매개 하거나 전기통신설비를 타인의 통신용으로 제공 하는 것”\n통신 서비스 (전화, 인터넷, 문자 등)를 말합니다.\n2.4 전기통신사업 정의 (제2조)\n“전기통신역무를 타인에게 제공 하는 사업”\n주요 사업자\n- KT - SK텔레콤 - LG U+ - 알뜰폰 사업자 (MVNO) 2.5 전기통신사업자 분류 (1) 기간통신사업자 정의 : 전송설비를 소유·임차하여 기간통신역무를 제공 하는 사업자\n특징 : 통신망 직접 소유, 허가 필요\n예시\n- KT (유선, 무선) - SK텔레콤 (무선) - LG U+ (유선, 무선) (2) 별정통신사업자 정의 : 기간통신사업자 외의 전기통신사업자\n특징 : 통신망 임차 사용, 등록 필요\n예시\n- 알뜰폰 사업자 (MVNO) - 티모빌 - 유모바일 - KT M모바일 2.6 통신비밀 정의 (제83조)\n“누구든지 전기통신사업자가 취급 중에 있는 통신의 비밀 을 침해하여서는 아니 된다”\n범위\n- 통화 내용 - 문자 내용 - 통신 사실 (누가, 언제, 누구와) 3. 전기통신사업 허가·등록 3.1 기간통신사업 허가 (제5조) 허가 대상 : 기간통신사업을 영위하려는 자\n허가 기관 : 과학기술정보통신부장관\n허가 기준\n- 재정적·기술적 능력 - 전기통신설비 확보 계획 - 전기통신망 안정성 [허가 절차]\n- 1. 허가 신청 - 2. 심사 (과기정통부) - 3. 허가 또는 불허 - 4. 사업 개시 3.2 별정통신사업 등록 (제22조) 등록 대상 : 별정통신사업을 영위하려는 자\n등록 기관 : 과학기술정보통신부장관\n등록 요건\n- 기술 능력 - 재정 능력 4. 정보보호 관련 조항 4.1 정보보호 최고책임자 (제66조의2) 지정 의무 대상\n- 기간통신사업자 - 과기정통부령으로 정하는 별정통신사업자 자격\n- 임원 또는 이에 준하는 직급 - 정보보호 관련 경력 5년 이상 또는 7년 이상 역할\n- 정보보호 정책 수립·시행 - 정보보호 관리체계 수립·운영 - 침해사고 예방 및 대응 - 정보보호 교육·훈련 독립성 보장 (제66조의3)\n- 정보보호 업무 외 겸직 제한 - 정당한 사유 없이 해임 불가 4.2 정보보호 관리체계 인증 (제47조) ISMS 인증 대상\n- 일정 규모 이상 기간통신사업자 - 과기정통부령으로 정하는 별정통신사업자 인증 기관 : 한국인터넷진흥원 (KISA)\n유효 기간 : 3년\n갱신 : 만료 전 재인증\n4.3 정보보호 조치 (제66조) 제66조 (정보의 보호 등)\n“전기통신사업자는 이용자의 정보 및 통신비밀 을 보호하기 위하여 다음 각 호의 조치를 하여야 한다”\n[기술적 조치]\n- 접근통제 - 암호화 - 침입탐지·차단 - 보안 패치 [관리적 조치]\n- 정보보호 정책 - 인력 관리 - 접근 권한 관리 [물리적 조치]\n- 출입통제 - 시설 보안 4.4 통신비밀 보호 (제83조) 제83조 (통신비밀의 보호)\n“누구든지 전기통신사업자가 취급 중에 있는 통신의 비밀을 침해하여서는 아니 된다 \"\n금지 행위\n- 통신 내용 도청 - 통신 내용 녹음·녹화 - 통신 사실 무단 확인 - 통신 내용 공개 예외 : 통신비밀보호법에 따른 경우만 허용\n- 법원 허가 (영장) - 국가안보 (엄격한 요건) 4.5 개인정보 보호 (제85조의2) 제85조의2 (개인정보의 보호)\n“전기통신사업자는 이용자의 개인정보를 보호 하여야 한다”\n준용 법률 : 개인정보보호법\n추가 의무\n- 위치정보 : 위치정보법 준수, 동의 없이 수집·이용 금지 - 통신 사실 확인자료 : 통신비밀보호법 준수, 법원 허가 없이 제공 금지 5. 망 중립성 (Network Neutrality) 5.1 개념 모든 인터넷 트래픽을 차별 없이 동등하게 처리해야 한다는 원칙\n- 통신사가 특정 서비스를 차단하거나 속도 제한 금지 - 모든 콘텐츠를 동등하게 전송 5.2 법적 근거 (제50조의8) 금지 행위 - 불합리한 차별\n- 특정 서비스 차단 금지 - 특정 서비스 속도 제한 금지 - 특정 서비스 우대 금지 예외 - 합리적 트래픽 관리\n- 망 안정성 확보 - 불법 콘텐츠 차단 (법원 명령) 5.3 실무 사례 금지되는 행위\n- 유튜브만 속도 제한 (X) - 넷플릭스 차단 (X) - 자사 서비스만 무료 (제한적 허용) 허용되는 행위\n- 전체 네트워크 혼잡 시 일시적 속도 조절 - 불법 사이트 차단 (법원 명령 시) 6. 망 사용료 분쟁 6.1 배경 - 대용량 트래픽 발생 (유튜브, 넷플릭스 등) - 통신사 망 증설 비용 증가 - 망 사용료 부담 논란 6.2 법적 쟁점 제34조 (전기통신설비의 제공 등) : 전기통신사업자 간 설비 제공 및 대가\n논점\n- 콘텐츠 사업자 (CP) 는 통신사업자인가? - 망 사용료 부담 주체는 누구인가? 6.3 현황 국내\n- 대형 CP (유튜브, 넷플릭스 등)와 통신사 간 협상 - 명확한 법적 기준 없음 해외\n- 미국 : 망 중립성 원칙 - EU : 망 중립성 규정 7. 통신 장애 대응 7.1 통신 장애 발생 시 의무 (제62조의2) 통지 의무 대상\n- 2시간 이상 장애 - 또는 10만 명 이상 영향 통지 대상\n- 과학기술정보통신부 - 한국방송통신전파진흥원 통지 시기 : 즉시 (장애 인지 시)\n원인 조사 및 재발 방지\n- 장애 원인 분석 및 조치 내역 정리 - 개선 대책 수립 후 과기정통부 보고 7.2 최근 사례 2024년 KT 인터넷 장애\n- 전국적 인터넷 장애 (약 3시간) - 원인 : 라우팅 설정 오류 - 조치 : 즉시 과기정통부 보고, 원인 조사, 재발 방지 대책 수립 2021년 카카오 데이터센터 화재\n- 카카오톡, 카카오맵 등 서비스 중단 - 통신사는 아니지만 사회적 파장으로 통신사업자에 준하는 대응 요구 8. 통신 자료 제공 8.1 통신 사실 확인자료 통신의 내용 이 아닌, 통신의 사실 관계 를 나타내는 자료입니다.\n포함\n- 발신·착신 전화번호 - 통화 시작·종료 시간 - 통화 지속 시간 - 기지국 위치 (대략적 위치) 제외\n- 통화 내용 (X) - 문자 내용 (X) 8.2 제공 절차 (통신비밀보호법 적용) 수사기관 요청 요건\n- 법원 허가 (영장) - 또는 긴급 요청 (사후 허가) [제공 절차]\n- 1. 수사기관 요청 - 2. 법원 허가 - 3. 통신사 제공 - 4. 이용자 통보 (사후) 예외 : 본인 동의 시 이용자가 직접 요청하면 즉시 제공\n8.3 보관 의무 (제83조의2) 보관 대상 : 통신 사실 확인자료\n보관 기간 : 12개월\n목적 : 수사기관 요청 시 제공\n9. 보안 관련 의무 사항 정리 9.1 기간통신사업자 체크리스트 [조직]\n- 정보보호 최고책임자를 지정했는가? (임원급) - 정보보호 전담 조직이 있는가? [인증]\n- ISMS 인증을 받았는가? - 유효 기간 내인가? (3년) [기술적 보호 조치]\n- 접근통제 시스템을 구축했는가? - 암호화를 적용했는가? (통신 내용 암호화, 개인정보 암호화) - 침입탐지·차단 시스템 (IDS/IPS)을 구축했는가? - 보안 패치를 정기적으로 적용하는가? [관리적 보호 조치]\n- 정보보호 정책을 수립했는가? - 접근 권한 관리를 하는가? - 정기 보안 교육을 실시하는가? [물리적 보호 조치]\n- 출입통제 시스템이 있는가? - CCTV를 설치했는가? [통신비밀 보호]\n- 통신 내용 접근 통제를 하는가? - 통신 사실 확인자료를 12개월 보관하는가? - 법원 허가 없이 제공하지 않는가? [장애 대응]\n- 통신 장애 대응 체계가 있는가? - 장애 발생 시 즉시 신고하는가? [망 중립성]\n- 특정 서비스를 차별하지 않는가? - 트래픽 관리 정책이 합리적인가? 10. 벌칙 10.1 형사처벌 1년 이하 징역 또는 1천만원 이하 벌금\n- 통신비밀 침해 - 통신 방해 3년 이하 징역 또는 3천만원 이하 벌금\n- 무허가 기간통신사업 10.2 과태료 3천만원 이하 과태료\n- 정보보호 최고책임자 미지정 - 정보보호 조치 미이행 - ISMS 미인증 1천만원 이하 과태료\n- 장애 미신고 11. 전기통신사업법 vs 정보통신망법 11.1 비교표 구분 전기통신사업법 정보통신망법 대상 통신사업자 정보통신서비스 제공자 예시 KT, SKT, LG U+ 네이버, 카카오, 쿠팡 주요 규제 통신망 운영, 통신비밀 온라인 서비스, 개인정보 CISO 의무 (임원급) 의무 (정보통신서비스 제공자) ISMS 의무 (일정 규모 이상) 의무 (일정 규모 이상) 망 중립성 있음 없음 통신비밀 강력 일반 11.2 중복 적용 통신사가 온라인 서비스도 제공 시\n- 전기통신사업법 (통신망 운영) ✓ - 정보통신망법 (온라인 서비스) ✓ - 예 : KT (통신 + KT 멤버십 앱), SKT (통신 + T world 앱) 12. 실무 사례 사례 1 : KT (기간통신사업자) 사업\n- 유선 인터넷 (초고속, 기가) - 무선 통신 (5G, LTE) - IPTV 적용 법령\n- 전기통신사업법 (기간통신사업) - 정보통신망법 (온라인 서비스) - 정보통신기반 보호법 (주요기반시설) - 개인정보보호법 의무\n- CISO 지정 (임원급) - ISMS 인증 - 정보보호 조치 (암호화, 접근통제 등) - 통신비밀 보호 - 장애 즉시 신고 - 망 중립성 준수 사례 2 : 알뜰폰 (별정통신사업자) 사업 : 기간통신망 임차, 이동통신 서비스 제공\n적용 법령\n- 전기통신사업법 (별정통신사업) - 개인정보보호법 의무\n- 정보보호 조치 - 개인정보 보호 - CISO, ISMS는 규모에 따라 적용 사례 3 : 2021년 SKT-카카오 망 사용료 분쟁 배경\n- 카카오톡 트래픽 급증 - SKT 망 부담 증가 쟁점\n- 카카오는 망 사용료를 내야 하는가? - 망 중립성 vs 공정한 비용 분담 결과\n- 협상 타결 (구체적 내용 비공개) - 법적 기준 부재로 논란 지속 사례 4 : 통신 장애 대응 (2024년 KT 인터넷 장애) 발생\n- 전국 인터넷 장애 (약 3시간) - 100만 명 이상 영향 대응\n- 즉시 과기정통부 신고 - 긴급 복구 - 원인 조사 (라우팅 오류) - 재발 방지 대책 수립 - 과기정통부 보고 후속\n- 과기정통부 행정처분 (경고, 과태료 등) - 이용자 보상 13. 향후 이슈 13.1 6G 도입 예정 : 2028년~2030년 상용화\n법적 대비\n- 주파수 할당 - 보안 기준 강화 13.2 망 사용료 규제 쟁점 : 대형 CP (유튜브, 넷플릭스)의 망 사용료, 공정한 비용 분담\n예상 : 법적 기준 마련 논의\n13.3 양자 암호 통신 기술 : 해킹 불가능한 암호화\n법적 대비 : 양자 암호 통신 기준 마련\n학습 정리 오늘 학습한 핵심 내용\n- 전기통신사업법 : 통신사업자 규제 법률 (1983년 제정) - 대상 : 기간통신사업자 (KT, SKT, LG U+), 별정통신사업자 (알뜰폰) - CISO 지정 의무 (임원급, 정보보호 경력 5년 또는 7년 이상) - ISMS 인증 의무 (일정 규모 이상) - 정보보호 조치 의무 (기술적, 관리적, 물리적) - 통신비밀 보호 (통화 내용, 문자 내용 등) - 통신 사실 확인자료 12개월 보관, 법원 허가 시만 제공 - 망 중립성 원칙 (특정 서비스 차별 금지) - 통신 장애 즉시 신고 (2시간 이상 또는 10만 명 이상) - 정보통신망법과 중복 적용 가능 - 통신비밀 침해 시 1년 이하 징역 지금까지 학습한 법률\n- 개인정보보호법 - 정보통신망법 - 전자금융거래법 - 신용정보법 - 산업기술보호법 - 부정경쟁방지법 - 전자서명법 - 위치정보법 - 의료법 및 생명윤리법 - 전자정부법 - 클라우드컴퓨팅법 - 정보통신기반 보호법 - 전기통신사업법 다음 학습 주제 Day 33: 다음 학습 주제\n",
+  "wordCount" : "4502",
+  "inLanguage": "ko",
+  "datePublished": "2026-03-16T00:00:00Z",
+  "dateModified": "2026-03-16T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/cyber_law_study/01_%EA%B8%B0%EB%B3%B8%EB%B2%95%EB%A5%A0/10_%ED%86%B5%EC%8B%A0%EC%82%AC%EC%97%85/day32_%EC%A0%84%EA%B8%B0%ED%86%B5%EC%8B%A0%EC%82%AC%EC%97%85%EB%B2%95/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
 </script>
 </head>
 <body id="top">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -102,37 +170,37 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/about" title="소개">
+                <a href="https://hojjang98.github.io/about" title="소개">
                     <span>소개</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
                     <span>일일 로그</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/projects/" title="Projects">
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
                     <span>프로젝트</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/cyber-law-study/" title="Cyber-Law-Study">
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
                     <span>보안법 공부</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
                     <span>보안 시사 분석</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
                     <span>태그</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/paper-review/" title="Paper-Review">
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
                     <span>논문 리뷰</span>
                 </a>
             </li>
@@ -143,7 +211,7 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/">홈</a>&nbsp;»&nbsp;<a href="http://localhost:1313/cyber_law_study/">보안 컨설팅 공부</a></div>
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/cyber_law_study/">보안 컨설팅 공부</a></div>
     <h1 class="post-title entry-hint-parent">
       Day 32: 전기통신사업법
     </h1>
@@ -670,21 +738,21 @@
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/%EC%A0%84%EA%B8%B0%ED%86%B5%EC%8B%A0%EC%82%AC%EC%97%85%EB%B2%95/">전기통신사업법</a></li>
-      <li><a href="http://localhost:1313/tags/%EA%B8%B0%EA%B0%84%ED%86%B5%EC%8B%A0%EC%82%AC%EC%97%85%EC%9E%90/">기간통신사업자</a></li>
-      <li><a href="http://localhost:1313/tags/%ED%86%B5%EC%8B%A0%EB%B9%84%EB%B0%80/">통신비밀</a></li>
-      <li><a href="http://localhost:1313/tags/%EB%A7%9D%EC%A4%91%EB%A6%BD%EC%84%B1/">망중립성</a></li>
-      <li><a href="http://localhost:1313/tags/ciso/">CISO</a></li>
-      <li><a href="http://localhost:1313/tags/isms/">ISMS</a></li>
-      <li><a href="http://localhost:1313/tags/%ED%86%B5%EC%8B%A0%EC%9E%A5%EC%95%A0/">통신장애</a></li>
-      <li><a href="http://localhost:1313/tags/%ED%86%B5%EC%8B%A0%EC%9E%90%EB%A3%8C/">통신자료</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%A0%84%EA%B8%B0%ED%86%B5%EC%8B%A0%EC%82%AC%EC%97%85%EB%B2%95/">전기통신사업법</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EA%B8%B0%EA%B0%84%ED%86%B5%EC%8B%A0%EC%82%AC%EC%97%85%EC%9E%90/">기간통신사업자</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%ED%86%B5%EC%8B%A0%EB%B9%84%EB%B0%80/">통신비밀</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%A7%9D%EC%A4%91%EB%A6%BD%EC%84%B1/">망중립성</a></li>
+      <li><a href="https://hojjang98.github.io/tags/ciso/">CISO</a></li>
+      <li><a href="https://hojjang98.github.io/tags/isms/">ISMS</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%ED%86%B5%EC%8B%A0%EC%9E%A5%EC%95%A0/">통신장애</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%ED%86%B5%EC%8B%A0%EC%9E%90%EB%A3%8C/">통신자료</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
 
     <span>
         Powered by

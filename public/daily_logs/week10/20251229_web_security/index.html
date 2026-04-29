@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="ko" dir="auto" data-theme="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>2025.12.29 (Day 44) - 웹 보안과 Apache 웹 서버 보안 설정 | HJ&#39;s Security Note</title>
 <meta name="keywords" content="Apache, 웹서버보안, 접근통제, 생체인증, 로그분석, 입력값검증, ModSecurity, SetEnvIf">
 <meta name="description" content="ROT13/47 패스워드 관리, 생체 인증 FRR/FAR/EER, DAC/Bell-LaPadula/Biba/RBAC 접근통제 모델, Apache2 설치 및 보안 설정, access.log Combined 형식 분석, SetEnvIf 로그 필터링, SQL Injection/XSS/파일 업로드 입력값 검증 비교">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/daily_logs/week10/20251229_web_security/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.c8c3b65cd6d058be2b4f050fd7a688ac13a23056571601dabe4f70d8d008259e.css" integrity="sha256-yMO2XNbQWL4rTwUP16aIrBOiMFZXFgHavk9w2NAIJZ4=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="canonical" href="https://hojjang98.github.io/daily_logs/week10/20251229_web_security/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.898219bd95f420a374e6df8d4ee9050d8913bfcf44c82e41bddff27ad9322aec.css" integrity="sha256-iYIZvZX0IKN05t&#43;NTukFDYkTv89EyC5Bvd/yetkyKuw=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="ko" href="http://localhost:1313/daily_logs/week10/20251229_web_security/">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/daily_logs/week10/20251229_web_security/">
 <noscript>
     <style>
         #theme-toggle,
@@ -70,13 +70,81 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
+</script><meta property="og:url" content="https://hojjang98.github.io/daily_logs/week10/20251229_web_security/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="2025.12.29 (Day 44) - 웹 보안과 Apache 웹 서버 보안 설정">
+  <meta property="og:description" content="ROT13/47 패스워드 관리, 생체 인증 FRR/FAR/EER, DAC/Bell-LaPadula/Biba/RBAC 접근통제 모델, Apache2 설치 및 보안 설정, access.log Combined 형식 분석, SetEnvIf 로그 필터링, SQL Injection/XSS/파일 업로드 입력값 검증 비교">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="daily_logs">
+    <meta property="article:published_time" content="2025-12-29T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-12-29T00:00:00+00:00">
+    <meta property="article:tag" content="Apache">
+    <meta property="article:tag" content="웹서버보안">
+    <meta property="article:tag" content="접근통제">
+    <meta property="article:tag" content="생체인증">
+    <meta property="article:tag" content="로그분석">
+    <meta property="article:tag" content="입력값검증">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2025.12.29 (Day 44) - 웹 보안과 Apache 웹 서버 보안 설정">
+<meta name="twitter:description" content="ROT13/47 패스워드 관리, 생체 인증 FRR/FAR/EER, DAC/Bell-LaPadula/Biba/RBAC 접근통제 모델, Apache2 설치 및 보안 설정, access.log Combined 형식 분석, SetEnvIf 로그 필터링, SQL Injection/XSS/파일 업로드 입력값 검증 비교">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "6개월, 혹은 그 이상의 보안 여정",
+      "item": "https://hojjang98.github.io/daily_logs/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "2025.12.29 (Day 44) - 웹 보안과 Apache 웹 서버 보안 설정",
+      "item": "https://hojjang98.github.io/daily_logs/week10/20251229_web_security/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "2025.12.29 (Day 44) - 웹 보안과 Apache 웹 서버 보안 설정",
+  "name": "2025.12.29 (Day 44) - 웹 보안과 Apache 웹 서버 보안 설정",
+  "description": "ROT13/47 패스워드 관리, 생체 인증 FRR/FAR/EER, DAC/Bell-LaPadula/Biba/RBAC 접근통제 모델, Apache2 설치 및 보안 설정, access.log Combined 형식 분석, SetEnvIf 로그 필터링, SQL Injection/XSS/파일 업로드 입력값 검증 비교",
+  "keywords": [
+    "Apache", "웹서버보안", "접근통제", "생체인증", "로그분석", "입력값검증", "ModSecurity", "SetEnvIf"
+  ],
+  "articleBody": "📄 2025.12.29 (Day 44) - 웹 보안과 Apache 웹 서버 보안 설정 1. 핵심 개념 정리 사용자 인증 메커니즘 # 핵심 개념 설명 실무/보안 관점 1 패스워드 보안 원칙 세 종류 이상 문자 조합(abc123!@), 두 종류 이상 8자 이상(angel12345), 특정 명칭 첫 글자 조합 안전한 패스워드 생성 규칙, 추측 어려운 조합 사용, 노래 제목/숫자 조합 활용 2 ROT 암호화 ROT13(영어 13자 이동), ROT47(모든 ASCII 문자 치환) rot13.com, webutils.pl/ROTencode 사이트 활용, 패스워드 변형 저장 3 패스워드 파일 관리 엑셀 파일 암호화 + 시트 숨기기 + USB 메모리 이중 보관 [파일]-[정보]-[통합 문서 보호]-[암호 설정], 외부 저장장치 백업 4 공인인증서 구조 ITU-T X.509 표준, PKI 공개키 기반 구조 일련번호, 주체, 발행자, 유효기간, 공인키, 지문 알고리즘, 지문 포함 5 공인인증서 저장 C:\\Users\\계정\\AppData\\LocalLow\\NPKI\\발급기관\\USER signCert.der(DER 암호화 인증서), signPri.key(개인키) 생체 인증 기술 # 핵심 개념 설명 실무/보안 관점 6 지문 인증 융선과 골 구성, 지문 등록(enrollment) -\u003e 지문 인증(verification) 프로세스 가장 대중적, 평생 변하지 않음, 복제 가능성 존재 7 손 모양 인증 손가락 길이와 굵기 측정, 낮은 보안 수준 정맥 모양 촬영 시 보안 수준 향상 가능 8 망막 인증 눈 뒷부분 모세혈관 형태 확인, 10~15초 소요 매우 높은 정확도, 안경 착용 시 불가, 불편함 9 홍채 인증 홍채 패턴을 수학/통계 알고리즘으로 분석, 50cm 거리 인증 망막보다 정확도 높음, 자동 통관 시스템 적용, Apple Face ID 10 생체 인증 성능 FRR(False Rejection Rate, Type I), FAR(False Acceptance Rate, Type II), EER(Error Equal Rate) FRR: 권한자 거부, FAR: 비권한자 허용(더 치명적), EER: 교차점(낮을수록 우수) 접근 통제 모델 # 핵심 개념 설명 실무/보안 관점 11 보안 등급 체계 Top Secret(최고 기밀) \u003e Secret \u003e Confidential \u003e Restricted \u003e Unclassified 군사/정부 문서 보안 수준, 극도의 치명적 피해 방지 12 DAC (임의적 접근 통제) Discretionary Access Control, 정보 소유자가 보안 수준 결정 유닉스/윈도우 파일 권한(rwx rw- rw-), 중앙 집중 관리 어려움 13 Bell-LaPadula 모델 기밀성 중심, No read up(상위 정보 읽기 금지), *property(하위 정보 쓰기 금지) 보안 수준 2 정보를 수준 1에 기록하면 기밀성 손상, 군사/정부 적용 14 Biba 모델 무결성 중심, Read up(상위 정보 읽기 허용), No write up(상위 정보 쓰기 금지) Bell-LaPadula와 반대 개념, 금융 거래 데이터 보호 15 RBAC Role-Based Access Control, 직책 기반 권한 부여 사람이 아닌 역할에 권한 할당, 직책 이동 시 불필요 권한 확대 방지 2. 실습 내용 정리 실습 9-1: 나만의 방식으로 안전하게 패스워드 관리하기 목표: ROT 암호화 및 엑셀 파일 암호화를 활용한 안전한 패스워드 저장 방법 실습\n실습 환경:\nROT13 온라인 도구: rot13.com ROT47 온라인 도구: webutils.pl/ROTencode Microsoft Excel 실습 단계:\nROT13 암호화 실습 - rot13.com 접속, Password123!@# 입력 -\u003e Cnffjbeq123!@# 결과 확인 ROT47 암호화 실습 - webutils.pl/ROTencode 접속, ROT47 옵션 선택 -\u003e Password123!@# 입력 엑셀 파일에 패스워드 정보 입력 - 사이트, 설명, 아이디, 인코딩된 패스워드, 가입일, 최종 변경일 컬럼 생성 시트 숨기기 - 시트명 우클릭 -\u003e [숨기기(H)] 선택 엑셀 파일 암호화 - [파일] -\u003e [정보] -\u003e [통합 문서 보호] -\u003e [암호를 사용하여 암호화] -\u003e 암호 설정 USB 메모리에 이중 보관 - 외부 저장장치 백업 분석 포인트:\nROT13은 영어 알파벳만 13자 이동 (A -\u003e N, B -\u003e O) ROT18은 문자+숫자 모두 치환 ROT47은 모든 ASCII 문자(33~126) 치환 가능 엑셀 파일 암호 설정 후 외부 저장장치 백업 여부 확인 보안 인사이트:\nROT 암호화는 기초적이지만 평문 저장보다 안전 패스워드 파일 자체 암호화로 2차 보안 레이어 구축 시트 숨기기 기능으로 추가 보안 레이어 제공 USB 이중 보관으로 컴퓨터 손상/해킹 시 복구 가능 실습 9-2: 공인인증서 파일 확인하기 목표: Windows 시스템에서 공인인증서 파일 구조 및 X.509 인증서 정보 확인\n실습 단계:\n공인인증서 폴더 탐색 - C:\\Users\\사용자계정\\AppData\\LocalLow\\NPKI 발급 기관별 폴더 확인 (yessign, SignKorea, CrossCert, NPKI 등) USER 폴더 내 파일 확인 signCert.der - DER 암호화된 인증서 파일 signPri.key - 개인키 파일 signCert.der 더블클릭하여 인증서 정보 확인 [일반] 탭: 발급 대상, 발급자, 유효 기간 [자세히] 탭: 버전, 일련번호, 서명 알고리즘, 발급자, 유효 기간, 주체, 공개 키 인증서 구성요소 확인 버전: V3 일련번호: 고유 식별자 서명 알고리즘: sha256RSA 발급자: yessignCA Class 1 유효 기간: 2016.04.24 ~ 2017.04.24 X.509 인증서 구조:\n일련번호 - 증명서 개별 인증 주체 - 사람 또는 증명자 서명 알고리즘 - 서명 생성 알고리즘 발행자 - 정보 검증 및 증명서 발행 주체 (CA) 유효 기간 - 시작일/만료일 키 이용 목적 - SSL, 전자서명 등 공인키 - 공개키 지문 알고리즘 - 인증서 해시 알고리즘 지문 - 증명서 개봉 여부 증명 보안 고려사항:\n탐지 패턴:\n인증서 유효 기간 만료 비인가 인증서 사용 시도 인증서 파일 무단 복사/이동 취소된 인증서(CRL) 사용 시도 방어 방법:\n주기적인 인증서 유효 기간 점검 인증서 파일 접근 권한 엄격 관리 (signPri.key 특히 중요) 인증서 갱신 알림 시스템 구축 CRL(Certificate Revocation List) 확인 절차 실습 9-3: 아파치 웹 서버 설치하기 (Ubuntu 22.04) 목표: Ubuntu Linux에 Apache2 웹 서버 설치 및 기본 동작 확인\n실습 환경:\nUbuntu 22.04 LTS VMware Workstation root 권한 필요 실습 단계:\n패키지 목록 업데이트 - sudo apt-get install update 루트 권한 전환 - sudo su - DPKG 설정 파일 세팅 - dpkg --configure -a Apache2 설치 - apt-get install apache2 아파치 서비스 시작 - systemctl start apache2 프로세스 확인 - ps -ef | grep apache2 root 권한 parent 프로세스 1개 www-data 권한 worker 프로세스 여러 개 확인 포트 리스닝 확인 - netstat -tuln | grep :80 또는 ss -tuln | grep :80 브라우저 접속 테스트 - http://localhost 또는 http://서버IP -\u003e “It works!” 페이지 확인 분석 포인트:\napache2 프로세스가 여러 개 실행 중 (parent + worker processes) root 권한으로 parent 실행, www-data 권한으로 worker 실행 기본 포트 80번 리스닝 상태 /var/www/html/index.html 기본 페이지 표시 설정 파일 위치: /etc/apache2/ (Ubuntu 특징) 보안 인사이트:\nApache는 멀티 프로세스 모델 (MPM Prefork)로 동작 root 권한으로 시작하나 worker는 www-data 계정으로 권한 제한 기본 설치 상태는 보안 강화 필요 (디렉터리 리스팅, 버전 정보 노출 등) Ubuntu는 설정 파일이 여러 개로 분산 (apache2.conf, sites-available, mods-available 등) 실습 9-4: 아파치 웹 서버 보안 설정하기 목표: 디렉터리 리스팅 차단, FollowSymLinks 비활성화, 로그 분석\n실습 단계:\nApache 메인 설정 파일 확인 - nano /etc/apache2/apache2.conf 포트 설정 확인 - nano /etc/apache2/ports.conf (Listen 80 기본 HTTP) 가상 호스트 설정 확인 - nano /etc/apache2/sites-available/000-default.conf (DocumentRoot /var/www/html) 기본 문서 설정 확인 - nano /etc/apache2/mods-available/dir.conf (DirectoryIndex 설정) 디렉터리 리스팅 차단 - apache2.conf에서 블록의 Options에서 Indexes 제거 아파치 재시작 - systemctl restart apache2 디렉터리 리스팅 테스트 - /var/www/html/test 폴더 생성 후 브라우저 접속 -\u003e Forbidden 확인 FollowSymLinks 테스트 - ln -s /etc /var/www/html/etc 후 접속 -\u003e /etc 내용 노출 확인 FollowSymLinks 비활성화 - Options -Indexes -FollowSymLinks 설정 후 재시작 접근 로그 확인 - tail -f /var/log/apache2/access.log 디렉터리 리스팅 차단 원리:\nOptions 지시자:\nIndexes: 디렉터리 내 파일 목록 자동 표시 -\u003e 제거 시 403 Forbidden 반환 FollowSymLinks: 심볼릭 링크 추적 허용 -\u003e 활성화 시 시스템 디렉터리 접근 가능, 제거 시 차단 MultiViews: 콘텐츠 협상 기능 -\u003e 필요시에만 활성화 권장 설정: Options -Indexes -FollowSymLinks\n발견 가능한 취약점:\nIndexes 설정 시 디렉터리 구조 완전 노출 FollowSymLinks 허용 시 /etc, /var 등 시스템 디렉터리 접근 가능 기본 에러 페이지에 Apache 버전 정보 노출 상세한 에러 메시지로 웹 서버 내부 경로 정보 유출 보안 고려사항:\n탐지 패턴:\n403 Forbidden 대량 발생 (무작위 디렉터리 스캔) ../../../etc/passwd 경로 순회(Path Traversal) 시도 access.log에서 robots.txt, .git, .env 등 민감 파일 접근 시도 특정 IP에서 짧은 시간 대량 요청 (디렉터리 스캔) 방어 방법:\nOptions에서 Indexes, FollowSymLinks 제거 ServerTokens Prod (버전 정보 숨김) ServerSignature Off (에러 페이지 시그니처 제거) 심볼릭 링크 사용 금지 또는 제한적 허용 Fail2ban 설정으로 스캔 시도 IP 자동 차단 실습 9-5: Apache access_log 분석하기 목표: Apache 접근 로그 구조 이해 및 CustomLog/LogFormat 설정 분석\nCombined 로그 형식 분석:\n로그 구조 예시: 127.0.0.1 - - [29/May/2022:00:41:38 +0300] \"GET / HTTP/1.1\" 200 3460 \"-\" \"Mozilla/5.0\"\n각 필드 설명:\n%h - 클라이언트 IP 주소 %l - 클라이언트 사용자 이름 (identd, 대부분 -) %u - 인증된 사용자 이름 (HTTP 인증) %t - 요청 시간 [날짜:시간 타임존] \"%r\" - 요청 라인 (메소드 URL 프로토콜) %\u003es - 최종 상태 코드 (200, 404, 500 등) %O - 응답 크기 (bytes, 헤더 포함) \"%{Referer}i\" - 리퍼러 (이전 페이지) \"%{User-Agent}i\" - 브라우저 정보 LogFormat 정의:\ncombined: %h %l %u %t \"%r\" %\u003es %O \"%{Referer}i\" \"%{User-Agent}i\" common: %h %l %u %t \"%r\" %\u003es %O referer: %{Referer}i -\u003e %U agent: %{User-agent}i 로그 인수 상세:\n인수 설명 예시 %a 클라이언트 IP 192.168.1.100 %A 로컬 서버 IP 10.0.0.1 %h 클라이언트 호스트/IP example.com %l 클라이언트 identd - %u 인증 사용자 john %t 요청 시간 [29/May/2022:00:41:38] %r 요청 첫 번째 줄 GET /index.html HTTP/1.1 %\u003es 최종 상태 코드 200, 404, 500 %O 응답 크기(헤더 포함) 3460 %{Referer}i 리퍼러 URL https://google.com %{User-Agent}i UA 문자열 Mozilla/5.0 SetEnvIf 활용:\nSetEnvIf 인수:\n요청 헤더: Host, User-Agent, Referer, Accept-Language 요청 특성: Remote_Host, Remote_Addr, Server_Addr, Request_Method, Request_Protocol, Request_URI SetEnvIf 적용 예시:\n특정 IP 로그 제외: SetEnvIf Remote_Addr \"127\\.0\\.0\\.1\" dontlog + CustomLog logs/access_log common env=!dontlog 웜 공격 로그 제외: SetEnvIf Request_URI \"\\.ida\" worm + CustomLog logs/access_log common env=!worm 이미지 파일 로그 제외: SetEnvIf Request_URI \"\\.(gif|jpg|png)$\" image + CustomLog logs/access_log common env=!image 특정 브라우저 식별: SetEnvIf User-Agent \"MSIE\" msie_browser 또는 SetEnvIf User-Agent \"Mozilla\" mozilla_browser 3. 입력값 검증 비교표 SQL Injection 방어 기법 항목 취약한 코드 안전한 코드 차이점 사용 시기/적용 방안 문자열 연결 String query = \"SELECT * FROM \" + tableName + \" WHERE Name = \" + name; String query = \"SELECT * FROM ? WHERE Name = ?\"; 직접 연결 vs 파라미터 바인딩 Prepared Statement 사용 파라미터 설정 stmt.executeQuery(query); stmt.setString(1, tableName); stmt.setString(2, name); 직접 실행 vs 바인딩 후 실행 setString(), setInt() 메서드 쿼리 컴파일 런타임 쿼리 생성 쿼리 미리 컴파일 SQL 인젝션 가능 vs 차단 DB에 컴파일된 쿼리 전달 공격 차단 ' OR '1'='1 입력 시 인증 우회 파라미터는 문자열로 처리 모든 사용자 조회 vs 안전 사용자 입력을 코드로 해석 안 함 XSS 방어 기법 항목 취약한 코드 안전한 코드 차이점 사용 시기/적용 방안 직접 출력 NAME: \u003c%= name %\u003e\nname = name.replaceAll(\"\u003c\", \"\u0026lt;\"); name = name.replaceAll(\"\u003e\", \"\u0026gt;\"); 특수문자 그대로 vs 치환 출력 전 replaceAll() 사용 특수문자 치환 없음 \u003c -\u003e \u0026lt, \u003e -\u003e \u0026gt, \u0026 -\u003e \u0026amp, \" -\u003e \u0026quot 스크립트 실행 vs 문자 표시 HTML Entity 변환 검증 위치 클라이언트 측만 서버 측 필수 (JSP, PHP) Burp Suite 우회 가능 vs 불가 서버 언어에서 구현 공격 차단 실행 \u0026lt;script\u0026gt;... 문자열로 표시 악성 스크립트 실행 vs 차단 반사형/저장형 XSS 모두 방어 파일 업로드 검증 항목 취약한 코드 안전한 코드 차이점 사용 시기/적용 방안 확장자 검증 확장자 체크 없음 화이트리스트 방식 모든 파일 허용 vs 특정만 허용 .hwp, .doc, .pdf만 허용 파일명 처리 원본 파일명 저장 UUID/랜덤 문자열로 변경 추측 가능 vs 불가능 UUID.randomUUID() 사용 저장 경로 웹 루트 내 저장 웹 루트 외부 저장 직접 실행 가능 vs 불가 /var/uploads 별도 경로 공격 차단 shell.php 업로드 후 실행 .php 업로드 차단 웹셸 설치 가능 vs 차단 실행 권한 제거, MIME 검증 필터링 방식 비교 예시 화이트리스트 블랙리스트 보안 영향 파일 업로드 .hwp, .doc, .pdf만 허용 .php, .jsp, .aspx 차단 4개만 통과 vs 수백 개 차단 필요 (우회 가능성) SQL 인젝션 영문자, 숫자만 허용 ', --, union 차단 명확한 허용 vs 새로운 패턴 우회 가능 XSS 특정 HTML 태그만 허용 CSP 헤더 적용, 입력값 필터링 강화, 저장형 XSS 시 DB 정화 Path Traversal ../, ..\\ 패턴, 403 Forbidden 대량, /etc/passwd 접근 시도 GET /../../../etc/passwd 경로 정규화 검증, chroot 환경, 파일 접근 로그 모니터링 File Upload .php, .jsp, .aspx 업로드, MIME 타입 불일치, 이중 확장자 (file.php.jpg) POST /upload.php (shell.php) 화이트리스트 검증, 파일 실행 권한 제거, 업로드 디렉터리 격리 Brute Force 단시간 로그인 실패 반복, 401/403 대량 발생, 자동화 도구 UA POST /login (401) x 100회 계정 잠금 정책, CAPTCHA 적용, IP 속도 제한 DDoS/Scanning 초당 100+ 요청, robots.txt 접근, Nikto/Nmap UA GET /admin (404) x 1000회 Rate Limiting, Fail2ban 설정, CDN/WAF 활용 Apache 보안 설정 핵심 항목 서버 정보 숨기기:\nServerTokens Prod - 버전 정보 최소화 ServerSignature Off - 에러 페이지 시그니처 제거 디렉터리 보안:\nOptions -Indexes -FollowSymLinks - 디렉터리 리스팅 및 심볼릭 링크 차단 FilesMatch로 .htaccess, .htpasswd, .log, .sql 파일 접근 차단 HTTP 메서드 제한:\nGET, POST, HEAD만 허용 TRACE, PUT, DELETE 차단 타임아웃 및 요청 크기 제한:\nTimeout 60 KeepAliveTimeout 5 LimitRequestBody 10MB SetEnvIf 로그 필터링:\n내부 IP(10.0.0.0/8) env=internal 설정 -\u003e CustomLog combined env=!internal 정적 파일(.gif, .jpg, .png, .css, .js) env=static 설정 -\u003e CustomLog combined env=!static 보안 헤더 (mod_headers):\nX-Frame-Options: SAMEORIGIN X-Content-Type-Options: nosniff X-XSS-Protection: 1; mode=block Referrer-Policy: strict-origin-when-cross-origin SSL/TLS 설정:\nSSLv2, SSLv3, TLSv1, TLSv1.1 비활성화 TLS 1.2 이상만 허용 HIGH:!aNULL:!MD5 Cipher Suite ModSecurity (WAF):\nSecRuleEngine On OWASP CRS(Core Rule Set) 포함 오탐 시 SecRuleRemoveById로 특정 룰 비활성화 가능 6. 배운 점 및 인사이트 새로 알게 된 점 ROT 암호화 실무 활용: ROT13/ROT47 같은 단순 치환 암호도 평문 저장보다 훨씬 안전. 특히 ROT47은 모든 ASCII 문자(33~126)를 치환하여 특수문자 포함 복잡한 패스워드도 변형 가능. 엑셀 파일 암호화와 결합하면 실용적인 개인 패스워드 관리 방안\n생체 인증 성능 지표: FRR과 FAR의 트레이드오프 관계가 명확함. 임계값을 높이면 FRR 증가(사용자 불편), 낮추면 FAR 증가(보안 위험). EER 지점이 이론적 최적 설정이나, 실무에서는 보안 수준에 따라 FAR을 0.01% 이하로 낮추는 방향으로 조정\nApache 로그 필터링 기법: SetEnvIf로 내부 IP나 정적 파일 요청을 env=!dontlog 방식으로 로그에서 제외하여 로그 파일 크기를 50% 이상 절감 가능. SIEM 연동 전 1차 필터링으로 분석 효율 향상\n접근 통제 모델의 실제 적용: Bell-LaPadula(기밀성)는 군사/정부, Biba(무결성)는 금융, RBAC은 기업 ERP/그룹웨어에 주로 사용. 현대 클라우드 환경에서는 RBAC + ABAC(Attribute-Based) 하이브리드 모델이 트렌드\n서버 측 입력값 검증의 중요성: 클라이언트 측 JavaScript 검증은 Burp Suite로 쉽게 우회 가능. JSP, PHP 등 서버 언어에서 Prepared Statement, replaceAll(), 화이트리스트 검증을 필수로 구현해야 SQL Injection/XSS 방어 가능\n이전 학습과의 연결고리 개인정보보호법과 연계: 개인정보보호법 시행령의 “접근 기록 최소 6개월 보관” 의무는 Apache access.log가 바로 충족하는 수단. 로그에는 IP 주소(개인정보)가 포함되므로 로그 파일 자체도 암호화 저장 권장. SetEnvIf로 필요한 로그만 수집하면 개인정보 최소 수집 원칙 준수\n웹 해킹 실습 확장: WebGoat에서 실습한 SQL Injection, XSS 공격이 실제 Apache 로그에 union select, ",
+  "wordCount" : "7971",
+  "inLanguage": "ko",
+  "datePublished": "2025-12-29T00:00:00Z",
+  "dateModified": "2025-12-29T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/daily_logs/week10/20251229_web_security/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
 </script>
 </head>
 <body id="top">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -102,37 +170,37 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/about" title="소개">
+                <a href="https://hojjang98.github.io/about" title="소개">
                     <span>소개</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
                     <span>일일 로그</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/projects/" title="Projects">
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
                     <span>프로젝트</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/cyber-law-study/" title="Cyber-Law-Study">
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
                     <span>보안법 공부</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
                     <span>보안 시사 분석</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
                     <span>태그</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/paper-review/" title="Paper-Review">
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
                     <span>논문 리뷰</span>
                 </a>
             </li>
@@ -143,7 +211,7 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/">홈</a>&nbsp;»&nbsp;<a href="http://localhost:1313/daily_logs/">6개월, 혹은 그 이상의 보안 여정</a></div>
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/daily_logs/">6개월, 혹은 그 이상의 보안 여정</a></div>
     <h1 class="post-title entry-hint-parent">
       2025.12.29 (Day 44) - 웹 보안과 Apache 웹 서버 보안 설정
     </h1>
@@ -1239,21 +1307,21 @@
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/apache/">Apache</a></li>
-      <li><a href="http://localhost:1313/tags/%EC%9B%B9%EC%84%9C%EB%B2%84%EB%B3%B4%EC%95%88/">웹서버보안</a></li>
-      <li><a href="http://localhost:1313/tags/%EC%A0%91%EA%B7%BC%ED%86%B5%EC%A0%9C/">접근통제</a></li>
-      <li><a href="http://localhost:1313/tags/%EC%83%9D%EC%B2%B4%EC%9D%B8%EC%A6%9D/">생체인증</a></li>
-      <li><a href="http://localhost:1313/tags/%EB%A1%9C%EA%B7%B8%EB%B6%84%EC%84%9D/">로그분석</a></li>
-      <li><a href="http://localhost:1313/tags/%EC%9E%85%EB%A0%A5%EA%B0%92%EA%B2%80%EC%A6%9D/">입력값검증</a></li>
-      <li><a href="http://localhost:1313/tags/modsecurity/">ModSecurity</a></li>
-      <li><a href="http://localhost:1313/tags/setenvif/">SetEnvIf</a></li>
+      <li><a href="https://hojjang98.github.io/tags/apache/">Apache</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%9B%B9%EC%84%9C%EB%B2%84%EB%B3%B4%EC%95%88/">웹서버보안</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%A0%91%EA%B7%BC%ED%86%B5%EC%A0%9C/">접근통제</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%83%9D%EC%B2%B4%EC%9D%B8%EC%A6%9D/">생체인증</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%A1%9C%EA%B7%B8%EB%B6%84%EC%84%9D/">로그분석</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%9E%85%EB%A0%A5%EA%B0%92%EA%B2%80%EC%A6%9D/">입력값검증</a></li>
+      <li><a href="https://hojjang98.github.io/tags/modsecurity/">ModSecurity</a></li>
+      <li><a href="https://hojjang98.github.io/tags/setenvif/">SetEnvIf</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
 
     <span>
         Powered by

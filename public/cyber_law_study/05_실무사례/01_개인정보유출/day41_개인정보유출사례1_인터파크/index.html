@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="ko" dir="auto" data-theme="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>Day 41: 실무 사례 #1 - 인터파크 개인정보 유출 사건 (2016) | HJ&#39;s Security Note</title>
 <meta name="keywords" content="실무사례, 개인정보유출, 인터파크, SQL인젝션, 과징금, 개인정보보호법">
 <meta name="description" content="2016년 인터파크 해킹으로 1,030만 건 개인정보가 유출된 사건을 법률 위반, 기술적 원인, 처벌 결과, 교훈 관점에서 분석합니다.">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C/day41_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C%EC%82%AC%EB%A1%801_%EC%9D%B8%ED%84%B0%ED%8C%8C%ED%81%AC/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.c8c3b65cd6d058be2b4f050fd7a688ac13a23056571601dabe4f70d8d008259e.css" integrity="sha256-yMO2XNbQWL4rTwUP16aIrBOiMFZXFgHavk9w2NAIJZ4=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="canonical" href="https://hojjang98.github.io/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C/day41_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C%EC%82%AC%EB%A1%801_%EC%9D%B8%ED%84%B0%ED%8C%8C%ED%81%AC/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.898219bd95f420a374e6df8d4ee9050d8913bfcf44c82e41bddff27ad9322aec.css" integrity="sha256-iYIZvZX0IKN05t&#43;NTukFDYkTv89EyC5Bvd/yetkyKuw=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="ko" href="http://localhost:1313/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C/day41_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C%EC%82%AC%EB%A1%801_%EC%9D%B8%ED%84%B0%ED%8C%8C%ED%81%AC/">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C/day41_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C%EC%82%AC%EB%A1%801_%EC%9D%B8%ED%84%B0%ED%8C%8C%ED%81%AC/">
 <noscript>
     <style>
         #theme-toggle,
@@ -70,13 +70,81 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
+</script><meta property="og:url" content="https://hojjang98.github.io/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C/day41_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C%EC%82%AC%EB%A1%801_%EC%9D%B8%ED%84%B0%ED%8C%8C%ED%81%AC/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="Day 41: 실무 사례 #1 - 인터파크 개인정보 유출 사건 (2016)">
+  <meta property="og:description" content="2016년 인터파크 해킹으로 1,030만 건 개인정보가 유출된 사건을 법률 위반, 기술적 원인, 처벌 결과, 교훈 관점에서 분석합니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="cyber_law_study">
+    <meta property="article:published_time" content="2026-03-31T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-03-31T00:00:00+00:00">
+    <meta property="article:tag" content="실무사례">
+    <meta property="article:tag" content="개인정보유출">
+    <meta property="article:tag" content="인터파크">
+    <meta property="article:tag" content="SQL인젝션">
+    <meta property="article:tag" content="과징금">
+    <meta property="article:tag" content="개인정보보호법">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Day 41: 실무 사례 #1 - 인터파크 개인정보 유출 사건 (2016)">
+<meta name="twitter:description" content="2016년 인터파크 해킹으로 1,030만 건 개인정보가 유출된 사건을 법률 위반, 기술적 원인, 처벌 결과, 교훈 관점에서 분석합니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "보안 컨설팅 공부",
+      "item": "https://hojjang98.github.io/cyber_law_study/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  4 ,
+      "name": "Day 41: 실무 사례 #1 - 인터파크 개인정보 유출 사건 (2016)",
+      "item": "https://hojjang98.github.io/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C/day41_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C%EC%82%AC%EB%A1%801_%EC%9D%B8%ED%84%B0%ED%8C%8C%ED%81%AC/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Day 41: 실무 사례 #1 - 인터파크 개인정보 유출 사건 (2016)",
+  "name": "Day 41: 실무 사례 #1 - 인터파크 개인정보 유출 사건 (2016)",
+  "description": "2016년 인터파크 해킹으로 1,030만 건 개인정보가 유출된 사건을 법률 위반, 기술적 원인, 처벌 결과, 교훈 관점에서 분석합니다.",
+  "keywords": [
+    "실무사례", "개인정보유출", "인터파크", "SQL인젝션", "과징금", "개인정보보호법"
+  ],
+  "articleBody": "Day 41: 실무 사례 #1 - 인터파크 개인정보 유출 사건 (2016) [ 1. 사건 개요 ]\n기본 정보 - 회사 : 인터파크 (온라인 쇼핑몰) - 발생 시기 : 2016년 7월 - 발견 : 2016년 7월 11일 - 유출 규모 : 약 1,030만 건 사건 요약 - 인터파크 웹사이트가 해킹당해 고객 개인정보 1,030만 건이 유출되었다. - 유출된 정보에는 이름, 주민등록번호, 연락처, 이메일, 주소 등이 포함되었다. [ 1.1 상세 경위 ]\n공격 시점 : 2016년 6월 말 - 7월 초 (추정) 공격 방법 - SQL Injection 공격 - 웹사이트 취약점 악용 - 데이터베이스 직접 접근 발견 경위 - 2016년 7월 11일 다크웹에서 인터파크 고객 정보 발견 - 외부 보안 업체가 인터파크에 통보 - 인터파크 내부 조사 착수 유출 데이터 - 이름 : 1,030만 건 - 주민등록번호 : 1,030만 건 (고유식별정보) - 전화번호 : 1,030만 건 - 이메일 : 1,030만 건 - 주소 : 1,030만 건 [ 1.2 타임라인 ]\n2016년 6월 말 - 해커, SQL Injection 공격 시작 - 취약점 발견 및 데이터베이스 접근 2016년 7월 초 - 고객 정보 1,030만 건 다운로드 - 다크웹에 판매 시도 2016년 7월 11일 - 다크웹에서 인터파크 정보 발견 - 보안 업체가 인터파크에 통보 2016년 7월 12일 - 인터파크 내부 조사 시작 - 유출 사실 확인 2016년 7월 13일 (발견 2일 후) - 개인정보보호위원회 신고 - 고객 통지 (이메일, SMS) - 경찰 고소 2016년 7월 14일 - 언론 보도 - 대국민 사과문 발표 2016년 8월 - 해커 검거 (중국인) 2017년 3월 - 개인정보보호위원회 제재 [ 2. 법률 분석 ]\n[ 2.1 적용 법률 ] 주요 법률 1. 개인정보보호법 2. 정보통신망법 3. 형법 적용 이유 - 인터파크 = 온라인 서비스 제공자 - 개인정보 + 주민등록번호 유출 - 해킹 (외부 침입) [ 2.2 위반 사항 분석 ] (1) 안전성 확보 조치 의무 위반 법적 근거 : 개인정보보호법 제29조 (안전성 확보 조치) 위반 내용 1. SQL Injection 취약점 존재 - 입력값 검증 미흡 - 웹 애플리케이션 보안 취약 2. 주민등록번호 암호화 미흡 - 당시 평문 또는 취약한 암호화 사용 - 안전성 확보조치 기준 미준수 3. 침입탐지시스템 미흡 - 대규모 데이터 다운로드 탐지 실패 - 모니터링 부재 해당 조항 - 개인정보보호법 제71조 (벌칙) - \"제29조를 위반하여 안전성 확보에 필요한 조치를 하지 아니하여 개인정보를 분실-도난-유출-위조-변조 또는 훼손당한 자는 2년 이하의 징역 또는 2천만원 이하의 벌금에 처한다\" (2) 개인정보 유출 통지 의무 법적 근거 : 개인정보보호법 제34조 (개인정보 유출 통지 등) 인터파크 대응 - 발견 : 7월 11일 - 신고 : 7월 13일 (2일 후) - 통지 : 7월 13일 (이메일, SMS) - 비교적 신속한 대응 평가 - 당시 \"지체 없이\" 기준으로는 양호 - (현재는 24시간 내 권장) (3) 해커에 대한 처벌 법적 근거 - 정보통신망법 제48조 (정보통신망 침해) - 개인정보보호법 제70조 (개인정보 부정 이용) - 형법 제314조의2 (컴퓨터등장애업무방해) 해커 처벌 (중국인 해커 A) - 정보통신망 침해죄 : 5년 이하 징역 - 개인정보 부정 이용죄 : 5년 이하 징역 - 컴퓨터등장애업무방해죄 : 5년 이하 징역 - 실제 처벌 : 공개되지 않음 (중국에서 체포) [ 2.3 처벌 및 제재 ] 인터파크 제재 개인정보보호위원회 - 과징금 : 14억 5천만원 (당시 최대) - 근거 : 1,030만 건 대규모 유출, 주민등록번호 포함 (고유식별정보), 안전조치 미흡 과징금 산정 - 당시 개인정보보호법 : 매출액의 3% 이하 - 인터파크 2015년 매출 : 약 5,000억원 - 3% = 150억원 (상한) - 실제 부과 : 14억 5천만원 (약 10%) 형사 처벌 - 안전조치 의무 위반 - 2년 이하 징역 또는 2천만원 이하 벌금 - 실제 : 공개되지 않음 민사 배상 - 고객 손해배상 청구 소송 - 1인당 10만원-50만원 배상 - 총 배상액 : 약 100억원 추정 총 비용 - 과징금 : 14.5억원 - 손해배상 : 약 100억원 - 복구 비용 : 약 20억원 (추정) - 평판 손실 : 측정 불가 - 총 직접 비용 : 약 135억원 이상 [ 3. 기술적 분석 ]\n[ 3.1 공격 기법 - SQL Injection ] SQL Injection이란 - 웹사이트 입력란에 SQL 쿼리를 삽입하여 데이터베이스를 조작하는 공격 공격 원리 - 정상 로그인 시 ID와 PW로 일치하는 사용자를 조회 - 해킹 로그인 시 입력값에 OR 조건을 삽입해 항상 참(true)이 되도록 조작 - 결과적으로 인증 우회 및 데이터베이스 전체 접근 가능 인터파크 사례 공격 흐름 1. 로그인 페이지 또는 검색창에서 취약점 발견 2. SQL Injection 쿼리 삽입 3. 데이터베이스 직접 접근 4. 고객 정보 테이블 조회 5. 1,030만 건 데이터 다운로드 [ 3.2 취약점 원인 ] 원인 1. 입력값 검증 미흡 - 사용자 입력을 그대로 SQL 쿼리에 사용 - 특수문자 필터링 없음 2. Prepared Statement 미사용 - SQL 쿼리 하드코딩 - 파라미터 바인딩 안 함 3. 데이터베이스 권한 과다 - 웹 애플리케이션 계정에 모든 테이블 접근 권한 - 최소 권한 원칙 위반 보안 대책 (당시 미비) 1. 입력값 검증 : 특수문자 이스케이프 처리 2. Prepared Statement 사용 : 파라미터 바인딩으로 쿼리 분리 3. 웹 방화벽 (WAF) : SQL Injection 패턴 차단 4. 침입탐지시스템 (IDS) : 비정상 쿼리 탐지 [ 3.3 주민등록번호 암호화 미흡 ] 당시 상황 - 인터파크는 주민등록번호를 평문 또는 단순 암호화로 저장 - 이유 : 오래된 시스템 (2000년대 초반 구축), 당시 암호화 의무 없었음 (2011년 이전), 레거시 시스템 개선 지연 2011년 개정 후 - 개인정보보호법 제24조 (고유식별정보) : 주민등록번호 별도 동의 + 암호화 의무 - 안전성 확보조치 기준 (고시) : AES-256 등 강력한 암호화 인터파크는 2016년까지 개선 안 함 \u003e 안전조치 의무 위반 [ 4. 대응 평가 ]\n[ 4.1 잘한 점 ] 신속한 신고 및 통지 - 발견 : 7월 11일 - 신고 : 7월 13일 (2일 후) - 통지 : 7월 13일 (동시) - 비교적 빠른 대응, 법적 의무 준수 투명한 공개 - 언론 보도 적극 대응 - 대국민 사과문 발표 - 유출 규모 정확히 공개 경찰 고소 - 즉시 경찰에 고소 - 포렌식 수사 협조 - 해커 검거 기여 [ 4.2 미흡한 점 ] 사전 예방 실패 1. SQL Injection 취약점 방치 - 기본적인 보안 취약점 - 정기 점검 미흡 2. 주민등록번호 암호화 지연 - 2011년 의무화 후 5년간 방치 - 레거시 개선 투자 부족 3. 침입탐지 실패 - 1,030만 건 대규모 다운로드 탐지 못함 - 모니터링 시스템 부재 초동 대응 지연 - 공격 시점 : 6월 말 - 7월 초 - 발견 : 7월 11일 (외부 통보로) - 자체 탐지 실패, 외부 제보로 발견 [ 5. 교훈 및 시사점 ]\n[ 5.1 기술적 교훈 ] 1. 웹 애플리케이션 보안 필수 - SQL Injection은 가장 기본적인 공격 - 입력값 검증, Prepared Statement 필수 - 정기 취약점 진단 - 웹 방화벽 (WAF) 도입 2. 암호화 철저 - 주민등록번호 등 고유식별정보 - AES-256 등 강력한 암호화 - 레거시 시스템도 예외 없음 3. 침입탐지 및 모니터링 - 대규모 데이터 다운로드 즉시 탐지 및 차단 - SIEM 등 통합 모니터링 [ 5.2 법률적 교훈 ] 1. 안전조치 의무 = 법적 의무 - 개인정보보호법 제29조 - 단순 권고가 아님 - 위반 시 형사 처벌 + 과징금 2. 주민등록번호 = 특별 관리 - 고유식별정보 - 별도 동의 + 강력한 암호화 - 유출 시 제재 가중 3. 신속한 신고 중요 - 발견 즉시 신고 (24시간 내 권장) - 지연 시 과태료 추가 - 투명한 공개가 신뢰 회복에 도움 [ 5.3 경영적 교훈 ] 1. 보안은 비용이 아닌 투자 - 인터파크 총 손실 : 약 135억원 이상 - 사전 투자 추정 : 웹 방화벽 5천만원, 암호화 개선 2억원, 취약점 진단 5천만원 = 총 3억원 - 135억원 vs 3억원 \u003e 45배 차이 2. 레거시 시스템 개선 필수 - 오래된 시스템 = 취약점 온상 - 정기적 개선 투자 - 보안 패치 적용 3. 평판 손실 측정 불가 - 직접 비용 : 135억원 - 평판 손실 : 측정 불가 - 고객 이탈, 신뢰 추락 \u003e 장기적 매출 감소, 브랜드 이미지 타격 [ 6. 이후 변화 ]\n[ 6.1 인터파크 조치 ] 보안 강화 1. 전사 보안 점검 2. 웹 방화벽 (WAF) 도입 3. 주민등록번호 암호화 완료 4. 침입탐지시스템 (IDS) 강화 5. 보안 인력 증원 6. 정기 취약점 진단 (분기 1회) ISMS-P 인증 - 2017년 ISMS-P 인증 취득 - 관리체계 강화 - 정기 심사 [ 6.2 업계 변화 ] 주민등록번호 수집 금지 움직임 - 2016년 인터파크 사건 이후 : 온라인 쇼핑몰 주민번호 수집 자제 - 2017년 정보통신망법 강화 : 주민번호 수집 사실상 금지, 본인인증 대체 (아이핀, 휴대폰 인증) 웹 보안 강화 - SQL Injection 등 웹 취약점 : 업계 전반 보안 강화, 웹 방화벽 도입 확대 [ 7. 비교 - 유사 사건 ]\n[ 7.1 옥션-G마켓 사건 (2008) ] 규모 : 약 1,800만 건 (인터파크보다 큼) 처벌 : 과징금 약 13억원 (당시 최대) 인터파크와의 차이 - 옥션-G마켓 (2008) : 개인정보보호법 시행 전, 정보통신망법만 적용, 주민번호 암호화 의무 없었음 - 인터파크 (2016) : 개인정보보호법 시행 후, 암호화 의무 있었음, 제재 더 무거움 [ 7.2 KT 사건 (2012) ] 규모 : 약 1,200만 건 처벌 : 과징금 약 4억원 차이 - KT는 통신사 - 전기통신사업법도 적용 - CISO 의무 [ 8. 체크리스트 - 인터파크 사건에서 배우는 보안 체크리스트 ]\n사전 예방 - 웹 취약점 정기 진단 (분기 1회) - SQL Injection 등 기본 공격 대응 - 입력값 검증, Prepared Statement 사용 - 웹 방화벽 (WAF) 도입 - 주민등록번호 등 고유식별정보 암호화 (AES-256) - 레거시 시스템 보안 개선 - 침입탐지시스템 (IDS/IPS) 구축 - 대규모 데이터 다운로드 탐지 및 차단 침해사고 대응 - 외부 통보 즉시 확인 - 내부 조사 착수 - 유출 범위 확인 - 24시간 내 신고 (개보위, KISA) - 정보주체 개별 통지 - 경찰 고소 - 언론 대응 사후 조치 - 취약점 패치 - 보안 강화 - 손해배상 - 재발 방지 대책 - ISMS-P 인증 (의무 대상) [ 9. 관련 법령 ]\n개인정보보호법 - 제24조 (고유식별정보) - 제29조 (안전성 확보 조치) - 제34조 (개인정보 유출 통지) - 제70조 (벌칙 - 5년 이하) - 제71조 (벌칙 - 2년 이하) 정보통신망법 - 제23조의2 (주민등록번호 처리 제한) - 제27조의3 (개인정보 유출 통지) - 제28조 (기술적 조치) - 제48조 (벌칙 - 정보통신망 침해) 형법 - 제314조의2 (컴퓨터등장애업무방해) 안전성 확보조치 기준 - 제6조 (암호화) [ 학습 정리 ]\n인터파크 사건에서 배운 점 - SQL Injection은 가장 기본적이지만 여전히 위협적인 공격 - 주민등록번호 암호화는 법적 의무이자 고객 신뢰 - 침입탐지 및 모니터링의 중요성 - 레거시 시스템 방치는 시한폭탄 - 신속한 신고 및 통지가 신뢰 회복의 첫걸음 - 보안 투자는 사고 비용보다 훨씬 저렴 - 1,030만 건 유출로 과징금 14.5억원 + 손해배상 100억원 = 총 135억원 이상 손실 ",
+  "wordCount" : "3906",
+  "inLanguage": "ko",
+  "datePublished": "2026-03-31T00:00:00Z",
+  "dateModified": "2026-03-31T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C/day41_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C%EC%82%AC%EB%A1%801_%EC%9D%B8%ED%84%B0%ED%8C%8C%ED%81%AC/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
 </script>
 </head>
 <body id="top">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -102,37 +170,37 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/about" title="소개">
+                <a href="https://hojjang98.github.io/about" title="소개">
                     <span>소개</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
                     <span>일일 로그</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/projects/" title="Projects">
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
                     <span>프로젝트</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/cyber-law-study/" title="Cyber-Law-Study">
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
                     <span>보안법 공부</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
                     <span>보안 시사 분석</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
                     <span>태그</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/paper-review/" title="Paper-Review">
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
                     <span>논문 리뷰</span>
                 </a>
             </li>
@@ -143,7 +211,7 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/">홈</a>&nbsp;»&nbsp;<a href="http://localhost:1313/cyber_law_study/">보안 컨설팅 공부</a></div>
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/cyber_law_study/">보안 컨설팅 공부</a></div>
     <h1 class="post-title entry-hint-parent">
       Day 41: 실무 사례 #1 - 인터파크 개인정보 유출 사건 (2016)
     </h1>
@@ -565,19 +633,19 @@ ISMS-P 인증
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/">실무사례</a></li>
-      <li><a href="http://localhost:1313/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C/">개인정보유출</a></li>
-      <li><a href="http://localhost:1313/tags/%EC%9D%B8%ED%84%B0%ED%8C%8C%ED%81%AC/">인터파크</a></li>
-      <li><a href="http://localhost:1313/tags/sql%EC%9D%B8%EC%A0%9D%EC%85%98/">SQL인젝션</a></li>
-      <li><a href="http://localhost:1313/tags/%EA%B3%BC%EC%A7%95%EA%B8%88/">과징금</a></li>
-      <li><a href="http://localhost:1313/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/">개인정보보호법</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/">실무사례</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C/">개인정보유출</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%9D%B8%ED%84%B0%ED%8C%8C%ED%81%AC/">인터파크</a></li>
+      <li><a href="https://hojjang98.github.io/tags/sql%EC%9D%B8%EC%A0%9D%EC%85%98/">SQL인젝션</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EA%B3%BC%EC%A7%95%EA%B8%88/">과징금</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/">개인정보보호법</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
 
     <span>
         Powered by

@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="ko" dir="auto" data-theme="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>네덜란드 재무부 침해 사건 - 정책 부서 내부 시스템 침해와 외부 탐지 의존 | HJ&#39;s Security Note</title>
 <meta name="keywords" content="네덜란드, 재무부, 정부기관, 내부시스템침해, 외부탐지, GDPR, 망분리, 국가인프라">
 <meta name="description" content="2026년 3월 19일 네덜란드 재무부 정책 부서 내부 시스템이 침해된 사건으로, 외부 제3자 알림에 의존해 침해를 인지한 구조적 탐지 역량 부재와 망 분리의 실효성을 분석한다. 공격자 귀속 및 탈취 데이터는 현재까지 미공개 상태다.">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/security-issues-analysis/2026/week12/dutch_ministry_of_finance_breach/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.c8c3b65cd6d058be2b4f050fd7a688ac13a23056571601dabe4f70d8d008259e.css" integrity="sha256-yMO2XNbQWL4rTwUP16aIrBOiMFZXFgHavk9w2NAIJZ4=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="canonical" href="https://hojjang98.github.io/security-issues-analysis/2026/week12/dutch_ministry_of_finance_breach/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.898219bd95f420a374e6df8d4ee9050d8913bfcf44c82e41bddff27ad9322aec.css" integrity="sha256-iYIZvZX0IKN05t&#43;NTukFDYkTv89EyC5Bvd/yetkyKuw=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="ko" href="http://localhost:1313/security-issues-analysis/2026/week12/dutch_ministry_of_finance_breach/">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/security-issues-analysis/2026/week12/dutch_ministry_of_finance_breach/">
 <noscript>
     <style>
         #theme-toggle,
@@ -70,13 +70,93 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
+</script><meta property="og:url" content="https://hojjang98.github.io/security-issues-analysis/2026/week12/dutch_ministry_of_finance_breach/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="네덜란드 재무부 침해 사건 - 정책 부서 내부 시스템 침해와 외부 탐지 의존">
+  <meta property="og:description" content="2026년 3월 19일 네덜란드 재무부 정책 부서 내부 시스템이 침해된 사건으로, 외부 제3자 알림에 의존해 침해를 인지한 구조적 탐지 역량 부재와 망 분리의 실효성을 분석한다. 공격자 귀속 및 탈취 데이터는 현재까지 미공개 상태다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="security-issues-analysis">
+    <meta property="article:published_time" content="2026-03-23T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-03-23T00:00:00+00:00">
+    <meta property="article:tag" content="네덜란드">
+    <meta property="article:tag" content="재무부">
+    <meta property="article:tag" content="정부기관">
+    <meta property="article:tag" content="내부시스템침해">
+    <meta property="article:tag" content="외부탐지">
+    <meta property="article:tag" content="GDPR">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="네덜란드 재무부 침해 사건 - 정책 부서 내부 시스템 침해와 외부 탐지 의존">
+<meta name="twitter:description" content="2026년 3월 19일 네덜란드 재무부 정책 부서 내부 시스템이 침해된 사건으로, 외부 제3자 알림에 의존해 침해를 인지한 구조적 탐지 역량 부재와 망 분리의 실효성을 분석한다. 공격자 귀속 및 탈취 데이터는 현재까지 미공개 상태다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "보안 시사 분석",
+      "item": "https://hojjang98.github.io/security-issues-analysis/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "2026",
+      "item": "https://hojjang98.github.io/security-issues-analysis/2026/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Week 12",
+      "item": "https://hojjang98.github.io/security-issues-analysis/2026/week12/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  4 ,
+      "name": "네덜란드 재무부 침해 사건 - 정책 부서 내부 시스템 침해와 외부 탐지 의존",
+      "item": "https://hojjang98.github.io/security-issues-analysis/2026/week12/dutch_ministry_of_finance_breach/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "네덜란드 재무부 침해 사건 - 정책 부서 내부 시스템 침해와 외부 탐지 의존",
+  "name": "네덜란드 재무부 침해 사건 - 정책 부서 내부 시스템 침해와 외부 탐지 의존",
+  "description": "2026년 3월 19일 네덜란드 재무부 정책 부서 내부 시스템이 침해된 사건으로, 외부 제3자 알림에 의존해 침해를 인지한 구조적 탐지 역량 부재와 망 분리의 실효성을 분석한다. 공격자 귀속 및 탈취 데이터는 현재까지 미공개 상태다.",
+  "keywords": [
+    "네덜란드", "재무부", "정부기관", "내부시스템침해", "외부탐지", "GDPR", "망분리", "국가인프라"
+  ],
+  "articleBody": "네덜란드 재무부 침해 사건 [ 인시던트 개요 ]\n- 침해 탐지 일자 - 2026년 3월 19일 ( 목요일 ) - 공식 공개 일자 - 2026년 3월 23일~24일 - 탐지 주체 - 외부 제3자의 알림을 통해 재무부 ICT 보안팀이 인지 - 침해 범위 - 정책 부서 ( policy department ) 일부 핵심 업무 시스템 - 영향 대상 - 일부 직원 ( 정확한 피해자 수 미공개 ) - 영향을 받지 않은 시스템 - 세금 징수, 수출입 규제, 소득 연계 보조금 관련 시스템 ( 연간 950만 건 소득세 처리 인프라 포함 ) - 공격자 귀속 - 미확인 ( 어떤 사이버범죄 그룹이나 국가 행위자도 공식 주장 없음 ) - 현재 상태 - 침해 시스템 접근 차단 완료, 수사 진행 중 [ 기술적 세부 사항 ]\n[ 침해 탐지 경위 ]\n재무부의 ICT 보안팀은 외부 제3자 ( external party ) 로부터 내부 네트워크 내 의심스러운 활동에 대한 알림을 받은 후 비로소 침해를 인지하였다. 이 외부 탐지의 정확한 주체 ( 보안 연구원, 위협 인텔리전스 서비스, 또는 다른 정부 기관 ) 와 알림 전달 경로는 현재까지 공개되지 않았다. 재무부는 알림 수신 후 즉각 조사를 개시하고 침해된 시스템에 대한 접근을 차단하였다고 발표하였다.\n산업 데이터에 따르면 전체 침해 사건의 약 60%는 피해 조직 자체가 아닌 외부에서 먼저 탐지된다. 이번 사건도 그 통계에 해당하는 사례로, 재무부의 내부 탐지 역량이 작동하기 전에 공격자가 이미 내부 시스템에 접근하고 있었음을 의미한다.\n[ 침해 범위 및 데이터 ]\n공식 발표 기준으로 정책 부서 내 일부 핵심 업무 프로세스 시스템이 침해되었다. 정책 부서는 세금 징수나 국민 대민 서비스를 직접 담당하는 부서가 아닌, 재무 정책 입안 및 행정 업무를 담당하는 부서로 이해된다.\n피해 직원의 정확한 수, 접근되거나 탈취된 데이터의 종류와 범위는 현재까지 공개되지 않았다. 재무부는 세금 징수, 수출입 규제, 소득 연계 보조금 관련 시스템은 영향을 받지 않았음을 명시하였다. 이 시스템들은 연간 950만 건 이상의 소득세 신고를 처리하는 핵심 국가 인프라다.\n현재까지 어떤 사이버범죄 그룹이나 국가 지원 위협 행위자도 이번 침해에 대한 공식적인 책임을 주장하지 않았다.\n[ 네덜란드 정부 기관 침해 패턴 ]\n이번 사건은 최근 네덜란드 정부 기관 대상 침해 사건들과 유사한 시기에 발생하였다.\n- 2026년 2월 - 네덜란드 교정청 ( 교도소 및 구금 시설 관할 기관 ) 에서 직원들의 이메일 주소, 전화번호, 보안 인증서가 노출된 침해 발생 - 2026년 2월 - 네덜란드 최대 이동통신사 Odido ( 구 T-Mobile Netherlands ) 에서 620만 명의 고객 정보가 유출된 침해 ( ShinyHunters 귀속 ) 발생 이러한 연속적인 침해 패턴은 네덜란드 정부 및 기업 인프라에 대한 체계적인 정찰 또는 침해 시도가 진행 중일 가능성을 시사하나, 현재 공개된 정보만으로는 이들 사건들 간의 직접적 연계를 확인할 수 없다.\n[ 근본 원인 분석 ]\n공개된 기술 정보가 현재까지 매우 제한적이므로, 확인된 사실과 추정을 명확히 구분하여 분석한다.\n[ 기술적 요인 - 확인된 사실 기반 ]\n재무부의 내부 탐지 체계가 공격자의 활동을 먼저 식별하지 못하고 외부 알림에 의존하였다는 점은 확인된 사실이다. 이는 내부 네트워크에서의 이상 동작 탐지, 사용자 행동 분석 ( UEBA ), 엔드포인트 탐지 및 대응 ( EDR ) 솔루션의 커버리지나 효과성에 한계가 있었을 가능성을 시사한다.\n[ 관리적 요인 - 추정 ]\n정부 기관의 특성상 IT 시스템 현대화 및 보안 투자가 민간 부문에 비해 지연되는 경향이 있다. 정책 부서와 같이 민감한 정부 정책 정보를 다루는 내부 시스템에 대한 접근 제어와 모니터링이 외부 대면 시스템에 비해 상대적으로 낮은 우선순위로 취급되었을 가능성이 있다. 이는 현재까지 사실로 확인되지 않은 추정이다.\n[ 인적 요인 - 추정 ]\n별도의 피싱 연계 가능성이 일부 언론에서 제기되었으나, 재무부는 공식적으로 초기 접근 벡터를 공개하지 않았다. 해당 추정은 현재 공개된 정보로는 확인할 수 없다.\n[ 피해 영향 평가 ]\n[ 운영 영향 ]\n침해된 시스템에 대한 접근 차단으로 인해 정책 부서 일부 직원들의 업무가 제한되었다. 국민 대면 서비스 ( 세금, 세관, 보조금 ) 는 영향을 받지 않았다. 시스템 차단이 얼마나 지속되었는지는 현재까지 공개되지 않았다.\n[ 데이터 영향 ]\n정책 부서 시스템에 담길 수 있는 정보로는 내부 정책 입안 문서, 직원 개인정보, 부처 간 커뮤니케이션, 미공개 정책 초안 등이 포함될 수 있다. 이러한 정보는 국가 안보 관련 외국 정부 기관이나 기업 이해관계자들에게 전략적 가치를 가질 수 있다. 그러나 실제로 어떤 데이터가 접근되거나 탈취되었는지는 공개되지 않았다.\n[ 신뢰 영향 ]\n국가 재정 정책을 담당하는 재무부의 내부 시스템 침해는 정부 기관의 사이버 보안 역량에 대한 공중의 신뢰에 부정적 영향을 미칠 수 있다. 특히 외부 탐지에 의해 인지된 점은 내부 보안 모니터링 역량의 한계를 노출한다.\n[ 예방 및 대응 조치 ]\n[ 즉각적 조치 ]\n침해된 시스템의 접근을 즉시 차단하는 봉쇄 ( containment ) 조치는 이미 취해진 것으로 확인되었다. 현재 수사 중인 초기 접근 벡터가 확인되는 시점에 추가적인 기술 조치가 필요할 것이다. 직원 자격증명 전체에 대한 재발급 또는 비밀번호 강제 변경이 권고된다.\n[ 단기 조치 ]\n내부 탐지 역량 강화가 최우선 과제다. 외부 탐지에 의존하는 상황을 최소화하기 위해 SIEM, UEBA, EDR 솔루션의 커버리지와 탐지 규칙을 재검토해야 한다. 정부 부처 간 위협 인텔리전스 공유 체계를 활용하여 유사한 공격 벡터에 대한 사전 탐지 능력을 높여야 한다.\n[ 장기 조치 ]\n정부 정보 시스템에 대한 제로 트러스트 아키텍처 도입을 검토해야 한다. 특히 정책 문서와 같은 민감 정보를 다루는 시스템에 대한 접근은 최소 권한 원칙과 지속적인 인증 검증이 적용되어야 한다. 망 분리 ( network segmentation ) 원칙을 강화하여 정책 부서 시스템과 국민 대민 서비스 인프라가 철저히 분리된 아키텍처를 유지해야 한다.\n[ 컨설팅 커뮤니케이션 전략 ]\n[ 비기술 직원 대상 ]\n정부 기관도 사이버 공격의 표적이 되며, 이번 사건에서는 세금 서비스나 국민 대민 업무가 아닌 내부 정책 업무 시스템이 침해되었다. 이는 공격자가 직접적인 재정 피해보다는 정책 정보 또는 직원 정보에 관심을 가졌을 가능성이 있음을 시사한다. 자신의 직원 정보가 노출되었을 수 있는 직원들은 신용 모니터링 서비스를 활용할 것을 권고한다.\n[ 기술팀 대상 ]\n이번 사건에서 핵심 학습 포인트는 외부 탐지 의존의 문제다. 공격자가 이미 내부 시스템에 접근한 후에 외부로부터 알림을 받는 상황은 내부 탐지 체계의 효과성에 의문을 제기한다. 정상 업무 트래픽과 침해 행위를 구분할 수 있는 행동 기반 이상 탐지 ( anomaly detection ), 특권 계정에 대한 접근 모니터링, 비정상적 시간대 접근 탐지를 최우선으로 점검해야 한다.\n[ 경영진 대상 ]\n이번 사건은 국가 재정 기관의 내부 시스템 보안이 대민 서비스 인프라 보안과 동등한 우선순위를 가져야 함을 보여준다. 정책 부서의 내부 시스템이 외부 서비스 시스템에 비해 상대적으로 낮은 보안 투자를 받는 경향이 많은 조직에서 나타난다. 내부 정책 정보와 직원 정보도 국가 안보 관련 가치를 가질 수 있으며, 이에 상응하는 보안 수준이 요구된다.\n[ 법무/컴플라이언스 대상 ]\n네덜란드의 경우 GDPR에 따라 개인정보 침해 시 72시간 이내 감독 기관 ( 네덜란드 데이터 보호 당국, AP ) 에 신고해야 한다. 피해 직원 수가 명확하지 않은 상황에서도 신고 의무는 발생할 수 있으므로, 조사와 병행하여 신고 의무 이행 여부를 즉시 법무팀과 검토해야 한다. 직원 개인정보가 노출된 경우 피해 당사자에 대한 개별 통보 의무도 발생할 수 있다.\n[ 예상 Q\u0026A ]\nQ. 공격자가 누구인지 왜 공개되지 않나?\nA. 사이버 침해의 귀속 ( attribution ) 확인은 기술적으로 복잡하고 시간이 걸리는 과정이다. 귀속 확인에는 악성코드 분석, 네트워크 패턴 분석, 위협 인텔리전스 비교 등이 필요하다. 또한 수사 진행 중에 귀속 정보를 공개하면 수사에 방해가 될 수 있다. 현재 어떤 그룹도 공식 주장을 하지 않은 것은 정교한 국가 지원 행위자의 경우 공개적인 귀속을 피하는 경향이 있기 때문일 수도 있다.\nQ. 세금 정보도 노출됐나?\nA. 재무부의 공식 발표에 따르면, 세금 징수, 수출입 규제, 보조금 관련 시스템은 영향을 받지 않았다. 침해된 것은 정책 부서의 내부 업무 시스템이다. 그러나 정책 부서 시스템에 어떤 데이터가 포함되어 있었는지는 현재까지 공개되지 않았으므로, 완전한 답변을 제공하기 위해서는 재무부의 추가 조사 결과를 기다려야 한다.\nQ. 우리 정부 부처도 이런 위험에 노출되어 있나?\nA. 정부 기관은 민간 기업과 달리 공격 표적으로서의 고유한 특성을 갖는다. 정책 정보, 외교 문서, 예산 계획 등은 국가 안보적 가치를 가지므로 국가 지원 위협 행위자들의 주요 수집 대상이 된다. 내부 정책 시스템에 대한 접근 제어, 특권 계정 관리, 행동 기반 이상 탐지가 대민 서비스 인프라와 동일한 수준의 보안 투자를 받고 있는지 점검해야 한다.\n[ 핵심 학습 포인트 ]\n- 외부 탐지에 의존하는 내부 보안 모니터링의 한계 - 공격자가 이미 내부 시스템에 접근한 후에 외부 제3자로부터 알림을 받는 상황은 dwell time이 길어질수록 잠재적 피해 범위가 확대됨을 의미한다. - 현재 공개된 정보가 매우 제한적이라는 사실 자체가 중요한 학습 포인트다. 정부 기관의 경우 수사 중인 침해에 대한 기술적 세부 정보 공개를 제한하는 것이 일반적이지만, 이는 동시에 다른 조직들이 활용할 수 있는 방어 정보의 공유를 제한하는 결과를 낳는다. - 망 분리의 실효성 - 이번 사건에서 정책 부서 시스템의 침해가 세금 징수 및 국민 대민 서비스 시스템으로 확산되지 않은 것은, 물리적 또는 논리적 망 분리가 효과적으로 작동하였음을 보여준다. 침해가 발생하더라도 피해를 국지화하는 방어 전략의 실제 효과를 확인해주는 사례다. ",
+  "wordCount" : "3560",
+  "inLanguage": "ko",
+  "datePublished": "2026-03-23T00:00:00Z",
+  "dateModified": "2026-03-23T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/security-issues-analysis/2026/week12/dutch_ministry_of_finance_breach/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
 </script>
 </head>
 <body id="top">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -102,37 +182,37 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/about" title="소개">
+                <a href="https://hojjang98.github.io/about" title="소개">
                     <span>소개</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
                     <span>일일 로그</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/projects/" title="Projects">
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
                     <span>프로젝트</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/cyber-law-study/" title="Cyber-Law-Study">
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
                     <span>보안법 공부</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
                     <span>보안 시사 분석</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
                     <span>태그</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/paper-review/" title="Paper-Review">
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
                     <span>논문 리뷰</span>
                 </a>
             </li>
@@ -143,7 +223,7 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/">홈</a>&nbsp;»&nbsp;<a href="http://localhost:1313/security-issues-analysis/">보안 시사 분석</a>&nbsp;»&nbsp;<a href="http://localhost:1313/security-issues-analysis/2026/">2026</a>&nbsp;»&nbsp;<a href="http://localhost:1313/security-issues-analysis/2026/week12/">Week 12</a></div>
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/security-issues-analysis/">보안 시사 분석</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/security-issues-analysis/2026/">2026</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/security-issues-analysis/2026/week12/">Week 12</a></div>
     <h1 class="post-title entry-hint-parent">
       네덜란드 재무부 침해 사건 - 정책 부서 내부 시스템 침해와 외부 탐지 의존
     </h1>
@@ -225,21 +305,21 @@
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/%EB%84%A4%EB%8D%9C%EB%9E%80%EB%93%9C/">네덜란드</a></li>
-      <li><a href="http://localhost:1313/tags/%EC%9E%AC%EB%AC%B4%EB%B6%80/">재무부</a></li>
-      <li><a href="http://localhost:1313/tags/%EC%A0%95%EB%B6%80%EA%B8%B0%EA%B4%80/">정부기관</a></li>
-      <li><a href="http://localhost:1313/tags/%EB%82%B4%EB%B6%80%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%B9%A8%ED%95%B4/">내부시스템침해</a></li>
-      <li><a href="http://localhost:1313/tags/%EC%99%B8%EB%B6%80%ED%83%90%EC%A7%80/">외부탐지</a></li>
-      <li><a href="http://localhost:1313/tags/gdpr/">GDPR</a></li>
-      <li><a href="http://localhost:1313/tags/%EB%A7%9D%EB%B6%84%EB%A6%AC/">망분리</a></li>
-      <li><a href="http://localhost:1313/tags/%EA%B5%AD%EA%B0%80%EC%9D%B8%ED%94%84%EB%9D%BC/">국가인프라</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%84%A4%EB%8D%9C%EB%9E%80%EB%93%9C/">네덜란드</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%9E%AC%EB%AC%B4%EB%B6%80/">재무부</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%A0%95%EB%B6%80%EA%B8%B0%EA%B4%80/">정부기관</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%82%B4%EB%B6%80%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%B9%A8%ED%95%B4/">내부시스템침해</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%99%B8%EB%B6%80%ED%83%90%EC%A7%80/">외부탐지</a></li>
+      <li><a href="https://hojjang98.github.io/tags/gdpr/">GDPR</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%A7%9D%EB%B6%84%EB%A6%AC/">망분리</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EA%B5%AD%EA%B0%80%EC%9D%B8%ED%94%84%EB%9D%BC/">국가인프라</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
 
     <span>
         Powered by

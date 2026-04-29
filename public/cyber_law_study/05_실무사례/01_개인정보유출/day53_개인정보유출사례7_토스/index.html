@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="ko" dir="auto" data-theme="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>Day 53: 실무 사례 #13 - 토스 내부자 정보 유출 (2023) | HJ&#39;s Security Note</title>
 <meta name="keywords" content="실무사례, 개인정보유출, 토스, 내부자유출, 재택근무보안, 개인정보보호법, DLP, 퇴사자관리">
 <meta name="description" content="2023년 3월 토스 전 직원이 재택근무 중 고객 개인정보 1,400만 건을 개인 노트북에 복사해 유출한 사건을 법률 위반, 재택근무 보안 취약점, DLP·VDI 대응 방법 관점에서 분석합니다.">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C/day53_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C%EC%82%AC%EB%A1%807_%ED%86%A0%EC%8A%A4/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.c8c3b65cd6d058be2b4f050fd7a688ac13a23056571601dabe4f70d8d008259e.css" integrity="sha256-yMO2XNbQWL4rTwUP16aIrBOiMFZXFgHavk9w2NAIJZ4=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="canonical" href="https://hojjang98.github.io/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C/day53_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C%EC%82%AC%EB%A1%807_%ED%86%A0%EC%8A%A4/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.898219bd95f420a374e6df8d4ee9050d8913bfcf44c82e41bddff27ad9322aec.css" integrity="sha256-iYIZvZX0IKN05t&#43;NTukFDYkTv89EyC5Bvd/yetkyKuw=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="ko" href="http://localhost:1313/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C/day53_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C%EC%82%AC%EB%A1%807_%ED%86%A0%EC%8A%A4/">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C/day53_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C%EC%82%AC%EB%A1%807_%ED%86%A0%EC%8A%A4/">
 <noscript>
     <style>
         #theme-toggle,
@@ -70,13 +70,81 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
+</script><meta property="og:url" content="https://hojjang98.github.io/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C/day53_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C%EC%82%AC%EB%A1%807_%ED%86%A0%EC%8A%A4/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="Day 53: 실무 사례 #13 - 토스 내부자 정보 유출 (2023)">
+  <meta property="og:description" content="2023년 3월 토스 전 직원이 재택근무 중 고객 개인정보 1,400만 건을 개인 노트북에 복사해 유출한 사건을 법률 위반, 재택근무 보안 취약점, DLP·VDI 대응 방법 관점에서 분석합니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="cyber_law_study">
+    <meta property="article:published_time" content="2026-04-15T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-04-15T00:00:00+00:00">
+    <meta property="article:tag" content="실무사례">
+    <meta property="article:tag" content="개인정보유출">
+    <meta property="article:tag" content="토스">
+    <meta property="article:tag" content="내부자유출">
+    <meta property="article:tag" content="재택근무보안">
+    <meta property="article:tag" content="개인정보보호법">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Day 53: 실무 사례 #13 - 토스 내부자 정보 유출 (2023)">
+<meta name="twitter:description" content="2023년 3월 토스 전 직원이 재택근무 중 고객 개인정보 1,400만 건을 개인 노트북에 복사해 유출한 사건을 법률 위반, 재택근무 보안 취약점, DLP·VDI 대응 방법 관점에서 분석합니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "보안 컨설팅 공부",
+      "item": "https://hojjang98.github.io/cyber_law_study/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  4 ,
+      "name": "Day 53: 실무 사례 #13 - 토스 내부자 정보 유출 (2023)",
+      "item": "https://hojjang98.github.io/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C/day53_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C%EC%82%AC%EB%A1%807_%ED%86%A0%EC%8A%A4/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Day 53: 실무 사례 #13 - 토스 내부자 정보 유출 (2023)",
+  "name": "Day 53: 실무 사례 #13 - 토스 내부자 정보 유출 (2023)",
+  "description": "2023년 3월 토스 전 직원이 재택근무 중 고객 개인정보 1,400만 건을 개인 노트북에 복사해 유출한 사건을 법률 위반, 재택근무 보안 취약점, DLP·VDI 대응 방법 관점에서 분석합니다.",
+  "keywords": [
+    "실무사례", "개인정보유출", "토스", "내부자유출", "재택근무보안", "개인정보보호법", "DLP", "퇴사자관리"
+  ],
+  "articleBody": "Day 53: 실무 사례 #13 - 토스 내부자 정보 유출 (2023) [ 1. 사건 개요 ]\n기본 정보 - 회사 : 토스 (비바리퍼블리카) - 발생 시기 : 2023년 3월 - 유출 규모 : 약 1,400만 건 - 유출 방식 : 내부자 유출 (전 직원) - 유출자 : 전 직원 A씨 (데이터 분석가) 사건 요약 - 2023년 3월, 토스의 전 직원이 재직 중 고객 개인정보 약 1,400만 건을 불법으로 유출한 사실이 적발되었다. - 데이터 분석가였던 A씨는 업무상 접근 권한을 이용하여 고객 정보를 개인 노트북에 복사했으며, 퇴사 후에도 해당 정보를 보유하고 있었다. - 유출 정보에는 이름, 주민등록번호 뒷자리, 전화번호 등이 포함되었다. - 핀테크 대표 기업의 보안 관리 부실이 드러났으며, 개인정보보호위원회로부터 과징금 60억원이 부과되었다. [ 1.1 상세 경위 ]\n범행 기간 : 2022년 말 - 2023년 초 (재직 중) 범행 주체 - 주범 : 전 직원 A씨 (30대, 데이터 분석가) - 재직 기간 : 2020년 - 2023년 2월 (약 3년) - 퇴사 : 2023년 2월 범행 방법 1. 정당한 업무 권한 보유 : 데이터 분석 업무로 고객 DB 접근 권한 보유 2. 개인 노트북 반출 : 재택근무 시 회사 노트북 + 개인 노트북 동시 사용, 회사 데이터를 개인 노트북에 복사 3. 퇴사 시 미삭제 : 2023년 2월 퇴사, 회사 노트북은 반납했으나 개인 노트북의 데이터는 삭제 안 함 4. 발각 : 2023년 3월 토스 내부 감사에서 발견 유출 데이터 - 이름, 주민등록번호 뒷자리 (7자리), 전화번호 - 이메일, 토스 가입 일자, 일부 거래 정보 (금액 제외) 유출 규모 - 약 1,400만 건 (토스 전체 가입자 약 2,400만 명 중 58%) 용도 - A씨는 유출 정보를 외부 판매하지는 않음 (확인됨) - 개인 보유 (이유 불명확 - 이직 후 활용 또는 단순 보유) [ 1.2 타임라인 ]\n2022년 말 - 2023년 초 - A씨, 재직 중 고객 정보를 개인 노트북에 복사 (재택근무 중 반복적 복사) 2023년 2월 - A씨 퇴사, 회사 노트북 반납, 개인 노트북 데이터 미삭제 2023년 3월 초 - 토스 정기 내부 감사 실시, 퇴사자 데이터 접근 기록 점검 - A씨의 비정상 접근 기록 발견 2023년 3월 13일 - A씨 개인 노트북에서 고객 정보 발견, 유출 사실 확인 - 경찰 신고, 개인정보보호위원회 신고, 금융위원회 보고 2023년 3월 16일 - 토스 대표 공식 사과, 고객 통지 시작 (앱 푸시, 이메일) 2023년 7월 - 검찰 A씨 기소 (개인정보 누설죄) 2023년 10월 - 1심 선고 : A씨 징역 1년 6개월 (집행유예 2년), 벌금 1천만원 2023년 12월 - 개인정보보호위원회 제재 : 과징금 60억원 2024년 1월 - 집단 소송 제기 시작 [ 2. 법률 분석 ]\n[ 2.1 적용 법률 ]\n주요 법률 1. 개인정보보호법 (핵심) 2. 신용정보법 3. 정보통신망법 토스 = 핀테크 (금융 + IT), 개인정보 + 신용정보 유출, 전직원 = 내부자. [ 2.2 내부자 (A씨)에 대한 처벌 ]\n개인정보보호법 제70조 (개인정보 누설) 조문 - 업무상 알게 된 개인정보를 누설하거나 권한 없이 다른 사람이 이용하도록 제공한 경우 5년 이하의 징역 또는 5천만원 이하의 벌금에 처한다. 해당 사항 - A씨는 재직 중 업무상 알게 된 고객 정보를 개인 노트북에 복사 (누설) - 퇴사 후에도 보유 (권한 없음) 신용정보법 제50조 (벌칙) - 업무상 알게 된 개인신용정보를 누설하거나 권한 없이 다른 사람이 이용하도록 제공한 자 - 5년 이하의 징역 또는 5천만원 이하의 벌금 형법 제356조 (업무상 배임) - 타인의 사무를 처리하는 자가 그 임무에 위배하는 행위로써 손해를 가한 때에는 10년 이하의 징역 또는 3천만원 이하의 벌금 - 해당 사항 : 토스 직원으로서 회사 데이터 무단 반출 = 임무 위배 실제 처벌 (1심) - 징역 1년 6개월 (집행유예 2년) - 벌금 1천만원, 사회봉사 80시간 - 이유 : 외부 판매 안 함 (정상 참작), 초범, 반성, 하지만 1,400만 건 = 막대한 규모 [ 2.3 토스의 책임 ]\n안전성 확보 조치 의무 위반 법적 근거 : 개인정보보호법 제29조 (안전성 확보 조치) 위반 내용 1. 재택근무 통제 미흡 - 개인 노트북 사용 허용 - 회사 데이터 개인 기기 복사 차단 안 됨 - DLP 미흡 2. 접근통제 미흡 - 데이터 분석가에게 전체 고객 DB 접근 허용 - 1,400만 건 전체 조회 가능 - 최소 권한 원칙 미적용 3. 로그 관리 미흡 - 대량 다운로드 기록 점검 안 함 (재직 중) - 퇴사 후 정기 감사에서 발견 (지연) 4. 퇴사자 관리 부실 - 퇴사 시 개인 기기 점검 안 함 - 데이터 삭제 확인 안 함 해당 조항 - 개인정보보호법 제75조 (과징금) : 안전성 확보 조치를 하지 아니하여 개인정보를 유출당한 자에게는 매출액의 3% 이하 과징금 부과 가능 [ 2.4 처벌 및 제재 ]\n개인정보보호위원회 제재 (2023년 12월) - 과징금 : 60억원 (매출액의 약 0.3%) - 근거 : 개인정보보호법 제75조 - 의미 : 핀테크 업계 최초 대규모 과징금 - 시정명령 : 재택근무 보안 체계 강화, DLP 전면 도입, 접근통제 강화, 퇴사자 관리 절차 개선 A씨 형사 처벌 - 징역 1년 6개월 (집행유예 2년), 벌금 1천만원 민사 배상 - 집단 소송 (2024년 1월 제기) : 원고 약 5만 명, 청구액 1인당 30만원 - 50만원 - 토스 자체 보상 : 1인당 5만원 위로금 지급, 총 약 20억원 (추정) 총 비용 추정 - 과징금 : 60억원 - 자체 보상 : 약 20억원 - 시스템 개선 : 약 100억원 (추정) - 총 직접 비용 : 약 200억원 이상 (소송 결과에 따라 증가) [ 2.5 법적 의미 ]\n핀테크 최초 대규모 과징금 - 60억원 = 핀테크 업계 최대 - 카카오뱅크, 토스 등 핀테크 보안 경각심 제고 재택근무 보안 문제 - 코로나19 이후 재택근무 확대로 보안 취약점 드러남 - 개인 기기 사용 통제 필요성 입증 퇴사자 관리 중요성 - 퇴사 시 데이터 삭제 확인 필수 - 개인 기기 점검 절차 의무화 필요 [ 3. 기술적 분석 ]\n[ 3.1 재택근무 보안 취약점 ]\n문제 상황 - 재택근무 시 직원이 집에서 근무 - 회사 노트북 + 개인 노트북 동시 사용 - 회사 데이터를 개인 노트북에 복사 가능 - 회사에서 통제 어려움 A씨 사례 - 업무상 고객 데이터 조회 - 분석 결과를 개인 노트북에 저장 (편의) - 반복적 복사, 회사는 탐지 못함 필요한 통제 1. 개인 기기 사용 금지 : 회사 노트북만 사용, BYOD (Bring Your Own Device) 금지 2. DLP (Data Loss Prevention) : 개인정보 포함 파일 개인 기기 복사 차단, USB·이메일·클라우드 등 모든 경로 차단 3. VDI (Virtual Desktop Infrastructure) : 가상 데스크톱, 서버에서 화면만 전송, 로컬 저장 불가, 복사 붙여넣기 차단 4. 접속 로그 모니터링 : 재택근무 중 접속 기록, 대량 다운로드 탐지, 비정상 패턴 경고 [ 3.2 보안 취약점 분석 ]\n재택근무 통제 미흡 - 코로나19 이후 재택근무 확대, 개인 노트북 사용 허용 (편의성) - DLP 미구축 또는 미흡, 재택근무 보안 정책 부족 - 필요한 대책 : DLP 전면 도입, VDI 도입, 개인 기기 사용 금지 접근통제 미흡 - 데이터 분석가에게 전체 고객 DB 접근 허용, 업무상 필요 이상 과도 - 필요한 대책 : 최소 권한 원칙, 샘플링 데이터 제공, 조회 건수 제한, 전체 DB 접근 시 승인 로그 관리 미흡 - 재직 중 대량 다운로드 탐지 못함, 퇴사 후 수개월 지연 발견 - 필요한 대책 : 실시간 로그 모니터링, 대량 다운로드 자동 경고, 일 1회 점검, AI 이상 탐지 퇴사자 관리 부실 - 퇴사 시 회사 노트북만 반납, 개인 노트북 점검 안 함, 데이터 삭제 확인 안 함 - 필요한 대책 : 퇴사 시 개인 기기 점검 (의무), 회사 데이터 삭제 확인, 서약서 징구, 퇴사 후 1개월 내 추적 조사 [ 3.3 사후 보안 강화 조치 ]\nDLP 전면 도입 - 모든 PC에 DLP 설치 - 개인정보 패턴 감지, USB·이메일·클라우드 차단 - 재택근무 PC도 포함 VDI 도입 - 데이터 분석가는 VDI만 사용 - 로컬 저장 불가, 화면만 전송 접근통제 강화 - 최소 권한 원칙 - 데이터 분석가는 샘플링 데이터만, 전체 DB 접근 시 승인 필요 - 조회 건수 제한 (일 1,000건 등) 로그 모니터링 강화 - 실시간 모니터링, 대량 다운로드 자동 경고 - 주 1회 → 일 1회 점검, AI 이상 탐지 퇴사자 관리 강화 - 퇴사 시 개인 기기 점검 (의무) - 회사 데이터 삭제 확인, 서약서 징구 - 퇴사 후 1개월 내 추적 조사 재택근무 정책 개편 - 개인 노트북 업무 사용 금지 - 회사 노트북만 사용, VPN + DLP 필수 [ 4. 대응 평가 ]\n[ 4.1 잘한 점 ]\n자체 감사로 발견 - 정기 내부 감사에서 발견 (외부 신고 아님) 신속한 조치 - 발견 즉시 A씨 추적, 경찰 신고, 고객 통지 투명한 공개 - 언론 브리핑, 앱 푸시 알림, 고객 통지 보상 프로그램 - 자체 위로금 지급 [ 4.2 미흡한 점 ]\n사전 예방 실패 - 재직 중 수개월간 탐지 못함 - 재택근무 보안 취약, DLP 미구축 - 퇴사자 관리 부실 늦은 발견 - 재직 중 탐지 못함, 퇴사 후 수개월 지연 핀테크 = 높은 기준 미달 - 토스 = 핀테크 대표 기업임에도 금융사 수준 보안 미흡 [ 5. 교훈 및 시사점 ]\n[ 5.1 기술적 교훈 ]\n재택근무 = 보안 취약점 - 개인 기기 사용 = 통제 어려움, 데이터 반출 쉬움 - 대응 : DLP 필수, VDI 도입, 개인 기기 사용 금지, 재택근무 보안 정책 최소 권한 원칙 - 전체 DB 접근 = 위험, 업무 목적만 접근 - 대응 : 샘플링 데이터 제공, 조회 건수 제한, 승인제 퇴사자 = 고위험 - 퇴사 직전 데이터 반출 위험 높음, 퇴사 후 악용 가능 - 대응 : 퇴사 시 개인 기기 점검, 데이터 삭제 확인, 추적 조사 로그 모니터링 실시간 - 재직 중 탐지 못함 = 실패 - 대응 : 일 1회 점검, 대량 다운로드 자동 경고, AI 이상 탐지 핀테크 = 금융권 수준 - 핀테크 = 금융 + IT, 일반 IT 기업보다 높은 보안 필요 - 대응 : 금융권 보안 가이드 준수, 정기 감사 [ 5.2 법률적 교훈 ]\n내부자도 5년 이하 징역 - 개인정보 누설 = 5년 이하 징역 - 초범, 외부 판매 안 해도 처벌 - A씨 : 징역 1년 6개월 (집행유예), 벌금 1천만원 회사도 과징금 - 토스 = 안전조치 의무 위반, 과징금 60억원 - 직원 관리 철저히 = 회사 책임 재택근무 = 회사 책임 - 재택근무 허용한 회사 = 통제 책임 - DLP 등 보안 조치 필수 핀테크 규제 강화 - 토스 사건 이후 핀테크 규제 강화 논의 - 금융권과 동일한 보안 기준 요구 [ 5.3 경영적 교훈 ]\n과징금 + 소송 = 막대한 비용 - 직접 비용 200억원 이상 (소송 제외) - 사전 투자 추정 : DLP 5억원, VDI 10억원, 관리 강화 5억원 = 총 20억원 - 200억원 vs 20억원 = 10배 차이 평판 손실 - 토스 = 핀테크 대표, 보안 사고 = 신뢰 추락 - 경쟁사 (카카오뱅크 등)로 이탈 가능 재택근무 시대의 보안 - 코로나19 이후 재택근무 일반화 - 재택근무 = 새로운 위협, 적극적 대응 필요 [ 6. 주요 핀테크 보안 사건 비교 ]\n토스 (2023년 3월) - 유출 규모 : 1,400만 건 - 유출 방식 : 내부자 (재택근무) - 과징금 : 60억원 현대캐피탈 (2020년 8월) - 유출 규모 : 175만 건 - 유출 방식 : 외부 해킹 (VPN) - 과징금 : 67억원 토스 특징 - 핀테크 최초 대규모 유출 - 내부자 (전 직원) - 재택근무 보안 취약점 - DLP 미흡, 퇴사자 관리 부실 - 과징금 60억원 [ 7. 체크리스트 - 재택근무 보안 ]\n재택근무 정책 - 개인 노트북 업무 사용 금지 (회사 노트북만) - VPN 필수 - 이중 인증 (2FA) - 공용 WiFi 금지 DLP (필수) - 모든 PC에 DLP 설치 - 개인정보 패턴 감지 (주민번호, 전화번호 등) - USB 차단, 이메일 첨부 차단 - 클라우드 업로드 차단, 화면 캡처 방지 VDI (권장) - 데이터 분석가 등 민감 정보 취급자 - 가상 데스크톱, 로컬 저장 불가 접근통제 - 최소 권한 원칙 - 샘플링 데이터 제공 - 전체 DB 접근 시 승인 - 조회 건수 제한 로그 관리 - 실시간 모니터링 - 대량 다운로드 자동 경고 - 일 1회 점검, AI 이상 탐지 퇴사자 관리 - 퇴사 1주일 전 : 권한 제한, 로그 집중 모니터링 - 퇴사 당일 : 즉시 모든 권한 회수, 개인 기기 점검, 데이터 삭제 확인, 서약서 징구 - 퇴사 후 1개월 : 접근 로그 재검토, 필요 시 추적 조사 교육 - 재택근무 보안 교육 (월 1회) - 데이터 반출 금지 교육 - 위반 시 징계 (해고 + 형사 고소) [ 8. 관련 법령 ]\n개인정보보호법 - 제29조 (안전성 확보 조치) - 제34조 (개인정보 유출 통지) - 제70조 (벌칙 - 개인정보 누설, 5년 이하) - 제75조 (과징금 - 매출액 3% 이하) 신용정보법 - 제43조 (안전성 확보 의무) - 제50조 (벌칙 - 5년 이하) 정보통신망법 - 제28조 (기술적 조치) 형법 - 제356조 (업무상 배임, 10년 이하) [ 학습 정리 ]\n토스 사건에서 배운 점 - 2023년 핀테크 최초 대규모 개인정보 유출 (1,400만 건) - 전 직원 (데이터 분석가)이 재직 중 개인 노트북에 복사 - 재택근무 중 회사 데이터를 개인 기기로 반출 - 퇴사 시 개인 노트북 데이터 미삭제, 퇴사 후 발견 - 개인정보보호법 5년 이하 징역 (실제 징역 1년 6개월 집행유예) - 토스 과징금 60억원 (핀테크 최초) - DLP 미구축, 재택근무 보안 취약, 퇴사자 관리 부실이 원인 - 최소 권한 원칙 미적용 (전체 DB 접근 허용) - 로그 모니터링 미흡 (재직 중 탐지 못함) - DLP, VDI 필수 (재택근무 시대) - 개인 노트북 업무 사용 금지 - 퇴사 시 개인 기기 점검 및 데이터 삭제 확인 필수 - 핀테크도 금융사 수준 보안 필요 - 사전 투자 20억원으로 200억원 손실 예방 가능 (10배 차이) ",
+  "wordCount" : "4791",
+  "inLanguage": "ko",
+  "datePublished": "2026-04-15T00:00:00Z",
+  "dateModified": "2026-04-15T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/cyber_law_study/05_%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/01_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C/day53_%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C%EC%82%AC%EB%A1%807_%ED%86%A0%EC%8A%A4/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
 </script>
 </head>
 <body id="top">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -102,37 +170,37 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/about" title="소개">
+                <a href="https://hojjang98.github.io/about" title="소개">
                     <span>소개</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/daily-logs/" title="Daily-Logs">
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
                     <span>일일 로그</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/projects/" title="Projects">
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
                     <span>프로젝트</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/cyber-law-study/" title="Cyber-Law-Study">
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
                     <span>보안법 공부</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
                     <span>보안 시사 분석</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
                     <span>태그</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/paper-review/" title="Paper-Review">
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
                     <span>논문 리뷰</span>
                 </a>
             </li>
@@ -143,7 +211,7 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/">홈</a>&nbsp;»&nbsp;<a href="http://localhost:1313/cyber_law_study/">보안 컨설팅 공부</a></div>
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/cyber_law_study/">보안 컨설팅 공부</a></div>
     <h1 class="post-title entry-hint-parent">
       Day 53: 실무 사례 #13 - 토스 내부자 정보 유출 (2023)
     </h1>
@@ -552,21 +620,21 @@ VDI (권장)
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/">실무사례</a></li>
-      <li><a href="http://localhost:1313/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C/">개인정보유출</a></li>
-      <li><a href="http://localhost:1313/tags/%ED%86%A0%EC%8A%A4/">토스</a></li>
-      <li><a href="http://localhost:1313/tags/%EB%82%B4%EB%B6%80%EC%9E%90%EC%9C%A0%EC%B6%9C/">내부자유출</a></li>
-      <li><a href="http://localhost:1313/tags/%EC%9E%AC%ED%83%9D%EA%B7%BC%EB%AC%B4%EB%B3%B4%EC%95%88/">재택근무보안</a></li>
-      <li><a href="http://localhost:1313/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/">개인정보보호법</a></li>
-      <li><a href="http://localhost:1313/tags/dlp/">DLP</a></li>
-      <li><a href="http://localhost:1313/tags/%ED%87%B4%EC%82%AC%EC%9E%90%EA%B4%80%EB%A6%AC/">퇴사자관리</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%8B%A4%EB%AC%B4%EC%82%AC%EB%A1%80/">실무사례</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%9C%A0%EC%B6%9C/">개인정보유출</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%ED%86%A0%EC%8A%A4/">토스</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%82%B4%EB%B6%80%EC%9E%90%EC%9C%A0%EC%B6%9C/">내부자유출</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%9E%AC%ED%83%9D%EA%B7%BC%EB%AC%B4%EB%B3%B4%EC%95%88/">재택근무보안</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/">개인정보보호법</a></li>
+      <li><a href="https://hojjang98.github.io/tags/dlp/">DLP</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%ED%87%B4%EC%82%AC%EC%9E%90%EA%B4%80%EB%A6%AC/">퇴사자관리</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1313/">HJ&#39;s Security Note</a></span> · 
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
 
     <span>
         Powered by
