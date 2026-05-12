@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Week 21 — 파이널 프로젝트: 수탁사 분석 및 점검 계획 수립 (Team LIBERO) | HJ&#39;s Security Note</title>
+<meta name="keywords" content="파이널프로젝트, 개인정보보호, 위수탁관리, 컨설팅, 수탁사분석, 점검계획서, 위탁계약서, 개인정보보호법, SK쉴더스루키즈">
+<meta name="description" content="파이널 프로젝트 6단계 — 6개 수탁사(다온컨택·온다로지스·패스트레인·플라이메이트·하랑케이터링·해랑금융) 위험도 기반 등급 산정, 수탁사별 점검계획서·개인정보처리위탁계약서 작성 완료">
+<meta name="author" content="">
+<link rel="canonical" href="https://hojjang98.github.io/project/week_21/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.898219bd95f420a374e6df8d4ee9050d8913bfcf44c82e41bddff27ad9322aec.css" integrity="sha256-iYIZvZX0IKN05t&#43;NTukFDYkTv89EyC5Bvd/yetkyKuw=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/project/week_21/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://hojjang98.github.io/project/week_21/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="Week 21 — 파이널 프로젝트: 수탁사 분석 및 점검 계획 수립 (Team LIBERO)">
+  <meta property="og:description" content="파이널 프로젝트 6단계 — 6개 수탁사(다온컨택·온다로지스·패스트레인·플라이메이트·하랑케이터링·해랑금융) 위험도 기반 등급 산정, 수탁사별 점검계획서·개인정보처리위탁계약서 작성 완료">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="project">
+    <meta property="article:published_time" content="2026-03-30T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-03-30T00:00:00+00:00">
+    <meta property="article:tag" content="파이널프로젝트">
+    <meta property="article:tag" content="개인정보보호">
+    <meta property="article:tag" content="위수탁관리">
+    <meta property="article:tag" content="컨설팅">
+    <meta property="article:tag" content="수탁사분석">
+    <meta property="article:tag" content="점검계획서">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_24/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_23/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_22/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_20/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_19/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_18/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Week 21 — 파이널 프로젝트: 수탁사 분석 및 점검 계획 수립 (Team LIBERO)">
+<meta name="twitter:description" content="파이널 프로젝트 6단계 — 6개 수탁사(다온컨택·온다로지스·패스트레인·플라이메이트·하랑케이터링·해랑금융) 위험도 기반 등급 산정, 수탁사별 점검계획서·개인정보처리위탁계약서 작성 완료">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "프로젝트",
+      "item": "https://hojjang98.github.io/project/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Week 21 — 파이널 프로젝트: 수탁사 분석 및 점검 계획 수립 (Team LIBERO)",
+      "item": "https://hojjang98.github.io/project/week_21/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Week 21 — 파이널 프로젝트: 수탁사 분석 및 점검 계획 수립 (Team LIBERO)",
+  "name": "Week 21 — 파이널 프로젝트: 수탁사 분석 및 점검 계획 수립 (Team LIBERO)",
+  "description": "파이널 프로젝트 6단계 — 6개 수탁사(다온컨택·온다로지스·패스트레인·플라이메이트·하랑케이터링·해랑금융) 위험도 기반 등급 산정, 수탁사별 점검계획서·개인정보처리위탁계약서 작성 완료",
+  "keywords": [
+    "파이널프로젝트", "개인정보보호", "위수탁관리", "컨설팅", "수탁사분석", "점검계획서", "위탁계약서", "개인정보보호법", "SK쉴더스루키즈"
+  ],
+  "articleBody": "Week 21 — 파이널 프로젝트: 수탁사 분석 및 점검 계획 수립 (Team LIBERO) 프로젝트 전체 자료는 GitHub에서 확인할 수 있습니다. hojjang98 / skshielders-rookies-28 — projects/week_21\n이번 주 목표 6개 수탁사 현황을 분석하고, 수탁사별 점검계획서와 개인정보처리위탁계약서를 작성한다.\n점검 대상 수탁사 (6개사) 수탁사명 업종 다온컨택 콜센터 온다로지스 물류 패스트레인 운송 플라이메이트 서비스 하랑케이터링 기내식 케이터링 해랑금융 금융 주요 산출물 산출물 위치 설명 사업제안서 ver3 리베로_수탁사보안점검_사업제안서 ver3.docx 피드백 반영 개정본 수탁사 등급 산정표 수탁사_등급_산정표.xlsx 위험도 기반 6개사 등급 산정 개인정보 범주 매핑 개인정보 보호 범주 통합 매핑.xlsx 수탁사별 처리 개인정보 분류 수탁사현황 (수탁사현황/) 6개 수탁사 각각의 현황 분석 문서 (DOCX + PDF)\n수탁사 점검계획서 (수탁사_점검계획서/, 수탁사_점검계획서_PDF/) 수탁사별 점검 일정·범위·방법을 정의한 계획서 (DOCX + PDF)\n개인정보처리위탁계약서 (개인정보위탁처리_계약서/, 개인정보위탁처리계약서_PDF/) 하랑항공-수탁사 간 위탁 계약서 전체 (DOCX + PDF)\n학습 성과 정리 영역 학습 내용 위험도 산정 수탁사 위험도 기반 등급 산정 방법론 법령 적용 개인정보처리위탁계약서 필수 기재사항 (개인정보보호법 제26조 2항) 현황 분석 수탁사 현황 인터뷰 및 문서 검토 방법 ",
+  "wordCount" : "522",
+  "inLanguage": "ko",
+  "datePublished": "2026-03-30T00:00:00Z",
+  "dateModified": "2026-03-30T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/project/week_21/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://hojjang98.github.io/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/project/">프로젝트</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Week 21 — 파이널 프로젝트: 수탁사 분석 및 점검 계획 수립 (Team LIBERO)
+    </h1>
+    <div class="post-meta"><span title='2026-03-30 00:00:00 +0000 UTC'>2026년 3월 30일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="week-21--파이널-프로젝트-수탁사-분석-및-점검-계획-수립-team-libero">Week 21 — 파이널 프로젝트: 수탁사 분석 및 점검 계획 수립 (Team LIBERO)<a hidden class="anchor" aria-hidden="true" href="#week-21--파이널-프로젝트-수탁사-분석-및-점검-계획-수립-team-libero">#</a></h1>
+<blockquote>
+<p>프로젝트 전체 자료는 GitHub에서 확인할 수 있습니다.
+<a href="https://github.com/hojjang98/skshielders-rookies-28/tree/main/projects/week_21">hojjang98 / skshielders-rookies-28 — projects/week_21</a></p>
+</blockquote>
+<hr>
+<h2 id="이번-주-목표">이번 주 목표<a hidden class="anchor" aria-hidden="true" href="#이번-주-목표">#</a></h2>
+<p>6개 수탁사 현황을 분석하고, 수탁사별 점검계획서와 개인정보처리위탁계약서를 작성한다.</p>
+<hr>
+<h2 id="점검-대상-수탁사-6개사">점검 대상 수탁사 (6개사)<a hidden class="anchor" aria-hidden="true" href="#점검-대상-수탁사-6개사">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>수탁사명</th>
+          <th>업종</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>다온컨택</td>
+          <td>콜센터</td>
+      </tr>
+      <tr>
+          <td>온다로지스</td>
+          <td>물류</td>
+      </tr>
+      <tr>
+          <td>패스트레인</td>
+          <td>운송</td>
+      </tr>
+      <tr>
+          <td>플라이메이트</td>
+          <td>서비스</td>
+      </tr>
+      <tr>
+          <td>하랑케이터링</td>
+          <td>기내식 케이터링</td>
+      </tr>
+      <tr>
+          <td>해랑금융</td>
+          <td>금융</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="주요-산출물">주요 산출물<a hidden class="anchor" aria-hidden="true" href="#주요-산출물">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>산출물</th>
+          <th>위치</th>
+          <th>설명</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>사업제안서 ver3</td>
+          <td><code>리베로_수탁사보안점검_사업제안서 ver3.docx</code></td>
+          <td>피드백 반영 개정본</td>
+      </tr>
+      <tr>
+          <td>수탁사 등급 산정표</td>
+          <td><code>수탁사_등급_산정표.xlsx</code></td>
+          <td>위험도 기반 6개사 등급 산정</td>
+      </tr>
+      <tr>
+          <td>개인정보 범주 매핑</td>
+          <td><code>개인정보 보호 범주 통합 매핑.xlsx</code></td>
+          <td>수탁사별 처리 개인정보 분류</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="수탁사현황-수탁사현황">수탁사현황 (<code>수탁사현황/</code>)<a hidden class="anchor" aria-hidden="true" href="#수탁사현황-수탁사현황">#</a></h3>
+<p>6개 수탁사 각각의 현황 분석 문서 (DOCX + PDF)</p>
+<h3 id="수탁사-점검계획서-수탁사_점검계획서-수탁사_점검계획서_pdf">수탁사 점검계획서 (<code>수탁사_점검계획서/</code>, <code>수탁사_점검계획서_PDF/</code>)<a hidden class="anchor" aria-hidden="true" href="#수탁사-점검계획서-수탁사_점검계획서-수탁사_점검계획서_pdf">#</a></h3>
+<p>수탁사별 점검 일정·범위·방법을 정의한 계획서 (DOCX + PDF)</p>
+<h3 id="개인정보처리위탁계약서-개인정보위탁처리_계약서-개인정보위탁처리계약서_pdf">개인정보처리위탁계약서 (<code>개인정보위탁처리_계약서/</code>, <code>개인정보위탁처리계약서_PDF/</code>)<a hidden class="anchor" aria-hidden="true" href="#개인정보처리위탁계약서-개인정보위탁처리_계약서-개인정보위탁처리계약서_pdf">#</a></h3>
+<p>하랑항공-수탁사 간 위탁 계약서 전체 (DOCX + PDF)</p>
+<hr>
+<h2 id="학습-성과-정리">학습 성과 정리<a hidden class="anchor" aria-hidden="true" href="#학습-성과-정리">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>영역</th>
+          <th>학습 내용</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>위험도 산정</strong></td>
+          <td>수탁사 위험도 기반 등급 산정 방법론</td>
+      </tr>
+      <tr>
+          <td><strong>법령 적용</strong></td>
+          <td>개인정보처리위탁계약서 필수 기재사항 (<code>개인정보보호법</code> 제26조 2항)</td>
+      </tr>
+      <tr>
+          <td><strong>현황 분석</strong></td>
+          <td>수탁사 현황 인터뷰 및 문서 검토 방법</td>
+      </tr>
+  </tbody>
+</table>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://hojjang98.github.io/tags/%ED%8C%8C%EC%9D%B4%EB%84%90%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/">파이널프로젝트</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8/">개인정보보호</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%9C%84%EC%88%98%ED%83%81%EA%B4%80%EB%A6%AC/">위수탁관리</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%BB%A8%EC%84%A4%ED%8C%85/">컨설팅</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%88%98%ED%83%81%EC%82%AC%EB%B6%84%EC%84%9D/">수탁사분석</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%A0%90%EA%B2%80%EA%B3%84%ED%9A%8D%EC%84%9C/">점검계획서</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%9C%84%ED%83%81%EA%B3%84%EC%95%BD%EC%84%9C/">위탁계약서</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/">개인정보보호법</a></li>
+      <li><a href="https://hojjang98.github.io/tags/sk%EC%89%B4%EB%8D%94%EC%8A%A4%EB%A3%A8%ED%82%A4%EC%A6%88/">SK쉴더스루키즈</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

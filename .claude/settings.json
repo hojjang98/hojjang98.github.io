@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\ghwns\\\\HJ_Blog\\\\config\\\\_default\\\\\" -File | Select-Object Name)"
+    ]
+  }
+}

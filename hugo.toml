@@ -1,5 +1,6 @@
 baseURL = "https://hojjang98.github.io/"
 title = "HJ's Security Note"
+description = "보안 거버넌스 · 개인정보보호법 · 침해사고 분석을 공부하는 최호준의 보안 포트폴리오 블로그"
 theme = "PaperMod"
 defaultContentLanguage = "ko"
 languageCode = "ko-kr"
@@ -58,6 +59,14 @@ summaryLength = 30
 [[params.profileMode.buttons]]
   name = "논문 리뷰"
   url = "/categories/paper-review"
+
+[[params.socialIcons]]
+  name = "github"
+  url = "https://github.com/hojjang98"
+
+[[params.socialIcons]]
+  name = "email"
+  url = "mailto:ghwns970821@gmail.com"
 
 [privacy]
   [privacy.youtube]

@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Week 20 — 파이널 프로젝트: 착수 및 계획 수립 (Team LIBERO) | HJ&#39;s Security Note</title>
+<meta name="keywords" content="파이널프로젝트, 개인정보보호, 위수탁관리, 컨설팅, WBS, 수행계획서, 사업제안서, 보안컨설팅, SK쉴더스루키즈">
+<meta name="description" content="파이널 프로젝트 5단계 — 개인정보 수탁사 점검 프로젝트 킥오프. WBS·수행계획서·사업제안서 등 기반 산출물을 완성하고 6개 수탁사 점검을 위한 전체 방향을 확정한 Team LIBERO의 착수 주차">
+<meta name="author" content="">
+<link rel="canonical" href="https://hojjang98.github.io/project/week_20/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.898219bd95f420a374e6df8d4ee9050d8913bfcf44c82e41bddff27ad9322aec.css" integrity="sha256-iYIZvZX0IKN05t&#43;NTukFDYkTv89EyC5Bvd/yetkyKuw=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://hojjang98.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hojjang98.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hojjang98.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://hojjang98.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://hojjang98.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="https://hojjang98.github.io/project/week_20/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://hojjang98.github.io/project/week_20/">
+  <meta property="og:site_name" content="HJ&#39;s Security Note">
+  <meta property="og:title" content="Week 20 — 파이널 프로젝트: 착수 및 계획 수립 (Team LIBERO)">
+  <meta property="og:description" content="파이널 프로젝트 5단계 — 개인정보 수탁사 점검 프로젝트 킥오프. WBS·수행계획서·사업제안서 등 기반 산출물을 완성하고 6개 수탁사 점검을 위한 전체 방향을 확정한 Team LIBERO의 착수 주차">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="project">
+    <meta property="article:published_time" content="2026-03-23T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-03-23T00:00:00+00:00">
+    <meta property="article:tag" content="파이널프로젝트">
+    <meta property="article:tag" content="개인정보보호">
+    <meta property="article:tag" content="위수탁관리">
+    <meta property="article:tag" content="컨설팅">
+    <meta property="article:tag" content="WBS">
+    <meta property="article:tag" content="수행계획서">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_24/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_23/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_22/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_21/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_19/">
+      <meta property="og:see_also" content="https://hojjang98.github.io/project/week_18/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Week 20 — 파이널 프로젝트: 착수 및 계획 수립 (Team LIBERO)">
+<meta name="twitter:description" content="파이널 프로젝트 5단계 — 개인정보 수탁사 점검 프로젝트 킥오프. WBS·수행계획서·사업제안서 등 기반 산출물을 완성하고 6개 수탁사 점검을 위한 전체 방향을 확정한 Team LIBERO의 착수 주차">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "프로젝트",
+      "item": "https://hojjang98.github.io/project/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Week 20 — 파이널 프로젝트: 착수 및 계획 수립 (Team LIBERO)",
+      "item": "https://hojjang98.github.io/project/week_20/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Week 20 — 파이널 프로젝트: 착수 및 계획 수립 (Team LIBERO)",
+  "name": "Week 20 — 파이널 프로젝트: 착수 및 계획 수립 (Team LIBERO)",
+  "description": "파이널 프로젝트 5단계 — 개인정보 수탁사 점검 프로젝트 킥오프. WBS·수행계획서·사업제안서 등 기반 산출물을 완성하고 6개 수탁사 점검을 위한 전체 방향을 확정한 Team LIBERO의 착수 주차",
+  "keywords": [
+    "파이널프로젝트", "개인정보보호", "위수탁관리", "컨설팅", "WBS", "수행계획서", "사업제안서", "보안컨설팅", "SK쉴더스루키즈"
+  ],
+  "articleBody": "Week 20 — 파이널 프로젝트: 착수 및 계획 수립 (Team LIBERO) 프로젝트 전체 자료는 GitHub에서 확인할 수 있습니다. hojjang98 / skshielders-rookies-28 — projects/week_20\n이번 주 목표 프로젝트 전체 방향을 잡고, 킥오프에 필요한 기반 산출물을 완성한다.\n프로젝트 현황 항목 내용 프로젝트명 개인정보 수탁사 점검 프로젝트 (리베로 컨설팅) 위탁사 하랑항공 (가상 국내 중대형 항공사) 점검 대상 6개 수탁사 역할 5조 팀장 / 보안컨설팅 파트 주요 산출물 산출물 파일 설명 WBS 루키즈_28기(AI)_보안컨설팅_최종프로젝트_WBS_26.00.00_v1.0.xlsx 5주 전체 일정 계획 WBS (최종) 5조_개인정보수탁사점검프로젝트_WBS.xlsx 팀 확정본 수행계획서 5조_개인정보수탁사점검프로젝트_수행계획서.docx 프로젝트 수행 방향 정의 사업제안서 초안 리베로_수탁사보안점검_사업제안서_ver2.docx 리베로 사업제안서 ver2 사업제안서 (팀) 5조_개인정보수탁사점검프로젝트_리베로_사업제안서.docx 최종 제출용 사업제안서 수탁사 목록 5조_개인정보수탁사점검프로젝트_수탁사목록.xlsx 점검 대상 6개사 목록 데일리 스크럼 5조_데일리스크럼.pdf 팀 진행 현황 기록 참고자료 자료 설명 루키즈_28기_프로젝트_계획서_및_멘토_소개_보안컨설팅_한관희.pdf 멘토 소개 및 프로젝트 개요 ★개인정보의 안전성 확보조치 기준 안내서(2024.10).pdf 개인정보보호법 실무 가이드 [가이드북] 정보보호위험관리사(ISRM).pdf ISRM 기반 리스크 관리 ISRM 46장 요약본.pdf ISRM 핵심 내용 요약 23기 컨설팅.pdf 선배 기수 컨설팅 프로젝트 참고 루키즈 26기(Cloud)_수탁사 점검 체크리스트.xlsx 26기 체크리스트 참고 멘토 제공/ 멘토가 직접 제공한 양식 및 가이드 일체 학습 성과 정리 영역 학습 내용 법적 근거 개인정보 수탁사 점검의 법적 근거 (개인정보보호법 제26조) 일정 관리 WBS 기반 5주 프로젝트 일정 관리 방법론 문서 구성 보안컨설팅 사업제안서 구성 방식 및 목차 설계 이해 ",
+  "wordCount" : "789",
+  "inLanguage": "ko",
+  "datePublished": "2026-03-23T00:00:00Z",
+  "dateModified": "2026-03-23T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hojjang98.github.io/project/week_20/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HJ's Security Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hojjang98.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://hojjang98.github.io/" accesskey="h" title="HJ&#39;s Security Note (Alt + H)">HJ&#39;s Security Note</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://hojjang98.github.io/about" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/daily-logs/" title="Daily-Logs">
+                    <span>일일 로그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/projects/" title="Projects">
+                    <span>프로젝트</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/cyber-law-study/" title="Cyber-Law-Study">
+                    <span>보안법 공부</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/security-issues-analysis/" title="Security-Issues-Analysis">
+                    <span>보안 시사 분석</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/tags/" title="Tags">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://hojjang98.github.io/categories/paper-review/" title="Paper-Review">
+                    <span>논문 리뷰</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://hojjang98.github.io/">홈</a>&nbsp;»&nbsp;<a href="https://hojjang98.github.io/project/">프로젝트</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Week 20 — 파이널 프로젝트: 착수 및 계획 수립 (Team LIBERO)
+    </h1>
+    <div class="post-meta"><span title='2026-03-23 00:00:00 +0000 UTC'>2026년 3월 23일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="week-20--파이널-프로젝트-착수-및-계획-수립-team-libero">Week 20 — 파이널 프로젝트: 착수 및 계획 수립 (Team LIBERO)<a hidden class="anchor" aria-hidden="true" href="#week-20--파이널-프로젝트-착수-및-계획-수립-team-libero">#</a></h1>
+<blockquote>
+<p>프로젝트 전체 자료는 GitHub에서 확인할 수 있습니다.
+<a href="https://github.com/hojjang98/skshielders-rookies-28/tree/main/projects/week_20">hojjang98 / skshielders-rookies-28 — projects/week_20</a></p>
+</blockquote>
+<hr>
+<h2 id="이번-주-목표">이번 주 목표<a hidden class="anchor" aria-hidden="true" href="#이번-주-목표">#</a></h2>
+<p>프로젝트 전체 방향을 잡고, 킥오프에 필요한 기반 산출물을 완성한다.</p>
+<hr>
+<h2 id="프로젝트-현황">프로젝트 현황<a hidden class="anchor" aria-hidden="true" href="#프로젝트-현황">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>항목</th>
+          <th>내용</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>프로젝트명</strong></td>
+          <td>개인정보 수탁사 점검 프로젝트 (리베로 컨설팅)</td>
+      </tr>
+      <tr>
+          <td><strong>위탁사</strong></td>
+          <td>하랑항공 (가상 국내 중대형 항공사)</td>
+      </tr>
+      <tr>
+          <td><strong>점검 대상</strong></td>
+          <td>6개 수탁사</td>
+      </tr>
+      <tr>
+          <td><strong>역할</strong></td>
+          <td>5조 팀장 / 보안컨설팅 파트</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="주요-산출물">주요 산출물<a hidden class="anchor" aria-hidden="true" href="#주요-산출물">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>산출물</th>
+          <th>파일</th>
+          <th>설명</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>WBS</td>
+          <td><code>루키즈_28기(AI)_보안컨설팅_최종프로젝트_WBS_26.00.00_v1.0.xlsx</code></td>
+          <td>5주 전체 일정 계획</td>
+      </tr>
+      <tr>
+          <td>WBS (최종)</td>
+          <td><code>5조_개인정보수탁사점검프로젝트_WBS.xlsx</code></td>
+          <td>팀 확정본</td>
+      </tr>
+      <tr>
+          <td>수행계획서</td>
+          <td><code>5조_개인정보수탁사점검프로젝트_수행계획서.docx</code></td>
+          <td>프로젝트 수행 방향 정의</td>
+      </tr>
+      <tr>
+          <td>사업제안서 초안</td>
+          <td><code>리베로_수탁사보안점검_사업제안서_ver2.docx</code></td>
+          <td>리베로 사업제안서 ver2</td>
+      </tr>
+      <tr>
+          <td>사업제안서 (팀)</td>
+          <td><code>5조_개인정보수탁사점검프로젝트_리베로_사업제안서.docx</code></td>
+          <td>최종 제출용 사업제안서</td>
+      </tr>
+      <tr>
+          <td>수탁사 목록</td>
+          <td><code>5조_개인정보수탁사점검프로젝트_수탁사목록.xlsx</code></td>
+          <td>점검 대상 6개사 목록</td>
+      </tr>
+      <tr>
+          <td>데일리 스크럼</td>
+          <td><code>5조_데일리스크럼.pdf</code></td>
+          <td>팀 진행 현황 기록</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="참고자료">참고자료<a hidden class="anchor" aria-hidden="true" href="#참고자료">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>자료</th>
+          <th>설명</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>루키즈_28기_프로젝트_계획서_및_멘토_소개_보안컨설팅_한관희.pdf</code></td>
+          <td>멘토 소개 및 프로젝트 개요</td>
+      </tr>
+      <tr>
+          <td><code>★개인정보의 안전성 확보조치 기준 안내서(2024.10).pdf</code></td>
+          <td>개인정보보호법 실무 가이드</td>
+      </tr>
+      <tr>
+          <td><code>[가이드북] 정보보호위험관리사(ISRM).pdf</code></td>
+          <td>ISRM 기반 리스크 관리</td>
+      </tr>
+      <tr>
+          <td><code>ISRM 46장 요약본.pdf</code></td>
+          <td>ISRM 핵심 내용 요약</td>
+      </tr>
+      <tr>
+          <td><code>23기 컨설팅.pdf</code></td>
+          <td>선배 기수 컨설팅 프로젝트 참고</td>
+      </tr>
+      <tr>
+          <td><code>루키즈 26기(Cloud)_수탁사 점검 체크리스트.xlsx</code></td>
+          <td>26기 체크리스트 참고</td>
+      </tr>
+      <tr>
+          <td><code>멘토 제공/</code></td>
+          <td>멘토가 직접 제공한 양식 및 가이드 일체</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="학습-성과-정리">학습 성과 정리<a hidden class="anchor" aria-hidden="true" href="#학습-성과-정리">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>영역</th>
+          <th>학습 내용</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>법적 근거</strong></td>
+          <td>개인정보 수탁사 점검의 법적 근거 (<code>개인정보보호법</code> 제26조)</td>
+      </tr>
+      <tr>
+          <td><strong>일정 관리</strong></td>
+          <td>WBS 기반 5주 프로젝트 일정 관리 방법론</td>
+      </tr>
+      <tr>
+          <td><strong>문서 구성</strong></td>
+          <td>보안컨설팅 사업제안서 구성 방식 및 목차 설계 이해</td>
+      </tr>
+  </tbody>
+</table>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://hojjang98.github.io/tags/%ED%8C%8C%EC%9D%B4%EB%84%90%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/">파이널프로젝트</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8/">개인정보보호</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%9C%84%EC%88%98%ED%83%81%EA%B4%80%EB%A6%AC/">위수탁관리</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%BB%A8%EC%84%A4%ED%8C%85/">컨설팅</a></li>
+      <li><a href="https://hojjang98.github.io/tags/wbs/">WBS</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%88%98%ED%96%89%EA%B3%84%ED%9A%8D%EC%84%9C/">수행계획서</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EC%82%AC%EC%97%85%EC%A0%9C%EC%95%88%EC%84%9C/">사업제안서</a></li>
+      <li><a href="https://hojjang98.github.io/tags/%EB%B3%B4%EC%95%88%EC%BB%A8%EC%84%A4%ED%8C%85/">보안컨설팅</a></li>
+      <li><a href="https://hojjang98.github.io/tags/sk%EC%89%B4%EB%8D%94%EC%8A%A4%EB%A3%A8%ED%82%A4%EC%A6%88/">SK쉴더스루키즈</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://hojjang98.github.io/">HJ&#39;s Security Note</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
